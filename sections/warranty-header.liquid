@@ -1,0 +1,35 @@
+<section>
+  <div class="warranty-header-wrapper">
+    <div class="wrapper">
+      <img class="img-fluid wow fadeIn" src="{{ section.settings.image | img_url: 'master' }}">
+      <h2>
+        {{ section.settings.title }}
+      </h2>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Warranty Header",
+	"class": "warranty-header",
+    "settings": 	[
+						{
+							"type": "image_picker",
+							"id": "image",
+							"label": "Page Logo"
+						},
+						{
+							"type": "text",
+							"id": "title",
+							"label": "Page Title"
+						}
+					]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

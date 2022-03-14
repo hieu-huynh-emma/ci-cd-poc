@@ -1,0 +1,59 @@
+<section>
+  <div class="wrapper">
+    <div class="text-center title-w-two-col-header">
+        <h3 class="h2 wow fadeIn">
+            {{ section.settings.two-col-header }}
+        </h3>
+    </div>
+    <div class="title-w-two-col-row wow fadeIn" data-wow-delay=".2s">
+      {% for block in section.blocks %}
+      <div class="title-w-two-col-block">
+        <h5 class="title-w-two-col-block-title">
+        	{{ block.settings.two-col-block-title }}
+        </h5>
+        <p class="text-lg">
+        	{{ block.settings.two-col-block-description }}
+        </p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Two Column No Img",
+	"class": "title-w-two-column-no-img",
+    "settings": [
+					{
+						"type": "text",
+                        "id": "two-col-header",
+                        "label": "Two Column Title"
+					}
+				],
+	"blocks": [
+					{
+						"type": "text",
+						"name": "Two Column Block",
+						"settings": [
+										{
+											"type": "text",
+											"id": "two-col-block-title",
+											"label": "Two Column Block Title"
+										},
+										{
+											"type": "text",
+											"id": "two-col-block-description",
+											"label": "Two Column Block Description"
+										}
+									]
+					}
+			  ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

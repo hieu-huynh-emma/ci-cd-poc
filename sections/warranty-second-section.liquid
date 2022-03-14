@@ -1,0 +1,37 @@
+<section>
+  <div class="warranty-second-section-wrapper">
+    <div class="wrapper">
+      <h6 class="h6-small">
+        {{ section.settings.title }}
+      </h6>
+      <div>
+        {{ section.settings.content }}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Warranty Second Section",
+	"class": "warranty-second-section",
+    "settings": 	[
+						{
+							"type": "text",
+							"id": "title",
+							"label": "Title"
+						},
+						{
+							"type": "richtext",
+							"id": "content",
+							"label": "Content"
+						}
+					]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

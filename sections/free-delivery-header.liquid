@@ -1,0 +1,45 @@
+<section>
+  <div class="warranty-header-wrapper">
+    <div class="wrapper">
+      <div class="free-delivery-width">
+        <img class="img-fluid wow fadeIn" src="{{ section.settings.image | img_url: 'master' }}">
+        <h2 class="wow fadeIn" data-wow-delay=".2s">
+          {{ section.settings.title }}
+        </h2>
+        <p class="wow fadeIn" data-wow-delay=".4s">
+          {{ section.settings.content }}
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Free Delivery Header",
+	"class": "free-delivery-header",
+    "settings": 	[
+						{
+							"type": "image_picker",
+							"id": "image",
+							"label": "Page Logo"
+						},
+						{
+							"type": "text",
+							"id": "title",
+							"label": "Page Title"
+						},
+						{
+							"type": "text",
+							"id": "content",
+							"label": "Page Header Description"
+						}
+					]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

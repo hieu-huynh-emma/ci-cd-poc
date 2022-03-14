@@ -1,0 +1,88 @@
+<section class="custom-home-slider">
+	{% for block in section.blocks %}
+    <div>
+        <div class="custom-home-slider--slider-wrapper">
+          <div class="custom-home-slider--slider-wrapper__gradient"></div>
+            <img class="img-fluid custom-home-slider--bg" src="{{ block.settings.banner-bg-img | img_url: 'master' }}">
+            <div class="wrapper">
+                <div class="custom-home-slider--content">
+                    <p class="font-weight-bold text-lg text-white custom-home-slider--content__top-sub">
+                        {{ block.settings.top-sub }}
+                    </p>
+                    <h1 class="text-white">
+                        {{ block.settings.banner-big-text }} <span class="custom-home-slider--content__span">{{ block.settings.banner-big-text-dif-color }}</span>
+                    </h1>
+                    <p class="font-weight-bold text-nm text-white custom-home-slider--content__desc">
+                        {{ block.settings.banner-description }}
+                    </p>
+                    <a href="{{ block.settings.banner-link }}" class="btn btn-primary">
+                        {{ block.settings.banner-link-text }}
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</section>
+
+{% schema %}
+  {
+    "name": "Custom Home Slider",
+    "settings": [],
+	"blocks": 	[
+					{
+						"type": "text",
+						"name": "Home Slider Wrapper",
+						"settings": [
+										{
+											"type": "text",
+											"id": "top-sub",
+											"label": "Top Subtitle Text"
+										},
+										{
+											"type": "text",
+											"id": "banner-big-text",
+											"label": "Banner Big Text"
+										},
+										{
+											"type": "text",
+											"id": "banner-big-text-dif-color",
+											"label": "Banner Big Text Span"
+										},
+										{
+											"type": "text",
+											"id": "banner-description",
+											"label": "Banner Description"
+										},
+										{
+											"type": "image_picker",
+											"id": "banner-bg-img",
+											"label": "Banner Background Image"
+										},
+										{
+											"type": "url",
+											"id": "banner-link",
+											"label": "Button Link"
+										},
+										{
+											"type": "text",
+											"id": "banner-link-text",
+											"label": "Button Link Text"
+										}
+									]
+					}
+				],
+	"presets":	[
+					{
+						"category": "Advance Layout",
+						"name": "Custom Home Slider"
+					}
+				]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

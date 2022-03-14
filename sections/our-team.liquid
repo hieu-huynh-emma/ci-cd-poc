@@ -1,0 +1,95 @@
+<section>
+  <div class="our-team">
+    <h2 class="wow fadeIn">
+      {{ section.settings.section-title }}
+    </h2>
+    <div class="text-lg wow fadeIn" data-wow-delay=".2s">
+      {{ section.settings.section-content }}
+    </div>
+    <div class="our-team-row wow fadeIn" data-wow-delay=".4s">
+      {% for block in section.blocks %}
+      <div class="our-team-row--block">
+        <h2 class="our-team-row--block__title text-orange">
+        	{{ block.settings.block-number }}
+        </h2>
+        <p class="our-team-row--block__description text-lg">
+        	{{ block.settings.block-description }}
+        </p>
+      </div>
+      {% endfor %}
+    </div>
+    <h2 class="wow fadeIn">
+      {{ section.settings.join-team-title }}
+    </h2>
+    <div class="text-lg wow fadeIn" data-wow-delay=".2s">
+      {{ section.settings.join-team-content }}
+    </div>
+    <a href="{{ section.settings.button-link }}" class="btn btn-secondary join-team-btn wow fadeIn" data-wow-delay=".4s">
+      {{ section.settings.button-text }}
+    </a>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Our Team",
+	"class": "our-team",
+    "settings": [
+					{
+						"type": "text",
+						"id": "section-title",	
+						"label": "Our Team Title"
+					},
+					{
+						"type": "richtext",
+						"id": "section-content",
+						"label": "Our Team Content"
+					},
+					{
+						"type": "text",
+						"id": "join-team-title",	
+						"label": "Join Team Title"
+					},
+					{
+						"type": "richtext",
+						"id": "join-team-content",
+						"label": "Join Team Content"
+					},
+					{
+						"type": "text",
+						"id": "button-text",
+						"label": "Mini CTA Button Text"
+					},
+					{
+                        "type": "url",
+                        "id": "button-link",
+                        "label": "Mini CTA Button Link"
+                    }
+				],
+	"blocks": 	[
+					{
+						"type": "text",
+						"name": "Our Team Block",
+						"settings": [
+										{
+											"type": "text",
+											"id": "block-number",
+											"label": "Our Team Block Number"
+										},
+										{
+											"type": "text",
+											"id": "block-description",
+											"label": "Our Team Block Description"
+										}
+									]
+					}
+				]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+
+{% endjavascript %}

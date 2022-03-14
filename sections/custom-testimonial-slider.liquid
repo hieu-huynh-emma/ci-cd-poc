@@ -1,0 +1,78 @@
+<section class="custom-testimonial-slider">
+  <div class="wrapper">
+    <div class="custom-testimonial-slider--wrapper">
+      	{% for block in section.blocks %}
+    	<div class="custom-testimonial-slider--slider-block">
+          <div class="testimonial-flex">
+          	<div class="custom-testimonial-slider--slider-block__img">
+              <img class="img-fluid testimonial--img wow fadeIn" src="{{ block.settings.testimonial-img | img_url: 'master' }}">
+            </div>
+            <div class="custom-testimonial-slider--slider-block__content">
+              <p class="text-primary text-lg font-weight-bold testimonial-top-sub wow fadeIn" data-wow-delay=".3s">
+                  {{ block.settings.testimonial-top-text }}
+              </p>
+              <h5 class="text-primary text-transform-unset letter-spacing-none testimonial-main-content wow fadeIn" data-wow-delay=".4s">
+                  {{ block.settings.testimonial-text }}
+              </h5>
+              <p class="other-text text-primary wow fadeIn" data-wow-delay=".5s">
+                <span class="font-weight-bold">{{ block.settings.testimonial-name }},</span> {{ block.settings.testimonial-job }}
+              </p>
+            </div>
+          </div>
+    	</div>
+      	{% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Custom Testimonial Slider",
+    "settings": [],
+	"blocks": 	[
+					{
+						"type": "text",
+						"name": "Testimonial Slider Block",
+						"settings": [
+										{
+											"type": "image_picker",
+											"id": "testimonial-img",
+											"label": "Testimonial Image"
+										},
+										{
+											"type": "text",
+											"id": "testimonial-top-text",
+											"label": "Testimonial Top Text"
+										},
+										{
+											"type": "text",
+											"id": "testimonial-text",
+											"label": "Testimonial"
+										},
+										{
+											"type": "text",
+											"id": "testimonial-name",
+											"label": "Testimonial Name"
+										},
+										{
+											"type": "text",
+											"id": "testimonial-job",
+											"label": "Testimonial Job"
+										}
+									]
+					}
+				],
+	"presets":	[
+					{
+						"category": "Advance Layout",
+						"name": "Custom Testimonial Slider"
+					}
+				]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

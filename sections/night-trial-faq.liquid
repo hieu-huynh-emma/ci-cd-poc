@@ -1,0 +1,59 @@
+<section>
+  <div class="wrapper">
+    <div class="text-center">
+      <h2 class="text-white wow fadeIn">
+      	{{ section.settings.section-title }}
+      </h2>
+    </div>
+    <div class="bedsize-collapse wow fadeIn" data-wow-delay=".2s">
+      {% for block in section.blocks %}
+      <button class="collapsible">{{ block.settings.faq-question }}</button>
+      <div class="content">
+        <div>
+          <p>
+            {{ block.settings.faq-answer }}
+          </p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "100 Night Trial FAQ",
+	"class": "night-trial-faq",
+    "settings": [
+                  {
+                    "type": "text",
+                    "id": "section-title",
+                    "label": "Section Title"	
+                  }	
+				],
+	"blocks": 	[
+					{
+						"type": "text",
+						"name": "FAQ Block",
+						"settings": [
+										{
+											"type": "text",
+											"id": "faq-question",
+											"label": "FAQ Question"
+										},
+										{
+											"type": "text",
+											"id": "faq-answer",
+											"label": "FAQ Answer"
+										}
+									]
+					}
+				]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

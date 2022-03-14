@@ -1,0 +1,47 @@
+{% section 'faq-page-header' %}
+
+<section>
+  <div class="wrapper">
+    <div class="faq-row">
+      <div class="faq-col">
+        <div class="side-nav">
+          <nav>
+            <div class="bedsize-collapse faq-sidebar-nav wow fadeIn" data-wow-delay=".2s">
+              {% for link in linklists.faq-sidebar.links %}
+              <button class="collapsible">
+                <a href="{{ link.url }}" class="faq-sidebar--link faq-link">
+                  {{ link.title }}
+                </a>
+                {% if link.links != blank %}
+                <img class="img-fluid" src="{{ "collapse-arrow-primary.svg" | asset_url }}">
+                {% endif %}
+              </button>
+              <div class="content">
+                <div>
+                  {% if link.links != blank %}
+                  <ul>
+                    {% for child_link in link.links %}  
+                    <li>
+                      <a class="faq-link" href="{{ child_link.url }}">
+                      	{{ child_link.title }}
+                      </a>
+                    </li>
+                    {% endfor %}
+                  </ul>
+                  {% endif %}
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+          </nav>
+        </div>
+      </div>
+      <div class="faq-col">
+        {% section 'faq-page-template' %}
+      </div>
+    </div>
+  </div>
+</section>
+
+
+

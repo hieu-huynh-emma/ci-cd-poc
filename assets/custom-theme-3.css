@@ -1,0 +1,1194 @@
+/* ADD TO STYLEGUIDE */
+.btn-primary-inverted {
+  background-color: #212b57;
+  border: 2px solid #212b57;
+}
+
+.btn-primary-inverted:hover {
+  background-color: transparent;
+  color: #212b57;
+}
+
+.btn-secondary-inverted {
+  background-color: #ffa355;
+  border: 2px solid #ffa355;
+}
+
+.btn-secondary-inverted:hover {
+  background-color: transparent;
+  color: #ffa355;
+}
+
+.two-col-main-img {
+  width: 150px;
+  margin-bottom: 20px;
+}
+
+.modal {
+  position: fixed; /* Stay in place */
+  z-index: 99999; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  transition: .3s ease-in;
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 12% auto; /* 15% from the top and centered */
+  padding: 30px 45px;
+  border: 1px solid #ffffff;
+  width: 600px; /* Could be more or less, depending on screen size */
+  border-radius: 10px;
+  position: relative;
+}
+
+/* The Close Button */
+.close {
+  color: #212b57;
+  font-size: 28px;
+  font-weight: 700;
+  position: absolute;
+  top: 3%;
+  right: 4%;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.custom-modal-popup {
+  margin-top: 0 !important;
+}
+
+.modal-title {
+  margin-bottom: 10px;
+}
+
+.modal-content form {
+  display: flex;
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+
+.modal-content form input:first-child {
+  width: 65%;
+  border: 2px solid #212b57;
+}
+
+.modal-content form input:last-child {
+  width: 35%;
+  border-radius: 0;
+  padding: 16px 20px;
+}
+
+.title-w-two-col-row {
+  margin-top: 40px;
+}
+
+.title-w-two-column-no-img {
+  margin-top: 50px;
+}
+
+.night-trial-faq {
+  padding: 80px 0;
+  background-color: #212b57;
+  margin-top: 80px;
+}
+
+.night-trial-faq .bedsize-collapse .collapsible,
+.warranty-faq .bedsize-collapse .collapsible,
+.delivery-returns-faq .bedsize-collapse .collapsible {
+  color: #fff;
+  background-color: transparent;
+  background-image: url('collapse-arrow-white.svg');
+  transition: .2s ease-in;
+}
+
+.night-trial-faq .bedsize-collapse .collapsible:hover,
+.warranty-faq .bedsize-collapse .collapsible:hover,
+.delivery-returns-faq .bedsize-collapse .collapsible:hover {
+  color: #617eff;
+}
+
+.night-trial-faq .bedsize-collapse .collapsible.active,
+.warranty-faq .bedsize-collapse .collapsible.active,
+.delivery-returns-faq .bedsize-collapse .collapsible.active {
+  color: #617eff;
+}
+
+.night-trial-faq .bedsize-collapse .content,
+.warranty-faq .bedsize-collapse .content,
+.delivery-returns-faq .bedsize-collapse .content {
+  background-color: transparent;
+}
+
+.night-trial-faq .bedsize-collapse .content>div *,
+.warranty-faq .bedsize-collapse .content>div *,
+.delivery-returns-faq .bedsize-collapse .content>div * {
+  color: #ffffff;
+}
+
+.product-cta-wrapper {
+  padding: 80px 0;
+  position: relative;
+  display: flex;
+}
+
+.single-prod-cta--img {
+  display: block;
+  margin: 0 auto;
+}
+
+.product-cta-wrapper:before {
+  content: ' ';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #f2a764;
+  height: 45%;
+}
+
+.primary-product-cta {
+  position: relative;
+}
+
+.primary-product-cta:before {
+  content: ' ';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #212b57 !important;
+  height: 45%;
+}
+
+.product-cta-wrapper--content {
+  z-index: 999;
+  width: 100%;
+}
+
+.product-cta-title {
+  margin-bottom: 40px;
+}
+
+.single-prod-cta--img {
+  margin-bottom: 45px;
+}
+
+.about-us-header {
+display: flex;
+flex-flow: row wrap;
+align-items: center;
+place-content: center;
+background-color: #3c4196;
+background-image: url("https://cdn.shopify.com/s/files/1/0568/9049/1074/t/2/assets/gradientbg-1638440140831.png?v=1638440144");
+background-position: center bottom;
+background-size: cover;
+background-repeat: no-repeat;
+background-attachment: scroll;
+padding: 2em;
+  margin-bottom: 1.5em;
+}
+
+
+#about-us .main-content {
+  padding-top: 0;
+}
+
+.mini-cta-wrapper {
+  background-color: #ffa355;
+  padding: 35px 0;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.mini-cta {
+  margin-top: 40px;
+}
+
+.mini-cta-description {
+  margin-bottom: 35px;
+}
+
+.our-team-row--block__title {
+  margin-bottom: 10px;
+}
+
+.our-team-row {
+  display: flex;
+  margin: 45px 0 55px;
+}
+
+.join-team-btn {
+  margin-top: 30px;
+}
+
+.awards-accordion--button {
+  margin-bottom: 0;
+}
+
+.awards-accordion .collapsible {
+  padding: 20px 50px 20px 0;
+  border-bottom: 0;
+}
+
+
+.bedsize-collapse.awards-accordion .content>div {
+  padding: 15px 0 0;
+}	
+
+.awards-accordion-ul {
+  list-style-type: none;
+  border-left: 1px solid #ffa355;
+}
+
+.awards-accordion-ul li {
+  margin-bottom: 30px !important;
+  padding-left: 35px;
+  position: relative;
+}
+
+.awards-accordion-ul li:after {
+  content: ' ';
+  position: absolute;
+  top: 0;
+  left: -3%;
+  height: 1rem;
+  width: 1rem;
+  border-radius: 50%;
+  background-color: #ffa355;
+}
+
+.awards-accordion-ul li p:first-child {
+  line-height: 1.1em;
+  margin-bottom: 10px;
+}
+
+.faq-page-header-wrapper {
+  background-color: #212b57;
+  padding: 80px 0;
+}
+
+.faq-page-header-form-wrapper {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.faq-page-header-form-wrapper form .btn {
+  border: 2px solid #f2a764;
+}
+
+.faq-page-header-form-wrapper form .btn:hover {
+  background-color: transparent;
+  border: 2px solid #f2a764;
+  color: #f2a764;
+}
+
+.faq-page-header-form-wrapper form .form-control:focus {
+  outline: none;
+}
+
+.faq-page-header-title {
+  margin-bottom: 55px;
+}
+
+#faqs .main-content {
+  padding-top: 0;
+}
+
+#reviews .main-content {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.reviews-page-wrapper {
+  padding: 80px 0;
+  background-color: #ffa355;
+}
+
+.reviews-page-wrapper select,
+.reviews-page-content select {
+  border-radius: 40px;
+  padding: 14px 20px;
+  font-family: 'header-text', sans-serif;
+  color: #212b57;
+}
+
+.reviews-page-wrapper select:focus,
+.reviews-page-wrapper select:hover,
+.reviews-page-content select:focus,
+.reviews-page-content select:hover {
+  outline: none;
+}
+
+.review-bar-wrapper {
+  margin-top: 30px;
+}
+
+.review-bar-wrapper--row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.review-progress-bar {
+  height: 29px;
+  border: 1px solid;
+  width: 100%;
+  border-radius: 20px;
+}
+
+.review-progress-bar {
+  height: 35px;
+  border: 1px solid;
+  width: 100%;
+  border-radius: 20px;
+}
+
+.reviews-page-content {
+  padding: 80px 0;
+  background-color: #212b57;
+}
+
+.my-product-rating-row {
+  margin-top: 30px;
+  display: flex;
+  align-items: center;
+}
+
+.rating-list {
+  list-style-type: none;
+  display: inline-flex;
+  margin: 0 !important;
+}
+
+.rating-list li {
+  margin-right: 5px;
+  margin-bottom: 0;
+}
+
+.my-product-rating-row div:first-child {
+  margin-right: 20px;
+}
+
+.my-reviews-card {
+  background-color: #ffffff;
+  padding: 50px 60px 40px;
+  border-radius: 30px;
+  margin-top: 35px;
+}
+
+.reviews-content-container {
+  margin-top: 45px;
+}
+
+.my-reviews-card .rating-list {
+  margin-bottom: 10px !important;
+}
+
+.my-reviews-card .rating-list li i {
+  color: #ffa355;
+}
+
+.my-reviews-card--footer-row__col p {
+  color: #9094a1;
+}
+
+.my-reviews-card--footer-row {
+  margin-top: 30px;
+}
+
+.my-reviews-pagination-wrapper {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.my-reviews-pagination-wrapper ul {
+  margin: 0;
+  display: inline-flex;
+  justify-content: center;
+}
+
+.my-reviews-pagination-wrapper ul li {
+  margin: 0 10px;
+}
+
+.my-reviews-pagination-wrapper ul li a {
+  color: #ffffff;
+}
+
+.my-reviews-pagination-wrapper ul li a:hover {
+  text-decoration: underline;
+  color: #ffa355;
+}
+
+.faq-row {
+  margin-top: 60px;
+}
+
+/* .side-nav ul {
+  margin: 0;
+  list-style-type: none;
+}
+
+.side-nav ul li {
+  margin-bottom: 0;
+}
+
+.side-nav ul li a {
+  padding: 18px 15px;
+  display: block;
+  color: #ffffff;
+  background-color: #212b57;
+  transition: .2s ease-in;
+}
+
+.side-nav ul li a.active {
+  background-color: #ffa355;
+  color: #212b57;
+}
+
+.side-nav ul li a:hover {
+  background-color: #ffa355;
+  color: #212b57;
+} */
+
+.my-accordion .content>div {
+  padding: 25px 0;
+}
+
+.my-accordion .content p {
+  color: #212b57;
+  font-size: 18px;
+}
+
+.faq-sidebar-nav .collapsible {
+  padding: 18px 15px;
+  font-weight: 500;
+  border-bottom: 0;
+  background-color: #212b57;
+  font-size: 16px;
+  transition: .2s ease-in;
+  justify-content: space-between;
+  display: flex;
+  align-items: center;
+  background-image: none;
+}
+
+.faq-sidebar-nav .collapsible img {
+  filter: brightness(0) invert(1);
+  width: 10%;
+}
+
+.faq-sidebar-nav .collapsible:hover img {
+  filter: none;
+}
+
+.faq-sidebar-nav .collapsible a {
+  color: #ffffff;
+}
+
+.faq-sidebar-nav .collapsible:hover {
+  background-color: #ffa355;
+}
+
+.faq-sidebar-nav .collapsible:hover a {
+  color: #212b57;
+}
+
+.faq-sidebar-nav .collapsible.active {
+  background-color: #ffa355;
+}
+
+.faq-sidebar-nav .collapsible.active a {
+  color: #212b57;
+}
+
+.faq-sidebar-nav .collapsible.active img {
+  filter: none;
+}
+
+.faq-sidebar-nav .content>div {
+  padding: 0;
+}
+
+.reviews-header-row .reviews-header-col img {
+  display: block;
+  margin: 0 auto;
+}
+
+.reviews-header-col-wrap .spr-icon {
+  font-size: 21px !important;
+}
+
+.reviews-header-col-wrap .spr-badge-caption {
+  font-size: 20px;
+  padding-left: 10px;
+  font-family: 'body-text', sans-serif;
+}
+
+.customer-reviews-wrapper #shopify-product-reviews .spr-content .spr-reviews {
+  display: block !important;
+  flex-wrap: nowrap;
+}
+
+.customer-reviews-wrapper #shopify-product-reviews .spr-content .spr-reviews .spr-review {
+  width: 100% !important;
+}
+
+.faq-sidebar-nav .content ul {
+  margin: 0;
+  list-style-type: none;
+}
+
+.faq-sidebar-nav .content ul li {
+  background-color: #ffa355;
+  padding: 18px 15px;
+}
+
+.faq-sidebar-nav .content ul li a:hover {
+  color: #ffffff;
+}
+
+.modal-content form .newsletter--form .input-group input:focus {
+  outline: none;
+}
+
+.featured-mid-text-wrapper {
+  background-color: #fffaf5;
+  padding: 80px 0;
+  text-align: center;
+}
+
+#mattress-in-a-box .main-content {
+  padding: 0;
+}
+
+.featured-mid-text-subtitle {
+  margin-bottom: 10px;
+  font-size: 22px;
+  color: #ffa355;
+}
+
+.mattress-box-second-wrapper {
+  padding: 80px 0;
+  background-color: #212b57;
+  text-align: center;
+}
+
+.mattress-box-fourth-wrapper {
+  padding: 80px 0;
+  background-color: #fffaf5;
+}
+
+.mattress-three-col-wrapper {
+  padding: 30px 0 100px;
+  background-color: #fffaf5;
+}
+
+#frequently-asked-questions .main-content {
+  padding-top: 0;
+}
+
+.mattress-hero-container {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.mattress-hero-container .wrapper {
+  z-index: 999;
+}
+
+.mattress-hero-video-wrapper {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+.mattress-hero-video-wrapper video {
+  object-fit: cover;
+}
+
+.mattress-hero-container:before {
+  content: ' ';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #ffffff63;
+  z-index: 2;
+}
+
+.mattress-hero-content-wrapper {
+  text-align: center;
+}
+
+.mattress-hero-title {
+  margin-bottom: 85px;
+}
+
+.mattress-three-col-wrapper--col__img {
+  margin-bottom: 15px;
+}
+
+.mattress-three-col-wrapper--col__text {
+  margin-bottom: 3px;
+}
+
+#warranty .main-content {
+  padding: 0;
+}
+
+.warranty-header-wrapper {
+  padding: 80px 0;
+  text-align: center;
+}
+
+.warranty-header-wrapper img {
+  margin-bottom: 30px;
+}
+
+.warranty-faq {
+  background-color: #212b57;
+  padding: 80px 0;
+}
+
+.warranty-second-section-wrapper {
+  padding-bottom: 80px;
+}
+
+.delivery-returns-faq {
+  background-color: #212b57;
+  padding-top: 80px;
+}
+
+.delivery-returns-width {
+  text-align: center;
+  margin-bottom: 75px;
+}
+
+.delivery-returns-wrapper {
+  padding: 80px 0 100px;
+}
+
+#shopify-section-faq-page-template .content {
+  padding: 10px 0 0;
+}
+
+@media (min-width: 1024px) {
+  .title-w-two-col-header {
+    width: 60%;
+    margin: 0 auto;
+  }
+  
+  .our-team-row--block {
+    width: 25%;
+  }
+  
+  .about-us-content-row {
+    display: flex;
+    padding-bottom: 80px;
+    justify-content: space-between;
+  }
+  
+  .about-us-content-row .about-us-content-row--col:first-child {
+    width: 70%;
+  }
+  
+  .about-us-content-row .about-us-content-row--col:last-child {
+    width: 25%;
+  }
+  
+  .awards-accordion .content {
+    max-height: 100%;
+  }
+  
+  .faq-page-header-wrapper--width {
+    width: 65%;
+    margin: 0 auto;
+  }
+  
+  .review-bar-wrapper--row .review-bar-wrapper--row__col:first-child {
+    width: 15% !important;
+  }
+
+  .review-bar-wrapper--row .review-bar-wrapper--row__col:last-child {
+    width: 85% !important;
+  }
+  
+  .featured-container {
+  	width: 60%;
+    margin: 0 auto;
+  }
+  
+  .mattress-box-second-wrapper .mattress-box-container {
+    width: 60%;
+    margin: 0 auto;
+  }
+  
+  .mattress-three-col-wrapper--flex:before {
+    left: 31% !Important;
+  }
+  
+  .mattress-three-col-wrapper--flex:after {
+    left: 66% !important;
+  }
+  
+  .mattress-hero-content-wrapper {
+  	width: 70%;
+    margin: 0 auto;
+  }
+  
+  .mattress-hero-title {
+    font-size: 90px;
+  }
+  
+  .delivery-returns-wrapper .mattress-three-col-wrapper--flex:before {
+  	left: 32.5%!important;
+  }
+  
+  .delivery-returns-wrapper .mattress-three-col-wrapper--flex:after {
+  	left: 67.5%!important;
+  }
+}
+
+@media (min-width: 768px) {
+  .title-w-two-col-row {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+  }
+
+  .title-w-two-col-block {
+    width: 45%;
+    position: relative;
+    padding: 10px 0;
+  }
+
+  .title-w-two-col-row:after {
+    content: ' ';
+    position: absolute;
+    width: 1px;
+    height: 100%;
+    top: 0;
+    right: 0;
+    left: 0;
+    margin: 0 auto;
+    border: 1px solid #ffa355;
+  }
+  
+  .faq-page-header-form-wrapper form {
+    display: flex;
+  }
+  
+  .faq-page-header-form-wrapper form .form-control {
+    border-top-left-radius: 40px;
+    border-bottom-left-radius: 40px;
+  }
+  
+  .faq-page-header-form-wrapper form .btn {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+
+  .faq-page-header-form-wrapper form .form-control {
+    width: 70%;
+    padding: 10px 25px;
+  }
+
+  .faq-page-header-form-wrapper form .btn {
+    width: 30%;
+    border: 2px solid #f2a764;
+  }
+  
+  .reviews-page-wrapper select {
+    width: 40%;
+  }
+  
+/*   .reviews-header-row .reviews-header-col:first-child {
+    text-align: left;
+  } */
+  
+  .reviews-header-col {
+    width: 45%;
+    text-align: center;
+  }
+
+/*   .reviews-header-row {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  } */
+  
+  .reviews-header-col-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .reviews-select-wrapper {
+    width: 100%;
+  }
+  
+  .reviews-page-content--row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .reviews-page-content select {
+    width: 40%;
+  }
+
+  .reviews-page-content--row__col {
+    width: 50%;
+  }
+
+  .reviews-page-content--row__col:last-child {
+    text-align: right;
+  }
+  
+  .review-bar-wrapper--row .review-bar-wrapper--row__col:first-child {
+    width: 30%;
+  }
+
+  .review-bar-wrapper--row .review-bar-wrapper--row__col:last-child {
+    width: 70%;
+  }
+  
+  .my-reviews-card--footer-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .my-reviews-card--footer-row__col p {
+    margin-bottom: 0;
+  }
+  
+  .faq-row {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .faq-row .faq-col:first-child {
+    width: 20%;
+  }
+
+  .faq-row .faq-col:last-child {
+    width: 70%;
+  }
+  
+  .modal-content form .newsletter--form {
+    display: flex;
+    width: 100%;
+  }
+
+  .modal-content form .newsletter--form .input-group {
+    width: 100% !important;
+    display: flex;
+  }
+  
+  .modal-content form .newsletter--form .input-group input {
+    width: 65% !important;
+  }
+
+  .modal-content form .newsletter--form .input-group .input-group-btn {
+    width: 35% !important;
+  }
+  
+  .mattress-box-fourth-wrapper--flex {
+    display: flex;
+  }
+
+  .mattress-box-fourth-wrapper__col:first-child {
+    width: 44%;
+  }
+
+  .mattress-box-fourth-wrapper__col:last-child {
+    width: 56%;
+    padding-left: 40px;
+  }
+  
+  .mattress-three-col-wrapper--flex {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+  }
+
+  .mattress-three-col-wrapper--col {
+    width: 30%;
+  }
+  
+  .mattress-three-col-wrapper--flex:before {
+    content: ' ';
+    position: absolute;
+    height: 100%;
+    width: 2px;
+    background-color: #ffa355;
+    left: 33%;
+  }
+
+  .mattress-three-col-wrapper--flex:after {
+    content: ' ';
+    position: absolute;
+    height: 100%;
+    width: 2px;
+    background-color: #ffa355;
+    left: 68%;
+  }
+  
+  .free-delivery-width {
+    width: 60%;
+    margin: 0 auto;
+  }
+  
+  .delivery-returns-width {
+    width: 60%;
+    margin: 0 auto 75px;
+  }
+  
+}
+
+@media (max-width: 1024px) {
+  .modal-content form .newsletter--form {
+  	width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .modal-content {
+    width: 70%;
+  }
+  
+  .two-col-main-img {
+    width: 100px;
+  }
+  
+  .title-w-two-col-row {
+    margin-top: 40px;
+  }
+  
+  .our-team-row--block {
+    width: 50%;
+    margin-bottom: 20px;
+  }
+  
+  .our-team-row {
+    flex-wrap: wrap;
+  }
+  
+  .about-us-content-row .about-us-content-row--col:first-child {
+  	margin-bottom: 50px;
+  }
+  
+  .awards-accordion .collapsible {
+    border-bottom: 1px solid #212b57;
+  }
+  
+  .awards-accordion-ul li:after {
+  	left: -1.2%;
+  }
+  
+  .mattress-three-col-wrapper--col {
+    text-align: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .modal-content {
+    margin: 25% auto 0;
+    width: 90%;
+    padding: 30px 30px;
+  }
+
+  .modal-content form {
+    display: block;
+  }
+
+  .modal-content form input {
+    width: 100% !important;
+  }
+
+  .modal-content form input.btn {
+    padding: 11px 20px !important;
+    margin-top: 5px;
+  }
+  
+  .title-w-two-col-block-title {
+    margin-bottom: 7px;
+  }
+  
+  .title-w-two-col-block {
+    margin-bottom: 30px;
+  }
+  
+  .faq-page-header-form-wrapper input {
+    width: 100%;
+  }
+
+  .faq-page-header-form-wrapper input:first-child {
+    margin-bottom: 10px;
+    border-radius: 10px;
+  }
+  
+  .review-bar-wrapper--row .review-bar-wrapper--row__col:first-child {
+    width: 20%;
+  }
+
+  .review-bar-wrapper--row .review-bar-wrapper--row__col:last-child {
+    width: 80%;
+  }
+  
+  .reviews-page-content select,
+  .reviews-page-content--row .btn {
+  	width: 100%;
+  }
+  
+  .reviews-page-content--row__col {
+  	margin-bottom: 30px;
+  }
+  
+  .my-reviews-card {
+  	padding: 50px 20px 40px;
+  }
+  
+  .awards-accordion-ul li:after {
+    left: -2.5%;
+  }
+  
+  .mini-cta-wrapper {
+    padding: 35px 20px;
+  }
+  
+  .reviews-page-wrapper select {
+  	width: 100%;
+  }
+  
+  .my-product-rating-row {
+  	margin-top: 15px;
+  }
+  
+  .reviews-header-col {
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .modal-content form .newsletter--form .input-group input,
+  .modal-content form .newsletter--form .input-group .input-group-btn,
+  .modal-content form .newsletter--form .input-group .input-group-btn .btn{
+    width: 100% !important;
+    display: block;
+  }
+
+  .modal-content form .newsletter--form .input-group .input-group-btn {
+    margin-top: 10px;
+  }
+
+  .modal-content form .newsletter--form {
+    width: 100%;
+  }
+
+  .modal-content form .newsletter--form .input-group {
+    display: block !important;
+  }
+  
+  .mattress-box-fourth-wrapper__col:last-child {
+    margin-top: 50px;
+  }
+  
+  .mattress-three-col-wrapper--col {
+  	margin-bottom: 40px;
+  }
+
+}
+
+/*** GLOBO ADDITIONAL **/
+
+.gPreorderBottomMessage {display: none!important;}
+
+.gPreorderBtn {background: #288E7C!important; border: 1px solid #288E7C!important;}
+
+.gPreorderWarning {display: none!important;}
+
+
+
+
+/**** VITALS *****/
+
+.vtl-ub-bundle-box {
+  text-align: left!important;
+  font-size: 1em!important;
+    margin-top: .8em!important;
+}
+
+.vtl-ub-bundle-box h2 {
+  font-size: 1.5em; }
+
+
+.vtl-ub-bundle-box button {
+  font-size: .9em!important;
+    padding: 6px!important;}
+
+.vtl-ub-bundle-box__product-image-link > img {
+  width: 100px!important;
+  height: auto!important;
+}
+
+.vitals-popup-content-wrapper {
+    background-image: url(https://cdn.shopify.com/s/files/1/0562/9873/3706/files/bgpopup.jpg?v=1641996468)!important;
+}
+
+.vitals-popup-cta {
+    background-color: #fff!important;
+    color: #3C4196;
+    border: 1px solid #fff!important;
+}
+  
+
+ .vtl-pr-review-stars-snippet {
+   display: none!important;
+ }
+
+.vtl-pr-main-widget__summary {
+  display: none!important
+}
+
+
+/**** JUDE ME HOMEPAGE CAROUSEL ****/
+
+
+.jdgm-carousel--card-theme .jdgm-carousel-item__inner-wrapper {
+	box-shadow: rgb(0 0 0 / 10%) 0 5px 10px;
+  	border-radius: 8px!important;
+    background: #fff;
+}
+
+
+
+.jdgm-paginate__page.jdgm-curt {
+    font-weight: bold;
+    font-size: 100%!important; 
+    pointer-events: none;
+}
+
+.jdgm-all-reviews-widget, .jdgm-rev-widg {
+    padding: 24px;
+    border: 0px solid #eee!important;
+}

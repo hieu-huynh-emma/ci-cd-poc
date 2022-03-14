@@ -1,0 +1,47 @@
+<section>
+  <div class="featured-mid-text-wrapper">
+    <div class="wrapper">
+      <div class="featured-container">
+        <p class="featured-mid-text-subtitle wow fadeIn">
+          {{ section.settings.section-subtitle }}
+        </p>
+        <h2 class="text-primary wow fadeIn" data-wow-delay=".2s">
+          {{ section.settings.section-title }}
+        </h2>
+        <p class="wow fadeIn" data-wow-delay=".4s">
+           {{ section.settings.section-content }}
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Featured Mid Text",
+	"class": "featured-mid-text",
+    "settings": [
+                  {
+                    "type": "text",
+                    "id": "section-subtitle",
+                    "label": "Section Sub Title"	
+                  },
+                  {
+                    "type": "text",
+                    "id": "section-title",
+                    "label": "Section Title"	
+                  },
+				  {
+                    "type": "text",
+                    "id": "section-content",
+                    "label": "Section Content"	
+                  }
+				]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
