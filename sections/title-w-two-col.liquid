@@ -1,0 +1,65 @@
+<section>
+  <div class="wrapper">
+    <div class="text-center title-w-two-col-header">
+    	<img class="img-fluid two-col-main-img wow fadeIn" src="{{ section.settings.two-col-main-img | img_url: 'master' }}">
+        <h3 class="h2 wow fadeIn" data-wow-delay=".2s">
+            {{ section.settings.two-col-main-text }}
+        </h3>
+    </div>
+    <div class="title-w-two-col-row wow fadeIn" data-wow-delay=".4s">
+      {% for block in section.blocks %}
+      <div class="title-w-two-col-block">
+        <h5 class="title-w-two-col-block-title">
+        	{{ block.settings.two-col-block-title }}
+        </h5>
+        <p class="text-lg">
+        	{{ block.settings.two-col-block-description }}
+        </p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Title with Two Column",
+	"class": "title-w-two-column",
+    "settings": [
+					{
+						"type": "image_picker",
+                        "id": "two-col-main-img",
+                        "label": "Two Column Main Image"
+					},
+					{
+						"type": "text",
+                        "id": "two-col-main-text",
+                        "label": "Two Column Main Text"
+					}
+				],
+	"blocks": [
+					{
+						"type": "text",
+						"name": "Two Column Block",
+						"settings": [
+										{
+											"type": "text",
+											"id": "two-col-block-title",
+											"label": "Two Column Block Title"
+										},
+										{
+											"type": "text",
+											"id": "two-col-block-description",
+											"label": "Two Column Block Description"
+										}
+									]
+					}
+			  ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

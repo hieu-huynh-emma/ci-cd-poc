@@ -1,0 +1,72 @@
+<section class="custom-award-slider-wrapper">
+  <div class="wrapper">
+    <div class="custom-award-width">
+    	<p class="other-text text-lg font-weight-bold text-black wow fadeIn">
+            {{ section.settings.award-section-top-sub }}
+        </p>
+        <h5 class="text-primary text-capitalize letter-spacing-none wow fadeIn" data-wow-delay=".2s">
+            {{ section.settings.award-section-title }}
+        </h5>
+        <p class="font-weight-bold text-primary text-nm wow fadeIn" data-wow-delay=".4s">
+            {{ section.settings.award-section-description }}
+        </p>
+    </div>
+    <div class="custom-award-slider wow fadeIn" data-wow-delay=".6s">
+      {% for block in section.blocks %}
+      <div div class="custom-award-slider--wrapper">
+        <div>
+        	<img class="img-fluid custom-award-slider--logo" src="{{ block.settings.award-block-logo | img_url: 'master' }}">
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Custom Award Winning",
+    "settings": [
+					{
+						"type": "text",
+						"id": "award-section-top-sub",
+						"label": "Award Section Top Sub"
+					},
+					{
+						"type": "text",
+						"id": "award-section-title",
+						"label": "Award Section Title"
+					},
+					{
+						"type": "text",
+						"id": "award-section-description",
+						"label": "Award Section Description"
+					}
+				],
+	"blocks": 	[
+					{
+						"type": "text",
+						"name": "Award Block",
+						"settings": [
+										{
+											"type": "image_picker",
+                                            "id": "award-block-logo",
+                                            "label": "Award Block Logo"
+										}
+									]
+					}
+				],
+	"presets":	[
+					{
+						"category": "Advance Layout",
+						"name": "Custom Award Winning"
+					}
+				]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

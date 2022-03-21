@@ -1,0 +1,200 @@
+<section>
+  <div class="awards-accordion-wrapper">
+    <h3 class="wow fadeIn">
+      {{ section.settings.awards-title }}
+    </h3>
+    
+    <div class="bedsize-collapse awards-accordion wow fadeIn" data-wow-delay=".2s">
+    
+      
+      <button class="collapsible"><h4 class="awards-accordion--button">2019</h4></button>
+      <div class="content">
+        <div>
+          <ul class="awards-accordion-ul">
+            
+            {% for block in section.blocks %}
+              {% if block.type == '2019' %}
+                <li>
+                  <p class="text-lg font-weight-bold">
+                    {{ block.settings.awards-label }}
+                  </p>
+                  <p class="text-lg">
+                    {{ block.settings.awards-content }}
+                  </p>
+                </li>
+              {% endif %}
+            {% endfor %}
+
+          </ul>
+        </div>
+      </div>
+      
+      
+      
+      <button class="collapsible"><h4 class="awards-accordion--button">2018</h4></button>
+      <div class="content">
+        <div>
+          <ul class="awards-accordion-ul">
+             {% for block in section.blocks %}
+              {% if block.type == '2018' %}
+                <li>
+                  <p class="text-lg font-weight-bold">
+                    {{ block.settings.awards-label }}
+                  </p>
+                  <p class="text-lg">
+                    {{ block.settings.awards-content }}
+                  </p>
+                </li>
+              {% endif %}
+            {% endfor %}
+
+          </ul>
+        </div>
+      </div>
+      
+      <button class="collapsible"><h4 class="awards-accordion--button">2017</h4></button>
+      <div class="content">
+        <div>
+          <ul class="awards-accordion-ul">
+             {% for block in section.blocks %}
+              {% if block.type == '2017' %}
+                <li>
+                  <p class="text-lg font-weight-bold">
+                    {{ block.settings.awards-label }}
+                  </p>
+                  <p class="text-lg">
+                    {{ block.settings.awards-content }}
+                  </p>
+                </li>
+              {% endif %}
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+      
+      
+      
+    </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Awards Accordion",
+	"class": "awards-accordion",
+    "settings": [
+					{
+						"type": "text",
+						"id": "awards-title",
+						"label": "Awards Title"
+					}
+				],
+	"blocks": 	[
+					{
+						"type": "2022",
+						"name": "2022",
+						"settings": [
+                          {
+                            "type": "text",
+                            "id": "awards-label",
+                            "label": "Label"
+                          },
+                          {
+                            "type": "text",
+                            "id": "awards-content",
+                            "label": "Content"
+                            }
+                          ]
+					},
+					{
+						"type": "2021",
+						"name": "2021",
+						"settings": [
+                          {
+                            "type": "text",
+                            "id": "awards-label",
+                            "label": "Label"
+                          },
+                          {
+                            "type": "text",
+                            "id": "awards-content",
+                            "label": "Content"
+                            }
+                          ]
+					},
+					{
+						"type": "2020",
+						"name": "2020",
+						"settings": [
+                          {
+                            "type": "text",
+                            "id": "awards-label",
+                            "label": "Label"
+                          },
+                          {
+                            "type": "text",
+                            "id": "awards-content",
+                            "label": "Content"
+                            }
+                          ]
+					},
+					{
+						"type": "2019",
+						"name": "2019",
+						"settings": [
+                          {
+                            "type": "text",
+                            "id": "awards-label",
+                            "label": "Label"
+                          },
+                          {
+                            "type": "text",
+                            "id": "awards-content",
+                            "label": "Content"
+                            }
+                          ]
+					},
+					{
+						"type": "2018",
+						"name": "2018",
+						"settings": [
+                          {
+                            "type": "text",
+                            "id": "awards-label",
+                            "label": "Label"
+                          },
+                          {
+                            "type": "text",
+                            "id": "awards-content",
+                            "label": "Content"
+                            }
+                          ]
+					},
+					{
+						"type": "2017",
+						"name": "2017",
+						"settings": [
+                          {
+                            "type": "text",
+                            "id": "awards-label",
+                            "label": "Label"
+                          },
+                          {
+                            "type": "text",
+                            "id": "awards-content",
+                            "label": "Content"
+                            }
+                          ]
+					}
+				
+				
+					
+				]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

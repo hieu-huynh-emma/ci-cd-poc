@@ -1,0 +1,73 @@
+<section>
+  <div class="mattress-three-col-wrapper">
+    <div class="wrapper">
+      <div class="mattress-three-col-wrapper--flex">
+        {% for block in section.blocks %}
+        <div class="mattress-three-col-wrapper--col">
+          <img class="img-fluid mattress-three-col-wrapper--col__img wow fadeIn" src="{{ block.settings.mattress-col-img | img_url: 'master' }}">
+          <h6 class="h6-small mattress-three-col-wrapper--col__title wow fadeIn" data-wow-delay=".2s">
+            {{ block.settings.mattress-col-title }}
+          </h6>
+          <p class="mattress-three-col-wrapper--col__text wow fadeIn" data-wow-delay=".4s">
+            {{ block.settings.mattress-col-text }}
+          </p>
+          <u class="wow fadeIn" data-wow-delay=".6s">
+            <a href="{{ block.settings.mattress-col-link }}" class="font-weight-bold">
+          	{{ block.settings.mattress-col-link-text }}
+            </a>
+          </u>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Mattress Three Col",
+	"class": "mattress-three-col",
+    "settings": 	[
+						
+					],
+	"blocks": 	[
+					{
+						"type": "text",
+						"name": "Mattress Box Column",
+						"settings": [
+										{
+                                            "type": "image_picker",
+                                            "id": "mattress-col-img",
+                                            "label": "Mattress Column Title"
+                                        },
+                                        {
+                                            "type": "text",
+                                            "id": "mattress-col-title",
+                                            "label": "Mattress Column Title"
+                                        },
+                                        {
+                                            "type": "text",
+                                            "id": "mattress-col-text",
+                                            "label": "Mattress Column Text"
+                                        },
+										{
+                                            "type": "text",
+                                            "id": "mattress-col-link-text",
+                                            "label": "Mattress Column Link Text"
+                                        },
+                                        {
+                                            "type": "url",
+                                            "id": "mattress-col-link",
+                                            "label": "Mattress Column Link"
+                                        }
+									]
+					}
+				]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

@@ -1,0 +1,31 @@
+<section>
+  <div class="mattress-box-second-wrapper">
+    <div class="wrapper">
+      <div class="mattress-box-container">
+        <h2 class="text-white wow fadeIn">
+          {{ section.settings.section-title }}
+        </h2>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Mattress Second Section",
+	"class": "mattress-box-second-section",
+    "settings": [
+                  {
+                    "type": "text",
+                    "id": "section-title",
+                    "label": "Section Title"	
+                  }
+				]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

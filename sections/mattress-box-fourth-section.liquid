@@ -1,0 +1,52 @@
+<section>
+  <div class="mattress-box-fourth-wrapper">
+    <div class="wrapper">
+      <div class="mattress-box-fourth-wrapper--flex">
+        <div class="mattress-box-fourth-wrapper__col">
+          <h2 class="wow fadeIn">
+          	{{ section.settings.section-title }}
+          </h2>
+          <p class="wow fadeIn" data-wow-delay=".2s">
+          	{{ section.settings.section-content }}
+          </p>
+        </div>
+        <div class="mattress-box-fourth-wrapper__col wow fadeIn" data-wow-delay=".4s">
+          <video loop="" muted="" autoplay="autoplay" preload="" id="vid" width="100%" height="100%"> 
+            <source src="{{ section.settings.video-link }}" type="video/webm">
+            <source src="{{ section.settings.video-link }}" type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Mattress Box Fourth",
+	"class": "mattress-box-fourth-section",
+    "settings": 	[
+						{
+							"type": "text",
+							"id": "section-title",
+							"label": "Section Title"
+						},
+						{
+							"type": "text",
+							"id": "section-content",
+							"label": "Section Content Text"
+						},
+						{
+							"type": "url",
+							"id": "video-link",
+							"label": "Mattress Hero Video Link"
+						}
+					]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

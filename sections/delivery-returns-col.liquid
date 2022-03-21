@@ -1,0 +1,69 @@
+<section>
+  <div class="delivery-returns-wrapper">
+    <div class="wrapper">
+      <div class="delivery-returns-width">
+        <h2 class="wow fadeIn">
+        {{ section.settings.section-title }}
+        </h2>
+      </div>
+      <div class="mattress-three-col-wrapper--flex">
+        {% for block in section.blocks %}
+        <div class="mattress-three-col-wrapper--col text-center">
+          <h2 class="wow fadeIn mb-0" data-wow-delay=".2s">
+          {{ block.settings.number }}
+          </h2>
+          <h6 class="h6-small mattress-three-col-wrapper--col__title wow fadeIn" data-wow-delay=".4s">
+            {{ block.settings.title }}
+          </h6>
+          <p class="mattress-three-col-wrapper--col__text wow fadeIn" data-wow-delay=".6s">
+            {{ block.settings.text }}
+          </p>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Delivery and Returns",
+	"class": "delivery-returns",
+    "settings": 	[
+						{
+							"type": "text",
+							"id": "section-title",
+							"label": "Section Title"
+						}
+					],
+	"blocks": 	[
+					{
+						"type": "text",
+						"name": "Delivery Returns Column",
+						"settings": [
+										{
+                                            "type": "text",
+                                            "id": "number",
+                                            "label": "Column Number"
+                                        },
+                                        {
+                                            "type": "text",
+                                            "id": "title",
+                                            "label": "Column Title"
+                                        },
+                                        {
+                                            "type": "text",
+                                            "id": "text",
+                                            "label": "Column Text"
+                                        }
+									]
+					}
+				]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

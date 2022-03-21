@@ -1,0 +1,98 @@
+<section class="custom-featured-products">
+  <div class="wrapper">
+    <p class="text-black text-lg font-weight-bold custom-featured-products--top-sub text-mobile-center wow fadeIn">
+    	{{ section.settings.custom-featured-products-top-sub }}
+    </p>
+    <h2 class="text-primary custom-featured-products--title text-mobile-center wow fadeIn" data-wow-delay=".2s">
+    	{{ section.settings.custom-featured-products-title }}
+    </h2>
+    <div class="custom-featured-products-row wow fadeIn" data-wow-delay=".4s">
+
+      
+        
+      
+        
+      {% for product in collections[section.settings.featured-collection].products limit: 8 %}
+        
+          
+          
+          {% assign current_variant = product.selected_or_first_available_variant %}
+      
+      
+          
+
+          <div class="featured-product-item">
+            <a class="shop-now" href="{{ product.url }}">
+              <div class="featured-product-item-flex">
+              	<p class="text-sm text-primary font-weight-bold featured-product-item--tag">
+                    {{ product.tags }}
+                </p>
+                
+                {% if product.compare_at_price_max > product.price %}
+
+                {% capture discount %}
+        		  {{ product.compare_at_price_min | minus:product.price | times:100 | divided_by:product.compare_at_price_min | plus:0 }}% 
+                {% endcapture %}
+                
+                  <p class="text-sm text-white featured-product-item--discount font-weight-bold">
+                    -{{ discount }}
+              	  </p>
+                {% endif %}
+             
+              </div>
+              <h4 class="text-primary featured-product-item--title">
+                {{ product.title | escape }} 
+              </h4>
+              
+                {% include 'product-price', variant: current_variant %}
+              
+              <img src="{{ product.featured_image | product_img_url: 'medium' }}" alt="{{ product.title | escape }}" / class="featured-product-item--image"> 
+            </a>
+          </div>
+		  
+        
+        
+      {% endfor %}
+
+
+    </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Custom Featured Products",
+    "settings": [
+					{
+						"type": "text",
+						"id": "custom-featured-products-top-sub",
+						"label": "Featured Products Top Sub"
+					},
+					{
+						"type": "text",
+						"id": "custom-featured-products-title",
+						"label": "Featured Products Title"
+					},
+					{
+						"type": "collection",
+						"id": "featured-collection",
+						"label": "Collection"
+					}
+				],
+	"blocks": 	[
+					
+				],
+	"presets":	[
+					{
+						"category": "Advance Layout",
+						"name": "Custom Featured Products"
+					}
+				]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

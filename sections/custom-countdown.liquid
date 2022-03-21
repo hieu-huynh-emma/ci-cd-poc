@@ -1,0 +1,151 @@
+<section class="custom-countdown-section">
+  <div class="wrapper">
+    <div class="custom-countdown-section--row">
+    	<div class="custom-countdown-section--text-wrapper">
+          <h6 class="text-mobile-center text-white mb-0 wow fadeIn">
+            {{ section.settings.countdown-title-month }} <span class="custom-countdown-section--text-wrapper__span">{{ section.settings.countdown-title-span }}</span>{{ section.settings.countdown-title-cont }}
+          </h6>
+        </div>
+        <div class="custom-countdown-section--countdown-wrapper wow fadeIn" data-wow-delay=".2s" id="timer">
+		<!--      js will fill this      -->
+         
+        </div>
+    </div>
+  </div>
+</section>
+
+
+<script>
+  
+  // No magic numbers...
+
+const SECOND = 1000;
+const MINUTE = 60 * SECOND;
+const HOUR = 60 * MINUTE;
+const DAY = 24 * HOUR;
+
+/**
+ * Calculates the difference between two timestamps, returns a quadruple with
+ * the difference in days, hours, minutes and seconds.
+ *
+ * @param {number} future
+ */
+const timestampDiff =
+    future =>
+    /** @param {number} past */
+    past =>
+        [DAY, HOUR, MINUTE, SECOND].map((time, index, times) => {
+            const diff = future - past;
+            const previousTime = times[index - 1];
+
+            return (
+                Math.floor(diff / time) -
+                (Math.floor(diff / previousTime) * (previousTime / time) || 0)
+            );
+        });
+
+/**
+ * Start timer and set the content of the element.
+ *
+ * @param {string} date
+ */
+const timer =
+    date =>
+    /** @param {HTMLElement} target */
+    target => {
+        const diff = timestampDiff(Date.parse(date));
+
+        return setInterval(() => {
+            const [days, hours, minutes, seconds] = diff(Date.now());
+
+            // Ideally we should have targets for every element
+            // to avoid updating the entire innerHTML of the container with
+            // every tick.
+            target.innerHTML = `
+			<div class="countdown-col body-text text-primary">
+              <h5 class="body-text countdown-col--number">
+				${days}
+              </h5>
+              <p class="body-text text-lg font-weight-bold countdown-col--text">
+                  DAYS
+              </p>
+            </div>
+			<span class="countdown-seperator">:</span>
+			<div class="body-text countdown-col text-primary">
+              <h5 class="body-text countdown-col--number">
+				${hours}
+              </h5>
+              <p class="body-text text-lg font-weight-bold countdown-col--text">
+                  HRS
+              </p>
+            </div>
+			<span class="countdown-seperator">:</span>
+			<div class="body-text countdown-col text-primary">
+              <h5 class="body-text countdown-col--number">
+				${minutes}
+              </h5>
+              <p class="body-text text-lg font-weight-bold countdown-col--text">
+                  MINS
+              </p>
+            </div>
+			<span class="countdown-seperator">:</span>
+			<div class="body-text countdown-col text-primary">
+              <h5 class="body-text countdown-col--number">
+				${seconds}
+              </h5>
+              <p class="body-text text-lg font-weight-bold countdown-col--text">
+                  SECS
+              </p>
+            </div>
+            `;
+        }, SECOND);
+    };
+
+// We finally run it (and we save the interval return value if we wan to stop it later)
+  const interval = timer("{{section.settings.countdown-date}}")(document.querySelector("#timer"));
+  
+</script>
+
+
+
+{% schema %}
+  {
+    "name": "Custom Countdown",
+    "settings": [
+					{
+						"type": "text",
+						"id": "countdown-title-month",
+						"label": "Countdownt Section Month"
+					},
+					{
+						"type": "text",
+						"id": "countdown-title-span",
+						"label": "Countdownt Section Span"
+					},
+					{
+						"type": "text",
+						"id": "countdown-title-cont",
+						"label": "Countdownt Section Continue"
+					},
+					{
+						"type": "text",
+						"id": "countdown-date",
+						"label": "Date",
+						"info" : "Format Sample: January 1, 2020 11:59:00 PM"
+					}
+				],
+	"blocks": 	[],
+	"presets":	[
+					{
+						"category": "Advance Layout",
+						"name": "Custom Countdown"
+					}
+				]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

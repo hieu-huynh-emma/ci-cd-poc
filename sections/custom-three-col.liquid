@@ -1,0 +1,81 @@
+<section class="custom-three-column-section">
+  <div class="wrapper">
+    <p class="text-lg other-text font-weight-bold text-primary-light text-mobile-center custom-three-column-section--top-sub wow fadeIn">
+    	{{ section.settings.three-col-top-title }}
+    </p>
+    <h2 class="text-primary text-mobile-center custom-three-column-section--title wow fadeIn" data-wow-delay=".3s">
+    	{{ section.settings.three-col-title }}
+    </h2>
+    <div class="custom-three-column-section--row wow fadeIn" data-wow-delay=".5s">
+      	
+      	{% for block in section.blocks %}
+    	
+      	<div class="custom-three-column-section--row__column">
+    		<img class="img-fluid three-col--img" src="{{ block.settings.three-col-block-icon | img_url: 'master' }}">
+          	<h6 class="h6-small text-capitalize three-col--title">
+          		{{ block.settings.three-col-block-title }}
+          	</h6>
+          	<p class="text-sm other-text font-weight-normal three-col--description">
+          		{{ block.settings.three-col-block-description }}
+          	</p>
+    	</div>
+      
+      	{% endfor %}
+
+    </div>
+  </div>
+ <!-- test remove half moon <img class="img-fluid three-col--img-decor" src="{{ "half-moon-desktop.svg" | asset_url }}"> -->
+</section>
+
+{% schema %}
+  {
+    "name": "Custom Three Column",
+    "settings": [
+					{
+						"type": "text",
+						"id": "three-col-top-title",
+						"label": "Three Column Section Top Subtitle"
+					},
+					{
+						"type": "text",
+						"id": "three-col-title",
+						"label": "Three Column Section Title"
+					}
+				],
+	"blocks": 	[
+					{
+						"type": "text",
+						"name": "Three Column Block",
+						"settings": [
+										{
+											"type": "image_picker",
+                                            "id": "three-col-block-icon",
+                                            "label": "Three Column Block Icon"
+										},
+										{
+											"type": "text",
+                                            "id": "three-col-block-title",
+                                            "label": "Three Column Block Title"
+										},
+										{
+											"type": "text",
+                                            "id": "three-col-block-description",
+                                            "label": "Three Column Block Description"
+										}
+									]
+					}
+				],
+	"presets":	[
+					{
+						"category": "Advance Layout",
+						"name": "Custom Three Column"
+					}
+				]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

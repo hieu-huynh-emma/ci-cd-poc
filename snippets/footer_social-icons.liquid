@@ -1,0 +1,7 @@
+{% for block in section.blocks %}
+<li>
+  <a href="{{ block.settings.footer-social-media-link }}">
+    <img class="img-fluid footer-social-icons" src="{{ block.settings.footer-social-icon | img_url: 'master' }}">
+  </a>
+</li>
+{% endfor %}

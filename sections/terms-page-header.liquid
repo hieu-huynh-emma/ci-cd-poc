@@ -1,0 +1,29 @@
+<section>
+  <div class="terms-section-wrapper">
+    <div class="wrapper">
+      <h1 class="h2 text-white text-center">
+      {{ section.settings.page-title }}
+      </h1>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Terms And Conditions",
+	"class": "terms-and-conditions-header",
+    "settings": [
+					{
+						"type": "text",
+						"id": "page-title",
+						"label": "Page Title"
+					}
+				]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

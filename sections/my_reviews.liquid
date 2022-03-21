@@ -1,0 +1,132 @@
+<section>
+  <div class="reviews-page-wrapper">
+    <div class="wrapper">
+      <div class="reviews-header-row">
+        <div class="reviews-header-col-wrap">
+          <div class="reviews-select-wrapper">
+          	<select class="product-review-changer wow fadeIn">
+              {% for block in section.blocks %}
+              <option value="{{ block.settings.product-item.id }}">{{ block.settings.product-item.title }}</option>
+              {% endfor %}
+            </select>
+          </div>
+          
+
+          {% for block in section.blocks %}
+          <div class="wow fadeIn product-star product-star-{{block.settings.product-item.id}} {% if forloop.first == true %} review-active {% else %} review-inactive {% endif %}">
+            <div class="my-product-rating-row">
+              <div class="my-product-rating-row--col">
+                <div data-pf-type="ProductReviews" class="sc-fTFMiz PIJDq pf-19_"><span class="shopify-product-reviews-badge" data-id="{{block.settings.product-item.id}}"></span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="reviews-header-col product-cta product-cta-{{ block.settings.product-item.id }} {% if forloop.first == true %} review-active {% else %} review-inactive {% endif %}">
+            {% assign featured_image = block.settings.product-item.selected_variant.featured_image | default: block.settings.product-item.featured_image %}
+            <img src="{{ block.settings.product-item.featured_image | product_img_url: 'large' }}" data-wow-delay=".2s"  class="img-fluid wow fadeIn"> 
+            <a href="{{ block.settings.product-item.url }}" class="btn btn-primary-inverted wow fadeIn" data-wow-delay=".4s">
+              Order Now
+            </a>
+          </div>
+          {% endfor %}
+        </div>
+
+
+        {% for block in section.blocks %}
+
+        {% endfor %}
+
+
+
+      </div>
+    </div>
+  </div>
+  
+  
+  {% for block in section.blocks %}
+    <section class="customer-reviews-wrapper product-review product-review-{{block.settings.product-item.id}} {% if forloop.first == true %} review-active {% else %} review-inactive {% endif %}">
+      <div class="wrapper">
+        <h2>{{ block.settings.product-item.title }}</h2>
+        <div id="shopify-product-reviews" class="wow fadeIn" data-id="{{block.settings.product-item.id}}">{{ block.settings.product-item.metafields.spr.reviews }}</div>
+      </div>
+      <hr style="display: block; margin: 25px auto; }">
+    </section>
+  {% endfor %}
+  
+  
+
+</section>
+
+<style>
+  .review-inactive {
+  	display:none;
+  } 
+</style>
+
+<script>
+  (function($){
+    $(document).ready(function() {
+      
+      $(".product-review-changer").change(function() {
+      	value = $(this).val();
+        
+        $(".product-review").each(function() {
+          $(this).addClass("review-inactive");
+        });
+        
+        $(".product-star").each(function() {
+          $(this).addClass("review-inactive");
+        });
+        
+        $(".product-cta").each(function() {
+          $(this).addClass("review-inactive");
+        });
+        
+
+        $(".product-review-" + value).removeClass("review-inactive");
+        $(".product-star-" + value).removeClass("review-inactive");
+        $(".product-cta-" + value).removeClass("review-inactive");
+
+      });
+      
+    });
+})(jQuery);
+
+</script>
+
+
+
+
+
+
+
+
+{% schema %}
+  {
+    "name": "Reviews",
+	"class": "reviews",
+    "settings": [],
+ "blocks" : [
+        {
+          "type": "product-review",
+          "name": "Product",
+          "settings": [
+            {
+            "type": "product",
+            "id": "product-item",
+            "label": "Product"
+            }
+          ]
+        }
+	]
+
+
+
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

@@ -1,0 +1,35 @@
+<section>
+  <div>
+    <h2 class="wow fadeIn">
+    	{{ section.settings.section-title }}
+    </h2>
+    <div class="text-lg wow fadeIn" data-wow-delay=".2s">
+    	{{ section.settings.section-content }}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Custom Rich Text",
+	"class": "custom-rich-text",
+    "settings": [
+					{
+						"type": "text",
+						"id": "section-title",	
+						"label": "Section Title"
+					},
+					{
+						"type": "richtext",
+						"id": "section-content",
+						"label": "Section Content"
+					}
+				]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

@@ -1,0 +1,55 @@
+<section>
+  <div class="mattress-hero-container">
+    <div class="mattress-hero-video-wrapper">
+      <video loop="" muted="" autoplay="autoplay" preload="" id="vid" width="100%" height="100%"> 
+        <source src="{{ section.settings.video-link }}" type="video/webm">
+        <source src="{{ section.settings.video-link }}" type="video/mp4">
+      </video>
+    </div>
+    <div class="wrapper">
+      <div class="mattress-hero-content-wrapper">
+        <h1 class="mattress-hero-title wow fadeIn">
+          {{ section.settings.title }}
+        </h1>
+        <a href="{{ section.settings.button-link }}" class="btn btn-primary mattress-hero-button wow fadeIn" data-wow-delay=".2s">
+        	{{ section.settings.button-text }}
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Mattress Box Hero",
+	"class": "mattress-box-hero-wrapper",
+    "settings": 	[
+						{
+							"type": "text",
+							"id": "title",
+							"label": "Mattress Hero Title"
+						},
+						{
+							"type": "text",
+							"id": "button-text",
+							"label": "Mattress Hero Button Text"
+						},
+						{
+							"type": "url",
+							"id": "button-link",
+							"label": "Mattress Hero Button Link"
+						},
+						{
+							"type": "url",
+							"id": "video-link",
+							"label": "Mattress Hero Video Link"
+						}
+					]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

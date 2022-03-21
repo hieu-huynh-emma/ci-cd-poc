@@ -1,0 +1,48 @@
+<section>
+  <div class="mini-cta-wrapper">
+    <h5 class="mini-cta-title wow fadeIn">
+    	{{ section.settings.title }}
+    </h5>
+    <p class="mini-cta-description text-nm wow fadeIn" data-wow-delay=".2s">
+    	{{ section.settings.description }}
+    </p>
+    <a href="{{ section.settings.button-link }}" class="btn btn-primary mini-cta-btn wow fadeIn" data-wow-delay=".4s">
+      {{ section.settings.button-text }}
+    </a>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Mini CTA",
+	"class": "mini-cta",
+    "settings": [
+					{
+						"type": "text",
+						"id": "title",
+						"label": "Mini CTA Title"
+					},
+					{
+						"type": "text",
+						"id": "description",
+						"label": "Mini CTA Description"
+					},
+					{
+						"type": "text",
+						"id": "button-text",
+						"label": "Mini CTA Button Text"
+					},
+					{
+                        "type": "url",
+                        "id": "button-link",
+                        "label": "Mini CTA Button Link"
+                    }
+				]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

@@ -1,0 +1,48 @@
+<section>
+  <div class="faq-page-header-wrapper">
+    <div class="wrapper">
+      <div class="faq-page-header-wrapper--width">
+        <h1 class="h2 text-white text-center faq-page-header-title">
+          {{ section.settings.title }}
+        </h1>
+<!--         <div class="faq-page-header-form-wrapper">
+          <form>
+            <input type="text" class="form-control">
+            <input type="submit" class="btn btn-secondary" value="Search">
+          </form>
+        </div> -->
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<div id="shopify-product-reviews" class="wow fadeInDown" data-id="{{product.id}}">{{ product.metafields.spr.reviews }}</div>
+
+
+
+
+{% schema %}
+  {
+    "name": "FAQ Page Header",
+	"class": "faq-page-header",
+    "settings": [
+					{
+						"type": "text",
+						"id": "title",
+						"label": "FAQ Page Header Title"
+					}
+				]
+
+
+
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

@@ -1,0 +1,105 @@
+{% if section.settings.enable_full_banner %}
+ 
+    <div class="section--fullwidth-banner" id="section--fullwidth-banner" style="background-image: url('{{section.settings.img | img_url: 'master' }}')">
+      <h1 class="title" style="color: #fff!important;"><span> {{page_title}}</span>
+      
+      {%- if collection.description != blank -%}
+          <p class="title">
+            <span> {{ collection.description }}</span>
+          </p>
+        
+    {%- endif -%}
+      
+      </h1>
+      <br>
+      
+      
+      
+    </div>
+
+
+ 
+  <style>
+    .section--fullwidth-banner{
+      position: relative;
+      display: flex;
+      align-items: center;
+      width: 100%;
+      height: {{section.settings.img_height}}px;
+      overflow: visible;
+      text-align: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: 50% 50%;
+    }
+    .section--fullwidth-banner .title{
+ 
+      z-index: 1;
+      width: 100%;
+      font-size: 170%;
+ 
+    }
+    
+    .section--fullwidth-banner .title h1{
+ 
+      z-index: 1;
+      width: 100%;
+      font-size: 170%;
+ 
+    }
+    
+     .section--fullwidth-banner .title p{
+ 
+      z-index: 1;
+      width: 100%;
+      font-size: 60%;
+ 
+    }
+    .section--fullwidth-banner .title span{
+      padding: 10px 20px;
+      color: #fff;
+    }
+    {% comment %} .section--fullwidth-banner img{
+      position: absolute;
+      z-index: 0;
+      top: 0;
+      left: 0;
+      right: 0;
+    } {% endcomment %}
+ 
+  </style>
+ 
+ 
+{% endif %}
+ 
+{% schema %}
+  {
+    "name": "Full-width Banner",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "enable_full_banner",
+        "label": "Enable Fullwidth Banner",
+        "default": true
+      },
+      {
+        "type": "image_picker",
+        "id": "img",
+        "label": "Default image"
+      },
+      {
+        "type": "number",
+        "id": "img_height",
+        "label": "Image height in px",
+            "default": 200
+      }
+    ]
+  }
+ 
+{% endschema %}
+ 
+{% stylesheet %}
+{% endstylesheet %}
+ 
+{% javascript %}
+{% endjavascript %}

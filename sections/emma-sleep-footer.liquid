@@ -1,0 +1,200 @@
+<footer class="emma-sleep-footer">
+  <div class="wrapper">
+    <!-- FOOTER TOP ROW -->
+  	<div class="footer-top-row">
+      <div>
+        <a href="/">
+        	<img class="img-fluid footer-logo" src="{{ section.settings.footer-logo | img_url: 'master' }}">
+        </a>
+      </div>
+      <div>
+        <div class="footer-social-wrapper">
+          <p class="text-white">Follow Us</p>
+          <div>
+            <ul class="footer-icons-wrapper">
+              {% for block in section.blocks %}
+              <li>
+                <a href="{{ block.settings.footer-social-media-link }}" target="_blank">
+                  <img class="img-fluid footer-social-icons" src="{{ block.settings.footer-social-icon | img_url: 'master' }}">
+                </a>
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- FOOTER MID ROW -->
+    <div class="footer-mid-row">
+      <div class="newsletter-container">
+        <p class="text-lg other-text font-weight-bold text-white">
+          {{ section.settings.subscriber_header }} 
+        </p>
+        <p class="text-nm text-white other-text">
+			{{ section.settings.subscriber_description }} 
+        </p>
+        
+        
+        
+        {% form 'customer' %}
+        {{ form.errors | default_errors }}
+        {% if form.posted_successfully? %}
+        <div class="newsletter--form">
+          <div class="note form-success">{{ 'general.newsletter_form.newsletter_confirmation' | t }}</div>
+        </div>
+        {% else %}
+        <label for="Email" class="newsletter__label hidden-label">{{ 'general.newsletter_form.newsletter_email' | t }}</label>
+        <input type="hidden" name="contact[tags]" value="newsletter">
+        <div class="newsletter--form"><center>
+          <div class="input-group">
+            <input style="border-radius: 8px; width: 100%;" type="email" value="{% if customer %}{{ customer.email }}{% endif %}" placeholder="{{ 'general.newsletter_form.newsletter_placeholder' | t }}" name="contact[email]" id="Email" class="input-group-field newsletter__input" autocorrect="off" autocapitalize="off">
+            <br>
+              <button style="width: 100%;" id="Subscribe" type="submit"
+                      class="btn newsletter__submit"
+                      aria-label="{{ 'general.newsletter_form.submit' | t }}">
+                <span class="newsletter__submit-text--large">{{ 'general.newsletter_form.submit' | t }}</span>
+                <span class="newsletter__submit-text--small">{{ 'general.newsletter_form.submit' | t }}
+                  <span class="icon icon-arrow-right" aria-hidden="true"></span>
+                </span>
+              </button>
+          </div>
+        </div>
+        {% endif %}
+        {% endform %}
+
+      </div>
+      <div class="footer-nav-container" style="font-size: .9em;">
+        
+        <div class="footer-nav-col">
+          {% assign menu = linklists.footer-products-menu %}
+          <p class="other-text font-weight-bold text-lg text-white">
+          	{{ menu.title }}
+          </p>
+          <ul>
+            {% for link in linklists.footer-products-menu.links %}
+            	<li>
+            		<a href="{{ link.url }}">{{ link.title }}</a>
+            	</li>
+            {% endfor %}
+          </ul>
+        </div>
+		
+		<div class="footer-nav-col">
+          {% assign menu = linklists.footer-customer-support-menu %}
+          <p class="other-text font-weight-bold text-lg text-white">
+          	{{ menu.title }}
+          </p>
+          <ul>
+            {% for link in linklists.footer-customer-support-menu.links %}
+            	<li>
+            		<a href="{{ link.url }}">{{ link.title }}</a>
+            	</li>
+            {% endfor %}
+          </ul>
+        </div>
+        
+        <div class="footer-nav-col">
+          {% assign menu = linklists.footer-links-menu %}
+          <p class="other-text font-weight-bold text-lg text-white">
+          	{{ menu.title }}
+          </p>
+          <ul>
+            {% for link in linklists.footer-links-menu.links %}
+            	<li>
+            		<a href="{{ link.url }}">{{ link.title }}</a>
+            	</li>
+            {% endfor %}
+          </ul>
+        </div>
+        
+        
+        <div class="footer-nav-col">
+          <p class="other-text font-weight-bold text-lg text-white">
+          	Contact Us<br>
+           <ul> 
+             <li><a href="mailto:support@emma-sleep.ca" class="text-white">support@emma-sleep.ca</a></li>
+             <li> 1-888-585-EMMA </li>
+
+          </ul>
+        </div>
+        
+        
+		
+      </div>
+    </div>
+    <!-- FOOTER BOTTOM ROW -->
+    <div class="footer-bottom-row">
+      <div>
+      	<p class="text-nm text-white">
+          {{ section.settings.rights }} 
+     
+      </div>
+      <div class="emma-sleep-footer-payment-methods">
+        <img class="img-fluid footer-payment-icons" src="{{ section.settings.footer-payment-icons | img_url: 'master' }}">
+      </div>
+    </div>
+  </div>
+</footer> 
+
+{% schema %}
+  {
+    "name": "Emma Sleep Footer",
+    "settings": [
+					{
+                    	"type": "text",
+                    	"id": "subscriber_header",
+                    	"label": "Subscribe Text"
+                    },
+
+					{
+                    	"type": "text",
+                    	"id": "subscriber_description",
+                    	"label": "Subscribe Description"
+                    },
+
+
+
+					{
+                    	"type": "text",
+                    	"id": "rights",
+                    	"label": "Rights"
+                    },
+
+
+					{
+                    	"type": "image_picker",
+                    	"id": "footer-logo",
+                    	"label": "Footer Logo"
+                    },
+					{
+                    	"type": "image_picker",
+                    	"id": "footer-payment-icons",
+                    	"label": "Footer Payment Icons"
+                    }
+				],
+	"blocks": 	[
+					{
+						"type": "text",
+						"name": "Social Blocks",
+						"settings": [
+										{
+											"type": "image_picker",
+                                            "id": "footer-social-icon",
+                                            "label": "Social Media Image"
+										},
+										{
+											"type": "url",
+											"id": "footer-social-media-link",
+											"label": "Social Media Link"
+										}
+									]
+					}
+				]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

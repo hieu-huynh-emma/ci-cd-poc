@@ -1,0 +1,63 @@
+<section class="custom-call-to-action">
+  <img class="img-fluid custom-cta--bg-img" src="{{ section.settings.cta-bg-img | img_url: 'master' }}">
+  <div class="wrapper">
+    <div class="custom-cta-width">
+    	<p class="text-lg other-text font-weight-bold text-white mb-0 wow fadeIn">
+            {{ section.settings.cta-top-sub }}
+        </p>
+        <h2 class="text-white wow fadeIn" data-wow-delay=".2s">
+            {{ section.settings.cta-title }}
+        </h2>
+        <a href="{{ section.settings.cta-button-link }}" class="btn btn-secondary wow fadeIn" data-wow-delay=".4s">
+            {{ section.settings.cta-button-text }}
+        </a>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Custom CTA",
+    "settings": [
+					{
+						"type": "text",
+						"id": "cta-top-sub",
+						"label": "CTA Top Subtitle"
+					},
+					{
+						"type": "text",
+						"id": "cta-title",
+						"label": "CTA Title"
+					},
+					{
+						"type": "text",
+						"id": "cta-button-text",
+						"label": "CTA Button Text"
+					},
+					{
+                        "type": "url",
+                        "id": "cta-button-link",
+                        "label": "CTA Button Link"
+                    },
+					{
+                        "type": "image_picker",
+                        "id": "cta-bg-img",
+                        "label": "CTA Background Image"
+                    }
+				],
+	"blocks": 	[
+				],
+	"presets":	[
+					{
+						"category": "Advance Layout",
+						"name": "Custom Call To Action"
+					}
+				]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

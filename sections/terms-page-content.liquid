@@ -1,0 +1,27 @@
+<section>
+  <div class="wrapper">
+    <div>
+      {{ section.settings.page-content }}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Terms Content",
+	"class": "terms-content-section",
+    "settings": [
+					{
+						"type": "richtext",
+						"id": "page-content",
+						"label": "Page Content"
+					}
+				]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
