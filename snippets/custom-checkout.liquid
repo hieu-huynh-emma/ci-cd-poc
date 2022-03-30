@@ -1,0 +1,24 @@
+<script>
+ const PAYMENT_GATEWAYS_ALLOWED = ["paypal"];
+
+ (function ($) {
+  $(document).on("page:load page:change", function () {
+   const hasDiscountApplied = $(".reduction-code").length || $(".reduction-code__text").length;
+   var $paymentSection = $(".section--payment-method [data-payment-subform='required']");
+
+   if (hasDiscountApplied) {
+    var $gatewayFields = $paymentSection.find(`[data-gateway-name]`);
+    $gatewayFields.each(function (i, elem) {
+     var dataGatewayName = $(elem).attr("data-gateway-name");
+     if (! PAYMENT_GATEWAYS_ALLOWED.includes(dataGatewayName)) {
+      var dataSubfield = $(elem).attr("data-select-gateway");
+      var $gatewaySubfields = $paymentSection.find(`#payment-gateway-subfields-${dataSubfield}`);
+      $(elem).hide();
+      $gatewaySubfields.hide();
+     }
+    });
+   }
+
+  });
+ })(Checkout.$);
+</script>
