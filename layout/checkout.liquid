@@ -1,266 +1,155 @@
 <!DOCTYPE html>
 <html lang="{{ locale }}" dir="{{ direction }}" class="{{ checkout_html_classes }}">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, height=device-height, minimum-scale=1.0, user-scalable=0">
-    <meta name="referrer" content="origin">
 
-    <title>{{ page_title }}</title>
-
-    {{ content_for_header }}
-
-    {{ checkout_stylesheets }}
-    {{ checkout_scripts }}
-    
-    
-   		 <script>
-
-            (function($) {
-
-            window.PhoneNumberInputFormatter=function(){return false;};
-
-            $(document).on('page:load page:change', function() {
-
-            if (Shopify.Checkout.step === 'contact_information') {
-
-            var $phoneField = $('[name="checkout[shipping_address][phone]"]:not([tabindex="-1"])'),
-
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, height=device-height, minimum-scale=1.0, user-scalable=0">
+  <meta name="referrer" content="origin">
+  <title>{{ page_title }}</title>
+  {{ content_for_header }}
+  {{ checkout_stylesheets }}
+  {{ checkout_scripts }}
+  <script>
+    (function ($) {
+      window.PhoneNumberInputFormatter = function () { return false; };
+      $(document).on('page:load page:change', function () {
+        if (Shopify.Checkout.step === 'contact_information') {
+          var $phoneField = $('[name="checkout[shipping_address][phone]"]:not([tabindex="-1"])');
+          phoneFormatValidated = false;
+          // Remove automatic formatting triggers
+          $phoneField.removeAttr('data-phone-formatter data-phone-formatter-country-select');
+          // Set maxium size
+          $phoneField.attr('maxlength', 11);
+          function phoneNumberValidation() {
             phoneFormatValidated = false;
-
-            // Remove automatic formatting triggers
-
-            $phoneField.removeAttr('data-phone-formatter data-phone-formatter-country-select');
-
-            // Set maxium size
-
-            $phoneField.attr('maxlength', 11);
-
-            function phoneNumberValidation() {
-
-            phoneFormatValidated = false;
-
-
-
             var phoneFieldVal = $phoneField.val();
-
-
-
             // Strip out any non-numeric characters
-
             var formattedPhoneValue = phoneFieldVal.replace(/[^0-9]/g, '');
-
             $phoneField.val(formattedPhoneValue);
-
             phoneFormatValidated = true;
-
-            }
-
-            // Run validator if there is a previously cached phone number
-
-            if ($phoneField.val() != "") { phoneNumberValidation() };
-
-            // Run validator when the user has switched focus from the phone field
-
-            $phoneField.on('blur', phoneNumberValidation);
-
-            // Run the function when the continue button is clicked or the enter key is pressed
-
-            $('[data-step] form [type="submit"]').on('click', function(e) {
-
+          }
+          // Run validator if there is a previously cached phone number
+          if ($phoneField.val() != "") { phoneNumberValidation() };
+          // Run validator when the user has switched focus from the phone field
+          $phoneField.on('blur', phoneNumberValidation);
+          // Run the function when the continue button is clicked or the enter key is pressed
+          $('[data-step] form [type="submit"]').on('click', function (e) {
             e.preventDefault();
-
             phoneNumberValidation();
-
             if (phoneFormatValidated) {
-
-            $('[data-step] form').trigger('submit');
-
+              $('[data-step] form').trigger('submit');
             }
-
-            });
-
-
-
-            $('[data-step] form').on('keypress', function(e) {
-
+          });
+          $('[data-step] form').on('keypress', function (e) {
             if (e.keyCode === 13) {
-
-            e.preventDefault();
-
-            $('[data-step] form [type="submit"]').trigger('click');
-
+              e.preventDefault();
+              $('[data-step] form [type="submit"]').trigger('click');
             }
+          });
+        }
+      });
+    })(Checkout.$);
+  </script>
+  <script>
+    (function ($) {
+      $(document).on('page:load page:change', function () {
+        var $phoneField;
+        var errorClass = 'field--error-plus-dynamic';
+        var errorMessageSelector = '.field__message--error-plus-dynamic';
 
-            });
-
-            }
-
-            });
-
-            })(Checkout.$);
-
-            </script>
-
-
-
-             <script>
-
-            (function($) {
-
-            $(document).on('page:load page:change', function() {
-
-            var $phoneField;
-
-            var errorClass = 'field--error-plus-dynamic';
-
-            var errorMessageSelector = '.field__message--error-plus-dynamic';
-
-            // Check input for character limit and remove letters
-
-            var validatePhoneNumber = function(phoneField) {
-
-            var minChars = {{ settings.11 }};
-
-            var maxChars = {{ settings.13 }};
-
-            var errorMessage = "{{ 'plus.checkout.phone_field_error' | t: min_chars: settings.plus_phone_min_chars, max_chars: settings.plus_phone_max_chars }}";
-
-            var numbers = phoneField.val().match(/(\d)/g) || [];
-
-            var numbersLength = numbers.length;
-
-
-
-            // Only allow + and numbers
-
-            var allowedChars = phoneField.val().match(/(\d|\+)/g) || [];
-
-            var phoneFieldVal = phoneField.val;
-
-            // Remove non-allowed characters from phone number
-
-            phoneField.val(allowedChars.join(''));
-
-            if (numbersLength !== 0 && numbersLength < minChars || numbersLength > maxChars) {
-
+        // Check input for character limit and remove letters
+        var validatePhoneNumber = function (phoneField) {
+          var minChars = {{ settings.11 }};
+          var maxChars = {{ settings.13 }};
+          var errorMessage = "{{ 'plus.checkout.phone_field_error' | t: min_chars: settings.plus_phone_min_chars, max_chars: settings.plus_phone_max_chars }}";
+          var numbers = phoneField.val().match(/(\d)/g) || [];
+          var numbersLength = numbers.length;
+          // Only allow + and numbers
+          var allowedChars = phoneField.val().match(/(\d|\+)/g) || [];
+          var phoneFieldVal = phoneField.val;
+          // Remove non-allowed characters from phone number
+          phoneField.val(allowedChars.join(''));
+          if (numbersLength !== 0 && numbersLength < minChars || numbersLength > maxChars) {
             // Not enough characters, show error on input.
-
             if (!phoneField.hasClass(errorClass)) {
-
-            phoneField.addClass(errorClass);
-
-            phoneField.closest('[data-address-field]').after("<p class='field__message field__message--error-plus-dynamic'>"+ errorMessage +"</p>");
-
+              phoneField.addClass(errorClass);
+              phoneField.closest('[data-address-field]').after("<p class='field__message field__message--error-plus-dynamic'>" + errorMessage + "</p>");
             }
-
             return false;
-
-            } else {
-
+          } else {
             // Phone number is valid. Remove errors and continue.
-
             phoneField.removeClass(errorClass);
-
             phoneField.closest('[data-address-field]').nextAll(errorMessageSelector).remove();
-
             return true;
+          }
+        }
 
-            }
-
-            }
-
-            if (Shopify.Checkout.step === 'contact_information') {
-
-            var $phoneField = $('[name="checkout[shipping_address][phone]"]:not([aria-hidden="true"])');
-
-            // Check for enter keypress on form and click button instead.
-
-            $('[data-step] form').on('keypress', function(e) {
-
+        if (Shopify.Checkout.step === 'contact_information') {
+          var $phoneField = $('[name="checkout[shipping_address][phone]"]:not([aria-hidden="true"])');
+          // Check for enter keypress on form and click button instead.
+          $('[data-step] form').on('keypress', function (e) {
             if (event.keyCode === 13) {
-
-            e.preventDefault();
-
-            $(this).find('[type="submit"]').trigger('click');
-
+              e.preventDefault();
+              $(this).find('[type="submit"]').trigger('click');
             }
-
-            });
-
-            // Handle form submit by validating button click.
-
-            $('[data-step] form [type="submit"]').on('click', function(e) {
-
+          });
+          // Handle form submit by validating button click.
+          $('[data-step] form [type="submit"]').on('click', function (e) {
             e.preventDefault();
-
             if (validatePhoneNumber($phoneField)) {
-
-            $('[data-step] form').trigger('submit');
-
+              $('[data-step] form').trigger('submit');
             }
-
-            });
-
-            // Validate phone number when modified
-
-            $phoneField.on('input', function() {
-
+          });
+          // Validate phone number when modified
+          $phoneField.on('input', function () {
             validatePhoneNumber($(this));
+          });
+        }
+      });
+    })(Checkout.$);
+  </script>
 
-            });
-
-            }
-
-            });
-
-            })(Checkout.$);
-
-            </script>   
-
-
-
-
-    
   {% render 'weglot_hreftags' %}
-{% render 'weglot_switcher' %}
+  {% render 'weglot_switcher' %}
+  {% render 'custom-checkout' %}
 </head>
-  <body>
-    {{ skip_to_content_link }}
 
-    <header class="banner" data-header role="banner">
-      <div class="wrap">
-        {{ content_for_logo }}
-      </div>
-    </header>
-
-    {{ order_summary_toggle }}
-    <div class="content" data-content>
-      <div class="wrap">
-        <div class="main">
-          <header class="main__header" role="banner">
-            {{ content_for_logo }}
-            {{ breadcrumb }}
-            {{ alternative_payment_methods }}
-          </header>
-          <main class="main__content" role="main">
-            {{ content_for_layout }}
-          </main>
-          <footer class="main__footer" role="contentinfo">
-            {{ content_for_footer }}
-          </footer>
-        </div>
-        <aside class="sidebar" role="complementary">
-          <div class="sidebar__header">
-            {{ content_for_logo }}
-          </div>
-          <div class="sidebar__content">
-            {{ content_for_order_summary }}
-          </div>
-        </aside>
-      </div>
+<body>
+  {{ skip_to_content_link }}
+  <header class="banner" data-header role="banner">
+    <div class="wrap">
+      {{ content_for_logo }}
     </div>
+  </header>
+  {{ order_summary_toggle }}
+  <div class="content" data-content>
+    <div class="wrap">
+      <div class="main">
+        <header class="main__header" role="banner">
+          {{ content_for_logo }}
+          {{ breadcrumb }}
+          {{ alternative_payment_methods }}
+        </header>
+        <main class="main__content" role="main">
+          {{ content_for_layout }}
+        </main>
+        <footer class="main__footer" role="contentinfo">
+          {{ content_for_footer }}
+        </footer>
+      </div>
+      <aside class="sidebar" role="complementary">
+        <div class="sidebar__header">
+          {{ content_for_logo }}
+        </div>
+        <div class="sidebar__content">
+          {{ content_for_order_summary }}
+        </div>
+      </aside>
+    </div>
+  </div>
+  {{ tracking_code }}
+</body>
 
-    {{ tracking_code }}
-  </body>
 </html>
