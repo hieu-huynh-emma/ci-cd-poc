@@ -22,8 +22,9 @@ data-auto-install='{% if auto_install != nil %}{{ auto_install }}{% else %}false
 {% if widget_type == 'judgeme_all_reviews_text' %}
 <div class='jdgm-widget jdgm-all-reviews-text' data-from-snippet='{% if concierge_install != nil  %}{{ concierge_install }}{% else %}true{% endif %}' >
   <a href="javascript:void(0)">
+    <span data-score="{{ shop.metafields.judgeme.all_reviews_rating }}" class='jdgm-all-reviews-rating'></span>
     <span class='jdgm-all-reviews-text__text' data-score="{{ shop.metafields.judgeme.all_reviews_rating }}" data-number-of-reviews="{{ shop.metafields.judgeme.all_reviews_count }}" data-locale="en">
-      Customers rate us {{ shop.metafields.judgeme.all_reviews_rating | round: 1 }}/5 based on {{ shop.metafields.judgeme.all_reviews_count }} reviews.
+      Customers rate us {{ shop.metafields.judgeme.all_reviews_rating | round: 1 }}/5 
     </span>
   </a>
 </div>
@@ -61,6 +62,14 @@ data-auto-install='{% if auto_install != nil %}{{ auto_install }}{% else %}false
 data-template='{% if concierge_install == true or concierge_install == nil %}{{ template }}{% else %}manual-installation{% endif %}'
 data-auto-install='{% if auto_install != nil %}{{ auto_install }}{% else %}false{% endif %}'>
   {{ product.metafields.judgeme.badge }}
+</div>
+{% endif %}
+
+{% if widget_type == 'judgeme_ugc_media_grid' %}
+<div class='jdgm-widget jdgm-ugc-media-wrapper'
+    data-from-snippet='{% if concierge_install != nil %}{{ concierge_install }}{% else %}true{% endif %}'
+    data-auto-install='{% if auto_install != nil %}{{ auto_install }}{% else %}false{% endif %}' >
+  {{ shop.metafields.judgeme.ugc_media_grid }}
 </div>
 {% endif %}
 

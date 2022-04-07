@@ -1,4 +1,11 @@
 <!-- /templates/collection.liquid -->
+{%- comment -%}
+     Disables collection / all, to remove also remove if, else, and endif right above schema
+    {%- endcomment -%}
+{% if collection.handle == 'all' %}
+<script>window.location.replace("/");</script>
+{% else %}
+
 {%- if section.settings.show_collection_image and collection.image -%}
   <div class="collection-hero">
     <noscript>
@@ -162,7 +169,7 @@
 
   {%- endpaginate -%}
 </div>
-
+{% endif %}
 
 
 {% schema %}

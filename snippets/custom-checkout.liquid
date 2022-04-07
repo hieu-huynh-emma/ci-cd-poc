@@ -1,24 +1,96 @@
 <script>
  const PAYMENT_GATEWAYS_ALLOWED = ["paypal"];
+ const TAXES = [
+  { value: "AB", labels: ["GST"], totalRate: 5 },
+  { value: "NT", labels: ["GST"], totalRate: 5 },
+  { value: "NU", labels: ["GST"], totalRate: 5 },
+  { value: "YT", labels: ["GST"], totalRate: 5 },
+  { value: "NB", labels: ["HST"], totalRate: 15 },
+  { value: "NL", labels: ["HST"], totalRate: 15 },
+  { value: "NS", labels: ["HST"], totalRate: 15 },
+  { value: "ON", labels: ["HST"], totalRate: 13 },
+  { value: "BC", labels: [{ subLabel: "PST", rate: 7 }, { subLabel: "GST", rate: 5 }] },
+  { value: "MB", labels: [{ subLabel: "GST", rate: 5 }, { subLabel: "RST", rate: 7 }] },
+  { value: "QC", labels: [{ subLabel: "GST", rate: 5 }, { subLabel: "QST", rate: 9.98 }] },
+  { value: "SK", labels: [{ subLabel: "PST", rate: 6 }, { subLabel: "GST", rate: 5 }] },
+ ];
 
  (function ($) {
   $(document).on("page:load page:change", function () {
-   const hasDiscountApplied = $(".reduction-code").length || $(".reduction-code__text").length;
-   var $paymentSection = $(".section--payment-method [data-payment-subform='required']");
 
+   let hasDiscountApplied = $(".reduction-code").length || $(".reduction-code__text").length;
+   let $paymentSection = $(".section--payment-method [data-payment-subform='required']");
    if (hasDiscountApplied) {
-    var $gatewayFields = $paymentSection.find(`[data-gateway-name]`);
+    let $gatewayFields = $paymentSection.find(`[data-gateway-name]`);
     $gatewayFields.each(function (i, elem) {
-     var dataGatewayName = $(elem).attr("data-gateway-name");
-     if (! PAYMENT_GATEWAYS_ALLOWED.includes(dataGatewayName)) {
-      var dataSubfield = $(elem).attr("data-select-gateway");
-      var $gatewaySubfields = $paymentSection.find(`#payment-gateway-subfields-${dataSubfield}`);
+     let dataGatewayName = $(elem).attr("data-gateway-name");
+     if (!PAYMENT_GATEWAYS_ALLOWED.includes(dataGatewayName)) {
+      let dataSubfield = $(elem).attr("data-select-gateway");
+      let $gatewaySubfields = $paymentSection.find(`#payment-gateway-subfields-${dataSubfield}`);
       $(elem).hide();
       $gatewaySubfields.hide();
      }
     });
    }
 
+   let totalShippingPrice = $(".total-line.total-line--shipping .total-line__price span");
+   if (totalShippingPrice) {
+    totalShippingPrice.text("FREE");
+   }
+
+   let $provinceSelector = $("#checkout_shipping_address_province");
+
+   if ($provinceSelector.val()) {
+    breakdownTax($);
+   }
+
+   $provinceSelector.on("change", function (e) {
+    e.preventDefault();
+    breakdownTax($);
+   });
   });
  })(Checkout.$);
+
+ function breakdownTax($) {
+  let $taxLabel = $('.total-line.total-line--taxes .total-line__name');
+  let $taxPrice = $('.total-line.total-line--taxes .total-line__price');
+  let checkoutSubtotal = extractPrice($('.total-line.total-line--subtotal [data-checkout-subtotal-price-target]').text());
+
+  const taxSubtotal = $('.tax-subtotal');
+  if (taxSubtotal) {
+   taxSubtotal.remove();
+  }
+
+  let $selectedProvince = $("#checkout_shipping_address_province option:selected");
+  let selectedProvince = $selectedProvince.val();
+  const taxApplied = TAXES.find((tax) => tax.value === selectedProvince);
+  const { labels, totalRate } = taxApplied;
+
+  if (labels && (labels.length === 1)) {
+   $taxLabel.text(`${labels}`);
+
+   const value = ((checkoutSubtotal / 100) * totalRate).toFixed(2);
+   $taxPrice.html(`<span class="order-summary__emphasis">$${value}</span>`);
+  } else if (labels && (labels.length > 1)) {
+   let taxTotal = 0;
+   const $totalTable = $('.total-line-table__tbody');
+   labels.forEach((label) => {
+    const { subLabel, rate } = label;
+    const value = ((checkoutSubtotal / 100) * rate).toFixed(2);
+    $totalTable.append(`<tr class="total-line tax-subtotal"><th class="total-line__name">Tax (${subLabel} ${rate}%)</th><td class="total-line__price"><span class="order-summary__emphasis">$${value}</span></td></tr>`);
+    taxTotal += (+value);
+   });
+
+   $taxLabel.text("Taxes");
+   $taxPrice.html(`<span class="order-summary__emphasis">$${taxTotal.toFixed(2)}</span>`);
+  }
+ }
+
+ function extractPrice(string) {
+  if (string) {
+   const commaPrice = string.match(/([\d,.]+)/g);
+   const price = commaPrice.length ? commaPrice[0].replace(/,/, '') : '';
+   return price ? +price : '';
+  }
+ }
 </script>
