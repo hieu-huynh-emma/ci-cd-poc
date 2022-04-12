@@ -1,0 +1,34 @@
+<style>
+    .promotion-capsule {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 15px;
+        padding: 4px 8px;
+        background-color: #3c4196;
+        color: white;
+        font-weight: bold;
+
+        text-transform: uppercase;
+    }
+
+    .promotion-capsule--mobile {
+        background-color: white;
+        color: #3c4196;
+    }
+</style>
+
+{% assign capsule = "" %}
+{% assign collectionIds = "265877848202,271340208266,271182332042,271340241034" %}
+
+{% for collection in collections %}
+    {% if collectionIds contains collection.id %}
+        {% assign capsule = collection.description %}
+    {% endif %}
+{% endfor %}
+
+{% if capsule != blank %}
+    <div class="promotion-capsule{% if isMobile == true %} promotion-capsule--mobile{% endif %}">
+        {{ capsule }}
+    </div>
+{% endif %}
