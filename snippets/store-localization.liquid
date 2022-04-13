@@ -1,0 +1,484 @@
+{{ 'jquery.modal.min.js' | asset_url | script_tag }}
+{{ 'jquery.modal.min.css' | asset_url | stylesheet_tag }}
+
+<div id="store-localization-popup">
+    <div class="store-localization__wrapper">
+        <div class="store-localization__sidebar">
+            {% render 'icon-pin-rotate' %}
+        </div>
+        <div class="change-country">
+            <p class="from-abroad">It seems you are visiting Emma from abroad.</p>
+
+            <p class="change-country__select-country">You can choose your country from the list below:</p>
+            <select class="change-country__dropdown" onchange="redirectToOtherStore(this)">
+                <option value="" selected="">Select your country</option>
+            </select>
+            <div class="keep-me-container" onclick="closePopup()">
+                <a class="keep-me">Keep me on this site</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    #store-localization-popup {
+        z-index: 9999;
+
+        display: none;
+        vertical-align: middle;
+        position: relative;
+
+        max-width: 620px;
+        padding: 0;
+
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 10px #000;
+
+        text-align: left;
+    }
+
+    .close-modal {
+        position: absolute;
+
+        top: 0.5rem;
+        right: 1rem;
+
+        color: #8a8a8a;
+
+        font-size: 2em;
+        line-height: 1;
+    }
+
+    .store-localization__wrapper {
+        position: relative;
+        background: #fffaf5;
+        margin: 0 auto;
+
+        display: flex;
+        color: #1e2b5a;
+        font-size: 16px;
+        border-radius: 10px;
+    }
+
+    .store-localization__wrapper .store-localization__sidebar {
+        background-color: #ffa355;
+        padding: 2.5rem 1.5rem;
+        border-radius: 10px 0 0 10px;
+    }
+
+    .store-localization__wrapper .change-country {
+        padding: 2.5rem 5rem 2.5rem 1.5rem;
+    }
+
+    .from-abroad {
+        margin-bottom: 2rem;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1;
+    }
+
+    .quick-redirect {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 3rem;
+    }
+
+    .change-country .redirect-button {
+        cursor: pointer;
+
+        background: #ffa355;
+        border-radius: 1rem;
+        padding: 1rem 1.5rem;
+        text-align: center;
+        font-weight: bold;
+        border: 2px solid #ffa355;
+        color: #1e2b5a;
+
+        transition: background-color .25s ease-out, color .25s ease-out;
+        line-height: 1;
+
+        text-decoration: none;
+    }
+
+    .redirect-button:hover {
+        background: white;
+        color: #ffa355;
+    }
+
+    .change-country__dropdown {
+        width: 100%;
+        margin-bottom: 1.5rem;
+        margin: 0 0 1rem;
+        appearance: none;
+        border: 1px solid #1e2b5a;
+        border-radius: 0.625rem;
+        font-size: 1rem;
+        font-weight: bold;
+        line-height: 1.5;
+        color: #1e2b5a;
+        transition: box-shadow .3s, border-color .25s ease-in-out, -webkit-box-shadow .3s;
+        background: #fffaf5;
+        cursor: pointer;
+        outline: none;
+    }
+
+    .change-country__select-country {
+        margin: 0;
+        padding: 0;
+
+        font-size: inherit;
+        line-height: 1.5;
+        text-rendering: optimizeLegibility;
+    }
+
+    .keep-me-container {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .keep-me {
+        border: none;
+        text-decoration: underline;
+        cursor: pointer;
+        color: #1e2b5a;
+    }
+
+    .keep-me:hover {
+        color: #ffa355;
+        text-decoration: none;
+    }
+
+    .blocker {
+        z-index: 9999;
+    }
+</style>
+
+<script>
+    const GEOLOCATION_API_KEY = "760c76c456b645fd81eadecde19808ce"
+    const CANADA_COUNTRY = "Canada";
+
+    const allStores = [
+        {
+            "languageCode": "en",
+            "countryCode": "AU",
+            "storeName": "Emma Australia (AU)",
+            "storeUrl": "https://www.emma-sleep.com.au/"
+        },
+        {
+            "languageCode": "de",
+            "countryCode": "AT",
+            "storeName": "Emma Austria (AT)",
+            "storeUrl": "https://www.emma-matratze.at/"
+        },
+        {
+            "languageCode": "fr",
+            "countryCode": "BE",
+            "storeName": "Emma Belgium (FR)",
+            "storeUrl": "https://www.emma-matelas.be/"
+        },
+        {
+            "languageCode": "nl",
+            "countryCode": "BE",
+            "storeName": "Emma Belgium (NL)",
+            "storeUrl": "https://www.emma-matras.be/"
+        },
+        {
+            "languageCode": "pt",
+            "countryCode": "BR",
+            "storeName": "Emma Brazil (BR)",
+            "storeUrl": "https://www.colchoesemma.com.br/"
+        },
+        {
+            "languageCode": "en",
+            "countryCode": "CA",
+            "storeName": "Emma Canada (EN)",
+            "storeUrl": "https://www.emma-sleep.ca/"
+        },
+        {
+            "languageCode": "fr",
+            "countryCode": "CA",
+            "storeName": "Emma Canada (FR)",
+            "storeUrl": "https://qc.emma-sleep.ca/"
+        },
+        {
+            "languageCode": "es",
+            "countryCode": "CL",
+            "storeName": "Emma Chile (CL)",
+            "storeUrl": "https://www.emma-colchon.cl/"
+        },
+        {
+            "languageCode": "da",
+            "countryCode": "DK",
+            "storeName": "Emma Denmark (DK)",
+            "storeUrl": "https://www.emma.dk/"
+        },
+        {
+            "languageCode": "fr",
+            "countryCode": "FR",
+            "storeName": "Emma France (FR)",
+            "storeUrl": "https://www.emma.fr/"
+        },
+        {
+            "languageCode": "de",
+            "countryCode": "DE",
+            "storeName": "Emma Germany (DE)",
+            "storeUrl": "https://www.emma-matratze.de/"
+        },
+        {
+            "languageCode": "en",
+            "countryCode": "HK",
+            "storeName": "Emma Hong Kong SAR China (EN)",
+            "storeUrl": "https://www.emma-mattress.hk/en/"
+        },
+        {
+            "languageCode": "zh",
+            "countryCode": "HK",
+            "storeName": "Emma Hong Kong SAR China (簡体中文)",
+            "storeUrl": "https://www.emma-mattress.hk/cn/"
+        },
+        {
+            "languageCode": "zh",
+            "countryCode": "HK",
+            "storeName": "Emma Hong Kong SAR China (繁體中文)",
+            "storeUrl": "https://www.emma-mattress.hk/zh/"
+        },
+        {
+            "languageCode": "en",
+            "countryCode": "IN",
+            "storeName": "Emma India (IN)",
+            "storeUrl": "https://www.emma-mattress.in/"
+        },
+        {
+            "languageCode": "id",
+            "countryCode": "ID",
+            "storeName": "Emma Indonesia (ID)",
+            "storeUrl": "https://www.emma-sleep.co.id/"
+        },
+        {
+            "languageCode": "en",
+            "countryCode": "IE",
+            "storeName": "Emma Ireland (IE)",
+            "storeUrl": "https://www.emma-sleep.ie/"
+        },
+        {
+            "languageCode": "it",
+            "countryCode": "IT",
+            "storeName": "Emma Italy (IT)",
+            "storeUrl": "https://www.emma-materasso.it/"
+        },
+        {
+            "languageCode": "en",
+            "countryCode": "JP",
+            "storeName": "Emma Japan (JP)",
+            "storeUrl": "https://www.emma-sleep.jp/"
+        },
+        {
+            "languageCode": "en",
+            "countryCode": "MY",
+            "storeName": "Emma Malaysia (MY)",
+            "storeUrl": "https://www.emma-sleep.com.my/"
+        },
+        {
+            "languageCode": "es",
+            "countryCode": "MX",
+            "storeName": "Emma Mexico (MX)",
+            "storeUrl": "https://www.emma-colchon.com.mx/"
+        },
+        {
+            "languageCode": "nl",
+            "countryCode": "NL",
+            "storeName": "Emma Netherlands (NL)",
+            "storeUrl": "https://www.emma-sleep.nl/"
+        },
+        {
+            "languageCode": "en",
+            "countryCode": "NZ",
+            "storeName": "Emma New Zealand (NZ)",
+            "storeUrl": "https://www.emma-sleep.co.nz/"
+        },
+        {
+            "languageCode": "en",
+            "countryCode": "PH",
+            "storeName": "Emma Philippines (PH)",
+            "storeUrl": "https://www.emma-sleep.com.ph/"
+        },
+        {
+            "languageCode": "pl",
+            "countryCode": "PL",
+            "storeName": "Emma Poland (PL)",
+            "storeUrl": "https://www.emma-materac.pl/"
+        },
+        {
+            "languageCode": "pt",
+            "countryCode": "PT",
+            "storeName": "Emma Portugal (PT)",
+            "storeUrl": "https://www.colchaoemma.pt/"
+        },
+        {
+            "languageCode": "en",
+            "countryCode": "SG",
+            "storeName": "Emma Singapore (SG)",
+            "storeUrl": "https://www.emma-sleep.com.sg/"
+        },
+        {
+            "languageCode": "ko",
+            "countryCode": "KR",
+            "storeName": "Emma South Korea (KR)",
+            "storeUrl": "https://www.emma-mattress.co.kr/"
+        },
+        {
+            "languageCode": "es",
+            "countryCode": "ES",
+            "storeName": "Emma Spain (ES)",
+            "storeUrl": "https://www.emma-colchon.es/"
+        },
+        {
+            "languageCode": "sv",
+            "countryCode": "SE",
+            "storeName": "Emma Sweden (SE)",
+            "storeUrl": "https://www.emma.se/"
+        },
+        {
+            "languageCode": "de",
+            "countryCode": "CH",
+            "storeName": "Emma Switzerland (CH)",
+            "storeUrl": "https://www.emma-matratze.ch/"
+        },
+        {
+            "languageCode": "fr",
+            "countryCode": "CH",
+            "storeName": "Emma Switzerland (FR)",
+            "storeUrl": "https://www.emma-matelas.ch/"
+        },
+        {
+            "languageCode": "it",
+            "countryCode": "CH",
+            "storeName": "Emma Switzerland (IT)",
+            "storeUrl": "https://www.emma-materasso.ch/"
+        },
+        {
+            "languageCode": "en",
+            "countryCode": "TW",
+            "storeName": "Emma Taiwan (TW_EN)",
+            "storeUrl": "https://www.emma-sleep.com.tw/en/"
+        },
+        {
+            "languageCode": "zh",
+            "countryCode": "TW",
+            "storeName": "Emma Taiwan (TW_ZH)",
+            "storeUrl": "https://www.emma-sleep.com.tw/"
+        },
+        {
+            "languageCode": "th",
+            "countryCode": "TH",
+            "storeName": "Emma Thailand (TH)",
+            "storeUrl": "https://www.emma.co.th/"
+        },
+        {
+            "languageCode": "en",
+            "countryCode": "GB",
+            "storeName": "Emma U.K. (UK)",
+            "storeUrl": "https://www.emma-sleep.co.uk/"
+        },
+        {
+            "languageCode": "en",
+            "countryCode": "US",
+            "storeName": "Emma U.S. (US)",
+            "storeUrl": "https://www.emma-sleep.com/"
+        },
+        {
+            "languageCode": "en",
+            "countryCode": "VN",
+            "storeName": "Emma Vietnam (VN)",
+            "storeUrl": "https://www.emma-sleep.vn/"
+        }
+    ]
+
+    function checkGeolocation() {
+        fetch(`https://api.ipgeolocation.io/ipgeo?apiKey=${GEOLOCATION_API_KEY}`)
+            .then(res => res.json())
+            .then(ipgeo => {
+                quebecProvinceGuard(ipgeo)
+
+                localizationGuard(ipgeo)
+            })
+    }
+
+    // Automatically redirect all customers from Quebec to Canada French subdomain
+    function quebecProvinceGuard(ipgeo) {
+        if (ipgeo.state_prov === 'Quebec') {
+            window.location.href = 'http://qc.emma-sleep.ca'
+        }
+    }
+
+    function localizationGuard(ipgeo) {
+        const popupShowed = !!sessionStorage.getItem('storeLocalizationPopupShowed')
+
+        if (!popupShowed && ipgeo.country_name !== CANADA_COUNTRY) {
+            showPopup();
+
+            sessionStorage.setItem('storeLocalizationPopupShowed', 'true');
+
+            checkCountryAvailability(ipgeo);
+
+            renderStoreOptions();
+        }
+    }
+
+    function redirectToOtherStore(el) {
+        window.location.href = el.value
+    }
+
+    function showPopup() {
+        $("#store-localization-popup").modal({
+            fadeDuration: 100,
+            modalClass: "",
+            closeText: '×',
+        });
+    }
+
+    function closePopup() {
+        $.modal.close();
+    }
+
+    function renderStoreOptions() {
+        const countryDropdownEl = document.querySelector('.change-country__dropdown');
+
+        allStores.forEach(store => {
+            const opt = document.createElement('option');
+            opt.value = store.storeUrl;
+            opt.text = store.storeName;
+            opt.dataset.languageCode = store.languageCode;
+            opt.dataset.countryCode = store.countryCode;
+
+            countryDropdownEl.appendChild(opt)
+        })
+
+    }
+
+    function checkCountryAvailability(ipgeo) {
+        const allStoreCountryCodes = allStores.map(({ countryCode }) => countryCode);
+
+        if(allStoreCountryCodes.includes(ipgeo.country_code2)) {
+            const selectCountryTextEl = document.querySelector('#store-localization-popup .change-country__select-country')
+
+            selectCountryTextEl.textContent = `Alternatively you can choose your country from the list below:`;
+
+            renderQuickRedirectElement(ipgeo.country_code2)
+        }
+    }
+
+    function renderQuickRedirectElement(targetCountryCode) {
+        const changeCountryEl = document.querySelector('#store-localization-popup .change-country');
+        const store = allStores.find(({countryCode}) => countryCode === targetCountryCode);
+        const el = document.createElement('div');
+        el.classList.add('quick-redirect')
+        el.innerHTML =  `<a href="${store.storeUrl}" class="redirect-button">Go to ${store.storeName}</a>`;
+
+        changeCountryEl.firstElementChild.insertAdjacentElement('afterend', el)
+    }
+
+
+    checkGeolocation();
+</script>
