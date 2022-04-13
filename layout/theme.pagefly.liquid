@@ -33,23 +33,23 @@ If you plan to remove PageFly, please see the guide in our help center first: ht
   <!-- CSS ================================================== -->
   {{ 'timber.scss.css' | asset_url | stylesheet_tag }}
   {{ 'theme.scss.css' | asset_url | stylesheet_tag }}
-
+  
   <!-- CUSTOM CSS ================================================== -->
   {{ 'custom-theme.css' | asset_url | stylesheet_tag }}
   <link rel="stylesheet" href="{{ 'slick.css' | asset_url }}">
   <link rel="stylesheet" href="{{ 'slick-theme.css' | asset_url }}">
   <link rel="stylesheet" href="{{ 'custom-theme-2.css' | asset_url }}">
   <link rel="stylesheet" href="{{ 'custom-theme-3.css' | asset_url }}">
-  <link rel="stylesheet" href="{{ 'animate.css' | asset_url }}">
-
-
+  <link rel="stylesheet" href="{{ 'animate.css' | asset_url }}"> 
+  
+  
     <!---- LUCKY ORANGE INTEGRATION ================================= -->
 
-  <script async defer src="https://tools.luckyorange.com/core/lo.js?site-id=30b438a6"></script>
-
-
+  <script async defer src="https://tools.luckyorange.com/core/lo.js?site-id=9ca7f04f"></script>
+  
+  
   <!---- SHOP BACK INTEGRATION ================================= -->
-
+  
   <script>
     var url_string = window.location.href;
     var url = new URL(url_string);
@@ -60,7 +60,12 @@ If you plan to remove PageFly, please see the guide in our help center first: ht
     localStorage.setItem('transaction_id', transaction);
     }
     </script>
-
+  
+   <!---- Upsellit Integration ================================= -->
+<script type="text/javascript">
+usi_installed = 0; USI_installCode = function() { if (usi_installed == 0) { usi_installed = 1; var USI_headID = document.getElementsByTagName("head")[0]; var USI_installID = document.createElement('script'); USI_installID.type = 'text/javascript'; USI_installID.src = 'https://www.upsellit.com/active/emmasleep.jsp'; USI_headID.appendChild(USI_installID); } }; if (typeof(document.readyState) != "undefined" && document.readyState === "complete") { USI_installCode(); } else if (window.addEventListener){ window.addEventListener('load', USI_installCode, true); } else if (window.attachEvent) { window.attachEvent('onload', USI_installCode); } else { USI_installCode(); } setTimeout("USI_installCode()", 10000);
+</script>
+  
   <!-- Sections ================================================== -->
   <script>
     window.theme = window.theme || {};
@@ -103,8 +108,8 @@ If you plan to remove PageFly, please see the guide in our help center first: ht
   {% endif %}
 
 	{% render 'vitals-loader' %}
-
-
+  
+  
   <!--International SEO: hreflang tags-->
   <link rel="alternate" hreflang="de-AT" href="https://www.emma-matratze.at/">
 <link rel="alternate" hreflang="en-AU" href="https://www.emma-sleep.com.au/">
@@ -154,3 +159,11 @@ If you plan to remove PageFly, please see the guide in our help center first: ht
 {% endcomment %}
 <body id="{{ page_title | handle }}" class="{% if customer %}customer-logged-in {% endif %}template-{{ request.page_type | handle }}"><div class="pagefly-container">{{ content_for_layout }}</div></body>
 </html>
+<style>
+ span.jdgm-subtab__name {
+    display: none;
+}     
+  span.jdgm-prev-badge__text {
+    display: inline-block !important;
+}
+</style> 
