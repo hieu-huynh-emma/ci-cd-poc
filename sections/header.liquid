@@ -315,9 +315,8 @@
 															{% if childlink.active %}aria-current="page"{% endif %}
 															tabindex="-1">
 															{{ childlink.title | escape }}
+															{% include 'promotion-capsule', collections: childlink.object.collections %}
 														</a>
-														
-														{% include 'promotion-capsule', collections: childlink.object.collections %}
 													</li>
 												{% endif %}
 											{% endfor %}

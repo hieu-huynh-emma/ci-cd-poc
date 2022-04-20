@@ -1,5 +1,5 @@
 <style>
-    .mobile-nav__sublist .mobile-nav__item {
+    .mobile-nav__sublist .mobile-nav__item .mobile-nav__link {
         display: flex;
         align-items: center;
         justify-content: center;
@@ -91,11 +91,9 @@
 										href="{{ childlink.url }}"
 										class="mobile-nav__link"
 										{% unless request.page_type == 'index' %}{% if childlink.active %}aria-current="page"{% endif %}{% endunless %}>
-										{{ childlink.title | escape }}
+										<span>{{ childlink.title | escape }}</span>
+										{% include 'promotion-capsule', collections: childlink.object.collections, isMobile: true %}
 									</a>
-									
-									{% include 'promotion-capsule', collections: childlink.object.collections, isMobile: true %}
-								
 								</li>
 							{% endif %}
 						{% endfor %}
