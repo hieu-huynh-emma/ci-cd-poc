@@ -50,6 +50,9 @@ html {
     scroll-behavior: smooth;
 }
 
+body {
+  overflow: clip !important;
+}
 /* CUSTOM CSS START */
 /* START STYLEGUIDE */
 
@@ -1711,4 +1714,17 @@ background: #3C4196;
 .spr-icon {
 color: #FF8900!important;}
 
+
+#shopify-section-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
+#bundle-sticky_add_to_cart {
+  top: 7.8rem !important;  
+  box-shadow: 0 8px 10px -5px rgb(0 0 0 / 40%) !important;
+  border-top: 1px solid rgb(0 0 0 / 10%);
+  z-index: 10 !important;
+}
 /* CUSTOM CSS END */
