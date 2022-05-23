@@ -1,0 +1,325 @@
+.backimg {
+  z-index: -1;
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  object-fit: cover;
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.transparent_svg {
+  opacity: 0;
+  fill: transparent;
+  stroke: transparent;
+  stroke-miterlimit: 0;
+  display: block;
+}
+
+svg:not(:root) {
+  overflow: hidden;
+}
+
+.que {
+  border-radius: 50%;
+  border: 1px solid #000;
+  /*   padding: 0px; */
+  /*   width: 16px; */
+  display: inline-flex;
+  justify-content: center;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.que {
+  padding: 1px;
+  width: 15px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.pro_info {
+  padding-bottom: 12px;
+}
+
+.pay_img img {
+  width: 100% !important;
+  padding-left: 0px;
+  padding-right: 0px;
+  max-width: 70px !important;
+}
+
+.model_img {
+  width: 100% !important;
+  padding-right: 6px;
+  max-width: 80px !important;
+  padding-left: 6px;
+}
+
+.sub_head {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  line-height: 1;
+}
+
+.step_head {
+  text-align: center;
+}
+
+.step_head h3 {
+  font-size:1.8rem;
+  margin-bottom:12px;
+}
+
+.step_item {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  padding-top: 24px;
+  align-items: center;
+}
+
+.step_data {
+  width: 70%;
+  margin-left: 12px;
+}
+
+.step_icon .backimg {
+  background-size: 55%;
+  z-index: 1;
+  height: inherit;
+}
+
+.step_icon .backimg {
+  /*   background-size:contain;
+  background-position:center top;
+  z-index:1; */
+}
+
+.step_item_head {
+  text-transform:uppercase;
+  font-size:1rem;
+  color:#FC8800;
+  font-weight:600;
+}
+
+.step_info {
+  font-size:14px;
+  line-height:1.72;
+}	
+
+.step_icon_inner {
+  /*   display: flex;
+  height:100%; */
+}
+
+.step_icon_inner {
+  display: flex;
+  height: 64px;
+  border-radius: 56%;
+  border: 1.5px solid #FC8800;
+}
+
+.step_icon {
+  width: 100%;
+  max-width: 64px;
+  position: relative;
+}
+
+.shop_btn {
+  text-align: center;
+  padding-top: 32px;
+  padding-bottom: 32px;
+}
+
+.shop_btn a {
+  background-color: #3c4196;
+  color: #fff;
+  border-radius: 8px;
+  text-align: center;
+  display: inline-block;
+  padding: 12.5px 20px;
+  outline: 0;  
+  text-transform: uppercase;
+  font-size:16px;
+  font-weight:600;
+}
+
+.product_step_inner {
+  padding-top:48px;
+  padding-bottom:0px;
+  padding-left:100px;
+  padding-right:100px;
+}
+
+.para_txt {
+  /*     padding-left: 10px; */
+  font-size:14px;	
+}
+
+.pro_note_inner p {
+  /*      padding-left: 10px; */
+  margin: 0;
+  font-size:12.8px;
+  padding-bottom: 5px;
+}
+
+.pro_note {
+  padding-top:32px;
+  padding-bottom:32px;
+  padding-left:80px;
+  padding-right:80px;
+  background-color:#eee;
+}
+
+.product_step {
+  padding:0px !important; 
+  width:92% !important;
+  max-width:650px !important;
+}
+
+.product_step .fancybox-close-small svg {
+  border: 2px solid #000;
+  border-radius: 50%;
+}
+
+.product_step .fancybox-close-small {
+  margin-top: 0.6rem;
+  margin-right: 0.6rem;
+  padding: 5px !important;
+}
+
+@media only screen and (max-width: 600px) {
+
+  .step_head h3 {
+    font-size:1.687rem;
+  }	
+
+  .step_item_head {
+    font-size:0.8rem; 
+  }
+  .step_info {
+    font-size: 0.812rem;
+  }
+  .step_icon {
+    max-width: 45px;
+  }
+  .step_icon .step_icon_inner {
+    height:45px; 
+    border:1px solid #FC8800;
+  }
+  .pro_note {
+    padding-left:10%;
+    padding-right:10%;
+  }
+  .step_item {
+    align-items: flex-start;
+  }
+
+}
+
+
+@media only screen and (max-width: 768px) {
+
+  .pro_note {
+    padding-left:10%;
+    padding-right:10%;
+  }
+
+  .product_step .product_step_inner {
+    /*     padding-top:40px; */
+    padding-left:10%;
+    padding-right:10%;
+  }
+
+}
+
+.fr_pop {
+  padding-bottom:12px;
+}	
+
+.fr_txt {
+  text-decoration:underline;
+}
+
+.pro_info {
+  display:none; 
+}
+
+.fr_pop {
+  display:none;
+}
+
+.pro_info.showw {
+  display:block;
+}
+
+.fr_pop.showw {
+  display:block;
+}
+
+.product_form_6714893467786 .pro_info {
+  display:block !important; 
+}
+
+.fancybox-active.compensate-for-scrollbar {
+  margin-right: 0;
+} 
+
+.img_bann.updfr {
+  background-image:none !important;
+  background-color:rgba(255,137,0,1) !important;
+  height:43vh !important;
+  padding-bottom:0px !important; 
+  padding-top: 0;
+}
+
+.img_bann.updfr .header {
+  text-align:center; 
+}
+
+.img_bann.updfr .shpnw {
+  text-align:center; 
+}
+.img_bann.updfr .shpnw a {
+  margin-top:0px; 
+}
+
+.img_bann.updfr p {
+  color:#fff; 
+  padding-top: 10px;
+  padding-bottom: 5px;
+}
+
+.img_bann.first_bann.eng{
+  background-image:url("https://cdn.shopify.com/s/files/1/0562/9873/3706/t/3/assets/0708_emma_original_neubau_franziska_0285_retedited--edited-1652258141535.jpg") !important;
+  -webkit-transition: background-image 1000ms ease-in;
+  -ms-transition: background-image 1000ms ease-in;
+  transition: background-image 1000ms ease-in;
+
+}
+
+.img_bann.sec_bann.eng{
+  background-image:url("https://cdn.shopify.com/s/files/1/0562/9873/3706/t/3/assets/emmaboxbedgreyoriginalmattressdsc01721medium-1641963163399.jpg") !important;
+  -webkit-transition: background-image 1000ms ease-in;
+  -ms-transition: background-image 1000ms ease-in;
+  transition: background-image 1000ms ease-in;
+}
+
+.img_bann.first_bann{
+  background-image:none !important;
+}
+
+.img_bann.sec_bann{
+  background-image:none !important;
+}
+

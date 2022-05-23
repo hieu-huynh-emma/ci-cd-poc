@@ -3416,7 +3416,7 @@ shopify-payment-terms {
 }
 
 .shopify-payment-button {
-  margin: 10px 10px 0 0;
+  margin: 10px 0px 0 0;
   min-width: 155px;
   flex: auto;
 
@@ -3425,16 +3425,20 @@ shopify-payment-terms {
   }
 
   .shopify-payment-button__button {
-    border-radius: $radius;
+    border-radius: 8px;
   }
 
-  .shopify-payment-button__button--unbranded {
+
+.shopify-payment-button__button--unbranded {
     @extend .btn;
     @include accentFontStack;
     margin-right: 0;
+    background: #FF8900 !important;
     width: 100%;
     min-height: 44px;
     font-size: em(13px);
+    font-size:1em !important;
+    text-transform:uppercase ;
 
     &:hover,
     &:focus {
@@ -3452,6 +3456,7 @@ shopify-payment-terms {
     white-space: nowrap;
     text-decoration: underline;
     padding: 0 15px;
+    margin-top:-5px !important;
 
     &:hover,
     &:focus {
@@ -3463,9 +3468,21 @@ shopify-payment-terms {
     }
   }
 }
-
 .product-unit-price {
   color: $colorTextBody;
   display: block;
+}
+ .shopify-payment-button__more-options {
+    margin-top:-5px !important;
+}
+.__pf .pf-35_.sc-igXgud
+{
+margin-top:0px !important; 
+}
+.vitals-upsell-suggestions {
+    color: #fff !important;
+}
+a.vt-suggestion-add.vtl-ub-suggestion__add-to-cart {
+    color: #000 !important;
 }
 

@@ -40,8 +40,11 @@ For info on test orders:
           <div class="grid__item large--three-fifths">
             <div class="grid">
 
+              {%- assign item_url = item.variant.title | split: '|' | first | handleize | append: '-size' -%}
+
+              {%- assign item_variant = item.url | split:'?' | last -%}
               <div class="grid__item one-third">
-                <a href="{{ item.url }}" class="cart__image">
+                <a href="{{ item.product.url }}/{{ item_url }}?{{ item_variant }}" class="cart__image">
 
                   {% comment %}
                   More image size options at:
@@ -52,7 +55,7 @@ For info on test orders:
               </div>
 
               <div class="grid__item two-thirds">
-                <a href="{{ item.url }}" class="h6 cart__product-name header-text">
+                <a href="{{ item.product.url }}/{{ item_url }}?{{ item_variant }}" class="h6 cart__product-name header-text">
                   {{ item.product.title }}
                 </a>
                 {% unless item.product.has_only_default_variant %}
