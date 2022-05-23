@@ -1,3 +1,7 @@
+// upsell cart drawer code start line number ---> 4400  // upsell cart drawer code start line number ---> 4662
+
+// please find (upsell cart drawer code start)
+
 window.theme = window.theme || {};
 window.slate = window.slate || {};
 
@@ -776,8 +780,7 @@ if ($cartRoutes.length) {
 /*============================================================================
   API Helper Functions
 ==============================================================================*/
-if (typeof attributeToString != 'function') { 
-function attributeToString(attribute) {
+function custom_attributeToString(attribute) {
   if (typeof attribute !== 'string') {
     attribute += '';
     if (attribute === 'undefined') {
@@ -786,7 +789,7 @@ function attributeToString(attribute) {
   }
   return jQuery.trim(attribute);
 }
-}
+
 /*============================================================================
   API Functions
 ==============================================================================*/
@@ -798,7 +801,7 @@ ShopifyAPI.updateCartNote = function(note, callback) {
   var params = {
     type: 'POST',
     url: '/cart/update.js',
-    data: 'note=' + attributeToString(note),
+    data: 'note=' + custom_attributeToString(note),
     dataType: 'json',
     success: function(cart) {
       if (typeof callback === 'function') {
@@ -966,7 +969,6 @@ var ajaxCart = (function(module, $) {
   loadCart = function() {
     //return false;
     if((typeof $body == undefined) || (typeof $body == 'undefined')){
-      console.log('here');
       ajaxCart.init();
     }
     $body.addClass('drawer--is-loading');
@@ -1076,6 +1078,7 @@ var ajaxCart = (function(module, $) {
       }
 
       if (cartItem.properties !== null) {
+                
         $.each(cartItem.properties, function(key, value) {
           if (key.charAt(0) === '_' || !value) {
             delete cartItem.properties[key];
@@ -1160,10 +1163,16 @@ var ajaxCart = (function(module, $) {
         vendor: cartItem.vendor,
         unitPrice: unitPrice
       };
-
+      
+//      console.log(cartItem.product_type);
+      
+//       console.log(cartItem);
+      
       items.push(item);
     });
 
+    
+    
     // Gather all cart data and add to DOM
     data = {
       items: items,
@@ -4392,6 +4401,21 @@ theme.sizeCartDrawerFooter = function() {
   $cartFooter.css('height', cartFooterHeight);
 };
 
+// upsell cart drawer code start
+theme.checkIncart = function(product_id,cart_items){
+  let check = true;  
+  if (cart_items.length > 0) { 
+    $(cart_items).each(function(cart_k,cart_v){
+      if ((product_id == cart_v.product_id)) {
+        check = false;
+        return false;          
+      }    
+    });
+  }
+  return check;
+}
+
+
 theme.afterCartLoad = function() {
   theme.cache.$body.on('ajaxCart.afterCartLoad', function(evt, cart) {
     // Open cart drawer
@@ -4402,12 +4426,245 @@ theme.afterCartLoad = function() {
 
     // Show cart bubble in nav if items exist
     if (cart.items.length > 0) {
+      jQuery.getJSON(window.Shopify.routes.root + 'products.json', function(product) {
+//     ==================*********  upsell code start  *********==================
+
+        // Static UPSELL items Object
+        var upsell_pro = { 
+          "mattress" : ['protector','pillow','topper'],
+          "pillow" : ['mattress','topper','protector'],
+          "protector" : ['mattress','pillow','topper'],
+          "topper" : ['mattress','pillow','protector'],
+          "bed-frame-with-mattress" : ['protector','pillow','topper'],
+          "bed-frame-without-mattress" : ['mattress','protector','pillow'] 
+        }
+
+        var upsell_results = {};
+
+        // This is the cart items loop
+        $(cart.items).each(function(i,c_item){
+          var cart_pro_type = (c_item.product_type).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-$/, '').replace(/^-/, '');
+
+          // got the same type from upsell object
+          if((typeof upsell_pro[cart_pro_type] != undefined) && (typeof upsell_pro[cart_pro_type] != 'undefined') && (upsell_pro[cart_pro_type].length > 0)){
+            var upsell_type = upsell_pro[cart_pro_type];
+
+            // each loop of current cart product type from upsell object
+            $(upsell_type).each(function(k,upsell_type){
+
+              if((typeof upsell_type != 'undefined') && (typeof upsell_type != undefined) && (typeof upsell_type != null)){
+                
+                // find products which match upsell types
+                $(product['products']).each(function(p,e){
+
+                  var protype_data = (e.product_type).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-$/, '').replace(/^-/, '');
+          
+                  // match the type of product with the upsell type
+                  if(upsell_type == protype_data){
+                    // check this product isn't in cart
+                    let check = theme.checkIncart(e.id,cart.items);
+                    if((check == 'true') || (check == true)){
+                      if((typeof upsell_results[protype_data] != undefined) && (typeof upsell_results[protype_data] != 'undefined') && (upsell_results[protype_data] != null)){
+                        upsell_results[protype_data].push(e);
+                      }else{
+                        upsell_results[protype_data] = [e];
+                      }
+                    }
+                  }
+                });
+              }
+            });
+          }
+        });
+        if((typeof upsell_results != undefined) && (typeof upsell_results != 'undefined') && (upsell_results != null)){
+          theme.showUpsells(upsell_results);
+        }
+      });
+     
+//    ==================*********   upsell code end    *********==================  
       theme.cache.$cartBuggle.addClass('cart-link__bubble--visible');
     } else {
       theme.cache.$cartBuggle.removeClass('cart-link__bubble--visible');
     }
   });
 };
+
+// =============================================================
+        //         ajax cart start code
+
+
+          function addItemToCart(variant_id, qty) {
+            console.log(variant_id,qty);
+            var data = {
+              "id": variant_id,
+              "quantity": qty
+            };
+            jQuery.ajax({
+              type: 'POST',
+              url: '/cart/add.js',
+              data: data,
+              dataType: 'json',
+              success: function() { 
+                $(".cart_trigger_click").trigger("click");
+              }
+            });
+          };
+
+          $(document).on('click',"#add-to-cart-button", function(){
+            var variant_id = $(this).parents('.prod_item').find('.js-select2').val();
+            var qty = "1";
+            addItemToCart(variant_id, qty);
+          });
+
+
+        //         ajax cart end code
+// =============================================================  
+
+function remove_Dumplicate_Value(myArray){
+  var newArray = [];
+  $.each(myArray, function(key, value) {
+    var exists = false;
+    $.each(newArray, function(k, val2) {
+      if(value.id == val2.id){
+        exists = true;
+      }; 
+    });
+    if(exists == false && value.id != ""){
+      newArray.push(value);
+    }
+  });
+
+  return newArray;
+};
+
+theme.getMultipleRandom = function(arr, num) {
+  
+  var shuffled = arr.sort(() => 0.5 - Math.random());
+  
+  return shuffled.slice(0, num);
+};
+
+
+theme.showUpsells = function(upsells){
+  //console.log(upsells);
+  $.each(upsells,function(u,e){
+    upsells[u] = remove_Dumplicate_Value(e);
+  });
+
+  var arr = Object.keys(upsells);
+  var final_keys = theme.getMultipleRandom(arr, arr.length);
+  
+// ****************** upsell item html start ****************** 
+  
+  var html ="";
+  var currency_format = document.getElementsByTagName('body');
+  currency_format =  currency_format[0].dataset.format;
+
+  $.each(final_keys,function(final_k,final_v){
+
+    if((upsells[final_v] != 'undefined' && upsells[final_v] != undefined && upsells[final_v] != null )){
+
+      if(Object.keys(upsells[final_v]).length > 1){
+        let random_key = theme.getMultipleRandom(Object.keys(upsells[final_v]), 1)[0];
+        let single_upsells = upsells[final_v][random_key];
+        upsells[final_v] = {};
+        upsells[final_v][0] = single_upsells;        
+      }
+      $.each(upsells[final_v],function(html_k,html_v){
+
+        if((typeof html_v != undefined) && (typeof html_v != 'undefined')){
+          var tag = html_v.tags[0];
+          var img = html_v.images[0];
+          var variant = html_v.variants[0];
+          $(document).on('change',"select.product-form__variants",function(){
+            var data_price = $(this).children("option:selected").data('price');
+            console.log(data_price);
+            var data_compare_price = $(this).children("option:selected").data('compare_price');
+            $(this).parents(".prod_item ").find( ".prod_sale_price").text(data_compare_price);
+            $(this).parents(".prod_item ").find( ".prod_price").text(data_price);
+          });
+          
+          html += '<div class="prod_item">';      
+          if((tag != 'undefined') && (tag != null) && (tag != undefined)){         
+            html += '<div class="prod_tag"><p>'+tag+'</p></div>';
+          }
+          html += '<div class="prod_img">';
+          html += '<div class="prod_img_inner">';
+          if((img != 'undefined') && (img != null) && (img != undefined)){         
+            html += '<div class="backimg" style="background-image:url('+img.src+');">';   
+          }
+          html += '<svg class="transparent_svg" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 101 76">';
+          html += '<rect class="cls-1" x="0.5" y="0.5" width="100" height="75"></rect>';
+          html += '</svg>';
+          html += '</div>';
+          html += '</div>';
+          html += '</div>';
+          html += '<div class="prod_info">';
+          html += '<div class="prod_tt">';
+          html += '<a href="/products/'+html_v.handle+'">'+html_v.title+'</a>'; 
+          html += '</div>';  
+
+          html += '<div class="compare_pro_price">';  
+          html += '<div class="prod_price">'+theme.Currency.formatMoney(variant.price, currency_format)+'</div>';       
+          html += '<div class="prod_sale_price">'+theme.Currency.formatMoney(variant.compare_at_price, currency_format)+' </div>';
+       
+          html += '</div>';  
+          if((variant != 'undefined') && (variant != null) && (variant != undefined)){
+            html += '<div class="prod_type">';
+            if (variant.available) {
+              html += '<select name="id" class="js-select2" id="ProductSelect-'+ html_v.id +'"';
+              if(variant.title == 'Default Title'){
+                html += ' style="display:none"';
+                html += ' data-default="" ';
+              }
+              html += ' class="product-form__variants no-js">';
+              $.each(html_v.variants,function(var_key,var_val){  
+                if (var_val.available) {
+                  html += '<option';
+                  if(var_key == 0){
+                    html += ' selected="selected"';
+                  }
+                  html += ' data-price=" '+theme.Currency.formatMoney(var_val.price, currency_format)+' " data-compare_price=" '+ theme.Currency.formatMoney(var_val.compare_at_price, currency_format) +' "   data-availability="true" value="'+var_val.id+'">'+var_val.title+'</option>';
+                }
+              });
+              html += '</select>';
+            }
+            html += '</div>'
+
+          }
+          html += '</div>';  
+          html += '<div class="add_prod">';
+          html += '<div class="add_btn">';           
+          html += '<a href="javascript:void(0);" id="add-to-cart-button" class="btn btn--secondary btn--full marztop">';
+          html += '<span class="icon icon-plus" aria-hidden="true"></span> ADD';
+          html += '</a>';            
+          html += '</div>';                
+          html += '</div>';
+
+          //      ============== addto cart end ==============`
+
+          html += '</div>';
+        }
+
+      });
+
+      //     console.log(upsells[final_v]);
+    }
+  });
+
+
+  
+
+//   console.log(html);
+  document.getElementById('cart__drawer_items').innerHTML = '';
+  document.getElementById('cart__drawer_items').insertAdjacentHTML('beforeend', html);
+  jQuery(".js-select2").select2();
+
+  
+// ****************** upsell item html end ******************
+  
+};
+// upsell cart drawer code end
 
 theme.checkoutIndicator = function() {
   // Add a loading indicator on the cart checkout button (/cart and drawer)
@@ -4583,27 +4840,12 @@ var afterResize = (function () {
   };
 })();
 
-function prodPrice () {
-    var p_price = $('.sale_price').delay(1500).html();
-    pp_price = p_price.replace(/([-,€~!@#$%^&*()_+=`{}\[\]\|\\:;'<>])+/g, '');
-    //console.log(pp_price);
-    var f_price = parseFloat(pp_price);
-    console.log(f_price);
-    var month = 6;
-    var fpp_price = (f_price / month).toFixed(2);
-    console.log(fpp_price);
-    jQuery(".pro_info .pro_val").html(fpp_price);
-}
-  
-jQuery(window).on("load",function(e){     
-  prodPrice();  
-});
 
-
-jQuery('.pf-variant-select').on('change',function(e){ 
+jQuery('.pf-variant-select').on('change',function(e){
   if (!history.replaceState) {
     return;
   }
+
   var val = $(this).val();
   if(val.indexOf('|') > -1){
     var str = val.split('|')[0].toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-$/, '').replace(/^-/, '');
@@ -4620,27 +4862,15 @@ jQuery('.pf-variant-select').on('change',function(e){
     '',
     newurl
   );
-  
-   setTimeout(prodPrice, 500);
-
 });
 
-$(document).ready(function() {
-  let cur_url = window.location.href;
-  cur_url = cur_url.split('/');
-  let last_ele = cur_url.slice(-1)[0];
-  console.log(last_ele);
-  console.log(last_ele.includes("-size"));
-  if(last_ele.includes("-size") == true){
-    last_ele = last_ele.split('-size')[0];
-    if($('select[data-option-name="Size"]').length > 0){
-      $('select[data-option-name="Size"] option').each(function(i,e){
-        let s_elm = $(this).attr('value').split('|')[0].toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-$/, '').replace(/^-/, '');
-        if(s_elm == last_ele){
-//           $('select[data-option-name="Size"] option')[i].selected = true;
-//           $('select[data-option-name="Size"]').change();
-        }
-      });
-    }
-  }
+window.addEventListener('locationchange', function () {
+//   console.log('location changed!');
 });
+window.addEventListener('hashchange', function() { 
+//   console.log('hashchange changed!');
+});
+window.addEventListener('popstate', function() { 
+//   console.log('popstate changed!');
+});
+
