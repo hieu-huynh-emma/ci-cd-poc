@@ -55,7 +55,7 @@
   
   <!-- CUSTOM CSS ================================================== -->
   {{ 'custom-theme.css' | asset_url | stylesheet_tag }}
-   {{ 'custom.min.css' | asset_url | stylesheet_tag }}
+   {{ 'custom.css' | asset_url | stylesheet_tag }}
   <link rel="stylesheet" href="{{ 'slick.css' | asset_url }}">
   <link rel="stylesheet" href="{{ 'slick-theme.css' | asset_url }}">
   <link rel="stylesheet" href="{{ 'custom-theme-2.css' | asset_url }}">
@@ -208,6 +208,7 @@ jQuery(window).on("load",function(){
   Add the page template as a class for easy page or template specific styling.
 {% endcomment %}
 <body id="{{ page_title | handle }}" class="{% if customer %}customer-logged-in {% endif %}template-{{ request.page_type | handle }}">
+  {% section 'announcement-bar' %}
   {% section 'header' %}
   	<div id="pro_step" class="product_step" style="display:none">
               {% include 'product_step' %}

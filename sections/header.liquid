@@ -82,109 +82,6 @@
 	</div>
 	<div class="header-container drawer__header-container">
 		<div class="header-wrapper" data-header-wrapper>
-			{% if section.settings.show_announcement %}
-				{% if section.settings.home_page_only == false or request.page_type == 'index' %}
-					<style>
-              .announcement-bar {
-                  background-color: {{ section.settings.color_bg }};
-              }
-
-              .announcement-bar--link:hover {
-							{% assign brightness = section.settings.color_bg | color_brightness %}{% if brightness <= 192 %}{% assign lightenAmount = 255 | minus: brightness | divided_by: 255 | times: 16 %} background-color: {{ section.settings.color_bg | color_lighten: lightenAmount }};
-							{% else %}{% assign darkenAmount = 255 | divided_by: brightness | times: 8 %} background-color: {{ section.settings.color_bg | color_darken: darkenAmount }};
-							{% endif %}
-              }
-
-              .announcement-bar__message {
-                  color: {{ section.settings.color_text }};
-              }
-					</style>
-					
-					{% if section.settings.link == blank %}
-						<div class="announcement-bar">
-					{% else %}
-						<a href="{{ section.settings.link }}" class="announcement-bar announcement-bar--link">
-					{% endif %}
-					
-					<p class="announcement-bar__message">{{ section.settings.text | escape }} <span id="timer-banner"></span></p>
-					
-					
-					{% if section.settings.countdown-date != blank %}
-						<script>
-
-              // No magic numbers...
-
-              var SECOND_ = 1000;
-              var MINUTE_ = 60 * SECOND_;
-              var HOUR_ = 60 * MINUTE_;
-              var DAY_ = 24 * HOUR_;
-
-              /**
-               * Calculates the difference between two timestamps, returns a quadruple with
-               * the difference in days, hours, minutes and seconds.
-               *
-               * @param {number} future
-               */
-              var timestampDiff_ =
-                future =>
-                  /** @param {number} past */
-                    past =>
-                    [DAY_, HOUR_, MINUTE_, SECOND_].map((time, index, times) => {
-                      var diff = future - past;
-                      var previousTime = times[index - 1];
-
-                      return (
-                        Math.floor(diff / time) -
-                        (Math.floor(diff / previousTime) * (previousTime / time) || 0)
-                      );
-                    });
-
-              /**
-               * Start timer and set the content of the element.
-               *
-               * @param {string} date
-               */
-              var timer_ =
-                date =>
-                  /** @param {HTMLElement} target */
-                    target => {
-                    var diff = timestampDiff_(Date.parse(date));
-
-                    return setInterval(() => {
-                      var [days, hours, minutes, seconds] = diff(Date.now());
-
-                      // Ideally we should have targets for every element
-                      // to avoid updating the entire innerHTML of the container with
-                      // every tick.
-                      target.innerHTML = `
-
-                             ${days} days
-                             ${hours} hrs
-                             ${minutes} mins
-                             ${seconds} secs
-
-                            `;
-                    }, SECOND_);
-                  };
-
-              // We finally run it (and we save the interval return value if we wan to stop it later)
-              var interval_ = timer_("{{ section.settings.countdown-date }}")(document.querySelector("#timer-banner"));
-						
-						</script>
-					
-					{% endif %}
-					
-					
-					
-					{% if section.settings.link == blank %}
-						</div>
-					{% else %}
-						</a>
-					{% endif %}
-				
-				{% endif %}
-			{% endif %}
-			
 			<header class="site-header"
 			        role="banner"{% if section.settings.transparent_header_enable %} data-transparent-header="true"{% endif %}>
 				<div class="wrapper">
@@ -934,64 +831,6 @@
 }
 },
 {
-"type": "checkbox",
-"id": "show_announcement",
-"label": {
-"cs": "Zobrazit oznámení",
-"da": "Vis meddelelse",
-"de": "Ankündigung anzeigen",
-"en": "Show announcement",
-"es": "Mostrar anuncio",
-"fi": "Näytä ilmoitus",
-"fr": "Afficher l'annonce",
-"it": "Mostra annuncio",
-"ja": "告知を表示する",
-"ko": "공지 표시",
-"nb": "Vis kunngjøring",
-"nl": "Aankondiging weergeven",
-"pl": "Pokaż ogłoszenie",
-"pt-BR": "Exibir comunicado",
-"pt-PT": "Mostrar comunicado",
-"sv": "Visa tillkännagivande",
-"th": "แสดงประกาศ",
-"tr": "Duyuruyu göster",
-"vi": "Hiển thị thông báo",
-"zh-CN": "显示公告",
-"zh-TW": "顯示公告"
-},
-"default": false
-},
-{
-"type": "checkbox",
-"id": "home_page_only",
-"label": {
-"cs": "Jen domovská stránka",
-"da": "Kun startside",
-"de": "Nur Startseite",
-"en": "Home page only",
-"es": "Solo página de inicio",
-"fi": "Vain etusivu",
-"fr": "Page d'accueil uniquement",
-"it": "Solo home page",
-"ja": "ホームページのみ",
-"ko": "홈페이지만",
-"nb": "Kun på startsiden",
-"nl": "Alleen homepage",
-"pl": "Tylko strona główna",
-"pt-BR": "Apenas na página inicial",
-"pt-PT": "Apenas a página inicial",
-"sv": "Endast hemsida",
-"th": "หน้าแรกเท่านั้น",
-"tr": "Yalnızca ana sayfa",
-"vi": "Chỉ trang chủ",
-"zh-CN": "仅主页",
-"zh-TW": "僅限首頁"
-},
-"default": true
-},
-
-
-{
 "type": "text",
 "id": "text",
 "label": {
@@ -1041,16 +880,6 @@
 "zh-TW": "在此公告資訊"
 }
 },
-
-
-{
-"type": "text",
-"id": "countdown-date",
-"label": "Date",
-"info" : "Format Sample: January 1, 2020 11:59:00 PM"
-},
-
-
 {
 "type": "url",
 "id": "link",
@@ -1078,62 +907,6 @@
 "zh-TW": "連結"
 }
 },
-{
-"type": "color",
-"id": "color_bg",
-"label": {
-"cs": "Panel",
-"da": "Bjælke",
-"de": "Leiste",
-"en": "Bar",
-"es": "Barra",
-"fi": "Palkki",
-"fr": "Barre",
-"it": "Barra",
-"ja": "バー",
-"ko": "바",
-"nb": "Felt",
-"nl": "Balk",
-"pl": "Pasek",
-"pt-BR": "Barra",
-"pt-PT": "Barra",
-"sv": "Fält",
-"th": "แถบ",
-"tr": "Çubuk",
-"vi": "Thanh",
-"zh-CN": "栏",
-"zh-TW": "橫條"
-},
-"default": "#1c1d1d"
-},
-{
-"type": "color",
-"id": "color_text",
-"label": {
-"cs": "Text",
-"da": "Tekst",
-"de": "Text",
-"en": "Text",
-"es": "texto",
-"fi": "Teksti",
-"fr": "Texte",
-"it": "Testo",
-"ja": "テキスト",
-"ko": "텍스트",
-"nb": "Tekst",
-"nl": "Tekst",
-"pl": "Tekst",
-"pt-BR": "Texto",
-"pt-PT": "Texto",
-"sv": "Text",
-"th": "ข้อความ",
-"tr": "Metin",
-"vi": "Văn bản",
-"zh-CN": "文本",
-"zh-TW": "文字"
-},
-"default": "#ffffff"
-}
 ]
 }
 {% endschema %}
