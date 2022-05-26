@@ -446,6 +446,8 @@
         }
 
         if (Shopify.Checkout.step === 'contact_information') {
+          $(this).scrollTop(0);
+          
           var $phoneField = $('[name="checkout[shipping_address][phone]"]:not([aria-hidden="true"])');
           // Check for enter keypress on form and click button instead.
           $('[data-step] form').on('keypress', function (e) {
@@ -465,8 +467,19 @@
           $phoneField.on('input', function () {
             validatePhoneNumber($(this));
           });
-        }
+          $('#review-shipping-address').remove();
 
+          var $dynamicCheckoutTitle = $('.dynamic-checkout h2.dynamic-checkout__title');
+          if($dynamicCheckoutTitle) {
+            $dynamicCheckoutTitle.addClass('heading1');
+          }
+
+          var $alternativePaymentSeparatorContent = $('.alternative-payment-separator__content');
+          if($alternativePaymentSeparatorContent) {
+            var content = "{{ 'shopify.checkout.continue_with_credit' | t }}";
+            $alternativePaymentSeparatorContent.text(content);
+          }
+        }
       });
 
 
@@ -525,8 +538,10 @@
         <header class="main__header" role="banner">
           {{ content_for_logo }}
           {{ breadcrumb }}
-          <div class="heading1">Your Details</div>
-          <p class="para">Please review the shipping address before placing your order.</p>
+          <div id="review-shipping-address">
+            <div class="heading1">Your Details</div>
+            <p class="para">Please review the shipping address before placing your order.</p>
+          </div>
           {{ alternative_payment_methods }}
         </header>
         <main class="main__content" role="main">
@@ -813,6 +828,7 @@
 
     .custome .breadcrumb__item--current {
       font-weight: 600;
+      color: #ff8900;
     }
 
     .custome .breadcrumb__item--completed a {
