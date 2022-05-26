@@ -1,13 +1,20 @@
 <style>
+    .promotion-capsules-container {
+        display: inline-grid;
+        gap: 4px;
+        grid-auto-flow: column;
+        margin-right: 15px;
+    }
+
     .promotion-capsule {
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        margin-right: 15px;
+
         padding: 1px 4px;
         background-color: #3c4196;
         color: white;
-        font-family: Helvetica,Helvetica Neue,Arial,Lucida Grande,sans-serif;
+        font-family: Helvetica, Helvetica Neue, Arial, Lucida Grande, sans-serif;
         font-size: 0.8em;
         font-weight: bold;
 
@@ -21,25 +28,44 @@
     }
 </style>
 
-{% assign capsule = "" %}
+{% assign capsules = "" %}
 
-{% assign collectionCount = 0 %}
-
-{% assign collectionIds = "265877848202,271340208266,271182332042,271340241034,271400468618" %}
+{% assign collectionIds = "271182332042,265877848202,271400468618,271340208266,271340241034" %}
 
 {% for collection in collections %}
 	{% if collectionIds contains collection.id %}
-		{% assign collectionCount = collectionCount | plus: 1 %}
 		{% assign capsule = collection.description %}
+		{% if capsules != "" %}
+			{% assign capsules = capsules | append: "," %}
+		{% endif %}
+		
+		{% assign capsules = capsules | append: collection.description %}
+	
 	{% endif %}
 {% endfor %}
 
-{% if capsule != blank %}
-	<div class="promotion-capsule{% if isMobile == true %} promotion-capsule--mobile{% endif %}">
-		{% if collectionCount > 1 %}
-			PROMO
-		{% else %}
-			{{ capsule }}
-		{% endif %}
-	</div>
+{% assign capsules = capsules | split: "," %}
+
+{% if isMobile != true %}
+	{% if capsules != blank %}
+		<div class="promotion-capsules-container">
+			{% for capsule in capsules %}
+				{% if forloop.index0 < 2 %}
+					<div class="promotion-capsule">{{ capsule }}</div>
+				{% endif %}
+			{% endfor %}
+		</div>
+	{% endif %}
+{% else %}
+	{% assign firstCapsule = capsules | first %}
+	{% if firstCapsule != blank %}
+		<div class="promotion-capsule promotion-capsule--mobile">
+			{{ firstCapsule }}
+		</div>
+	{% endif %}
+
 {% endif %}
+
+
+
+
