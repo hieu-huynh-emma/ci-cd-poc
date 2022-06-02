@@ -50,6 +50,9 @@ html {
     scroll-behavior: smooth;
 }
 
+body {
+  overflow: visible !important;
+}
 /* CUSTOM CSS START */
 /* START STYLEGUIDE */
 
@@ -1148,7 +1151,7 @@ background: #3C4196;
   }
 
   .site-nav li {
-  	padding-right: 38px;
+  	padding-right: 20px;
   }
   
   .site-nav li:last-child {
@@ -1711,4 +1714,28 @@ background: #3C4196;
 .spr-icon {
 color: #FF8900!important;}
 
+
+#shopify-section-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
+#NavDrawer {
+  background-color: #3c4196;
+}
+
+#bundle-sticky_add_to_cart {
+  top: 5rem !important;
+  box-shadow: 0 8px 10px -5px rgb(0 0 0 / 40%) !important;
+  border-top: 1px solid rgb(0 0 0 / 10%);
+  z-index: 10 !important;
+}
+
+@media (min-width: 768px) {
+  #bundle-sticky_add_to_cart {
+  top: 5.5rem !important;  
+  height: max-content;
+  }
+}
 /* CUSTOM CSS END */

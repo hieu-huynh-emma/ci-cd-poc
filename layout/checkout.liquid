@@ -11,47 +11,13 @@
   {{ content_for_header }}
   {{ checkout_stylesheets }}
   {{ checkout_scripts }}
-  <script>
-    (function ($) {
-      window.PhoneNumberInputFormatter = function () { return false; };
-      $(document).on('page:load page:change', function () {
-        if (Shopify.Checkout.step === 'contact_information') {
-          var $phoneField = $('[name="checkout[shipping_address][phone]"]:not([tabindex="-1"])');
-          phoneFormatValidated = false;
-          // Remove automatic formatting triggers
-          $phoneField.removeAttr('data-phone-formatter data-phone-formatter-country-select');
-          // Set maxium size
-          $phoneField.attr('maxlength', 11);
-          function phoneNumberValidation() {
-            phoneFormatValidated = false;
-            var phoneFieldVal = $phoneField.val();
-            // Strip out any non-numeric characters
-            var formattedPhoneValue = phoneFieldVal.replace(/[^0-9]/g, '');
-            $phoneField.val(formattedPhoneValue);
-            phoneFormatValidated = true;
-          }
-          // Run validator if there is a previously cached phone number
-          if ($phoneField.val() != "") { phoneNumberValidation() };
-          // Run validator when the user has switched focus from the phone field
-          $phoneField.on('blur', phoneNumberValidation);
-          // Run the function when the continue button is clicked or the enter key is pressed
-          $('[data-step] form [type="submit"]').on('click', function (e) {
-            e.preventDefault();
-            phoneNumberValidation();
-            if (phoneFormatValidated) {
-              $('[data-step] form').trigger('submit');
-            }
-          });
-          $('[data-step] form').on('keypress', function (e) {
-            if (e.keyCode === 13) {
-              e.preventDefault();
-              $('[data-step] form [type="submit"]').trigger('click');
-            }
-          });
-        }
-      });
-    })(Checkout.$);
-  </script>
+  <link href="https://www.dafontfree.net/embed/dXRvcGlhLXN0ZC1kaXNwbGF5JmRhdGEvNDgvdS80ODMwMC9VdG9waWFTdGQtRGlzcC5vdGY"
+    rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.full.js"></script>
+
   <script>
     (function ($) {
       $(document).on('page:load page:change', function () {
@@ -61,15 +27,16 @@
 
         // Check input for character limit and remove letters
         var validatePhoneNumber = function (phoneField) {
-          var minChars = {{ settings.11 }};
-          var maxChars = {{ settings.13 }};
-          var errorMessage = "{{ 'plus.checkout.phone_field_error' | t: min_chars: settings.plus_phone_min_chars, max_chars: settings.plus_phone_max_chars }}";
+
+          var minChars = {% if settings.11 != blank %}{{ settings.11 }}{% else %}''{% endif %};
+          var maxChars = {% if settings.13 != blank %}{{ settings.13 }}{% else %}''{% endif %};          
+          var errorMessage = "{{ 'shopify.checkout.phone_field_error' | t: min_chars: settings.plus_phone_min_chars, max_chars: settings.plus_phone_max_chars }}";
           var numbers = phoneField.val().match(/(\d)/g) || [];
           var numbersLength = numbers.length;
-          // Only allow + and numbers
+
           var allowedChars = phoneField.val().match(/(\d|\+)/g) || [];
           var phoneFieldVal = phoneField.val;
-          // Remove non-allowed characters from phone number
+
           phoneField.val(allowedChars.join(''));
           if (numbersLength !== 0 && numbersLength < minChars || numbersLength > maxChars) {
             // Not enough characters, show error on input.
@@ -87,6 +54,8 @@
         }
 
         if (Shopify.Checkout.step === 'contact_information') {
+          $(this).scrollTop(0);
+          
           var $phoneField = $('[name="checkout[shipping_address][phone]"]:not([aria-hidden="true"])');
           // Check for enter keypress on form and click button instead.
           $('[data-step] form').on('keypress', function (e) {
@@ -106,17 +75,500 @@
           $phoneField.on('input', function () {
             validatePhoneNumber($(this));
           });
+          $('#review-shipping-address').remove();
+
+          var $dynamicCheckoutTitle = $('.dynamic-checkout h2.dynamic-checkout__title');
+          if($dynamicCheckoutTitle) {
+            $dynamicCheckoutTitle.addClass('heading1');
+          }
+
+          var $alternativePaymentSeparatorContent = $('.alternative-payment-separator__content');
+          if($alternativePaymentSeparatorContent) {
+            var content = "{{ 'shopify.checkout.continue_with_credit' | t }}";
+            $alternativePaymentSeparatorContent.text(content);
+          }
         }
       });
+
     })(Checkout.$);
   </script>
 
   {% render 'weglot_hreftags' %}
   {% render 'weglot_switcher' %}
   {% render 'custom-checkout' %}
+
+  <style>
+    @font-face {
+      font-family: 'Kepler Std Bold Semicondensed Display';
+      font-style: normal;
+      font-weight: normal;
+      src: local('Kepler Std Bold Semicondensed Display'), url('KeplerStd-BoldScnDisp.woff') format('woff');
+    }
+  
+    @font-face {
+      font-family: 'Kepler Std Bold Semicondensed Display Italic';
+      font-style: normal;
+      font-weight: normal;
+      src: local('Kepler Std Bold Semicondensed Display Italic'), url('KeplerStd-BoldScnItDisp.woff') format('woff');
+    }
+
+    @media only screen and (max-width: 999px) {
+      .sidebar__content .checkout_upsell {
+        position: relative;
+      }
+      .prod_item:last-child {
+        border-bottom: 0;
+      }
+    }
+  
+    @media only screen and (max-width: 591px) {
+      .prod_item {
+        justify-content: flex-start;
+      }
+  
+      .prod_img {
+        margin-left: 0;
+      }
+
+      .add_prod {
+        right: 10px;
+      }
+    }
+    /* upsell product show only information tab       */
+    .upselll_show_information .checkout_upsell {
+      display: block;
+    }
+  
+    .checkout_upsell {
+      display: none;
+    }
+  
+    .backimg {
+      z-index: -1;
+      display: block;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      object-fit: cover;
+      background-position: center center;
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+  
+    .transparent_svg {
+      opacity: 0;
+      fill: transparent;
+      stroke: transparent;
+      stroke-miterlimit: 0;
+      display: block;
+    }
+  
+    svg:not(:root) {
+      overflow: hidden;
+    }
+  
+    .subtt {
+      background-color: #ff8900;
+      padding: 10px 20px;
+      /*    margin-bottom: 10px; */
+    }
+  
+    .subtt h6 {
+      color: #fff;
+      text-transform: capitalize;
+      margin-bottom: 0;
+      font-size: 20px;
+    }
+  
+    .prod_item {
+      display: flex;
+      padding-top: 21px;
+      padding-bottom: 21px;
+      position: relative;
+      width: 100%;
+      border-bottom: 1px solid #eee;
+      align-items: center;
+    }
+  
+    .prod_tag {
+      display: flex;
+      align-items: center;
+      position: absolute;
+      left: 0px;
+      top: 50%;
+      transform: translate(-0%, -50%);
+      margin-left: -24px;
+    }
+  
+    .prod_tag p {
+      transform: rotate(270deg);
+      text-transform: uppercase;
+      background-color: #FC8800;
+      border-radius: 8px;
+      padding-left: 10px;
+      padding-right: 10px;
+      padding-top: 5px;
+      padding-bottom: 5px;
+      line-height: 1;
+      margin: 0;
+      border-top-right-radius: 0;
+      border-top-left-radius: 0;
+      color: #fff;
+    }
+  
+    .prod_img {
+      width: 20%;
+      position: relative;
+      margin-left: 32px;
+    }
+  
+    .prod_tt {
+      text-transform: capitalize;
+      font-weight: 800;
+      font-size: 1rem;
+    }
+  
+    .prod_price {
+      font-weight: 800;
+      font-size: 0.9rem;
+      padding-top: 4px;
+    }
+  
+    .prod_lists .prod_item .prod_info .compare_pro_price .prod_sale_price {
+      text-decoration: line-through;
+      font-size: .9rem;
+      padding-top: 4px;
+    }
+  
+    .prod_type {
+      text-transform: capitalize;
+      font-size: 14px;
+      padding-top: 4px;
+      color: #fff;
+    }
+  
+    .add_btn .btn {
+      padding: 7px 12px;
+      line-height: 1;
+      font-size: 14px;
+      display: flex;
+      border-radius: 8px;
+      margin-top: 10px;
+      color: #3c4196 !important;
+      background-color: #fff !important;
+      align-items: center;
+    }
+  
+    .add_btn span {
+      display: block;
+      padding-right: 5px;
+      font-size: 18px;
+    }
+  
+    .prod_img_inner .backimg {
+      background-size: contain;
+      position: relative;
+      z-index: 1;
+    }
+  
+    .add_prod {
+      position: absolute;
+      right: 8px;
+    }
+  
+    .add_btn .icon.icon-plus {
+      font-size: 0.6rem;
+      margin-right: 4px;
+    }
+  
+    .prod_info {
+      padding-left: 10px;
+      padding-left: 10px;
+      width: calc(80% - 32px);
+    }
+  
+    .prod_lists .prod_item .prod_info .compare_pro_price {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      align-content: center;
+      color: white;
+    }
+  
+    #order-summary .order-summary__sections {
+      height: unset;
+    }
+  
+    .checkout_upsell {
+      left: 0;
+      position: absolute;
+      width: 100%;
+      margin-top: 5%;
+    }
+  
+    .prod_tt a {
+      color: #fff;
+      font-weight: 700;
+    }
+  
+    .add_btn .icon.icon-plus:before {
+      display: inline;
+      font-family: icons;
+      text-decoration: none;
+      speak: none;
+      font-style: normal;
+      font-weight: 400;
+      font-variant: normal;
+      text-transform: none;
+      line-height: 1;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+  
+    span.icon.icon-plus:before {
+      content: "+";
+      font-size: 18px;
+      font-weight: 600 !important;
+    }
+  
+    .select2-container--default .select2-results__option--highlighted[aria-selected] {
+      background-color: #ff8900 !important;
+    }
+  
+    span.select2-search.select2-search--dropdown {
+      display: none;
+    }
+  
+    .add_prod {
+      position: absolute;
+      right: 8px;
+      bottom: 21px;
+    }
+  
+    .select2-container {
+      width: auto !important;
+      max-width: 147px;
+    }
+  
+    [data-default]+.select2 {
+      display: none;
+    }
+  
+    /* dropdown css  */
+  
+    .select2.select2-container {
+      width: 100% !important
+    }
+  
+    .select2.select2-container .select2-selection {
+      border: 1px solid #ccc -webkit-border-radius: 3px -moz-border-radius: 3px border-radius: 3px height: 34px margin-bottom: 15px outline: none transition: all .15s ease-in-out
+    }
+  
+    .select2.select2-container .select2-selection .select2-selection__rendered {
+      color: #333 line-height: 32px padding-right: 33px
+    }
+  
+    .select2.select2-container .select2-selection .select2-selection__arrow {
+      background: #f8f8f8 border-left: 1px solid #ccc -webkit-border-radius: 0 3px 3px 0 -moz-border-radius: 0 3px 3px 0 border-radius: 0 3px 3px 0 height: 32px width: 33px
+    }
+  
+    .select2.select2-container.select2-container--open .select2-selection.select2-selection--single {
+      background: #f8f8f8
+    }
+  
+    .select2.select2-container.select2-container--open .select2-selection.select2-selection--single .select2-selection__arrow {
+      -webkit-border-radius: 0 3px 0 0 -moz-border-radius: 0 3px 0 0 border-radius: 0 3px 0 0
+    }
+  
+    .select2.select2-container.select2-container--open .select2-selection.select2-selection--multiple {
+      border: 1px solid #34495e
+    }
+  
+    .select2.select2-container.select2-container--focus .select2-selection {
+      border: 1px solid #34495e
+    }
+  
+    .select2.select2-container .select2-selection--multiple {
+      height: auto min-height: 34px
+    }
+  
+    .select2.select2-container .select2-selection--multiple .select2-search--inline .select2-search__field {
+      margin-top: 0 height: 32px
+    }
+  
+    .select2.select2-container .select2-selection--multiple .select2-selection__rendered {
+      display: block padding: 0 4px line-height: 29px
+    }
+  
+    .select2.select2-container .select2-selection--multiple .select2-selection__choice {
+      background-color: #f8f8f8 border: 1px solid #ccc -webkit-border-radius: 3px -moz-border-radius: 3px border-radius: 3px margin: 4px 4px 0 0 padding: 0 6px 0 22px height: 24px line-height: 24px font-size: 12px position: relative
+    }
+  
+    .select2.select2-container .select2-selection--multiple .select2-selection__choice .select2-selection__choice__remove {
+      position: absolute top: 0 left: 0 height: 22px width: 22px margin: 0 text-align: center color: #e74c3c font-weight: bold font-size: 16px
+    }
+  
+    .select2-container .select2-dropdown {
+      background: transparent border: none margin-top: -5px
+    }
+  
+    .select2-container .select2-dropdown .select2-search {
+      padding: 0
+    }
+  
+    .select2-container .select2-dropdown .select2-search input {
+      outline: none border: 1px solid #34495e border-bottom: none padding: 4px 6px
+    }
+  
+    .select2-container .select2-dropdown .select2-results {
+      padding: 0
+    }
+  
+    .select2-container .select2-dropdown .select2-results ul {
+      background: #fff border: 1px solid #34495e
+    }
+  
+    .select2-container .select2-dropdown .select2-results ul .select2-results__option--highlighted[aria-selected] {
+      background-color: #3498db
+    }
+
+    .custome .heading1 {
+      color: #FF8200 !important;
+      padding-top: 1.5em;
+      font-size: 2em;
+      font-family: Kepler Std Bold Semicondensed Display;
+    }
+  
+    .custome .main__header {
+      padding-bottom: 1em !important;
+    }
+  
+    .custome p.para {
+      margin-top: 10px;
+      color: grey;
+    }
+  
+    .custome .review-block__label {
+      color: black !important;
+      font-size: 17px;
+    }
+  
+    .custome .review-block__content {
+      font-size: 14px;
+    }
+  
+    .custome h2#main-header {
+      font-size: 2em;
+      color: #FF8200;
+      padding-bottom: 0;
+      /* 0.5em;*/
+      font-family: Kepler Std Bold Semicondensed Display;
+      line-height: 1;
+  
+    }
+  
+    .custome p.para.para2 {
+      margin-top: 10px;
+      color: grey;
+      /*     position: absolute;
+              top: 86%; */
+      font-size: 13px;
+    }
+  
+    .custome .breadcrumb__link {
+      font-weight: 500;
+    }
+  
+    .custome .breadcrumb__item--current {
+      font-weight: 600;
+      color: #ff8900;
+    }
+  
+    .custome .breadcrumb__item--completed a {
+      font-weight: 600;
+    }
+  
+    .custome #main-header p {
+      line-height: 1.5em;
+      margin-top: 10px;
+      color: grey;
+      font-size: 14px;
+      font-family: 'Helvetica Neue', sans-serif;
+      font-size: 13px;
+    }
+  
+    .content-box__row.content-box__row--tight-spacing-vertical {
+      padding-left: 0px;
+      padding-right: 0px;
+    }
+  
+    .content-box__row.content-box__row--tight-spacing-vertical .review-block {
+      padding-left: 1.1428571429em;
+      padding-right: 1.1428571429em;
+    }
+  
+    .section.section--shipping-method {
+      padding-top: 2rem;
+    }
+  
+    .section--shipping-method .section__header {
+      margin-bottom: 1em;
+    }
+  
+    .custome .breadcrumb__item {
+      font-size: 0.95em;
+    }
+  
+    .custome span.radio__label__primary {
+      font-size: 18px;
+      color: #000;
+      /*    padding-top:2px; */
+    }
+  
+    .custome span.radio__label__primary .small-text {
+      font-size: 13px;
+      margin-top: 0.4rem;
+      display: block;
+    }
+  
+    .custome .content-box__row .radio-wrapper .radio__input .input-radio:checked {
+      border-width: 7.5px;
+    }
+  
+    .custome .content-box__row .radio-wrapper .radio__input .input-radio {
+      width: 22px;
+      height: 22px;
+      top: -2px;
+    }
+  
+    .custome .review-block__link {
+      font-size: 1em;
+    }
+  
+    .custome .content-box__emphasis {
+      font-size: 1em;
+    }
+  
+    .custome a.step__footer__previous-link {
+      font-size: 1.2em;
+    }
+  
+    .custome p.para2 {
+      padding-left: 32px;
+      margin-bottom: 10px;
+      margin-top: -5px;
+      color: grey;
+      font-size: 13px;
+    }
+  </style>
 </head>
 
-<body>
+<body data-format="{{ shop.money_format }}">
+  {% render 'leaving-checkout-popup'%}
   {{ skip_to_content_link }}
   <header class="banner" data-header role="banner">
     <div class="wrap">
@@ -124,12 +576,16 @@
     </div>
   </header>
   {{ order_summary_toggle }}
-  <div class="content" data-content>
+  <div class="content custome" data-content>
     <div class="wrap">
       <div class="main">
         <header class="main__header" role="banner">
           {{ content_for_logo }}
           {{ breadcrumb }}
+          <div id="review-shipping-address">
+            <div class="heading1">Your Details</div>
+            <p class="para">Please review the shipping address before placing your order.</p>
+          </div>
           {{ alternative_payment_methods }}
         </header>
         <main class="main__content" role="main">
@@ -145,11 +601,221 @@
         </div>
         <div class="sidebar__content">
           {{ content_for_order_summary }}
+          <!-- add checkout_upsell code here -->
+          <div class="checkout_upsell"> {% render 'checkout_upsell' %} </div>
         </div>
       </aside>
     </div>
   </div>
   {{ tracking_code }}
-</body>
+  {% comment %} UPSELL items code start under here! {% endcomment %}
+  <script type="text/javascript">
 
+    function addItemToCart(variant_id, qty) {
+      var data = {
+        "id": variant_id,
+        "quantity": qty
+      };
+      jQuery.ajax({
+        type: 'POST',
+        url: '/cart/add.js',
+        data: data,
+        dataType: 'json',
+        success: function () {
+          location.reload();
+        }
+      });
+    };
+
+    $(document).on('click', "#add-to-cart-button", function () {
+      var variant_id = $(this).parents('.prod_item').find('.js-select2').val();
+      var qty = "1";
+      addItemToCart(variant_id, qty);
+    });
+
+    function remove_Dumplicate_Value(myArray) {
+      var newArray = [];
+      $.each(myArray, function (key, value) {
+        var exists = false;
+        $.each(newArray, function (k, val2) {
+          if (value.id == val2.id) {
+            exists = true;
+          };
+        });
+        if (exists == false && value.id != "") {
+          newArray.push(value);
+        }
+      });
+
+      return newArray;
+    };
+
+    function getMultipleRandom(arr, num) {
+      var shuffled = arr.sort(() => 0.5 - Math.random());
+      return shuffled.slice(0, num);
+    };
+
+    function showUpsells(upsells) {
+      $.each(upsells, function (u, e) {
+        upsells[u] = remove_Dumplicate_Value(e);
+      });
+      var arr = Object.keys(upsells);
+      var final_keys = getMultipleRandom(arr, 3);
+
+      // ****************** upsell item html start ****************** 
+      var html = "";
+      var currency_format = document.getElementsByTagName('body');
+      currency_format = currency_format[0].dataset.format;
+
+      $.each(final_keys, function (final_k, final_v) {
+        if (Object.keys(upsells[final_v]).length > 1) {
+          let random_key = getMultipleRandom(Object.keys(upsells[final_v]), 1)[0];
+          let single_upsells = upsells[final_v][random_key];
+          upsells[final_v] = {};
+          upsells[final_v][0] = single_upsells;
+        }
+        if ((upsells[final_v] != 'undefined' && upsells[final_v] != undefined && upsells[final_v] != null)) {
+          $.each(upsells[final_v], function (html_k, html_v) {
+            if ((typeof html_v != undefined) && (typeof html_v != 'undefined')) {
+              var tag = html_v.tags[0];
+              var img = html_v.images[0];
+              var variant = html_v.variants[0];
+
+              $(document).on('change', "select.product-form__variants", function () {
+                var data_price = $(this).children("option:selected").data('price');
+                var data_compare_price = $(this).children("option:selected").data('compare_price');
+                $(this).parents(".prod_item ").find(".prod_sale_price").text(data_compare_price);
+                $(this).parents(".prod_item ").find(".prod_price").text(data_price);
+              });
+
+              html += '<div class="prod_item">';
+              if ((tag != 'undefined') && (tag != null) && (tag != undefined)) {
+                html += '<div class="prod_tag"><p>' + tag + '</p></div>';
+              }
+              html += '<div class="prod_img">';
+              html += '<div class="prod_img_inner">';
+              if ((img != 'undefined') && (img != null) && (img != undefined)) {
+                html += '<div class="backimg" style="background-image:url(' + img.src + ');">';
+              }
+              html += '<svg class="transparent_svg" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 101 76">';
+              html += '<rect class="cls-1" x="0.5" y="0.5" width="100" height="75"></rect>';
+              html += '</svg>';
+              html += '</div>';
+              html += '</div>';
+              html += '</div>';
+              html += '<div class="prod_info">';
+              html += '<div class="prod_tt">';
+              html += '<a href="/products/' + html_v.handle + '">' + html_v.title + '</a>';
+              html += '</div>';
+
+              html += '<div class="compare_pro_price">';
+              html += '<div class="prod_price">$' + variant.price + '</div>';
+
+              html += '<div class="prod_sale_price">$' + variant.compare_at_price + '</div>';
+
+              html += '</div>';
+              if ((variant != 'undefined') && (variant != null) && (variant != undefined)) {
+                html += '<div class="prod_type">';
+                if (variant.available) {
+                  html += '<select name="id" class="js-select2" id="ProductSelect-' + html_v.id + '"';
+                  if (variant.title == 'Default Title') {
+                    html += ' style="display:none"';
+                    html += ' data-default="" ';
+                  }
+                  html += ' class="product-form__variants no-js">';
+                  $.each(html_v.variants, function (var_key, var_val) {
+                    if (var_val.available) {
+                      html += '<option';
+                      if (var_key == 0) {
+                        html += ' selected="selected"';
+                      }
+                      html += ' data-price=" $' + var_val.price + ' " data-compare_price=" $' + var_val.compare_at_price + ' "   data-availability="true" value="' + var_val.id + '">' + var_val.title + '</option>';
+                    }
+                  });
+                  html += '</select>';
+                }
+                html += '</div>'
+
+              }
+              html += '</div>';
+              html += '<div class="add_prod">';
+              html += '<div class="add_btn">';
+              html += '<a href="javascript:void(0);" id="add-to-cart-button" class="btn btn--secondary btn--full marztop">';
+              html += '<span class="icon icon-plus" aria-hidden="true"></span> ADD';
+              html += '</a>';
+              html += '</div>';
+              html += '</div>';
+
+              //      ============== addto cart end ==============`
+
+              html += '</div>';
+            }
+          });
+        }
+      });
+      document.getElementById('cart__drawer_items').innerHTML = '';
+      document.getElementById('cart__drawer_items').insertAdjacentHTML('beforeend', html);
+      jQuery(".js-select2").select2();
+    };
+    jQuery(document).ready(function () {
+      jQuery.getJSON('/cart.js', function (cart) {
+        let items = cart.items;
+        if (cart.items.length > 0) {
+          jQuery.getJSON('https://emma-sleep.ca/products.json', function (product) {
+
+            // Static UPSELL items Object
+            var upsell_pro = {
+              "mattress": ['protector', 'pillow', 'topper'],
+              "pillow": ['mattress', 'topper', 'protector'],
+              "protector": ['mattress', 'pillow', 'topper'],
+              "topper": ['mattress', 'pillow', 'protector'],
+              "bed-frame-with-mattress": ['protector', 'pillow', 'topper'],
+              "bed-frame-without-mattress": ['mattress', 'protector', 'pillow']
+            }
+
+            var upsell_results = {};
+
+            // This is the cart items loop
+            $(cart.items).each(function (i, c_item) {
+              var cart_pro_type = (c_item.product_type).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-$/, '').replace(/^-/, '');
+
+              // got the same type from upsell object
+              if ((typeof upsell_pro[cart_pro_type] != undefined) && (typeof upsell_pro[cart_pro_type] != 'undefined') && (upsell_pro[cart_pro_type].length > 0)) {
+                var upsell_type = upsell_pro[cart_pro_type];
+
+                // each loop of current cart product type from upsell object
+                $(upsell_type).each(function (k, upsell_type) {
+
+                  if ((typeof upsell_type != 'undefined') && (typeof upsell_type != undefined) && (typeof upsell_type != null)) {
+
+                    // find products which match upsell types
+                    $(product['products']).each(function (p, e) {
+                      var protype_data = (e.product_type).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-$/, '').replace(/^-/, '');
+
+                      // match the type of product with the upsell type
+                      if (upsell_type == protype_data) {
+                        if ((typeof upsell_results[protype_data] != undefined) && (typeof upsell_results[protype_data] != 'undefined') && (upsell_results[protype_data] != null)) {
+                          upsell_results[protype_data].push(e);
+                        } else {
+                          upsell_results[protype_data] = [e];
+                        }
+                      }
+                    });
+                  }
+                });
+              }
+            });
+            if ((typeof upsell_results != undefined) && (typeof upsell_results != 'undefined') && (upsell_results != null)) {
+
+              showUpsells(upsell_results);
+              //      console.log(upsell_results);
+            }
+          });
+        }
+      });
+
+    }); 
+  </script>
+  {% comment %} UPSELL items code end under here! {% endcomment %}
+</body>
 </html>

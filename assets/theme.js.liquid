@@ -961,6 +961,11 @@ var ajaxCart = (function(module, $) {
   };
 
   loadCart = function() {
+    //return false;
+    if(typeof $body == undefined){
+      console.log('here');
+      ajaxCart.init();
+    }
     $body.addClass('drawer--is-loading');
     ShopifyAPI.getCart(cartUpdateCallback);
   };
@@ -4574,3 +4579,26 @@ var afterResize = (function () {
     t[uniqueId] = setTimeout(callback, ms);
   };
 })();
+
+
+jQuery('.pf-variant-select').on('change',function(e){  
+   if (!history.replaceState) {
+    return;
+  }
+  var val = $(this).val();
+  if(val.indexOf('|') > -1){
+    var str = val.split('|')[0].toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-$/, '').replace(/^-/, '');
+  }else{
+    var str = val.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-$/, '').replace(/^-/, '');
+  }
+  str += '-size';
+  var newurl =
+      window.location.protocol +'//' +window.location.host +'/products/' + vitals_product_data.handle + '/' +str;
+  window.history.replaceState(
+    {
+      path: newurl
+    },
+    '',
+    newurl
+  );  
+});
