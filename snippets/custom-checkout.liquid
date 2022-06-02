@@ -1,101 +1,199 @@
-<script>
- const PAYMENT_GATEWAYS_ALLOWED = ["paypal"];
- const TAXES = [
-  { value: "AB", labels: ["GST"], totalRate: 5 },
-  { value: "NT", labels: ["GST"], totalRate: 5 },
-  { value: "NU", labels: ["GST"], totalRate: 5 },
-  { value: "YT", labels: ["GST"], totalRate: 5 },
-  { value: "NB", labels: ["HST"], totalRate: 15 },
-  { value: "NL", labels: ["HST"], totalRate: 15 },
-  { value: "NS", labels: ["HST"], totalRate: 15 },
-  { value: "ON", labels: ["HST"], totalRate: 13 },
-  { value: "BC", labels: [{ subLabel: "PST", rate: 7 }, { subLabel: "GST", rate: 5 }] },
-  { value: "MB", labels: [{ subLabel: "GST", rate: 5 }, { subLabel: "RST", rate: 7 }] },
-  { value: "QC", labels: [{ subLabel: "GST", rate: 5 }, { subLabel: "QST", rate: 9.98 }] },
-  { value: "SK", labels: [{ subLabel: "PST", rate: 6 }, { subLabel: "GST", rate: 5 }] },
- ];
+<script type="text/javascript">
+  const PAYMENT_GATEWAYS_ALLOWED = ["paypal"];
+  const TAXES = [
+    { value: "AB", labels: ["GST"], totalRate: 5 },
+    { value: "NT", labels: ["GST"], totalRate: 5 },
+    { value: "NU", labels: ["GST"], totalRate: 5 },
+    { value: "YT", labels: ["GST"], totalRate: 5 },
+    { value: "NB", labels: ["HST"], totalRate: 15 },
+    { value: "NL", labels: ["HST"], totalRate: 15 },
+    { value: "NS", labels: ["HST"], totalRate: 15 },
+    { value: "ON", labels: ["HST"], totalRate: 13 },
+    { value: "BC", labels: [{ subLabel: "PST", rate: 7 }, { subLabel: "GST", rate: 5 }] },
+    { value: "MB", labels: [{ subLabel: "GST", rate: 5 }, { subLabel: "RST", rate: 7 }] },
+    { value: "QC", labels: [{ subLabel: "GST", rate: 5 }, { subLabel: "QST", rate: 9.98 }] },
+    { value: "SK", labels: [{ subLabel: "PST", rate: 6 }, { subLabel: "GST", rate: 5 }] },
+  ];
 
- (function ($) {
-  $(document).on("page:load page:change", function () {
+  (function ($) {
+    window.PhoneNumberInputFormatter = function () { return false; };
 
-   let hasDiscountApplied = $(".reduction-code").length || $(".reduction-code__text").length;
-   let $paymentSection = $(".section--payment-method [data-payment-subform='required']");
-   if (hasDiscountApplied) {
-    let $gatewayFields = $paymentSection.find(`[data-gateway-name]`);
-    $gatewayFields.each(function (i, elem) {
-     let dataGatewayName = $(elem).attr("data-gateway-name");
-     if (!PAYMENT_GATEWAYS_ALLOWED.includes(dataGatewayName)) {
-      let dataSubfield = $(elem).attr("data-select-gateway");
-      let $gatewaySubfields = $paymentSection.find(`#payment-gateway-subfields-${dataSubfield}`);
-      $(elem).hide();
-      $gatewaySubfields.hide();
-     }
+    $(document).on("page:load page:change", function () {
+      $('.main__header .logo').on('click', function (e) {
+        e.preventDefault();
+        showConfirmPopup($);
+      });
+
+      if (Shopify.Checkout.step === 'contact_information') {
+        $('body').addClass("upselll_show_information");
+
+        $('#review-shipping-address').remove();
+
+        var $dynamicCheckoutTitle = $('.dynamic-checkout h2.dynamic-checkout__title');
+        if ($dynamicCheckoutTitle) {
+          $dynamicCheckoutTitle.addClass('heading1');
+        }
+
+        var $alternativePaymentSeparatorContent = $('.alternative-payment-separator__content');
+        if ($alternativePaymentSeparatorContent) {
+          var content = "{{ 'shopify.checkout.continue_with_credit' | t }}";
+          $alternativePaymentSeparatorContent.text(content);
+        }
+        addTaxesBreakdown($);
+        addPhoneNumberValidation($);
+      }
+      else if (Shopify.Checkout.step === 'shipping_method') {
+        addShippingSectionSubtitle($);
+
+        $(".order-summary-toggle").click(function () {
+          $(".checkout_upsell").addClass("order-summary--is-expanded");
+        });
+      }
+
     });
-   }
+  })(Checkout.$);
 
-   let totalShippingPrice = $(".total-line.total-line--shipping .total-line__price span");
-   if (totalShippingPrice) {
-    totalShippingPrice.text("FREE");
-   }
 
-   let $provinceSelector = $("#checkout_shipping_address_province");
-
-   if ($provinceSelector.val()) {
-    breakdownTax($);
-   }
-
-   $provinceSelector.on("change", function (e) {
-    e.preventDefault();
-    breakdownTax($);
-   });
-  });
- })(Checkout.$);
-
- function breakdownTax($) {
-  let $taxLabel = $('.total-line.total-line--taxes .total-line__name');
-  let $taxPrice = $('.total-line.total-line--taxes .total-line__price');
-  let checkoutSubtotal = extractPrice($('.total-line.total-line--subtotal [data-checkout-subtotal-price-target]').text());
-
-  const taxSubtotal = $('.tax-subtotal');
-  if (taxSubtotal) {
-   taxSubtotal.remove();
+  function showConfirmPopup($) {
+    $('#leaving-checkout-popup').css('display', 'block');
   }
 
-  let $selectedProvince = $("#checkout_shipping_address_province option:selected");
-  let selectedProvince = $selectedProvince.val();
-  const taxApplied = TAXES.find((tax) => tax.value === selectedProvince);
-  const { labels, totalRate } = taxApplied;
+  // CONTACT INFORMATION
+  function addTaxesBreakdown($) {
+    let hasDiscountApplied = $(".reduction-code").length || $(".reduction-code__text").length;
+    let $paymentSection = $(".section--payment-method [data-payment-subform='required']");
+    if (hasDiscountApplied) {
+      let $gatewayFields = $paymentSection.find(`[data-gateway-name]`);
+      $gatewayFields.each(function (i, elem) {
+        let dataGatewayName = $(elem).attr("data-gateway-name");
+        if (!PAYMENT_GATEWAYS_ALLOWED.includes(dataGatewayName)) {
+          let dataSubfield = $(elem).attr("data-select-gateway");
+          let $gatewaySubfields = $paymentSection.find(`#payment-gateway-subfields-${dataSubfield}`);
+          $(elem).hide();
+          $gatewaySubfields.hide();
+        }
+      });
+    }
 
-  if (labels && (labels.length === 1)) {
-   $taxLabel.text(`${labels}`);
+    let totalShippingPrice = $(".total-line.total-line--shipping .total-line__price span");
+    if (totalShippingPrice) {
+      totalShippingPrice.text("FREE");
+    }
 
-   const value = ((checkoutSubtotal / 100) * totalRate).toFixed(2);
-   $taxPrice.html(`<span class="order-summary__emphasis">$${value}</span>`);
-  } else if (labels && (labels.length > 1)) {
-   let taxTotal = 0;
-   const $totalTable = $('.total-line-table__tbody');
-   labels.forEach((label) => {
-    const { subLabel, rate } = label;
-    const value = ((checkoutSubtotal / 100) * rate).toFixed(2);
-    $totalTable.append(`<tr class="total-line tax-subtotal"><th class="total-line__name">Tax (${subLabel} ${rate}%)</th><td class="total-line__price"><span class="order-summary__emphasis">$${value}</span></td></tr>`);
-    taxTotal += (+value);
-   });
+    let $provinceSelector = $("#checkout_shipping_address_province");
 
-   $taxLabel.text("Taxes");
-   $taxPrice.html(`<span class="order-summary__emphasis">$${taxTotal.toFixed(2)}</span>`);
+    if ($provinceSelector.val()) {
+      breakdownTax($);
+    }
+
+    $provinceSelector.on("change", function (e) {
+      e.preventDefault();
+      breakdownTax($);
+    });
   }
- }
 
- function extractPrice(string) {
-  if (string) {
-   const commaPrice = string.match(/([\d,.]+)/g);
-   const price = commaPrice.length ? commaPrice[0].replace(/,/, '') : '';
-   return price ? +price : '';
+  function breakdownTax($) {
+    let $taxLabel = $('.total-line.total-line--taxes .total-line__name');
+    let $taxPrice = $('.total-line.total-line--taxes .total-line__price');
+    let checkoutSubtotal = extractPrice($('.total-line.total-line--subtotal [data-checkout-subtotal-price-target]').text());
+
+    const taxSubtotal = $('.tax-subtotal');
+    if (taxSubtotal) {
+      taxSubtotal.remove();
+    }
+
+    let $selectedProvince = $("#checkout_shipping_address_province option:selected");
+    let selectedProvince = $selectedProvince.val();
+    const taxApplied = TAXES.find((tax) => tax.value === selectedProvince);
+    const { labels, totalRate } = taxApplied;
+
+    if (labels && (labels.length === 1)) {
+      $taxLabel.text(`${labels}`);
+
+      const value = ((checkoutSubtotal / 100) * totalRate).toFixed(2);
+      $taxPrice.html(`<span class="order-summary__emphasis">$${value}</span>`);
+    } else if (labels && (labels.length > 1)) {
+      let taxTotal = 0;
+      const $totalTable = $('.total-line-table__tbody');
+      labels.forEach((label) => {
+        const { subLabel, rate } = label;
+        const value = ((checkoutSubtotal / 100) * rate).toFixed(2);
+        $totalTable.append(`<tr class="total-line tax-subtotal"><th class="total-line__name">Tax (${subLabel} ${rate}%)</th><td class="total-line__price"><span class="order-summary__emphasis">$${value}</span></td></tr>`);
+        taxTotal += (+value);
+      });
+
+      $taxLabel.text("Taxes");
+      $taxPrice.html(`<span class="order-summary__emphasis">$${taxTotal.toFixed(2)}</span>`);
+    }
   }
- }
+
+  function extractPrice(string) {
+    if (string) {
+      const commaPrice = string.match(/([\d,.]+)/g);
+      const price = commaPrice.length ? commaPrice[0].replace(/,/, '') : '';
+      return price ? +price : '';
+    }
+  }
+
+  // SHIPPING METHOD
+  function addShippingSectionSubtitle($) {
+    var node = document.querySelector(".section--shipping-method > .section__header > .section__title"),
+      ele = document.createElement("p");
+
+    ele.className = "para";
+    ele.innerHTML = "For us to deliver your items faster, we may split your into two or more shipments.";
+    node.parentNode.insertBefore(ele, node.nextSibling);
+
+    var node1 = document.querySelector(".content-box > .content-box__row > .radio-wrapper"),
+      ele1 = document.createElement("p");
+
+    ele1.className = "para2";
+    ele1.innerHTML = "Please expect delivery to be made within 2-4 business days for Ontario, or 4-8 business days for the rest of Canada.";
+    node1.parentNode.insertBefore(ele1, node1.nextSibling);
+  }
+
+  function addPhoneNumberValidation($) {
+    var $phoneField = $('[name="checkout[shipping_address][phone]"]:not([tabindex="-1"])');
+    phoneFormatValidated = false;
+    // Remove automatic formatting triggers
+    $phoneField.removeAttr('data-phone-formatter data-phone-formatter-country-select');
+    // Set maxium size
+    $phoneField.attr('maxlength', 11);
+
+    // Run validator if there is a previously cached phone number
+    if ($phoneField.val() != "") { phoneNumberValidator() };
+    // Run validator when the user has switched focus from the phone field
+    $phoneField.on('blur', phoneNumberValidator);
+    // Run the function when the continue button is clicked or the enter key is pressed
+
+    $('[data-step] form [type="submit"]').on('click', function (e) {
+      e.preventDefault();
+      phoneNumberValidator();
+      if (phoneFormatValidated) {
+        $('[data-step] form').trigger('submit');
+      }
+    });
+    $('[data-step] form').on('keypress', function (e) {
+      if (e.keyCode === 13) {
+        e.preventDefault();
+        $('[data-step] form [type="submit"]').trigger('click');
+      }
+    });
+  }
+
+  function phoneNumberValidator() {
+    phoneFormatValidated = false;
+    var phoneFieldVal = $phoneField.val();
+    // Strip out any non-numeric characters
+    var formattedPhoneValue = phoneFieldVal.replace(/[^0-9]/g, '');
+    $phoneField.val(formattedPhoneValue);
+    phoneFormatValidated = true;
+  }
+
 </script>
+
 <style>
- .tax-subtotal .total-line__name {
-  padding-left: 1rem;
- }
+  .tax-subtotal .total-line__name {
+    padding-left: 1rem;
+  }
 </style>
