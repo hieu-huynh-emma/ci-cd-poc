@@ -1,5 +1,5 @@
 <script type="text/javascript">
-  const PAYMENT_GATEWAYS_ALLOWED = ["paypal"];
+  const PAYMENT_GATEWAYS_NOT_ALLOWED = ["offsite"];
   const TAXES = [
     { value: "AB", labels: ["GST"], totalRate: 5 },
     { value: "NT", labels: ["GST"], totalRate: 5 },
@@ -17,7 +17,7 @@
 
   (function ($) {
     window.PhoneNumberInputFormatter = function () { return false; };
-
+    $(this).scrollTop(0);
     $(document).on("page:load page:change", function () {
       $('.main__header .logo').on('click', function (e) {
         e.preventDefault();
@@ -26,7 +26,6 @@
 
       if (Shopify.Checkout.step === 'contact_information') {
         $('body').addClass("upselll_show_information");
-
         $('#review-shipping-address').remove();
 
         var $dynamicCheckoutTitle = $('.dynamic-checkout h2.dynamic-checkout__title');
@@ -39,8 +38,41 @@
           var content = "{{ 'shopify.checkout.continue_with_credit' | t }}";
           $alternativePaymentSeparatorContent.text(content);
         }
+
         addTaxesBreakdown($);
-        addPhoneNumberValidation($);
+
+        let $phoneField = $('[name="checkout[shipping_address][phone]"]:not([tabindex="-1"])');
+        phoneNumberValidated = false;
+        validatePhoneNumber($phoneField);
+
+        // Run validator if there is a previously cached phone number
+        if ($phoneField.val() !== '') {
+          validatePhoneNumber($phoneField);
+        };
+
+        $phoneField.blur(function () {
+          validatePhoneNumber($phoneField);
+        });
+
+        // Validate phone number when modified
+        $phoneField.on('input', function () {
+          validatePhoneNumber($(this));
+        });
+
+        $('[data-step] form [type="submit"]').on('click', function (e) {
+          e.preventDefault();
+          validatePhoneNumber($phoneField);
+          if (phoneNumberValidated) {
+            $('[data-step] form').trigger('submit');
+          }
+        });
+
+        $('[data-step] form').on('keypress', function (e) {
+          if (e.keyCode === 13) {
+            e.preventDefault();
+            $('[data-step] form [type="submit"]').trigger('click');
+          }
+        });
       }
       else if (Shopify.Checkout.step === 'shipping_method') {
         addShippingSectionSubtitle($);
@@ -49,32 +81,46 @@
           $(".checkout_upsell").addClass("order-summary--is-expanded");
         });
       }
-
+      else if (Shopify.Checkout.step === 'payment_method') {
+        disablePaybrightPaymentMethod($);
+      }
     });
   })(Checkout.$);
-
 
   function showConfirmPopup($) {
     $('#leaving-checkout-popup').css('display', 'block');
   }
 
   // CONTACT INFORMATION
-  function addTaxesBreakdown($) {
-    let hasDiscountApplied = $(".reduction-code").length || $(".reduction-code__text").length;
-    let $paymentSection = $(".section--payment-method [data-payment-subform='required']");
-    if (hasDiscountApplied) {
-      let $gatewayFields = $paymentSection.find(`[data-gateway-name]`);
-      $gatewayFields.each(function (i, elem) {
-        let dataGatewayName = $(elem).attr("data-gateway-name");
-        if (!PAYMENT_GATEWAYS_ALLOWED.includes(dataGatewayName)) {
-          let dataSubfield = $(elem).attr("data-select-gateway");
-          let $gatewaySubfields = $paymentSection.find(`#payment-gateway-subfields-${dataSubfield}`);
-          $(elem).hide();
-          $gatewaySubfields.hide();
-        }
-      });
-    }
+  function validatePhoneNumber($phoneField) {
+    phoneNumberValidated = false;
+    // Remove automatic formatting triggers
+    $phoneField.removeAttr('data-phone-formatter data-phone-formatter-country-select'); 1
+    $phoneField.val($phoneField.val().replace(/[^0-9]/g, ''));
 
+    let errorClass = 'field--error-plus-dynamic';
+    let errorMessageSelector = '.field__message--error-plus-dynamic';
+
+    // Check input for character limit and remove letters
+    let minChars = 11, maxChars = 13;
+    let errorMessage = "Enter a valid phone number";
+
+    let phoneLength = $phoneField.val().length;
+    if (phoneLength !== 0 && (phoneLength < minChars || phoneLength > maxChars)) {
+      // Not enough characters, show error on input.
+      if (!$phoneField.hasClass(errorClass)) {
+        $phoneField.addClass(errorClass);
+        $phoneField.closest('[data-address-field]').after("<p class='error-message field__message--error-plus-dynamic'>" + errorMessage + "</p>");
+      } 
+    } else {
+      // Phone number is valid. Remove errors and continue.
+      $phoneField.removeClass(errorClass);
+      $phoneField.closest('[data-address-field]').nextAll(errorMessageSelector).remove();
+      phoneNumberValidated = true;
+    }
+  }
+
+  function addTaxesBreakdown($) {
     let totalShippingPrice = $(".total-line.total-line--shipping .total-line__price span");
     if (totalShippingPrice) {
       totalShippingPrice.text("FREE");
@@ -152,48 +198,55 @@
     node1.parentNode.insertBefore(ele1, node1.nextSibling);
   }
 
-  function addPhoneNumberValidation($) {
-    var $phoneField = $('[name="checkout[shipping_address][phone]"]:not([tabindex="-1"])');
-    phoneFormatValidated = false;
-    // Remove automatic formatting triggers
-    $phoneField.removeAttr('data-phone-formatter data-phone-formatter-country-select');
-    // Set maxium size
-    $phoneField.attr('maxlength', 11);
-
-    // Run validator if there is a previously cached phone number
-    if ($phoneField.val() != "") { phoneNumberValidator() };
-    // Run validator when the user has switched focus from the phone field
-    $phoneField.on('blur', phoneNumberValidator);
-    // Run the function when the continue button is clicked or the enter key is pressed
-
-    $('[data-step] form [type="submit"]').on('click', function (e) {
-      e.preventDefault();
-      phoneNumberValidator();
-      if (phoneFormatValidated) {
-        $('[data-step] form').trigger('submit');
-      }
-    });
-    $('[data-step] form').on('keypress', function (e) {
-      if (e.keyCode === 13) {
-        e.preventDefault();
-        $('[data-step] form [type="submit"]').trigger('click');
-      }
-    });
+  // PAYMENT METHOD
+  function disablePaybrightPaymentMethod($) {
+    let hasDiscountApplied = $(".reduction-code").length || $(".reduction-code__text").length;
+    let $paymentSection = $(".section--payment-method [data-payment-subform='required']");
+    if (hasDiscountApplied) {
+      let $gatewayFields = $paymentSection.find(`[data-gateway-name]`);
+      $gatewayFields.each(function (i, elem) {
+        let dataGatewayName = $(elem).attr("data-gateway-name");
+        if (PAYMENT_GATEWAYS_NOT_ALLOWED.includes(dataGatewayName)) {
+          let paybrightIsNotAllowMsg = 'PayBright cannot be used in conjunction with other discounts and promotions.';
+          let dataSubfield = $(elem).attr("data-select-gateway");
+          let $gateway = $paymentSection.find(`#checkout_payment_gateway_${dataSubfield}`);
+          let $gatewaySubfields = $paymentSection.find(`#payment-gateway-subfields-${dataSubfield}`);
+          $gatewaySubfields.hide();
+          $(elem).attr('disabled', 'disabled');
+          $(elem).addClass('disable-payment-method');
+          $(elem).children().attr("disabled", "disabled");
+          $(elem).children().addClass('disable-payment-method');
+          $gateway.attr('disabled', 'disabled');
+          $gateway.addClass('disable-payment-method');
+          $(elem).after(`<p class="paybright-messages">${paybrightIsNotAllowMsg}</p>`);
+        }
+      });
+    }
   }
-
-  function phoneNumberValidator() {
-    phoneFormatValidated = false;
-    var phoneFieldVal = $phoneField.val();
-    // Strip out any non-numeric characters
-    var formattedPhoneValue = phoneFieldVal.replace(/[^0-9]/g, '');
-    $phoneField.val(formattedPhoneValue);
-    phoneFormatValidated = true;
-  }
-
 </script>
 
 <style>
   .tax-subtotal .total-line__name {
     padding-left: 1rem;
+  }
+
+  .paybright-messages {
+    margin-left: 2.8rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .disable-payment-method {
+    cursor: not-allowed;
+  }
+
+  .error-message {
+    font-weight: 400;
+    color: #f01130;
+    margin-top: 0.5rem;
+    margin-left: 0.5rem;
+  }
+
+  .field--error-plus-dynamic {
+    border: 2px solid #f01130 !important;
   }
 </style>
