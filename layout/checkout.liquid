@@ -18,81 +18,6 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.full.js"></script>
 
-  <script>
-    (function ($) {
-      $(document).on('page:load page:change', function () {
-        var $phoneField;
-        var errorClass = 'field--error-plus-dynamic';
-        var errorMessageSelector = '.field__message--error-plus-dynamic';
-
-        // Check input for character limit and remove letters
-        var validatePhoneNumber = function (phoneField) {
-
-          var minChars = {% if settings.11 != blank %}{{ settings.11 }}{% else %}''{% endif %};
-          var maxChars = {% if settings.13 != blank %}{{ settings.13 }}{% else %}''{% endif %};          
-          var errorMessage = "{{ 'shopify.checkout.phone_field_error' | t: min_chars: settings.plus_phone_min_chars, max_chars: settings.plus_phone_max_chars }}";
-          var numbers = phoneField.val().match(/(\d)/g) || [];
-          var numbersLength = numbers.length;
-
-          var allowedChars = phoneField.val().match(/(\d|\+)/g) || [];
-          var phoneFieldVal = phoneField.val;
-
-          phoneField.val(allowedChars.join(''));
-          if (numbersLength !== 0 && numbersLength < minChars || numbersLength > maxChars) {
-            // Not enough characters, show error on input.
-            if (!phoneField.hasClass(errorClass)) {
-              phoneField.addClass(errorClass);
-              phoneField.closest('[data-address-field]').after("<p class='field__message field__message--error-plus-dynamic'>" + errorMessage + "</p>");
-            }
-            return false;
-          } else {
-            // Phone number is valid. Remove errors and continue.
-            phoneField.removeClass(errorClass);
-            phoneField.closest('[data-address-field]').nextAll(errorMessageSelector).remove();
-            return true;
-          }
-        }
-
-        if (Shopify.Checkout.step === 'contact_information') {
-          $(this).scrollTop(0);
-          
-          var $phoneField = $('[name="checkout[shipping_address][phone]"]:not([aria-hidden="true"])');
-          // Check for enter keypress on form and click button instead.
-          $('[data-step] form').on('keypress', function (e) {
-            if (event.keyCode === 13) {
-              e.preventDefault();
-              $(this).find('[type="submit"]').trigger('click');
-            }
-          });
-          // Handle form submit by validating button click.
-          $('[data-step] form [type="submit"]').on('click', function (e) {
-            e.preventDefault();
-            if (validatePhoneNumber($phoneField)) {
-              $('[data-step] form').trigger('submit');
-            }
-          });
-          // Validate phone number when modified
-          $phoneField.on('input', function () {
-            validatePhoneNumber($(this));
-          });
-          $('#review-shipping-address').remove();
-
-          var $dynamicCheckoutTitle = $('.dynamic-checkout h2.dynamic-checkout__title');
-          if($dynamicCheckoutTitle) {
-            $dynamicCheckoutTitle.addClass('heading1');
-          }
-
-          var $alternativePaymentSeparatorContent = $('.alternative-payment-separator__content');
-          if($alternativePaymentSeparatorContent) {
-            var content = "{{ 'shopify.checkout.continue_with_credit' | t }}";
-            $alternativePaymentSeparatorContent.text(content);
-          }
-        }
-      });
-
-    })(Checkout.$);
-  </script>
-
   {% render 'weglot_hreftags' %}
   {% render 'weglot_switcher' %}
   {% render 'custom-checkout' %}
@@ -104,7 +29,7 @@
       font-weight: normal;
       src: local('Kepler Std Bold Semicondensed Display'), url('KeplerStd-BoldScnDisp.woff') format('woff');
     }
-  
+
     @font-face {
       font-family: 'Kepler Std Bold Semicondensed Display Italic';
       font-style: normal;
@@ -116,16 +41,17 @@
       .sidebar__content .checkout_upsell {
         position: relative;
       }
+
       .prod_item:last-child {
         border-bottom: 0;
       }
     }
-  
+
     @media only screen and (max-width: 591px) {
       .prod_item {
         justify-content: flex-start;
       }
-  
+
       .prod_img {
         margin-left: 0;
       }
@@ -134,15 +60,16 @@
         right: 10px;
       }
     }
+
     /* upsell product show only information tab       */
     .upselll_show_information .checkout_upsell {
       display: block;
     }
-  
+
     .checkout_upsell {
       display: none;
     }
-  
+
     .backimg {
       z-index: -1;
       display: block;
@@ -158,7 +85,7 @@
       background-size: cover;
       background-repeat: no-repeat;
     }
-  
+
     .transparent_svg {
       opacity: 0;
       fill: transparent;
@@ -166,24 +93,24 @@
       stroke-miterlimit: 0;
       display: block;
     }
-  
+
     svg:not(:root) {
       overflow: hidden;
     }
-  
+
     .subtt {
       background-color: #ff8900;
       padding: 10px 20px;
       /*    margin-bottom: 10px; */
     }
-  
+
     .subtt h6 {
       color: #fff;
       text-transform: capitalize;
       margin-bottom: 0;
       font-size: 20px;
     }
-  
+
     .prod_item {
       display: flex;
       padding-top: 21px;
@@ -193,7 +120,7 @@
       border-bottom: 1px solid #eee;
       align-items: center;
     }
-  
+
     .prod_tag {
       display: flex;
       align-items: center;
@@ -203,7 +130,7 @@
       transform: translate(-0%, -50%);
       margin-left: -24px;
     }
-  
+
     .prod_tag p {
       transform: rotate(270deg);
       text-transform: uppercase;
@@ -219,38 +146,38 @@
       border-top-left-radius: 0;
       color: #fff;
     }
-  
+
     .prod_img {
       width: 20%;
       position: relative;
       margin-left: 32px;
     }
-  
+
     .prod_tt {
       text-transform: capitalize;
       font-weight: 800;
       font-size: 1rem;
     }
-  
+
     .prod_price {
       font-weight: 800;
       font-size: 0.9rem;
       padding-top: 4px;
     }
-  
+
     .prod_lists .prod_item .prod_info .compare_pro_price .prod_sale_price {
       text-decoration: line-through;
       font-size: .9rem;
       padding-top: 4px;
     }
-  
+
     .prod_type {
       text-transform: capitalize;
       font-size: 14px;
       padding-top: 4px;
       color: #fff;
     }
-  
+
     .add_btn .btn {
       padding: 7px 12px;
       line-height: 1;
@@ -262,35 +189,35 @@
       background-color: #fff !important;
       align-items: center;
     }
-  
+
     .add_btn span {
       display: block;
       padding-right: 5px;
       font-size: 18px;
     }
-  
+
     .prod_img_inner .backimg {
       background-size: contain;
       position: relative;
       z-index: 1;
     }
-  
+
     .add_prod {
       position: absolute;
       right: 8px;
     }
-  
+
     .add_btn .icon.icon-plus {
       font-size: 0.6rem;
       margin-right: 4px;
     }
-  
+
     .prod_info {
       padding-left: 10px;
       padding-left: 10px;
       width: calc(80% - 32px);
     }
-  
+
     .prod_lists .prod_item .prod_info .compare_pro_price {
       display: flex;
       align-items: center;
@@ -298,23 +225,23 @@
       align-content: center;
       color: white;
     }
-  
+
     #order-summary .order-summary__sections {
       height: unset;
     }
-  
+
     .checkout_upsell {
       left: 0;
       position: absolute;
       width: 100%;
       margin-top: 5%;
     }
-  
+
     .prod_tt a {
       color: #fff;
       font-weight: 700;
     }
-  
+
     .add_btn .icon.icon-plus:before {
       display: inline;
       font-family: icons;
@@ -328,110 +255,110 @@
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
     }
-  
+
     span.icon.icon-plus:before {
       content: "+";
       font-size: 18px;
       font-weight: 600 !important;
     }
-  
+
     .select2-container--default .select2-results__option--highlighted[aria-selected] {
       background-color: #ff8900 !important;
     }
-  
+
     span.select2-search.select2-search--dropdown {
       display: none;
     }
-  
+
     .add_prod {
       position: absolute;
       right: 8px;
       bottom: 21px;
     }
-  
+
     .select2-container {
       width: auto !important;
       max-width: 147px;
     }
-  
+
     [data-default]+.select2 {
       display: none;
     }
-  
+
     /* dropdown css  */
-  
+
     .select2.select2-container {
       width: 100% !important
     }
-  
+
     .select2.select2-container .select2-selection {
       border: 1px solid #ccc -webkit-border-radius: 3px -moz-border-radius: 3px border-radius: 3px height: 34px margin-bottom: 15px outline: none transition: all .15s ease-in-out
     }
-  
+
     .select2.select2-container .select2-selection .select2-selection__rendered {
       color: #333 line-height: 32px padding-right: 33px
     }
-  
+
     .select2.select2-container .select2-selection .select2-selection__arrow {
       background: #f8f8f8 border-left: 1px solid #ccc -webkit-border-radius: 0 3px 3px 0 -moz-border-radius: 0 3px 3px 0 border-radius: 0 3px 3px 0 height: 32px width: 33px
     }
-  
+
     .select2.select2-container.select2-container--open .select2-selection.select2-selection--single {
       background: #f8f8f8
     }
-  
+
     .select2.select2-container.select2-container--open .select2-selection.select2-selection--single .select2-selection__arrow {
       -webkit-border-radius: 0 3px 0 0 -moz-border-radius: 0 3px 0 0 border-radius: 0 3px 0 0
     }
-  
+
     .select2.select2-container.select2-container--open .select2-selection.select2-selection--multiple {
       border: 1px solid #34495e
     }
-  
+
     .select2.select2-container.select2-container--focus .select2-selection {
       border: 1px solid #34495e
     }
-  
+
     .select2.select2-container .select2-selection--multiple {
       height: auto min-height: 34px
     }
-  
+
     .select2.select2-container .select2-selection--multiple .select2-search--inline .select2-search__field {
       margin-top: 0 height: 32px
     }
-  
+
     .select2.select2-container .select2-selection--multiple .select2-selection__rendered {
       display: block padding: 0 4px line-height: 29px
     }
-  
+
     .select2.select2-container .select2-selection--multiple .select2-selection__choice {
       background-color: #f8f8f8 border: 1px solid #ccc -webkit-border-radius: 3px -moz-border-radius: 3px border-radius: 3px margin: 4px 4px 0 0 padding: 0 6px 0 22px height: 24px line-height: 24px font-size: 12px position: relative
     }
-  
+
     .select2.select2-container .select2-selection--multiple .select2-selection__choice .select2-selection__choice__remove {
       position: absolute top: 0 left: 0 height: 22px width: 22px margin: 0 text-align: center color: #e74c3c font-weight: bold font-size: 16px
     }
-  
+
     .select2-container .select2-dropdown {
       background: transparent border: none margin-top: -5px
     }
-  
+
     .select2-container .select2-dropdown .select2-search {
       padding: 0
     }
-  
+
     .select2-container .select2-dropdown .select2-search input {
       outline: none border: 1px solid #34495e border-bottom: none padding: 4px 6px
     }
-  
+
     .select2-container .select2-dropdown .select2-results {
       padding: 0
     }
-  
+
     .select2-container .select2-dropdown .select2-results ul {
       background: #fff border: 1px solid #34495e
     }
-  
+
     .select2-container .select2-dropdown .select2-results ul .select2-results__option--highlighted[aria-selected] {
       background-color: #3498db
     }
@@ -442,25 +369,25 @@
       font-size: 2em;
       font-family: Kepler Std Bold Semicondensed Display;
     }
-  
+
     .custome .main__header {
       padding-bottom: 1em !important;
     }
-  
+
     .custome p.para {
       margin-top: 10px;
       color: grey;
     }
-  
+
     .custome .review-block__label {
       color: black !important;
       font-size: 17px;
     }
-  
+
     .custome .review-block__content {
       font-size: 14px;
     }
-  
+
     .custome h2#main-header {
       font-size: 2em;
       color: #FF8200;
@@ -468,9 +395,9 @@
       /* 0.5em;*/
       font-family: Kepler Std Bold Semicondensed Display;
       line-height: 1;
-  
+
     }
-  
+
     .custome p.para.para2 {
       margin-top: 10px;
       color: grey;
@@ -478,20 +405,20 @@
               top: 86%; */
       font-size: 13px;
     }
-  
+
     .custome .breadcrumb__link {
       font-weight: 500;
     }
-  
+
     .custome .breadcrumb__item--current {
       font-weight: 600;
       color: #ff8900;
     }
-  
+
     .custome .breadcrumb__item--completed a {
       font-weight: 600;
     }
-  
+
     .custome #main-header p {
       line-height: 1.5em;
       margin-top: 10px;
@@ -500,63 +427,63 @@
       font-family: 'Helvetica Neue', sans-serif;
       font-size: 13px;
     }
-  
+
     .content-box__row.content-box__row--tight-spacing-vertical {
       padding-left: 0px;
       padding-right: 0px;
     }
-  
+
     .content-box__row.content-box__row--tight-spacing-vertical .review-block {
       padding-left: 1.1428571429em;
       padding-right: 1.1428571429em;
     }
-  
+
     .section.section--shipping-method {
       padding-top: 2rem;
     }
-  
+
     .section--shipping-method .section__header {
       margin-bottom: 1em;
     }
-  
+
     .custome .breadcrumb__item {
       font-size: 0.95em;
     }
-  
+
     .custome span.radio__label__primary {
       font-size: 18px;
       color: #000;
       /*    padding-top:2px; */
     }
-  
+
     .custome span.radio__label__primary .small-text {
       font-size: 13px;
       margin-top: 0.4rem;
       display: block;
     }
-  
+
     .custome .content-box__row .radio-wrapper .radio__input .input-radio:checked {
       border-width: 7.5px;
     }
-  
+
     .custome .content-box__row .radio-wrapper .radio__input .input-radio {
       width: 22px;
       height: 22px;
       top: -2px;
     }
-  
+
     .custome .review-block__link {
       font-size: 1em;
     }
-  
+
     .custome .content-box__emphasis {
       font-size: 1em;
     }
-  
+
     .custome a.step__footer__previous-link {
       font-size: 1.2em;
     }
-  
+
     .custome p.para2 {
       padding-left: 32px;
       margin-bottom: 10px;
@@ -602,14 +529,14 @@
         <div class="sidebar__content">
           {{ content_for_order_summary }}
           <!-- add checkout_upsell code here -->
-          <div class="checkout_upsell"> {% render 'checkout_upsell' %} </div>
+          <!-- <div class="checkout_upsell"> {% render 'checkout_upsell' %} </div> -->
         </div>
       </aside>
     </div>
   </div>
   {{ tracking_code }}
   {% comment %} UPSELL items code start under here! {% endcomment %}
-  <script type="text/javascript">
+  <!-- <script type="text/javascript">
 
     function addItemToCart(variant_id, qty) {
       var data = {
@@ -815,7 +742,8 @@
       });
 
     }); 
-  </script>
+  </script> -->
   {% comment %} UPSELL items code end under here! {% endcomment %}
 </body>
+
 </html>

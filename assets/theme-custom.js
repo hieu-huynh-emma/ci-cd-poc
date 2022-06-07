@@ -1,7 +1,3 @@
-// upsell cart drawer code start line number ---> 4400  // upsell cart drawer code start line number ---> 4662
-
-// please find (upsell cart drawer code start)
-
 window.theme = window.theme || {};
 window.slate = window.slate || {};
 
@@ -217,7 +213,7 @@ theme.Sections.prototype = _.assignIn({}, theme.Sections.prototype, {
  */
 
 theme.Currency = (function() {
-  var moneyFormat = '${amount}';
+  var moneyFormat = '${{amount}}';
 
   function formatMoney(cents, format) {
 
@@ -1164,7 +1160,7 @@ var ajaxCart = (function(module, $) {
         unitPrice: unitPrice
       };
       
-//      console.log(cartItem.product_type);
+// 			console.log(cartItem.product_type);
       
 //       console.log(cartItem);
       
@@ -4268,6 +4264,7 @@ theme.initCache = function() {
 };
 
 theme.init = function() {
+
   theme.initCache();
   theme.setBreakpoints();
   theme.fitNav();
@@ -4401,7 +4398,6 @@ theme.sizeCartDrawerFooter = function() {
   $cartFooter.css('height', cartFooterHeight);
 };
 
-// upsell cart drawer code start
 theme.checkIncart = function(product_id,cart_items){
   let check = true;  
   if (cart_items.length > 0) { 
@@ -4458,7 +4454,7 @@ theme.afterCartLoad = function() {
                 $(product['products']).each(function(p,e){
 
                   var protype_data = (e.product_type).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-$/, '').replace(/^-/, '');
-          
+					
                   // match the type of product with the upsell type
                   if(upsell_type == protype_data){
                     // check this product isn't in cart
@@ -4544,7 +4540,15 @@ theme.getMultipleRandom = function(arr, num) {
   return shuffled.slice(0, num);
 };
 
-
+/*
+          $(document).on('change',"select.product-form__variants",function(){
+            var data_price = $(this).children("option:selected").data('price');
+            console.log(data_price);
+            var data_compare_price = $(this).children("option:selected").data('compare_price');
+            $(this).parents(".prod_item ").find( ".prod_sale_price").text(data_compare_price);
+            $(this).parents(".prod_item ").find( ".prod_price").text(data_price);
+          });
+*/
 theme.showUpsells = function(upsells){
   //console.log(upsells);
   $.each(upsells,function(u,e){
@@ -4573,21 +4577,14 @@ theme.showUpsells = function(upsells){
       $.each(upsells[final_v],function(html_k,html_v){
 
         if((typeof html_v != undefined) && (typeof html_v != 'undefined')){
-          var tag = html_v.tags[0];
+          
           var img = html_v.images[0];
           var variant = html_v.variants[0];
-          $(document).on('change',"select.product-form__variants",function(){
-            var data_price = $(this).children("option:selected").data('price');
-            console.log(data_price);
-            var data_compare_price = $(this).children("option:selected").data('compare_price');
-            $(this).parents(".prod_item ").find( ".prod_sale_price").text(data_compare_price);
-            $(this).parents(".prod_item ").find( ".prod_price").text(data_price);
-          });
           
           html += '<div class="prod_item">';      
-          if((tag != 'undefined') && (tag != null) && (tag != undefined)){         
-            html += '<div class="prod_tag"><p>'+tag+'</p></div>';
-          }
+         
+            html += '<div class="prod_tag" style="color: white"><p>Promo</p></div>';
+
           html += '<div class="prod_img">';
           html += '<div class="prod_img_inner">';
           if((img != 'undefined') && (img != null) && (img != undefined)){         
@@ -4658,13 +4655,21 @@ theme.showUpsells = function(upsells){
 //   console.log(html);
   document.getElementById('cart__drawer_items').innerHTML = '';
   document.getElementById('cart__drawer_items').insertAdjacentHTML('beforeend', html);
-  jQuery(".js-select2").select2();
+  let $eventSelect = $(".js-select2");
+  $eventSelect.select2();
+  $eventSelect.on("select2:select", function (e) {
+    let selected_options = e.params.data.element;
+    let data_price = $(selected_options).data('price');
+    let data_compare_price = $(selected_options).data('compare_price');
+    $(selected_options).parents(".prod_item ").find( ".prod_sale_price").text(data_compare_price);
+    $(selected_options).parents(".prod_item ").find( ".prod_price").text(data_price);
+  });
+
 
   
 // ****************** upsell item html end ******************
   
 };
-// upsell cart drawer code end
 
 theme.checkoutIndicator = function() {
   // Add a loading indicator on the cart checkout button (/cart and drawer)
@@ -4873,4 +4878,3 @@ window.addEventListener('hashchange', function() {
 window.addEventListener('popstate', function() { 
 //   console.log('popstate changed!');
 });
-
