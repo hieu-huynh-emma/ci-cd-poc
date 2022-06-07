@@ -26,8 +26,9 @@
 
   .popup-title {
     color: #FF8200;
-    font-size: 1.8rem;
+    font-size: 1.2rem;
     margin-bottom: 1.5rem;
+    text-align: center;
   }
 
   .popup-options {
@@ -57,6 +58,14 @@
     cursor: pointer;
     color: #333333;
   }
+
+@media (min-width: 768px) {
+  .popup-title {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+  }
+}
+
 </style>
 <div id="leaving-checkout-popup">
   <div class="popup-container">
@@ -73,7 +82,15 @@
 </div>
 
 <script>
+  $(document).ready(function () {
+    $("#leaving-checkout-popup").click(function (e) {
+      if (e.target !== this)
+        return;
+      hidePopup();
+    });
+  });
   function hidePopup() {
     $('#leaving-checkout-popup').css('display', 'none');
+    $('html, body').removeClass('disable-scrolling');
   }
 </script>

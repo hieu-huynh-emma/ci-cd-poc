@@ -135,7 +135,7 @@
               {{ 'cart.general.taxes_and_shipping_at_checkout' | t }}
             {%- endif -%}
           {%- endcapture -%}
-          {{ taxes_shipping_checkout }}
+          {{ 'cart.general.free_shipping_and_taxes_at_checkout' | t }}
         {% raw %}</p>
         <button type="submit" class="btn--secondary btn--full cart__checkout" name="checkout">
           {% endraw %}{{ 'cart.general.checkout' | t }}{% raw %} </span>

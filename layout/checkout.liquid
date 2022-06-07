@@ -529,14 +529,14 @@
         <div class="sidebar__content">
           {{ content_for_order_summary }}
           <!-- add checkout_upsell code here -->
-          <div class="checkout_upsell"> {% render 'checkout_upsell' %} </div>
+          <!-- <div class="checkout_upsell"> {% render 'checkout_upsell' %} </div> -->
         </div>
       </aside>
     </div>
   </div>
   {{ tracking_code }}
   {% comment %} UPSELL items code start under here! {% endcomment %}
-  <script type="text/javascript">
+  <!-- <script type="text/javascript">
 
     function addItemToCart(variant_id, qty) {
       var data = {
@@ -742,7 +742,7 @@
       });
 
     }); 
-  </script>
+  </script> -->
   {% comment %} UPSELL items code end under here! {% endcomment %}
 </body>
 

@@ -186,23 +186,22 @@ jQuery(window).on("load",function(){
   
  var theLanguage = $('html').attr('lang');  
   if( theLanguage == 'en' ){
-    //console.log("en");
-    $(".pro_info").addClass("showw");
+    // console.log("en");
+    $(".pro_info").css("display", "block");
     $(".img_bann.first_bann").addClass("eng");
     $(".img_bann.sec_bann").addClass("eng");    
   }
   else {
-    //console.log("fr");
-    $(".fr_pop").addClass("showw");
+    // console.log("fr");
+    $(".pro_info").hide();
+    $(".fr_pop").css("display", "block");
     $(".img_bann").addClass("updfr");
     $(".img_bann>.tImHU").css("background","rgba(255,137,0,1)");        
     $(".img_bann").css("display","flex");
     $(".img_bann.first_bann").css("background-image","");
   }  
 });
-  </script>  
-  
- 
+  </script>
 </head>
 {% comment %}
   Add the page template as a class for easy page or template specific styling.
@@ -215,7 +214,7 @@ jQuery(window).on("load",function(){
     </div> 
   
   	<div id="fr_pop" class="product_step" style="display:none">
-              {% include 'fr_pop' %}
+        {% include 'fr_pop' %}
     </div> 
   
   {%- if template contains 'page' or template contains 'collection' -%}

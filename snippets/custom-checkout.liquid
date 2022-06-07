@@ -24,13 +24,18 @@
         showConfirmPopup($);
       });
 
+      $('.banner .logo').on('click', function (e) {
+        e.preventDefault();
+        showConfirmPopup($);
+      });
+
       if (Shopify.Checkout.step === 'contact_information') {
         $('body').addClass("upselll_show_information");
         $('#review-shipping-address').remove();
 
         var $dynamicCheckoutTitle = $('.dynamic-checkout h2.dynamic-checkout__title');
         if ($dynamicCheckoutTitle) {
-          $dynamicCheckoutTitle.addClass('heading1');
+          $dynamicCheckoutTitle.addClass('heading1 section__title');
         }
 
         var $alternativePaymentSeparatorContent = $('.alternative-payment-separator__content');
@@ -89,6 +94,7 @@
 
   function showConfirmPopup($) {
     $('#leaving-checkout-popup').css('display', 'block');
+    $('html, body').addClass('disable-scrolling');
   }
 
   // CONTACT INFORMATION
@@ -103,7 +109,7 @@
 
     // Check input for character limit and remove letters
     let minChars = 11, maxChars = 13;
-    let errorMessage = "Enter a valid phone number";
+    let errorMessage = "Enter a valid phone number (11-13 digits)";
 
     let phoneLength = $phoneField.val().length;
     if (phoneLength !== 0 && (phoneLength < minChars || phoneLength > maxChars)) {
@@ -233,6 +239,7 @@
   .paybright-messages {
     margin-left: 2.8rem;
     margin-bottom: 0.5rem;
+    cursor: not-allowed;
   }
 
   .disable-payment-method {
@@ -248,5 +255,17 @@
 
   .field--error-plus-dynamic {
     border: 2px solid #f01130 !important;
+  }
+
+  .disable-scrolling {
+    overflow: hidden;
+    height: 100%;
+  }
+
+  .section__title {
+    text-transform: capitalize;
+    color: #FF8200 !important;
+    font-size: 2em;
+    font-family: Kepler Std Bold Semicondensed Display;
   }
 </style>
