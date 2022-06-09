@@ -117,7 +117,7 @@
       if (!$phoneField.hasClass(errorClass)) {
         $phoneField.addClass(errorClass);
         $phoneField.closest('[data-address-field]').after("<p class='error-message field__message--error-plus-dynamic'>" + errorMessage + "</p>");
-      } 
+      }
     } else {
       // Phone number is valid. Remove errors and continue.
       $phoneField.removeClass(errorClass);
@@ -268,4 +268,9 @@
     font-size: 2em;
     font-family: Kepler Std Bold Semicondensed Display;
   }
+
+  #review-shipping-address {
+    margin-bottom: 1rem;
+  }
+
 </style>

@@ -7,6 +7,9 @@
   <meta name="viewport"
     content="width=device-width, initial-scale=1.0, height=device-height, minimum-scale=1.0, user-scalable=0">
   <meta name="referrer" content="origin">
+  {% if settings.favicon %}
+  <link rel="shortcut icon" href="{{ settings.favicon | img_url: '32x32' }}" type="image/png" />
+  {% endif %}
   <title>{{ page_title }}</title>
   {{ content_for_header }}
   {{ checkout_stylesheets }}
@@ -375,8 +378,8 @@
     }
 
     .custome p.para {
-      margin-top: 10px;
-      color: grey;
+      margin-top: 0.5;
+      color: #545454;
     }
 
     .custome .review-block__label {
@@ -509,13 +512,14 @@
         <header class="main__header" role="banner">
           {{ content_for_logo }}
           {{ breadcrumb }}
+          {{ alternative_payment_methods }}
+        </header>
+        <main class="main__content" role="main">
+          {% render 'checkout-countdown'%}
           <div id="review-shipping-address">
             <div class="heading1">Your Details</div>
             <p class="para">Please review the shipping address before placing your order.</p>
           </div>
-          {{ alternative_payment_methods }}
-        </header>
-        <main class="main__content" role="main">
           {{ content_for_layout }}
         </main>
         <footer class="main__footer" role="contentinfo">

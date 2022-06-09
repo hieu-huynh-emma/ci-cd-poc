@@ -1,0 +1,38 @@
+<div class="checkcout-countdown">
+ <p class="subtitle">An item you ordered is in high demain. No worries, we have reserved your order</p>
+ <div id="checkout-timer">
+ </div>
+</div>
+<script>
+ let end = new Date().setTime(new Date().getTime() + 15 * 60 * 1000);
+
+ const timerInterval = setInterval(setTime, 1000);
+
+ function setTime() {
+  let now = new Date().getTime();
+  let diff = end - now;
+
+  var min = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+  var sec = Math.floor((diff % (1000 * 60)) / 1000);
+  document.getElementById("checkout-timer").innerHTML = `<p>Your order is reserve for ${min}:${sec} minutes!</p>`
+
+  if (diff < 0) {
+   document.getElementsByClassName('checkcout-countdown').style.display = 'none';
+   clearInterval(timerInterval);
+  }
+ }
+</script>
+<style>
+ #checkout-timer {
+  background-color: #FDFAEF;
+  padding: 1rem;
+  border: solid 1px #F7E1A1;
+  border-radius: 3px;
+  font-weight: 600;
+ }
+
+ .checkcout-countdown .subtitle {
+  text-align: center;
+  margin-bottom: 1rem;
+ }
+</style>
