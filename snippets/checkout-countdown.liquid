@@ -17,8 +17,8 @@
   document.getElementById("checkout-timer").innerHTML = `<p>Your order is reserve for ${min}:${sec} minutes!</p>`
 
   if (diff < 0) {
-   document.getElementsByClassName('checkcout-countdown').style.display = 'none';
    clearInterval(timerInterval);
+   document.getElementsByClassName('checkcout-countdown')[0].style.display = 'none';
   }
  }
 </script>
