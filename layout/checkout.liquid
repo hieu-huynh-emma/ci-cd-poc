@@ -378,7 +378,7 @@
     }
 
     .custome p.para {
-      margin-top: 0.5;
+      margin-top: 0.25em;
       color: #545454;
     }
 
@@ -512,10 +512,10 @@
         <header class="main__header" role="banner">
           {{ content_for_logo }}
           {{ breadcrumb }}
-          {{ alternative_payment_methods }}
         </header>
         <main class="main__content" role="main">
           {% render 'checkout-countdown'%}
+          {{ alternative_payment_methods }}
           <div id="review-shipping-address">
             <div class="heading1">Your Details</div>
             <p class="para">Please review the shipping address before placing your order.</p>

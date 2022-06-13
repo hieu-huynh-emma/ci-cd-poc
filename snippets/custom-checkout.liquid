@@ -35,7 +35,7 @@
 
         var $dynamicCheckoutTitle = $('.dynamic-checkout h2.dynamic-checkout__title');
         if ($dynamicCheckoutTitle) {
-          $dynamicCheckoutTitle.addClass('heading1 section__title');
+          $dynamicCheckoutTitle.addClass('section__title');
         }
 
         var $alternativePaymentSeparatorContent = $('.alternative-payment-separator__content');
@@ -80,7 +80,10 @@
         });
       }
       else if (Shopify.Checkout.step === 'shipping_method') {
-        addShippingSectionSubtitle($);
+
+        clearInterval(timerInterval);
+        document.getElementsByClassName('checkcout-countdown')[0].style.display = 'none';
+
 
         $(".order-summary-toggle").click(function () {
           $(".checkout_upsell").addClass("order-summary--is-expanded");
@@ -88,6 +91,9 @@
       }
       else if (Shopify.Checkout.step === 'payment_method') {
         disablePaybrightPaymentMethod($);
+        clearInterval(timerInterval);
+        document.getElementsByClassName('checkcout-countdown')[0].style.display = 'none';
+
       }
     });
   })(Checkout.$);
@@ -269,8 +275,10 @@
     font-family: Kepler Std Bold Semicondensed Display;
   }
 
+  .alternative-payment-separator__content {
+    padding-bottom: 1rem;
+  }
   #review-shipping-address {
     margin-bottom: 1rem;
   }
-
 </style>
