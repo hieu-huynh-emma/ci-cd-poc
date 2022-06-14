@@ -1,0 +1,37 @@
+<div class="checkcout-countdown">
+ <div id="checkout-timer">
+ </div>
+</div>
+<script>
+ let end = new Date().setTime(new Date().getTime() + 15 * 60 * 1000);
+
+ const timerInterval = setInterval(setTime, 1000);
+
+ function setTime() {
+  let now = new Date().getTime();
+  let diff = end - now;
+
+  var min = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+  var sec = Math.floor((diff % (1000 * 60)) / 1000);
+  document.getElementById("checkout-timer").innerHTML = `<p>An item in your cart is in high demand. <br/>Your order is reserved for ${min}:${sec} minutes. Check out soon!</p>`
+
+  if (diff < 0) {
+   document.getElementsByClassName('checkcout-countdown')[0].style.display = 'none';
+  }
+ }
+</script>
+<style>
+ #checkout-timer {
+  background-color: #FDFAEF;
+  padding: 1rem;
+  border: solid 1px #F7E1A1;
+  border-radius: 3px;
+  font-weight: 600;
+  text-align: center;
+ }
+
+ .checkcout-countdown .subtitle {
+  text-align: center;
+  margin-bottom: 1rem;
+ }
+</style>
