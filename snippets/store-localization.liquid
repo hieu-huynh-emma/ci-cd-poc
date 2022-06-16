@@ -262,7 +262,11 @@
     function checkGeolocation() {
         fetch(`https://api.ipgeolocation.io/ipgeo?apiKey=${GEOLOCATION_API_KEY}`)
             .then(res => res.json())
-            .then(localizationGuard)
+            .then(ipgeo => {
+                quebecProvinceGuard(ipgeo)
+                
+                localizationGuard(ipgeo)
+            })
     }
 
     function localizationGuard(ipgeo) {
@@ -278,6 +282,13 @@
             checkCountryAvailability(ipgeo);
 
             renderStoreOptions();
+        }
+    }
+
+    // Automatically redirect all customers from Quebec to Canada French subdomain
+    function quebecProvinceGuard(ipgeo) {
+        if (ipgeo.state_prov === 'Quebec') {
+            window.location.href = 'https://qc.emma-sleep.ca'
         }
     }
 
