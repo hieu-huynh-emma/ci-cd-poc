@@ -1074,7 +1074,7 @@ var ajaxCart = (function(module, $) {
       }
 
       if (cartItem.properties !== null) {
-                
+
         $.each(cartItem.properties, function(key, value) {
           if (key.charAt(0) === '_' || !value) {
             delete cartItem.properties[key];
@@ -1159,16 +1159,16 @@ var ajaxCart = (function(module, $) {
         vendor: cartItem.vendor,
         unitPrice: unitPrice
       };
-      
+
 // 			console.log(cartItem.product_type);
-      
+
 //       console.log(cartItem);
-      
+
       items.push(item);
     });
 
-    
-    
+
+
     // Gather all cart data and add to DOM
     data = {
       items: items,
@@ -4399,13 +4399,13 @@ theme.sizeCartDrawerFooter = function() {
 };
 
 theme.checkIncart = function(product_id,cart_items){
-  let check = true;  
-  if (cart_items.length > 0) { 
+  let check = true;
+  if (cart_items.length > 0) {
     $(cart_items).each(function(cart_k,cart_v){
       if ((product_id == cart_v.product_id)) {
         check = false;
-        return false;          
-      }    
+        return false;
+      }
     });
   }
   return check;
@@ -4426,13 +4426,13 @@ theme.afterCartLoad = function() {
 //     ==================*********  upsell code start  *********==================
 
         // Static UPSELL items Object
-        var upsell_pro = { 
+        var upsell_pro = {
           "mattress" : ['protector','pillow','topper'],
           "pillow" : ['mattress','topper','protector'],
           "protector" : ['mattress','pillow','topper'],
           "topper" : ['mattress','pillow','protector'],
           "bed-frame-with-mattress" : ['protector','pillow','topper'],
-          "bed-frame-without-mattress" : ['mattress','protector','pillow'] 
+          "bed-frame-without-mattress" : ['mattress','protector','pillow']
         }
 
         var upsell_results = {};
@@ -4449,12 +4449,12 @@ theme.afterCartLoad = function() {
             $(upsell_type).each(function(k,upsell_type){
 
               if((typeof upsell_type != 'undefined') && (typeof upsell_type != undefined) && (typeof upsell_type != null)){
-                
+
                 // find products which match upsell types
                 $(product['products']).each(function(p,e){
 
                   var protype_data = (e.product_type).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-$/, '').replace(/^-/, '');
-					
+
                   // match the type of product with the upsell type
                   if(upsell_type == protype_data){
                     // check this product isn't in cart
@@ -4476,8 +4476,8 @@ theme.afterCartLoad = function() {
           theme.showUpsells(upsell_results);
         }
       });
-     
-//    ==================*********   upsell code end    *********==================  
+
+//    ==================*********   upsell code end    *********==================
       theme.cache.$cartBuggle.addClass('cart-link__bubble--visible');
     } else {
       theme.cache.$cartBuggle.removeClass('cart-link__bubble--visible');
@@ -4500,7 +4500,7 @@ theme.afterCartLoad = function() {
               url: '/cart/add.js',
               data: data,
               dataType: 'json',
-              success: function() { 
+              success: function() {
                 $(".cart_trigger_click").trigger("click");
               }
             });
@@ -4514,7 +4514,7 @@ theme.afterCartLoad = function() {
 
 
         //         ajax cart end code
-// =============================================================  
+// =============================================================
 
 function remove_Dumplicate_Value(myArray){
   var newArray = [];
@@ -4523,7 +4523,7 @@ function remove_Dumplicate_Value(myArray){
     $.each(newArray, function(k, val2) {
       if(value.id == val2.id){
         exists = true;
-      }; 
+      };
     });
     if(exists == false && value.id != ""){
       newArray.push(value);
@@ -4534,9 +4534,9 @@ function remove_Dumplicate_Value(myArray){
 };
 
 theme.getMultipleRandom = function(arr, num) {
-  
+
   var shuffled = arr.sort(() => 0.5 - Math.random());
-  
+
   return shuffled.slice(0, num);
 };
 
@@ -4557,9 +4557,9 @@ theme.showUpsells = function(upsells){
 
   var arr = Object.keys(upsells);
   var final_keys = theme.getMultipleRandom(arr, arr.length);
-  
-// ****************** upsell item html start ****************** 
-  
+
+// ****************** upsell item html start ******************
+
   var html ="";
   var currency_format = document.getElementsByTagName('body');
   currency_format =  currency_format[0].dataset.format;
@@ -4572,23 +4572,23 @@ theme.showUpsells = function(upsells){
         let random_key = theme.getMultipleRandom(Object.keys(upsells[final_v]), 1)[0];
         let single_upsells = upsells[final_v][random_key];
         upsells[final_v] = {};
-        upsells[final_v][0] = single_upsells;        
+        upsells[final_v][0] = single_upsells;
       }
       $.each(upsells[final_v],function(html_k,html_v){
 
         if((typeof html_v != undefined) && (typeof html_v != 'undefined')){
-          
+
           var img = html_v.images[0];
           var variant = html_v.variants[0];
-          
-          html += '<div class="prod_item">';      
-         
+
+          html += '<div class="prod_item">';
+
             html += '<div class="prod_tag" style="color: white"><p>Promo</p></div>';
 
           html += '<div class="prod_img">';
           html += '<div class="prod_img_inner">';
-          if((img != 'undefined') && (img != null) && (img != undefined)){         
-            html += '<div class="backimg" style="background-image:url('+img.src+');">';   
+          if((img != 'undefined') && (img != null) && (img != undefined)){
+            html += '<div class="backimg" style="background-image:url('+img.src+');">';
           }
           html += '<svg class="transparent_svg" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 101 76">';
           html += '<rect class="cls-1" x="0.5" y="0.5" width="100" height="75"></rect>';
@@ -4598,14 +4598,14 @@ theme.showUpsells = function(upsells){
           html += '</div>';
           html += '<div class="prod_info">';
           html += '<div class="prod_tt">';
-          html += '<a href="/products/'+html_v.handle+'">'+html_v.title+'</a>'; 
-          html += '</div>';  
+          html += '<a href="/products/'+html_v.handle+'">'+html_v.title+'</a>';
+          html += '</div>';
 
-          html += '<div class="compare_pro_price">';  
-          html += '<div class="prod_price">'+theme.Currency.formatMoney(variant.price, currency_format)+'</div>';       
+          html += '<div class="compare_pro_price">';
+          html += '<div class="prod_price">'+theme.Currency.formatMoney(variant.price, currency_format)+'</div>';
           html += '<div class="prod_sale_price">'+theme.Currency.formatMoney(variant.compare_at_price, currency_format)+' </div>';
-       
-          html += '</div>';  
+
+          html += '</div>';
           if((variant != 'undefined') && (variant != null) && (variant != undefined)){
             html += '<div class="prod_type">';
             if (variant.available) {
@@ -4615,7 +4615,7 @@ theme.showUpsells = function(upsells){
                 html += ' data-default="" ';
               }
               html += ' class="product-form__variants no-js">';
-              $.each(html_v.variants,function(var_key,var_val){  
+              $.each(html_v.variants,function(var_key,var_val){
                 if (var_val.available) {
                   html += '<option';
                   if(var_key == 0){
@@ -4629,13 +4629,13 @@ theme.showUpsells = function(upsells){
             html += '</div>'
 
           }
-          html += '</div>';  
+          html += '</div>';
           html += '<div class="add_prod">';
-          html += '<div class="add_btn">';           
+          html += '<div class="add_btn">';
           html += '<a href="javascript:void(0);" id="add-to-cart-button" class="btn btn--secondary btn--full marztop">';
           html += '<span class="icon icon-plus" aria-hidden="true"></span> ADD';
-          html += '</a>';            
-          html += '</div>';                
+          html += '</a>';
+          html += '</div>';
           html += '</div>';
 
           //      ============== addto cart end ==============`
@@ -4650,7 +4650,7 @@ theme.showUpsells = function(upsells){
   });
 
 
-  
+
 
 //   console.log(html);
   document.getElementById('cart__drawer_items').innerHTML = '';
@@ -4666,9 +4666,9 @@ theme.showUpsells = function(upsells){
   });
 
 
-  
+
 // ****************** upsell item html end ******************
-  
+
 };
 
 theme.checkoutIndicator = function() {
@@ -4860,6 +4860,7 @@ jQuery('.pf-variant-select').on('change',function(e){
   str += '-size';
   var newurl =
       window.location.protocol +'//' +window.location.host +'/products/' + vitals_product_data.handle + '/' +str;
+
   window.history.replaceState(
     {
       path: newurl
@@ -4867,14 +4868,33 @@ jQuery('.pf-variant-select').on('change',function(e){
     '',
     newurl
   );
+
+  setTimeout(updatePaybrightMonthlyInstallment, 0)
 });
+
+function updatePaybrightMonthlyInstallment () {
+  const $monthlyInstallment = $(".pro_val");
+
+  if(!$monthlyInstallment.length) return
+
+  const urlParams = new URLSearchParams(window.location.search)
+  const selectedVariantId = urlParams.get('variant');
+
+  const selectedVariant = vitals_product_data.variants.find(({ id }) => id === +selectedVariantId)
+
+  const variantPrice = selectedVariant?.price / 100;
+
+
+  $monthlyInstallment.text('$' + (variantPrice / 6).toFixed(2))
+
+}
 
 window.addEventListener('locationchange', function () {
 //   console.log('location changed!');
 });
-window.addEventListener('hashchange', function() { 
+window.addEventListener('hashchange', function() {
 //   console.log('hashchange changed!');
 });
-window.addEventListener('popstate', function() { 
+window.addEventListener('popstate', function() {
 //   console.log('popstate changed!');
 });
