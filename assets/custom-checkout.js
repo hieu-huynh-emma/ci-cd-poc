@@ -15,11 +15,9 @@ let CustomCheckout = {
 }
 
 // Init mutationObserver to watch for changes in the DOM
-let mutationObserver = new MutationObserver(function(mutations) {
-    setTimeout(function(){
-       mutationObserver.disconnect();
-       CustomCheckout.loadOriginalLinePrice();
-    }, 0);
+let mutationObserver = new MutationObserver(function() {
+    mutationObserver.disconnect();
+    CustomCheckout.loadOriginalLinePrice();
 });
 
 $(document).on('click', '#checkout_submit', function(){
