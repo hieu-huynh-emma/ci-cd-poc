@@ -58,6 +58,7 @@
                       <span class="visually-hidden">{% endraw %}{{ 'products.general.sale_price' | t }}{% raw %}</span>
                       <span class="ajaxcart__price">{{{discountedPrice}}}</span>
                     {{else}}
+                      <span class="ajaxcart__price">{{{compareAtPrice}}}</span>
                       <span class="ajaxcart__price">{{{price}}}</span>
                     {{/if}}
                     {{#if unitPrice}}
@@ -73,6 +74,7 @@
                       </span>
                     {{/if}}
                   </div>
+
                 </div>
                 {{#if discountsApplied}}
                   <div class="grid--full">

@@ -23,41 +23,7 @@ If you plan to remove PageFly, please see the guide in our help center first: ht
   {% if page_description %}
   <meta name="description" content="{{ page_description | escape }}">
   {% endif %}
-  
-  <!-- Noindexed pages ================================================== -->
-   
-  {% if handle contains 'old-mattress-removal-zone-1' %}
-  <meta name="robots" content="noindex,nofollow">
-  {% endif %}
-  
-  {% if handle contains 'old-mattress-removal-zone-2' %}
-  <meta name="robots" content="noindex,nofollow">
-  {% endif %}
-  
-  {% if handle contains 'old-mattress-removal-zone-3' %}
-  <meta name="robots" content="noindex,nofollow">
-  {% endif %}
-  
-  {% if handle contains 'old-mattress-removal-zone-4' %}
-  <meta name="robots" content="noindex,nofollow">
-  {% endif %}
-  
-  {% if handle contains 'the-upholstered-bed-frame-part-1' %}
-  <meta name="robots" content="noindex,nofollow">
-  {% endif %}
-  
-  {% if handle contains 'the-upholstered-bed-frame-part-2' %}
-  <meta name="robots" content="noindex,nofollow">
-  {% endif %}
-  
-  {% if handle contains 'variant-not-available' %}
-  <meta name="robots" content="noindex,nofollow">
-  {% endif %}
-  
-  {% if handle contains 'return-mattress-dummy-product' %}
-  <meta name="robots" content="noindex,nofollow">
-  {% endif %}
-  
+    
     
   <!-- Google Search Console Verification ======================================= -->  
   <meta name="google-site-verification" content="6PIbsoianPTw4f2E_enBdUZYqvDOW5cupcrNh7zyVbs" />
@@ -66,6 +32,14 @@ If you plan to remove PageFly, please see the guide in our help center first: ht
   {% include 'social-meta-tags' %}
   
   {% if template contains 'product'%}
+  	{% comment %}
+  	{% if canonical_url contains '/products/' %}
+      {% assign c_url = canonical_url | split:'/' | size %}
+  	  {% if c_url > 5 %}
+        <meta name="robots" content="noindex,nofollow">
+  	  {% endif %}
+  	{% endif %}
+    {% endcomment %}
     {% if product.has_only_default_variant %}
      <link rel="canonical" href="{{ canonical_url }}">
     {% else %}
@@ -93,9 +67,9 @@ If you plan to remove PageFly, please see the guide in our help center first: ht
   <link rel="stylesheet" href="{{ 'animate.css' | asset_url }}"> 
   
   
-    <!---- LUCKY ORANGE INTEGRATION ================================= -->
-
-  <script async defer src="https://tools.luckyorange.com/core/lo.js?site-id=9ca7f04f"></script>
+  <!---- LUCKY ORANGE INTEGRATION ================================= -->
+  
+  <script async defer src="https://tools.luckyorange.com/core/lo.js?site-id=a1a18262"></script>
   
   
   <!---- SHOP BACK INTEGRATION ================================= -->
@@ -210,8 +184,31 @@ usi_installed = 0; USI_installCode = function() { if (usi_installed == 0) { usi_
       'cart_type' : '{{settings.cart_type}}' 
     }
   </script>
- 
-</head>
+
+<script type="text/javascript">
+jQuery(window).on("load",function(){ 
+  
+ var theLanguage = $('html').attr('lang');  
+  if( theLanguage == 'en' ){
+    // console.log("en");
+    $(".fr_pop").hide();
+    $(".pro_info").css("display", "block");
+    $(".img_bann.first_bann").addClass("eng");
+    $(".img_bann.sec_bann").addClass("eng");    
+  }
+  else {
+    // console.log("fr");
+    $(".pro_info").hide();
+    $(".fr_pop").css("display", "block");
+    $(".img_bann").addClass("updfr");
+    $(".img_bann>.tImHU").css("background","rgba(255,137,0,1)");        
+    $(".img_bann").css("display","flex");
+    $(".img_bann.first_bann").css("background-image","");
+  }  
+});
+  </script>
+
+{% include 'gwa-hreflang' %}</head>
 {% comment %}
   Add the page template as a class for easy page or template specific styling.
 {% endcomment %}

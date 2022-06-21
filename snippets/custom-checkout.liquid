@@ -237,6 +237,16 @@
   }
 </script>
 
+<script src="{{ 'custom-checkout.js' | asset_url }}" defer="defer"></script>
+
+{% for item in checkout.line_items %}
+  {%- if item.variant.compare_at_price != item.final_price -%}
+    <input id="{{ item.key }}" type="hidden" name="original_line_price" value="{{ item.variant.compare_at_price | times: item.quantity | money }}" disabled>
+  {% else %}
+    <input id="{{ item.key }}" type="hidden" name="original_line_price" value="" disabled>
+  {% endif %}
+{% endfor %}
+
 <style>
   .tax-subtotal .total-line__name {
     padding-left: 1rem;
@@ -278,7 +288,13 @@
   .alternative-payment-separator__content {
     padding-bottom: 1rem;
   }
+  
   #review-shipping-address {
     margin-bottom: 1rem;
   }
+
+  .original-line-price {
+    text-decoration: line-through;
+}
+
 </style>
