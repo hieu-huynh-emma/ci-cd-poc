@@ -271,7 +271,7 @@
 
     function localizationGuard(ipgeo) {
         const popupShowed = !!sessionStorage.getItem('storeLocalizationPopupShowed')
-
+        
         if (!popupShowed && ipgeo.country_code2 !== 'CA') {
             showPopup();
 
@@ -295,9 +295,11 @@
     function redirectToOtherStore () {
         const $selectedOption = $(this).find('option:selected');
 
-        const selectedStore = $selectedOption.data().countryCode
-
-        changeRedirectButton(selectedStore)
+        const url = $selectedOption.val();
+        
+        const store = allStores.find(({ storeUrl }) => storeUrl === url);
+    
+        changeRedirectButton(store)
     }
 
     function showPopup() {
@@ -336,8 +338,10 @@
             const selectCountryTextEl = document.querySelector('#store-localization-popup .change-country__dropdown-label')
 
             selectCountryTextEl.textContent = `Alternatively you can choose your country from the list below:`;
-
-            changeRedirectButton(ipgeo.country_code2)
+    
+            const store = allStores.find(({ countryCode }) => countryCode === ipgeo.country_code2 );
+    
+            changeRedirectButton(store)
         }
     }
 
@@ -350,15 +354,14 @@
         changeCountryEl.firstElementChild.insertAdjacentElement('afterend', el)
     }
 
-    function changeRedirectButton(targetCountryCode) {
-        const store = allStores.find(({ countryCode }) => countryCode === targetCountryCode);
-
+    function changeRedirectButton(store) {
+        if(!store) return
+        
         const redirectBtnEl = document.querySelector('#store-localization-popup .change-country .redirect-button')
 
         redirectBtnEl.href = store.storeUrl
         redirectBtnEl.text = `Go to ${store.storeName}`
     }
-
-
+    
     checkGeolocation();
 </script>

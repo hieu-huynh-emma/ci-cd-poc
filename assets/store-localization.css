@@ -143,6 +143,7 @@
   transition: background-color 0.25s ease-out, color 0.25s ease-out;
   line-height: 1;
   text-decoration: none;
+  word-break: keep-all;
 }
 .change-country .redirect-button:hover {
   background: white;
