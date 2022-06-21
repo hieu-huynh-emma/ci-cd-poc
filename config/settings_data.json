@@ -45,9 +45,9 @@
         "settings": {
           "show_announcement": true,
           "home_page_only": false,
-          "link": "shopify://products/emma-original-mattress",
-          "text": "Our Victoria Day Sale is here! 👑 Click here to take over 50% off our award-winning mattress.",
-          "countdown-date": "May 23, 2022 5:59:00 PM",
+          "text": "Our Canada Day Sale is here! Click here to take over 50% off our award-winning mattress.",
+          "countdown-date": "July 1, 2022 5:59:00 PM",
+          "link": "shopify:\/\/products\/emma-original-mattress",
           "color_bg": "#676f91",
           "color_text": "#ffffff"
         }
@@ -62,7 +62,7 @@
           "transparent_header_color": "#ffffff",
           "search": "none",
           "main_menu_link_list": "main-menu",
-          "drawer_bottom_link_list": "footer",
+          "drawer_bottom_link_list": "",
           "drawer_search_enable": false,
           "text": "Our Victoria Day Sale is here! 👑 Click here to take over 50% off our award-winning mattress.",
           "link": "shopify:\/\/products\/emma-original-mattress"
@@ -1791,12 +1791,6 @@
       "checkout_button_color": "#000000",
       "checkout_error_color": "e32c2b",
       "sections": {
-        "announcement-bar": {
-          "type": "header",
-          "settings": {
-            "show_announcement": true
-          }
-        },
         "slideshow": {
           "type": "slideshow",
           "blocks": {
@@ -1993,10 +1987,7 @@
           "settings": {
             "logo_max_width": 260,
             "search": "modal",
-            "main_menu_link_list": "main-menu",
-            "show_announcement": false,
-            "color_bg": "#290c49",
-            "color_text": "#ffffff"
+            "main_menu_link_list": "main-menu"
           }
         },
         "footer": {
