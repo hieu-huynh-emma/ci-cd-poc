@@ -984,6 +984,7 @@ var ajaxCart = (function(module, $) {
         theme.Currency.formatMoney(cart.total_price, settings.moneyFormat)
       );
     }
+    jQuery('#CartDrawer .drawer__title').text(`Your cart - ${cart.item_count} items`);
   };
 
   formOverride = function() {
@@ -1029,162 +1030,25 @@ var ajaxCart = (function(module, $) {
     buildCart(cart);
   };
 
-  buildCart = function(cart) {
-    // Start with a fresh cart div
-    $cartContainer.empty();
-
+  buildCart = function (cart) {
     // Show empty cart
     if (cart.item_count === 0) {
-      $cartContainer.append(
+      $cartContainer.html(
         '<p class="cart--empty-message">' +
-          theme.strings.cartEmpty +
-          '</p>\n' +
-          '<p class="cookie-message">' +
-          theme.strings.cartCookies +
-          '</p>'
+        theme.strings.cartEmpty +
+        '</p>\n' +
+        '<p class="cookie-message">' +
+        theme.strings.cartCookies +
+        '</p>'
       );
       cartCallback(cart);
       return;
     }
 
-    // Handlebars.js cart layout
-    var items = [],
-      item = {},
-      data = {},
-      source = $('#CartTemplate').html(),
-      template = Handlebars.compile(source);
-
-    // Add each item to our handlebars.js data
-    $.each(cart.items, function(index, cartItem) {
-      /* Hack to get product image thumbnail
-       *   - If image is not null
-       *     - Remove file extension, add _small, and re-add extension
-       *     - Create server relative link
-       *   - A hard-coded url of no-image
-       */
-      var prodImg;
-      var unitPrice = null;
-      if (cartItem.image !== null) {
-        prodImg = cartItem.image
-          .replace(/(\.[^.]*)$/, '_small$1')
-          .replace('http:', '');
-      } else {
-        prodImg =
-          '//cdn.shopify.com/s/assets/admin/no-image-medium-cc9732cb976dd349a0df1d39816fbcc7.gif';
-      }
-
-      if (cartItem.properties !== null) {
-
-        $.each(cartItem.properties, function(key, value) {
-          if (key.charAt(0) === '_' || !value) {
-            delete cartItem.properties[key];
-          }
-        });
-      }
-
-      if (cartItem.properties !== null) {
-        $.each(cartItem.properties, function(key, value) {
-          if (key.charAt(0) === '_' || !value) {
-            delete cartItem.properties[key];
-          }
-        });
-      }
-
-      if (cartItem.line_level_discount_allocations.length !== 0) {
-        for (var discount in cartItem.line_level_discount_allocations) {
-          var amount =
-            cartItem.line_level_discount_allocations[discount].amount;
-
-          cartItem.line_level_discount_allocations[
-            discount
-          ].formattedAmount = theme.Currency.formatMoney(
-            amount,
-            settings.moneyFormat
-          );
-        }
-      }
-
-      if (cart.cart_level_discount_applications.length !== 0) {
-        for (var cartDiscount in cart.cart_level_discount_applications) {
-          var cartAmount =
-            cart.cart_level_discount_applications[cartDiscount]
-              .total_allocated_amount;
-
-          cart.cart_level_discount_applications[
-            cartDiscount
-          ].formattedAmount = theme.Currency.formatMoney(
-            cartAmount,
-            settings.moneyFormat
-          );
-        }
-      }
-
-      if (cartItem.unit_price_measurement) {
-        unitPrice = {
-          addRefererenceValue:
-            cartItem.unit_price_measurement.reference_value !== 1,
-          price: theme.Currency.formatMoney(
-            cartItem.unit_price,
-            settings.moneyFormat
-          ),
-          reference_value: cartItem.unit_price_measurement.reference_value,
-          reference_unit: cartItem.unit_price_measurement.reference_unit
-        };
-      }
-
-      // Create item's data object and add to 'items' array
-      item = {
-        key: cartItem.key,
-        line: index + 1, // Shopify uses a 1+ index in the API
-        url: cartItem.url,
-        img: prodImg,
-        name: cartItem.product_title,
-        variation: cartItem.variant_title,
-        sellingPlanAllocation: cartItem.selling_plan_allocation,
-        properties: cartItem.properties,
-        itemAdd: cartItem.quantity + 1,
-        itemMinus: cartItem.quantity - 1,
-        itemQty: cartItem.quantity,
-        price: theme.Currency.formatMoney(
-          cartItem.original_line_price,
-          settings.moneyFormat
-        ),
-        discountedPrice: theme.Currency.formatMoney(
-          cartItem.final_line_price,
-          settings.moneyFormat
-        ),
-        discounts: cartItem.line_level_discount_allocations,
-        discountsApplied:
-          cartItem.line_level_discount_allocations.length === 0 ? false : true,
-        vendor: cartItem.vendor,
-        unitPrice: unitPrice
-      };
-
-// 			console.log(cartItem.product_type);
-
-//       console.log(cartItem);
-
-      items.push(item);
+    jQuery.get('/cart?view=emma', function (html) {
+      $cartContainer.html(html);
+      cartCallback(cart);
     });
-
-
-
-    // Gather all cart data and add to DOM
-    data = {
-      items: items,
-      note: cart.note,
-      totalPrice: theme.Currency.formatMoney(
-        cart.total_price,
-        settings.moneyFormat
-      ),
-      cartDiscounts: cart.cart_level_discount_applications,
-      cartDiscountsApplied:
-        cart.cart_level_discount_applications.length === 0 ? false : true
-    };
-
-    $cartContainer.append(template(data));
-
-    cartCallback(cart);
   };
 
   cartCallback = function(cart) {
@@ -4656,7 +4520,7 @@ theme.showUpsells = function(upsells){
   document.getElementById('cart__drawer_items').innerHTML = '';
   document.getElementById('cart__drawer_items').insertAdjacentHTML('beforeend', html);
   let $eventSelect = $(".js-select2");
-  $eventSelect.select2();
+  // $eventSelect.select2();
   $eventSelect.on("select2:select", function (e) {
     let selected_options = e.params.data.element;
     let data_price = $(selected_options).data('price');

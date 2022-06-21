@@ -1,5 +1,5 @@
 .weglot_switcher {
-  display:none !important; 
+  display:none !important;
 }
 
 
@@ -9,7 +9,7 @@
 
 
 html {
-  padding-bottom:0px; 
+  padding-bottom:0px;
 }
 
 .backimg {
@@ -134,7 +134,7 @@ svg:not(:root) {
 .step_info {
   font-size:14px;
   line-height:1.72;
-} 
+}
 
 .step_icon_inner {
   /*   display: flex;
@@ -169,7 +169,7 @@ svg:not(:root) {
   text-align: center;
   display: inline-block;
   padding: 12.5px 20px;
-  outline: 0;  
+  outline: 0;
   text-transform: uppercase;
   font-size:16px;
   font-weight:600;
@@ -184,7 +184,7 @@ svg:not(:root) {
 
 .para_txt {
   /*     padding-left: 10px; */
-  font-size:14px; 
+  font-size:14px;
 }
 
 .pro_note_inner p {
@@ -202,7 +202,7 @@ svg:not(:root) {
 }
 
 #pro_step {
-  padding:0px !important; 
+  padding:0px !important;
   width:92%;
   max-width:650px;
 }
@@ -229,10 +229,10 @@ svg:not(:root) {
 
   .step_head h3 {
     font-size:1.687rem;
-  } 
+  }
 
   .step_item_head {
-    font-size:0.8rem; 
+    font-size:0.8rem;
   }
   .step_info {
     font-size: 0.812rem;
@@ -241,7 +241,7 @@ svg:not(:root) {
     max-width: 45px;
   }
   .step_icon .step_icon_inner {
-    height:45px; 
+    height:45px;
     border:1px solid #FC8800;
   }
   .pro_note {
@@ -269,7 +269,7 @@ svg:not(:root) {
 
 
 #product_form_6713689211018 .pro_info {
-  display:none; 
+  display:none;
 }
 
 
@@ -289,9 +289,9 @@ svg:not(:root) {
     padding:30px 30px 0;
 
   }
-  
+
   .drawer__cart .ajaxcart__inner--has-fixed-footer {
-   padding:0px !important; 
+   padding:0px !important;
   }
 }
 
@@ -333,7 +333,7 @@ svg:not(:root) {
     margin-left: -23px;
 }
 
-.prod_tag p {  
+.prod_tag p {
     transform: rotate(270deg);
     text-transform: uppercase;
     background-color: #FC8800;
@@ -469,7 +469,7 @@ span.select2-search.select2-search--dropdown {
   border-top: 2px solid #c6c1bd;
 }
 .ajaxcart__footer p.ajaxcart__subtotal{
-      font-weight: 700; 
+      font-weight: 700;
       font-size: 18px;
 }
 .ajaxcart__price{
@@ -486,6 +486,7 @@ span.select2-search.select2-search--dropdown {
 }
 div#CartDrawer {
   padding: 0 !important;
+  z-index: 20;
 }
 .drawer__header{
   border: none;
