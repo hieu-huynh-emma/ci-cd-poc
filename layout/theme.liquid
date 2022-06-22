@@ -19,14 +19,14 @@
   {% if page_description %}
   <meta name="description" content="{{ page_description | escape }}">
   {% endif %}
-  
-  
+
+
   <!-- Google Search Console Verification ======================================= -->
   <meta name="google-site-verification" content="6PIbsoianPTw4f2E_enBdUZYqvDOW5cupcrNh7zyVbs" />
-  
+
   <!-- Helpers ================================================== -->
   {% include 'social-meta-tags' %}
-  
+
   {% if template contains 'product'%}
   	{% comment %}
   	{% if canonical_url contains '/products/' %}
@@ -44,7 +44,7 @@
   {% else %}
     <link rel="canonical" href="{{ canonical_url }}">
   {% endif %}
-  
+
   <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
   <meta name="theme-color" content="{{ settings.color_primary }}">
   {% render 'css-variables' %}
@@ -52,7 +52,7 @@
   <!-- CSS ================================================== -->
   {{ 'timber.scss.css' | asset_url | stylesheet_tag }}
   {{ 'theme.scss.css' | asset_url | stylesheet_tag }}
-  
+
   <!-- CUSTOM CSS ================================================== -->
   {{ 'custom-theme.css' | asset_url | stylesheet_tag }}
    {{ 'custom.css' | asset_url | stylesheet_tag }}
@@ -61,15 +61,15 @@
   <link rel="stylesheet" href="{{ 'custom-theme-2.css' | asset_url }}">
   <link rel="stylesheet" href="{{ 'custom-theme-3.css' | asset_url }}">
   <link rel="stylesheet" href="{{ 'animate.css' | asset_url }}">
-  
-  
+
+
     <!---- LUCKY ORANGE INTEGRATION ================================= -->
 
   <script async defer src="https://tools.luckyorange.com/core/lo.js?site-id=9ca7f04f"></script>
-  
-  
+
+
   <!---- SHOP BACK INTEGRATION ================================= -->
-  
+
   <script>
     var url_string = window.location.href;
     var url = new URL(url_string);
@@ -80,12 +80,12 @@
     localStorage.setItem('transaction_id', transaction);
     }
     </script>
-  
+
    <!---- Upsellit Integration ================================= -->
 <script type="text/javascript">
 usi_installed = 0; USI_installCode = function() { if (usi_installed == 0) { usi_installed = 1; var USI_headID = document.getElementsByTagName("head")[0]; var USI_installID = document.createElement('script'); USI_installID.type = 'text/javascript'; USI_installID.src = 'https://www.upsellit.com/active/emmasleep.jsp'; USI_headID.appendChild(USI_installID); } }; if (typeof(document.readyState) != "undefined" && document.readyState === "complete") { USI_installCode(); } else if (window.addEventListener){ window.addEventListener('load', USI_installCode, true); } else if (window.attachEvent) { window.attachEvent('onload', USI_installCode); } else { USI_installCode(); } setTimeout("USI_installCode()", 10000);
 </script>
-  
+
   <!-- Sections ================================================== -->
   <script>
     window.theme = window.theme || {};
@@ -128,8 +128,8 @@ usi_installed = 0; USI_installCode = function() { if (usi_installed == 0) { usi_
   {% endif %}
 
 	{% render 'vitals-loader' %}
- 
- 
+
+
 <!--International SEO: hreflang tags-->
 <link rel="alternate" hreflang="de-AT" href="https://www.emma-matratze.at/">
 <link rel="alternate" hreflang="en-AU" href="https://www.emma-sleep.com.au/">
@@ -168,10 +168,10 @@ usi_installed = 0; USI_installCode = function() { if (usi_installed == 0) { usi_
 <link rel="alternate" hreflang="zh-TW" href="https://www.emma-sleep.com.tw/">
 <link rel="alternate" hreflang="en-VN" href="https://www.emma-sleep.vn/">
 <link rel="alternate" hreflang="en-US" href="https://www.emma-sleep.com/">
-  
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
   <link  href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.css" rel="stylesheet">
-  
+
 {% render 'weglot_hreftags' %}
 {% render 'weglot_switcher' %}
   {% render 'judgeme_core' %}
@@ -183,10 +183,11 @@ usi_installed = 0; USI_installCode = function() { if (usi_installed == 0) { usi_
 
 <script type="text/javascript">
 jQuery(window).on("load",function(){
- 
+
  var theLanguage = $('html').attr('lang');
   if( theLanguage == 'en' ){
     // console.log("en");
+    $(".fr_pop").hide();
     $(".pro_info").css("display", "block");
     $(".img_bann.first_bann").addClass("eng");
     $(".img_bann.sec_bann").addClass("eng");
@@ -212,11 +213,11 @@ jQuery(window).on("load",function(){
   	<div id="pro_step" class="product_step" style="display:none">
               {% include 'product_step' %}
     </div>
-  
+
   	<div id="fr_pop" class="product_step" style="display:none">
         {% include 'fr_pop' %}
     </div>
-  
+
   {%- if template contains 'page' or template contains 'collection' -%}
         {% section 'full-banner' %}
   {% endif %}
@@ -270,7 +271,7 @@ jQuery(window).on("load",function(){
     Documentation:
       - http://shopify.com/timber#ajax-cart
   {% endcomment %}
-  
+
   {% comment %}
   {{ 'jquery-3.6.0.min.js' | asset_url | script_tag }}
   {% endcomment %}
