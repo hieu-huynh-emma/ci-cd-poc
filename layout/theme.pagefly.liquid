@@ -191,14 +191,14 @@ jQuery(window).on("load",function(){
  var theLanguage = $('html').attr('lang');
   if( theLanguage == 'en' ){
     // console.log("en");
-    $(".fr_pop").hide();
+    $(".fr_pop").css("display", "none");
     $(".pro_info").css("display", "block");
     $(".img_bann.first_bann").addClass("eng");
     $(".img_bann.sec_bann").addClass("eng");
   }
   else {
     // console.log("fr");
-    $(".pro_info").hide();
+    $(".pro_info").css("display", "none");
     $(".fr_pop").css("display", "block");
     $(".img_bann").addClass("updfr");
     $(".img_bann>.tImHU").css("background","rgba(255,137,0,1)");
