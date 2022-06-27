@@ -1,32 +1,32 @@
 {%- style -%}
 	{%- assign logo_max_width = section.settings.logo_max_width -%}
 	{%- assign header_color = section.settings.header_color -%}
-	
+
 	{%- if section.settings.transparent_header_enable and request.page_type == 'index' -%}
 		{%- assign header_color_transparent = section.settings.transparent_header_color -%}
-		
+
 		.header-wrapper.header-wrapper--transparent .site-nav__link,
 		.header-wrapper.header-wrapper--transparent .site-header__logo a {
 		color: {{ header_color_transparent }};
 		}
-		
+
 		.header-wrapper.header-wrapper--transparent .site-header__logo a:hover,
 		.header-wrapper.header-wrapper--transparent .site-nav__link:hover,
 		.header-wrapper.header-wrapper--transparent .site-nav__link:focus,
 		.header-wrapper.header-wrapper--transparent .site-header__logo a:focus {
 		color: {{ header_color_transparent | color_modify: 'alpha', 0.75 }};
 		}
-		
+
 		.header-wrapper.header-wrapper--transparent .site-nav--has-dropdown.nav-hover > .site-nav__link {
 		color: {{ header_color }};
 		}
-		
+
 		.header-wrapper.header-wrapper--transparent .burger-icon,
 		.header-wrapper.header-wrapper--transparent .site-nav__link:hover .burger-icon {
 		background: {{ header_color_transparent }};
 		}
 	{%- endif -%}
-	
+
 	.header-wrapper .site-nav__link,
 	.header-wrapper .site-header__logo a,
 	.header-wrapper .site-nav__dropdown-link,
@@ -35,7 +35,7 @@
 	.header-wrapper .site-nav--has-dropdown:hover > a {
 	color: {{ header_color }};
 	}
-	
+
 	.header-wrapper .site-header__logo a:hover,
 	.header-wrapper .site-header__logo a:focus,
 	.header-wrapper .site-nav__link:hover,
@@ -49,22 +49,22 @@
 	.header-wrapper .site-nav__dropdown a:focus {
 	color: {{ header_color | color_modify: 'alpha', 0.75 }};
 	}
-	
+
 	.header-wrapper .burger-icon,
 	.header-wrapper .site-nav--has-dropdown:hover > a:before,
 	.header-wrapper .site-nav--has-dropdown > a.nav-focus:before,
 	.header-wrapper .site-nav--has-dropdown.nav-hover > a:before {
 	background: {{ header_color }};
 	}
-	
+
 	.header-wrapper .site-nav__link:hover .burger-icon {
 	background: {{ header_color | color_modify: 'alpha', 0.75 }};
 	}
-	
+
 	.site-header__logo img {
 	max-width: {{ logo_max_width | append: 'px' }};
 	}
-	
+
 	@media screen and (max-width: 768px) {
 	.site-header__logo img {
 	max-width: 100%;
@@ -76,6 +76,25 @@
 	justify-content: flex-start;
 	}
 {%- endstyle -%}
+<style>
+  .cart-icon-container .icon-cart {
+    font-size: 1.7rem;
+    position: relative;
+  }
+
+  #cart-items-count {
+    top: 0.6rem;
+    left: 2rem;
+    position: absolute;
+    display: inline-flex;
+    height: 1rem;
+    width: 1rem;
+    border-radius: 50%;
+    background: orange;
+    justify-content: center;
+    align-items: center;
+  }
+</style>
 <div data-section-id="{{ section.id }}" data-section-type="header-section" data-template="{{ request.page_type }}">
 	<div id="NavDrawer" class="drawer drawer--left">
 		{% include 'drawer-menu' %}
@@ -109,20 +128,20 @@
 								<div class="h1 site-header__logo large--left" itemscope itemtype="http://schema.org/Organization">
 									{% endif %}
 									{% capture image_size %}{{ logo_max_width | escape }}x{% endcapture %}
-									
+
 									<a href="{{ routes.root_url }}" itemprop="url" class="site-header__logo-link">
 										{% if section.settings.logo %}
 											<img class="site-header__logo-image" src="{{ section.settings.logo | img_url: image_size }}"
 											     srcset="{{ section.settings.logo | img_url: image_size }} 1x, {{ section.settings.logo | img_url: image_size, scale: 2 }} 2x"
 											     alt="{{ section.settings.logo.alt | default: shop.name }}" itemprop="logo">
-											
+
 											{% if request.page_type == 'index' and section.settings.transparent_header_enable %}
 												{% if section.settings.transparent_logo == blank %}
 													{%- assign transparent_logo = section.settings.logo -%}
 												{% else %}
 													{%- assign transparent_logo = section.settings.transparent_logo -%}
 												{% endif %}
-												
+
 												<img class="site-header__logo-image site-header__logo-image--transparent"
 												     src="{{ transparent_logo | img_url: image_size }}"
 												     srcset="{{ transparent_logo | img_url: image_size }} 1x, {{ transparent_logo | img_url: image_size, scale: 2 }} 2x"
@@ -231,7 +250,7 @@
 									</li>
 								{% endif %}
 							{% endfor %}
-							
+
 							{% comment %}
 								Remove comment tags below to add a search box to your header, visible on screens where your header menu
 								is displayed inline.
@@ -242,14 +261,14 @@
 							{% if shop.customer_accounts_enabled %}
 								<li class="site-nav__item site-nav__expanded-item site-nav__item--compressed">
 									<a class="site-nav__link site-nav__link--icon" href="{{ routes.account_url }}">
-										
+
 										{% if customer %}
 											{{ 'layout.customer.account' | t }}
 										{% else %}
 											{{ 'layout.customer.log_in' | t }}
 										{% endif %}
-										
-										
+
+
 										<!--                       <span class="icon-fallback-text">
                         <span class="icon icon-customer" aria-hidden="true"></span>
                         <span class="fallback-text">
@@ -263,7 +282,7 @@
 									</a>
 								</li>
 							{% endif %}
-							
+
 							{% if section.settings.search == 'page' or section.settings.search == 'modal' %}
 								{% assign search_modal = true %}
 								{% if section.settings.search == 'page' %}
@@ -280,20 +299,20 @@
 									</a>
 								</li>
 							{% endif %}
-							
-							<li class="site-nav__item site-nav__item--compressed">
+
+							<li class="site-nav__item site-nav__item--compressed cart-icon-container">
 								<a href="{{ routes.cart_url }}"
 								   class="site-nav__link site-nav__link--icon cart-link js-drawer-open-button-right"
 								   aria-controls="CartDrawer">
-									Cart <span class="icon-fallback-text">
-                      <span class="icon icon-cart" aria-hidden="true"></span>
-                      <span class="fallback-text">{{ 'layout.cart.title' | t }}</span>
-                    </span>
-									<span
-										class="cart-link__bubble{% if cart.item_count > 0 %} cart-link__bubble--visible{% endif %}"></span>
+                   <span class="icon-fallback-text">
+                     <span class="icon icon-cart" aria-hidden="true"></span>
+                     <span class="fallback-text">{{ 'layout.cart.title' | t }}</span>
+                     <span id="cart-items-count">{{ cart.item_count }}</span>
+                  </span>
+                    Cart
 								</a>
 							</li>
-						
+
 						</ul>
 						<!-- //site-nav -->
 					</nav>
@@ -311,13 +330,49 @@
 						</div>
 					</div>
 				</div>
-		
+
 		</div>
 		</header>
 	</div>
 </div>
 </div>
+<script>
+  const open = window.XMLHttpRequest.prototype.open;
+  function openReplacement() {
+    this.addEventListener("load", function () {
+      if (
+        [
+          "/cart/add.js",
+          "/cart/update.js",
+          "/cart/change.js",
+          "/cart/clear.js",
+        ].includes(this._url)
+      ) {
+        const data = JSON.parse(this.response);
+        updateCartItemsCount(data);
+      }
+    });
+    return open.apply(this, arguments);
+  }
 
+  window.XMLHttpRequest.prototype.open = openReplacement;
+
+  $(document).ready(function () {
+    $('button[data-pf-type="ProductATC"]').click(function () {
+      let $cartButton = $('.cart-icon-container .js-drawer-open-button-right').first();
+      if(!$('#CartDrawer').hasClass('js-drawer-open')) {
+        ajaxCart.load();
+        $cartButton.click();
+      }
+    });
+  });
+
+  function updateCartItemsCount(cart) {
+    if (cart.item_count) {
+      $('#cart-items-count').text(`${cart.item_count}`)
+    }
+  }
+</script>
 
 {% schema %}
 {
