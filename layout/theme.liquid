@@ -2,51 +2,13 @@
 <html class="no-js" lang="{{ request.locale.iso_code }}">
 <head>
  {%- render 'hso-no-follow-no-index' -%}{% render 'pagefly-head' %}
-
-  <!-- Basic page needs ================================================== -->
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-
+  <!-- Metadata ================================================== -->
+  {% include 'page-metadata' %}
+  
   {% if settings.favicon %}
     <link rel="shortcut icon" href="{{ settings.favicon | img_url: '32x32' }}" type="image/png" />
   {% endif %}
-
-  <!-- Title and description ================================================== -->
-  <title>
-  {{ page_title }}{% if current_tags %}{% assign meta_tags = current_tags | join: ', ' %} &ndash; {{ 'general.meta.tags' | t: tags: meta_tags }}{% endif %}{% if current_page != 1 %} &ndash; {{ 'general.meta.page' | t: page: current_page }}{% endif %}{% unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless %}
-  </title>
-
-  {% if page_description %}
-  <meta name="description" content="{{ page_description | escape }}">
-  {% endif %}
-
-
-  <!-- Google Search Console Verification ======================================= -->
-  <meta name="google-site-verification" content="6PIbsoianPTw4f2E_enBdUZYqvDOW5cupcrNh7zyVbs" />
-
-  <!-- Helpers ================================================== -->
-  {% include 'social-meta-tags' %}
-
-  {% if template contains 'product'%}
-  	{% comment %}
-  	{% if canonical_url contains '/products/' %}
-      {% assign c_url = canonical_url | split:'/' | size %}
-  	  {% if c_url > 5 %}
-        <meta name="robots" content="noindex,nofollow">
-  	  {% endif %}
-  	{% endif %}
-    {% endcomment %}
-    {% if product.has_only_default_variant %}
-     <link rel="canonical" href="{{ canonical_url }}">
-    {% else %}
-     <link rel="canonical" href="{{ canonical_url }}/{{ product.selected_or_first_available_variant.title | split: '|' | first | handleize }}-size">
-    {% endif %}
-  {% else %}
-    <link rel="canonical" href="{{ canonical_url }}">
-  {% endif %}
-
-  <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
-  <meta name="theme-color" content="{{ settings.color_primary }}">
+  
   {% render 'css-variables' %}
 
   <!-- CSS ================================================== -->

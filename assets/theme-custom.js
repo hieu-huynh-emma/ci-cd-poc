@@ -4674,7 +4674,16 @@ $(document).ready(function() {
   sections.register('map', theme.Maps);
   sections.register('search', theme.Search);
   sections.register('footer-section', theme.FooterSection);
+
 });
+
+function getPlainVariantSize(val) {
+  if(val.indexOf('|') > -1){
+     return val.split('|')[0].toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-$/, '').replace(/^-/, '');
+  }else{
+    return val.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-$/, '').replace(/^-/, '');
+  }
+}
 
 /*
  * Run function after window resize
@@ -4694,17 +4703,14 @@ var afterResize = (function () {
 })();
 
 
-jQuery('.pf-variant-select').on('change',function(e){
+$(".pf-variant-select[data-option-name='Size']").on('change',function(e){
   if (!history.replaceState) {
     return;
   }
 
   var val = $(this).val();
-  if(val.indexOf('|') > -1){
-    var str = val.split('|')[0].toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-$/, '').replace(/^-/, '');
-  }else{
-    var str = val.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-$/, '').replace(/^-/, '');
-  }
+  let str = getPlainVariantSize(val)
+
   str += '-size';
   var newurl =
       window.location.protocol +'//' +window.location.host +'/products/' + vitals_product_data.handle + '/' +str;
@@ -4720,15 +4726,19 @@ jQuery('.pf-variant-select').on('change',function(e){
   setTimeout(updatePaybrightMonthlyInstallment, 0)
 });
 
+function getSelectedVariant() {
+  const urlParams = new URLSearchParams(window.location.search)
+  const selectedVariantId = urlParams.get('variant');
+
+  return vitals_product_data.variants.find(({ id }) => id === +selectedVariantId)
+}
+
 function updatePaybrightMonthlyInstallment () {
   const $monthlyInstallment = $(".pro_val");
 
   if(!$monthlyInstallment.length) return
 
-  const urlParams = new URLSearchParams(window.location.search)
-  const selectedVariantId = urlParams.get('variant');
-
-  const selectedVariant = vitals_product_data.variants.find(({ id }) => id === +selectedVariantId)
+  const selectedVariant = getSelectedVariant()
 
   const variantPrice = selectedVariant?.price / 100;
 
