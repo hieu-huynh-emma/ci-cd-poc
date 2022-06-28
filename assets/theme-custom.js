@@ -985,6 +985,7 @@ var ajaxCart = (function(module, $) {
       );
     }
     jQuery('#CartDrawer .drawer__title').text(`Your cart - ${cart.item_count} items`);
+    jQuery('#cart-items-count').text(`${cart.item_count}`);
   };
 
   formOverride = function() {
@@ -1041,6 +1042,7 @@ var ajaxCart = (function(module, $) {
         theme.strings.cartCookies +
         '</p>'
       );
+      $('#CartDrawe .drawer__inner').css('height', 'max-content');
       cartCallback(cart);
       return;
     }
@@ -4285,7 +4287,6 @@ theme.afterCartLoad = function() {
     theme.sizeCartDrawerFooter();
 
     // Show cart bubble in nav if items exist
-    if (cart.items.length > 0) {
       jQuery.getJSON(window.Shopify.routes.root + 'products.json', function(product) {
 //     ==================*********  upsell code start  *********==================
 
@@ -4343,9 +4344,7 @@ theme.afterCartLoad = function() {
 
 //    ==================*********   upsell code end    *********==================
       theme.cache.$cartBuggle.addClass('cart-link__bubble--visible');
-    } else {
-      theme.cache.$cartBuggle.removeClass('cart-link__bubble--visible');
-    }
+
   });
 };
 
@@ -4374,8 +4373,8 @@ theme.afterCartLoad = function() {
             var variant_id = $(this).parents('.prod_item').find('.js-select2').val();
             var qty = "1";
             addItemToCart(variant_id, qty);
+            ajaxCart.load();
           });
-
 
         //         ajax cart end code
 // =============================================================
@@ -4404,15 +4403,6 @@ theme.getMultipleRandom = function(arr, num) {
   return shuffled.slice(0, num);
 };
 
-/*
-          $(document).on('change',"select.product-form__variants",function(){
-            var data_price = $(this).children("option:selected").data('price');
-            console.log(data_price);
-            var data_compare_price = $(this).children("option:selected").data('compare_price');
-            $(this).parents(".prod_item ").find( ".prod_sale_price").text(data_compare_price);
-            $(this).parents(".prod_item ").find( ".prod_price").text(data_price);
-          });
-*/
 theme.showUpsells = function(upsells){
   //console.log(upsells);
   $.each(upsells,function(u,e){
@@ -4508,15 +4498,9 @@ theme.showUpsells = function(upsells){
         }
 
       });
-
-      //     console.log(upsells[final_v]);
     }
   });
 
-
-
-
-//   console.log(html);
   document.getElementById('cart__drawer_items').innerHTML = '';
   document.getElementById('cart__drawer_items').insertAdjacentHTML('beforeend', html);
   let $eventSelect = $(".js-select2");
@@ -4690,7 +4674,16 @@ $(document).ready(function() {
   sections.register('map', theme.Maps);
   sections.register('search', theme.Search);
   sections.register('footer-section', theme.FooterSection);
+
 });
+
+function getPlainVariantSize(val) {
+  if(val.indexOf('|') > -1){
+     return val.split('|')[0].toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-$/, '').replace(/^-/, '');
+  }else{
+    return val.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-$/, '').replace(/^-/, '');
+  }
+}
 
 /*
  * Run function after window resize
@@ -4710,17 +4703,14 @@ var afterResize = (function () {
 })();
 
 
-jQuery('.pf-variant-select').on('change',function(e){
+$(".pf-variant-select[data-option-name='Size']").on('change',function(e){
   if (!history.replaceState) {
     return;
   }
 
   var val = $(this).val();
-  if(val.indexOf('|') > -1){
-    var str = val.split('|')[0].toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-$/, '').replace(/^-/, '');
-  }else{
-    var str = val.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-$/, '').replace(/^-/, '');
-  }
+  let str = getPlainVariantSize(val)
+
   str += '-size';
   var newurl =
       window.location.protocol +'//' +window.location.host +'/products/' + vitals_product_data.handle + '/' +str;
@@ -4736,21 +4726,24 @@ jQuery('.pf-variant-select').on('change',function(e){
   setTimeout(updatePaybrightMonthlyInstallment, 0)
 });
 
+function getSelectedVariant() {
+  const urlParams = new URLSearchParams(window.location.search)
+  const selectedVariantId = urlParams.get('variant');
+
+  return vitals_product_data.variants.find(({ id }) => id === +selectedVariantId)
+}
+
 function updatePaybrightMonthlyInstallment () {
   const $monthlyInstallment = $(".pro_val");
 
   if(!$monthlyInstallment.length) return
 
-  const urlParams = new URLSearchParams(window.location.search)
-  const selectedVariantId = urlParams.get('variant');
-
-  const selectedVariant = vitals_product_data.variants.find(({ id }) => id === +selectedVariantId)
+  const selectedVariant = getSelectedVariant()
 
   const variantPrice = selectedVariant?.price / 100;
 
 
   $monthlyInstallment.text('$' + (variantPrice / 6).toFixed(2))
-
 }
 
 window.addEventListener('locationchange', function () {
