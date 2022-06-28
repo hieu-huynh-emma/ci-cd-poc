@@ -4744,7 +4744,6 @@ function updatePaybrightMonthlyInstallment () {
 
 
   $monthlyInstallment.text('$' + (variantPrice / 6).toFixed(2))
-
 }
 
 window.addEventListener('locationchange', function () {
