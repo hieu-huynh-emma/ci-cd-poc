@@ -4284,7 +4284,10 @@ theme.afterCartLoad = function() {
         var default_upsell_products = [
           'Breathable Mattress Protector',
           'Original Adjustable Foam Pillow',
-          'Emma Original Mattress'
+          'Emma Original Mattress',
+          'Protège-matelas respirant',
+          'Oreiller original en mousse réglable',
+          'Matelas original Emma'
         ]
 
         var upsell_results = {};
