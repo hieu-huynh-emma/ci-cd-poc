@@ -4374,6 +4374,7 @@ theme.afterCartLoad = function() {
             var variant_id = $(this).parents('.prod_item').find('.js-select2').val();
             var qty = "1";
             addItemToCart(variant_id, qty);
+            ajaxCart.load();
           });
 
         //         ajax cart end code
