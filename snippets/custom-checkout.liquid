@@ -80,10 +80,14 @@
         });
       }
       else if (Shopify.Checkout.step === 'shipping_method') {
-
+        addShippingSectionSubtitle($);
+        
         clearInterval(timerInterval);
         document.getElementsByClassName('checkcout-countdown')[0].style.display = 'none';
 
+        {% if request.locale.iso_code == 'fr' %}
+        $('[data-shipping-method-label-title="Standard Delivery"]').text('Livraison Standard');
+        {% endif %}
 
         $(".order-summary-toggle").click(function () {
           $(".checkout_upsell").addClass("order-summary--is-expanded");
@@ -209,6 +213,7 @@
     ele1.innerHTML = "Please expect delivery to be made within 2-4 business days for Ontario, or 4-8 business days for the rest of Canada.";
     node1.parentNode.insertBefore(ele1, node1.nextSibling);
   }
+  
 
   // PAYMENT METHOD
   function disablePaybrightPaymentMethod($) {
