@@ -517,8 +517,8 @@
           {% render 'checkout-countdown'%}
           {{ alternative_payment_methods }}
           <div id="review-shipping-address">
-            <div class="heading1">Your Details</div>
-            <p class="para">Please review the shipping address before placing your order.</p>
+            <div class="heading1">{{ 'shopify.checkout.your_details' | t }}</div>
+            <p class="para">{{ 'shopify.checkout.shipping_address_review' | t }}</p>
           </div>
           {{ content_for_layout }}
         </main>

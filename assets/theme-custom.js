@@ -789,10 +789,6 @@ function custom_attributeToString(attribute) {
 /*============================================================================
   API Functions
 ==============================================================================*/
-ShopifyAPI.onCartUpdate = function() {
-  // alert('There are now ' + cart.item_count + ' items in the cart.');
-};
-
 ShopifyAPI.updateCartNote = function(note, callback) {
   var params = {
     type: 'POST',
@@ -1031,22 +1027,7 @@ var ajaxCart = (function(module, $) {
     buildCart(cart);
   };
 
-  buildCart = function (cart) {
-    // Show empty cart
-    if (cart.item_count === 0) {
-      $cartContainer.html(
-        '<p class="cart--empty-message">' +
-        theme.strings.cartEmpty +
-        '</p>\n' +
-        '<p class="cookie-message">' +
-        theme.strings.cartCookies +
-        '</p>'
-      );
-      $('#CartDrawe .drawer__inner').css('height', 'max-content');
-      cartCallback(cart);
-      return;
-    }
-
+  buildCart = function (cart) {    // Show empty cart
     jQuery.get('/cart?view=emma', function (html) {
       $cartContainer.html(html);
       cartCallback(cart);
@@ -4300,44 +4281,64 @@ theme.afterCartLoad = function() {
           "bed-frame-without-mattress" : ['mattress','protector','pillow']
         }
 
+        var default_upsell_products = [
+          'Breathable Mattress Protector',
+          'Original Adjustable Foam Pillow',
+          'Emma Original Mattress'
+        ]
+
         var upsell_results = {};
 
-        // This is the cart items loop
-        $(cart.items).each(function(i,c_item){
-          var cart_pro_type = (c_item.product_type).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-$/, '').replace(/^-/, '');
+        if (cart.items.length == 0) {
+          $(product['products']).each(function (_, prod) {
+            if (default_upsell_products.includes(prod.title)) {
+              const productType = (prod.product_type).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-$/, '').replace(/^-/, '');
+              if ((typeof upsell_results[productType] != undefined) && (typeof upsell_results[productType] != 'undefined') && (upsell_results[productType] != null)) {
+                upsell_results[productType].push(prod);
+              } else {
+                upsell_results[productType] = [prod];
+              }
+            }
+          });
+        } else {
+          // This is the cart items loop
+          $(cart.items).each(function (i, c_item) {
+            var cart_pro_type = (c_item.product_type).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-$/, '').replace(/^-/, '');
 
-          // got the same type from upsell object
-          if((typeof upsell_pro[cart_pro_type] != undefined) && (typeof upsell_pro[cart_pro_type] != 'undefined') && (upsell_pro[cart_pro_type].length > 0)){
-            var upsell_type = upsell_pro[cart_pro_type];
+            // got the same type from upsell object
+            if ((typeof upsell_pro[cart_pro_type] != undefined) && (typeof upsell_pro[cart_pro_type] != 'undefined') && (upsell_pro[cart_pro_type].length > 0)) {
+              var upsell_type = upsell_pro[cart_pro_type];
 
-            // each loop of current cart product type from upsell object
-            $(upsell_type).each(function(k,upsell_type){
+              // each loop of current cart product type from upsell object
+              $(upsell_type).each(function (k, upsell_type) {
 
-              if((typeof upsell_type != 'undefined') && (typeof upsell_type != undefined) && (typeof upsell_type != null)){
+                if ((typeof upsell_type != 'undefined') && (typeof upsell_type != undefined) && (typeof upsell_type != null)) {
 
-                // find products which match upsell types
-                $(product['products']).each(function(p,e){
+                  // find products which match upsell types
+                  $(product['products']).each(function (p, e) {
 
-                  var protype_data = (e.product_type).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-$/, '').replace(/^-/, '');
+                    var protype_data = (e.product_type).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-$/, '').replace(/^-/, '');
 
-                  // match the type of product with the upsell type
-                  if(upsell_type == protype_data){
-                    // check this product isn't in cart
-                    let check = theme.checkIncart(e.id,cart.items);
-                    if((check == 'true') || (check == true)){
-                      if((typeof upsell_results[protype_data] != undefined) && (typeof upsell_results[protype_data] != 'undefined') && (upsell_results[protype_data] != null)){
-                        upsell_results[protype_data].push(e);
-                      }else{
-                        upsell_results[protype_data] = [e];
+                    // match the type of product with the upsell type
+                    if (upsell_type == protype_data) {
+                      // check this product isn't in cart
+                      let check = theme.checkIncart(e.id, cart.items);
+                      if ((check == 'true') || (check == true)) {
+                        if ((typeof upsell_results[protype_data] != undefined) && (typeof upsell_results[protype_data] != 'undefined') && (upsell_results[protype_data] != null)) {
+                          upsell_results[protype_data].push(e);
+                        } else {
+                          upsell_results[protype_data] = [e];
+                        }
                       }
                     }
-                  }
-                });
-              }
-            });
-          }
-        });
-        if((typeof upsell_results != undefined) && (typeof upsell_results != 'undefined') && (upsell_results != null)){
+                  });
+                }
+              });
+            }
+          });
+        }
+
+        if ((typeof upsell_results != undefined) && (typeof upsell_results != 'undefined') && (upsell_results != null)) {
           theme.showUpsells(upsell_results);
         }
       });
@@ -4353,7 +4354,6 @@ theme.afterCartLoad = function() {
 
 
           function addItemToCart(variant_id, qty) {
-            console.log(variant_id,qty);
             var data = {
               "id": variant_id,
               "quantity": qty
@@ -4365,6 +4365,7 @@ theme.afterCartLoad = function() {
               dataType: 'json',
               success: function() {
                 $(".cart_trigger_click").trigger("click");
+                ajaxCart.load();
               }
             });
           };
@@ -4404,7 +4405,6 @@ theme.getMultipleRandom = function(arr, num) {
 };
 
 theme.showUpsells = function(upsells){
-  //console.log(upsells);
   $.each(upsells,function(u,e){
     upsells[u] = remove_Dumplicate_Value(e);
   });
