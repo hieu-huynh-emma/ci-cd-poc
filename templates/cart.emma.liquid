@@ -1,16 +1,5 @@
 {% layout none %}
 <form action="{{ routes.cart_url }}" method="post" novalidate class="cart ajaxcart" style="z-index: 100;">
- {% if cart.items.size == 0%}
- <div class="cart--empty-message-wrapper">
-  <p class="cart--empty-message">
-   {{ 'cart.general.empty' | t }}
-  </p>
- </div>
- {% else %}
-  <div class="cart--ship-out-time">
-   <p>Orders before 14.00 EST today for next business day shipping.</p>
-  </div>
- {% endif%}
  <div class="ajaxcart__inner ajaxcart__inner--has-fixed-footer">
   {% assign total_cart_compare_price = 0 %}
   {% for item in cart.items %}
@@ -59,7 +48,7 @@
 
        <div class="grid__item one-half text-right">
         {% if item.variant.compare_at_price > item.variant.price %}
-        <del>{{item.variant.compare_at_price | money}}</del>
+        <del class="ajaxcart__price">{{item.variant.compare_at_price | money}}</del>
         <span class="ajaxcart__price">{{item.variant.price | money}}</span>
         {%else%}
         <span class="ajaxcart__price">{{item.price | money}}</span>
@@ -112,11 +101,3 @@
   </a>
  </div>
 </form>
-<style>
- .cart--ship-out-time {
-  font-weight: 400;
-  opacity: .7;
-  font-style: italic;
-  font-size: 1rem;
- }
-</style>
