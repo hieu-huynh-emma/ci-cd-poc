@@ -1718,7 +1718,7 @@ color: #FF8900!important;}
 #shopify-section-header {
   position: sticky;
   top: 0;
-  z-index: 20;
+  z-index: 101;
 }
 
 #NavDrawer {
@@ -1737,5 +1737,9 @@ color: #FF8900!important;}
   top: 5.5rem !important;  
   height: max-content;
   }
+}
+
+.jdgm-carousel-wrapper .jdgm-carousel__arrows {
+  display: block;
 }
 /* CUSTOM CSS END */
