@@ -373,7 +373,9 @@
   "shopify": {
     "checkout": {
       "order_summary": {
-        "shipping_default_value": "Free"
+        "shipping_default_value": "Free",
+        "discount_label": "Promo code",
+        "discount_placeholder": "Promo code"
       },
       "phone_field_error": "Phone field error",
       "your_details": "Your Details",
