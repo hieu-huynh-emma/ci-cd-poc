@@ -34,7 +34,7 @@
   .popup-options {
     display: flex;
     flex-flow: column;
-    width: 12rem;
+    width: 16rem;
     margin: 0 auto;
   }
 
@@ -69,13 +69,13 @@
 </style>
 <div id="leaving-checkout-popup">
   <div class="popup-container">
-    <h3 class="popup-title">You haven't finished checking out yet!</h3>
+    <h3 class="popup-title">{{ 'shopify.checkout.popup.message' | t }}</h3>
     <div class="popup-options">
       <button class="popup-option keep-checking-out" onclick="hidePopup()">
-        Keep checking out
+        {{ 'shopify.checkout.popup.continue' | t }}
       </button>
       <a class="popup-option return-to-cart" href="/cart">
-        Return to cart
+        {{ 'shopify.checkout.popup.return_to_cart' | t }}
       </a>
     </div>
   </div>

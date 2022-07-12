@@ -369,12 +369,22 @@
     "shopify": {
         "checkout": {
           "order_summary": {
-            "shipping_default_value": "Libre"
+            "shipping_default_value": "Libre",
+            "discount_title": "Code promo",
+            "discount_label": "Code promo",
+            "discount_placeholder": "Code promo",
+            "discount_sublabel": "Les offres ne sont pas cumulables.",
+            "you_save": "Vous économisez {{ saved }}!"
           },
           "phone_field_error": "Erreur champ téléphone",
           "your_details": "Vos détails",
           "shipping_address_review": "Merci de vérifier l'adresse de livraison avant de placer votre commande.",
-          "continue_with_credit": "ou continuez ci-dessous avec votre carte de crédit"
+          "continue_with_credit": "ou continuez ci-dessous avec votre carte de crédit",
+          "popup" : {
+            "message": "Vous n'avez pas encore fini votre commande!",
+            "continue": "Continuer votre commande",
+            "return_to_cart": "Retourner au panier"
+          }
         }
     }
   }

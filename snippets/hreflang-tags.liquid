@@ -1,0 +1,18 @@
+<!--International SEO: hreflang tags-->
+{% if template contains 'product' %}
+    {% assign productHreflangs = product.metafields.accentuate.hreflangs %}
+
+    {% if productHreflangs != blank %}
+        {{ productHreflangs | strip }}
+    {% else %}
+        {% include 'global-hreflangs' %}
+    {% endif %}
+{% else %}
+    {% assign pageHreflangs = page.metafields.accentuate.hreflangs %}
+
+    {% if pageHreflangs != blank %}
+        {{ pageHreflangs | strip }}
+    {% else %}
+        {% include 'global-hreflangs' %}
+    {% endif %}
+{% endif %}

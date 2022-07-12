@@ -1,3 +1,16 @@
+{% assign saved = 0.00 %}
+{% for item in checkout.line_items %}
+  {% if item.variant.compare_at_price != item.final_price %}
+    {% assign saved = item.variant.compare_at_price | minus: item.final_price | times: item.quantity | plus: saved %}
+  {% endif %}
+{% endfor %}
+{% assign saved = saved | minus: checkout.discounts_savings %}
+{% if request.locale.iso_code == 'fr' %}
+  {% assign saved_amount = saved | money_without_currency | replace: '.', ',' | append: ' $' %}
+{% else %}
+  {% assign saved_amount = saved | money %}
+{% endif %}
+
 <script type="text/javascript">
   const PAYMENT_GATEWAYS_NOT_ALLOWED = ["offsite"];
   const TAXES = [
@@ -16,8 +29,14 @@
   ];
 
   (function ($) {
+    var totalSavedText = '{% if saved > 0 %}{{ 'shopify.checkout.order_summary.you_save' | t: saved: saved_amount }}{% endif %}';
+    var totalAmountText = $('[data-checkout-payment-due-target]').text();
+    var discountCode = $('.reduction-code').length ? $('.reduction-code').text() : null;
+
     window.PhoneNumberInputFormatter = function () { return false; };
+
     $(this).scrollTop(0);
+    
     $(document).on("page:load page:change", function () {
       $('.main__header .logo').on('click', function (e) {
         e.preventDefault();
@@ -99,6 +118,49 @@
         document.getElementsByClassName('checkcout-countdown')[0].style.display = 'none';
 
       }
+
+      if (Shopify.Checkout.step === 'contact_information' || Shopify.Checkout.step === 'shipping_method') {
+        const $discountCodeInput = $('#checkout_reduction_code');
+        if ($discountCodeInput && $discountCodeInput.length) {
+          const $parent = $discountCodeInput.parent().parent().parent();
+          if (!$parent.hasClass('field--error')) {
+            $parent.append(`
+              <p class="field__message field__message--error">{{ 'shopify.checkout.order_summary.discount_sublabel' | t }}</p>
+            `);
+            $parent.toggleClass('field--info', true);
+          }
+          $discountCodeInput.on('keyup', function() {
+            $parent.toggleClass('field--error', false);
+            $parent.toggleClass('field--info', true);
+            $parent.find('.field__message--error').text(`{{ 'shopify.checkout.order_summary.discount_sublabel' | t }}`);
+          });
+        }
+      }
+
+      if (!$('.total-saved-line').length) {
+        $('.total-line-table__footer').append(`
+          <tr class="total-saved-line">
+            <td></td>
+            <td class="total-line__price payment-due" style="text-align: right; padding-top: 5px">
+              <span class="total-saved-text">${totalSavedText}</span>
+            </td>
+          </tr>
+        `);
+      }
+
+      const newDiscountCode = $('.reduction-code').length ? $('.reduction-code').text() : null;
+      if (newDiscountCode === discountCode) {
+        return;
+      }
+      discountCode = newDiscountCode;
+  
+      $.get(window.location.href, function(html) {
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, 'text/html');
+        totalSavedText = doc.querySelector('#total-saved-amount').value;
+        $('.total-saved-text').text(totalSavedText);
+      });
+
     });
   })(Checkout.$);
 
@@ -263,6 +325,10 @@
 
 <script src="{{ 'custom-checkout.js' | asset_url }}" defer="defer"></script>
 
+{% if saved > 0 %}
+  <input id="total-saved-amount" type="hidden" value="{% if saved > 0 %}{{ 'shopify.checkout.order_summary.you_save' | t: saved: saved_amount }}{% endif %}" disabled>
+{% endif %}
+
 {% for item in checkout.line_items %}
   {%- if item.variant.compare_at_price != item.final_price -%}
     <input id="{{ item.key }}" type="hidden" name="original_line_price" value="{{ item.variant.compare_at_price | times: item.quantity | money }}" disabled>
@@ -319,6 +385,18 @@
 
   .original-line-price {
     text-decoration: line-through;
-}
+    font-weight: 400;
+    color: #b1b3d5 !important;
+  }
+
+  .field--info .field__input {
+    border-color: inherit;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+  .field--info .field__message--error{
+    color: #b1b3d5;
+    display: block;
+  }
 
 </style>

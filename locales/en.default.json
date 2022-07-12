@@ -374,13 +374,22 @@
     "checkout": {
       "order_summary": {
         "shipping_default_value": "Free",
+        "discount_title": "Promo code",
         "discount_label": "Promo code",
-        "discount_placeholder": "Promo code"
+        "discount_placeholder": "Promo code",
+        "discount_sublabel": "Offers cannot be combined.",
+        "you_save": "You save {{ saved }}!"
       },
       "phone_field_error": "Phone field error",
       "your_details": "Your Details",
+      "discount_code": "Promo code",
       "shipping_address_review": "Please review the shipping address before placing your order.",
-      "continue_with_credit": "or continue below to pay with credit card"
+      "continue_with_credit": "or continue below to pay with credit card",
+      "popup" : {
+        "message": "You haven't finished checking out yet!",
+        "continue": "Keep checking out",
+        "return_to_cart": "Return to cart"
+      }
     }
   }
 }
