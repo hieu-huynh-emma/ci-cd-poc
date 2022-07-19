@@ -76,7 +76,7 @@ For info on test orders:
                 {% if property_size > 0 %}
                 {% for p in item.properties %}
                 {% assign first_character_in_key = p.first | truncate: 1, '' %}
-                {% unless p.last == blank %}
+                {% unless p.last == blank or p.first contains '__pf' %}
                 {% unless p.first contains '_is_preorder' %}{{ p.first }}:{% endunless %}
 
                 {% if p.last contains '/uploads/' %}
