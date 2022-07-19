@@ -252,14 +252,14 @@
     {% else %}
       if (labels && (labels.length === 1)) {
         $taxLabel.text(`${labels}`);
-        const value = ((checkoutSubtotal / 100) * totalRate).toFixed(2);
+        const value = ((checkoutSubtotal / 10000) * totalRate).toFixed(2);
         $taxPrice.html(`<span class="order-summary__emphasis">$${value}</span>`);
       } else if (labels && (labels.length > 1)) {
         let taxTotal = 0;
         const $totalTable = $('.total-line-table__tbody');
         labels.forEach((label) => {
           const { subLabel, rate } = label;
-          const value = ((checkoutSubtotal / 100) * rate).toFixed(2);
+          const value = ((checkoutSubtotal / 10000) * rate).toFixed(2);
           $totalTable.append(`<tr class="total-line tax-subtotal"><th class="total-line__name">Tax (${subLabel} ${rate}%)</th><td class="total-line__price"><span class="order-summary__emphasis">$${value}</span></td></tr>`);
           taxTotal += (+value);
         });

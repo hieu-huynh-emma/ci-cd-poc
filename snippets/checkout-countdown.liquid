@@ -14,9 +14,9 @@
   var min = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
   var sec = Math.floor((diff % (1000 * 60)) / 1000);
   {% if request.locale.iso_code == 'fr' %}
-  document.getElementById("checkout-timer").innerHTML = `<p>Un produit dans votre panier est forte demande. <br/>Votre panier est réservé pour ${min}:${sec} minutes.</p>`
+  document.getElementById("checkout-timer").innerHTML = `<p>Un produit dans votre panier est forte demande. <br/>Votre panier est réservé pour ${min}:${('0'+sec).slice(-2)} minutes.</p>`
   {% else %}
-  document.getElementById("checkout-timer").innerHTML = `<p>An item in your cart is in high demand. <br/>Your order is reserved for ${min}:${sec} minutes. Check out soon!</p>`
+  document.getElementById("checkout-timer").innerHTML = `<p>An item in your cart is in high demand. <br/>Your order is reserved for ${min}:${('0'+sec).slice(-2)} minutes. Check out soon!</p>`
   {% endif %}
 
   if (diff < 0) {
