@@ -1,0 +1,38 @@
+<div class="site-header-left">
+	<button class="hamburger-btn">
+		<svg width="20" height="13" viewBox="0 0 20 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<path
+				d="M11 10.9883H1C0.734784 10.9883 0.48043 11.0936 0.292893 11.2812C0.105357 11.4687 0 11.7231 0 11.9883C0 12.2535 0.105357 12.5079 0.292893 12.6954C0.48043 12.8829 0.734784 12.9883 1 12.9883H11C11.2652 12.9883 11.5196 12.8829 11.7071 12.6954C11.8946 12.5079 12 12.2535 12 11.9883C12 11.7231 11.8946 11.4687 11.7071 11.2812C11.5196 11.0936 11.2652 10.9883 11 10.9883ZM1 2.98828H19C19.2652 2.98828 19.5196 2.88292 19.7071 2.69539C19.8946 2.50785 20 2.2535 20 1.98828C20 1.72306 19.8946 1.46871 19.7071 1.28117C19.5196 1.09364 19.2652 0.988281 19 0.988281H1C0.734784 0.988281 0.48043 1.09364 0.292893 1.28117C0.105357 1.46871 0 1.72306 0 1.98828C0 2.2535 0.105357 2.50785 0.292893 2.69539C0.48043 2.88292 0.734784 2.98828 1 2.98828ZM19 5.98828H1C0.734784 5.98828 0.48043 6.09364 0.292893 6.28117C0.105357 6.46871 0 6.72306 0 6.98828C0 7.2535 0.105357 7.50785 0.292893 7.69539C0.48043 7.88292 0.734784 7.98828 1 7.98828H19C19.2652 7.98828 19.5196 7.88292 19.7071 7.69539C19.8946 7.50785 20 7.2535 20 6.98828C20 6.72306 19.8946 6.46871 19.7071 6.28117C19.5196 6.09364 19.2652 5.98828 19 5.98828Z"
+				fill="#2E2F3C"
+			/>
+		</svg>
+	</button>
+	
+	<a href="{{ routes.root_url }}" itemprop="url" class="site-header-left__logo">
+		{% if section.settings.logo %}
+			<img
+				class="site-header-left__logo-image" src="{{ section.settings.logo | img_url: image_size }}"
+				srcset="{{ section.settings.logo | img_url: image_size }} 1x, {{ section.settings.logo | img_url: image_size, scale: 2 }} 2x"
+				alt="{{ section.settings.logo.alt | default: shop.name }}" itemprop="logo"
+			>
+		{% else %}
+			{{ shop.name }}
+		{% endif %}
+	</a>
+</div>
+
+<script>
+  $(".site-header-left .hamburger-btn").click(function () {
+    const $siteNav = $("#site-nav")
+    const openClass = "site-nav--is-open"
+    const isOpen = $siteNav.hasClass(openClass);
+
+    if (isOpen) {
+      $siteNav.slideUp(100);
+      $siteNav.removeClass(openClass)
+    } else {
+      $siteNav.slideDown(100)
+      $siteNav.addClass(openClass)
+    }
+  })
+</script>

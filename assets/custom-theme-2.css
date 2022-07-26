@@ -1,6 +1,6 @@
 .why-emma {
-background: linear-gradient(180deg, #FFF6EB 0%, rgba(255, 246, 235, 0) 100%);  
-  
+background: linear-gradient(180deg, #FFF6EB 0%, rgba(255, 246, 235, 0) 100%);
+
 
   padding-top: 70px;
 }
@@ -23,8 +23,8 @@ background: linear-gradient(180deg, #FFF6EB 0%, rgba(255, 246, 235, 0) 100%);
   text-align: center;
   margin-bottom: 142px;
 }
-  
-  
+
+
 .features-img-cont {
   width: 264px;
   height: 264px;
@@ -619,13 +619,6 @@ background: linear-gradient(180deg, #FFF6EB 0%, rgba(255, 246, 235, 0) 100%);
 
 
 @media (max-width: 1300px) {
-  
-  .site-nav li {
-  	padding-right: 10px;
-  }
-  
-  
- 
   .slp--wrapper {
   	transform: scale(.8);
     transform-origin: center;
@@ -633,124 +626,124 @@ background: linear-gradient(180deg, #FFF6EB 0%, rgba(255, 246, 235, 0) 100%);
 }
 
 @media (max-width: 1199px) {
-  
+
   .slp--wrapper .main-img {
   	width: 400px;
   }
-  
+
   .layrs-strctre {
   	margin-top: -90px;
   }
-  
+
   .layrs-det {
   	width: 200px;
   }
-  
+
   .slp--wrapper {
   	transform: scale(.75);
     margin: 100px auto 100px;
   }
-  
+
   .delivery-icons div {
   	width: 100%;
     margin-bottom: 10px;
   }
-  
+
   .delivery-icons {
-	flex-wrap: wrap;  
+	flex-wrap: wrap;
   }
-  
+
 }
 
 @media (max-width: 991px) {
-  
-  
-  
+
+
+
   .layrs-strctre {
   	margin-top: 50px;
   }
-  
+
   .why-emma-features p {
   	font-size: 1rem;
   }
-  
+
   .features-img-cont {
   	margin-top: 50px;
   }
-  
+
   .why-emma .intro-text {
   	margin-bottom: 0px;
   }
-  
+
   .why-emma-features h4 {
   	text-align: center;
   }
-  
+
   .layrs-strctre {
   	flex-wrap: wrap;
     flex-direction: row;
   }
-  
+
   .layrs-det {
   	width: calc(50% - 15px);
     margin-bottom: 15px;
   }
-  
+
   .expl-cont {
   	flex-wrap: wrap;
   }
-  
+
   .expl-cont img {
     width: 100%;
   }
-  
+
   .sleep-positions {
   	margin-top: 100px;
   }
-  
+
   .sleep-positions .grid {
   	flex-wrap: wrap;
   }
-  
+
   .product--hero-wrapper .product-single__meta--wrapper {
 	padding: 45px;
   }
-  
-  
+
+
   .product--hero-wrapper:before {
 	width: 240px;
 	height: 150px;
   }
-  
+
   .techmat-cont {
     padding: 30px 0px;
   }
-  
+
   .slp--wrapper {
-	transform: none;  
+	transform: none;
   }
 }
 
 @media (max-width: 767px) {
-  
+
   .product--hero-wrapper .product-single__media-flex {
   	padding: 0px 0px;
   }
-  
+
   .product--hero-wrapper .product-form__item {
   	width: calc(100% - 15px);
   }
-  
+
   .delivery-icons {
   	flex-wrap: wrap;
   }
-  
-  
-  
+
+
+
   .wrapper-full {
   	padding: 0px 25px;
   }
-  
+
   .layrs-det {
   	width: 100%;
   }
@@ -758,95 +751,95 @@ background: linear-gradient(180deg, #FFF6EB 0%, rgba(255, 246, 235, 0) 100%);
   .layrs-strctre {
   	margin-top: 50px;
   }
-  
+
   .sleep-positions {
   	padding-bottom: 90px;
   }
-  
+
   .bedsize-collapse .content>div {
   	padding: 23px 0px;
   }
-  
+
   .bedsize-heading h5 {
   	font-size: .875rem;
   }
-  
+
   .bedsize-heading h3 {
   	font-size: 1.728rem;
   }
-  
+
   .slp--wrapper:before {
     top: -24px;
     height: calc(100% + 50px);
     width: 60%;
   }
-  
+
   .pitch-dots {
     left: 48px;
     bottom: -33px;
     width: 70px;
 	}
-  
+
   .notif-arrow-left {
   	width: 10px !important;
     left: -9px;
     top: 50%;
   }
-  
+
   .slp-heart-cont > img {
   	width: 100px;
   }
-  
+
   .slp-hearts {
     right: -70px;
   }
-  
+
   .slp-hearts img {
   	width: 15px;
   }
-  
+
   .slp--heart-rct {
     bottom: -63px;
     right: 80px;
   }
-  
+
   .slp-likes img {
   	width: 15px;
   }
-  
+
   .slp--like-rct {
   	top: 0px;
     left: 30px;
   }
-  
-  
+
+
   .slp-like-cont > img {
   	width: 100px;
   }
-  
+
   .slp--wrapper {
   	width: 100%;
     text-align: center;
   }
-  
+
   .slp--wrapper .main-img {
     width: 60%;
     height: auto;
   }
-  
+
   .techmat-slider .slick-list {
   	padding-right: 8%;
   }
-  
+
   .techmat-section {
     padding-left: 0px;
     padding-right: 0px;
   }
-  
+
   .techmat--slider-cont {
     position: relative;
   }
-  
+
   .techmat--slider-par {
     margin-left: 20px;
     padding: 38px 23px 23px;
@@ -854,12 +847,12 @@ background: linear-gradient(180deg, #FFF6EB 0%, rgba(255, 246, 235, 0) 100%);
     margin-top: 30px;
     margin-bottom: 15px;
   }
-  
+
   .techmat--slider-par p {
     margin-bottom: 0;
     font-weight: 700;
   }
-  
+
   .techmat--slider-cont img {
 	width: 55px;
     height: 55px;
@@ -867,7 +860,7 @@ background: linear-gradient(180deg, #FFF6EB 0%, rgba(255, 246, 235, 0) 100%);
     top: -27.5px;
     left: 23px;
   }
-  
+
   .product--hero-wrapper .product-single__add-to-cart {
   	padding-right: 15px;
   }
@@ -875,65 +868,65 @@ background: linear-gradient(180deg, #FFF6EB 0%, rgba(255, 246, 235, 0) 100%);
   .product--hero-wrapper .product-single__meta--wrapper {
 	padding: 0px;
   }
-  
+
   .tech-mat-img {
     margin-top: 1em;
   }
-  
-  
+
+
   .tech-materials {
     margin-top: 2%;
     flex-wrap: wrap;
     flex-direction: column-reverse;
   }
-  
+
   .product--hero-wrapper {
   	margin-bottom: 4px;
   }
-  
+
   .why-emma {
     padding-top: 64px;
   }
-  
+
   .why-emma .subheader-text {
   	font-size: 1rem;
     margin-bottom: 23px;
   }
-  
+
   .why-emma .header-text {
 	font-size: 2.063rem;
   }
-  
+
   .why-emma .intro-text {
     font-size: .875rem;
     margin-bottom: 0px;
   }
-  
+
   .why-emma-features {
     margin-top: 65px;
   }
-  
+
   .features-img-cont {
     width: 158px;
     height: 158px;
     padding: 8px;
   }
-  
+
   .features-img-cont img {
 	width: 60%;
   }
-  
+
   .why-emma-features h4 {
     font-size: 1.728rem;
     text-align: center;
     margin-bottom: 20px;
   }
-  
+
   .why-emma-features p {
     font-size: 1rem;
     margin-bottom: 0px;
   }
-  
+
 }
 
 
@@ -953,25 +946,25 @@ background: linear-gradient(180deg, #FFF6EB 0%, rgba(255, 246, 235, 0) 100%);
 
 
 @media (min-width: 992px) {
- 
+
   .wrapper {
   	min-width: 960px;
   }
-  
+
 }
 
 @media (min-width: 1200px) {
- 
+
   .wrapper {
   	min-width: 1200px;
   }
-  
+
 }
 
 @media (min-width: 1300px) {
- 
+
   .wrapper {
   	min-width: 1300px;
   }
-  
+
 }

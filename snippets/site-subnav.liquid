@@ -1,0 +1,59 @@
+<ul
+	id="MenuParent-{{ parent_index }}"
+	class="site-subnav{% if link.type != "product_link" %} site-subnav--minimal{% endif %}"
+>
+	{% for childlink in link.links %}
+		
+		{% if link.type != "product_link" %}
+			{% assign isMinimal = true %}
+		{% endif %}
+		
+		<li class="site-subnav__item{% if childlink.active %} site-nav--active{% endif %}">
+			<a
+				href="{{ childlink.url }}"
+				class="site-subnav__link"
+				{% if childlink.active %}aria-current="page"{% endif %}
+				tabindex="-1"
+			>
+				{% if isMinimal == true %}
+					{{ childlink.title | escape }}
+				
+				{% else %}
+					{% assign product = childlink.object %}
+					{% assign navImg = product.metafields.accentuate.nav-image[0].src %}
+					{% assign featuredImg = product.featured_image | img_url %}
+					
+					<div class="site-subnav__featured-image">
+						<img
+							src="{{ navImg | default: featuredImg }}" class="lg:w-full h-44 object-cover"
+							loading="lazy"
+						/>
+					</div>
+					
+					<div class="site-subnav__title">
+						{{ childlink.title | escape }}
+					</div>
+					
+					<div class="site-subnav__footer">
+						<div class="site-subnav__price">
+							
+							
+							<span>From</span>
+							<div>
+								<span class="site-subnav__price--sale">{{ product.price | money }}</span>
+								
+								<span class="site-subnav__price--original">{{ product.compare_at_price | money }}</span>
+							</div>
+						</div>
+						
+						<div class="site-subnav__capsule">
+							{% render 'promotion-capsule', collections: childlink.object.collections %}
+						</div>
+					</div>
+				{% endif %}
+			</a>
+		</li>
+	
+	{% endfor %}
+</ul>
+

@@ -1,0 +1,57 @@
+<div class="site-header-right">
+	<a tabindex="-1" class="language-redirection"></a>
+	
+	{%- if shop.customer_accounts_enabled -%}
+		<a
+			href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}"
+			class="site-header-right__account"
+		>
+			<img src="{{ 'account.svg' | asset_url }}" loading="lazy" width="28" height="35">
+			<span class="visually-hidden">
+        {%- liquid
+	        if customer
+		        echo 'customer.account_fallback' | t
+	        else
+		        echo 'customer.log_in' | t
+	        endif
+        -%}
+      </span>
+		</a>
+	{%- endif -%}
+	
+	<a
+		href="/cart" class="site-header-right__cart cart-link js-drawer-open-button-right"
+		aria-controls="CartDrawer"
+		aria-expanded="false"
+	>
+    <span class="icon-fallback-text">
+      <span class="icon icon-cart" aria-hidden="true"></span>
+      <span class="fallback-text">Cart</span>
+    </span>
+		<span class="cart-link__bubble cart-link__bubble--visible"></span>
+	</a>
+</div>
+
+
+<script>
+
+  function renderLanguageRedirection() {
+    const requestHost = "{{ request.host }}".toString();
+    const $languageRedirection = $(".site-header-right .language-redirection");
+
+    // Dont use "https://emma-sleep.ca" because it'll be auto converted to "https://qc.emma-sleep.ca" by shopify on french domain
+    const englishUrl = "https://emma-sleep" + ".ca";
+    const franceUrl = "https://qc.emma-sleep.ca";
+
+    const isFrenchDomain = requestHost.includes("qc.emma-sleep.ca");
+
+    $languageRedirection.text(isFrenchDomain ? "english" : "FRANÇAIS");
+
+    $languageRedirection.attr("href", isFrenchDomain ? englishUrl : franceUrl);
+  }
+
+
+  $(document).ready(function () {
+    renderLanguageRedirection();
+  });
+</script>
