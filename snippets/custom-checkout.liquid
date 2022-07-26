@@ -11,6 +11,16 @@
   {% assign saved_amount = saved | money %}
 {% endif %}
 
+<div id="partial-icon-symbols" class="icon-symbols" data-tg-refresh="partial-icon-symbols" data-tg-refresh-always="true">
+  <svg xmlns="http://www.w3.org/2000/svg">
+    <symbol id="question">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+        <path d="M8 0C3.6 0 0 3.6 0 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8zm.7 13H6.8v-2h1.9v2zm2.6-7.1c0 1.8-1.3 2.6-2.8 2.8l-.1 1.1H7.3L7 7.5l.1-.1c1.8-.1 2.6-.6 2.6-1.6 0-.8-.6-1.3-1.6-1.3-.9 0-1.6.4-2.3 1.1L4.7 4.5c.8-.9 1.9-1.6 3.4-1.6 1.9.1 3.2 1.2 3.2 3z"></path>
+      </svg>
+    </symbol>
+  </svg>
+</div>
+
 <script type="text/javascript">
   const PAYMENT_GATEWAYS_NOT_ALLOWED = ["offsite"];
   const TAXES = [
@@ -280,6 +290,7 @@
 
   // SHIPPING METHOD
   function addShippingSectionSubtitle($) {
+    
     var node = document.querySelector(".section--shipping-method > .section__header > .section__title"),
       ele = document.createElement("p");
 
@@ -291,8 +302,60 @@
       ele1 = document.createElement("p");
 
     ele1.className = "para2";
-    ele1.innerHTML = "Please expect delivery to be made within 2-4 business days for Ontario, or 4-8 business days for the rest of Canada.";
+    ele1.innerHTML = "No-contact delivery. You do not need to be home for your delivery.";
     node1.parentNode.insertBefore(ele1, node1.nextSibling);
+    
+    // Scheduled Delivery with In-Home Setup
+    const label = $('[data-shipping-method-label-title="Scheduled Delivery with In-Home Setup"]');
+    if (!label || !label.length) return;
+    const contentBox = label.parent().parent().parent();
+    const sectionContent = contentBox.closest('.section__content');
+    contentBox.append(`
+      <p class="para2">
+        {{ 'shopify.checkout.scheduled_delivery_with_in_home_setup_description' | t }}
+      </p>
+    `);
+    label.append(`
+      <div data-tooltip="true" id="scheduled_delivery_tooltip" class="tooltip-container">
+        <button type="button" class="tooltip-control" data-tooltip-control="true" aria-label="More information" aria-describedby="tooltip-for-scheduled-delivery" aria-controls="tooltip-for-scheduled-delivery" aria-pressed="false" placeholder="scheduled_delivery">
+          <svg class="icon-svg icon-svg--color-adaptive-lighter icon-svg--size-16 icon-svg--block icon-svg--center" role="presentation" aria-hidden="true" focusable="false">
+            <use xlink:href="#question"></use>
+          </svg>
+        </button>
+        <span class="tooltip" role="tooltip" id="tooltip-for-scheduled-delivery">
+          {{ 'shopify.checkout.scheduled_delivery_with_in_home_setup_faq_1' | t }}
+        </span>
+      </div>
+    `);
+    sectionContent.append(`
+      <div id="product-removal-wrapper" class="checkbox-wrapper" style="margin-top: 0.9285714286em; {% if checkout.shipping_method.title != 'Scheduled Delivery with In-Home Setup' %}display: none{% endif %}">
+        <div class="checkbox__input">
+          <input name="checkout[attributes][Product Removal]" type="hidden" value="No" autocomplete="off">
+          <input class="input-checkbox" type="checkbox" value="Yes" {% if checkout.attributes["Product Removal"] == 'Yes' and checkout.shipping_method.title == 'Scheduled Delivery with In-Home Setup' %}checked{% endif %} name="checkout[attributes][Product Removal]" id="checkout_product_removal" autocomplete="off">
+        </div>
+        <label class="checkbox__label" for="checkout_product_removal">
+          {{ 'shopify.checkout.product_removal' | t }}
+        </label>
+        <div data-tooltip="true" id="product_removal_tooltip" class="tooltip-container">
+          <button type="button" class="tooltip-control" data-tooltip-control="true" aria-label="More information" aria-describedby="tooltip-for-scheduled-delivery" aria-controls="tooltip-for-product-removal" aria-pressed="false" placeholder="product_removal">
+            <svg class="icon-svg icon-svg--color-adaptive-lighter icon-svg--size-16 icon-svg--block icon-svg--center" role="presentation" aria-hidden="true" focusable="false">
+              <use xlink:href="#question"></use>
+            </svg>
+          </button>
+          <span class="tooltip" role="tooltip" id="tooltip-for-product-removal">
+            {{ 'shopify.checkout.scheduled_delivery_with_in_home_setup_faq_2' | t }}
+          </span>
+        </div>
+      </div>
+    `);
+    $('[name="checkout[shipping_rate][id]"]').change(function(){
+      const checked = $('[name="checkout[shipping_rate][id]"]:checked').val().includes('shopify-Scheduled%20Delivery%20with%20In-Home%20Setup');
+      if (checked) {
+        $('#product-removal-wrapper').show();
+      } else {
+        $('#product-removal-wrapper').hide();
+      }
+    });
   }
   
 
@@ -397,6 +460,41 @@
   .field--info .field__message--error{
     color: #b1b3d5;
     display: block;
+  }
+
+  .radio__label__primary .tooltip-container {
+    height: 20px;
+    width: 20px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-bottom: 2px;
+  }
+
+  #product_removal_tooltip {
+    height: 10px;
+    width: 15px;
+    display: inline-block;
+    margin-left: 7px;
+  }
+
+  #product-removal-wrapper .checkbox__input {
+    display: inline-block;
+  }
+
+  label[for="checkout_product_removal"] {
+    display: inline !important;
+    width: auto !important;
+    vertical-align: baseline;
+  }
+
+  @media (min-width: 641px) {
+    #tooltip-for-scheduled-delivery {
+      max-width: 90vw;
+      width: 400px;
+      -webkit-transform: rotateX(0deg) scale(1) translateX(50%);
+      transform: rotateX(0deg) scale(1) translateX(50%);
+      margin-right: 0;
+    }
   }
 
 </style>

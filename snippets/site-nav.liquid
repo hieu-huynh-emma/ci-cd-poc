@@ -1,0 +1,60 @@
+{{ 'site-nav.css' | asset_url | stylesheet_tag }}
+
+<nav id="site-nav" role="navigation">
+	<ul class="site-nav" id="AccessibleNav">
+		{% for link in linklists[section.settings.main_menu_link_list].links %}
+			{% assign parent_index = forloop.index %}
+			
+			<li
+				id="site-nav__{{ link.title | handleize }}"
+				class="site-nav__item{% if link.links != blank %} site-nav--has-dropdown{% endif %}{% if link.active %} site-nav--active{% endif %}{% if link.type != "product_link" %} site-nav--minimal{% endif %}
+				"
+				aria-haspopup="true"
+			>
+				<div class="nav-link">
+					<div class="nav-link__title">
+						{{ link.title | escape }}
+						
+						<a
+							href="{{ link.url }}"
+							class="nav-link__url"
+							aria-controls="MenuParent-{{ parent_index }}"
+							aria-expanded="false"
+							{% unless request.page_type == 'index' %}{% if link.active %}aria-current="page"{% endif %}{% endunless %}
+						>
+						</a>
+					</div>
+					
+					{% if link.links != blank %}
+						<img src="{{ 'arrow-down.svg' | asset_url }}" loading="lazy" class="nav-link__arrow">
+					{% endif %}
+				</div>
+				
+				{% if link.links != blank %}
+					<div class="site-nav__dropdown">
+						{% render 'site-subnav', link: link %}
+					</div>
+				{% endif %}
+			</li>
+		{% endfor %}
+	</ul>
+</nav>
+
+
+<script type="module" defer>
+  $("#site-nav .nav-link").click(function () {
+    const openClass = "nav-link--is-open"
+    const isOpen = $(this).hasClass(openClass);
+
+    const $siblingDropdown = $(this).siblings(".site-nav__dropdown")
+
+    if (!isOpen) {
+      $("#site-nav .site-nav__dropdown").slideUp();
+      $siblingDropdown.slideDown();
+      $(this).addClass(openClass)
+    } else {
+      $siblingDropdown.slideUp();
+      $(this).removeClass(openClass)
+    }
+  });
+</script>
