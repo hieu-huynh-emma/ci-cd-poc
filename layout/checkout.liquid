@@ -593,7 +593,7 @@
       var arr = Object.keys(upsells);
       var final_keys = getMultipleRandom(arr, 3);
 
-      // ****************** upsell item html start ****************** 
+      // ****************** upsell item html start ******************
       var html = "";
       var currency_format = document.getElementsByTagName('body');
       currency_format = currency_format[0].dataset.format;
@@ -745,9 +745,21 @@
         }
       });
 
-    }); 
+    });
   </script> -->
   {% comment %} UPSELL items code end under here! {% endcomment %}
+  <script>
+  document.querySelector('[data-modal="policy-refund-policy"]').closest('.policy-list__item').remove();
+  document.querySelector('.main__footer .policy-list').insertAdjacentHTML('beforeend', `
+    <li class="digicert-logo"><img src="{{ 'digicert.png' | asset_url }}" itemprop="logo" /></li>
+  `);
+  </script>
+  <style>
+  .digicert-logo {
+    float: right;
+    width: 56px;
+  }
+  </style>
 </body>
 
 </html>
