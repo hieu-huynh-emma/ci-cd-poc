@@ -378,11 +378,17 @@
         "discount_label": "Promo code",
         "discount_placeholder": "Promo code",
         "discount_sublabel": "Offers cannot be combined.",
-        "you_save": "Total savings {{ saved }}!"
+        "you_save": "Total savings {{ saved }}!",
+        "only_one_code_allowed": "Only one promo code may be used per order.",
+        "no_promo_yet": "Have a promo code? Enter it below.",
+        "promo_applied": "Promo code applied!",
+        "original_price": "Original Price",
+        "promo_code": "Promo Code",
+        "sale_discount": "Sale Discount"
       },
       "scheduled_delivery_with_in_home_setup_description": "Our delivery partner will be in touch to schedule your deliveries once order has been placed. You can only schedule deliveries for orders placed at least 3 business days before your preferred delivery date.",
       "scheduled_delivery_with_in_home_setup_faq_1": "In-home setup only includes setting up of large items purchased (mattress or bed frame). Scheduled delivery with in-home setup cannot be refunded in the event of a return.",
-      "scheduled_delivery_with_in_home_setup_faq_2": "If you are getting a mattress or bed frame delivered with our scheduled delivery with in-home setup option, our delivery partner will remove your old mattress and bed frame from the same room and at the same time of the delivery. Removals cannot be refunded/returned.",
+      "scheduled_delivery_with_in_home_setup_faq_2": "If you are getting a mattress or bed frame delivered with our scheduled delivery with in-home setup option, our delivery partner will remove your old mattress and bed frame from the same room and at the same time of the delivery. Removals cannot be refunded\/returned.",
       "product_removal": "Product removal",
       "phone_field_error": "Phone field error",
       "your_details": "Your Details",
@@ -392,7 +398,7 @@
       "popup": {
         "message": "You haven't finished checking out yet!",
         "continue": "Keep checking out",
-        "return_to_cart": "Return to cart"
+        "return_to_homepage": "Return to homepage"
       }
     }
   }
