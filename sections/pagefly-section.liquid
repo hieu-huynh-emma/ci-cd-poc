@@ -6,27 +6,27 @@
   {% assign snippet_name = section.settings.section_id %}
   {% capture content %}{% include snippet_name %}{% endcapture %}
   {% if content contains "Liquid error" %}
-    
+
     {% if request.design_mode %}
       <div class="pf-ph">
         <h3>PageFly Section</h3>
         <span>No section selected. Please select your section from the list</span>
       </div>
     {% endif %}
-  
+
   {% else %}
     {% render 'pagefly-settings' %}
     {% include snippet_name %}
   {% endif %}
   {% else %}
-    
+
     {% if request.design_mode %}
       <div class="pf-ph">
         <h3>PageFly Section</h3>
         <span>No section selected. Please select your section from the list</span>
       </div>
     {% endif %}
-  
+
 {% endif %}
 
 {% schema %}
@@ -41,6 +41,10 @@
         {
           "label": "Select section",
           "value": ""
+        },
+        {
+          "label": "Review Header Old",
+          "value": "pf-1c466ee4"
         },
         {
           "label": "Reviews Home Page",
@@ -97,10 +101,6 @@
         {
           "label": "Press&Awards homepage section",
           "value": "pf-b4f0b078"
-        },
-        {
-          "label": "Bed 3",
-          "value": "pf-01393b84"
         },
         {
           "label": "Home Section",

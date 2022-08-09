@@ -1,0 +1,69 @@
+{{ 'brand-vs-brand.css' | asset_url | stylesheet_tag }}
+
+<section id="brand-vs-brand-section">
+  <div class="wrapper">
+  
+    <div class="emma-brand">
+      <h2 class="heading heading-2 text-center text-charade">{{ section.settings.title | strip_html }}</h2>
+  
+  
+      <div class="emma-brand__logo">
+        <img src="{{ 'emma-logo.svg' | asset_url }}" alt="emma-logo">
+      </div>
+    
+      <p class="emma-brand__versus-text">vs</p>
+    </div>
+  
+    <div class="competitor-brands">
+      {% assign competitorBlocks = section.blocks | where: "type", "competitor-brand" %}
+    
+      {%- for block in competitorBlocks -%}
+        <div class="competitor-brands__item">
+          <p>{{ block.settings.name }}</p>
+          <button class="competitor-brands__compare-btn">Compare</button>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+<script>
+  $('.competitor-brands__compare-btn').click(function () {
+    document.getElementById('product-comparison').scrollIntoView({
+      behavior: 'smooth'
+    });
+  })
+</script>
+
+{% schema %}
+{
+  "name": "Brand Vs Brand",
+  "blocks": [
+    {
+      "type": "competitor-brand",
+      "name": "Competitor Brand",
+      "settings": [
+        {
+          "id": "name",
+          "type": "text",
+          "label": "Brand Name",
+          "default": "Brand Name"
+        },
+        {
+          "id": "url",
+          "type": "url",
+          "label": "Brand Url"
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "id": "title",
+      "type": "richtext",
+      "label": "Title",
+      "default": "<p>Brand vs Brand</p>"
+    }
+  ]
+}
+{% endschema %}

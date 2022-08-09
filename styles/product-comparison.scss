@@ -1,0 +1,297 @@
+#product-comparison {
+  $table: ".comparison-table";
+  $cell: "#{$table}-cell";
+  display: flex;
+  justify-content: center;
+  padding: 30px 0 0;
+
+  @media screen and (min-width: 768px) {
+    padding: 100px 0 0;
+  }
+
+  .wrapper {
+    width: 100%;
+    max-width: initial;
+    padding: 0 16px;
+    @media screen and (min-width: 1024px) {
+      width: 90%;
+    }
+    @media screen and (min-width: 1200px) {
+      width: 80%;
+    }
+  }
+
+  .headings {
+    display: grid;
+    gap: 10px;
+    justify-content: center;
+    text-align: center;
+
+    @media screen and (min-width: 768px) {
+      gap: 20px;
+    }
+  }
+
+  .comparison-table {
+    position: relative;
+    display: grid;
+    grid-template-columns:  repeat(2, minmax(0, 1fr));
+
+    padding: 30px 0;
+
+    @media screen and (min-width: 768px) {
+      grid-template-columns: minmax(0, 200px) repeat(2, minmax(0, 1fr));
+
+      padding: 80px 0;
+
+    }
+    @media screen and (min-width: 1440px) {
+      grid-template-columns: minmax(200px, max-content) repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  .emma-highlighted {
+    grid-row: 1 / span 100;
+    grid-column: 1;
+    width: 100%;
+    margin: -10px 0;
+
+    border: 2px solid #FF8900;
+    border-radius: 10px;
+    background: #FFF6EC;
+
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+
+    @media screen and (min-width: 768px) {
+      grid-column: 2;
+
+      margin: -20px 0 -30px;
+    }
+
+  }
+
+  .emma-buy-now-btn {
+    grid-column: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 90%;
+
+    margin: 0 auto;
+    padding: 10px 0;
+
+    color: white;
+
+    background: #3C4196;
+    border-radius: 80px;
+
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    @media screen and (min-width: 768px) {
+      grid-column: 2;
+      width: 100%;
+      max-width: 242px;
+
+      padding: 15px 0;
+
+    }
+  }
+
+
+  #{$cell} {
+    $this: &;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    padding: 5px;
+
+    text-align: center;
+
+    word-break: break-all;
+
+    @media screen and (min-width: 768px) {
+      padding: 10px;
+    }
+
+    &:not(&.grid-row-1):not(&--highlight.last-specs) {
+      border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+    }
+
+    &.row-header {
+      display: none;
+      flex-direction: row;
+      justify-content: flex-start;
+
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 125%;
+      opacity: 1;
+
+      text-align: left;
+
+      @media screen and (min-width: 768px) {
+        display: flex;
+        grid-column: 1;
+      }
+    }
+
+    .column-header {
+      display: grid;
+      gap: 20px;
+    }
+
+    .cell-header {
+      display: block;
+      font-size: 10px;
+      line-height: 20px;
+      @media screen and (min-width: 768px) {
+        display: none;
+      }
+    }
+
+    .cell-content {
+      display: grid;
+      gap: 4px;
+      grid-auto-flow: column;
+      align-items: center;
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 35px;
+
+      opacity: 0.75;
+
+      @media screen and (min-width: 768px) {
+        gap: 8px;
+        font-size: 25px;
+      }
+    }
+
+    &[data-competitor-col-index="1"] {
+      display: none;
+
+      @media screen and (min-width: 1440px) {
+        display: flex;
+      }
+    }
+
+    &--highlight {
+      grid-column: 1;
+      margin: 0 10px;
+
+      .cell-content {
+        opacity: 1;
+      }
+
+      @media screen and (min-width: 768px) {
+        grid-column: 2;
+
+        margin: 0 35px;
+      }
+    }
+  }
+
+  .emma {
+    grid-column: 1;
+
+    &__brand {
+      z-index: 2;
+
+      display: flex;
+      justify-content: center;
+
+      height: 20px;
+    }
+
+    @media screen and (min-width: 768px) {
+      grid-column: 2;
+    }
+  }
+
+  .competitor {
+    &__brand {
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 20px;
+    }
+  }
+
+  .price--original {
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 35px;
+
+    text-decoration: line-through;
+
+    @media screen and (min-width: 768px) {
+      font-size: 20px;
+    }
+  }
+
+  .select2-selection {
+    border: none;
+    background: transparent;
+
+    &__rendered {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: "Inter";
+      font-style: normal;
+      font-weight: 500;
+      font-size: 18px;
+      line-height: 125%;
+      /* identical to box height, or 22px */
+      color: #2E2F3C;
+      max-width: 100%;
+      word-break: break-word;
+      word-wrap: normal;
+      white-space: normal;
+    }
+  }
+}
+
+.col-start-2 {
+  grid-column-start: 2;
+}
+
+.grid-row-1 {
+  grid-row: 1;
+}
+
+.col-start-1 {
+  grid-column-start: 1;
+}
+
+
+@media (min-width: 768px) {
+  .md\:col-start-3 {
+    grid-column-start: 3;
+  }
+
+  .md\:col-start-2 {
+    grid-column-start: 2;
+  }
+}
+
+@media (min-width: 1024px) {
+  .lg\:col-start-4 {
+    grid-column-start: 4;
+  }
+}
+
+@mixin createGridOrder($min, $max) {
+  @for $i from $min to $max {
+    .grid-row-#{$i} {
+      grid-row: $i;
+    }
+    .grid-col-#{$i} {
+      grid-column: $i;
+    }
+  }
+}
+
+@include createGridOrder(1, 100)

@@ -1,0 +1,83 @@
+{{ 'why-us.css' | asset_url | stylesheet_tag }}
+
+<section id="why-us-section">
+  <div
+    class="wrapper bg-athens-gray{% if section.settings.borderless %} wrapper--borderless{% endif %}"
+  >
+    <h2 class="heading-2 text-center text-charade">{{ section.settings.title | remove: "<p>" | remove: "</p>" }}</h2>
+    <div class="benefits">
+      {% assign footerBtn = section.blocks | where: "type", "footer-button" | first %}
+      {% assign textBlocks = section.blocks | where: "type", "text-block" %}
+
+      {%- for block in textBlocks -%}
+        <div class="benefits__item">
+          <img src="{{ block.settings.icon | img_url: 'original' }}" width="auto" height="auto" loading="lazy">
+          <h3 class="heading-3 h-16	word-break">{{ block.settings.title | remove: "<p>" | remove: "</p>" }}</h3>
+        </div>
+      {%- endfor -%}
+    </div>
+    {% if footerBtn != blank %}
+      <a
+        class="btn bg-chambray text-[white] uppercase px-24 py-3 rounded-[60px]"
+        href="{{ footerBtn.settings.url }}"
+      >
+        {{ footerBtn.settings.text }}
+      </a>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Why Us",
+  "blocks": [
+    {
+      "type": "text-block",
+      "name": "Text Block",
+      "settings": [
+        {
+          "id": "icon",
+          "type": "image_picker",
+          "label": "Block Icon"
+        },
+        {
+          "id": "title",
+          "type": "richtext",
+          "label": "Block Title"
+        }
+      ]
+    },
+    {
+      "type": "footer-button",
+      "name": "Footer Button",
+      "limit": 1,
+      "settings": [
+        {
+          "id": "url",
+          "type": "url",
+          "label": "Button Url"
+        },
+        {
+          "id": "text",
+          "type": "text",
+          "label": "Button Text"
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "id": "title",
+      "type": "richtext",
+      "label": "Title",
+      "default": "<p>Why sleepers <i>love</i> Emma</p>"
+    },
+    {
+      "id": "borderless",
+      "type": "checkbox",
+      "label": "Borderless",
+      "default": true
+    }
+  ]
+}
+{% endschema %}

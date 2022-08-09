@@ -64,7 +64,6 @@
 
       </div>
       <div class="footer-nav-container" style="font-size: .9em;">
-        
         <div class="footer-nav-col">
           {% assign menu = linklists.footer-products-menu %}
           <p class="other-text font-weight-bold text-lg text-white">
@@ -79,7 +78,7 @@
           </ul>
         </div>
 		
-		<div class="footer-nav-col">
+		    <div class="footer-nav-col">
           {% assign menu = linklists.footer-customer-support-menu %}
           <p class="other-text font-weight-bold text-lg text-white">
           	{{ menu.title }}
@@ -95,6 +94,7 @@
         
         <div class="footer-nav-col">
           {% assign menu = linklists.footer-links-menu %}
+          {% assign blogMenu = linklists.footer-blog-menu %}
           <p class="other-text font-weight-bold text-lg text-white">
           	{{ menu.title }}
           </p>
@@ -105,8 +105,17 @@
             	</li>
             {% endfor %}
           </ul>
+          <p class="other-text font-weight-bold text-lg text-white blog-menu-title">
+          	{{ blogMenu.title }}
+          </p>
+          <ul>
+            {% for link in linklists.footer-blog-menu.links %}
+            	<li>
+            		<a href="{{ link.url }}">{{ link.title }}</a>
+            	</li>
+            {% endfor %}
+          </ul>
         </div>
-        
         
         <div class="footer-nav-col">
           <p class="other-text font-weight-bold text-lg text-white">
@@ -117,9 +126,6 @@
 
           </ul>
         </div>
-        
-        
-		
       </div>
     </div>
     <!-- FOOTER BOTTOM ROW -->

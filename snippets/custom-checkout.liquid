@@ -1,14 +1,17 @@
 {% assign saved = 0.00 %}
 {% assign total_compare_at_price = 0.00 %}
-{% assign total_line_level_discount =  0.00 %}
-{% assign total_line_price =  0.00 %}
+{% assign total_line_level_discount = 0.00 %}
+{% assign total_line_price = 0.00 %}
 
 {% for item in checkout.line_items %}
 {% if item.variant.compare_at_price != item.final_price %}
-  {% assign saved = item.variant.compare_at_price | minus: item.final_price | times: item.quantity | plus: saved %}
-  {% assign total_compare_at_price = item.variant.compare_at_price | times: item.quantity | plus: total_compare_at_price %}
-  {% assign total_line_level_discount = item.line_level_total_discount | times: item.quantity | plus: total_line_level_discount %}
-  {% assign total_line_price = item.variant.compare_at_price | minus: item.line_price | times: item.quantity | plus: total_line_price %}
+{% assign saved = item.variant.compare_at_price | minus: item.final_price | times: item.quantity | plus: saved %}
+{% assign total_compare_at_price = item.variant.compare_at_price | times: item.quantity | plus: total_compare_at_price
+%}
+{% assign total_line_level_discount = item.line_level_total_discount | times: item.quantity | plus:
+total_line_level_discount %}
+{% assign total_line_price = item.variant.compare_at_price | minus: item.line_price | times: item.quantity | plus:
+total_line_price %}
 {% endif %}
 {% endfor %}
 
@@ -16,29 +19,19 @@
 {% assign total_item_sale_discount = checkout.total_line_items_price | minus: total_compare_at_price %}
 
 {% if request.locale.iso_code == 'fr' %}
-  {% assign saved_amount = saved | money_without_currency | replace: '.', ',' | append: ' $' %}
-  {% assign total_original_price = total_compare_at_price | money_without_currency | replace: '.', ',' | append: ' $' %}
-  {% assign promo_discount = total_line_level_discount | money_without_currency | replace: '.', ',' | append: ' $' %}
-  {% assign sale_discount = total_line_price | money_without_currency | replace: '.', ',' | append: ' $' %}
-  {% else %}
-  {% assign saved_amount = saved | money %}
-  {% assign total_original_price = total_compare_at_price | money %}
-  {% assign promo_discount = total_line_level_discount | money %}
-  {% assign sale_discount = total_line_price | money %}
+{% assign saved_amount = saved | money_without_currency | replace: '.', ',' | append: ' $' %}
+{% assign total_original_price = total_compare_at_price | money_without_currency | replace: '.', ',' | append: ' $' %}
+{% assign promo_discount = total_line_level_discount | money_without_currency | replace: '.', ',' | append: ' $' %}
+{% assign sale_discount = total_line_price | money_without_currency | replace: '.', ',' | append: ' $' %}
+{% else %}
+{% assign saved_amount = saved | money %}
+{% assign total_original_price = total_compare_at_price | money %}
+{% assign promo_discount = total_line_level_discount | money %}
+{% assign sale_discount = total_line_price | money %}
 {% endif %}
 
-<div id="partial-icon-symbols" class="icon-symbols" data-tg-refresh="partial-icon-symbols" data-tg-refresh-always="true">
-  <svg xmlns="http://www.w3.org/2000/svg">
-    <symbol id="question">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-        <path d="M8 0C3.6 0 0 3.6 0 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8zm.7 13H6.8v-2h1.9v2zm2.6-7.1c0 1.8-1.3 2.6-2.8 2.8l-.1 1.1H7.3L7 7.5l.1-.1c1.8-.1 2.6-.6 2.6-1.6 0-.8-.6-1.3-1.6-1.3-.9 0-1.6.4-2.3 1.1L4.7 4.5c.8-.9 1.9-1.6 3.4-1.6 1.9.1 3.2 1.2 3.2 3z"></path>
-      </svg>
-    </symbol>
-  </svg>
-</div>
-
 <script type="text/javascript">
-  const PAYMENT_GATEWAYS_NOT_ALLOWED = ["offsite"];
+  const PAYMENT_GATEWAYS_NOT_ALLOWED = ["offsite_v2"];
   const TAXES = [
     { value: "AB", labels: ["GST"], totalRate: 5 },
     { value: "NT", labels: ["GST"], totalRate: 5 },
@@ -48,6 +41,7 @@
     { value: "NL", labels: ["HST"], totalRate: 15 },
     { value: "NS", labels: ["HST"], totalRate: 15 },
     { value: "ON", labels: ["HST"], totalRate: 13 },
+    { value: "PE", labels: ["HST"], totalRate: 15 },
     { value: "BC", labels: [{ subLabel: "PST", rate: 7 }, { subLabel: "GST", rate: 5 }] },
     { value: "MB", labels: [{ subLabel: "GST", rate: 5 }, { subLabel: "RST", rate: 7 }] },
     { value: "QC", labels: [{ subLabel: "GST", rate: 5 }, { subLabel: "QST", rate: 9.98 }] },
@@ -74,6 +68,8 @@
         showConfirmPopup($);
       });
 
+      addTaxesBreakdown($);
+
       if (Shopify.Checkout.step === 'contact_information') {
         $('body').addClass("upselll_show_information");
         $('#review-shipping-address').remove();
@@ -89,7 +85,6 @@
           $alternativePaymentSeparatorContent.text(content);
         }
 
-        addTaxesBreakdown($);
 
         let $phoneField = $('#checkout_billing_address_phone');
         phoneNumberValidated = false;
@@ -139,7 +134,7 @@
         });
       }
       else if (Shopify.Checkout.step === 'payment_method') {
-        disablePaybrightPaymentMethod($);
+        disableAffirmPaymentMethod($);
         clearInterval(timerInterval);
         document.getElementsByClassName('checkcout-countdown')[0].style.display = 'none';
 
@@ -155,7 +150,7 @@
             `);
             $parent.toggleClass('field--info', true);
           }
-          $discountCodeInput.on('keyup', function() {
+          $discountCodeInput.on('keyup', function () {
             $parent.toggleClass('field--error', false);
             $parent.toggleClass('field--info', true);
             $parent.find('.field__message--error').text(`{{ 'shopify.checkout.order_summary.discount_sublabel' | t }}`);
@@ -179,7 +174,7 @@
         return;
       }
       discountCode = newDiscountCode;
-      $.get(window.location.href, function(html) {
+      $.get(window.location.href, function (html) {
         const parser = new DOMParser();
         const doc = parser.parseFromString(html, 'text/html');
         totalSavedText = doc.querySelector('#total-saved-amount').value;
@@ -260,41 +255,41 @@
     const { labels, totalRate } = taxApplied;
 
     {% if request.locale.iso_code == 'fr' %}
-      if (labels && (labels.length === 1)) {
-        $taxLabel.text(`${labels}`);
-        const value = (checkoutSubtotal / 10000 * totalRate).toFixed(2);
-        $taxPrice.html(`<span class="order-summary__emphasis">${value.replace('.', ',')} $</span>`);
-      } else if (labels && (labels.length > 1)) {
-        let taxTotal = 0;
-        const $totalTable = $('.total-line-table__tbody');
-        labels.forEach((label) => {
-          const { subLabel, rate } = label;
-          const value = (checkoutSubtotal / 10000 * rate).toFixed(2);
-          $totalTable.append(`<tr class="total-line tax-subtotal"><th class="total-line__name">Tax (${subLabel} ${rate}%)</th><td class="total-line__price"><span class="order-summary__emphasis">${value.replace('.', ',')} $</span></td></tr>`);
-          taxTotal += (+value);
-        });
+    if (labels && (labels.length === 1)) {
+      $taxLabel.text(`${labels}`);
+      const value = (checkoutSubtotal / 10000 * totalRate).toFixed(2);
+      $taxPrice.html(`<span class="order-summary__emphasis">${value.replace('.', ',')} $</span>`);
+    } else if (labels && (labels.length > 1)) {
+      let taxTotal = 0;
+      const $totalTable = $('.total-line-table__tbody');
+      labels.forEach((label) => {
+        const { subLabel, rate } = label;
+        const value = (checkoutSubtotal / 10000 * rate).toFixed(2);
+        $totalTable.append(`<tr class="total-line tax-subtotal"><th class="total-line__name">Tax (${subLabel} ${rate}%)</th><td class="total-line__price"><span class="order-summary__emphasis">${value.replace('.', ',')} $</span></td></tr>`);
+        taxTotal += (+value);
+      });
 
-        $taxLabel.text("Taxes");
-        $taxPrice.html(`<span class="order-summary__emphasis">${taxTotal.toFixed(2).replace('.', ',')} $</span>`);
-      }
+      $taxLabel.text("Taxes");
+      $taxPrice.html(`<span class="order-summary__emphasis">${taxTotal.toFixed(2).replace('.', ',')} $</span>`);
+    }
     {% else %}
-      if (labels && (labels.length === 1)) {
-        $taxLabel.text(`${labels}`);
-        const value = ((checkoutSubtotal / 10000) * totalRate).toFixed(2);
-        $taxPrice.html(`<span class="order-summary__emphasis">$${value}</span>`);
-      } else if (labels && (labels.length > 1)) {
-        let taxTotal = 0;
-        const $totalTable = $('.total-line-table__tbody');
-        labels.forEach((label) => {
-          const { subLabel, rate } = label;
-          const value = ((checkoutSubtotal / 10000) * rate).toFixed(2);
-          $totalTable.append(`<tr class="total-line tax-subtotal"><th class="total-line__name">Tax (${subLabel} ${rate}%)</th><td class="total-line__price"><span class="order-summary__emphasis">$${value}</span></td></tr>`);
-          taxTotal += (+value);
-        });
+    if (labels && (labels.length === 1)) {
+      $taxLabel.text(`${labels}`);
+      const value = ((checkoutSubtotal / 10000) * totalRate).toFixed(2);
+      $taxPrice.html(`<span class="order-summary__emphasis">$${value}</span>`);
+    } else if (labels && (labels.length > 1)) {
+      let taxTotal = 0;
+      const $totalTable = $('.total-line-table__tbody');
+      labels.forEach((label) => {
+        const { subLabel, rate } = label;
+        const value = ((checkoutSubtotal / 10000) * rate).toFixed(2);
+        $totalTable.append(`<tr class="total-line tax-subtotal"><th class="total-line__name">Tax (${subLabel} ${rate}%)</th><td class="total-line__price"><span class="order-summary__emphasis">$${value}</span></td></tr>`);
+        taxTotal += (+value);
+      });
 
-        $taxLabel.text("Taxes");
-        $taxPrice.html(`<span class="order-summary__emphasis">$${taxTotal.toFixed(2)}</span>`);
-      }
+      $taxLabel.text("Taxes");
+      $taxPrice.html(`<span class="order-summary__emphasis">$${taxTotal.toFixed(2)}</span>`);
+    }
     {% endif %}
   }
 
@@ -308,21 +303,29 @@
 
   // SHIPPING METHOD
   function addShippingSectionSubtitle($) {
-    
+
     var node = document.querySelector(".section--shipping-method > .section__header > .section__title"),
       ele = document.createElement("p");
 
     ele.className = "para";
-    ele.innerHTML = "For us to deliver your items faster, we may split your into two or more shipments.";
+    ele.innerHTML = '{{ 'shopify.checkout.shipping_method.subtitle' | t }}';
     node.parentNode.insertBefore(ele, node.nextSibling);
 
     var node1 = document.querySelector(".content-box > .content-box__row > .radio-wrapper"),
       ele1 = document.createElement("p");
 
     ele1.className = "para2";
-    ele1.innerHTML = "No-contact delivery. You do not need to be home for your delivery.";
+    ele1.innerHTML = '{{ 'shopify.checkout.shipping_method.standart_delivery_no_contact' | t }}';
     node1.parentNode.insertBefore(ele1, node1.nextSibling);
-    
+
+    var node2 = document.querySelector('div[data-shipping-method^="shopify-Scheduled"]'),
+      ele2 = document.createElement("p");
+    if(node2) {
+      ele2.className = "para2";
+      ele2.innerHTML = '{{ 'shopify.checkout.shipping_method.schedule_delivery_incomplete' | t }}';
+      node2.parentNode.insertBefore(ele2, node2.nextSibling);
+    }
+
     // Scheduled Delivery with In-Home Setup
     const label = $('[data-shipping-method-label-title="Scheduled Delivery with In-Home Setup"]');
     if (!label || !label.length) return;
@@ -337,7 +340,9 @@
       <div data-tooltip="true" id="scheduled_delivery_tooltip" class="tooltip-container">
         <button type="button" class="tooltip-control" data-tooltip-control="true" aria-label="More information" aria-describedby="tooltip-for-scheduled-delivery" aria-controls="tooltip-for-scheduled-delivery" aria-pressed="false" placeholder="scheduled_delivery">
           <svg class="icon-svg icon-svg--color-adaptive-lighter icon-svg--size-16 icon-svg--block icon-svg--center" role="presentation" aria-hidden="true" focusable="false">
-            <use xlink:href="#question"></use>
+             <path
+              d="M8 0C3.6 0 0 3.6 0 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8zm.7 13H6.8v-2h1.9v2zm2.6-7.1c0 1.8-1.3 2.6-2.8 2.8l-.1 1.1H7.3L7 7.5l.1-.1c1.8-.1 2.6-.6 2.6-1.6 0-.8-.6-1.3-1.6-1.3-.9 0-1.6.4-2.3 1.1L4.7 4.5c.8-.9 1.9-1.6 3.4-1.6 1.9.1 3.2 1.2 3.2 3z">
+            </path>
           </svg>
         </button>
         <span class="tooltip" role="tooltip" id="tooltip-for-scheduled-delivery">
@@ -357,7 +362,9 @@
         <div data-tooltip="true" id="product_removal_tooltip" class="tooltip-container">
           <button type="button" class="tooltip-control" data-tooltip-control="true" aria-label="More information" aria-describedby="tooltip-for-scheduled-delivery" aria-controls="tooltip-for-product-removal" aria-pressed="false" placeholder="product_removal">
             <svg class="icon-svg icon-svg--color-adaptive-lighter icon-svg--size-16 icon-svg--block icon-svg--center" role="presentation" aria-hidden="true" focusable="false">
-              <use xlink:href="#question"></use>
+              <path
+              d="M8 0C3.6 0 0 3.6 0 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8zm.7 13H6.8v-2h1.9v2zm2.6-7.1c0 1.8-1.3 2.6-2.8 2.8l-.1 1.1H7.3L7 7.5l.1-.1c1.8-.1 2.6-.6 2.6-1.6 0-.8-.6-1.3-1.6-1.3-.9 0-1.6.4-2.3 1.1L4.7 4.5c.8-.9 1.9-1.6 3.4-1.6 1.9.1 3.2 1.2 3.2 3z">
+            </path>
             </svg>
           </button>
           <span class="tooltip" role="tooltip" id="tooltip-for-product-removal">
@@ -378,7 +385,7 @@
 
 
   // PAYMENT METHOD
-  function disablePaybrightPaymentMethod($) {
+  function disableAffirmPaymentMethod($) {
     let hasDiscountApplied = $(".reduction-code").length || $(".reduction-code__text").length;
     let $paymentSection = $(".section--payment-method [data-payment-subform='required']");
     if (hasDiscountApplied) {
@@ -386,7 +393,7 @@
       $gatewayFields.each(function (i, elem) {
         let dataGatewayName = $(elem).attr("data-gateway-name");
         if (PAYMENT_GATEWAYS_NOT_ALLOWED.includes(dataGatewayName)) {
-          let paybrightIsNotAllowMsg = 'PayBright cannot be used in conjunction with other discounts and promotions.';
+          let paybrightIsNotAllowMsg = 'Affirm cannot be used in conjunction with other discounts and promotions.';
           let dataSubfield = $(elem).attr("data-select-gateway");
           let $gateway = $paymentSection.find(`#checkout_payment_gateway_${dataSubfield}`);
           let $gatewaySubfields = $paymentSection.find(`#payment-gateway-subfields-${dataSubfield}`);
@@ -407,19 +414,26 @@
 <script src="{{ 'custom-checkout.js' | asset_url }}" defer="defer"></script>
 
 {% if saved > 0 %}
-  <input id="total-saved-amount" type="hidden" value="{% if saved > 0 %}{{ 'shopify.checkout.order_summary.you_save' | t: saved: saved_amount }}{% endif %}" disabled>
+<input id="total-saved-amount" type="hidden"
+  value="{% if saved > 0 %}{{ 'shopify.checkout.order_summary.you_save' | t: saved: saved_amount }}{% endif %}"
+  disabled>
 {% endif %}
 
 <input id="promo-discount" type="hidden"
   value="{% if total_line_price > 0 %}{{ promo_discount }}{% endif %}"
   disabled>
 
+<input id="promo-discount" type="hidden"
+  value="{% if total_line_price > 0 %}{{ promo_discount }}{% endif %}"
+  disabled>
+
 {% for item in checkout.line_items %}
-  {%- if item.variant.compare_at_price != item.final_price -%}
-    <input id="{{ item.key }}" type="hidden" name="original_line_price" value="{{ item.variant.compare_at_price | times: item.quantity | money }}" disabled>
-  {% else %}
-    <input id="{{ item.key }}" type="hidden" name="original_line_price" value="" disabled>
-  {% endif %}
+{%- if item.variant.compare_at_price != item.final_price -%}
+<input id="{{ item.key }}" type="hidden" name="original_line_price"
+  value="{{ item.variant.compare_at_price | times: item.quantity | money }}" disabled>
+{% else %}
+<input id="{{ item.key }}" type="hidden" name="original_line_price" value="" disabled>
+{% endif %}
 {% endfor %}
 
 <script type="module">
@@ -440,14 +454,40 @@
       ($('.product .reduction-code') || []).each(function (idx, e) {e.remove();});
       ($('.product__price .order-summary__small-text') || []).each(function (idx, e) {e.remove();});
 
-      $totalTable.prepend(`<tr class="total-line"><th class="total-line__name">{{ 'shopify.checkout.order_summary.sale_discount' | t }}</th><td class="total-line__price"><span class="order-summary__emphasis">- ${saleDiscount}</span></td></tr>`);
       let hasOrderLevelDiscountCode = $('.total-line.total-line--reduction').length;
       if (!hasOrderLevelDiscountCode) {
-        $totalTable.prepend(`<tr class="total-line promo-code"><th class="total-line__name">{{ 'shopify.checkout.order_summary.promo_code' | t }} (${promoCodeText}) </th><td class="total-line__price" style='color: white;'><span class="order-summary__emphasis"> - ${promoDiscount}</span></td></tr>`);
+        $totalTable.prepend(`<tr class="total-line promo-code"><th class="total-line__name">{{ 'shopify.checkout.order_summary.promo_code' | t }} (${promoCodeText}) </th><td class="total-line__price"><span class="order-summary__emphasis"> - ${promoDiscount}</span></td></tr>`);
+
+      } else {
+        let $subtotal = $('.total-line--subtotal .order-summary__emphasis');
+        let $promoCode = $('.total-line--reduction .order-summary__emphasis');
+        let subtotalPrice = (extractPrice($subtotal.text()) - extractPrice($promoCode.text())).toFixed(2);
+        $subtotal.text(`$${subtotalPrice}`);
       }
-      $totalTable.prepend(`<tr class="total-line"><th class="total-line__name">{{ 'shopify.checkout.order_summary.original_price' | t }}</th><td class="total-line__price"><span class="order-summary__emphasis">${totalOriginalPrice}</span></td></tr>`);
+
+      $totalTable.prepend(`<tr class="total-line sale-discount"><th class="total-line__name">{{ 'shopify.checkout.order_summary.sale_discount' | t }}</th><td class="total-line__price"><span class="order-summary__emphasis">- ${saleDiscount}</span></td></tr>`);
+      $('.total-line.total-line--reduction').insertAfter('.total-line.sale-discount');
+      $totalTable.prepend(`<tr class="total-line original_price"><th class="total-line__name">{{ 'shopify.checkout.order_summary.original_price' | t }}</th><td class="total-line__price"><span class="order-summary__emphasis">${totalOriginalPrice}</span></td></tr>`);
 
       if (discountCode) {
+        ($('.product .reduction-code') || []).each(function (idx, e) { e.remove(); });
+        var replacementTag = 'div';
+
+        if($('.product__price .order-summary__small-text').length) {
+          ($('.product__price .order-summary__emphasis.skeleton-while-loading') || []).each(function (idx, e) { e.remove(); });
+          ($('.product__price .order-summary__small-text') || []).each(function (idx, e) {
+            var outer = this.outerHTML;
+
+            var regex = new RegExp('<' + this.tagName, 'i');
+            var newTag = outer.replace(regex, '<' + replacementTag);
+
+            regex = new RegExp('</' + this.tagName, 'i');
+            newTag = newTag.replace(regex, '</' + replacementTag);
+
+            $(this).replaceWith(newTag);
+          });
+
+        }
         $(".order-summary__section--discount form.edit_checkout .fieldset").hide();
         $(".total-line.promo-code").show();
         promoText = '{{ 'shopify.checkout.order_summary.promo_applied' | t }}';
@@ -518,7 +558,7 @@
   .original-line-price {
     text-decoration: line-through;
     font-weight: 400;
-    color: #b1b3d5 !important;
+    color: #33312f;
     margin-right: 0.5rem;
   }
 
@@ -527,7 +567,8 @@
     -webkit-box-shadow: none;
     box-shadow: none;
   }
-  .field--info .field__message--error{
+
+  .field--info .field__message--error {
     color: #b1b3d5;
     display: block;
   }
@@ -599,6 +640,48 @@
     height: 4rem;
     align-items: center;
     justify-content: flex-end;
+  }
+
+  .order-summary__section__content .product__price .order-summary__emphasis.skeleton-while-loading,
+  .total-saved-line {
+    color: #f70909 !important;
+    font-size: 14px;
+  }
+
+  .order-summary__section {
+    color: #33312f;
+    font-weight: 500;
+  }
+
+  .sidebar .order-summary__emphasis,
+  .original-line-price,
+  .sidebar .order-summary__small-text,
+  .sidebar .payment-due-label__total,
+  .sidebar .payment-due__currency,
+  .sidebar .payment-due__price {
+    color: #33312f;
+  }
+
+  .sidebar .reduction-code__text {
+    color: #3c4196;
+  }
+
+  span[data-checkout-total-shipping-target] {
+    color: #33312f !important;
+  }
+
+  span[data-checkout-total-shipping-target="0"] {
+    color: #F01130 !important;
+  }
+
+  .product__price .order-summary__small-text {
+    color: #f70909 !important;
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .total-line__price {
+    font-weight: 500;
   }
 
 </style>

@@ -25,6 +25,7 @@
   <link rel="stylesheet" href="{{ 'custom-theme-2.css' | asset_url }}">
   <link rel="stylesheet" href="{{ 'custom-theme-3.css' | asset_url }}">
   <link rel="stylesheet" href="{{ 'animate.css' | asset_url }}">
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
 
     <!---- LUCKY ORANGE INTEGRATION ================================= -->
@@ -72,8 +73,9 @@ usi_installed = 0; USI_installCode = function() { if (usi_installed == 0) { usi_
       gridType: {{ settings.collection_products_grid | json }}
     };
   </script>
-
-  {{ 'jquery-2.2.3.min.js' | asset_url | script_tag }}
+  
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-migrate-1.4.1.min.js"></script>
 
   <script src="{{ 'lazysizes.min.js' | asset_url }}" async="async"></script>
 
@@ -98,6 +100,8 @@ usi_installed = 0; USI_installCode = function() { if (usi_installed == 0) { usi_
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
   <link  href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.css" rel="stylesheet">
+  
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
 {% render 'weglot_hreftags' %}
 {% render 'weglot_switcher' %}
@@ -149,6 +153,11 @@ jQuery(window).on("load",function(){
         {% section 'full-banner' %}
   {% endif %}
   <div id="CartDrawer" class="drawer drawer--right drawer--has-fixed-footer">
+    <div class="icon-symbols" style="display: none">
+      <svg xmlns="http://www.w3.org/2000/svg">
+        <symbol id="spinner-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M20 10c0 5.523-4.477 10-10 10S0 15.523 0 10 4.477 0 10 0v2c-4.418 0-8 3.582-8 8s3.582 8 8 8 8-3.582 8-8h2z"></path></svg></symbol>
+      </svg>
+    </div>
     <div class="drawer__fixed-header">
       <div class="drawer__header">
         <div class="drawer__title">{{ 'cart.general.title' | t }}</div>
@@ -243,6 +252,7 @@ jQuery(window).on("load",function(){
   {% render 'globo.preorder.script' %}
   {% include 'smile-initializer' %}
   {% render 'store-localization' %}
+  {% render 'freshchat' %}
  </body>
 </html>
 <style>

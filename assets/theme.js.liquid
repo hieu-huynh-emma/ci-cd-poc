@@ -1,4 +1,4 @@
-window.theme = window.theme || {};
+uwindow.theme = window.theme || {};
 window.slate = window.slate || {};
 
 /* ================ VENDORS ================ */
@@ -4581,7 +4581,7 @@ var afterResize = (function () {
 })();
 
 
-jQuery('.pf-variant-select').on('change',function(e){  
+jQuery('.pf-variant-select').on('change',function(e){
    if (!history.replaceState) {
     return;
   }
@@ -4600,5 +4600,5 @@ jQuery('.pf-variant-select').on('change',function(e){
     },
     '',
     newurl
-  );  
+  );
 });
