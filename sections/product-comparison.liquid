@@ -1,0 +1,65 @@
+{{ 'product-comparison.css' | asset_url | stylesheet_tag }}
+
+<script>
+  const comparisonConfig = {
+    emmaLogo: "{{ 'logo-emma.svg' | asset_url }}",
+    emmaProducts: [
+	    {% for product in section.settings.emma-products %}
+      {
+        info: {{ product | json }},
+        specs: {{ product.metafields.accentuate.specifications | json }},
+        competitors: {{ product.metafields.accentuate.competitors | json }},
+      }
+	    {%- if forloop.length > 0 -%}
+	    {% unless forloop.last %},{% endunless -%}
+	    {%- endif -%}
+	    {% endfor %}
+    ]
+  }
+</script>
+{{ 'product-comparison.js' | asset_url | script_tag }}
+
+<section id="product-comparison">
+	<div class="wrapper">
+		<div class="headings">
+			<h2 class="heading-2 text-center text-charade">{{ section.settings.title | remove: "<p>" | remove: "</p>" }}</h2>
+			<h4 class="heading-4">{{ section.settings.subtitle }}</h4>
+		</div>
+		
+		<div class="comparison-table">
+			
+			
+			<div class="emma-highlighted">&nbsp;</div>
+			
+			<a href="/" class="emma-buy-now-btn grid-row-12">
+				Buy Now
+			</a>
+		</div>
+	</div>
+</section>
+
+{% schema %}
+{
+  "name": "Comparison Table",
+  "settings": [
+    {
+      "id": "emma-products",
+      "type": "product_list",
+      "label": "Emma Products",
+      "limit": 2
+    },
+    {
+      "id": "title",
+      "type": "richtext",
+      "label": "Title",
+      "default": "<p>Comparison Table</p>"
+    },
+    {
+      "id": "subtitle",
+      "type": "text",
+      "label": "Subtitle",
+      "default": "See how others stack up against Emma - the World's Most Awarded Mattress Brand"
+    }
+  ]
+}
+{% endschema %}

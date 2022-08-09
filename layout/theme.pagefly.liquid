@@ -138,7 +138,7 @@ jQuery(window).on("load",function(){
 {% comment %}
   Add the page template as a class for easy page or template specific styling.
 {% endcomment %}
-<body id="{{ page_title | handle }}" class="{% if customer %}customer-logged-in {% endif %}template-{{ request.page_type | handle }}"><div class="pagefly-container">{{ content_for_layout }}</div></body>
+<body id="{{ page_title | handle }}" class="{% if customer %}customer-logged-in {% endif %}template-{{ request.page_type | handle }}"><div class="pagefly-container">{{ content_for_layout }}</div>{% render 'freshchat' %}</body>
 </html>
 <style>
   span.jdgm-subtab__name {

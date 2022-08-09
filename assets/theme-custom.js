@@ -881,6 +881,185 @@ ShopifyAPI.changeItem = function(line, quantity, callback) {
 };
 
 /*============================================================================
+  Discount code on cart
+==============================================================================*/
+var discountOnCart = (function(module, $) {
+
+  'use strict';
+
+  // Public functions
+  var init, load;
+
+  let shopify_checkout_token = null;
+  let shopify_checkout_authorization_token = null;
+  let initialized = false;
+  let checkout = null;
+  const moneyFormat = theme.strings.moneyFormat;
+
+  async function getShopifyCheckoutPage() {
+    let gettingShopifyCheckoutPagePromise = fetch('/checkout', {method: 'get'});
+    const response = (await gettingShopifyCheckoutPagePromise).clone();
+    gettingShopifyCheckoutPagePromise = null;
+    try {
+      const urlParts = response.url.split('/checkouts/');
+      if (urlParts.length < 2) {
+        return false;
+      }
+      shopify_checkout_token = urlParts[1].split('?')[0];
+      const text = await response.text();
+      let parser = new DOMParser();
+      const doc = parser.parseFromString(text, 'text/html');
+      const metaEl = doc.querySelector('meta[name="shopify-checkout-authorization-token"]');
+      if (!metaEl) {
+        return false;
+      }
+      shopify_checkout_authorization_token = metaEl.getAttribute('content');
+      return true;
+    } catch (e) {
+      console.log(e);
+      return false;
+    }
+  }
+
+  function getRequestHeaders() {
+    return {
+      'Accept': '*/*',
+      'Cache-Control': 'max-age=0',
+      'x-shopify-checkout-authorization-token': shopify_checkout_authorization_token,
+      'Content-Type': 'application/json'
+    }
+  }
+
+  async function requestCheckout(payload, method = 'get') {
+    if (payload) {
+      const response = await fetch(
+        `/wallets/checkouts/${shopify_checkout_token}`,
+        {
+          method,
+          mode: 'cors',
+          headers: getRequestHeaders(),
+          body: JSON.stringify(payload)
+        });
+      if (response.status === 429) {
+        throw "You have tried applying discount codes too many times. Please try again later";
+      }
+      if (response.ok) {
+        return response.json();
+      } else {
+        throw await response.json();
+      }
+    }
+    const response = await fetch(
+      `/wallets/checkouts/${shopify_checkout_token}`,
+      {
+        method,
+        mode: 'cors',
+        headers: getRequestHeaders(),
+      });
+    return response.json();
+  }
+
+  function showDiscountCode() {
+    if (checkout && checkout.applied_discount && checkout.applied_discount.applicable) {
+      $('.promo-applied .promo-code').text(`${checkout.applied_discount.title} (- ${theme.Currency.formatMoney(checkout.applied_discount.amount, moneyFormat)})`);
+      $('.promo-applied').show();
+      const subtotal = parseFloat($('[data-subtotal]').attr('data-subtotal')) * 100;
+      const saved = parseFloat($('[data-total-saved]').attr('data-total-saved')) * 100;
+      const savedText = $('[data-total-saved]').attr('data-text');
+      const discount = parseFloat(checkout.applied_discount.amount) * 100;
+      $('[data-subtotal]').text(theme.Currency.formatMoney(subtotal - discount, moneyFormat));
+      $('[data-total-saved]').text(savedText.replace('[amount]', theme.Currency.formatMoney(saved + discount, moneyFormat)));
+    } else {
+      $('.promo-applied').hide();
+    }
+    theme.sizeCartDrawerFooter();
+  }
+
+  init = async function() {
+    if (!initialized) {
+      initialized = await getShopifyCheckoutPage();
+    }
+    if (!initialized) return;
+    try {
+      const response = await requestCheckout(null);
+      checkout = response.checkout;
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  load = async function(forceReload = false) {
+    if (checkout) {
+      $('body').toggleClass('discount-code-ready', true);
+      theme.sizeCartDrawerFooter();
+      showDiscountCode();
+    }
+
+    if (!initialized || forceReload) {
+      initialized = await getShopifyCheckoutPage();
+    }
+    if (!initialized) return;
+    $('body').toggleClass('discount-code-ready', true);
+    theme.sizeCartDrawerFooter();
+    try {
+      const response = await requestCheckout(null);
+      checkout = response.checkout;
+      console.log(checkout);
+      showDiscountCode();
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  async function applyDiscount() {
+    const code = $('.discount-input').val();
+    $('.discount-error').text('');
+    if (!code) {
+      return;
+    }
+    $('#discount-wrapper .discount-apply').toggleClass('btn--loading', true);
+    try {
+      const response = await requestCheckout({
+        checkout: {
+          discount_code: code
+        }
+      }, 'PUT');
+      $('.discount-input').val('');
+      checkout = response.checkout;
+      console.log(checkout);
+      showDiscountCode();
+    } catch (e) {
+      if (e.errors && e.errors.discount_code && e.errors.discount_code.length) {
+        $('.discount-error').text(e.errors.discount_code[0].message);
+      } else {
+        $('.discount-error').text(e);
+      }
+    } finally {
+      $('#discount-wrapper .discount-apply').toggleClass('btn--loading', false);
+    }
+  }
+
+  $('body').on('click', '#discount-wrapper .discount-apply', async function() {
+    await applyDiscount();
+  });
+
+  $('body').on('keyup', '#discount-wrapper .discount-input', async function(event) {
+    if (event.key === 'Enter' && shopify_checkout_token) {
+      event.stopPropagation();
+      event.preventDefault();
+      await applyDiscount();
+    }
+  });
+
+  module = {
+    init,
+    load
+  };
+
+  return module;
+})(discountOnCart || {}, jQuery);
+
+/*============================================================================
   Ajax Shopify Add To Cart
 ==============================================================================*/
 var ajaxCart = (function(module, $) {
@@ -910,6 +1089,7 @@ var ajaxCart = (function(module, $) {
     adjustCart,
     adjustCartCallback,
     qtySelectors,
+    renderCart,
     validateQty;
 
   /*============================================================================
@@ -966,6 +1146,25 @@ var ajaxCart = (function(module, $) {
     $body.addClass('drawer--is-loading');
     ShopifyAPI.getCart(cartUpdateCallback);
   };
+
+  // duplicate functionality from loadCart
+  // added more logic to handling race condition
+  // caused by pagefly sending cart api /add.js on its own
+  renderCart = function() {
+    //return false;
+    if((typeof $body == undefined) || (typeof $body == 'undefined')){
+      ajaxCart.init();
+    }
+    $body.addClass('drawer--is-loading');
+
+    jQuery.get('/cart?view=emma', function (html) {
+      $cartContainer.html(html);
+      ShopifyAPI.getCart(function(cart) {
+        updateCountPrice(cart)
+        cartCallback(cart);
+      });
+    });
+  }
 
   updateCountPrice = function(cart) {
     if ($cartCountSelector) {
@@ -1034,10 +1233,13 @@ var ajaxCart = (function(module, $) {
     });
   };
 
+  let oldCart = {};
+
   cartCallback = function(cart) {
     $body.removeClass('drawer--is-loading');
     $body.trigger('ajaxCart.afterCartLoad', cart);
-
+    cart.item_count && discountOnCart.load(JSON.stringify(cart) != JSON.stringify(oldCart));
+    oldCart = cart;
     if (window.Shopify && Shopify.StorefrontExpressButtons) {
       Shopify.StorefrontExpressButtons.initialize();
     }
@@ -1210,7 +1412,8 @@ var ajaxCart = (function(module, $) {
 
   module = {
     init: init,
-    load: loadCart
+    load: loadCart,
+    render: renderCart
   };
 
   return module;
@@ -4233,6 +4436,7 @@ theme.sizeCartDrawerFooter = function() {
   // Elements are reprinted regularly so selectors are not cached
   var $cartFooter = $('.ajaxcart__footer').removeAttr('style');
   var $cartInner = $('.ajaxcart__inner').removeAttr('style');
+  $cartFooter.css('height', 'auto');
   var cartFooterHeight = $cartFooter.outerHeight();
   var cartDrawerTitleHeight = $('.drawer--right .drawer__header').outerHeight();
   var $cartDrawerInner = $('.drawer--right .drawer__inner');
@@ -4677,6 +4881,7 @@ $(document).ready(function() {
   sections.register('map', theme.Maps);
   sections.register('search', theme.Search);
   sections.register('footer-section', theme.FooterSection);
+  discountOnCart.init();
 
 });
 

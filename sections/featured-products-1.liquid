@@ -1,0 +1,83 @@
+{{ 'featured-products-1.css' | asset_url | stylesheet_tag }}
+
+{% assign productBlocks = section.blocks | where: "type", "product-block" %}
+
+<section id="feature-products-section">
+  <div class="wrapper">
+    {%- for block in productBlocks -%}
+      {% assign product = block.settings.product %}
+      {% assign discountedAmount = product.compare_at_price | minus: product.price %}
+
+      <a
+        class="card" href="{{ product.url }}"
+        rel="noreferrer"
+      >
+        <div class="card__image">
+          <img
+            src="{{ block.settings.image | img_url: '537x375' }}" width="100%" height="auto"
+            class="h-full" loading="lazy"
+          >
+        </div>
+
+
+        <div class="card__header">
+          {% if discountedAmount != blank %}
+            <p
+              class="card__badge"
+            >
+              SAVE UP TO {{ discountedAmount | money }}
+            </p>
+          {% endif %}
+          <h3 class="card__title">{{ product.title }}</h3>
+          <div>
+            <p class="text-charade">{{ block.settings.desc }}</p>
+
+            <div>
+              <span class="font-semibold">From</span>
+
+              <span class="font-semibold">{{ product.price | money }}</span>
+
+              <span class="line-through">{{ product.compare_at_price | money }}</span>
+            </div>
+          </div>
+
+        </div>
+
+        <div
+          class="card__btn flex justify-center bg-chambray text-[white] uppercase rounded-[60px]"
+        >
+          Shop Now
+        </div>
+      </a>
+    {%- endfor -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Featured Products",
+  "blocks": [
+    {
+      "type": "product-block",
+      "name": "Product Block",
+      "settings": [
+        {
+          "id": "product",
+          "type": "product",
+          "label": "Block Product"
+        },
+        {
+          "id": "image",
+          "type": "image_picker",
+          "label": "Block Image"
+        },
+        {
+          "id": "desc",
+          "type": "textarea",
+          "label": "Block Description"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

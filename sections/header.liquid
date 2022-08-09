@@ -138,11 +138,17 @@
   window.XMLHttpRequest.prototype.open = openReplacement;
 
   $(document).ready(function() {
-    $("button[data-pf-type=\"ProductATC\"]").click(function() {
+    $("button[data-pf-type=\"ProductATC\"]").click(function(e) {
       let $cartButton = $(".cart-icon-container .js-drawer-open-button-right").first();
       if (!$("#CartDrawer").hasClass("js-drawer-open")) {
-        ajaxCart.load();
-        $cartButton.click();
+        ShopifyAPI.getCart(function () {
+          ajaxCart.load();
+          $cartButton.click();
+        })
+      } else {
+        ShopifyAPI.getCart(function () {
+          ajaxCart.render();
+        })
       }
     });
   });

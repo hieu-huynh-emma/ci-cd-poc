@@ -494,6 +494,10 @@
       color: grey;
       font-size: 13px;
     }
+
+    .sidebar::after {
+      background-color: #F0F0F5;
+    }
   </style>
 </head>
 
@@ -539,6 +543,7 @@
     </div>
   </div>
   {{ tracking_code }}
+  {% render 'freshchat' %}
   {% comment %} UPSELL items code start under here! {% endcomment %}
   <!-- <script type="text/javascript">
 
