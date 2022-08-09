@@ -5,14 +5,13 @@
 
 {% for item in checkout.line_items %}
 {% if item.variant.compare_at_price != item.final_price %}
-{% assign saved = item.variant.compare_at_price | minus: item.final_price | times: item.quantity | plus: saved %}
 {% assign total_compare_at_price = item.variant.compare_at_price | times: item.quantity | plus: total_compare_at_price %}
 {% assign total_line_level_discount = item.line_level_total_discount | times: item.quantity | plus: total_line_level_discount %}
 {% assign total_line_price = item.variant.compare_at_price | minus: item.line_price | times: item.quantity | plus: total_line_price %}
 {% endif %}
 {% endfor %}
 
-{% assign saved = saved | minus: checkout.discounts_savings %}
+{% assign saved = total_compare_at_price | minus: checkout.total_price %}
 
 {% if request.locale.iso_code == 'fr' %}
 {% assign saved_amount = saved | money_without_currency | replace: '.', ',' | append: ' $' %}
