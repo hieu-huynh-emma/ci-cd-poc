@@ -27,7 +27,7 @@
   {% assign sale_discount = total_line_price | money %}
 {% endif %}
 
-<div id="partial-icon-symbols" class="icon-symbols" data-tg-refresh="partial-icon-symbols" data-tg-refresh-always="true">
+<!-- <div id="partial-icon-symbols" class="icon-symbols" data-tg-refresh="partial-icon-symbols" data-tg-refresh-always="true">
   <svg xmlns="http://www.w3.org/2000/svg">
     <symbol id="question">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
@@ -35,7 +35,7 @@
       </svg>
     </symbol>
   </svg>
-</div>
+</div> -->
 
 <script type="text/javascript">
   const PAYMENT_GATEWAYS_NOT_ALLOWED = ["offsite"];
@@ -308,7 +308,7 @@
 
   // SHIPPING METHOD
   function addShippingSectionSubtitle($) {
-    
+
     var node = document.querySelector(".section--shipping-method > .section__header > .section__title"),
       ele = document.createElement("p");
 
@@ -322,7 +322,7 @@
     ele1.className = "para2";
     ele1.innerHTML = "No-contact delivery. You do not need to be home for your delivery.";
     node1.parentNode.insertBefore(ele1, node1.nextSibling);
-    
+
     // Scheduled Delivery with In-Home Setup
     const label = $('[data-shipping-method-label-title="Scheduled Delivery with In-Home Setup"]');
     if (!label || !label.length) return;
@@ -435,36 +435,36 @@
       let promoDiscount = '{{ promo_discount }}';
       let saleDiscount = '{{ sale_discount }}';
 
-      const $totalTable = $('.total-line-table__tbody');
+      // const $totalTable = $('.total-line-table__tbody');
 
-      ($('.product .reduction-code') || []).each(function (idx, e) {e.remove();});
-      ($('.product__price .order-summary__small-text') || []).each(function (idx, e) {e.remove();});
+      // ($('.product .reduction-code') || []).each(function (idx, e) {e.remove();});
+      // ($('.product__price .order-summary__small-text') || []).each(function (idx, e) {e.remove();});
 
-      $totalTable.prepend(`<tr class="total-line"><th class="total-line__name">{{ 'shopify.checkout.order_summary.sale_discount' | t }}</th><td class="total-line__price"><span class="order-summary__emphasis">- ${saleDiscount}</span></td></tr>`);
-      let hasOrderLevelDiscountCode = $('.total-line.total-line--reduction').length;
-      if (!hasOrderLevelDiscountCode) {
-        $totalTable.prepend(`<tr class="total-line promo-code"><th class="total-line__name">{{ 'shopify.checkout.order_summary.promo_code' | t }} (${promoCodeText}) </th><td class="total-line__price" style='color: white;'><span class="order-summary__emphasis"> - ${promoDiscount}</span></td></tr>`);
-      }
-      $totalTable.prepend(`<tr class="total-line"><th class="total-line__name">{{ 'shopify.checkout.order_summary.original_price' | t }}</th><td class="total-line__price"><span class="order-summary__emphasis">${totalOriginalPrice}</span></td></tr>`);
+      // $totalTable.prepend(`<tr class="total-line"><th class="total-line__name">{{ 'shopify.checkout.order_summary.sale_discount' | t }}</th><td class="total-line__price"><span class="order-summary__emphasis">- ${saleDiscount}</span></td></tr>`);
+      // let hasOrderLevelDiscountCode = $('.total-line.total-line--reduction').length;
+      // if (!hasOrderLevelDiscountCode) {
+      //   $totalTable.prepend(`<tr class="total-line promo-code"><th class="total-line__name">{{ 'shopify.checkout.order_summary.promo_code' | t }} (${promoCodeText}) </th><td class="total-line__price" style='color: white;'><span class="order-summary__emphasis"> - ${promoDiscount}</span></td></tr>`);
+      // }
+      // $totalTable.prepend(`<tr class="total-line"><th class="total-line__name">{{ 'shopify.checkout.order_summary.original_price' | t }}</th><td class="total-line__price"><span class="order-summary__emphasis">${totalOriginalPrice}</span></td></tr>`);
 
-      if (discountCode) {
-        $(".order-summary__section--discount form.edit_checkout .fieldset").hide();
-        $(".total-line.promo-code").show();
-        promoText = '{{ 'shopify.checkout.order_summary.promo_applied' | t }}';
-      } else {
-        $(".total-line.promo-code").hide();
-        $(".order-summary__section--discount form.edit_checkout .fieldset").show();
-      }
+      // if (discountCode) {
+      //   $(".order-summary__section--discount form.edit_checkout .fieldset").hide();
+      //   $(".total-line.promo-code").show();
+      //   promoText = '{{ 'shopify.checkout.order_summary.promo_applied' | t }}';
+      // } else {
+      //   $(".total-line.promo-code").hide();
+      //   $(".order-summary__section--discount form.edit_checkout .fieldset").show();
+      // }
 
-      let $discountSection = $('#order-summary .order-summary__section--discount').first();
-      $discountSection.prepend(
-        `<div class="promo-text-wrapper">
-          <p>${promoText}</p>
-          <div class="discount-tooltip">&#9432;
-            <span class="discount-tooltip-text">${onlyOneCodeAllowedText}</span>
-          </div>
-        </div>`
-      );
+      // let $discountSection = $('#order-summary .order-summary__section--discount').first();
+      // $discountSection.prepend(
+      //   `<div class="promo-text-wrapper">
+      //     <p>${promoText}</p>
+      //     <div class="discount-tooltip">&#9432;
+      //       <span class="discount-tooltip-text">${onlyOneCodeAllowedText}</span>
+      //     </div>
+      //   </div>`
+      // );
     });
   })(Checkout.$);
 </script>

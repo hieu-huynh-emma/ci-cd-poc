@@ -246,16 +246,71 @@ jQuery(window).on("load",function(){
  </body>
 </html>
 <style>
- span.jdgm-subtab__name {
+  span.jdgm-subtab__name {
     display: none;
-}
-span.jdgm-prev-badge__text {
+  }
+
+  span.jdgm-prev-badge__text {
     display: inline-block !important;
-}
+  }
 
-#dummy-chat-button-iframe, #ShopifyChat {
-  z-index: 19 !important;
-  margin-right: 3rem;
-}
+  html,
+  body {
+    overflow: visible !important;
+  }
 
+  #dummy-chat-button-iframe,
+  #ShopifyChat {
+    z-index: 19 !important;
+    margin-right: 3rem;
+  }
+
+  .announcement-bar {
+    height: 70px;
+  }
+
+  #shopify-section-announcement-bar {
+    position: fixed;
+    top: 0;
+    z-index: 101;
+    width: 100%;
+  }
+
+  #shopify-section-header {
+    top: 70px;
+    position: sticky;
+    z-index: 101;
+  }
+
+  #bundle-sticky_add_to_cart {
+    top: 134px;
+    min-height: 40px;
+  }
+
+  #bundle-sticky_add_to_cart .sticky-product-details {
+    background-color: white;
+  }
+
+  #PageContainer {
+    position: relative;
+    top: 70px;
+  }
+
+  @media (min-width: 768px) {
+    .announcement-bar {
+      height: 40px;
+    }
+
+    #shopify-section-header {
+      top: 40px;
+    }
+
+    #bundle-sticky_add_to_cart {
+      top: 104px;
+    }
+
+    #PageContainer {
+      top: 40px;
+    }
+  }
 </style>
