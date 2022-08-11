@@ -44,7 +44,7 @@
                             <select id="product-variant"
                                 onchange="updateProductVariant({{position}}, this.options[this.selectedIndex].value)">
                                 {% for variant in item.product.variants %}
-                                <option {% if item.variant_id == variant.id %} selected {% endif %} data-sku={{
+                                <option {% if item.variant_id==variant.id %} selected {% endif %} data-sku={{
                                     variant.sku }} value={{ variant.id }}>{{variant.title}}</option>
                                 {% endfor %}
                             </select>
@@ -113,11 +113,15 @@
             </div>
             <div class="subtotal_price">
                 <del class="ajaxcart__subtotal">{{total_cart_compare_price | money }}</del>
-                <p class="ajaxcart__subtotal" data-subtotal="{{cart.total_price | divided_by: 100}}">{{cart.total_price | money }}</p>
+                <p class="ajaxcart__subtotal" data-subtotal="{{cart.total_price | divided_by: 100}}">{{cart.total_price
+                    | money }}</p>
             </div>
         </div>
         {% assign save = total_cart_compare_price| minus: cart.total_price | money %}
-        <div class="save-amount" data-total-saved="{{total_cart_compare_price| minus: cart.total_price | divided_by: 100}}" data-text="{{ 'shopify.checkout.order_summary.you_save' | t: saved: '[amount]'}}">{{ 'shopify.checkout.order_summary.you_save' | t: saved:  save}}</div>
+        <div class="save-amount"
+            data-total-saved="{{total_cart_compare_price| minus: cart.total_price | divided_by: 100}}"
+            data-text="{{ 'shopify.checkout.order_summary.you_save' | t: saved: '[amount]'}}">{{
+            'shopify.checkout.order_summary.you_save' | t: saved: save}}</div>
 
         {% if cart.item_count > 0 %}
         <div id="discount-wrapper">
@@ -147,12 +151,25 @@
             {{ 'cart.general.free_shipping_and_taxes_at_checkout' | t }}
         </p>
         <button type="submit" class="btn--secondary btn--full cart__checkout" name="checkout">
-            <img src={{ 'icon-lock.svg'| asset_url}} width="30" height="30"/>
+            <img src={{ 'icon-lock.svg' | asset_url}} width="30" height="30" />
             <span>{{ 'cart.general.checkout' | t }}</span>
         </button>
+
         <div class="contact">
-            {{ 'shopify.checkout.order_summary.contact' | t}}
+            {% if request.locale.iso_code == 'fr' %}
+                Veuillez nous écrire à
+                <strong><a href="mailto:support@emma-sleep.ca">support@emma-sleep.ca</a></strong>
+                ou nous appeler au
+                <strong><a href="tel:1 888 585 3662">+1-888-585-3662</a></strong>
+                pour toute demande.
+            {% else %}
+                Please contact
+                <strong><a href="mailto:support@emma-sleep.ca">support@emma-sleep.ca</a></strong>
+                or call <strong><a href="tel:1 888 585 3662">+1-888-585-3662</a></strong>
+                for inquiries
+            {% endif %}
         </div>
+
     </div>
 </form>
 <style>
@@ -160,7 +177,7 @@
         font-weight: 400;
         opacity: .7;
         font-style: italic;
-        font-size: 1rem;
+        font-size: 12px;
         white-space: nowrap;
     }
 
@@ -188,7 +205,8 @@
         justify-content: flex-end;
     }
 
-    .subtotal p.ajaxcart__subtotal, .subtotal p.ajaxcart__promo {
+    .subtotal p.ajaxcart__subtotal,
+    .subtotal p.ajaxcart__promo {
         margin: 0;
         margin-left: 0.5rem;
     }
@@ -199,9 +217,18 @@
         font-weight: 600;
         margin-bottom: 1rem;
     }
+
     .ajaxcart__footer .contact {
-        font-size: 16px;
+        font-size: 13px;
         margin-top: 0.5rem;
+    }
+
+    .contact a {
+        color: black;
+    }
+
+    .contact a:hover {
+        color: black;
     }
 
     #product-variant {
@@ -218,17 +245,28 @@
         justify-content: center;
         align-items: flex-end;
     }
+
     .cart__checkout span {
         margin-left: 0.5rem;
     }
+
+    .ajaxcart__policies {
+        font-size: 12px;
+    }
+
+@media (min-width: 769px) {
+    .ajaxcart__policies, .cart--ship-out-time {
+        font-size: 14px;
+    }
+}
 </style>
 <script>
 
     function updateProductVariant(index, newVariantId) {
         removeItem(index)
-        .then(() => {
-            addItem(newVariantId, 1);
-        });
+            .then(() => {
+                addItem(newVariantId, 1);
+            });
     }
 
     async function removeItem(index) {
@@ -239,7 +277,7 @@
                 "Accept": "application/json"
             },
             body: JSON.stringify({
-                line: index+1,
+                line: index + 1,
                 quantity: 0
             })
         })

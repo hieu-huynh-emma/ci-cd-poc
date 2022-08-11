@@ -314,14 +314,6 @@
     ele1.innerHTML = '{{ 'shopify.checkout.shipping_method.standart_delivery_no_contact' | t }}';
     node1.parentNode.insertBefore(ele1, node1.nextSibling);
 
-    var node2 = document.querySelector('div[data-shipping-method^="shopify-Scheduled"]'),
-      ele2 = document.createElement("p");
-    if(node2) {
-      ele2.className = "para2";
-      ele2.innerHTML = '{{ 'shopify.checkout.shipping_method.schedule_delivery_incomplete' | t }}';
-      node2.parentNode.insertBefore(ele2, node2.nextSibling);
-    }
-
     // Scheduled Delivery with In-Home Setup
     const label = $('[data-shipping-method-label-title="Scheduled Delivery with In-Home Setup"]');
     if (!label || !label.length) return;
