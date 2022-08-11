@@ -496,7 +496,79 @@
     }
 
     .sidebar::after {
-      background-color: #F0F0F5;
+      background: linear-gradient(180deg, #F0F0F5 50.07%, #AFB4D3 109.76%);
+    }
+
+    .sidebar-ornament {
+      display: none;
+      gap: 15px;
+      grid-auto-flow: row;
+      align-items: center;
+      justify-content: center;
+      margin: 20px auto;
+      padding: 30px 18px;
+      color: white;
+      border-radius: 6px;
+      background: linear-gradient(180deg, #3C4196 0%, rgba(60, 65, 150, 0.4) 100%);
+    }
+
+    @media (min-width: 768px) {
+      .sidebar-ornament {
+        display: grid;
+      }
+    }
+
+    @media (min-width: 999px) {
+      .sidebar-ornament {
+        align-content: flex-start;
+        width: 392px;
+        height: 392px;
+        margin: 20px auto 0;
+        padding: 0;
+        border-radius: 100%;
+      }
+    }
+
+    .sidebar-ornament__title {
+      font-style: normal;
+      font-weight: 400;
+      font-size: 24px;
+      line-height: 24px;
+      text-align: center;
+      color: #FFFFFF;
+    }
+
+    @media (min-width: 999px) {
+      .sidebar-ornament__title {
+        padding: 71px 0 0;
+      }
+    }
+
+    .sidebar-ornament__subtitle {
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 150%;
+      text-align: center;
+    }
+
+    .sidebar-ornament__benefits {
+      display: grid;
+      gap: 8px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      justify-content: space-between;
+    }
+
+    .sidebar-ornament__benefit {
+      display: grid;
+      gap: 8px;
+      align-items: center;
+      justify-items: center;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 10px;
+      line-height: 150%;
+      text-align: center;
     }
 
     .breadcrumb .breadcrumb__item:first-child {
@@ -542,6 +614,26 @@
           {{ content_for_order_summary }}
           <!-- add checkout_upsell code here -->
           <!-- <div class="checkout_upsell"> {% render 'checkout_upsell' %} </div> -->
+
+          <div class="sidebar-ornament">
+            <h4 class="sidebar-ornament__title">{{ 'shopify.risk_reversals.title' | t | newline_to_br }}</h4>
+            <p class="sidebar-ornament__subtitle">{{ 'shopify.risk_reversals.subtitle' | t }}</p>
+            <div class="sidebar-ornament__benefits">
+              <div class="sidebar-ornament__benefit">
+                <img src="{{ '365-moon.svg' | asset_url }}" alt="365-moon.svg">
+                <p>{{ 'shopify.risk_reversals.benefit_1' | t | newline_to_br }}</p>
+              </div>
+              <div class="sidebar-ornament__benefit">
+                <img src="{{ 'warranty.svg' | asset_url }}" alt="warranty.svg">
+                <p>{{ 'shopify.risk_reversals.benefit_2' | t | newline_to_br }}</p>
+              </div>
+              <div class="sidebar-ornament__benefit">
+                <img src="{{ 'truck-free.svg' | asset_url }}" alt="truck-free.svg">
+                <p>{{ 'shopify.risk_reversals.benefit_3' | t | newline_to_br }}</p>
+              </div>
+            </div>
+          </div>
+
         </div>
       </aside>
     </div>
