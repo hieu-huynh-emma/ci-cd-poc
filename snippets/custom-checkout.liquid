@@ -45,8 +45,8 @@
 
   (function ($) {
     var totalSavedText = '{% if saved > 0 %}{{ 'shopify.checkout.order_summary.you_save' | t: saved: saved_amount }}{% endif %}';
-    console.log("🚀 ~ file: custom-checkout.liquid ~ line 52 ~ totalSavedText", totalSavedText)
     var totalAmountText = $('[data-checkout-payment-due-target]').text();
+    var promoDiscount = $('#promo-discount').val();
     var discountCode = $('.reduction-code').length ? $('.reduction-code').text() : null;
 
     window.PhoneNumberInputFormatter = function () { return false; };
@@ -170,16 +170,47 @@
         return;
       }
       discountCode = newDiscountCode;
-      $.get(window.location.href, function (html) {
-        const parser = new DOMParser();
-        const doc = parser.parseFromString(html, 'text/html');
-        totalSavedText = doc.querySelector('#total-saved-amount').value;
-        $('.total-saved-text').text(totalSavedText);
-        const promoDiscount = doc.querySelector('#promo-discount').value;
-        $('.promo-code .total-line__price').text(`- ${promoDiscount}`);
-      });
+      $('.total-saved-text').text(totalSavedText);
+      $('.promo-code .total-line__price').text(`- ${promoDiscount}`);
 
     });
+
+    const oldXMLHttpRequest = XMLHttpRequest;
+    XMLHttpRequest = function() {
+      var actual = new oldXMLHttpRequest();
+      var self = this;
+      this.onreadystatechange = null;
+      actual.onreadystatechange = function() { 
+        if (this.readyState == 4) {
+          if (self.responseURL.includes('/checkouts/') && self.responseURL.includes('?step')) {
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(self.responseText, 'text/html');
+            totalSavedText = doc.querySelector('#total-saved-amount').value;
+            $('.total-saved-text').text(totalSavedText);
+            promoDiscount = doc.querySelector('#promo-discount').value;
+            $('.promo-code .total-line__price').text(`- ${promoDiscount}`);
+          }
+        } if (self.onreadystatechange) {
+          return self.onreadystatechange();
+        }
+      };
+      ["status", "statusText", "responseType", "response", "readyState", "responseXML", "responseText", "responseURL", "upload"].forEach(function(item) { 
+        Object.defineProperty(self, item, {
+          get: function() {return actual[item];} 
+        });
+      });
+      ["ontimeout, timeout", "withCredentials", "onload", "onerror", "onprogress"].forEach(function(item) { 
+        Object.defineProperty(self, item, {
+          get: function() {return actual[item];},
+          set: function(val) {actual[item] = val;} 
+        });
+      });
+      ["addEventListener", "send", "open", "abort", "getAllResponseHeaders", "getResponseHeader", "overrideMimeType", "setRequestHeader"].forEach(function(item) { 
+        Object.defineProperty(self, item, {
+          value: function() {return actual[item].apply(actual, arguments);} 
+        });
+      });
+    }
   })(Checkout.$);
 
   function showConfirmPopup($) {
