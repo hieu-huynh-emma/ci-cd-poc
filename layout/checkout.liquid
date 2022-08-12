@@ -527,6 +527,11 @@
         padding: 0;
         border-radius: 100%;
       }
+
+      .sidebar-ornament--spacing {
+        width: 400px;
+        height: 400px;
+      }
     }
 
     .sidebar-ornament__title {
@@ -557,6 +562,10 @@
       gap: 8px;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       justify-content: space-between;
+    }
+
+    .sidebar-ornament__benefits--no-gap {
+      gap: 0;
     }
 
     .sidebar-ornament__benefit {
@@ -615,10 +624,10 @@
           <!-- add checkout_upsell code here -->
           <!-- <div class="checkout_upsell"> {% render 'checkout_upsell' %} </div> -->
 
-          <div class="sidebar-ornament">
+          <div class="sidebar-ornament {% if request.locale.iso_code == 'fr' %}sidebar-ornament--spacing{%endif%}">
             <h4 class="sidebar-ornament__title">{{ 'shopify.risk_reversals.title' | t | newline_to_br }}</h4>
             <p class="sidebar-ornament__subtitle">{{ 'shopify.risk_reversals.subtitle' | t }}</p>
-            <div class="sidebar-ornament__benefits">
+            <div class="sidebar-ornament__benefits {% if request.locale.iso_code == 'fr' %}sidebar-ornament__benefits--no-gap{%endif%}">
               <div class="sidebar-ornament__benefit">
                 <img src="{{ '365-moon.svg' | asset_url }}" alt="365-moon.svg">
                 <p>{{ 'shopify.risk_reversals.benefit_1' | t | newline_to_br }}</p>
