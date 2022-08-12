@@ -80,7 +80,7 @@
                                     </button>
                                 </div>
                             </div>
-                            <div class="grid__item one-half text-right">
+                            <div class="grid__item one-half text-right product-prices-wrapper">
                                 {% if item.variant.compare_at_price > item.variant.price %}
                                 <del>{{item.variant.compare_at_price | money}}</del>
                                 <span class="ajaxcart__price">{{item.variant.price | money}}</span>
@@ -162,12 +162,15 @@
                 Veuillez nous écrire à
                 <strong><a href="mailto:support@emma-sleep.ca">support@emma-sleep.ca</a></strong>
                 ou nous appeler au
+                <br />
                 <strong><a href="tel:1 888 585 3662">+1-888-585-3662</a></strong>
                 pour toute demande.
             {% else %}
                 Please contact
                 <strong><a href="mailto:support@emma-sleep.ca">support@emma-sleep.ca</a></strong>
-                or call <strong><a href="tel:1 888 585 3662">+1-888-585-3662</a></strong>
+                or call
+                <br/>
+                <strong><a href="tel:1 888 585 3662">+1-888-585-3662</a></strong>
                 for inquiries
             {% endif %}
         </div>
@@ -256,6 +259,14 @@
         font-size: 12px;
     }
 
+    .product-prices-wrapper {
+        display: flex;
+        align-items: baseline;
+    }
+
+    .product-prices-wrapper .ajaxcart__price {
+        margin-left: 0.5rem;
+    }
 @media (min-width: 769px) {
     .ajaxcart__policies, .cart--ship-out-time {
         font-size: 14px;
