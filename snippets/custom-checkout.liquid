@@ -44,9 +44,6 @@
   ];
 
   (function ($) {
-    var totalSavedText = '{% if saved > 0 %}{{ 'shopify.checkout.order_summary.you_save' | t: saved: saved_amount }}{% endif %}';
-    var totalAmountText = $('[data-checkout-payment-due-target]').text();
-    var promoDiscount = $('#promo-discount').val();
     var discountCode = $('.reduction-code').length ? $('.reduction-code').text() : null;
 
     window.PhoneNumberInputFormatter = function () { return false; };
@@ -154,63 +151,13 @@
         }
       }
 
-      if (!$('.total-saved-line').length) {
-        $('.total-line-table__footer').append(`
-          <tr class="total-saved-line">
-            <td></td>
-            <td class="total-line__price payment-due" style="text-align: right; padding-top: 5px">
-              <span class="total-saved-text">${totalSavedText}</span>
-            </td>
-          </tr>
-        `);
-      }
-
       const newDiscountCode = $('.reduction-code').length ? $('.reduction-code').text() : null;
       if (newDiscountCode === discountCode) {
         return;
       }
       discountCode = newDiscountCode;
-      $('.total-saved-text').text(totalSavedText);
-      $('.promo-code .total-line__price').text(`- ${promoDiscount}`);
 
     });
-
-    const oldXMLHttpRequest = XMLHttpRequest;
-    XMLHttpRequest = function() {
-      var actual = new oldXMLHttpRequest();
-      var self = this;
-      this.onreadystatechange = null;
-      actual.onreadystatechange = function() { 
-        if (this.readyState == 4) {
-          if (self.responseURL.includes('/checkouts/') && self.responseURL.includes('?step')) {
-            const parser = new DOMParser();
-            const doc = parser.parseFromString(self.responseText, 'text/html');
-            totalSavedText = doc.querySelector('#total-saved-amount').value;
-            $('.total-saved-text').text(totalSavedText);
-            promoDiscount = doc.querySelector('#promo-discount').value;
-            $('.promo-code .total-line__price').text(`- ${promoDiscount}`);
-          }
-        } if (self.onreadystatechange) {
-          return self.onreadystatechange();
-        }
-      };
-      ["status", "statusText", "responseType", "response", "readyState", "responseXML", "responseText", "responseURL", "upload"].forEach(function(item) { 
-        Object.defineProperty(self, item, {
-          get: function() {return actual[item];} 
-        });
-      });
-      ["ontimeout, timeout", "withCredentials", "onload", "onerror", "onprogress"].forEach(function(item) { 
-        Object.defineProperty(self, item, {
-          get: function() {return actual[item];},
-          set: function(val) {actual[item] = val;} 
-        });
-      });
-      ["addEventListener", "send", "open", "abort", "getAllResponseHeaders", "getResponseHeader", "overrideMimeType", "setRequestHeader"].forEach(function(item) { 
-        Object.defineProperty(self, item, {
-          value: function() {return actual[item].apply(actual, arguments);} 
-        });
-      });
-    }
   })(Checkout.$);
 
   function showConfirmPopup($) {
@@ -453,6 +400,9 @@
 
 <script type="module">
   (function ($) {
+    let promoDiscount = '{{ promo_discount }}';
+    let totalSavedText = '{% if saved > 0 %}{{ 'shopify.checkout.order_summary.you_save' | t: saved: saved_amount }}{% endif %}';
+
     $(document).on("page:load page:change", function () {
       let discountCode = $('.reduction-code').length ? $('.reduction-code').text() : null;
       let onlyOneCodeAllowedText = '{{ 'shopify.checkout.order_summary.only_one_code_allowed' | t }}';
@@ -461,7 +411,6 @@
 
 
       let totalOriginalPrice = '{{ total_original_price }}';
-      let promoDiscount = '{{ promo_discount }}';
       let saleDiscount = '{{ sale_discount }}';
 
       const $totalTable = $('.total-line-table__tbody');
@@ -516,7 +465,58 @@
           </div>
         </div>`
       );
+
+      if (!$('.total-saved-line').length) {
+        $('.total-line-table__footer').append(`
+          <tr class="total-saved-line">
+            <td></td>
+            <td class="total-line__price payment-due" style="text-align: right; padding-top: 5px">
+              <span class="total-saved-text">${totalSavedText}</span>
+            </td>
+          </tr>
+        `);
+      }
+
     });
+
+    const oldXMLHttpRequest = XMLHttpRequest;
+    XMLHttpRequest = function() {
+      var actual = new oldXMLHttpRequest();
+      var self = this;
+      this.onreadystatechange = null;
+      actual.onreadystatechange = function() { 
+        if (this.readyState == 4) {
+          if (self.responseURL.includes('/checkouts/') && self.responseURL.includes('?step')) {
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(self.responseText, 'text/html');
+            totalSavedText = doc.querySelector('#total-saved-amount').value;
+            $('.total-saved-text').text(totalSavedText);
+            promoDiscount = doc.querySelector('#promo-discount').value;
+            console.log(promoDiscount);
+            $('.promo-code .total-line__price').text(`- ${promoDiscount}`);
+          }
+        } if (self.onreadystatechange) {
+          return self.onreadystatechange();
+        }
+      };
+      ["status", "statusText", "responseType", "response", "readyState", "responseXML", "responseText", "responseURL", "upload"].forEach(function(item) { 
+        Object.defineProperty(self, item, {
+          get: function() {return actual[item];} 
+        });
+      });
+      ["ontimeout, timeout", "withCredentials", "onload", "onerror", "onprogress"].forEach(function(item) { 
+        Object.defineProperty(self, item, {
+          get: function() {return actual[item];},
+          set: function(val) {actual[item] = val;} 
+        });
+      });
+      ["addEventListener", "send", "open", "abort", "getAllResponseHeaders", "getResponseHeader", "overrideMimeType", "setRequestHeader"].forEach(function(item) { 
+        Object.defineProperty(self, item, {
+          value: function() {return actual[item].apply(actual, arguments);} 
+        });
+      });
+    }
+
   })(Checkout.$);
 </script>
 
