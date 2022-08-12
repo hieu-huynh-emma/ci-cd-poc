@@ -41,13 +41,15 @@
                         <div class="ajaxcart__product-name--wrapper">
                             {% assign title = item.title | split: ' - ' %}
                             <a href="{{item.url}}" class="ajaxcart__product-name">{{title[0]}}</a>
-                            <select id="product-variant"
-                                onchange="updateProductVariant({{position}}, this.options[this.selectedIndex].value)">
-                                {% for variant in item.product.variants %}
-                                <option {% if item.variant_id==variant.id %} selected {% endif %} data-sku={{
-                                    variant.sku }} value={{ variant.id }}>{{variant.title}}</option>
-                                {% endfor %}
-                            </select>
+                            {% if item.variant.title != "Default Title" %}
+                                <select id="product-variant"
+                                    onchange="updateProductVariant({{position}}, this.options[this.selectedIndex].value)">
+                                    {% for variant in item.product.variants %}
+                                    <option {% if item.variant_id == variant.id %} selected {% endif %} data-sku={{
+                                        variant.sku }} value={{ variant.id }}>{{variant.title}}</option>
+                                    {% endfor %}
+                                </select>
+                            {% endif %}
                             {% if item.selling_plan_allocation %}
                             <span
                                 class="ajaxcart__product-meta">{{item.selling_plan_allocation.selling_plan.name}}</span>
@@ -201,7 +203,7 @@
     .subtotal_price {
         display: flex;
         align-items: center;
-        width: 40%;
+        width: 60%;
         justify-content: flex-end;
     }
 

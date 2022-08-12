@@ -960,17 +960,25 @@ var discountOnCart = (function(module, $) {
   }
 
   function showDiscountCode() {
+    const subtotal = parseFloat($('[data-subtotal]').attr('data-subtotal')) * 100;
+    const saved = parseFloat($('[data-total-saved]').attr('data-total-saved')) * 100;
+    const savedText = $('[data-total-saved]').attr('data-text');
     if (checkout && checkout.applied_discount && checkout.applied_discount.applicable) {
-      $('.promo-applied .promo-code').text(`${checkout.applied_discount.title} (- ${theme.Currency.formatMoney(checkout.applied_discount.amount, moneyFormat)})`);
+      $('.promo-applied .promo-code').html(`
+        <svg class="reduction-code__icon" aria-hidden="true" focusable="false"> <use xlink:href="#tags-filled"></use> </svg>
+        ${checkout.applied_discount.title} (- ${theme.Currency.formatMoney(checkout.applied_discount.amount, moneyFormat)})
+        <span class="remove-discount"></span>
+      `);
       $('.promo-applied').show();
-      const subtotal = parseFloat($('[data-subtotal]').attr('data-subtotal')) * 100;
-      const saved = parseFloat($('[data-total-saved]').attr('data-total-saved')) * 100;
-      const savedText = $('[data-total-saved]').attr('data-text');
+      $('body').toggleClass('no-discount-code-applied', false);
       const discount = parseFloat(checkout.applied_discount.amount) * 100;
       $('[data-subtotal]').text(theme.Currency.formatMoney(subtotal - discount, moneyFormat));
       $('[data-total-saved]').text(savedText.replace('[amount]', theme.Currency.formatMoney(saved + discount, moneyFormat)));
     } else {
+      $('[data-subtotal]').text(theme.Currency.formatMoney(subtotal, moneyFormat));
+      $('[data-total-saved]').text(savedText.replace('[amount]', theme.Currency.formatMoney(saved, moneyFormat)));
       $('.promo-applied').hide();
+      $('body').toggleClass('no-discount-code-applied', true);
     }
     theme.sizeCartDrawerFooter();
   }
@@ -1039,6 +1047,20 @@ var discountOnCart = (function(module, $) {
     }
   }
 
+  async function removeDiscount() {
+    try {
+      const response = await requestCheckout({
+        checkout: {
+          discount_code: null
+        }
+      }, 'PUT');
+      checkout = response.checkout;
+      showDiscountCode();
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
   $('body').on('click', '#discount-wrapper .discount-apply', async function() {
     await applyDiscount();
   });
@@ -1049,6 +1071,10 @@ var discountOnCart = (function(module, $) {
       event.preventDefault();
       await applyDiscount();
     }
+  });
+
+  $('body').on('click', '.promo-applied .promo-code .remove-discount', async function() {
+    await removeDiscount();
   });
 
   module = {
