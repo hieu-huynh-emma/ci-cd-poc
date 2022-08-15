@@ -8,15 +8,8 @@
 {% assign total_compare_at_price = item.variant.compare_at_price | times: item.quantity | plus: total_compare_at_price %}
 {% assign total_line_level_discount = item.line_level_total_discount | times: item.quantity | plus: total_line_level_discount %}
 {% assign total_line_price = item.variant.compare_at_price | times: item.quantity | minus: item.original_line_price | plus: total_line_price %}
-<script>
-console.log('{{item.variant.compare_at_price}} {{item.original_line_price}}');
-</script>
 {% endif %}
 {% endfor %}
-
-<script>
-console.log('{{total_line_price}}');
-</script>
 
 {% assign saved = total_line_price | plus: checkout.discounts_amount %}
 
