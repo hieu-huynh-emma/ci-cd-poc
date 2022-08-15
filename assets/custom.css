@@ -657,4 +657,34 @@ body.discount-code-ready.no-discount-code-applied #discount-wrapper {
   color: #fc8903;
   fill: currentColor;
 }
-body.fetching-discount .discounted-value {display: none}
+body.fetching-discount .ajaxcart__footer .promo-applied,
+body.fetching-discount .ajaxcart__footer .subtotal,
+body.fetching-discount .ajaxcart__footer .save-amount {
+  display: none !important;
+}
+.ajaxcart__footer .placeholder--loading {
+  height: 65px;
+  background: none;
+  position: relative;
+}
+.ajaxcart__footer .placeholder--loading::after {
+  content: "";
+  display: block;
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -12px;
+  margin-top: -12px;
+  border-radius: 50%;
+  border: 3px solid #fc8903;
+  border-top-color: transparent;
+  -webkit-animation: spin 1s infinite linear;
+  -moz-animation: spin 1s infinite linear;
+  -o-animation: spin 1s infinite linear;
+  animation: spin 1s infinite linear;
+}
+body:not(.fetching-discount) .ajaxcart__footer .placeholder--loading {
+  display: none;
+}

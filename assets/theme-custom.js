@@ -970,7 +970,7 @@ var discountOnCart = (function(module, $) {
         ${checkout.applied_discount.title} <span class="discounted-value">(- ${theme.Currency.formatMoney(checkout.applied_discount.amount, moneyFormat)})</span>
         <span class="remove-discount"></span>
       `);
-      $('.promo-applied').show();
+      $('.promo-applied').css('display', 'flex');
       $('body').toggleClass('no-discount-code-applied', false);
       const discount = parseFloat(checkout.applied_discount.amount) * 100;
       $('[data-subtotal]').text(theme.Currency.formatMoney(subtotal - discount, moneyFormat));

@@ -103,6 +103,7 @@
         <div class="cart_upsell"> {% render 'cart_upsell' %} </div>
     </div>
     <div class="ajaxcart__footer ajaxcart__footer--fixed">
+        <div class="placeholder--loading"></div>
         <div class="grid--full subtotal promo-applied" style="display: none">
             <div class="subtotal_title">
                 <p class="ajaxcart__promo">{{ 'cart.general.promo_applied' | t }}</p>
@@ -124,7 +125,6 @@
             data-total-saved="{{total_cart_compare_price| minus: cart.total_price | divided_by: 100}}"
             data-text="{{ 'shopify.checkout.order_summary.you_save' | t: saved: '[amount]'}}">{{
             'shopify.checkout.order_summary.you_save' | t: saved: save}}</div>
-
         {% if cart.item_count > 0 %}
         <div id="discount-wrapper">
             <div class="discount-toggler">{{ 'cart.general.apply_promo_code' | t }}</div>
