@@ -897,6 +897,7 @@ var discountOnCart = (function(module, $) {
   const moneyFormat = theme.strings.moneyFormat;
 
   async function getShopifyCheckoutPage() {
+    $('body').toggleClass('fetching-discount', true);
     let gettingShopifyCheckoutPagePromise = fetch('/checkout', {method: 'get'});
     const response = (await gettingShopifyCheckoutPagePromise).clone();
     gettingShopifyCheckoutPagePromise = null;
@@ -966,7 +967,7 @@ var discountOnCart = (function(module, $) {
     if (checkout && checkout.applied_discount && checkout.applied_discount.applicable) {
       $('.promo-applied .promo-code').html(`
         <svg class="reduction-code__icon" aria-hidden="true" focusable="false"> <use xlink:href="#tags-filled"></use> </svg>
-        ${checkout.applied_discount.title} (- ${theme.Currency.formatMoney(checkout.applied_discount.amount, moneyFormat)})
+        ${checkout.applied_discount.title} <span class="discounted-value">(- ${theme.Currency.formatMoney(checkout.applied_discount.amount, moneyFormat)})</span>
         <span class="remove-discount"></span>
       `);
       $('.promo-applied').show();
@@ -980,6 +981,7 @@ var discountOnCart = (function(module, $) {
       $('.promo-applied').hide();
       $('body').toggleClass('no-discount-code-applied', true);
     }
+    $('body').toggleClass('fetching-discount', false);
     theme.sizeCartDrawerFooter();
   }
 

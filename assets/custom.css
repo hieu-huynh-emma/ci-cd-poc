@@ -657,3 +657,4 @@ body.discount-code-ready.no-discount-code-applied #discount-wrapper {
   color: #fc8903;
   fill: currentColor;
 }
+body.fetching-discount .discounted-value {display: none}
