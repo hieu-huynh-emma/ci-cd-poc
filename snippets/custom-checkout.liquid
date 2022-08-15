@@ -6,7 +6,7 @@
 {% for item in checkout.line_items %}
 {% if item.variant.compare_at_price != item.original_final_price %}
 {% assign total_compare_at_price = item.variant.compare_at_price | times: item.quantity | plus: total_compare_at_price %}
-{% assign total_line_level_discount = item.line_level_total_discount | times: item.quantity | plus: total_line_level_discount %}
+{% assign total_line_level_discount = item.line_level_total_discount | plus: total_line_level_discount %}
 {% assign total_line_price = item.variant.compare_at_price | times: item.quantity | minus: item.original_line_price | plus: total_line_price %}
 {% endif %}
 {% endfor %}
