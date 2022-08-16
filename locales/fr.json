@@ -1,8 +1,8 @@
 {
   "general": {
     "404": {
-      "title": "404 - Page non trouvée",
-      "subtext_html": "Cette page n'est pas disponible. <a href=\"{{ link }}\" class=\"text-link\">Retourner vers la boutique<\/a>"
+      "page_not_found_message": "Oups ! On dirait que cette page est sur snooze",
+      "continue_shopping": "Continuer les achats"
     },
     "accessibility": {
       "refresh_page": "Le choix d'une sélection entraîne l'actualisation d'une page entière.",
@@ -369,6 +369,13 @@
     }
   },
   "shopify": {
+    "risk_reversals": {
+      "title": "Dormez en toute simplicité,\ncommandez en toute simplicité",
+      "subtitle": "Ayez l'esprit tranquille avec notre",
+      "benefit_1": "Garantie de remboursement\nde 365 nuits",
+      "benefit_2": "Garantie\nde 10 ans",
+      "benefit_3": "Livraison et\nretours gratuits"
+    },
     "checkout": {
       "order_summary": {
         "shipping_default_value": "Libre",

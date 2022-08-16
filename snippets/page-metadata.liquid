@@ -43,7 +43,12 @@
 	{% endif %}
 {% endif %}
 
-{% include 'title-and-desc-meta-tags', variant_meta_title: variant_meta_title, variant_meta_desc: variant_meta_desc %}
+{% if request.path == '/apps/track-order' %}
+	{% include 'track-order-meta-tags' %}
+{% else %}
+	{% include 'title-and-desc-meta-tags', variant_meta_title: variant_meta_title, variant_meta_desc: variant_meta_desc %}
+{% endif %}
+
 {% include 'canonical-meta-tag', variant_canonical_url: variant_canonical_url %}
 {% include 'social-meta-tags' %}
 

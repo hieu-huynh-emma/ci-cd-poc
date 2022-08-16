@@ -552,7 +552,7 @@ a.btn--secondary.btn--full.marztop{
   margin-bottom: 10px;
   display: none;
 }
-body.discount-code-ready #discount-wrapper {
+body.discount-code-ready.no-discount-code-applied #discount-wrapper {
   display: block;
 }
 #discount-wrapper .discount-toggler {
@@ -613,4 +613,78 @@ body.discount-code-ready #discount-wrapper {
 }
 .discount-apply.btn--loading {
   color: transparent !important;
+}
+.promo-applied .promo-code .remove-discount {
+  display: inline-block;
+  font-size: 0;
+  position: relative;
+  width: 10px;
+  height: 10px;
+  cursor: pointer;
+  margin-left: 5px;
+}
+.promo-applied .promo-code .remove-discount::before {
+  position: absolute;
+  content: '';
+  left: 0;
+  top: 50%;
+  height: 2px;
+  width: 100%;
+  background: #b1b3d5;
+  transform: translateY(-50%) rotate(45deg);
+  transition: .5s all ease;
+}
+.promo-applied .promo-code .remove-discount::after {
+  position: absolute;
+  content: '';
+  left: 0;
+  top: 50%;
+  height: 2px;
+  width: 100%;
+  background: #b1b3d5;
+  transform: translateY(-50%) rotate(-45deg);
+  transition: .5s all ease;
+}
+.promo-applied .promo-code .remove-discount:hover::before,
+.promo-applied .promo-code .remove-discount:hover::after {
+  background: #fc8903;
+}
+.reduction-code__icon {
+  margin-right: 5px;
+  vertical-align: top;
+  width: 14px;
+  height: 14px;
+  color: #fc8903;
+  fill: currentColor;
+}
+body.fetching-discount .ajaxcart__footer .promo-applied,
+body.fetching-discount .ajaxcart__footer .subtotal,
+body.fetching-discount .ajaxcart__footer .save-amount {
+  display: none !important;
+}
+.ajaxcart__footer .placeholder--loading {
+  height: 65px;
+  background: none;
+  position: relative;
+}
+.ajaxcart__footer .placeholder--loading::after {
+  content: "";
+  display: block;
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -12px;
+  margin-top: -12px;
+  border-radius: 50%;
+  border: 3px solid #fc8903;
+  border-top-color: transparent;
+  -webkit-animation: spin 1s infinite linear;
+  -moz-animation: spin 1s infinite linear;
+  -o-animation: spin 1s infinite linear;
+  animation: spin 1s infinite linear;
+}
+body:not(.fetching-discount) .ajaxcart__footer .placeholder--loading {
+  display: none;
 }

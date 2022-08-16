@@ -207,6 +207,27 @@
   max-height: 15rem;
   border-radius: 4px;
   overflow: hidden;
+  position: relative;
+}
+
+.site-subnav__discount-icon {
+  width: 30%;
+  height: min-content;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+@media (min-width: 640px) {
+  .site-subnav__discount-icon {
+    top: 25%;
+    left: 15%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.site-subnav__discount-percent {
+  transform: rotate(-8deg);
 }
 
 .site-subnav__featured-image img {

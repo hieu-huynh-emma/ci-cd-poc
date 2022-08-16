@@ -1,0 +1,12 @@
+{{ 'main-404.css' | asset_url | stylesheet_tag }}
+
+{% assign home_page_url = 'https://emma-sleep.ca/' %}
+{% if request.locale.iso_code == 'fr' %}
+  {% assign home_page_url = 'https://qc.emma-sleep.ca/' %}
+{% endif %}
+
+<div class="page-404">
+  <img class="page-404__image" src="{{ 'sleep-moon.svg' | asset_url }}" width="auto" height="auto" />
+  <div class="page-404__message">{{ 'general.404.page_not_found_message' | t }}</div>
+  <a href="{{ home_page_url }}" class="page-404__home-link">{{ 'general.404.continue_shopping' | t }}</a>
+</div>

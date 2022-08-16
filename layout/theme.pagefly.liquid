@@ -29,6 +29,7 @@ If you plan to remove PageFly, please see the guide in our help center first: ht
   <link rel="stylesheet" href="{{ 'custom-theme-2.css' | asset_url }}">
   <link rel="stylesheet" href="{{ 'custom-theme-3.css' | asset_url }}">
   <link rel="stylesheet" href="{{ 'animate.css' | asset_url }}">
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
 
     <!---- LUCKY ORANGE INTEGRATION ================================= -->
@@ -76,8 +77,9 @@ usi_installed = 0; USI_installCode = function() { if (usi_installed == 0) { usi_
       gridType: {{ settings.collection_products_grid | json }}
     };
   </script>
-
-  {{ 'jquery-2.2.3.min.js' | asset_url | script_tag }}
+  
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-migrate-1.4.1.min.js"></script>
 
   <script src="{{ 'lazysizes.min.js' | asset_url }}" async="async"></script>
 
@@ -102,6 +104,8 @@ usi_installed = 0; USI_installCode = function() { if (usi_installed == 0) { usi_
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
   <link  href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.css" rel="stylesheet">
+  
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
 {% render 'weglot_hreftags' %}
 {% render 'weglot_switcher' %}
@@ -134,78 +138,32 @@ jQuery(window).on("load",function(){
   }
 });
   </script>
+
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "d60mjcc2fl");
+</script>
+  
 </head>
 {% comment %}
   Add the page template as a class for easy page or template specific styling.
 {% endcomment %}
-<body id="{{ page_title | handle }}" class="{% if customer %}customer-logged-in {% endif %}template-{{ request.page_type | handle }}"><div class="pagefly-container">{{ content_for_layout }}</div>{% render 'freshchat' %}</body>
+<body id="{{ page_title | handle }}" class="{% if customer %}customer-logged-in {% endif %}template-{{ request.page_type | handle }}"><div class="pagefly-container">{{ content_for_layout }}</div></body>
 </html>
 <style>
-  span.jdgm-subtab__name {
+ span.jdgm-subtab__name {
     display: none;
-  }
-
-  span.jdgm-prev-badge__text {
+}
+span.jdgm-prev-badge__text {
     display: inline-block !important;
-  }
+}
 
-  html,
-  body {
-    overflow: visible !important;
-  }
+#dummy-chat-button-iframe, #ShopifyChat {
+  z-index: 19 !important;
+  margin-right: 3rem;
+}
 
-  #dummy-chat-button-iframe,
-  #ShopifyChat {
-    z-index: 19 !important;
-    margin-right: 3rem;
-  }
-
-  .announcement-bar {
-    height: 70px;
-  }
-
-  #shopify-section-announcement-bar {
-    position: fixed;
-    top: 0;
-    z-index: 101;
-    width: 100%;
-  }
-
-  #shopify-section-header {
-    top: 70px;
-    position: sticky;
-    z-index: 101;
-  }
-
-  #bundle-sticky_add_to_cart {
-    top: 134px;
-    min-height: 40px;
-  }
-
-  #bundle-sticky_add_to_cart .sticky-product-details {
-    background-color: white;
-  }
-
-  #PageContainer {
-    position: relative;
-    top: 70px;
-  }
-
-  @media (min-width: 768px) {
-    .announcement-bar {
-      height: 40px;
-    }
-
-    #shopify-section-header {
-      top: 40px;
-    }
-
-    #bundle-sticky_add_to_cart {
-      top: 104px;
-    }
-
-    #PageContainer {
-      top: 40px;
-    }
-  }
 </style>
