@@ -4,25 +4,25 @@
 {% assign total_line_price = 0.00 %}
 
 {% for item in checkout.line_items %}
-{% if item.variant.compare_at_price != item.original_final_price %}
-{% assign total_compare_at_price = item.variant.compare_at_price | times: item.quantity | plus: total_compare_at_price %}
-{% assign total_line_level_discount = item.line_level_total_discount | plus: total_line_level_discount %}
-{% assign total_line_price = item.variant.compare_at_price | times: item.quantity | minus: item.original_line_price | plus: total_line_price %}
-{% endif %}
+  {% if item.variant.compare_at_price != item.original_final_price %}
+    {% assign total_compare_at_price = item.variant.compare_at_price | times: item.quantity | plus: total_compare_at_price %}
+    {% assign total_line_level_discount = item.line_level_total_discount | plus: total_line_level_discount %}
+    {% assign total_line_price = item.variant.compare_at_price | times: item.quantity | minus: item.original_line_price | plus: total_line_price %}
+  {% endif %}
 {% endfor %}
 
 {% assign saved = total_line_price | plus: checkout.discounts_amount %}
 
 {% if request.locale.iso_code == 'fr' %}
-{% assign saved_amount = saved | money_without_currency | replace: '.', ',' | append: ' $' %}
-{% assign total_original_price = total_compare_at_price | money_without_currency | replace: '.', ',' | append: ' $' %}
-{% assign promo_discount = total_line_level_discount | money_without_currency | replace: '.', ',' | append: ' $' %}
-{% assign sale_discount = total_line_price | money_without_currency | replace: '.', ',' | append: ' $' %}
+  {% assign saved_amount = saved | money_without_currency | replace: '.', ',' | append: ' $' %}
+  {% assign total_original_price = total_compare_at_price | money_without_currency | replace: '.', ',' | append: ' $' %}
+  {% assign promo_discount = total_line_level_discount | money_without_currency | replace: '.', ',' | append: ' $' %}
+  {% assign sale_discount = total_line_price | money_without_currency | replace: '.', ',' | append: ' $' %}
 {% else %}
-{% assign saved_amount = saved | money %}
-{% assign total_original_price = total_compare_at_price | money %}
-{% assign promo_discount = total_line_level_discount | money %}
-{% assign sale_discount = total_line_price | money %}
+  {% assign saved_amount = saved | money %}
+  {% assign total_original_price = total_compare_at_price | money %}
+  {% assign promo_discount = total_line_level_discount | money %}
+  {% assign sale_discount = total_line_price | money %}
 {% endif %}
 
 <script type="text/javascript">
@@ -42,61 +42,61 @@
     { value: "QC", labels: [{ subLabel: "GST", rate: 5 }, { subLabel: "QST", rate: 9.98 }] },
     { value: "SK", labels: [{ subLabel: "PST", rate: 6 }, { subLabel: "GST", rate: 5 }] },
   ];
-
+  
   (function ($) {
     var discountCode = $('.reduction-code').length ? $('.reduction-code').text() : null;
-
+    
     window.PhoneNumberInputFormatter = function () { return false; };
-
+    
     $(this).scrollTop(0);
-
+    
     $(document).on("page:load page:change", function () {
       $('.main__header .logo').on('click', function (e) {
         e.preventDefault();
         showConfirmPopup($);
       });
-
+      
       $('.banner .logo').on('click', function (e) {
         e.preventDefault();
         showConfirmPopup($);
       });
-
+      
       addTaxesBreakdown($);
-
+      
       if (Shopify.Checkout.step === 'contact_information') {
         $('body').addClass("upselll_show_information");
         $('#review-shipping-address').remove();
-
+        
         var $dynamicCheckoutTitle = $('.dynamic-checkout h2.dynamic-checkout__title');
         if ($dynamicCheckoutTitle) {
           $dynamicCheckoutTitle.addClass('section__title');
         }
-
+        
         var $alternativePaymentSeparatorContent = $('.alternative-payment-separator__content');
         if ($alternativePaymentSeparatorContent) {
           var content = "{{ 'shopify.checkout.continue_with_credit' | t }}";
           $alternativePaymentSeparatorContent.text(content);
         }
-
-
+        
+        
         let $phoneField = $('#checkout_billing_address_phone');
         phoneNumberValidated = false;
         validatePhoneNumber($phoneField);
-
+        
         // Run validator if there is a previously cached phone number
         if ($phoneField.val() !== '') {
           validatePhoneNumber($phoneField);
         };
-
+        
         $phoneField.blur(function () {
           validatePhoneNumber($phoneField);
         });
-
+        
         // Validate phone number when modified
         $phoneField.on('input', function () {
           validatePhoneNumber($(this));
         });
-
+        
         $('[data-step] form [type="submit"]').on('click', function (e) {
           e.preventDefault();
           validatePhoneNumber($phoneField);
@@ -104,7 +104,7 @@
             $('[data-step] form').trigger('submit');
           }
         });
-
+        
         $('[data-step] form').on('keypress', function (e) {
           if (e.keyCode === 13) {
             e.preventDefault();
@@ -114,14 +114,14 @@
       }
       else if (Shopify.Checkout.step === 'shipping_method') {
         addShippingSectionSubtitle($);
-
+        
         clearInterval(timerInterval);
         document.getElementsByClassName('checkcout-countdown')[0].style.display = 'none';
-
+        
         {% if request.locale.iso_code == 'fr' %}
         $('[data-shipping-method-label-title="Standard Delivery"]').text('Livraison Standard');
         {% endif %}
-
+        
         $(".order-summary-toggle").click(function () {
           $(".checkout_upsell").addClass("order-summary--is-expanded");
         });
@@ -130,9 +130,9 @@
         disableAffirmPaymentMethod($);
         clearInterval(timerInterval);
         document.getElementsByClassName('checkcout-countdown')[0].style.display = 'none';
-
+        
       }
-
+      
       if (Shopify.Checkout.step === 'contact_information' || Shopify.Checkout.step === 'shipping_method') {
         const $discountCodeInput = $('#checkout_reduction_code');
         if ($discountCodeInput && $discountCodeInput.length) {
@@ -150,21 +150,21 @@
           });
         }
       }
-
+      
       const newDiscountCode = $('.reduction-code').length ? $('.reduction-code').text() : null;
       if (newDiscountCode === discountCode) {
         return;
       }
       discountCode = newDiscountCode;
-
+      
     });
   })(Checkout.$);
-
+  
   function showConfirmPopup($) {
     $('#leaving-checkout-popup').css('display', 'block');
     $('html, body').addClass('disable-scrolling');
   }
-
+  
   // CONTACT INFORMATION
   function validatePhoneNumber($phoneField) {
     phoneNumberValidated = false;
@@ -172,14 +172,14 @@
     $phoneField.removeAttr('data-phone-formatter data-phone-formatter-country-select');
     let extractedPhoneVal = $phoneField.val() ? $phoneField.val().replace(/[^0-9]/g) : '';
     $phoneField.val(extractedPhoneVal);
-
+    
     let errorClass = 'field--error-plus-dynamic';
     let errorMessageSelector = '.field__message--error-plus-dynamic';
-
+    
     // Check input for character limit and remove letters
     let minChars = 11, maxChars = 13;
     let errorMessage = "Enter a valid phone number (11-13 digits)";
-
+    
     let phoneLength = $phoneField.val() ? $phoneField.val().length : 0;
     if (phoneLength !== 0 && (phoneLength < minChars || phoneLength > maxChars)) {
       // Not enough characters, show error on input.
@@ -194,40 +194,40 @@
       phoneNumberValidated = true;
     }
   }
-
+  
   function addTaxesBreakdown($) {
     let totalShippingPrice = $(".total-line.total-line--shipping .total-line__price span");
     if (totalShippingPrice) {
       totalShippingPrice.text("FREE");
     }
-
+    
     let $provinceSelector = $("#checkout_shipping_address_province");
-
+    
     if ($provinceSelector.val()) {
       breakdownTax($);
     }
-
+    
     $provinceSelector.on("change", function (e) {
       e.preventDefault();
       breakdownTax($);
     });
   }
-
+  
   function breakdownTax($) {
     let $taxLabel = $('.total-line.total-line--taxes .total-line__name');
     let $taxPrice = $('.total-line.total-line--taxes .total-line__price');
     let checkoutSubtotal = extractPrice($('.total-line.total-line--subtotal [data-checkout-subtotal-price-target]').attr('data-checkout-subtotal-price-target'));
-
+    
     const taxSubtotal = $('.tax-subtotal');
     if (taxSubtotal) {
       taxSubtotal.remove();
     }
-
+    
     let $selectedProvince = $("#checkout_shipping_address_province option:selected");
     let selectedProvince = $selectedProvince.val();
     const taxApplied = TAXES.find((tax) => tax.value === selectedProvince);
     const { labels, totalRate } = taxApplied;
-
+    
     {% if request.locale.iso_code == 'fr' %}
     if (labels && (labels.length === 1)) {
       $taxLabel.text(`${labels}`);
@@ -242,7 +242,7 @@
         $totalTable.append(`<tr class="total-line tax-subtotal"><th class="total-line__name">Tax (${subLabel} ${rate}%)</th><td class="total-line__price"><span class="order-summary__emphasis">${value.replace('.', ',')} $</span></td></tr>`);
         taxTotal += (+value);
       });
-
+      
       $taxLabel.text("Taxes");
       $taxPrice.html(`<span class="order-summary__emphasis">${taxTotal.toFixed(2).replace('.', ',')} $</span>`);
     }
@@ -260,13 +260,13 @@
         $totalTable.append(`<tr class="total-line tax-subtotal"><th class="total-line__name">Tax (${subLabel} ${rate}%)</th><td class="total-line__price"><span class="order-summary__emphasis">$${value}</span></td></tr>`);
         taxTotal += (+value);
       });
-
+      
       $taxLabel.text("Taxes");
       $taxPrice.html(`<span class="order-summary__emphasis">$${taxTotal.toFixed(2)}</span>`);
     }
     {% endif %}
   }
-
+  
   function extractPrice(string) {
     if (string) {
       const commaPrice = string.match(/([\d,.]+)/g);
@@ -274,20 +274,20 @@
       return price ? +price : '';
     }
   }
-
+  
   // SHIPPING METHOD
   function addShippingSectionSubtitle($) {
 
     var node = document.querySelector(".section--shipping-method > .section__header > .section__title"),
       ele = document.createElement("p");
-
+    
     ele.className = "para";
     ele.innerHTML = '{{ 'shopify.checkout.shipping_method.subtitle' | t }}';
     node.parentNode.insertBefore(ele, node.nextSibling);
-
+    
     var node1 = document.querySelector(".content-box > .content-box__row > .radio-wrapper"),
       ele1 = document.createElement("p");
-
+    
     ele1.className = "para2";
     ele1.innerHTML = '{{ 'shopify.checkout.shipping_method.standart_delivery_no_contact' | t }}';
     node1.parentNode.insertBefore(ele1, node1.nextSibling);
@@ -348,8 +348,8 @@
       }
     });
   }
-
-
+  
+  
   // PAYMENT METHOD
   function disableAffirmPaymentMethod($) {
     let hasDiscountApplied = $(".reduction-code").length || $(".reduction-code__text").length;
@@ -380,41 +380,41 @@
 <script src="{{ 'custom-checkout.js' | asset_url }}" defer="defer"></script>
 
 {% if saved > 0 %}
-<input id="total-saved-amount" type="hidden"
-  value="{% if saved > 0 %}{{ 'shopify.checkout.order_summary.you_save' | t: saved: saved_amount }}{% endif %}"
-  disabled>
+  <input id="total-saved-amount" type="hidden"
+         value="{% if saved > 0 %}{{ 'shopify.checkout.order_summary.you_save' | t: saved: saved_amount }}{% endif %}"
+         disabled>
 {% endif %}
 
 <input id="promo-discount" type="hidden"
-  value="{% if total_line_price > 0 %}{{ promo_discount }}{% endif %}"
-  disabled>
+       value="{% if total_line_price > 0 %}{{ promo_discount }}{% endif %}"
+       disabled>
 
 {% for item in checkout.line_items %}
-{%- if item.variant.compare_at_price != item.final_price -%}
-<input id="{{ item.key }}" type="hidden" name="original_line_price"
-  value="{{ item.variant.compare_at_price | times: item.quantity | money }}" disabled>
-{% else %}
-<input id="{{ item.key }}" type="hidden" name="original_line_price" value="" disabled>
-{% endif %}
+  {%- if item.variant.compare_at_price != item.final_price -%}
+    <input id="{{ item.key }}" type="hidden" name="original_line_price"
+           value="{{ item.variant.compare_at_price | times: item.quantity | money }}" disabled>
+  {% else %}
+    <input id="{{ item.key }}" type="hidden" name="original_line_price" value="" disabled>
+  {% endif %}
 {% endfor %}
 
 <script type="module">
   (function ($) {
     let promoDiscount = '{{ promo_discount }}';
     let totalSavedText = '{% if saved > 0 %}{{ 'shopify.checkout.order_summary.you_save' | t: saved: saved_amount }}{% endif %}';
-
+    
     $(document).on("page:load page:change", function () {
       let discountCode = $('.reduction-code').length ? $('.reduction-code').text() : null;
       let onlyOneCodeAllowedText = '{{ 'shopify.checkout.order_summary.only_one_code_allowed' | t }}';
       let promoText = '{{ 'shopify.checkout.order_summary.no_promo_yet' | t }}';
       let promoCodeText = $('.order-summary__section--discount .reduction-code__text').text();
-
-
+      
+      
       let totalOriginalPrice = '{{ total_original_price }}';
       let saleDiscount = '{{ sale_discount }}';
-
+      
       const $totalTable = $('.total-line-table__tbody');
-
+      
       let hasOrderLevelDiscountCode = $('.total-line.total-line--reduction').length;
       if (!hasOrderLevelDiscountCode) {
         $totalTable.prepend(`<tr class="total-line promo-code"><th class="total-line__name">{{ 'shopify.checkout.order_summary.promo_code' | t }} (${promoCodeText}) </th><td class="total-line__price"><span class="order-summary__emphasis"> - ${promoDiscount}</span></td></tr>`);
@@ -425,26 +425,26 @@
         let subtotalPrice = (extractPrice($subtotal.text()) - extractPrice($promoCode.text())).toFixed(2);
         $subtotal.text(`$${subtotalPrice}`);
       }
-
+      
       $totalTable.prepend(`<tr class="total-line sale-discount"><th class="total-line__name">{{ 'shopify.checkout.order_summary.sale_discount' | t }}</th><td class="total-line__price"><span class="order-summary__emphasis">- ${saleDiscount}</span></td></tr>`);
       $('.total-line.total-line--reduction').insertAfter('.total-line.sale-discount');
       $totalTable.prepend(`<tr class="total-line original_price"><th class="total-line__name">{{ 'shopify.checkout.order_summary.original_price' | t }}</th><td class="total-line__price"><span class="order-summary__emphasis">${totalOriginalPrice}</span></td></tr>`);
-
+      
       if (discountCode) {
         ($('.product .reduction-code') || []).each(function (idx, e) { e.remove(); });
         var replacementTag = 'div';
-
+        
         if($('.product__price .order-summary__small-text').length) {
           ($('.product__price .order-summary__emphasis.skeleton-while-loading') || []).each(function (idx, e) { e.remove(); });
           ($('.product__price .order-summary__small-text') || []).each(function (idx, e) {
             var outer = this.outerHTML;
-
+            
             var regex = new RegExp('<' + this.tagName, 'i');
             var newTag = outer.replace(regex, '<' + replacementTag);
-
+            
             regex = new RegExp('</' + this.tagName, 'i');
             newTag = newTag.replace(regex, '</' + replacementTag);
-
+            
             $(this).replaceWith(newTag);
           });
         }
@@ -455,7 +455,7 @@
         $(".total-line.promo-code").hide();
         $(".order-summary__section--discount form.edit_checkout .fieldset").show();
       }
-
+      
       let $discountSection = $('#order-summary .order-summary__section--discount').first();
       $discountSection.prepend(
         `<div class="promo-text-wrapper">
@@ -465,7 +465,7 @@
           </div>
         </div>`
       );
-
+      
       if (!$('.total-saved-line').length) {
         $('.total-line-table__footer').append(`
           <tr class="total-saved-line">
@@ -476,15 +476,15 @@
           </tr>
         `);
       }
-
+      
     });
-
+    
     const oldXMLHttpRequest = XMLHttpRequest;
     XMLHttpRequest = function() {
       var actual = new oldXMLHttpRequest();
       var self = this;
       this.onreadystatechange = null;
-      actual.onreadystatechange = function() { 
+      actual.onreadystatechange = function() {
         if (this.readyState == 4) {
           if (self.responseURL.includes('/checkouts/') && self.responseURL.includes('?step')) {
             const parser = new DOMParser();
@@ -499,24 +499,24 @@
           return self.onreadystatechange();
         }
       };
-      ["status", "statusText", "responseType", "response", "readyState", "responseXML", "responseText", "responseURL", "upload"].forEach(function(item) { 
+      ["status", "statusText", "responseType", "response", "readyState", "responseXML", "responseText", "responseURL", "upload"].forEach(function(item) {
         Object.defineProperty(self, item, {
-          get: function() {return actual[item];} 
+          get: function() {return actual[item];}
         });
       });
-      ["ontimeout, timeout", "withCredentials", "onload", "onerror", "onprogress"].forEach(function(item) { 
+      ["ontimeout, timeout", "withCredentials", "onload", "onerror", "onprogress"].forEach(function(item) {
         Object.defineProperty(self, item, {
           get: function() {return actual[item];},
-          set: function(val) {actual[item] = val;} 
+          set: function(val) {actual[item] = val;}
         });
       });
-      ["addEventListener", "send", "open", "abort", "getAllResponseHeaders", "getResponseHeader", "overrideMimeType", "setRequestHeader"].forEach(function(item) { 
+      ["addEventListener", "send", "open", "abort", "getAllResponseHeaders", "getResponseHeader", "overrideMimeType", "setRequestHeader"].forEach(function(item) {
         Object.defineProperty(self, item, {
-          value: function() {return actual[item].apply(actual, arguments);} 
+          value: function() {return actual[item].apply(actual, arguments);}
         });
       });
     }
-
+    
   })(Checkout.$);
 </script>
 
@@ -524,66 +524,66 @@
   .tax-subtotal .total-line__name {
     padding-left: 1rem;
   }
-
+  
   .paybright-messages {
     margin-left: 2.8rem;
     margin-bottom: 0.5rem;
     cursor: not-allowed;
   }
-
+  
   .disable-payment-method {
     cursor: not-allowed;
   }
-
+  
   .error-message {
     font-weight: 400;
     color: #f01130;
     margin-top: 0.5rem;
     margin-left: 0.5rem;
   }
-
+  
   .field--error-plus-dynamic {
     border: 2px solid #f01130 !important;
   }
-
+  
   .disable-scrolling {
     overflow: hidden;
     height: 100%;
   }
-
+  
   .section__title {
     text-transform: capitalize;
     color: #FF8200 !important;
     font-size: 2em;
     font-family: Kepler Std Bold Semicondensed Display;
   }
-
+  
   .alternative-payment-separator__content {
     padding-bottom: 1rem;
   }
-
+  
   #review-shipping-address {
     margin-bottom: 1rem;
   }
-
+  
   .original-line-price {
     text-decoration: line-through;
     font-weight: 400;
     color: #33312f;
     margin-right: 0.5rem;
   }
-
+  
   .field--info .field__input {
     border-color: inherit;
     -webkit-box-shadow: none;
     box-shadow: none;
   }
-
+  
   .field--info .field__message--error {
     color: #b1b3d5;
     display: block;
   }
-
+  
   .radio__label__primary .tooltip-container {
     height: 20px;
     width: 20px;
@@ -591,24 +591,24 @@
     vertical-align: middle;
     margin-bottom: 2px;
   }
-
+  
   #product_removal_tooltip {
     height: 10px;
     width: 15px;
     display: inline-block;
     margin-left: 7px;
   }
-
+  
   #product-removal-wrapper .checkbox__input {
     display: inline-block;
   }
-
+  
   label[for="checkout_product_removal"] {
     display: inline !important;
     width: auto !important;
     vertical-align: baseline;
   }
-
+  
   @media (min-width: 641px) {
     #tooltip-for-scheduled-delivery {
       max-width: 90vw;
@@ -618,17 +618,17 @@
       margin-right: 0;
     }
   }
-
+  
   .promo-text-wrapper {
     display: flex;
   }
-
+  
   .discount-tooltip {
     position: relative;
     display: inline-block;
     margin-left: 0.5rem;
   }
-
+  
   .discount-tooltip .discount-tooltip-text {
     visibility: hidden;
     width: 10rem;
@@ -641,16 +641,58 @@
     z-index: 1;
     left: 1.5rem;
   }
-
+  
   .discount-tooltip:hover .discount-tooltip-text {
     visibility: visible;
   }
-
+  
   .product__price {
     display: flex;
     height: 4rem;
     align-items: center;
     justify-content: flex-end;
+  }
+  
+  .order-summary__section__content .product__price .order-summary__emphasis.skeleton-while-loading,
+  .total-saved-line {
+    color: #f70909 !important;
+    font-size: 14px;
+  }
+  
+  .order-summary__section {
+    color: #33312f;
+    font-weight: 500;
+  }
+  
+  .sidebar .order-summary__emphasis,
+  .original-line-price,
+  .sidebar .order-summary__small-text,
+  .sidebar .payment-due-label__total,
+  .sidebar .payment-due__currency,
+  .sidebar .payment-due__price {
+    color: #33312f;
+  }
+  
+  .sidebar .reduction-code__text {
+    color: #3c4196;
+  }
+  
+  span[data-checkout-total-shipping-target] {
+    color: #33312f !important;
+  }
+  
+  span[data-checkout-total-shipping-target="0"] {
+    color: #F01130 !important;
+  }
+  
+  .product__price .order-summary__small-text {
+    color: #f70909 !important;
+    font-size: 14px;
+    font-weight: 500;
+  }
+  
+  .total-line__price {
+    font-weight: 500;
   }
 
   .order-summary__section__content .product__price .order-summary__emphasis.skeleton-while-loading,
