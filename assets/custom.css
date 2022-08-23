@@ -685,6 +685,7 @@ body.fetching-discount .ajaxcart__footer .save-amount {
   -o-animation: spin 1s infinite linear;
   animation: spin 1s infinite linear;
 }
-body:not(.fetching-discount) .ajaxcart__footer .placeholder--loading {
+body:not(.fetching-discount) .ajaxcart__footer .placeholder--loading,
+[data-cart-items="0"] .placeholder--loading{
   display: none;
 }
