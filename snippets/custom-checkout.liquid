@@ -133,24 +133,6 @@
         
       }
       
-      if (Shopify.Checkout.step === 'contact_information' || Shopify.Checkout.step === 'shipping_method') {
-        const $discountCodeInput = $('#checkout_reduction_code');
-        if ($discountCodeInput && $discountCodeInput.length) {
-          const $parent = $discountCodeInput.parent().parent().parent();
-          if (!$parent.hasClass('field--error')) {
-            $parent.append(`
-              <p class="field__message field__message--error">{{ 'shopify.checkout.order_summary.discount_sublabel' | t }}</p>
-            `);
-            $parent.toggleClass('field--info', true);
-          }
-          $discountCodeInput.on('keyup', function () {
-            $parent.toggleClass('field--error', false);
-            $parent.toggleClass('field--info', true);
-            $parent.find('.field__message--error').text(`{{ 'shopify.checkout.order_summary.discount_sublabel' | t }}`);
-          });
-        }
-      }
-      
       const newDiscountCode = $('.reduction-code').length ? $('.reduction-code').text() : null;
       if (newDiscountCode === discountCode) {
         return;
@@ -277,7 +259,7 @@
   
   // SHIPPING METHOD
   function addShippingSectionSubtitle($) {
-    
+
     var node = document.querySelector(".section--shipping-method > .section__header > .section__title"),
       ele = document.createElement("p");
     
@@ -291,7 +273,7 @@
     ele1.className = "para2";
     ele1.innerHTML = '{{ 'shopify.checkout.shipping_method.standart_delivery_no_contact' | t }}';
     node1.parentNode.insertBefore(ele1, node1.nextSibling);
-    
+
     // Scheduled Delivery with In-Home Setup
     const label = $('[data-shipping-method-label-title="Scheduled Delivery with In-Home Setup"]');
     if (!label || !label.length) return;
@@ -691,6 +673,48 @@
     font-weight: 500;
   }
   
+  .total-line__price {
+    font-weight: 500;
+  }
+
+  .order-summary__section__content .product__price .order-summary__emphasis.skeleton-while-loading,
+  .total-saved-line {
+    color: #f70909 !important;
+    font-size: 14px;
+  }
+
+  .order-summary__section {
+    color: #33312f;
+    font-weight: 500;
+  }
+
+  .sidebar .order-summary__emphasis,
+  .original-line-price,
+  .sidebar .order-summary__small-text,
+  .sidebar .payment-due-label__total,
+  .sidebar .payment-due__currency,
+  .sidebar .payment-due__price {
+    color: #33312f;
+  }
+
+  .sidebar .reduction-code__text {
+    color: #3c4196;
+  }
+
+  span[data-checkout-total-shipping-target] {
+    color: #33312f !important;
+  }
+
+  span[data-checkout-total-shipping-target="0"] {
+    color: #F01130 !important;
+  }
+
+  .product__price .order-summary__small-text {
+    color: #f70909 !important;
+    font-size: 14px;
+    font-weight: 500;
+  }
+
   .total-line__price {
     font-weight: 500;
   }

@@ -28,8 +28,8 @@
 							src="{{ navImg | default: featuredImg }}" class="lg:w-full h-44 object-cover"
 							loading="lazy"
 						/>
-						{% if product.compare_at_price > product.price %}
-							{% render 'discount-tag', product: product %}
+						{% if product.metafields.accentuate.navigation_bar_discount %}
+							{% render 'discount-tag', discount: product.metafields.accentuate.navigation_bar_discount %}
 						{% endif %}
 					</div>
 					

@@ -13,7 +13,7 @@
     });
 </script>
 
-<form action="{{ routes.cart_url }}" method="post" novalidate class="cart ajaxcart" style="z-index: 100;">
+<form action="{{ routes.cart_url }}" method="post" novalidate class="cart ajaxcart" style="z-index: 100;" data-cart-items="{{ cart.items.size }}">
     {% if cart.items.size == 0%}
     <div class="cart--empty-message-wrapper">
         <p class="cart--empty-message">
