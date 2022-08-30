@@ -1,3 +1,5 @@
+{{ 'custom-checkout.css' | asset_url | stylesheet_tag }}
+
 {% assign saved = 0.00 %}
 {% assign total_compare_at_price = 0.00 %}
 {% assign total_line_level_discount = 0.00 %}
@@ -458,7 +460,8 @@
           </tr>
         `);
       }
-      
+  
+      renderSSLText();
     });
     
     const oldXMLHttpRequest = XMLHttpRequest;
@@ -500,6 +503,19 @@
     }
     
   })(Checkout.$);
+
+  
+  function renderSSLText() {
+  
+    const $header = $(".main .main__header");
+  
+    if (!!$header.find("nav .ssl").length) return
+  
+    $header.find("nav").append(`<div class='ssl'>
+                {% render 'icon-lock' %}
+                {{ settings.shopify.checkout.ssl | default: "Secure SSL encryption" }}</div>
+            `);
+  }
 </script>
 
 <style>
@@ -717,6 +733,12 @@
 
   .total-line__price {
     font-weight: 500;
+  }
+
+  .step__footer__previous-link[href="https://emma-sleep.ca/cart"],
+  .step__footer__previous-link[href="https://qc.emma-sleep.ca/cart"],
+  .step__footer__previous-link[href="https://emma-sleep-ca.myshopify.com/cart"] {
+    display: none;
   }
 
 </style>

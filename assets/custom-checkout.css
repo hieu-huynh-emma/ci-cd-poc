@@ -1,0 +1,22 @@
+.main__header nav {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+
+.ssl {
+    display: grid;
+    gap: 4px;
+    grid-auto-flow: column;
+    align-items: center;
+    letter-spacing: 0.13rem;
+    opacity: 0.85;
+    font-size: 0.8571428571em;
+    color: #737373;
+}
+
+.ssl svg {
+    width: 15px;
+    height: 15px;
+    fill: rgba(46, 47, 60, 0.85);
+}

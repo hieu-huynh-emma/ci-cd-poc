@@ -6,27 +6,27 @@
   {% assign snippet_name = section.settings.section_id %}
   {% capture content %}{% include snippet_name %}{% endcapture %}
   {% if content contains "Liquid error" %}
-
+    
     {% if request.design_mode %}
       <div class="pf-ph">
         <h3>PageFly Section</h3>
         <span>No section selected. Please select your section from the list</span>
       </div>
     {% endif %}
-
+  
   {% else %}
     {% render 'pagefly-settings' %}
     {% include snippet_name %}
   {% endif %}
   {% else %}
-
+    
     {% if request.design_mode %}
       <div class="pf-ph">
         <h3>PageFly Section</h3>
         <span>No section selected. Please select your section from the list</span>
       </div>
     {% endif %}
-
+  
 {% endif %}
 
 {% schema %}
@@ -41,6 +41,14 @@
         {
           "label": "Select section",
           "value": ""
+        },
+        {
+          "label": "FAQ",
+          "value": "pf-b030fdc9"
+        },
+        {
+          "label": "Product Reviews",
+          "value": "pf-8c0e9b8e"
         },
         {
           "label": "Review Header Old",
@@ -81,10 +89,6 @@
         {
           "label": "USP Mobile",
           "value": "pf-960b46b9"
-        },
-        {
-          "label": "USP Picture",
-          "value": "pf-11aa15e2"
         },
         {
           "label": "home page awards",

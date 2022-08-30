@@ -1,0 +1,68 @@
+{{ 'component-article-card.css' | asset_url | stylesheet_tag }}
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+{{ 'section-main-blog.css' | asset_url | stylesheet_tag }}
+
+{% for link in linklists.footer-blog-menu.links %}
+    {% assign blog = link.object %}
+    <div class="page-width category-block">
+        <a href="{{ link.url }}" class="blog-category__title">{{ link.title  }}</a>
+        {% assign blogCategory = blog.articles | slice: 0, 2 %}
+            <div class="blog-articles {% if section.settings.layout == 'collage' %}blog-articles--collage{% endif %}">
+                {% for article in blogCategory %}
+                    <div class="blog-articles__article article">
+                        {%- render 'article-card', article: article, show_image: section.settings.show_image, show_date: section.settings.show_date, show_author: section.settings.show_author -%}
+                    </div>
+                {% endfor %} 
+            </div>
+      </div>
+{% endfor %}
+
+{% schema %}
+{
+  "name": "Blogs Category",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Blog post card"
+    },
+    {
+      "type": "select",
+      "id": "layout",
+      "options": [
+        {
+          "value": "grid",
+          "label": "Grid"
+        },
+        {
+          "value": "collage",
+          "label": "Collage"
+        }
+      ],
+      "default": "collage",
+      "label": "Layout on large screens"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_image",
+      "default": true,
+      "label": "Show featured image"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_date",
+      "default": true,
+      "label": "Show date"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_author",
+      "default": false,
+      "label": "Show author"
+    },
+    {
+      "type": "paragraph",
+      "content": "Change excerpts by editing your blog posts. [Learn more](https:\/\/help.shopify.com\/en\/manual\/online-store\/blogs\/writing-blogs#display-an-excerpt-from-a-blog-post)"
+    }
+  ]
+}
+{% endschema %}
