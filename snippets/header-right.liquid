@@ -28,7 +28,7 @@
       <span class="icon icon-cart" aria-hidden="true"></span>
       <span class="fallback-text">Cart</span>
     </span>
-		<span class="cart-link__bubble cart-link__bubble--visible"></span>
+		<span class="cart-link__bubble {% if cart.item_count > 0 %}cart-link__bubble--visible{% endif %}">{{ cart.item_count }}</span>
 	</a>
 </div>
 

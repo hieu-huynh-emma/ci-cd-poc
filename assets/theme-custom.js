@@ -4579,8 +4579,12 @@ theme.afterCartLoad = function() {
     });
 
 //    ==================*********   upsell code end    *********==================
-    theme.cache.$cartBuggle.addClass('cart-link__bubble--visible');
-
+    if (cart.item_count > 0) {
+      theme.cache.$cartBuggle.text(cart.item_count);
+      theme.cache.$cartBuggle.addClass('cart-link__bubble--visible');
+    } else {
+      theme.cache.$cartBuggle.removeClass('cart-link__bubble--visible');
+    }
   });
 };
 

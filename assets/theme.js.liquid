@@ -4396,13 +4396,6 @@ theme.afterCartLoad = function() {
 
     // Size the cart's fixed footer
     theme.sizeCartDrawerFooter();
-
-    // Show cart bubble in nav if items exist
-    if (cart.items.length > 0) {
-      theme.cache.$cartBuggle.addClass('cart-link__bubble--visible');
-    } else {
-      theme.cache.$cartBuggle.removeClass('cart-link__bubble--visible');
-    }
   });
 };
 
