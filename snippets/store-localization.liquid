@@ -263,7 +263,6 @@
     fetch(`https://api.ipgeolocation.io/ipgeo?apiKey=${GEOLOCATION_API_KEY}`)
       .then(res => res.json())
       .then(ipgeo => {
-        quebecProvinceGuard(ipgeo);
         localizationGuard(ipgeo);
       });
   }
