@@ -400,9 +400,7 @@ svg:not(:root) {
 span.select2-search.select2-search--dropdown {
     display: none;
 }
-.select2-container--default .select2-results__option--highlighted[aria-selected]{
-  background-color: #f8a13a !important;
-}
+
 
 @media only screen and (min-width: 590px) {
   .prod_item .prod_type span.select2.select2-container{

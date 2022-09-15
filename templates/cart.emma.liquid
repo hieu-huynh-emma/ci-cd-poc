@@ -15,90 +15,90 @@
 
 <form action="{{ routes.cart_url }}" method="post" novalidate class="cart ajaxcart" style="z-index: 100;" data-cart-items="{{ cart.items.size }}">
     {% if cart.items.size == 0%}
-    <div class="cart--empty-message-wrapper">
-        <p class="cart--empty-message">
-            {{ 'cart.general.empty' | t }}
-        </p>
-    </div>
+        <div class="cart--empty-message-wrapper">
+            <p class="cart--empty-message">
+                {{ 'cart.general.empty' | t }}
+            </p>
+        </div>
     {% else %}
-    <p class="cart--ship-out-time"></p>
+        <p class="cart--ship-out-time"></p>
     {% endif%}
     <div class="ajaxcart__inner ajaxcart__inner--has-fixed-footer">
         {% assign total_cart_compare_price = 0 %}
         {% for item in cart.items %}
-        {% assign position = forloop.index0%}
-        {% assign compare_price = item.variant.compare_at_price | times: item.quantity %}
-        {% assign total_cart_compare_price = total_cart_compare_price | plus: compare_price %}
-        <div class="ajaxcart__product">
-            <div class="ajaxcart__row" data-line="{{ forloop.index }}">
-                <div class="grid">
-                    <div class="grid__item one-quarter">
-                        <a href="{{item.url}}" class="ajaxcart__product-image">
-                            {{ item.image | image_url: width: 100, height: 50 | image_tag: srcset: nil }}
-                        </a>
-                    </div>
-                    <div class="grid__item three-quarters">
-                        <div class="ajaxcart__product-name--wrapper">
-                            {% assign title = item.title | split: ' - ' %}
-                            <a href="{{item.url}}" class="ajaxcart__product-name">{{title[0]}}</a>
-                            {% if item.variant.title != "Default Title" %}
-                                <select id="product-variant"
-                                    onchange="updateProductVariant({{position}}, this.options[this.selectedIndex].value)">
-                                    {% for variant in item.product.variants %}
-                                    <option {% if item.variant_id == variant.id %} selected {% endif %} data-sku={{
-                                        variant.sku }} value={{ variant.id }}>{{variant.title}}</option>
-                                    {% endfor %}
-                                </select>
-                            {% endif %}
-                            {% if item.selling_plan_allocation %}
-                            <span
-                                class="ajaxcart__product-meta">{{item.selling_plan_allocation.selling_plan.name}}</span>
-                            {% endif %}
+            {% assign position = forloop.index0%}
+            {% assign compare_price = item.variant.compare_at_price | times: item.quantity %}
+            {% assign total_cart_compare_price = total_cart_compare_price | plus: compare_price %}
+            <div class="ajaxcart__product">
+                <div class="ajaxcart__row" data-line="{{ forloop.index }}">
+                    <div class="cart-product">
+                        <div class="cart-product__image">
+                            <a href="{{item.url}}" class="ajaxcart__product-image">
+                                {{ item.image | image_url: width: 100, height: 50 | image_tag: srcset: nil }}
+                            </a>
                         </div>
-
-                        <div class="grid--full">
-                            <div class="grid__item one-half">
-                                <div class="ajaxcart__qty">
-                                    <button type="button"
-                                        class="ajaxcart__qty-adjust ajaxcart__qty--minus icon-fallback-text"
-                                        data-id={{item.key}} data-qty="{{item.quantity | minus: 1}}"
-                                        data-line="{{ forloop.index }}"
-                                        aria-label="{{ 'cart.general.reduce_quantity' | t }}">
-                                        <span class="icon icon-minus" aria-hidden="true"></span>
-                                        <span class="fallback-text" aria-hidden="true">&minus;</span>
-                                    </button>
-                                    <input type="text" name="updates[]" class="ajaxcart__qty-num"
-                                        value="{{item.quantity}}" min="0" data-id="{{item.key}}"
-                                        data-line="{{ forloop.index }}" aria-label="quantity" pattern="[0-9]*">
-                                    <button type="button"
-                                        class="ajaxcart__qty-adjust ajaxcart__qty--plus icon-fallback-text"
-                                        data-id="{{item.key}}" data-line="{{ forloop.index }}"
-                                        data-qty="{{item.quantity | plus: 1}}"
-                                        aria-label="{{ 'cart.general.increase_quantity' | t }}">
-                                        <span class="icon icon-plus" aria-hidden="true"></span>
-                                        <span class="fallback-text" aria-hidden="true">+</span>
-                                    </button>
-                                </div>
+                        <div class="cart-product__content">
+                            <div class="ajaxcart__product-name--wrapper">
+                                {% assign title = item.title | split: ' - ' %}
+                                <a href="{{item.url}}" class="ajaxcart__product-name">{{title[0]}}</a>
+                                {% if item.variant.title != "Default Title" %}
+                                    <select id="product-variant"
+                                            onchange="updateProductVariant({{position}}, this.options[this.selectedIndex].value)">
+                                        {% for variant in item.product.variants %}
+                                            <option {% if item.variant_id == variant.id %} selected {% endif %} data-sku={{
+                                            variant.sku }} value={{ variant.id }}>{{variant.title}}</option>
+                                        {% endfor %}
+                                    </select>
+                                {% endif %}
+                                {% if item.selling_plan_allocation %}
+                                    <span
+                                      class="ajaxcart__product-meta">{{item.selling_plan_allocation.selling_plan.name}}</span>
+                                {% endif %}
                             </div>
-                            <div class="grid__item one-half text-right product-prices-wrapper">
-                                {% if item.variant.compare_at_price > item.variant.price %}
-                                <del>{{item.variant.compare_at_price | money}}</del>
-                                <span class="ajaxcart__price">{{item.variant.price | money}}</span>
-                                {%else%}
-                                <span class="ajaxcart__price">{{item.price | money}}</span>
-                                {%endif%}
+
+                            <div class="grid--full">
+                                <div class="grid__item one-half">
+                                    <div class="ajaxcart__qty">
+                                        <button type="button"
+                                                class="ajaxcart__qty-adjust ajaxcart__qty--minus icon-fallback-text"
+                                                data-id={{item.key}} data-qty="{{item.quantity | minus: 1}}"
+                                                data-line="{{ forloop.index }}"
+                                                aria-label="{{ 'cart.general.reduce_quantity' | t }}">
+                                            <span class="icon icon-minus" aria-hidden="true"></span>
+                                            <span class="fallback-text" aria-hidden="true">&minus;</span>
+                                        </button>
+                                        <input type="text" name="updates[]" class="ajaxcart__qty-num"
+                                               value="{{item.quantity}}" min="0" data-id="{{item.key}}"
+                                               data-line="{{ forloop.index }}" aria-label="quantity" pattern="[0-9]*">
+                                        <button type="button"
+                                                class="ajaxcart__qty-adjust ajaxcart__qty--plus icon-fallback-text"
+                                                data-id="{{item.key}}" data-line="{{ forloop.index }}"
+                                                data-qty="{{item.quantity | plus: 1}}"
+                                                aria-label="{{ 'cart.general.increase_quantity' | t }}">
+                                            <span class="icon icon-plus" aria-hidden="true"></span>
+                                            <span class="fallback-text" aria-hidden="true">+</span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="grid__item one-half text-right product-prices-wrapper">
+                                    {% if item.variant.compare_at_price > item.variant.price %}
+                                        <del>{{item.variant.compare_at_price | money}}</del>
+                                        <span class="ajaxcart__price">{{item.variant.price | money}}</span>
+                                    {%else%}
+                                        <span class="ajaxcart__price">{{item.price | money}}</span>
+                                    {%endif%}
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
         {% endfor %}
         {% if settings.cart_notes_enable %}
-        <div>
-            <label for="CartSpecialInstructions" class="ajaxcart__note">{{ 'cart.general.note' | t }}</label>
-            <textarea name="note" class="input-full" id="CartSpecialInstructions">{{cart.note}}</textarea>
-        </div>
+            <div>
+                <label for="CartSpecialInstructions" class="ajaxcart__note">{{ 'cart.general.note' | t }}</label>
+                <textarea name="note" class="input-full" id="CartSpecialInstructions">{{cart.note}}</textarea>
+            </div>
         {% endif %}
         <div class="cart_upsell"> {% render 'cart_upsell' %} </div>
     </div>
@@ -122,33 +122,33 @@
         </div>
         {% assign save = total_cart_compare_price| minus: cart.total_price | money %}
         <div class="save-amount"
-            data-total-saved="{{total_cart_compare_price| minus: cart.total_price | divided_by: 100}}"
-            data-text="{{ 'shopify.checkout.order_summary.you_save' | t: saved: '[amount]'}}">{{
+             data-total-saved="{{total_cart_compare_price| minus: cart.total_price | divided_by: 100}}"
+             data-text="{{ 'shopify.checkout.order_summary.you_save' | t: saved: '[amount]'}}">{{
             'shopify.checkout.order_summary.you_save' | t: saved: save}}</div>
         {% if cart.item_count > 0 %}
-        <div id="discount-wrapper">
-            <div class="discount-toggler">{{ 'cart.general.apply_promo_code' | t }}</div>
-            <div class="discount-container">
-                <input class="discount-input" placeholder="Promo code" onkeypress="return (event.key !== 'Enter')" />
-                <button class="btn--secondary discount-apply" type="button">
-                    Apply
-                </button>
+            <div id="discount-wrapper">
+                <div class="discount-toggler">{{ 'cart.general.apply_promo_code' | t }}</div>
+                <div class="discount-container">
+                    <input class="discount-input" placeholder="Promo code" onkeypress="return (event.key !== 'Enter')" />
+                    <button class="btn--secondary discount-apply" type="button">
+                        Apply
+                    </button>
+                </div>
+                <div class="discount-error"></div>
             </div>
-            <div class="discount-error"></div>
-        </div>
         {% endif %}
 
         <p class="ajaxcart__policies">
             {%- capture taxes_shipping_checkout -%}
-            {%- if cart.taxes_included and shop.shipping_policy.body != blank -%}
-            {{ 'cart.general.taxes_included_and_shipping_policy_html' | t: link: shop.shipping_policy.url }}
-            {%- elsif cart.taxes_included -%}
-            {{ 'cart.general.taxes_included_but_shipping_at_checkout' | t }}
-            {%- elsif shop.shipping_policy.body != blank -%}
-            {{ 'cart.general.taxes_and_shipping_policy_at_checkout_html' | t: link: shop.shipping_policy.url }}
-            {%- else -%}
-            {{ 'cart.general.taxes_and_shipping_at_checkout' | t }}
-            {%- endif -%}
+                {%- if cart.taxes_included and shop.shipping_policy.body != blank -%}
+                    {{ 'cart.general.taxes_included_and_shipping_policy_html' | t: link: shop.shipping_policy.url }}
+                {%- elsif cart.taxes_included -%}
+                    {{ 'cart.general.taxes_included_but_shipping_at_checkout' | t }}
+                {%- elsif shop.shipping_policy.body != blank -%}
+                    {{ 'cart.general.taxes_and_shipping_policy_at_checkout_html' | t: link: shop.shipping_policy.url }}
+                {%- else -%}
+                    {{ 'cart.general.taxes_and_shipping_at_checkout' | t }}
+                {%- endif -%}
             {%- endcapture -%}
             {{ 'cart.general.free_shipping_and_taxes_at_checkout' | t }}
         </p>
@@ -160,13 +160,13 @@
         <div class="contact">
             {% if request.locale.iso_code == 'fr' %}
                 Veuillez nous écrire à
-                <strong><a href="mailto:support@emma-sleep.ca">support@emma-sleep.ca</a></strong>
-                ou nous appeler au <strong style="display: inline-block"><a href="tel:1 888 585 3662">+1-888-585-3662</a></strong>
+                <a class="contact--strong" href="mailto:support@emma-sleep.ca">support@emma-sleep.ca</a>
+                ou nous appeler au <a class="contact--strong" href="tel:1 888 585 3662">+1-888-585-3662</a>
                 pour toute demande.
             {% else %}
                 Please contact
-                <strong><a href="mailto:support@emma-sleep.ca">support@emma-sleep.ca</a></strong>
-                or call <strong style="display: inline-block"><a href="tel:1 888 585 3662">+1-888-585-3662</a></strong>
+                <a class="contact--strong" href="mailto:support@emma-sleep.ca">support@emma-sleep.ca</a>
+                or call <a class="contact--strong" href="tel:1 888 585 3662">+1-888-585-3662</a>
                 for inquiries
             {% endif %}
         </div>
@@ -263,19 +263,19 @@
     .product-prices-wrapper .ajaxcart__price {
         margin-left: 0.5rem;
     }
-@media (min-width: 769px) {
-    .ajaxcart__policies, .cart--ship-out-time {
-        font-size: 14px;
+    @media (min-width: 769px) {
+        .ajaxcart__policies, .cart--ship-out-time {
+            font-size: 14px;
+        }
     }
-}
 </style>
 <script>
 
     function updateProductVariant(index, newVariantId) {
         removeItem(index)
-            .then(() => {
-                addItem(newVariantId, 1);
-            });
+          .then(() => {
+              addItem(newVariantId, 1);
+          });
     }
 
     async function removeItem(index) {

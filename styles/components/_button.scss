@@ -1,0 +1,62 @@
+@import "../abstracts/index";
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 40px;
+  padding: 10px 28px;
+
+  background: #FF8900;
+  border-radius: 60px;
+
+  font-family: 'Acumin Pro';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 150%;
+
+  text-align: center;
+  text-transform: uppercase;
+  text-decoration: none;
+
+  color: #FFFFFF;
+  transition: all 200ms ease-in;
+
+  cursor: pointer;
+
+  @media screen and (min-width: 768px) {
+    min-height: 50px;
+    padding: 13px 36px;
+  }
+
+  &:hover, &:active {
+    background: #3C4196;
+  }
+
+  &--secondary {
+    background: #3C4196;
+
+    &:hover {
+      background: #FF8900;
+    }
+  }
+
+  &--compact {
+    min-height: auto;
+    width: max-content;
+
+    padding: 10px 1rem;
+
+    text-transform: none;
+  }
+
+  &[disabled],
+  &.disabled {
+    cursor: default;
+    color: darken($colorDisabledBorder, 27%);
+    background-color: $colorDisabledGrey;
+  }
+}
+

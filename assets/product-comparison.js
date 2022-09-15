@@ -1,11 +1,4 @@
-const currencyFormatter = new Intl.NumberFormat('en-US', {
-  style: 'currency',
-  currency: 'USD',
-  maximumFractionDigits: 0
-});
-
 const allEmmaProducts = comparisonConfig.emmaProducts.map(({ info, competitors, specs }) => {
-
   const queenVariant = info.variants.find(variant => variant.title.includes('Queen'));
 
   return {
@@ -20,7 +13,7 @@ const allEmmaProducts = comparisonConfig.emmaProducts.map(({ info, competitors, 
   }
 });
 
-const allSpecLabels = allEmmaProducts[0].specLabels;
+const allSpecLabels = ['Price'].concat(allEmmaProducts[0].specLabels);
 
 let allCompetitors = allEmmaProducts[0].competitors;
 
@@ -29,28 +22,28 @@ let allCompetitors = allEmmaProducts[0].competitors;
 function renderAllColHeaders() {
   const $table = $('#product-comparison .comparison-table');
 
-  const emmaColHeader = $($.parseHTML(`<div
-				class="comparison-table-cell comparison-table-cell--highlight grid-row-1 col-start-1 md:col-start-2 column-header"
-			>
-				<div class="emma column-header">
-					<div class="emma__brand">
-						<img src="${comparisonConfig.emmaLogo}" alt="">
-					</div>
-					<select class="emma__product-selector"></select>
-				</div>
-			</div>`));
+  const emmaColHeader = $($.parseHTML(`
+    <div class="comparison-table-cell comparison-table-cell--highlight grid-row-1 tw-col-start-1 md:tw-col-start-2 column-header">
+      <div class="emma column-header">
+        <div class="emma__brand">
+          <img src="${comparisonConfig.emmaLogo}" alt="">
+        </div>
+        <select class="emma__product-selector"></select>
+      </div>
+    </div>
+  `));
 
   const competitorHeaders = $($.parseHTML(`
-<div data-competitor-col-index="0" class="comparison-table-cell grid-row-1 col-start-2 md:col-start-3 column-header">
-  <div class="competitor column-header">
-    <p class="competitor__brand"></p>
-    <select data-col="3" class="product-selector"></select></div>
-</div>
-<div data-competitor-col-index="1" class="comparison-table-cell grid-row-1 lg:col-start-4 column-header">
-  <div class="competitor column-header">
-    <p class="competitor__brand"></p>
-    <select class="product-selector"></select></div>
-</div>
+    <div data-competitor-col-index="0" class="comparison-table-cell grid-row-1 tw-col-start-2 md:tw-col-start-3 column-header">
+      <div class="competitor column-header">
+        <p class="competitor__brand"></p>
+        <select data-col="3" class="product-selector"></select></div>
+    </div>
+    <div data-competitor-col-index="1" class="comparison-table-cell grid-row-1 lg:tw-col-start-4 column-header">
+      <div class="competitor column-header">
+        <p class="competitor__brand"></p>
+        <select class="product-selector"></select></div>
+    </div>
 `));
 
   $table.append(emmaColHeader);
@@ -169,7 +162,7 @@ function updateSpecs({ specs = [], isCompetitor = false, competitorColIndex }) {
     : $(`#product-comparison .comparison-table-cell--highlight:not(.column-header)`);
 
   $allRows.each(function (index) {
-    $(this).find('.cell-content').text(specs[index] || "")
+    $(this).find('.cell-content').text(specs[!!isCompetitor ? index : index - 1] || "")
   })
 }
 
@@ -244,7 +237,6 @@ function initializeEmma() {
 }
 
 $(document).ready(async function () {
-  console.log('kjlkfsd')
   initialTable();
 
   await initializeEmma();

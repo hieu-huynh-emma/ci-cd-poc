@@ -2,23 +2,23 @@
 
 <section id="why-us-section">
   <div
-    class="wrapper bg-athens-gray{% if section.settings.borderless %} wrapper--borderless{% endif %}"
+    class="wrapper tw-bg-athens-gray{% if section.settings.borderless %} wrapper--borderless{% endif %}"
   >
-    <h2 class="heading-2 text-center text-charade">{{ section.settings.title | remove: "<p>" | remove: "</p>" }}</h2>
+    <h2 class="heading-2 tw-text-center tw-text-charade">{{ section.settings.title | remove: "<p>" | remove: "</p>" }}</h2>
     <div class="benefits">
       {% assign footerBtn = section.blocks | where: "type", "footer-button" | first %}
       {% assign textBlocks = section.blocks | where: "type", "text-block" %}
 
-      {%- for block in textBlocks -%}
+      {%- for tw-block in textBlocks -%}
         <div class="benefits__item">
-          <img src="{{ block.settings.icon | img_url: 'original' }}" width="auto" height="auto" loading="lazy">
-          <h3 class="heading-3 h-16	word-break">{{ block.settings.title | remove: "<p>" | remove: "</p>" }}</h3>
+          <img src="{{ tw-block.settings.icon | img_url: 'original' }}" width="auto" height="auto" loading="lazy">
+          <h3 class="heading-3 tw-h-16	word-break">{{ tw-block.settings.title | remove: "<p>" | remove: "</p>" }}</h3>
         </div>
       {%- endfor -%}
     </div>
     {% if footerBtn != blank %}
       <a
-        class="btn bg-chambray text-[white] uppercase px-24 py-3 rounded-[60px]"
+        class="btn tw-bg-chambray tw-text-[white] tw-uppercase tw-px-24 tw-py-3 tw-rounded-[60px]"
         href="{{ footerBtn.settings.url }}"
       >
         {{ footerBtn.settings.text }}

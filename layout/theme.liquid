@@ -1,247 +1,284 @@
 <!doctype html>
 <html class="no-js" lang="{{ request.locale.iso_code }}">
-<head>
- {%- render 'hso-no-follow-no-index' -%}{% render 'pagefly-head' %}
-  <!-- Metadata ================================================== -->
-  {% include 'page-metadata' %}
+  <head>
+    {%- render 'hso-no-follow-no-index' -%}{% render 'pagefly-head' %}
+    <!-- Metadata ================================================== -->
+    {% include 'page-metadata' %}
 
-  {% include 'hreflang-tags' %}
+    {% include 'hreflang-tags' %}
 
-  {% if settings.favicon %}
-    <link rel="shortcut icon" href="{{ settings.favicon | img_url: '32x32' }}" type="image/png" />
-  {% endif %}
+    {% if settings.favicon %}
+      <link rel="shortcut icon" href="{{ settings.favicon | img_url: '32x32' }}" type="image/png" />
+    {% endif %}
 
-  {% render 'css-variables' %}
+    {% render 'css-variables' %}
 
-  <!-- CSS ================================================== -->
-  {{ 'timber.scss.css' | asset_url | stylesheet_tag }}
-  {{ 'theme.scss.css' | asset_url | stylesheet_tag }}
+    {% render 'vendors' %}
 
-  <!-- CUSTOM CSS ================================================== -->
-  {{ 'custom-theme.css' | asset_url | stylesheet_tag }}
-   {{ 'custom.css' | asset_url | stylesheet_tag }}
-  <link rel="stylesheet" href="{{ 'slick.css' | asset_url }}">
-  <link rel="stylesheet" href="{{ 'slick-theme.css' | asset_url }}">
-  <link rel="stylesheet" href="{{ 'custom-theme-2.css' | asset_url }}">
-  <link rel="stylesheet" href="{{ 'custom-theme-3.css' | asset_url }}">
-  <link rel="stylesheet" href="{{ 'animate.css' | asset_url }}">
-  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    {% render 'page-styles' %}
+    {% render 'page-scripts' %}
+
+    <!-- CSS ================================================== -->
+    {{ 'timber.scss.css' | asset_url | stylesheet_tag }}
+    {{ 'theme.scss.css' | asset_url | stylesheet_tag }}
+
+    <!-- CUSTOM CSS ================================================== -->
+    {{ 'custom-theme.css' | asset_url | stylesheet_tag }}
+    {{ 'custom.css' | asset_url | stylesheet_tag }}
+    <link rel="stylesheet" href="{{ 'slick.css' | asset_url }}">
+    <link rel="stylesheet" href="{{ 'slick-theme.css' | asset_url }}">
+    <link rel="stylesheet" href="{{ 'custom-theme-2.css' | asset_url }}">
+    <link rel="stylesheet" href="{{ 'custom-theme-3.css' | asset_url }}">
+    <link rel="stylesheet" href="{{ 'animate.css' | asset_url }}">
 
 
     <!---- LUCKY ORANGE INTEGRATION ================================= -->
 
-  <script async defer src="https://tools.luckyorange.com/core/lo.js?site-id=9ca7f04f"></script>
+    <script async defer src="https://tools.luckyorange.com/core/lo.js?site-id=9ca7f04f"></script>
 
-   <!---- GSC Verification ================================= -->
-  <meta name="google-site-verification" content="ECx3b-uuFXsoMOd08Jvv6o9Es--o5AyltTo9A-n9zCE" />
+    <!---- GSC Verification ================================= -->
+    <meta name="google-site-verification" content="ECx3b-uuFXsoMOd08Jvv6o9Es--o5AyltTo9A-n9zCE" />
 
 
-  <!---- SHOP BACK INTEGRATION ================================= -->
+    <!---- SHOP BACK INTEGRATION ================================= -->
 
-  <script>
-    var url_string = window.location.href;
-    var url = new URL(url_string);
-    var source = url.searchParams.get("utm_source");
-    var transaction = url.searchParams.get("transaction_id");
-    if(source == "shopback"){
-    localStorage.setItem('utm_source', source);
-    localStorage.setItem('transaction_id', transaction);
-    }
+    <script>
+      var url_string = window.location.href;
+      var url = new URL(url_string);
+      var source = url.searchParams.get("utm_source");
+      var transaction = url.searchParams.get("transaction_id");
+      if (source == "shopback") {
+        localStorage.setItem('utm_source', source);
+        localStorage.setItem('transaction_id', transaction);
+      }
     </script>
 
-   <!---- Upsellit Integration ================================= -->
-<script type="text/javascript">
-usi_installed = 0; USI_installCode = function() { if (usi_installed == 0) { usi_installed = 1; var USI_headID = document.getElementsByTagName("head")[0]; var USI_installID = document.createElement('script'); USI_installID.type = 'text/javascript'; USI_installID.src = 'https://www.upsellit.com/active/emmasleep.jsp'; USI_headID.appendChild(USI_installID); } }; if (typeof(document.readyState) != "undefined" && document.readyState === "complete") { USI_installCode(); } else if (window.addEventListener){ window.addEventListener('load', USI_installCode, true); } else if (window.attachEvent) { window.attachEvent('onload', USI_installCode); } else { USI_installCode(); } setTimeout("USI_installCode()", 10000);
-</script>
+    <!---- Upsellit Integration ================================= -->
+    <script type="text/javascript">
+      usi_installed = 0;
+      USI_installCode = function () {
+        if (usi_installed == 0) {
+          usi_installed = 1;
+          var USI_headID = document.getElementsByTagName("head")[0];
+          var USI_installID = document.createElement('script');
+          USI_installID.type = 'text/javascript';
+          USI_installID.src = 'https://www.upsellit.com/active/emmasleep.jsp';
+          USI_headID.appendChild(USI_installID);
+        }
+      };
+      if (typeof (document.readyState) != "undefined" && document.readyState === "complete") {
+        USI_installCode();
+      } else if (window.addEventListener) {
+        window.addEventListener('load', USI_installCode, true);
+      } else if (window.attachEvent) {
+        window.attachEvent('onload', USI_installCode);
+      } else {
+        USI_installCode();
+      }
+      setTimeout("USI_installCode()", 10000);
+    </script>
 
-  <!-- Sections ================================================== -->
-  <script>
-    window.theme = window.theme || {};
-    theme.strings = {
-      zoomClose: {{ "products.zoom.close" | t | json }},
-      zoomPrev: {{ "products.zoom.prev" | t | json }},
-      zoomNext: {{ "products.zoom.next" | t | json }},
-      moneyFormat: {{ shop.money_format | json }},
-      addressError: {{ 'home_page.map.address_error' | t | json }},
-      addressNoResults: {{ 'home_page.map.address_no_results' | t | json }},
-      addressQueryLimit: {{ 'home_page.map.address_query_limit_html' | t | json }},
-      authError: {{ 'home_page.map.auth_error_html' | t | json }},
-      cartEmpty: {{ 'cart.general.empty' | t | json }},
-      cartCookie: {{ 'cart.general.cookies_required' | t | json }},
-      cartSavings: {{ 'cart.general.savings_html' | t: savings: '[savings]' | json }},
-      productSlideLabel: {{ 'products.product.slide_label' | t: slide_number: '[slide_number]', slide_max: '[slide_max]' | json }}
-    };
-    theme.settings = {
-      cartType: {{ settings.cart_type | json }},
-      gridType: {{ settings.collection_products_grid | json }}
-    };
-  </script>
+    <!-- Sections ================================================== -->
+    <script>
+      window.theme = window.theme || {};
+      theme.strings = {
+        zoomClose: {{ "products.zoom.close" | t | json }},
+        zoomPrev: {{ "products.zoom.prev" | t | json }},
+        zoomNext: {{ "products.zoom.next" | t | json }},
+        moneyFormat: {{ shop.money_format | json }},
+        addressError: {{ 'home_page.map.address_error' | t | json }},
+        addressNoResults: {{ 'home_page.map.address_no_results' | t | json }},
+        addressQueryLimit: {{ 'home_page.map.address_query_limit_html' | t | json }},
+        authError: {{ 'home_page.map.auth_error_html' | t | json }},
+        cartEmpty: {{ 'cart.general.empty' | t | json }},
+        cartCookie: {{ 'cart.general.cookies_required' | t | json }},
+        cartSavings: {{ 'cart.general.savings_html' | t: savings: '[savings]' | json }},
+        productSlideLabel: {{ 'products.product.slide_label' | t: slide_number: '[slide_number]', slide_max: '[slide_max]' | json }}
+      };
+      theme.settings = {
+        cartType: {{ settings.cart_type | json }},
+        gridType: {{ settings.collection_products_grid | json }}
+      };
+    </script>
 
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-  <script src="https://code.jquery.com/jquery-migrate-1.4.1.min.js"></script>
 
-  <script src="{{ 'lazysizes.min.js' | asset_url }}" async="async"></script>
+    <script src="{{ 'lazysizes.min.js' | asset_url }}" async="async"></script>
 
-  <script src="{{ 'theme-custom.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'theme-custom.js' | asset_url }}" defer="defer"></script>
 
-  <!-- Header hook for plugins ================================================== -->
-  {{ content_for_header }}
+    <!-- Header hook for plugins ================================================== -->
+    {{ content_for_header }}
 
-  {{ 'modernizr.min.js' | asset_url | script_tag }}
+    {{ 'modernizr.min.js' | asset_url | script_tag }}
 
+    {% comment %}
+      If you store has customer accounts disabled, you can remove the following JS file
+    {% endcomment %}
+    {% if request.page_type contains 'customers/' %}
+      {{ 'shopify_common.js' | shopify_asset_url | script_tag }}
+    {% endif %}
+
+    {% render 'vitals-loader' %}
+
+
+    {% render 'weglot_hreftags' %}
+    {% render 'weglot_switcher' %}
+    {% render 'judgeme_core' %}
+    <script type="text/javascript">
+      schema_settings = {
+        'cart_type': '{{ settings.cart_type }}'
+      }
+    </script>
+
+    <script type="text/javascript">
+      jQuery(window).on("load", function () {
+
+        var theLanguage = $('html').attr('lang');
+        if (theLanguage == 'en') {
+          // console.log("en");
+          $(".fr_pop").hide();
+          $(".pro_info").css("display", "block");
+          $(".img_bann.first_bann").addClass("eng");
+          $(".img_bann.sec_bann").addClass("eng");
+        } else {
+          // console.log("fr");
+          $(".pro_info").hide();
+          $(".fr_pop").css("display", "block");
+          $(".img_bann").addClass("updfr");
+          $(".img_bann>.tImHU").css("background", "rgba(255,137,0,1)");
+          $(".img_bann").css("display", "flex");
+          $(".img_bann.first_bann").css("background-image", "");
+        }
+      });
+    </script>
+
+    <script type="text/javascript">
+      (function (c, l, a, r, i, t, y) {
+        c[a] = c[a] || function () {
+          (c[a].q = c[a].q || []).push(arguments)
+        };
+        t = l.createElement(r);
+        t.async = 1;
+        t.src = "https://www.clarity.ms/tag/" + i;
+        y = l.getElementsByTagName(r)[0];
+        y.parentNode.insertBefore(t, y);
+      })(window, document, "clarity", "script", "d60mjcc2fl");
+    </script>
+  </head>
   {% comment %}
-    If you store has customer accounts disabled, you can remove the following JS file
+    Add the page template as a class for easy page or template specific styling.
   {% endcomment %}
-  {% if request.page_type contains 'customers/' %}
-    {{ 'shopify_common.js' | shopify_asset_url | script_tag }}
-  {% endif %}
-
-	{% render 'vitals-loader' %}
-
-
-
-
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
-  <link  href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.css" rel="stylesheet">
-
-  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-
-{% render 'weglot_hreftags' %}
-{% render 'weglot_switcher' %}
-  {% render 'judgeme_core' %}
-  <script type="text/javascript">
-    schema_settings = {
-      'cart_type' : '{{settings.cart_type}}'
-    }
-  </script>
-
-<script type="text/javascript">
-jQuery(window).on("load",function(){
-
- var theLanguage = $('html').attr('lang');
-  if( theLanguage == 'en' ){
-    // console.log("en");
-    $(".fr_pop").hide();
-    $(".pro_info").css("display", "block");
-    $(".img_bann.first_bann").addClass("eng");
-    $(".img_bann.sec_bann").addClass("eng");
-  }
-  else {
-    // console.log("fr");
-    $(".pro_info").hide();
-    $(".fr_pop").css("display", "block");
-    $(".img_bann").addClass("updfr");
-    $(".img_bann>.tImHU").css("background","rgba(255,137,0,1)");
-    $(".img_bann").css("display","flex");
-    $(".img_bann.first_bann").css("background-image","");
-  }
-});
-  </script>
-
-<script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "d60mjcc2fl");
-</script>
-  
-</head>
-{% comment %}
-  Add the page template as a class for easy page or template specific styling.
-{% endcomment %}
-<body id="{{ page_title | handle }}" class="{% if customer %}customer-logged-in {% endif %}template-{{ request.page_type | handle }}">
-  {% section 'announcement-bar' %}
-  {% section 'header' %}
-  	<div id="pro_step" class="product_step" style="display:none">
-              {% include 'product_step' %}
+  <body
+    id="{{ page_title | handle }}"
+    class="{% if customer %}customer-logged-in {% endif %}template-{{ request.page_type | handle }}"
+  >
+    {% section 'announcement-bar' %}
+    {% section 'header' %}
+    <div id="pro_step" class="product_step" style="display:none">
+      {% include 'product_step' %}
     </div>
 
-  	<div id="fr_pop" class="product_step" style="display:none">
-        {% include 'fr_pop' %}
+    <div id="fr_pop" class="product_step" style="display:none">
+      {% include 'fr_pop' %}
     </div>
 
-  {%- if template contains 'page' or template contains 'collection' -%}
-        {% section 'full-banner' %}
-  {% endif %}
-  <div id="CartDrawer" class="drawer drawer--right drawer--has-fixed-footer">
-    <div class="icon-symbols" style="display: none">
-      <svg xmlns="http://www.w3.org/2000/svg">
-        <symbol id="spinner-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M20 10c0 5.523-4.477 10-10 10S0 15.523 0 10 4.477 0 10 0v2c-4.418 0-8 3.582-8 8s3.582 8 8 8 8-3.582 8-8h2z"></path></svg></symbol>
-        <symbol id="tags-filled"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18"><path d="M17.78 3.09C17.45 2.443 16.778 2 16 2h-5.165c-.535 0-1.046.214-1.422.593l-6.82 6.89c0 .002 0 .003-.002.003-.245.253-.413.554-.5.874L.738 8.055c-.56-.953-.24-2.178.712-2.737L9.823.425C10.284.155 10.834.08 11.35.22l4.99 1.337c.755.203 1.293.814 1.44 1.533z" fill-opacity=".55"/><path d="M10.835 2H16c1.105 0 2 .895 2 2v5.172c0 .53-.21 1.04-.586 1.414l-6.818 6.818c-.777.778-2.036.782-2.82.01l-5.166-5.1c-.786-.775-.794-2.04-.02-2.828.002 0 .003 0 .003-.002l6.82-6.89C9.79 2.214 10.3 2 10.835 2zM13.5 8c.828 0 1.5-.672 1.5-1.5S14.328 5 13.5 5 12 5.672 12 6.5 12.672 8 13.5 8z"/></svg></symbol>
-      </svg>
-    </div>
-    <div class="drawer__fixed-header">
-      <div class="drawer__header">
-        <div class="drawer__title">{{ 'cart.general.title' | t }}</div>
-        <div class="drawer__close">
-          <button type="button" class="icon-fallback-text drawer__close-button js-drawer-close">
-            <span class="icon icon-x" aria-hidden="true"></span>
-            <span class="fallback-text">{{ 'cart.general.close_cart' | t }}</span>
-          </button>
+    {%- if template contains 'page' or template contains 'collection' -%}
+      {% section 'full-banner' %}
+    {% endif %}
+    <div id="CartDrawer" class="drawer drawer--right drawer--has-fixed-footer">
+      <div class="icon-symbols" style="display: none">
+        <svg xmlns="http://www.w3.org/2000/svg">
+          <symbol id="spinner-button">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+              <path
+                d="M20 10c0 5.523-4.477 10-10 10S0 15.523 0 10 4.477 0 10 0v2c-4.418 0-8 3.582-8 8s3.582 8 8 8 8-3.582 8-8h2z"
+              ></path>
+            </svg>
+          </symbol>
+          <symbol id="tags-filled">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18">
+              <path
+                d="M17.78 3.09C17.45 2.443 16.778 2 16 2h-5.165c-.535 0-1.046.214-1.422.593l-6.82 6.89c0 .002 0 .003-.002.003-.245.253-.413.554-.5.874L.738 8.055c-.56-.953-.24-2.178.712-2.737L9.823.425C10.284.155 10.834.08 11.35.22l4.99 1.337c.755.203 1.293.814 1.44 1.533z"
+                fill-opacity=".55"
+              />
+              <path
+                d="M10.835 2H16c1.105 0 2 .895 2 2v5.172c0 .53-.21 1.04-.586 1.414l-6.818 6.818c-.777.778-2.036.782-2.82.01l-5.166-5.1c-.786-.775-.794-2.04-.02-2.828.002 0 .003 0 .003-.002l6.82-6.89C9.79 2.214 10.3 2 10.835 2zM13.5 8c.828 0 1.5-.672 1.5-1.5S14.328 5 13.5 5 12 5.672 12 6.5 12.672 8 13.5 8z"
+              />
+            </svg>
+          </symbol>
+        </svg>
+      </div>
+      <div class="drawer__fixed-header">
+        <div class="drawer__header">
+          <div class="drawer__title">{{ 'cart.general.title' | t }}</div>
+          <div class="drawer__close">
+            <button type="button" class="icon-fallback-text drawer__close-button js-drawer-close">
+              <span class="icon icon-x" aria-hidden="true"></span>
+              <span class="fallback-text">{{ 'cart.general.close_cart' | t }}</span>
+            </button>
+          </div>
         </div>
       </div>
+      <div class="drawer__inner">
+        <div id="CartContainer" class="drawer__cart"></div>
+      </div>
     </div>
-    <div class="drawer__inner">
-      <div id="CartContainer" class="drawer__cart"></div>
-    </div>
-  </div>
 
-  <div id="PageContainer" class="page-container">
-    <main class="main-content" role="main">
-      {% unless request.page_type == "index" or  request.page_type == "product" or request.page_type == "page" %}
+    <div id="PageContainer" class="page-container">
+      <main class="main-content" role="main">
+      {% unless request.page_type == "index" or request.page_type == "product" or request.page_type == "page" %}
         <div class="wrapper">
-      {% endunless %}
-        {{ content_for_layout }}
-      {% unless request.page_type == "index" %}
+          {% endunless %}
+          {{ content_for_layout }}
+          {% unless request.page_type == "index" %}
         </div>
-      {% endunless %}
-    </main>
+        {% endunless %}
+      </main>
 
 
-    {% section 'emma-sleep-footer' %}
+      {% section 'emma-sleep-footer' %}
 
-  </div>
+    </div>
 
-  {% comment %}
-    Template-specific js
-  {% endcomment %}
-  <script>
-    {% if resetPassword %}
-      $(function() {
+    {% comment %}
+      Template-specific js
+    {% endcomment %}
+    <script>
+      {% if resetPassword %}
+      $(function () {
         timber.initCache();
         timber.resetPasswordSuccess();
       });
-    {% endif %}
-  </script>
+      {% endif %}
+    </script>
 
-  {% comment %}
-    Ajaxify your cart with this plugin.
-    Documentation:
-      - http://shopify.com/timber#ajax-cart
-  {% endcomment %}
+    {% comment %}
+      Ajaxify your cart with this plugin.
+      Documentation:
+        - http://shopify.com/timber#ajax-cart
+    {% endcomment %}
 
-  {% comment %}
-  {{ 'jquery-3.6.0.min.js' | asset_url | script_tag }}
-  {% endcomment %}
-  {{ 'slick.min.js' | asset_url | script_tag }}
-  {{ 'custom-javascript.js' | asset_url | script_tag }}
-  {{ 'wow.min.js' | asset_url | script_tag }}
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+    {% comment %}
+    {{ 'jquery-3.6.0.min.js' | asset_url | script_tag }}
+    {% endcomment %}
+    {{ 'slick.min.js' | asset_url | script_tag }}
+    {{ 'custom-javascript.js' | asset_url | script_tag }}
+    {{ 'wow.min.js' | asset_url | script_tag }}
 
-  <script type="application/json" data-cart-routes>
+
+    <script type="application/json" data-cart-routes>
     {
       "cartUrl": "{{ routes.cart_url }}",
       "cartAddUrl": "{{ routes.cart_add_url }}",
       "cartChangeUrl": "{{ routes.cart_change_url }}"
     }
-  </script>
-  {% if settings.cart_type == 'drawer' %}
-    {% include 'ajax-cart-template' %}
-  {% endif %}
 
-  {% if request.page_type == 'product' or request.page_type == 'index' %}
+    </script>
+    {% if settings.cart_type == 'drawer' %}
+      {% include 'ajax-cart-template' %}
+    {% endif %}
+
+    {% if request.page_type == 'product' or request.page_type == 'index' %}
       <script>
         // Override default values of shop.strings for each template.
         // Alternate product templates can change values of
@@ -254,87 +291,87 @@ jQuery(window).on("load",function(){
       </script>
     {% endif %}
 
-  <div id="SearchModal" class="mfp-hide">
-    {% include 'search-bar', search_btn_style: 'btn', search_bar_location: 'search-bar--modal' %}
-  </div>
-  <ul hidden>
-    <li id="a11y-refresh-page-message">{{ 'general.accessibility.refresh_page' | t }}</li>
-    <li id="a11y-selection-message">{{ 'general.accessibility.selection_help' | t }}</li>
-    <li id="a11y-slideshow-info">{{ 'home_page.slideshow.navigation_instructions' | t }}</li>
-  </ul>
-  {% render 'globo.preorder.script' %}
-  {% include 'smile-initializer' %}
-  {% render 'store-localization' %}
-  {% render 'freshchat' %}
- </body>
+    <div id="SearchModal" class="mfp-hide">
+      {% include 'search-bar', search_btn_style: 'btn', search_bar_location: 'search-bar--modal' %}
+    </div>
+    <ul hidden>
+      <li id="a11y-refresh-page-message">{{ 'general.accessibility.refresh_page' | t }}</li>
+      <li id="a11y-selection-message">{{ 'general.accessibility.selection_help' | t }}</li>
+      <li id="a11y-slideshow-info">{{ 'home_page.slideshow.navigation_instructions' | t }}</li>
+    </ul>
+    {% render 'globo.preorder.script' %}
+    {% include 'smile-initializer' %}
+    {% render 'store-localization' %}
+    {% render 'freshchat' %}
+  </body>
 </html>
 <style>
-  span.jdgm-subtab__name {
-    display: none;
-  }
+    span.jdgm-subtab__name {
+        display: none;
+    }
 
-  span.jdgm-prev-badge__text {
-    display: inline-block !important;
-  }
+    span.jdgm-prev-badge__text {
+        display: inline-block !important;
+    }
 
-  html,
-  body {
-    overflow: visible !important;
-  }
+    html,
+    body {
+        overflow: visible !important;
+    }
 
-  #dummy-chat-button-iframe,
-  #ShopifyChat {
-    z-index: 19 !important;
-    margin-right: 3rem;
-  }
+    #dummy-chat-button-iframe,
+    #ShopifyChat {
+        z-index: 19 !important;
+        margin-right: 3rem;
+    }
 
-  .announcement-bar {
-    height: 70px;
-  }
-
-  #shopify-section-announcement-bar {
-    position: fixed;
-    top: 0;
-    z-index: 101;
-    width: 100%;
-  }
-
-  #shopify-section-header {
-    top: 70px;
-    position: sticky;
-    z-index: 101;
-  }
-
-  #bundle-sticky_add_to_cart {
-    top: 134px;
-    height: 90px;
-  }
-
-  #bundle-sticky_add_to_cart .sticky-product-details {
-    background-color: white;
-  }
-
-  #PageContainer {
-    position: relative;
-    top: 70px;
-  }
-
-  @media (min-width: 768px) {
     .announcement-bar {
-      height: 40px;
+        height: 70px;
+    }
+
+    #shopify-section-announcement-bar {
+        position: fixed;
+        top: 0;
+        z-index: 101;
+        width: 100%;
     }
 
     #shopify-section-header {
-      top: 40px;
+        top: 70px;
+        position: sticky;
+        z-index: 101;
     }
 
     #bundle-sticky_add_to_cart {
-      top: 104px;
-      height: 40px;
+        top: 134px;
+        height: 90px;
+    }
+
+    #bundle-sticky_add_to_cart .sticky-product-details {
+        background-color: white;
     }
 
     #PageContainer {
-      top: 40px;
+        position: relative;
+        margin: 70px 0 0;
     }
-  }
+
+    @media (min-width: 768px) {
+        .announcement-bar {
+            height: 40px;
+        }
+
+        #shopify-section-header {
+            top: 40px;
+        }
+
+        #bundle-sticky_add_to_cart {
+            top: 104px;
+            height: 40px;
+        }
+
+        #PageContainer {
+            margin: 40px 0 0 ;
+        }
+    }
 </style>

@@ -1509,17 +1509,7 @@ input[type="image"] {
 }
 
 /*================ Partials | Theme button overrides ================*/
-a {
-  color: $colorTextBody;
-  text-decoration: none;
-  background: transparent;
 
-  &:hover {
-    color: $colorTextBody;
-  }
-}
-
-.rte a,
 .text-link {
   color: $colorLink;
 
@@ -1531,14 +1521,6 @@ a {
 .return-link {
   @include accentFontStack;
   font-size: em(14px);
-}
-
-/*================ Buttons and Input Groups ================*/
-.btn,
-.btn--secondary {
-  @include accentFontStack;
-  padding: 12px 20px;
-  font-size: em(13px);
 }
 
 .input-group .btn,
@@ -1714,14 +1696,6 @@ a {
 .ajaxcart__product:last-child .ajaxcart__row {
   border-bottom: 0 none;
   padding-bottom: 0;
-}
-
-.btn--secondary {
-  @include transition(all 0.2s ease-out);
-
-  &:hover {
-    background-color: adaptive-color($colorDrawerButton, 10%);
-  }
 }
 
 /*============================================================================
@@ -2617,12 +2591,6 @@ $slick-dot-character: '\2022';
   width: 8rem;
   left: 0;
   right: 0;
-
-  a:hover {
-    &:before {
-      top: -0.125rem;
-    }
-  }
 }
 
 .hero__controls {
@@ -4389,11 +4357,6 @@ $disclosure-list-large: 1100px;
     }
   }
 
-  .rte a:hover {
-    color: $colorSecondary;
-    border-bottom: 1px solid $colorSecondary;
-  }
-
   .social-sharing.clean a {
     color: inherit;
     background: transparent;
@@ -4509,9 +4472,6 @@ $disclosure-list-large: 1100px;
 .password-login,
 .admin-login {
   margin-top: $gutter / 2;
-  a:hover {
-    color: inherit;
-  }
 }
 
 .password-login {
@@ -4822,13 +4782,6 @@ opacity:1 !important;
 .marztop
 {
 margin-top:5px;
-}
-a.btn--secondary.btn--full.marztop:hover {
-    color: #3c4196 !important;
-}
-a.btn--secondary.btn--full.marztop{
-    color: #3c4196 !important;
-     background-color: #fff !important;
 }
 
 .drawer .btn--secondary {

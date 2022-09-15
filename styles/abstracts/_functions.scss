@@ -1,0 +1,4 @@
+@function rgb($args...) {
+  @return #{'rgb('}#{$args}#{')'};
+}
+

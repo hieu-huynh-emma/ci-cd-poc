@@ -1267,17 +1267,6 @@ $class-type: unquote(".");
 }
 
 /*================ Partials | Links and Buttons ================*/
-a,
-.text-link {
-  color: $colorLink;
-  text-decoration: none;
-  background: transparent;
-
-  &:hover {
-    color: $colorLinkHover;
-  }
-}
-
 a[href^="tel"] {
   color: inherit;
 }
@@ -1291,51 +1280,6 @@ html input[disabled] {
   cursor: default;
 }
 
-.btn,
-.rte .btn {
-  display: inline-block;
-  padding: 8px 10px;
-  margin: 0;
-  width: auto;
-  line-height: 1.42;
-  font-weight: $accentFontWeightBold;
-  text-decoration: none;
-  text-align: center;
-  vertical-align: middle;
-  white-space: normal;
-  cursor: pointer;
-  border: 1px solid transparent;
-  @include prefix("user-select", "none");
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  border-radius: $radius;
-
-  /*================ Set primary button colors - can override later ================*/
-  background-color: $colorBtnPrimary;
-  color: $colorBtnPrimaryText;
-  @include transition(background-color 0.4s ease-out);
-
-  &:hover {
-    @include transition(background-color 0.15s ease-out);
-    background-color: $colorBtnPrimaryHover;
-    color: $colorBtnPrimaryText;
-  }
-
-  &:active {
-    @include transition(background-color 0.15s ease-out);
-    background-color: $colorBtnPrimaryActive;
-    color: $colorBtnPrimaryText;
-  }
-
-  &[disabled],
-  &.disabled {
-    cursor: default;
-    color: darken($disabledBorder, 27%);
-    background-color: $disabledGrey;
-  }
-}
-
-.btn--secondary,
 .rte .btn--secondary {
   @extend .btn;
   background-color: $colorBtnSecondary;
@@ -1585,12 +1529,7 @@ label[for] {
   }
 
   input[type="checkbox"],
-  input[type="radio"],
-  .btn {
-    display: inline-block;
-  }
-
-  .btn {
+  input[type="radio"]{
     display: inline-block;
   }
 }
@@ -1816,11 +1755,6 @@ $socialIconFontStack: 'icons';
   input[type='number'],
   textarea {
     border-color: $colorDrawerBorder;
-  }
-
-  .btn--secondary {
-    background-color: $colorDrawerButton;
-    color: $colorDrawerButtonText;
   }
 }
 
@@ -2815,11 +2749,6 @@ $socialIconFontStack: 'icons';
 
   .js-qty {
     margin: 0 auto;
-  }
-
-  .btn,
-  .btn--secondary {
-    margin-bottom: $gutter / 2;
   }
 }
 

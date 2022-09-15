@@ -4,9 +4,10 @@
       "type": "product-comparison",
       "settings": {
         "emma-products": [
-          "emma-original-mattress"
+          "emma-original-mattress",
+          "emma-original-hybrid-mattress"
         ],
-        "title": "<p>Comparison Table<\/p>",
+        "title": "<p>Comparison Emma<\/p>",
         "subtitle": "See how others stack up against Emma, the world’s most-awarded mattress brand"
       }
     },
@@ -45,6 +46,13 @@
             "content": "Overall, the Emma Original mattress is a quality product and a good value for Canadians."
           }
         },
+        "f36ec166-d753-420d-8541-39dfe6136005": {
+          "type": "footer-button",
+          "settings": {
+            "url": "\/pages\/meet-the-sleep-experts",
+            "text": "SEE ALL AWARDS"
+          }
+        },
         "b7e26aad-7cf4-49d5-94a9-a76e48b7903b": {
           "type": "text-block",
           "settings": {
@@ -60,13 +68,6 @@
             "title": "<p>Mattress Buyer Guide, 2022<\/p>",
             "content": "Because The Emma Original Mattress offered a softer and plusher feel without that 'buried inside' sensation, and because of its pain and pressure relieving qualities, we rated it at 4.9 out of 5 stars."
           }
-        },
-        "f36ec166-d753-420d-8541-39dfe6136005": {
-          "type": "footer-button",
-          "settings": {
-            "url": "\/pages\/meet-the-sleep-experts",
-            "text": "SEE ALL AWARDS"
-          }
         }
       },
       "block_order": [
@@ -74,9 +75,9 @@
         "1af6586e-37d7-4904-89e9-51ac975f51dc",
         "61cd41e8-87d8-492f-a988-ae2ac2ec3379",
         "36c0fe95-7ff0-43ac-b673-b39719b89d37",
+        "f36ec166-d753-420d-8541-39dfe6136005",
         "b7e26aad-7cf4-49d5-94a9-a76e48b7903b",
-        "0ad526f6-65ce-4eee-b508-42240ac7de5b",
-        "f36ec166-d753-420d-8541-39dfe6136005"
+        "0ad526f6-65ce-4eee-b508-42240ac7de5b"
       ],
       "settings": {
         "title": "<p>Comfort <em>celebrated & trusted<\/em><br\/>around the world<\/p>",
@@ -84,20 +85,20 @@
         "borderless": true
       }
     },
-    "product-reputation": {
-      "type": "product-reputation",
+    "brand-statistics": {
+      "type": "brand-statistics",
       "blocks": {
         "ca504ac7-3137-4ad7-997c-c1e12bd1d446": {
           "type": "wallpaper",
           "settings": {
-            "desktop_src": "shopify:\/\/shop_images\/Rectangle_405.png",
-            "mobile_src": "shopify:\/\/shop_images\/Rectangle_412.png"
+            "src": "shopify:\/\/shop_images\/wallpaper-1.png",
+            "color": "#FFA235"
           }
         },
         "9593f14f-4c86-4af9-953e-0fa248231b89": {
           "type": "footer-button",
           "settings": {
-            "url": "",
+            "url": "\/pages\/reviews",
             "text": "See All Reviews"
           }
         }
@@ -185,6 +186,20 @@
             "name": "Big Fig",
             "url": ""
           }
+        },
+        "9fa82017-de59-4845-8aff-d04e2358f5ea": {
+          "type": "competitor-brand",
+          "settings": {
+            "name": "Titan",
+            "url": ""
+          }
+        },
+        "c82e0330-ac7e-4f1a-90bd-f91318986572": {
+          "type": "competitor-brand",
+          "settings": {
+            "name": "Big Fig",
+            "url": ""
+          }
         }
       },
       "block_order": [
@@ -254,13 +269,14 @@
         "borderless": false
       }
     },
-    "featured-products-1": {
-      "type": "featured-products-1",
+    "featured-products-compact": {
+      "type": "featured-products-compact",
       "blocks": {
         "ea9c21c5-b22e-476d-86dd-aeac3fc49194": {
           "type": "product-block",
           "settings": {
             "product": "emma-original-mattress",
+            "image": "shopify:\/\/shop_images\/Rectangle_371.png",
             "desc": "Perfect balance of pressure-relief and support."
           }
         }
@@ -275,9 +291,9 @@
   "order": [
     "product-comparison",
     "product-awards",
-    "product-reputation",
+    "brand-statistics",
     "brand-vs-brand",
     "why-us",
-    "featured-products-1"
+    "featured-products-compact"
   ]
 }

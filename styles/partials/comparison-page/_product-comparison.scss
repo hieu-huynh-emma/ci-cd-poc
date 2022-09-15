@@ -1,4 +1,61 @@
 #product-comparison {
+  b, strong {
+    font-weight: bolder
+  }
+
+  button, select {
+    color: inherit;
+    font-family: inherit;
+    font-size: 100%;
+    font-weight: inherit;
+    line-height: inherit;
+    margin: 0;
+    padding: 0;
+    text-transform: none
+  }
+
+  [type=button], button {
+    -webkit-appearance: button;
+    background-color: transparent;
+    background-image: none
+  }
+
+  ::-webkit-inner-spin-button, ::-webkit-outer-spin-button {
+    height: auto
+  }
+
+  ::-webkit-search-decoration {
+    -webkit-appearance: none
+  }
+
+  ::-webkit-file-upload-button {
+    -webkit-appearance: button;
+    font: inherit
+  }
+
+  h2, h3, h4, p, ul {
+    margin: 0
+  }
+
+  ul {
+    list-style: none;
+    padding: 0
+  }
+
+  [role=button], button {
+    cursor: pointer
+  }
+
+  img, svg {
+    display: block;
+    vertical-align: middle
+  }
+
+  img {
+    height: auto;
+    max-width: 100%
+  }
+
   $table: ".comparison-table";
   $cell: "#{$table}-cell";
   display: flex;
@@ -11,7 +68,6 @@
 
   .wrapper {
     width: 100%;
-    max-width: initial;
     padding: 0 16px;
     @media screen and (min-width: 1024px) {
       width: 90%;
@@ -142,6 +198,7 @@
     .column-header {
       display: grid;
       gap: 20px;
+      grid-template-columns: minmax(0, 1fr);
     }
 
     .cell-header {
@@ -181,6 +238,9 @@
     &--highlight {
       grid-column: 1;
       margin: 0 10px;
+      &.last-specs {
+        border: none;
+      }
 
       .cell-content {
         opacity: 1;
@@ -231,55 +291,92 @@
     }
   }
 
+
+}
+
+.select2-container {
   .select2-selection {
+    $this: ".select2-selection";
+    display: grid;
+    gap: 4px;
+    align-items: center;
+    grid-template-columns: minmax(0, 1fr) minmax(0, auto);
     border: none;
     background: transparent;
 
-    &__rendered {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: "Inter";
-      font-style: normal;
-      font-weight: 500;
-      font-size: 18px;
-      line-height: 125%;
-      /* identical to box height, or 22px */
-      color: #2E2F3C;
-      max-width: 100%;
-      word-break: break-word;
-      word-wrap: normal;
-      white-space: normal;
+    &--single {
+      height: auto;
+      #{$this}__arrow {
+        position: relative;
+      }
+      #{$this}__rendered {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        max-width: 100%;
+        padding: 0;
+
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 500;
+        font-size: 1rem;
+        line-height: 125%;
+        /* identical to box height, or 22px */
+        color: #2E2F3C;
+
+        word-break: break-word;
+        word-wrap: normal;
+        white-space: normal;
+
+        @media screen and (min-width: 768px) {
+          font-size: 18px;
+        }
+      }
     }
   }
-}
+  .select2-dropdown {
+    min-width: 242px;
+    border: none;
 
-.col-start-2 {
-  grid-column-start: 2;
-}
+    .select2-results {
+      display: flex;
+      align-items: flex-start;
+      padding: 5px 3px 5px 5px;
 
-.grid-row-1 {
-  grid-row: 1;
-}
+      background: #F8F8FA;
+      border: 1px solid #3C4196;
+      border-radius: 6px;
+      box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
 
-.col-start-1 {
-  grid-column-start: 1;
-}
+    }
+
+    .select2-results__options {
+      display: grid;
+      gap: 11px;
+      width: 100%;
+      max-height: 300px;
+    }
+
+    .select2-results__option {
+
+      color: #2E2F3C;
+      background-color: transparent;
+
+      text-align: center;
+
+      font-family: 'Inter';
+      font-style: normal;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 125%;
 
 
-@media (min-width: 768px) {
-  .md\:col-start-3 {
-    grid-column-start: 3;
-  }
-
-  .md\:col-start-2 {
-    grid-column-start: 2;
-  }
-}
-
-@media (min-width: 1024px) {
-  .lg\:col-start-4 {
-    grid-column-start: 4;
+      &--highlighted {
+        background-color: #E1E1F0;
+        border-radius: 4px;
+      }
+    }
   }
 }
 

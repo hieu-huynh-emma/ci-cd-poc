@@ -1,0 +1,209 @@
+#brand-vs-brand-section {
+  margin: 30px 0;
+  @media screen and (min-width: 450px) {
+    margin: 80px 0;
+  }
+
+  .wrapper {
+    display: grid;
+    gap: 30px;
+    grid-auto-flow: row;
+
+    @media screen and (min-width: 450px) {
+      margin: 0 1rem;
+    }
+    @media (min-width: 768px) {
+      margin: 0 2rem;
+    }
+    @media (min-width: 1024px) {
+      margin: 0 4rem;
+    }
+  }
+
+  .main-content {
+    position: relative;
+    display: grid;
+    gap: 10px;
+    grid-template-rows: minmax(0, 140px) minmax(0, auto)  minmax(0, 200px);
+    grid-template-columns: minmax(0, 1fr);
+    justify-items: center;
+
+    @media screen and (min-width: 450px) {
+      gap: 20px;
+      max-width: initial;
+    }
+
+    @media screen and (min-width: 768px) {
+      grid-template-rows: minmax(0, 260px) minmax(0, auto)  minmax(0, 300px);
+    }
+
+    @media screen and (min-width: 1024px) {
+      grid-template-columns: minmax(250px, 442px) minmax(0, auto) 450px;
+      grid-template-rows: minmax(260px, 1fr);
+      align-items: flex-start;
+      justify-content: center;
+    }
+    @media screen and (min-width: 1200px) {
+      gap: 80px;
+    }
+  }
+
+  .emma-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+
+    background-color: #3C4196;
+    border-radius: 5px;
+
+    &__wrapper {
+      width: 100%;
+      height: 100%;
+      padding: 0 1rem;
+      @media screen and (min-width: 450px) {
+        padding: 0;
+      }
+    }
+
+    &__image {
+      height: 25px;
+
+      background-color: #3C4196;
+      @media screen and (min-width: 450px) {
+        height: 50px;
+      }
+    }
+  }
+
+  .versus-text {
+    align-self: center;
+
+    font-family: 'Test Tiempos Headline';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 31px;
+    line-height: 47px;
+  }
+
+  .competitor-brands {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+
+    @media screen and (min-width: 768px) {
+      height: calc(100% + 32px);
+    }
+
+    .splide {
+      height: 100%;
+
+      &__track {
+        height: 100%;
+        margin: 0 auto;
+        padding: 0 0 32px;
+
+        @media screen and (min-width: 450px) {
+
+          max-width: 450px;
+        }
+
+        &:before, &:after {
+          content: "";
+          z-index: 2;
+
+          position: absolute;
+          top: 0;
+
+          width: 53px;
+          height: 100%;
+
+          transform: matrix(-1, 0, 0, 1, 0, 0);
+        }
+
+        &:before {
+          left: 0;
+
+          background: linear-gradient(270deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%);
+        }
+
+        &:after {
+          right: 0;
+
+          background: linear-gradient(90deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%);
+        }
+
+      }
+      &__arrow {
+        width: 40px;
+        @media screen and (min-width: 1024px) {
+          width: 20px;
+          height: 20px;
+        }
+
+
+        &--prev {
+          left: 0;
+
+          border-radius: 0 20px 20px 0;
+          @media screen and (min-width: 450px) {
+            left: 1rem;
+            border-radius: 100%;
+          }
+
+          @media screen and (min-width: 768px) {
+            left: 2rem;
+          }
+        }
+
+        &--next {
+          right: 0;
+          border-radius: 20px 0 0 20px;
+
+          @media screen and (min-width: 450px) {
+            right: 1rem;
+            border-radius: 100%;
+          }
+          @media screen and (min-width: 768px) {
+            right: 2rem;
+          }
+        }
+      }
+
+
+      &__slide.is-active {
+        .competitor-brands__item {
+          background: rgba(186, 152, 124, 0.1);
+
+          pointer-events: all;
+        }
+      }
+    }
+
+    &__item {
+      display: grid;
+      grid-template-rows: minmax(0, 1fr) minmax(0, auto);
+      align-items: center;
+      align-content: space-between;
+      justify-items: center;
+      height: 100%;
+      min-width: 175px;
+      padding: 10px;
+      background: rgba(31, 61, 184, 0.1);
+      border-radius: 5px;
+
+      pointer-events: none;
+    }
+
+    &__compare-btn {
+      padding: 8px 16px;
+
+      font-weight: 700;
+      font-size: 13px;
+      line-height: 20px;
+    }
+
+  }
+}
+
+
