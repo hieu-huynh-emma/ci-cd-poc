@@ -1,0 +1,20 @@
+$colorPrimary: #FFA235;
+$colorSecondary: #3C4196;
+$colorCharade: var(--colorCharade);
+
+$colorDisabledGrey:  #f6f6f6;
+$colorDisabledBorder: darken($colorDisabledGrey, 25%);
+$colorError: #d02e2e;
+
+
+
+
+$colorBodyText: #1c1d1d;
+
+$colorLink: $colorBodyText;
+$colorLinkHover: $colorPrimary;
+
+:root {
+  --colorPrimary: #{$colorPrimary};
+  --colorSecondary: #{$colorSecondary};
+}

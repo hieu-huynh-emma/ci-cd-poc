@@ -1,28 +1,36 @@
-{{ 'brand-vs-brand.css' | asset_url | stylesheet_tag }}
-
 <section id="brand-vs-brand-section">
   <div class="wrapper">
-  
-    <div class="emma-brand">
-      <h2 class="heading heading-2 text-center text-charade">{{ section.settings.title | strip_html }}</h2>
-  
-  
-      <div class="emma-brand__logo">
-        <img src="{{ 'emma-logo.svg' | asset_url }}" alt="emma-logo">
-      </div>
-    
-      <p class="emma-brand__versus-text">vs</p>
-    </div>
-  
-    <div class="competitor-brands">
-      {% assign competitorBlocks = section.blocks | where: "type", "competitor-brand" %}
-    
-      {%- for block in competitorBlocks -%}
-        <div class="competitor-brands__item">
-          <p>{{ block.settings.name }}</p>
-          <button class="competitor-brands__compare-btn">Compare</button>
+    <h2 class="heading-2 tw-text-center tw-text-charade">{{ section.settings.title | strip_html }}</h2>
+
+    <div class="main-content">
+      <div class="emma-logo__wrapper">
+        <div class="emma-logo">
+          <img class="emma-logo__image" src="{{ 'emma-logo.svg' | asset_url }}" alt="emma-logo" height="50">
         </div>
-      {%- endfor -%}
+      </div>
+
+      <p class="versus-text">vs</p>
+
+      <div class="competitor-brands">
+        {% assign competitorBlocks = section.blocks | where: "type", "competitor-brand" %}
+        <div class="splide">
+          {% include 'splide-arrows' %}
+
+          <div class="splide__track">
+            <ul class="splide__list">
+              {%- for tw-block in competitorBlocks -%}
+                <li class="splide__slide">
+                  <div class="competitor-brands__item">
+                    <p class="tw-font-semibold">{{ tw-block.settings.name }}</p>
+                    <button class="btn btn--secondary btn--compact competitor-brands__compare-btn tw-w-full">Compare
+                    </button>
+                  </div>
+                </li>
+              {%- endfor -%}
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -32,6 +40,20 @@
     document.getElementById('product-comparison').scrollIntoView({
       behavior: 'smooth'
     });
+  })
+
+  $(document).ready(function () {
+    new Splide('#brand-vs-brand-section .splide', {
+      gap: '20px',
+      padding: '8.5rem',
+      autoWidth: true,
+      type: 'loop',
+      breakpoints: {
+        412: {
+          padding: '7rem',
+        }
+      }
+    }).mount();
   })
 </script>
 

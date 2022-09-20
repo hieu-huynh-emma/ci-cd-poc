@@ -1,41 +1,39 @@
-{{ 'product-comparison.css' | asset_url | stylesheet_tag }}
-
 <script>
   const comparisonConfig = {
     emmaLogo: "{{ 'logo-emma.svg' | asset_url }}",
     emmaProducts: [
-	    {% for product in section.settings.emma-products %}
+      {% for product in section.settings.emma-products %}
       {
         info: {{ product | json }},
         specs: {{ product.metafields.accentuate.specifications | json }},
         competitors: {{ product.metafields.accentuate.competitors | json }},
       }
-	    {%- if forloop.length > 0 -%}
-	    {% unless forloop.last %},{% endunless -%}
-	    {%- endif -%}
-	    {% endfor %}
+      {%- if forloop.length > 0 -%}
+      {% unless forloop.last %},{% endunless -%}
+      {%- endif -%}
+      {% endfor %}
     ]
   }
 </script>
 {{ 'product-comparison.js' | asset_url | script_tag }}
 
 <section id="product-comparison">
-	<div class="wrapper">
-		<div class="headings">
-			<h2 class="heading-2 text-center text-charade">{{ section.settings.title | remove: "<p>" | remove: "</p>" }}</h2>
-			<h4 class="heading-4">{{ section.settings.subtitle }}</h4>
-		</div>
-		
-		<div class="comparison-table">
-			
-			
-			<div class="emma-highlighted">&nbsp;</div>
-			
-			<a href="/" class="emma-buy-now-btn grid-row-12">
-				Buy Now
-			</a>
-		</div>
-	</div>
+  <div class="wrapper">
+    <div class="headings">
+      <h2 class="heading-2 tw-text-center tw-text-charade">{{ section.settings.title | remove: "<p>" | remove: "</p>" }}</h2>
+      <h4 class="heading-4">{{ section.settings.subtitle }}</h4>
+    </div>
+
+    <div class="comparison-table">
+
+
+      <div class="emma-highlighted">&nbsp;</div>
+
+      <a href="/" class="emma-buy-now-btn grid-row-12">
+        Buy Now
+      </a>
+    </div>
+  </div>
 </section>
 
 {% schema %}

@@ -1,0 +1,16 @@
+@import "../abstracts/functions";
+@import "../typography/index";
+@import "../components/index";
+
+* {
+  font-variant-ligatures: none;
+}
+
+html {
+  scroll-padding-top: 10rem;
+  color: #2E2F3C;
+}
+
+body {
+  color: #2E2F3C;
+}

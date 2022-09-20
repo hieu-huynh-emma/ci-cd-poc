@@ -1,0 +1,37 @@
+{
+  "name": "shopify-template-ca",
+  "version": "1.0.0",
+  "description": "Shopify template for Canada",
+  "scripts": {
+    "start": "concurrently npm:serve:* --raw",
+    "serve:theme": "npm run shopify:switch && shopify theme serve",
+    "serve:scss": "gulp watch",
+    "pull:live": "npm run shopify:switch && shopify theme pull -t CA-MAIN",
+    "push:dev": "npm run shopify:switch && shopify theme push -t CA-DEV",
+    "shopify:login": "shopify login --store=emma-sleep-ca",
+    "shopify:switch": "shopify switch --store=emma-sleep-ca",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/emma-sleep/shopify-template-ca.git"
+  },
+  "keywords": [
+    "shopify"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/emma-sleep/shopify-template-ca/issues"
+  },
+  "homepage": "https://github.com/emma-sleep/shopify-template-ca#readme",
+  "dependencies": {
+    "concurrently": "^7.3.0",
+    "gulp": "^4.0.2",
+    "gulp-cached": "^1.1.1",
+    "gulp-cached-sass": "^0.0.5",
+    "gulp-flatten": "^0.4.0",
+    "gulp-sass": "^5.1.0",
+    "node-sass": "^7.0.1"
+  }
+}

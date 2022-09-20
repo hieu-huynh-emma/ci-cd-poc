@@ -1,0 +1,11 @@
+{{ 'cart-drawer-override.css' | asset_url | stylesheet_tag }}
+{{ 'cart-drawer.css' | asset_url | stylesheet_tag }}
+
+{{ 'base.css' | asset_url | stylesheet_tag }}
+
+{% case template %}
+  {% when 'page.comparison' %}
+    {{ 'comparison-page.css' | asset_url | stylesheet_tag }}
+  {% else %}
+
+{% endcase %}
