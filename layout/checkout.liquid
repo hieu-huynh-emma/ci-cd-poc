@@ -16,10 +16,8 @@
   {{ checkout_scripts }}
   <link href="https://www.dafontfree.net/embed/dXRvcGlhLXN0ZC1kaXNwbGF5JmRhdGEvNDgvdS80ODMwMC9VdG9waWFTdGQtRGlzcC5vdGY"
     rel="stylesheet" type="text/css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css">
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.full.js"></script>
+  
+  {% render 'checkout-vendors' %}
 
   {% render 'weglot_hreftags' %}
   {% render 'weglot_switcher' %}

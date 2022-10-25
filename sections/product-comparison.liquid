@@ -15,7 +15,8 @@
     ]
   }
 </script>
-{{ 'product-comparison.js' | asset_url | script_tag }}
+
+<script src="{{ 'product-comparison.js' | asset_url }}" defer></script>
 
 <section id="product-comparison">
   <div class="wrapper">
