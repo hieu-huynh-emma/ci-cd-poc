@@ -91,8 +91,50 @@
     }
   },
   "cart": {
+    "banner": {
+      "ship_today": "Livraison gratuite! Les commandes avant 14H (HNE) seront expédiées aujourd'hui.",
+      "ship_next_business_day": "Livraison gratuite! Les commandes seront expédiées le prochain jour ouvrable."
+    },
+    "customer_support": {
+      "need_help": "Besoin d'aide?",
+      "support_hour": "Notre soutien est disponible 24\/7",
+      "chat_now": "Discuter maintenant"
+    },
+    "drawer_header": {
+      "title": "Votre panier",
+      "item": "Article",
+      "items_in_cart": "Votre panier - {{ count }} article"
+    },
+    "drawer_empty": {
+      "empty": "Votre panier est vide",
+      "change_that": "Changeons cela.",
+      "start_here": "Commencer ici:",
+      "shop_best_sellers": "Achetez nos best-sellers",
+      "price_start": "Commence à",
+      "shop_now": "Achetez maintenant",
+      "sale": "VENTE",
+      "free_shipping": "Livraison gratuite",
+      "365_night_return": "Garantie de remboursement de 365 nuits",
+      "10_year_warranty": "Garantie de 10 ans"
+    },
+    "drawer_upsell": {
+      "others_also_bought": "D'autres ont également acheté"
+    },
+    "drawer_summary": {
+      "subtotal": "Total"
+    },
+    "redeem_code": {
+      "apply": "Appliquer",
+      "promo_placeholder": "Tapez le code promotionnel ici",
+      "promo_applied": "Code promo"
+    },
+    "total": {
+      "total": "Total (hors taxe)"
+    },
+    "footer": {
+      "checkout_btn_text": "Vérifier"
+    },
     "general": {
-      "title": "Panier",
       "remove": "Supprimer",
       "note": "Instructions spéciales pour la commande",
       "subtotal": "Sous-total",
@@ -369,14 +411,23 @@
     }
   },
   "shopify": {
+    "award_title": "Matelas primé",
+    "shipping_time": "Les commandes arrivent sous 3 à 7 jours ouvrables",
     "risk_reversals": {
       "title": "Dormez en toute simplicité,\ncommandez en toute simplicité",
       "subtitle": "Ayez l'esprit tranquille avec notre",
       "benefit_1": "Garantie de remboursement\nde 365 nuits",
       "benefit_2": "Garantie\nde 10 ans",
-      "benefit_3": "Livraison et\nretours gratuits"
+      "benefit_3": "Livraison et\nretours gratuits",
+      "help": "Besoin d'aide?",
+      "support": "Notre soutien est disponible 24/7",
+      "chat": "Discuter maintenant"
     },
     "checkout": {
+      "banner": {
+        "ship_today": "Livraison gratuite! Les commandes avant 14H (HNE) seront expédiées aujourd'hui.",
+        "ship_next_business_day": "Livraison gratuite! Les commandes seront expédiées le prochain jour ouvrable."
+      },
       "order_summary": {
         "shipping_default_value": "Libre",
         "discount_title": "Code promo",
@@ -396,29 +447,29 @@
       }
     },
     "shopify": {
-        "checkout": {
-          "order_summary": {
-            "shipping_default_value": "Libre",
-            "discount_title": "Code promo",
-            "discount_label": "Code promo",
-            "discount_placeholder": "Code promo",
-            "discount_sublabel": "Les offres ne sont pas cumulables.",
-            "you_save": "Économies totales {{ saved }}!"
-          },
-          "scheduled_delivery_with_in_home_setup_description": "Notre partenaire de livraison vous contactera pour planifier vos livraisons une fois la commande passée. Vous ne pouvez programmer des livraisons que pour les commandes passées au moins 3 jours ouvrables avant la date de livraison souhaitée.",
-          "scheduled_delivery_with_in_home_setup_faq_1": "L'installation à domicile ne comprend que l'installation des gros articles achetés (matelas ou cadre de lit). La livraison programmée avec configuration à domicile ne peut pas être remboursée en cas de retour.",
-          "scheduled_delivery_with_in_home_setup_faq_2": "Si vous commandez un matelas ou un cadre de lit livré avec notre livraison planifiée avec option d'installation à domicile, notre partenaire de livraison retirera votre ancien matelas et cadre de lit de la même pièce et au même moment de la livraison. l'ancienne literie enlevée ne peut pas être remboursée/retournée.",
-          "product_removal": "Ramassage d’articles",
-          "phone_field_error": "Erreur champ téléphone",
-          "your_details": "Vos détails",
-          "shipping_address_review": "Merci de vérifier l'adresse de livraison avant de placer votre commande.",
-          "continue_with_credit": "ou continuez ci-dessous avec votre carte de crédit",
-          "popup" : {
-            "message": "Vous n'avez pas encore fini votre commande!",
-            "continue": "Continuer votre commande",
-            "return_to_cart": "Retourner au panier"
-          }
+      "checkout": {
+        "order_summary": {
+          "shipping_default_value": "Libre",
+          "discount_title": "Code promo",
+          "discount_label": "Code promo",
+          "discount_placeholder": "Code promo",
+          "discount_sublabel": "Les offres ne sont pas cumulables.",
+          "you_save": "Économies totales {{ saved }}!"
+        },
+        "scheduled_delivery_with_in_home_setup_description": "Notre partenaire de livraison vous contactera pour planifier vos livraisons une fois la commande passée. Vous ne pouvez programmer des livraisons que pour les commandes passées au moins 3 jours ouvrables avant la date de livraison souhaitée.",
+        "scheduled_delivery_with_in_home_setup_faq_1": "L'installation à domicile ne comprend que l'installation des gros articles achetés (matelas ou cadre de lit). La livraison programmée avec configuration à domicile ne peut pas être remboursée en cas de retour.",
+        "scheduled_delivery_with_in_home_setup_faq_2": "Si vous commandez un matelas ou un cadre de lit livré avec notre livraison planifiée avec option d'installation à domicile, notre partenaire de livraison retirera votre ancien matelas et cadre de lit de la même pièce et au même moment de la livraison. l'ancienne literie enlevée ne peut pas être remboursée/retournée.",
+        "product_removal": "Ramassage d’articles",
+        "phone_field_error": "Erreur champ téléphone",
+        "your_details": "Vos détails",
+        "shipping_address_review": "Merci de vérifier l'adresse de livraison avant de placer votre commande.",
+        "continue_with_credit": "ou continuez ci-dessous avec votre carte de crédit",
+        "popup": {
+          "message": "Vous n'avez pas encore fini votre commande!",
+          "continue": "Continuer votre commande",
+          "return_to_cart": "Retourner au panier"
         }
+      }
     }
   }
 }

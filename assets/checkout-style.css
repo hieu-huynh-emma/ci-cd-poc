@@ -1,0 +1,257 @@
+.digicert-logo {
+  float: right;
+  width: 56px;
+}
+
+.main-award {
+  margin-bottom: 1.5em;
+}
+
+.sidebar-award__title {
+  text-align: center;
+  font-weight: 500;
+  font-size: 20px;
+  margin-bottom: 24px;
+  color: #2E2F3C;
+}
+
+.sidebar-award__list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 30px 40px;
+}
+
+.sidebar-award__list li img {
+  border-radius: 100%;
+  width: 60px;
+}
+
+.sidebar-banner {
+  background-color: #3C4196;
+  padding: 12px 23px;
+  display: flex;
+  color: white;
+  align-items: center;
+  border-radius: 8px;
+  margin-top: 20px;
+  justify-content: center;
+}
+
+.sidebar-banner__icon {
+  margin-right: 12px;
+}
+
+.sidebar-banner__text {
+  font-weight: 600;
+  font-size: 12px;
+}
+
+.digicert-logo-payment {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 56px;
+}
+
+.checkout-return-button {
+  display: flex !important;
+  align-items: center;
+  margin-top: 1.5em;
+  float: none;
+}
+
+.ssl {
+  font-weight: 600;
+  display: grid;
+  gap: 4px;
+  grid-auto-flow: column;
+  align-items: center;
+  letter-spacing: .13rem;
+  opacity: .85;
+  font-size: .8571428571em;
+  color: white;
+  background: #5EC64D;
+  border-radius: 50px;
+  padding: 6px 12px;
+  width: max-content;
+}
+
+.ssl svg {
+  width: 15px;
+  height: 15px;
+  margin-right: 5px;
+}
+
+.checkout-banner {
+  display: none;
+}
+
+.sidebar-ornament {
+  margin: 20px auto;
+  width: 100%;
+}
+
+.sidebar-ornament__content {
+  display: grid;
+  gap: 15px;
+  grid-auto-flow: row;
+  align-items: center;
+  justify-content: center;
+  padding: 30px 20px;
+  color: white;
+  background: linear-gradient(180deg, #3c4196 0%, rgba(60, 65, 150, 0.4) 100%);
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+.sidebar-ornament__footer {
+  background-color: #2E2F3C;
+  color: white;
+  display: grid;
+  grid-template-columns: 44px minmax(140px, max-content) minmax(120px, max-content);
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+
+.sidebar-ornament__support-avatar {
+  position: relative;
+}
+
+.sidebar-ornament__support-avatar-image {
+  margin-right: 12px;
+  display: inline-block;
+  border-radius: 100%;
+}
+
+.sidebar-ornament__support-avatar-status {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 12px;
+  width: 12px;
+  border-radius: 100%;
+  background-color: #00B67A;
+}
+
+.sidebar-ornament__support {
+  margin-right: 6px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.sidebar-ornament__support-heading {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.sidebar-ornament__support-subheading {
+  font-size: 10px;
+  font-weight: 500;
+}
+
+.sidebar-ornament__support-info {
+  height: 100%;
+}
+
+.sidebar-ornament__support-chat {
+  display: flex;
+  align-items: center;
+  color: white;
+}
+
+.sidebar-ornament__support-chat:hover {
+  color: inherit;
+}
+
+.sidebar-ornament__support-info-text {
+  margin-left: 8px;
+  font-size: 10px;
+  text-decoration: underline;
+  font-weight: 600;
+  text-align: left;
+}
+
+.sidebar-ornament__title {
+  display: none;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 24px;
+  text-align: center;
+  color: #FFFFFF;
+}
+
+.sidebar-ornament__subtitle {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 150%;
+  text-align: center;
+}
+
+.sidebar-ornament__benefits {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  justify-content: space-between;
+}
+
+.sidebar-ornament__benefit {
+  display: grid;
+  gap: 8px;
+  align-items: center;
+  justify-items: center;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 150%;
+  text-align: center;
+}
+
+@media (min-width: 1000px) {
+  .sidebar-ornament__support {
+    margin-right: 20px;
+  }
+
+  .main-award {
+    display: none;
+  }
+
+  .sidebar-award__title {
+    font-size: 18px;
+    font-weight: 400;
+  }
+
+  .sidebar-banner {
+    display: none;
+  }
+
+  .checkout-banner {
+    display: block;
+    font-size: 14px;
+    background: #FF8900;
+    padding: 8px;
+    color: white;
+    text-align: center;
+  }
+
+  .sidebar-ornament {
+    align-content: flex-start;
+    margin: 20px auto 0;
+    padding: 0;
+  }
+
+  .sidebar-ornament__title {
+    display: block;
+  }
+}
+
+@media (min-width: 1300px) {
+
+}

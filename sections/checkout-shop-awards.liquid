@@ -1,0 +1,27 @@
+<p class="sidebar-award__title">{{ 'shopify.award_title' | t }}</p>
+<ul class="sidebar-award__list">
+  {% for block in section.blocks %}
+    <li>
+      <img src="{{ block.settings.icon | img_url }}" width="auto" height="auto" loading="lazy">
+    </li>
+  {% endfor %}
+</ul>
+
+{% schema %}
+{
+  "name": "Shop Awards",
+  "blocks": [
+    {
+      "type": "award",
+      "name": "Award",
+      "settings": [
+        {
+          "id": "icon",
+          "type": "image_picker",
+          "label": "Icon"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

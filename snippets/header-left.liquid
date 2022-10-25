@@ -7,7 +7,7 @@
 			/>
 		</svg>
 	</button>
-	
+
 	<a href="{{ routes.root_url }}" itemprop="url" class="site-header-left__logo">
 		{% if section.settings.logo %}
 			<img
@@ -22,17 +22,21 @@
 </div>
 
 <script>
-  $(".site-header-left .hamburger-btn").click(function () {
-    const $siteNav = $("#site-nav")
-    const openClass = "site-nav--is-open"
-    const isOpen = $siteNav.hasClass(openClass);
+	$(".site-header-left .hamburger-btn").click(function () {
+		const $siteNav = $("#site-nav")
+		const $body = $("body")
+		const hideBodyScrollClass = "site-nav--hide-body-scroll"
+		const openClass = "site-nav--is-open"
+		const isOpen = $siteNav.hasClass(openClass);
 
-    if (isOpen) {
-      $siteNav.slideUp(100);
-      $siteNav.removeClass(openClass)
-    } else {
-      $siteNav.slideDown(100)
-      $siteNav.addClass(openClass)
-    }
-  })
+		if (isOpen) {
+			$siteNav.slideUp(100);
+			$siteNav.removeClass(openClass)
+			$body.removeClass(hideBodyScrollClass)
+		} else {
+			$siteNav.slideDown(100)
+			$siteNav.addClass(openClass)
+			$body.addClass(hideBodyScrollClass)
+		}
+	})
 </script>

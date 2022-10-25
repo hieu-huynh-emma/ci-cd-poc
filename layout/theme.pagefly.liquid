@@ -14,7 +14,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-5RJR9WC');</script>
 <!-- End Google Tag Manager -->
 
-    
+
     {%- render 'hso-no-follow-no-index' -%}{% render 'pagefly-head' %}
     <!-- Metadata ================================================== -->
     {% include 'page-metadata' %}
@@ -26,7 +26,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     {% endif %}
 
     {% render 'css-variables' %}
-    
+
+    {% render 'apps-integration' %}
+    {% render 'vendors' %}
+
     {% render 'apps-integration' %}
     {% render 'vendors' %}
 
@@ -235,7 +238,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         background-color: white;
     }
 
-    #PageContainer {
+    #MainContent {
         position: relative;
         margin: 70px 0 0;
     }
@@ -254,7 +257,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             height: 40px;
         }
 
-        #PageContainer {
+        #MainContent {
             margin: 40px 0 0 ;
         }
     }

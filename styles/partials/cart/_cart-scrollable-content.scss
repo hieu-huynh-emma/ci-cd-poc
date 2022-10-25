@@ -1,0 +1,24 @@
+cart-scrollable-content {
+  overflow-y: scroll;
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+
+  height: 100%;
+
+  &.is-loading {
+    align-items: center;
+    justify-content: center;
+    > {
+      * {
+        opacity: 0;
+      }
+
+      .loading-overlay {
+        opacity: 1 !important;
+        display: block !important;
+      }
+    }
+  }
+}

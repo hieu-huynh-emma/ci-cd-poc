@@ -1,8 +1,4 @@
 tailwind.config = {
-  prefix: "tw-",
-  corePlugins: {
-    preflight: false,
-  },
   theme: {
     extend: {
       colors: {
@@ -21,28 +17,11 @@ tailwind.config = {
         'cultured': "#F7F7F9",
         red: '#FF0000'
       },
-      typography: (theme) => ({
-        DEFAULT: {
-          css: {
-            hr: {
-              borderColor: theme('colors.gray.200'),
-              borderTopWidth: '1px',
-              marginTop: '2rem',
-              marginBottom: '2rem',
-            },
-            'ol > li::before': {
-              color: theme('colors.gray.900'),
-            },
-            'ul > li::before': {
-              backgroundColor: theme('colors.gray.900'),
-            },
-          },
-        },
-      }),
     },
     fontFamily: {
-      'acuminpro': ["acumin-pro"],
+      'acuminpro': ['"Acumin Pro"'],
       'tiempos': ["Tiempos"],
+      'utopia': ['"Utopia Std"'],
     }
   },
 }

@@ -4,18 +4,18 @@
 
 <section id="feature-products-section">
   <div class="wrapper">
-    {%- for tw-block in productBlocks -%}
-      {% assign product = tw-block.settings.product %}
+    {%- for block in productBlocks -%}
+      {% assign product = block.settings.product %}
       {% assign discountedAmount = product.compare_at_price | minus: product.price %}
 
       <a
-        class="card tw-w-full tw-relative" href="{{ product.url }}"
+        class="card w-full relative" href="{{ product.url }}"
         rel="noreferrer"
       >
-        <div class="card__image tw-absolute tw-top-0 tw-right-0 tw-w-full tw-h-full tw-scale-x-[1.1] tw-scale-y-[0.7] md:tw-scale-100 tw-origin-bottom-right">
+        <div class="card__image absolute top-0 right-0 w-full h-full scale-x-[1.1] scale-y-[0.7] md:scale-100 origin-bottom-right">
           <img
-            src="{{ tw-block.settings.image | img_url: '537x375' }}" width="100%" height="auto"
-            class="tw-h-full" loading="lazy"
+            src="{{ block.settings.image | img_url: '537x375' }}" width="100%" height="auto"
+            class="h-full" loading="lazy"
           >
         </div>
 
@@ -23,28 +23,28 @@
         <div class="card__header">
           {% if discountedAmount != blank %}
             <p
-              class="tw-mb-[10px] tw-py-1 tw-px-2 tw-rounded-[4px] tw-bg-green-pea tw-text-[white] tw-text-[11px] md:tw-text-[13px] tw-uppercase"
+              class="mb-[10px] py-1 px-2 rounded-[4px] bg-green-pea text-[white] text-[11px] md:text-[13px] uppercase"
             >
               SAVE UP TO {{ discountedAmount | money }}
             </p>
           {% endif %}
-          <h3 class="tw-text-[24px] md:tw-text-[28px] font-tiempos tw-text-charade tw-font-normal">{{ product.title }}</h3>
+          <h3 class="text-[24px] md:text-[28px] font-tiempos text-charade font-normal">{{ product.title }}</h3>
           <div>
-            <p class="tw-text-charade">{{ tw-block.settings.desc }}</p>
+            <p class="text-charade">{{ block.settings.desc }}</p>
 
             <div>
-              <span class="tw-font-semibold">From</span>
+              <span class="font-semibold">From</span>
 
-              <span class="tw-font-semibold">{{ product.price | money }}</span>
+              <span class="font-semibold">{{ product.price | money }}</span>
 
-              <span class="tw-line-through">{{ product.compare_at_price | money }}</span>
+              <span class="line-through">{{ product.compare_at_price | money }}</span>
             </div>
           </div>
 
         </div>
 
         <div
-          class="card__btn tw-flex tw-justify-center tw-bg-chambray tw-text-[white] tw-uppercase tw-rounded-[60px]"
+          class="card__btn flex justify-center bg-chambray text-[white] uppercase rounded-[60px]"
         >
           Shop Now
         </div>

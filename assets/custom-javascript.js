@@ -132,20 +132,6 @@ $(document).ready( function() {
           ]
         });
   
-  
-  $('.techmat-slider').slick({
-    mobileFirst: true,
-    dots: false,
-    arrows: false,
-    responsive: [
-      {
-        breakpoint: 768,
-        settings: "unslick",
-      }
-    ]
-
-  });
-  
   $(".popup-close").click(function(){
     $(".modal").css("display", "none");
   });

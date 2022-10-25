@@ -1,20 +1,17 @@
 $colorPrimary: #FFA235;
 $colorSecondary: #3C4196;
-$colorCharade: var(--colorCharade);
-
-$colorDisabledGrey:  #f6f6f6;
-$colorDisabledBorder: darken($colorDisabledGrey, 25%);
-$colorError: #d02e2e;
-
-
-
-
-$colorBodyText: #1c1d1d;
-
-$colorLink: $colorBodyText;
-$colorLinkHover: $colorPrimary;
+$colorCharade: #2E2F3C;
+$colorComet: #55576F;
+$colorChambray: #3C4196;
+$colorPizazz: #FF8900;
+$colorJade: #00B67A;
 
 :root {
-  --colorPrimary: #{$colorPrimary};
-  --colorSecondary: #{$colorSecondary};
+  --color-primary: #{$colorPrimary};
+  --color-secondary: #{$colorSecondary};
+  --color-charade: #{$colorCharade};
+  --color-comet: #{$colorComet};
+  --color-chambray: #{$colorChambray};
+  --color-pizazz: #{$colorPizazz};
+  --color-jade: #{$colorJade}
 }

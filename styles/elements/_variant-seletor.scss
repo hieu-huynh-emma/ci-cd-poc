@@ -1,0 +1,29 @@
+.variant-selector {
+  $this: &;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 86px;
+  padding: 6px 10px;
+
+  background: #FFFFFF;
+  border: 1px solid #2E2F3C19;
+  border-radius: 48px;
+
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 150%;
+  /* identical to box height, or 18px */
+  overflow: hidden;
+  max-width: 100%;
+
+  color: #2E2F3C;
+
+  &[disabled] {
+    cursor: not-allowed;
+    opacity: 0.4;
+  }
+}

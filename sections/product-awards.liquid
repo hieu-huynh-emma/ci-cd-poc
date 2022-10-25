@@ -1,30 +1,28 @@
-{{ 'product-awards.css' | asset_url | stylesheet_tag }}
-
 <section id="product-awards-section">
   <div
-    class="wrapper tw-bg-athens-gray{% if section.settings.borderless %} wrapper--borderless{% endif %}"
+    class="wrapper bg-athens-gray{% if section.settings.borderless %} wrapper--borderless{% endif %}"
   >
     <div class="headings">
-      <h2 class="heading-2 tw-text-center tw-text-charade">{{ section.settings.title | remove: "<p>" | remove: "</p>" }}</h2>
+      <h2 class="heading-2 text-center text-charade">{{ section.settings.title | remove: "<p>" | remove: "</p>" }}</h2>
       <h4 class="heading-4">{{ section.settings.subtitle }}</h4>
     </div>
     <div class="experts">
       {% assign footerBtn = section.blocks | where: "type", "footer-button" | first %}
       {% assign textBlocks = section.blocks | where: "type", "text-block" %}
 
-      {%- for tw-block in textBlocks -%}
+      {%- for block in textBlocks -%}
         <div class="experts__item">
-          <img src="{{ tw-block.settings.icon | img_url: 'original' }}" width="auto" height="auto" loading="lazy">
+          <img src="{{ block.settings.icon | img_url: 'original' }}" width="auto" height="auto" loading="lazy">
           <h3
             class="heading-3 experts__title"
-          >{{ tw-block.settings.title | remove: "<p>" | remove: "</p>" }}</h3>
-          <p class="experts__content">{{ tw-block.settings.content }}</p>
+          >{{ block.settings.title | remove: "<p>" | remove: "</p>" }}</h3>
+          <p class="experts__content">{{ block.settings.content }}</p>
         </div>
       {%- endfor -%}
     </div>
     {% if footerBtn != blank %}
       <a
-        class="btn tw-bg-chambray tw-text-[white] tw-uppercase tw-px-24 tw-py-3 tw-rounded-[60px]"
+        class="btn bg-chambray text-[white] uppercase px-24 py-3 rounded-[60px]"
         href="{{ footerBtn.settings.url }}"
       >
         {{ footerBtn.settings.text }}

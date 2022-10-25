@@ -1,120 +1,116 @@
 {%- style -%}
-	{%- assign logo_max_width = section.settings.logo_max_width -%}
-	{%- assign header_color = section.settings.header_color -%}
-	
-	{%- if section.settings.transparent_header_enable and request.page_type == 'index' -%}
-		{%- assign header_color_transparent = section.settings.transparent_header_color -%}
-		
-		.header-wrapper.header-wrapper--transparent .site-nav__link,
-		.header-wrapper.header-wrapper--transparent .site-header__logo a {
-		color: {{ header_color_transparent }};
-		}
-		
-		.header-wrapper.header-wrapper--transparent .site-header__logo a:hover,
-		.header-wrapper.header-wrapper--transparent .site-nav__link:hover,
-		.header-wrapper.header-wrapper--transparent .site-nav__link:focus,
-		.header-wrapper.header-wrapper--transparent .site-header__logo a:focus {
-		color: {{ header_color_transparent | color_modify: 'alpha', 0.75 }};
-		}
-		
-		.header-wrapper.header-wrapper--transparent .site-nav--has-dropdown.nav-hover > .site-nav__link {
-		color: {{ header_color }};
-		}
-		
-		.header-wrapper.header-wrapper--transparent .burger-icon,
-		.header-wrapper.header-wrapper--transparent .site-nav__link:hover .burger-icon {
-		background: {{ header_color_transparent }};
-		}
-	{%- endif -%}
-	
-	.header-wrapper .site-nav__link,
-	.header-wrapper .site-header__logo a,
-	.header-wrapper .site-nav__dropdown-link,
-	.header-wrapper .site-nav--has-dropdown > a.nav-focus,
-	.header-wrapper .site-nav--has-dropdown.nav-hover > a,
-	.header-wrapper .site-nav--has-dropdown:hover > a {
-	color: {{ header_color }};
-	}
-	
-	.header-wrapper .site-header__logo a:hover,
-	.header-wrapper .site-header__logo a:focus,
-	.header-wrapper .site-nav__link:hover,
-	.header-wrapper .site-nav__link:focus,
-	.header-wrapper .site-nav--has-dropdown a:hover,
-	.header-wrapper .site-nav--has-dropdown > a.nav-focus:hover,
-	.header-wrapper .site-nav--has-dropdown > a.nav-focus:focus,
-	.header-wrapper .site-nav--has-dropdown .site-nav__link:hover,
-	.header-wrapper .site-nav--has-dropdown .site-nav__link:focus,
-	.header-wrapper .site-nav--has-dropdown.nav-hover > a:hover,
-	.header-wrapper .site-nav__dropdown a:focus {
-	color: {{ header_color | color_modify: 'alpha', 0.75 }};
-	}
-	
-	.header-wrapper .burger-icon,
-	.header-wrapper .site-nav--has-dropdown:hover > a:before,
-	.header-wrapper .site-nav--has-dropdown > a.nav-focus:before,
-	.header-wrapper .site-nav--has-dropdown.nav-hover > a:before {
-	background: {{ header_color }};
-	}
-	
-	.header-wrapper .site-nav__link:hover .burger-icon {
-	background: {{ header_color | color_modify: 'alpha', 0.75 }};
-	}
-	
-	.site-header__logo img {
-	max-width: {{ logo_max_width | append: 'px' }};
-	}
-	
-	@media screen and (max-width: 768px) {
-	.site-header__logo img {
-	max-width: 100%;
-	}
-	}
-	.site-nav__dropdown > li {
-	display: flex;
-	align-items: center;
-	justify-content: flex-start;
-	}
-{%- endstyle -%}
-<style>
-    .cart-icon-container .icon-cart {
-        font-size: 1.7rem;
-        position: relative;
+  {%- assign logo_max_width = section.settings.logo_max_width -%}
+  {%- assign header_color = section.settings.header_color -%}
+
+  {%- if section.settings.transparent_header_enable and request.page_type == 'index' -%}
+    {%- assign header_color_transparent = section.settings.transparent_header_color -%}
+
+    .header-wrapper.header-wrapper--transparent .site-nav__link,
+    .header-wrapper.header-wrapper--transparent .site-header__logo a {
+      color: {{ header_color_transparent }};
     }
 
-    #cart-items-count {
-        top: 0.6rem;
-        left: 2rem;
-        position: absolute;
-        display: inline-flex;
-        height: 1rem;
-        width: 1rem;
-        border-radius: 50%;
-        background: orange;
-        justify-content: center;
-        align-items: center;
+    .header-wrapper.header-wrapper--transparent .site-header__logo a:hover,
+    .header-wrapper.header-wrapper--transparent .site-nav__link:hover,
+    .header-wrapper.header-wrapper--transparent .site-nav__link:focus,
+    .header-wrapper.header-wrapper--transparent .site-header__logo a:focus {
+      color: {{ header_color_transparent | color_modify: 'alpha', 0.75 }};
     }
+
+    .header-wrapper.header-wrapper--transparent .site-nav--has-dropdown.nav-hover > .site-nav__link {
+      color: {{ header_color }};
+    }
+
+    .header-wrapper.header-wrapper--transparent .burger-icon,
+    .header-wrapper.header-wrapper--transparent .site-nav__link:hover .burger-icon {
+      background: {{ header_color_transparent }};
+    }
+  {%- endif -%}
+
+  .header-wrapper .site-nav__link,
+  .header-wrapper .site-header__logo a,
+  .header-wrapper .site-nav__dropdown-link,
+  .header-wrapper .site-nav--has-dropdown > a.nav-focus,
+  .header-wrapper .site-nav--has-dropdown.nav-hover > a,
+  .header-wrapper .site-nav--has-dropdown:hover > a {
+    color: {{ header_color }};
+  }
+
+  .header-wrapper .site-header__logo a:hover,
+  .header-wrapper .site-header__logo a:focus,
+  .header-wrapper .site-nav__link:hover,
+  .header-wrapper .site-nav__link:focus,
+  .header-wrapper .site-nav--has-dropdown a:hover,
+  .header-wrapper .site-nav--has-dropdown > a.nav-focus:hover,
+  .header-wrapper .site-nav--has-dropdown > a.nav-focus:focus,
+  .header-wrapper .site-nav--has-dropdown .site-nav__link:hover,
+  .header-wrapper .site-nav--has-dropdown .site-nav__link:focus,
+  .header-wrapper .site-nav--has-dropdown.nav-hover > a:hover,
+  .header-wrapper .site-nav__dropdown a:focus {
+    color: {{ header_color | color_modify: 'alpha', 0.75 }};
+  }
+
+  .header-wrapper .burger-icon,
+  .header-wrapper .site-nav--has-dropdown:hover > a:before,
+  .header-wrapper .site-nav--has-dropdown > a.nav-focus:before,
+  .header-wrapper .site-nav--has-dropdown.nav-hover > a:before {
+    background: {{ header_color }};
+  }
+
+  .header-wrapper .site-nav__link:hover .burger-icon {
+    background: {{ header_color | color_modify: 'alpha', 0.75 }};
+  }
+
+  .site-header__logo img {
+    max-width: {{ logo_max_width | append: 'px' }};
+  }
+
+  @media screen and (max-width: 768px) {
+  .site-header__logo img {
+      max-width: 100%;
+    }
+  }
+
+  .site-nav__dropdown > li {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+{%- endstyle -%}
+<style>
+  .cart-icon-container .icon-cart {
+    font-size: 1.7rem;
+    position: relative;
+  }
+
+  #cart-items-count {
+    top: 0.6rem;
+    left: 2rem;
+    position: absolute;
+    display: inline-flex;
+    height: 1rem;
+    width: 1rem;
+    border-radius: 50%;
+    background: orange;
+    justify-content: center;
+    align-items: center;
+  }
 </style>
 
 {{ 'header.css' | asset_url | stylesheet_tag }}
 
-<div data-section-id="{{ section.id }}" data-section-type="header-section" data-template="{{ request.page_type }}">
-	<div class="header-container drawer__header-container">
-		<div class="header-wrapper" data-header-wrapper>
-			<header
-				class="site-header"
-				role="banner"
-				{% if section.settings.transparent_header_enable %}data-transparent-header="true"{% endif %}
-			>
-				{% render 'header-left' %}
-				
-				{% render 'site-nav' %}
-				
-				{% render 'header-right' %}
-			</header>
-		</div>
-	</div>
+<div id="header" data-section-id="{{ section.id }}" data-section-type="header-section" data-template="{{ request.page_type }}">
+  <div class="header-container drawer__header-container">
+    <div class="header-wrapper" data-header-wrapper>
+      <header class="site-header" role="banner" {% if section.settings.transparent_header_enable %}data-transparent-header="true"{% endif %}>
+        {% render 'header-left' %}
+        {% render 'site-nav' %}
+        {% render 'header-right' %}
+      </header>
+    </div>
+  </div>
 </div>
+
 <script>
   const open = window.XMLHttpRequest.prototype.open;
 

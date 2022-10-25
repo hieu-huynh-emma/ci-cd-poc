@@ -1,0 +1,51 @@
+@import "../../abstracts/index";
+
+.drawer-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  min-height: 50px;
+  background: $colorPrimary;
+  color: white;
+  @media screen and (max-width: 390px) {
+    height: 32px;
+    min-height: 32px;
+  }
+
+  @media screen and (min-width: 591px) {
+    justify-content: space-between;
+
+    padding: 0 2.5rem;
+  }
+
+  .drawer-title {
+    display: grid;
+    gap: 8px;
+    grid-template-columns: minmax(0, 1fr) minmax(0, auto) minmax(0, 1fr);
+    align-items: center;
+    justify-content: center;
+
+    color: white;
+    font-weight: 400;
+    font-size: 1.25rem;
+    @media screen and (max-width: 390px) {
+      font-size: 1rem;
+    }
+    &.is-empty {
+      display: block;
+    }
+  }
+
+  .drawer-close-btn {
+    position: absolute;
+    right: 1.625rem;
+    @media screen and (min-width: 591px) {
+      position: static;
+    }
+
+    svg {
+      width: 24px;
+    }
+  }
+}

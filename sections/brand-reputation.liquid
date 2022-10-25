@@ -1,0 +1,260 @@
+{{ 'brand-reputation.css' | asset_url | stylesheet_tag }}
+
+{% assign affiliates = section.blocks | where: "type", "affiliate" %}
+
+<style>
+  #brand-reputation-section .wrapper {
+    width: 100%;
+    max-width: 1440px;
+    margin: 50px auto;
+    position: relative;
+  }
+
+  #affiliates-carousel {
+    overflow: auto;
+    width: 100%;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+  }
+
+  #affiliates-carousel::-webkit-scrollbar {
+    height: 0;
+  }
+
+  #brand-reputation-section .affiliates {
+    width: 100%;
+    min-height: auto;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    padding: 1rem;
+  }
+
+  #brand-reputation-section .affiliates__item {
+    min-width: 40%;
+    height: auto;
+    padding: 1rem;
+  }
+
+  #prevAffiliates,
+  #nextAffiliates {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 8px 2px;
+    width: 2rem;
+    height: 3rem;
+    background: rgba(255, 255, 255, 0.6);
+    left: 0;
+    bottom: 6.2rem;
+  }
+
+  #nextAffiliates {
+    right: 0;
+    left: auto;
+  }
+
+  #affiliates-carousel {
+    background: rgba(255, 246, 236, 0.5);
+  }
+
+  #toPrevAffiliate,
+  #toNextAffiliate {
+    display: none;
+  }
+
+  .affiliates-wrapper {
+    overflow: hidden;
+    width: 100%;
+  }
+
+  @media (min-width: 768px) {
+
+    #prevAffiliates,
+    #nextAffiliates {
+      display: none;
+    }
+
+    #toPrevAffiliate,
+    #toNextAffiliate {
+      display: inline-block;
+      font-size: 4rem;
+      width: fit-content;
+      position: absolute;
+      left: -2.5rem;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    #toNextAffiliate {
+      right: -2.5rem;
+      left: auto;
+    }
+
+    #brand-reputation-section .affiliates {
+      display: grid;
+      gap: 10px 8px;
+      grid-auto-flow: row;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      align-content: center;
+      align-items: center;
+      height: 100%;
+    }
+
+    #brand-reputation-section .headings {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      padding: 1rem;
+    }
+
+    #brand-reputation-section .quote {
+      flex-grow: 1;
+    }
+  }
+
+</style>
+<section id="brand-reputation-section">
+  <div class="wrapper">
+    <div class="headings">
+      <h2 class="heading-2 text-center md:text-left text-charade">{{ section.settings.title | remove: "<p>" | remove: "</p>" }}</h2>
+      <p class="quote heading-4 text-black-65"></p>
+      <button id="toPrevAffiliate">&#60;</button>
+      <button id="toNextAffiliate">&#62;</button>
+    </div>
+    <div class="affiliates-wrapper">
+      <div id="affiliates-carousel">
+        <div id="affiliates" class="affiliates">
+          {%- for affiliate in affiliates -%}
+            <div data-quote="{{ affiliate.settings.quote | remove: " <p>" | remove: "</p>" | escape }}" class="affiliates__item">
+              {{ affiliate.settings.logo }}
+            </div>
+          {%- endfor -%}
+        </div>
+        <button id="prevAffiliates">&#8592;</button>
+        <button id="nextAffiliates">&#8594;</button>
+      </div>
+      <a class="btn mx-auto block max-w-max mt-5" href="{{ section.settings.cta_url }}">{{ section.settings.cta_text }}</a>
+    </div>
+  </div>
+</section>
+
+<script>
+  const carousel = document.getElementById("affiliates-carousel"),
+    affiliates = document.getElementById("affiliates"),
+    affiliateItems = document.querySelectorAll("#brand-reputation-section .affiliates__item"),
+    nextAffiliates = document.getElementById("nextAffiliates"),
+    prevAffiliates = document.getElementById("prevAffiliates");
+
+  nextAffiliates.addEventListener("click", e => {
+    carousel.scrollBy(width, 0);
+    if (carousel.scrollWidth !== 0) {
+      prev.style.display = "flex";
+    }
+    if (affiliates.scrollWidth - width <= carousel.scrollLeft + width) {
+      next.style.display = "none";
+    }
+  });
+
+  prevAffiliates.addEventListener("click", e => {
+    carousel.scrollBy(-width, 0);
+    if (carousel.scrollLeft - width <= 0) {
+      prev.style.display = "none";
+    }
+    if (!affiliates.scrollWidth - width <= carousel.scrollLeft + width) {
+      next.style.display = "flex";
+    }
+  });
+  let width = carousel.offsetWidth;
+
+  $(document).ready(function () {
+    $("#brand-reputation-section .affiliates__item").click(function () {
+      $(this).parent().find('.affiliates__item').removeClass('active');
+      $(this).addClass('active');
+
+      const quote = $(this).data('quote');
+      const $quoteEl = $('#brand-reputation-section .headings .quote');
+
+      const curHeight = $quoteEl.height();
+      $quoteEl.html(decodeURI(quote));
+
+      const autoHeight = $quoteEl.css('height', 'auto').height();
+      $quoteEl.height(curHeight).animate({ height: autoHeight }, 200);
+    });
+
+    $("#brand-reputation-section .affiliates__item:first-child").click();
+
+    $("#toNextAffiliate").click(function () {
+      let index = $('.active').index('.affiliates__item');
+      let items = $("#brand-reputation-section .affiliates__item");
+      $(items[index]).removeClass('active');
+      if (index >= items.length - 1) {
+        index = -1;
+      }
+      $(items[index + 1]).addClass('active');
+      $(items[index + 1]).click();
+    });
+
+    $("#toPrevAffiliate").click(function () {
+      let index = $('.active').index('.affiliates__item');
+      let items = $("#brand-reputation-section .affiliates__item");
+      $(items[index]).removeClass('active');
+      if (index <= 0) {
+        index = items.length;
+      }
+      $(items[index - 1]).addClass('active');
+      $(items[index - 1]).click();
+    });
+
+  })
+</script>
+
+{% schema %}
+{
+  "name": "Product Reputation",
+  "blocks": [
+    {
+      "type": "affiliate",
+      "name": "Affiliate",
+      "limit": 12,
+      "settings": [
+        {
+          "id": "heading",
+          "type": "text",
+          "label": "Affiliate Heading"
+        },
+        {
+          "id": "logo",
+          "type": "html",
+          "label": "Affiliate SVG Logo"
+        },
+        {
+          "id": "quote",
+          "type": "richtext",
+          "label": "Affiliate Quote"
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "id": "title",
+      "type": "richtext",
+      "label": "Title",
+      "default": "<p>Why sleepers <i>love</i> Emma</p>"
+    },
+    {
+      "id": "cta_url",
+      "type": "url",
+      "label": "Button Url"
+    },
+    {
+      "id": "cta_text",
+      "type": "text",
+      "label": "Button Text"
+    }
+  ]
+}
+{% endschema %}

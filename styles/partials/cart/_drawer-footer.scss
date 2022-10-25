@@ -1,0 +1,29 @@
+cart-drawer-footer {
+  display: flex;
+  flex-direction: column;
+
+  padding: 0.625rem 1.25rem;
+
+  box-shadow: rgb(0 0 0 / 8%) 0px -0.25rem 0.2rem;
+
+  @media screen and (min-width: 591px) {
+    padding: 0.625rem 2.5rem;
+  }
+
+
+  .cart-cta-btn[type='submit'].btn--compact {
+    display: grid;
+    gap: 8px;
+    grid-template-columns: repeat(2, minmax(0, auto));
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+
+    background-color: $colorPizazz;
+    font-size: 14px;
+    line-height: 150%;
+    span {
+
+    }
+  }
+}

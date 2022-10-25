@@ -1,6 +1,12 @@
 @import "../abstracts/functions";
+@import "../legacy/pagefly-customization";
+@import "../legacy/base-legacy";
+@import "../legacy/user-page";
 @import "../typography/index";
-@import "../components/index";
+@import "../elements/index";
+@import "../vendors/index";
+@import "./utils";
+@import "./global";
 
 * {
   font-variant-ligatures: none;
@@ -13,4 +19,21 @@ html {
 
 body {
   color: #2E2F3C;
+}
+
+.dummy-chat-button-iframe {
+  z-index: 200!important;
+}
+
+#ShopifyChat {
+  &:not([isopen="true"]) {
+    z-index: 200 !important;
+  }
+}
+
+.no-scroll {
+  overflow: hidden !important;
+  height: 100%;
+  width: 100%;
+  // position: fixed; remove due to CA has sticky navigation bar
 }

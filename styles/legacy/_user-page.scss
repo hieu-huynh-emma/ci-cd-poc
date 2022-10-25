@@ -1,0 +1,58 @@
+@import "../elements/button";
+
+#user {
+  h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
+    display: block;
+    font-weight: 400;
+    font-style: normal;
+    margin: 0 0 0.5em;
+    line-height: 1.4;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1, .h1 {
+    font-size: 60px;
+    line-height: 1.2em;
+    font-family: 'header-text' !important;
+  }
+
+  h2, .h2 {
+    font-size: 50px;
+    line-height: 1.2em;
+  }
+
+  p {
+    margin: 0 0 15px;
+    text-rendering: optimizeLegibility;
+  }
+
+  .form-vertical input, .form-vertical select, .form-vertical textarea {
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  input, select, textarea {
+    border: 1px solid #212b57;
+    border-radius: 0;
+    max-width: 100%;
+    padding: 8px 10px
+  }
+
+  input, select, textarea {
+    background-color: #f7f7f7;
+    border-color: transparent;
+    color: #1c1d1d;
+    font-size: 1.28571em;
+    -webkit-transition: opacity .4s ease-out;
+    -moz-transition: opacity .4s ease-out;
+    -ms-transition: opacity .4s ease-out;
+    -o-transition: opacity .4s ease-out;
+    transition: opacity .4s ease-out
+  }
+
+  input[type='submit'] {
+    &.btn {
+      @include button
+    }
+  }
+}

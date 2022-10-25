@@ -2,6 +2,7 @@ $paragraphByBreakpoints: (
         default: (
                 10: "0.625rem",
                 12: "0.75rem",
+                14: "0.875rem",
                 18: "1rem",
                 20: "1.25rem"
         ),
@@ -14,8 +15,6 @@ $paragraphByBreakpoints: (
 @mixin defaultParagraph {
   font-style: normal;
   line-height: 125%;
-
-  word-break: break-word;
 }
 
 @mixin renderSize($sizes, $isDefault) {

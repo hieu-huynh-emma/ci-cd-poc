@@ -1,309 +1,311 @@
 {% layout none %}
 
 <script>
-    $(document).ready(function () {
-        const $shipOutTime = $(".cart--ship-out-time")
+  $(document).ready(function () {
+    const $shipOutTime = $('.cart--ship-out-time')
 
-        if (!$shipOutTime.length) return
+    if (!$shipOutTime.length) return
 
-        const dateInEst = (new Date()).toLocaleString('en-US', { timeZone: 'America/New_York', hour12: false })
-        const currentHour = new Date(dateInEst).getHours()
+    const dateInEst = (new Date()).toLocaleString('en-US', { timeZone: 'America/New_York', hour12: false })
+    const currentHour = new Date(dateInEst).getHours()
 
-        $shipOutTime.text((currentHour > 14) ? "{{ cart.general.ship_next_business_day | t | default: "Orders typically ship out the next business day." }}" : "{{ cart.general.ship_today | t | default: "Orders before 2PM ET will be shipped out today." }}")
-    });
+    $shipOutTime.text((currentHour > 14) ? "{{ cart.general.ship_next_business_day | t | default: "Orders typically ship out the next business day." }}" : "{{ cart.general.ship_today | t | default: "Orders before 2PM ET will be shipped out today." }}")
+  })
 </script>
 
-<form action="{{ routes.cart_url }}" method="post" novalidate class="cart ajaxcart" style="z-index: 100;" data-cart-items="{{ cart.items.size }}">
-    {% if cart.items.size == 0%}
-        <div class="cart--empty-message-wrapper">
-            <p class="cart--empty-message">
-                {{ 'cart.general.empty' | t }}
-            </p>
-        </div>
-    {% else %}
-        <p class="cart--ship-out-time"></p>
-    {% endif%}
-    <div class="ajaxcart__inner ajaxcart__inner--has-fixed-footer">
-        {% assign total_cart_compare_price = 0 %}
-        {% for item in cart.items %}
-            {% assign position = forloop.index0%}
-            {% assign compare_price = item.variant.compare_at_price | times: item.quantity %}
-            {% assign total_cart_compare_price = total_cart_compare_price | plus: compare_price %}
-            <div class="ajaxcart__product">
-                <div class="ajaxcart__row" data-line="{{ forloop.index }}">
-                    <div class="cart-product">
-                        <div class="cart-product__image">
-                            <a href="{{item.url}}" class="ajaxcart__product-image">
-                                {{ item.image | image_url: width: 100, height: 50 | image_tag: srcset: nil }}
-                            </a>
-                        </div>
-                        <div class="cart-product__content">
-                            <div class="ajaxcart__product-name--wrapper">
-                                {% assign title = item.title | split: ' - ' %}
-                                <a href="{{item.url}}" class="ajaxcart__product-name">{{title[0]}}</a>
-                                {% if item.variant.title != "Default Title" %}
-                                    <select id="product-variant"
-                                            onchange="updateProductVariant({{position}}, this.options[this.selectedIndex].value)">
-                                        {% for variant in item.product.variants %}
-                                            <option {% if item.variant_id == variant.id %} selected {% endif %} data-sku={{
-                                            variant.sku }} value={{ variant.id }}>{{variant.title}}</option>
-                                        {% endfor %}
-                                    </select>
-                                {% endif %}
-                                {% if item.selling_plan_allocation %}
-                                    <span
-                                      class="ajaxcart__product-meta">{{item.selling_plan_allocation.selling_plan.name}}</span>
-                                {% endif %}
-                            </div>
-
-                            <div class="grid--full">
-                                <div class="grid__item one-half">
-                                    <div class="ajaxcart__qty">
-                                        <button type="button"
-                                                class="ajaxcart__qty-adjust ajaxcart__qty--minus icon-fallback-text"
-                                                data-id={{item.key}} data-qty="{{item.quantity | minus: 1}}"
-                                                data-line="{{ forloop.index }}"
-                                                aria-label="{{ 'cart.general.reduce_quantity' | t }}">
-                                            <span class="icon icon-minus" aria-hidden="true"></span>
-                                            <span class="fallback-text" aria-hidden="true">&minus;</span>
-                                        </button>
-                                        <input type="text" name="updates[]" class="ajaxcart__qty-num"
-                                               value="{{item.quantity}}" min="0" data-id="{{item.key}}"
-                                               data-line="{{ forloop.index }}" aria-label="quantity" pattern="[0-9]*">
-                                        <button type="button"
-                                                class="ajaxcart__qty-adjust ajaxcart__qty--plus icon-fallback-text"
-                                                data-id="{{item.key}}" data-line="{{ forloop.index }}"
-                                                data-qty="{{item.quantity | plus: 1}}"
-                                                aria-label="{{ 'cart.general.increase_quantity' | t }}">
-                                            <span class="icon icon-plus" aria-hidden="true"></span>
-                                            <span class="fallback-text" aria-hidden="true">+</span>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="grid__item one-half text-right product-prices-wrapper">
-                                    {% if item.variant.compare_at_price > item.variant.price %}
-                                        <del>{{item.variant.compare_at_price | money}}</del>
-                                        <span class="ajaxcart__price">{{item.variant.price | money}}</span>
-                                    {%else%}
-                                        <span class="ajaxcart__price">{{item.price | money}}</span>
-                                    {%endif%}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        {% endfor %}
-        {% if settings.cart_notes_enable %}
-            <div>
-                <label for="CartSpecialInstructions" class="ajaxcart__note">{{ 'cart.general.note' | t }}</label>
-                <textarea name="note" class="input-full" id="CartSpecialInstructions">{{cart.note}}</textarea>
-            </div>
-        {% endif %}
-        <div class="cart_upsell"> {% render 'cart_upsell' %} </div>
+<form action="{{ routes.cart_url }}" method="post" novalidate class="cart ajaxcart" style="z-index: 100;"
+      data-cart-items="{{ cart.items.size }}">
+  {% if cart.items.size == 0 %}
+    <div class="cart--empty-message-wrapper">
+      <p class="cart--empty-message">
+        {{ 'cart.general.empty' | t }}
+      </p>
     </div>
-    <div class="ajaxcart__footer ajaxcart__footer--fixed">
-        <div class="placeholder--loading"></div>
-        <div class="grid--full subtotal promo-applied" style="display: none">
-            <div class="subtotal_title">
-                <p class="ajaxcart__promo">{{ 'cart.general.promo_applied' | t }}</p>
+  {% else %}
+    <p class="cart--ship-out-time"></p>
+  {% endif %}
+  <div class="ajaxcart__inner ajaxcart__inner--has-fixed-footer">
+    {% assign total_cart_compare_price = 0 %}
+    {% for item in cart.items %}
+      {% assign position = forloop.index0 %}
+      {% assign compare_price = item.variant.compare_at_price | times: item.quantity %}
+      {% assign total_cart_compare_price = total_cart_compare_price | plus: compare_price %}
+      <div class="ajaxcart__product">
+        <div class="ajaxcart__row" data-line="{{ forloop.index }}">
+          <div class="cart-product">
+            <div class="cart-product__image">
+              <a href="{{ item.url }}" class="ajaxcart__product-image">
+                {{ item.image | image_url: width: 100, height: 50 | image_tag: srcset: nil }}
+              </a>
             </div>
-            <div class="subtotal_price promo-code"></div>
-        </div>
-        <div class="grid--full subtotal">
-            <div class="subtotal_title">
-                <p class="ajaxcart__subtotal">{{ 'cart.general.subtotal' | t }}</p>
-            </div>
-            <div class="subtotal_price">
-                <del class="ajaxcart__subtotal">{{total_cart_compare_price | money }}</del>
-                <p class="ajaxcart__subtotal" data-subtotal="{{cart.total_price | divided_by: 100}}">{{cart.total_price
-                    | money }}</p>
-            </div>
-        </div>
-        {% assign save = total_cart_compare_price| minus: cart.total_price | money %}
-        <div class="save-amount"
-             data-total-saved="{{total_cart_compare_price| minus: cart.total_price | divided_by: 100}}"
-             data-text="{{ 'shopify.checkout.order_summary.you_save' | t: saved: '[amount]'}}">{{
-            'shopify.checkout.order_summary.you_save' | t: saved: save}}</div>
-        {% if cart.item_count > 0 %}
-            <div id="discount-wrapper">
-                <div class="discount-toggler">{{ 'cart.general.apply_promo_code' | t }}</div>
-                <div class="discount-container">
-                    <input class="discount-input" placeholder="Promo code" onkeypress="return (event.key !== 'Enter')" />
-                    <button class="btn--secondary discount-apply" type="button">
-                        Apply
+            <div class="cart-product__content">
+              <div class="ajaxcart__product-name--wrapper">
+                {% assign title = item.title | split: ' - ' %}
+                <a href="{{ item.url }}" class="ajaxcart__product-name">{{ title[0] }}</a>
+                {% if item.variant.title != "Default Title" %}
+                  <select id="product-variant"
+                          onchange="updateProductVariant({{ position }}, this.options[this.selectedIndex].value)">
+                    {% for variant in item.product.variants %}
+                      <option {% if item.variant_id == variant.id %} selected {% endif %} data-sku={{
+                      variant.sku }} value={{ variant.id }}>{{ variant.title }}</option>
+                    {% endfor %}
+                  </select>
+                {% endif %}
+                {% if item.selling_plan_allocation %}
+                  <span
+                      class="ajaxcart__product-meta">{{ item.selling_plan_allocation.selling_plan.name }}</span>
+                {% endif %}
+              </div>
+
+              <div class="grid--full">
+                <div class="grid__item one-half">
+                  <div class="ajaxcart__qty">
+                    <button type="button"
+                            class="ajaxcart__qty-adjust ajaxcart__qty--minus icon-fallback-text"
+                            data-id={{ item.key }} data-qty="{{ item.quantity | minus: 1 }}"
+                            data-line="{{ forloop.index }}"
+                            aria-label="{{ 'cart.general.reduce_quantity' | t }}">
+                      <span class="icon icon-minus" aria-hidden="true"></span>
+                      <span class="fallback-text" aria-hidden="true">&minus;</span>
                     </button>
+                    <input type="text" name="updates[]" class="ajaxcart__qty-num"
+                           value="{{ item.quantity }}" min="0" data-id="{{ item.key }}"
+                           data-line="{{ forloop.index }}" aria-label="quantity" pattern="[0-9]*">
+                    <button type="button"
+                            class="ajaxcart__qty-adjust ajaxcart__qty--plus icon-fallback-text"
+                            data-id="{{ item.key }}" data-line="{{ forloop.index }}"
+                            data-qty="{{ item.quantity | plus: 1 }}"
+                            aria-label="{{ 'cart.general.increase_quantity' | t }}">
+                      <span class="icon icon-plus" aria-hidden="true"></span>
+                      <span class="fallback-text" aria-hidden="true">+</span>
+                    </button>
+                  </div>
                 </div>
-                <div class="discount-error"></div>
+                <div class="grid__item one-half text-right product-prices-wrapper">
+                  {% if item.variant.compare_at_price > item.variant.price %}
+                    <del>{{ item.variant.compare_at_price | money }}</del>
+                    <span class="ajaxcart__price">{{ item.variant.price | money }}</span>
+                  {% else %}
+                    <span class="ajaxcart__price">{{ item.price | money }}</span>
+                  {% endif %}
+                </div>
+              </div>
             </div>
-        {% endif %}
-
-        <p class="ajaxcart__policies">
-            {%- capture taxes_shipping_checkout -%}
-                {%- if cart.taxes_included and shop.shipping_policy.body != blank -%}
-                    {{ 'cart.general.taxes_included_and_shipping_policy_html' | t: link: shop.shipping_policy.url }}
-                {%- elsif cart.taxes_included -%}
-                    {{ 'cart.general.taxes_included_but_shipping_at_checkout' | t }}
-                {%- elsif shop.shipping_policy.body != blank -%}
-                    {{ 'cart.general.taxes_and_shipping_policy_at_checkout_html' | t: link: shop.shipping_policy.url }}
-                {%- else -%}
-                    {{ 'cart.general.taxes_and_shipping_at_checkout' | t }}
-                {%- endif -%}
-            {%- endcapture -%}
-            {{ 'cart.general.free_shipping_and_taxes_at_checkout' | t }}
-        </p>
-        <button type="submit" class="btn--secondary btn--full cart__checkout" name="checkout">
-            <img src={{ 'icon-lock.svg' | asset_url}} width="30" height="30" />
-            <span>{{ 'cart.general.checkout' | t }}</span>
-        </button>
-
-        <div class="contact">
-            {% if request.locale.iso_code == 'fr' %}
-                Veuillez nous écrire à
-                <a class="contact--strong" href="mailto:support@emma-sleep.ca">support@emma-sleep.ca</a>
-                ou nous appeler au <a class="contact--strong" href="tel:1 888 585 3662">+1-888-585-3662</a>
-                pour toute demande.
-            {% else %}
-                Please contact
-                <a class="contact--strong" href="mailto:support@emma-sleep.ca">support@emma-sleep.ca</a>
-                or call <a class="contact--strong" href="tel:1 888 585 3662">+1-888-585-3662</a>
-                for inquiries
-            {% endif %}
+          </div>
         </div>
-
+      </div>
+    {% endfor %}
+    {% if settings.cart_notes_enable %}
+      <div>
+        <label for="CartSpecialInstructions" class="ajaxcart__note">{{ 'cart.general.note' | t }}</label>
+        <textarea name="note" class="input-full" id="CartSpecialInstructions">{{ cart.note }}</textarea>
+      </div>
+    {% endif %}
+    <div class="cart_upsell"> {% render 'cart_upsell' %} </div>
+  </div>
+  <div class="ajaxcart__footer ajaxcart__footer--fixed">
+    <div class="placeholder--loading"></div>
+    <div class="grid--full subtotal promo-applied" style="display: none">
+      <div class="subtotal_title">
+        <p class="ajaxcart__promo">{{ 'cart.general.promo_applied' | t }}</p>
+      </div>
+      <div class="subtotal_price promo-code"></div>
     </div>
+    <div class="grid--full subtotal">
+      <div class="subtotal_title">
+        <p class="ajaxcart__subtotal">{{ 'cart.general.subtotal' | t }}</p>
+      </div>
+      <div class="subtotal_price">
+        <del class="ajaxcart__subtotal">{{ total_cart_compare_price | money }}</del>
+        <p class="ajaxcart__subtotal" data-subtotal="{{ cart.total_price | divided_by: 100 }}">{{ cart.total_price
+          | money }}</p>
+      </div>
+    </div>
+    {% assign save = total_cart_compare_price | minus: cart.total_price | money %}
+    <div class="save-amount"
+         data-total-saved="{{ total_cart_compare_price | minus: cart.total_price | divided_by: 100 }}"
+         data-text="{{ 'shopify.checkout.order_summary.you_save' | t: saved: '[amount]' }}">{{
+      'shopify.checkout.order_summary.you_save' | t: saved: save }}</div>
+    {% if cart.item_count > 0 %}
+      <div id="discount-wrapper">
+        <div class="discount-toggler">{{ 'cart.general.apply_promo_code' | t }}</div>
+        <div class="discount-container">
+          <input class="discount-input" placeholder="Promo code" onkeypress="return (event.key !== 'Enter')"/>
+          <button class="btn--secondary discount-apply" type="button">
+            Apply
+          </button>
+        </div>
+        <div class="discount-error"></div>
+      </div>
+    {% endif %}
+
+    <p class="ajaxcart__policies">
+      {%- capture taxes_shipping_checkout -%}
+        {%- if cart.taxes_included and shop.shipping_policy.body != blank -%}
+          {{ 'cart.general.taxes_included_and_shipping_policy_html' | t: link: shop.shipping_policy.url }}
+        {%- elsif cart.taxes_included -%}
+          {{ 'cart.general.taxes_included_but_shipping_at_checkout' | t }}
+        {%- elsif shop.shipping_policy.body != blank -%}
+          {{ 'cart.general.taxes_and_shipping_policy_at_checkout_html' | t: link: shop.shipping_policy.url }}
+        {%- else -%}
+          {{ 'cart.general.taxes_and_shipping_at_checkout' | t }}
+        {%- endif -%}
+      {%- endcapture -%}
+      {{ 'cart.general.free_shipping_and_taxes_at_checkout' | t }}
+    </p>
+    <button type="submit" class="btn--secondary btn--full cart__checkout" name="checkout">
+      <img src={{ 'icon-lock.svg' | asset_url }} width="30" height="30"/>
+      <span>{{ 'cart.general.checkout' | t }}</span>
+    </button>
+
+    <div class="contact">
+      {% if request.locale.iso_code == 'fr' %}
+        Veuillez nous écrire à
+        <a class="contact--strong" href="mailto:support@emma-sleep.ca">support@emma-sleep.ca</a>
+        ou nous appeler au <a class="contact--strong" href="tel:1 888 585 3662">+1-888-585-3662</a>
+        pour toute demande.
+      {% else %}
+        Please contact
+        <a class="contact--strong" href="mailto:support@emma-sleep.ca">support@emma-sleep.ca</a>
+        or call <a class="contact--strong" href="tel:1 888 585 3662">+1-888-585-3662</a>
+        for inquiries
+      {% endif %}
+    </div>
+
+  </div>
 </form>
 <style>
-    .cart--ship-out-time {
-        font-weight: 400;
-        opacity: .7;
-        font-style: italic;
-        font-size: 12px;
-        white-space: nowrap;
-    }
+  .cart--ship-out-time {
+    font-weight: 400;
+    opacity: .7;
+    font-style: italic;
+    font-size: 12px;
+    white-space: nowrap;
+  }
 
-    .ajaxcart__footer .grid__item.one-third {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
+  .ajaxcart__footer .grid__item.one-third {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 
-    .subtotal {
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-    }
+  .subtotal {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
 
-    .subtotal_title {
-        flex-grow: 1;
-    }
+  .subtotal_title {
+    flex-grow: 1;
+  }
 
-    .subtotal_price {
-        display: flex;
-        align-items: center;
-        width: 60%;
-        justify-content: flex-end;
-    }
+  .subtotal_price {
+    display: flex;
+    align-items: center;
+    width: 60%;
+    justify-content: flex-end;
+  }
 
-    .subtotal p.ajaxcart__subtotal,
-    .subtotal p.ajaxcart__promo {
-        margin: 0;
-        margin-left: 0.5rem;
-    }
+  .subtotal p.ajaxcart__subtotal,
+  .subtotal p.ajaxcart__promo {
+    margin: 0;
+    margin-left: 0.5rem;
+  }
 
-    .ajaxcart__footer .save-amount {
-        text-align: right;
-        color: red;
-        font-weight: 600;
-        margin-bottom: 1rem;
-    }
+  .ajaxcart__footer .save-amount {
+    text-align: right;
+    color: red;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
 
-    .ajaxcart__footer .contact {
-        font-size: 13px;
-        margin-top: 0.5rem;
-    }
+  .ajaxcart__footer .contact {
+    font-size: 13px;
+    margin-top: 0.5rem;
+  }
 
-    .contact a {
-        color: black;
-    }
+  .contact a {
+    color: black;
+  }
 
-    .contact a:hover {
-        color: black;
-    }
+  .contact a:hover {
+    color: black;
+  }
 
-    #product-variant {
-        margin-top: 3px;
-        border: 1px solid black;
-        background: none;
-        font-size: 14px;
-        padding: 3px;
-        width: 15rem;
-    }
+  #product-variant {
+    margin-top: 3px;
+    border: 1px solid black;
+    background: none;
+    font-size: 14px;
+    padding: 3px;
+    width: 15rem;
+  }
 
-    .cart__checkout {
-        display: flex;
-        justify-content: center;
-        align-items: flex-end;
-    }
+  .cart__checkout {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+  }
 
-    .cart__checkout span {
-        margin-left: 0.5rem;
-    }
+  .cart__checkout span {
+    margin-left: 0.5rem;
+  }
 
-    .ajaxcart__policies {
-        font-size: 12px;
-    }
+  .ajaxcart__policies {
+    font-size: 12px;
+  }
 
-    .product-prices-wrapper {
-        display: flex;
-        align-items: baseline;
-    }
+  .product-prices-wrapper {
+    display: flex;
+    align-items: baseline;
+  }
 
-    .product-prices-wrapper .ajaxcart__price {
-        margin-left: 0.5rem;
+  .product-prices-wrapper .ajaxcart__price {
+    margin-left: 0.5rem;
+  }
+
+  @media (min-width: 769px) {
+    .ajaxcart__policies, .cart--ship-out-time {
+      font-size: 14px;
     }
-    @media (min-width: 769px) {
-        .ajaxcart__policies, .cart--ship-out-time {
-            font-size: 14px;
-        }
-    }
+  }
 </style>
 <script>
 
-    function updateProductVariant(index, newVariantId) {
-        removeItem(index)
-          .then(() => {
-              addItem(newVariantId, 1);
-          });
-    }
+  function updateProductVariant(index, newVariantId) {
+    removeItem(index)
+      .then(() => {
+        addItem(newVariantId, 1)
+      })
+  }
 
-    async function removeItem(index) {
-        await fetch("/cart/change.json", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Accept": "application/json"
-            },
-            body: JSON.stringify({
-                line: index + 1,
-                quantity: 0
-            })
-        })
-    }
+  async function removeItem(index) {
+    await fetch('/cart/change.json', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },
+      body: JSON.stringify({
+        line: index + 1,
+        quantity: 0,
+      }),
+    })
+  }
 
-    function addItem(variantId, quantity) {
-        fetch("/cart/add.json", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Accept": "application/json"
-            },
-            body: JSON.stringify({
-                id: variantId,
-                quantity: quantity
-            })
-        })
-        ajaxCart.load();
-    }
+  function addItem(variantId, quantity) {
+    fetch('/cart/add.json', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },
+      body: JSON.stringify({
+        id: variantId,
+        quantity: quantity,
+      }),
+    })
+    ajaxCart.load()
+  }
 </script>

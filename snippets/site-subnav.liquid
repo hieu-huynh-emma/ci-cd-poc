@@ -1,62 +1,78 @@
-<ul
-	id="MenuParent-{{ parent_index }}"
-	class="site-subnav{% if link.type != "product_link" %} site-subnav--minimal{% endif %}"
->
-	{% for childlink in link.links %}
-		
-		{% if link.type != "product_link" %}
-			{% assign isMinimal = true %}
-		{% endif %}
-		
-		<li class="site-subnav__item{% if childlink.active %} site-nav--active{% endif %}">
-			<a
-				href="{{ childlink.url }}"
-				class="site-subnav__link"
-				{% if childlink.active %}aria-current="page"{% endif %}
-				tabindex="-1"
-			>
-				{% if isMinimal == true %}
-					{{ childlink.title | escape }}
-				
-				{% else %}
-					{% assign product = childlink.object %}
-					{% assign navImg = product.metafields.accentuate.nav-image[0].src %}
-					{% assign featuredImg = product.featured_image | img_url %}
-					
-					<div class="site-subnav__featured-image">
-						<img
-							src="{{ navImg | default: featuredImg }}" class="lg:w-full h-44 object-cover"
-							loading="lazy"
-						/>
-						{% if product.metafields.accentuate.navigation_bar_discount %}
-							{% render 'discount-tag', discount: product.metafields.accentuate.navigation_bar_discount %}
-						{% endif %}
-					</div>
-					
-					<div class="site-subnav__title">
-						{{ childlink.title | escape }}
-					</div>
-					
-					<div class="site-subnav__footer">
-						<div class="site-subnav__price">
-							
-							
-							<span>From</span>
-							<div>
-								<span class="site-subnav__price--sale">{{ product.price | money }}</span>
-								
-								<span class="site-subnav__price--original">{{ product.compare_at_price | money }}</span>
-							</div>
-						</div>
-						
-						<div class="site-subnav__capsule">
-							{% render 'promotion-capsule', collections: childlink.object.collections %}
-						</div>
-					</div>
-				{% endif %}
+{% if link.type != "product_link" %}
+	{% assign isMinimal = true %}
+{% endif %}
+
+<div id="MenuParent-{{ parent_index }}" class="{% if isMinimal == true %}site-subnav--minimal{% else %}site-subnav{% endif %}">
+	{% if isMinimal == true %}
+    <div>
+      {% for childlink in link.links %}
+        <div>
+          <a href="{{ childlink.url }}" class="site-subnav__link" {% if childlink.active %}aria-current="page" {% endif %}tabindex="-1">{{ childlink.title | escape }}</a>
+        </div>
+      {% endfor %}
+    </div>
+	{% else %}
+		<div class="subnav-container">
+			<p class="subnav-container__title paragraph-20 font-semibold">{{ link.title | escape }}</p>
+			<ul class="subnav-container__links">
+				{% for childlink in link.links %}
+					<li
+						data-index="{{ forloop.index0 }}"
+						data-product='{{ childlink.object | json | escape }}'
+						data-accentuate='{{ childlink.object.metafields.accentuate | json | escape }}'
+						class="site-subnav__item{% if childlink.active %} site-nav--active{% endif %}"
+					>
+						<a
+							href="{{ childlink.url }}"
+							class="site-subnav__link"
+							{% if childlink.active %}aria-current="page"{% endif %}
+							tabindex="-1"
+						>
+							<p class="font-semibold">
+								{{ childlink.title | escape }}
+							</p>
+
+							<p class="subnav-container__badge">
+								{{ childlink.object.metafields.accentuate.navigation_promotion_badge | default: "BEST VALUE" }}
+							</p>
+						</a>
+					</li>
+				{% endfor %}
+			</ul>
+
+			{% liquid
+				assign btnPrefix = "Shop "
+				assign btnUrl = link.url
+
+				if link.title == "Mattresses"
+					assign btnPrefix = "Shop "
+					assign btnUrl = "/products/emma-climax-hybrid"
+				endif
+			%}
+
+			<a href="{{ btnUrl }}" class="site-subnav__cta compare-btn btn btn--secondary btn--compact">
+				{{ btnPrefix | append: link.title | escape }}
 			</a>
-		</li>
-	
-	{% endfor %}
-</ul>
+		</div>
+		<div class="product-spotlight">
+			<div class="product-spotlight__media bg-wild-sand">
+				<p class="product-spotlight__badge absolute top-5 left-4 text-[13px] whitespace-pre">
+					<span>Up to </span><span class="product-spotlight__badge-discount"></span><span>% off</span>
+				</p>
+				<a href="" class="product-spotlight__link">
+					<img class="product-spotlight__image w-full h-full object-cover" loading="lazy" />
+				</a>
+			</div>
+			<div class="product-spotlight__content">
+				<a href="" class="product-spotlight__link">
+					<p class="product-spotlight__name text-xl font-semibold"></p>
+				</a>
+				<p class="text-xs">
+					From <span class="product-spotlight__price text-scarlet font-bold"></span>
+					<span class="product-spotlight__original-price line-through"></span>
+				</p>
+			</div>
+		</div>
+	{% endif %}
+</div>
 

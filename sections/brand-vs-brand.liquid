@@ -1,6 +1,6 @@
 <section id="brand-vs-brand-section">
   <div class="wrapper">
-    <h2 class="heading-2 tw-text-center tw-text-charade">{{ section.settings.title | strip_html }}</h2>
+    <h2 class="heading-2 text-center text-charade">{{ section.settings.title | strip_html }}</h2>
 
     <div class="main-content">
       <div class="emma-logo__wrapper">
@@ -18,12 +18,11 @@
 
           <div class="splide__track">
             <ul class="splide__list">
-              {%- for tw-block in competitorBlocks -%}
+              {%- for block in competitorBlocks -%}
                 <li class="splide__slide">
                   <div class="competitor-brands__item">
-                    <p class="tw-font-semibold">{{ tw-block.settings.name }}</p>
-                    <button class="btn btn--secondary btn--compact competitor-brands__compare-btn tw-w-full">Compare
-                    </button>
+                    <p class="font-semibold">{{ block.settings.name }}</p>
+                    <button class="btn btn--secondary btn--full btn--compact competitor-brands__compare-btn">Compare</button>
                   </div>
                 </li>
               {%- endfor -%}

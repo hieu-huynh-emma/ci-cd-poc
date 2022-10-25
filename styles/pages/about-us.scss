@@ -1,0 +1,32 @@
+@import "../partials/about-us/about-us-header";
+@import "../partials/about-us/our-team";
+@import "../partials/about-us/mini-cta";
+@import "../partials/about-us/awards-accordion";
+
+#about-us {
+  .main-content {
+    padding-top: 0
+  }
+
+  @media (min-width: 1024px) {
+    .about-us-content-row {
+      display: flex;
+      justify-content: space-between;
+      padding-bottom: 80px
+    }
+
+    .about-us-content-row .about-us-content-row--col:first-child {
+      width: 70%
+    }
+
+    .about-us-content-row .about-us-content-row--col:last-child {
+      width: 25%
+    }
+  }
+
+  @media (max-width: 768px) {
+    .about-us-content-row .about-us-content-row--col:first-child {
+      margin-bottom: 50px
+    }
+  }
+}

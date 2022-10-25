@@ -23,7 +23,7 @@ function renderAllColHeaders() {
   const $table = $('#product-comparison .comparison-table');
 
   const emmaColHeader = $($.parseHTML(`
-    <div class="comparison-table-cell comparison-table-cell--highlight grid-row-1 tw-col-start-1 md:tw-col-start-2 column-header">
+    <div class="comparison-table-cell comparison-table-cell--highlight grid-row-1 col-start-1 md:col-start-2 column-header">
       <div class="emma column-header">
         <div class="emma__brand">
           <img src="${comparisonConfig.emmaLogo}" alt="">
@@ -34,12 +34,12 @@ function renderAllColHeaders() {
   `));
 
   const competitorHeaders = $($.parseHTML(`
-    <div data-competitor-col-index="0" class="comparison-table-cell grid-row-1 tw-col-start-2 md:tw-col-start-3 column-header">
+    <div data-competitor-col-index="0" class="comparison-table-cell grid-row-1 col-start-2 md:col-start-3 column-header">
       <div class="competitor column-header">
         <p class="competitor__brand"></p>
         <select data-col="3" class="product-selector"></select></div>
     </div>
-    <div data-competitor-col-index="1" class="comparison-table-cell grid-row-1 lg:tw-col-start-4 column-header">
+    <div data-competitor-col-index="1" class="comparison-table-cell grid-row-1 lg:col-start-4 column-header">
       <div class="competitor column-header">
         <p class="competitor__brand"></p>
         <select class="product-selector"></select></div>

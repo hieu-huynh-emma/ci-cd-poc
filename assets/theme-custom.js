@@ -1704,7 +1704,7 @@ timber.Drawers = (function() {
 
     this.nodes = {
       $parent: $('body, html'),
-      $page: $('#PageContainer'),
+      $page: $('#MainContent'),
       $moved: $('.page-container')
     };
 
@@ -4510,7 +4510,8 @@ theme.afterCartLoad = function() {
         "protector" : ['mattress','pillow','topper'],
         "topper" : ['mattress','pillow','protector'],
         "bed-frame-with-mattress" : ['protector','pillow','topper'],
-        "bed-frame-without-mattress" : ['mattress','protector','pillow']
+        "bed-frame-without-mattress" : ['mattress','protector','pillow'],
+        "climax": ['protector','pillow','bedframe'],
       }
 
       var default_upsell_products = [

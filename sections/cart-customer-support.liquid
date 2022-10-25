@@ -1,0 +1,50 @@
+<div id="CartDrawerCustomerSupport" class="drawer-customer-support">
+  <ul class="utility-nav">
+    <li class="customer-support utility-nav__item">
+      <div class="customer-support__avatar">
+        {{ section.settings.support-avatar | image_url: width: 30 | image_tag }}
+      </div>
+      <p><span>{{ 'cart.customer_support.need_help' | t }}</span><span>{{ 'cart.customer_support.support_hour' | t }}</span></p>
+    </li>
+    <li class="live-chat utility-nav__item cursor-pointer">
+      <svg
+        width="9" height="10" viewBox="0 0 9 10" fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M8.25 6.25C8.25 6.47101 8.1622 6.68298 8.00592 6.83926C7.84964 6.99554 7.63768 7.08333 7.41667 7.08333H2.41667L0.75 8.75V2.08333C0.75 1.86232 0.837797 1.65036 0.994078 1.49408C1.15036 1.3378 1.36232 1.25 1.58333 1.25H7.41667C7.63768 1.25 7.84964 1.3378 8.00592 1.49408C8.1622 1.65036 8.25 1.86232 8.25 2.08333V6.25Z"
+          stroke="white" stroke-linecap="round" stroke-linejoin="round"
+        />
+      </svg>
+      <p>{{ 'cart.customer_support.chat_now' | t }}</p>
+    </li>
+    <li class="utility-nav__item phone">
+      <img class="small-icon" src="{{ 'phone.svg' | asset_url }}" height="8" loading="lazy" />
+      <a href="tel:+18885853662">1-888-585-EMMA</a>
+    </li>
+    <li class="email utility-nav__item">
+      <img class="small-icon" src="{{ 'support-email.svg' | asset_url }}" height="8" loading="lazy" />
+      <a href="mailto:{{ shop.email }}">{{ shop.email }}</a>
+    </li>
+  </ul>
+</div>
+
+<script>
+  $(document).ready(function () {
+    $("#CartDrawerCustomerSupport .live-chat").click(openChatSupport)
+  })
+</script>
+
+{% schema %}
+{
+  "name": "Cart Customer Support",
+  "limit": 1,
+  "settings": [
+    {
+      "id": "support-avatar",
+      "type": "image_picker",
+      "label": "Customer Support Avatar"
+    }
+  ]
+}
+{% endschema %}

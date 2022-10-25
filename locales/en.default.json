@@ -91,6 +91,51 @@
     }
   },
   "cart": {
+    "banner": {
+      "ship_today": "Free Shipping! Orders before 2PM ET will be shipped out today.",
+      "ship_next_business_day": "Free Shipping! Orders shipped out the next business day."
+    },
+    "customer_support": {
+      "need_help": "Need help?",
+      "support_hour": "Our support is available 24\/7",
+      "chat_now": "Chat now"
+    },
+    "drawer_header": {
+      "title": "Your Cart",
+      "item": "Item",
+      "items_in_cart": "Your Cart - {{ count }} Item"
+    },
+    "drawer_empty": {
+      "empty": "Your cart is empty",
+      "change_that": "Let's change that.",
+      "start_here": "Start here:",
+      "shop_best_sellers": "Shop our best sellers",
+      "price_start": "Starts at",
+      "shop_now": "Shop Now",
+      "sale": "SALE",
+      "free_shipping": "Free Shipping",
+      "365_night_return": "365-Night Money-Back Guarantee",
+      "10_year_warranty": "10-Year Warranty"
+    },
+    "drawer_upsell": {
+      "others_also_bought": "Others also bought"
+    },
+    "drawer_summary": {
+      "subtotal": "Subtotal"
+    },
+    "redeem_code": {
+      "apply": "Apply",
+      "promo_placeholder": "Type promo code here",
+      "promo_applied": "Promo Code"
+    },
+    "total": {
+      "total": "Total (before tax)"
+    },
+    "footer": {
+      "checkout_btn_text": "Checkout"
+    },
+    "shipping": "Shipping",
+    "free_shipping": "Free Shipping!",
     "general": {
       "title": "Your cart",
       "remove": "Remove",
@@ -111,8 +156,6 @@
       "increase_quantity": "Increase item quantity by one",
       "cookies_required": "Enable cookies to use the shopping cart",
       "view_my_card": "View my cart",
-      "ship_today": "Orders before 2PM ET will be shipped out today.",
-      "ship_next_business_day": "Orders typically ship out the next business day.",
       "promo_applied": "Promo applied",
       "apply_promo_code": "Apply promo code"
     },
@@ -373,14 +416,23 @@
     }
   },
   "shopify": {
+    "award_title": "Multi Award Winning Mattress",
+    "shipping_time": "Orders arrive within 3-7 business days",
     "risk_reversals": {
       "title": "Sleep with Ease,\nShop with Ease",
       "subtitle": "Rest easy with our mattress guarantees",
       "benefit_1": "365-Night,\nRisk free trial",
       "benefit_2": "10-Year,\nWarranty",
-      "benefit_3": "Free Shipping,\n&amp; Returns"
+      "benefit_3": "Free Shipping,\n&amp; Returns",
+      "help": "Need help?",
+      "support": "Our support is available 24\/7",
+      "chat": "Chat now"
     },
     "checkout": {
+      "banner": {
+        "ship_today": "Free Shipping! Orders before 2PM ET will be shipped out today.",
+        "ship_next_business_day": "Free Shipping! Orders shipped out the next business day."
+      },
       "order_summary": {
         "shipping_default_value": "Free",
         "discount_title": "Promo code",
