@@ -1,0 +1,57 @@
+{{ 'cart-drawer.css' | asset_url | stylesheet_tag }}
+{{ 'component-cart.css' | asset_url | stylesheet_tag }}
+
+<script src="{{ 'cart.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'cart-drawer.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'cart-item.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'cart-upsell.js' | asset_url }}" defer="defer"></script>
+
+<cart-drawer id="CartDrawer" class="{% if cart == empty %}is-empty{% endif %}">
+  <div id="CartDrawer-Overlay" class="cart-drawer__overlay"></div>
+  <div class="drawer animate">
+    {% section 'cart-drawer-header' %}
+
+    <div
+      class="drawer__inner" role="dialog" aria-modal="true" aria-label="{{ 'sections.cart.title' | t }}" tabindex="-1"
+    >
+      {% section 'cart-drawer-empty' %}
+      <cart-scrollable-content>
+        {% liquid
+          render 'cart-drawer-banner'
+          section 'cart-drawer-items'
+          section 'cart-drawer-upsell'
+          section 'cart-drawer-summary'
+        %}
+
+        {% render 'loading-spinner', center: true %}
+      </cart-scrollable-content>
+    </div>
+
+    {% section 'cart-drawer-footer' %}
+    {% section 'cart-customer-support' %}
+  </div>
+
+
+</cart-drawer>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    function isIE() {
+      const ua = window.navigator.userAgent;
+      const msie = ua.indexOf('MSIE ');
+      const trident = ua.indexOf('Trident/');
+
+      return (msie > 0 || trident > 0);
+    }
+
+    if (!isIE()) return;
+    const cartSubmitInput = document.createElement('input');
+    cartSubmitInput.setAttribute('name', 'checkout');
+    cartSubmitInput.setAttribute('type', 'hidden');
+    document.querySelector('#cart').appendChild(cartSubmitInput);
+    document.querySelector('#checkout').addEventListener('click', function (event) {
+      document.querySelector('#cart').submit();
+    });
+  });
+</script>
+

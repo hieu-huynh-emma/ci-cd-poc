@@ -1,6 +1,6 @@
 <section>
   <div class="reviews-page-wrapper">
-    <div class="wrapper">
+    <div class="global-wrapper">
       <div class="reviews-header-row">
         <div class="reviews-header-col-wrap">
           <div class="reviews-select-wrapper">
@@ -45,7 +45,7 @@
   
   {% for block in section.blocks %}
     <section class="customer-reviews-wrapper product-review product-review-{{block.settings.product-item.id}} {% if forloop.first == true %} review-active {% else %} review-inactive {% endif %}">
-      <div class="wrapper">
+      <div class="global-wrapper">
         <h2>{{ block.settings.product-item.title }}</h2>
         <div id="shopify-product-reviews" class="wow fadeIn" data-id="{{block.settings.product-item.id}}">{{ block.settings.product-item.metafields.spr.reviews }}</div>
       </div>

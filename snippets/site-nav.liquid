@@ -1,20 +1,23 @@
-{{ 'site-nav.css' | asset_url | stylesheet_tag }}
-
 <nav id="site-nav" role="navigation">
 	<ul class="site-nav" id="AccessibleNav">
 		{% for link in linklists[section.settings.main_menu_link_list].links %}
-			{% assign parent_index = forloop.index %}
-			
+			{% liquid
+				assign parent_index = forloop.index
+				if link.links != blank
+					assign hasDropdown = true
+				else
+					assign hasDropdown = false
+				endif
+			%}
 			<li
 				id="site-nav__{{ link.title | handleize }}"
-				class="site-nav__item{% if link.links != blank %} site-nav--has-dropdown{% endif %}{% if link.active %} site-nav--active{% endif %}{% if link.type != "product_link" %} site-nav--minimal{% endif %}
-				"
+				class="site-nav__item{% if hasDropdown == true %} site-nav--has-dropdown{% endif %}{% if link.active %} site-nav--active{% endif %}{% if link.type != "product_link" %} site-nav--minimal{% endif %}"
 				aria-haspopup="true"
 			>
-				<div class="nav-link">
+				<div class="nav-link{% if hasDropdown == true %} nav-link--has-dropdown{% endif %}">
 					<div class="nav-link__title">
 						{{ link.title | escape }}
-						
+
 						<a
 							href="{{ link.url }}"
 							class="nav-link__url"
@@ -24,13 +27,11 @@
 						>
 						</a>
 					</div>
-					
-					{% if link.links != blank %}
+					{% if hasDropdown == true %}
 						<img src="{{ 'arrow-down.svg' | asset_url }}" loading="lazy" class="nav-link__arrow">
 					{% endif %}
 				</div>
-				
-				{% if link.links != blank %}
+				{% if hasDropdown == true %}
 					<div class="site-nav__dropdown">
 						{% render 'site-subnav', link: link %}
 					</div>
@@ -42,19 +43,51 @@
 
 
 <script type="module" defer>
-  $("#site-nav .nav-link").click(function () {
-    const openClass = "nav-link--is-open"
-    const isOpen = $(this).hasClass(openClass);
+	$("#site-nav .nav-link").click(function () {
+		const openClass = "nav-link--is-open"
+		const isOpen = $(this).hasClass(openClass);
 
-    const $siblingDropdown = $(this).siblings(".site-nav__dropdown")
+		const $siblingDropdown = $(this).siblings(".site-nav__dropdown")
 
-    if (!isOpen) {
-      $("#site-nav .site-nav__dropdown").slideUp();
-      $siblingDropdown.slideDown();
-      $(this).addClass(openClass)
-    } else {
-      $siblingDropdown.slideUp();
-      $(this).removeClass(openClass)
-    }
-  });
+		if (!isOpen) {
+			$("#site-nav .site-nav__dropdown").slideUp();
+			$siblingDropdown.slideDown();
+			$(this).addClass(openClass)
+		} else {
+			$siblingDropdown.slideUp();
+			$(this).removeClass(openClass)
+		}
+	});
+
+	$(document).ready(function () {
+		$(`.site-nav__item`).hover($.debounce(100, function () {
+			const firstSubnavItem = $(this).find(".site-subnav__item").first();
+			renderSpotLight.call(firstSubnavItem);
+		}));
+
+		$(`.site-subnav__item`).hover($.debounce(100, renderSpotLight));
+
+		function renderSpotLight() {
+			const product = $(this).data('product');
+			const accentuate = $(this).data('accentuate');
+
+			const $name = $(this).closest(".site-subnav").find(".product-spotlight__name")
+			const $price = $(this).closest(".site-subnav").find(".product-spotlight__price")
+			const $originalPrice = $(this).closest(".site-subnav").find(".product-spotlight__original-price")
+			const $image = $(this).closest(".site-subnav").find(".product-spotlight__image");
+			const $badge = $(this).closest(".site-subnav").find(".product-spotlight__badge .product-spotlight__badge-discount")
+			const $link = $(this).closest(".site-subnav").find(".product-spotlight__link")
+
+			const spotLightLink = product.handle
+			const spotLightImageSrc = accentuate.navigation_spotlight_image ? accentuate.navigation_spotlight_image[0].src : "";
+			const discountedAmount = product.compare_at_price - product.price
+
+			$name.text(product.title)
+			$price.text(currencyFormatter.format(product.price / 100))
+			$originalPrice.text(currencyFormatter.format(product.compare_at_price / 100))
+			$image.attr('src', spotLightImageSrc)
+			$badge.text(accentuate.navigation_product_discount || (100 * discountedAmount / product.compare_at_price).toFixed(0))
+			$link.attr('href', spotLightLink);
+		}
+	})
 </script>

@@ -1,0 +1,69 @@
+.swiper-scrollbar-drag {
+  display: block !important;
+}
+
+.swiper {
+  display: flex;
+  align-items: center;
+
+  max-width: 100%;
+  &-arrow {
+    position: absolute;
+
+    z-index: 5;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+
+    background: rgba($colorComet, 0.6);
+    border-radius: 100%;
+
+    &.swiper-button-disabled {
+      background: rgba($colorComet, 0.3);
+      cursor: not-allowed;
+    }
+
+    &:hover:not(&.swiper-button-disabled) {
+      background: $colorComet
+    }
+
+    &--prev {
+      left: 0;
+
+      border-radius: 0 20px 20px 0;
+      @media screen and (min-width: 768px) {
+        border-radius: 100%;
+      }
+    }
+
+    &--next {
+      right: 0;
+      border-radius: 20px 0 0 20px;
+
+      @media screen and (min-width: 768px) {
+        border-radius: 100%;
+      }
+    }
+
+    svg {
+      fill: white;
+
+      width: auto;
+      height: 40%;
+
+      transform: none;
+    }
+
+    &:after {
+      display: none;
+    }
+  }
+
+  &-scrollbar-horizontal {
+    bottom: 0 !important;
+  }
+}
+

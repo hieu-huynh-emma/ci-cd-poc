@@ -1,0 +1,7 @@
+.is-disabled {
+  &[role=button], &button {
+    cursor: not-allowed;
+  }
+
+  cursor: not-allowed;
+}

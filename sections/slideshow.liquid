@@ -122,7 +122,7 @@
           {%- endif -%}
 
           <div class="hero__text-wrap{% if block.settings.image_overlay %} slideshow__overlay{% endif %}">
-            <div class="hero__text-align wrapper">
+            <div class="hero__text-align global-wrapper">
               <div class="hero__text-content" data-hero-text-content>
                 {%- unless block.settings.slide_subheading == blank -%}
                   <p class="font-weight-bold text-lg text-white custom-home-slider--content__top-sub wow fadeIn">
@@ -152,7 +152,7 @@
       {%- endfor -%}
 
       {%- if section.blocks.size > 1 -%}
-        <div class="hero__controls wrapper">
+        <div class="hero__controls global-wrapper">
           {%- if section.settings.hero_home_auto -%}
             <button class="hero__pause" aria-live="polite" aria-label="{{ 'home_page.slideshow.pause' | t }}" data-label-pause="{{ 'home_page.slideshow.pause' | t }}" data-label-play="{{ 'home_page.slideshow.play' | t }}" data-pause>
               <span class="icon icon-pause" aria-hidden="true"></span>
@@ -176,7 +176,7 @@
       {%- endif -%}
     </div>
     {%- if section.settings.home_hero_height == 'adapt' -%}
-      <div class="hero__adapt-text-wrap wrapper" data-hero-adapt-text-wrap>
+      <div class="hero__adapt-text-wrap global-wrapper" data-hero-adapt-text-wrap>
         {%- for block in section.blocks -%}
           <div class="hero__text-content hero__text-content--adapt text-center" data-index="{{ forloop.index0 }}" data-hero-text-content>
             {%- unless block.settings.slide_subheading == blank -%}

@@ -1,17 +1,20 @@
-<!-- /templates/page.about-us.liquid -->
-{% section 'about-us-header' %}
+{{ 'about-us.css' | asset_url | stylesheet_tag }}
 
-<div class="wrapper">
-  <div class="about-us-content-row">
-    <div class="about-us-content-row--col">
-      {% section 'custom-rich-text' %}
+<div id="about-us">
+  {% section 'about-us-header' %}
 
-      {% section 'mini-cta' %}
+  <div class="global-wrapper">
+    <div class="about-us-content-row">
+      <div class="about-us-content-row--col">
+        {% section 'custom-rich-text' %}
 
-      {% section 'our-team' %}
-    </div>
-    <div class="about-us-content-row--col">
-      {% section 'awards-accordion' %}
+        {% section 'mini-cta' %}
+
+        {% section 'our-team' %}
+      </div>
+      <div class="about-us-content-row--col">
+        {% section 'awards-accordion' %}
+      </div>
     </div>
   </div>
 </div>

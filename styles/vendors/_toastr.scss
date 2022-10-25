@@ -1,0 +1,11 @@
+#toast-container {
+  > div {
+    opacity: 1;
+  }
+}
+
+.toast {
+  &-chambray {
+    background-color: $colorChambray;
+  }
+}

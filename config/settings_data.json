@@ -1,5 +1,18 @@
 {
   "current": {
+    "colors_solid_button_labels": "#FFFFFF",
+    "colors_accent_1": "#121212",
+    "colors_accent_2": "#334FB4",
+    "colors_text": "#121212",
+    "colors_outline_button_labels": "#121212",
+    "colors_background_1": "#FFFFFF",
+    "colors_background_2": "#F3F3F3",
+    "color_drawer_text": "#3c4196",
+    "color_drawer_border": "#ffffff",
+    "color_drawer_button": "#ffffff",
+    "color_drawer_button_text": "#3c4196",
+    "type_header_font": "assistant_n4",
+    "type_body_font": "assistant_n4",
     "color_body_bg": "#ffffff",
     "color_headings": "#1c1d1d",
     "color_body_text": "#1c1d1d",
@@ -12,10 +25,6 @@
     "color_input": "#f7f7f7",
     "color_newsletter": "#c9d5ff",
     "color_drawer_background": "#3c4196",
-    "color_drawer_text": "#ffffff",
-    "color_drawer_border": "#ffffff",
-    "color_drawer_button": "#ffffff",
-    "color_drawer_button_text": "#3c4196",
     "type_header_family": "playfair_display_n4",
     "type_header_base_size": "28px",
     "type_header_border_thickness": "1px",
@@ -28,7 +37,7 @@
     "cart_type": "drawer",
     "cart_notes_enable": false,
     "favicon": "shopify:\/\/shop_images\/MicrosoftTeams-image_3.png",
-    "checkout_logo_image": "shopify:\/\/shop_images\/emma-logo-1.png",
+    "checkout_logo_image": "shopify:\/\/shop_images\/orange_logo.png",
     "checkout_logo_position": "left",
     "checkout_logo_size": "medium",
     "checkout_body_background_color": "#ffffff",
@@ -37,16 +46,100 @@
     "checkout_heading_font": "Helvetica Neue",
     "checkout_body_font": "Helvetica Neue",
     "checkout_accent_color": "#3c4196",
-    "checkout_button_color": "#3c4196",
+    "checkout_button_color": "#ff8900",
     "checkout_error_color": "#f01130",
     "sections": {
+      "cart-drawer-header": {
+        "type": "cart-drawer-header",
+        "settings": {
+        }
+      },
+      "cart-drawer-empty": {
+        "type": "cart-drawer-empty",
+        "settings": {
+          "core-product": "emma-climax-hybrid",
+          "suggestion-catalog": [
+            "emma-foam-pillow",
+            "emma-mattress-protector"
+          ],
+          "picture": "shopify:\/\/shop_images\/Group_34574.png",
+          "finance-tagline": "<p>As low as $450\/mo or 0% APR. <a href=\"\/products\/emma-original-mattress\" title=\"Emma Original Mattress\">Learn more<\/a><\/p>"
+        }
+      },
+      "cart-drawer-footer": {
+        "type": "cart-drawer-footer",
+        "settings": {
+        }
+      },
+      "cart-customer-support": {
+        "type": "cart-customer-support",
+        "settings": {
+          "support-avatar": "shopify:\/\/shop_images\/checkout-support-avatar.png"
+        }
+      },
+      "cart-drawer-summary": {
+        "type": "cart-drawer-summary",
+        "settings": {
+          "finance-tagline": "<p>As low as $450\/mo or 0% APR. <a href=\"\/products\/emma-original-mattress\" title=\"Emma Original Mattress\">Learn more<\/a><\/p>"
+        }
+      },
+      "cart-drawer-items": {
+        "type": "cart-drawer-items",
+        "settings": {
+          "freeGift": "",
+          "gwpTargetProduct": ""
+        }
+      },
+      "cart-drawer-upsell": {
+        "type": "cart-drawer-upsell",
+        "settings": {
+          "title": ""
+        }
+      },
+      "checkout-shop-awards": {
+        "type": "checkout-shop-awards",
+        "blocks": {
+          "49091865-221d-4b00-80c4-0e5331f38d9c": {
+            "type": "award",
+            "settings": {
+              "icon": "shopify:\/\/shop_images\/award-1.png"
+            }
+          },
+          "e323fff3-43c6-4b2d-8be5-abe637d170c8": {
+            "type": "award",
+            "settings": {
+              "icon": "shopify:\/\/shop_images\/US_Affiliate_Awards.png"
+            }
+          },
+          "546896c2-266c-4b09-a0d1-2092e9781ec4": {
+            "type": "award",
+            "settings": {
+              "icon": "shopify:\/\/shop_images\/Untitled_design_8_55bce6b2-134d-434d-a6b3-559daabb3edd.png"
+            }
+          },
+          "0a546486-1c9f-422f-892e-40d5034dc348": {
+            "type": "award",
+            "settings": {
+              "icon": "shopify:\/\/shop_images\/Sleepopolis_Logo_-_Best_Overall_Mattress_2022.png"
+            }
+          }
+        },
+        "block_order": [
+          "49091865-221d-4b00-80c4-0e5331f38d9c",
+          "e323fff3-43c6-4b2d-8be5-abe637d170c8",
+          "546896c2-266c-4b09-a0d1-2092e9781ec4",
+          "0a546486-1c9f-422f-892e-40d5034dc348"
+        ],
+        "settings": {
+        }
+      },
       "announcement-bar": {
         "type": "announcement-bar",
         "settings": {
           "show_announcement": true,
           "home_page_only": false,
-          "text": "Get up to 56% off this Autumn Sale! Promo ends in",
-          "countdown-date": "September 26, 2022 12:59:00 PM",
+          "text": "Get up to 56% off this Halloween Sale! Promo ends in",
+          "countdown-date": "October 28, 2022 6:00:00 PM",
           "link": "shopify:\/\/products\/emma-original-mattress",
           "color_bg": "#ff8900",
           "color_text": "#ffffff"
@@ -220,15 +313,6 @@
         "settings": {
           "heading": "12312",
           "description": "<p>asdasdas<\/p>"
-        }
-      },
-      "footer": {
-        "type": "footer",
-        "settings": {
-          "show_payment_icons": false,
-          "show_locale_selector": false,
-          "show_currency_selector": false,
-          "footer_link_list": "footer"
         }
       },
       "163047552836cc9616": {
@@ -486,8 +570,8 @@
           "product_vendor_enable": false
         }
       },
-      "emma-sleep-footer": {
-        "type": "emma-sleep-footer",
+      "footer": {
+        "type": "footer",
         "blocks": {
           "5d5c6680-bb94-4645-81d7-0adf840ed393": {
             "type": "text",
@@ -2011,7 +2095,6 @@
         "footer": {
           "type": "footer",
           "settings": {
-            "footer_link_list": "footer"
           }
         },
         "collection-template": {

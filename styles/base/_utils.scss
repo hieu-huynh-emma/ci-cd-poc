@@ -1,0 +1,49 @@
+.bedsize-collapse .collapsible {
+  background-image: url(collapse-arrow.svg);
+  background-position: calc(100% - 15px) 50%;
+  background-repeat: no-repeat;
+  background-size: 20px;
+  border-bottom: 1px solid;
+  cursor: pointer;
+  font-family: header-text;
+  font-size: 1.5rem;
+  font-weight: 700;
+  outline: none;
+  padding: 15px 30px 15px 0;
+  text-align: left;
+  width: 100%
+}
+
+.bedsize-collapse .active, .bedsize-collapse .collapsible:hover {
+  background-color: #fff
+}
+
+.bedsize-collapse .content {
+  background-color: #fff;
+  max-height: 0;
+  overflow: hidden;
+  padding: 0;
+  transition: max-height .2s ease-out
+}
+
+.bedsize-collapse .content > div {
+  padding: 25px 15px
+}
+
+.bedsize-collapse .content > div * {
+  margin-bottom: 0
+}
+
+.bedsize-collapse {
+  padding-bottom: 100px
+}
+
+@media (max-width: 767px) {
+  .bedsize-collapse .content > div {
+    padding: 23px 0
+  }
+}
+
+.collapsible.active {
+  color: #6469AA;
+}

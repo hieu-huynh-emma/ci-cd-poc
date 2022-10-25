@@ -1,0 +1,18 @@
+<cart-icon-bubble id="cart-icon-bubble">
+  <div class="cart-icon-bubble">
+    {% render 'icon-cart' %}
+    <span class="visually-hidden">{{ 'templates.cart.cart' | t }}</span>
+
+    <loading-overlay></loading-overlay>
+
+    {%- if cart.item_count != 0 -%}
+      <div class="cart-count-bubble">
+        <span aria-hidden="true" class="hidden">{{ cart.item_count }}</span>
+        {%- if cart.item_count < 100 -%}
+          <span aria-hidden="true">{{ cart.item_count }}</span>
+        {%- endif -%}
+        <span class="visually-hidden">{{ 'sections.header.cart_count' | t: count: cart.item_count }}</span>
+      </div>
+    {%- endif -%}
+  </div>
+</cart-icon-bubble>

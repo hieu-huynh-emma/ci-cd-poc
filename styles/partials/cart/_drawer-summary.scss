@@ -1,0 +1,53 @@
+@import "../../abstracts/index";
+
+cart-drawer-summary {
+  display: grid;
+  gap: 6px;
+  grid-auto-flow: row;
+  grid-template-columns: minmax(0, 1fr);
+  align-content: flex-end;
+  padding: 0.625rem 1.25rem;
+
+  @media screen and (min-width: 591px) {
+    padding: 0.625rem 2.5rem;
+  }
+
+  &.is-loading {
+    .invisible-on-loading {
+      opacity: 0;
+    }
+
+    .loading-overlay {
+      display: block !important;
+      top: initial;
+      left: initial;
+      right: 2rem;
+    }
+  }
+
+  .summary-container {
+    position: relative;
+
+    display: grid;
+    gap: 8px;
+    grid-auto-flow: row;
+    align-items: center;
+    width: 100%;
+  }
+
+
+}
+
+.summary-list {
+  display: grid;
+  gap: 8px;
+  grid-auto-flow: row;
+  width: 100%;
+}
+
+.summary-item {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: minmax(0, 1fr) minmax(0, auto);
+  align-items: center;
+}

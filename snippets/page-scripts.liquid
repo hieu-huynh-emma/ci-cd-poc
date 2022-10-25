@@ -1,1 +1,8 @@
-{{ 'global.js' | asset_url | script_tag }}
+<script src="{{ 'global.js' | asset_url }}" defer="defer"></script>
+{{ 'helpers.js' | asset_url | script_tag }}
+
+{{ 'custom-elements.js' | asset_url | script_tag }}
+
+{{ 'quantity-adjuster.js' | asset_url | script_tag }}
+{{ 'variant-selector.js' | asset_url | script_tag }}
+{{ 'loading-overlay.js' | asset_url | script_tag }}

@@ -1,0 +1,41 @@
+.select2-container {
+  $container: &;
+  $selection: '.select2-selection';
+
+  &#{$container}--disabled #{$selection}--single {
+    background-color: transparent;
+    cursor: not-allowed;
+  }
+
+  &--default {
+    width: 100% !important;
+    display: flex;
+    flex: 1;
+
+    .selection {
+      width: 100%;
+    }
+
+    #{$selection}--single {
+      display: flex;
+      align-items: center;
+
+      height: auto;
+      border: none;
+
+      #{$selection} {
+        &__rendered {
+          padding: 0 20px 0 0;
+          line-height: 100%;
+        }
+
+        &__arrow {
+          height: initial;
+          top: initial;
+          right: -6px;
+        }
+      }
+    }
+  }
+
+}

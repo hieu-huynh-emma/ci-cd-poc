@@ -1,5 +1,5 @@
 <div data-section-id="{{ section.id }}" data-section-type="featured-collections-section">
-  <div class="wrapper">
+  <div class="global-wrapper">
     {% if section.settings.title != blank %}
       <div class="section-header text-center">
         <h2 class="h1 section-header__title">{{ section.settings.title | escape }}</h2>
@@ -48,7 +48,7 @@
       {% endfor %}
 
       {% if isEmpty %}
-        <div class="wrapper">
+        <div class="global-wrapper">
           <div class="grid">
             <div class="grid__item">
               <div class="rte text-center">

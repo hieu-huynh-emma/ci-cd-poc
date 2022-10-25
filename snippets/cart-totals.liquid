@@ -1,0 +1,34 @@
+{% for item in cart.items %}
+  {% assign compare_price = item.variant.compare_at_price | times: item.quantity %}
+  {% assign total_cart_compare_price = total_cart_compare_price | plus: compare_price %}
+{% endfor %}
+
+
+<div id="CartTotals">
+  <div class="cart-totals">
+    <p class="font-medium">
+      {{ 'cart.total.total' | t }}
+    </p>
+
+    <div class="cart-totals__inner invisible-on-loading">
+      <p id="CartOriginalPrice" class="cart-pricing__price cart-pricing__price--original">
+        {{ total_cart_compare_price | money_without_trailing_zeros }}
+      </p>
+
+      <p
+        id="CartTotalPrice"
+        class="cart-pricing__price cart-pricing__price--total"
+        data-total="{{ cart.total_price | divided_by: 100.00 }}"
+        data-original-price="{{ total_cart_compare_price | divided_by: 100.00 }}"
+        data-discounted-total=""
+      >
+        {{ cart.total_price | money_without_trailing_zeros }}
+      </p>
+
+      <p id="CartTotalSaved" class="summary-item__value paragraph-14 text-red font-bold">
+        You save <span class="saved-amount">{{ total_cart_compare_price | minus: cart.total_price | money_without_trailing_zeros }}</span>!
+      </p>
+    </div>
+  </div>
+</div>
+

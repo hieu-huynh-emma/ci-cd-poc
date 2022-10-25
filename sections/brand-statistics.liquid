@@ -5,7 +5,7 @@
 
 
 <section id="brand-statistics-section">
-  <div class="wrapper {% if section.settings.borderless %} wrapper--borderless{% endif %}">
+  <div class="wrapper {% if section.settings.borderless %}wrapper--borderless{% endif %}">
     {% if wallpaper != blank %}
 
       <style>
@@ -24,14 +24,11 @@
         class="main-content__review-number"
       >{{ section.settings.review-number | times: 100 | money_without_trailing_zeros | remove: "$" }}+</h2>
       <h3 class="heading-3 main-content__title">{{ section.settings.title | remove: "<p>" | remove: "</p>" }}</h3>
-      <p class="main-content__subtitle tw-font-normal indent-0">{{ section.settings.subtitle }}</p>
+      <p class="main-content__subtitle font-normal indent-0">{{ section.settings.subtitle }}</p>
 
 
       {% if footerBtn != blank %}
-        <a
-          class="btn btn--secondary"
-          href="{{ footerBtn.settings.url }}"
-        >
+        <a class="btn btn--secondary" href="{{ footerBtn.settings.url }}">
           {{ footerBtn.settings.text }}
         </a>
       {% endif %}

@@ -1,0 +1,166 @@
+cart-upsell {
+  position: relative;
+  display: grid;
+  gap: 16px;
+  grid-auto-flow: row;
+  margin: 0 1.25rem 1.25rem;
+  overflow: hidden;
+
+  background: #f0f0f5;
+  border-radius: 6px;
+  @media screen and (min-width: 591px) {
+    margin: 0 2.5rem 1.25rem;
+  }
+
+  &.is-single {
+    padding: 0 0 0.625rem;
+    @media screen and (min-width: 591px) {
+      padding: 0 0 1rem;
+    }
+  }
+
+  .swiper {
+    padding: 0 1.25rem 1.25rem;
+    @media screen and (min-width: 591px) {
+      padding: 0 1rem 1rem 4rem;
+    }
+
+    &-wrapper {
+      box-sizing: border-box;
+    }
+
+    &-slide {
+      &:not(.is-single):not(.swiper-slide--empty) {
+        width: 80%;
+        min-width: 270px;
+        max-width: 350px;
+      }
+
+      &--empty {
+        width: 70%;
+        min-width: initial;
+        @media screen and (min-width: 591px) {
+          width: 11%;
+        }
+      }
+    }
+
+    &-arrow {
+      display: none;
+      @media screen and (min-width: 591px) {
+        display: flex;
+      }
+
+      &--prev {
+        left: 1rem;
+      }
+
+      &--next {
+        right: 1rem;
+      }
+    }
+  }
+}
+
+.cart-upsell__title {
+  padding: 0.625rem 1.25rem 0;
+  font-weight: 600;
+  font-size: 12px;
+
+  @media screen and (min-width: 591px) {
+    padding: 1rem 1rem 0;
+    font-size: 16px;
+  }
+}
+
+.upsell-item {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: 70px minmax(0, 1fr);
+  grid-template-rows: minmax(0, 1fr) minmax(0, auto);
+  height: 100%;
+  padding: 8px;
+
+  background: #ffffff;
+  border-radius: 6px;
+
+  &--single {
+    margin: 0 1rem;
+    @media screen and (min-width: 591px) {
+      margin: 0 1rem;
+    }
+  }
+
+  &__media {
+    grid-row: 1 / span 2;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 70px;
+    height: 70px;
+
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  &__details {
+    display: grid;
+    gap: 6px;
+    grid-auto-flow: row;
+    justify-content: flex-start;
+    justify-items: flex-start;
+  }
+
+  &-footer {
+    display: grid;
+    gap: 8px;
+    grid-template-columns: minmax(0, 1fr) minmax(0, auto);
+    align-items: center;
+  }
+
+  &__pricing {
+    display: grid;
+    gap: 4px;
+    grid-template-columns: repeat(2, minmax(0, auto));
+    justify-content: flex-start;
+
+    font-weight: 600;
+    font-size: 0.625rem;
+    line-height: 120%;
+  }
+
+  &__cta {
+    width: 69px !important;
+    height: 22px;
+
+    padding: 0 !important;
+
+    font-weight: 500 !important;
+    font-size: 12px !important;
+    line-height: 120%;
+
+    text-transform: none !important;
+  }
+}
+
+.upsell-variant-selector {
+  display: flex;
+
+  align-items: center;
+  padding: 3px 8px;
+
+  background: #ffffff;
+  border: 1px solid rgba(46, 47, 60, 0.1);
+  border-radius: 12px;
+
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 0.625rem;
+  line-height: 150%;
+  /* identical to box height, or 15px */
+
+  color: #2e2f3c;
+}
