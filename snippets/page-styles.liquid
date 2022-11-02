@@ -11,6 +11,6 @@
 {% case template %}
   {% when 'page.comparison' %}
     {{ 'comparison-page.css' | asset_url | stylesheet_tag }}
-  {% else %}
-
+  {% when 'page.competitor-comparison' %}
+    {{ 'competitor-comparison.css' | asset_url | stylesheet_tag }}
 {% endcase %}

@@ -2,7 +2,12 @@
   <div
     class="wrapper bg-athens-gray{% if section.settings.borderless %} wrapper--borderless{% endif %}"
   >
-    <h2 class="heading-2 text-center text-charade">{{ section.settings.title | remove: "<p>" | remove: "</p>" }}</h2>
+    <div>
+      <h2 class="heading-2 text-center text-charade">{{ section.settings.title | remove: "<p>" | remove: "</p>" }}</h2>
+      {% if section.settings.subtitle != blank %}
+        <p style="" class="text-center text-comet hidden md:block md:mt-4 text-xl">{{ section.settings.subtitle | remove: "<p>" | remove: "</p>" }}</p>
+      {% endif %}
+    </div>
     <div class="benefits">
       {% assign footerBtn = section.blocks | where: "type", "footer-button" | first %}
       {% assign textBlocks = section.blocks | where: "type", "text-block" %}
@@ -10,7 +15,7 @@
       {%- for block in textBlocks -%}
         <div class="benefits__item">
           <img src="{{ block.settings.icon | img_url: 'original' }}" width="auto" height="auto" loading="lazy">
-          <h3 class="heading-3 h-16	word-break">{{ block.settings.title | remove: "<p>" | remove: "</p>" }}</h3>
+          <h3 class="text-xl h-16 flex items-center	word-break">{{ block.settings.title | remove: "<p>" | remove: "</p>" }}</h3>
         </div>
       {%- endfor -%}
     </div>
@@ -69,6 +74,11 @@
       "type": "richtext",
       "label": "Title",
       "default": "<p>Why sleepers <i>love</i> Emma</p>"
+    },
+    {
+      "id": "subtitle",
+      "type": "richtext",
+      "label": "Subtitle"
     },
     {
       "id": "borderless",

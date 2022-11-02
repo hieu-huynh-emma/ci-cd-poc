@@ -1,4 +1,4 @@
-<cart-drawer-footer id="CartDrawerFooter">
+<cart-drawer-footer class="{% if cart.total_price > 30000 %}affirm--minimized{% endif %}" id="CartDrawerFooter">
   <button
     id="CartDrawer-Checkout"
     class="cart-cta-btn btn btn--compact"
@@ -19,10 +19,4 @@
 
     <span>{{ 'cart.footer.checkout_btn_text' | t }}</span>
   </button>
-
-  <klarna-placement
-    data-key="credit-promotion-auto-size"
-    data-locale="en-US"
-    data-purchase-amount="{{ cart.total_price }}"
-  ></klarna-placement>
 </cart-drawer-footer>

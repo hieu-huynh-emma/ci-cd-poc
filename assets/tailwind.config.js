@@ -17,11 +17,6 @@ tailwind.config = {
         'cultured': "#F7F7F9",
         red: '#FF0000'
       },
-    },
-    fontFamily: {
-      'acuminpro': ['"Acumin Pro"'],
-      'tiempos': ["Tiempos"],
-      'utopia': ['"Utopia Std"'],
     }
   },
 }

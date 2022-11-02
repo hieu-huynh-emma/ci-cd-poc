@@ -1,0 +1,103 @@
+#competitor-myth-busting-section {
+  background-color: #F0F0F5;
+
+  .wrapper {
+    padding: 30px 0;
+
+    @media (min-width: 768px) {
+      padding: 60px 16px;
+    }
+  }
+
+  .mythbusting {
+    padding: 0 47px;
+    margin-bottom: 20px;
+
+    @media (min-width: 768px) {
+      margin-bottom: 40px;
+    }
+
+    &__heading {
+      font-weight: 500;
+      font-size: 28px;
+      text-align: center;
+      margin-bottom: 2px;
+
+      @media (min-width: 768px) {
+        font-size: 32px;
+        margin-bottom: 10px;
+      }
+    }
+
+    &__subheading {
+      font-size: 16px;
+      text-align: center;
+
+      @media (min-width: 768px) {
+        font-size: 20px;
+      }
+    }
+  }
+
+  .mythbusting-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 40px;
+  }
+
+  .card {
+    background-color: #fff;
+    border-radius: 8px;
+    height: 100%;
+    display: grid;
+    grid-template-rows: min-content 1fr 1fr;
+
+    &__title {
+      font-size: 16px;
+      font-weight: 600;
+      text-align: center;
+      margin-bottom: 20px;
+      padding: 30px 20px 0 20px;
+
+      @media (min-width: 768px) {
+        font-size: 25px;
+        margin-bottom: 30px;
+      }
+    }
+
+    &__content {
+      font-size: 12px;
+      text-align: center;
+      padding: 0 20px 30px 20px;
+      align-self: center;
+
+      @media (min-width: 768px) {
+        font-size: 14px;
+      }
+    }
+
+    &__footer {
+      background-color: #FFA235;
+      border-radius: 8px;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+    }
+
+    &__footer-content {
+      font-weight: 600;
+      font-size: 12px;
+      text-align: center;
+      color: #fff;
+      width: 100%;
+
+      @media (min-width: 768px) {
+        font-size: 14px;
+      }
+    }
+  }
+
+  .splide {
+    padding: 0 48px 20px 48px;
+  }
+}

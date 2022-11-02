@@ -1,7 +1,9 @@
 {{ 'featured-products-compact.css' | asset_url | stylesheet_tag }}
 
 {% assign productBlocks = section.blocks | where: "type", "product-block" %}
-
+<div class="heading text-center mt-10 md:mt-14">
+  <h1 class="text-3xl md:text-4xl">{{ section.settings.heading }}</h1>
+</div>
 <section id="feature-products-section">
   <div class="wrapper">
     {%- for block in productBlocks -%}
@@ -12,7 +14,7 @@
         class="card w-full relative" href="{{ product.url }}"
         rel="noreferrer"
       >
-        <div class="card__image absolute top-0 right-0 w-full h-full scale-x-[1.1] scale-y-[0.7] md:scale-100 origin-bottom-right">
+        <div class="card__image absolute top-0 -right-5 w-full h-full scale-x-[1.1] scale-y-[0.7] md:scale-100 origin-bottom-right">
           <img
             src="{{ block.settings.image | img_url: '537x375' }}" width="100%" height="auto"
             class="h-full" loading="lazy"
@@ -28,7 +30,7 @@
               SAVE UP TO {{ discountedAmount | money }}
             </p>
           {% endif %}
-          <h3 class="text-[24px] md:text-[28px] font-tiempos text-charade font-normal">{{ product.title }}</h3>
+          <h3 class="text-[24px] md:text-[28px] text-charade font-normal">{{ product.title }}</h3>
           <div>
             <p class="text-charade">{{ block.settings.desc }}</p>
 
@@ -43,9 +45,7 @@
 
         </div>
 
-        <div
-          class="card__btn flex justify-center bg-chambray text-[white] uppercase rounded-[60px]"
-        >
+        <div class="card__btn justify-center btn btn--secondary relative z-10 mt-auto">
           Shop Now
         </div>
       </a>
@@ -56,6 +56,13 @@
 {% schema %}
 {
   "name": "Featured Products",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading"
+    }
+  ],
   "blocks": [
     {
       "type": "product-block",

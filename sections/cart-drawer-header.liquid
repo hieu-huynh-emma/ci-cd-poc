@@ -1,5 +1,5 @@
 <div id="CartDrawerHeader" class="drawer-header">
-  <div class="drawer-title font-tiempos {% if cart.item_count == 0 %}is-empty{% endif %}">
+  <div class="drawer-title {% if cart.item_count == 0 %}is-empty{% endif %}">
     {% if cart.item_count == 0 %}
       <h2 class="text-white">{{ 'cart.drawer_header.title' | t }}</h2>
     {% else %}

@@ -1,0 +1,42 @@
+<section class="px-4 md:px-24 py-5 bg-[#FEFBF8]" id="competitor-awards-summary-section">
+	<div class="w-full m-auto px-4">
+		<div class="grid grid-cols-1 xl:grid-cols-2 gap-7 md:gap-7 xl:gap-20">
+			<div class="left-column m-auto text-left order-2 xl:order-1">
+				<h2 class="text-xl md:text-[27px] text-[#FF8900] font-semibold md:font-medium mb-6">
+					{{ section.settings.left_column_title }}
+				</h2>
+				<h4 class="text-base text-[#55576F]">
+					{{ section.settings.left_column_desc }}
+				</h4>
+			</div>
+			<div class="right-column m-auto order-1 xl:order-2">
+				<img class="rounded-lg object-cover" src="{{ section.settings.right_column_image | img_url: 'master'}}" width="712" height="467" loading="lazy">
+			</div>
+		</div>
+	</div>
+</section>
+
+{% schema %}
+{
+  "name": "Emma Awards Summary",
+  "settings": [
+    {
+      "id": "left_column_title",
+      "type": "text",
+      "label": "Title",
+      "default": "Emma’s #1 for the most prestigious consumer organizations & test institutions globally, and we win more each year."
+    },
+    {
+      "id": "left_column_desc",
+      "type": "richtext",
+      "label": "Description",
+      "default": "<p>Not only do we have tons of awards from different publications, but we are also tested and ranked 1st by several of the most prestigious independent consumer associations globally That makes the Emma Original & CliMax great based on the testimonies of real people and stringent scientific testing.</p>"
+    },
+    {
+      "id": "right_column_image",
+      "type": "image_picker",
+      "label": "Image"
+    }
+  ]
+}
+{% endschema %}

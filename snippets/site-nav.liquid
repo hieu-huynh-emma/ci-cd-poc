@@ -1,93 +1,129 @@
 <nav id="site-nav" role="navigation">
-	<ul class="site-nav" id="AccessibleNav">
-		{% for link in linklists[section.settings.main_menu_link_list].links %}
-			{% liquid
-				assign parent_index = forloop.index
-				if link.links != blank
-					assign hasDropdown = true
-				else
-					assign hasDropdown = false
-				endif
-			%}
-			<li
-				id="site-nav__{{ link.title | handleize }}"
-				class="site-nav__item{% if hasDropdown == true %} site-nav--has-dropdown{% endif %}{% if link.active %} site-nav--active{% endif %}{% if link.type != "product_link" %} site-nav--minimal{% endif %}"
-				aria-haspopup="true"
-			>
-				<div class="nav-link{% if hasDropdown == true %} nav-link--has-dropdown{% endif %}">
-					<div class="nav-link__title">
-						{{ link.title | escape }}
+  <ul class="site-nav" id="AccessibleNav">
+    {% for link in linklists[section.settings.main_menu_link_list].links %}
+      {% liquid
+        assign parent_index = forloop.index
+        if link.links != blank
+          assign hasDropdown = true
+        else
+          assign hasDropdown = false
+        endif
+      %}
+      <li
+        id="site-nav__{{ link.title | handleize }}"
+        class="site-nav__item{% if hasDropdown == true %} site-nav--has-dropdown{% endif %}{% if link.active %} site-nav--active{% endif %}{% if link.type != "product_link" %} site-nav--minimal{% endif %}"
+        aria-haspopup="true"
+      >
+        <div
+          class="nav-link{% if hasDropdown == true %} nav-link--has-dropdown{% endif %}">
+          <div class="nav-link__title">
+            {{ link.title | escape }}
 
-						<a
-							href="{{ link.url }}"
-							class="nav-link__url"
-							aria-controls="MenuParent-{{ parent_index }}"
-							aria-expanded="false"
-							{% unless request.page_type == 'index' %}{% if link.active %}aria-current="page"{% endif %}{% endunless %}
-						>
-						</a>
-					</div>
-					{% if hasDropdown == true %}
-						<img src="{{ 'arrow-down.svg' | asset_url }}" loading="lazy" class="nav-link__arrow">
-					{% endif %}
-				</div>
-				{% if hasDropdown == true %}
-					<div class="site-nav__dropdown">
-						{% render 'site-subnav', link: link %}
-					</div>
-				{% endif %}
-			</li>
-		{% endfor %}
-	</ul>
+            <a
+              href="{{ link.url }}"
+              class="nav-link__url"
+              aria-controls="MenuParent-{{ parent_index }}"
+              aria-expanded="false"
+              {% unless request.page_type == 'index' %}{% if link.active %}aria-current="page"{% endif %}{% endunless %}
+            >
+            </a>
+          </div>
+          {% if hasDropdown == true %}
+            <img src="{{ 'arrow-down.svg' | asset_url }}" loading="lazy"
+                 class="nav-link__arrow">
+          {% endif %}
+        </div>
+        {% if hasDropdown == true %}
+          <div class="site-nav__dropdown {% if link.url == '/pages/comparison' %}site-nav__dropdown--compare{% endif %}">
+            {% render 'site-subnav', link: link %}
+          </div>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
 </nav>
 
 
 <script type="module" defer>
-	$("#site-nav .nav-link").click(function () {
-		const openClass = "nav-link--is-open"
-		const isOpen = $(this).hasClass(openClass);
+  $('#site-nav .nav-link').click(function () {
+    const openClass = 'nav-link--is-open'
+    const isOpen = $(this).hasClass(openClass)
 
-		const $siblingDropdown = $(this).siblings(".site-nav__dropdown")
+    const $siblingDropdown = $(this).siblings('.site-nav__dropdown')
 
-		if (!isOpen) {
-			$("#site-nav .site-nav__dropdown").slideUp();
-			$siblingDropdown.slideDown();
-			$(this).addClass(openClass)
-		} else {
-			$siblingDropdown.slideUp();
-			$(this).removeClass(openClass)
-		}
-	});
+    if (!isOpen) {
+      $('#site-nav .site-nav__dropdown').slideUp()
+      $siblingDropdown.slideDown()
+      $(this).addClass(openClass)
+    } else {
+      $siblingDropdown.slideUp()
+      $(this).removeClass(openClass)
+    }
+  })
 
-	$(document).ready(function () {
-		$(`.site-nav__item`).hover($.debounce(100, function () {
-			const firstSubnavItem = $(this).find(".site-subnav__item").first();
-			renderSpotLight.call(firstSubnavItem);
-		}));
+  $(document).ready(function () {
+    onHoverNavTitleRenderDropdown()
 
-		$(`.site-subnav__item`).hover($.debounce(100, renderSpotLight));
+    $(`.site-nav__item`).hover($.debounce(100, function () {
+      const firstSubnavItem = $(this).find('.site-subnav__item').first()
+      renderSpotLight.call(firstSubnavItem)
+    }))
 
-		function renderSpotLight() {
-			const product = $(this).data('product');
-			const accentuate = $(this).data('accentuate');
+    $(`.site-subnav__item`).hover($.debounce(100, function () {
+      renderSpotLight.call(this)
+    }))
 
-			const $name = $(this).closest(".site-subnav").find(".product-spotlight__name")
-			const $price = $(this).closest(".site-subnav").find(".product-spotlight__price")
-			const $originalPrice = $(this).closest(".site-subnav").find(".product-spotlight__original-price")
-			const $image = $(this).closest(".site-subnav").find(".product-spotlight__image");
-			const $badge = $(this).closest(".site-subnav").find(".product-spotlight__badge .product-spotlight__badge-discount")
-			const $link = $(this).closest(".site-subnav").find(".product-spotlight__link")
+    function onHoverNavTitleRenderDropdown() {
+      // handling case hide current dropdown and show another dropdown that got hovered
+      $('.nav-link.nav-link--has-dropdown > .nav-link__title').mouseenter(function () {
+        $('.site-nav__item.site-nav--has-dropdown.nav-drop-down-active').removeClass('nav-drop-down-active')
+        $(this).parent().parent().addClass('nav-drop-down-active')
+      })
 
-			const spotLightLink = product.handle
-			const spotLightImageSrc = accentuate.navigation_spotlight_image ? accentuate.navigation_spotlight_image[0].src : "";
-			const discountedAmount = product.compare_at_price - product.price
+      // handling case from dropdown hover out
+      $('.site-nav__dropdown').mouseleave(function () {
+        $('.site-nav__item.site-nav--has-dropdown.nav-drop-down-active').removeClass('nav-drop-down-active')
+      })
 
-			$name.text(product.title)
-			$price.text(currencyFormatter.format(product.price / 100))
-			$originalPrice.text(currencyFormatter.format(product.compare_at_price / 100))
-			$image.attr('src', spotLightImageSrc)
-			$badge.text(accentuate.navigation_product_discount || (100 * discountedAmount / product.compare_at_price).toFixed(0))
-			$link.attr('href', spotLightLink);
-		}
-	})
+      // handling case from minimal dropdown hover to normal dropdown
+      $('.site-nav__item.site-nav--minimal').hover(function () {
+        if (!$(this).hasClass('site-nav--has-dropdown')) {
+          $('.site-nav__item.site-nav--has-dropdown.nav-drop-down-active').removeClass('nav-drop-down-active')
+        }
+      })
+
+      // handling case from minimal dropdown hover to body
+      $('main.main-content').hover(function() {
+        $('.site-nav__item.site-nav--has-dropdown.nav-drop-down-active').removeClass('nav-drop-down-active')
+      })
+
+      // handling case from nav link to out to cart/login/language or logo
+      $('.site-nav.site-nav--init').mouseleave(function () {
+        $('.site-nav__item.site-nav--has-dropdown.nav-drop-down-active').removeClass('nav-drop-down-active')
+      })
+    }
+
+    function renderSpotLight() {
+      const product = $(this).data('product')
+      const accentuate = $(this).data('accentuate')
+
+      const $name = $(this).closest('.site-subnav').find('.product-spotlight__name')
+      const $price = $(this).closest('.site-subnav').find('.product-spotlight__price')
+      const $originalPrice = $(this).closest('.site-subnav').find('.product-spotlight__original-price')
+      const $image = $(this).closest('.site-subnav').find('.product-spotlight__image')
+      const $badge = $(this).closest('.site-subnav').find('.product-spotlight__badge .product-spotlight__badge-discount')
+      const $link = $(this).closest('.site-subnav').find('.product-spotlight__link')
+
+      const spotLightLink = product?.handle
+      const spotLightImageSrc = accentuate.navigation_spotlight_image ? accentuate.navigation_spotlight_image[0].src : ''
+      const discountedAmount = product.compare_at_price - product.price
+
+      $name.text(product.title)
+      $price.text(currencyFormatter.format(product.price / 100))
+      $originalPrice.text(currencyFormatter.format(product.compare_at_price / 100))
+      $image.attr('src', spotLightImageSrc)
+      $badge.text(accentuate.navigation_product_discount || (100 * discountedAmount / product.compare_at_price).toFixed(0))
+      $link.attr('href', spotLightLink)
+    }
+  })
 </script>

@@ -77,6 +77,7 @@ function isShippedOutNextDay(hour, minute) {
 
 async function onAddToCartSuccess() {
   const cart = document.querySelector('cart-drawer')
+  const cartAffirm = document.querySelector('cart-drawer-affirm')
   const cartScrollableContent = document.querySelector('cart-scrollable-content')
 
   const cartSections = cart.getSectionsToRender().map((section) => section.section)
@@ -97,6 +98,8 @@ async function onAddToCartSuccess() {
 
   const response = await fetch(`/?sections=${sections}`)
   const responseData = await response.json()
+
+  await cartAffirm.refreshAffirm()
 
   cart.renderContents({ sections: responseData })
 
@@ -128,3 +131,5 @@ async function monitorPageFlyAddToCartEvent() {
     console.warn('PageFly', e);
   }
 }
+
+monitorPageFlyAddToCartEvent()
