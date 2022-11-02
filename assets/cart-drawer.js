@@ -345,9 +345,6 @@ class CartDrawerSummary extends CustomElement {
       $originalPriceEl.addClass('hidden')
       $totalSavedEl.addClass('hidden')
     }
-
-
-    this.refreshKlarnaWidget(discountedTotal || totalPrice)
   }
 
   clearTotalPrice() {
@@ -398,13 +395,6 @@ class CartDrawerSummary extends CustomElement {
     $totalPriceEl.text(totalPriceInCurrency)
     $totalSavedEl.find(".saved-amount").text(totalSavedInCurrency)
   }
-
-  refreshKlarnaWidget(totalPrice) {
-
-    document.getElementsByTagName("klarna-placement")[0].setAttribute("data-purchase-amount", parseFloat(totalPrice * 100).toFixed(0));
-
-    window.KlarnaOnsiteService.push({ eventName: 'refresh-placements' })
-  }
 }
 
 customElements.define("cart-drawer-summary", CartDrawerSummary);
@@ -426,6 +416,68 @@ class CartDrawerFooter extends CustomElement {
 }
 
 customElements.define("cart-drawer-footer", CartDrawerFooter);
+
+class CartDrawerAffirm extends CustomElement {
+  get refs() {
+    return {
+      affirmEn: this.$el.find(".cart-drawer-affirm-en"),
+      affirmFr: this.$el.find(".cart-drawer-affirm-fr"),
+    }
+  }
+
+  async refreshAffirm() {
+    const response = await fetch('/?sections=cart-drawer-affirm')
+    const state = await response.json()
+    this.refreshSections(state)
+
+    const currentLanguage = $('html').attr('lang');
+    if (currentLanguage === 'en') {
+      $(this).find(".cart-drawer-affirm-en").show();
+      $(this).find(".cart-drawer-affirm-fr").hide();
+    } else {
+      $(this).find(".cart-drawer-affirm-fr").show();
+      $(this).find(".cart-drawer-affirm-en").hide();
+    }
+  }
+
+  onDisabledChange(isDisabled) {
+    super.onDisabledChange(isDisabled);
+
+    const { affirmEn, affirmFr } = this.refs
+
+    affirmEn[!!isDisabled ? 'attr' : 'removeAttr']('disabled', 'disabled')
+    affirmFr[!!isDisabled ? 'attr' : 'removeAttr']('disabled', 'disabled')
+  }
+
+  refreshSections(sections) {
+    this.getSectionsToRender().forEach((section => {
+      const elementToReplace = document.getElementById(section.id).querySelector(section.selector) || document.getElementById(section.id);
+
+      elementToReplace.innerHTML =
+        this.getSectionInnerHTML(sections[section.section], section.selector);
+    }));
+  }
+
+  getSectionsToRender() {
+    return [
+      {
+        id: "shopify-section-cart-drawer-affirm",
+        section: "cart-drawer-affirm",
+        selector: ".cart-drawer-affirm",
+      },
+    ]
+  }
+
+  getSectionInnerHTML(html, selector = ".shopify-section") {
+    const el = new DOMParser()
+      .parseFromString(html, 'text/html')
+      .querySelector(selector)
+
+    return el?.innerHTML ?? ""
+  }
+}
+
+customElements.define("cart-drawer-affirm", CartDrawerAffirm);
 
 class CartRedeemCode extends CustomElement {
 

@@ -6,23 +6,23 @@
     margin: 80px 0;
   }
 }
-#brand-vs-brand-section .tw-wrapper {
+#brand-vs-brand-section .wrapper {
   display: grid;
   gap: 30px;
   grid-auto-flow: row;
 }
 @media screen and (min-width: 450px) {
-  #brand-vs-brand-section .tw-wrapper {
+  #brand-vs-brand-section .wrapper {
     margin: 0 1rem;
   }
 }
 @media (min-width: 768px) {
-  #brand-vs-brand-section .tw-wrapper {
+  #brand-vs-brand-section .wrapper {
     margin: 0 2rem;
   }
 }
 @media (min-width: 1024px) {
-  #brand-vs-brand-section .tw-wrapper {
+  #brand-vs-brand-section .wrapper {
     margin: 0 4rem;
   }
 }
@@ -87,7 +87,6 @@
 }
 #brand-vs-brand-section .versus-text {
   align-self: center;
-  font-family: "Test Tiempos Headline";
   font-style: normal;
   font-weight: 400;
   font-size: 31px;
@@ -277,52 +276,6 @@
   justify-content: center;
   padding: 30px 0 0;
 }
-#product-comparison b, #product-comparison strong {
-  font-weight: bolder;
-}
-#product-comparison button, #product-comparison select {
-  color: inherit;
-  font-family: inherit;
-  font-size: 100%;
-  font-weight: inherit;
-  line-height: inherit;
-  margin: 0;
-  padding: 0;
-  text-transform: none;
-}
-#product-comparison [type=button], #product-comparison button {
-  -webkit-appearance: button;
-  background-color: transparent;
-  background-image: none;
-}
-#product-comparison ::-webkit-inner-spin-button, #product-comparison ::-webkit-outer-spin-button {
-  height: auto;
-}
-#product-comparison ::-webkit-search-decoration {
-  -webkit-appearance: none;
-}
-#product-comparison ::-webkit-file-upload-button {
-  -webkit-appearance: button;
-  font: inherit;
-}
-#product-comparison h2, #product-comparison h3, #product-comparison h4, #product-comparison p, #product-comparison ul {
-  margin: 0;
-}
-#product-comparison ul {
-  list-style: none;
-  padding: 0;
-}
-#product-comparison [role=button], #product-comparison button {
-  cursor: pointer;
-}
-#product-comparison img, #product-comparison svg {
-  display: block;
-  vertical-align: middle;
-}
-#product-comparison img {
-  height: auto;
-  max-width: 100%;
-}
 @media screen and (min-width: 768px) {
   #product-comparison {
     padding: 100px 0 0;
@@ -416,7 +369,7 @@
   justify-content: center;
   padding: 5px;
   text-align: center;
-  word-break: break-all;
+  word-break: break-word;
 }
 @media screen and (min-width: 768px) {
   #product-comparison .comparison-table-cell {
@@ -527,8 +480,7 @@
     font-size: 20px;
   }
 }
-
-.select2-container .select2-selection {
+#product-comparison .select2-container .select2-selection {
   display: grid;
   gap: 4px;
   align-items: center;
@@ -536,13 +488,13 @@
   border: none;
   background: transparent;
 }
-.select2-container .select2-selection--single {
+#product-comparison .select2-container .select2-selection--single {
   height: auto;
 }
-.select2-container .select2-selection--single .select2-selection__arrow {
+#product-comparison .select2-container .select2-selection--single .select2-selection__arrow {
   position: relative;
 }
-.select2-container .select2-selection--single .select2-selection__rendered {
+#product-comparison .select2-container .select2-selection--single .select2-selection__rendered {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -559,15 +511,15 @@
   white-space: normal;
 }
 @media screen and (min-width: 768px) {
-  .select2-container .select2-selection--single .select2-selection__rendered {
+  #product-comparison .select2-container .select2-selection--single .select2-selection__rendered {
     font-size: 18px;
   }
 }
-.select2-container .select2-dropdown {
-  min-width: 242px;
+
+.select2-dropdown.product-comparison {
   border: none;
 }
-.select2-container .select2-dropdown .select2-results {
+.select2-dropdown.product-comparison .select2-results {
   display: flex;
   align-items: flex-start;
   padding: 5px 3px 5px 5px;
@@ -576,13 +528,13 @@
   border-radius: 6px;
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
 }
-.select2-container .select2-dropdown .select2-results__options {
+.select2-dropdown.product-comparison .select2-results__options {
   display: grid;
   gap: 11px;
   width: 100%;
   max-height: 300px;
 }
-.select2-container .select2-dropdown .select2-results__option {
+.select2-dropdown.product-comparison .select2-results__option {
   color: #2E2F3C;
   background-color: transparent;
   text-align: center;
@@ -591,7 +543,7 @@
   font-size: 16px;
   line-height: 125%;
 }
-.select2-container .select2-dropdown .select2-results__option--highlighted {
+.select2-dropdown.product-comparison .select2-results__option--highlighted {
   background-color: #E1E1F0;
   border-radius: 4px;
 }
@@ -1412,6 +1364,7 @@
 }
 #why-us-section .wrapper--borderless {
   margin: 0;
+  border-radius: 0;
 }
 #why-us-section .benefits {
   display: grid;
@@ -1419,11 +1372,11 @@
   grid-auto-flow: row;
   align-content: flex-start;
   align-items: flex-start;
-  width: 80%;
 }
 @media (min-width: 768px) {
   #why-us-section .benefits {
     grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+    width: 60%;
   }
 }
 #why-us-section .benefits__item {

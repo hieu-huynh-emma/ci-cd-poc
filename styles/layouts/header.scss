@@ -92,6 +92,7 @@
     background-color: white;
     max-height: 75vh;
     box-shadow: 0 4px 6px -1px rgb(0 0 0 / 30%);
+    overflow: auto;
 
     @media (min-width: 1024px) {
       flex-direction: row;
@@ -99,6 +100,8 @@
       height: 100%;
       max-height: 100%;
       box-shadow: none;
+      width: min-content;
+      overflow: unset;
     }
 
     &__item {
@@ -121,6 +124,23 @@
       @media (min-width: 1200px) {
         padding-right: 20px;
       }
+    }
+
+    &__item.site-nav--has-dropdown.nav-drop-down-active .site-nav__dropdown {
+      opacity: 1;
+      pointer-events: auto;
+
+      -webkit-transform: translate3d(0px, 0px, 0px);
+      -moz-transform: translate3d(0px, 0px, 0px);
+      -ms-transform: translate3d(0px, 0px, 0px);
+      -o-transform: translate3d(0px, 0px, 0px);
+      transform: translate3d(0px, 0px, 0px);
+
+      -webkit-transition: transform 300ms cubic-bezier(0.2, .06, .05, .95);
+      -moz-transition: transform 300ms cubic-bezier(0.2, .06, .05, .95);
+      -ms-transition: transform 300ms cubic-bezier(0.2, .06, .05, .95);
+      -o-transition: transform 300ms cubic-bezier(0.2, .06, .05, .95);
+      transition: transform 300ms cubic-bezier(0.2, .06, .05, .95);
     }
 
     &__dropdown {
@@ -159,6 +179,14 @@
         pointer-events: none;
         border-top: 1px solid rgba(0, 0, 0, 0.08);
       }
+
+      &--compare {
+        left: -200%;
+
+        @media (min-width: 1280px) {
+          left: 0;
+        }
+      }
     }
 
     &--has-dropdown {
@@ -166,62 +194,11 @@
         position: relative;
         z-index: 6;
       }
-
-      &:hover > a, &.nav-hover > a {
-        color: #1c1d1d;
-        background-color: white;
-        opacity: 1;
-        -webkit-transition: none;
-        -moz-transition: none;
-        -ms-transition: none;
-        -o-transition: none;
-        transition: none;
-      }
-
-      &:hover > a:before, &.nav-hover > a:before {
-        content: "";
-        position: absolute;
-        left: 15px;
-        right: 30px;
-        bottom: 0;
-        display: block;
-        background-color: #1c1d1d;
-        height: 1px;
-        z-index: 6;
-      }
-
-      &.nav-hover > a {
-        color: #1c1d1d;
-        background-color: white;
-        opacity: 1;
-        -webkit-transition: none;
-        -moz-transition: none;
-        -ms-transition: none;
-        -o-transition: none;
-        transition: none;
-      }
     }
 
 
     &__link--icon {
       padding: 9px 15px;
-    }
-
-    &--has-dropdown.nav-hover .site-nav__dropdown {
-      opacity: 1;
-      pointer-events: auto;
-
-      -webkit-transform: translate3d(0px, 0px, 0px);
-      -moz-transform: translate3d(0px, 0px, 0px);
-      -ms-transform: translate3d(0px, 0px, 0px);
-      -o-transform: translate3d(0px, 0px, 0px);
-      transform: translate3d(0px, 0px, 0px);
-
-      -webkit-transition: transform 300ms cubic-bezier(0.2, .06, .05, .95);
-      -moz-transition: transform 300ms cubic-bezier(0.2, .06, .05, .95);
-      -ms-transition: transform 300ms cubic-bezier(0.2, .06, .05, .95);
-      -o-transition: transform 300ms cubic-bezier(0.2, .06, .05, .95);
-      transition: transform 300ms cubic-bezier(0.2, .06, .05, .95);
     }
 
     &--has-dropdown > a:before {
@@ -444,6 +421,10 @@
       padding: 30px 0 20px;
     }
 
+    &__item {
+      width: max-content;
+    }
+
     &__link {
       display: grid;
       gap: 10px;
@@ -469,6 +450,11 @@
         padding: 9px 15px;
         word-break: keep-all;
         white-space: nowrap;
+        width: max-content;
+
+        &:hover {
+          font-weight: 900;
+        }
       }
     }
 
@@ -524,6 +510,10 @@
       display: grid;
       gap: 12px;
 
+      &__link {
+        width: max-content;
+      }
+
       &__badge {
         display: flex;
         justify-content: center;
@@ -547,6 +537,24 @@
         display: grid;
         gap: 4px;
       }
+    }
+  }
+
+  .site-subnav-brand-comparison {
+    display: grid;
+    grid-template-rows: repeat(5, minmax(0, auto));
+    grid-template-columns: repeat(2, minmax(min-content, auto));
+    gap: 9px;
+    margin-top: 8px;
+
+    @media (min-width: 1024px) {
+      grid-template-columns: repeat(2, minmax(240px, auto));
+      padding: 9px 15px;
+      margin-top: 0;
+    }
+
+    .site-subnav__link {
+      padding: 0;
     }
   }
 }

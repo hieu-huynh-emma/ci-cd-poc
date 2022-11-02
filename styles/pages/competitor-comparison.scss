@@ -1,0 +1,17 @@
+@import "../partials/competitor-comparison/banner";
+@import "../partials/competitor-comparison/competitor-myth-busting";
+@import "../partials/competitor-comparison/competitor-awards";
+@import "../partials/competitor-comparison/competitor-comparison";
+@import "../partials/competitor-comparison/competitor-reviews";
+@import "../partials/comparison-page/why-us";
+
+// Override timber styles
+body main.main-content {
+  padding-top: 0 !important;
+}
+
+@media screen and (min-width: 769px) {
+  body main.main-content {
+    padding-top: 0 !important;
+  }
+}

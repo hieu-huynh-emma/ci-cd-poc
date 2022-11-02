@@ -10,6 +10,9 @@ cart-drawer-footer {
     padding: 0.625rem 2.5rem;
   }
 
+  &.affirm--minimized {
+    padding-bottom: 0.4rem;
+  }
 
   .cart-cta-btn[type='submit'].btn--compact {
     display: grid;

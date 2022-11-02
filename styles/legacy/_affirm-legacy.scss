@@ -1,0 +1,19 @@
+#fr_pop {
+  box-shadow: 4px 4px 4px black;
+
+  .step_head .sub_head {
+    line-height: 150%;
+  }
+
+  .pay_steps .para_txt {
+    text-align: center;
+  }
+
+  .product_step_inner {
+    padding: 0;
+
+    @media (min-width: 640px) {
+      padding: 48px 100px 0;
+    }
+  }
+}

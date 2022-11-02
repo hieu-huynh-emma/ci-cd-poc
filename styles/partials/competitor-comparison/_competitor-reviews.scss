@@ -1,0 +1,93 @@
+#competitor-reviews-section {
+  background: linear-gradient(180deg, #6469AA 0%, #3C4196 100%);
+
+  .wrapper {
+    padding: 40px 0;
+
+    @media (min-width: 768px) {
+      padding: 50px 16px 70px 16px;
+    }
+
+    @media (min-width: 1024px) {
+      padding: 50px 16px 70px 16px;
+    }
+  }
+
+  .review-heading {
+    font-size: 24px;
+    text-align: center;
+    color: #fff;
+    margin-bottom: 30px;
+
+    @media (min-width: 768px) {
+      font-size: 28px;
+      margin-bottom: 40px;
+    }
+  }
+
+  .review-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 40px;
+  }
+
+  .competitor-review {
+    background-color: #fff;
+    border-radius: 7px;
+    height: 100%;
+    display: grid;
+    padding: 20px;
+    grid-template-rows: min-content minmax(min-content, 3em) 1fr min-content;
+
+    &__title {
+      font-size: 20px;
+      text-align: center;
+      margin-bottom: 10px;
+      align-self: center;
+    }
+
+    &__content {
+      font-size: 12px;
+      text-align: center;
+      align-self: center;
+      margin-bottom: 16px;
+    }
+
+    &__footer {
+      text-align: center;
+
+    }
+
+    &__author {
+      font-size: 10px;
+      margin-bottom: 4px;
+    }
+
+    &__verified {
+      font-size: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  .splide {
+    padding: 0 48px 20px 48px;
+  }
+
+  .splide__arrow {
+    background-color: #fff;
+  }
+
+  .splide__arrow svg path {
+    fill: #55576F;
+  }
+
+  .splide__pagination__page {
+    background-color: rgba(255,255,255,var(--opacity)) !important;
+  }
+
+  .star-ratings {
+    justify-content: center;
+  }
+}

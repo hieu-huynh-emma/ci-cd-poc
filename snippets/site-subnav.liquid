@@ -4,13 +4,24 @@
 
 <div id="MenuParent-{{ parent_index }}" class="{% if isMinimal == true %}site-subnav--minimal{% else %}site-subnav{% endif %}">
 	{% if isMinimal == true %}
-    <div>
-      {% for childlink in link.links %}
-        <div>
-          <a href="{{ childlink.url }}" class="site-subnav__link" {% if childlink.active %}aria-current="page" {% endif %}tabindex="-1">{{ childlink.title | escape }}</a>
-        </div>
-      {% endfor %}
-    </div>
+		{% if link.url == '/pages/comparison' %}
+			<div class="site-subnav-brand-comparison">
+				{% for childlink in link.links %}
+					{% comment %}site-subnav-header-compare prevent weglot auto translation on french{% endcomment %}
+					<div class="site-subnav-header-compare">
+						<a href="{{ childlink.url }}" class="site-subnav__link" {% if childlink.active %}aria-current="page" {% endif %}tabindex="-1">{{ childlink.title | escape }}</a>
+					</div>
+				{% endfor %}
+			</div>
+		{% else %}
+			<div>
+				{% for childlink in link.links %}
+					<div style="width: 150px;">
+						<a href="{{ childlink.url }}" class="site-subnav__link" {% if childlink.active %}aria-current="page" {% endif %}tabindex="-1">{{ childlink.title | escape }}</a>
+					</div>
+				{% endfor %}
+			</div>
+		{% endif %}
 	{% else %}
 		<div class="subnav-container">
 			<p class="subnav-container__title paragraph-20 font-semibold">{{ link.title | escape }}</p>

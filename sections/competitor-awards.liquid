@@ -1,0 +1,50 @@
+<section id="competitor-awards-section">
+  <div class="wrapper">
+    <h2 class="awards-heading text-center text-charade">{{ section.settings.title | remove: "<p>" | remove: "</p>" }}</h2>
+    <div class="experts">
+      {%- for block in section.blocks -%}
+        <div class="experts__item">
+          <img class="experts__image" src="{{ block.settings.icon | img_url: 'original' }}" width="auto" height="auto" loading="lazy">
+          <h3 class="experts__title text-charade">{{ block.settings.title | remove: "<p>" | remove: "</p>" }}</h3>
+          <p class="experts__content text-charade">{{ block.settings.organizationName }}</p>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Emma Awards",
+  "blocks": [
+    {
+      "type": "award",
+      "name": "Award",
+      "settings": [
+        {
+          "id": "icon",
+          "type": "image_picker",
+          "label": "Icon"
+        },
+        {
+          "id": "title",
+          "type": "richtext",
+          "label": " Title"
+        },
+        {
+          "id": "organizationName",
+          "type": "text",
+          "label": "Award Organization Name"
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "id": "title",
+      "type": "richtext",
+      "label": "Title"
+    }
+  ]
+}
+{% endschema %}

@@ -4,7 +4,6 @@
   }
 
   .awards-accordion .collapsible {
-    border-bottom: 0;
     padding: 20px 50px 20px 0
   }
 
@@ -14,7 +13,9 @@
 
   .awards-accordion-ul {
     border-left: 1px solid #ffa355;
-    list-style-type: none
+    margin: 0 0 15px 20px;
+    padding: 0;
+    text-rendering: optimizeLegibility;
   }
 
   .awards-accordion-ul li {
@@ -40,6 +41,10 @@
   }
 
   @media (min-width: 1024px) {
+    .awards-accordion .collapsible {
+      border-bottom: 0;
+    }
+
     .awards-accordion .content {
       max-height: 100%
     }

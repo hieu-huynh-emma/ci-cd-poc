@@ -5,35 +5,38 @@
 
 
 <section id="brand-statistics-section">
-  <div class="wrapper {% if section.settings.borderless %}wrapper--borderless{% endif %}">
-    {% if wallpaper != blank %}
-
-      <style>
+	<div class="wrapper {% if section.settings.borderless %} wrapper--borderless{% endif %}">
+		{% if wallpaper != blank %}
+			
+			<style>
           #brand-statistics-section .wallpaper {
               --bg-desktop: url({{ wallpaper.settings.src | image_url: width: 1440 }});
               --bg-mobile: url({{ wallpaper.settings.src | image_url: width: 768 }});
               --bg-color: {{ wallpaper.settings.color }};
           }
-      </style>
-      <div class="wallpaper">
-      </div>
-
-    {% endif %}
-    <div class="main-content">
-      <h2
-        class="main-content__review-number"
-      >{{ section.settings.review-number | times: 100 | money_without_trailing_zeros | remove: "$" }}+</h2>
-      <h3 class="heading-3 main-content__title">{{ section.settings.title | remove: "<p>" | remove: "</p>" }}</h3>
-      <p class="main-content__subtitle font-normal indent-0">{{ section.settings.subtitle }}</p>
-
-
-      {% if footerBtn != blank %}
-        <a class="btn btn--secondary" href="{{ footerBtn.settings.url }}">
-          {{ footerBtn.settings.text }}
-        </a>
-      {% endif %}
-    </div>
-  </div>
+			</style>
+			<div class="wallpaper">
+			</div>
+		
+		{% endif %}
+		<div class="main-content">
+			<h2
+				class="main-content__review-number"
+			>{{ section.settings.review-number | times: 100 | money_without_trailing_zeros | remove: "$" }}+</h2>
+			<h3 class="heading-3 main-content__title">{{ section.settings.title | remove: "<p>" | remove: "</p>" }}</h3>
+			<p class="main-content__subtitle font-normal indent-0">{{ section.settings.subtitle }}</p>
+			
+			
+			{% if footerBtn != blank %}
+				<a
+					class="btn btn--secondary"
+					href="{{ footerBtn.settings.url }}"
+				>
+					{{ footerBtn.settings.text }}
+				</a>
+			{% endif %}
+		</div>
+	</div>
 </section>
 {% schema %}
 {

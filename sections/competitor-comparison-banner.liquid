@@ -1,0 +1,58 @@
+{% assign competitor = shop.metafields.globals.competitors %}
+
+<section id="competitor-comparison-banner-section">
+  <div class="wrapper">
+    {% if section.settings.wallpaper != blank %}
+      <style>
+        #competitor-comparison-banner-section .wallpaper {
+          --bg-desktop: url({{ section.settings.wallpaper | image_url: width: 1440 }});
+          --bg-mobile: url({{ section.settings.wallpaper | image_url: width: 768 }});
+        }
+      </style>
+      <div class="wallpaper"></div>
+    {% endif %}
+  </div>
+
+  <div class="main-content">
+    <h1 class="main-content__title"></h1>
+    <p class="main-content__description"></p>
+    <div class="main-content__links">
+      <a href="#competitor-comparison-section" class="btn main-content__link">Comparison Table</a>
+      <a href="#competitor-myth-busting-section" class="btn main-content__link">
+        <span>Mythbusting <span id="myth-busting-brand"></span></span>
+      </a>
+      <a href="#competitor-awards-section" class="btn main-content__link">Why Emma?</a>
+    </div>
+  </div>
+</section>
+
+<script type="module">
+  const competitors = {{ competitor | json }}
+  const elements = {
+    mythBustingBrand$: $('#myth-busting-brand'),
+    bannerTitle$: $('#competitor-comparison-banner-section .main-content__title'),
+    bannerDescription$: $('#competitor-comparison-banner-section .main-content__description')
+  }
+
+  renderBanner()
+
+  function renderBanner() {
+    const competitor = getComparisonCompetitor(competitors)
+    elements.mythBustingBrand$.text(competitor.brandName)
+    elements.bannerTitle$.text(competitor.banner.title)
+    elements.bannerDescription$.text(competitor.banner.desc)
+  }
+</script>
+
+{% schema %}
+{
+  "name": "Banner",
+  "settings": [
+    {
+      "id": "wallpaper",
+      "type": "image_picker",
+      "label": "Wallpaper Source"
+    }
+  ]
+}
+{% endschema %}

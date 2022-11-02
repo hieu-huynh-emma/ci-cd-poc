@@ -6,6 +6,7 @@ class CartItems extends CustomElement {
       cartRedeem: document.getElementById('CartRedeemCode'),
       cartUpsell: document.getElementById('CartDrawerUpsell'),
       cartFooter: document.getElementById('CartDrawerFooter'),
+      cartAffirm: document.getElementById('CartDrawerAffirm'),
       scrollableContent: this.closest('cart-scrollable-content')
     }
   }
@@ -39,7 +40,7 @@ class CartItems extends CustomElement {
   }
 
   async requestCart(payload = {}, url = routes.cart_change_url) {
-    const { cartSummary, cartRedeem } = this.refs
+    const { cartSummary, cartRedeem, cartAffirm } = this.refs
     console.log('requestCart')
 
     try {
@@ -52,6 +53,8 @@ class CartItems extends CustomElement {
           sections_url: window.location.pathname
         })
       }).then(res => res.json())
+
+      await cartAffirm.refreshAffirm()
 
       const codeRedeemed = cartRedeem.codeRedeemed
 
@@ -153,7 +156,7 @@ class CartItems extends CustomElement {
 
     if (!line) return
 
-    const { cartUpsell, cartSummary, cartFooter } = this.refs
+    const { cartUpsell, cartSummary, cartFooter, cartAffirm } = this.refs
 
     const $lineItem = this.$el.find(`#CartDrawer-Item-${line}`);
 
@@ -164,6 +167,7 @@ class CartItems extends CustomElement {
 
     this.disabled = true
     cartUpsell.disabled = true
+    cartAffirm.disabled = true
     cartFooter.disabled = true
 
 
@@ -186,6 +190,7 @@ class CartItems extends CustomElement {
       this.disabled = false
       cartUpsell.disabled = false
       cartFooter.disabled = false
+      cartAffirm.disabled = false
     }
   }
 

@@ -22,7 +22,7 @@
                 <li class="splide__slide">
                   <div class="competitor-brands__item">
                     <p class="font-semibold">{{ block.settings.name }}</p>
-                    <button class="btn btn--secondary btn--full btn--compact competitor-brands__compare-btn">Compare</button>
+                    <a class="btn btn--secondary btn--compact competitor-brands__compare-btn w-full" href="{{ block.settings.url }}">Compare</a>
                   </div>
                 </li>
               {%- endfor -%}
@@ -35,12 +35,6 @@
 </section>
 
 <script>
-  $('.competitor-brands__compare-btn').click(function () {
-    document.getElementById('product-comparison').scrollIntoView({
-      behavior: 'smooth'
-    });
-  })
-
   $(document).ready(function () {
     new Splide('#brand-vs-brand-section .splide', {
       gap: '20px',

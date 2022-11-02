@@ -1,0 +1,49 @@
+{% assign competitors = shop.metafields.globals.competitors %}
+
+<script>
+	const competitors = {{ competitors | json }}
+	const competitor = getComparisonCompetitor(competitors)
+	const specifications = competitor.competitiveSpecs
+	const compertitorName = competitor.brandName
+	const emmaLogo = "{{ 'emma-logo.svg' | asset_url }}";
+	const checkGreenIcon = "{{ 'icon-check-green.svg' | asset_url }}";
+	const checkGrayIcon = "{{ 'icon-check-gray.svg' | asset_url }}";
+	const cancelIcon = "{{ 'icon-cancel.svg' | asset_url }}";
+	const emmaOriginalSpecifications = {
+		price: "$745 <span class='line-through font-medium text-sm'>$1495</span>",
+		layers: "5",
+		removable_and_machine_washable_cover: "Yes",
+		ergonomic_zoning: "3 zones",
+		global_awards: "70+",
+		global_5_star_reviews: "75,000+",
+		sleep_trial: "365 nights",
+		warranty: "10 years",
+		free_shipping_and_returns: "Yes"
+	};
+	const emmaHybridSpecifications = {
+		price: "$989 <span class='line-through font-medium text-sm'>$1789</span>",
+		layers: "6",
+		removable_and_machine_washable_cover: "Yes",
+		ergonomic_zoning: "5 zones",
+		global_awards: "70+",
+		global_5_star_reviews: "75,000+",
+		sleep_trial: "365 nights",
+		warranty: "10 years",
+		free_shipping_and_returns: "Yes"
+	};
+	const productToCompare = competitor.productToCompare === "Emma Original" ? emmaOriginalSpecifications : emmaHybridSpecifications;
+</script>
+
+
+<script src="{{ 'competitor-comparison.js' | asset_url  }}"></script>
+
+<section id="competitor-comparison-section">
+	<div class="wrapper">
+		<div class="competitor-comparison-table">
+			<div class="emma-highlighted">&nbsp;</div>
+			<a id="competitor-buy-btn" href="" class="emma-buy-now-btn grid-row-12">
+				Buy Now
+			</a>
+		</div>
+	</div>
+</section>

@@ -34,7 +34,7 @@
           {% endif %}
         </div>
         {% if hasDropdown == true %}
-          <div class="site-nav__dropdown">
+          <div class="site-nav__dropdown {% if link.url == '/pages/comparison' %}site-nav__dropdown--compare{% endif %}">
             {% render 'site-subnav', link: link %}
           </div>
         {% endif %}

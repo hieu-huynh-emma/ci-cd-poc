@@ -1,0 +1,86 @@
+#competitor-awards-section {
+  background: linear-gradient(180deg, #FFF6EC 0%,  #FEFBF8 100%);
+
+  .wrapper {
+    padding: 40px 16px;
+    margin: 0 1rem;
+
+    @media (min-width: 768px) {
+      padding: 60px 0;
+      margin: 0 2rem;
+    }
+
+    @media (min-width: 1024px) {
+      padding: 60px 0;
+      margin: 0 4rem;
+    }
+  }
+
+  .awards-heading {
+    font-weight: 400;
+    font-size: 28px;
+    margin-bottom: 30px;
+
+    @media (min-width: 768px) {
+      font-size: 32px;
+      margin-bottom: 60px;
+    }
+  }
+
+  .experts {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 20px 0;
+
+    @media screen and (min-width: 768px) {
+      gap: 50px;
+    }
+
+    &__item {
+      display: grid;
+      justify-items: center;
+      text-align: center;
+      width: 50%;
+
+      @media screen and (min-width: 768px) {
+        width: 20%;
+      }
+    }
+
+    &__image {
+      margin-bottom: 6px;
+      border-radius: 100%;
+      width: 60px;
+      height: 60px;
+      object-fit: contain;
+
+      @media (min-width: 768px) {
+        width: 80px;
+        height: 80px;
+        margin-bottom: 10px;
+      }
+    }
+
+    &__title {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 6px;
+      word-break: break-word;
+
+      @media (min-width: 768px) {
+        font-size: 16px;
+        margin-bottom: 10px;
+      }
+    }
+
+    &__content {
+      font-size: 12px;
+
+      @media (min-width: 768px) {
+        font-size: 14px;
+      }
+    }
+  }
+}

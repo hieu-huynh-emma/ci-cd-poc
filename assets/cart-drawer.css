@@ -81,6 +81,9 @@ cart-drawer-footer {
     padding: 0.625rem 2.5rem;
   }
 }
+cart-drawer-footer.affirm--minimized {
+  padding-bottom: 0.4rem;
+}
 cart-drawer-footer .cart-cta-btn[type=submit].btn--compact {
   display: grid;
   gap: 8px;
@@ -92,6 +95,44 @@ cart-drawer-footer .cart-cta-btn[type=submit].btn--compact {
   font-size: 14px;
   line-height: 150%;
 }
+#CartDrawerAffirm .cart-drawer-affirm-en {
+  font-size: 11px;
+  padding-bottom: 0;
+  margin-bottom: 8px;
+  text-align: center;
+  cursor: auto;
+  width: 100%;
+}
+#CartDrawerAffirm .cart-drawer-affirm-en img {
+  width: 32px !important;
+}
+#CartDrawerAffirm .cart-drawer-affirm-en:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+#CartDrawerAffirm .cart-drawer-affirm-fr {
+  padding-bottom: 0;
+  margin-bottom: 8px;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+}
+#CartDrawerAffirm .cart-drawer-affirm-fr a:first-child {
+  font-size: 11px;
+}
+#CartDrawerAffirm .cart-drawer-affirm-fr:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+#CartDrawerAffirm .que {
+  font-size: 10px;
+  border: 1px solid #000;
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
+  justify-content: center;
+}
+
 .cart-drawer-empty {
   overflow-y: scroll;
   display: grid;
@@ -874,6 +915,9 @@ cart-drawer.is-empty .drawer__inner > :not(.cart-drawer-empty), cart-drawer.is-e
   display: none;
 }
 cart-drawer.is-empty cart-drawer-footer {
+  display: none;
+}
+cart-drawer.is-empty .cart-drawer-affirm {
   display: none;
 }
 cart-drawer.is-empty .cart-drawer-empty {

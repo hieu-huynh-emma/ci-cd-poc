@@ -246,7 +246,8 @@ $(document).ready(async function () {
   $('#product-comparison .product-selector, #product-comparison .emma__product-selector').select2({
     minimumResultsForSearch: -1,
     dropdownAutoWidth: true,
-    width: 'auto'
+    width: 'auto',
+    dropdownCssClass: 'product-comparison'
   });
 
 })
