@@ -1,0 +1,50 @@
+{
+  "sections": {
+    "why-us": {
+      "type": "why-us",
+      "blocks": {
+        "48ca0997-ffa4-4408-8013-4796cb7f17c4": {
+          "type": "text-block",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/free_delivery_blue_1.png",
+            "title": "<p>Free shipping<br\/>and returns<\/p>"
+          }
+        },
+        "1af6586e-37d7-4904-89e9-51ac975f51dc": {
+          "type": "text-block",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/365_night_trial_blue_1.png",
+            "title": "<p>365 night<br\/>trial<\/p>"
+          }
+        },
+        "61cd41e8-87d8-492f-a988-ae2ac2ec3379": {
+          "type": "text-block",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/warranty_blue_1_1.png",
+            "title": "<p>10 year<br\/>Warranty<\/p>"
+          }
+        },
+        "36c0fe95-7ff0-43ac-b673-b39719b89d37": {
+          "type": "text-block",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/credit-card.png",
+            "title": "<p>0%<br\/>financing<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "48ca0997-ffa4-4408-8013-4796cb7f17c4",
+        "1af6586e-37d7-4904-89e9-51ac975f51dc",
+        "61cd41e8-87d8-492f-a988-ae2ac2ec3379",
+        "36c0fe95-7ff0-43ac-b673-b39719b89d37"
+      ],
+      "settings": {
+        "title": "<p>The Emma Promise<\/p>",
+        "borderless": true
+      }
+    }
+  },
+  "order": [
+    "why-us"
+  ]
+}

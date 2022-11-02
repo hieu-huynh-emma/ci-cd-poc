@@ -17,10 +17,6 @@
       color: {{ header_color_transparent | color_modify: 'alpha', 0.75 }};
     }
 
-    .header-wrapper.header-wrapper--transparent .site-nav--has-dropdown.nav-hover > .site-nav__link {
-      color: {{ header_color }};
-    }
-
     .header-wrapper.header-wrapper--transparent .burger-icon,
     .header-wrapper.header-wrapper--transparent .site-nav__link:hover .burger-icon {
       background: {{ header_color_transparent }};
@@ -31,7 +27,6 @@
   .header-wrapper .site-header__logo a,
   .header-wrapper .site-nav__dropdown-link,
   .header-wrapper .site-nav--has-dropdown > a.nav-focus,
-  .header-wrapper .site-nav--has-dropdown.nav-hover > a,
   .header-wrapper .site-nav--has-dropdown:hover > a {
     color: {{ header_color }};
   }
@@ -45,7 +40,6 @@
   .header-wrapper .site-nav--has-dropdown > a.nav-focus:focus,
   .header-wrapper .site-nav--has-dropdown .site-nav__link:hover,
   .header-wrapper .site-nav--has-dropdown .site-nav__link:focus,
-  .header-wrapper .site-nav--has-dropdown.nav-hover > a:hover,
   .header-wrapper .site-nav__dropdown a:focus {
     color: {{ header_color | color_modify: 'alpha', 0.75 }};
   }
@@ -53,7 +47,6 @@
   .header-wrapper .burger-icon,
   .header-wrapper .site-nav--has-dropdown:hover > a:before,
   .header-wrapper .site-nav--has-dropdown > a.nav-focus:before,
-  .header-wrapper .site-nav--has-dropdown.nav-hover > a:before {
     background: {{ header_color }};
   }
 

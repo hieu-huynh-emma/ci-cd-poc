@@ -22,9 +22,7 @@
 	{% render 'cart-icon-bubble' %}
 </div>
 
-
 <script>
-
 	function renderLanguageRedirection() {
 		const requestHost = "{{ request.host }}".toString();
 		const $languageRedirection = $(".site-header-right .language-redirection");
@@ -40,8 +38,7 @@
 		$languageRedirection.attr("href", isFrenchDomain ? englishUrl : franceUrl);
 	}
 
-
-	$(document).ready(function () {
+	setTimeout(() => {
 		renderLanguageRedirection();
-	});
+	}, 0)
 </script>

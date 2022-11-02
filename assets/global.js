@@ -128,3 +128,5 @@ async function monitorPageFlyAddToCartEvent() {
     console.warn('PageFly', e);
   }
 }
+
+monitorPageFlyAddToCartEvent()

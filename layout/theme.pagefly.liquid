@@ -25,29 +25,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <link rel="shortcut icon" href="{{ settings.favicon | img_url: '32x32' }}" type="image/png" />
     {% endif %}
 
-    {% render 'css-variables' %}
-
     {% render 'apps-integration' %}
     {% render 'vendors' %}
-
-    {% render 'apps-integration' %}
-    {% render 'vendors' %}
-
     {% render 'page-styles' %}
     {% render 'page-scripts' %}
 
-
-    <!-- CSS ================================================== -->
-    {{ 'timber.scss.css' | asset_url | stylesheet_tag }}
-    {{ 'theme.scss.css' | asset_url | stylesheet_tag }}
-
-    <!-- CUSTOM CSS ================================================== -->
-    {{ 'custom-theme.css' | asset_url | stylesheet_tag }}
-    {{ 'custom.css' | asset_url | stylesheet_tag }}
     <link rel="stylesheet" href="{{ 'slick.css' | asset_url }}">
     <link rel="stylesheet" href="{{ 'slick-theme.css' | asset_url }}">
-    <link rel="stylesheet" href="{{ 'custom-theme-2.css' | asset_url }}">
-    <link rel="stylesheet" href="{{ 'custom-theme-3.css' | asset_url }}">
     <link rel="stylesheet" href="{{ 'animate.css' | asset_url }}">
 
 
@@ -128,6 +112,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <!-- Header hook for plugins ================================================== -->
     {{ content_for_header }}
 
+    {% include 'bold-common' %}
+
+
     {{ 'modernizr.min.js' | asset_url | script_tag }}
 
     {% comment %}
@@ -192,7 +179,35 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     class="{% if customer %}customer-logged-in {% endif %}template-{{ request.page_type | handle }}"
   ><div class="pagefly-container">{{ content_for_layout }}</div></body>
 </html>
+
 <style>
+  :root {
+    --font-body-family: 'Inter';
+    --font-body-style: normal;
+    --font-body-weight: 400;
+    --font-heading-family: 'Tiempos';
+    --font-heading-style: normal;
+    --font-heading-weight: 400;
+    --color-base-text: 18, 18,18;
+    --color-base-background-1: 255, 255,255;
+    --color-base-background-2: 243, 243,243;
+    --color-base-solid-button-labels: 255, 255,255;
+    --color-base-outline-button-labels: 18, 18,18;
+    --color-base-accent-1: 18, 18,18;
+    --color-base-accent-2: 51, 79,180;
+    --payment-terms-background-color: #FFFFFF;
+    --gradient-base-background-1: #FFFFFF;
+    --gradient-base-background-2: #F3F3F3;
+    --gradient-base-accent-1: #121212;
+    --gradient-base-accent-2: #334FB4;
+    --page-width: 160rem;
+    --page-width-margin: 2rem;
+    --color_drawer_text: #3c4196;
+    --color_drawer_background: ;
+    --color_drawer_border: #ffffff;
+    --color_drawer_button: #ffffff;
+    --color_drawer_button_text: #3c4196;
+  }
     span.jdgm-subtab__name {
         display: none;
     }
