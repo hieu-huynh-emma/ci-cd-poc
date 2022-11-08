@@ -6,7 +6,7 @@
       {
         info: {{ product | json }},
         specs: {{ product.metafields.accentuate.specifications | json }},
-        competitors: {{ product.metafields.accentuate.competitors | json }},
+        competitors: {{ product.metafields.accentuate.competitors_v2 | json }},
       }
       {%- if forloop.length > 0 -%}
       {% unless forloop.last %},{% endunless -%}

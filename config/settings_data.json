@@ -138,8 +138,8 @@
         "settings": {
           "show_announcement": true,
           "home_page_only": false,
-          "text": "Get up to 50% off this Halloween Sale! Promo ends in",
-          "countdown-date": "November 2, 2022 6:00:00 PM",
+          "text": "Get up to 50% off this Black Friday Sale! Promo ends in",
+          "countdown-date": "November 11, 2022 6:00:00 PM",
           "link": "shopify:\/\/products\/emma-original-mattress",
           "color_bg": "#ff8900",
           "color_text": "#ffffff"
@@ -1865,6 +1865,11 @@
           "show_image": true,
           "show_date": true,
           "show_author": false
+        }
+      },
+      "cart-drawer-affirm": {
+        "type": "cart-drawer-affirm",
+        "settings": {
         }
       }
     },

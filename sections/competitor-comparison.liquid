@@ -9,8 +9,21 @@
 	const checkGreenIcon = "{{ 'icon-check-green.svg' | asset_url }}";
 	const checkGrayIcon = "{{ 'icon-check-gray.svg' | asset_url }}";
 	const cancelIcon = "{{ 'icon-cancel.svg' | asset_url }}";
+
+	const emmaProducts = {
+		{% for product in section.settings.emma-products %}
+			'{{ product.handle }}': {
+				info: {{ product | json }}
+			}
+			{%- if forloop.length > 0 -%}
+				{% unless forloop.last %},{% endunless -%}
+			{%- endif -%}
+		{% endfor %}
+	}
+
+	const emmaOriginalQueen = emmaProducts['emma-original-mattress'].info.variants.find(variant => variant.title.includes('Queen'));
 	const emmaOriginalSpecifications = {
-		price: "$745 <span class='line-through font-medium text-sm'>$1495</span>",
+		price: `${currencyFormatter.format(emmaOriginalQueen.price / 100)} <span class='line-through font-medium text-sm'>${currencyFormatter.format(emmaOriginalQueen.compare_at_price / 100)}</span>`,
 		layers: "5",
 		removable_and_machine_washable_cover: "Yes",
 		ergonomic_zoning: "3 zones",
@@ -20,8 +33,10 @@
 		warranty: "10 years",
 		free_shipping_and_returns: "Yes"
 	};
+
+	const emmaClimaxQueen = emmaProducts['emma-climax-hybrid'].info.variants.find(variant => variant.title.includes('Queen'));
 	const emmaHybridSpecifications = {
-		price: "$989 <span class='line-through font-medium text-sm'>$1789</span>",
+		price: `${currencyFormatter.format(emmaClimaxQueen.price / 100)} <span class='line-through font-medium text-sm'>${currencyFormatter.format(emmaClimaxQueen.compare_at_price / 100)}</span>`,
 		layers: "6",
 		removable_and_machine_washable_cover: "Yes",
 		ergonomic_zoning: "5 zones",
@@ -47,3 +62,17 @@
 		</div>
 	</div>
 </section>
+
+{% schema %}
+{
+	"name": "Comparison Table",
+	"settings": [
+		{
+			"id": "emma-products",
+			"type": "product_list",
+			"label": "Emma Products",
+			"limit": 2
+		}
+	]
+}
+{% endschema %}

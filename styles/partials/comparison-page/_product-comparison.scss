@@ -214,12 +214,8 @@
     }
   }
 
-  .competitor {
-    &__brand {
-      font-weight: 700;
-      font-size: 14px;
-      line-height: 20px;
-    }
+  .product-name {
+    font-size: 18px;
   }
 
   .price--original {
