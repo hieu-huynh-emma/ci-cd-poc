@@ -193,7 +193,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
     <div id="MainContent" class="page-container">
       <main class="main-content" role="main">
-      {% unless request.page_type == "index" or request.page_type == "product" or request.page_type == "page" %}
+      {% unless request.page_type == "index" or request.page_type == "product" or request.page_type == "page" or request.page_type == "collection" %}
         <div class="global-wrapper">
           {% endunless %}
           {{ content_for_layout }}

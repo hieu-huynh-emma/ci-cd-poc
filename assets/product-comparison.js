@@ -34,15 +34,17 @@ function renderAllColHeaders() {
   `));
 
   const competitorHeaders = $($.parseHTML(`
-    <div data-competitor-col-index="0" class="comparison-table-cell grid-row-1 col-start-2 md:col-start-3 column-header">
+    <div style="padding-top: 0;" data-competitor-col-index="0" class="comparison-table-cell grid-row-1 col-start-2 md:col-start-3 column-header">
       <div class="competitor column-header">
-        <p class="competitor__brand"></p>
-        <select data-col="3" class="product-selector"></select></div>
+        <select data-col="3" class="brand-selector"></select>
+        <p class="product-name"></p>
+      </div>
     </div>
-    <div data-competitor-col-index="1" class="comparison-table-cell grid-row-1 lg:col-start-4 column-header">
+    <div style="padding-top: 0;" data-competitor-col-index="1" class="comparison-table-cell grid-row-1 lg:col-start-4 column-header">
       <div class="competitor column-header">
-        <p class="competitor__brand"></p>
-        <select class="product-selector"></select></div>
+        <select class="brand-selector"></select>
+        <p class="product-name"></p>
+      </div>
     </div>
 `));
 
@@ -91,38 +93,38 @@ function renderAllCells() {
   });
 }
 
-function renderProductSelector(config) {
+function renderSelector(config) {
   const { isCompetitor = false, competitorColIndex, emmaHandle } = config
 
-  const $productSelector = !!isCompetitor
-    ? $(`#product-comparison .comparison-table-cell[data-competitor-col-index="${competitorColIndex}"] .product-selector`)
+  const $selector = !!isCompetitor
+    ? $(`#product-comparison .comparison-table-cell[data-competitor-col-index="${competitorColIndex}"] .brand-selector`)
     : $("#product-comparison .emma__product-selector");
 
-  if (!$productSelector.length) return
+  if (!$selector.length) return
 
-  $productSelector.empty()
+  $selector.empty()
 
-  const optionsRenderFn = renderProductSelectorOptions.bind(null, config, $productSelector)
+  const optionsRenderFn = renderSelectorOptions.bind(null, config, $selector)
 
   !!isCompetitor ? allCompetitors.forEach(optionsRenderFn) : allEmmaProducts.forEach(optionsRenderFn)
 
-  $productSelector.change(handleProductChange)
+  $selector.change(handleSelectorChange)
 
-  return $productSelector
+  return $selector
 }
 
-function renderProductSelectorOptions(config, $productSelector, competitorOrProduct, optionIndex) {
+function renderSelectorOptions(config, $productSelector, competitorOrProduct, optionIndex) {
   const { isCompetitor = false, competitorColIndex } = config
 
   const handle = competitorOrProduct.handle
 
   const specs = competitorOrProduct.specs
-  const label = !!isCompetitor ? competitorOrProduct.productName : competitorOrProduct.label
+  const label = !!isCompetitor ? competitorOrProduct.brandName : competitorOrProduct.label
   const data = !!isCompetitor ? {
     specs,
-    brandName: competitorOrProduct.brandName,
+    productName: competitorOrProduct.productName,
     isCompetitor: true,
-    competitorColIndex
+    competitorColIndex,
   } : { specs, handle, productIndex: optionIndex }
 
 
@@ -132,17 +134,17 @@ function renderProductSelectorOptions(config, $productSelector, competitorOrProd
 
 }
 
-function handleProductChange() {
+function handleSelectorChange() {
   const $selectedOption = $(this).find(':selected')
   const specs = $selectedOption.data("specs");
   const isCompetitor = $selectedOption.data("isCompetitor")
   const competitorColIndex = $selectedOption.data("competitorColIndex")
-  const brandName = $selectedOption.data("brandName");
   const productIndex = $selectedOption.data('productIndex')
-
-  updateSpecs(!!isCompetitor ? { isCompetitor, specs, competitorColIndex } : { specs });
+  const productName = $selectedOption.data('productName')
 
   if (!isCompetitor) {
+    updateSpecs({ specs });
+
     allCompetitors = allEmmaProducts[productIndex].competitors;
 
     updateCompetitors();
@@ -151,7 +153,8 @@ function handleProductChange() {
 
     updateButtonHref(productIndex);
   } else {
-    updateBrandName(competitorColIndex, brandName)
+    updateSpecs({ isCompetitor, specs, competitorColIndex })
+    updateProductName(competitorColIndex, productName)
   }
 
 }
@@ -162,14 +165,24 @@ function updateSpecs({ specs = [], isCompetitor = false, competitorColIndex }) {
     : $(`#product-comparison .comparison-table-cell--highlight:not(.column-header)`);
 
   $allRows.each(function (index) {
-    $(this).find('.cell-content').text(specs[!!isCompetitor ? index : index - 1] || "")
+    const $cell = $(this).find('.cell-content')
+    if (index === 0) {
+      if (typeof specs[index] === "string") {
+        $cell.text(specs[!!isCompetitor ? index : index - 1] || "")
+      } else {
+        const { price, originalPrice } = specs[index]
+        $cell.html(`${price} <span class="price--original">${originalPrice}</span>`)
+      }
+    } else {
+      $cell.text(specs[!!isCompetitor ? index : index - 1] || "")
+    }
   })
 }
 
-function updateBrandName(competitorColIndex, brandName) {
+function updateProductName(competitorColIndex, productName) {
   const $columnHeader = $(`#product-comparison .comparison-table-cell[data-competitor-col-index="${competitorColIndex}"].column-header`)
 
-  $columnHeader.find('.competitor__brand').text(brandName);
+  $columnHeader.find('.product-name').text(productName);
 }
 
 // ----- Emma ----- //
@@ -202,10 +215,10 @@ function updateCompetitors() {
     const competitorInfo = allCompetitors[competitorColIndex];
     const specs = competitorInfo.specs
 
-    updateBrandName(competitorColIndex, competitorInfo.brandName)
+    updateProductName(competitorColIndex, competitorInfo.productName)
     updateSpecs({ isCompetitor: true, competitorColIndex, specs });
 
-    renderProductSelector({ isCompetitor: true, competitorColIndex, emmaHandle })
+    renderSelector({ isCompetitor: true, competitorColIndex, emmaHandle })
   })
 }
 
@@ -224,7 +237,7 @@ function initializeEmma() {
   const specs = allEmmaProducts[productIndex].specs
 
   return new Promise((resolve) => {
-    renderProductSelector({ isCompetitor: false });
+    renderSelector({ isCompetitor: false });
 
     updateSpecs({ isCompetitor: false, specs });
 
@@ -243,7 +256,7 @@ $(document).ready(async function () {
 
   updateCompetitors();
 
-  $('#product-comparison .product-selector, #product-comparison .emma__product-selector').select2({
+  $('#product-comparison .brand-selector, #product-comparison .emma__product-selector').select2({
     minimumResultsForSearch: -1,
     dropdownAutoWidth: true,
     width: 'auto',

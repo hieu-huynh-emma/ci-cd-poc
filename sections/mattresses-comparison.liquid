@@ -1,0 +1,434 @@
+<style>
+  .mattresses-comparison-section {
+    padding: 2.5rem 1rem;
+  }
+
+  .mattresses-comparison-section h2 {
+    font-size: 31px;
+    color: #2E2F3C;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .double-mattresses {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap;
+  }
+
+  .product-item {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    width: 45%;
+    margin: 0 0.5rem;
+    min-height: 17rem;
+  }
+
+  .product-item .badge {
+    background: #FF8900;
+    border-radius: 4px;
+    padding: 5px 8px 3px;
+    color: white;
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 20px;
+    display: flex;
+    align-items: center;
+    width: max-content;
+    max-width: 100%;
+    margin-bottom: 1rem;
+    word-break: break-word;
+  }
+
+  .product-item h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-top: 10px;
+    text-align: center;
+  }
+
+  .product-item .desc {
+    color: #595959;
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 150%;
+    text-align: center;
+  }
+
+  .product-item .product-price {
+    font-size: 11px;
+    font-weight: 600;
+  }
+
+  .product-price .sale-price {
+    font-weight: 400;
+  }
+
+  .mattresses-comparison-section .product-url-cta {
+    width: max-content;
+    color: #FF8900;
+    background: none;
+    font-size: 12px;
+    font-weight: 600;
+    margin-top: 1rem;
+  }
+
+  .comparison-table {
+    max-width: 100%;
+    margin-top: 1rem;
+  }
+
+  .comparison-table li:nth-child(odd) {
+    background-color: #F0F0F5;
+    border-radius: 6px;
+  }
+
+  .comparison-table li:last-child {
+    background: none;
+  }
+
+  .comparison-table li {
+    display: flex;
+    flex-wrap: wrap;
+    min-height: 75px;
+    padding: 10px;
+    align-items: center;
+  }
+
+  .comparison-table .criteria-title {
+    font-size: 20px;
+    width: 100%;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+
+  .comparison-table div {
+    font-size: 16px;
+    width: 49%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+  }
+
+  .comparison-table p {
+    text-align: center;
+  }
+
+  .btn {
+    padding: 13px 30px;
+  }
+
+  .comparison-table .btn {
+    width: 90%;
+  }
+
+  @media (min-width: 769px) {
+    .mattresses-comparison-section {
+      max-width: 902px;
+      margin: 0 auto;
+    }
+
+    .double-mattresses {
+      justify-content: flex-end;
+    }
+
+    .product-item {
+      width: 30%;
+      align-items: flex-start;
+    }
+
+    .product-item h3 {
+      font-size: 24px;
+      font-weight: 600;
+      text-align: left;
+    }
+
+    .product-item .desc,
+    .product-item .product-price {
+      font-size: 14px;
+      text-align: left;
+    }
+
+    .comparison-table .criteria-title {
+      width: 36%;
+      margin-bottom: 0;
+      text-align: start;
+    }
+
+    .comparison-table p {
+      font-size: 20px;
+    }
+
+    .comparison-table div {
+      width: 32%;
+    }
+  }
+</style>
+<section class="mattresses-comparison-section">
+  <div>
+    <h2>{{ section.settings.title }}
+    </h2>
+    <div class="double-mattresses">
+      <div class="product-item">
+        <span class="badge">{{ section.settings.badge_text_1 }}
+        </span>
+        <img
+          src="{% if section.settings.product_image_1 != blank %} {{ section.settings.product_image_1 | img_url: 'medium' }} {% else %} {{ section.settings.product_1.featured_image | img_url: 'medium' }} {% endif %}"/>
+        <h3>
+          {% if section.settings.product_title_1 != blank %}
+            {{ section.settings.product_title_1 }}
+          {% else %}
+            {{ section.settings.product_1.title }}
+          {% endif %}
+        </h3>
+        <p class="desc">{{ section.settings.product_desc_1 }}
+        </p>
+        <p class="product-price">
+          from
+          {{ section.settings.product_1.price | money }}
+          {% if section.settings.product_1.compare_at_price > section.settings.product_1.price %}
+            <del
+              class="sale-price">{{ section.settings.product_1.compare_at_price | money }}
+            </del>
+          {% endif %}
+        </p>
+        <a class="product-url-cta" href="{{ section.settings.product_1.url }}">
+          {{ section.settings.cta_text_1 }}
+        </a>
+      </div>
+      <div class="product-item">
+        <span class="badge">{{ section.settings.badge_text_2 }}
+        </span>
+        <img
+          src="{% if section.settings.product_image_2 != blank %} {{ section.settings.product_image_2 | img_url: 'medium' }} {% else %} {{ section.settings.product_2.featured_image | img_url: 'medium' }} {% endif %}"/>
+        <h3>
+          {% if section.settings.product_title_2 != blank %}
+            {{ section.settings.product_title_2 }}
+          {% else %}
+            {{ section.settings.product_2.title }}
+          {% endif %}
+        </h3>
+        <p class="desc">{{ section.settings.product_desc_2 }}
+        </p>
+        <p class="product-price">
+          from
+          {{ section.settings.product_2.price | money }}
+          {% if section.settings.product_2.compare_at_price > section.settings.product_2.price %}
+            <del
+              class="sale-price">{{ section.settings.product_2.compare_at_price | money }}
+            </del>
+          {% endif %}
+        </p>
+        <a class="product-url-cta" href="{{ section.settings.product_2.url }}">
+          {{ section.settings.cta_text_2 }}
+        </a>
+      </div>
+    </div>
+    <ul class="comparison-table">
+      <li>
+        <p class="criteria-title">Height</p>
+        <div>
+          <p>10-inch</p>
+        </div>
+        <div>
+          <p>11.5-inch</p>
+        </div>
+      </li>
+      <li>
+        <p class="criteria-title">Layers</p>
+        <div>
+          <p>5</p>
+        </div>
+        <div>
+          <p>6</p>
+        </div>
+      </li>
+      <li>
+        <p class="criteria-title">Comfort</p>
+        <div>
+          <p>Excellent Comfort</p>
+        </div>
+        <div>
+          <p>Maximum Comfort</p>
+        </div>
+      </li>
+      <li>
+        <p class="criteria-title">Ergonomic Zoning & Support</p>
+        <div>
+          {% if section.settings.ergonomic_image_1 != blank %}
+            <img src="{{ section.settings.ergonomic_image_1 | img_url: 'small' }}"
+                 width="60px" height="60px"/>
+          {% endif %}
+          <p>3 zones</p>
+        </div>
+        <div>
+          {% if section.settings.ergonomic_image_2 != blank %}
+            <img src="{{ section.settings.ergonomic_image_2 | img_url: 'small' }}"
+                 width="60px" height="60px"/>
+          {% endif %}
+          <p>5 zones</p>
+        </div>
+      </li>
+      <li>
+        <p class="criteria-title">Breathability & Cooling</p>
+        <div>
+          {% if section.settings.cooling_image_1 != blank %}
+            <img src="{{ section.settings.cooling_image_1 | img_url: 'small' }}"
+                 width="60px" height="60px"/>
+          {% endif %}
+          <p>Breathable, moisture-wicking, and climate-regulating</p>
+        </div>
+        <div>
+          {% if section.settings.cooling_image_2 != blank %}
+            <img src=" {{ section.settings.cooling_image_2 | img_url: 'small' }}"
+                 width="60px" height="60px"/>
+          {% endif %}
+          <p>Breathable, moisture-wicking, and cooling</p>
+        </div>
+      </li>
+      <li>
+        <p class="criteria-title">Motion Transfer</p>
+        <div>
+          <p>Minimal motion transfer</p>
+        </div>
+        <div>
+          <p>Zero motion transfer</p>
+        </div>
+      </li>
+      <li>
+        <p class="criteria-title">Free Shipping & Returns</p>
+        <div><img src='{{ 'icon-check-green.svg' | asset_url }}'/></div>
+        <div><img src='{{ 'icon-check-green.svg' | asset_url }}'/></div>
+      </li>
+      <li>
+        <p class="criteria-title">365-Night Trial</p>
+        <div><img src='{{ 'icon-check-green.svg' | asset_url }}'/></div>
+        <div><img src='{{ 'icon-check-green.svg' | asset_url }}'/></div>
+      </li>
+      <li>
+        <p class="criteria-title">10-Year Warranty</p>
+        <div><img src='{{ 'icon-check-green.svg' | asset_url }}'/></div>
+        <div><img src='{{ 'icon-check-green.svg' | asset_url }}'/></div>
+      </li>
+      <li>
+        <div class="criteria-title"></div>
+        <div>
+          <a class="btn collection-comparison-table-btn" href="{{ section.settings.product_1.url }}">{{ 'collections.mattresses.shop_now' | t }}</a>
+        </div>
+        <div>
+          <a class="btn collection-comparison-table-btn" href="{{ section.settings.product_2.url }}">{{ 'collections.mattresses.shop_now' | t }}</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Mattresses Comparison",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Which mattress is right for you?"
+    },
+    {
+      "type": "header",
+      "content": "First Product"
+    },
+    {
+      "type": "product",
+      "id": "product_1",
+      "label": "Product"
+    },
+    {
+      "type": "text",
+      "id": "badge_text_1",
+      "label": "Badge",
+      "default": "best value"
+    },
+    {
+      "type": "image_picker",
+      "id": "product_image_1",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "product_title_1",
+      "label": "Title"
+    },
+    {
+      "type": "text",
+      "id": "product_desc_1",
+      "label": "Description",
+      "default": "Perfect balance of pressure-relief and support."
+    },
+    {
+      "type": "text",
+      "id": "cta_text_1",
+      "label": "CTA Text",
+      "default": "Learn more >"
+    },
+    {
+      "type": "image_picker",
+      "id": "ergonomic_image_1",
+      "label": "Ergonomic Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "cooling_image_1",
+      "label": "Cooling Image"
+    },
+    {
+      "type": "header",
+      "content": "Second Product"
+    },
+    {
+      "type": "product",
+      "id": "product_2",
+      "label": "Product"
+    },
+    {
+      "type": "text",
+      "id": "badge_text_2",
+      "label": "Badge",
+      "default": "best value"
+    },
+    {
+      "type": "image_picker",
+      "id": "product_image_2",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "product_title_2",
+      "label": "Title"
+    },
+    {
+      "type": "text",
+      "id": "product_desc_2",
+      "label": "Description",
+      "default": "Perfect balance of pressure-relief and support."
+    },
+    {
+      "type": "text",
+      "id": "cta_text_2",
+      "label": "CTA Text",
+      "default": "Learn more >"
+    },
+    {
+      "type": "image_picker",
+      "id": "ergonomic_image_2",
+      "label": "Ergonomic Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "cooling_image_2",
+      "label": "Cooling Image"
+    }
+  ]
+}
+{% endschema %}
