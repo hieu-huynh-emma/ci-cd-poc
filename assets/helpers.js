@@ -5,10 +5,10 @@ function openChatSupport() {
 }
 
 function getComparisonCompetitor(competitors) {
-  const params = new URLSearchParams(window.location.search)
-  const competitorParam = params.get('competitor') ?? 'Casper'
-  const competitor = competitors.find(c => c.brandRoute === competitorParam)
-  return competitor ?? competitors.find(c => c.brandRoute === 'Casper')
+  const emmaWithCompetitor = location.pathname.replace('/pages/', '')
+  const competitorParam = emmaWithCompetitor.replace('emma-vs-', '')
+  const competitor = competitors.find(c => c.brandName.toLowerCase().split(' ').join('-') === competitorParam)
+  return competitor ?? competitors.find(c => c.brandName.toLowerCase().split(' ').join('-') === 'casper')
 }
 
 const currencyFormatter = new Intl.NumberFormat('en-US', {
