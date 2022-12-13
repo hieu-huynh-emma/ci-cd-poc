@@ -106,7 +106,16 @@ let CompetitorComparison = {
       } else if (competitorSpec === "No") {
         $cellContent.append(`<img src="${cancelIcon}" alt="">`);
       } else {
-        $cellContent.text(competitorSpec);
+        if (i === 0) {
+          if (typeof competitorSpec === "string") {
+            $cellContent.text(competitorSpec);
+          } else {
+            const { price, originalPrice } = competitorSpec
+            $cellContent.html(`${price} <span class="line-through font-medium text-sm">${originalPrice}</span>`)
+          }
+        } else {
+          $cellContent.text(competitorSpec);
+        }
       }
     });
   },

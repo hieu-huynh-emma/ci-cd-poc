@@ -114,7 +114,7 @@
       const $badge = $(this).closest('.site-subnav').find('.product-spotlight__badge .product-spotlight__badge-discount')
       const $link = $(this).closest('.site-subnav').find('.product-spotlight__link')
 
-      const spotLightLink = product?.handle
+      const spotLightLink = '/products/' + product?.handle
       const spotLightImageSrc = accentuate.navigation_spotlight_image ? accentuate.navigation_spotlight_image[0].src : ''
       const discountedAmount = product.compare_at_price - product.price
 
