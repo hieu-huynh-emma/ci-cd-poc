@@ -6,8 +6,9 @@
   #brand-reputation-section .wrapper {
     width: 100%;
     max-width: 1440px;
-    margin: 50px auto;
+    margin: 0 auto;
     position: relative;
+    background-color: white;
   }
 
   #affiliates-carousel {
@@ -41,23 +42,22 @@
     position: absolute;
     display: flex;
     flex-direction: row;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
     padding: 8px 2px;
     width: 2rem;
-    height: 3rem;
-    background: rgba(255, 255, 255, 0.6);
-    left: 0;
-    bottom: 6.2rem;
+    height: 2rem;
+    background-color: #3C4196;
+    left: 8px;
+    bottom: 6.5rem;
+    border-radius: 50%;
   }
 
   #nextAffiliates {
-    right: 0;
+    right: 8px;
     left: auto;
-  }
-
-  #affiliates-carousel {
-    background: rgba(255, 246, 236, 0.5);
+    transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
   }
 
   #toPrevAffiliate,
@@ -65,12 +65,14 @@
     display: none;
   }
 
-  .affiliates-wrapper {
-    overflow: hidden;
-    width: 100%;
+  #brand-reputation-section h2 {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 26px;
+    text-align: center;
   }
 
-  @media (min-width: 768px) {
+  @media(min-width: 768px) {
 
     #prevAffiliates,
     #nextAffiliates {
@@ -79,18 +81,25 @@
 
     #toPrevAffiliate,
     #toNextAffiliate {
-      display: inline-block;
-      font-size: 4rem;
-      width: fit-content;
       position: absolute;
-      left: -2.5rem;
-      top: 50%;
-      transform: translateY(-50%);
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      padding: 8px 2px;
+      width: 2rem;
+      height: 2rem;
+      background-color: #3C4196;
+      left: 1rem;
+      border-radius: 50%;
+      top: 45%;
     }
 
     #toNextAffiliate {
-      right: -2.5rem;
+      right: 0;
       left: auto;
+      transform: rotate(180deg);
+      -webkit-transform: rotate(180deg);
     }
 
     #brand-reputation-section .affiliates {
@@ -101,13 +110,19 @@
       align-content: center;
       align-items: center;
       height: 100%;
+      padding: 2rem 1rem;
+    }
+
+    #brand-reputation-section .headings h2 {
+      font-size: 36px;
+      text-align: start;
     }
 
     #brand-reputation-section .headings {
       display: flex;
       flex-direction: column;
       position: relative;
-      padding: 1rem;
+      padding: 3rem 4rem 1rem;
     }
 
     #brand-reputation-section .quote {
@@ -119,24 +134,27 @@
 <section id="brand-reputation-section">
   <div class="wrapper">
     <div class="headings">
-      <h2 class="heading-2 text-center md:text-left text-charade">{{ section.settings.title | remove: "<p>" | remove: "</p>" }}</h2>
+      <h2 class="text-center md:text-left text-charade">{{ section.settings.title | remove: "<p>" | remove: "</p>" }}
+      </h2>
       <p class="quote heading-4 text-black-65"></p>
-      <button id="toPrevAffiliate">&#60;</button>
-      <button id="toNextAffiliate">&#62;</button>
+      <button id="toPrevAffiliate"><img src="{{'arrow.svg' | asset_url }}" /></button>
+      <button id="toNextAffiliate"><img src="{{'arrow.svg' | asset_url }}" /></button>
     </div>
-    <div class="affiliates-wrapper">
-      <div id="affiliates-carousel">
-        <div id="affiliates" class="affiliates">
-          {%- for affiliate in affiliates -%}
-            <div data-quote="{{ affiliate.settings.quote | remove: " <p>" | remove: "</p>" | escape }}" class="affiliates__item">
-              {{ affiliate.settings.logo }}
-            </div>
-          {%- endfor -%}
-        </div>
-        <button id="prevAffiliates">&#8592;</button>
-        <button id="nextAffiliates">&#8594;</button>
+    <div id="affiliates-carousel">
+      <div id="affiliates" class="affiliates">
+        {%- for affiliate in affiliates -%}
+          <div data-quote="{{ affiliate.settings.quote | remove: " <p>" | remove: "</p>" | escape }}"
+               class="affiliates__item">
+            {{ affiliate.settings.logo }}
+          </div>
+        {%- endfor -%}
       </div>
-      <a class="btn mx-auto block max-w-max mt-5" href="{{ section.settings.cta_url }}">{{ section.settings.cta_text }}</a>
+      <button id="prevAffiliates"><img src="{{'arrow.svg' | asset_url }}" /></button>
+      <button id="nextAffiliates"><img src="{{'arrow.svg' | asset_url }}" /></button>
+    </div>
+
+    <div class="brand-reputation__cta">
+      <a href="{{ section.settings.cta_url }}" class="btn">{{ section.settings.cta_text }}</a>
     </div>
   </div>
 </section>
@@ -173,21 +191,15 @@
     $("#brand-reputation-section .affiliates__item").click(function () {
       $(this).parent().find('.affiliates__item').removeClass('active');
       $(this).addClass('active');
-
       const quote = $(this).data('quote');
       const $quoteEl = $('#brand-reputation-section .headings .quote');
-
-      const curHeight = $quoteEl.height();
       $quoteEl.html(decodeURI(quote));
-
-      const autoHeight = $quoteEl.css('height', 'auto').height();
-      $quoteEl.height(curHeight).animate({ height: autoHeight }, 200);
     });
 
     $("#brand-reputation-section .affiliates__item:first-child").click();
 
     $("#toNextAffiliate").click(function () {
-      let index = $('.active').index('.affiliates__item');
+      let index = $('.active.affiliates__item').index('.affiliates__item');
       let items = $("#brand-reputation-section .affiliates__item");
       $(items[index]).removeClass('active');
       if (index >= items.length - 1) {
@@ -198,7 +210,7 @@
     });
 
     $("#toPrevAffiliate").click(function () {
-      let index = $('.active').index('.affiliates__item');
+      let index = $('.active.affiliates__item').index('.affiliates__item');
       let items = $("#brand-reputation-section .affiliates__item");
       $(items[index]).removeClass('active');
       if (index <= 0) {
@@ -224,13 +236,11 @@
           "id": "heading",
           "type": "text",
           "label": "Affiliate Heading"
-        },
-        {
+        }, {
           "id": "logo",
           "type": "html",
           "label": "Affiliate SVG Logo"
-        },
-        {
+        }, {
           "id": "quote",
           "type": "richtext",
           "label": "Affiliate Quote"
@@ -246,14 +256,14 @@
       "default": "<p>Why sleepers <i>love</i> Emma</p>"
     },
     {
-      "id": "cta_url",
-      "type": "url",
-      "label": "Button Url"
-    },
-    {
       "id": "cta_text",
       "type": "text",
       "label": "Button Text"
+    },
+    {
+      "id": "cta_url",
+      "type": "url",
+      "label": "Button URL"
     }
   ]
 }

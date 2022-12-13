@@ -1,0 +1,88 @@
+.emma-product__price {
+  font-size: 14px;
+  line-height: 19px;
+}
+
+.price-block {
+  margin: 0.625rem 0 0;
+}
+
+.price {
+  display: grid;
+  gap: 10px;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(0, auto);
+  align-items: center;
+  justify-content: flex-start;
+
+  &__sale {
+    display: grid;
+    gap: 10px;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(0, auto);
+    align-items: center;
+    justify-content: flex-start;
+
+    .price-item {
+      color: #2e2f3c;
+      font-size: 20px;
+      line-height: 150%;
+
+      &--sale {
+        margin: 0;
+      }
+
+      &--regular {
+        margin: 0;
+        font-weight: 400;
+        font-size: 16px;
+        text-decoration-line: line-through;
+        color: #9a9cb2;
+        @media (min-width: 768px) {
+          font-size: 20px;
+        }
+      }
+
+      @media (min-width: 768px) {
+        font-size: 25px;
+        line-height: 35px;
+      }
+    }
+  }
+}
+
+
+.price__badge-sale {
+  border: none !important;
+  background-color: red !important;
+}
+
+.emma-product__price .price--large,
+.emma-product .price .price-item,
+.price .price-item {
+  font-size: 1.5rem;
+  letter-spacing: normal;
+
+  @media screen and (max-width: 568px) {
+    font-size: 1.2rem;
+    letter-spacing: normal;
+  }
+}
+
+.emma-product__price .price--sold-out,
+.emma-product__price .price__availability {
+  margin-bottom: 1rem;
+}
+
+.badge {
+  padding: 4px;
+  border-radius: 4px;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 11px;
+  @media (min-width: 768px) {
+    padding: 5px 8px;
+    font-size: 13px;
+  }
+}
+

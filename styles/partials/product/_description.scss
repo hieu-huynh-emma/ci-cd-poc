@@ -1,0 +1,26 @@
+.product__description {
+  margin-top: 15px;
+
+  > * {
+    color: #55576f;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+
+  }
+
+  h3 {
+    padding-bottom: 10px;
+    @media screen and (max-width: 768px) {
+      padding-top: 10px;
+    }
+  }
+
+  ul {
+    list-style: initial;
+    margin: initial;
+    padding: initial;
+    padding-inline-start: 1.5rem !important;
+  }
+}

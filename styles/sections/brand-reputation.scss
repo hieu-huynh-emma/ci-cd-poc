@@ -1,8 +1,10 @@
 #brand-reputation-section {
+  padding: 2rem 4px;
   display: grid;
   gap: 30px;
-
+  background-color: white;
   @media screen and (min-width: 768px) {
+    padding: 0;
     gap: 60px;
   }
 
@@ -12,30 +14,26 @@
     justify-items: center;
 
     @media (min-width: 768px) {
-      gap: 3rem;
-      grid-template-columns: minmax(0, 0.43fr) minmax(0, 0.57fr);
+      column-gap: 3rem;
+      row-gap: 0;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
   }
 
   .headings {
     display: grid;
-    gap: 20px;
     grid-template-rows: repeat(2, minmax(0, auto));
     align-content: center;
     justify-items: center;
-    margin: 0 1rem;
     text-align: center;
 
     @media (min-width: 768px) {
       gap: 31px;
       justify-items: flex-start;
-      margin: 0 0 0 2rem;
-
       text-align: left;
+      min-width: 100%;
     }
-    @media (min-width: 1024px) {
-      margin: 0 0 0 4rem;
-    }
+
     @media (min-width: 1200px) {
       padding: 4.4rem;
     }
@@ -85,23 +83,32 @@
       border-radius: 6px;
       transition: border-color 200ms ease-in;
 
-      &.active, &:hover {
+      &.active,
+      &:hover {
         path {
-          fill: rgba(#FF8900, 0.5);
+          fill: rgba(#ff8900, 0.5);
         }
       }
 
       &.active {
         path {
-          fill: #FF8900;
+          fill: #ff8900;
         }
       }
 
       path {
-        fill: rgba(#55576F, 0.5);
+        fill: rgba(#55576f, 0.5);
         transition: fill 200ms ease-in;
       }
+    }
+  }
 
+  .brand-reputation {
+    &__cta {
+      @media (min-width: 768px) {
+        grid-column: 2 / 2;
+        margin-bottom: 30px;
+      }
     }
   }
 }

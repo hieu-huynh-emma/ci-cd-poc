@@ -1,0 +1,73 @@
+<style>
+  .banner {
+    color: white;
+    font-family: body-text;
+    font-weight: bold;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #home-risk-free-banner-section .splide__track {
+    padding: 0;
+  }
+
+  @media screen and (min-width: 768px) {
+    #home-risk-free-banner-section .splide__list {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+</style>
+
+<section id="home-risk-free-banner-section">
+  <div class="splide bg-chambray px-2 py-2 lg:px-auto">
+    <div class="splide__track">
+      <ul class="splide__list">
+        <li class="splide__slide banner">
+          <img src="{{ 'delivery.svg' | asset_url }}" width="25" height="25"/>
+          <span class="banner mx-1 lg:mr-6 lg:ml-3.5">Free delivery</span>
+        </li>
+        <li class="splide__slide banner">
+          <img src="{{ 'star.svg' | asset_url }}" width="20" height="20"/>
+          <span class="banner mx-1 lg:mr-6 lg:ml-3.5">365 nights risk free trial</span>
+        </li>
+        <li class="splide__slide banner">
+          <img src="{{ 'credit-card.svg' | asset_url }}" width="20" height="20"/>
+          <span class="banner mx-1 lg:mr-6 lg:ml-3.5">Financing Available</span>
+        </li>
+        <li class="splide__slide banner">
+          <img src="{{ 'calendar.svg' | asset_url }}" width="20" height="20"/>
+          <span class="banner mx-1 lg:mr-6 lg:ml-3.5">10-Year Warranty</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+<script defer type="module">
+  $(document).ready(function () {
+    new Splide('#home-risk-free-banner-section .splide', {
+      gap: '16px',
+      pagination: false,
+      autoplay: true,
+      interval: 3000,
+      type: 'loop',
+      width: '100%',
+      perPage: 1,
+      perMove: 1,
+      mediaQuery: 'min',
+      breakpoints: {
+        768: {
+          perPage: 2,
+          perMove: 1,
+        },
+        1024: {
+          destroy: true,
+        },
+      },
+    }).mount()
+  })
+</script>

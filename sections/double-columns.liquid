@@ -1,0 +1,232 @@
+<style>
+  .double-columns-section {
+    width: 100%;
+    background-color: white;
+  }
+
+  .double-columns-section .wrapper {
+    max-width: 1440px;
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 1rem;
+  }
+
+  .double-columns-section .column {
+    width: 100%;
+    padding-top: 2rem;
+  }
+
+  .double-columns-collapsible {
+    padding: 1.25rem 0;
+    cursor: pointer;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .double-columns-collapsible h3 {
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 600;
+  }
+
+  .content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+  }
+
+  .content p {
+    font-size: 13px;
+    line-height: 19.5px;
+    margin-bottom: 1.25rem;
+  }
+
+
+  .double-columns-section pre {
+    font-size: 13px;
+  }
+
+  .circle {
+    border: 1px solid #3C4196;
+    height: 30px;
+    width: 30px;
+    min-width: 30px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .arrow {
+    border: solid #3C4196;
+    border-width: 0 1px 1px 0;
+    display: inline-block;
+    padding: 3px;
+    width: 10px;
+    height: 10px;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    transition: transform 0.2s;
+  }
+
+  .active .arrow {
+    transform: rotate(-135deg);
+    -webkit-transform: rotate(-135deg);
+    transition: transform 0.2s;
+    border: solid white;
+    border-width: 0 1px 1px 0;
+  }
+
+  .active .circle {
+    background-color: #3C4196;
+  }
+
+  .double-column-divider {
+    display: block;
+    height: 1px;
+    background-color: rgba(46, 47, 60, 0.3);
+  }
+
+  .column .double-column-divider:last-child {
+    display: none;
+  }
+
+  @media (min-width: 769px) {
+    .double-columns-section .wrapper {
+      flex-wrap: nowrap;
+      padding: 0 2.5rem;
+    }
+
+    .double-columns-section .column {
+      width: 50%;
+      margin: 0 1.5rem;
+    }
+  }
+</style>
+<section class="double-columns-section">
+  <div class="wrapper">
+    <div class="column">
+      <h2 class="heading-2">{{ section.settings.heading_1 }}</h2>
+      {% for block in section.blocks %}
+        {% if block.type == 'left_column' %}
+          <div class="double-columns-collapsible">
+            <h3 class="question">{{ block.settings.title }}</h3>
+            <div class="circle">
+              <i class="arrow down"></i>
+            </div>
+          </div>
+          <div class="content">
+            <p>{{ block.settings.content }}</p>
+          </div>
+          <span class="double-column-divider"></span>
+        {% endif %}
+      {% endfor %}
+    </div>
+    <div class="column">
+      <h2 class="heading-2">{{ section.settings.heading_2 }}</h2>
+      {% for block in section.blocks %}
+        {% if block.type == 'right_column' %}
+          <div class="double-columns-collapsible">
+            <h3 class="question">{{ block.settings.title }}</h3>
+            <div class="circle">
+              <i class="arrow down"></i>
+            </div>
+          </div>
+          <div class="content">
+            <p>{{ block.settings.content }}</p>
+          </div>
+          <span class="double-column-divider"></span>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Double Columns",
+  "blocks": [
+    {
+      "type": "left_column",
+      "name": "Left Columns Item",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Left Column Dropdown"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Title"
+        },
+        {
+          "type": "html",
+          "id": "content",
+          "label": "Content",
+          "default": "<p>Content</p>"
+        }
+      ]
+    },
+    {
+      "type": "right_column",
+      "name": "Right Column Item",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Right Column Dropdown"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Title"
+        },
+        {
+          "type": "html",
+          "id": "content",
+          "label": "Content",
+          "default": "<p>Content</p>"
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "id": "heading_1",
+      "type": "text",
+      "label": "Heading 1",
+      "default": "FAQs"
+    },
+    {
+      "id": "heading_2",
+      "type": "text",
+      "label": "Heading 2",
+      "default": "Specs"
+    }
+  ]
+}
+{% endschema %}
+<script>
+  var coll = document.getElementsByClassName('double-columns-collapsible')
+  var i
+
+  for (i = 0; i < coll.length; i++) {
+    coll[i].addEventListener('click', function () {
+      this.classList.toggle('active')
+      var content = this.nextElementSibling
+      if (content.style.maxHeight) {
+        content.style.maxHeight = null
+      } else {
+        content.style.maxHeight = content.scrollHeight + 'px'
+      }
+    })
+  }
+</script>

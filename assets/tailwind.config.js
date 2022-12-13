@@ -17,6 +17,10 @@ tailwind.config = {
         'cultured': "#F7F7F9",
         red: '#FF0000'
       },
+    },
+    fontFamily: {
+      'acuminpro': ["acumin-pro"],
+      'helvetica': ["helvetica"],
     }
   },
 }
