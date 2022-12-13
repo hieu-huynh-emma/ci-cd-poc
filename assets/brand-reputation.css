@@ -1,79 +1,108 @@
 #brand-reputation-section {
+  padding: 2rem 4px;
   display: grid;
-  gap: 30px; }
-  @media screen and (min-width: 768px) {
-    #brand-reputation-section {
-      gap: 60px; } }
+  gap: 30px;
+  background-color: white;
+}
+@media screen and (min-width: 768px) {
+  #brand-reputation-section {
+    padding: 0;
+    gap: 60px;
+  }
+}
+#brand-reputation-section .wrapper {
+  display: grid;
+  gap: 20px;
+  justify-items: center;
+}
+@media (min-width: 768px) {
   #brand-reputation-section .wrapper {
-    display: grid;
-    gap: 20px;
-    justify-items: center; }
-    @media (min-width: 768px) {
-      #brand-reputation-section .wrapper {
-        gap: 3rem;
-        grid-template-columns: minmax(0, 0.43fr) minmax(0, 0.57fr); } }
+    column-gap: 3rem;
+    row-gap: 0;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+#brand-reputation-section .headings {
+  display: grid;
+  grid-template-rows: repeat(2, minmax(0, auto));
+  align-content: center;
+  justify-items: center;
+  text-align: center;
+}
+@media (min-width: 768px) {
   #brand-reputation-section .headings {
-    display: grid;
-    gap: 20px;
-    grid-template-rows: repeat(2, minmax(0, auto));
-    align-content: center;
-    justify-items: center;
-    margin: 0 1rem;
-    text-align: center; }
-    @media (min-width: 768px) {
-      #brand-reputation-section .headings {
-        gap: 31px;
-        justify-items: flex-start;
-        margin: 0 0 0 2rem;
-        text-align: left; } }
-    @media (min-width: 1024px) {
-      #brand-reputation-section .headings {
-        margin: 0 0 0 4rem; } }
-    @media (min-width: 1200px) {
-      #brand-reputation-section .headings {
-        padding: 4.4rem; } }
+    gap: 31px;
+    justify-items: flex-start;
+    text-align: left;
+    min-width: 100%;
+  }
+}
+@media (min-width: 1200px) {
+  #brand-reputation-section .headings {
+    padding: 4.4rem;
+  }
+}
+#brand-reputation-section .affiliates {
+  display: grid;
+  gap: 10px 8px;
+  grid-auto-flow: row;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 30px 16px;
+  border-radius: 10px 0px 0px 0px;
+}
+@media screen and (min-width: 768px) {
   #brand-reputation-section .affiliates {
-    display: grid;
-    gap: 10px 8px;
-    grid-auto-flow: row;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    padding: 2rem;
+  }
+}
+@media (min-width: 1024px) {
+  #brand-reputation-section .affiliates {
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    align-content: center;
-    align-items: center;
-    width: 100%;
-    padding: 30px 16px;
-    border-radius: 10px 0px 0px 0px; }
-    @media screen and (min-width: 768px) {
-      #brand-reputation-section .affiliates {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        padding: 2rem; } }
-    @media (min-width: 1024px) {
-      #brand-reputation-section .affiliates {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 20px;
-        padding: 3rem; } }
-    @media (min-width: 1200px) {
-      #brand-reputation-section .affiliates {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-        padding: 4rem; } }
-    @media (min-width: 1400px) {
-      #brand-reputation-section .affiliates {
-        min-height: 400px;
-        padding: 5.625rem; } }
-    #brand-reputation-section .affiliates__item {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 60px;
-      padding: 10px;
-      text-align: center;
-      cursor: pointer;
-      border: 1px solid transparent;
-      border-radius: 6px;
-      transition: border-color 200ms ease-in; }
-      #brand-reputation-section .affiliates__item.active path, #brand-reputation-section .affiliates__item:hover path {
-        fill: rgba(255, 137, 0, 0.5); }
-      #brand-reputation-section .affiliates__item.active path {
-        fill: #FF8900; }
-      #brand-reputation-section .affiliates__item path {
-        fill: rgba(85, 87, 111, 0.5);
-        transition: fill 200ms ease-in; }
+    gap: 20px;
+    padding: 3rem;
+  }
+}
+@media (min-width: 1200px) {
+  #brand-reputation-section .affiliates {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    padding: 4rem;
+  }
+}
+@media (min-width: 1400px) {
+  #brand-reputation-section .affiliates {
+    min-height: 400px;
+    padding: 5.625rem;
+  }
+}
+#brand-reputation-section .affiliates__item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 60px;
+  padding: 10px;
+  text-align: center;
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  transition: border-color 200ms ease-in;
+}
+#brand-reputation-section .affiliates__item.active path, #brand-reputation-section .affiliates__item:hover path {
+  fill: rgba(255, 137, 0, 0.5);
+}
+#brand-reputation-section .affiliates__item.active path {
+  fill: #ff8900;
+}
+#brand-reputation-section .affiliates__item path {
+  fill: rgba(85, 87, 111, 0.5);
+  transition: fill 200ms ease-in;
+}
+@media (min-width: 768px) {
+  #brand-reputation-section .brand-reputation__cta {
+    grid-column: 2/2;
+    margin-bottom: 30px;
+  }
+}

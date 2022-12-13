@@ -5,3 +5,16 @@
 
   cursor: not-allowed;
 }
+
+@mixin createGridOrder($min, $max) {
+  @for $i from $min to $max {
+    .grid-row-#{$i} {
+      grid-row: $i;
+    }
+    .grid-col-#{$i} {
+      grid-column: $i;
+    }
+  }
+}
+
+@include createGridOrder(1, 100)

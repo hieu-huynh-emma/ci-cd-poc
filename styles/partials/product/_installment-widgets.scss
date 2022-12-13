@@ -1,0 +1,59 @@
+.product__info-container {
+
+  klarna-placement {
+    font-size: 20px !important;
+
+    > * {
+      width: fit-content !important;
+    }
+  }
+
+  .container {
+     font-weight: 400;
+     color: #2E2F3C;
+  }
+
+  .shopify-block {
+    margin:0 !important;
+  }
+}
+
+//Select Klarna Widget
+.price-block + .shopify-app-block {
+  margin: 0;
+}
+
+.qp-widget-container {
+  margin-bottom: 0 !important;
+  font-weight: 400;
+  color: #2E2F3C;
+  font-size: 12px;
+  line-height: 16px;
+
+  @media (min-width: 768px) {
+    font-size: 13px;
+    line-height: 20px;
+  }
+}
+
+
+.qp--wrapped-content {
+  flex-basis: 0;
+}
+
+#product-form-installment {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  color: #2E2F3C;
+
+  @media (min-width: 768px) {
+    font-size: 13px;
+    line-height: 20px;
+  }
+}
+
+.ca-promotional-widget {
+  margin: 0;
+}
+

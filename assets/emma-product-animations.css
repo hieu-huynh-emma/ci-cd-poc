@@ -1,0 +1,38 @@
+.emma-wave {
+  opacity: 0.4;
+  background: #FF8900;
+  transform-origin: 50% 48%;
+  border-radius: 43%;
+  animation: drift 10000ms infinite linear;
+}
+
+.emma-wave--two {
+  animation: drift 5000ms infinite linear;
+  opacity: 0.1;
+}
+
+.emma-wave--three {
+  animation: drift 25000ms infinite linear;
+}
+
+.emma-wave--four {
+  background: linear-gradient(135deg, #FFEAD2 32.39%, rgba(255, 193, 121, 0) 82.8%);
+}
+
+@keyframes drift {
+  from {
+    transform: rotate(0deg);
+  }
+  from {
+    transform: rotate(360deg);
+  }
+}
+[data-aos^=fade-slowly][data-aos^=fade-slowly] {
+  opacity: 0.9;
+  transition-property: opacity, transform;
+  transform: translate3d(0, 100px, 0);
+}
+[data-aos^=fade-slowly][data-aos^=fade-slowly].aos-animate {
+  opacity: 1;
+  transform: none;
+}

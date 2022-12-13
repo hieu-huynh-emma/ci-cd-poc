@@ -1,0 +1,18 @@
+{% assign selected_variant = product.selected_or_first_available_variant %}
+
+<div id="product-affirm">
+  <div class="pro_info cart-drawer-affirm-en">
+    or
+    <strong><span class="pro_val">{{ selected_variant.price | divided_by: 6 | money }}</span></strong>
+    monthly with
+    <span class="pay_img" style="display: inline-flex">
+        <img src="https://cdn.shopify.com/s/files/1/0562/9873/3706/files/Logo_affirm.png?v=1659502934">
+      </span>
+    financing <a data-fancybox data-src="#pro_step" href="javascript:" class="que">?</a>
+  </div>
+
+  <div data-fancybox data-src="#fr_pop" href="javascript:" class="fr_pop cart-drawer-affirm-fr" style="display: block;">
+    <a class="fr_txt">Option de crédit</a>
+    <a class="que">?</a>
+  </div>
+</div>
