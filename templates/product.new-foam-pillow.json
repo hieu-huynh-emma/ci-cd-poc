@@ -1,0 +1,439 @@
+{
+  "sections": {
+    "banner": {
+      "type": "home-risk-free-banner",
+      "settings": {
+        "year_warranty": 3,
+        "night_trial": 60,
+        "financing_available": false
+      }
+    },
+    "main": {
+      "type": "product-details",
+      "blocks": {
+        "title": {
+          "type": "title",
+          "settings": {
+          }
+        },
+        "subtitle": {
+          "type": "text",
+          "settings": {
+            "text": "{{ product.metafields.descriptors.subtitle.value }}",
+            "text_style": "subtitle"
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {
+          }
+        },
+        "affirm_container": {
+          "type": "affirm_container",
+          "settings": {
+          }
+        },
+        "description": {
+          "type": "description",
+          "settings": {
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button"
+          }
+        },
+        "quantity_selector": {
+          "type": "quantity_selector",
+          "settings": {
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true
+          }
+        },
+        "027d2f0b-b63c-4c8d-b16e-65790b63aee0": {
+          "type": "mini-review",
+          "settings": {
+            "title": "No more neck pain!",
+            "content": "My wife was suffering from neck aches several times a month. Since purchasing the Emma pillow, no more aches! Really comfortable pillow. We have since purchased the Emma mattress for our parents and they are loving it!",
+            "customer_name": "Zak",
+            "customer_location": "Vancouver, British Columbia"
+          }
+        },
+        "b9f03ddb-c081-415a-9a43-eadc841c2049": {
+          "type": "mini-review",
+          "settings": {
+            "title": "Goodbye neck pain",
+            "content": "Pillow that seems a bit thick the first few hours but becomes very comfortable afterwards. No more neck pain in the morning, why did I wait so long before changing? I recommend it without limit.",
+            "customer_name": "Abieuzent",
+            "customer_location": "Winnipeg, Manitoba"
+          }
+        },
+        "1f94613b-2d97-4383-864f-bb6d5e87e785": {
+          "type": "mini-review",
+          "settings": {
+            "title": "The Emma pillow provided me with a sleep...",
+            "content": "The Emma pillow gave me a better night's sleep, deep and pain-free neck, a situation that was previously recurrent",
+            "customer_name": "Inês N.",
+            "customer_location": "Ottawa, Ontario"
+          }
+        },
+        "030ef8d9-a517-48b4-866d-fcf9b98d1815": {
+          "type": "risk_reversal_item",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/free_delivery_blue.png",
+            "title": "<p><strong>Free Shipping & Returns<\/strong><\/p>"
+          }
+        },
+        "9fe40ff3-4c83-4c82-b178-ab0b42a8a917": {
+          "type": "risk_reversal_item",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Untitled_design_5.png",
+            "title": "<p><strong>60-Night Risk-Free Trial<\/strong><\/p>"
+          }
+        },
+        "9cad400a-201e-49ee-b327-24701231b7d8": {
+          "type": "risk_reversal_item",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/warranty_blue_1_1_82f9ff94-e59a-48e5-a13b-1b5dd10d18ff.png",
+            "title": "<p><strong>3-Year Warranty<\/strong><\/p>"
+          }
+        },
+        "d8409e4e-7ce5-4894-9112-a1ff03735541": {
+          "type": "risk_reversal_item",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Untitled_design_11.png",
+            "title": "<p><strong>24\/7 Customer Support<\/strong><\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "title",
+        "subtitle",
+        "price",
+        "affirm_container",
+        "description",
+        "variant_picker",
+        "quantity_selector",
+        "buy_buttons",
+        "027d2f0b-b63c-4c8d-b16e-65790b63aee0",
+        "b9f03ddb-c081-415a-9a43-eadc841c2049",
+        "1f94613b-2d97-4383-864f-bb6d5e87e785",
+        "030ef8d9-a517-48b4-866d-fcf9b98d1815",
+        "9fe40ff3-4c83-4c82-b178-ab0b42a8a917",
+        "9cad400a-201e-49ee-b327-24701231b7d8",
+        "d8409e4e-7ce5-4894-9112-a1ff03735541"
+      ],
+      "settings": {
+        "media_badge": "﻿20% OFF",
+        "enable_sticky_info": true,
+        "hide_variants": false,
+        "enable_video_looping": false,
+        "tab_title_1": "WHAT IT IS",
+        "tab_content_1": "<ul>\n<li>Adjustable three-layer foam pillow that provides bespoke comfort for any type of sleeper<\/li>\n<li>Breathable and hypoallergenic for sensitive and hot sleepers<\/li>\n<\/ul>",
+        "tab_title_2": "WHO IT'S FOR",
+        "tab_content_2": "<ul>\n<li>Budget-conscious sleepers who won’t compromise on quality <\/li>\n<li>Loved by back, side, and stomach sleepers<\/li>\n\n<\/ul>"
+      }
+    },
+    "alternate-banners": {
+      "type": "alternate-banners",
+      "blocks": {
+        "1a40ff53-9e17-4bc1-8f32-cc39fbfd6e23": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Untitled_design.jpg",
+            "title": "A pillow for all sleeping positions",
+            "content": "No matter if you sleep on your side, back or on your stomach: with the individually removable layers you can adjust the pillow height exactly to your needs."
+          }
+        },
+        "3c7042bd-f91e-4ea9-b2e8-dea2a7bfe9fe": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Untitled_design_2_f04b6278-ffd6-4eb5-bed4-7e0bf1637843.png",
+            "title": "Maximum sleeping comfort",
+            "content": "Full relaxation of the head, shoulders and neck thanks to our adaptive visco foam. Wonderful lying feeling thanks to individually adjustable degrees of hardness. Heavenly dry and cool thanks to breathable Airgocell® foam and UltraDry cover."
+          }
+        },
+        "fc285559-d93f-4537-a582-d2bee0b5e6ea": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Untitled_design_3_adb54cf9-f7bb-4e43-9226-a2e8c80ea848.png",
+            "title": "All-around carefree pillow",
+            "content": "100% carefree: Our pillow retains its support overnight and for years. It is hypoallergenic, vegan, OEKOTEX-100 tested for harmful substances and has a washable cover. And as always, you can try sleep for 100 nights!"
+          }
+        }
+      },
+      "block_order": [
+        "1a40ff53-9e17-4bc1-8f32-cc39fbfd6e23",
+        "3c7042bd-f91e-4ea9-b2e8-dea2a7bfe9fe",
+        "fc285559-d93f-4537-a582-d2bee0b5e6ea"
+      ],
+      "settings": {
+      }
+    },
+    "accessory-highlights": {
+      "type": "accessory-highlights",
+      "blocks": {
+        "76232b4f-41fc-4499-ab92-8f6dc9f657b9": {
+          "type": "highlight",
+          "settings": {
+            "title": "Precise pressure relief",
+            "content": "Adaptive viscose foam supports your head and neck precisely so that you can sleep completely relaxed."
+          }
+        },
+        "665b1e19-6d3d-41ae-acca-13643cfae236": {
+          "type": "highlight",
+          "settings": {
+            "title": "Soft and breathable",
+            "content": "Heavenly sleeping climate thanks to breathable Airgocell® foam. The softest of the three layers."
+          }
+        },
+        "f76fb2dc-fbcb-4637-917e-e9427f7be812": {
+          "type": "highlight",
+          "settings": {
+            "title": "Supportive",
+            "content": "Viscose foam with a slightly softer feeling to lie on, but still provides great pressure relief for the head, neck and shoulders."
+          }
+        },
+        "4ff03ea0-193d-400b-a916-df4a61759601": {
+          "type": "highlight",
+          "settings": {
+            "title": "Cooling Cover",
+            "content": "UltraDry technology transports moisture away quickly and ensures a pleasantly cool, dry sleeping environment."
+          }
+        }
+      },
+      "block_order": [
+        "76232b4f-41fc-4499-ab92-8f6dc9f657b9",
+        "665b1e19-6d3d-41ae-acca-13643cfae236",
+        "f76fb2dc-fbcb-4637-917e-e9427f7be812",
+        "4ff03ea0-193d-400b-a916-df4a61759601"
+      ],
+      "settings": {
+        "highligh_content": "",
+        "title": "Love at first sleep",
+        "subtitle": "ENGINEERED BY SLEEP EXPERTS"
+      }
+    },
+    "information-tabs": {
+      "type": "information-tabs",
+      "disabled": true,
+      "blocks": {
+        "82ffd23f-3e8b-4e5c-a165-5897fe51cbec": {
+          "type": "tab",
+          "settings": {
+            "tab_title": "Tabbed content",
+            "tab_content": "<p><strong>Lorem ipsum<br\/><\/strong><br\/>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<\/p>"
+          }
+        },
+        "46ebc01e-5f8d-47b4-b934-6a960f97d181": {
+          "type": "tab",
+          "settings": {
+            "tab_title": "Tabbed content",
+            "tab_content": "<p><strong>Lorem ipsum<br\/><\/strong><br\/>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<\/p>"
+          }
+        },
+        "e1cc5e35-c423-49f9-95ba-a2a2b4a3a087": {
+          "type": "tab",
+          "settings": {
+            "tab_title": "Tabbed content",
+            "tab_content": "<p><strong>Lorem ipsum<br\/><\/strong><br\/>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "82ffd23f-3e8b-4e5c-a165-5897fe51cbec",
+        "46ebc01e-5f8d-47b4-b934-6a960f97d181",
+        "e1cc5e35-c423-49f9-95ba-a2a2b4a3a087"
+      ],
+      "settings": {
+        "title": "Bed information"
+      }
+    },
+    "faqs-and-specs": {
+      "type": "double-columns",
+      "blocks": {
+        "78ca144d-5919-4a1b-9e22-082ef5384310": {
+          "type": "left_column",
+          "settings": {
+            "title": "Does the Emma Original Adjustable Foam Pillow stay cool at night?",
+            "content": "Yes it does. The Plush UltraDry® breathable cover has a knit design for optimal airflow and our AIRGOCELL® foam cooling technology dissipates sweat and distributes heat so that you keep a cool and comfortable sleep throughout the night."
+          }
+        },
+        "c68412f4-0251-42dc-9113-a0eecd22c518": {
+          "type": "left_column",
+          "settings": {
+            "title": "How does the Emma Original Adjustable Foam Pillow adjust to my sleep?",
+            "content": "The Emma Original Adjustable Foam Pillow is adjustable for any type of sleeper. The three different layers can be interchanged as you see fit. Its Supportive Visco Foam layer conforms to your head and neck so that your head is cradled and well-supported. Its AIRGOCELL® Foam layer is the softest layer which dissipates sweat and distributes heat for cool and breathable comfort. While its Pressure-relieving Viscose Foam has a slightly softer feel but consistent pressure relief for optimal support."
+          }
+        },
+        "a72149c3-5420-4a8c-80fe-7370288da216": {
+          "type": "left_column",
+          "settings": {
+            "title": "Is the Emma Original Adjustable Foam Pillow hypoallergenic?",
+            "content": "Yes, the Emma Original Adjustable Foam Pillow is  abreathable and hypoallergenic pillow perfect for sensitive and hot sleepers."
+          }
+        },
+        "d9373dca-57f2-4b56-8838-1a8fc22e21ca": {
+          "type": "left_column",
+          "settings": {
+            "title": "Does the Emma Original Adjustable Foam Pillow have a trial period and warranty?",
+            "content": "The Emma Original Adjustable Foam Pillow has a 60-night trial period, where you can enjoy it risk-free! It also has a warranty period of 3 years upon receipt. For more information on warranty claims, please visit our Terms and Conditions or contact our Customer Care agents from 6 AM - 9 PM EST through our available channels."
+          }
+        },
+        "25dc702d-b510-4b92-b992-7f9cd7c0af10": {
+          "type": "right_column",
+          "settings": {
+            "title": "Construction, Materials, and Certifications",
+            "content": "<p><strong>Construction &amp; Materials<\/strong><br>• Hypergel Foam<br>• Hypersoft Foam<br>• Visco Foam<br>• Completely removable and washable cover made of 98% polyester and 2% elastane.<\/p>\n\n<p><strong>Certifications<\/strong><br>Cover and core (foam layers) are certified with a Class II (19.0.91049) of OEKO-Tex Standard 100.<br>What does it mean? The foam and the cover meet high quality standards.<\/p>"
+          }
+        },
+        "dc6becd9-d75d-4307-a1fd-f2ae96892001": {
+          "type": "right_column",
+          "settings": {
+            "title": "Size and Weight",
+            "content": "<p>Pillow Size: 28 x 16 in <br>Total Weight: 3.3 lbs <br>Filling Weight: 2.64 lbs<\/p>"
+          }
+        },
+        "27a05c64-cb9c-4e17-9607-0124a2982c36": {
+          "type": "right_column",
+          "settings": {
+            "title": "Mattress Box Dimensions",
+            "content": "<p>8 x 8 x 17 in, 4.62 lbs<\/p>"
+          }
+        },
+        "0d3641f2-2024-410e-8331-1d71bd48b165": {
+          "type": "right_column",
+          "settings": {
+            "title": "Country of Origin",
+            "content": "<p>Designed by Sleep Scientists in Germany and delivered straight to your home from our warehouse in Toronto. No middleman fees, just the best prices. All pillows are manufactured to our high quality assurance standards.<\/p>"
+          }
+        },
+        "80179856-c2a9-4910-a399-7555e1a4a0fc": {
+          "type": "right_column",
+          "settings": {
+            "title": "Delivery and Returns",
+            "content": "<p>Free Delivery <br>We work with the top carriers in Canada to ship your Emma products straight from our warehouse to your front door.<\/p>\n\n<p>Free Returns<br>Enjoy a 60-nights free trial on your Emma Foam Pillow. We typically require an adjustment period of at least 3 weeks as our researchers confirm that it takes around that long to get suited to your Emma product. Of course, we've made returning of any unsuitable items super easy. Just contact our customer service and we'll take care of the rest.<\/p>\n\n<p>If you would like to contact us, please feel free to email our support team at support@emma-sleep.ca or call us at +1-888-585-3662.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "78ca144d-5919-4a1b-9e22-082ef5384310",
+        "c68412f4-0251-42dc-9113-a0eecd22c518",
+        "a72149c3-5420-4a8c-80fe-7370288da216",
+        "d9373dca-57f2-4b56-8838-1a8fc22e21ca",
+        "25dc702d-b510-4b92-b992-7f9cd7c0af10",
+        "dc6becd9-d75d-4307-a1fd-f2ae96892001",
+        "27a05c64-cb9c-4e17-9607-0124a2982c36",
+        "0d3641f2-2024-410e-8331-1d71bd48b165",
+        "80179856-c2a9-4910-a399-7555e1a4a0fc"
+      ],
+      "settings": {
+        "heading_1": "FAQs",
+        "heading_2": "Specs"
+      }
+    },
+    "yotpo-main-widget": {
+      "type": "yotpo-main-widget",
+      "settings": {
+      }
+    },
+    "brand-statistics": {
+      "type": "brand-statistics",
+      "blocks": {
+        "ca504ac7-3137-4ad7-997c-c1e12bd1d446": {
+          "type": "wallpaper",
+          "settings": {
+            "src": "shopify:\/\/shop_images\/wallpaper-1.png",
+            "color": "#ffdeb7"
+          }
+        },
+        "9593f14f-4c86-4af9-953e-0fa248231b89": {
+          "type": "footer-button",
+          "settings": {
+            "url": "shopify:\/\/collections\/mattresses",
+            "text": "shop mattresses"
+          }
+        }
+      },
+      "block_order": [
+        "ca504ac7-3137-4ad7-997c-c1e12bd1d446",
+        "9593f14f-4c86-4af9-953e-0fa248231b89"
+      ],
+      "settings": {
+        "borderless": true,
+        "review-number": 4000000,
+        "title": "<p>Happy Sleepers Worldwide<\/p>",
+        "subtitle": "Curious as to why millions of customers in over 30 countries have chosen Emma? See what they have to say about us."
+      }
+    },
+    "products-grid": {
+      "type": "products-grid",
+      "blocks": {
+        "4f70ceb7-0ed5-4816-a3c6-7e5307241126": {
+          "type": "grid_item",
+          "settings": {
+            "product": "emma-mattress-protector",
+            "badge_text": "10% off",
+            "name": ""
+          }
+        },
+        "ddf828c5-6eed-47cf-bc7f-f8ba12792926": {
+          "type": "grid_item",
+          "settings": {
+            "product": "emma-topper",
+            "badge_text": "18 off",
+            "name": ""
+          }
+        },
+        "5a957481-10d2-43ab-a92a-241d7d34bd5f": {
+          "type": "grid_item",
+          "settings": {
+            "product": "emma-bed-frame",
+            "badge_text": "13% off",
+            "name": ""
+          }
+        },
+        "07c3a1bf-135a-4913-a567-74e6d897d945": {
+          "type": "grid_item",
+          "settings": {
+            "product": "emma-climax-hybrid",
+            "badge_text": "38% off",
+            "name": ""
+          }
+        }
+      },
+      "block_order": [
+        "4f70ceb7-0ed5-4816-a3c6-7e5307241126",
+        "ddf828c5-6eed-47cf-bc7f-f8ba12792926",
+        "5a957481-10d2-43ab-a92a-241d7d34bd5f",
+        "07c3a1bf-135a-4913-a567-74e6d897d945"
+      ],
+      "settings": {
+        "title": "You might also like"
+      }
+    },
+    "contact-us": {
+      "type": "contact-us",
+      "settings": {
+        "custom_title": "Need help deciding?"
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "main",
+    "alternate-banners",
+    "accessory-highlights",
+    "information-tabs",
+    "faqs-and-specs",
+    "yotpo-main-widget",
+    "brand-statistics",
+    "products-grid",
+    "contact-us"
+  ]
+}

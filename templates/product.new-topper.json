@@ -1,0 +1,394 @@
+{
+  "sections": {
+    "banner": {
+      "type": "home-risk-free-banner",
+      "settings": {
+        "year_warranty": 5,
+        "night_trial": 60,
+        "financing_available": false
+      }
+    },
+    "main": {
+      "type": "product-details",
+      "blocks": {
+        "title": {
+          "type": "title",
+          "settings": {
+          }
+        },
+        "subtitle": {
+          "type": "text",
+          "settings": {
+            "text": "{{ product.metafields.descriptors.subtitle.value }}",
+            "text_style": "subtitle"
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {
+          }
+        },
+        "affirm_container": {
+          "type": "affirm_container",
+          "settings": {
+          }
+        },
+        "description": {
+          "type": "description",
+          "settings": {
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button"
+          }
+        },
+        "quantity_selector": {
+          "type": "quantity_selector",
+          "settings": {
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true
+          }
+        },
+        "eb1b6a19-3823-4c79-9f44-ff859cb77459": {
+          "type": "risk_reversal_item",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/free_delivery_blue.png",
+            "title": "<p><strong>Free Shipping & Returns<\/strong><\/p>"
+          }
+        },
+        "cc5170cb-00d0-42bc-be01-ca440a233368": {
+          "type": "risk_reversal_item",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Untitled_design_5.png",
+            "title": "<p><strong>60-Nights Risk-Free Trial<\/strong><\/p>"
+          }
+        },
+        "ebae4fda-9a46-4efc-9e29-dc47b051059f": {
+          "type": "risk_reversal_item",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/warranty_blue_1_1_82f9ff94-e59a-48e5-a13b-1b5dd10d18ff.png",
+            "title": "<p><strong>5-Year Warranty<\/strong><\/p>"
+          }
+        },
+        "7f2920be-6720-46e4-a2f2-d7b53913f5c0": {
+          "type": "risk_reversal_item",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Untitled_design_11.png",
+            "title": "<p><strong>24\/7 Customer Support<\/strong><\/p>"
+          }
+        },
+        "734bd135-4277-49a3-a893-722d33314c93": {
+          "type": "mini-review",
+          "settings": {
+            "title": "The perfect complement to your mattress",
+            "content": "This was the perfect complement to our Emma mattress! I love how it's reversible so on days where my body is more sore because of workouts, I can easily switch to the softer side and back to the firmer side when I want more support for my back. Highly recommend!",
+            "customer_name": "Jonathan W.",
+            "customer_location": "Vancouver, British Columbia"
+          }
+        },
+        "444a4ce1-6b7e-4155-9d23-75fde06dbaaa": {
+          "type": "mini-review",
+          "settings": {
+            "title": "He loves it.",
+            "content": "We bought our son a less expensive mattress last year. He was telling us how it wasn’t that comfortable, anymore. I bought him the Topper and he love it’s.\nGame changer. Glad he loves it and not expensive. Very good quality.",
+            "customer_name": "Carolyn M.",
+            "customer_location": "Vankleek Hill, Ontario"
+          }
+        },
+        "05ec72e9-1576-4012-bd0c-dea801c282df": {
+          "type": "mini-review",
+          "settings": {
+            "title": "Super Topper",
+            "content": "I bought something from Emma for the first time, a topper 120x200cm. The delivery took a little longer, but the result was great. The topper is really great and I can now sleep much more relaxed. Would definitely buy one again and continue to use it.",
+            "customer_name": "Gisela K.",
+            "customer_location": "Calgary, Ontario"
+          }
+        }
+      },
+      "block_order": [
+        "title",
+        "subtitle",
+        "price",
+        "affirm_container",
+        "description",
+        "variant_picker",
+        "quantity_selector",
+        "buy_buttons",
+        "eb1b6a19-3823-4c79-9f44-ff859cb77459",
+        "cc5170cb-00d0-42bc-be01-ca440a233368",
+        "ebae4fda-9a46-4efc-9e29-dc47b051059f",
+        "7f2920be-6720-46e4-a2f2-d7b53913f5c0",
+        "734bd135-4277-49a3-a893-722d33314c93",
+        "444a4ce1-6b7e-4155-9d23-75fde06dbaaa",
+        "05ec72e9-1576-4012-bd0c-dea801c282df"
+      ],
+      "settings": {
+        "media_badge": "﻿30% OFF",
+        "enable_sticky_info": true,
+        "hide_variants": false,
+        "enable_video_looping": false,
+        "tab_title_1": "WHAT IT IS",
+        "tab_content_1": "<ul>\n<li>Reversible firm and soft sides to suit any sleeping preference<\/li>\n<li>Works with any other mattress brand<\/li>\n<li>Made with the same <strong>AIRGOCELL®<\/strong> foam as our award-winning <strong>Emma® Original<\/strong> mattresses<\/li>\n<li>Breathable, washable, and plush cover<\/li>\n<li>Luxuriously adds 2\" in height<\/li>\n<\/ul>",
+        "tab_title_2": "WHO IT'S FOR",
+        "tab_content_2": "<ul>\n<li>Budget-conscious sleepers who won’t compromise on quality<\/li>\n<li>Loved by back, side, and stomach sleepers<\/li>\n<\/ul>"
+      }
+    },
+    "alternate-banners": {
+      "type": "alternate-banners",
+      "blocks": {
+        "1a40ff53-9e17-4bc1-8f32-cc39fbfd6e23": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Irresistibly_comfortable.jpg",
+            "title": "Irresistibly comfortable",
+            "content": "​With pressure-compensating HRXSupreme foam and soft Airgocell® foam, you are wonderfully comfortable in every position. And with our breathable UltraDry Cover you can sleep cool and dry all night."
+          }
+        },
+        "3c7042bd-f91e-4ea9-b2e8-dea2a7bfe9fe": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/A_topper_for_all_situations.jpg",
+            "title": "A topper for all situations",
+            "content": "Your sleep preferences can change over time. No problem with our topper: simply choose between a firmer and a softer side to achieve the comfort you want."
+          }
+        },
+        "fc285559-d93f-4537-a582-d2bee0b5e6ea": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/All-round_carefree_guarantee.jpg",
+            "title": "All-round carefree guarantee",
+            "content": "Our topper is 100% vegan, non-toxic, and certified according to the highest OEKOTEX-100 standards. With its washable cover, the topper is also perfectly suitable for those with allergies."
+          }
+        }
+      },
+      "block_order": [
+        "1a40ff53-9e17-4bc1-8f32-cc39fbfd6e23",
+        "3c7042bd-f91e-4ea9-b2e8-dea2a7bfe9fe",
+        "fc285559-d93f-4537-a582-d2bee0b5e6ea"
+      ],
+      "settings": {
+      }
+    },
+    "information-tabs": {
+      "type": "information-tabs",
+      "disabled": true,
+      "blocks": {
+        "82ffd23f-3e8b-4e5c-a165-5897fe51cbec": {
+          "type": "tab",
+          "settings": {
+            "tab_title": "Tabbed content",
+            "tab_content": "<p><strong>Lorem ipsum<br\/><\/strong><br\/>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<\/p>"
+          }
+        },
+        "46ebc01e-5f8d-47b4-b934-6a960f97d181": {
+          "type": "tab",
+          "settings": {
+            "tab_title": "Tabbed content",
+            "tab_content": "<p><strong>Lorem ipsum<br\/><\/strong><br\/>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<\/p>"
+          }
+        },
+        "e1cc5e35-c423-49f9-95ba-a2a2b4a3a087": {
+          "type": "tab",
+          "settings": {
+            "tab_title": "Tabbed content",
+            "tab_content": "<p><strong>Lorem ipsum<br\/><\/strong><br\/>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "82ffd23f-3e8b-4e5c-a165-5897fe51cbec",
+        "46ebc01e-5f8d-47b4-b934-6a960f97d181",
+        "e1cc5e35-c423-49f9-95ba-a2a2b4a3a087"
+      ],
+      "settings": {
+        "title": "Bed information"
+      }
+    },
+    "faqs-and-specs": {
+      "type": "double-columns",
+      "blocks": {
+        "78ca144d-5919-4a1b-9e22-082ef5384310": {
+          "type": "left_column",
+          "settings": {
+            "title": "How will the Emma Firm-to-Soft Reversible Topper affect my mattress?",
+            "content": "The Emma Firm-to-Soft Reversible Topper allows you to change the softness or firmness of your mattress, depending on which side of the topper you use."
+          }
+        },
+        "c68412f4-0251-42dc-9113-a0eecd22c518": {
+          "type": "left_column",
+          "settings": {
+            "title": "Is the Emma Firm-to-Soft Reversible Topper compatible with any mattress?",
+            "content": "Yes, the Emma Firm-to-Soft Reversible Topper is compatible with any kind of mattress. We do recommend to pair it with our Emma mattresses for the best sleeping experience!"
+          }
+        },
+        "a72149c3-5420-4a8c-80fe-7370288da216": {
+          "type": "left_column",
+          "settings": {
+            "title": "Can I wash the Emma Firm-to-Soft Reversible Topper?",
+            "content": "Yes, but you can only wash the Plush UltraDry® Cover of the Emma Firm-to-Soft Reversible Topper. You can easily remove the cover by using the zipper found in the topper. For specific information on washing, you may see their individual wash-label details."
+          }
+        },
+        "d9373dca-57f2-4b56-8838-1a8fc22e21ca": {
+          "type": "left_column",
+          "settings": {
+            "title": "Does the Emma Firm-to-Soft Reversible Topper have a trial period and warranty?",
+            "content": "The Emma Firm-to-Soft Reversible Topper has a 60-night trial period, where you can enjoy it risk-free! It also has a warranty period of 5 years upon receipt. For more information on warranty claims, please visit our Terms and Conditions or contact our Customer Care agents from 6 AM - 9 PM EST through our available channels."
+          }
+        },
+        "dc6becd9-d75d-4307-a1fd-f2ae96892001": {
+          "type": "right_column",
+          "settings": {
+            "title": "Construction, Materials, and Certifications",
+            "content": "<p>Characteristics:<br>•Top and bottom fabric: 99% Polyester, 1% Elastane (330gsm)<br>•Knitted white fabric<br>•Completely detachable top to bottom dark gray zipper with blue Emma puller between border and top panel fabric.<\/p>\n<p>Certification<br>•OEKO-Tex® 100 Certified Class 1 (16.0.93305) of OEKO-Tex Standard 100.<br>What does it mean?<br>Meets the highest standard and are therefore suitable for infants.<\/p>"
+          }
+        },
+        "99f2277c-2819-4609-9e9b-52683fc8c127": {
+          "type": "right_column",
+          "settings": {
+            "title": "Size and Weight",
+            "content": "<p>Twin: 38 x 75 x 2 in, 10 lbs<br>Full: 54 x 75 x 2 in, 14 lbs<br>Queen: 60 x 80 x 2 in, 16.6 lbs<br>King: 76 x 80 x 2 in, 22 lbs<\/p>"
+          }
+        },
+        "27a05c64-cb9c-4e17-9607-0124a2982c36": {
+          "type": "right_column",
+          "settings": {
+            "title": "Mattress Box Dimensions",
+            "content": "<p>Each Emma flip topper comes in a 15 x 15 x 22 in box.<\/p>"
+          }
+        },
+        "0d3641f2-2024-410e-8331-1d71bd48b165": {
+          "type": "right_column",
+          "settings": {
+            "title": "Country of Origin",
+            "content": "<p>Designed by Sleep Scientists in Germany and delivered straight to your home from our warehouse in Toronto. No middleman fees, just the best prices. All mattresses are manufactured to our high quality assurance standards.<\/p>"
+          }
+        },
+        "bdad5210-a686-4ee2-8615-9826e8ee8b23": {
+          "type": "right_column",
+          "settings": {
+            "title": "Delivery and Returns",
+            "content": "<p>Free Delivery<br>We work with the top carriers in Canada to ship your Emma products straight from our warehouse to your front door.<\/p>\n<p>Free Returns<br>Enjoy a 60-nights free trial on your Emma Flip Topper. We typically require an adjustment period of at least 3 weeks as our researchers confirm that it takes around that long to get suited to your Emma product. Of course, we've made returning of any unsuitable items super easy. Just contact our customer service and we'll take care of the rest.<\/p>\n<p>If you would like to contact us, please feel free to email our support team at support@emma-sleep.ca or call us at +1-888-585-3662.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "78ca144d-5919-4a1b-9e22-082ef5384310",
+        "c68412f4-0251-42dc-9113-a0eecd22c518",
+        "a72149c3-5420-4a8c-80fe-7370288da216",
+        "d9373dca-57f2-4b56-8838-1a8fc22e21ca",
+        "dc6becd9-d75d-4307-a1fd-f2ae96892001",
+        "99f2277c-2819-4609-9e9b-52683fc8c127",
+        "27a05c64-cb9c-4e17-9607-0124a2982c36",
+        "0d3641f2-2024-410e-8331-1d71bd48b165",
+        "bdad5210-a686-4ee2-8615-9826e8ee8b23"
+      ],
+      "settings": {
+        "heading_1": "FAQs",
+        "heading_2": "Specs"
+      }
+    },
+    "yotpo-main-widget": {
+      "type": "yotpo-main-widget",
+      "settings": {
+      }
+    },
+    "brand-statistics": {
+      "type": "brand-statistics",
+      "blocks": {
+        "ca504ac7-3137-4ad7-997c-c1e12bd1d446": {
+          "type": "wallpaper",
+          "settings": {
+            "src": "shopify:\/\/shop_images\/wallpaper-1.png",
+            "color": "#ffdeb7"
+          }
+        },
+        "9593f14f-4c86-4af9-953e-0fa248231b89": {
+          "type": "footer-button",
+          "settings": {
+            "url": "shopify:\/\/collections\/mattresses",
+            "text": "shop mattresses"
+          }
+        }
+      },
+      "block_order": [
+        "ca504ac7-3137-4ad7-997c-c1e12bd1d446",
+        "9593f14f-4c86-4af9-953e-0fa248231b89"
+      ],
+      "settings": {
+        "borderless": true,
+        "review-number": 4000000,
+        "title": "<p>Happy Sleepers Worldwide<\/p>",
+        "subtitle": "Curious as to why millions of customers in over 30 countries have chosen Emma? See what they have to say about us."
+      }
+    },
+    "products-grid": {
+      "type": "products-grid",
+      "blocks": {
+        "ddf828c5-6eed-47cf-bc7f-f8ba12792926": {
+          "type": "grid_item",
+          "settings": {
+            "product": "emma-foam-pillow",
+            "badge_text": "21% off",
+            "name": ""
+          }
+        },
+        "4f70ceb7-0ed5-4816-a3c6-7e5307241126": {
+          "type": "grid_item",
+          "settings": {
+            "product": "emma-mattress-protector",
+            "badge_text": "10% off",
+            "name": ""
+          }
+        },
+        "07c3a1bf-135a-4913-a567-74e6d897d945": {
+          "type": "grid_item",
+          "settings": {
+            "product": "emma-bed-frame",
+            "badge_text": "13% off",
+            "name": ""
+          }
+        },
+        "5a957481-10d2-43ab-a92a-241d7d34bd5f": {
+          "type": "grid_item",
+          "settings": {
+            "product": "emma-climax-hybrid",
+            "badge_text": "38% OFF",
+            "name": ""
+          }
+        }
+      },
+      "block_order": [
+        "ddf828c5-6eed-47cf-bc7f-f8ba12792926",
+        "4f70ceb7-0ed5-4816-a3c6-7e5307241126",
+        "07c3a1bf-135a-4913-a567-74e6d897d945",
+        "5a957481-10d2-43ab-a92a-241d7d34bd5f"
+      ],
+      "settings": {
+        "title": "You might also like"
+      }
+    },
+    "contact-us": {
+      "type": "contact-us",
+      "settings": {
+        "custom_title": "Need help deciding?"
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "main",
+    "alternate-banners",
+    "information-tabs",
+    "faqs-and-specs",
+    "yotpo-main-widget",
+    "brand-statistics",
+    "products-grid",
+    "contact-us"
+  ]
+}

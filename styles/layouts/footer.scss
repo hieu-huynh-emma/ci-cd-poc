@@ -14,29 +14,9 @@
   }
 
   .wrapper {
-    max-width: 1050px;
+    max-width: 1280px;
     margin: 0 auto;
     padding: 0 15px;
-
-    @media (min-width: 1300px) {
-      min-width: 1300px;
-    }
-
-    @media (min-width: 1200px) {
-      min-width: 1200px;
-    }
-
-    @media (min-width: 992px) {
-      min-width: 960px;
-    }
-
-    @media (min-width: 1200px) {
-      min-width: 1300px;
-    }
-
-    @media (min-width: 1400px) {
-      min-width: 1350px !important;
-    }
 
     @media screen and (min-width: 591px) {
       padding: 0 30px;
@@ -90,9 +70,16 @@
     @media (min-width: 1200px) {
       display: flex;
       justify-content: space-between;
+      gap: 12px;
     }
 
     .newsletter-container {
+
+
+      @media (min-width: 1280px) {
+        width: 40%;
+      }
+
       @media (max-width: 1024px) {
         margin-bottom: 46px;
       }

@@ -313,7 +313,15 @@
     --color_drawer_button_text: #3c4196;
   }
 
-  {% if template != 'product.climax-hybrid-mattress' and template != 'product.new-original-mattress' and template != 'index' %}
+  {%-
+    if template != 'product.climax-hybrid-mattress'
+    and template != 'product.new-original-mattress'
+    and template != 'product.new-topper'
+    and template != 'product.new-bed-frame'
+    and template != 'product.new-foam-pillow'
+    and template != 'product.new-mattress-protector'
+    and template != 'index'
+  -%}
     body .main-content {
       padding-top: .5%
     }

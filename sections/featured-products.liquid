@@ -1,301 +1,154 @@
-<div id="CollectionSection" data-section-id="{{ section.id }}" data-section-type="collection-template" data-grid-type="{{ section.settings.collection_products_grid }}">
-  <div class="global-wrapper">
-    {% if section.settings.title != blank %}
-      <div class="section-header text-center">
-        <h2 class="h1 section-header__title">{{ section.settings.title | escape }}</h2>
-        <hr class="hr--small">
-      </div>
-    {% endif %}
+{% assign productBlocks = section.blocks | where: "type", "product-block" %}
 
-    <div class="{% if section.settings.collection_products_grid == 'collage' %}grid grid-collage{% else %}grid-uniform{% endif %}">
+<section id="featured-products-section">
+  <div class="wrapper">
+    <div class="headings">
+      <h2 class="heading-2 text-center text-charade">{{ section.settings.title | remove: "<p>" | remove: "</p>" }}</h2>
+      <p class="subheading text-comet">{{ section.settings.subtitle }}</p>
+    </div>
 
-      {% comment %}
-        Loop through products in your Frontpage collection.
-        This collection is created by default, but you must add products to it.
+    <div class="customer-reviews">
+      {%- for block in productBlocks -%}
+        {% assign product = block.settings.product %}
 
-        See the snippet 'snippets/product-grid-collage.liquid'.
+        <div class="card">
+          <div class="top-section">
+            <p class="card__badge">
+              {{ block.settings.badge }}
+            </p>
+            <div class="w-full">
+              <img
+                src="{{ block.settings.image | img_url: 'grande' }}" width="100%" height="auto"
+                class="h-full" loading="lazy"
+              />
+            </div>
 
-        `is_reverse_row_product`, `three_row_index_product`, `collection_product_count_product`, and `divisible_by_three_product` are
-        all used by 'snippets/product-grid-collage.liquid'
-      {% endcomment %}
+            <h3 class="text-[24px] text-charade font-normal text-center self-center">{{ product.title }}</h3>
+            <p class="text-charade mb-2">{{ block.settings.desc | remove: "<p>" | remove: "</p>" }}</p>
+            <div class="w-full">
+              <div class="mattress-comparison">
+                <div class="mattress-comparison__item">
+                  <p>Comfort</p>
+                  <div class="mattress-comparison__bar mattress-comparison__bar--outer">
+                    <div class="mattress-comparison__bar mattress-comparison__bar--inner fill-{{ block.settings.comfort_meter }}"></div>
+                  </div>
+                </div>
 
-      {% if section.settings.home_featured_products == blank or collections[section.settings.home_featured_products] == empty or collections[section.settings.home_featured_products].products_count == 0 %}
+                <div class="mattress-comparison__item">
+                  <p>Cooling</p>
+                  <div class="mattress-comparison__bar mattress-comparison__bar--outer">
+                    <div class="mattress-comparison__bar mattress-comparison__bar--inner fill-{{ block.settings.cooling_meter }}"></div>
+                  </div>
+                </div>
 
-      {% comment %}
-        For onboarding new users to your theme, we add some default products and onboarding tutorials to help populate their store
-      {% endcomment %}
-      {% unless emptyState %}
-        {% assign emptyState = true %}
-      {% endunless %}
-        {% include 'onboarding-featured-products' %}
-      {% else %}
+                <div class="mattress-comparison__item">
+                  <p>Motion Isolation</p>
+                  <div class="mattress-comparison__bar mattress-comparison__bar--outer">
+                    <div class="mattress-comparison__bar mattress-comparison__bar--inner fill-{{ block.settings.motion_isolation_meter }}"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
 
-        {% if section.settings.collection_products_grid == 'collage' %}
 
-          {% assign is_reverse_row__product = false %}
-          {% assign three_row_index__product = 0 %}
-          {% if collections[section.settings.home_featured_products].products_count > 50 %}
-            {% assign collection_product_count__product = 50 %}
-          {% else %}
-            {% assign collection_product_count__product = collections[section.settings.home_featured_products].products_count %}
-          {% endif %}
-          {% assign divisible_by_three__product = collection_product_count__product | modulo:3 %}
+          <div class="footer-section">
+            <div class="starting-at">
+              <span class="text-[14px] font-normal">starting at</span>
+              <div class="flex items-center">
+                {% if product.compare_at_price > product.price %}
+                  <p class="font-semibold mr-1 font-helvetica">{{ product.price | money_without_trailing_zeros }}</p>
+                  <p class="line-through font-helvetica">{{ product.compare_at_price | money_without_trailing_zeros }}</p>
+                {% else %}
+                  <p class="font-semibold font-helvetica">{{ product.price | money_without_trailing_zeros }}</p>
+                {% endif %}
+              </div>
+            </div>
 
-          {% for product in collections[section.settings.home_featured_products].products %}
-            {% include 'product-grid-collage' %}
-          {% endfor %}
+            <a class="btn" href="{{ product.url }}" rel="noreferrer">
+              Shop Now
+            </a>
+          </div>
 
-        {% else %}
 
-          {% assign grid_item_width = 'medium--one-half large--one-third' %}
-          {% for product in collections[section.settings.home_featured_products].products %}
-            {% include 'product-grid-item' %}
-          {% endfor %}
-
-        {% endif %}
-
-      {% endif %}
+        </div>
+      {%- endfor -%}
     </div>
   </div>
-</div>
-
-
+</section>
 
 {% schema %}
 {
-  "name": {
-    "cs": "Propagovaná kolekce",
-    "da": "Udvalgt kollektion",
-    "de": "Vorgestellte Kategorie",
-    "en": "Featured collection",
-    "es": "colección destacada",
-    "fi": "Esittelyssä oleva kokoelma",
-    "fr": "Collection en vedette",
-    "it": "Collezione in evidenza",
-    "ja": "特集コレクション",
-    "ko": "추천 컬렉션",
-    "nb": "Utvalgt samling",
-    "nl": "Uitgelichte collectie",
-    "pl": "Polecana kolekcja",
-    "pt-BR": "Coleção em destaque",
-    "pt-PT": "Coleção em destaque",
-    "sv": "Utvald kollektion",
-    "th": "คอลเลกชันแนะนำ",
-    "tr": "Öne çıkan koleksiyon",
-    "vi": "Bộ sưu tập nổi bật",
-    "zh-CN": "特色产品系列",
-    "zh-TW": "精選商品系列"
-  },
-  "settings": [
+  "name": "Featured Products",
+  "blocks": [
     {
-      "type": "text",
-      "id": "title",
-      "label": {
-        "cs": "Nadpis",
-        "da": "Overskrift",
-        "de": "Überschrift",
-        "en": "Heading",
-        "es": "Título",
-        "fi": "Otsake",
-        "fr": "Titre",
-        "it": "Heading",
-        "ja": "見出し",
-        "ko": "제목",
-        "nb": "Overskrift",
-        "nl": "Kop",
-        "pl": "Nagłówek",
-        "pt-BR": "Título",
-        "pt-PT": "Título",
-        "sv": "Rubrik",
-        "th": "ส่วนหัว",
-        "tr": "Başlık",
-        "vi": "Tiêu đề",
-        "zh-CN": "标题",
-        "zh-TW": "標題"
-      },
-      "default": {
-        "cs": "Propagovaná kolekce",
-        "da": "Udvalgt kollektion",
-        "de": "Vorgestellte Kategorie",
-        "en": "Featured collection",
-        "es": "colección destacada",
-        "fi": "Esittelyssä oleva kokoelma",
-        "fr": "Collection en vedette",
-        "it": "Collezione in evidenza",
-        "ja": "特集コレクション",
-        "ko": "추천 컬렉션",
-        "nb": "Fremhevet samling",
-        "nl": "Uitgelichte collectie",
-        "pl": "Polecana kolekcja",
-        "pt-BR": "Coleção em destaque",
-        "pt-PT": "Coleção em destaque",
-        "sv": "Utvald kollektion",
-        "th": "คอลเลกชันแนะนำ",
-        "tr": "Öne çıkan koleksiyon",
-        "vi": "Bộ sưu tập nổi bật",
-        "zh-CN": "特色产品系列",
-        "zh-TW": "精選商品系列"
-      }
-    },
-    {
-      "type": "collection",
-      "id": "home_featured_products",
-      "label": {
-        "cs": "Kolekce",
-        "da": "Kollektion",
-        "de": "Kategorie",
-        "en": "Collection",
-        "es": "Colección",
-        "fi": "Kokoelma",
-        "fr": "Collection",
-        "it": "Collezione",
-        "ja": "コレクション",
-        "ko": "컬렉션",
-        "nb": "Samling",
-        "nl": "Collectie",
-        "pl": "Kolekcja",
-        "pt-BR": "Coleção",
-        "pt-PT": "Coleção",
-        "sv": "Produktserie",
-        "th": "คอลเลกชัน",
-        "tr": "Koleksiyon",
-        "vi": "Bộ sưu tập",
-        "zh-CN": "收藏",
-        "zh-TW": "商品系列"
-      }
-    },
-    {
-      "type": "select",
-      "id": "collection_products_grid",
-      "label": {
-        "cs": "Styl mřížky",
-        "da": "Gittertypografi",
-        "de": "Rasterstil",
-        "en": "Grid style",
-        "es": "Estilo de cuadrícula",
-        "fi": "Ruudukkotyyli",
-        "fr": "Style de grille",
-        "it": "Stile griglia",
-        "ja": "グリッドスタイル",
-        "ko": "그리드 스타일",
-        "nb": "Rutenettstil",
-        "nl": "Rasterstijl",
-        "pl": "Styl siatki",
-        "pt-BR": "Estilo da grade",
-        "pt-PT": "Estilo da grelha",
-        "sv": "Rutnätsstil",
-        "th": "สไตล์กริด",
-        "tr": "Izgara stili",
-        "vi": "Kiểu lưới",
-        "zh-CN": "网格样式",
-        "zh-TW": "網格樣式"
-      },
-      "options": [
+      "type": "product-block",
+      "name": "Product Block",
+      "settings": [
         {
-          "value": "collage",
-          "label": {
-            "cs": "Koláž",
-            "da": "Collage",
-            "de": "Collage",
-            "en": "Collage",
-            "es": "Collage",
-            "fi": "Kollaasi",
-            "fr": "Collage",
-            "it": "Collage",
-            "ja": "コラージュ",
-            "ko": "콜라주",
-            "nb": "Fotomontasje",
-            "nl": "Collage",
-            "pl": "Kolaż",
-            "pt-BR": "Colagem",
-            "pt-PT": "Colagem",
-            "sv": "Kollage",
-            "th": "ภาพตัดแปะ",
-            "tr": "Kolaj",
-            "vi": "Ghép",
-            "zh-CN": "拼贴画",
-            "zh-TW": "拼貼"
-          }
+          "id": "product",
+          "type": "product",
+          "label": "Block Product"
         },
         {
-          "value": "grid",
-          "label": {
-            "cs": "Mřížka",
-            "da": "Gitter",
-            "de": "Raster",
-            "en": "Grid",
-            "es": "Cuadrícula",
-            "fi": "Ruudukko",
-            "fr": "Grille",
-            "it": "Griglia",
-            "ja": "グリッド",
-            "ko": "그리드",
-            "nb": "Rutenett",
-            "nl": "Grid",
-            "pl": "Siatka",
-            "pt-BR": "Grade",
-            "pt-PT": "Grelha",
-            "sv": "Rutnät",
-            "th": "กริด",
-            "tr": "Izgara",
-            "vi": "Lưới",
-            "zh-CN": "网格",
-            "zh-TW": "網格"
-          }
+          "id": "badge",
+          "type": "text",
+          "label": "Block Badge",
+          "default": "Best Value"
+        },
+        {
+          "id": "image",
+          "type": "image_picker",
+          "label": "Block Image"
+        },
+        {
+          "id": "desc",
+          "type": "richtext",
+          "label": "Block Description"
+        },
+        {
+          "type": "range",
+          "id": "comfort_meter",
+          "min": 1,
+          "max": 100,
+          "step": 1,
+          "label": "Comfort Meter",
+          "default": 80
+        },
+        {
+          "type": "range",
+          "id": "cooling_meter",
+          "min": 1,
+          "max": 100,
+          "step": 1,
+          "label": "Cooling Meter",
+          "default": 80
+        },
+        {
+          "type": "range",
+          "id": "motion_isolation_meter",
+          "min": 1,
+          "max": 100,
+          "step": 1,
+          "label": "Motion Isolation Meter",
+          "default": 80
         }
       ]
     }
   ],
-  "presets": [
+  "settings": [
     {
-      "name": {
-        "cs": "Propagovaná kolekce",
-        "da": "Udvalgt kollektion",
-        "de": "Vorgestellte Kategorie",
-        "en": "Featured collection",
-        "es": "colección destacada",
-        "fi": "Esittelyssä oleva kokoelma",
-        "fr": "Collection en vedette",
-        "it": "Collezione in evidenza",
-        "ja": "特集コレクション",
-        "ko": "추천 컬렉션",
-        "nb": "Utvalgt samling",
-        "nl": "Uitgelichte collectie",
-        "pl": "Polecana kolekcja",
-        "pt-BR": "Coleção em destaque",
-        "pt-PT": "Coleção em destaque",
-        "sv": "Utvald kollektion",
-        "th": "คอลเลกชันแนะนำ",
-        "tr": "Öne çıkan koleksiyon",
-        "vi": "Bộ sưu tập nổi bật",
-        "zh-CN": "特色产品系列",
-        "zh-TW": "精選商品系列"
-      },
-      "category": {
-        "cs": "Kolekce",
-        "da": "Kollektion",
-        "de": "Kategorie",
-        "en": "Collection",
-        "es": "Colección",
-        "fi": "Kokoelma",
-        "fr": "Collection",
-        "it": "Collezione",
-        "ja": "コレクション",
-        "ko": "컬렉션",
-        "nb": "Samling",
-        "nl": "Collectie",
-        "pl": "Kolekcja",
-        "pt-BR": "Coleção",
-        "pt-PT": "Coleção",
-        "sv": "Produktserie",
-        "th": "คอลเลกชัน",
-        "tr": "Koleksiyon",
-        "vi": "Bộ sưu tập",
-        "zh-CN": "收藏",
-        "zh-TW": "商品系列"
-      }
+      "id": "title",
+      "type": "richtext",
+      "label": "Title",
+      "default": "<p>Hit snooze! Sleep is about to get <i>wayyy better.</i></p>"
+    },
+    {
+      "id": "subtitle",
+      "type": "text",
+      "label": "Subtitle",
+      "default": "Our sleep experts have mastered designing award-winning mattresses crafted to keep you relaxed and recharged, no matter what kind of sleeper you are. Climb on your best sleep yet!"
     }
-  ],
-  "blocks": []
+  ]
 }
 {% endschema %}

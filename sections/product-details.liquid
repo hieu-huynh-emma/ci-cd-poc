@@ -574,8 +574,8 @@
               {% render 'upsell-mini-banner', upsellData: block.settings%}
 
           {%- when 'variant_picker' -%}
-            <div class="emma-variant-quantity">
-              <variant-selects class="no-js-hidden emma-product__variant" data-section="{{ section.id }}"
+            <div class="emma-variant-quantity {% if product.first_available_variant.title == "Default Title" %}emma-variant-quantity--expand{% else %}emma-variant-quantity--normal{% endif %}">
+              <variant-selects class="{% if product.first_available_variant.title == "Default Title" %}hidden{% else %}grid{% endif %} emma-product__variant" data-section="{{ section.id }}"
                                data-url="{{ product.url }}" {{ block.shopify_attributes }}>
                 {%- for option in product.options_with_values -%}
                   <div class="product-form__input product-form__input--dropdown">
@@ -586,7 +586,7 @@
                       <select id="Option-{{ section.id }}-{{ forloop.index0 }}" class="select__select"
                               name="options[{{ option.name | escape }}]" form="product-form-{{ section.id }}">
                         {%- for value in option.values -%}
-                          <option value="{{ value | escape }}" {% if option.selected_value==value %}selected="selected" {% endif
+                          <option value="{{ value | escape }}" {% if option.selected_value == value %}selected="selected" {% endif
                           %}>
                             {{ value }}
                           </option>
@@ -820,15 +820,20 @@
                 {% if block.type == "mini-review" %}
                   <div class="review-mini-card">
                     <div class="review-mini-card-heading">
-                      <h1>{{ block.settings.title }}
-                      </h1>
+                      <h1>{{ block.settings.title }}</h1>
                       <img src="{{ 'stars.png' | asset_url }}" width="89px" height="15px" loading="lazy">
                     </div>
                     <p>{{ block.settings.content }}
                     </p>
-                    <div class="review-mini-card-user">
-                      <p>{{ block.settings.customer_name }}
-                      </p>
+                    <div class="review-mini-card-user flex items-center">
+                      <p class="mr-1">{{ block.settings.customer_name }}</p>
+                      <div class="flex items-center">
+                        <svg style="margin-bottom: 2px;" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 mr-1">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+                        </svg>
+                        <p>{{ block.settings.customer_location }}</p>
+                      </div>
                     </div>
                   </div>
                 {% endif %}
@@ -1604,6 +1609,11 @@ customElements.define('product-modal', ProductModal);
           "id": "customer_name",
           "type": "text",
           "label": "Customer Name"
+        },
+        {
+          "id": "customer_location",
+          "type": "text",
+          "label": "Customer Location"
         }
       ]
     },

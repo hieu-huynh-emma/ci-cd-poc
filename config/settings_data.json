@@ -138,8 +138,8 @@
         "settings": {
           "show_announcement": true,
           "home_page_only": false,
-          "text": "Get up to 50% off this Holiday Sale! Promo ends in",
-          "countdown-date": "December 15, 2022 1:00:00 PM",
+          "text": "Get up to 50% off this New Year Sale! Promo ends in",
+          "countdown-date": "January10, 2023 1:00:00 PM",
           "link": "shopify:\/\/products\/emma-climax-hybrid",
           "color_bg": "#ff8900",
           "color_text": "#ffffff"
@@ -264,9 +264,7 @@
       "featured-products": {
         "type": "featured-products",
         "settings": {
-          "title": "Featured collection",
-          "home_featured_products": "",
-          "collection_products_grid": "grid"
+          "title": "<p>Featured collection<\/p>"
         }
       },
       "featured-product": {
@@ -1968,7 +1966,6 @@
         "featured-products": {
           "type": "featured-products",
           "settings": {
-            "collection_products_grid": "grid"
           }
         },
         "featured-product": {
@@ -2080,8 +2077,6 @@
         "featured-products": {
           "type": "featured-products",
           "settings": {
-            "home_featured_products": "frontpage",
-            "collection_products_grid": "collage"
           }
         },
         "newsletter": {

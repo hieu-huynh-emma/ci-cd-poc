@@ -1,7 +1,7 @@
 <style>
-  .banner {
+  #home-risk-free-banner-section .risk-banner {
     color: white;
-    font-family: body-text;
+    font-family: "Helvetica";
     font-weight: bold;
     font-size: 15px;
     display: flex;
@@ -20,33 +20,35 @@
       align-items: center;
     }
   }
-
 </style>
 
 <section id="home-risk-free-banner-section">
   <div class="splide bg-chambray px-2 py-2 lg:px-auto">
     <div class="splide__track">
       <ul class="splide__list">
-        <li class="splide__slide banner">
+        <li class="splide__slide risk-banner">
           <img src="{{ 'delivery.svg' | asset_url }}" width="25" height="25"/>
-          <span class="banner mx-1 lg:mr-6 lg:ml-3.5">Free delivery</span>
+          <span class="risk-banner mx-1 lg:mr-6 lg:ml-3.5">Free Shipping & Returns</span>
         </li>
-        <li class="splide__slide banner">
+        <li class="splide__slide risk-banner">
           <img src="{{ 'star.svg' | asset_url }}" width="20" height="20"/>
-          <span class="banner mx-1 lg:mr-6 lg:ml-3.5">365 nights risk free trial</span>
+          <span class="risk-banner mx-1 lg:mr-6 lg:ml-3.5">{{ section.settings.night_trial }}-Night Money-Back Guarantee</span>
         </li>
-        <li class="splide__slide banner">
-          <img src="{{ 'credit-card.svg' | asset_url }}" width="20" height="20"/>
-          <span class="banner mx-1 lg:mr-6 lg:ml-3.5">Financing Available</span>
-        </li>
-        <li class="splide__slide banner">
+        {% if section.settings.financing_available == true %}
+          <li class="splide__slide risk-banner">
+            <img src="{{ 'credit-card.svg' | asset_url }}" width="20" height="20"/>
+            <span class="risk-banner mx-1 lg:mr-6 lg:ml-3.5">Financing Available</span>
+          </li>
+        {% endif %}
+        <li class="splide__slide risk-banner">
           <img src="{{ 'calendar.svg' | asset_url }}" width="20" height="20"/>
-          <span class="banner mx-1 lg:mr-6 lg:ml-3.5">10-Year Warranty</span>
+          <span class="risk-banner mx-1 lg:mr-6 lg:ml-3.5">{{ section.settings.year_warranty }}-Year Warranty</span>
         </li>
       </ul>
     </div>
   </div>
 </section>
+
 <script defer type="module">
   $(document).ready(function () {
     new Splide('#home-risk-free-banner-section .splide', {
@@ -60,10 +62,6 @@
       perMove: 1,
       mediaQuery: 'min',
       breakpoints: {
-        768: {
-          perPage: 2,
-          perMove: 1,
-        },
         1024: {
           destroy: true,
         },
@@ -71,3 +69,29 @@
     }).mount()
   })
 </script>
+
+{% schema %}
+{
+  "name": "Risk Free Banner",
+  "settings": [
+    {
+      "type": "number",
+      "id": "year_warranty",
+      "label": "Year Warranty Amount",
+      "default": 10
+    },
+    {
+      "type": "number",
+      "id": "night_trial",
+      "label": "Night Trial Amount",
+      "default": 365
+    },
+    {
+      "type": "checkbox",
+      "id": "financing_available",
+      "label": "Financing Available",
+      "default": true
+    }
+  ]
+}
+{% endschema %}

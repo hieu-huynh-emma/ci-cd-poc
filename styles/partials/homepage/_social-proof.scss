@@ -1,0 +1,55 @@
+#social-proof-section {
+  padding: 30px 48px 60px;
+  background: #F7F7F9;
+
+  @media screen and (min-width: 768px) {
+    padding: 60px 0;
+  }
+
+  .wrapper {
+    width: 100%;
+  }
+
+  .influencer {
+    display: grid;
+    gap: 10px;
+    align-content: flex-start;
+    height: 100%;
+    padding: 20px;
+
+    border-radius: 6px;
+    background-color: white;
+
+    &__image {
+      height: 240px;
+      border-radius: 6px;
+      object-fit: cover;
+    }
+  }
+
+  .splide {
+    position: static;
+
+    @media screen and (min-width: 768px) {
+      position: relative;
+    }
+
+    &__track {
+      @media screen and (min-width: 768px) {
+        width: 80%;
+        margin: 0 auto;
+        padding: 0 0 40px;
+      }
+    }
+
+    &__pagination {
+      @media screen and (max-width: 768px) {
+        bottom: 20px;
+      }
+    }
+
+    .splide__arrow {
+      background-color: #3C4196;
+    }
+  }
+}

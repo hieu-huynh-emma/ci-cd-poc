@@ -1,0 +1,50 @@
+#promotional-banner-section {
+  .wrapper {
+    display: grid;
+    gap: 20px;
+    grid-auto-flow: row;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+    min-height: 80px;
+    padding: 40px;
+    @media screen and (min-width: 768px) {
+      grid-auto-flow: column;
+      padding: 20px;
+    }
+
+    .dot {
+      display: none;
+      width: 6px;
+      height: 6px;
+
+      background-color: white;
+      border-radius: 100%;
+
+      @media (min-width: 768px) {
+        display: flex;
+      }
+    }
+  }
+
+  .banner-item {
+    display: grid;
+    gap: 12px;
+    grid-template-columns: repeat(2, minmax(0, auto));
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    @media screen and (min-width: 768px) {
+      max-width: 100%;
+    }
+
+    br {
+      @media screen and (min-width: 768px) {
+        display: none;
+      }
+    }
+  }
+}

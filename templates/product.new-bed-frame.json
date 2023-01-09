@@ -1,0 +1,402 @@
+{
+  "sections": {
+    "banner": {
+      "type": "home-risk-free-banner",
+      "settings": {
+        "year_warranty": 5,
+        "night_trial": 60,
+        "financing_available": true
+      }
+    },
+    "main": {
+      "type": "product-details",
+      "blocks": {
+        "title": {
+          "type": "title",
+          "settings": {
+          }
+        },
+        "subtitle": {
+          "type": "text",
+          "settings": {
+            "text": "{{ product.metafields.descriptors.subtitle.value }}",
+            "text_style": "subtitle"
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {
+          }
+        },
+        "affirm_container": {
+          "type": "affirm_container",
+          "settings": {
+          }
+        },
+        "description": {
+          "type": "description",
+          "settings": {
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button"
+          }
+        },
+        "quantity_selector": {
+          "type": "quantity_selector",
+          "settings": {
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true
+          }
+        },
+        "027d2f0b-b63c-4c8d-b16e-65790b63aee0": {
+          "type": "mini-review",
+          "settings": {
+            "title": "Professional Build, Easy to Assemble and Compliments the Emma Mattress",
+            "content": "Bed was delivered in well packaged sections and the instructions were clear. I assembled it myself in a couple of hours. I have used it for 5 months now and it is sturdy and along with the mattress gives me excellent sleep and comfort.",
+            "customer_name": "Noel L.",
+            "customer_location": "Brandon, Manitoba"
+          }
+        },
+        "b9f03ddb-c081-415a-9a43-eadc841c2049": {
+          "type": "mini-review",
+          "settings": {
+            "title": "Great value, stylish bed",
+            "content": "Easy to set up (maybe 30 minutes?), looks great, very sturdy, Emma mattress fits beautifully.\nQuality material, nice fabric. Delivery was fast - within a few days of ordering - but communication from company was lacking... bed dropped off without much notice! All up, very happy.",
+            "customer_name": "Jdw",
+            "customer_location": "Calgary, Ontario"
+          }
+        },
+        "1f94613b-2d97-4383-864f-bb6d5e87e785": {
+          "type": "mini-review",
+          "settings": {
+            "title": "Solid Support!",
+            "content": "The slats of Emma Upholstered Platform are essentially boards, almost like you're laying your mattress on a foundation itself. Needless to say, the even support the slats provide is unparalleled! I would highly recommend!",
+            "customer_name": "Joel R.",
+            "customer_location": "Vancouver, British Columbia"
+          }
+        },
+        "030ef8d9-a517-48b4-866d-fcf9b98d1815": {
+          "type": "risk_reversal_item",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/free_delivery_blue.png",
+            "title": "<p><strong>Free Shipping & Returns<\/strong><\/p>"
+          }
+        },
+        "9fe40ff3-4c83-4c82-b178-ab0b42a8a917": {
+          "type": "risk_reversal_item",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Untitled_design_5.png",
+            "title": "<p><strong>60-Night Risk-Free Trial<\/strong><\/p>"
+          }
+        },
+        "9cad400a-201e-49ee-b327-24701231b7d8": {
+          "type": "risk_reversal_item",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/warranty_blue_1_1_82f9ff94-e59a-48e5-a13b-1b5dd10d18ff.png",
+            "title": "<p><strong>5-Year Warranty<\/strong><\/p>"
+          }
+        },
+        "2559bd3e-e15f-4b85-8347-f64c4261119f": {
+          "type": "risk_reversal_item",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/credit_card_2.png",
+            "title": "<p><strong>0% Financing<\/strong><\/p>"
+          }
+        },
+        "d8409e4e-7ce5-4894-9112-a1ff03735541": {
+          "type": "risk_reversal_item",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Untitled_design_11.png",
+            "title": "<p><strong>24\/7 Customer Support<\/strong><\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "title",
+        "subtitle",
+        "price",
+        "affirm_container",
+        "description",
+        "variant_picker",
+        "quantity_selector",
+        "buy_buttons",
+        "027d2f0b-b63c-4c8d-b16e-65790b63aee0",
+        "b9f03ddb-c081-415a-9a43-eadc841c2049",
+        "1f94613b-2d97-4383-864f-bb6d5e87e785",
+        "030ef8d9-a517-48b4-866d-fcf9b98d1815",
+        "9fe40ff3-4c83-4c82-b178-ab0b42a8a917",
+        "9cad400a-201e-49ee-b327-24701231b7d8",
+        "2559bd3e-e15f-4b85-8347-f64c4261119f",
+        "d8409e4e-7ce5-4894-9112-a1ff03735541"
+      ],
+      "settings": {
+        "media_badge": "﻿20% OFF",
+        "enable_sticky_info": true,
+        "hide_variants": false,
+        "enable_video_looping": false,
+        "tab_title_1": "WHAT IT IS",
+        "tab_content_1": "<ul>\n<li>Elegant-yet-sturdy, minimalist Scandinavian design that adds a touch of class to your bedroom<\/li>\n<li>Easily-assembled, no additional tools required!<\/li>\n<li>Uniquely-designed with <strong>FlexiSlats®<\/strong> that help provide additional pressure-relief for your back and joints and an <strong>AirFlow®<\/strong> bed base that helps maximize breathability<\/li>\n<\/ul>",
+        "tab_title_2": "WHO IT'S FOR",
+        "tab_content_2": "<ul>\n<li>Budget-conscious sleepers who won’t compromise on quality<\/li>\n<li>Great for couples and pet-lovers<\/li>\n<\/ul>"
+      }
+    },
+    "alternate-banners": {
+      "type": "alternate-banners",
+      "blocks": {
+        "1a40ff53-9e17-4bc1-8f32-cc39fbfd6e23": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/new-bed-frame-2.png",
+            "title": "Superior comfort",
+            "content": "The luscious upholstering of the bed and the thick padding of the headboard make this bed frame ridiculously comfy. We also added a hotel-level height to make it extra-easy for you to get in and out of bed."
+          }
+        },
+        "3c7042bd-f91e-4ea9-b2e8-dea2a7bfe9fe": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/new-bed-frame-3.png",
+            "title": "Extra-strong and ultra-robust",
+            "content": "This bed will accompany you through everything: slumber parties, moves, and pillow fights! It has our extra-strong EmmaFlex bed frame with an ultra-robust metal construction and we give you a guarantee of 5 years on it!"
+          }
+        },
+        "fc285559-d93f-4537-a582-d2bee0b5e6ea": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/new-bed-frame-4.png",
+            "title": "Perfect for your Emma mattress",
+            "content": "We have engineered and patented the perfect bed frame for your Emma mattress with specially-designed FlexiSlats for ultimate pressure relief and an AirFlow bed base for maximum breathability."
+          }
+        }
+      },
+      "block_order": [
+        "1a40ff53-9e17-4bc1-8f32-cc39fbfd6e23",
+        "3c7042bd-f91e-4ea9-b2e8-dea2a7bfe9fe",
+        "fc285559-d93f-4537-a582-d2bee0b5e6ea"
+      ],
+      "settings": {
+      }
+    },
+    "information-tabs": {
+      "type": "information-tabs",
+      "disabled": true,
+      "blocks": {
+        "82ffd23f-3e8b-4e5c-a165-5897fe51cbec": {
+          "type": "tab",
+          "settings": {
+            "tab_title": "Tabbed content",
+            "tab_content": "<p><strong>Lorem ipsum<br\/><\/strong><br\/>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<\/p>"
+          }
+        },
+        "46ebc01e-5f8d-47b4-b934-6a960f97d181": {
+          "type": "tab",
+          "settings": {
+            "tab_title": "Tabbed content",
+            "tab_content": "<p><strong>Lorem ipsum<br\/><\/strong><br\/>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<\/p>"
+          }
+        },
+        "e1cc5e35-c423-49f9-95ba-a2a2b4a3a087": {
+          "type": "tab",
+          "settings": {
+            "tab_title": "Tabbed content",
+            "tab_content": "<p><strong>Lorem ipsum<br\/><\/strong><br\/>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "82ffd23f-3e8b-4e5c-a165-5897fe51cbec",
+        "46ebc01e-5f8d-47b4-b934-6a960f97d181",
+        "e1cc5e35-c423-49f9-95ba-a2a2b4a3a087"
+      ],
+      "settings": {
+        "title": "Bed information"
+      }
+    },
+    "faqs-and-specs": {
+      "type": "double-columns",
+      "blocks": {
+        "78ca144d-5919-4a1b-9e22-082ef5384310": {
+          "type": "left_column",
+          "settings": {
+            "title": "How durable is the Upholstered Bed Frame?",
+            "content": "The Upholstered Bed Frame is highly durable and has gone through several durability tests during its development to ensure its quality. It has been tested to be able to withstand up to 500 lbs of force - meaning it can hold up and withstand a lot of weight."
+          }
+        },
+        "c68412f4-0251-42dc-9113-a0eecd22c518": {
+          "type": "left_column",
+          "settings": {
+            "title": "Do I have to use an Emma mattress for the Upholstered Bed?",
+            "content": "You can use the bed with any mattress and any topper. To get the best sleep experience, we would of course recommend using an Emma mattress with your Upholstered Bed Frame. If you want to get the Boxspring bed experience, you can add a topper to it too."
+          }
+        },
+        "a72149c3-5420-4a8c-80fe-7370288da216": {
+          "type": "left_column",
+          "settings": {
+            "title": "How do I assemble the Upholstered Bed Frame?",
+            "content": "Assembling the Upholstered Bed Frame only takea 30-45 minutes! We have a manual and a video to guide you on this. You can access the manual instructions or instructional video in our FAQs page."
+          }
+        },
+        "d9373dca-57f2-4b56-8838-1a8fc22e21ca": {
+          "type": "left_column",
+          "settings": {
+            "title": "Does the Upholstered Bed Frame have a trial period and warranty?",
+            "content": "The Upholstered Bed Frame has a 60-night trial period, where you can enjoy it risk-free! It also has a warranty period of 5 years upon receipt. For more information on warranty claims, please visit our Terms and Conditions or contact our Customer Care agents from 6 AM - 9 PM EST through our available channels."
+          }
+        },
+        "dc6becd9-d75d-4307-a1fd-f2ae96892001": {
+          "type": "right_column",
+          "settings": {
+            "title": "Construction, Materials, and Certifications",
+            "content": "<p>• Upholstery: 100% polyester, 100 g\/m² non-woven fabric<br>• Structure: Metal<br>• Material: Plywood in P2 quality<\/p>\n<p>Certification<br>•OEKO-Tex® 100 Certified Class 1 (16.0.93305) of OEKO-Tex Standard 100.<br>What does it mean?<br>Meets the highest standard and are therefore suitable for infants.<\/p>"
+          }
+        },
+        "27a05c64-cb9c-4e17-9607-0124a2982c36": {
+          "type": "right_column",
+          "settings": {
+            "title": "Size and Weight",
+            "content": "<p>Full Size Bed Frame:<br>frame: 54 x 75 in, 61.6 lbs<br>headboard: 56 x 30 x 3 in, 59.4 lbs<\/p>\n<p>Queen Size Bed Frame:<br>frame: 60 x 80 in, 66 lbs<br>headboard: 62 x 30 x 3 in, 63.8 lbs<\/p>\n<p>King Size Bed Frame:<br>frame: 76 x 80 in, 79.2 lbs<br>headboard: 78 x 30 x 3 in, 79.2 lbs<\/p>\n<p>California King Size Bed Frame:<br>frame: 72 x 84 in, 77 lbs<br>headboard: 74 x 30 x 3 in, 70.4 lbs<\/p>"
+          }
+        },
+        "0d3641f2-2024-410e-8331-1d71bd48b165": {
+          "type": "right_column",
+          "settings": {
+            "title": "Mattress Box Dimensions",
+            "content": "<p>Full Bed:<br>frame: 29 x 31 x 9 in, 66 lbs<br>headboard: 39  x 21 x 7 in, 63.8 lbs<\/p>\n<p>Queen Bed:<br>frame: 32 x 31 x 9 in, 70.4 lbs<br>headboard: 41 x 21 x 7 in, 68.2 lbs<\/p>\n<p>King Bed:<br>frame: 40 x 31 x 8 in, 83.6 lbs<br>headboard: 47 x 21 x 7 in, 79.2 lbs<\/p>\n<p>California King Bed:<br>frame: 38 x 31 x 9 in, 81.4 lbs<br>headboard: 44 x 21 x 7 in, 74.8 lbs<\/p>"
+          }
+        },
+        "25dc702d-b510-4b92-b992-7f9cd7c0af10": {
+          "type": "right_column",
+          "settings": {
+            "title": "Country of Origin",
+            "content": "<p>Designed in Germany. All products are manufactured to our high quality assurance standards.<\/p>"
+          }
+        },
+        "2436333b-0895-4616-8150-ee71ce9c28d4": {
+          "type": "right_column",
+          "settings": {
+            "title": "Delivery and Returns",
+            "content": "<p>Free Delivery<br>We work with the top carriers in Canada to ship your Emma products straight from our warehouse to your front door.<\/p>\n<p>Free Returns<br>Enjoy a 60-nights free trial on your Emma Bed Frame. We typically require an adjustment period of at least 3 weeks as our researchers confirm that it takes around that long to get suited to your Emma product. Of course, we've made returning of any unsuitable items super easy. Just contact our customer service and we'll take care of the rest.<\/p>\n<p>If you would like to contact us, please feel free to email our support team at support@emma-sleep.ca or call us at +1-888-585-3662.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "78ca144d-5919-4a1b-9e22-082ef5384310",
+        "c68412f4-0251-42dc-9113-a0eecd22c518",
+        "a72149c3-5420-4a8c-80fe-7370288da216",
+        "d9373dca-57f2-4b56-8838-1a8fc22e21ca",
+        "dc6becd9-d75d-4307-a1fd-f2ae96892001",
+        "27a05c64-cb9c-4e17-9607-0124a2982c36",
+        "0d3641f2-2024-410e-8331-1d71bd48b165",
+        "25dc702d-b510-4b92-b992-7f9cd7c0af10",
+        "2436333b-0895-4616-8150-ee71ce9c28d4"
+      ],
+      "settings": {
+        "heading_1": "FAQs",
+        "heading_2": "Specs"
+      }
+    },
+    "yotpo-main-widget": {
+      "type": "yotpo-main-widget",
+      "settings": {
+      }
+    },
+    "brand-statistics": {
+      "type": "brand-statistics",
+      "blocks": {
+        "ca504ac7-3137-4ad7-997c-c1e12bd1d446": {
+          "type": "wallpaper",
+          "settings": {
+            "src": "shopify:\/\/shop_images\/wallpaper-1.png",
+            "color": "#ffdeb7"
+          }
+        },
+        "9593f14f-4c86-4af9-953e-0fa248231b89": {
+          "type": "footer-button",
+          "settings": {
+            "url": "shopify:\/\/collections\/mattresses",
+            "text": "shop mattresses"
+          }
+        }
+      },
+      "block_order": [
+        "ca504ac7-3137-4ad7-997c-c1e12bd1d446",
+        "9593f14f-4c86-4af9-953e-0fa248231b89"
+      ],
+      "settings": {
+        "borderless": true,
+        "review-number": 4000000,
+        "title": "<p>Happy Sleepers Worldwide<\/p>",
+        "subtitle": "Curious as to why millions of customers in over 30 countries have chosen Emma? See what they have to say about us."
+      }
+    },
+    "products-grid": {
+      "type": "products-grid",
+      "blocks": {
+        "ddf828c5-6eed-47cf-bc7f-f8ba12792926": {
+          "type": "grid_item",
+          "settings": {
+            "product": "emma-foam-pillow",
+            "badge_text": "21% off",
+            "name": ""
+          }
+        },
+        "4f70ceb7-0ed5-4816-a3c6-7e5307241126": {
+          "type": "grid_item",
+          "settings": {
+            "product": "emma-mattress-protector",
+            "badge_text": "10% off",
+            "name": ""
+          }
+        },
+        "07c3a1bf-135a-4913-a567-74e6d897d945": {
+          "type": "grid_item",
+          "settings": {
+            "product": "emma-topper",
+            "badge_text": "18% off",
+            "name": ""
+          }
+        },
+        "5a957481-10d2-43ab-a92a-241d7d34bd5f": {
+          "type": "grid_item",
+          "settings": {
+            "product": "emma-climax-hybrid",
+            "badge_text": "38% OFF",
+            "name": ""
+          }
+        }
+      },
+      "block_order": [
+        "ddf828c5-6eed-47cf-bc7f-f8ba12792926",
+        "4f70ceb7-0ed5-4816-a3c6-7e5307241126",
+        "07c3a1bf-135a-4913-a567-74e6d897d945",
+        "5a957481-10d2-43ab-a92a-241d7d34bd5f"
+      ],
+      "settings": {
+        "title": "You might also like"
+      }
+    },
+    "contact-us": {
+      "type": "contact-us",
+      "settings": {
+        "custom_title": "Need help deciding?"
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "main",
+    "alternate-banners",
+    "information-tabs",
+    "faqs-and-specs",
+    "yotpo-main-widget",
+    "brand-statistics",
+    "products-grid",
+    "contact-us"
+  ]
+}

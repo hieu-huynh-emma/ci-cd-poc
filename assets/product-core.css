@@ -241,6 +241,17 @@
 }
 @media screen and (min-width: 768px) {
   #mini-comparison-table .mini-comparison-table {
+    --rowHeaderWidth: 100px;
+  }
+}
+@media screen and (min-width: 1024px) {
+  #mini-comparison-table .mini-comparison-table {
+    grid-template-columns: minmax(0, var(--rowHeaderWidth)) minmax(150px, 1fr) repeat(2, minmax(0, 1fr));
+  }
+}
+@media screen and (min-width: 1280px) {
+  #mini-comparison-table .mini-comparison-table {
+    grid-template-columns: minmax(0, var(--rowHeaderWidth)) repeat(3, minmax(0, 1fr));
     --rowHeaderWidth: 150px;
   }
 }
@@ -1713,11 +1724,17 @@ p {
 }
 
 .emma-variant-quantity {
-  display: grid;
   gap: 8px;
   grid-template-columns: minmax(0, 0.65fr) minmax(0, 0.35fr);
   align-items: flex-end;
   margin: 1.5rem 0 10px;
+}
+.emma-variant-quantity--expand {
+  display: block;
+  width: 100%;
+}
+.emma-variant-quantity--normal {
+  display: grid;
 }
 
 @media (min-width: 768px) {
@@ -1728,20 +1745,18 @@ p {
     gap: 20px;
     margin: 0 0 1.5rem 0;
   }
+  .emma-variant-quantity--expand {
+    display: block;
+    width: 50%;
+  }
 }
 .emma-product__variant {
-  display: grid;
   gap: 8px;
   grid-auto-flow: row;
   width: 100%;
   margin: 0;
 }
 
-@media (min-width: 768px) {
-  .emma-product__variant {
-    gap: 20px;
-  }
-}
 .emma-product__variant .select {
   display: flex;
   align-items: center;
