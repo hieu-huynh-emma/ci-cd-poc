@@ -3,6 +3,9 @@
     "banner": {
       "type": "home-risk-free-banner",
       "settings": {
+        "year_warranty": 10,
+        "night_trial": 365,
+        "financing_available": true
       }
     },
     "hero-banner": {
@@ -37,7 +40,7 @@
           "type": "announcement",
           "settings": {
             "title": "Up to 50% off",
-            "subtitle": "HOLIDAY SALE",
+            "subtitle": "NEW YEAR SALE",
             "background_color": "#ff8900",
             "text_color": "#ffffff"
           }
@@ -61,8 +64,8 @@
       "settings": {
         "title": "<p><strong>World's #1 Sleep Brand<\/strong><\/p>",
         "slogan": "MOST AWARDED MATTRESS IN CANADA",
-        "subtitle": "Save up to $1200 off the Emma CliMax Hybrid during our Holiday Sale!",
-        "countdown_timer": "2022-12-15 13:00",
+        "subtitle": "Save up to $1200 off the Emma CliMax Hybrid during our New Year Sale!",
+        "countdown_timer": "2023-01-10 13:00",
         "hero_media": ""
       }
     },
