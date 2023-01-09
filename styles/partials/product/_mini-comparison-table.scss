@@ -15,6 +15,15 @@
     grid-template-columns: minmax(0, var(--rowHeaderWidth)) repeat(3, minmax(0, 1fr));
 
     @media screen and (min-width: 768px) {
+      --rowHeaderWidth: 100px;
+    }
+
+    @media screen and (min-width: 1024px) {
+      grid-template-columns: minmax(0,var(--rowHeaderWidth)) minmax(150px, 1fr) repeat(2,minmax(0,1fr));
+    }
+
+    @media screen and (min-width: 1280px) {
+      grid-template-columns: minmax(0, var(--rowHeaderWidth)) repeat(3, minmax(0, 1fr));
       --rowHeaderWidth: 150px;
     }
 

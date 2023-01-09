@@ -19,7 +19,7 @@ tailwind.config = {
       },
     },
     fontFamily: {
-      'acuminpro': ["acumin-pro"],
+      'header': ["header-text"],
       'helvetica': ["helvetica"],
     }
   },

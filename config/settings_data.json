@@ -264,9 +264,7 @@
       "featured-products": {
         "type": "featured-products",
         "settings": {
-          "title": "Featured collection",
-          "home_featured_products": "",
-          "collection_products_grid": "grid"
+          "title": "<p>Featured collection<\/p>"
         }
       },
       "featured-product": {
@@ -1968,7 +1966,6 @@
         "featured-products": {
           "type": "featured-products",
           "settings": {
-            "collection_products_grid": "grid"
           }
         },
         "featured-product": {
@@ -2080,8 +2077,6 @@
         "featured-products": {
           "type": "featured-products",
           "settings": {
-            "home_featured_products": "frontpage",
-            "collection_products_grid": "collage"
           }
         },
         "newsletter": {

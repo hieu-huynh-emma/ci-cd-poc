@@ -574,8 +574,8 @@
               {% render 'upsell-mini-banner', upsellData: block.settings%}
 
           {%- when 'variant_picker' -%}
-            <div class="emma-variant-quantity">
-              <variant-selects class="no-js-hidden emma-product__variant" data-section="{{ section.id }}"
+            <div class="emma-variant-quantity {% if product.first_available_variant.title == "Default Title" %}emma-variant-quantity--expand{% else %}emma-variant-quantity--normal{% endif %}">
+              <variant-selects class="{% if product.first_available_variant.title == "Default Title" %}hidden{% else %}grid{% endif %} emma-product__variant" data-section="{{ section.id }}"
                                data-url="{{ product.url }}" {{ block.shopify_attributes }}>
                 {%- for option in product.options_with_values -%}
                   <div class="product-form__input product-form__input--dropdown">
@@ -586,7 +586,7 @@
                       <select id="Option-{{ section.id }}-{{ forloop.index0 }}" class="select__select"
                               name="options[{{ option.name | escape }}]" form="product-form-{{ section.id }}">
                         {%- for value in option.values -%}
-                          <option value="{{ value | escape }}" {% if option.selected_value==value %}selected="selected" {% endif
+                          <option value="{{ value | escape }}" {% if option.selected_value == value %}selected="selected" {% endif
                           %}>
                             {{ value }}
                           </option>
