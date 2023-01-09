@@ -217,9 +217,9 @@
         <img class="layer-media" src="{{ block.settings.media | img_url: 'medium'}}" />
         {% endif %}
         {% if block.settings.media_url != blank %}
-          <a class="layer-mediabox btn-watch-video btn btn--outlined w-full md:w-max mt-4 mx-auto " href="{{ block.settings.media_url }}">
-          See how it works
-        </a>
+          <a class="layer-mediabox btn-watch-video btn btn--outlined w-full md:max-w-max mt-4 mx-auto" href="{{ block.settings.media_url }}">
+            See how it works
+          </a>
         {% endif %}
       </div>
       {% endif %}
