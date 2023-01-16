@@ -3,6 +3,9 @@
     "banner": {
       "type": "home-risk-free-banner",
       "settings": {
+        "year_warranty": 10,
+        "night_trial": 365,
+        "financing_available": true
       }
     },
     "main": {
@@ -38,7 +41,7 @@
         "upsell-mini-banner": {
           "type": "upsell-mini-banner",
           "settings": {
-            "content": "<p><strong>Try the Emma CliMax Hybrid for maximum cooling & support →<\/strong><\/p>",
+            "content": "<p><strong>IN STOCK, READY TO SHIP: Try the CliMax Hybrid for maximum cooling & support →<\/strong><\/p>",
             "url": "shopify:\/\/products\/emma-climax-hybrid"
           }
         },
@@ -155,7 +158,7 @@
         "hide_variants": false,
         "enable_video_looping": false,
         "tab_title_1": "WHAT IT IS",
-        "tab_content_1": "<p style=\"font-weight: 600;\">Our best-selling mattress redesigned for great pressure-relief and even greater support. Say goodbye to backpains!<\/p>\n<p style=\"margin-bottom: 1rem\">\n<\/p><li>The world’s #1 best-selling online mattress<\/li>\n<li>Our most globally-awarded product<\/li>\n<li>Combines hotel-quality comfort, pressure-relief, motion-isolation, cooling, and zoned support<\/li>\n<li style=\"margin-bottom: 1rem\">Re-engineered to match American sleep preferences<\/li>\n<p style=\"font-weight: 600;\">Delivery time: Ships out the next business day<\/p>",
+        "tab_content_1": "<p style=\"font-weight: 600;\">Our best-selling mattress redesigned for great pressure-relief and even greater support. Say goodbye to backpains!<\/p>\n<p style=\"margin-bottom: 1rem\">\n<\/p><li>The world’s #1 best-selling online mattress<\/li>\n<li>Our most globally-awarded product<\/li>\n<li>Combines hotel-quality comfort, pressure-relief, motion-isolation, cooling, and zoned support<\/li>\n<li style=\"margin-bottom: 1rem\">Re-engineered to match American sleep preferences<\/li>\n<p style=\"font-weight: 600; margin-bottom: 4px;\">Delivery time: Ships out the next business day.<\/p>\n<p><em>*Queen size: Ships out in 4 weeks.<\/em><\/p>",
         "tab_title_2": "WHO IT'S FOR",
         "tab_content_2": "<li>Budget-conscious sleepers who won’t compromise on quality <\/li>\n<li>Loved by back, side, and stomach sleepers<\/li>\n<li>Great for couples and pet-lovers<\/li>"
       }
@@ -186,8 +189,7 @@
           "settings": {
             "title": "Luxurious Comfort in All Positions",
             "desc": "Our pressure relieving 3-zone design allows the mattress to adjust to your shoulder, back, and hips zones, creating full body support that’s loved by back, side, and stomach sleepers.",
-            "image": "shopify:\/\/shop_images\/12.png",
-            "mobile_image": "shopify:\/\/shop_images\/10_-9094-4642-915f-45cb9321eb96.png"
+            "image": "shopify:\/\/shop_images\/12.png"
           }
         }
       },
