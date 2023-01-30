@@ -18,6 +18,7 @@
     text-decoration: underline
   }
   #faq .accordion__content p {
+    font-size: 11px;
     margin-bottom: 16px;
   }
   #faq .accordion__content p:last-child {
@@ -32,7 +33,7 @@
     padding-bottom: 0;
   }
   #faq .accordion__content ul li {
-    font-size: 16px;
+    font-size: 11px;
     margin-bottom: 4px;
   }
   #faq .accordion__content tr:first-child td:after,
@@ -50,6 +51,12 @@
 
   #faq .faq-qa-section:nth-child(even) {
     background-color: white
+  }
+  @media (min-width: 1024px) {
+    #faq .accordion__content p,
+    #faq .accordion__content ul li {
+      font-size: 16px;
+    }
   }
 </style>
 
