@@ -769,21 +769,6 @@ cart-upsell .swiper-arrow--next {
     display: none;
   }
 }
-.drawer-customer-support .utility-nav {
-  display: grid;
-  gap: 4px 1rem;
-  grid-template-columns: repeat(2, minmax(0, auto));
-  grid-template-rows: repeat(2, minmax(0, auto));
-  align-items: center;
-  justify-content: center;
-}
-@media screen and (min-width: 591px) {
-  .drawer-customer-support .utility-nav {
-    gap: 1rem;
-    grid-template-columns: repeat(4, minmax(0, auto));
-    grid-template-rows: initial;
-  }
-}
 .drawer-customer-support .utility-nav__item {
   display: grid;
   gap: 6px;

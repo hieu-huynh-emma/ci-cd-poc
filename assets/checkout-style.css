@@ -109,8 +109,8 @@
 .sidebar-ornament__footer {
   background-color: #2E2F3C;
   color: white;
-  display: grid;
-  grid-template-columns: 44px minmax(140px, max-content) minmax(120px, max-content);
+  display: flex;
+  gap: 12px;
   align-items: center;
   justify-content: center;
   padding: 20px;
@@ -119,11 +119,11 @@
 }
 
 .sidebar-ornament__support-avatar {
+  min-width: 35px;
   position: relative;
 }
 
 .sidebar-ornament__support-avatar-image {
-  margin-right: 12px;
   display: inline-block;
   border-radius: 100%;
 }
@@ -145,8 +145,15 @@
   justify-content: space-between;
 }
 
+.sidebar-ornament__support-wrapper {
+  margin-bottom: 1px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
 .sidebar-ornament__support-heading {
-  font-size: 12px;
+  font-size: 10px;
   font-weight: 600;
 }
 
@@ -157,6 +164,8 @@
 
 .sidebar-ornament__support-info {
   height: 100%;
+  display: flex;
+  gap: 12px;
 }
 
 .sidebar-ornament__support-chat {
@@ -215,10 +224,6 @@
 }
 
 @media (min-width: 1000px) {
-  .sidebar-ornament__support {
-    margin-right: 20px;
-  }
-
   .main-award {
     display: none;
   }
