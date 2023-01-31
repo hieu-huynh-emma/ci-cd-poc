@@ -113,20 +113,19 @@
     }
 
     #main-carousel>.product__media img {
-        height: 30rem;
+      height: 30rem;
     }
 
     #MainContent .risk-reversal-banner {
-        display: none;
+      display: none;
     }
 
     #MainContent .risk-reversal__item {
-        width: 20%;
-        display: flex;
-        flex-flow: column;
-        justify-content: space-between;
-        align-items: center;
-        padding-right: 15px;
+      display: flex;
+      flex-flow: column;
+      justify-content: space-between;
+      align-items: center;
+      padding-right: 15px;
     }
 
     .risk-reversal__item img {
@@ -253,15 +252,6 @@
             display: none;
         }
 
-        #MainContent .risk-reversal__item {
-            width: 20%;
-            display: flex;
-            flex-flow: column;
-            justify-content: space-between;
-            align-items: center;
-            padding-right: 15px;
-        }
-
         .risk-reversal__item img {
             height: 40px;
             width: 40px;
@@ -362,11 +352,11 @@
         }
 
         #MainContent .risk-reversal-banner {
-            display: flex;
-            justify-content: center;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
             align-items: baseline;
-            flex-wrap: wrap;
             padding: 40px;
+            gap: 20px;
         }
 
         .splide__track {
@@ -1577,7 +1567,7 @@ customElements.define('product-modal', ProductModal);
     {
       "type": "risk_reversal_item",
       "name": "Risk Reversal Item",
-      "limit": 5,
+      "limit": 6,
       "settings": [
         {
           "id": "icon",
