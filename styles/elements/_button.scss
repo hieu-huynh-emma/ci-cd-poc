@@ -41,6 +41,10 @@
     background-color: $hoverColor;
   }
 
+  &.btn-no-hover:hover {
+    background-color: $bgColor;
+  }
+
   &--secondary {
     $bgColor: $colorSecondary;
     $hoverColor: $colorPrimary;

@@ -522,6 +522,9 @@ deferred-media {
 .btn:hover {
   background-color: #3C4196;
 }
+.btn.btn-no-hover:hover {
+  background-color: #FFA235;
+}
 .btn--secondary {
   background-color: #3C4196;
 }
@@ -582,6 +585,9 @@ button.btn[disabled], button[type=submit].btn[disabled] {
 }
 button.btn:hover, button[type=submit].btn:hover {
   background-color: #3C4196;
+}
+button.btn.btn-no-hover:hover, button[type=submit].btn.btn-no-hover:hover {
+  background-color: #FFA235;
 }
 button.btn--secondary, button[type=submit].btn--secondary {
   background-color: #3C4196;
@@ -685,6 +691,9 @@ button.btn--full, button[type=submit].btn--full {
 }
 #user input[type=submit].btn:hover {
   background-color: #3C4196;
+}
+#user input[type=submit].btn.btn-no-hover:hover {
+  background-color: #FFA235;
 }
 #user input[type=submit].btn--secondary {
   background-color: #3C4196;
@@ -1018,6 +1027,9 @@ p, button {
 .btn:hover {
   background-color: #3C4196;
 }
+.btn.btn-no-hover:hover {
+  background-color: #FFA235;
+}
 .btn--secondary {
   background-color: #3C4196;
 }
@@ -1078,6 +1090,9 @@ button.btn[disabled], button[type=submit].btn[disabled] {
 }
 button.btn:hover, button[type=submit].btn:hover {
   background-color: #3C4196;
+}
+button.btn.btn-no-hover:hover, button[type=submit].btn.btn-no-hover:hover {
+  background-color: #FFA235;
 }
 button.btn--secondary, button[type=submit].btn--secondary {
   background-color: #3C4196;
