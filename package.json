@@ -2,17 +2,15 @@
   "name": "shopify-template-ca",
   "version": "1.0.0",
   "description": "Shopify template for Canada",
+  "main": "index.js",
   "scripts": {
     "start": "concurrently npm:serve:* --raw",
-    "serve:theme": "npm run shopify:switch && shopify theme serve",
+    "serve:theme": "shopify theme dev -s emma-sleep-ca",
     "serve:scss": "gulp watch",
-    "gulp:sass": "gulp sass",
-    "gulp:sass-uncompressed": "gulp sass-uncompressed",
-    "gulp:clean": "gulp clean",
-    "pull:live": "npm run shopify:switch && shopify theme pull -t CA-MAIN",
-    "push:dev": "npm run shopify:switch && shopify theme push -t CA-DEV",
-    "shopify:login": "shopify login --store=emma-sleep-ca",
-    "shopify:switch": "shopify switch --store=emma-sleep-ca",
+    "pull:live": "shopify theme pull -s emma-sleep-ca -l",
+    "pull:dev": "shopify theme pull -s emma-sleep-ca -t CA-DEV",
+    "pull:local": "shopify theme pull -s emma-sleep-ca -d",
+    "push:dev": "shopify theme push -s emma-sleep-ca -t CA-DEV",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
