@@ -1,266 +1,59 @@
 <!doctype html>
 <html class="no-js" lang="{{ request.locale.iso_code }}">
 <head>
-
-  <!-- Google Tag Manager -->
-  <script>(function (w, d, s, l, i) {
-      w[l] = w[l] || []
-      w[l].push({
-        'gtm.start':
-          new Date().getTime(), event: 'gtm.js',
-      })
-      var f = d.getElementsByTagName(s)[0],
-        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''
-      j.async = true
-      j.src =
-        'https://www.googletagmanager.com/gtm.js?id=' + i + dl
-      f.parentNode.insertBefore(j, f)
-    })(window, document, 'script', 'dataLayer', 'GTM-5RJR9WC')</script>
-  <!-- End Google Tag Manager -->
-
-
-  {%- render 'hso-no-follow-no-index' -%}{% render 'pagefly-head' %}
-  <!-- Metadata ================================================== -->
-  {% include 'page-metadata' %}
-
-  {% include 'hreflang-tags' %}
-
-  {% if settings.favicon %}
-    <link rel="shortcut icon" href="{{ settings.favicon | img_url: '32x32' }}"
-          type="image/png"/>
-  {% endif %}
-
-  {% render 'apps-integration' %}
+  {% render 'google-tag-manager' %}
+  {% render 'hso-no-follow-no-index' %}
+  {% render 'page-metadata' %}
+  {% render 'hreflang-tags' %}
   {% render 'vendors' %}
   {% render 'page-styles' %}
   {% render 'page-scripts' %}
+  {% render 'tangoo' %}
+  {% render 'shop-back' %}
+  {% render 'upsellit' %}
+  {% render 'vitals-loader' %}
+  {% render 'weglot_hreftags' %}
+  {% render 'weglot_switcher' %}
+  {% render 'judgeme_core' %}
+  {% render 'ms-clarity' %}
 
-  <link rel="stylesheet" href="{{ 'slick.css' | asset_url }}">
-  <link rel="stylesheet" href="{{ 'slick-theme.css' | asset_url }}">
-  <link rel="stylesheet" href="{{ 'animate.css' | asset_url }}">
+  {% if settings.favicon %}
+    <link rel="shortcut icon" href="{{ settings.favicon | img_url: '32x32' }}" type="image/png" />
+  {% endif %}
 
-
-  <!---- LUCKY ORANGE INTEGRATION ================================= -->
-
-  <script async defer
-          src="https://tools.luckyorange.com/core/lo.js?site-id=9ca7f04f"></script>
-
-  <!---- GSC Verification ================================= -->
-  <meta name="google-site-verification"
-        content="ECx3b-uuFXsoMOd08Jvv6o9Es--o5AyltTo9A-n9zCE"/>
-
-
-  <!---- SHOP BACK INTEGRATION ================================= -->
-
-  <script>
-    var url_string = window.location.href
-    var url = new URL(url_string)
-    var source = url.searchParams.get('utm_source')
-    var transaction = url.searchParams.get('transaction_id')
-    if (source == 'shopback') {
-      localStorage.setItem('utm_source', source)
-      localStorage.setItem('transaction_id', transaction)
-    }
-  </script>
-
-  <!---- Upsellit Integration ================================= -->
-  <script type="text/javascript">
-    usi_installed = 0
-    USI_installCode = function () {
-      if (usi_installed == 0) {
-        usi_installed = 1
-        var USI_headID = document.getElementsByTagName('head')[0]
-        var USI_installID = document.createElement('script')
-        USI_installID.type = 'text/javascript'
-        USI_installID.src = 'https://www.upsellit.com/active/emmasleep.jsp'
-        USI_headID.appendChild(USI_installID)
-      }
-    }
-    if (typeof (document.readyState) != 'undefined' && document.readyState === 'complete') {
-      USI_installCode()
-    } else if (window.addEventListener) {
-      window.addEventListener('load', USI_installCode, true)
-    } else if (window.attachEvent) {
-      window.attachEvent('onload', USI_installCode)
-    } else {
-      USI_installCode()
-    }
-    setTimeout('USI_installCode()', 10000)
-  </script>
-
-  <!-- Sections ================================================== -->
-  <script>
-    window.theme = window.theme || {}
-    theme.strings = {
-      zoomClose: {{ "products.zoom.close" | t | json }},
-      zoomPrev: {{ "products.zoom.prev" | t | json }},
-      zoomNext: {{ "products.zoom.next" | t | json }},
-      moneyFormat: {{ shop.money_format | json }},
-      addressError: {{ 'home_page.map.address_error' | t | json }},
-      addressNoResults: {{ 'home_page.map.address_no_results' | t | json }},
-      addressQueryLimit: {{ 'home_page.map.address_query_limit_html' | t | json }},
-      authError: {{ 'home_page.map.auth_error_html' | t | json }},
-      cartEmpty: {{ 'cart.general.empty' | t | json }},
-      cartCookie: {{ 'cart.general.cookies_required' | t | json }},
-      cartSavings: {{ 'cart.general.savings_html' | t: savings: '[savings]' | json }},
-      productSlideLabel: {{ 'products.product.slide_label' | t: slide_number: '[slide_number]', slide_max: '[slide_max]' | json }}
-    }
-    theme.settings = {
-      cartType: {{ settings.cart_type | json }},
-      gridType: {{ settings.collection_products_grid | json }}
-    }
-  </script>
-
-
-  <script src="{{ 'lazysizes.min.js' | asset_url }}" async="async"></script>
-
-  <script src="{{ 'theme-custom.js' | asset_url }}" defer="defer"></script>
-
-  <!-- Header hook for plugins ================================================== -->
-  {{ content_for_header }}
-
-  {% include 'bold-common' %}
-
-
-  {{ 'modernizr.min.js' | asset_url | script_tag }}
-
-  {% comment %}
-    If you store has customer accounts disabled, you can remove the following JS file
-  {% endcomment %}
   {% if request.page_type contains 'customers/' %}
     {{ 'shopify_common.js' | shopify_asset_url | script_tag }}
   {% endif %}
 
-  {% render 'vitals-loader' %}
+  {{ content_for_header }}
+</head>
 
+<body id="{{ page_title | handle }}" class="{% if customer %}customer-logged-in {% endif %}template-{{ request.page_type | handle }}">
+  {% section 'announcement-bar' %}
+  {% section 'header' %}
 
-  {% render 'weglot_hreftags' %}
-  {% render 'weglot_switcher' %}
-  {% render 'judgeme_core' %}
-  <script type="text/javascript">
-    schema_settings = {
-      'cart_type': '{{ settings.cart_type }}',
-    }
-  </script>
+  <div id="MainContent" class="page-container">
+    <main class="main-content" role="main">
+    {% unless request.page_type == "index" or request.page_type == "product" or request.page_type == "page" or request.page_type == "collection" or request.page_type == "article" %}
+      <div class="global-wrapper">
+        {% endunless %}
+        {{ content_for_layout }}
+        {% unless request.page_type == "index" %}
+      </div>
+      {% endunless %}
+    </main>
+    {% section 'footer' %}
+  </div>
 
-  <script type="text/javascript">
+  <script>
     jQuery(window).on('load', function () {
       switchAffirmMessage()
     })
-  </script>
-
-  <script type="text/javascript">
-    (function (c, l, a, r, i, t, y) {
-      c[a] = c[a] || function () {
-        (c[a].q = c[a].q || []).push(arguments)
-      }
-      t = l.createElement(r)
-      t.async = 1
-      t.src = 'https://www.clarity.ms/tag/' + i
-      y = l.getElementsByTagName(r)[0]
-      y.parentNode.insertBefore(t, y)
-    })(window, document, 'clarity', 'script', 'd60mjcc2fl')
-  </script>
-</head>
-{% comment %}
-  Add the page template as a class for easy page or template specific styling.
-{% endcomment %}
-<body
-  id="{{ page_title | handle }}"
-  class="{% if customer %}customer-logged-in {% endif %}template-{{ request.page_type | handle }}"
->
-{% section 'announcement-bar' %}
-{% section 'header' %}
-
-{%- render 'cart-drawer' -%}
-
-<div id="pro_step" class="product_step" style="display:none">
-  {% include 'product_step' %}
-</div>
-
-<div id="fr_pop" class="product_step" style="display:none">
-  {% include 'fr_pop' %}
-</div>
-
-{%- if template contains 'page' or template contains 'collection' -%}
-  {% section 'full-banner' %}
-{% endif %}
-
-<div id="MainContent" class="page-container">
-  <main class="main-content" role="main">
-  {% unless request.page_type == "index" or request.page_type == "product" or request.page_type == "page" or request.page_type == "collection" %}
-    <div class="global-wrapper">
-      {% endunless %}
-      {{ content_for_layout }}
-      {% unless request.page_type == "index" %}
-    </div>
-    {% endunless %}
-  </main>
-
-
-  {% section 'footer' %}
-
-</div>
-
-{% comment %}
-  Template-specific js
-{% endcomment %}
-<script>
-  {% if resetPassword %}
-  $(function () {
-    timber.initCache()
-    timber.resetPasswordSuccess()
-  })
-  {% endif %}
-</script>
-
-{% comment %}
-  Ajaxify your cart with this plugin.
-  Documentation:
-    - http://shopify.com/timber#ajax-cart
-{% endcomment %}
-
-{% comment %}
-{{ 'jquery-3.6.0.min.js' | asset_url | script_tag }}
-{% endcomment %}
-
-{% if template.name != "index" %}
-  {% unless template contains 'pf' %}
-    {{ 'slick.min.js' | asset_url | script_tag }}
-  {% endunless %}
-{% endif %}
-{{ 'custom-javascript.js' | asset_url | script_tag }}
-{{ 'wow.min.js' | asset_url | script_tag }}
-
-
-<script type="application/json" data-cart-routes>
-    {
-      "cartUrl": "{{ routes.cart_url }}",
-      "cartAddUrl": "{{ routes.cart_add_url }}",
-      "cartChangeUrl": "{{ routes.cart_change_url }}"
-    }
-
-
-</script>
-
-<script>
-  window.routes = {
-    cart_add_url: '{{ routes.cart_add_url }}',
-    cart_change_url: '{{ routes.cart_change_url }}',
-    cart_update_url: '{{ routes.cart_update_url }}',
-    predictive_search_url: '{{ routes.predictive_search_url }}',
-  }
-</script>
-
-{% if request.page_type == 'product' or request.page_type == 'index' %}
-  <script>
-    // Override default values of shop.strings for each template.
-    // Alternate product templates can change values of
-    // add to cart button, sold out, and unavailable states here.
-    theme.productStrings = {
-      addToCart: {{ 'products.product.add_to_cart' | t | json }},
-      soldOut: {{ 'products.product.sold_out' | t | json }},
-      unavailable: {{ 'products.product.unavailable' | t | json }}
+    window.routes = {
+      cart_add_url: '{{ routes.cart_add_url }}',
+      cart_change_url: '{{ routes.cart_change_url }}',
+      cart_update_url: '{{ routes.cart_update_url }}',
+      predictive_search_url: '{{ routes.predictive_search_url }}',
     }
     window.variantStrings = {
       addToCart: `{{ 'products.product.add_to_cart' | t }}`,
@@ -268,28 +61,28 @@
       unavailable: `{{ 'products.product.unavailable' | t }}`,
     }
   </script>
-{% endif %}
 
-<div id="SearchModal" class="mfp-hide">
-  {% include 'search-bar', search_btn_style: 'btn', search_bar_location: 'search-bar--modal' %}
-</div>
-<ul hidden>
-  <li id="a11y-refresh-page-message">{{ 'general.accessibility.refresh_page' | t }}</li>
-  <li id="a11y-selection-message">{{ 'general.accessibility.selection_help' | t }}</li>
-  <li
-    id="a11y-slideshow-info">{{ 'home_page.slideshow.navigation_instructions' | t }}</li>
-</ul>
-{% render 'globo.preorder.script' %}
-{% include 'smile-initializer' %}
-{% render 'store-localization' %}
-{% render 'freshchat' %}
+  <ul hidden>
+    <li id="a11y-refresh-page-message">{{ 'general.accessibility.refresh_page' | t }}</li>
+    <li id="a11y-selection-message">{{ 'general.accessibility.selection_help' | t }}</li>
+    <li id="a11y-slideshow-info">{{ 'home_page.slideshow.navigation_instructions' | t }}</li>
+  </ul>
+
+  {% render 'cart-drawer' %}
+  {% render 'affirm-popup' %}
+  {% render 'globo.preorder.script' %}
+  {% render 'smile-initializer' %}
+  {% render 'store-localization' %}
+  {% render 'freshchat' %}
 </body>
 </html>
 
 <style>
   :root {
+    --font-body-family: 'Inter';
     --font-body-style: normal;
     --font-body-weight: 400;
+    --font-heading-family: 'Tiempos';
     --font-heading-style: normal;
     --font-heading-weight: 400;
     --color-base-text: 18, 18, 18;
@@ -312,27 +105,6 @@
     --color_drawer_button: #ffffff;
     --color_drawer_button_text: #3c4196;
   }
-
-  {%-
-    if template != 'product.climax-hybrid-mattress'
-    and template != 'product.new-original-mattress'
-    and template != 'product.new-topper'
-    and template != 'product.new-bed-frame'
-    and template != 'product.new-foam-pillow'
-    and template != 'product.new-mattress-protector'
-    and template != 'page.faqs'
-    and template != 'index'
-  -%}
-    body .main-content {
-      padding-top: .5%
-    }
-
-    @media screen and (min-width: 769px) {
-      body .main-content {
-        padding-top: 2%
-      }
-    }
-  {% endif %}
 
   span.jdgm-subtab__name {
     display: none;

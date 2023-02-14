@@ -1,0 +1,43 @@
+{
+  "sections": {
+    "article-main": {
+      "type": "article-main",
+      "settings": {
+      }
+    },
+    "article-related-articles": {
+      "type": "article-related-articles",
+      "blocks": {
+        "b620b38a-f4b6-4d87-ac9a-068a357962da": {
+          "type": "article",
+          "settings": {
+            "article": "news\/bed-box-mattress"
+          }
+        },
+        "02848b70-75c6-430a-80fe-6cfb7e076a80": {
+          "type": "article",
+          "settings": {
+            "article": "news\/good-bedtime-routine"
+          }
+        },
+        "e2066d42-76e5-440d-971c-1f41ab368b18": {
+          "type": "article",
+          "settings": {
+            "article": "news\/natural-ways-boost-energy"
+          }
+        }
+      },
+      "block_order": [
+        "b620b38a-f4b6-4d87-ac9a-068a357962da",
+        "02848b70-75c6-430a-80fe-6cfb7e076a80",
+        "e2066d42-76e5-440d-971c-1f41ab368b18"
+      ],
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "article-main",
+    "article-related-articles"
+  ]
+}

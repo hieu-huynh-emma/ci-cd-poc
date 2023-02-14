@@ -1,0 +1,63 @@
+<style>
+  #financing-options-section tr:first-child td:after,
+  #financing-options-section tr:first-child th:after {
+    border-bottom: 0;
+  }
+</style>
+
+<section id="financing-options-section">
+  <div class="mx-auto max-w-7xl px-4 py-10 sm:px-6 md:px-8">
+    <h5 class="mb-8 text-center text-[28px] lg:text-[33px]">{{ section.settings.title }}</h5>
+    <div class="overflow-auto px-4">
+      <table class="mx-auto table-auto border-collapse">
+        <thead>
+        <tr class="border-b border-b-black">
+          <th class="p-2 text-left text-[13px] font-bold md:p-4"></th>
+          <th class="p-2 text-left text-[13px] font-bold md:p-4"></th>
+          <th class="p-2 text-left text-[13px] font-bold md:p-4">Twin</th>
+          <th class="p-2 text-left text-[13px] font-bold md:p-4">Twin XL</th>
+          <th class="p-2 text-left text-[13px] font-bold md:p-4">Full</th>
+          <th class="p-2 text-left text-[13px] font-bold md:p-4">Queen</th>
+          <th class="p-2 text-left text-[13px] font-bold md:p-4">King</th>
+          <th class="p-2 text-left text-[13px] font-bold md:p-4">Cal King</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="border-b">
+          <td class="p-2 text-left text-[14px] md:p-4">Emma Original Mattress</td>
+          <td class="p-2 text-left text-[14px] md:p-4">PayBright Monthly Price (6 months)</td>
+          <td class="p-2 text-left text-[14px] md:p-4">$90.83</td>
+          <td class="p-2 text-left text-[14px] md:p-4">$99.17</td>
+          <td class="p-2 text-left text-[14px] md:p-4">$112.50</td>
+          <td class="p-2 text-left text-[14px] md:p-4">$124.17</td>
+          <td class="p-2 text-left text-[14px] md:p-4">$149.17</td>
+          <td class="p-2 text-left text-[14px] md:p-4">$149.17</td>
+        </tr>
+        <tr>
+          <td class="p-2 text-left text-[14px] md:p-4">Upholstered Bed Frame + Mattress</td>
+          <td class="p-2 text-left text-[14px] md:p-4">PayBright Monthly Price (6 months)</td>
+          <td class="p-2 text-left text-[14px] md:p-4"></td>
+          <td class="p-2 text-left text-[14px] md:p-4"></td>
+          <td class="p-2 text-left text-[14px] md:p-4">$211.67</td>
+          <td class="p-2 text-left text-[14px] md:p-4">$231.67</td>
+          <td class="p-2 text-left text-[14px] md:p-4">$273.33</td>
+          <td class="p-2 text-left text-[14px] md:p-4">$273.33</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Financing Options",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    }
+  ]
+}
+{% endschema %}

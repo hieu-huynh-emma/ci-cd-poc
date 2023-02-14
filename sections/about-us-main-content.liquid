@@ -1,0 +1,82 @@
+<style>
+  .about-us-content-section .about-us-content p {
+    margin-bottom: 16px;
+  }
+  .about-us-content-section .about-us-content p:last-child {
+    margin-bottom: 0;
+  }
+  .about-us-awards-section .about-us-accordion-button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    border-bottom: 1px solid #000;
+    padding: 20px 0;
+  }
+  .about-us-awards-section .award-list {
+    border-left: 1px solid #ffa355;
+    margin: 0 0 15px 20px;
+    padding: 0;
+    text-rendering: optimizeLegibility;
+  }
+  .about-us-awards-section .award-list li:after {
+    background-color: #ffa355;
+    border-radius: 50%;
+    content: " ";
+    height: 1rem;
+    left: -8.5px;
+    position: absolute;
+    top: 0;
+    width: 1rem;
+  }
+  .about-us-awards-section .award-list li {
+    margin-bottom: 30px !important;
+    padding-left: 35px;
+    position: relative;
+  }
+  .about-us-awards-section .award-list li:last-child {
+    margin-bottom: 0 !important;
+  }
+  .about-us-awards-section .award-list li p {
+    font-size: 18px;
+    margin-bottom: 8px;
+  }
+  .about-us-awards-section .award-list li p:last-child {
+    margin-bottom: 0;
+  }
+</style>
+
+<section id="about-us-main-content-section">
+  <div class="mx-auto max-w-7xl px-4 py-8 sm:px-6 md:px-8">
+    <div class="mb-12 lg:flex lg:gap-10">
+      <div id="about-us-left-column-content" class="lg:w-3/4"></div>
+      <div id="about-us-right-column-content" class="lg:w-1/4"></div>
+    </div>
+  </div>
+</section>
+
+<script type="module" defer>
+  $('.accordion-wrapper').beefup({ trigger: ".accordion", content: ".accordion__content", openSpeed: 100, closeSpeed: 100 })
+  $('.about-us-accordion-button').click()
+
+  $('.about-us-left-column').removeClass('hidden').appendTo('#about-us-left-column-content')
+  $('.about-us-right-column').removeClass('hidden').appendTo('#about-us-right-column-content')
+</script>
+
+{% schema %}
+{
+  "name": "About Us Content",
+  "settings": [
+    {
+      "type": "url",
+      "id": "shop_now_link",
+      "label": "Shop now link"
+    },
+    {
+      "type": "url",
+      "id": "vacancies_link",
+      "label": "Emma vacancies link"
+    }
+  ]
+}
+{% endschema %}

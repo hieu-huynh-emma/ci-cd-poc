@@ -1,35 +1,24 @@
-<section>
-  <div class="warranty-header-wrapper">
-    <div class="global-wrapper">
-      <img class="img-fluid wow fadeIn" src="{{ section.settings.image | img_url: 'master' }}">
-      <h2>
-        {{ section.settings.title }}
-      </h2>
-    </div>
-  </div>
+<section id="warranty-header-section" class="bg-[#3c4196]">
+	<div class="mx-auto max-w-7xl px-4 py-7 sm:px-6 md:px-8">
+		<h1 class="text-center text-white mb-3 font-bold text-[32px] lg:text-[42px]">{{ section.settings.title }}</h1>
+		<div class="text-white">{{ section.settings.content }}</div>
+	</div>
 </section>
 
 {% schema %}
-  {
-    "name": "Warranty Header",
-	"class": "warranty-header",
-    "settings": 	[
-						{
-							"type": "image_picker",
-							"id": "image",
-							"label": "Page Logo"
-						},
-						{
-							"type": "text",
-							"id": "title",
-							"label": "Page Title"
-						}
-					]
-  }
+{
+	"name": "Warranty Header",
+	"settings": [
+		{
+			"type": "text",
+			"id": "title",
+			"label": "Title"
+		},
+		{
+			"type": "richtext",
+			"id": "content",
+			"label": "Content"
+		}
+	]
+}
 {% endschema %}
-
-{% stylesheet %}
-{% endstylesheet %}
-
-{% javascript %}
-{% endjavascript %}

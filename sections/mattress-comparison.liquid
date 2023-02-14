@@ -61,10 +61,10 @@
               <span class="text-[14px] font-normal">starting at</span>
               <div class="flex items-center">
                 {% if product.compare_at_price > product.price %}
-                  <p class="font-semibold mr-1 font-helvetica">{{ product.price | money_without_trailing_zeros }}</p>
-                  <p class="line-through font-helvetica">{{ product.compare_at_price | money_without_trailing_zeros }}</p>
+                  <p class="font-semibold mr-1">{{ product.price | money_without_trailing_zeros }}</p>
+                  <p class="line-through">{{ product.compare_at_price | money_without_trailing_zeros }}</p>
                 {% else %}
-                  <p class="font-semibold font-helvetica">{{ product.price | money_without_trailing_zeros }}</p>
+                  <p class="font-semibold">{{ product.price | money_without_trailing_zeros }}</p>
                 {% endif %}
               </div>
             </div>

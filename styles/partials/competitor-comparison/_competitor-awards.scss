@@ -17,6 +17,7 @@
   }
 
   .awards-heading {
+    font-family: 'Tiempos';
     font-weight: 400;
     font-size: 28px;
     margin-bottom: 30px;
@@ -64,6 +65,7 @@
     }
 
     &__title {
+      font-family: 'Inter';
       font-size: 14px;
       font-weight: 600;
       margin-bottom: 6px;
@@ -76,6 +78,7 @@
     }
 
     &__content {
+      font-family: 'Inter';
       font-size: 12px;
 
       @media (min-width: 768px) {

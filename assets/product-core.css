@@ -147,6 +147,7 @@
 }
 .product__description > * {
   color: #55576f;
+  font-family: "Inter";
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -327,6 +328,7 @@
   min-height: 44px;
   padding: 5px;
   text-align: center;
+  font-family: "Inter";
   font-style: normal;
   font-weight: 400;
   font-size: 12px;
@@ -402,6 +404,7 @@
 }
 #mini-comparison-table .footer-note {
   color: #55576F;
+  font-family: "Inter";
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
@@ -423,6 +426,7 @@ model-viewer::part(default-progress-bar) {
 
 /* Buttons */
 .menu-btn {
+  font-family: "Inter";
   font-weight: bold;
   font-size: 13px;
   cursor: pointer;
@@ -433,6 +437,7 @@ model-viewer::part(default-progress-bar) {
 .circle {
   border-radius: 50%;
   display: inline-block;
+  font-family: "Inter";
   font-weight: 700;
   color: white;
   display: flex;
@@ -507,6 +512,7 @@ h5 {
 }
 
 .heading-1 {
+  font-family: "Tiempos";
   font-style: normal;
   font-weight: 400;
   font-size: 24px;
@@ -520,6 +526,7 @@ h5 {
   }
 }
 .heading-2 {
+  font-family: "Tiempos";
   font-style: normal;
   font-weight: 400;
   font-size: 31px;
@@ -533,6 +540,7 @@ h5 {
   }
 }
 .heading-3 {
+  font-family: "Tiempos";
   font-style: normal;
   font-weight: 400;
   font-size: 25px;
@@ -541,6 +549,7 @@ h5 {
 }
 
 .heading-4 {
+  font-family: "Inter";
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -554,6 +563,7 @@ h5 {
   }
 }
 .subheading {
+  font-family: "Inter";
   font-style: normal;
   font-weight: 400;
   font-size: 20px;
@@ -562,6 +572,7 @@ h5 {
 
 a,
 p {
+  font-family: "Inter";
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -1584,6 +1595,7 @@ p {
 }
 
 .jdgm-prev-badge__text {
+  font-family: "Inter";
   font-style: normal;
   font-weight: 400;
   font-size: 13px;
@@ -1610,6 +1622,7 @@ p {
   border-radius: 50px !important;
   border: none;
   text-transform: none !important;
+  font-family: "Inter" !important;
   font-style: normal !important;
   font-weight: 600 !important;
   font-size: 14px !important;
@@ -1665,6 +1678,7 @@ p {
   border-radius: 50px !important;
   border: none;
   text-transform: none !important;
+  font-family: "Inter" !important;
   font-style: normal !important;
   font-weight: 600 !important;
   font-size: 14px !important;
@@ -1775,6 +1789,7 @@ p {
   border: none;
   background-color: white;
   box-shadow: none;
+  font-family: "Inter";
   font-style: normal;
   font-weight: 600;
   font-size: 14px;
@@ -1831,6 +1846,7 @@ p {
   border: none;
   background-color: white;
   box-shadow: none;
+  font-family: "Inter";
   font-style: normal;
   font-weight: 600;
   font-size: 14px;
@@ -1850,6 +1866,7 @@ p {
 }
 
 .product-form__input .form__label {
+  font-family: "Inter";
   font-style: normal;
   font-weight: 400;
   font-size: 12px;

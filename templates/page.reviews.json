@@ -1,0 +1,22 @@
+{
+  "sections": {
+    "reviews-header": {
+      "type": "reviews-header",
+      "settings": {
+        "title": "Customer Reviews",
+        "description": "See why we're loved by over 75,000 Happy Sleepers in over 30 countries. Join the club and let our community know how you feel about Emma products and services below.",
+        "link": "shopify:\/\/products\/emma-original-mattress"
+      }
+    },
+    "reviews-yotpo": {
+      "type": "reviews-yotpo",
+      "settings": {
+        "product": "emma-original-mattress"
+      }
+    }
+  },
+  "order": [
+    "reviews-header",
+    "reviews-yotpo"
+  ]
+}

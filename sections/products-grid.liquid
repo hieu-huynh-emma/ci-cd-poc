@@ -1,171 +1,173 @@
 <style>
- .products-grid-wrapper {
-  margin: 0 auto;
- }
-
- .products-grid-section {
-  width: 100%;
-  background-color: white;
-  padding: 1rem;
- }
-
- .products-grid-section h2 {
-  font-size: 31px;
-  text-align: center;
-  margin: 0 auto 30px;
- }
-
- .products-grid-container {
-  display: grid;
-  grid-gap: 1rem;
-  grid-template-columns: repeat(2, 1fr);
- }
-
- .products-grid-item {
-  display: flex;
-  align-items: flex-start;
-  flex-flow: column;
- }
-
- .product-image-container {
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  background-color: #F7F7F9;
-  border-radius: 4px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 0.5rem;
- }
-
- .products-grid-section .badge {
-  background-color: #F03306;
-  color: white;
-  margin-bottom: 0.5rem;
-  max-height: 28px;
-  padding: 3px 8px;
-  font-size: 13px;
- }
-
- .item-name {
-  font-style: normal;
-  font-weight: 700;
-  font-size: 16px;
- }
-
- .item-price {
-  font-style: normal;
-  font-weight: 400;
-  font-size: 13px;
- }
-
- .sale-price {
-  color: #F03306;
-  font-weight: 700;
- }
-
- @media (min-width: 769px) {
   .products-grid-wrapper {
-   max-width: 1440px;
-   padding: 0 3.5rem;
+    margin: 0 auto;
+  }
+
+  .products-grid-section {
+    width: 100%;
+    background-color: white;
+    padding: 1rem;
   }
 
   .products-grid-section h2 {
-   font-size: 39px;
+    font-size: 31px;
+    text-align: center;
+    margin: 0 auto 30px;
   }
 
   .products-grid-container {
-   grid-template-columns: repeat(4, 1fr);
+    display: grid;
+    grid-gap: 1rem;
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .products-grid-item {
-   position: relative;
+    display: flex;
+    align-items: flex-start;
+    flex-flow: column;
+  }
+
+  .product-image-container {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    background-color: #F7F7F9;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0.5rem;
   }
 
   .products-grid-section .badge {
-   position: absolute;
-   top: 0.5rem;
-   left: 0.5rem;
+    background-color: #F03306;
+    color: white;
+    margin-bottom: 0.5rem;
+    max-height: 28px;
+    padding: 3px 8px;
+    font-size: 13px;
   }
- }
 
+  .item-name {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+  }
+
+  .item-price {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+  }
+
+  .sale-price {
+    color: #F03306;
+    font-weight: 700;
+  }
+
+  @media (min-width: 769px) {
+    .products-grid-wrapper {
+      max-width: 1440px;
+      padding: 0 3.5rem;
+    }
+
+    .products-grid-section h2 {
+      font-size: 39px;
+    }
+
+    .products-grid-container {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .products-grid-item {
+      position: relative;
+    }
+
+    .products-grid-section .badge {
+      position: absolute;
+      top: 0.5rem;
+      left: 0.5rem;
+    }
+  }
 </style>
+
 <section class="products-grid-section">
- <div class="products-grid-wrapper">
-  <h2>{{section.settings.title}}</h2>
-  <div class="products-grid-container">
-   {% for block in section.blocks %}
-    <a href="{{ block.settings.product.url }}" class="products-grid-item">
-     <div class="product-image-container">
-      <img
-        src="{% if block.settings.image != blank %} {{ block.settings.image | img_url: 'medium'}} {% else %} {{ block.settings.product.featured_image | img_url: 'medium'}} {% endif %}"
-        alt="" class="item-image">
-     </div>
-     {% if block.settings.badge_text != blank %}
-      <span class="badge">{{ block.settings.badge_text }}</span>
-     {% endif %}
-     <h3 class="item-name">
-      {% if block.settings.name != blank %}
-       {{ block.settings.name }}
-      {% else %}
-       {{ block.settings.product.title }}
-      {% endif%}
-     </h3>
-     <p class="item-price">
-      from
-      <span
-        class="{% if block.settings.product.compare_at_price > block.settings.product.price %} sale-price {% else %} font-bold {% endif %}">
+  <div class="products-grid-wrapper">
+    <h2>{{ section.settings.title }}</h2>
+    <div class="products-grid-container">
+      {% for block in section.blocks %}
+        <a href="{{ block.settings.product.url }}" class="products-grid-item">
+          <div class="product-image-container">
+            <img
+              src="{% if block.settings.image != blank %} {{ block.settings.image | img_url: 'medium' }} {% else %} {{ block.settings.product.featured_image | img_url: 'medium' }} {% endif %}"
+              alt="" class="item-image">
+          </div>
+          {% if block.settings.badge_text != blank %}
+            <span class="badge">{{ block.settings.badge_text }}</span>
+          {% endif %}
+          <h3 class="item-name">
+            {% if block.settings.name != blank %}
+              {{ block.settings.name }}
+            {% else %}
+              {{ block.settings.product.title }}
+            {% endif %}
+          </h3>
+          <p class="item-price">
+            from
+            <span
+              class="{% if block.settings.product.compare_at_price > block.settings.product.price %} sale-price {% else %} font-bold {% endif %}">
       {{ block.settings.product.price | money }}
      </span>
-      {% if block.settings.product.compare_at_price > block.settings.product.price %}
-       <del>{{ block.settings.product.compare_at_price | money }}</del>
-      {% endif %}
-     </p>
-    </a>
-   {% endfor %}
+            {% if block.settings.product.compare_at_price > block.settings.product.price %}
+              <del>{{ block.settings.product.compare_at_price | money }}</del>
+            {% endif %}
+          </p>
+        </a>
+      {% endfor %}
+    </div>
   </div>
- </div>
 </section>
 {% schema %}
 {
- "name": "Products Grid",
- "blocks": [
-  {
-   "type": "grid_item",
-   "name": "Product",
-   "settings": [
+  "name": "Products Grid",
+  "blocks": [
     {
-     "type": "product",
-     "id": "product",
-     "label": "Product"
-    },
-    {
-     "type": "image_picker",
-     "id": "image",
-     "label": "Image"
-    },
-    {
-     "type": "text",
-     "id": "badge_text",
-     "label": "Bagde",
-     "default": "30%"
-    },
-    {
-     "type": "text",
-     "id": "name",
-     "label": "Name",
-     "default": "Emma Pillow"
+      "type": "grid_item",
+      "name": "Product",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "badge_text",
+          "label": "Bagde",
+          "default": "30%"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Name",
+          "default": "Emma Pillow"
+        }
+      ]
     }
-   ]
-  }
- ],
- "settings": [
-  {
-   "type": "text",
-   "id": "title",
-   "label": "Section title",
-   "default": "You might also like"
-  }
- ]
+  ],
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section title",
+      "default": "You might also like"
+    }
+  ]
 }
 {% endschema %}

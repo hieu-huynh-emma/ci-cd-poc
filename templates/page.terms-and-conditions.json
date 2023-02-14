@@ -1,0 +1,20 @@
+{
+  "sections": {
+    "terms-and-conditions-header": {
+      "type": "terms-and-conditions-header",
+      "settings": {
+        "title": "Terms and Conditions",
+        "image": "shopify:\/\/shop_images\/gradientbg.png"
+      }
+    },
+    "terms-and-conditions-content": {
+      "type": "terms-and-conditions-content",
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "terms-and-conditions-header",
+    "terms-and-conditions-content"
+  ]
+}

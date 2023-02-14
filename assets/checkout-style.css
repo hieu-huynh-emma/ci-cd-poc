@@ -44,6 +44,7 @@
 }
 
 .sidebar-banner__text {
+  font-family: "Inter";
   font-weight: 600;
   font-size: 12px;
 }
@@ -63,6 +64,7 @@
 }
 
 .ssl {
+  font-family: "Inter";
   font-weight: 600;
   display: grid;
   gap: 4px;
@@ -153,11 +155,13 @@
 }
 
 .sidebar-ornament__support-heading {
+  font-family: "Inter";
   font-size: 10px;
   font-weight: 600;
 }
 
 .sidebar-ornament__support-subheading {
+  font-family: "Inter";
   font-size: 10px;
   font-weight: 500;
 }
@@ -179,6 +183,7 @@
 }
 
 .sidebar-ornament__support-info-text {
+  font-family: "Inter";
   margin-left: 8px;
   font-size: 10px;
   text-decoration: underline;
@@ -188,6 +193,7 @@
 
 .sidebar-ornament__title {
   display: none;
+  font-family: "Tiempos";
   font-style: normal;
   font-weight: 400;
   font-size: 24px;
@@ -197,6 +203,7 @@
 }
 
 .sidebar-ornament__subtitle {
+  font-family: "Inter";
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
@@ -229,6 +236,7 @@
   }
 
   .sidebar-award__title {
+    font-family: "Tiempos";
     font-size: 18px;
     font-weight: 400;
   }
