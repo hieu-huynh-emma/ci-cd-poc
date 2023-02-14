@@ -1,12 +1,10 @@
 html {
   font-size: 90%;
-  font-family: Acumin Pro, "acumin-pro", sans-serif;
 }
 
 h1,
 h2 {
   color: #3c4196;
-  font-family: Utopia Std, serif;
   font-style: normal;
   font-weight: bold;
   line-height: 100%;
@@ -25,17 +23,9 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: Proxima Nova, "proxima-nova", Acumin Pro, "acumin-pro",
-    sans-serif;
   font-style: normal;
   font-weight: normal;
   line-height: 150%;
-}
-
-ul {
-  list-style: initial;
-  margin: inherit;
-  padding: initial;
 }
 
 .blog-articles {
@@ -55,7 +45,7 @@ ul {
     font-size: 2rem;
     margin: 1rem;
     color: #3c4196 !important;
-    font-family: Utopia Std,serif;
+    font-family: 'Tiempos';
   }
 
   .category-block {
@@ -74,7 +64,7 @@ ul {
     font-size: 3rem;
     margin: 1rem;
     color: #3c4196 !important;
-    font-family: Utopia Std,serif;
+    font-family: 'Tiempos';
   }
   
   .category-block {

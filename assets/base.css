@@ -815,14 +815,6 @@ button.btn--full, button[type=submit].btn--full {
   ascent-override: 100%;
 }
 @font-face {
-  font-family: "Utopia Std";
-  src: url("utopiastd-disp-webfont.woff2") format("woff2"), url("utopiastd-disp-webfont.woff") format("woff");
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-  ascent-override: 100%;
-}
-@font-face {
   font-family: "Inter";
   src: url("Inter-Thin.ttf") format("truetype");
   font-weight: 100;

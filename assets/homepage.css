@@ -83,7 +83,7 @@
   #hero-banner-section .main-content {
     position: static;
     justify-items: flex-start;
-    max-width: 565px;
+    max-width: 615px;
     padding: 40px;
     backdrop-filter: blur(10px);
     background: rgba(255, 255, 255, 0.5);
@@ -118,7 +118,8 @@
 }
 @media screen and (min-width: 768px) {
   #hero-banner-section .award-ribbon {
-    display: grid;right: 64px;
+    display: grid;
+    right: 64px;
     grid-auto-flow: row;
     padding: 20px;
   }
