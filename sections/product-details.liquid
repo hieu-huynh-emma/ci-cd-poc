@@ -65,6 +65,14 @@
         color: white;
     }
 
+    #main-carousel .logo-badge {
+      position: absolute;
+      top: 0;
+      right: 0;
+      z-index: 5;
+      background: rgb(255 255 255 / 50%);
+    }
+
     #main-carousel-slide01 {
         position: relative;
     }
@@ -378,8 +386,13 @@
 
             <!-- BADGE -->
             {% if section.settings.media_badge != blank %}
-              <span class="media-badge">{{ section.settings.media_badge }}
-            </span>
+              <span class="media-badge">{{ section.settings.media_badge }}</span>
+            {% endif %}
+
+            {% if section.settings.logo_badge != blank %}
+              <div class="logo-badge lg:p-1">
+                <img class="w-[70px] lg:w-[120px]" src="{{ section.settings.logo_badge | img_url: 'master' }}" alt="">
+              </div>
             {% endif %}
 
             <!-- AWARD RIBBON -->
@@ -1630,6 +1643,11 @@ customElements.define('product-modal', ProductModal);
       "id": "media_badge",
       "default": "sale",
       "label": "Media badge"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo_badge",
+      "label": "Logo badge"
     },
     {
       "type": "checkbox",

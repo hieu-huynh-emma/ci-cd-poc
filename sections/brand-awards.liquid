@@ -15,7 +15,7 @@
           <li class="splide__slide">
             <div class="awards__item">
               <div class="image_container">
-                <img src="{{ block.settings.icon | img_url: 'large' }}" width="120" height="auto" loading="lazy">
+                <img src="{{ block.settings.icon | img_url: 'large' }}" width="{{ block.settings.icon_width }}" height="auto" loading="lazy">
               </div>
               <div>
                 <h4 class="heading-4 awards__title">{{ block.settings.title | remove: "<p>" | remove: "</p>" }}</h4>
@@ -63,6 +63,12 @@
           "id": "icon",
           "type": "image_picker",
           "label": "Icon"
+        },
+        {
+          "id": "icon_width",
+          "type": "number",
+          "label": "Icon width",
+          "default": 140
         },
         {
           "id": "title",
