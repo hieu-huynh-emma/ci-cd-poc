@@ -12,7 +12,7 @@
     position: relative;
 
     display: grid;
-    gap: 20px;
+    column-gap: 20px;
     justify-items: center;
     width: 100%;
     max-width: 1440px;
@@ -20,8 +20,9 @@
 
     background-color: white;
     @media screen and (min-width: 768px) {
-      gap: 3rem;
-      grid-template-columns: minmax(0, 45%) minmax(0, 1fr);    }
+      column-gap: 3rem;
+      grid-template-columns: minmax(0, 45%) minmax(0, 1fr);
+    }
   }
 
   .headings {
@@ -37,7 +38,7 @@
       font-weight: 400;
       font-size: 26px;
       text-align: center;
-      @media screen and(min-width: 768px) {
+      @media screen and (min-width: 768px) {
         font-size: 36px;
         text-align: start;
       }
@@ -111,6 +112,15 @@
     }
   }
 
+  .brand-reputation {
+    &__cta {
+      @media (min-width: 768px) {
+        grid-column: 2 / 2;
+        margin-bottom: 30px;
+      }
+    }
+  }
+
   #affiliates-carousel {
     overflow: auto;
     width: 100%;
@@ -132,9 +142,9 @@
     padding: 8px 2px;
     width: 2rem;
     height: 2rem;
-    background-color: #3c4196;
-    left: 0;
-    bottom: 2.2rem;
+    background-color: #3C4196;
+    left: 8px;
+    bottom: 5.1rem;
     border-radius: 50%;
 
     @media screen and (min-width: 768px) {
@@ -143,7 +153,7 @@
   }
 
   #nextAffiliates {
-    right: 0;
+    right: 8px;
     left: auto;
     transform: rotate(180deg);
     -webkit-transform: rotate(180deg);

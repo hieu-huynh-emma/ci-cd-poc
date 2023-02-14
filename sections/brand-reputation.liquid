@@ -15,17 +15,16 @@
     <div id="affiliates-carousel">
       <div id="affiliates" class="affiliates">
         {%- for affiliate in affiliates -%}
-          <div
-            data-quote="{{ affiliate.settings.quote | remove: " <p>" | remove: "</p>" | escape }}"
-            data-link="{{ affiliate.settings.link | escape }}"
-            class="affiliates__item"
-          >
+          <div data-quote="{{ affiliate.settings.quote | remove: " <p>" | remove: "</p>" | escape }}" class="affiliates__item">
             {{ affiliate.settings.logo }}
           </div>
         {%- endfor -%}
       </div>
       <button id="prevAffiliates"><img src="{{ 'arrow.svg' | asset_url }}"></button>
       <button id="nextAffiliates"><img src="{{ 'arrow.svg' | asset_url }}"></button>
+    </div>
+    <div class="brand-reputation__cta">
+      <a href="{{ section.settings.cta_url }}" class="btn">{{ section.settings.cta_text }}</a>
     </div>
   </div>
 </section>
@@ -126,6 +125,17 @@
       "type": "richtext",
       "label": "Title",
       "default": "<p>Why sleepers <i>love</i> Emma</p>"
+    },
+    {
+      "id": "cta_text",
+      "type": "text",
+      "label": "Button Text",
+      "default": "see all reviews"
+    },
+    {
+      "id": "cta_url",
+      "type": "url",
+      "label": "Button URL"
     }
   ]
 }
