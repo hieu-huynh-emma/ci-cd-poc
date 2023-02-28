@@ -1,0 +1,66 @@
+<!-- Tangoo -->
+{% case template.name %}
+  {% when 'collection' %}
+    <script type='text/javascript'>
+      window.data_3415 = []
+      window.data_3415.push({
+        'Currency': '$Currency$',
+        'CustomerType': '$CustomerType$',
+        'ProductId': '$ProductId$',
+        'ProductCategoryList': '$ProductCategoryList$',
+        'gdpr': '${GDPR}',
+        'gdpr_consent': '${GDPR_CONSENT_317}',
+        'gdpr_pd': '${GDPR_PD}',
+        'us_privacy': '${US_PRIVACY}',
+        'CouponCode': '$CouponCode$',
+        'PageType': 'category',
+      })
+    </script>
+  {% when 'product' %}
+    <script type='text/javascript'>
+      window.data_3415 = []
+      window.data_3415.push({
+        'Currency': '$Currency$',
+        'CustomerType': '$CustomerType$',
+        'ProductId': '$ProductId$',
+        'ProductCategoryList': '$ProductCategoryList$',
+        'gdpr': '${GDPR}',
+        'gdpr_consent': '${GDPR_CONSENT_317}',
+        'gdpr_pd': '${GDPR_PD}',
+        'us_privacy': '${US_PRIVACY}',
+        'CouponCode': '$CouponCode$',
+        'PageType': 'product',
+      })
+    </script>
+  {% when 'cart' %}
+    <script type='text/javascript'>
+      window.data_3415 = []
+      window.data_3415.push({
+        'Currency': '$Currency$',
+        'CustomerType': '$CustomerType$',
+        'ProductId': '$ProductId$',
+        'gdpr': '${GDPR}',
+        'gdpr_consent': '${GDPR_CONSENT_317}',
+        'gdpr_pd': '${GDPR_PD}',
+        'us_privacy': '${US_PRIVACY}',
+        'CouponCode': '$CouponCode$',
+        'PageType': 'basket',
+      })
+    </script>
+  {% when 'index' %}
+    <script type='text/javascript'>
+      window.data_3415 = []
+      window.data_3415.push({
+        'gdpr': '${GDPR}',
+        'gdpr_consent': '${GDPR_CONSENT_317}',
+        'gdpr_pd': '${GDPR_PD}',
+        'us_privacy': '${US_PRIVACY}',
+        'PageType': 'home',
+      })
+    </script>
+{% endcase %}
+
+<script id="DLFNPMMP1" type="text/javascript" src="https://cdn.logico3c.com/aud/clientjs/ptag.js?3415" async></script>
+
+<!-- End Tangoo -->
+

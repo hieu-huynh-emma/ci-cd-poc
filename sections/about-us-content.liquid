@@ -1,0 +1,37 @@
+<section class="about-us-left-column hidden about-us-content-section">
+  <div class="py-8">
+    <h2 class="mb-6 text-[50px]">{{ section.settings.title }}</h2>
+    <div class="about-us-content">{{ section.settings.content }}</div>
+    {% if section.settings.cta_button_text != '' %}
+      <a href="{{ section.settings.cta_button_link }}" class="btn max-w-max mt-6">{{ section.settings.cta_button_text }}</a>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "About Us Content",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "richtext",
+      "id": "content",
+      "label": "Content"
+    },
+    {
+      "type": "text",
+      "id": "cta_button_text",
+      "label": "CTA Button Text"
+    },
+    {
+      "type": "url",
+      "id": "cta_button_link",
+      "label": "CTA Button Link"
+    }
+  ]
+}
+{% endschema %}

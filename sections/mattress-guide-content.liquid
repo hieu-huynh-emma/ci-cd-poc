@@ -1,0 +1,42 @@
+<section id="mattress-guide-content-section">
+  <div class="mx-auto max-w-7xl px-4 py-8 sm:px-6 md:px-8">
+    {% for block in section.blocks %}
+      <div class="py-4 md:flex">
+        <img class="mb-10 mx-auto md:w-2/5 md:mb-0 md:mr-10" src="{{ block.settings.image | img_url: 'master' }}" alt="">
+        <div class="md:w-3/5">
+          <h6 class="text-[25px] mb-3">{{ block.settings.heading }}</h6>
+          <p>{{ block.settings.content }}</p>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Mattress Guide Content",
+  "blocks": [
+    {
+      "type": "guide",
+      "name": "Guide",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Illustration image"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading"
+        },
+        {
+          "type": "text",
+          "id": "content",
+          "label": "Content"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

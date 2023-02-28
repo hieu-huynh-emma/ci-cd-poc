@@ -1,0 +1,276 @@
+<style>
+  #article-main-content-section div:empty {
+    display: block;
+  }
+  #article-main-content-section .customer-email__input {
+    margin-bottom: 16px;
+    border-radius: 4px;
+    padding-left: 16px;
+    height: 54px;
+    border: 1px solid #b4bbc3;
+    font-size: 20px;
+    display: block;
+    width: 100%;
+  }
+  #article-main-content-section .customer-email__submit,
+  #article-main-content-section .shop-now-button {
+    background-color: #3c4196;
+  }
+  #article-main-content-section .article-rich-content a,
+  #article-main-content-section .article-rich-content a:visited {
+    color: #3c4196;
+    text-decoration: underline;
+  }
+</style>
+
+<section id="article-main-content-section" class="bg-[#fbf6f0]">
+  <div class="mx-auto max-w-6xl px-4 py-8 sm:px-6 md:px-8">
+    <div class="md:flex md:flex-row-reverse">
+      <div class="md:w-2/3">
+        <div class="mb-10">
+          <div class="mb-8">
+            <div class="flex items-center justify-between">
+              <div class="w-1/4">
+                <a href="/blogs/curiosity-on-sleep" class="text-center">
+                  <img class="mx-auto" src="{{ 'article-curiosity-on-sleep.png' | asset_url }}" width="50px" height="50px" alt="">
+                  <span class="block font-bold">Better Sleep 101</span>
+                </a>
+              </div>
+              <div class="w-1/4">
+                <a href="/blogs/health-science" class="text-center">
+                  <img class="mx-auto" src="{{ 'article-health-science.png' | asset_url }}" width="50px" height="50px" alt="">
+                  <span class="block font-bold">Health & Science</span>
+                </a>
+              </div>
+              <div class="w-1/4">
+                <a href="/blogs/lifestyle" class="text-center">
+                  <img class="mx-auto" src="{{ 'article-lifestyle.png' | asset_url }}" width="50px" height="50px" alt="">
+                  <span class="block font-bold">Lifestyle</span>
+                </a>
+              </div>
+              <div class="w-1/4">
+                <a href="/blogs/guides" class="text-center">
+                  <img class="mx-auto" src="{{ 'article-guides.png' | asset_url }}" width="50px" height="50px" alt="">
+                  <span class="block font-bold">Guides</span>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="flex items-center">
+            <div class="w-2/5">
+              <div class="text-gray-500 flex items-center">
+                <svg class="fill-gray-500 h-2 mr-1" width="10" height="15" viewBox="0 0 10 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M0.417482 7.42509C0.416982 7.01909 0.591481 6.63259 0.895981 6.36459L7.73598 0.347092C8.20748 -0.048408 8.90848 0.00459197 9.31498 0.466592C9.72148 0.928592 9.68448 1.63059 9.23198 2.04759L3.25098 7.30959C3.21798 7.33859 3.19848 7.38059 3.19848 7.42509C3.19848 7.46959 3.21748 7.51109 3.25098 7.54059L9.23198 12.8026C9.54698 13.0666 9.69398 13.4806 9.61648 13.8846C9.53898 14.2886 9.24848 14.6181 8.85848 14.7466C8.46798 14.8751 8.03848 14.7821 7.73648 14.5036L0.898981 8.48809C0.593481 8.21959 0.418482 7.83259 0.417982 7.42559L0.417482 7.42509Z"/>
+                </svg>
+                <p class="text-[15px]">Previous Article</p>
+              </div>
+              <a class="text-[18px]" href="{{ section.settings.previous_article.url }}">{{ section.settings.previous_article.title }}</a>
+            </div>
+            <div class="w-1/5">
+              <a href="{{ routes.root_url }}"><img class="mx-auto" src="{{ 'symbolblue-edited.png' | asset_url }}" width="135px" height="135px" alt=""></a>
+            </div>
+            <div class="w-2/5 text-right">
+              <div class="text-gray-500 flex items-center justify-end">
+                <p class="text-[15px]">Next Article</p>
+                <svg class="fill-gray-500 h-2 ml-1 rotate-180" width="10" height="15" viewBox="0 0 10 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M0.417482 7.42509C0.416982 7.01909 0.591481 6.63259 0.895981 6.36459L7.73598 0.347092C8.20748 -0.048408 8.90848 0.00459197 9.31498 0.466592C9.72148 0.928592 9.68448 1.63059 9.23198 2.04759L3.25098 7.30959C3.21798 7.33859 3.19848 7.38059 3.19848 7.42509C3.19848 7.46959 3.21748 7.51109 3.25098 7.54059L9.23198 12.8026C9.54698 13.0666 9.69398 13.4806 9.61648 13.8846C9.53898 14.2886 9.24848 14.6181 8.85848 14.7466C8.46798 14.8751 8.03848 14.7821 7.73648 14.5036L0.898981 8.48809C0.593481 8.21959 0.418482 7.83259 0.417982 7.42559L0.417482 7.42509Z"/>
+                </svg>
+              </div>
+              <a class="text-[18px]" href="{{ section.settings.next_article.url }}">{{ section.settings.next_article.title }}</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-14">
+          <p class="text-[#ffa355] text-center leading-loose uppercase">{{ blog.title }}</p>
+          <div class="w-[37px] mx-auto border-b-2 border-[#ffa355]"></div>
+        </div>
+
+        <div>
+          <h1 class="text-[42px] text-[#1e2b5a] text-center mb-14">{{ article.title }}</h1>
+          <img class="mb-12" src="{{ article.image | img_url: 'master' }}" alt="">
+          {% for block in section.blocks %}
+            {% case block.type %}
+              {% when 'standalone_title' %}
+                <h2 class="text-[38px] text-[#1e2b5a] text-center mb-5">{{ block.settings.title }}</h2>
+                <div class="w-[75px] mx-auto border-b-2 border-[#1e2b5a] mb-8"></div>
+              {% when 'standalone_richtext' %}
+                <div class="article-rich-content text-[18px] text-[#1e2b5a] mb-14">{{ block.settings.content | remove: '<p>' | remove: '</p>' }}</div>
+              {% when 'standalone_image' %}
+                {% if block.settings.image %}
+                  <img class="w-full mb-6" src="{{ block.settings.image | img_url: 'master' }}" alt="">
+                {% endif %}
+              {% when 'primary_group_content' %}
+                <h2 class="text-[38px] text-[#1e2b5a] text-center mb-5">{{ block.settings.title }}</h2>
+                <div class="w-[75px] mx-auto border-b-2 border-[#1e2b5a] mb-8"></div>
+                {% if block.settings.image_1 %}
+                  <img class="w-full mb-6" src="{{ block.settings.image_1 | img_url: 'master' }}" alt="">
+                {% endif %}
+                <div class="article-rich-content text-[18px] text-[#1e2b5a] {% if block.settings.image_2 %}mb-6{% else %}mb-14{% endif %}">{{ block.settings.content | remove: '<p>' | remove: '</p>' }}</div>
+                {% if block.settings.image_2 %}
+                  <img class="w-full mb-6" src="{{ block.settings.image_2 | img_url: 'master' }}" alt="">
+                {% endif %}
+              {% when 'secondary_group_content' %}
+                <h3 class="text-[29px] text-[#1e2b5a] mb-6">{{ block.settings.title_1 }}</h3>
+                <div class="article-rich-content text-[18px] text-[#1e2b5a] mb-14">{{ block.settings.content_1 | remove: '<p>' | remove: '</p>' }}</div>
+                <h3 class="text-[29px] text-[#1e2b5a] mb-6">{{ block.settings.title_2 }}</h3>
+                <div class="article-rich-content text-[18px] text-[#1e2b5a] mb-14">{{ block.settings.content_2 | remove: '<p>' | remove: '</p>' }}</div>
+                <h3 class="text-[29px] text-[#1e2b5a] mb-6">{{ block.settings.title_3 }}</h3>
+                <div class="article-rich-content text-[18px] text-[#1e2b5a] mb-14">{{ block.settings.content_3 | remove: '<p>' | remove: '</p>' }}</div>
+            {% endcase %}
+          {% endfor %}
+        </div>
+      </div>
+      <div class="md:w-1/3 md:mr-20">
+        <div class="sticky top-[136px] mb-14">
+          <div class="mb-4">
+            <h3 class="text-[28px] text-[#1e2b5a] mb-3 text-center">The Emma Original</h3>
+            <img class="mb-4 mx-auto" src="{{ 'canada-blog.png' | asset_url }}" alt="">
+            <p class="text-[18px] mb-4 text-center">Treat yourself to your best sleep ever with the award-winning Emma Original memory foam mattress.</p>
+            <a class="shop-now-button mb-10 btn btn--secondary max-w-max mx-auto" href="/products/emma-original-mattress">shop now</a>
+            <h3 class="text-[28px] text-[#1e2b5a] text-center mb-5">Sign up to get an instant $30 off!</h3>
+            <p class="text-[18px] text-center">Join the Emma Sleep Club and stay up-to-date with all our special offers, events, and more!</p>
+          </div>
+          <div class="mb-5">
+            {% form 'customer' %}
+              {% if form.posted_successfully? %}
+                <p class="text-[28px] font-bold text-center mb-3">Thanks for subscribing!</p>
+                <p class="text-[20px] text-center">Check your email for a confirmation message.</p>
+              {% else %}
+                <input class="customer-email__input" placeholder="Email" type="email" name="contact[email]" required/>
+                <input class="customer-email__submit btn btn--secondary btn--full" type="submit" value="Subscribe" />
+              {% endif %}
+            {% endform %}
+          </div>
+          <div class="flex items-center justify-center">
+            <a class="mr-4" href="https://www.facebook.com/EmmaSleepCanada" rel="nofollow" target="_blank">
+              <svg class="w-7 h-7" id="Ebene_1" data-name="Ebene 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1017.78">
+                <path class="fill-[#2e2f3c]" d="M1024,512C1024,229.23,794.77,0,512,0S0,229.23,0,512c0,255.55,187.23,467.37,432,505.78V660H302V512H432V399.2C432,270.88,508.44,200,625.39,200c56,0,114.61,10,114.61,10V336H675.44c-63.6,0-83.44,39.47-83.44,80v96H734L711.3,660H592v357.78C836.77,979.37,1024,767.55,1024,512Z"/>
+              </svg>
+            </a>
+            <a href="https://www.instagram.com/emmasleep.canada/" rel="nofollow" target="_blank">
+              <svg class="w-7 h-7" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000">
+                <path class="fill-[#2e2f3c]" d="M295.42,6c-53.2,2.51-89.53,11-121.29,23.48-32.87,12.81-60.73,30-88.45,57.82S40.89,143,28.17,175.92c-12.31,31.83-20.65,68.19-23,121.42S2.3,367.68,2.56,503.46,3.42,656.26,6,709.6c2.54,53.19,11,89.51,23.48,121.28,12.83,32.87,30,60.72,57.83,88.45S143,964.09,176,976.83c31.8,12.29,68.17,20.67,121.39,23s70.35,2.87,206.09,2.61,152.83-.86,206.16-3.39S799.1,988,830.88,975.58c32.87-12.86,60.74-30,88.45-57.84S964.1,862,976.81,829.06c12.32-31.8,20.69-68.17,23-121.35,2.33-53.37,2.88-70.41,2.62-206.17s-.87-152.78-3.4-206.1-11-89.53-23.47-121.32c-12.85-32.87-30-60.7-57.82-88.45S862,40.87,829.07,28.19c-31.82-12.31-68.17-20.7-121.39-23S637.33,2.3,501.54,2.56,348.75,3.4,295.42,6m5.84,903.88c-48.75-2.12-75.22-10.22-92.86-17-23.36-9-40-19.88-57.58-37.29s-28.38-34.11-37.5-57.42c-6.85-17.64-15.1-44.08-17.38-92.83-2.48-52.69-3-68.51-3.29-202s.22-149.29,2.53-202c2.08-48.71,10.23-75.21,17-92.84,9-23.39,19.84-40,37.29-57.57s34.1-28.39,57.43-37.51c17.62-6.88,44.06-15.06,92.79-17.38,52.73-2.5,68.53-3,202-3.29s149.31.21,202.06,2.53c48.71,2.12,75.22,10.19,92.83,17,23.37,9,40,19.81,57.57,37.29s28.4,34.07,37.52,57.45c6.89,17.57,15.07,44,17.37,92.76,2.51,52.73,3.08,68.54,3.32,202s-.23,149.31-2.54,202c-2.13,48.75-10.21,75.23-17,92.89-9,23.35-19.85,40-37.31,57.56s-34.09,28.38-57.43,37.5c-17.6,6.87-44.07,15.07-92.76,17.39-52.73,2.48-68.53,3-202.05,3.29s-149.27-.25-202-2.53m407.6-674.61a60,60,0,1,0,59.88-60.1,60,60,0,0,0-59.88,60.1M245.77,503c.28,141.8,115.44,256.49,257.21,256.22S759.52,643.8,759.25,502,643.79,245.48,502,245.76,245.5,361.22,245.77,503m90.06-.18a166.67,166.67,0,1,1,167,166.34,166.65,166.65,0,0,1-167-166.34" transform="translate(-2.5 -2.5)"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Article Content",
+  "settings": [
+    {
+      "type": "article",
+      "id": "previous_article",
+      "label": "Previous article"
+    },
+    {
+      "type": "article",
+      "id": "next_article",
+      "label": "Next article"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Standalone Title",
+      "type": "standalone_title",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        }
+      ]
+    },
+    {
+      "name": "Standalone Richtext",
+      "type": "standalone_richtext",
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content"
+        }
+      ]
+    },
+    {
+      "name": "Standalone Image",
+      "type": "standalone_image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        }
+      ]
+    },
+    {
+      "name": "Primary Group Content",
+      "type": "primary_group_content",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_1",
+          "label": "Image before content"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_2",
+          "label": "Image after content"
+        }
+      ]
+    },
+    {
+      "name": "Secondary Group Content",
+      "type": "secondary_group_content",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title_1",
+          "label": "Title 1"
+        },
+        {
+          "type": "richtext",
+          "id": "content_1",
+          "label": "Content 1"
+        },
+        {
+          "type": "text",
+          "id": "title_2",
+          "label": "Title 2"
+        },
+        {
+          "type": "richtext",
+          "id": "content_2",
+          "label": "Content 2"
+        },
+        {
+          "type": "text",
+          "id": "title_3",
+          "label": "Title 3"
+        },
+        {
+          "type": "richtext",
+          "id": "content_3",
+          "label": "Content 3"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

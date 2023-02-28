@@ -1,0 +1,56 @@
+<section id="financing-affirm-guide-section" class="bg-[#e1e1f0]">
+  <div class="mx-auto max-w-7xl px-4 py-10 text-center sm:px-6 md:px-8">
+    <h3 class="text-center text-[33px] md:text-[40px] text-[#3c4196] mb-10 md:mb-16">{{ section.settings.title }}</h3>
+    <div class="md:flex md:gap-6 justify-between mb-14">
+      {% for block in section.blocks %}
+        <div class="{% if forloop.last != true %}mb-14 md:mb-0{% endif %}">
+          <h3 class="text-center text-[#3c4196] text-[22px] md:text-[25px] mb-1">{{ block.settings.heading }}</h3>
+          <p class="text-center">{{ block.settings.subheading }}</p>
+        </div>
+      {% endfor %}
+    </div>
+    <p class="text-center italic mb-6">{{ section.settings.note }}</p>
+    <a href="{{ section.settings.link }}" class="btn btn--secondary mx-auto w-max">Shop Now</a>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Affirm Apply Process",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "text",
+      "id": "note",
+      "label": "Note"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "CTA link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "affirm-how-to",
+      "name": "Affirm Apply Step",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading"
+        },
+        {
+          "type": "text",
+          "id": "subheading",
+          "label": "Subheading"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

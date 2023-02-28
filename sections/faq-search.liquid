@@ -1,94 +1,50 @@
-<section class="faq-search-section h-full">
-  <button class="font-header faq-search-btn hidden flex items-center p-2 bg-[#3c4196] opacity-40 hover:opacity-80 rounded-lg block w-full mb-1 md:mb-0 md:flex-col md:justify-center md:w-[170px] md:min-h-[150px] md:h-full">
-    <img class="mr-2 w-8 h-8 md:w-20 md:h-20 block" src="{{ section.settings.faq_icon | img_url }}" alt="">
-    <span class="text-[16px] md:text-[20px] text-white">{{ section.settings.faq_title }}</span>
-  </button>
+{% assign subtopicBlocks = section.blocks | where: "type", "subtopic" %}
+{% assign questionAnswerBlocks = section.blocks | where: "type", "question_and_answer" %}
 
-  {% assign subtopicBlocks = section.blocks | where: "type", "subtopic" %}
-  {% assign questionBlocks = section.blocks | where: "type", "question" %}
-  {% assign answerBlocks = section.blocks | where: "type", "answer" %}
-  {% assign questionAnswerBlocks = section.blocks | where: "type", "question_and_answer" %}
-
-  <div class="hidden">
-    <div class="faq-qna-content">
-      <div class="mx-auto max-w-7xl md:max-w-2xl lg:max-w-4xl xl:max-w-5xl px-4 py-7 md:pt-14 sm:px-6 md:px-8">
-        {% if section.settings.topic_title != blank %}
-          <h4 class="text-[32px] lg:text-[28px] mb-6 text-[#3c4196] font-bold text-center">{{ section.settings.topic_title }}</h4>
-        {% endif %}
-
+<div id="{{ section.settings.slug }}" class="faq-qna-section py-4 lg:py-24">
+  <div class="mx-auto max-w-7xl px-4 sm:px-3 md:px-5">
+    <div class="lg:flex lg:gap-60">
+      <h3 class="mb-5 text-center text-[26px] lg:mb-0 lg:w-1/4 lg:text-left lg:text-[39px]">{{ section.settings.topic_title }}</h3>
+      <div class="lg:flex-1">
         {% for subtopicBlock in subtopicBlocks %}
-          <h6 class="faq-subtopic-title text-[24px] md:text-[32px] lg:text-[26px] text-[#3c4196] font-bold">{{ subtopicBlock.settings.title }}</h6>
           {% for questionAnswerBlock in questionAnswerBlocks %}
             {% if questionAnswerBlock.settings.subtopic_id == subtopicBlock.settings.id %}
-              {% if questionAnswerBlock.settings.question_1 != blank %}
-                <div class="accordion-wrapper">
-                  <button class="font-header accordion block text-[18px] md:text-[23px] text-[#3c4196] hover:text-[#ff8900] p-3 pl-0 text-left w-full border-b border-b-[#3c4196] border-solid border-t-0 border-r-0 border-l-0 flex items-center">
-                    <svg class="mr-2" width="16" height="10" viewBox="0 0 16 10" fill="#55576F" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M8.00957 9.36976C7.60357 9.37026 7.21707 9.19576 6.94907 8.89126L0.931565 2.05126C0.536065 1.57976 0.589065 0.878757 1.05106 0.472257C1.51306 0.0657566 2.21506 0.102757 2.63206 0.555257L7.89407 6.53626C7.92307 6.56926 7.96507 6.58876 8.00957 6.58876C8.05407 6.58876 8.09557 6.56976 8.12507 6.53626L13.3871 0.555257C13.6511 0.240257 14.0651 0.0932565 14.4691 0.170756C14.8731 0.248256 15.2026 0.538757 15.3311 0.928757C15.4596 1.31926 15.3666 1.74876 15.0881 2.05076L9.07257 8.88826C8.80407 9.19376 8.41707 9.36876 8.01007 9.36926L8.00957 9.36976Z" />
-                    </svg>
-                    <span class="flex-1">{{ questionAnswerBlock.settings.question_1 }}</span>
-                  </button>
-                  <div class="accordion__content p-4 pl-6 pb-0">
-                    {{ questionAnswerBlock.settings.answer_1 }}
-                    {% if questionAnswerBlock.settings.html_1 != blank %}<div class="overflow-auto">{{ questionAnswerBlock.settings.html_1 }}</div>{% endif %}
-                  </div>
-                </div>
-              {% endif %}
-              {% if questionAnswerBlock.settings.question_2 != blank %}
-                <div class="accordion-wrapper">
-                  <button class="font-header accordion block text-[18px] md:text-[23px] text-[#3c4196] hover:text-[#ff8900] p-3 pl-0 text-left w-full border-b border-b-[#3c4196] border-solid border-t-0 border-r-0 border-l-0 flex items-center">
-                    <svg class="mr-2" width="16" height="10" viewBox="0 0 16 10" fill="#55576F" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M8.00957 9.36976C7.60357 9.37026 7.21707 9.19576 6.94907 8.89126L0.931565 2.05126C0.536065 1.57976 0.589065 0.878757 1.05106 0.472257C1.51306 0.0657566 2.21506 0.102757 2.63206 0.555257L7.89407 6.53626C7.92307 6.56926 7.96507 6.58876 8.00957 6.58876C8.05407 6.58876 8.09557 6.56976 8.12507 6.53626L13.3871 0.555257C13.6511 0.240257 14.0651 0.0932565 14.4691 0.170756C14.8731 0.248256 15.2026 0.538757 15.3311 0.928757C15.4596 1.31926 15.3666 1.74876 15.0881 2.05076L9.07257 8.88826C8.80407 9.19376 8.41707 9.36876 8.01007 9.36926L8.00957 9.36976Z" />
-                    </svg>
-                    <span class="flex-1">{{ questionAnswerBlock.settings.question_2 }}</span>
-                  </button>
-                  <div class="accordion__content p-4 pl-6 pb-0">
-                    {{ questionAnswerBlock.settings.answer_2 }}
-                    {% if questionAnswerBlock.settings.html_2 != blank %}<div class="overflow-auto">{{ questionAnswerBlock.settings.html_2 }}</div>{% endif %}
-                  </div>
-                </div>
-              {% endif %}
-              {% if questionAnswerBlock.settings.question_3 != blank %}
-                <div class="accordion-wrapper">
-                  <button class="font-header accordion block text-[18px] md:text-[23px] text-[#3c4196] hover:text-[#ff8900] p-3 pl-0 text-left w-full border-b border-b-[#3c4196] border-solid border-t-0 border-r-0 border-l-0 flex items-center">
-                    <svg class="mr-2" width="16" height="10" viewBox="0 0 16 10" fill="#55576F" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M8.00957 9.36976C7.60357 9.37026 7.21707 9.19576 6.94907 8.89126L0.931565 2.05126C0.536065 1.57976 0.589065 0.878757 1.05106 0.472257C1.51306 0.0657566 2.21506 0.102757 2.63206 0.555257L7.89407 6.53626C7.92307 6.56926 7.96507 6.58876 8.00957 6.58876C8.05407 6.58876 8.09557 6.56976 8.12507 6.53626L13.3871 0.555257C13.6511 0.240257 14.0651 0.0932565 14.4691 0.170756C14.8731 0.248256 15.2026 0.538757 15.3311 0.928757C15.4596 1.31926 15.3666 1.74876 15.0881 2.05076L9.07257 8.88826C8.80407 9.19376 8.41707 9.36876 8.01007 9.36926L8.00957 9.36976Z" />
-                    </svg>
-                    <span class="flex-1">{{ questionAnswerBlock.settings.question_3 }}</span>
-                  </button>
-                  <div class="accordion__content p-4 pl-6 pb-0">
-                    {{ questionAnswerBlock.settings.answer_3 }}
-                    {% if questionAnswerBlock.settings.html_3 != blank %}<div class="overflow-auto">{{ questionAnswerBlock.settings.html_3 }}</div>{% endif %}
-                  </div>
-                </div>
-              {% endif %}
+              {% render 'faq-qna-accordion', question: questionAnswerBlock.settings.question_1, answer: questionAnswerBlock.settings.answer_1, html: questionAnswerBlock.settings.html_1 %}
+              {% render 'faq-qna-accordion', question: questionAnswerBlock.settings.question_2, answer: questionAnswerBlock.settings.answer_2, html: questionAnswerBlock.settings.html_2 %}
+              {% render 'faq-qna-accordion', question: questionAnswerBlock.settings.question_3, answer: questionAnswerBlock.settings.answer_3, html: questionAnswerBlock.settings.html_3 %}
             {% endif %}
           {% endfor %}
         {% endfor %}
       </div>
     </div>
   </div>
-</section>
+</div>
+
+<script type="module">
+  $('.accordion-wrapper').beefup({
+    trigger: ".accordion",
+    content: ".accordion__content",
+    openSpeed: 100,
+    closeSpeed: 100
+  });
+</script>
 
 {% schema %}
 {
-  "name": "FAQ",
-  "class": "faq-search-wrapper",
+  "name": "Question & Answer",
+  "class": "faq-qa-section",
+  "tag": "section",
   "settings": [
-    {
-      "type": "image_picker",
-      "id": "faq_icon",
-      "label": "FAQ icon"
-    },
-    {
-      "type": "text",
-      "id": "faq_title",
-      "label": "FAQ title"
-    },
     {
       "type": "text",
       "id": "topic_title",
       "label": "Topic title"
+    },
+    {
+      "id": "slug",
+      "type": "text",
+      "label": "Section slug",
+      "info": "Question & Answer section slug should be unique and follow slug format. Slug format example: top-questions"
     }
   ],
   "blocks": [
@@ -100,48 +56,6 @@
           "type": "text",
           "id": "id",
           "label": "Subtopic ID"
-        },
-        {
-          "type": "text",
-          "id": "title",
-          "label": "Subtopic title"
-        }
-      ]
-    },
-    {
-      "type": "question",
-      "name": "Question",
-      "settings": [
-        {
-          "type": "text",
-          "id": "subtopic_id",
-          "label": "Child of subtopic ID"
-        },
-        {
-          "type": "text",
-          "id": "id",
-          "label": "Question ID"
-        },
-        {
-          "type": "text",
-          "id": "question",
-          "label": "Question"
-        }
-      ]
-    },
-    {
-      "type": "answer",
-      "name": "Answer",
-      "settings": [
-        {
-          "type": "text",
-          "id": "question_id",
-          "label": "Child of question ID"
-        },
-        {
-          "type": "richtext",
-          "id": "answer",
-          "label": "Answer"
         }
       ]
     },

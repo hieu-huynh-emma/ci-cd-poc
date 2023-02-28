@@ -61,8 +61,16 @@
         font-style: normal;
         font-weight: 400;
         font-size: 20px;
-        line-height: 37px;
+        line-height: 1.25;
         color: white;
+    }
+
+    #main-carousel .logo-badge {
+      position: absolute;
+      top: 0;
+      right: 0;
+      z-index: 5;
+      background: rgb(255 255 255 / 50%);
     }
 
     #main-carousel-slide01 {
@@ -113,20 +121,19 @@
     }
 
     #main-carousel>.product__media img {
-        height: 30rem;
+      height: 30rem;
     }
 
     #MainContent .risk-reversal-banner {
-        display: none;
+      display: none;
     }
 
     #MainContent .risk-reversal__item {
-        width: 20%;
-        display: flex;
-        flex-flow: column;
-        justify-content: space-between;
-        align-items: center;
-        padding-right: 15px;
+      display: flex;
+      flex-flow: column;
+      justify-content: space-between;
+      align-items: center;
+      padding-right: 15px;
     }
 
     .risk-reversal__item img {
@@ -158,12 +165,12 @@
 
     .double-tab button:hover {
         border-bottom: 2px solid #2E2F3C;
-        font-weight: 600px;
+        font-weight: 600;
     }
 
     .double-tab button.active {
         border-bottom: 2px solid #2E2F3C;
-        font-weight: 600px;
+        font-weight: 600;
     }
 
     .tabcontent {
@@ -253,15 +260,6 @@
             display: none;
         }
 
-        #MainContent .risk-reversal__item {
-            width: 20%;
-            display: flex;
-            flex-flow: column;
-            justify-content: space-between;
-            align-items: center;
-            padding-right: 15px;
-        }
-
         .risk-reversal__item img {
             height: 40px;
             width: 40px;
@@ -291,12 +289,12 @@
 
         .double-tab button:hover {
             border-bottom: 2px solid #2E2F3C;
-            font-weight: 600px;
+            font-weight: 600;
         }
 
         .double-tab button.active {
             border-bottom: 2px solid #2E2F3C;
-            font-weight: 600px;
+            font-weight: 600;
         }
 
         .tabcontent {
@@ -362,11 +360,11 @@
         }
 
         #MainContent .risk-reversal-banner {
-            display: flex;
-            justify-content: center;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
             align-items: baseline;
-            flex-wrap: wrap;
             padding: 40px;
+            gap: 20px;
         }
 
         .splide__track {
@@ -388,8 +386,13 @@
 
             <!-- BADGE -->
             {% if section.settings.media_badge != blank %}
-              <span class="media-badge">{{ section.settings.media_badge }}
-            </span>
+              <span class="media-badge">{{ section.settings.media_badge }}</span>
+            {% endif %}
+
+            {% if section.settings.logo_badge != blank %}
+              <div class="logo-badge lg:p-1">
+                <img class="w-[70px] lg:w-[120px]" src="{{ section.settings.logo_badge | img_url: 'master' }}" alt="">
+              </div>
             {% endif %}
 
             <!-- AWARD RIBBON -->
@@ -1577,7 +1580,7 @@ customElements.define('product-modal', ProductModal);
     {
       "type": "risk_reversal_item",
       "name": "Risk Reversal Item",
-      "limit": 5,
+      "limit": 6,
       "settings": [
         {
           "id": "icon",
@@ -1640,6 +1643,11 @@ customElements.define('product-modal', ProductModal);
       "id": "media_badge",
       "default": "sale",
       "label": "Media badge"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo_badge",
+      "label": "Logo badge"
     },
     {
       "type": "checkbox",

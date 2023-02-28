@@ -1,0 +1,64 @@
+<div class="py-7">
+  <div class="mx-auto max-w-7xl px-4 text-center sm:px-6 md:px-8">
+    <h1 class="mb-4 text-[33px] lg:text-[40px] text-[#3c4196]">{{ section.settings.title }}</h1>
+    {% for block in section.blocks %}
+      <div class="block items-center gap-10 lg:flex py-6">
+        <img class="mb-4 lg:w-1/5 mx-auto" src="{{ block.settings.logo | img_url: 'master' }}" alt="" />
+        <div class="mb-6 lg:w-3/5 lg:mb-0">
+          <h6 class="mb-2 text-[25px] lg:text-[30px]">{{ block.settings.title }}</h6>
+          <h3 class="mb-2 text-[20px] text-[#3c4196]">{{ block.settings.quote }}</h3>
+          <p>{{ block.settings.description }}</p>
+        </div>
+        <div class="lg:w-1/5">
+          <a href="{{ block.settings.link }}" rel="nofollow" target="_blank" class="btn btn--secondary mx-auto max-w-max">Read Full Article</a>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Awards",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "award-card",
+      "name": "Award Card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "logo",
+          "label": "Award logo"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Award title"
+        },
+        {
+          "type": "text",
+          "id": "quote",
+          "label": "Award quote"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "Award description"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Award article link"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

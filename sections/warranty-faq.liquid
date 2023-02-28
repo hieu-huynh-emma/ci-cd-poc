@@ -1,59 +1,66 @@
-<section>
-  <div class="global-wrapper">
-    <div class="text-center">
-      <h2 class="text-white wow fadeIn">
-      	{{ section.settings.section-title }}
-      </h2>
-    </div>
-    <div class="bedsize-collapse wow fadeIn" data-wow-delay=".2s">
+<section id="warranty-faq-section">
+  <div class="mx-auto max-w-7xl px-4 py-7 sm:px-6 md:px-8">
+    <div class="md:flex md:gap-3 md:flex-wrap md:justify-center">
       {% for block in section.blocks %}
-      <button class="collapsible">{{ block.settings.faq-question }}</button>
-      <div class="content">
-        <div>
-          <p>
-            {{ block.settings.faq-answer }}
-          </p>
-        </div>
-      </div>
+        <button data-faq-id="{{ block.settings.faq_id }}" class="warranty-faq-btn flex items-center p-2 bg-[#3c4196] opacity-40 hover:opacity-80 rounded-lg block w-full mb-1 md:w-[170px] md:min-h-[150px] md:flex md:flex-col md:justify-center">
+          <img class="mr-2 w-8 h-8 md:w-20 md:h-20 block" src="{{ block.settings.faq_icon | img_url }}" alt="">
+          <span class="md:text-[20px] text-white">{{ block.settings.faq_title }}</span>
+        </button>
       {% endfor %}
     </div>
   </div>
 </section>
 
-{% schema %}
-  {
-    "name": "Warranty FAQ",
-	"class": "warranty-faq",
-    "settings": [
-                  {
-                    "type": "text",
-                    "id": "section-title",
-                    "label": "Section Title"	
-                  }	
-				],
-	"blocks": 	[
-					{
-						"type": "text",
-						"name": "FAQ Block",
-						"settings": [
-										{
-											"type": "text",
-											"id": "faq-question",
-											"label": "FAQ Question"
-										},
-										{
-											"type": "text",
-											"id": "faq-answer",
-											"label": "FAQ Answer"
-										}
-									]
-					}
-				]
+<script type="module" defer>
+  addFAQButtonListener()
+  activeFirstFAQButton()
+
+  function activeFirstFAQButton() {
+    $('#warranty-faq-section .warranty-faq-btn').first().click()
   }
+
+  function addFAQButtonListener() {
+    $('#warranty-faq-section .warranty-faq-btn').click(function () {
+      const faqId = $(this).data('faq-id');
+      const faqContent = $(`.warranty-qna-section[data-qna-faq-id*='${faqId}']`)
+
+      // blur all faq
+      $('#warranty-faq-section .warranty-faq-btn').addClass('opacity-40');
+      // active selected faq
+      $(this).removeClass('opacity-40');
+      // hide all qna content
+      $('.warranty-qna-section').addClass('hidden')
+      // show selected qna content
+      $(faqContent).removeClass('hidden')
+    })
+  }
+</script>
+
+{% schema %}
+{
+  "name": "Warranty FAQ",
+  "blocks": [
+    {
+      "type": "faq",
+      "name": "FAQ",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "faq_icon",
+          "label": "FAQ icon"
+        },
+        {
+          "type": "text",
+          "id": "faq_id",
+          "label": "FAQ ID"
+        },
+        {
+          "type": "text",
+          "id": "faq_title",
+          "label": "FAQ title"
+        }
+      ]
+    }
+  ]
+}
 {% endschema %}
-
-{% stylesheet %}
-{% endstylesheet %}
-
-{% javascript %}
-{% endjavascript %}

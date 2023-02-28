@@ -19,8 +19,9 @@ tailwind.config = {
       },
     },
     fontFamily: {
-      'header': ["header-text"],
-      'helvetica': ["helvetica"],
+      'acuminpro': ["acumin-pro"],
+      'tiempos': ["Tiempos"],
+      'inter': ["Inter"]
     }
   },
 }

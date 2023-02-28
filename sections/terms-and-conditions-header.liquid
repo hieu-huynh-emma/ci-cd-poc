@@ -1,0 +1,43 @@
+<style>
+  #terms-and-conditions-header-section .terms-bg {
+    min-height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #3c4196;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-image: url({{ section.settings.image | img_url: "original" }});
+  }
+
+  @media (min-width: 768px) {
+    #terms-and-conditions-header-section .terms-bg {
+      background-position: center bottom;
+    }
+  }
+</style>
+
+<section id="terms-and-conditions-header-section">
+  <div class="terms-bg">
+    <h1 class="text-[30px] lg:text-[42px] text-[#3c4196] text-center max-w-[200px] sm:max-w-full">{{ section.settings.title }}</h1>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Terms & Conditions Header",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Background image"
+    }
+  ]
+}
+{% endschema %}

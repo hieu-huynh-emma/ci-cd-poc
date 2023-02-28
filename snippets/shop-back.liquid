@@ -1,0 +1,10 @@
+<script>
+  var url_string = window.location.href
+  var url = new URL(url_string)
+  var source = url.searchParams.get('utm_source')
+  var transaction = url.searchParams.get('transaction_id')
+  if (source == 'shopback') {
+    localStorage.setItem('utm_source', source)
+    localStorage.setItem('transaction_id', transaction)
+  }
+</script>

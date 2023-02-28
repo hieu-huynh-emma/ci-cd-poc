@@ -44,13 +44,14 @@
 {% endif %}
 
 {% if request.path == '/apps/track-order' %}
-	{% include 'track-order-meta-tags' %}
+	{% render 'track-order-meta-tags' %}
 {% else %}
-	{% include 'title-and-desc-meta-tags', variant_meta_title: variant_meta_title, variant_meta_desc: variant_meta_desc %}
+	{% render 'title-and-desc-meta-tags', variant_meta_title: variant_meta_title, variant_meta_desc: variant_meta_desc %}
 {% endif %}
 
-{% include 'canonical-meta-tag', variant_canonical_url: variant_canonical_url %}
-{% include 'social-meta-tags' %}
+<link rel="canonical" href="{{ canonical_url }}">
+
+{% render 'social-meta-tags' %}
 
 
 
@@ -58,5 +59,6 @@
 <meta name="google-site-verification" content="6PIbsoianPTw4f2E_enBdUZYqvDOW5cupcrNh7zyVbs" />
 <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
 <meta name="theme-color" content="{{ settings.color_primary }}">
+<meta name="google-site-verification" content="ECx3b-uuFXsoMOd08Jvv6o9Es--o5AyltTo9A-n9zCE"/>
 
 

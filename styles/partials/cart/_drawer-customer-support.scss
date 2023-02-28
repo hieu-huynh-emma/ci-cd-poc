@@ -10,18 +10,6 @@
     display: none;
   }
   .utility-nav {
-    display: grid;
-    gap: 4px 1rem;
-    grid-template-columns: repeat(2, minmax(0, auto));
-    grid-template-rows: repeat(2, minmax(0, auto));
-    align-items: center;
-    justify-content: center;
-    @media screen and (min-width: 591px) {
-      gap: 1rem;
-      grid-template-columns: repeat(4, minmax(0, auto));
-      grid-template-rows: initial;
-    }
-
     &__item {
       display: grid;
       gap: 6px;

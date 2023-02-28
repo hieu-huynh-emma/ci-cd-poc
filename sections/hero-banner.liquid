@@ -6,16 +6,20 @@
 <section id="hero-banner-section">
   <div class="banner">
     <div class="main-content">
-      <div class="text-box">
-        <p class="text-sm leading-5 font-semibold">{{ section.settings.slogan }}</p>
-        <h2
-          class="heading-2">{{ section.settings.title | remove: "<p>" | remove: "</p>" }}</h2>
-        <p class="subheading">{{ section.settings.subtitle }}</p>
+      <div class="md:flex">
+        <div class="md:w-3/4 md:pr-2 md:text-left text-center">
+          <p class="mb-2 text-sm leading-5 font-semibold">{{ section.settings.slogan }}</p>
+          <h2 class="mb-2 heading-2">{{ section.settings.title | remove: "<p>" | remove: "</p>" }}</h2>
+          <p class="subheading">{{ section.settings.subtitle }}</p>
+        </div>
+        <div class="md:w-1/4 md:block hidden">
+          <img src="{{ section.settings.main_award | img_url: 'master' }}" alt="">
+        </div>
       </div>
 
       <div class="hero-actions">
         {% if ctaBtn != blank %}
-          <a class="btn btn--secondary" href="{{ ctaBtn.settings.url }}">
+          <a class="row-start-2 btn btn--secondary" href="{{ ctaBtn.settings.url }}">
             {{ ctaBtn.settings.text }}
           </a>
         {% endif %}
@@ -36,8 +40,11 @@
         }
 
       </style>
-      <div class="wallpaper">
-        <div class="award-ribbon">
+      <div class="wallpaper relative">
+        <div style="background-color: rgb(255 255 255 / 50%);" class="md:hidden md:relative md:w-full absolute -top-[2px] right-0">
+          <img width="95px" src="{{ section.settings.main_award | img_url: 'master' }}" alt="">
+        </div>
+        <div class="award-ribbon hidden md:block">
           <p class="minion text-white">{{ 'sections.home.award_ribbon' | t }}</p>
           {% for award in awards %}
             <div class="award-ribbon__item"><img
@@ -243,6 +250,11 @@
       "id": "hero_media",
       "type": "url",
       "label": "Hero Media"
+    },
+    {
+      "id": "main_award",
+      "type": "image_picker",
+      "label": "Main Award"
     }
   ]
 }

@@ -1,21 +1,25 @@
-<section id="about-us-header">
-  <div class="global-wrapper text-center">
-    <h1 class="h2 mb-0 wow fadeIn">
-      Awaken your best.
-    </h1>
+<style>
+  #about-us-header-section .terms-bg {
+    min-height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #3c4196;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-image: url({{ 'about-us-gradientbg.png' | asset_url }})
+  }
+
+  @media (min-width: 768px) {
+    #about-us-header-section .terms-bg {
+      background-position: center bottom;
+    }
+  }
+</style>
+
+<section id="about-us-header-section">
+  <div class="terms-bg">
+    <h1 class="text-[30px] lg:text-[42px] text-[#3c4196] text-center max-w-[200px] sm:max-w-full">Awaken your best.</h1>
   </div>
 </section>
-
-{% schema %}
-{
-  "name": "About Us Header",
-  "class": "about-us-header",
-  "settings": [
-    {
-      "type": "text",
-      "id": "page-title",
-      "label": "Page Title"
-    }
-  ]
-}
-{% endschema %}

@@ -70,25 +70,6 @@
     justify-content: flex-start;
   }
 {%- endstyle -%}
-<style>
-  .cart-icon-container .icon-cart {
-    font-size: 1.7rem;
-    position: relative;
-  }
-
-  #cart-items-count {
-    top: 0.6rem;
-    left: 2rem;
-    position: absolute;
-    display: inline-flex;
-    height: 1rem;
-    width: 1rem;
-    border-radius: 50%;
-    background: orange;
-    justify-content: center;
-    align-items: center;
-  }
-</style>
 
 {{ 'header.css' | asset_url | stylesheet_tag }}
 
@@ -103,51 +84,6 @@
     </div>
   </div>
 </div>
-
-<script>
-  const open = window.XMLHttpRequest.prototype.open;
-
-  function openReplacement() {
-    this.addEventListener("load", function() {
-      if (
-        [
-          "/cart/add.js",
-          "/cart/update.js",
-          "/cart/change.js",
-          "/cart/clear.js",
-        ].includes(this._url)
-      ) {
-        const data = JSON.parse(this.response);
-        updateCartItemsCount(data);
-      }
-    });
-    return open.apply(this, arguments);
-  }
-
-  window.XMLHttpRequest.prototype.open = openReplacement;
-
-  $(document).ready(function() {
-    $("button[data-pf-type=\"ProductATC\"]").click(function(e) {
-      let $cartButton = $(".cart-icon-container .js-drawer-open-button-right").first();
-      if (!$("#CartDrawer").hasClass("js-drawer-open")) {
-        ShopifyAPI.getCart(function () {
-          ajaxCart.load();
-          $cartButton.click();
-        })
-      } else {
-        ShopifyAPI.getCart(function () {
-          ajaxCart.render();
-        })
-      }
-    });
-  });
-
-  function updateCartItemsCount(cart) {
-    if (cart.item_count) {
-      $("#cart-items-count").text(`${cart.item_count}`);
-    }
-  }
-</script>
 
 {% schema %}
 {

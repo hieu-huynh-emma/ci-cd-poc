@@ -26,6 +26,7 @@
     }
 
     &__title {
+      font-family: 'Tiempos';
       font-weight: 600;
       font-size: 32px;
       text-align: center;
@@ -39,6 +40,7 @@
     }
 
     &__description {
+      font-family: 'Inter';
       font-size: 14px;
       text-align: center;
       font-weight: 300;
@@ -67,6 +69,7 @@
     &__link {
       text-transform: capitalize;
       font-size: 12px;
+      font-family: "Inter";
 
       @media (min-width: 768px) {
         font-size: 14px;

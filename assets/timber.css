@@ -68,7 +68,6 @@ body, button, input, select, textarea {
   -webkit-font-smoothing: antialiased;
   -webkit-text-size-adjust: 100%;
   color: #1c1d1d;
-  font-family: Helvetica, Helvetica Neue, Arial, Lucida Grande, sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
@@ -78,7 +77,6 @@ body, button, input, select, textarea {
 
 .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
   display: block;
-  font-family: Playfair Display, serif;
   font-style: normal;
   font-weight: 400;
   line-height: 1.4;
@@ -157,20 +155,6 @@ code {
   font-family: Consolas, monospace;
   font-size: 1em;
   padding: 0 2px
-}
-
-ul {
-  margin: 0 0 15px 20px;
-  padding: 0;
-  text-rendering: optimizeLegibility
-}
-
-ul ul {
-  margin: 4px 0 5px 20px
-}
-
-li {
-  margin-bottom: .25em
 }
 
 ul.square {
@@ -282,28 +266,12 @@ td, th {
   width: 66.666%
 }
 
-.one-quarter {
-  width: 25%
-}
-
-.three-quarters {
-  width: 75%
-}
-
 .show {
   display: block !important
 }
 
 .hide {
   display: none !important
-}
-
-.text-left {
-  text-align: left !important
-}
-
-.text-right {
-  text-align: right !important
 }
 
 .left {
@@ -444,19 +412,9 @@ td, th {
   position: relative
 }
 
-@media only screen and (min-width: 591px) and (max-width: 768px) {
-  .push--medium--one-sixth {
-    left: 16.666%
-  }
-}
-
 @media only screen and (min-width: 769px) {
   .push--large--one-third {
     left: 33.333%
-  }
-
-  .push--large--one-sixth {
-    left: 16.666%
   }
 
   .push--large--one-tenth {
@@ -491,20 +449,6 @@ td, th {
   zoom: 1;
   overflow: hidden;
   _overflow: visible
-}
-
-.fade-in {
-  opacity: 0;
-  transition: opacity .25s ease-out
-}
-
-.no-js .fade-in {
-  clip: rect(0 0 0 0);
-  clip: rect(0, 0, 0, 0);
-  height: 1px;
-  overflow: hidden;
-  position: absolute;
-  width: 1px
 }
 
 a[href^=tel] {
@@ -774,10 +718,6 @@ label.error {
   content: "\e609"
 }
 
-.icon-pause:before {
-  content: "\e902"
-}
-
 .icon-pin:before {
   content: "\e90d"
 }
@@ -796,18 +736,6 @@ label.error {
 
 .icon-saletag:before {
   content: "\e906"
-}
-
-.icon-search:before {
-  content: "\73"
-}
-
-.icon-slide-prev:before {
-  content: "\e903"
-}
-
-.icon-slide-next:before {
-  content: "\e905"
 }
 
 .icon-twitter:before {
@@ -880,7 +808,6 @@ label.error {
 }
 
 .pagination {
-  font-family: Helvetica, Helvetica Neue, Arial, Lucida Grande, sans-serif;
   font-size: 1em;
   font-style: normal;
   font-weight: 400;
@@ -919,7 +846,6 @@ label.error {
 }
 
 .pagination .next, .pagination .prev {
-  font-family: arial, helvetica, sans-serif;
   font-size: 30px
 }
 
@@ -1025,11 +951,6 @@ label.error {
 
 .search-bar--page {
   margin: 0 auto;
-  max-width: 300px
-}
-
-.search-bar--modal {
-  margin: 20% auto 0;
   max-width: 300px
 }
 
@@ -1187,7 +1108,6 @@ label.error {
 
 .product-single__price, .product-single__price--compare-at {
   color: #1c1d1d;
-  font-family: Helvetica, Helvetica Neue, Arial, Lucida Grande, sans-serif;
   font-size: 1.28571em;
   font-style: normal;
   font-weight: 400
@@ -1231,10 +1151,6 @@ label.error {
 
 #shopify-product-reviews .spr-summary-actions, #shopify-product-reviews .spr-summary-caption {
   display: block
-}
-
-.slick-initialized .product-single__media-wrapper {
-  display: block !important
 }
 
 .product-single__view-in-space {
@@ -1293,15 +1209,11 @@ label.error {
   opacity: 1
 }
 
-.product-single__media-group.slick-initialized {
-  margin-bottom: 0
-}
-
-.product-single__media-group--single-xr ~ .product-single__view-in-space:not([data-shopify-xr-hidden]), .product-single__media-group.slick-initialized ~ .product-single__view-in-space:not([data-shopify-xr-hidden]) {
+.product-single__media-group--single-xr ~ .product-single__view-in-space:not([data-shopify-xr-hidden]) {
   visibility: visible
 }
 
-.product-single__media-group--single-xr .product-single__view-in-space--multi, .product-single__media-group.slick-initialized .product-single__view-in-space--multi {
+.product-single__media-group--single-xr .product-single__view-in-space--multi {
   display: none
 }
 

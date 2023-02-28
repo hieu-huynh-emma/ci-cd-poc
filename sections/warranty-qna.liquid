@@ -1,0 +1,115 @@
+<style>
+  .warranty-qna-section .warranty-qna-content p {
+    margin-bottom: 16px;
+  }
+  .warranty-qna-section .warranty-qna-content p:last-child {
+    margin-bottom: 0;
+  }
+  .warranty-qna-section .warranty-qna-content ul {
+    list-style: disc;
+    margin: 0 0 15px 20px;
+    padding: 0 0 0 8px;
+  }
+  .warranty-qna-section .warranty-qna-content ul:last-child {
+    padding-bottom: 0;
+  }
+  .warranty-qna-section .warranty-qna-content ul li {
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
+</style>
+
+<section class="warranty-qna-section hidden" data-qna-faq-id="{{ section.settings.faq_id }}">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 md:px-8">
+    {% for block in section.blocks %}
+      {% if block.type == 'basic_qna' %}
+        <div class="mb-12 warranty-qna-content">
+          <h4 class="text-[30px] md:text-[36px] md:text- font-bold mb-4">{{ block.settings.heading }}</h4>
+          <div>{{ block.settings.content }}</div>
+        </div>
+      {% else %}
+        <div class="mb-12 warranty-qna-content">
+          <h4 class="text-[30px] md:text-[36px] md:text- font-bold mb-8">{{ block.settings.main_heading }}</h4>
+          <div class="mb-8 md:flex md:gap-5">
+            <div class="mb-8">
+              <h6 class="text-[25px] md:text-[30px] mb-4">{{ block.settings.left_column_heading }}</h6>
+              <div>{{ block.settings.left_column_content }}</div>
+            </div>
+            <div>
+              <h6 class="text-[25px] md:text-[30px] mb-4">{{ block.settings.right_column_heading }}</h6>
+              <div>{{ block.settings.right_column_content }}</div>
+            </div>
+          </div>
+          <div>{{ block.settings.main_content }}</div>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Warranty Q&A",
+  "settings": [
+    {
+      "type": "text",
+      "id": "faq_id",
+      "label": "Content of FAQ ID"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "basic_qna",
+      "name": "Basic Q&A",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content"
+        }
+      ]
+    },
+    {
+      "type": "double_column_qna",
+      "name": "Double Column Q&A",
+      "settings": [
+        {
+          "type": "text",
+          "id": "main_heading",
+          "label": "Main heading"
+        },
+        {
+          "type": "richtext",
+          "id": "main_content",
+          "label": "Main content"
+        },
+        {
+          "type": "text",
+          "id": "left_column_heading",
+          "label": "Left column heading"
+        },
+        {
+          "type": "richtext",
+          "id": "left_column_content",
+          "label": "Left column content"
+        },
+        {
+          "type": "text",
+          "id": "right_column_heading",
+          "label": "Right column heading"
+        },
+        {
+          "type": "richtext",
+          "id": "right_column_content",
+          "label": "Right column content"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

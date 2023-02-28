@@ -36,7 +36,6 @@ gulp.task('clean', function () {
         greedy: [
           /weglot/,
           /shopify-section/,
-          /slick/,
           /spr/,
           /jdgm/,
           /template/,
@@ -45,7 +44,6 @@ gulp.task('clean', function () {
           /vt/,
           /vitals/,
           /yotpo/,
-          /pf/,
           /plyr/,
           /gm/,
           /mfp/

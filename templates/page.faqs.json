@@ -1,10 +1,117 @@
 {
+  "wrapper": "div#faq",
   "sections": {
-    "faq-header": {
-      "type": "faq-header",
+    "faq-form": {
+      "type": "faq-form",
+      "blocks": {
+        "d8d1e281-78e7-434b-857f-c52500e3debe": {
+          "type": "qna-button",
+          "settings": {
+            "title": "Top Questions",
+            "slug": "top-questions"
+          }
+        },
+        "2a2232a4-320c-40f7-bfbf-feae37356318": {
+          "type": "qna-button",
+          "settings": {
+            "title": "Trial & Guarantee",
+            "slug": "trial-and-guarantee"
+          }
+        },
+        "10221e63-0386-457f-a5f6-ce221a687644": {
+          "type": "qna-button",
+          "settings": {
+            "title": "Purchasing Your Emma",
+            "slug": "purchasing-your-emma"
+          }
+        },
+        "abf9e6ea-2e4a-4098-8fb4-ee300a9ada74": {
+          "type": "qna-button",
+          "settings": {
+            "title": "Awards & Certifications",
+            "slug": "awards-and-certifications"
+          }
+        },
+        "5ef6b5c6-0074-4e3d-9952-c09ccadd37e6": {
+          "type": "qna-button",
+          "settings": {
+            "title": "Your Order",
+            "slug": "your-order"
+          }
+        },
+        "8b466142-1c45-4250-b392-700bccc74925": {
+          "type": "qna-button",
+          "settings": {
+            "title": "Returning Your Emma",
+            "slug": "returning-your-emma"
+          }
+        },
+        "04fbab67-05a2-4260-9ec7-cf0c312ba447": {
+          "type": "qna-button",
+          "settings": {
+            "title": "Accessing Your Account",
+            "slug": "accessing-your-account"
+          }
+        },
+        "2282f61e-b3a8-4829-a4f4-19079b2d9134": {
+          "type": "qna-button",
+          "settings": {
+            "title": "Emma Original Mattress",
+            "slug": "emma-original-mattress"
+          }
+        },
+        "3093edb9-24a7-4e98-a063-ac3031ccafda": {
+          "type": "qna-button",
+          "settings": {
+            "title": "Emma CliMax Hybrid",
+            "slug": "emma-climax-hybrid"
+          }
+        },
+        "f3ef9ecf-a9ec-4cbc-9251-f293a23c363b": {
+          "type": "qna-button",
+          "settings": {
+            "title": "Upholstered Bed Frame",
+            "slug": "upholstered-bed-frame"
+          }
+        },
+        "e769a8d8-7f96-413e-b323-d6163108fb34": {
+          "type": "qna-button",
+          "settings": {
+            "title": "Original Adjustable Foam Pillow",
+            "slug": "original-adjustable-foam-pillow"
+          }
+        },
+        "6427e75d-9dc4-4cba-889a-ea5f2b91ff41": {
+          "type": "qna-button",
+          "settings": {
+            "title": "Breathable Mattress Protector",
+            "slug": "breathable-mattress-protector"
+          }
+        },
+        "de2ea638-509e-492e-b96f-7d6377a2a9df": {
+          "type": "qna-button",
+          "settings": {
+            "title": "Firm-to-Soft Reversible Topper",
+            "slug": "firm-to-soft-reversible-topper"
+          }
+        }
+      },
+      "block_order": [
+        "d8d1e281-78e7-434b-857f-c52500e3debe",
+        "2a2232a4-320c-40f7-bfbf-feae37356318",
+        "10221e63-0386-457f-a5f6-ce221a687644",
+        "abf9e6ea-2e4a-4098-8fb4-ee300a9ada74",
+        "5ef6b5c6-0074-4e3d-9952-c09ccadd37e6",
+        "8b466142-1c45-4250-b392-700bccc74925",
+        "04fbab67-05a2-4260-9ec7-cf0c312ba447",
+        "2282f61e-b3a8-4829-a4f4-19079b2d9134",
+        "3093edb9-24a7-4e98-a063-ac3031ccafda",
+        "f3ef9ecf-a9ec-4cbc-9251-f293a23c363b",
+        "e769a8d8-7f96-413e-b323-d6163108fb34",
+        "6427e75d-9dc4-4cba-889a-ea5f2b91ff41",
+        "de2ea638-509e-492e-b96f-7d6377a2a9df"
+      ],
       "settings": {
-        "heading": "Frequently Asked Questions",
-        "subheading": "Get to know more about Emma's products and services!"
       }
     },
     "faq-1": {
@@ -13,8 +120,7 @@
         "5f87165b-8ba1-46ba-84b7-b4d92dc2c92c": {
           "type": "subtopic",
           "settings": {
-            "id": "",
-            "title": ""
+            "id": ""
           }
         },
         "205c031d-77e1-4ba4-8bb6-89e97b566ff7": {
@@ -22,10 +128,10 @@
           "settings": {
             "subtopic_id": "",
             "question_1": "How do I track my order?",
-            "answer_1": "<p>After purchasing your Emma product, please wait for a confirmation email containing your product tracking number and instructions to track your order. Orders from Ontario take approximately 2-4 days while orders from the rest of Canada take approximately 4-8 days through our logistics carriers (e.g. Bolt Logistics, Canpar).<br\/><br\/>Should you have any concerns, please contact our Customer Care agents from 6 AM - 9 PM EST through our available channels:<\/p><ul><li>Email: support@emma-sleep.ca <\/li><li>Landline: +1-888-585-3662<\/li><li>or speak directly with an agent using our live-chat feature on our website.<\/li><\/ul>",
+            "answer_1": "<p>After purchasing your Emma product, please wait for a confirmation email containing your product tracking number and instructions to track your order. Orders from Ontario take approximately 2-4 days while orders from the rest of Canada take approximately 4-8 days through our logistics carriers (e.g. Bolt Logistics, Canpar).<br\/><br\/>Should you have any concerns, please contact our Customer Care agents from 08:00 to 18:00 GMT-6, Monday-Friday, through our available channels:<\/p><ul><li>Email: support@emma-sleep.ca <\/li><li>Landline: +1-888-585-3662<\/li><li>or speak directly with an agent using our live-chat feature on our website.<\/li><\/ul>",
             "html_1": "",
             "question_2": "How do I contact customer service?",
-            "answer_2": "<p>We’re always ready to help and appreciate feedback of any kind. If you would like to contact us, please contact our Customer Care agents from 6 AM - 9 PM EST through our available channels:<\/p><ul><li>Email: support@emma-sleep.ca <\/li><li>Landline: +1-888-585-3662<\/li><li>or speak directly with an agent using our live-chat feature on our website.<\/li><\/ul>",
+            "answer_2": "<p>We’re always ready to help and appreciate feedback of any kind. If you would like to contact us, please contact our Customer Care agents from 08:00 to 18:00 GMT-6, Monday-Friday through our available channels:<\/p><ul><li>Email: support@emma-sleep.ca <\/li><li>Landline: +1-888-585-3662<\/li><li>or speak directly with an agent using our live-chat feature on our website.<\/li><\/ul>",
             "html_2": "",
             "question_3": "What makes the Emma Original Mattress special?",
             "answer_3": "<p>The Emma Original, with over 75 product awards, is composed of three layers. Its AIRGOCELL® foam technology dissipates sweat and absorbs heat so that you sleep cool and comfortable. Its HALO® Memory Foam has 3 zones that adapt to your body shape and has motion isolation technology so that you get better pressure relief and uninterrupted sleep. Its HRX® Supreme Foam has 5 adaptive cutouts that distribute your body weight evenly so that you get full body support.<\/p>",
@@ -52,7 +158,7 @@
           "settings": {
             "subtopic_id": "",
             "question_1": "How do I change\/edit my order?",
-            "answer_1": "<p>After purchasing your Emma product, please reach out to our Customer Care agents from 6 AM - 9 PM EST through our available channels with your respective information (e.g. address changes, mattress size changes, payment changes, cancellation, or delivery date changes):<\/p><ul><li>Email: support@emma-sleep.ca <\/li><li>Landline: +1-888-585-3662<\/li><li>or speak directly with an agent using our live-chat feature on our website.<\/li><\/ul>",
+            "answer_1": "<p>After purchasing your Emma product, please reach out to our Customer Care agents from 08:00 to 18:00 GMT-6, Monday-Friday through our available channels with your respective information (e.g. address changes, mattress size changes, payment changes, cancellation, or delivery date changes):<\/p><ul><li>Email: support@emma-sleep.ca <\/li><li>Landline: +1-888-585-3662<\/li><li>or speak directly with an agent using our live-chat feature on our website.<\/li><\/ul>",
             "html_1": "",
             "question_2": "How does the 365-night trial phase work?",
             "answer_2": "<p>We’re glad you asked! When choosing a mattress, it is important to give it a try and decide if everything is right for you. Our risk-free 365-night trial means that you get 365 nights to relax into your Emma mattress and experience the benefits of a good night’s sleep in order to make that decision. We encourage and require a trial period of 21 nights on your mattress so that you and your body can get suited to your Emma mattress.<br\/>If you choose to return your mattress within the trial period, please reach out to our Customer Care agents from 6 AM - 9 PM EST through our available channels:<\/p><ul><li>Email: support@emma-sleep.ca <\/li><li>Landline: +1-888-585-3662<\/li><li>or speak directly with an agent using our live-chat feature on our website.<\/li><\/ul>",
@@ -70,9 +176,8 @@
         "8dc1cda1-c7d7-46c8-8f5b-4f47c84ff339"
       ],
       "settings": {
-        "faq_icon": "shopify:\/\/shop_images\/top-questions--1-1658473202727.png",
-        "faq_title": "Top Questions",
-        "topic_title": "Top Questions Asked"
+        "topic_title": "Top Questions Asked",
+        "slug": "top-questions"
       }
     },
     "faq-2": {
@@ -81,8 +186,7 @@
         "c90bf885-336b-4494-b80e-cc0a6cbfba54": {
           "type": "subtopic",
           "settings": {
-            "id": "365-Night Trial",
-            "title": "365-Night Trial"
+            "id": "365-Night Trial"
           }
         },
         "19bb8802-2739-4b1b-b745-f286245ff1a2": {
@@ -90,7 +194,7 @@
           "settings": {
             "subtopic_id": "365-Night Trial",
             "question_1": "How does the 365-night trial phase work?",
-            "answer_1": "<p>How does the 365-night trial phase work?<br\/><br\/>We’re glad you asked! When choosing a mattress, it is important to give it a try and decide if everything is right for you. Our risk-free 365 night trial means that you get 365 nights to relax into your Emma mattress and experience the benefits of a good night’s sleep in order to make that decision. We encourage and require a trial period of 21 nights on your mattress so that you and your body can get suited to your Emma mattress.<br\/><br\/>If you choose to return your mattress within the trial period, please reach out to our Customer Care agents from 6 AM - 9 PM EST through our available channels:<\/p><ul><li>Email: support@emma-sleep.ca <\/li><li>Landline: +1-888-585-3662<\/li><li>or speak directly with an agent using our live-chat feature on our website.<\/li><\/ul><p>Note that the 365-night trial is only applicable to purchases after July 7, 2022. All purchases before this date are subject to the previous 200-night trial.<\/p>",
+            "answer_1": "<p>How does the 365-night trial phase work?<br\/><br\/>We’re glad you asked! When choosing a mattress, it is important to give it a try and decide if everything is right for you. Our risk-free 365 night trial means that you get 365 nights to relax into your Emma mattress and experience the benefits of a good night’s sleep in order to make that decision. We encourage and require a trial period of 21 nights on your mattress so that you and your body can get suited to your Emma mattress.<br\/><br\/>If you choose to return your mattress within the trial period, please reach out to our Customer Care agents from 08:00 to 18:00 GMT-6, Monday-Friday through our available channels:<\/p><ul><li>Email: support@emma-sleep.ca <\/li><li>Landline: +1-888-585-3662<\/li><li>or speak directly with an agent using our live-chat feature on our website.<\/li><\/ul><p>Note that the 365-night trial is only applicable to purchases after July 7, 2022. All purchases before this date are subject to the previous 200-night trial.<\/p>",
             "html_1": "",
             "question_2": "Should I test a mattress first in person before purchasing?",
             "answer_2": "<p>You don’t need to. We believe that our mattresses provide an exceptional and comfortable sleep experience without pushy sales tactics and high prices. We offer a 365-night trial so that you can experience Emma in the comfort of your own home without the need to go in-store.<\/p>",
@@ -105,7 +209,7 @@
           "settings": {
             "subtopic_id": "365-Night Trial",
             "question_1": "How can I return my mattress within the trial time?",
-            "answer_1": "<p>To return your mattress, please reach out to our Customer Care agents from 6 AM - 9 PM EST through our available channels:<\/p><ul><li>Email: support@emma-sleep.ca <\/li><li>Landline: +1-888-585-3662<\/li><li>or speak directly with an agent using our live-chat feature on our website.<\/li><\/ul>",
+            "answer_1": "<p>To return your mattress, please reach out to our Customer Care agents from 08:00 to 18:00 GMT-6, Monday-Friday through our available channels:<\/p><ul><li>Email: support@emma-sleep.ca <\/li><li>Landline: +1-888-585-3662<\/li><li>or speak directly with an agent using our live-chat feature on our website.<\/li><\/ul>",
             "html_1": "",
             "question_2": "What condition can I return the mattress in?",
             "answer_2": "<p>Products must be in donable condition to be eligible for return (e.g., no stains, tears or other soiling including odors). To know more information, you may view our terms & conditions (Article VIII) here. Should you have any questions, please reach out to our Customer Care agents from 6 AM - 9 PM EST through our available channels:<\/p><ul><li>Email: support@emma-sleep.ca <\/li><li>Landline: +1-888-585-3662<\/li><li>or speak directly with an agent using our live-chat feature on our website.<\/li><\/ul>",
@@ -133,8 +237,7 @@
         "501373b7-aaff-4dc6-9a17-490580b3964c": {
           "type": "subtopic",
           "settings": {
-            "id": "10-Year Warranty",
-            "title": "10-Year Warranty"
+            "id": "10-Year Warranty"
           }
         },
         "5c55cea2-67ad-459c-836d-75ef7adae172": {
@@ -145,7 +248,7 @@
             "answer_1": "<p>The warranty begins as soon as you receive your Emma Original mattress.<\/p>",
             "html_1": "",
             "question_2": "Can you explain the Emma Original Mattress 10-year Warranty?",
-            "answer_2": "<p>The 10-year warranty begins as soon as you receive your Emma Original mattress and covers damages made by factory defects and\/or faulty materials. For more information please check our terms and conditions.<br\/><br\/> Suppose you have received a defective mattress upon delivery. In that case, you may reach out to our Customer Care agents from 6 AM - 9 PM EST through our available channels:<\/p><ul><li>Email: support@emma-sleep.ca <\/li><li>Landline: +1-888-585-3662<\/li><li>or speak directly with an agent using our live-chat feature on our website.<\/li><\/ul>",
+            "answer_2": "<p>The 10-year warranty begins as soon as you receive your Emma Original mattress and covers damages made by factory defects and\/or faulty materials. For more information please check our terms and conditions.<br\/><br\/> Suppose you have received a defective mattress upon delivery. In that case, you may reach out to our Customer Care agents from 08:00 to 18:00 GMT-6, Monday-Friday through our available channels:<\/p><ul><li>Email: support@emma-sleep.ca <\/li><li>Landline: +1-888-585-3662<\/li><li>or speak directly with an agent using our live-chat feature on our website.<\/li><\/ul>",
             "html_2": "",
             "question_3": "I received a defective mattress, what do I do?",
             "answer_3": "<p>We sincerely apologize for the inconvenience we have brought to you. We would love to replace your mattress, free of charge (Note: <a href=\"https:\/\/emma-sleep.ca\/pages\/terms-and-conditions\" target=\"_self\">Terms & Conditions<\/a> apply). With that, please reach out to our Customer Care agents from 6 AM - 9 PM EST through our available channels:<\/p><ul><li>Email: support@emma-sleep.ca <\/li><li>Landline: +1-888-585-3662<\/li><li>or speak directly with an agent using our live-chat feature on our website.<\/li><\/ul><p>Rest assured, we will attend to this as soon as possible.<\/p>",
@@ -155,8 +258,7 @@
         "76af16a8-f7b0-4bb1-93b7-7457e2f70716": {
           "type": "subtopic",
           "settings": {
-            "id": "Other Products",
-            "title": "Other Products"
+            "id": "Other Products"
           }
         },
         "2e733c98-c1c9-4941-a62f-d3ad22765d56": {
@@ -186,9 +288,8 @@
         "2e733c98-c1c9-4941-a62f-d3ad22765d56"
       ],
       "settings": {
-        "faq_icon": "shopify:\/\/shop_images\/guarantee--1-1658473113235.png",
-        "faq_title": "Trial & Guarantee",
-        "topic_title": "Trial & Guarantee"
+        "topic_title": "Trial & Guarantee",
+        "slug": "trial-and-guarantee"
       }
     },
     "faq-3": {
@@ -197,8 +298,7 @@
         "477bbd50-2f6f-4bf8-980b-c724a2802929": {
           "type": "subtopic",
           "settings": {
-            "id": "Discounts",
-            "title": "Discounts"
+            "id": "Discounts"
           }
         },
         "73a45d77-ce69-4c34-bf1d-6c068bd3f813": {
@@ -206,7 +306,7 @@
           "settings": {
             "subtopic_id": "Discounts",
             "question_1": "What if my discount doesn't work?",
-            "answer_1": "<p>If you experience an error when inputting your discount code, you may reach out to our Customer Care agents from 6 AM - 9 PM EST through our available channels:<\/p><ul><li>Email: support@emma-sleep.ca <\/li><li>Landline: +1-888-585-3662<\/li><li>or speak directly with an agent using our live-chat feature on our website.<\/li><\/ul>",
+            "answer_1": "<p>If you experience an error when inputting your discount code, you may reach out to our Customer Care agents from 08:00 to 18:00 GMT-6, Monday-Friday through our available channels:<\/p><ul><li>Email: support@emma-sleep.ca <\/li><li>Landline: +1-888-585-3662<\/li><li>or speak directly with an agent using our live-chat feature on our website.<\/li><\/ul>",
             "html_1": "",
             "question_2": "Can I use more than one discount code?",
             "answer_2": "<p>Unfortunately, we can only accommodate the use of one discount code per transaction (i.e. no stacking of discount codes). Although, if you subscribe to our newsletter, you may just get another discount code for your next purchase!<\/p>",
@@ -219,8 +319,7 @@
         "ebe2df22-c301-446f-95f6-538f2ffc285a": {
           "type": "subtopic",
           "settings": {
-            "id": "Payments",
-            "title": "Payments"
+            "id": "Payments"
           }
         },
         "eeb2f3fb-d3c8-48cb-8f7a-b7e5e2d5dbbe": {
@@ -231,7 +330,7 @@
             "answer_1": "<p>We do not take orders via phone, but our Emma Canada website is convenient and quick. Visit us here: www.emma-sleep.ca.<\/p>",
             "html_1": "",
             "question_2": "What payment methods do you offer?",
-            "answer_2": "<p>Shopify Payments (any Credit \/ Debit Card): <br\/>You can pay securely on our website with all major credit or debit cards (Visa, MasterCard, American Express, and Discover). Rest assured, Your credit card data is encrypted via a safe SSL method. <br\/><br\/>PayPal:<br\/>You can pay using PayPal for all your orders on our website.<br\/><br\/>PayBright: <br\/>If you choose to pay by installment (i.e. Buy Now, Pay Later), you may pay using PayBright. For more information, see our FAQs on<a href=\"https:\/\/emma-sleep.ca\/pages\/financing\" target=\"_self\">PayBright here. <\/a><\/p>",
+            "answer_2": "<p>Shopify Payments (any Credit \/ Debit Card): <br\/>You can pay securely on our website with all major credit or debit cards (Visa, MasterCard, American Express, and Discover). Rest assured, Your credit card data is encrypted via a safe SSL method. <br\/><br\/>PayPal:<br\/>You can pay using PayPal for all your orders on our website.<br\/><br\/>PayBright: <br\/>If you choose to pay by installment (i.e. Buy Now, Pay Later), you may pay using PayBright. For more information, see our FAQs on <a href=\"https:\/\/emma-sleep.ca\/pages\/financing\" target=\"_self\">PayBright here. <\/a><\/p>",
             "html_2": "",
             "question_3": "",
             "answer_3": "",
@@ -241,8 +340,7 @@
         "120dbc3c-9f42-493f-9548-47f7b2e32dde": {
           "type": "subtopic",
           "settings": {
-            "id": "About PayBright FAQs",
-            "title": "About PayBright FAQs"
+            "id": "About PayBright FAQs"
           }
         },
         "316a3ea9-f181-43ca-bbf8-0389d8f11648": {
@@ -283,7 +381,7 @@
             "answer_1": "<p>Yes, all PayBright payment plans can be prepaid at any time without penalty. To pay off your current balance, please send PayBright a message here.<\/p>",
             "html_1": "",
             "question_2": "What if I can't make a payment?",
-            "answer_2": "<p>Please reach out to the PayBright team and they will be happy to look into the options available. You can contact them using this link<a href=\"https:\/\/help.paybright.com\/hc\/en-us\/requests\/new\" target=\"_blank\">here.<\/a><\/p>",
+            "answer_2": "<p>Please reach out to the PayBright team and they will be happy to look into the options available. You can contact them using this link <a href=\"https:\/\/help.paybright.com\/hc\/en-us\/requests\/new\" target=\"_blank\">here.<\/a><\/p>",
             "html_2": "",
             "question_3": "What happens if I decide to return my mattress within the 365-night trial?",
             "answer_3": "<p>Purchases made using PayBright are subject to Emma's trial and return policy. Any returns will be processed by Emma, and your PayBright loan balance will be reduced or canceled accordingly. If you have already made monthly payments, it will be refunded to you by PayBright.<\/p>",
@@ -302,9 +400,8 @@
         "5856911f-966f-4d88-a466-2037b2aa1340"
       ],
       "settings": {
-        "faq_icon": "shopify:\/\/shop_images\/purchasing---1-1658473174590.png",
-        "faq_title": "Purchasing Your Emma",
-        "topic_title": "Purchasing Your Emma"
+        "topic_title": "Purchasing Your Emma",
+        "slug": "purchasing-your-emma"
       }
     },
     "faq-4": {
@@ -313,8 +410,7 @@
         "3da394ce-07a0-4ccd-99bf-27a636ca51eb": {
           "type": "subtopic",
           "settings": {
-            "id": "Oeko-Tex",
-            "title": "Oeko-Tex"
+            "id": "Oeko-Tex"
           }
         },
         "b66b3378-0e66-4d30-9ce3-e3f2da1cf00d": {
@@ -335,8 +431,7 @@
         "6875f14d-9029-4c2b-bdc3-1ee38d6a556a": {
           "type": "subtopic",
           "settings": {
-            "id": "Certi-PUR-US",
-            "title": "Certi-PUR-US"
+            "id": "Certi-PUR-US"
           }
         },
         "708f12d6-865e-4604-940f-8bad171be1a2": {
@@ -344,10 +439,10 @@
           "settings": {
             "subtopic_id": "Certi-PUR-US",
             "question_1": "What does it mean when a product is CertiPUR-US® certified?",
-            "answer_1": "<p>It means that our mattress foams are made without toxic materials (e.g. formaldehyde, phthalates, flame retardants, and heavy metals). All Certipur-US certified products are rigorously tested and meet strict safety standards. For more information, see<a href=\"https:\/\/certipur.us\/about-the-seal\/about-certipur-us\/\" target=\"_blank\">here<\/a><\/p>",
+            "answer_1": "<p>It means that our mattress foams are made without toxic materials (e.g. formaldehyde, phthalates, flame retardants, and heavy metals). All Certipur-US certified products are rigorously tested and meet strict safety standards. For more information, see <a href=\"https:\/\/certipur.us\/about-the-seal\/about-certipur-us\/\" target=\"_blank\">here<\/a><\/p>",
             "html_1": "",
             "question_2": "Why is the CertiPUR-US® certification important?",
-            "answer_2": "<p>The CertiPUR-US® certification is important to give you the assurance that our mattress foams are made without toxic materials (e.g. formaldehyde, phthalates, flame retardants, and heavy metals). This means that our Emma Original is safer for you and your family. For more information, see<a href=\"https:\/\/certipur.us\/about-the-seal\/about-certipur-us\/\" target=\"_blank\">here<\/a><\/p>",
+            "answer_2": "<p>The CertiPUR-US® certification is important to give you the assurance that our mattress foams are made without toxic materials (e.g. formaldehyde, phthalates, flame retardants, and heavy metals). This means that our Emma Original is safer for you and your family. For more information, see <a href=\"https:\/\/certipur.us\/about-the-seal\/about-certipur-us\/\" target=\"_blank\">here<\/a><\/p>",
             "html_2": "",
             "question_3": "If the foam is certified, does that mean it was made without flame retardants?",
             "answer_3": "<p>Because our foams have the CertiPUR-US® certification, you can be sure that there are no harmful flame retardants found in our Emma products that have been identified by the <a href=\"https:\/\/www.ccohs.ca\/oshanswers\/chemicals\/ghs.html#:~:text=What%20is%20the%20Globally%20Harmonized%20System%20%28GHS%29%3F%20GHS,Nations%20%28UN%29%20international%20team%20of%20hazard%20communication%20experts.\" target=\"_blank\">Globally Harmonized System (GHS)<\/a>, a global standard by the United Nations for harmful chemicals.<\/p>",
@@ -362,9 +457,8 @@
         "708f12d6-865e-4604-940f-8bad171be1a2"
       ],
       "settings": {
-        "faq_icon": "shopify:\/\/shop_images\/awards--1-1658473083660.png",
-        "faq_title": "Awards & Certifications",
-        "topic_title": "Awards & Certifications"
+        "topic_title": "Awards & Certifications",
+        "slug": "awards-and-certifications"
       }
     },
     "faq-5": {
@@ -373,8 +467,7 @@
         "850403fa-5c87-472a-9362-a045546ab0c5": {
           "type": "subtopic",
           "settings": {
-            "id": "Manage my Order",
-            "title": "Manage my Order"
+            "id": "Manage my Order"
           }
         },
         "56061f52-8b06-494b-a8c0-1e0fa1223a13": {
@@ -382,10 +475,10 @@
           "settings": {
             "subtopic_id": "Manage my Order",
             "question_1": "How do I track my order?",
-            "answer_1": "<p>After purchasing your Emma product, please wait for a confirmation email containing your product tracking number and instructions to track your order. Orders from Ontario take approximately 2-4 days while orders from the rest of Canada take approximately 4-8 days through our logistics carriers (e.g. Bolt Logistics, Canpar).<br\/><br\/>Should you have any concerns, please contact our Customer Care agents from 6 AM - 9 PM EST through our available channels:<\/p><ul><li>Email: support@emma-sleep.ca <\/li><li>Landline: +1-888-585-3662<\/li><li>or speak directly with an agent using our live-chat feature on our website.<\/li><\/ul>",
+            "answer_1": "<p>After purchasing your Emma product, please wait for a confirmation email containing your product tracking number and instructions to track your order. Orders from Ontario take approximately 2-4 days while orders from the rest of Canada take approximately 4-8 days through our logistics carriers (e.g. Bolt Logistics, Canpar).<br\/><br\/>Should you have any concerns, please contact our Customer Care agents from 08:00 to 18:00 GMT-6, Monday-Friday through our available channels:<\/p><ul><li>Email: support@emma-sleep.ca <\/li><li>Landline: +1-888-585-3662<\/li><li>or speak directly with an agent using our live-chat feature on our website.<\/li><\/ul>",
             "html_1": "",
             "question_2": "How do I change\/edit my order?",
-            "answer_2": "<p>After purchasing your Emma product, please reach out to our Customer Care agents from 6 AM - 9 PM EST through our available channels with your respective information (e.g. address changes, mattress size changes, payment changes, cancellation, or delivery date changes):<\/p><ul><li>Email: support@emma-sleep.ca <\/li><li>Landline: +1-888-585-3662<\/li><li>or speak directly with an agent using our live-chat feature on our website.<\/li><\/ul>",
+            "answer_2": "<p>After purchasing your Emma product, please reach out to our Customer Care agents from 08:00 to 18:00 GMT-6, Monday-Friday through our available channels with your respective information (e.g. address changes, mattress size changes, payment changes, cancellation, or delivery date changes):<\/p><ul><li>Email: support@emma-sleep.ca <\/li><li>Landline: +1-888-585-3662<\/li><li>or speak directly with an agent using our live-chat feature on our website.<\/li><\/ul>",
             "html_2": "",
             "question_3": "What if I ordered the wrong size?",
             "answer_3": "<p>After purchasing your Emma product, please reach out to our Customer Care agents from 6 AM - 9 PM EST through our available channels with your respective information (e.g. address changes, mattress size changes, payment changes, cancellation, or delivery date changes):<\/p><ul><li>Email: support@emma-sleep.ca <\/li><li>Landline: +1-888-585-3662<\/li><li>or speak directly with an agent using our live-chat feature on our website.<\/li><\/ul>",
@@ -397,10 +490,10 @@
           "settings": {
             "subtopic_id": "Manage my Order",
             "question_1": "How do I cancel my order?",
-            "answer_1": "<p>If you would like to cancel your order, our Customer Care agents will be happy to help you. Please reach out to our Customer Care agents from 6 AM - 9 PM EST through our available channels:<\/p><ul><li>Email: support@emma-sleep.ca <\/li><li>Landline: +1-888-585-3662<\/li><li>or speak directly with an agent using our live-chat feature on our website.<\/li><\/ul>",
+            "answer_1": "<p>If you would like to cancel your order, our Customer Care agents will be happy to help you. Please reach out to our Customer Care agents from 08:00 to 18:00 GMT-6, Monday-Friday through our available channels:<\/p><ul><li>Email: support@emma-sleep.ca <\/li><li>Landline: +1-888-585-3662<\/li><li>or speak directly with an agent using our live-chat feature on our website.<\/li><\/ul>",
             "html_1": "",
             "question_2": "How do I contact customer service?",
-            "answer_2": "<p>We’re always ready to help and appreciate feedback of any kind. If you would like to contact us, please contact our Customer Care agents from 6 AM - 9 PM EST through our available channels:<\/p><ul><li>Email: support@emma-sleep.ca <\/li><li>Landline: +1-888-585-3662<\/li><li>or speak directly with an agent using our live-chat feature on our website.<\/li><\/ul>",
+            "answer_2": "<p>We’re always ready to help and appreciate feedback of any kind. If you would like to contact us, please contact our Customer Care agents from 08:00 to 18:00 GMT-6, Monday-Friday through our available channels:<\/p><ul><li>Email: support@emma-sleep.ca <\/li><li>Landline: +1-888-585-3662<\/li><li>or speak directly with an agent using our live-chat feature on our website.<\/li><\/ul>",
             "html_2": "",
             "question_3": "",
             "answer_3": "",
@@ -410,8 +503,7 @@
         "77b19c7e-322b-4bf5-8707-16d36e369a25": {
           "type": "subtopic",
           "settings": {
-            "id": "Standard Delivery",
-            "title": "Standard Delivery"
+            "id": "Standard Delivery"
           }
         },
         "850c1566-89a3-4360-b5e6-e3bac4e448cd": {
@@ -425,7 +517,7 @@
             "answer_2": "<p>The Emma Original Mattress will be vacuum packed in a 17’’ x 17’’ x 44’’ box. We ship throughout Canada directly to your front door using our logistics carriers.<\/p>",
             "html_2": "",
             "question_3": "How long does delivery take?",
-            "answer_3": "<p>Orders from Ontario take approximately 2-4 days while orders from the rest of Canada take approximately 4-8 days. We also have the option to deliver your order on your preferred schedule. To view your estimated delivery, you may view it in your account on the website under “order.” You may also use the tracking number sent to your email to track your order.<br\/><br\/>Should you have any concerns, you may reach out to our Customer Care agents from 6 AM - 9 PM EST through our available channels:<\/p><ul><li>Email: support@emma-sleep.ca <\/li><li>Landline: +1-888-585-3662<\/li><li>or speak directly with an agent using our live-chat feature on our website.<\/li><\/ul>",
+            "answer_3": "<p>Orders from Ontario take approximately 2-4 days while orders from the rest of Canada take approximately 4-8 days. We also have the option to deliver your order on your preferred schedule. To view your estimated delivery, you may view it in your account on the website under “order.” You may also use the tracking number sent to your email to track your order.<br\/><br\/>Should you have any concerns, you may reach out to our Customer Care agents from 08:00 to 18:00 GMT-6, Monday-Friday  through our available channels:<\/p><ul><li>Email: support@emma-sleep.ca <\/li><li>Landline: +1-888-585-3662<\/li><li>or speak directly with an agent using our live-chat feature on our website.<\/li><\/ul>",
             "html_3": ""
           }
         },
@@ -437,18 +529,17 @@
             "answer_1": "<p>Each Emma product will be sent separately. You will receive a tracking number and confirmation email for each parcel.<\/p>",
             "html_1": "",
             "question_2": "Can I change my delivery address?",
-            "answer_2": "<p>After purchasing your Emma product, please reach out to our Customer Care agents from 6 AM - 9 PM EST through our available channels with your respective information (e.g. address changes, mattress size changes, payment changes, cancellation, or delivery date changes):<\/p><ul><li>Email: support@emma-sleep.ca <\/li><li>Landline: +1-888-585-3662<\/li><li>or speak directly with an agent using our live-chat feature on our website.<\/li><\/ul>",
+            "answer_2": "<p>After purchasing your Emma product, please reach out to our Customer Care agents from 08:00 to 18:00 GMT-6, Monday-Friday through our available channels with your respective information (e.g. address changes, mattress size changes, payment changes, cancellation, or delivery date changes):<\/p><ul><li>Email: support@emma-sleep.ca <\/li><li>Landline: +1-888-585-3662<\/li><li>or speak directly with an agent using our live-chat feature on our website.<\/li><\/ul>",
             "html_2": "",
             "question_3": "Can I change the date of my delivery?",
-            "answer_3": "<p>After purchasing your Emma product, please reach out to our Customer Care agents from 6 AM - 9 PM EST through our available channels with your respective information (e.g. address changes, mattress size changes, payment changes, cancellation, or delivery date changes):<\/p><ul><li>Email: support@emma-sleep.ca <\/li><li>Landline: +1-888-585-3662<\/li><li>or speak directly with an agent using our live-chat feature on our website.<\/li><\/ul><p>Please do note that we cannot assure an exact delivery date, but we will do our best to have your Emma products delivered within the range of your preferred dates. You may also choose our scheduled delivery with in-home setup to have your order delivered on your preferred date.<\/p>",
+            "answer_3": "<p>After purchasing your Emma product, please reach out to our Customer Care agents from 08:00 to 18:00 GMT-6, Monday-Friday through our available channels with your respective information (e.g. address changes, mattress size changes, payment changes, cancellation, or delivery date changes):<\/p><ul><li>Email: support@emma-sleep.ca <\/li><li>Landline: +1-888-585-3662<\/li><li>or speak directly with an agent using our live-chat feature on our website.<\/li><\/ul><p>Please do note that we cannot assure an exact delivery date, but we will do our best to have your Emma products delivered within the range of your preferred dates. You may also choose our scheduled delivery with in-home setup to have your order delivered on your preferred date.<\/p>",
             "html_3": ""
           }
         },
         "41b38732-7a35-4a65-b97f-a6be0446c706": {
           "type": "subtopic",
           "settings": {
-            "id": "Scheduled Delivery",
-            "title": "Scheduled Delivery"
+            "id": "Scheduled Delivery"
           }
         },
         "37508462-1011-4e7a-844d-0225105df77a": {
@@ -499,8 +590,7 @@
         "83c247a6-67f2-44f2-88b5-29470a7407ae": {
           "type": "subtopic",
           "settings": {
-            "id": "Receiving the Product",
-            "title": "Receiving the Product"
+            "id": "Receiving the Product"
           }
         },
         "38def78b-d62e-4c9c-8a16-2b3973ac9177": {
@@ -508,7 +598,7 @@
           "settings": {
             "subtopic_id": "Receiving the Product",
             "question_1": "What do I do if I haven't received my welcome package?",
-            "answer_1": "<p>We hope that every customer receives their welcome package, but we understand that packing mistakes can happen. If you happen to experience this, please reach out to our Customer Care agents from 6 AM - 9 PM EST through our available channels:<\/p><ul><li>Email: support@emma-sleep.ca <\/li><li>Landline: +1-888-585-3662<\/li><li>or speak directly with an agent using our live-chat feature on our website.<\/li><\/ul>",
+            "answer_1": "<p>We hope that every customer receives their welcome package, but we understand that packing mistakes can happen. If you happen to experience this, please reach out to our Customer Care agents from 08:00 to 18:00 GMT-6, Monday-Friday through our available channels:<\/p><ul><li>Email: support@emma-sleep.ca <\/li><li>Landline: +1-888-585-3662<\/li><li>or speak directly with an agent using our live-chat feature on our website.<\/li><\/ul>",
             "html_1": "",
             "question_2": "What will I get in the welcome package?",
             "answer_2": "<p>You will receive a plastic cutter to help you with the package and a welcome booklet containing essential information about your Emma Original mattress (e.g. how to unbox, FAQs, etc.).<\/p>",
@@ -529,7 +619,7 @@
             "answer_2": "<p>You can sleep right away but we recommend waiting 30 minutes to an hour for the mattress to become fully expanded.<\/p>",
             "html_2": "",
             "question_3": "What if I ordered the wrong size?",
-            "answer_3": "<p>After purchasing your Emma product, please reach out to our Customer Care agents from 6 AM - 9 PM EST through our available channels with your respective information (e.g. address changes, mattress size changes, payment changes, cancellation, or delivery date changes):<\/p><ul><li>Email: support@emma-sleep.ca <\/li><li>Landline: +1-888-585-3662<\/li><li>or speak directly with an agent using our live-chat feature on our website.<\/li><\/ul>",
+            "answer_3": "<p>After purchasing your Emma product, please reach out to our Customer Care agents from 08:00 to 18:00 GMT-6, Monday-Friday through our available channels with your respective information (e.g. address changes, mattress size changes, payment changes, cancellation, or delivery date changes):<\/p><ul><li>Email: support@emma-sleep.ca <\/li><li>Landline: +1-888-585-3662<\/li><li>or speak directly with an agent using our live-chat feature on our website.<\/li><\/ul>",
             "html_3": ""
           }
         }
@@ -550,9 +640,8 @@
         "95a7e876-f519-479b-9ca1-717ba2d1d087"
       ],
       "settings": {
-        "faq_icon": "shopify:\/\/shop_images\/order--1-1658473124821.png",
-        "faq_title": "Your Order",
-        "topic_title": "Your Order"
+        "topic_title": "Your Order",
+        "slug": "your-order"
       }
     },
     "faq-6": {
@@ -561,8 +650,7 @@
         "75e006e5-583f-4bbd-8912-9fe170d553fc": {
           "type": "subtopic",
           "settings": {
-            "id": "Returns",
-            "title": "Returns"
+            "id": "Returns"
           }
         },
         "d79c33f5-8b90-4ea4-acfb-3a2c0ad981a9": {
@@ -573,7 +661,7 @@
             "answer_1": "<p>The return process starts with getting in touch with our Customer Care agents to initiate a return (Note, please prepare your Order Number). We will then schedule a free pick-up of your mattress for disposal and process your refund once accomplished. Please bear in mind that the refund may take up to 5-10 business days to process depending on the payment method you used.<\/p>",
             "html_1": "",
             "question_2": "How do I start the return process?",
-            "answer_2": "<p>If you would like to start the return process, you can start the process by reaching out to our Customer Care agents from 6 AM - 9 PM EST through our available channels:<\/p><ul><li>Email: support@emma-sleep.ca <\/li><li>Landline: +1-888-585-3662<\/li><li>or speak directly with an agent using our live-chat feature on our website.<\/li><\/ul>",
+            "answer_2": "<p>If you would like to start the return process, you can start the process by reaching out to our Customer Care agents from 08:00 to 18:00 GMT-6, Monday-Friday through our available channels:<\/p><ul><li>Email: support@emma-sleep.ca <\/li><li>Landline: +1-888-585-3662<\/li><li>or speak directly with an agent using our live-chat feature on our website.<\/li><\/ul>",
             "html_2": "",
             "question_3": "How long do the return and refund take?",
             "answer_3": "<p>Once you’ve initiated a return with our Care Agents, we will schedule a pick for your mattress which may take a maximum of 1 week. After such, we will process your refund which may take 5-10 business days.<\/p>",
@@ -583,8 +671,7 @@
         "c44c44aa-d3d0-44cc-aad8-f6a9d930f0ed": {
           "type": "subtopic",
           "settings": {
-            "id": "Refunds",
-            "title": "Refunds"
+            "id": "Refunds"
           }
         },
         "81b9a5b8-6846-4bfd-bba1-a1927daaa000": {
@@ -595,10 +682,10 @@
             "answer_1": "<p>Once the mattress has been picked up from your home, we will start processing your refund. You will be refunded the same way you paid for your product. (i.e. If you paid through PayBright, you will receive your funds from PayBright).<\/p>",
             "html_1": "",
             "question_2": "How long does a refund take?",
-            "answer_2": "<p>We will process your refund within 5-10 business days. Should you have any concerns, please reach out to our Customer Care agents from 6 AM - 9 PM EST through our available channels:<\/p><ul><li>Email: support@emma-sleep.ca <\/li><li>Landline: +1-888-585-3662<\/li><li>or speak directly with an agent using our live-chat feature on our website.<\/li><\/ul>",
+            "answer_2": "<p>We will process your refund within 5-10 business days. Should you have any concerns, please reach out to our Customer Care agents from 08:00 to 18:00 GMT-6, Monday-Friday through our available channels:<\/p><ul><li>Email: support@emma-sleep.ca <\/li><li>Landline: +1-888-585-3662<\/li><li>or speak directly with an agent using our live-chat feature on our website.<\/li><\/ul>",
             "html_2": "",
             "question_3": "What is the status of my refund?",
-            "answer_3": "<p>To check the status of your refund, please reach out to our Customer Care agents from 6 AM - 9 PM EST through our available channels:<\/p><ul><li>Email: support@emma-sleep.ca <\/li><li>Landline: +1-888-585-3662<\/li><li>or speak directly with an agent using our live-chat feature on our website.<\/li><\/ul>",
+            "answer_3": "<p>To check the status of your refund, please reach out to our Customer Care agents from 08:00 to 18:00 GMT-6, Monday-Friday through our available channels:<\/p><ul><li>Email: support@emma-sleep.ca <\/li><li>Landline: +1-888-585-3662<\/li><li>or speak directly with an agent using our live-chat feature on our website.<\/li><\/ul>",
             "html_3": ""
           }
         }
@@ -610,9 +697,8 @@
         "81b9a5b8-6846-4bfd-bba1-a1927daaa000"
       ],
       "settings": {
-        "faq_icon": "shopify:\/\/shop_images\/returns--1-1658473188567.png",
-        "faq_title": "Returning Your Emma",
-        "topic_title": "Returning Your Emma Products"
+        "topic_title": "Returning Your Emma Products",
+        "slug": "returning-your-emma"
       }
     },
     "faq-13": {
@@ -621,8 +707,7 @@
         "f4b35f59-920a-493b-b28b-d954bebdd756": {
           "type": "subtopic",
           "settings": {
-            "id": "",
-            "title": ""
+            "id": ""
           }
         },
         "90bbdcab-43c8-459e-a069-c193bf2bdad8": {
@@ -646,9 +731,8 @@
         "90bbdcab-43c8-459e-a069-c193bf2bdad8"
       ],
       "settings": {
-        "faq_icon": "shopify:\/\/shop_images\/account--1-1658472668567.png",
-        "faq_title": "Accessing Your Account",
-        "topic_title": "Accessing Your Account"
+        "topic_title": "Accessing Your Account",
+        "slug": "accessing-your-account"
       }
     },
     "faq-7": {
@@ -657,8 +741,7 @@
         "4f84cfcd-6e49-4ab9-accd-388baaef4f23": {
           "type": "subtopic",
           "settings": {
-            "id": "About the Emma Original Mattress",
-            "title": "About the Emma Original Mattress"
+            "id": "About the Emma Original Mattress"
           }
         },
         "5c0907bb-062f-4296-9691-4a4a85a71aea": {
@@ -709,8 +792,7 @@
         "c41ec487-f0bd-49eb-a8c8-8afa20ef2e54": {
           "type": "subtopic",
           "settings": {
-            "id": "Is the Emma Original Mattress right for you?",
-            "title": "Is the Emma Original Mattress right for you?"
+            "id": "Is the Emma Original Mattress right for you?"
           }
         },
         "b1515a3f-d67c-405d-b9d1-7aa20c193d4f": {
@@ -746,8 +828,7 @@
         "ca1fabe3-b6d8-4784-9ad2-e3b8ac9545fa": {
           "type": "subtopic",
           "settings": {
-            "id": "How do I take care of my Emma Original Mattress?",
-            "title": "How do I take care of my Emma Original Mattress?"
+            "id": "How do I take care of my Emma Original Mattress?"
           }
         },
         "30b11c34-062e-4aa6-9461-605bdfaac7b4": {
@@ -783,8 +864,7 @@
         "0d755ba3-e989-46c6-876a-9adbea9ab663": {
           "type": "subtopic",
           "settings": {
-            "id": "Returns & Delivery",
-            "title": "Returns & Delivery"
+            "id": "Returns & Delivery"
           }
         },
         "1ebd0b02-3014-4958-ae15-a3dd54ebe6bc": {
@@ -792,7 +872,7 @@
           "settings": {
             "subtopic_id": "Returns & Delivery",
             "question_1": "How do I return my Emma Original Mattress?",
-            "answer_1": "<p>You may return your Emma Original Mattress within 365 nights of receiving your product. When you want to return your Emma Original Mattress, please contact our Customer Care agents from 6 AM - 9 PM EST through our available channels:<\/p><ul><li>Email: support@emma-sleep.ca <\/li><li>Landline: +1-888-585-3662<\/li><li>or speak directly with an agent using our live-chat feature on our website.<\/li><\/ul>",
+            "answer_1": "<p>You may return your Emma Original Mattress within 365 nights of receiving your product. When you want to return your Emma Original Mattress, please contact our Customer Care agents from 08:00 to 18:00 GMT-6, Monday-Friday through our available channels:<\/p><ul><li>Email: support@emma-sleep.ca <\/li><li>Landline: +1-888-585-3662<\/li><li>or speak directly with an agent using our live-chat feature on our website.<\/li><\/ul>",
             "html_1": "",
             "question_2": "Does the Emma Original Mattress have a warranty?",
             "answer_2": "<p>The Emma Original Mattress has a 10-year-warranty upon receipt. For more information on warranty claims, please visit our <a href=\"https:\/\/emma-sleep.ca\/pages\/terms-and-conditions\" target=\"_blank\">Terms and Conditions<\/a> or contact our Customer Care agents from 6 AM - 9 PM EST through our available channels:<\/p><ul><li>Email: support@emma-sleep.ca <\/li><li>Landline: +1-888-585-3662<\/li><li>or speak directly with an agent using our live-chat feature on our website.<\/li><\/ul>",
@@ -818,9 +898,8 @@
         "1ebd0b02-3014-4958-ae15-a3dd54ebe6bc"
       ],
       "settings": {
-        "faq_icon": "shopify:\/\/shop_images\/emma--og--1-1658473107468.png",
-        "faq_title": "Emma Original Mattress",
-        "topic_title": "The Emma Original Mattress"
+        "topic_title": "The Emma Original Mattress",
+        "slug": "emma-original-mattress"
       }
     },
     "faq-8": {
@@ -829,8 +908,7 @@
         "7ef277ba-33fa-4ab1-a3b2-963302ea8ec5": {
           "type": "subtopic",
           "settings": {
-            "id": "About the Emma Climax® Hybrid",
-            "title": "About the Emma Climax® Hybrid"
+            "id": "About the Emma Climax® Hybrid"
           }
         },
         "b8f27896-2050-4fa8-8ef8-91ea03526f42": {
@@ -881,8 +959,7 @@
         "14e94168-362a-45d4-b362-826b279d57d5": {
           "type": "subtopic",
           "settings": {
-            "id": "Is the Emma Climax® Hybrid right for you?",
-            "title": "Is the Emma Climax® Hybrid right for you?"
+            "id": "Is the Emma Climax® Hybrid right for you?"
           }
         },
         "1d04957b-0025-4d6e-a7ad-c346dbcbacf0": {
@@ -918,8 +995,7 @@
         "bbe66b0b-a1c0-4674-ad58-a5ee259e7481": {
           "type": "subtopic",
           "settings": {
-            "id": "How do I take care of my Emma Climax® Hybrid?",
-            "title": "How do I take care of my Emma Climax® Hybrid?"
+            "id": "How do I take care of my Emma Climax® Hybrid?"
           }
         },
         "1a80ec95-f446-41d4-a0dd-63c4b5e614f3": {
@@ -955,8 +1031,7 @@
         "7699fa88-d039-419b-b9fb-e754a751ac96": {
           "type": "subtopic",
           "settings": {
-            "id": "Returns & Delivery",
-            "title": "Returns & Delivery"
+            "id": "Returns & Delivery"
           }
         },
         "4c62c47d-3d0d-475d-95a6-2410e8230402": {
@@ -964,7 +1039,7 @@
           "settings": {
             "subtopic_id": "Returns & Delivery",
             "question_1": "How do I return my Emma Climax® Hybrid?",
-            "answer_1": "<p>You may return your Emma Climax® Hybrid within 365 nights of receiving your product. When you want to return your Emma Climax® Hybrid, please contact our Customer Care agents from 6 AM - 9 PM EST through our available channels:<\/p><ul><li>Email: support@emma-sleep.ca <\/li><li>Landline: +1-888-585-3662<\/li><li>or speak directly with an agent using our live-chat feature on our website.<\/li><\/ul>",
+            "answer_1": "<p>You may return your Emma Climax® Hybrid within 365 nights of receiving your product. When you want to return your Emma Climax® Hybrid, please contact our Customer Care agents from 08:00 to 18:00 GMT-6, Monday-Friday through our available channels:<\/p><ul><li>Email: support@emma-sleep.ca <\/li><li>Landline: +1-888-585-3662<\/li><li>or speak directly with an agent using our live-chat feature on our website.<\/li><\/ul>",
             "html_1": "",
             "question_2": "Does the Emma Climax® Hybrid have a warranty?",
             "answer_2": "<p>The Emma Climax® Hybrid has a 10-year-warranty upon receipt. For more information on warranty claims, please visit our <a href=\"https:\/\/emma-sleep.ca\/pages\/terms-and-conditions\" target=\"_blank\">Terms and Conditions<\/a> or contact our Customer Care agents from 6 AM - 9 PM EST through our available channels:<\/p><ul><li>Email: support@emma-sleep.ca <\/li><li>Landline: +1-888-585-3662<\/li><li>or speak directly with an agent using our live-chat feature on our website.<\/li><\/ul>",
@@ -990,9 +1065,8 @@
         "4c62c47d-3d0d-475d-95a6-2410e8230402"
       ],
       "settings": {
-        "faq_icon": "shopify:\/\/shop_images\/emma--og--1-1658473107468.png",
-        "faq_title": "Emma CliMax Hybrid",
-        "topic_title": "The Emma CliMax Hybrid"
+        "topic_title": "The Emma CliMax Hybrid",
+        "slug": "emma-climax-hybrid"
       }
     },
     "faq-9": {
@@ -1001,8 +1075,7 @@
         "0a8cf82a-3a69-4a6c-a278-12b4ceb06379": {
           "type": "subtopic",
           "settings": {
-            "id": "About the Upholstered Bed Frame ",
-            "title": "About the Upholstered Bed Frame "
+            "id": "About the Upholstered Bed Frame "
           }
         },
         "100085f8-2829-419c-bd54-a8ccb72287e7": {
@@ -1053,8 +1126,7 @@
         "cf318667-3b25-46a0-8e3b-7223bc237f21": {
           "type": "subtopic",
           "settings": {
-            "id": "Is the Emma Upholstered Bed Frame right for you? ",
-            "title": "Is the Emma Upholstered Bed Frame right for you? "
+            "id": "Is the Emma Upholstered Bed Frame right for you? "
           }
         },
         "11169a7f-344c-4960-a71c-e920f85ca0f1": {
@@ -1081,7 +1153,7 @@
             "html_1": "",
             "question_2": "What are the dimensions of your Bed Frames?",
             "answer_2": "",
-            "html_2": "<table class=\"mx-auto table-auto border-collapse border\">  <thead>  <tr class=\"border-b border-b-black\">    <th class=\"p-2 text-left text-[13px] font-bold md:p-4\">Size<\/th>    <th class=\"p-2 text-left text-[13px] font-bold md:p-4\">Length<\/th>    <th class=\"p-2 text-left text-[13px] font-bold md:p-4\">Width<\/th>    <th class=\"p-2 text-left text-[13px] font-bold md:p-4\">Height<\/th>    <th class=\"p-2 text-left text-[13px] font-bold md:p-4\">Weight<\/th>  <\/tr>  <\/thead>  <tbody>  <tr class=\"border-b\">    <td class=\"p-2 text-left text-[14px] md:p-4\">Full<\/td>    <td class=\"p-2 text-left text-[14px] md:p-4\">75.20 in<\/td>    <td class=\"p-2 text-left text-[14px] md:p-4\">53.94 in<\/td>    <td class=\"p-2 text-left text-[14px] md:p-4\">43.30 in<\/td>    <td class=\"p-2 text-left text-[14px] md:p-4\">121 lbs<\/td>  <\/tr>  <tr class=\"border-b\">    <td class=\"p-2 text-left text-[14px] md:p-4\">Queen<\/td>    <td class=\"p-2 text-left text-[14px] md:p-4\">79.92 in<\/td>    <td class=\"p-2 text-left text-[14px] md:p-4\">60.24 in<\/td>    <td class=\"p-2 text-left text-[14px] md:p-4\">43.30 in<\/td>    <td class=\"p-2 text-left text-[14px] md:p-4\">129.8 lbs<\/td>  <\/tr>  <tr class=\"border-b\">    <td class=\"p-2 text-left text-[14px] md:p-4\">King<\/td>    <td class=\"p-2 text-left text-[14px] md:p-4\">79.92 in<\/td>    <td class=\"p-2 text-left text-[14px] md:p-4\">75.98 in<\/td>    <td class=\"p-2 text-left text-[14px] md:p-4\">43.30 in<\/td>    <td class=\"p-2 text-left text-[14px] md:p-4\">158.4 lbs<\/td>  <\/tr>  <tr class=\"\">    <td class=\"p-2 text-left text-[14px] md:p-4\">California King<\/td>    <td class=\"p-2 text-left text-[14px] md:p-4\">83.86 in<\/td>    <td class=\"p-2 text-left text-[14px] md:p-4\">72.05 in<\/td>    <td class=\"p-2 text-left text-[14px] md:p-4\">43.30 in<\/td>    <td class=\"p-2 text-left text-[14px] md:p-4\">147.4 lbs<\/td>  <\/tr>  <\/tbody>\n<\/table>",
+            "html_2": "Size    Length    Width    Height    Weight            Full    75.20 in    53.94 in    43.30 in    121 lbs        Queen    79.92 in    60.24 in    43.30 in    129.8 lbs        King    79.92 in    75.98 in    43.30 in    158.4 lbs        California King    83.86 in    72.05 in    43.30 in    147.4 lbs",
             "question_3": "",
             "answer_3": "",
             "html_3": ""
@@ -1090,8 +1162,7 @@
         "d830801b-c7a0-4e46-b5bd-8dea1d850313": {
           "type": "subtopic",
           "settings": {
-            "id": "How do I take care of and assemble my bed frame?",
-            "title": "How do I take care of and assemble my bed frame?"
+            "id": "How do I take care of and assemble my bed frame?"
           }
         },
         "1b6d93db-58f2-47a3-9f4e-5ad09c33159e": {
@@ -1112,8 +1183,7 @@
         "d4a54774-17b9-406b-acb6-92071bf23a17": {
           "type": "subtopic",
           "settings": {
-            "id": "Returns & Delivery",
-            "title": "Returns & Delivery"
+            "id": "Returns & Delivery"
           }
         },
         "4fca8f49-b5a4-4715-ade3-1faa335caa2c": {
@@ -1124,7 +1194,7 @@
             "answer_1": "<p>The Emma Upholstered Bed Frame will be delivered in 2 packages with separate tracking numbers through our logistics carriers (i.e. Bolt Logistics, Canpar). To track your order, please wait for an email that will contain instructions on how to do so using your provided tracking number. Please wait for both packages to arrive before building your Upholstered Bed Frame.<\/p>",
             "html_1": "",
             "question_2": "How long does the delivery take?",
-            "answer_2": "<p>Please note that 2 packages will be delivered to your home for the Upholstered Bed Frame. Orders from Ontario take approximately 2-4 days while orders from the rest of Canada take approximately 4-8 days.<br\/><br\/>Should you have any concerns, please contact our Customer Care agents from 6 AM - 9 PM EST through our available channels:<\/p><ul><li>Email: support@emma-sleep.ca <\/li><li>Landline: +1-888-585-3662<\/li><li>or speak directly with an agent using our live-chat feature on our website.<\/li><\/ul>",
+            "answer_2": "<p>Please note that 2 packages will be delivered to your home for the Upholstered Bed Frame. Orders from Ontario take approximately 2-4 days while orders from the rest of Canada take approximately 4-8 days.<br\/><br\/>Should you have any concerns, please contact our Customer Care agents from 08:00 to 18:00 GMT-6, Monday-Friday through our available channels:<\/p><ul><li>Email: support@emma-sleep.ca <\/li><li>Landline: +1-888-585-3662<\/li><li>or speak directly with an agent using our live-chat feature on our website.<\/li><\/ul>",
             "html_2": "",
             "question_3": "Can I assemble the Upholstered Bed frame if only one package has arrived?",
             "answer_3": "<p>No. Please wait to have both packages before assembling the Upholstered Bed Frame.<\/p>",
@@ -1139,7 +1209,7 @@
             "answer_1": "<p>You may return your Upholstered Bed Frame within 60 nights of receiving your product. When you want to return your Emma Upholstered Bedframe, please contact our Customer Care agents from 6 AM - 9 PM EST through our available channels:<\/p><ul><li>Email: support@emma-sleep.ca <\/li><li>Landline: +1-888-585-3662<\/li><li>or speak directly with an agent using our live-chat feature on our website.<\/li><\/ul>",
             "html_1": "",
             "question_2": "Does the Upholstered Bed Frame have a warranty?",
-            "answer_2": "<p>Our Upholstered Bed Frame has a 5-year-warranty upon receipt. For more information on warranty claims, please visit our <a href=\"https:\/\/emma-sleep.ca\/pages\/terms-and-conditions\" target=\"_blank\">Terms and Conditions<\/a> or contact our Customer Care agents from 6 AM - 9 PM EST through our available channels:<\/p><ul><li>Email: support@emma-sleep.ca <\/li><li>Landline: +1-888-585-3662<\/li><li>or speak directly with an agent using our live-chat feature on our website.<\/li><\/ul>",
+            "answer_2": "<p>Our Upholstered Bed Frame has a 5-year-warranty upon receipt. For more information on warranty claims, please visit our <a href=\"https:\/\/emma-sleep.ca\/pages\/terms-and-conditions\" target=\"_blank\">Terms and Conditions<\/a> or contact our Customer Care agents from 08:00 to 18:00 GMT-6, Monday-Friday through our available channels:<\/p><ul><li>Email: support@emma-sleep.ca <\/li><li>Landline: +1-888-585-3662<\/li><li>or speak directly with an agent using our live-chat feature on our website.<\/li><\/ul>",
             "html_2": "",
             "question_3": "",
             "answer_3": "",
@@ -1162,9 +1232,8 @@
         "52f9766e-e366-4adc-bb75-0b70774d8e70"
       ],
       "settings": {
-        "faq_icon": "shopify:\/\/shop_images\/bed-frame--1-1658473093757.png",
-        "faq_title": "Upholstered Bed Frame",
-        "topic_title": "Upholstered Bed Frame"
+        "topic_title": "Upholstered Bed Frame",
+        "slug": "upholstered-bed-frame"
       }
     },
     "faq-10": {
@@ -1173,8 +1242,7 @@
         "6b727871-731b-4cb0-bef2-41c8ee7ae4a7": {
           "type": "subtopic",
           "settings": {
-            "id": "About the Emma Original Adjustable Foam Pillow",
-            "title": "About the Emma Original Adjustable Foam Pillow"
+            "id": "About the Emma Original Adjustable Foam Pillow"
           }
         },
         "569523bd-06a6-444c-acca-4f440999ee0c": {
@@ -1182,7 +1250,7 @@
           "settings": {
             "subtopic_id": "About the Emma Original Adjustable Foam Pillow",
             "question_1": "What are the certifications of the Emma Original Adjustable Foam Pillow?",
-            "answer_1": "<p>The Emma Original Adjustable Foam Pillow is OEKO-Tex® 100 Certified Class 1 (16.0.93305) of OEKO-Tex Standard 100. This certification suggests a high standard and is even suitable for infants\/toddlers up to 3 years old. Check more at their website<a href=\"https:\/\/www.oeko-tex.com\/en\/our-standards\/standard-100-by-oeko-tex\" target=\"_blank\">here.<\/a><\/p>",
+            "answer_1": "<p>The Emma Original Adjustable Foam Pillow is OEKO-Tex® 100 Certified Class 1 (16.0.93305) of OEKO-Tex Standard 100. This certification suggests a high standard and is even suitable for infants\/toddlers up to 3 years old. Check more at their website <a href=\"https:\/\/www.oeko-tex.com\/en\/our-standards\/standard-100-by-oeko-tex\" target=\"_blank\">here.<\/a><\/p>",
             "html_1": "",
             "question_2": "What is the Emma Original Adjustable Foam Pillow made of?",
             "answer_2": "<p>The Emma Original Adjustable Foam Pillow is made of three adjustable foam layers that provides bespoke comfort for any type of sleeper with a removable Plus UltraDry Cover®. The three layers are:<\/p><ul><li>Supportive Visco Foam that conforms to your head and neck for more support.<\/li><li>Cool AIRGOCELL® Foam which is our softest layer that allows for breathability and cooling.<\/li><li>Visco Memory Foam that distributes weight for optimal pressure relief.<\/li><\/ul>",
@@ -1210,8 +1278,7 @@
         "f81d6d55-6ca7-4a4c-9ed4-1f00ad3bac91": {
           "type": "subtopic",
           "settings": {
-            "id": "Is the Emma Original Adjustable Foam Pillow right for you?",
-            "title": "Is the Emma Original Adjustable Foam Pillow right for you?"
+            "id": "Is the Emma Original Adjustable Foam Pillow right for you?"
           }
         },
         "1d182cfc-3798-4f62-8b03-503fc7c9273b": {
@@ -1232,8 +1299,7 @@
         "3ca8bc3d-7ecf-4727-8f96-c4fdc1a28cb5": {
           "type": "subtopic",
           "settings": {
-            "id": "How do I take care of my Emma Original Adjustable Foam Pillow?",
-            "title": "How do I take care of my Emma Original Adjustable Foam Pillow?"
+            "id": "How do I take care of my Emma Original Adjustable Foam Pillow?"
           }
         },
         "de04db8f-6f1f-48d9-a2fa-cb628fad5d13": {
@@ -1254,8 +1320,7 @@
         "25f8a0c4-2f07-40a5-afd6-2611fdb23569": {
           "type": "subtopic",
           "settings": {
-            "id": "Returns & Delivery",
-            "title": "Returns & Delivery"
+            "id": "Returns & Delivery"
           }
         },
         "0efc9406-53a2-4011-8ba7-d6541694e26b": {
@@ -1269,7 +1334,7 @@
             "answer_2": "<p>Yes, the Emma Original Adjustable Foam Pillow offers a 60-night trial for your benefit.<\/p>",
             "html_2": "",
             "question_3": "Does the pillow have a warranty?",
-            "answer_3": "<p>The Emma Original Adjustable Foam Pillow has a warranty period of 3 years upon receipt. For more information on warranty claims, please visit our <a href=\"https:\/\/emma-sleep.ca\/pages\/terms-and-conditions\" target=\"_blank\">Terms and Conditions<\/a> or contact our Customer Care agents from 6 AM - 9 PM EST through our available channels:<\/p><ul><li>Email: support@emma-sleep.ca <\/li><li>Landline: +1-888-585-3662<\/li><li>or speak directly with an agent using our live-chat feature on our website.<\/li><\/ul>",
+            "answer_3": "<p>The Emma Original Adjustable Foam Pillow has a warranty period of 3 years upon receipt. For more information on warranty claims, please visit our <a href=\"https:\/\/emma-sleep.ca\/pages\/terms-and-conditions\" target=\"_blank\">Terms and Conditions<\/a> or contact our Customer Care agents from 08:00 to 18:00 GMT-6, Monday-Friday through our available channels:<\/p><ul><li>Email: support@emma-sleep.ca <\/li><li>Landline: +1-888-585-3662<\/li><li>or speak directly with an agent using our live-chat feature on our website.<\/li><\/ul>",
             "html_3": ""
           }
         }
@@ -1286,9 +1351,8 @@
         "0efc9406-53a2-4011-8ba7-d6541694e26b"
       ],
       "settings": {
-        "faq_icon": "shopify:\/\/shop_images\/pillow--1-1658473138528.png",
-        "faq_title": "Original Adjustable Foam Pillow",
-        "topic_title": "Emma Original Adjustable Foam Pillow"
+        "topic_title": "Emma Original Adjustable Foam Pillow",
+        "slug": "original-adjustable-foam-pillow"
       }
     },
     "faq-11": {
@@ -1297,8 +1361,7 @@
         "108be0fc-5b1c-4593-b60a-dc7ff69fe314": {
           "type": "subtopic",
           "settings": {
-            "id": "About the Emma Breathable Mattress Protector",
-            "title": "About the Emma Breathable Mattress Protector"
+            "id": "About the Emma Breathable Mattress Protector"
           }
         },
         "f5ad1b66-f705-474d-ad2b-c7c83e296b5d": {
@@ -1306,7 +1369,7 @@
           "settings": {
             "subtopic_id": "About the Emma Breathable Mattress Protector",
             "question_1": "What are the certifications of the Emma Breathable Mattress Protector?",
-            "answer_1": "<p>The Emma Breathable Mattress Protector is OEKO-Tex® 100 Certified Class 1 (16.0.93305) of OEKO-Tex Standard 100. This certification suggests a high standard and is even suitable for infants\/toddlers up to 3 years old. Check more at their website<a href=\"https:\/\/www.oeko-tex.com\/en\/our-standards\/standard-100-by-oeko-tex\" target=\"_blank\">here.<\/a><\/p>",
+            "answer_1": "<p>The Emma Breathable Mattress Protector is OEKO-Tex® 100 Certified Class 1 (16.0.93305) of OEKO-Tex Standard 100. This certification suggests a high standard and is even suitable for infants\/toddlers up to 3 years old. Check more at their website <a href=\"https:\/\/www.oeko-tex.com\/en\/our-standards\/standard-100-by-oeko-tex\" target=\"_blank\">here.<\/a><\/p>",
             "html_1": "",
             "question_2": "How does the Emma Breathable Mattress Protector work?",
             "answer_2": "<p>The Breathable Mattress Protector has Tri-Protect™ Action. Its polyurethane layer prevents unwanted liquid from getting into the mattress. It also uses Purotex® technology which reduces allergens (i.e. dust mites, animal hair) by up to 93.7%, and is made with a breathable material. All these keep your mattress well-protected from stains, allergens, and prolongs the useful comfortable life of your mattress.<\/p>",
@@ -1321,7 +1384,7 @@
           "settings": {
             "subtopic_id": "About the Emma Breathable Mattress Protector",
             "question_1": "How do I put the Emma Breathable Mattress Protector on the mattress?",
-            "answer_1": "<p>Putting on the Emma Breathable Mattress Protector is quick and easy. It’s adjustable and flexible. You just need to wrap it around your mattress and you’re good to go. For visual instruction, you may view<a href=\"https:\/\/www.youtube.com\/watch?v=FItaOpA7kNM&ab_channel=EmmaMattress\" target=\"_blank\">here.<\/a><\/p>",
+            "answer_1": "<p>Putting on the Emma Breathable Mattress Protector is quick and easy. It’s adjustable and flexible. You just need to wrap it around your mattress and you’re good to go. For visual instruction, you may view <a href=\"https:\/\/www.youtube.com\/watch?v=FItaOpA7kNM&ab_channel=EmmaMattress\" target=\"_blank\">here.<\/a><\/p>",
             "html_1": "",
             "question_2": "Does my Emma Breathable Mattress Protector go under my sheets?",
             "answer_2": "<p>Yes. The Emma Breathable Mattress Protector goes under your sheets, if any. To sum it up, the order of layers from bottom to top is<\/p><ul><li>Emma Original Mattress<\/li><li>Emma Firm-to-Soft Reversible Topper<\/li><li>Emma Breathable Mattress Protector<\/li><li>Mattress Sheets<\/li><\/ul>",
@@ -1334,8 +1397,7 @@
         "129dd685-c703-4a19-86eb-2c0c7754c977": {
           "type": "subtopic",
           "settings": {
-            "id": "Is the Emma Breathable Mattress Protector right for you?",
-            "title": "Is the Emma Breathable Mattress Protector right for you?"
+            "id": "Is the Emma Breathable Mattress Protector right for you?"
           }
         },
         "8b7950f4-6465-4ad4-a037-c180974924c5": {
@@ -1356,8 +1418,7 @@
         "7e0c81a6-bb1a-4546-8b82-16a863f2c566": {
           "type": "subtopic",
           "settings": {
-            "id": "How do I take care of my Emma Breathable Mattress Protector?",
-            "title": "How do I take care of my Emma Breathable Mattress Protector?"
+            "id": "How do I take care of my Emma Breathable Mattress Protector?"
           }
         },
         "878df280-164a-456d-8eb5-f8ffbecb6608": {
@@ -1393,8 +1454,7 @@
         "2f85a5ea-afd8-4104-84a5-e563ced20199": {
           "type": "subtopic",
           "settings": {
-            "id": "Returns & Delivery",
-            "title": "Returns & Delivery"
+            "id": "Returns & Delivery"
           }
         },
         "55782986-c1ca-48e1-9da9-1c45eef4837f": {
@@ -1426,9 +1486,8 @@
         "55782986-c1ca-48e1-9da9-1c45eef4837f"
       ],
       "settings": {
-        "faq_icon": "shopify:\/\/shop_images\/protector--1-1658473152175_1.png",
-        "faq_title": "Breathable Mattress Protector",
-        "topic_title": "Breathable Mattress Protector"
+        "topic_title": "Breathable Mattress Protector",
+        "slug": "breathable-mattress-protector"
       }
     },
     "faq-12": {
@@ -1437,8 +1496,7 @@
         "bc520379-5819-4956-a2c6-6267779a57fa": {
           "type": "subtopic",
           "settings": {
-            "id": "About the Emma Firm-to-Soft Reversible Topper",
-            "title": "About the Emma Firm-to-Soft Reversible Topper"
+            "id": "About the Emma Firm-to-Soft Reversible Topper"
           }
         },
         "ebe07b70-a454-4191-8d3c-7a707577a498": {
@@ -1474,8 +1532,7 @@
         "87a43ec5-2d0b-40ff-bfd7-a2d754d992f6": {
           "type": "subtopic",
           "settings": {
-            "id": "Is the Emma Reversible Topper right for you?",
-            "title": "Is the Emma Reversible Topper right for you?"
+            "id": "Is the Emma Reversible Topper right for you?"
           }
         },
         "650ca9af-0bb1-4336-b48a-fa3e82dce5b5": {
@@ -1511,8 +1568,7 @@
         "c1ad24d9-3bfe-4e12-a454-d20fe6f1d3da": {
           "type": "subtopic",
           "settings": {
-            "id": "How do I take care of my Emma Firm-to-Soft Reversible Topper?",
-            "title": "How do I take care of my Emma Firm-to-Soft Reversible Topper?"
+            "id": "How do I take care of my Emma Firm-to-Soft Reversible Topper?"
           }
         },
         "9171a59d-8dac-4ca0-b1d9-6926c32f64c0": {
@@ -1533,8 +1589,7 @@
         "3e1b441f-28df-486f-967a-8cd562d93a48": {
           "type": "subtopic",
           "settings": {
-            "id": "Returns & Delivery",
-            "title": "Returns & Delivery"
+            "id": "Returns & Delivery"
           }
         },
         "867d66b5-1d98-4ce1-9283-5dbb9aef6209": {
@@ -1566,19 +1621,19 @@
         "867d66b5-1d98-4ce1-9283-5dbb9aef6209"
       ],
       "settings": {
-        "faq_icon": "shopify:\/\/shop_images\/topper--1-1658473215135.png",
-        "faq_title": "Firm-to-Soft Reversible Topper",
-        "topic_title": "Firm-to-Soft Reversible Topper"
+        "topic_title": "Firm-to-Soft Reversible Topper",
+        "slug": "firm-to-soft-reversible-topper"
       }
     },
-    "faq-qna": {
-      "type": "faq-qna",
+    "contact-us": {
+      "type": "contact-us",
       "settings": {
+        "custom_title": "Need help deciding?"
       }
     }
   },
   "order": [
-    "faq-header",
+    "faq-form",
     "faq-1",
     "faq-2",
     "faq-3",
@@ -1592,6 +1647,6 @@
     "faq-10",
     "faq-11",
     "faq-12",
-    "faq-qna"
+    "contact-us"
   ]
 }

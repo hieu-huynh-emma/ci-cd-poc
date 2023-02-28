@@ -14,6 +14,7 @@
   background-color: $bgColor;
   border-radius: 60px;
 
+  font-family: 'Acumin Pro';
   font-style: normal;
   font-weight: 600;
   font-size: 16px;
@@ -39,6 +40,14 @@
 
   &:hover {
     background-color: $hoverColor;
+  }
+
+  &.btn-no--hover {
+    background-color: $colorPrimary;
+  }
+
+  &.btn-no-hover:hover {
+    background-color: $bgColor;
   }
 
   &--secondary {
