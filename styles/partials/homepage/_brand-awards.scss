@@ -1,4 +1,5 @@
 #brand-awards-section {
+  background-color: #f7f7f9;
   .wrapper {
     display: grid;
     justify-items: center;
@@ -14,6 +15,11 @@
     display: grid;
     gap: 10px;
     justify-items: center;
+    margin-bottom: 1rem;
+
+    .heading-2 {
+      font-size: 26px;
+    }
   }
 
   .awards {
@@ -23,6 +29,7 @@
     align-items: center;
     width: 100%;
     max-width: 1440px;
+    flex-direction: column;
 
     &__item {
       display: flex;
@@ -74,5 +81,16 @@
 
   .splide__track {
     width: 100%;
+  }
+}
+
+@media (min-width: 768px) {
+  #brand-awards-section {
+    .headings {
+      margin-bottom: 2rem;
+      .heading-2 {
+        font-size: 36px;
+      }
+    }
   }
 }
