@@ -421,7 +421,7 @@
 
         let hasOrderLevelDiscountCode = $('.total-line.total-line--reduction').length;
         if (!hasOrderLevelDiscountCode) {
-          $totalTable.prepend(`<tr class="total-line promo-code"><th class="total-line__name">{{ 'shopify.checkout.order_summary.promo_code' | t }} (${promoCodeText}) </th><td class="total-line__price"><span class="order-summary__emphasis"> - ${promoDiscount}</span></td></tr>`);
+          $totalTable.prepend(`<tr class="total-line promo-code"><th class="total-line__name">{{ 'shopify.checkout.order_summary.promo_code' | t }} ${promoCodeText} </th><td class="total-line__price"><span class="order-summary__emphasis"> - ${promoDiscount}</span></td></tr>`);
         } else {
           let $subtotal = $('.total-line--subtotal .order-summary__emphasis');
           let $promoCode = $('.total-line--reduction .order-summary__emphasis');
@@ -447,7 +447,7 @@
           var replacementTag = 'div';
 
           if($('.product__price .order-summary__small-text').length) {
-            ($('.product__price .order-summary__emphasis.skeleton-while-loading') || []).each(function (idx, e) { e.remove(); });
+            ($('.product__price .order-summary__small-text.skeleton-while-loading--sm') || []).each(function (idx, e) { e.remove(); });
             ($('.product__price .order-summary__small-text') || []).each(function (idx, e) {
               var outer = this.outerHTML;
 
@@ -460,11 +460,13 @@
               $(this).replaceWith(newTag);
             });
           }
+        } 
+
+        let oneDiscountCodeApplied = $('.tags-list .reduction-code').length ? $('.tags-list .reduction-code').length : null;
+        if(oneDiscountCodeApplied) {
           $(".order-summary__section--discount form.edit_checkout .fieldset").hide();
-          $(".total-line.promo-code").show();
           promoText = '{{ 'shopify.checkout.order_summary.promo_applied' | t }}';
         } else {
-          $(".total-line.promo-code").hide();
           $(".order-summary__section--discount form.edit_checkout .fieldset").show();
         }
 

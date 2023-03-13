@@ -21,12 +21,12 @@ class CartItems extends CustomElement {
 
   async onQuantityChange(event) {
     const quantityAdjuster = event.target
-    // const cartItem = quantityAdjuster.closest('cart-item')
+    const cartItem = quantityAdjuster.closest('cart-item')
     const value = quantityAdjuster.value
 
-    // const hasGWP = await this.gwpGuard(cartItem, value)
-    //
-    // if (hasGWP) return
+    const hasGWP = await this.gwpGuard(cartItem, value)
+
+    if (hasGWP) return
 
     await this.updateCartItem(value, $(quantityAdjuster).data('index'))
   }
@@ -115,6 +115,12 @@ class CartItems extends CustomElement {
   }
 
   async removeFromCart(index) {
+    const $cartItem = this.$el.find(`cart-item[\\:index='${index}']`).get(0);
+
+    const hasGWP = await this.gwpGuard($cartItem, 0)
+
+    if (hasGWP) return
+
     return this.updateQuantity(index + 1, 0)
   }
 
@@ -131,7 +137,6 @@ class CartItems extends CustomElement {
   }
 
   async switchVariant(variantId, qty = 1, key) {
-    console.log('switchVariant')
     const { cartSummary, scrollableContent } = this.refs
 
     scrollableContent.loading = true
@@ -140,7 +145,7 @@ class CartItems extends CustomElement {
     const data = {
       updates: {
         [key]: 0,
-        [variantId]: 1
+        [variantId]: qty
       }
     };
 
@@ -148,7 +153,6 @@ class CartItems extends CustomElement {
 
     scrollableContent.loading = false
     cartSummary.loading = false
-
   }
 
   async updateQuantity(line, quantity) {
