@@ -21,10 +21,10 @@ class CartItems extends CustomElement {
 
   async onQuantityChange(event) {
     const quantityAdjuster = event.target
-    const cartItem = quantityAdjuster.closest('cart-item')
+    const $cartItem = $(quantityAdjuster).closest('cart-item')
     const value = quantityAdjuster.value
 
-    const hasGWP = await this.gwpGuard(cartItem, value)
+    const hasGWP = await this.gwpGuard($cartItem, value)
 
     if (hasGWP) return
 
@@ -41,7 +41,6 @@ class CartItems extends CustomElement {
 
   async requestCart(payload = {}, url = routes.cart_change_url) {
     const { cartSummary, cartRedeem, cartAffirm } = this.refs
-    console.log('requestCart')
 
     try {
       const state = await fetch(`${url}`, {
@@ -85,22 +84,72 @@ class CartItems extends CustomElement {
     }
   }
 
-  async addToCart(variantId, qty) {
+  async requestCartWithoutRendering(payload = {}, url = routes.cart_change_url) {
+    try {
+      await fetch(`${url}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': `application/json` },
+        body: JSON.stringify({
+          ...payload,
+          sections: this.getSectionsToRender().map((section) => section.section),
+          sections_url: window.location.pathname
+        })
+      }).then(res => res.json())
+    } catch (e) {
+      console.log(e)
+    }
+  }
+
+  async addToCart(variantId, qty, properties = {}) {
     const data = {
       "id": variantId,
-      "quantity": qty
+      "quantity": qty,
+      properties
     };
 
     return this.requestCart(data, routes.cart_add_url)
   };
 
-  async updateGWP(cartItem, value) {
-    const targetProductKey = cartItem.props.key
+  async removeFromCart(index) {
+    const $cartItem = this.$el.find(`cart-item[\\:index='${index}']`)
+
+    const hasGWP = await this.gwpGuard($cartItem, 0)
+
+    if (hasGWP) return
+
+    return this.updateQuantity(index + 1, 0)
+  }
+
+  async gwpGuard($cartItem, value) {
+    if (!$cartItem.length) return false
+
+    const cartItemNode = $cartItem.get(0)
+
+    const { gwpTargetProductIds } = this.props
+    const { productId, key, hasGWP } = cartItemNode.props
+
+    const gwpItem = this.$el.find(`cart-item[\\:variantId='${this.props.freeGiftId}']`)
+    const hasFreeGift = !!gwpItem.length && !!hasGWP
+
+    if (gwpTargetProductIds.includes(productId) && hasFreeGift) {
+      await this.updateGWP($cartItem, gwpItem, key, value)
+
+      return true
+    }
+
+    return false
+  }
+
+  async updateGWP($cartItem, gwpItem, targetProductKey, value) {
+    const prevValue = +$cartItem.find('.quantity-adjuster__value').text()
+
+    const offset = value - prevValue
+    const gwpQty = +gwpItem.find('.quantity-adjuster__value').text()
 
     const data = {
       updates: {
         [targetProductKey]: value,
-        [this.props.freeGiftId]: value
+        [this.props.freeGiftId]: gwpQty + offset
       }
     };
     const { cartSummary, scrollableContent } = this.refs
@@ -112,16 +161,6 @@ class CartItems extends CustomElement {
 
     scrollableContent.loading = false
     cartSummary.loading = false
-  }
-
-  async removeFromCart(index) {
-    const $cartItem = this.$el.find(`cart-item[\\:index='${index}']`).get(0);
-
-    const hasGWP = await this.gwpGuard($cartItem, 0)
-
-    if (hasGWP) return
-
-    return this.updateQuantity(index + 1, 0)
   }
 
   async emptyCart() {
@@ -137,22 +176,32 @@ class CartItems extends CustomElement {
   }
 
   async switchVariant(variantId, qty = 1, key) {
+
     const { cartSummary, scrollableContent } = this.refs
+
+    const sourceItem = this.$el.find(`cart-item[\\:key='${key}']`)[0]
+    const hasGWP = sourceItem.props.hasGWP
 
     scrollableContent.loading = true
     cartSummary.loading = true
 
+    await this.requestCartWithoutRendering({ updates: { [key]: 0 } }, routes.cart_update_url)
+
     const data = {
-      updates: {
-        [key]: 0,
-        [variantId]: qty
-      }
+      id: variantId,
+      quantity: qty,
+      ...(hasGWP ? {
+        properties: {
+          hasGWP: true
+        }
+      } : {})
     };
 
-    await this.requestCart(data, routes.cart_update_url)
+    await this.requestCart(data, routes.cart_add_url)
 
     scrollableContent.loading = false
     cartSummary.loading = false
+
   }
 
   async updateQuantity(line, quantity) {
@@ -196,19 +245,6 @@ class CartItems extends CustomElement {
       cartFooter.disabled = false
       cartAffirm.disabled = false
     }
-  }
-
-  async gwpGuard(cartItem, value) {
-    const productId = cartItem.props.productId;
-    const hasFreeGift = !!this.$el.find(`cart-item[\\:variantId='${this.props.freeGiftId}']`).length
-
-    if (productId === this.props.gwpTargetProductId && hasFreeGift) {
-      await this.updateGWP(cartItem, value)
-
-      return true
-    }
-
-    return false
   }
 
   getSectionsToRender() {
@@ -259,7 +295,7 @@ customElements.define('cart-items', CartItems);
 class CartDrawerItems extends CartItems {
   props = {
     freeGiftId: 0,
-    gwpTargetProductId: 0
+    gwpTargetProductIds: []
   }
 
   beforeMount() {
@@ -329,7 +365,9 @@ class CartItem extends CustomElement {
   props = {
     productId: "",
     variantId: "",
+    hasGWP: false,
     index: 0,
+    itemId: 0,
     key: "",
     originalPrice: 0,
     quantity: 0
@@ -339,7 +377,7 @@ class CartItem extends CustomElement {
     return {
       removeBtn: this.querySelector("cart-item-remove-button"),
       quantityAdjuster: this.querySelector("quantity-adjuster"),
-      variantSelector: this.querySelector("cart-variant-selector"),
+      // variantSelector: this.querySelector("cart-variant-selector"),
     }
   }
 
@@ -380,12 +418,12 @@ class CartItem extends CustomElement {
     if (!!isDisabled) {
       removeBtn.disabled = true;
       quantityAdjuster.disabled = true;
-      variantSelector.disabled = true;
+      // variantSelector.disabled = true;
 
     } else {
       removeBtn.disabled = false;
       quantityAdjuster.disabled = false;
-      variantSelector.disabled = false;
+      // variantSelector.disabled = false;
     }
   }
 }

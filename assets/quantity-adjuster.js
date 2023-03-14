@@ -96,7 +96,7 @@ class QuantityAdjuster extends CustomElement {
 
     if (!minusBtn || !plusBtn) return
 
-    if (inventoryPolicy === 'continue') return
+    if (inventoryPolicy === 'continue') return true
 
     const minThresholdExceed = isNumber(min) && val <= min
     const maxThresholdExceed = isNumber(max) && val >= max

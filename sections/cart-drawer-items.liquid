@@ -1,85 +1,118 @@
 {% assign freeGift = section.settings.freeGift %}
-{% assign gwpTargetProduct = section.settings.gwpTargetProduct %}
+{% assign gwpTargetProducts = section.settings.gwpTargetProducts %}
 
 {% assign freeGiftId = freeGift.selected_or_first_available_variant.id %}
 
+{% assign cartItemsFragment = '' %}
+{% assign freeItemsFragment = '' %}
+
 <cart-drawer-items
-  :freeGiftId="{{ freeGiftId }}" :gwpTargetProductId="{{ gwpTargetProduct.id }}"
+  :freeGiftId="{{ freeGiftId }}" :gwpTargetProductIds="{{ gwpTargetProducts | map: 'id' | json | escape }}"
 >
   <form action="{{ routes.cart_url }}" id="CartDrawer-Form" method="post">
     <div id="CartDrawer-CartItems" class="cart-drawer-items">
       {% for item in cart.items %}
-        <cart-item
-          :key="{{ item.key }}"
-          :index="{{ item.index }}"
-          :variantId="{{ item.id }}"
-          :productId="{{ item.product_id }}"
-          :originalPrice="{{ item.variant.compare_at_price }}"
-          :quanity="{{ item.quantity }}"
-        >
-          <a class="cart-item-media" href="{{ item.url }}">
-            {{ item.image | image_url: width: 120, height: 80 | image_tag }}
-          </a>
-          <div class="cart-item-details">
-            <a href="{{ item.url }}" class="product__name paragraph-14 font-semibold">
-              {% assign title = item.title | split: ' - ' %}
-              <span>{{ title[0] }}</span>
+        {% assign isGWP = false %}
 
-              {% if item.selling_plan_allocation %}
-                <span
-                  class="ajaxcart__product-meta"
-                >{{ item.selling_plan_allocation.selling_plan.name }}</span>
+        {% if freeGiftId == item.id and item.final_line_price == 0 %}
+          {% assign isGWP = true %}
+        {% else %}
+          {% assign isGWP = false %}
+        {% endif %}
+
+        {% capture cartItem %}
+          <cart-item
+            :key="{{ item.key }}"
+            :itemId="{{ item.id }}"
+            :index="{{ item.index }}"
+            :variantId="{{ item.id }}"
+            :productId="{{ item.product_id }}"
+            :originalPrice="{{ item.variant.compare_at_price }}"
+            :quantity="{{ item.quantity }}"
+            {% for property in item.properties %}
+              {% if property contains 'freeGift' or property contains 'hasGWP' %}
+                :{{ property | first }}="{{ property | last }}"
               {% endif %}
+            {% endfor %}
+          >
+
+            <a class="cart-item-media" href="{{ item.url }}">
+              {{ item.image | image_url: width: 120, height: 80 | image_tag }}
             </a>
+            <div class="cart-item-details">
+              <a href="{{ item.url }}" class="product__name paragraph-14 font-semibold">
+                {% assign title = item.title | split: ' - ' %}
+                <span>{{ title[0] }}</span>
+                <script>
 
-            <div class="cart-item-actions">
-              <cart-variant-selector
-                class="variant-selector {% if item.variant.title == "Default Title" %}hidden{% endif %}"
-                :key="{{ item.key }}"
-                :value="{{ item.variant_id }}"
-                :options="{{ item.product.variants | json | escape }}"
-                :quantity="{{ item.quantity }}"
-              >
-              </cart-variant-selector>
-              <quantity-adjuster
-                {% if freeGiftId == item.id %}readOnly{% endif %}
-                :inventoryPolicy="{{ item.variant.inventory_policy }}"
-                :index="{{ item.index }}" :value="{{ item.quantity }}" :max="{{ item.variant.inventory_quantity }}"
-              ></quantity-adjuster>
-            </div>
-          </div>
-
-          <div class="cart-item-totals">
-            <loading-overlay></loading-overlay>
-
-            <cart-item-remove-button
-              id="CartDrawer-Remove-{{ item.index | plus: 1 }}"
-              :index="{{ item.index }}"
-              aria-label="{{ 'sections.cart.remove_title' | t: title: item.title }}"
-            >
-              {% render 'icon-remove' %}
-            </cart-item-remove-button>
-
-            <div class="cart-pricing cart-pricing--row">
-              {% if item.variant.compare_at_price > item.variant.price %}
-                <p class="cart-pricing__price cart-pricing__price--original">
-                  {{ item.variant.compare_at_price | times: item.quantity | money_without_trailing_zeros }}
-                </p>
-              {% endif %}
-
-              <p
-                class="cart-pricing__price{% if item.variant.compare_at_price > item.variant.price %} text-red{% endif %}"
-              >
-                {% if item.final_line_price > 0 %}
-                  {{ item.final_line_price | money_without_trailing_zeros }}
-                {% else %}
-                  FREE
+                </script>
+                {% if item.selling_plan_allocation %}
+                  <span
+                    class="ajaxcart__product-meta"
+                  >{{ item.selling_plan_allocation.selling_plan.name }}</span>
                 {% endif %}
-              </p>
+              </a>
+
+              <div class="cart-item-actions">
+                {% if item.variant.title != "Default Title" %}
+                  <cart-variant-selector
+                    class="variant-selector{% if isGWP %} hidden{% endif %}"
+                    :key="{{ item.key }}"
+                    :value="{{ item.variant_id }}"
+                    :options="{{ item.product.variants | json | escape }}"
+                    :quantity="{{ item.quantity }}"
+                  >
+                  </cart-variant-selector>
+                {% endif %}
+                <quantity-adjuster
+                  {% if freeGiftId == item.id %}readOnly{% endif %}
+                  :inventoryPolicy="{{ item.variant.inventory_policy }}"
+                  :index="{{ item.index }}" :value="{{ item.quantity }}" :max="{{ item.variant.inventory_quantity }}"
+                ></quantity-adjuster>
+              </div>
             </div>
-          </div>
-        </cart-item>
+
+            <div class="cart-item-totals">
+              <loading-overlay></loading-overlay>
+
+              <cart-item-remove-button
+                id="CartDrawer-Remove-{{ item.index | plus: 1 }}"
+                :index="{{ item.index }}"
+                aria-label="{{ 'sections.cart.remove_title' | t: title: item.title }}"
+                class="{% if isGWP %}hidden{% endif %}"
+              >
+                {% render 'icon-remove' %}
+              </cart-item-remove-button>
+
+
+              <div class="cart-pricing cart-pricing--row">
+                {% if item.variant.compare_at_price > item.variant.price %}
+                  <p class="cart-pricing__price cart-pricing__price--original">
+                    {{ item.variant.compare_at_price | times: item.quantity | money_without_trailing_zeros }}
+                  </p>
+                {% endif %}
+
+                <p
+                  class="cart-pricing__price{% if item.variant.compare_at_price > item.variant.price %} text-red{% endif %}"
+                >
+                  {% if item.final_line_price > 0 %}
+                    {{ item.final_line_price | money_without_trailing_zeros }}
+                  {% else %}
+                    FREE
+                  {% endif %}
+                </p>
+              </div>
+            </div>
+          </cart-item>
+        {% endcapture %}
+        {% if isGWP %}
+          {% assign freeItemsFragment = freeItemsFragment | append: cartItem %}
+        {% else %}
+          {% assign cartItemsFragment = cartItemsFragment | append: cartItem %}
+        {% endif %}
       {% endfor %}
+      {{cartItemsFragment}}
+      {{freeItemsFragment}}
     </div>
     <div id="CartDrawer-CartErrors" role="alert"></div>
   </form>
@@ -97,9 +130,10 @@
       "label": "Free Gift"
     },
     {
-      "id": "gwpTargetProduct",
-      "type": "product",
-      "label": "GWP Target Product"
+      "id": "gwpTargetProducts",
+      "type": "product_list",
+      "label": "GWP Target Products",
+      "limit": 2
     }
   ]
 }
