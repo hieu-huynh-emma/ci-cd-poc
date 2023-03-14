@@ -69,7 +69,7 @@
       {% assign prod = all_products[upsell_products[0]] %}
 
       {% if prod.selected_or_first_available_variant.available %}
-        <cart-upsell-item class="upsell-item upsell-item--single">
+        <cart-upsell-item class="upsell-item upsell-item--single" :productId="{{prod.id}}">
           <div class="upsell-item__media">
             {% assign img = prod.featured_image %}
             {{ img | image_url: width: 70 | image_tag }}
@@ -125,7 +125,7 @@
             {% if prod.selected_or_first_available_variant.available %}
               {% assign count = count | plus: 1 %}
               <li class="swiper-slide{% if upsell_products.size == 1 %} is-single{% endif %}">
-                <cart-upsell-item class="upsell-item">
+                <cart-upsell-item class="upsell-item" :productId="{{prod.id}}">
                   <div class="upsell-item__media">
                     {% assign img = prod.featured_image %}
                     {{ img | image_url: width: 70 | image_tag }}

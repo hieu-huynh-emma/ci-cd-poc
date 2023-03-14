@@ -3,7 +3,8 @@ class CartUpsell extends CustomElement {
     value: null,
     options: [],
     quantity: 0,
-    index: 0
+    index: 0,
+    productId: 0
   };
 
   get refs() {
@@ -76,7 +77,17 @@ class CartUpsell extends CustomElement {
     scrollableContentEl.loading = true
     cartSummaryNode.loading = true
 
-    await cartItems.addToCart(variantId, 1);
+    const productId = $upsellItem.attr(':productid')
+
+    const { freeGiftId, gwpTargetProductIds } = cartItems.props
+
+    debugger
+
+    const isGWPTargetProduct = freeGiftId && gwpTargetProductIds.includes(+productId)
+
+    await cartItems.addToCart(variantId, 1, isGWPTargetProduct ? { hasGWP: true } : {});
+
+    isGWPTargetProduct && await cartItems.addToCart(freeGiftId, 1, { freeGift: true });
 
     scrollableContentEl.loading = false
     cartSummaryNode.loading = false

@@ -128,7 +128,7 @@ class CartItems extends CustomElement {
     const { gwpTargetProductIds } = this.props
     const { productId, key, hasGWP } = cartItemNode.props
 
-    const gwpItem = this.$el.find(`cart-item[\\:variantId='${this.props.freeGiftId}']`)
+    const gwpItem = this.$el.find(`cart-item[\\:variantId='${this.props.freeGiftId}'][\\:freeGift='true']`)
     const hasFreeGift = !!gwpItem.length && !!hasGWP
 
     if (gwpTargetProductIds.includes(productId) && hasFreeGift) {
@@ -149,7 +149,7 @@ class CartItems extends CustomElement {
     const data = {
       updates: {
         [targetProductKey]: value,
-        [this.props.freeGiftId]: gwpQty + offset
+        [gwpItem.get(0).props.key]: gwpQty + offset
       }
     };
     const { cartSummary, scrollableContent } = this.refs
@@ -370,7 +370,8 @@ class CartItem extends CustomElement {
     itemId: 0,
     key: "",
     originalPrice: 0,
-    quantity: 0
+    quantity: 0,
+    freeGift: false,
   };
 
   get refs() {
