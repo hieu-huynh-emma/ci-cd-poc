@@ -332,6 +332,16 @@
         "type": "cart-drawer-affirm",
         "settings": {
         }
+      },
+      "checkout-supported-payment-methods": {
+        "type": "checkout-supported-payment-methods",
+        "settings": {
+          "supported_payment_image": "shopify:\/\/shop_images\/checkout-payment-support.png",
+          "supported_payment_left_text": "We accept",
+          "supported_payment_right_text": "at payment",
+          "supported_payment_left_text_fr": "Nous acceptons",
+          "supported_payment_right_text_fr": "au paiement"
+        }
       }
     },
     "content_for_index": [
