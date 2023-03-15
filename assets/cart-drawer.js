@@ -375,7 +375,7 @@ class CartDrawerSummary extends CustomElement {
 
     if (!cart || !checkout) return
 
-    const totalPrice = parseFloat(checkout.total_price)
+    const totalPrice = parseFloat(checkout.subtotal_price)
     const originalPrice = parseFloat(checkout.line_items.reduce((r, item) => r + item.quantity * (+item.compare_at_price), 0));
 
     this.refreshCartPrices(totalPrice, originalPrice)

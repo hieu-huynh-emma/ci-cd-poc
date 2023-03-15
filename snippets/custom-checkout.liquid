@@ -18,6 +18,34 @@
 
 {% assign saved = total_line_price | plus: checkout.discounts_amount %}
 
+{% assign promo_code_allow = true %}
+{% assign promo_codes = '' %}
+{% assign line_item_discounted = 0.0 %}
+{% assign line_item_discount_code = '' %}
+
+{% for discount_application in checkout.discount_applications %}
+  {% if promo_codes == '' %}
+    {% assign promo_codes = discount_application.title %}
+  {% else %}
+    {% assign promo_codes = promo_codes | append: '|' | append: discount_application.title %}
+  {% endif %}
+  {% if discount_application.type != 'script' %}
+    {% assign promo_code_allow = false %}
+  {% endif %}
+  {% if discount_application.target_selection != 'all' %}
+    {% if discount_application.total_allocated_amount > 0 %}
+      {% assign line_item_discounted = line_item_discounted | plus: discount_application.total_allocated_amount %}
+      {% if line_item_discount_code == '' %}
+        {% assign line_item_discount_code = discount_application.title %}
+      {% else %}
+        {% assign line_item_discount_code = line_item_discount_code | append: '|' | append: discount_application.title %}
+      {% endif %}
+      {% assign sale_discount = sale_discount | plus: discount_application.total_allocated_amount %}
+      {% assign saved = saved | plus: discount_application.total_allocated_amount %}
+    {% endif %}
+  {% endif %}
+{% endfor %}
+
 {% if request.locale.iso_code == 'fr' %}
   {% assign saved_amount = saved | money_without_currency | replace: '.', ',' | append: ' $' %}
   {% assign total_original_price = total_compare_at_price | money_without_currency | replace: '.', ',' | append: ' $' %}
@@ -29,6 +57,37 @@
   {% assign promo_discount = total_line_level_discount | money %}
   {% assign sale_discount = total_line_price | money %}
 {% endif %}
+
+<input
+  id="promo-codes" type="hidden"
+  value="{{promo_codes}}"
+  disabled
+/>
+<input
+  id="allow-more-promo-code" type="hidden"
+  value="{{promo_code_allow}}"
+  disabled
+/>
+<input
+  id="line-item-discount-code" type="hidden"
+  value="{{line_item_discount_code | split: '|' | join: ' + '}}"
+  disabled
+/>
+<input
+  id="line-item-discounted" type="hidden"
+  value="{{line_item_discounted | money}}"
+  disabled
+/>
+
+{% if saved > 0 %}
+  <input id="total-saved-amount" type="hidden"
+    value="{% if saved > 0 %}{{ 'shopify.checkout.order_summary.you_save' | t: saved: saved_amount }}{% endif %}"
+    disabled />
+{% endif %}
+  
+<input id="promo-discount" type="hidden"
+  value="{% if total_line_price > 0 %}{{ promo_discount }}{% endif %}"
+  disabled />
 
 <script type="text/javascript">
   const PAYMENT_GATEWAYS_NOT_ALLOWED = ["offsite_v2"];
@@ -382,16 +441,6 @@
 
 <script src="{{ 'custom-checkout.js' | asset_url }}" defer="defer"></script>
 
-{% if saved > 0 %}
-  <input id="total-saved-amount" type="hidden"
-         value="{% if saved > 0 %}{{ 'shopify.checkout.order_summary.you_save' | t: saved: saved_amount }}{% endif %}"
-         disabled>
-{% endif %}
-
-<input id="promo-discount" type="hidden"
-       value="{% if total_line_price > 0 %}{{ promo_discount }}{% endif %}"
-       disabled>
-
 {% for item in checkout.line_items %}
   {%- if item.variant.compare_at_price != item.final_price -%}
     <input id="{{ item.key }}" type="hidden" name="original_line_price"
@@ -408,6 +457,17 @@
     
     $(document).on("page:load page:change", function () {
       setTimeout(() => {
+        let freeGiftCount = 0;
+        $('[data-order-summary-section="line-items"] .reduction-code').each(function(){
+          const $this = $(this), text = $this.text().trim(), $product = $this.closest('.product');
+          if (text.includes('🎁 FREE GIFT')) {
+            $this.text('🎁 FREE GIFT');
+            freeGiftCount += parseInt($product.find('.product-thumbnail__quantity').text());
+          }
+        });
+
+        let discountCodes = $('#promo-codes').val().split('|');
+        let allowPromoCode = $('#allow-more-promo-code').val() === 'true';
         let discountCode = $('.reduction-code').length ? $('.reduction-code').text() : null;
         let onlyOneCodeAllowedText = '{{ 'shopify.checkout.order_summary.only_one_code_allowed' | t }}';
         let promoText = '{{ 'shopify.checkout.order_summary.no_promo_yet' | t }}';
@@ -419,66 +479,49 @@
 
         const $totalTable = $('.total-line-table__tbody');
 
-        let hasOrderLevelDiscountCode = $('.total-line.total-line--reduction').length;
-        if (!hasOrderLevelDiscountCode) {
-          $totalTable.prepend(`<tr class="total-line promo-code"><th class="total-line__name">{{ 'shopify.checkout.order_summary.promo_code' | t }} ${promoCodeText} </th><td class="total-line__price"><span class="order-summary__emphasis"> - ${promoDiscount}</span></td></tr>`);
-        } else {
-          let $subtotal = $('.total-line--subtotal .order-summary__emphasis');
-          let $promoCode = $('.total-line--reduction .order-summary__emphasis');
-          let $saleDiscount = $('.sale-discount .order-summary__emphasis');
-
-          let subtotalPrice = "";
-
-          {% if request.locale.iso_code == 'fr' %}
-            subtotalPrice = (extractPriceFrench($subtotal.text()) - extractPriceFrench($promoCode.text())).toFixed(2);
-            $subtotal.text(`${subtotalPrice.replace('.', ',')} $`);
-          {% else %}
-            subtotalPrice = (extractPrice($subtotal.text()) - extractPrice($promoCode.text())).toFixed(2);
-            $subtotal.text(`$${subtotalPrice}`);
-          {% endif %}
+        let lineItemDiscounted = $('#line-item-discounted').val();
+        let lineItemDiscountCode = $('#line-item-discount-code').val();
+        if (lineItemDiscountCode.includes('FREE GIFT: 1')) {
+          lineItemDiscountCode = lineItemDiscountCode.replace('1', freeGiftCount);
+        }
+        if (lineItemDiscounted) {
+          $('.total-line--subtotal').before(`<tr class="total-line promo-code"><th class="total-line__name">${lineItemDiscountCode}</th><td class="total-line__price"><span class="order-summary__emphasis" style="color: red"> - ${lineItemDiscounted}</span></td></tr>`);
         }
 
         $totalTable.prepend(`<tr class="total-line sale-discount"><th class="total-line__name">{{ 'shopify.checkout.order_summary.sale_discount' | t }}</th><td class="total-line__price"><span class="order-summary__emphasis">- ${saleDiscount}</span></td></tr>`);
         $('.total-line.total-line--reduction').insertAfter('.total-line.sale-discount');
         $totalTable.prepend(`<tr class="total-line original_price"><th class="total-line__name">{{ 'shopify.checkout.order_summary.original_price' | t }}</th><td class="total-line__price"><span class="order-summary__emphasis">${totalOriginalPrice}</span></td></tr>`);
 
-        if (discountCode) {
-          ($('.product .reduction-code') || []).each(function (idx, e) { e.remove(); });
-          var replacementTag = 'div';
-
-          if($('.product__price .order-summary__small-text').length) {
-            ($('.product__price .order-summary__small-text.skeleton-while-loading--sm') || []).each(function (idx, e) { e.remove(); });
-            ($('.product__price .order-summary__small-text') || []).each(function (idx, e) {
-              var outer = this.outerHTML;
-
-              var regex = new RegExp('<' + this.tagName, 'i');
-              var newTag = outer.replace(regex, '<' + replacementTag);
-
-              regex = new RegExp('</' + this.tagName, 'i');
-              newTag = newTag.replace(regex, '</' + replacementTag);
-
-              $(this).replaceWith(newTag);
-            });
-          }
+        let $promoCode = $('.total-line--reduction:not(.detached)');
+        if ($promoCode.length) {
+          $promoCode.detach().addClass('detached');
+          $('.total-line.total-line--subtotal').after($promoCode);
         }
 
-        let oneDiscountCodeApplied = $('.tags-list .reduction-code').length ? $('.tags-list .reduction-code').length : null;
-        if(oneDiscountCodeApplied) {
+        if (lineItemDiscountCode) {
+          $(".total-line.promo-code").show();
+        } else {
+          $(".total-line.promo-code").hide();
+        }
+
+        if (!allowPromoCode) {
           $(".order-summary__section--discount form.edit_checkout .fieldset").hide();
           promoText = '{{ 'shopify.checkout.order_summary.promo_applied' | t }}';
         } else {
           $(".order-summary__section--discount form.edit_checkout .fieldset").show();
         }
 
-        let $discountSection = $('#order-summary .order-summary__section--discount').first();
-        $discountSection.prepend(
-          `<div class="promo-text-wrapper">
-          <p>${promoText}</p>
-          <div class="discount-tooltip">&#9432;
-            <span class="discount-tooltip-text">${onlyOneCodeAllowedText}</span>
-          </div>
-        </div>`
-        );
+        if (!$('.promo-text-wrapper').length) {
+          let $discountSection = $('#order-summary .order-summary__section--discount').first();
+          $discountSection.prepend(
+            `<div class="promo-text-wrapper">
+              <p>${promoText}</p>
+              <div class="discount-tooltip">&#9432;
+                <span class="discount-tooltip-text">${onlyOneCodeAllowedText}</span>
+              </div>
+            </div>`
+          );
+        }
 
         if (!$('.total-saved-line').length) {
           $('.total-line-table__footer').append(`
@@ -506,10 +549,17 @@
             const parser = new DOMParser();
             const doc = parser.parseFromString(self.responseText, 'text/html');
             totalSavedText = doc.querySelector('#total-saved-amount').value;
+            const promoCodes = doc.querySelector('#promo-codes').value;
+            const allowPromoCode = doc.querySelector('#allow-more-promo-code').value;
+            const lineItemDiscounted = doc.querySelector('#line-item-discounted').value;
+            const lineItemDiscountCode = doc.querySelector('#line-item-discount-code').value;
             $('.total-saved-text').text(totalSavedText);
             promoDiscount = doc.querySelector('#promo-discount').value;
-            console.log(promoDiscount);
             $('.promo-code .total-line__price').text(`- ${promoDiscount}`);
+            $('#promo-codes').val(promoCodes);
+            $('#allow-more-promo-code').val(allowPromoCode);
+            $('#line-item-discounted').val(lineItemDiscounted);
+            $('#line-item-discount-code').val(lineItemDiscountCode);
           }
         } if (self.onreadystatechange) {
           return self.onreadystatechange();
@@ -680,6 +730,14 @@
     height: 4rem;
     align-items: center;
     justify-content: flex-end;
+  }
+
+  [data-order-summary-section="line-items"] .reduction-code {
+    font-size: .8em;
+  }
+
+  [data-order-summary-section="line-items"] .product__price del {
+    display: none;
   }
   
   .order-summary__section__content .product__price .order-summary__emphasis.skeleton-while-loading,
