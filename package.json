@@ -11,6 +11,7 @@
     "pull:dev": "shopify theme pull -s emma-sleep-ca -t CA-DEV",
     "pull:local": "shopify theme pull -s emma-sleep-ca -d",
     "push:dev": "shopify theme push -s emma-sleep-ca -t CA-DEV",
+    "push:staging": "shopify theme push -s emma-sleep-ca -t CA-STAGING",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
