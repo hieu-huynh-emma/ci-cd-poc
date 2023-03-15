@@ -12,12 +12,12 @@
   <form action="{{ routes.cart_url }}" id="CartDrawer-Form" method="post">
     <div id="CartDrawer-CartItems" class="cart-drawer-items">
       {% for item in cart.items %}
-        {% assign isGWP = false %}
+        {% assign isFreeGift = false %}
 
         {% if freeGiftId == item.id and item.final_line_price == 0 %}
-          {% assign isGWP = true %}
+          {% assign isFreeGift = true %}
         {% else %}
-          {% assign isGWP = false %}
+          {% assign isFreeGift = false %}
         {% endif %}
 
         {% capture cartItem %}
@@ -56,7 +56,7 @@
               <div class="cart-item-actions">
                 {% if item.variant.title != "Default Title" %}
                   <cart-variant-selector
-                    class="variant-selector{% if isGWP %} hidden{% endif %}"
+                    class="variant-selector{% if isFreeGift %} hidden{% endif %}"
                     :key="{{ item.key }}"
                     :value="{{ item.variant_id }}"
                     :options="{{ item.product.variants | json | escape }}"
@@ -65,7 +65,7 @@
                   </cart-variant-selector>
                 {% endif %}
                 <quantity-adjuster
-                  {% if freeGiftId == item.id %}readOnly{% endif %}
+                  {% if isFreeGift %}readOnly{% endif %}
                   :inventoryPolicy="{{ item.variant.inventory_policy }}"
                   :index="{{ item.index }}" :value="{{ item.quantity }}" :max="{{ item.variant.inventory_quantity }}"
                 ></quantity-adjuster>
@@ -79,7 +79,7 @@
                 id="CartDrawer-Remove-{{ item.index | plus: 1 }}"
                 :index="{{ item.index }}"
                 aria-label="{{ 'sections.cart.remove_title' | t: title: item.title }}"
-                class="{% if isGWP %}hidden{% endif %}"
+                class="{% if isFreeGift %}hidden{% endif %}"
               >
                 {% render 'icon-remove' %}
               </cart-item-remove-button>
@@ -105,7 +105,7 @@
             </div>
           </cart-item>
         {% endcapture %}
-        {% if isGWP %}
+        {% if isFreeGift %}
           {% assign freeItemsFragment = freeItemsFragment | append: cartItem %}
         {% else %}
           {% assign cartItemsFragment = cartItemsFragment | append: cartItem %}
