@@ -14,8 +14,8 @@
         "ca504ac7-3137-4ad7-997c-c1e12bd1d446": {
           "type": "wallpaper",
           "settings": {
-            "src": "shopify:\/\/shop_images\/US_Home_Banner.png",
-            "mobile_src": "shopify:\/\/shop_images\/US_Home_Banner_Mobile_272923cd-a435-4e5f-8adc-3f95514530d5.png"
+            "src": "shopify:\/\/shop_images\/US_Home_Banner_d6915fd7-96c8-41ee-9e7d-597e5bb95c41.png",
+            "mobile_src": "shopify:\/\/shop_images\/US_Home_Banner_Mobile_de048e47-daab-4167-8d34-04ad39cb48cc.png"
           }
         },
         "bd272d46-c257-44dd-997b-462ac3f0a316": {
@@ -40,7 +40,7 @@
           "type": "announcement",
           "settings": {
             "title": "Up to 50% off",
-            "subtitle": "World Sleep Day Sale",
+            "subtitle": "Easter Sale",
             "background_color": "#ff8900",
             "text_color": "#ffffff"
           }
@@ -64,8 +64,8 @@
       "settings": {
         "title": "<p><strong>World's #1 Sleep Brand<\/strong><\/p>",
         "slogan": "MOST AWARDED MATTRESS IN CANADA",
-        "subtitle": "WORLD SLEEP DAY SALE: Get up to $1,200 OFF the Emma Climax Hybrid and  1 FREE Adjustable Foam Pillow!",
-        "countdown_timer": "2023-03-24 13:00",
+        "subtitle": "EASTER SALE: Get up to $1,200 OFF the Emma Climax Hybrid and  1 FREE Adjustable Foam Pillow!",
+        "countdown_timer": "2023-04-10 13:00",
         "hero_media": "",
         "main_award": "shopify:\/\/shop_images\/bnpa_logos_2023_can_bilingual.png"
       }
@@ -480,6 +480,7 @@
     },
     "customer-sentiment": {
       "type": "customer-sentiment",
+      "disabled": true,
       "blocks": {
         "review-1": {
           "type": "review",

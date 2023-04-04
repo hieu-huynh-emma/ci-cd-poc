@@ -2,8 +2,21 @@
 {% assign reviewColumn2 = section.blocks | slice: 2, 2 %}
 {% assign reviewColumn3 = section.blocks | slice: 4, 2 %}
 
+
+<style>
+	.custom-mb-10 {
+		margin-bottom: 40px !important;
+	}
+
+	@media (min-width: 768px) {
+		.custom-md-mb-0 {
+			margin-bottom: 0 !important;
+		}
+	}
+</style>
+
 <section id="customer-sentiment-section">
-	<div class="wrapper">
+	<div class="wrapper custom-mb-10 custom-md-mb-0">
 		<div class="top-header">
 			<div class="main-headings">
 				<h2 class="heading-2-sm">{{ section.settings.title | remove: "<p>" | remove: "</p>" }}</h2>
@@ -65,241 +78,8 @@
 			</div>
 		</div>
 
-		<div class="metrics">
-			<div class="metrics__frame metric">
-				<div class="metric-content">
-					<h4 class="metric__number">
-						18x
-					</h4>
-
-					<p class="metric__subtitle">
-						MORE LIKELY TO EXPERIENCE
-					</p>
-
-					<p class="metric__title">
-						Best Night’s Sleep
-					</p>
-				</div>
-				<div class="customer-reviews">
-					{% for block in reviewColumn1 %}
-						<div class="customer-reviews__card">
-							{% include 'star-ratings' %}
-							<p class="customer-reviews__content">
-								{{ block.settings.content }}
-							</p>
-
-							<div class="reviewer">
-								<p class="reviewer__name">{{ block.settings.author }}</p>
-								<div class="reviewer__verified">
-									<svg width="12" height="13" viewBox="0 0 12 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-										<path
-											d="M7.986 11.2933C8.78212 11.5456 9.6525 11.333 10.2431 10.7424C10.8337 10.1517 11.046 9.28137 10.794 8.48525C11.535 8.1005 12 7.33512 12 6.5C12 5.66488 11.535 4.8995 10.794 4.51475C11.0464 3.71863 10.8337 2.84825 10.2431 2.25762C9.6525 1.667 8.78212 1.45475 7.986 1.70675C7.60125 0.965375 6.8355 0.5 6 0.5C5.1645 0.5 4.39875 0.965375 4.014 1.70675C3.21825 1.45512 2.34863 1.66737 1.758 2.25725C1.16738 2.84713 0.95475 3.71675 1.206 4.51288C0.465 4.89762 0 5.663 0 6.49813C0 7.33325 0.465 8.09862 1.206 8.48337C0.9525 9.27987 1.16438 10.1514 1.75538 10.7428C2.34637 11.3341 3.21788 11.5464 4.01437 11.2933C4.39913 12.0346 5.16488 12.5 6 12.5C6.83512 12.5 7.60087 12.0346 7.98563 11.2933H7.986ZM3.44513 7.26125C3.3075 7.12813 3.25238 6.93125 3.30113 6.74638C3.34988 6.5615 3.49425 6.41675 3.6795 6.36837C3.86475 6.32 4.06125 6.37512 4.19438 6.51312L5.41425 7.73225L8.04788 4.28825C8.22563 4.05575 8.55825 4.0115 8.79037 4.18925C9.0225 4.367 9.06713 4.69963 8.88937 4.93175L6.255 8.37238C6.06975 8.6165 5.78813 8.768 5.4825 8.78863C5.17688 8.80925 4.87725 8.696 4.66125 8.47888L3.44588 7.26125H3.44513Z"
-											fill="#2E2F3C"
-										/>
-									</svg>
-									verified customer
-								</div>
-							</div>
-						</div>
-					{% endfor %}
-				</div>
-
-			</div>
-			<div class="metrics__frame metric">
-				<div class="metric-content">
-					<h4 class="metric__number">11x</h4>
-
-					<p class="metric__subtitle">MORE LIKELY TO SAY </p>
-
-					<p class="metric__title">Most Comfortable Mattress</p>
-				</div>
-				<div class="customer-reviews">
-					{% for block in reviewColumn2 %}
-						<div class="customer-reviews__card">
-							{% include 'star-ratings' %}
-							<p class="customer-reviews__content">
-								{{ block.settings.content }}
-							</p>
-
-							<div class="reviewer">
-								<p class="reviewer__name">{{ block.settings.author }}</p>
-								<div class="reviewer__verified">
-									<svg width="12" height="13" viewBox="0 0 12 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-										<path
-											d="M7.986 11.2933C8.78212 11.5456 9.6525 11.333 10.2431 10.7424C10.8337 10.1517 11.046 9.28137 10.794 8.48525C11.535 8.1005 12 7.33512 12 6.5C12 5.66488 11.535 4.8995 10.794 4.51475C11.0464 3.71863 10.8337 2.84825 10.2431 2.25762C9.6525 1.667 8.78212 1.45475 7.986 1.70675C7.60125 0.965375 6.8355 0.5 6 0.5C5.1645 0.5 4.39875 0.965375 4.014 1.70675C3.21825 1.45512 2.34863 1.66737 1.758 2.25725C1.16738 2.84713 0.95475 3.71675 1.206 4.51288C0.465 4.89762 0 5.663 0 6.49813C0 7.33325 0.465 8.09862 1.206 8.48337C0.9525 9.27987 1.16438 10.1514 1.75538 10.7428C2.34637 11.3341 3.21788 11.5464 4.01437 11.2933C4.39913 12.0346 5.16488 12.5 6 12.5C6.83512 12.5 7.60087 12.0346 7.98563 11.2933H7.986ZM3.44513 7.26125C3.3075 7.12813 3.25238 6.93125 3.30113 6.74638C3.34988 6.5615 3.49425 6.41675 3.6795 6.36837C3.86475 6.32 4.06125 6.37512 4.19438 6.51312L5.41425 7.73225L8.04788 4.28825C8.22563 4.05575 8.55825 4.0115 8.79037 4.18925C9.0225 4.367 9.06713 4.69963 8.88937 4.93175L6.255 8.37238C6.06975 8.6165 5.78813 8.768 5.4825 8.78863C5.17688 8.80925 4.87725 8.696 4.66125 8.47888L3.44588 7.26125H3.44513Z"
-											fill="#2E2F3C"
-										/>
-									</svg>
-									verified customer
-								</div>
-							</div>
-						</div>
-					{% endfor %}
-				</div>
-			</div>
-			<div class="metrics__frame metric">
-				<div class="metric-content">
-					<h4 class="metric__number">
-						4x
-					</h4>
-
-					<p class="metric__subtitle">MORE LIKELY TO </p>
-
-					<p class="metric__title">
-						Highly Recommend
-					</p>
-				</div>
-				<div class="customer-reviews">
-					{% for block in reviewColumn3 %}
-						<div class="customer-reviews__card">
-							{% include 'star-ratings' %}
-							<p class="customer-reviews__content">
-								{{ block.settings.content }}
-							</p>
-
-							<div class="reviewer">
-								<p class="reviewer__name">{{ block.settings.author }}</p>
-								<div class="reviewer__verified">
-									<svg width="12" height="13" viewBox="0 0 12 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-										<path
-											d="M7.986 11.2933C8.78212 11.5456 9.6525 11.333 10.2431 10.7424C10.8337 10.1517 11.046 9.28137 10.794 8.48525C11.535 8.1005 12 7.33512 12 6.5C12 5.66488 11.535 4.8995 10.794 4.51475C11.0464 3.71863 10.8337 2.84825 10.2431 2.25762C9.6525 1.667 8.78212 1.45475 7.986 1.70675C7.60125 0.965375 6.8355 0.5 6 0.5C5.1645 0.5 4.39875 0.965375 4.014 1.70675C3.21825 1.45512 2.34863 1.66737 1.758 2.25725C1.16738 2.84713 0.95475 3.71675 1.206 4.51288C0.465 4.89762 0 5.663 0 6.49813C0 7.33325 0.465 8.09862 1.206 8.48337C0.9525 9.27987 1.16438 10.1514 1.75538 10.7428C2.34637 11.3341 3.21788 11.5464 4.01437 11.2933C4.39913 12.0346 5.16488 12.5 6 12.5C6.83512 12.5 7.60087 12.0346 7.98563 11.2933H7.986ZM3.44513 7.26125C3.3075 7.12813 3.25238 6.93125 3.30113 6.74638C3.34988 6.5615 3.49425 6.41675 3.6795 6.36837C3.86475 6.32 4.06125 6.37512 4.19438 6.51312L5.41425 7.73225L8.04788 4.28825C8.22563 4.05575 8.55825 4.0115 8.79037 4.18925C9.0225 4.367 9.06713 4.69963 8.88937 4.93175L6.255 8.37238C6.06975 8.6165 5.78813 8.768 5.4825 8.78863C5.17688 8.80925 4.87725 8.696 4.66125 8.47888L3.44588 7.26125H3.44513Z"
-											fill="#2E2F3C"
-										/>
-									</svg>
-									verified customer
-								</div>
-							</div>
-						</div>
-					{% endfor %}
-				</div>
-
-			</div>
-		</div>
-
-		<div class="md:hidden splide">
-			{% include 'splide-arrows' %}
-
-			<div class="splide__track">
-				<ul class="splide__list">
-					{% for block in reviewColumn1 %}
-						<li class="splide__slide">
-							<div class="metrics__frame metric">
-								<div class="metric-content">
-									<h4 class="metric__number">
-										18x
-									</h4>
-
-									<p class="metric__subtitle">
-										MORE LIKELY TO EXPERIENCE
-									</p>
-
-									<p class="metric__title">
-										Best Night’s Sleep
-									</p>
-								</div>
-								<div class="customer-reviews">
-									<div class="customer-reviews__card">
-										{% include 'star-ratings' %}
-										<p class="customer-reviews__content">
-											{{ block.settings.content }}
-										</p>
-
-										<div class="reviewer">
-											<p class="reviewer__name">{{ block.settings.author }}</p>
-											<div class="reviewer__verified">
-												<svg width="12" height="13" viewBox="0 0 12 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-													<path
-														d="M7.986 11.2933C8.78212 11.5456 9.6525 11.333 10.2431 10.7424C10.8337 10.1517 11.046 9.28137 10.794 8.48525C11.535 8.1005 12 7.33512 12 6.5C12 5.66488 11.535 4.8995 10.794 4.51475C11.0464 3.71863 10.8337 2.84825 10.2431 2.25762C9.6525 1.667 8.78212 1.45475 7.986 1.70675C7.60125 0.965375 6.8355 0.5 6 0.5C5.1645 0.5 4.39875 0.965375 4.014 1.70675C3.21825 1.45512 2.34863 1.66737 1.758 2.25725C1.16738 2.84713 0.95475 3.71675 1.206 4.51288C0.465 4.89762 0 5.663 0 6.49813C0 7.33325 0.465 8.09862 1.206 8.48337C0.9525 9.27987 1.16438 10.1514 1.75538 10.7428C2.34637 11.3341 3.21788 11.5464 4.01437 11.2933C4.39913 12.0346 5.16488 12.5 6 12.5C6.83512 12.5 7.60087 12.0346 7.98563 11.2933H7.986ZM3.44513 7.26125C3.3075 7.12813 3.25238 6.93125 3.30113 6.74638C3.34988 6.5615 3.49425 6.41675 3.6795 6.36837C3.86475 6.32 4.06125 6.37512 4.19438 6.51312L5.41425 7.73225L8.04788 4.28825C8.22563 4.05575 8.55825 4.0115 8.79037 4.18925C9.0225 4.367 9.06713 4.69963 8.88937 4.93175L6.255 8.37238C6.06975 8.6165 5.78813 8.768 5.4825 8.78863C5.17688 8.80925 4.87725 8.696 4.66125 8.47888L3.44588 7.26125H3.44513Z"
-														fill="#2E2F3C"
-													/>
-												</svg>
-												verified customer
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</li>
-					{% endfor %}
-
-					{% for block in reviewColumn2 %}
-						<li class="splide__slide">
-							<div class="metrics__frame metric">
-								<div class="metric-content">
-									<h4 class="metric__number">11x</h4>
-									<p class="metric__subtitle">MORE LIKELY TO SAY </p>
-									<p class="metric__title">Most Comfortable Mattress</p>
-								</div>
-								<div class="customer-reviews">
-									<div class="customer-reviews__card">
-										{% include 'star-ratings' %}
-										<p class="customer-reviews__content">
-											{{ block.settings.content }}
-										</p>
-
-										<div class="reviewer">
-											<p class="reviewer__name">{{ block.settings.author }}</p>
-											<div class="reviewer__verified">
-												<svg width="12" height="13" viewBox="0 0 12 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-													<path
-														d="M7.986 11.2933C8.78212 11.5456 9.6525 11.333 10.2431 10.7424C10.8337 10.1517 11.046 9.28137 10.794 8.48525C11.535 8.1005 12 7.33512 12 6.5C12 5.66488 11.535 4.8995 10.794 4.51475C11.0464 3.71863 10.8337 2.84825 10.2431 2.25762C9.6525 1.667 8.78212 1.45475 7.986 1.70675C7.60125 0.965375 6.8355 0.5 6 0.5C5.1645 0.5 4.39875 0.965375 4.014 1.70675C3.21825 1.45512 2.34863 1.66737 1.758 2.25725C1.16738 2.84713 0.95475 3.71675 1.206 4.51288C0.465 4.89762 0 5.663 0 6.49813C0 7.33325 0.465 8.09862 1.206 8.48337C0.9525 9.27987 1.16438 10.1514 1.75538 10.7428C2.34637 11.3341 3.21788 11.5464 4.01437 11.2933C4.39913 12.0346 5.16488 12.5 6 12.5C6.83512 12.5 7.60087 12.0346 7.98563 11.2933H7.986ZM3.44513 7.26125C3.3075 7.12813 3.25238 6.93125 3.30113 6.74638C3.34988 6.5615 3.49425 6.41675 3.6795 6.36837C3.86475 6.32 4.06125 6.37512 4.19438 6.51312L5.41425 7.73225L8.04788 4.28825C8.22563 4.05575 8.55825 4.0115 8.79037 4.18925C9.0225 4.367 9.06713 4.69963 8.88937 4.93175L6.255 8.37238C6.06975 8.6165 5.78813 8.768 5.4825 8.78863C5.17688 8.80925 4.87725 8.696 4.66125 8.47888L3.44588 7.26125H3.44513Z"
-														fill="#2E2F3C"
-													/>
-												</svg>
-												verified customer
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</li>
-					{% endfor %}
-
-					{% for block in reviewColumn3 %}
-						<li class="splide__slide">
-							<div class="metrics__frame metric">
-								<div class="metric-content">
-									<h4 class="metric__number">
-										4x
-									</h4>
-
-									<p class="metric__subtitle">MORE LIKELY TO </p>
-
-									<p class="metric__title">
-										Highly Recommend
-									</p>
-								</div>
-								<div class="customer-reviews">
-									<div class="customer-reviews__card">
-										{% include 'star-ratings' %}
-										<p class="customer-reviews__content">
-											{{ block.settings.content }}
-										</p>
-
-										<div class="reviewer">
-											<p class="reviewer__name">{{ block.settings.author }}</p>
-											<div class="reviewer__verified">
-												<svg width="12" height="13" viewBox="0 0 12 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-													<path
-														d="M7.986 11.2933C8.78212 11.5456 9.6525 11.333 10.2431 10.7424C10.8337 10.1517 11.046 9.28137 10.794 8.48525C11.535 8.1005 12 7.33512 12 6.5C12 5.66488 11.535 4.8995 10.794 4.51475C11.0464 3.71863 10.8337 2.84825 10.2431 2.25762C9.6525 1.667 8.78212 1.45475 7.986 1.70675C7.60125 0.965375 6.8355 0.5 6 0.5C5.1645 0.5 4.39875 0.965375 4.014 1.70675C3.21825 1.45512 2.34863 1.66737 1.758 2.25725C1.16738 2.84713 0.95475 3.71675 1.206 4.51288C0.465 4.89762 0 5.663 0 6.49813C0 7.33325 0.465 8.09862 1.206 8.48337C0.9525 9.27987 1.16438 10.1514 1.75538 10.7428C2.34637 11.3341 3.21788 11.5464 4.01437 11.2933C4.39913 12.0346 5.16488 12.5 6 12.5C6.83512 12.5 7.60087 12.0346 7.98563 11.2933H7.986ZM3.44513 7.26125C3.3075 7.12813 3.25238 6.93125 3.30113 6.74638C3.34988 6.5615 3.49425 6.41675 3.6795 6.36837C3.86475 6.32 4.06125 6.37512 4.19438 6.51312L5.41425 7.73225L8.04788 4.28825C8.22563 4.05575 8.55825 4.0115 8.79037 4.18925C9.0225 4.367 9.06713 4.69963 8.88937 4.93175L6.255 8.37238C6.06975 8.6165 5.78813 8.768 5.4825 8.78863C5.17688 8.80925 4.87725 8.696 4.66125 8.47888L3.44588 7.26125H3.44513Z"
-														fill="#2E2F3C"
-													/>
-												</svg>
-												verified customer
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</li>
-					{% endfor %}
-				</ul>
-			</div>
-		</div>
-
-
 		{% if section.settings.url != blank and section.settings.text != blank %}
-			<a class="btn" href="{{ section.settings.url }}">
+			<a class="btn" style="transform: none; background: #ffa235;" href="{{ section.settings.url }}">
 				{{ section.settings.text }}
 			</a>
 		{% endif %}
