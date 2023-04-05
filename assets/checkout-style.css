@@ -211,6 +211,14 @@
   text-align: center;
 }
 
+.sidebar-ornament__subtitle > img {
+  height: 22px;
+  width: auto;
+  vertical-align: middle;
+  margin-right: 5px;
+  margin-bottom: 4px;
+}
+
 .sidebar-ornament__benefits {
   display: grid;
   gap: 8px;
