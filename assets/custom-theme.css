@@ -14,10 +14,6 @@ body {
   color: #fff !important
 }
 
-.font-weight-bold {
-  font-weight: 700
-}
-
 .h1, h1 {
   font-size: 60px
 }
@@ -85,105 +81,8 @@ body {
   font-size: 18px
 }
 
-.text-nm {
-  font-size: 16px
-}
-
 .text-sm {
   font-size: 14px
-}
-
-#shopify-section-16303916789100407d, #shopify-section-16305476701a1aa676, #shopify-section-1630551372b4bbde71, #shopify-section-16306447962a0632f9, #shopify-section-1630748036381422ad, #shopify-section-163090879603f8dbf7 {
-  margin-top: 0
-}
-
-.footer-social-wrapper {
-  align-items: center;
-  display: flex
-}
-
-.footer-icons-wrapper {
-  display: flex;
-  list-style-type: none;
-  margin-bottom: 0
-}
-
-.footer-social-wrapper p {
-  margin-bottom: 0
-}
-
-.footer-icons-wrapper li {
-  margin-bottom: 0;
-  margin-right: 21px
-}
-
-.footer-icons-wrapper li:last-child {
-  margin-right: 0
-}
-
-.emma-sleep-footer {
-  background: #3c4196;
-  color: #fff !important;
-  padding: 67px 0 60px
-}
-
-.footer-top-row {
-  margin-bottom: 66px
-}
-
-.footer-nav-col ul {
-  list-style-type: none;
-  margin: 0
-}
-
-.blog-menu-title {
-  margin-top: 24px
-}
-
-.footer-nav-col ul li a {
-  color: #fff;
-  font-size: 12px;
-  transition: .3s ease-in
-}
-
-.footer-nav-col ul li a:hover {
-  color: #fff
-}
-
-.footer-mid-row {
-  margin-bottom: 119px
-}
-
-.footer-nav-col ul li {
-  margin-bottom: 9px
-}
-
-.footer-bottom-row p {
-  margin-bottom: 0
-}
-
-.newsletter-container form {
-  display: flex;
-  margin-top: 33px
-}
-
-.newsletter-container form input {
-  border: 0;
-  box-shadow: inset 0 4px 4px rgba(0, 0, 0, .25);
-  font-size: 16px;
-  padding: 13px 18px;
-  width: 60%
-}
-
-.newsletter-container form input.btn {
-  border-radius: 0;
-  font-weight: 400;
-  padding: 12px 30px;
-  width: 40%
-}
-
-#shopify-section-16306447962a0632f9 {
-  margin-top: -3%
 }
 
 .newsletter--form button {
@@ -200,114 +99,7 @@ body {
   font-weight: 600
 }
 
-.coming-soon-template-wrapper {
-  padding: 120px 0;
-  text-align: center
-}
-
-.coming-soon-template-wrapper .coming-soon-logo {
-  margin-bottom: 10px
-}
-
-.coming-soon-template-wrapper .btn {
-  margin-top: 80px
-}
-
-#shopify-product-reviews .spr-container {
-  border: none;
-  padding: 0
-}
-
-#shopify-product-reviews .spr-header .spr-header-title {
-  font-size: 33px !important
-}
-
-#shopify-product-reviews .spr-summary-actions-newreview {
-  background-color: #212b57;
-  border-radius: 40px;
-  color: #fff;
-  font-size: 16px;
-  font-weight: 700;
-  padding: 13px 50px;
-  transition: .3s ease-in
-}
-
-#shopify-product-reviews .spr-summary-actions-newreview:hover {
-  background-color: #ffa236;
-  color: #fff
-}
-
-#shopify-product-reviews span.spr-summary-actions {
-  margin-left: auto
-}
-
-#shopify-product-reviews .spr-content .spr-review {
-  border: 1px solid #000;
-  border-radius: 40px;
-  margin-bottom: 32px;
-  margin-top: 0;
-  padding: 30px
-}
-
-#shopify-product-reviews .spr-content {
-  margin-top: 65px
-}
-
-#shopify-product-reviews .spr-summary-actions-togglereviews {
-  font-size: 14px
-}
-
-#shopify-product-reviews .spr-summary-starrating {
-  margin-right: 17px
-}
-
-#shopify-product-reviews .spr-summary {
-  align-items: center;
-  display: flex
-}
-
-#shopify-product-reviews .spr-starratings .spr-icon {
-  font-size: 25px
-}
-
-#shopify-product-reviews .spr-starratings {
-  margin-bottom: 25px
-}
-
-#shopify-product-reviews .spr-review-header-title {
-  font-size: 28px;
-  line-height: 1.1em;
-  margin-bottom: 25px
-}
-
-#shopify-product-reviews .spr-review-header-byline {
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 700
-}
-
-#shopify-product-reviews .spr-review-footer {
-  display: none
-}
-
-#shopify-product-reviews .spr-form {
-  border: none
-}
-
-#shopify-product-reviews .spr-form .spr-form-title {
-  font-size: 27px
-}
-
-#shopify-product-reviews .spr-form .spr-form-label {
-  font-size: 15px;
-  font-weight: 700
-}
-
-#shopify-product-reviews .spr-summary-starrating .spr-icon {
-  color: #6469aa
-}
-
-#emma-foam-pillow .main-content, #emma-original-mattress .main-content, .template-index .main-content {
+#emma-foam-pillow .main-content, #emma-original-mattress .main-content {
   padding-bottom: 0
 }
 
@@ -324,30 +116,8 @@ body {
   padding: 40px 0
 }
 
-.grid-product__wrapper .grid-product__title {
-}
-
-.grid-product__wrapper .grid-product__price {
-}
-
-#shopify-product-reviews .spr-pagination div span {
-  margin-right: 20px
-}
-
-#shopify-product-reviews .spr-pagination div span a {
-}
-
-#shopify-product-reviews .spr-pagination {
-  border-top: 0;
-  width: 37%
-}
-
 .price-container .product-single__price {
   font-size: 20px
-}
-
-#terms-and-conditions .main-content {
-  padding-top: 0
 }
 
 @media (min-width: 1400px) {
@@ -360,142 +130,23 @@ body {
   .container, .global-wrapper {
     min-width: 1300px
   }
-
-  .footer-mid-row, .footer-top-row {
-    display: flex;
-    justify-content: space-between
-  }
-
-  .footer-nav-container {
-    display: flex
-  }
-
-  .footer-nav-col {
-    margin-right: 40px
-  }
-
-  .footer-nav-col:last-child {
-    margin-right: 0
-  }
-
-  .footer-bottom-row {
-    align-items: center;
-    display: flex;
-    justify-content: space-between
-  }
-
-  #shopify-product-reviews .spr-content .spr-review {
-    width: 23% !important
-  }
-}
-
-@media (min-width: 992px) {
-  #shopify-product-reviews .spr-content .spr-reviews {
-    grid-template-columns:1fr 1fr 1fr 1fr;
-    grid-template-rows:1fr 1fr
-  }
-}
-
-@media (min-width: 768px) {
-  #shopify-product-reviews .spr-content .spr-reviews {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2%
-  }
-
-  #shopify-product-reviews .spr-content .spr-review {
-    width: 32%
-  }
 }
 
 @media (max-width: 1024px) {
-  .emma-sleep-footer {
-    text-align: center
-  }
-
-  .footer-social-wrapper {
-    display: inline-flex;
-    margin: 0 auto
-  }
-
-  .footer-logo, .footer-top-row {
+  .footer-logo {
     margin-bottom: 50px
-  }
-
-  .footer-nav-container {
-    display: flex;
-    flex-wrap: wrap
-  }
-
-  .footer-nav-col {
-    margin-bottom: 20px;
-    margin-right: 3%;
-    padding-left: 2%;
-    text-align: left;
-    width: 45%
-  }
-
-  .footer-mid-row {
-    margin-bottom: 92px
-  }
-
-  .footer-nav-col p, .footer-nav-col ul li a {
-    font-size: 9px
-  }
-
-  .newsletter-container {
-    margin-bottom: 46px
   }
 
   .newsletter--form {
     margin: 0 auto;
     width: 50%
   }
-
-  .footer-bottom-row p {
-    font-size: 14px;
-    margin-bottom: 37px
-  }
-
-  #shopify-section-16306447962a0632f9 {
-    margin-top: 0
-  }
-
-  #shopify-product-reviews .spr-pagination {
-    width: 100%
-  }
-}
-
-@media (max-width: 1024px) and (min-width: 600px) {
-  .footer-nav-col {
-    text-align: center
-  }
-}
-
-@media (max-width: 768px) {
-  #shopify-section-16306447962a0632f9 {
-    margin-top: 4%
-  }
-
-  #shopify-product-reviews .spr-content .spr-reviews {
-    grid-template-areas:". ." ". ." ". ." ". .";
-    grid-template-columns:1fr 1fr;
-    grid-template-rows:1fr 1fr 1fr 1fr
-  }
-
-  #shopify-section-163047552836cc9616 {
-    margin-top: 0
-  }
 }
 
 @media (max-width: 600px) {
-  .footer-nav-col:last-child {
-    margin-bottom: 0
-  }
-
   html {
-   scroll-behavior: smooth
- }
+    scroll-behavior: smooth
+  }
 
   body {
     overflow: visible !important
@@ -507,10 +158,6 @@ body {
 
   .text-white {
     color: #fff !important
-  }
-
-  .font-weight-bold {
-    font-weight: 700
   }
 
   .h1, h1 {
@@ -578,101 +225,8 @@ body {
      font-size: 18px
    }
 
-  .text-nm {
-    font-size: 16px
-  }
-
   .text-sm {
     font-size: 14px
-  }
-
-  #shopify-section-16303916789100407d, #shopify-section-16305476701a1aa676, #shopify-section-1630551372b4bbde71, #shopify-section-16306447962a0632f9, #shopify-section-1630748036381422ad, #shopify-section-163090879603f8dbf7 {
-    margin-top: 0
-  }
-
-  .footer-social-wrapper {
-    align-items: center;
-    display: flex
-  }
-
-  .footer-icons-wrapper {
-    display: flex;
-    list-style-type: none;
-    margin-bottom: 0
-  }
-
-  .footer-social-wrapper p {
-    margin-bottom: 0
-  }
-
-  .footer-icons-wrapper li {
-    margin-bottom: 0;
-    margin-right: 21px
-  }
-
-  .footer-icons-wrapper li:last-child {
-    margin-right: 0
-  }
-
-  .emma-sleep-footer {
-    background: #3c4196;
-    color: #fff !important;
-    padding: 67px 0 60px
-  }
-
-  .footer-top-row {
-    margin-bottom: 66px
-  }
-
-  .footer-nav-col ul {
-    list-style-type: none;
-    margin: 0
-  }
-
-  .footer-nav-col ul li a {
-    color: #fff;
-    font-size: 12px;
-    transition: .3s ease-in
-  }
-
-  .footer-nav-col ul li a:hover {
-    color: #fff
-  }
-
-  .footer-mid-row {
-    margin-bottom: 119px
-  }
-
-  .footer-nav-col ul li {
-    margin-bottom: 9px
-  }
-
-  .footer-bottom-row p {
-    margin-bottom: 0
-  }
-
-  .newsletter-container form {
-    display: flex;
-    margin-top: 33px
-  }
-
-  .newsletter-container form input {
-    border: 0;
-    box-shadow: inset 0 4px 4px rgba(0, 0, 0, .25);
-    font-size: 16px;
-    padding: 13px 18px;
-    width: 60%
-  }
-
-  .newsletter-container form input.btn {
-    border-radius: 0;
-    font-weight: 400;
-    padding: 12px 30px;
-    width: 40%
-  }
-
-  #shopify-section-16306447962a0632f9 {
-    margin-top: -3%
   }
 
   .newsletter--form button {
@@ -689,114 +243,7 @@ body {
     font-weight: 600
   }
 
-  .coming-soon-template-wrapper {
-    padding: 120px 0;
-    text-align: center
-  }
-
-  .coming-soon-template-wrapper .coming-soon-logo {
-    margin-bottom: 10px
-  }
-
-  .coming-soon-template-wrapper .btn {
-    margin-top: 80px
-  }
-
-  #shopify-product-reviews .spr-container {
-    border: none;
-    padding: 0
-  }
-
-  #shopify-product-reviews .spr-header .spr-header-title {
-    font-size: 33px !important
-  }
-
-  #shopify-product-reviews .spr-summary-actions-newreview {
-    background-color: #212b57;
-    border-radius: 40px;
-    color: #fff;
-    font-size: 16px;
-    font-weight: 700;
-    padding: 13px 50px;
-    transition: .3s ease-in
-  }
-
-  #shopify-product-reviews .spr-summary-actions-newreview:hover {
-    background-color: #ffa236;
-    color: #fff
-  }
-
-  #shopify-product-reviews span.spr-summary-actions {
-    margin-left: auto
-  }
-
-  #shopify-product-reviews .spr-content .spr-review {
-    border: 1px solid #000;
-    border-radius: 40px;
-    margin-bottom: 32px;
-    margin-top: 0;
-    padding: 30px
-  }
-
-  #shopify-product-reviews .spr-content {
-    margin-top: 65px
-  }
-
-  #shopify-product-reviews .spr-summary-actions-togglereviews {
-    font-size: 14px
-  }
-
-  #shopify-product-reviews .spr-summary-starrating {
-    margin-right: 17px
-  }
-
-  #shopify-product-reviews .spr-summary {
-    align-items: center;
-    display: flex
-  }
-
-  #shopify-product-reviews .spr-starratings .spr-icon {
-    font-size: 25px
-  }
-
-  #shopify-product-reviews .spr-starratings {
-    margin-bottom: 25px
-  }
-
-  #shopify-product-reviews .spr-review-header-title {
-    font-size: 28px;
-    line-height: 1.1em;
-    margin-bottom: 25px
-  }
-
-  #shopify-product-reviews .spr-review-header-byline {
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 700
-  }
-
-  #shopify-product-reviews .spr-review-footer {
-    display: none
-  }
-
-  #shopify-product-reviews .spr-form {
-    border: none
-  }
-
-  #shopify-product-reviews .spr-form .spr-form-title {
-    font-size: 27px
-  }
-
-  #shopify-product-reviews .spr-form .spr-form-label {
-    font-size: 15px;
-    font-weight: 700
-  }
-
-  #shopify-product-reviews .spr-summary-starrating .spr-icon {
-    color: #6469aa
-  }
-
-  #emma-foam-pillow .main-content, #emma-original-mattress .main-content, .template-index .main-content {
+  #emma-foam-pillow .main-content, #emma-original-mattress .main-content {
     padding-bottom: 0
   }
 
@@ -813,21 +260,8 @@ body {
     padding: 40px 0
   }
 
-  #shopify-product-reviews .spr-pagination div span {
-    margin-right: 20px
-  }
-
-  #shopify-product-reviews .spr-pagination {
-    border-top: 0;
-    width: 37%
-  }
-
   .price-container .product-single__price {
     font-size: 20px
-  }
-
-  #terms-and-conditions .main-content {
-    padding-top: 0
   }
 
   @media (min-width: 1400px) {
@@ -838,178 +272,18 @@ body {
   .container, .global-wrapper {
     min-width: 1300px
   }
-
-  .footer-mid-row, .footer-top-row {
-    display: flex;
-    justify-content: space-between
-  }
-
-  .footer-nav-container {
-    display: flex
-  }
-
-  .footer-nav-col {
-    margin-right: 40px
-  }
-
-  .footer-nav-col:last-child {
-    margin-right: 0
-  }
-
-  .footer-bottom-row {
-    align-items: center;
-    display: flex;
-    justify-content: space-between
-  }
-
-  #shopify-product-reviews .spr-content .spr-review {
-    width: 23% !important
-  }
-}@media (min-width: 992px) {
-  #shopify-product-reviews .spr-content .spr-reviews {
-    grid-template-columns:1fr 1fr 1fr 1fr;
-    grid-template-rows:1fr 1fr
-  }
-}@media (min-width: 768px) {
-  #shopify-product-reviews .spr-content .spr-reviews {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2%
-  }
-
-  #shopify-product-reviews .spr-content .spr-review {
-    width: 32%
-  }
 }@media (max-width: 1024px) {
-  .emma-sleep-footer {
-    text-align: center
-  }
-
-  .footer-social-wrapper {
-    display: inline-flex;
-    margin: 0 auto
-  }
-
-  .footer-logo, .footer-top-row {
+  .footer-logo {
     margin-bottom: 50px
-  }
-
-  .footer-nav-container {
-    display: flex;
-    flex-wrap: wrap
-  }
-
-  .footer-nav-col {
-    margin-bottom: 20px;
-    margin-right: 3%;
-    padding-left: 2%;
-    text-align: left;
-    width: 45%
-  }
-
-  .footer-mid-row {
-    margin-bottom: 92px
-  }
-
-  .footer-nav-col p, .footer-nav-col ul li a {
-    font-size: 9px
-  }
-
-  .newsletter-container {
-    margin-bottom: 46px
   }
 
   .newsletter--form {
     margin: 0 auto;
     width: 50%
   }
-
-  .footer-bottom-row p {
-    font-size: 14px;
-    margin-bottom: 37px
-  }
-
-  #shopify-section-16306447962a0632f9 {
-    margin-top: 0
-  }
-
-  #shopify-product-reviews .spr-pagination {
-    width: 100%
-  }
-}@media (max-width: 1024px) and (min-width: 600px) {
-  .footer-nav-col {
-    text-align: center
-  }
-}@media (max-width: 768px) {
-  #shopify-section-16306447962a0632f9 {
-    margin-top: 4%
-  }
-
-  #shopify-product-reviews .spr-content .spr-reviews {
-    grid-template-areas:". ." ". ." ". ." ". .";
-    grid-template-columns:1fr 1fr;
-    grid-template-rows:1fr 1fr 1fr 1fr
-  }
-
-  #shopify-section-163047552836cc9616 {
-    margin-top: 0
-  }
 }@media (max-width: 600px) {
-  .footer-nav-col:last-child {
-    margin-bottom: 0
-  }
-
-  #shopify-section-16306447962a0632f9 {
-    margin-top: -24%
-  }
-
-  #shopify-product-reviews .spr-content .spr-review {
-    margin-bottom: 24px
-  }
-
-  #shopify-product-reviews .spr-summary-actions-newreview {
-    display: block;
-    margin-top: 45px;
-    text-align: center;
-    width: 100%
-  }
-
-  #shopify-product-reviews .spr-header .spr-header-title {
-    margin-bottom: 32px
-  }
-
-  #shopify-product-reviews .spr-header .spr-header-title, #shopify-product-reviews .spr-summary {
-    text-align: left
-  }
-
-  #shopify-product-reviews .spr-summary-caption {
-    margin-left: 0
-  }
-
-  #shopify-product-reviews span.spr-summary-actions {
-    width: 100%
-  }
-
-  #shopify-product-reviews .spr-summary {
-    flex-wrap: wrap !important
-  }
-
-  #shopify-product-reviews .spr-pagination div span.spr-pagination-deco {
-    margin-right: 5px
-  }
-
-  #shopify-product-reviews .spr-pagination div span {
-    margin: 0 2px
-  }
-
   .newsletter--form {
     width: 100%
   }
-}.spr-icon {
-   color: #ff8900 !important
- }
-
-  .jdgm-carousel-wrapper .jdgm-carousel__arrows {
-    display: block
-  }
+}
 }

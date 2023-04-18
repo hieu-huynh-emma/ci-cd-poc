@@ -34,19 +34,6 @@ gulp.task('clean', function () {
         standard: [],
         deep: [],
         greedy: [
-          /weglot/,
-          /shopify-section/,
-          /spr/,
-          /jdgm/,
-          /template/,
-          /gPreorder/,
-          /vtl/,
-          /vt/,
-          /vitals/,
-          /yotpo/,
-          /plyr/,
-          /gm/,
-          /mfp/
         ]
       }
     }))

@@ -9,11 +9,11 @@ body, html {
   padding: 0
 }
 
-article, aside, details, figure, footer, header, main, nav, section, summary {
+article, aside, details, footer, header, main, nav, section, summary {
   display: block
 }
 
-audio, video {
+video {
   display: inline-block;
   vertical-align: baseline
 }
@@ -134,18 +134,11 @@ small {
   font-size: .9em
 }
 
-sub, sup {
+sup {
   font-size: 60%;
   position: relative;
+  top: -.5em;
   vertical-align: baseline
-}
-
-sup {
-  top: -.5em
-}
-
-sub {
-  bottom: -.5em
 }
 
 code {
@@ -155,10 +148,6 @@ code {
   font-family: Consolas, monospace;
   font-size: 1em;
   padding: 0 2px
-}
-
-ul.square {
-  list-style: square outside
 }
 
 .no-bullets {
@@ -1050,7 +1039,7 @@ label.error {
   text-align: left
 }
 
-.product-single__media-wrapper .media-item, .product-single__media-wrapper .plyr, .product-single__media-wrapper img, .product-single__media-wrapper video {
+.product-single__media-wrapper .media-item, .product-single__media-wrapper img, .product-single__media-wrapper video {
   left: 0;
   max-width: 100%;
   position: absolute;
@@ -1058,7 +1047,7 @@ label.error {
   width: 100%
 }
 
-.product-single__media-wrapper .media-item, .product-single__media-wrapper .media-video, .product-single__media-wrapper .plyr, .product-single__media-wrapper .plyr__video-wrapper {
+.product-single__media-wrapper .media-item, .product-single__media-wrapper .media-video {
   height: 100%
 }
 
@@ -1135,24 +1124,6 @@ label.error {
   margin: 15px 0 25px
 }
 
-#shopify-product-reviews .spr-form-label, #shopify-product-reviews .spr-review-content-body, #shopify-product-reviews .spr-review-header-byline {
-  font-size: 14px;
-  line-height: 1.563
-}
-
-#shopify-product-reviews .spr-form-label {
-  display: block;
-  text-align: left
-}
-
-#shopify-product-reviews .spr-summary-actions-newreview {
-  float: none
-}
-
-#shopify-product-reviews .spr-summary-actions, #shopify-product-reviews .spr-summary-caption {
-  display: block
-}
-
 .product-single__view-in-space {
   align-items: center;
   background-color: rgba(28, 29, 29, .08);
@@ -1220,12 +1191,4 @@ label.error {
 .product-unit-price {
   color: #1c1d1d;
   display: block
-}
-
-.vitals-upsell-suggestions {
-  color: #fff !important
-}
-
-a.vt-suggestion-add.vtl-ub-suggestion__add-to-cart {
-  color: #000 !important
 }

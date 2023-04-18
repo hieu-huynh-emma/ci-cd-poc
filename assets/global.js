@@ -812,23 +812,6 @@ async function onAddToCartSuccess() {
   cartScrollableContent.loading = false
 }
 
-// Monitor event from page fly when user add product to cart
-// https://help.pagefly.io/manual/cart-drawer-does-not-automatically-update/?utm_campaign=manual&utm_source=profile%3Ashopify_community&utm_medium=message&utm_content=LinhNH
-async function monitorPageFlyAddToCartEvent() {
-  try {
-    setTimeout(function() {
-      window.__pagefly_helper_store__ &&
-      window.__pagefly_helper_store__.subscribe(function(c) {
-        onAddToCartSuccess()
-      });
-    }, 1500);
-  } catch (e) {
-    console.warn('PageFly', e);
-  }
-}
-
-monitorPageFlyAddToCartEvent()
-
 class ScrollToTopButton extends HTMLElement {
   constructor() {
     super();
