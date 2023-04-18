@@ -86,9 +86,9 @@
       "cart-drawer-items": {
         "type": "cart-drawer-items",
         "settings": {
-          "freeGift": "emma-foam-pillow",
+          "freeGift": "",
           "gwpTargetProducts": [
-            "emma-climax-hybrid"
+
           ]
         }
       },
@@ -140,8 +140,8 @@
         "settings": {
           "show_announcement": true,
           "home_page_only": false,
-          "text": "Get up to 50% off for our Easter Sale! Promo ends in",
-          "countdown-date": "April 10, 2023 1:00:00 PM",
+          "text": "Spring Flash Sale: up to 55% OFF | Promo ends in",
+          "countdown-date": "April 24, 2023 9:00:00 AM",
           "link": "shopify:\/\/products\/emma-climax-hybrid",
           "color_bg": "#ff8900",
           "color_text": "#ffffff"
@@ -345,6 +345,12 @@
     "blocks": {
       "855628211100114053": {
         "type": "shopify:\/\/apps\/klaviyo-email-marketing-sms\/blocks\/klaviyo-onsite-embed\/2632fe16-c075-4321-a88b-50b567f42507",
+        "disabled": false,
+        "settings": {
+        }
+      },
+      "5134484470793087125": {
+        "type": "shopify:\/\/apps\/vitals-all-in-one-marketing\/blocks\/app-embed\/aeb48102-2a5a-4f39-bdbd-d8d49f4e20b8",
         "disabled": false,
         "settings": {
         }

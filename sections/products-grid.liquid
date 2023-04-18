@@ -97,33 +97,35 @@
     <h2>{{ section.settings.title }}</h2>
     <div class="products-grid-container">
       {% for block in section.blocks %}
-        <a href="{{ block.settings.product.url }}" class="products-grid-item">
-          <div class="product-image-container">
-            <img
-              src="{% if block.settings.image != blank %} {{ block.settings.image | img_url: 'medium' }} {% else %} {{ block.settings.product.featured_image | img_url: 'medium' }} {% endif %}"
-              alt="" class="item-image">
-          </div>
-          {% if block.settings.badge_text != blank %}
-            <span class="badge">{{ block.settings.badge_text }}</span>
-          {% endif %}
-          <h3 class="item-name">
-            {% if block.settings.name != blank %}
-              {{ block.settings.name }}
-            {% else %}
-              {{ block.settings.product.title }}
+        {% if block.settings.product.published_at %}
+          <a href="{{ block.settings.product.url }}" class="products-grid-item">
+            <div class="product-image-container">
+              <img
+                src="{% if block.settings.image != blank %} {{ block.settings.image | img_url: 'medium' }} {% else %} {{ block.settings.product.featured_image | img_url: 'medium' }} {% endif %}"
+                alt="" class="item-image">
+            </div>
+            {% if block.settings.badge_text != blank %}
+              <span class="badge">{{ block.settings.badge_text }}</span>
             {% endif %}
-          </h3>
-          <p class="item-price">
-            from
-            <span
-              class="{% if block.settings.product.compare_at_price > block.settings.product.price %} sale-price {% else %} font-bold {% endif %}">
+            <h3 class="item-name">
+              {% if block.settings.name != blank %}
+                {{ block.settings.name }}
+              {% else %}
+                {{ block.settings.product.title }}
+              {% endif %}
+            </h3>
+            <p class="item-price">
+              from
+              <span
+                class="{% if block.settings.product.compare_at_price > block.settings.product.price %} sale-price {% else %} font-bold {% endif %}">
       {{ block.settings.product.price | money }}
      </span>
-            {% if block.settings.product.compare_at_price > block.settings.product.price %}
-              <del>{{ block.settings.product.compare_at_price | money }}</del>
-            {% endif %}
-          </p>
-        </a>
+              {% if block.settings.product.compare_at_price > block.settings.product.price %}
+                <del>{{ block.settings.product.compare_at_price | money }}</del>
+              {% endif %}
+            </p>
+          </a>
+        {% endif %}
       {% endfor %}
     </div>
   </div>

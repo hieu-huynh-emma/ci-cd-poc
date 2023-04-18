@@ -105,15 +105,11 @@ const MiniComparisonTable = {
     const pillowPrice = +pillow.variants[0].price / 100
     const pillowOriginalPrice = +pillow.variants[0].compare_at_price / 100
 
-    const protectorQueenVariant = protector.variants.find(variant => variant.title.includes('Queen'));
-    const protectorPrice = +protectorQueenVariant.price / 100
-    const protectorOriginalPrice = +protectorQueenVariant.compare_at_price / 100
-
     const topperQueenVariant = topper.variants.find(variant => variant.title.includes('Queen'));
     const topperPrice = +topperQueenVariant.price / 100
     const topperOriginalPrice = +topperQueenVariant.compare_at_price / 100
 
-    const totalPrice = price + pillowPrice + protectorPrice + topperPrice
+    const totalPrice = price + pillowPrice + topperPrice
 
     switch (specName) {
       case 'Mattress':
@@ -121,9 +117,6 @@ const MiniComparisonTable = {
         break;
       case "Pillows":
         cellVal = `${Currency.format(pillowPrice)} <span class='hidden lg:block line-through font-medium text-sm'>${Currency.format(pillowOriginalPrice)}</span>`
-        break;
-      case "Protector":
-        cellVal = `${Currency.format(protectorPrice)} <span class='hidden lg:block line-through font-medium text-sm'>${Currency.format(protectorOriginalPrice)}</span>`
         break;
       case "Topper":
         cellVal = `${Currency.format(topperPrice)} <span class='hidden lg:block line-through font-medium text-sm'>${Currency.format(topperOriginalPrice)}</span>`
