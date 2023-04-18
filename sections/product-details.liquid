@@ -130,6 +130,7 @@
     }
 
     #MainContent .risk-reversal__item {
+      flex: 0 0 27.5%;
       display: flex;
       flex-flow: column;
       justify-content: space-between;
@@ -362,9 +363,10 @@
         }
 
         #MainContent .risk-reversal-banner {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            display: flex;
+            flex-wrap: wrap;
             align-items: baseline;
+            justify-content: center;
             padding: 40px;
             gap: 20px;
         }
