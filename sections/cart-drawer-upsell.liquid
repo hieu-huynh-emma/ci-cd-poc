@@ -1,7 +1,9 @@
 {% assign upsell_count = 0 %}
 {% assign upsell_products = '' %}
+{% assign valid_upsell_product_handles = '' %}
 {% assign cart_product_handles = '' %}
 {% assign upsell_priority = 'emma-climax-hybrid|emma-original-mattress|emma-mattress-protector|emma-foam-pillow|emma-bed-frame|emma-topper' | split: '|' %}
+
 {% for item in cart.items %}
   {% if cart_product_handles == '' %}
     {% assign cart_product_handles = item.product.handle %}
@@ -9,20 +11,26 @@
     {% assign cart_product_handles = cart_product_handles | append: '|' | append: item.product.handle %}
   {% endif %}
 {% endfor %}
-{% assign valid_upsell_product_handles = '' %}
-{% for handle in upsell_priority %}
-  {% if cart_product_handles contains handle %}
-    {% if valid_upsell_product_handles == '' %}
-      {% assign valid_upsell_product_handles = handle %}
-    {% else %}
-      {% assign valid_upsell_product_handles = valid_upsell_product_handles | append: '|' | append: handle %}
-    {% endif %}
-  {% endif %}
-{% endfor %}
+
 {% assign cart_product_handles = cart_product_handles | split: '|' %}
+
+{% for cart_product_handle in cart_product_handles %}
+  {% for upsell_priority_handle in upsell_priority %}
+    {% if cart_product_handle == upsell_priority_handle %}
+      {% if valid_upsell_product_handles == '' %}
+        {% assign valid_upsell_product_handles = cart_product_handle %}
+      {% else %}
+        {% assign valid_upsell_product_handles = valid_upsell_product_handles | append: '|' | append: cart_product_handle %}
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+{% endfor %}
+
+{% assign valid_upsell_product_handles = valid_upsell_product_handles | split: '|' %}
 {% for handle in valid_upsell_product_handles %}
   {% assign this_product = all_products[handle] %}
   {% assign upsell_products_meta = this_product.metafields.accentuate.upsell_products | split: '|' %}
+
   {% if this_product and this_product.available and upsell_products_meta.size > 0 %}
     {% for product_handle in upsell_products_meta %}
       {% assign upsell_products = upsell_products | split: '|' %}
@@ -40,6 +48,7 @@
     {% endfor %}
   {% endif %}
 {% endfor %}
+
 {% assign upsell_products_meta = shop.metafields.accentuate.default_upsell_products | split: '|' %}
 {% if upsell_count < 4 and upsell_products_meta.size > 0 %}
   {% for product_handle in upsell_products_meta %}
