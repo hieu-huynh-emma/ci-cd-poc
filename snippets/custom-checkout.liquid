@@ -179,9 +179,6 @@
       else if (Shopify.Checkout.step === 'shipping_method') {
         addShippingSectionSubtitle($);
         
-        clearInterval(timerInterval);
-        document.getElementsByClassName('checkcout-countdown')[0].style.display = 'none';
-        
         {% if request.locale.iso_code == 'fr' %}
         $('[data-shipping-method-label-title="Standard Delivery"]').text('Livraison Standard');
         {% endif %}
@@ -192,9 +189,6 @@
       }
       else if (Shopify.Checkout.step === 'payment_method') {
         disableAffirmPaymentMethod($);
-        clearInterval(timerInterval);
-        document.getElementsByClassName('checkcout-countdown')[0].style.display = 'none';
-        
       }
       
       const newDiscountCode = $('.reduction-code').length ? $('.reduction-code').text() : null;

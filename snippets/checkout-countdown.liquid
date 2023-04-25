@@ -1,28 +1,44 @@
-<div class="checkcout-countdown">
+<div class="checkout-countdown">
  <div id="checkout-timer">
  </div>
 </div>
 <script>
- let end = new Date().setTime(new Date().getTime() + 15 * 60 * 1000);
+    const DEFAULT_COUNTDOWN_STR = '10:00';
+    const countDownTimerStr = sessionStorage.countdown || DEFAULT_COUNTDOWN_STR;
+    const countDownArr = countDownTimerStr.split(':');
+    const countdownTimer = parseInt(countDownArr[0]) * 60 + parseInt(countDownArr[1]);
+    var countdownInterVal;
 
- const timerInterval = setInterval(setTime, 1000);
+    initCountText();
+    
+    setTime(countdownTimer, document.querySelector('#timer'));
+    
+    function initCountText() {
+        var countDownStr = `<p>An item in your cart is in high demand. <br/>Your order is reserved for <span id="timer" style="width: 40px">${countDownTimerStr}</span> minutes. Check out soon!</p>`; 
+        {% if request.locale.iso_code == 'fr' %}
+            countDownStr = `<p>Un produit dans votre panier est forte demande. <br/>Votre panier est réservé pour <span id="timer" style="width: 40px">${countDownTimerStr}</span> minutes.</p>`; 
+        {% endif %}
+        document.getElementById("checkout-timer").innerHTML = countDownStr;
+    }
+    
+    function setTime(duration, display) {
+        var timer = duration, minutes, seconds;
+        countdownInterVal = setInterval(function() {
+            minutes = parseInt(timer / 60, 10)
+            seconds = parseInt(timer % 60, 10);
+    
+            display.innerHTML = `${minutes < 10 ? `0${minutes}` : minutes}:${seconds < 10 ? `0${seconds}` : seconds}`;
 
- function setTime() {
-  let now = new Date().getTime();
-  let diff = end - now;
-
-  var min = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-  var sec = Math.floor((diff % (1000 * 60)) / 1000);
-  {% if request.locale.iso_code == 'fr' %}
-  document.getElementById("checkout-timer").innerHTML = `<p>Un produit dans votre panier est forte demande. <br/>Votre panier est réservé pour ${min}:${('0'+sec).slice(-2)} minutes.</p>`
-  {% else %}
-  document.getElementById("checkout-timer").innerHTML = `<p>An item in your cart is in high demand. <br/>Your order is reserved for ${min}:${('0'+sec).slice(-2)} minutes. Check out soon!</p>`
-  {% endif %}
-
-  if (diff < 0) {
-   document.getElementsByClassName('checkcout-countdown')[0].style.display = 'none';
-  }
- }
+            var user = {'minutes': minutes, 'seconds': seconds};
+    
+            if (--timer < 0) {
+                document.getElementsByClassName('checkout-countdown')[0].style.display = 'none';
+                document.getElementById('timer').innerHTML = '';
+                sessionStorage.removeItem('countdown');
+                clearInterval(countdownInterVal);
+            }
+        }, 1000);
+    }
 </script>
 <style>
  #checkout-timer {
@@ -34,7 +50,7 @@
   text-align: center;
  }
 
- .checkcout-countdown .subtitle {
+ .checkout-countdown .subtitle {
   text-align: center;
   margin-bottom: 1rem;
  }
