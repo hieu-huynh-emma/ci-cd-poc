@@ -84,7 +84,7 @@
     value="{% if saved > 0 %}{{ 'shopify.checkout.order_summary.you_save' | t: saved: saved_amount }}{% endif %}"
     disabled />
 {% endif %}
-  
+
 <input id="promo-discount" type="hidden"
   value="{% if total_line_price > 0 %}{{ promo_discount }}{% endif %}"
   disabled />
@@ -199,6 +199,8 @@
       
     });
   })(Checkout.$);
+  
+  
   
   function showConfirmPopup($) {
     $('#leaving-checkout-popup').css('display', 'block');
@@ -578,7 +580,6 @@
     }
     
   })(Checkout.$);
-
   
   function renderSSLText() {
   

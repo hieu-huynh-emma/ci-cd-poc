@@ -45,13 +45,16 @@ body, html, h1, h2, h3, h4, h5, h6 {
     margin-top: 0;
     font-size: 2em;
   }
+
   .main__header {
     padding-bottom: 0;
   }
+
   .breadcrumb__item {
     font-size: 14px;
   }
 }
+
 @media (min-width: 1300px) {
   .main__header nav {
     display: flex;
@@ -59,38 +62,52 @@ body, html, h1, h2, h3, h4, h5, h6 {
     margin-top: 1em;
     justify-content: space-between;
   }
+
   .page--logo-main .breadcrumb {
     margin-top: 0;
     margin-bottom: 0;
   }
 }
+
 @media (min-width: 750px) {
   .dynamic-checkout {
     margin-top: 0;
   }
 }
+
 .checkout-countdown {
   margin-bottom: 1.5rem;
 }
 
-@media screen and (max-width: 749px) {
-  .shopify-cleanslate .ElVMgDjOgshGFMIvg3se {
-    min-width: 79px;
-    text-align: left;
+.shopify-cleanslate {
+  .ElVMgDjOgshGFMIvg3se {
+    @media screen and (max-width: 749px) {
+      min-width: 79px;
+
+      text-align: left;
+    }
+
   }
-}
-@media screen and (max-width: 749px) {
-  .shopify-cleanslate div[role=button] .Xrk_DudB6JJ3t2Kh2_cU {
-    position: static !important;
-    overflow: initial !important;
-    clip: initial !important;
-    width: initial !important;
-    height: initial !important;
-    margin-right: 8px !important;
+
+  div[role="button"] {
+    .Xrk_DudB6JJ3t2Kh2_cU {
+     @media screen and (max-width: 749px) {
+       position: static !important;
+       overflow: initial !important;
+       clip: initial !important;
+       width: initial !important;
+       height: initial !important;
+
+       margin-right: 8px !important;
+     }
+    }
+
+    &[data-testid="ShopifyPay-button"] {
+      .Xrk_DudB6JJ3t2Kh2_cU {
+        margin-right: 5px !important;
+      }
+    }
   }
-}
-.shopify-cleanslate div[role=button][data-testid=ShopifyPay-button] .Xrk_DudB6JJ3t2Kh2_cU {
-  margin-right: 5px !important;
 }
 
 .paypal-express-checkout {
@@ -101,37 +118,44 @@ body, html, h1, h2, h3, h4, h5, h6 {
   align-items: center;
   grid-template-columns: repeat(2, minmax(0, auto));
   justify-content: center;
+
   padding: 0 12px;
+
   background-color: #FCC43A;
   border-radius: 4px;
+
   pointer-events: none;
-}
-@media screen and (min-width: 750px) {
-  .paypal-express-checkout {
+
+  @media screen and (min-width: 750px) {
     display: none;
   }
-}
-.paypal-express-checkout:hover {
-  box-shadow: inset 0 0 100px 100px rgba(0, 0, 0, 0.05);
-}
-.paypal-express-checkout .ElVMgDjOgshGFMIvg3se {
-  min-width: 80px;
-}
-.paypal-express-checkout img {
-  height: 20px;
-  max-height: 25px;
-  min-height: 17px;
-}
-.paypal-express-checkout span {
-  width: 100%;
-  font-family: Inter;
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 16px;
-  white-space: pre;
-}
-@media screen and (min-width: 500px) {
-  .paypal-express-checkout span {
-    font-size: 14px;
+
+
+  &:hover {
+    box-shadow: inset 0 0 100px 100px rgba(0, 0, 0, 0.05);
+  }
+
+  .ElVMgDjOgshGFMIvg3se {
+    min-width: 80px;
+  }
+
+  img {
+    height: 20px;
+    max-height: 25px;
+    min-height: 17px;
+  }
+
+  span {
+    width: 100%;
+    font-family: Inter;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 16px;
+
+    white-space: pre;
+
+    @media screen and (min-width: 500px) {
+      font-size: 14px;
+    }
   }
 }
