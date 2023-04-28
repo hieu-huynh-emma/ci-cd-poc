@@ -3,9 +3,9 @@
     "banner": {
       "type": "home-risk-free-banner",
       "settings": {
-        "year_warranty": 3,
-        "night_trial": 60,
-        "financing_available": false
+        "year_warranty": 10,
+        "night_trial": 365,
+        "financing_available": true
       }
     },
     "main": {
@@ -14,13 +14,6 @@
         "title": {
           "type": "title",
           "settings": {
-          }
-        },
-        "subtitle": {
-          "type": "text",
-          "settings": {
-            "text": "{{ product.metafields.descriptors.subtitle.value }}",
-            "text_style": "subtitle"
           }
         },
         "price": {
@@ -55,55 +48,42 @@
             "show_dynamic_checkout": true
           }
         },
-        "027d2f0b-b63c-4c8d-b16e-65790b63aee0": {
-          "type": "mini-review",
+        "mini-comparison-specs": {
+          "type": "mini-comparison-specs",
           "settings": {
-            "title": "No more neck pain!",
-            "content": "My wife was suffering from neck aches several times a month. Since purchasing the Emma pillow, no more aches! Really comfortable pillow. We have since purchased the Emma mattress for our parents and they are loving it!",
-            "customer_name": "Zak",
-            "customer_location": "Vancouver, British Columbia"
+            "badge": "$1,008",
+            "note": "*For queen sizes only. All prices and information from public sources listed as of April 21, 2023. Information may not reflect updated prices and promotions."
           }
         },
-        "b9f03ddb-c081-415a-9a43-eadc841c2049": {
-          "type": "mini-review",
-          "settings": {
-            "title": "Goodbye neck pain",
-            "content": "Pillow that seems a bit thick the first few hours but becomes very comfortable afterwards. No more neck pain in the morning, why did I wait so long before changing? I recommend it without limit.",
-            "customer_name": "Abieuzent",
-            "customer_location": "Winnipeg, Manitoba"
-          }
-        },
-        "1f94613b-2d97-4383-864f-bb6d5e87e785": {
-          "type": "mini-review",
-          "settings": {
-            "title": "The Emma pillow provided me with a sleep...",
-            "content": "The Emma pillow gave me a better night's sleep, deep and pain-free neck, a situation that was previously recurrent",
-            "customer_name": "Inês N.",
-            "customer_location": "Ottawa, Ontario"
-          }
-        },
-        "030ef8d9-a517-48b4-866d-fcf9b98d1815": {
+        "a4e1fe4f-d89c-43fd-8c6d-fc2db0bc35e9": {
           "type": "risk_reversal_item",
           "settings": {
             "icon": "shopify:\/\/shop_images\/free_delivery_blue.png",
             "title": "<p><strong>Free Shipping & Returns<\/strong><\/p>"
           }
         },
-        "9fe40ff3-4c83-4c82-b178-ab0b42a8a917": {
+        "04de0427-fea3-41c8-9cb2-a48d6a8ba124": {
           "type": "risk_reversal_item",
           "settings": {
-            "icon": "shopify:\/\/shop_images\/Untitled_design_5.png",
-            "title": "<p><strong>60-Night Risk-Free Trial<\/strong><\/p>"
+            "icon": "shopify:\/\/shop_images\/365_night_trial_blue_1_32f74488-77cc-497b-b19a-05620b8062f0.png",
+            "title": "<p><strong>365-Night Risk-Free Trial<\/strong><\/p>"
           }
         },
-        "9cad400a-201e-49ee-b327-24701231b7d8": {
+        "41bc036b-6145-497d-a5ee-024fd25f006b": {
           "type": "risk_reversal_item",
           "settings": {
             "icon": "shopify:\/\/shop_images\/warranty_blue_1_1_82f9ff94-e59a-48e5-a13b-1b5dd10d18ff.png",
-            "title": "<p><strong>3-Year Warranty<\/strong><\/p>"
+            "title": "<p><strong>10-Year Warranty<\/strong><\/p>"
           }
         },
-        "d8409e4e-7ce5-4894-9112-a1ff03735541": {
+        "3cf5f8eb-48d6-476f-9ab5-b349bdb027fa": {
+          "type": "risk_reversal_item",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/credit_card_2.png",
+            "title": "<p><strong>0% Financing<\/strong><\/p>"
+          }
+        },
+        "31ae7856-c067-41de-b62a-6ad7c5dfcc33": {
           "type": "risk_reversal_item",
           "settings": {
             "icon": "shopify:\/\/shop_images\/Untitled_design_11.png",
@@ -113,145 +93,122 @@
       },
       "block_order": [
         "title",
-        "subtitle",
         "price",
         "affirm_container",
         "description",
         "variant_picker",
         "quantity_selector",
         "buy_buttons",
-        "027d2f0b-b63c-4c8d-b16e-65790b63aee0",
-        "b9f03ddb-c081-415a-9a43-eadc841c2049",
-        "1f94613b-2d97-4383-864f-bb6d5e87e785",
-        "030ef8d9-a517-48b4-866d-fcf9b98d1815",
-        "9fe40ff3-4c83-4c82-b178-ab0b42a8a917",
-        "9cad400a-201e-49ee-b327-24701231b7d8",
-        "d8409e4e-7ce5-4894-9112-a1ff03735541"
+        "mini-comparison-specs",
+        "a4e1fe4f-d89c-43fd-8c6d-fc2db0bc35e9",
+        "04de0427-fea3-41c8-9cb2-a48d6a8ba124",
+        "41bc036b-6145-497d-a5ee-024fd25f006b",
+        "3cf5f8eb-48d6-476f-9ab5-b349bdb027fa",
+        "31ae7856-c067-41de-b62a-6ad7c5dfcc33"
       ],
       "settings": {
-        "media_badge": "﻿20% OFF",
+        "media_badge": "﻿50% OFF",
         "enable_sticky_info": true,
         "hide_variants": false,
         "enable_video_looping": false,
         "tab_title_1": "WHAT IT IS",
-        "tab_content_1": "<ul>\n<li>Adjustable three-layer foam pillow that provides bespoke comfort for any type of sleeper<\/li>\n<li>Breathable and hypoallergenic for sensitive and hot sleepers<\/li>\n<\/ul>",
+        "tab_content_1": "<p class=\"font-bold mb-3\">A fully customizable non-electric smart mattress.<\/p>\n<ul>\n<li>A mattress that allows you to adjust firmness to fit any sleeping preference or mood<\/li>\n<li>Choose between levels of firmness or softness on either side of the bed<\/li>\n<li>Titanium-infused foam for extra cooling and optimal pressure relief<\/li>\n<\/ul><p class=\"font-bold my-3\">Delivery: Arrives in 1 week.<\/p>",
         "tab_title_2": "WHO IT'S FOR",
-        "tab_content_2": "<ul>\n<li>Budget-conscious sleepers who won’t compromise on quality <\/li>\n<li>Loved by back, side, and stomach sleepers<\/li>\n\n<\/ul>"
+        "tab_content_2": "<ul>\n<li>Sleepers who have struggled to find the perfect mattress and value personalized comfort and support <\/li>\n<li>Couples with different firmness preferences<\/li>\n<li>Sleepers who want to stay cool all night long<\/li>\n<\/ul>"
       }
     },
-    "alternate-banners": {
-      "type": "alternate-banners",
+    "video-intro": {
+      "type": "video-with-text",
+      "settings": {
+        "sub-heading": "Adjustable comfort",
+        "heading": "Fine tune your perfect mattress",
+        "content": "<p>With the customisable Emma Shift mattress, you can adjust the firmness or softness to every imaginable level until you find what’s perfect for you. What’s even better is that you and your partner can have different firmness levels on both sides of the mattress, controlled by your own individual Smart Valves. This Smart Valve allows you to shift the internal pressure of the mattress whenever you want to.<\/p>",
+        "video": "",
+        "hosted_video": "shopify:\/\/files\/videos\/EMMA_Shift_button-below-2mb.mp4",
+        "autoplay": true,
+        "inverted": false
+      }
+    },
+    "video-intro-2": {
+      "type": "video-with-text",
+      "settings": {
+        "sub-heading": "Complete Support",
+        "heading": "Get the best of air technology and foam",
+        "content": "<p>The Emma Shift gives you the benefits of advanced air technology and foam, all in one. Soft enough to cushion your sensitive pressure points and firm enough to support your spine, this superior mattress eliminates back pain and joint pain. If you’re unsure of how firm or soft you want your mattress, you can adjust it any time with the Smart Valve. And if your sleeping patterns change, the AquaGel layer will mold around your new position. <\/p>",
+        "video": "",
+        "hosted_video": "shopify:\/\/files\/videos\/NL_MA_PDP_Shift_-_Technlogy.mp4",
+        "autoplay": true,
+        "inverted": true
+      }
+    },
+    "video-intro-3": {
+      "type": "video-with-text",
+      "settings": {
+        "sub-heading": "Built to last",
+        "heading": "Customisable through the years",
+        "content": "<p>As you go through different life stages and ages, your body has different needs in a mattress. The Emma Shift is made of top quality foams that are engineered to withstand various durability tests. And, with adjustable firmness levels, you can change your mattress to suit your life stage rather than replacing it.<\/p>",
+        "video": "",
+        "hosted_video": "shopify:\/\/files\/videos\/Same_Timing_Split_Video-below-2mb.mp4",
+        "autoplay": true,
+        "inverted": false
+      }
+    },
+    "layer-description-section": {
+      "type": "layer-description",
       "blocks": {
-        "1a40ff53-9e17-4bc1-8f32-cc39fbfd6e23": {
-          "type": "item",
+        "001670a7-3ff3-4482-bae5-c9c8e735cc82": {
+          "type": "layer-item",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Untitled_design.jpg",
-            "title": "A pillow for all sleeping positions",
-            "content": "No matter if you sleep on your side, back or on your stomach: with the individually removable layers you can adjust the pillow height exactly to your needs."
+            "title": "The cover that’s plush and moisture-wicking",
+            "content": "The Emma cover is soft-to-touch, making it very comfortable to lie on. It is also completely removable, making it extremely easy to wash."
           }
         },
-        "3c7042bd-f91e-4ea9-b2e8-dea2a7bfe9fe": {
-          "type": "item",
+        "7455550d-1c49-4a55-8bce-ea20103bd9d1": {
+          "type": "layer-item",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Untitled_design_2_f04b6278-ffd6-4eb5-bed4-7e0bf1637843.png",
-            "title": "Maximum sleeping comfort",
-            "content": "Full relaxation of the head, shoulders and neck thanks to our adaptive visco foam. Wonderful lying feeling thanks to individually adjustable degrees of hardness. Heavenly dry and cool thanks to breathable Airgocell® foam and UltraDry cover."
+            "title": "The cool foam layer that isolates motion",
+            "content": "This award-winning open-celled foam enhances breathability by dissipating body heat away from the mattress so you stay cool at night. It also limits motion transfer so light sleepers can sleep easy even with a partner (or pet) that tosses in bed."
           }
         },
-        "fc285559-d93f-4537-a582-d2bee0b5e6ea": {
-          "type": "item",
+        "ce808106-9d0d-4272-bcb2-107272f11017": {
+          "type": "layer-item",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Untitled_design_3_adb54cf9-f7bb-4e43-9226-a2e8c80ea848.png",
-            "title": "All-around carefree pillow",
-            "content": "100% carefree: Our pillow retains its support overnight and for years. It is hypoallergenic, vegan, OEKOTEX-100 tested for harmful substances and has a washable cover. And as always, you can try sleep for 100 nights!"
+            "title": "The layer with 100 supporting points",
+            "content": "The CliMax Transition layer has 100 supporting points and 5-zoned contouring to provide pressure relief for the head, shoulder, back, and hips."
+          }
+        },
+        "4f75b7bd-6c25-425d-a0d7-02a0c5e90423": {
+          "type": "layer-item",
+          "settings": {
+            "title": "The springs that add extra strength",
+            "content": "CliMax Pocketed Springs are 4.7-inch premium and individually-wrapped coils designed to enhance airflow and provide the optimum level of tension and bounce-- strong enough to support sleepers of all shape and size."
+          }
+        },
+        "4ae22619-3feb-49d8-93be-217a2b96e1c0": {
+          "type": "layer-item",
+          "settings": {
+            "title": "The edge of the mattress with added support",
+            "content": "A reinforced perimeter that does not only help prevent active sleepers from falling off at night, but also help you sit up and get out of bed in the morning."
+          }
+        },
+        "5845eed1-ca4d-4b18-9cd4-90d26ff947a5": {
+          "type": "layer-item",
+          "settings": {
+            "title": "The base foam that keeps your spine aligned",
+            "content": "HRX stands for High Resiliency Extra. Providing sufficient counter pressure, this layer is designed to keep your spine evenly aligned for maximum relief, rest and recovery – in any sleeping position."
           }
         }
       },
       "block_order": [
-        "1a40ff53-9e17-4bc1-8f32-cc39fbfd6e23",
-        "3c7042bd-f91e-4ea9-b2e8-dea2a7bfe9fe",
-        "fc285559-d93f-4537-a582-d2bee0b5e6ea"
+        "001670a7-3ff3-4482-bae5-c9c8e735cc82",
+        "7455550d-1c49-4a55-8bce-ea20103bd9d1",
+        "ce808106-9d0d-4272-bcb2-107272f11017",
+        "4f75b7bd-6c25-425d-a0d7-02a0c5e90423",
+        "4ae22619-3feb-49d8-93be-217a2b96e1c0",
+        "5845eed1-ca4d-4b18-9cd4-90d26ff947a5"
       ],
       "settings": {
-      }
-    },
-    "accessory-highlights": {
-      "type": "accessory-highlights",
-      "blocks": {
-        "76232b4f-41fc-4499-ab92-8f6dc9f657b9": {
-          "type": "highlight",
-          "settings": {
-            "title": "Precise pressure relief",
-            "content": "Adaptive viscose foam supports your head and neck precisely so that you can sleep completely relaxed."
-          }
-        },
-        "665b1e19-6d3d-41ae-acca-13643cfae236": {
-          "type": "highlight",
-          "settings": {
-            "title": "Soft and breathable",
-            "content": "Heavenly sleeping climate thanks to breathable Airgocell® foam. The softest of the three layers."
-          }
-        },
-        "f76fb2dc-fbcb-4637-917e-e9427f7be812": {
-          "type": "highlight",
-          "settings": {
-            "title": "Supportive",
-            "content": "Viscose foam with a slightly softer feeling to lie on, but still provides great pressure relief for the head, neck and shoulders."
-          }
-        },
-        "4ff03ea0-193d-400b-a916-df4a61759601": {
-          "type": "highlight",
-          "settings": {
-            "title": "Cooling Cover",
-            "content": "UltraDry technology transports moisture away quickly and ensures a pleasantly cool, dry sleeping environment."
-          }
-        }
-      },
-      "block_order": [
-        "76232b4f-41fc-4499-ab92-8f6dc9f657b9",
-        "665b1e19-6d3d-41ae-acca-13643cfae236",
-        "f76fb2dc-fbcb-4637-917e-e9427f7be812",
-        "4ff03ea0-193d-400b-a916-df4a61759601"
-      ],
-      "settings": {
-        "highligh_content": "",
-        "title": "Love at first sleep",
-        "subtitle": "ENGINEERED BY SLEEP EXPERTS"
-      }
-    },
-    "information-tabs": {
-      "type": "information-tabs",
-      "disabled": true,
-      "blocks": {
-        "82ffd23f-3e8b-4e5c-a165-5897fe51cbec": {
-          "type": "tab",
-          "settings": {
-            "tab_title": "Tabbed content",
-            "tab_content": "<p><strong>Lorem ipsum<br\/><\/strong><br\/>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<\/p>"
-          }
-        },
-        "46ebc01e-5f8d-47b4-b934-6a960f97d181": {
-          "type": "tab",
-          "settings": {
-            "tab_title": "Tabbed content",
-            "tab_content": "<p><strong>Lorem ipsum<br\/><\/strong><br\/>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<\/p>"
-          }
-        },
-        "e1cc5e35-c423-49f9-95ba-a2a2b4a3a087": {
-          "type": "tab",
-          "settings": {
-            "tab_title": "Tabbed content",
-            "tab_content": "<p><strong>Lorem ipsum<br\/><\/strong><br\/>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<\/p>"
-          }
-        }
-      },
-      "block_order": [
-        "82ffd23f-3e8b-4e5c-a165-5897fe51cbec",
-        "46ebc01e-5f8d-47b4-b934-6a960f97d181",
-        "e1cc5e35-c423-49f9-95ba-a2a2b4a3a087"
-      ],
-      "settings": {
-        "title": "Bed information"
+        "image": "shopify:\/\/shop_images\/emma_matras_shift_layers.jpg"
       }
     },
     "faqs-and-specs": {
@@ -260,64 +217,43 @@
         "78ca144d-5919-4a1b-9e22-082ef5384310": {
           "type": "left_column",
           "settings": {
-            "title": "Does the Emma Original Adjustable Foam Pillow stay cool at night?",
-            "content": "Yes it does. The Plush UltraDry® breathable cover has a knit design for optimal airflow and our AIRGOCELL® foam cooling technology dissipates sweat and distributes heat so that you keep a cool and comfortable sleep throughout the night."
+            "title": "How exactly does the Smart Valve technology work?",
+            "content": "<p>If you want to adjust the firmness of your mattress, lie on the mattress, open the Smart Valve fully and press it. The Shift Core Technology will enable you to feel your mattress become softer on the most important pressure points of your body within 10 seconds. If you want the mattress to be firmer again, get up from the mattress, open the Smart Valve, and press it to re-inflate the Shift Core.<\/p>"
           }
         },
         "c68412f4-0251-42dc-9113-a0eecd22c518": {
           "type": "left_column",
           "settings": {
-            "title": "How does the Emma Original Adjustable Foam Pillow adjust to my sleep?",
-            "content": "The Emma Original Adjustable Foam Pillow is adjustable for any type of sleeper. The three different layers can be interchanged as you see fit. Its Supportive Visco Foam layer conforms to your head and neck so that your head is cradled and well-supported. Its AIRGOCELL® Foam layer is the softest layer which dissipates sweat and distributes heat for cool and breathable comfort. While its Pressure-relieving Viscose Foam has a slightly softer feel but consistent pressure relief for optimal support."
+            "title": "Is the Emma Shift suitable for all ages and weights?",
+            "content": "<p>The Emma Shift is suitable for all ages and weights, but we especially recommend this mattress for those who have difficulty sleeping due to firmness levels and have yet to find the perfect fit for their individual preferences.<\/p>"
           }
         },
         "a72149c3-5420-4a8c-80fe-7370288da216": {
           "type": "left_column",
           "settings": {
-            "title": "Is the Emma Original Adjustable Foam Pillow hypoallergenic?",
-            "content": "Yes, the Emma Original Adjustable Foam Pillow is  abreathable and hypoallergenic pillow perfect for sensitive and hot sleepers."
-          }
-        },
-        "d9373dca-57f2-4b56-8838-1a8fc22e21ca": {
-          "type": "left_column",
-          "settings": {
-            "title": "Does the Emma Original Adjustable Foam Pillow have a trial period and warranty?",
-            "content": "The Emma Original Adjustable Foam Pillow has a 60-night trial period, where you can enjoy it risk-free! It also has a warranty period of 3 years upon receipt. For more information on warranty claims, please visit our Terms and Conditions or contact our Customer Care agents from 6 AM - 9 PM EST through our available channels."
-          }
-        },
-        "25dc702d-b510-4b92-b992-7f9cd7c0af10": {
-          "type": "right_column",
-          "settings": {
-            "title": "Construction, Materials, and Certifications",
-            "content": "<p><strong>Construction &amp; Materials<\/strong><br>• Hypergel Foam<br>• Hypersoft Foam<br>• Visco Foam<br>• Completely removable and washable cover made of 98% polyester and 2% elastane.<\/p>\n\n<p><strong>Certifications<\/strong><br>Cover and core (foam layers) are certified with a Class II (19.0.91049) of OEKO-Tex Standard 100.<br>What does it mean? The foam and the cover meet high quality standards.<\/p>"
+            "title": "Is the lifespan of the Emma Shift the same as the other Emma mattresses?",
+            "content": "<p>Like all Emma mattresses, the Emma Shift has undergone several durability tests to guarantee its durability. The Smart Valve is also made of high-quality acrylic glass and plastic, ensuring a lifetime guarantee.<\/p>"
           }
         },
         "dc6becd9-d75d-4307-a1fd-f2ae96892001": {
           "type": "right_column",
           "settings": {
-            "title": "Size and Weight",
-            "content": "<p>Pillow Size: 28 x 16 in <br>Total Weight: 3.3 lbs <br>Filling Weight: 2.64 lbs<\/p>"
+            "title": "Dimensions",
+            "content": "<div class=\"grid grid-cols-2 gap-y-3\">\n    <div>\n      <strong>Twin XL<\/strong>\n      <div>38”W × 80”L × 13”H<\/div>\n    <\/div>\n\n    <div>\n      <strong>Queen<\/strong>\n      <div>60”W × 80”L × 13”H<\/div>\n    <\/div>\n\n    <div>\n      <strong>King<\/strong>\n      <div>76”W × 80”L × 13”H<\/div>\n    <\/div>\n  <\/div>"
           }
         },
         "27a05c64-cb9c-4e17-9607-0124a2982c36": {
           "type": "right_column",
           "settings": {
-            "title": "Mattress Box Dimensions",
-            "content": "<p>8 x 8 x 17 in, 4.62 lbs<\/p>"
+            "title": "Shipping, Warranty, & Returns",
+            "content": "<p>Free Shipping<\/p>\n<p>We work with UPS &amp; FedEx to ship your Emma products straight from our warehouse to your front door.<\/p>\n<p>Free Returns<\/p>\n<p>Our risk-free 365-night trial means that you get 365 nights to relax into your Emma mattress and experience the benefits of a good night’s sleep in order to make that decision. We encourage and require a trial period of 21 nights on your mattress so that you and your body can get suited to your Emma mattress.<\/p>\n<p>10-Year Warranty<\/p>\n<p>Enjoy a 10-Year Warranty for each Emma mattress purchase.<\/p>"
           }
         },
         "0d3641f2-2024-410e-8331-1d71bd48b165": {
           "type": "right_column",
           "settings": {
-            "title": "Country of Origin",
-            "content": "<p>Designed by Sleep Scientists in Germany and delivered straight to your home from our warehouse in Toronto. No middleman fees, just the best prices. All pillows are manufactured to our high quality assurance standards.<\/p>"
-          }
-        },
-        "80179856-c2a9-4910-a399-7555e1a4a0fc": {
-          "type": "right_column",
-          "settings": {
-            "title": "Delivery and Returns",
-            "content": "<p>Free Delivery <br>We work with the top carriers in Canada to ship your Emma products straight from our warehouse to your front door.<\/p>\n\n<p>Free Returns<br>Enjoy a 60-nights free trial on your Emma Foam Pillow. We typically require an adjustment period of at least 3 weeks as our researchers confirm that it takes around that long to get suited to your Emma product. Of course, we've made returning of any unsuitable items super easy. Just contact our customer service and we'll take care of the rest.<\/p>\n\n<p>If you would like to contact us, please feel free to email our support team at support@emma-sleep.ca or call us at +1-888-585-3662.<\/p>"
+            "title": "Certifications",
+            "content": "<p>Our top-of-the-line foams are all CertiPUR-US® certified, meaning, they are made without any ozone-depleting chemicals and safe from VOCs, formaldehyde, and phthalates.<\/p>"
           }
         }
       },
@@ -325,20 +261,115 @@
         "78ca144d-5919-4a1b-9e22-082ef5384310",
         "c68412f4-0251-42dc-9113-a0eecd22c518",
         "a72149c3-5420-4a8c-80fe-7370288da216",
-        "d9373dca-57f2-4b56-8838-1a8fc22e21ca",
-        "25dc702d-b510-4b92-b992-7f9cd7c0af10",
         "dc6becd9-d75d-4307-a1fd-f2ae96892001",
         "27a05c64-cb9c-4e17-9607-0124a2982c36",
-        "0d3641f2-2024-410e-8331-1d71bd48b165",
-        "80179856-c2a9-4910-a399-7555e1a4a0fc"
+        "0d3641f2-2024-410e-8331-1d71bd48b165"
       ],
       "settings": {
         "heading_1": "FAQs",
-        "heading_2": "Specs"
+        "heading_2": "Specifications"
       }
     },
-    "yotpo-main-widget": {
-      "type": "yotpo-main-widget",
+    "contact-us": {
+      "type": "contact-us",
+      "settings": {
+        "custom_title": "Need help deciding?"
+      }
+    },
+    "social-proof": {
+      "type": "social-proof",
+      "blocks": {
+        "b6dae6a6-e5ff-4a67-a17f-5634e5e2a7ca": {
+          "type": "influencer",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/m.for.mai.webp",
+            "heading": "<p>Mai Le, Mom<\/p>",
+            "tag": "@m.for.mai",
+            "location": "Columbia",
+            "content": "<p>We've had our emma mattress for about 2 weeks and holy smokes I can attest to the zero partner disturbance... because I co-sleep and even with me moving around getting up it doesn't disturb my baby girl 🙌<\/p>"
+          }
+        },
+        "866c9023-8512-4f64-8555-b334b28a7bd3": {
+          "type": "influencer",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/alexanderkenton.webp",
+            "heading": "<p>Alex Liang, Interior Designer<\/p>",
+            "tag": "@alexanderkenton",
+            "location": "Ontario",
+            "content": "<p>No bedroom redesign would be complete without a new mattress! And we’ve been really enjoying my new Emma Original. It’s soft, yet supportive and keeps us comfortable and cool all night long. I also love that the entire cover of the mattress can be removed and machine washed, to keep the mattress fresh and new.<\/p>"
+          }
+        },
+        "ab27efca-c44c-4ac2-9ca7-6c716db36cdb": {
+          "type": "influencer",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/coco.crochet.lee.webp",
+            "heading": "<p>Lee Sartori, Author<\/p>",
+            "tag": "@coco.crochet.lee",
+            "location": "Ontario",
+            "content": "<p>I've fallen in love with my Emma Mattress 😍. The Mattress sort of expands when you open it which made me think it would be way too soft. Surprise, it is actually very firm while keeping your sleep comfy and soft 😴💕. Because it's a memory foam mattress, you can sleep (or crochet) comfortably next to someone without disturbing them at all which is fantastic. All in all, I highly recommend!<\/p>"
+          }
+        },
+        "7170fa98-02bb-4aa1-8493-07101d6bf39d": {
+          "type": "influencer",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/ayagonz.webp",
+            "heading": "<p>Aya G,  Content Creator<\/p>",
+            "tag": "@_ayagonz@_ayagonz",
+            "location": "British Columbia",
+            "content": "<p>Emma has, no joke, given me the best sleep quality I've ever had (!!!) - I get to sleep straight through the night without being disturbed by any movements or noises, I no longer get any shoulder\/back aches and the temperature is always *just* right. I now wake up happier and more energized to take on my day. ⚡️<\/p>"
+          }
+        },
+        "56e82b97-2660-4bac-ad05-6dfada93c277": {
+          "type": "influencer",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/pandi_po_family.jpg",
+            "heading": "<p>Sylvana Carda, Mom<\/p>",
+            "tag": "@pandi_po_family",
+            "location": "Quebec",
+            "content": "<p>Even superheroes sleep at night  🦸🏻‍♂️💫 Baby sleeps in his bed, but in the morning he joins us in our bed and I share my pillow with him. After using the pillow, I have much less neck pain unlike before when I wake up in the middle of the night and need to adjust my pillow several times.<\/p>"
+          }
+        },
+        "ae42156b-a9d8-4bd6-a80b-430239cbf2a3": {
+          "type": "influencer",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/listen2lena.jpg",
+            "heading": "<p>Lena Almeida, Mom<\/p>",
+            "tag": "@listen2lena",
+            "location": "Ontario",
+            "content": "<p>I couldn’t be happier! The mattress and pillows are cool, breathable and offer just the right support to help me drift off to dreamland. 💤 The best part? I barely feel my husband’s movement throughout the night, which has improved the quality of my sleep enormously.<\/p>"
+          }
+        },
+        "81b0094e-e87f-4db8-82f1-b7ab53dadd5a": {
+          "type": "influencer",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/orsida.luzati.webp",
+            "heading": "<p>Orsida Luzati, Mom<\/p>",
+            "tag": "@orsida.luzati",
+            "location": "Ontario",
+            "content": "<p>Who knew that a new mattress would have such a positive impact in our lives! The girls have found their favorite bed– soft and comfortable mattress (with motion isolating foam) and a 3-layer pillow with option to remove a layer for best comfort💗<\/p>"
+          }
+        },
+        "56d25398-6bdd-4000-b1b3-c61d2d9075ed": {
+          "type": "influencer",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/jessicatylerofficial.webp",
+            "heading": "<p>Jessica Tyler, Content Creator<\/p>",
+            "tag": "@jessicatylerofficial",
+            "location": "Ontario",
+            "content": "<p>I no longer wake up feeling like I’ve aged several years overnight with back pain! The support and comfort of this bed is seriously unmatched. Our bedroom has easily become my favorite room in the house - I already can’t wait to get back into bed tonight! 💤<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "b6dae6a6-e5ff-4a67-a17f-5634e5e2a7ca",
+        "866c9023-8512-4f64-8555-b334b28a7bd3",
+        "ab27efca-c44c-4ac2-9ca7-6c716db36cdb",
+        "7170fa98-02bb-4aa1-8493-07101d6bf39d",
+        "56e82b97-2660-4bac-ad05-6dfada93c277",
+        "ae42156b-a9d8-4bd6-a80b-430239cbf2a3",
+        "81b0094e-e87f-4db8-82f1-b7ab53dadd5a",
+        "56d25398-6bdd-4000-b1b3-c61d2d9075ed"
+      ],
       "settings": {
       }
     },
@@ -355,8 +386,8 @@
         "9593f14f-4c86-4af9-953e-0fa248231b89": {
           "type": "footer-button",
           "settings": {
-            "url": "shopify:\/\/collections\/mattresses",
-            "text": "shop mattresses"
+            "url": "shopify:\/\/products\/emma-climax-hybrid",
+            "text": "shop now"
           }
         }
       },
@@ -374,23 +405,23 @@
     "products-grid": {
       "type": "products-grid",
       "blocks": {
-        "4f70ceb7-0ed5-4816-a3c6-7e5307241126": {
-          "type": "grid_item",
-          "settings": {
-            "product": "emma-mattress-protector",
-            "badge_text": "10% off",
-            "name": ""
-          }
-        },
         "ddf828c5-6eed-47cf-bc7f-f8ba12792926": {
           "type": "grid_item",
           "settings": {
-            "product": "emma-topper",
-            "badge_text": "18 off",
+            "product": "emma-foam-pillow",
+            "badge_text": "21% off",
             "name": ""
           }
         },
-        "5a957481-10d2-43ab-a92a-241d7d34bd5f": {
+        "4f70ceb7-0ed5-4816-a3c6-7e5307241126": {
+          "type": "grid_item",
+          "settings": {
+            "product": "emma-topper",
+            "badge_text": "17% off",
+            "name": ""
+          }
+        },
+        "07c3a1bf-135a-4913-a567-74e6d897d945": {
           "type": "grid_item",
           "settings": {
             "product": "emma-bed-frame",
@@ -398,7 +429,7 @@
             "name": ""
           }
         },
-        "07c3a1bf-135a-4913-a567-74e6d897d945": {
+        "5a957481-10d2-43ab-a92a-241d7d34bd5f": {
           "type": "grid_item",
           "settings": {
             "product": "emma-climax-hybrid",
@@ -408,32 +439,27 @@
         }
       },
       "block_order": [
-        "4f70ceb7-0ed5-4816-a3c6-7e5307241126",
         "ddf828c5-6eed-47cf-bc7f-f8ba12792926",
-        "5a957481-10d2-43ab-a92a-241d7d34bd5f",
-        "07c3a1bf-135a-4913-a567-74e6d897d945"
+        "4f70ceb7-0ed5-4816-a3c6-7e5307241126",
+        "07c3a1bf-135a-4913-a567-74e6d897d945",
+        "5a957481-10d2-43ab-a92a-241d7d34bd5f"
       ],
       "settings": {
         "title": "You might also like"
-      }
-    },
-    "contact-us": {
-      "type": "contact-us",
-      "settings": {
-        "custom_title": "Need help deciding?"
       }
     }
   },
   "order": [
     "banner",
     "main",
-    "alternate-banners",
-    "accessory-highlights",
-    "information-tabs",
+    "video-intro",
+    "video-intro-2",
+    "video-intro-3",
+    "layer-description-section",
     "faqs-and-specs",
-    "yotpo-main-widget",
+    "contact-us",
+    "social-proof",
     "brand-statistics",
-    "products-grid",
-    "contact-us"
+    "products-grid"
   ]
 }

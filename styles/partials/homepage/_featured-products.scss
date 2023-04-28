@@ -96,7 +96,8 @@
 
     &__media {
       img {
-        object-fit: cover;
+        object-fit: contain;
+        aspect-ratio: 2576/1752;
       }
     }
   }

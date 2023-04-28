@@ -4,7 +4,14 @@
 @import "../partials/product/description";
 @import "../partials/product/product-media";
 @import "../partials/product/mini-comparison-table";
+@import "../partials/product/mini-comparison-specs";
 @import "../partials/product/add-on-pillow";
+
+#product-details-emma-shift {
+  .vtl-su-main-widget {
+    display: none !important;
+  }
+}
 
 model-viewer::part(default-progress-mask) {
   display: none;

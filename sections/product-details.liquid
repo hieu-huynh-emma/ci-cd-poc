@@ -377,7 +377,7 @@
     }
 
 </style>
-<section class="page-width">
+<section id="product-details-{{ product.handle }}" class="page-width">
   <div class="product {% if product.media.size > 0 %}product--2-col-tablet{% else %}product--no-media{% endif %}">
     <!-- PRODUCT DETAILS LEFT -->
     <div class="product__media-wrapper">
@@ -802,6 +802,9 @@
 
             {%- when 'mini-comparison-table' %}
               {% render 'mini-comparison-table', settings: block.settings %}
+            
+            {%- when 'mini-comparison-specs' %}
+              {% render 'mini-comparison-specs', settings: block.settings %}
 
           {%- when 'emma_discount_mechanics' -%}
             <div class="emma-discount-mechanics">
@@ -1347,6 +1350,24 @@ customElements.define('product-modal', ProductModal);
     {
       "type": "mini-comparison-table",
       "name": "Mini Comparison Table",
+      "settings": [
+        {
+          "id": "badge",
+          "type": "text",
+          "label": "Badge",
+          "default": "-$1239"
+        },
+        {
+          "id": "note",
+          "type": "text",
+          "label": "Note",
+          "default": "*For queen sizes only. All prices and information from public sources listed as of October 10, 2022. Information may not reflect updated prices and promotions."
+        }
+      ]
+    },
+    {
+      "type": "mini-comparison-specs",
+      "name": "Mini Comparison Specs",
       "settings": [
         {
           "id": "badge",
