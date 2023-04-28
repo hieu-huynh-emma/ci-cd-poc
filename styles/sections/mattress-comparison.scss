@@ -6,12 +6,6 @@
   .wrapper {
     display: grid;
     gap: 20px;
-    @media screen and (min-width: 768px) {
-      width: 90%;
-    }
-    @media screen and (min-width: 1024px) {
-      width: 60%;
-    }
   }
 
   .headings {
@@ -22,6 +16,11 @@
 
     @media screen and (min-width: 768px) {
       gap: 20px;
+      width: 90%;
+      margin: 0 auto;
+    }
+    @media screen and (min-width: 1024px) {
+      width: 60%;
     }
   }
 
@@ -33,7 +32,8 @@
 
     @media screen and (min-width: 768px) {
       gap: 36px;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: repeat(3,minmax(0,auto));
+      justify-content: center;
     }
   }
 
@@ -42,6 +42,7 @@
 
     align-content: space-between;
     min-height: 375px;
+    max-width: 352px;
 
     border-radius: 6px;
     overflow: hidden;

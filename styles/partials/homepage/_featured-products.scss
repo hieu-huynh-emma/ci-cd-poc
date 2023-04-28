@@ -6,12 +6,6 @@
   .wrapper {
     display: grid;
     gap: 20px;
-    @media screen and (min-width: 768px) {
-      width: 90%;
-    }
-    @media screen and (min-width: 1024px) {
-      width: 60%;
-    }
   }
 
   .headings {
@@ -19,9 +13,13 @@
     gap: 10px;
     justify-content: center;
     text-align: center;
-
     @media screen and (min-width: 768px) {
       gap: 20px;
+      width: 90%;
+      margin: 0 auto;
+    }
+    @media screen and (min-width: 1024px) {
+      width: 60%;
     }
   }
 
@@ -33,7 +31,8 @@
 
     @media screen and (min-width: 768px) {
       gap: 36px;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: repeat(3, minmax(0, auto));
+      justify-content: center;
     }
   }
 
@@ -48,6 +47,7 @@
     overflow: hidden;
     border: 1.5px solid #E1E1F0;
     width: 100%;
+    max-width: 352px;
 
 
     transition: all 200ms ease-in;
@@ -94,6 +94,11 @@
       }
     }
 
+    &__media {
+      img {
+        object-fit: cover;
+      }
+    }
   }
 
   .top-section {
