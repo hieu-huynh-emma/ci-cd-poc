@@ -449,61 +449,63 @@
       "support": "Live support available from 08:00 to 18:00 GMT-6, Mondays-Fridays",
       "chat": "Chat now"
     },
-    "shipping_estimation": "Mattress Ships within 1 - 3 business days",
-    "checkout": {
-      "banner": {
-        "ship_today": "Free Shipping! Orders before 2PM ET will be shipped out today.",
-        "ship_next_business_day": "Free Shipping! Orders shipped out the next business day."
-      },
-      "order_summary": {
-        "shipping_default_value": "Free",
-        "discount_title": "Promo code",
-        "discount_label": "Promo code",
-        "discount_placeholder": "Promo code",
-        "discount_sublabel": "Offers cannot be combined.",
-        "you_save": "You save {{ saved }}!",
-        "only_one_code_allowed": "Only one promo code may be used per order.",
-        "no_promo_yet": "Have a promo code? Enter it below.",
-        "promo_applied": "Promo code applied!",
-        "original_price": "Original Price",
-        "promo_code": "Promo Code",
-        "sale_discount": "Sale Discount",
-        "contact": "Please contact support@emma-sleep.ca or call +1-888-585-3662 for more inquiries"
-      },
-      "scheduled_delivery_with_in_home_setup_description": "Our delivery partner will be in touch to schedule your deliveries once order has been placed. You can only schedule deliveries for orders placed at least 3 business days before your preferred delivery date.",
-      "scheduled_delivery_with_in_home_setup_faq_1": "In-home setup only includes setting up of large items purchased (mattress or bed frame). Scheduled delivery with in-home setup cannot be refunded in the event of a return.",
-      "scheduled_delivery_with_in_home_setup_faq_2": "If you are getting a mattress or bed frame delivered with our scheduled delivery with in-home setup option, our delivery partner will remove your old mattress and bed frame from the same room and at the same time of the delivery. Removals cannot be refunded\/returned.",
-      "product_removal": "Product removal",
-      "phone_field_error": "Phone field error",
-      "your_details": "Your Details",
-      "discount_code": "Promo code",
-      "shipping_address_review": "Please review the shipping address before placing your order.",
-      "continue_with_credit": "or continue below",
-      "popup": {
-        "message": "You haven't finished checking out yet!",
-        "continue": "Keep checking out",
-        "return_to_homepage": "Return to homepage"
-      },
-      "shipping_method": {
-        "standart_delivery_no_contact": "Contactless Delivery. Ships out in 1 business day and arrives within 3 to 5 days.",
-        "schedule_delivery_incomplete": "Scheduled delivery with in-home set up is incomplete.",
-        "subtitle": "In order to get your items delivered to you faster, your order may be split into two or more shipments."
-      },
-      "ssl": "Secure SSL encryption",
-      "general": {
-        "pay_now_button_label": "Pay Now",
-        "continue_to_shipping_method": "Continue to Shipping",
-        "continue_to_payment_method": "Continue to Payment"
-      },
-      "contact": {
-        "title": "1. Details"
-      },
-      "shipping": {
-        "title": "2. Shipping & Taxes"
-      },
-      "payment": {
-        "title": "3. Payment"
-      }
+    "shipping_estimation": "Mattress Ships within 1 - 3 business days"
+  },
+  "checkout": {
+    "banner": {
+      "ship_today": "Free Shipping! Orders before 2PM ET will be shipped out today.",
+      "ship_next_business_day": "Free Shipping! Orders shipped out the next business day."
+    },
+    "order_summary": {
+      "shipping_default_value": "Free",
+      "discount_title": "Promo code",
+      "discount_label": "Promo code",
+      "discount_placeholder": "Promo code",
+      "discount_sublabel": "Offers cannot be combined.",
+      "you_save": "You save {{ saved }}!",
+      "only_one_code_allowed": "Only one promo code may be used per order.",
+      "no_promo_yet": "Have a promo code? Enter it below.",
+      "promo_applied": "Promo code applied!",
+      "original_price": "Original Price",
+      "promo_code": "Promo Code",
+      "sale_discount": "Sale Discount",
+      "contact": "Please contact support@emma-sleep.ca or call +1-888-585-3662 for more inquiries"
+    },
+    "scheduled_delivery_with_in_home_setup_description": "Our delivery partner will be in touch to schedule your deliveries once order has been placed. You can only schedule deliveries for orders placed at least 3 business days before your preferred delivery date.",
+
+    "scheduled_delivery_with_in_home_setup_faq_1": "In-home setup only includes setting up of large items purchased (mattress or bed frame). Scheduled delivery with in-home setup cannot be refunded in the event of a return.",
+    "scheduled_delivery_with_in_home_setup_faq_2": "If you are getting a mattress or bed frame delivered with our scheduled delivery with in-home setup option, our delivery partner will remove your old mattress and bed frame from the same room and at the same time of the delivery. Removals cannot be refunded\/returned.",
+    "product_removal": "Product removal",
+    "phone_field_error": "Phone field error",
+    "your_details": "Your Details",
+    "discount_code": "Promo code",
+    "shipping_address_review": "Please review the shipping address before placing your order.",
+    "continue_with_credit": "or continue below",
+    "popup": {
+      "message": "You haven't finished checking out yet!",
+      "continue": "Keep checking out",
+      "return_to_homepage": "Return to homepage"
+    },
+    "shipping_method": {
+      "standart_delivery_no_contact": "Emma Original and CliMax mattresses ship out in 1 business day and arrive within 3 to 5 days.",
+      "shift_dropshipping": "Emma Shift mattresses arrive within 7 days.",
+      "schedule_delivery_incomplete": "Scheduled delivery with in-home set up is incomplete.",
+      "subtitle": "In order to get your items delivered to you faster, your order may be split into two or more shipments."
+    },
+    "ssl": "Secure SSL encryption",
+    "general": {
+      "pay_now_button_label": "Pay Now",
+      "continue_to_shipping_method": "Continue to Shipping",
+      "continue_to_payment_method": "Continue to Payment"
+    },
+    "contact": {
+      "title": "1. Details"
+    },
+    "shipping": {
+      "title": "2. Shipping & Taxes"
+    },
+    "payment": {
+      "title": "3. Payment"
     }
   }
 }

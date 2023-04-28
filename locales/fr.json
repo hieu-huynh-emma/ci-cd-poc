@@ -448,48 +448,7 @@
       "help": "Besoin d'aide?",
       "support": "Assistance en direct disponible de 08:00 à 18:00 GMT-6, du Lundi au Vendredi.",
       "chat": "Discuter maintenant"
-    },
-    "checkout": {
-      "banner": {
-        "ship_today": "Livraison gratuite! Les commandes avant 14H (HNE) seront expédiées aujourd'hui.",
-        "ship_next_business_day": "Livraison gratuite! Les commandes seront expédiées le prochain jour ouvrable."
-      },
-      "order_summary": {
-        "shipping_default_value": "Libre",
-        "discount_title": "Code promo",
-        "discount_label": "Code promo",
-        "discount_placeholder": "Code promo",
-        "discount_sublabel": "Les offres ne sont pas cumulables.",
-        "you_save": "Économies totales {{ saved }}!",
-        "no_promo_yet": "Vous avez un code promo ? Saisissez-le ci-dessous.",
-        "sale_discount": "Réduction"
-      },
-      "phone_field_error": "Erreur champ téléphone",
-      "your_details": "Vos détails",
-      "shipping_address_review": "Merci de vérifier l'adresse de livraison avant de placer votre commande.",
-      "continue_with_credit": "ou continuez ci-dessous",
-      "popup": {
-        "message": "Vous n'avez pas encore fini votre commande!",
-        "continue": "Continuer votre commande",
-        "return_to_cart": "Retourner au panier",
-        "return_to_homepage": "Retour à la page d'accueil"
-      },
-      "contact": {
-        "title": "1. Informations"
-      },
-      "shipping": {
-        "title": "2. Livraison"
-      },
-      "payment": {
-        "title": "3. Paiement"
-      },
-      "shipping_method": {
-        "standart_delivery_no_contact": "Livraison sans contact. Vous n'avez pas besoin d'être chez vous pour la livraison.",
-        "schedule_delivery_incomplete": "La livraison programmée avec mise en place à domicile est incomplète.",
-        "subtitle": "Afin que vos articles vous soient livrés plus rapidement, votre commande peut être scindée en deux ou plusieurs envois."
-      },
-      "discount_code": "Code Promo"
-    },
+    }
     "shopify": {
       "checkout": {
         "order_summary": {
@@ -515,5 +474,47 @@
         }
       }
     }
+  },
+  "checkout": {
+    "banner": {
+      "ship_today": "Livraison gratuite! Les commandes avant 14H (HNE) seront expédiées aujourd'hui.",
+      "ship_next_business_day": "Livraison gratuite! Les commandes seront expédiées le prochain jour ouvrable."
+    },
+    "order_summary": {
+      "shipping_default_value": "Libre",
+      "discount_title": "Code promo",
+      "discount_label": "Code promo",
+      "discount_placeholder": "Code promo",
+      "discount_sublabel": "Les offres ne sont pas cumulables.",
+      "you_save": "Économies totales {{ saved }}!",
+      "no_promo_yet": "Vous avez un code promo ? Saisissez-le ci-dessous.",
+      "sale_discount": "Réduction"
+    },
+    "phone_field_error": "Erreur champ téléphone",
+    "your_details": "Vos détails",
+    "shipping_address_review": "Merci de vérifier l'adresse de livraison avant de placer votre commande.",
+    "continue_with_credit": "ou continuez ci-dessous",
+    "popup": {
+      "message": "Vous n'avez pas encore fini votre commande!",
+      "continue": "Continuer votre commande",
+      "return_to_cart": "Retourner au panier",
+      "return_to_homepage": "Retour à la page d'accueil"
+    },
+    "contact": {
+      "title": "1. Informations"
+    },
+    "shipping": {
+      "title": "2. Livraison"
+    },
+    "payment": {
+      "title": "3. Paiement"
+    },
+    "shipping_method": {
+      "standart_delivery_no_contact": "Livraison sans contact. Vous n'avez pas besoin d'être chez vous pour la livraison.",
+      "shift_dropshipping": "Delivered in X-X.",
+      "schedule_delivery_incomplete": "La livraison programmée avec mise en place à domicile est incomplète.",
+      "subtitle": "Afin que vos articles vous soient livrés plus rapidement, votre commande peut être scindée en deux ou plusieurs envois."
+    },
+    "discount_code": "Code Promo"
   }
 }
