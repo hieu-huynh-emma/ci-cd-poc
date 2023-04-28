@@ -1,38 +1,76 @@
 {
   "sections": {
-    "double-products": {
-      "type": "double-products",
+    "product-banners": {
+      "type": "product-banners",
+      "blocks": {
+        "ea9c21c5-b22e-476d-86dd-aeac3fc49194": {
+          "type": "product-block",
+          "settings": {
+            "product": "emma-original-mattress",
+            "image": "shopify:\/\/shop_images\/layer1.png",
+            "desc": "Globally-Awarded Memory Foam Mattress for Budget-Conscious Sleepers"
+          }
+        },
+        "b90ba716-de83-4ea2-93db-bd0d0e1dd95e": {
+          "type": "product-block",
+          "settings": {
+            "product": "emma-climax-hybrid",
+            "image": "shopify:\/\/shop_images\/layer2.png",
+            "desc": "Top-Rated Plush Hybrid Mattress for Hot & Heavy Sleepers"
+          }
+        },
+        "f8ce53b1-d776-4545-9e3e-a3ca9a059228": {
+          "type": "product-block",
+          "settings": {
+            "product": "emma-shift",
+            "image": "shopify:\/\/shop_images\/Shift_13-inch_Orange_Titanium.png",
+            "desc": ""
+          }
+        }
+      },
+      "block_order": [
+        "ea9c21c5-b22e-476d-86dd-aeac3fc49194",
+        "b90ba716-de83-4ea2-93db-bd0d0e1dd95e",
+        "f8ce53b1-d776-4545-9e3e-a3ca9a059228"
+      ],
       "settings": {
-        "title": "Mattresses",
-        "background_image_1": "shopify:\/\/shop_images\/1_d77cda92-892f-4860-8cbc-94ac5094db7a.png",
-        "badge_1": "SAVE UP TO $800",
-        "product_title_1": "Emma Original",
-        "product_desc_1": "Globally-Awarded Memory Foam Mattress for Budget-Conscious Sleepers",
-        "product_1": "emma-original-mattress",
-        "btn_1": "Shop now",
-        "background_image_2": "shopify:\/\/shop_images\/2_61be234c-b592-41ba-a9a0-f0f44ab35659.png",
-        "badge_2": "SAVE UP TO $1200",
-        "product_title_2": "Emma CliMax Hybrid",
-        "product_desc_2": "Top-Rated Plush Hybrid Mattress for Hot & Heavy Sleepers",
-        "product_2": "emma-climax-hybrid",
-        "btn_2": "Shop now"
+        "heading": ""
       }
     },
     "mattresses-comparison": {
       "type": "mattresses-comparison",
+      "blocks": {
+        "214c991b-b175-471c-82fe-70b4326a2e27": {
+          "type": "mattress",
+          "settings": {
+            "product": "emma-original-mattress",
+            "badge": "Best Value",
+            "image": "shopify:\/\/shop_images\/layer1.png"
+          }
+        },
+        "fe1d9d67-12c6-46fb-8243-e17c10c5683b": {
+          "type": "mattress",
+          "settings": {
+            "product": "emma-climax-hybrid",
+            "badge": "Best Value",
+            "image": "shopify:\/\/shop_images\/layer2.png"
+          }
+        },
+        "a92bee8a-33f3-44b5-9424-864ef1a5d173": {
+          "type": "mattress",
+          "settings": {
+            "product": "emma-shift",
+            "badge": "Best Value",
+            "image": "shopify:\/\/shop_images\/Shift_13-inch_Orange_Titanium.png"
+          }
+        }
+      },
+      "block_order": [
+        "214c991b-b175-471c-82fe-70b4326a2e27",
+        "fe1d9d67-12c6-46fb-8243-e17c10c5683b",
+        "a92bee8a-33f3-44b5-9424-864ef1a5d173"
+      ],
       "settings": {
-        "title": "Which mattress is right for you?",
-        "product_1": "emma-original-mattress",
-        "badge_text_1": "BEST VALUE",
-        "product_image_1": "shopify:\/\/shop_images\/2_14c7f421-2f11-4deb-a263-57527751ca38.png",
-        "product_title_1": "Emma Original",
-        "product_desc_1": "",
-        "cta_text_1": "Learn more >",
-        "product_2": "emma-climax-hybrid",
-        "badge_text_2": "BEST SELLING",
-        "product_image_2": "shopify:\/\/shop_images\/1_38fff0ac-7205-4bc2-ba00-41bb31702709.png",
-        "product_title_2": "Emma CliMax Hybrid",
-        "product_desc_2": "",
         "cta_text_2": "Learn more >"
       }
     },
@@ -73,7 +111,7 @@
     }
   },
   "order": [
-    "double-products",
+    "product-banners",
     "mattresses-comparison",
     "brand-statistics",
     "contact-us"

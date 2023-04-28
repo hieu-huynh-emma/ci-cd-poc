@@ -1,0 +1,213 @@
+.mattress-comparison-wrapper {
+  position: relative;
+}
+
+.mattresses-comparison-section {
+  padding: 2.5rem 1rem;
+
+  @media screen and (max-width: 769px) {
+    overflow-x: scroll;
+  }
+
+  @media screen and (min-width: 769px) {
+    max-width: 1440px;
+    margin: 0 auto;
+  }
+}
+
+.mattresses-comparison-section h2 {
+  font-family: "Tiempos", Times, serif;
+  font-size: 31px;
+  color: #2e2f3c;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.swipe-left-icon {
+  position: fixed;
+  top: 50%;
+  right: 0;
+  display: none;
+  @media screen and (min-width: 769px) {
+    display: none !important;
+  }
+
+  svg {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+.comparison-table-row {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: center;
+
+  &:not(.column-header) {
+    @media screen and (max-width: 769px) {
+      grid-template-rows: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  &.column-header > :first-child {
+    @media screen and (min-width: 769px) {
+      &:empty {
+        display: block;
+      }
+    }
+  }
+
+  > :first-child {
+    @media screen and (max-width: 769px) {
+      grid-column: 1 / span 3;
+    }
+  }
+
+  @media screen and (max-width: 769px) {
+    min-width: 600px;
+  }
+
+
+  @media screen and (min-width: 769px) {
+    grid-template-columns: 150px repeat(3, minmax(0, 1fr));
+    grid-template-rows: initial;
+  }
+
+  @media screen and (min-width: 1024px) {
+    grid-template-columns: 300px repeat(3, minmax(0, 1fr));
+  }
+
+}
+
+.product-item {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  margin: 0 0.5rem;
+  min-height: 17rem;
+  max-width: 300px;
+  @media screen and (min-width: 769px) {
+    align-items: flex-start;
+  }
+}
+
+.product-item .badge {
+  background: #ff8900;
+  border-radius: 4px;
+  padding: 5px 8px 3px;
+  color: white;
+  font-weight: 700;
+  font-size: 13px;
+  line-height: 20px;
+  display: flex;
+  align-items: center;
+  width: max-content;
+  max-width: 100%;
+  margin-bottom: 1rem;
+  word-break: break-word;
+}
+
+.product-item h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-top: 10px;
+  text-align: center;
+  font-family: "Inter", sans-serif;
+}
+
+.product-item .desc {
+  color: #595959;
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 150%;
+  text-align: center;
+}
+
+.product-item .product-price {
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.product-price .sale-price {
+  font-weight: 400;
+}
+
+.mattresses-comparison-section .product-url-cta {
+  width: max-content;
+  color: #ff8900;
+  background: none;
+  font-size: 12px;
+  font-weight: 600;
+  margin-top: 1rem;
+}
+
+.comparison-table {
+  max-width: 100%;
+  margin-top: 1rem;
+}
+
+.comparison-table li:nth-child(odd) {
+  background-color: #f0f0f5;
+  border-radius: 6px;
+}
+
+.comparison-table li:last-child {
+  background: none;
+}
+
+.comparison-table li {
+  min-height: 75px;
+  padding: 10px;
+}
+
+.comparison-table .criteria-title {
+  font-size: 20px;
+  width: 100%;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.comparison-table div {
+  font-size: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column;
+}
+
+.comparison-table p {
+  text-align: center;
+}
+
+.btn {
+  padding: 13px 30px;
+}
+
+.comparison-table .btn {
+  width: 90%;
+}
+
+@media (min-width: 769px) {
+
+  .product-item h3 {
+    font-size: 24px;
+    font-weight: 600;
+    text-align: left;
+  }
+
+  .product-item .desc,
+  .product-item .product-price {
+    font-size: 14px;
+    text-align: left;
+  }
+
+  .comparison-table .criteria-title {
+    margin-bottom: 0;
+    text-align: start;
+  }
+
+  .comparison-table p {
+    font-size: 20px;
+  }
+}
