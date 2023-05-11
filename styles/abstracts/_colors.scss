@@ -5,6 +5,13 @@ $colorComet: #55576F;
 $colorChambray: #3C4196;
 $colorPizazz: #FF8900;
 $colorJade: #00B67A;
+$colorCultured: #F7F7F9;
+$colorSpunPearl: #B0B1C2;
+$colorAthensGray: #E6E7EC;
+$colorLochinvar: #288E7C;
+$colorScampi: #6469AA;
+$colorLapisBlue: #2C3183;
+$colorSteel: #7F819D;
 
 :root {
   --color-primary: #{$colorPrimary};
@@ -13,5 +20,12 @@ $colorJade: #00B67A;
   --color-comet: #{$colorComet};
   --color-chambray: #{$colorChambray};
   --color-pizazz: #{$colorPizazz};
-  --color-jade: #{$colorJade}
+  --color-jade: #{$colorJade};
+  --color-cultured: #{$colorCultured};
+  --color-spun-pearl: #{$colorSpunPearl};
+  --color-athens-gray: #{$colorAthensGray};
+  --color-lochinvar: #{$colorLochinvar};
+  --color-scampi: #{$colorScampi};
+  --color-lapis-blue: #{$colorLapisBlue};
+  --color-steel: #{$colorSteel};
 }

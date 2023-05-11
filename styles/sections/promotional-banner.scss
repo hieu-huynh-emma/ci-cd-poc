@@ -1,0 +1,33 @@
+#promotional-banner-section {
+
+  .promotional-banner {
+    display: grid;
+    gap: 8px;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 48px;
+    padding: 8px 0;
+
+    @media screen and (min-width: 769px) {
+      gap: 40px;
+      grid-template-columns: repeat(2, minmax(0, auto));
+    }
+  }
+
+  .section-content {
+    display: grid;
+    gap: 8px;
+    grid-template-columns: minmax(0, auto) minmax(0, 1fr);
+    align-items: center;
+  }
+
+  .top-brands {
+    display: grid;
+    gap: 24px;
+    grid-auto-flow: column;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+  }
+}

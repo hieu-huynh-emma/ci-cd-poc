@@ -1,0 +1,185 @@
+{% assign section_title = section.blocks | where: 'type', 'section_title' %}
+{% assign layers_image = section.blocks | where: 'type', 'layers_image' %}
+{% assign layers_info = section.blocks | where: 'type', 'layers_info' %}
+
+{{ 'mattress-layers.css' | asset_url | stylesheet_tag }}
+
+<section id="mattress-layers-section" class="section-container spacing-{{ section.settings.container_spacing }}">
+	<div class="section-chassis page-boundary">
+		{% render 'section-header' %}
+		
+		<div class="section-body">
+			<div class="layers-photo">
+				<img src="{{ layers_image.first.settings.image | image_url: width: 644 }}">
+			</div>
+			
+			<div class="info-wrapper hidden xl:block">
+				<ul class="layer-specifications">
+					{% for item in layers_info %}
+						<li class="layer-info-item">
+							<span class="layer-info-item__number">{{ item.settings.layer_num }}</span>
+							<h4 class="heading-5">{{ item.settings.title }}</h4>
+							<p class="solid">{{ item.settings.desc }}</p>
+						</li>
+					{% endfor %}
+				</ul>
+			</div>
+			
+			<div class="info-wrapper mobile xl:hidden">
+				<div id="mattress-layers-controller">
+					{% for layer in layers_info %}
+						<button>
+							{{ layer.settings.layer_num }}
+						</button>
+					{% endfor %}
+				</div>
+				<div id="mattress-layers" class="layers-info-wrapper splide mobile xl:hidden">
+					<ul class="splide__pagination"></ul>
+					<div class="splide__track">
+						<div class="splide__list">
+							{% for item in layers_info %}
+								<div class="layer-info-item splide__slide">
+									<h4 class="heading-5">{{ item.settings.title }}</h4>
+									<p class="solid">{{ item.settings.desc }}</p>
+								</div>
+							{% endfor %}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	
+	
+	</div>
+</section>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var splide = new Splide('#mattress-layers', {
+      arrows: false,
+    });
+    splide.mount();
+
+    //extra custom pagination
+    const layersController = document.querySelector('#mattress-layers-controller');
+    const listItems = layersController.querySelectorAll('button');
+
+    splide.on('move', (destIndex) => {
+      listItems[destIndex].click();
+    });
+
+    listItems.forEach((item, index) => {
+      item.addEventListener('click', () => {
+        listItems.forEach((item) => {
+          item.classList.remove('active');
+        });
+        item.classList.add('active');
+
+        splide.go(index);
+      });
+    });
+
+    listItems[0].click();
+  });
+</script>
+{% schema %}
+{
+  "name": "Mattress Layers",
+  "blocks": [
+    {
+      "type": "section_title",
+      "name": "Section Title",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        }
+      ]
+    },
+    {
+      "type": "layers_image",
+      "name": "Layers Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        }
+      ]
+    },
+    {
+      "type": "layers_info",
+      "name": "Layer",
+      "settings": [
+        {
+          "type": "number",
+          "id": "layer_num",
+          "label": "Layer Number"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "text",
+          "id": "desc",
+          "label": "Description"
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "id": "heading",
+      "type": "text",
+      "label": "Heading",
+      "default": "Emma Original - Layer by Layer"
+    },
+    {
+      "id": "heading_alignment",
+      "type": "select",
+      "label": "Heading Alignment",
+      "options": [
+        {
+          "value": "start",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "end",
+          "label": "Right"
+        }
+      ],
+      "default": "start"
+    },
+    {
+      "type": "select",
+      "id": "container_spacing",
+      "options": [
+        {
+          "value": "sm",
+          "label": "Small (24px)"
+        },
+        {
+          "value": "md",
+          "label": "Medium (40px)"
+        },
+        {
+          "value": "lg",
+          "label": "Large (60px)"
+        },
+        {
+          "value": "xl",
+          "label": "XL (80px)"
+        }
+      ],
+      "default": "md",
+      "label": "Container Spacing"
+    }
+  ]
+}
+{% endschema %}

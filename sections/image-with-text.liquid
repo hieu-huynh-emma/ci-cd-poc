@@ -1,0 +1,72 @@
+{% assign ctaBtn = section.blocks | where: "type", "cta-button" | first %}
+
+
+<section class="image-with-text section-container">
+	<div class="page-boundary">
+		<div class="two-columns-layout{% if section.settings.inverted %} is-inverted{% endif %}">
+			<div class="media-column">
+				{{ section.settings.image | image_url: width: 1280 | image_tag }}
+			</div>
+			
+			<div class="content-column">
+				<h2 class="heading-2">{{ section.settings.heading }}</h2>
+				<p class="lead-statement">
+					{{ section.settings.content | remove: "<p>" | remove: "</p>" }}
+				</p>
+				
+				{% if ctaBtn != blank %}
+					<a class="btn" href="{{ ctaBtn.settings.url }}">
+						{{ ctaBtn.settings.text }}
+					</a>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+</section>
+
+{% schema %}
+{
+  "name": "Image with Text Section",
+  "blocks": [
+    {
+      "type": "cta-button",
+      "name": "CTA Button",
+      "limit": 1,
+      "settings": [
+        {
+          "id": "url",
+          "type": "url",
+          "label": "Button Url"
+        },
+        {
+          "id": "text",
+          "type": "text",
+          "label": "Button Text"
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "id": "heading",
+      "type": "text",
+      "label": "Heading"
+    },
+    {
+      "id": "content",
+      "type": "richtext",
+      "label": "Content"
+    },
+    {
+      "id": "image",
+      "type": "image_picker",
+      "label": "Section Image"
+    },
+    {
+      "id": "inverted",
+      "type": "checkbox",
+      "label": "Inverted?"
+    }
+  ]
+}
+{% endschema %}

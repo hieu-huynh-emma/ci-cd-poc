@@ -1,0 +1,218 @@
+#mini-comparison-table {
+  display: grid;
+  gap: 15px;
+
+  margin-top: 45px;
+
+  .mini-comparison-table {
+    $table: ".mini-comparison-table";
+    $cell: "#{$table}-cell";
+
+    --rowHeaderWidth: 80px;
+
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, var(--rowHeaderWidth)) repeat(3, minmax(0, 1fr));
+
+    @media screen and (min-width: 768px) {
+      --rowHeaderWidth: 100px;
+    }
+
+    @media screen and (min-width: 1024px) {
+      grid-template-columns: minmax(0,var(--rowHeaderWidth)) minmax(150px, 1fr) repeat(2,minmax(0,1fr));
+    }
+
+    .emma-highlighted {
+      grid-row: 1 / span 100;
+      grid-column: 2;
+      display: flex;
+      justify-content: center;
+
+      width: 100%;
+      margin: -10px 0;
+
+      border-radius: 10px;
+      background: #3c4196;
+
+      box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+
+      @media screen and (min-width: 768px) {
+        margin: -20px 0 0;
+      }
+
+      .badge {
+        grid-column: 2;
+
+        position: absolute;
+        top: -10px;
+
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        padding: 5px 8px;
+
+        color: #FFFFFF;
+        background: #FF8900;
+        border-radius: 20px;
+
+        font-weight: 700;
+        font-size: 13px;
+
+        transform: translateY(-50%);
+
+        @media screen and (min-width: 768px) {
+          top: -20px;
+        }
+      }
+
+    }
+
+    .star-rating {
+      grid-column: 2;
+      display: grid;
+      gap: 4px;
+      align-items: center;
+      justify-content: center;
+
+      padding: 0 0 10px 0;
+      @media screen and (min-width: 768px) {
+        padding: 0 0 20px 0;
+      }
+
+      p {
+        font-weight: 400;
+        font-size: 10px;
+        line-height: 20px;
+        text-align: center;
+        @media screen and (min-width: 768px) {
+          font-size: 14px;
+        }
+      }
+
+      .star-ratings {
+        justify-content: center;
+      }
+    }
+
+    #{$cell} {
+      $this: &;
+      $borderVal: 1px solid #E1E1F0;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      min-height: 44px;
+      padding: 5px;
+
+
+      text-align: center;
+
+      font-family: 'Inter';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 125%;
+
+      @media screen and (min-width: 768px) {
+        padding: 10px;
+
+        font-size: 14px;
+      }
+
+      &:not(#{$cell}--highlight) {
+        border: {
+          top: $borderVal;
+          right: $borderVal;
+        }
+      }
+
+
+      &.row-header {
+        grid-column: 1;
+
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+
+        border-left: $borderVal;
+
+        text-align: left;
+
+        &.last-row {
+          border-bottom-left-radius: 6px;
+        }
+
+        &.grid-row-2 {
+          border-top-left-radius: 6px;
+        }
+      }
+
+      &.column-header {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 50px;
+
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 125%;
+
+        &.last-col {
+          border-top-right-radius: 6px;
+        }
+      }
+
+      &.last-row {
+        font-weight: 600;
+
+        &:not(#{$cell}--highlight) {
+          border-bottom: $borderVal;
+        }
+      }
+
+      &.last-col.last-row {
+        border-bottom-right-radius: 6px;
+      }
+
+      &--highlight {
+        grid-column: 2;
+
+        display: grid;
+        gap: 4px;
+        grid-auto-flow: column;
+        align-items: center;
+        margin: 0 10px;
+        border-bottom: none;
+
+        color: #ffffff;
+
+        @media screen and (min-width: 768px) {
+
+          gap: 8px;
+        }
+      }
+
+      .boolean-icon {
+        width: 20px;
+        @media screen and (min-width: 768px) {
+          width: 30px;
+        }
+      }
+    }
+  }
+
+  .footer-note {
+    color: #55576F;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 150%;
+
+    text-align: center;
+  }
+}

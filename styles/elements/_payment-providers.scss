@@ -1,0 +1,40 @@
+@import "../abstracts/colors";
+
+.payment-providers {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: minmax(0, 1fr);
+  width: 100%;
+
+  &__listing {
+    display: grid;
+    gap: 8px;
+    grid-template-columns: repeat(auto-fit, minmax(0, 42px));
+    align-items: center;
+    justify-items: center;
+    width: 100%;
+  }
+
+  .payment-provider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 42px;
+    aspect-ratio: 32 / 22;
+
+    padding: 3px;
+
+    border-radius: 4px;
+    background-color: #fff;
+    border: 1px solid $colorAthensGray;
+
+    img {
+      height: 100%;
+    }
+
+    &--borderless {
+      border: none
+    }
+  }
+}

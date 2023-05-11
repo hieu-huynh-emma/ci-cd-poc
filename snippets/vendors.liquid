@@ -15,19 +15,7 @@
 <link rel="preload" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.0.1/dist/css/splide.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <link rel="preload" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.0.1/dist/css/splide-core.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <link rel="preload" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.0.1/dist/css/themes/splide-default.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-
-{% if template.name != "index"%}
-  {% unless template contains 'pf' %}
-    <script defer src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.0.1/dist/js/splide.min.js"></script>
-  {% endunless %}
-{% endif %}
-
-{% case template %}
-  {% when 'page.competitor-comparison' %}
-    <script defer src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.0.1/dist/js/splide.min.js"></script>
-  {% when 'index' %}
-    <script defer src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.0.1/dist/js/splide.min.js"></script>
-{% endcase %}
+<script defer src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.0.1/dist/js/splide.min.js"></script>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>

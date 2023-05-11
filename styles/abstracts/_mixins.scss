@@ -1,14 +1,24 @@
 @mixin page-boundary {
-  margin: 0 1rem;
-  @media screen and (min-width: 768px) {
-    margin: 0 2rem;
+
+  height: 100%;
+
+  padding: 0 12px;
+
+  @media screen and (min-width: 769px) {
+
+    padding: 0 20px;
   }
 
-  @media (min-width: 1024px) {
-    margin: 0 4rem;
+  @media screen and (min-width: 1024px) {
+    padding: 0 40px;
   }
-  @media (min-width: 1200px) {
-    margin: 0 9rem;
+  @media screen and (min-width: 1200px) {
+    padding: 0 64px;
   }
 
+  @media screen and (min-width: 1440px) {
+    max-width: 1440px;
+
+    margin: 0 auto;
+  }
 }

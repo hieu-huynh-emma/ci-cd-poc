@@ -582,7 +582,7 @@
 
           {%- when 'variant_picker' -%}
             <div class="emma-variant-quantity {% if product.first_available_variant.title == "Default Title" %}emma-variant-quantity--expand{% else %}emma-variant-quantity--normal{% endif %}">
-              <variant-selects class="{% if product.first_available_variant.title == "Default Title" %}hidden{% else %}grid{% endif %} emma-product__variant" data-section="{{ section.id }}"
+              <old-variant-selects class="{% if product.first_available_variant.title == "Default Title" %}hidden{% else %}grid{% endif %} emma-product__variant" data-section="{{ section.id }}"
                                data-url="{{ product.url }}" {{ block.shopify_attributes }}>
                 {%- for option in product.options_with_values -%}
                   <div class="product-form__input product-form__input--dropdown">
@@ -607,7 +607,7 @@
                 <script type="application/json">
                     {{ product.variants | json }}
                   </script>
-              </variant-selects>
+              </old-variant-selects>
 
               <div class="product-form__input product-form__quantity emma-product__quantity" {{ block.shopify_attributes }}>
                 <label class="form__label" for="Quantity-{{ section.id }}">
@@ -1117,7 +1117,7 @@ customElements.define('product-modal', ProductModal);
 
     const hiddenInput = document.querySelector('# {{ product_form_id }}input[name="id"]');
     const noScriptInputWrapper = document.createElement('div');
-    const variantSwitcher = document.querySelector('variant-radios[data-section=" {{ section.id }}"]') || document.querySelector('variant-selects[data-section=" {{ section.id }}"]');
+    const variantSwitcher = document.querySelector('variant-radios[data-section=" {{ section.id }}"]') || document.querySelector('old-variant-selects[data-section=" {{ section.id }}"]');
     noScriptInputWrapper.innerHTML = document.querySelector('.product-form__noscript-wrapper- {{ section.id }}').textContent;
     variantSwitcher.outerHTML = noScriptInputWrapper.outerHTML;
 

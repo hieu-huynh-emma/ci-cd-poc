@@ -1,0 +1,70 @@
+.splide {
+  max-width: 100%;
+  overflow: hidden;
+}
+.splide__track {
+  z-index: 1;
+  padding: 0 0 20px;
+}
+.splide__arrows {
+  z-index: 2;
+}
+.splide__arrow {
+  z-index: 3;
+  width: 30px;
+  height: 40px;
+  background: #55576F;
+  opacity: 1;
+}
+@media screen and (min-width: 768px) {
+  .splide__arrow {
+    width: 40px;
+  }
+}
+.splide__arrow--prev {
+  left: 0;
+  border-radius: 0 20px 20px 0;
+}
+@media screen and (min-width: 768px) {
+  .splide__arrow--prev {
+    left: 2rem;
+    border-radius: 100%;
+  }
+}
+.splide__arrow--next {
+  right: 0;
+  border-radius: 20px 0 0 20px;
+}
+@media screen and (min-width: 768px) {
+  .splide__arrow--next {
+    right: 2rem;
+    border-radius: 100%;
+  }
+}
+.splide__arrow svg {
+  fill: white;
+  width: auto;
+  height: 40%;
+}
+.splide__pagination {
+  bottom: 0;
+  display: grid;
+  gap: 8px;
+  grid-template-columns: repeat(auto-fit, minmax(8px, auto));
+  justify-content: center;
+  padding: 0;
+}
+.splide__pagination__page {
+  --opacity: 0.5;
+  width: 12px;
+  height: 12px;
+  margin: 0;
+  padding: 0;
+  background-color: rgba(46, 47, 60, var(--opacity)) !important;
+  opacity: 1;
+  transition: all 0.2s linear;
+}
+.splide__pagination__page.is-active {
+  --opacity: 0.75;
+  transform: none;
+}

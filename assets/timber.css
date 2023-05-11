@@ -943,32 +943,6 @@ label.error {
   max-width: 300px
 }
 
-.section-header {
-  margin-bottom: 30px
-}
-
-.section-header .section-header__title {
-  letter-spacing: 0
-}
-
-@media screen and (min-width: 591px) {
-  .section-header {
-    margin-bottom: 50px
-  }
-}
-
-@media screen and (min-width: 769px) {
-  .section-header {
-    display: table;
-    table-layout: fixed;
-    width: 100%
-  }
-
-  .section-header__title {
-    margin-bottom: 12px
-  }
-}
-
 .product-single {
   text-align: center
 }

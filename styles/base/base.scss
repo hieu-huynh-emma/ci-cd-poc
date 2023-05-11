@@ -29,6 +29,7 @@ body {
   font-style: var(--font-body-style);
   font-weight: var(--font-body-weight);
   color: #2E2F3C;
+  overflow-x: hidden;
 }
 
 .dummy-chat-button-iframe {
@@ -46,4 +47,28 @@ body {
   height: 100%;
   width: 100%;
   // position: fixed; remove due to CA has sticky navigation bar
+}
+
+.shopify-richtext {
+  p, ul, li {
+    font-size: 14px;
+  }
+  p {
+    color: $colorCharade;
+    white-space: pre-wrap;
+  }
+
+  ul {
+    margin: 8px 0 8px 25px;
+
+    list-style: initial;
+  }
+
+  strong {
+    font-weight: 600;
+  }
+}
+
+.no-js:not(html) {
+  display: none;
 }

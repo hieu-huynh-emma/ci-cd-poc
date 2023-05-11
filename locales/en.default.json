@@ -359,6 +359,7 @@
         "increase": "Increase quantity for {{ product }}",
         "decrease": "Decrease quantity for {{ product }}"
       },
+      "quantity_minimum_message": "Quantity must be 1 or more",
       "on_sale": "Sale",
       "sold_out": "Sold Out",
       "sold_out_html": "Sold<br \/> Out",
@@ -370,7 +371,10 @@
       "slide_label": "Slide {{ slide_number }} of {{ slide_max }}.",
       "gallery_thumbnail_alt": "Load image into Gallery viewer, {{ imageAlt }}",
       "video_thumbnail_alt": "Load and play video in Gallery viewer, {{ imageAlt }}",
-      "model_thumbnail_alt": "Load 3D model into Gallery viewer, {{ imageAlt }}"
+      "model_thumbnail_alt": "Load 3D model into Gallery viewer, {{ imageAlt }}",
+      "labels" : {
+        "quantity": "Quantity"
+      }
     },
     "zoom": {
       "next": "Next (Right arrow key)",

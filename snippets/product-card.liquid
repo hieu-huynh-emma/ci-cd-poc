@@ -1,0 +1,31 @@
+<div class="product-card">
+	<div class="product-card-media">
+		{% assign blockImg = blockImg | image_url: width: 450 %}
+		{% assign coverImg = product.featured_image | image_url: width: 450 %}
+		
+		<img
+			src="{{ blockImg | default: product.metafields.accentuate.featured_image[0].src | default: coverImg }}"
+			alt="" class="product__image"
+		>
+	</div>
+	
+	{% if product.metafields.accentuate.upto_discount %}
+		<div
+			class="product-card__badge"
+		>{{ product.metafields.accentuate.upto_discount | prepend: "- " | append: " %" }}</div>
+	{% endif %}
+	
+	<div class="product-card-metadata">
+		<h3 class="product__name font-inter">{{ product.title }}</h3>
+		
+		<p class="product__short-desc">{{ product.metafields.accentuate.short_description }}</p>
+		
+		<p class="product__price">
+			<span class="font-bold">{{ product.price | money }}</span>
+			
+			{% if product.compare_at_price > product.price %}
+				<del class="product__original-price">{{ product.compare_at_price | money }}</del>
+			{% endif %}
+		</p>
+	</div>
+</div>

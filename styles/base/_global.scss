@@ -1,9 +1,27 @@
+@import "../abstracts/index";
+
+.page-boundary {
+  @include page-boundary;
+
+  &--full {
+    @include page-boundary;
+    width: 100%;
+  }
+}
+
 .is-disabled {
   &[role=button], &button {
     cursor: not-allowed;
   }
 
   cursor: not-allowed;
+}
+
+.separator {
+  width: 100%;
+  height: 1px;
+
+  background-color: rgba(46, 47, 60, 0.3);
 }
 
 @mixin createGridOrder($min, $max) {

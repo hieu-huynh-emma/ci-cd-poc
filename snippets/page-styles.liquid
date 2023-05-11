@@ -8,11 +8,26 @@
 
 {{ 'base.css' | asset_url | stylesheet_tag }}
 
+{% comment %}DESIGN MIGRATE{% endcomment %}
 {% case template %}
-  {% when 'page.comparison' %}
-    {{ 'comparison-page.css' | asset_url | stylesheet_tag }}
-  {% when 'page.competitor-comparison' %}
-    {{ 'competitor-comparison.css' | asset_url | stylesheet_tag }}
-  {% else %}
-    {{ 'homepage.css' | asset_url | stylesheet_tag }}
+	{% when 'index', 'product.emma-original', 'product.emma-climax-hybrid' %}
+		{{ 'new-splide.css' | asset_url | stylesheet_tag }}
+		{{ 'new-heading.css' | asset_url | stylesheet_tag }}
+	{% else %}
+		{{ 'old-splide.css' | asset_url | stylesheet_tag }}
+		{{ 'old-heading.css' | asset_url | stylesheet_tag }}
 {% endcase %}
+
+{% liquid
+	assign pageStylesheet = ""
+	case template
+		when 'page.comparison'
+			assign pageStylesheet = 'comparison-page.css'
+		when 'page.competitor-comparison'
+			assign pageStylesheet = 'competitor-comparison.css'
+		when 'product.emma-original', 'product.emma-climax-hybrid'
+			assign pageStylesheet = 'product-detail.css'
+	endcase
+%}
+
+<link rel="stylesheet" href="{{ pageStylesheet | asset_url }}">

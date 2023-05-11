@@ -1,49 +1,40 @@
+{{ 'mattress-firmness.css' | asset_url | stylesheet_tag }}
+
 <style>
-    #mattress-firmness-section {
-        background: white;
-    }
-
-    #mattress-firmness-section .firmness-scale {
-        background: linear-gradient(90deg, #e1e1f0 0%, #afb4d2 35.75%, #6469aa 70.67%, #3e4093 100%);
-        display: block !important; // override hidden empty tag
-    }
-
-    #mattress-firmness-section .firmness-scale-indicator {
-        background: linear-gradient(125deg, #fff6ec 14.1%, #ffdeb7 85.91%);
-        top: 50%;
-
-    {% if section.settings.firmness_point == 10 %}
-        right: 10%;
-        transform: translate(50%, -50%);
-    {% elsif section.settings.firmness_point < 5  %}
-        left: {{ section.settings.firmness_point }}0%;
-        transform: translate(-50%, -50%);
-    {% else %}
-        right: {{ 10 | minus: section.settings.firmness_point }}0%;
-        transform: translate(50%, -50%);
-    {% endif %}
-    }
+  #mattress-firmness-section {
+    --scale-point: {{ section.settings.firmness_point }}
+  }
 </style>
 
-<section id="mattress-firmness-section">
-  <div class="mattress-firmness-wrapper mx-auto max-w-6xl py-10 px-4">
-    <p class="md:mb-2 text-center text-base font-semibold text-[#595959] text-[14px]">{{ section.settings.subtitle | remove: "<p>" | remove: "</p>" }}</p>
-    <h2 class="mb-14 text-center text-[26px] md:mb-24">{{ section.settings.title | remove: "<p>" | remove: "</p>" }}</h2>
-    <div class="mb-14 md:mb-24">
-      <div class="flex items-center gap-2 md:gap-4">
-        <p class="text-[14px] text-[#AFB4D2] md:text-[16px]">SOFT</p>
-        <div class="relative flex-1">
-          <p class="absolute top-6 left-0 -left-4 text-[14px] text-[#AFB4D2] md:top-12 md:text-[16px]">1</p>
-          <div class="firmness-scale h-4 w-full rounded-2xl md:h-6"></div>
-          <div class="firmness-scale-indicator absolute z-10 h-16 w-16 rounded-full md:h-28 md:w-28">
-            <div class="flex h-full w-full items-center justify-center"><p class="font-inter text-center text-[35px] text-[#3E4093] md:text-[55px]">{{ section.settings.firmness_point }}</p></div>
+<section id="mattress-firmness-section" class="section-container spacing-{{ section.settings.container_spacing }}">
+  <div class="mattress-firmness-wrapper mx-auto max-w-6xl px-4 overflow-hidden">
+    <p class="font-inter md:mb-2 text-center text-base font-semibold text-[#595959] text-[14px] text-pizazz">{{ section.settings.subtitle | remove: "<p>" | remove: "</p>" }}</p>
+    <h2 class="heading-2 text-center">{{ section.settings.title | remove: "<p>" | remove: "</p>" }}</h2>
+    <div class="scale-container">
+      
+      <div class="metric-labels">
+        <p class="metric-label text-scampi">SOFT</p>
+        
+        <p class="metric-label text-scampi">FIRM</p>
+      </div>
+      
+      <div class="scale-pillar">
+        <div class="scale-beam"></div>
+        <div class="scale-apex absolute z-10 w-full">
+          <div class="scale-pointer">
+            <p class="firmness-point font-tiempos">{{ section.settings.firmness_point }}</p>
           </div>
-          <p class="absolute top-6 right-0 -right-4 text-[14px] text-[#3E4093] md:top-12 md:text-[16px]">10</p>
         </div>
-        <p class="text-[14px] text-[#3E4093] md:text-[16px]">FIRM</p>
+      </div>
+      
+      <div class="metric-labels">
+        <p class="metric-label text-lapis-blue">1</p>
+        
+        <p class="metric-label text-lapis-blue">10</p>
       </div>
     </div>
-    <p class="text-center text-[#595959] px-2 md:px-24">{{ section.settings.description | remove: "<p>" | remove: "</p>" }}</p>
+    
+    <p class="solid text-center text-comet px-2 md:px-24" >{{ section.settings.description | remove: "<p>" | remove: "</p>" }}</p>
   </div>
 </section>
 
@@ -55,19 +46,18 @@
       "id": "title",
       "type": "text",
       "label": "Title",
-      "default": "<p>The Firmness Scale<\/p>"
+      "default": "Scale How does the Emma Original feel?"
     },
     {
       "id": "subtitle",
       "type": "text",
       "label": "Subtitle",
-      "default": "<p>LOREM IPSUM DOLOR<\/p>"
+      "default": "Mattress Firmness Scale"
     },
     {
       "id": "description",
       "type": "richtext",
-      "label": "Description",
-      "default": "<p>1-10 scale (Soft to firm) and we’re around 6.5 on the scale (medium-firm). This means that you’ll feel the cloudlike comfort of modern memory foam while still have just the right amount of support to protect your back and hips as you sleep soundly through the night.<\/p>"
+      "label": "Description"
     },
     {
       "type": "range",
@@ -77,6 +67,26 @@
       "step": 1,
       "label": "Firmness Point",
       "default": 5
+    },
+    {
+      "type": "select",
+      "id": "container_spacing",
+      "options": [
+        {
+          "value": "md",
+          "label": "Medium (40px)"
+        },
+        {
+          "value": "lg",
+          "label": "Large (60px)"
+        },
+        {
+          "value": "xl",
+          "label": "XL (80px)"
+        }
+      ],
+      "default": "md",
+      "label": "Container Spacing"
     }
   ]
 }

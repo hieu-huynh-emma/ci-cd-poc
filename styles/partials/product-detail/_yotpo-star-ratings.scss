@@ -1,0 +1,44 @@
+
+.yotpo-bottomline {
+  float: none;
+
+  display: grid;
+  gap: 4px;
+  align-items: center;
+
+
+  .yotpo-stars {
+    display: grid;
+    gap: 4px;
+    grid-auto-flow: column;
+
+    &:after {
+      content: none !important;
+    }
+  }
+
+  .yotpo-review-source {
+    display: grid;
+    gap: 4px;
+    grid-template-columns: minmax(0, auto) minmax(0, 1fr);
+    align-items: center;
+
+    &__text {
+      color: $colorSteel;
+
+      font-style: normal;
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 16px;
+    }
+  }
+
+  .yotpo-rating-score {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 150%;
+  }
+}
+
+

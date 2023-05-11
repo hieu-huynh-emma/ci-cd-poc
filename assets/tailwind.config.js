@@ -2,6 +2,7 @@ tailwind.config = {
   theme: {
     extend: {
       colors: {
+        primary: '#FFA235',
         charade: '#2E2F3C',
         chambray: '#3C4196',
         serenade: '#FFF6EC',
@@ -22,6 +23,15 @@ tailwind.config = {
       'acuminpro': ["acumin-pro"],
       'tiempos': ["Tiempos"],
       'inter': ["Inter"]
+    },
+    fontSize: {
+      xs: "12px",
+      sm: "14px",
+      base: "16px",
+      md: "20px",
+      lg: ['24px', '125%'],
+      xl: ['32px'],
+      xxl: ['40px']
     }
   },
 }

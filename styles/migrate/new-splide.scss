@@ -1,0 +1,91 @@
+@import "../abstracts/colors";
+
+.splide {
+  max-width: 100%;
+
+  @media screen and (max-width: 769px) {
+    overflow: hidden;
+  }
+
+  &__track {
+    z-index: 1;
+
+    padding: 0 0 calc(24px + 8px);
+    @media screen and (min-width: 769px) {
+      padding: 0 0 calc(40px + 8px);
+    }
+  }
+
+  &__arrows {
+    z-index: 2;
+  }
+
+  &__arrow {
+    z-index: 3;
+
+    background: $colorCharade;
+    opacity: 1;
+
+    @media screen and (min-width: 768px) {
+      width: 56px;
+      height: 56px;
+    }
+
+    &--prev {
+      left: 0;
+
+      border-radius: 0 20px 20px 0;
+      @media screen and (min-width: 768px) {
+        border-radius: 100%;
+        transform: translateX(-50%) translateY(-50%);
+      }
+    }
+
+    &--next {
+      right: 0;
+      border-radius: 20px 0 0 20px;
+
+      @media screen and (min-width: 768px) {
+        border-radius: 100%;
+
+        transform: translateX(50%) translateY(-50%);
+      }
+    }
+
+    svg {
+      fill: white;
+
+      width: auto;
+      height: 40%;
+    }
+  }
+
+  &__pagination {
+    bottom: 0;
+
+    display: grid;
+    gap: 8px;
+    grid-template-columns: repeat(auto-fit, minmax(8px, auto));
+    justify-content: center;
+    padding: 0;
+  }
+
+  &__pagination__page {
+    width: 8px;
+    height: 8px;
+    margin: 0;
+    padding: 0;
+    background-color: $colorSpunPearl !important;
+    opacity: 1;
+    transition: all 0.2s linear;
+  }
+
+  &__pagination__page.is-active {
+    width: 26px;
+
+    border-radius: 8px;
+    background-color: $colorPizazz !important;
+
+    transform: none;
+  }
+}

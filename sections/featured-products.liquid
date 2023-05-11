@@ -1,48 +1,53 @@
 {% assign productBlocks = section.blocks | where: "type", "product-block" %}
 
-<section id="featured-products-section">
-  <div class="wrapper">
-    <div class="headings">
-      <h2 class="heading-2 text-center text-charade">{{ section.settings.title | remove: "<p>" | remove: "</p>" }}</h2>
-      <p class="subheading text-comet">{{ section.settings.subtitle }}</p>
+{{ 'featured-products.css' | asset_url | stylesheet_tag }}
+
+<section id="featured-products-section" class="section-container md:lg">
+  <div class="section-chassis page-boundary">
+    <div class="section-header">
+      <h2 class="text-xl md:text-xxl text-center text-charade font-inter font-semibold">
+        <span class="hidden md:inline">{{ section.settings.title }}</span>
+        <span class="md:hidden">{{ section.settings.mobile_title }}</span>
+      </h2>
+      <p class="text-comet text-center solid">{{ section.settings.subtitle }}</p>
     </div>
 
-    <div class="customer-reviews">
+    <div class="product-display">
       {%- for block in productBlocks -%}
         {% assign product = block.settings.product %}
 
         <div class="card">
-          <div class="top-section">
-            <p class="card__badge">
-              {{ block.settings.badge }}
-            </p>
-            <div class="card__media w-full">
-              <img
-                src="{{ block.settings.image | img_url: 'grande' }}" width="100%" height="auto"
-                class="h-full" loading="lazy"
-              />
-            </div>
+          <p class="card__badge">
+            {{ block.settings.badge }}
+          </p>
 
-            <h3 class="text-[24px] text-charade font-normal text-center self-center">{{ product.title }}</h3>
-            <p class="text-charade mb-2">{{ block.settings.desc | remove: "<p>" | remove: "</p>" }}</p>
-            <div class="w-full">
+          <div class="card-media">
+            <img
+              src="{{ block.settings.image | image_url: width: 800 }}" width="350" height="179"
+              loading="lazy"
+            />
+          </div>
+          <div class="card-body">
+            <h3 class="text-[20px] font-inter font-semibold text-center">{{ product.title }}</h3>
+            <div class="shopify-richtext w-full">{{ block.settings.desc }}</div>
+            <div class="w-full mt-3">
               <div class="mattress-comparison">
                 <div class="mattress-comparison__item">
-                  <p>Comfort</p>
+                  <p class="mb-1">Comfort</p>
                   <div class="mattress-comparison__bar mattress-comparison__bar--outer">
                     <div class="mattress-comparison__bar mattress-comparison__bar--inner fill-{{ block.settings.comfort_meter }}"></div>
                   </div>
                 </div>
 
                 <div class="mattress-comparison__item">
-                  <p>Cooling</p>
+                  <p class="mb-1">Cooling</p>
                   <div class="mattress-comparison__bar mattress-comparison__bar--outer">
                     <div class="mattress-comparison__bar mattress-comparison__bar--inner fill-{{ block.settings.cooling_meter }}"></div>
                   </div>
                 </div>
 
                 <div class="mattress-comparison__item">
-                  <p>Motion Isolation</p>
+                  <p class="mb-1">Motion Isolation</p>
                   <div class="mattress-comparison__bar mattress-comparison__bar--outer">
                     <div class="mattress-comparison__bar mattress-comparison__bar--inner fill-{{ block.settings.motion_isolation_meter }}"></div>
                   </div>
@@ -52,7 +57,7 @@
           </div>
 
 
-          <div class="footer-section">
+          <div class="card-footer">
             <div class="starting-at">
               <span class="text-[14px] font-normal">starting at</span>
               <div class="flex items-center">
@@ -139,9 +144,13 @@
   "settings": [
     {
       "id": "title",
-      "type": "richtext",
-      "label": "Title",
-      "default": "<p>Hit snooze! Sleep is about to get <i>wayyy better.</i></p>"
+      "type": "text",
+      "label": "Title"
+    },
+    {
+      "id": "mobile_title",
+      "type": "text",
+      "label": "Mobile Title"
     },
     {
       "id": "subtitle",

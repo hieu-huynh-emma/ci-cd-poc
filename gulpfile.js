@@ -3,6 +3,8 @@ const sass = require('gulp-sass')(require('node-sass'))
 const flatten = require('gulp-flatten');
 const purgecss = require('gulp-purgecss')
 const postcss = require('gulp-postcss')
+const cleanCSS = require('gulp-clean-css');
+
 const cssnano = require('cssnano')
 const cssnanoAdvanced = require('cssnano-preset-advanced')
 
@@ -19,6 +21,7 @@ gulp.task('sass-uncompressed', function () {
   return gulp.src(sources)
     .pipe(sass({}).on('error', sass.logError))
     .pipe(flatten())
+    .pipe(cleanCSS({ level: 2 }))
     .pipe(gulp.dest('assets'))
 });
 

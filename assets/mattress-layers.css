@@ -1,0 +1,92 @@
+@media screen and (max-width: 1280px) {
+  #mattress-layers-section .section-header {
+    justify-content: center;
+    text-align: center;
+  }
+}
+@media screen and (max-width: 1280px) {
+  #mattress-layers-section .section-chassis {
+    gap: 0;
+  }
+}
+#mattress-layers-section .section-body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+}
+@media screen and (min-width: 1280px) {
+  #mattress-layers-section .section-body {
+    gap: 32px;
+    grid-template-columns: minmax(640px, 0.5fr) minmax(0, 1fr);
+  }
+}
+#mattress-layers-section .layers-photo img {
+  width: 100%;
+}
+@media screen and (min-width: 1280px) {
+  #mattress-layers-section .info-wrapper {
+    height: 100%;
+  }
+}
+#mattress-layers-section .info-wrapper .splide__pagination {
+  margin-bottom: 1.5rem;
+}
+#mattress-layers-section .info-wrapper #mattress-layers-controller {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+@media screen and (min-width: 1280px) {
+  #mattress-layers-section .info-wrapper #mattress-layers-controller {
+    display: none;
+  }
+}
+#mattress-layers-section .info-wrapper #mattress-layers-controller button {
+  background: #efeff3;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0px;
+  border-radius: 32px;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 20px;
+  margin-right: 10px;
+}
+#mattress-layers-section .info-wrapper #mattress-layers-controller button:last-child {
+  margin-right: 0;
+}
+#mattress-layers-section .info-wrapper #mattress-layers-controller button.active {
+  background: #ff8900;
+  color: white;
+  border: none;
+}
+#mattress-layers-section .layer-specifications {
+  display: grid;
+  gap: 16px;
+}
+@media screen and (min-width: 1280px) {
+  #mattress-layers-section .layer-specifications .layer-info-item {
+    display: grid;
+    gap: 4px 12px;
+    grid-template-rows: repeat(2, minmax(0, auto));
+    grid-template-columns: minmax(0, auto) minmax(0, 1fr);
+  }
+}
+@media screen and (min-width: 1280px) {
+  #mattress-layers-section .layer-specifications .layer-info-item__number {
+    grid-row: 1/span 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border: 1px solid #2e2f3c;
+    border-radius: 100%;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 150%;
+  }
+}
