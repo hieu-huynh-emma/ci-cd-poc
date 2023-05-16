@@ -81,8 +81,6 @@ class CartUpsell extends CustomElement {
 
     const { freeGiftId, gwpTargetProductIds } = cartItems.props
 
-    debugger
-
     const isGWPTargetProduct = freeGiftId && gwpTargetProductIds.includes(+productId)
 
     await cartItems.addToCart(variantId, 1, isGWPTargetProduct ? { hasGWP: true } : {});

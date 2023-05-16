@@ -75,7 +75,7 @@
     {% if available_upsell_products == '' %}
       {% assign available_upsell_products = handle %}
     {% else %}
-      {% assign available_upsell_products = handle | append: '|' | append: handle %}
+      {% assign available_upsell_products = available_upsell_products | append: '|' | append: handle %}
     {% endif %}
   {% endif %}
 {% endfor %}
