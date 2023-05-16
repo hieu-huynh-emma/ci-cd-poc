@@ -596,6 +596,12 @@
         "horizontal_layout_on_mobile": true,
         "solid_typo": false
       }
+    },
+    "contact-us": {
+      "type": "contact-us",
+      "settings": {
+        "custom_title": "Need help deciding?"
+      }
     }
   },
   "order": [
@@ -609,6 +615,7 @@
     "customer-sentiment",
     "social-proof",
     "product-catalog",
-    "special-services"
+    "special-services",
+    "contact-us"
   ]
 }
