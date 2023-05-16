@@ -1,5 +1,6 @@
 {% assign upsell_count = 0 %}
 {% assign upsell_products = '' %}
+{% assign available_upsell_products = '' %}
 {% assign valid_upsell_product_handles = '' %}
 {% assign cart_product_handles = '' %}
 {% assign upsell_priority = 'emma-climax-hybrid|emma-original-mattress|emma-mattress-protector|emma-foam-pillow|emma-bed-frame|emma-topper' | split: '|' %}
@@ -68,14 +69,26 @@
 {% endif %}
 {% assign upsell_products = upsell_products | split: '|' %}
 
-<cart-upsell id="CartDrawerUpsell" class="{% if upsell_products.size == 1 %}is-single{% endif %}">
-  {% if upsell_products.size > 0 %}
-    <p class="cart-upsell__title{% if upsell_products.size == 1 %} is-single{% endif %}">
+{% for handle in upsell_products %}
+  {% assign product = all_products[handle] %}
+  {% if product.first_available_variant.available %}
+    {% if available_upsell_products == '' %}
+      {% assign available_upsell_products = handle %}
+    {% else %}
+      {% assign available_upsell_products = handle | append: '|' | append: handle %}
+    {% endif %}
+  {% endif %}
+{% endfor %}
+{% assign available_upsell_products = available_upsell_products | split: '|' %}
+
+<cart-upsell id="CartDrawerUpsell" class="{% if available_upsell_products.size == 1 %}is-single{% endif %}">
+  {% if available_upsell_products.size > 0 %}
+    <p class="cart-upsell__title{% if available_upsell_products.size == 1 %} is-single{% endif %}">
       {{ section.settings.title | default: 'cart.drawer_upsell.others_also_bought' | t }}
     </p>
 
-    {% if upsell_products.size == 1 %}
-      {% assign prod = all_products[upsell_products[0]] %}
+    {% if available_upsell_products.size == 1 %}
+      {% assign prod = all_products[available_upsell_products[0]] %}
 
       {% if prod.selected_or_first_available_variant.available %}
         <cart-upsell-item class="upsell-item upsell-item--single" :productId="{{prod.id}}">
@@ -124,8 +137,8 @@
       <div class="swiper">
         {% render 'swiper-components' %}
         {% assign count = 0 %}
-        <div class="swiper-wrapper{% if upsell_products.size == 1 %} is-single{% endif %}">
-          {% for product_handle in upsell_products %}
+        <div class="swiper-wrapper{% if available_upsell_products.size == 1 %} is-single{% endif %}">
+          {% for product_handle in available_upsell_products %}
             {% if count > 3 %}
               {% break %}
             {% endif %}
@@ -133,7 +146,7 @@
 
             {% if prod.selected_or_first_available_variant.available %}
               {% assign count = count | plus: 1 %}
-              <li class="swiper-slide{% if upsell_products.size == 1 %} is-single{% endif %}">
+              <li class="swiper-slide{% if available_upsell_products.size == 1 %} is-single{% endif %}">
                 <cart-upsell-item class="upsell-item" :productId="{{prod.id}}">
                   <div class="upsell-item__media">
                     {% assign img = prod.featured_image %}
