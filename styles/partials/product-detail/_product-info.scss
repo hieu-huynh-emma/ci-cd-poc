@@ -20,6 +20,7 @@
     .left-section {
 
       &.mobile {
+        position: relative;
         display: flex;
         @media screen and (min-width: 769px) {
           display: none;
@@ -228,6 +229,10 @@
   }
 
   .product-media {
+    position: relative;
+  }
+
+  .media-masonry {
     display: none;
 
     @media screen and (min-width: 769px) {
@@ -568,5 +573,22 @@
     height: 100%;
 
     background-color: white;
+  }
+}
+
+#affiliate-badge {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 5;
+  width: 60px;
+  height: 60px;
+
+  margin: 12px;
+  border-radius: 100%;
+
+  @media screen and (min-width: 769px) {
+    width: 108px;
+    height: 108px;
   }
 }

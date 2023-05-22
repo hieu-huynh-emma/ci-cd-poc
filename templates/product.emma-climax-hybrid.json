@@ -1,5 +1,51 @@
 {
   "sections": {
+    "affiliate-banners": {
+      "type": "affiliate-banners",
+      "blocks": {
+        "f5f456c7-b29a-4f74-826f-648e09f5b1cd": {
+          "type": "affiliate",
+          "settings": {
+            "heading": "sleepopolis",
+            "logo": "shopify:\/\/shop_images\/Sleepopolis_Logo_Horizontal.png",
+            "badge": "shopify:\/\/shop_images\/Sleepopolis_Logo.png",
+            "message": "<p>OUR BLACK FRIDAY SALE | Get  extra 5% Offd with code: <strong>SLEEPOPOLIS<\/strong> 🔥<\/p>",
+            "background_color": "#ffdeb7",
+            "text_color": "#2e2f3c"
+          }
+        },
+        "ff4c88cb-2bb7-4c5f-a1ce-17e0a4b07120": {
+          "type": "affiliate",
+          "settings": {
+            "heading": "sleep_foundation",
+            "logo": "shopify:\/\/shop_images\/R_19_1.png",
+            "badge": "shopify://shop_images/Sleep-Foundation_Logo.png",
+            "message": "<p>OUR BLACK FRIDAY SALE | Get extra 5% Off with code: <strong>SF5<\/strong> 🔥<\/p>",
+            "background_color": "#ffdeb7",
+            "text_color": "#2e2f3c"
+          }
+        },
+        "0e5ad842-30da-4046-bab8-46b406facf93": {
+          "type": "affiliate",
+          "settings": {
+            "heading": "top_10",
+            "logo": "shopify://shop_images/us_site_logo.png",
+            "badge": "",
+            "message": "<p>Our Memorial Day Sale | Get extra 5% off with code <strong>TOP10<\/strong> 🔥<\/p>",
+            "background_color": "#ffdeb7",
+            "text_color": "#2e2f3c"
+          }
+        }
+      },
+      "block_order": [
+        "f5f456c7-b29a-4f74-826f-648e09f5b1cd",
+        "ff4c88cb-2bb7-4c5f-a1ce-17e0a4b07120",
+        "0e5ad842-30da-4046-bab8-46b406facf93",
+        "15b092b9-0a3a-4fb8-b647-b91a0a17d05d",
+        "0369bce7-2941-4ed1-88a7-3cc9da7cb330"
+      ],
+      "settings": {}
+    },
     "banner": {
       "type": "home-risk-free-banner",
       "settings": {
@@ -615,6 +661,7 @@
   },
   "order": [
     "banner",
+    "affiliate-banners",
     "product-info",
     "content-1",
     "content-2",
