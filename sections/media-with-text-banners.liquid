@@ -18,8 +18,6 @@
               allowfullscreen
             ></iframe>
         {% endcase %}
-        <a class="prev" onclick="nextBanner(-1)">&#8592;</a>
-        <a class="next" onclick="nextBanner(1)">&#8594;</a>
       </div>
 
       <div class="content-wrapper">
@@ -28,42 +26,7 @@
       </div>
     </div>
   {% endfor %}
-  <div class="progress-bars">
-    {% for block in section.blocks %}
-      <span class="bar"></span>
-    {% endfor %}
-  </div>
 </div>
-<script>
-  let bannerIndex = 1;
-  showBanner(bannerIndex);
-
-  function nextBanner(n) {
-    showBanner((bannerIndex += n));
-  }
-
-  function showBanner(n) {
-    let i;
-    let section = document.getElementById('mediaWithTextBannersSection');
-    let banners = section.getElementsByClassName('banner-item');
-
-    let bars = section.getElementsByClassName('bar');
-    if (n > banners.length) {
-      bannerIndex = 1;
-    }
-    if (n < 1) {
-      bannerIndex = banners.length;
-    }
-    for (i = 0; i < banners.length; i++) {
-      banners[i].style.display = 'none';
-    }
-    for (i = 0; i < bars.length; i++) {
-      bars[i].className = bars[i].className.replace(' active', '');
-    }
-    banners[bannerIndex - 1].style.display = 'flex';
-    bars[bannerIndex - 1].className += ' active';
-  }
-</script>
 {% schema %}
 {
   "name": "Media With Text Banners",
