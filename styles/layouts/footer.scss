@@ -52,3 +52,10 @@
     margin-top: 24px;
   }
 }
+
+.site-footer__link a {
+  font-size: inherit;
+}
+.footer-newsletter__checkbox label input[type="checkbox"] {
+  margin: 0;
+}

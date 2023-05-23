@@ -37,8 +37,20 @@
                        value="{% if customer %}{{ customer.email }}{% endif %}"
                        placeholder="{{ 'general.newsletter_form.newsletter_placeholder' | t }}"
                        name="contact[email]" id="Email"
-                       class="rounded-md w-full h-[45px] mb-4 text-[16px] py-4 px-5 shadow-md shadow-inner" autocorrect="off"
-                       autocapitalize="off">
+                       class="rounded-md w-full h-[45px] mb-2 text-[16px] py-4 px-5 shadow-md shadow-inner" autocorrect="off"
+                       autocapitalize="off" />
+                <div class="footer-newsletter__checkbox mb-2">
+                  <label for="ContactFooterCheckbox" class="site-footer__link text-[12px] text-white">
+                    <input
+                      type="checkbox" id="ContactFooterCheckbox" name="customer[accepts_marketing]"
+                      value="privacypolicy" checked
+                    />
+                    Yes, I would like to receive
+                      newsletters, and I have read and
+                      accepted the <a href="/pages/privacy-policy">privacy
+                          policy.</a>
+                  </label>
+                </div>
                 <button id="Subscribe" type="submit" class="btn btn-no-hover w-full" aria-label="{{ 'general.newsletter_form.submit' | t }}">
                   {{ 'general.newsletter_form.submit' | t }}
                 </button>
@@ -47,6 +59,18 @@
           {% endform %}
         </div>
       </div>
+
+      <script>
+        (function() {
+            const checkbox = document.querySelector('#shopify-section-{{section.id}} input[name="customer[accepts_marketing]"]'),
+                  submit = document.querySelector('#shopify-section-{{section.id}} [type="submit"]');
+            
+            checkbox.addEventListener('change', (event) => {
+              const checked = event.target.checked;
+              submit.toggleAttribute('disabled', !checked);
+            });
+        })();
+      </script>
 
       <div class="lg:w-2/3 grid grid-cols-2 lg:grid-cols-4 text-left md:text-center lg:text-left gap-5">
         <div>
