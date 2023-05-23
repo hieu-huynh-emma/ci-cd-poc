@@ -1,0 +1,154 @@
+{{ 'media-with-text-banners.css' | asset_url | stylesheet_tag }}
+
+<div id="mediaWithTextBannersSection" class="banners-container page-boundary">
+  {% for block in section.blocks %}
+    <div class="banner-item {% if block.settings.reverse %} is-reversed{% endif %}">
+      <div class="media-wrapper">
+        {% case block.type %}
+          {% when 'image' and block.settings.image != blank %}
+            {{ block.settings.image | image_url: width: 720 | image_tag }}
+
+          {% when 'video' and block.settings.video != blank %}
+            {{ block.settings.video | video_tag: image_size: '720x', autoplay: true, loop: true, muted: true }}
+
+          {% when 'youtube' and block.settings.video_url != blank %}
+            <iframe
+              src="https://www.youtube.com/embed/{{ block.settings.video_url.id }}"
+              allow="autoplay; encrypted-media"
+              allowfullscreen
+            ></iframe>
+        {% endcase %}
+        <a class="prev" onclick="nextBanner(-1)">&#8592;</a>
+        <a class="next" onclick="nextBanner(1)">&#8594;</a>
+      </div>
+
+      <div class="content-wrapper">
+        <h3 class="title">{{ block.settings.title }}</h3>
+        <p class="content">{{ block.settings.content }}</p>
+      </div>
+    </div>
+  {% endfor %}
+  <div class="progress-bars">
+    {% for block in section.blocks %}
+      <span class="bar"></span>
+    {% endfor %}
+  </div>
+</div>
+<script>
+  let bannerIndex = 1;
+  showBanner(bannerIndex);
+
+  function nextBanner(n) {
+    showBanner((bannerIndex += n));
+  }
+
+  function showBanner(n) {
+    let i;
+    let section = document.getElementById('mediaWithTextBannersSection');
+    let banners = section.getElementsByClassName('banner-item');
+
+    let bars = section.getElementsByClassName('bar');
+    if (n > banners.length) {
+      bannerIndex = 1;
+    }
+    if (n < 1) {
+      bannerIndex = banners.length;
+    }
+    for (i = 0; i < banners.length; i++) {
+      banners[i].style.display = 'none';
+    }
+    for (i = 0; i < bars.length; i++) {
+      bars[i].className = bars[i].className.replace(' active', '');
+    }
+    banners[bannerIndex - 1].style.display = 'flex';
+    bars[bannerIndex - 1].className += ' active';
+  }
+</script>
+{% schema %}
+{
+  "name": "Media With Text Banners",
+  "max_blocks": 4,
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image or GIF"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "textarea",
+          "id": "content",
+          "label": "Content"
+        },
+        {
+          "type": "checkbox",
+          "id": "reverse",
+          "label": "Reverse"
+        }
+      ]
+    },
+    {
+      "type": "video",
+      "name": "Video",
+      "settings": [
+        {
+          "type": "video",
+          "id": "video",
+          "label": "A Shopify-hosted video"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "textarea",
+          "id": "content",
+          "label": "Content"
+        },
+        {
+          "type": "checkbox",
+          "id": "reverse",
+          "label": "Reverse"
+        }
+      ]
+    },
+    {
+      "type": "youtube",
+      "name": "Youtube URL",
+      "settings": [
+        {
+          "type": "video_url",
+          "id": "video_url",
+          "label": "Video URL",
+          "accept": ["youtube"]
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "textarea",
+          "id": "content",
+          "label": "Content"
+        },
+        {
+          "type": "checkbox",
+          "id": "reverse",
+          "label": "Reverse"
+        }
+      ]
+    }
+  ],
+  "class": "media-with-text-banners-wrapper"
+}
+{% endschema %}

@@ -1,5 +1,13 @@
 {
   "sections": {
+    "banner": {
+      "type": "home-risk-free-banner",
+      "settings": {
+        "year_warranty": 10,
+        "night_trial": 365,
+        "financing_available": true
+      }
+    },
     "affiliate-banners": {
       "type": "affiliate-banners",
       "blocks": {
@@ -50,9 +58,6 @@
     "banner": {
       "type": "home-risk-free-banner",
       "settings": {
-        "year_warranty": 10,
-        "night_trial": 365,
-        "financing_available": true
       }
     },
     "product-info": {
@@ -62,42 +67,48 @@
           "type": "product_media",
           "settings": {
             "image": "shopify:\/\/shop_images\/03_Emma_CliMax_Hybrid_1.jpg",
-            "full_width": true
+            "full_width": true,
+            "is_video": false
           }
         },
         "ae4539f2-6ea2-42a3-a132-a31010570bf1": {
           "type": "product_media",
           "settings": {
             "image": "shopify:\/\/shop_images\/Original_3.png",
-            "full_width": false
+            "full_width": false,
+            "is_video": false
           }
         },
         "e4cd7962-4d57-4250-8e6e-4c76dd76d6d6": {
           "type": "product_media",
           "settings": {
             "image": "shopify:\/\/shop_images\/f80ce622ee744ca29f41905898bac316.thumbnail.0000000000_2048x_a55451c5-d423-4702-96f2-d21bcc06eb63.webp",
-            "full_width": false
+            "full_width": false,
+            "is_video": false
           }
         },
         "038c8f16-3a84-418c-9ee2-38f53be4a385": {
           "type": "product_media",
           "settings": {
             "image": "shopify:\/\/shop_images\/Emma-CliMax_Hybrid_4_1.png",
-            "full_width": false
+            "full_width": false,
+            "is_video": false
           }
         },
         "72b3b893-b0bb-44ad-978c-733ee54620a1": {
           "type": "product_media",
           "settings": {
             "image": "shopify:\/\/shop_images\/1Emma_Sleep_Photo_Shoot2391_copy_2_2.jpg",
-            "full_width": false
+            "full_width": false,
+            "is_video": false
           }
         },
         "12e2c164-6e6a-42a2-a76a-b4363d4c2c09": {
           "type": "product_media",
           "settings": {
             "image": "shopify:\/\/shop_images\/MicrosoftTeams-image_1.png",
-            "full_width": true
+            "full_width": true,
+            "is_video": false
           }
         },
         "0a7cd906-1a13-44a7-bfe8-34d0b6373b48": {
@@ -244,31 +255,53 @@
         "caption_content": "Designed to support added weight, activity, and stay cool while you sleep"
       }
     },
-    "content-1": {
-      "type": "image-with-text",
+    "media-with-text-banners": {
+      "type": "media-with-text-banners",
+      "blocks": {
+        "7eddc7a1-60de-430c-ad1d-0fa4619d108d": {
+          "type": "video",
+          "settings": {
+            "video": "shopify:\/\/files\/videos\/USP - Spinal Support 1920x1080.mp4",
+            "title": "Extra strength to support even more weight",
+            "content": "Perfect for all types of sleepers, and activities that need the added reinforcement, the mattress can easily support all body types while maintaining its resilience so that you don’t sink too deep into the mattress. It also has a reinforced perimeter that makes getting in and out of bed easy.",
+            "reverse": false
+          }
+        },
+        "57e597f8-8943-4def-820a-a0e469678641": {
+          "type": "video",
+          "settings": {
+            "video": "shopify:\/\/files\/videos\/original bed-ddtopper-sheet.mp4",
+            "title": "No more sweaty nights",
+            "content": "Designed with a plush and moisture-wicking cover, the CliMax Hybrid is climate-regulating and creates a cool sleep environment. The Airgocell foam allows heat to dissipate away from your body allowing you to fall asleep at the ideal temperature every night.",
+            "reverse": true
+          }
+        },
+        "95f7a903-df98-4d58-9b15-0db125d9190c": {
+          "type": "video",
+          "settings": {
+            "video": "shopify:\/\/files\/videos\/zero-motion-technology-clean.mp4",
+            "title": "Undisturbed sleep with zero motion transfer",
+            "content": "Made with an open-celled foam that isolates motion, light sleepers can continue to snooze even as their partner tosses and turns in bed. The combined springs in the CliMax Hybrid also help hold the structure of the mattress during movement.",
+            "reverse": false
+          }
+        },
+        "258722e6-18c8-4c8d-bee9-c411c5312e58": {
+          "type": "video",
+          "settings": {
+            "video": "shopify:\/\/files\/videos\/USP3_10YearWarranty.mp4",
+            "title": "Developed by experts ",
+            "content": "The CliMax Hybrid was developed by a team of sleep experts and researchers, bringing top-notch technology to the USA. We know that the quality of your sleep is a long-term investment. Our products are built to last, having been tested and approved in our laboratories.",
+            "reverse": true
+          }
+        }
+      },
+      "block_order": [
+        "7eddc7a1-60de-430c-ad1d-0fa4619d108d",
+        "57e597f8-8943-4def-820a-a0e469678641",
+        "95f7a903-df98-4d58-9b15-0db125d9190c",
+        "258722e6-18c8-4c8d-bee9-c411c5312e58"
+      ],
       "settings": {
-        "heading": "Extra strength to support even more weight",
-        "content": "<p>Perfect for plus-sized sleepers, and activities that need the added reinforcement, the mattress can easily support heavyweights while maintaining its resilience so that you don’t sink too deep into the mattress. It also has a reinforced perimeter that makes getting in and out of bed easy.<\/p>",
-        "image": "shopify:\/\/shop_images\/02-Couple_Billboard_2.jpg",
-        "inverted": false
-      }
-    },
-    "content-2": {
-      "type": "image-with-text",
-      "settings": {
-        "heading": "No more sweaty nights",
-        "content": "<p>Designed with a plush and moisture-wicking cover, the CliMax Hybrid is climate-regulating and creates a cool sleep environment.  The Airgocell foam allows heat to dissipate away from your body allowing you to fall asleep at the ideal temperature every night. <\/p>",
-        "image": "shopify:\/\/shop_images\/03-Couple_Billboard.jpg",
-        "inverted": true
-      }
-    },
-    "content-3": {
-      "type": "image-with-text",
-      "settings": {
-        "heading": "Undisturbed sleep with zero motion transfer",
-        "content": "<p>Made with an open-celled foam that isolates motion, light sleepers can continue to snooze even as their partner tosses and turns in bed. The combined springs in the CliMax Hybrid also help hold the structure of the mattress during movement.<\/p>",
-        "image": "shopify:\/\/shop_images\/Bougez-sans-reveiller.gif",
-        "inverted": false
       }
     },
     "mattress-layers": {
@@ -664,9 +697,7 @@
     "banner",
     "affiliate-banners",
     "product-info",
-    "content-1",
-    "content-2",
-    "content-3",
+    "media-with-text-banners",
     "mattress-layers",
     "mattress-firmness",
     "customer-sentiment",

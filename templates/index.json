@@ -551,6 +551,7 @@
     },
     "special-services": {
       "type": "multicolumn-text",
+      "disabled": true,
       "blocks": {
         "48ca0997-ffa4-4408-8013-4796cb7f17c4": {
           "type": "column",
@@ -597,6 +598,45 @@
         "container_spacing": "lg",
         "horizontal_layout_on_mobile": true,
         "solid_typo": false
+      }
+    },
+    "media-with-text-banners": {
+      "type": "media-with-text-banners",
+      "blocks": {
+        "b994cd49-6609-4c5f-bb10-89fa51df87b9": {
+          "type": "video",
+          "settings": {
+            "video": "shopify:\/\/files\/videos\/Compressed Preview-ultimate-body-comfort-clean.mp4",
+            "title": "365-Night Trial",
+            "content": "Get properly acquainted with Emma so you can be sure we’re the one. We offer a 365-night trail so you can try your mattress in the comfort of your own home.",
+            "reverse": false
+          }
+        },
+        "7da943b8-38e5-4467-93ea-e9ed5c3042d0": {
+          "type": "video",
+          "settings": {
+            "video": "shopify:\/\/files\/videos\/USP2_FreeDelivery.mp4",
+            "title": "Free Delivery and Returns",
+            "content": "We’ll bring your Emma order straight to your door at no extra cost, and our mattress-in-a-box technology makes moving around easier. If Emma isn’t for you, our customer service team will take care of you.",
+            "reverse": true
+          }
+        },
+        "d22c9f79-bc13-4ed4-8759-4cb6c5c97346": {
+          "type": "video",
+          "settings": {
+            "video": "shopify:\/\/files\/videos\/USP3_10YearWarranty.mp4",
+            "title": "10-Year Warranty",
+            "content": "We know that the quality of your sleep is a long-term investment. Our products are built to last, having been tested and approved in our laboratories. You’re covered if something goes wrong.",
+            "reverse": false
+          }
+        }
+      },
+      "block_order": [
+        "b994cd49-6609-4c5f-bb10-89fa51df87b9",
+        "7da943b8-38e5-4467-93ea-e9ed5c3042d0",
+        "d22c9f79-bc13-4ed4-8759-4cb6c5c97346"
+      ],
+      "settings": {
       }
     },
     "social-proof": {
@@ -756,6 +796,7 @@
     "media-publication",
     "product-catalog",
     "special-services",
+    "media-with-text-banners",
     "social-proof",
     "featured-faqs"
   ]
