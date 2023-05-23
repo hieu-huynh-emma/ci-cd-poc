@@ -112,18 +112,6 @@ html {
   font-size: 20px
 }
 
-@media (min-width: 1400px) {
-  .global-wrapper {
-    min-width: 1350px !important
-  }
-}
-
-@media (min-width: 1200px) {
-  .container, .global-wrapper {
-    min-width: 1300px
-  }
-}
-
 @media (max-width: 1024px) {
   .footer-logo {
     margin-bottom: 50px
@@ -248,15 +236,8 @@ html {
     font-size: 20px
   }
 
-  @media (min-width: 1400px) {
-    .global-wrapper {
-      min-width: 1350px !important
-    }
-  }@media (min-width: 1200px) {
-  .container, .global-wrapper {
-    min-width: 1300px
-  }
-}@media (max-width: 1024px) {
+
+  @media (max-width: 1024px) {
   .footer-logo {
     margin-bottom: 50px
   }

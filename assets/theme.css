@@ -36,83 +36,6 @@ button::-moz-focus-inner {
   margin: 60px auto
 }
 
-table {
-  background-color: #fff;
-  position: relative
-}
-
-table, td, th {
-  border: 0
-}
-
-td {
-  padding: 10px 15px
-}
-
-tr:first-child td, tr:first-child th {
-  position: relative
-}
-
-tr:first-child td:after, tr:first-child th:after {
-  border-bottom: 1px solid #212b57;
-  bottom: 0;
-  content: "";
-  display: block;
-  left: -15px;
-  position: absolute;
-  right: 15px
-}
-
-tr:first-child td:first-child:after, tr:first-child th:first-child:after {
-  left: 15px;
-  right: -15px
-}
-
-@media screen and (max-width: 590px) {
-  .table--responsive thead {
-    display: none
-  }
-
-  .table--responsive tr {
-    display: block
-  }
-
-  .table--responsive td, .table--responsive th {
-    display: block;
-    padding: 15px;
-    text-align: right
-  }
-
-  .table--responsive td:before {
-    content: attr(data-label);
-    float: left;
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 400;
-    padding-right: 10px
-  }
-
-  .table--small-hide {
-    display: none !important
-  }
-
-  .table__section + .table__section {
-    margin-top: 10px;
-    padding-top: 15px;
-    position: relative
-  }
-
-  .table__section + .table__section:after {
-    border-bottom: 1px solid #212b57;
-    content: "";
-    display: block;
-    left: 15px;
-    position: absolute;
-    right: 15px;
-    top: 0
-  }
-}
-
 body, button, input, select, textarea {
   line-height: 1.363
 }
@@ -144,11 +67,6 @@ body, button, input, select, textarea {
 .h3, .h4, .h5, .h6, h3, h4, h5, h6, th {
   font-style: normal;
   font-weight: 400
-}
-
-th {
-  font-size: .92857em;
-  letter-spacing: .15em
 }
 
 .rte .h1, .rte .h2, .rte h1, .rte h2 {
