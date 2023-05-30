@@ -57,6 +57,10 @@ class CartItems extends CustomElement {
 
       const codeRedeemed = cartRedeem.codeRedeemed
 
+      if (state.item_count === 0) {
+        await this.emptyCart()
+      }
+
       if (!!codeRedeemed && state.item_count !== 0) {
         await this.$cart.parseCheckoutPage();
 
@@ -72,10 +76,6 @@ class CartItems extends CustomElement {
         cartRedeem.refreshDiscountTag();
       } else {
         this.refreshSections(state)
-      }
-
-      if (state.item_count === 0) {
-        await this.emptyCart()
       }
 
       return state
@@ -116,6 +116,12 @@ class CartItems extends CustomElement {
     const hasGWP = await this.gwpGuard($cartItem, 0)
 
     if (hasGWP) return
+
+    const cart = await fetch('/cart.json').then(res => res.json());
+
+    if (cart.items.length == 1) {
+      this.emptyCart();
+    }
 
     return this.updateQuantity(index + 1, 0)
   }
