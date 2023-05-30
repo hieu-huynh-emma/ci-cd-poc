@@ -1,6 +1,38 @@
-{% assign productBlocks = section.blocks | where: "type", "product-block" %}
+<style>
+  #featured-products-section .yotpo-bottomline .yotpo-stars {
+    display: grid;
+    gap: 4px;
+    grid-auto-flow: column;
+  }
 
-{{ 'featured-products.css' | asset_url | stylesheet_tag }}
+  #featured-products-section .yotpo-bottomline .yotpo-stars:after {
+    content: none !important;
+  }
+
+  #featured-products-section .yotpo-bottomline .yotpo-review-source {
+    display: grid;
+    gap: 4px;
+    grid-template-columns: minmax(0, auto) minmax(0, 1fr);
+    align-items: center;
+  }
+
+  #featured-products-section .yotpo-bottomline .yotpo-review-source__text {
+    color: #7F819D;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+  }
+
+  #featured-products-section .yotpo-bottomline .yotpo-rating-score {
+    font-family: 'Inter';
+    font-weight: 600;
+    font-size: 14px;
+    margin-left: 4px;
+  }
+</style>
+
+{% assign productBlocks = section.blocks | where: "type", "product-block" %}
 
 <section id="featured-products-section" class="section-container md:lg">
   <div class="section-chassis page-boundary">
@@ -12,75 +44,250 @@
       <p class="text-comet text-center solid">{{ section.settings.subtitle }}</p>
     </div>
 
-    <div class="product-display">
+    <div class="hidden md:flex md:justify-center md:gap-5">
       {%- for block in productBlocks -%}
         {% assign product = block.settings.product %}
-
-        <div class="card">
-          <p class="card__badge">
-            {{ block.settings.badge }}
-          </p>
-
-          <div class="card-media">
-            <img
-              src="{{ block.settings.image | image_url: width: 800 }}" width="350" height="179"
-              loading="lazy"
-            />
-          </div>
-          <div class="card-body">
-            <h3 class="text-[20px] font-inter font-semibold text-center">{{ product.title }}</h3>
-            <div class="shopify-richtext w-full">{{ block.settings.desc }}</div>
-            <div class="w-full mt-3">
-              <div class="mattress-comparison">
-                <div class="mattress-comparison__item">
-                  <p class="mb-1">Comfort</p>
-                  <div class="mattress-comparison__bar mattress-comparison__bar--outer">
-                    <div class="mattress-comparison__bar mattress-comparison__bar--inner fill-{{ block.settings.comfort_meter }}"></div>
-                  </div>
-                </div>
-
-                <div class="mattress-comparison__item">
-                  <p class="mb-1">Cooling</p>
-                  <div class="mattress-comparison__bar mattress-comparison__bar--outer">
-                    <div class="mattress-comparison__bar mattress-comparison__bar--inner fill-{{ block.settings.cooling_meter }}"></div>
-                  </div>
-                </div>
-
-                <div class="mattress-comparison__item">
-                  <p class="mb-1">Motion Isolation</p>
-                  <div class="mattress-comparison__bar mattress-comparison__bar--outer">
-                    <div class="mattress-comparison__bar mattress-comparison__bar--inner fill-{{ block.settings.motion_isolation_meter }}"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-
-          <div class="card-footer">
-            <div class="starting-at">
-              <span class="text-[14px] font-normal">starting at</span>
-              <div class="flex items-center">
-                {% if product.compare_at_price > product.price %}
-                  <p class="font-semibold mr-1">{{ product.price | money_without_trailing_zeros }}</p>
-                  <p class="line-through">{{ product.compare_at_price | money_without_trailing_zeros }}</p>
-                {% else %}
-                  <p class="font-semibold">{{ product.price | money_without_trailing_zeros }}</p>
+        <div class="w-full flex flex-col md:max-w-[422px]">
+          {% if section.settings.show_secondary_badge %}
+            <p
+              style="background-color: {{ block.settings.color }};"
+              class="mx-auto mb-8 w-max rounded-full px-7 py-3 text-[13px] font-semibold uppercase leading-none text-white">{{ block.settings.primary_badge }}</p>
+          {%endif%}
+          <div
+            style="border-color: {{ block.settings.color }}"
+            class="rounded-[6px] border flex flex-col h-full">
+            <div class="flex justify-between p-4 gap-5">
+              <div>
+                <p
+                  style="background-color: {{ block.settings.color }};"
+                  class="h-max rounded px-2 py-2 text-[13px] font-semibold uppercase leading-none text-white mb-1">{{ block.settings.secondary_badge }}</p>
+                {% if template.name == 'product' and request.path contains product.handle %}
+                  <p class="text-[13px] text-[#FF8900]">👁 Currently Viewing</p>
                 {% endif %}
               </div>
+              <img src="{{ block.settings.mattress_height | img_url: 'master' }}" alt=""/>
             </div>
 
-            <a class="btn" href="{{ product.url }}" rel="noreferrer">
-              Shop Now
-            </a>
+            <div class="mb-6 h-[185px] px-4">
+              <img
+                style="aspect-ratio: 2576 / 1752;"
+                class="mx-auto h-full object-contain"
+                src="{{ block.settings.image | image_url: width: 800 }}" width="350"
+                height="179"
+                loading="lazy"
+              />
+            </div>
+
+            <h3 class="px-4 mb-2 text-[24px] font-semibold font-inter">{{ block.settings.product_title }}</h3>
+            <div class="mb-3 px-4 h-[17px]">
+              {% render 'yotpo-review-stars-standalone', product: product %}
+            </div>
+            <div class="px-4 shopify-richtext mb-3 md:mb-auto">{{ block.settings.desc }}</div>
+
+            <div class="mb-4 px-4">
+              <div class="rounded bg-[#F2F1F1] p-4">
+                <div>
+                  <p class="mb-1 text-[14px] font-semibold">Comfort</p>
+                  <div style="grid-template-columns: repeat(8, 1fr);"
+                       class="mb-2 grid gap-[6px]">
+                    {% for i in (1..8) %}
+                      {% if i <= block.settings.comfort_meter %}
+                        <div class="h-3 rounded-xl bg-[#F4711E]">&nbsp;</div>
+                      {% else %}
+                        <div class="h-3 rounded-xl bg-[#D9D9D9]">&nbsp;</div>
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+
+                  <p class="mb-1 text-[14px] font-semibold">Cooling</p>
+                  <div style="grid-template-columns: repeat(8, 1fr);"
+                       class="mb-2 grid gap-[6px]">
+                    {% for i in (1..8) %}
+                      {% if i <= block.settings.cooling_meter %}
+                        <div class="h-3 rounded-xl bg-[#FF8C00]">&nbsp;</div>
+                      {% else %}
+                        <div class="h-3 rounded-xl bg-[#D9D9D9]">&nbsp;</div>
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+
+                  <p class="mb-1 text-[14px] font-semibold">Motion Isolation</p>
+                  <div style="grid-template-columns: repeat(8, 1fr);"
+                       class="grid gap-[6px]">
+                    {% for i in (1..8) %}
+                      {% if i <= block.settings.motion_isolation_meter %}
+                        <div class="h-3 rounded-xl bg-[#FDB147]">&nbsp;</div>
+                      {% else %}
+                        <div class="h-3 rounded-xl bg-[#D9D9D9]">&nbsp;</div>
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="rounded-bl-[6px] rounded-br-[6px] bg-[#FFF6EC]">
+              <div class="p-4">
+                <p
+                  class="mb-4 inline-block rounded border border-[#F4711E66] bg-[#FDB14766] px-2 py-1 text-[13px] leading-none">
+                  <span>{{ block.settings.discount_title }} -</span>
+                  <span
+                    class="font-semibold"> {{ block.settings.discount_amount }}% Off</span>
+                </p>
+
+                <div class="flex items-center justify-between gap-2">
+                  <div>
+                    <p class="text-[16px]">starting at</p>
+                    <p
+                      class="text-[16px] font-semibold">{{ product.price | money_without_trailing_zeros }}</p>
+                  </div>
+
+                  <a class="btn" href="{{ product.url }}" rel="noreferrer">Shop Now</a>
+                </div>
+              </div>
+            </div>
           </div>
-
-
         </div>
       {%- endfor -%}
     </div>
+
+    <div class="splide md:hidden">
+      {% include 'splide-arrows' %}
+
+      <div class="splide__track">
+        <ul class="splide__list">
+          {%- for block in productBlocks -%}
+            {% assign product = block.settings.product %}
+            <li class="splide__slide">
+              <div class="w-full h-full flex flex-col max-w-[320px]">
+                {% if section.settings.show_secondary_badge %}
+                  <p
+                    style="background-color: {{ block.settings.color }};"
+                    class="mx-auto mb-8 w-max rounded-full px-7 py-3 text-[13px] font-semibold uppercase leading-none text-white">{{ block.settings.primary_badge }}</p>
+                {%endif%}
+                <div
+                  style="border-color: {{ block.settings.color }}"
+                  class="rounded-[6px] border flex flex-col h-full">
+                  <div class="flex justify-between p-4 gap-5">
+                    <div>
+                      <p
+                        style="background-color: {{ block.settings.color }};"
+                        class="h-max rounded px-2 py-2 text-[13px] font-semibold uppercase leading-none text-white mb-1">{{ block.settings.secondary_badge }}</p>
+                      {% if template.name == 'product' and request.path contains product.handle %}
+                        <p class="text-[13px] text-[#FF8900]">👁 Currently Viewing</p>
+                      {% endif %}
+                    </div>
+                    <img src="{{ block.settings.mattress_height | img_url: 'master' }}" alt=""/>
+                  </div>
+
+                  <div class="mb-6 h-[185px] px-4">
+                    <img
+                      style="aspect-ratio: 2576 / 1752;"
+                      class="mx-auto h-full object-contain"
+                      src="{{ block.settings.image | image_url: width: 800 }}" width="350"
+                      height="179"
+                      loading="lazy"
+                    />
+                  </div>
+
+                  <h3 class="px-4 mb-2 text-[24px] font-semibold font-inter">{{ block.settings.product_title }}</h3>
+                  <div class="mb-3 px-4 h-[17px]">
+                    {% render 'yotpo-review-stars-standalone', product: product %}
+                  </div>
+                  <div class="px-4 shopify-richtext mb-auto">{{ block.settings.desc }}</div>
+
+                  <div class="mb-4 px-4">
+                    <div class="rounded bg-[#F2F1F1] p-4">
+                      <div>
+                        <p class="mb-1 text-[14px] font-semibold">Comfort</p>
+                        <div style="grid-template-columns: repeat(8, 1fr);"
+                             class="mb-2 grid gap-[6px]">
+                          {% for i in (1..8) %}
+                            {% if i <= block.settings.comfort_meter %}
+                              <div class="h-3 rounded-xl bg-[#F4711E]">&nbsp;</div>
+                            {% else %}
+                              <div class="h-3 rounded-xl bg-[#D9D9D9]">&nbsp;</div>
+                            {% endif %}
+                          {% endfor %}
+                        </div>
+
+                        <p class="mb-1 text-[14px] font-semibold">Cooling</p>
+                        <div style="grid-template-columns: repeat(8, 1fr);"
+                             class="mb-2 grid gap-[6px]">
+                          {% for i in (1..8) %}
+                            {% if i <= block.settings.cooling_meter %}
+                              <div class="h-3 rounded-xl bg-[#FF8C00]">&nbsp;</div>
+                            {% else %}
+                              <div class="h-3 rounded-xl bg-[#D9D9D9]">&nbsp;</div>
+                            {% endif %}
+                          {% endfor %}
+                        </div>
+
+                        <p class="mb-1 text-[14px] font-semibold">Motion Isolation</p>
+                        <div style="grid-template-columns: repeat(8, 1fr);"
+                             class="grid gap-[6px]">
+                          {% for i in (1..8) %}
+                            {% if i <= block.settings.motion_isolation_meter %}
+                              <div class="h-3 rounded-xl bg-[#FDB147]">&nbsp;</div>
+                            {% else %}
+                              <div class="h-3 rounded-xl bg-[#D9D9D9]">&nbsp;</div>
+                            {% endif %}
+                          {% endfor %}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="rounded-bl-[6px] rounded-br-[6px] bg-[#FFF6EC]">
+                    <div class="p-4">
+                      <p
+                        class="mb-4 inline-block rounded border border-[#F4711E66] bg-[#FDB14766] px-2 py-1 text-[13px] leading-none">
+                        <span>{{ block.settings.discount_title }} -</span>
+                        <span
+                          class="font-semibold"> {{ block.settings.discount_amount }}% Off</span>
+                      </p>
+
+                      <div class="flex items-center justify-between gap-2">
+                        <div>
+                          <p class="text-[16px]">starting at</p>
+                          <p
+                            class="text-[16px] font-semibold">{{ product.price | money_without_trailing_zeros }}</p>
+                        </div>
+
+                        <a class="btn" href="{{ product.url }}" rel="noreferrer">Shop Now</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+          {%- endfor -%}
+        </ul>
+      </div>
+    </div>
   </div>
 </section>
+
+<script type="module">
+  $(document).ready(function () {
+    new Splide('#featured-products-section .splide', {
+      autoWidth: true,
+      padding: { right: '5rem' },
+      perPage: 4,
+      perMove: 1,
+      gap: '20px',
+      pagination: false,
+      breakpoints: {
+        768: {
+          perPage: 1,
+          arrows: false,
+          pagination: true,
+          gap: '12px',
+        }
+      }
+    }).mount();
+  })
+</script>
 
 {% schema %}
 {
@@ -93,13 +300,27 @@
         {
           "id": "product",
           "type": "product",
-          "label": "Block Product"
+          "label": "Product"
         },
         {
-          "id": "badge",
+          "id": "color",
+          "type": "color",
+          "label": "Color"
+        },
+        {
+          "id": "primary_badge",
           "type": "text",
-          "label": "Block Badge",
-          "default": "Best Value"
+          "label": "Primary Badge"
+        },
+        {
+          "id": "secondary_badge",
+          "type": "text",
+          "label": "Secondary Badge"
+        },
+        {
+          "id": "mattress_height",
+          "type": "image_picker",
+          "label": "Mattress Height"
         },
         {
           "id": "image",
@@ -107,36 +328,51 @@
           "label": "Block Image"
         },
         {
+          "id": "product_title",
+          "type": "text",
+          "label": "Product Title"
+        },
+        {
           "id": "desc",
           "type": "richtext",
           "label": "Block Description"
         },
         {
+          "id": "discount_title",
+          "type": "text",
+          "label": "Discount Title"
+        },
+        {
+          "id": "discount_amount",
+          "type": "number",
+          "label": "Discount Amount"
+        },
+        {
           "type": "range",
           "id": "comfort_meter",
           "min": 1,
-          "max": 100,
+          "max": 8,
           "step": 1,
           "label": "Comfort Meter",
-          "default": 80
+          "default": 8
         },
         {
           "type": "range",
           "id": "cooling_meter",
           "min": 1,
-          "max": 100,
+          "max": 8,
           "step": 1,
           "label": "Cooling Meter",
-          "default": 80
+          "default": 8
         },
         {
           "type": "range",
           "id": "motion_isolation_meter",
           "min": 1,
-          "max": 100,
+          "max": 8,
           "step": 1,
           "label": "Motion Isolation Meter",
-          "default": 80
+          "default": 8
         }
       ]
     }
@@ -157,6 +393,12 @@
       "type": "text",
       "label": "Subtitle",
       "default": "Our sleep experts have mastered designing award-winning mattresses crafted to keep you relaxed and recharged, no matter what kind of sleeper you are. Climb on your best sleep yet!"
+    },
+    {
+      "id": "show_secondary_badge",
+      "type": "checkbox",
+      "label": "Show Secondary Badge?",
+      "default": true
     }
   ]
 }

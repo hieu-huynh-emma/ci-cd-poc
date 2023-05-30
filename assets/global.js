@@ -999,3 +999,50 @@ class ScrollToTopButton extends HTMLElement {
 }
 
 customElements.define('scroll-to-top-button', ScrollToTopButton);
+
+class YotpoReviewStarsStandalone extends HTMLElement {
+  constructor() {
+    super()
+  }
+
+  connectedCallback() {
+    const $element = $(this)
+    const starRatingObserver = new MutationObserver(() => {
+      starRatingObserver.disconnect()
+
+      $element.find('.yotpo-bottomline .yotpo-clr').remove()
+
+      const $reviewSource = $element.find('.yotpo-bottomline .text-m')
+      $reviewSource.addClass('yotpo-review-source').removeClass('text-m').html('')
+
+      const $starsContainer = $element.find('.yotpo-bottomline .yotpo-stars')
+      const $scoreEl = $starsContainer.find('.sr-only')
+      $scoreEl.removeClass('sr-only').addClass('yotpo-rating-score').text(parseFloat($scoreEl.text())).detach().insertAfter($starsContainer)
+
+      $element.find('.yotpo-stars .yotpo-icon-star').replaceWith(`
+          <svg width="14" height="13" viewBox="0 0 14 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12.103 4.36677C12.6146 4.36677 13.0492 4.6798 13.2104 5.1643C13.3711 5.64738 13.211 6.15694 12.8026 6.46198L10.4151 8.24502L11.2058 11.1976C11.3391 11.6966 11.1437 12.199 10.7085 12.4776C10.271 12.7579 9.73151 12.7231 9.33217 12.3927L7.18683 10.612C7.07859 10.522 6.92108 10.522 6.81228 10.612L4.66779 12.3927C4.44875 12.5744 4.18757 12.6662 3.9241 12.6662C3.70677 12.6662 3.48831 12.6041 3.29063 12.477C2.85569 12.1985 2.66087 11.696 2.79445 11.1976L3.58457 8.24502L1.19769 6.46227C0.789246 6.15636 0.629168 5.64708 0.790098 5.16373C0.951028 4.67951 1.38568 4.36677 1.89695 4.36677H4.66323C4.78656 4.36677 4.89707 4.2893 4.93837 4.17423L5.90139 1.47973C6.06887 1.01033 6.5001 0.706985 6.99998 0.706985C7.49957 0.706985 7.9308 1.01033 8.09828 1.48001L9.06215 4.17451C9.10316 4.28959 9.21368 4.36677 9.33672 4.36677H12.103Z" fill="#FFBA00"/>
+          </svg>
+        `)
+
+      $element.find('.yotpo-stars .yotpo-icon-half-star').replaceWith(`
+          <svg width="14" height="13" viewBox="0 0 14 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M11.8471 3.93846C12.3799 3.93846 12.8326 4.27533 13.0005 4.79672C13.1678 5.31658 13.0011 5.86494 12.5757 6.19322L10.0891 8.11203L10.9126 11.2894C11.0515 11.8264 10.8479 12.3671 10.3946 12.6669C9.93897 12.9685 9.37709 12.9311 8.96117 12.5756L6.72671 10.6592C6.72671 11.0234 6.5 0 6.72671 0.0158723C7.17838 0.0747844 7.51955 0.378499 7.67603 0.83189L8.67993 3.73156C8.72265 3.8554 8.83775 3.93846 8.96591 3.93846H11.8471Z" fill="#CDCDCD"/>
+            <path d="M5.38787 0.831589C5.55752 0.340325 6.21198 0.0332128 6.72671 0.0158723V10.6592C6.72671 10.6592 6.44993 10.5623 6.3366 10.6592L4.10303 12.5756C3.8749 12.7711 3.60286 12.8698 3.32845 12.8698C3.10209 12.8698 2.87456 12.803 2.66867 12.6663C2.21566 12.3665 2.01275 11.8258 2.15188 11.2894L2.97482 8.11203L0.488791 6.19352C0.0633806 5.86432 -0.103347 5.31627 0.0642677 4.7961C0.231883 4.27502 0.684591 3.93846 1.2171 3.93846H4.09828C4.22674 3.93846 4.34184 3.85509 4.38486 3.73126L5.38787 0.831589Z" fill="#FFBA00"/>
+          </svg>
+        `)
+    })
+
+    $(document).ready(async () => {
+      starRatingObserver.observe(
+        this.querySelector('.yotpo.bottomLine'),
+        {
+          childList: true,
+          subtree: true,
+        },
+      )
+    })
+  }
+}
+
+customElements.define('yotpo-review-stars-standalone', YotpoReviewStarsStandalone)
