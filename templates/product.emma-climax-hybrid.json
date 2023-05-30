@@ -55,11 +55,6 @@
       "settings": {
       }
     },
-    "banner": {
-      "type": "home-risk-free-banner",
-      "settings": {
-      }
-    },
     "product-info": {
       "type": "product-info",
       "blocks": {
@@ -219,6 +214,7 @@
         },
         "c84bbed1-8413-4b34-bc21-8091dad8dc98": {
           "type": "upsell_mattress",
+          "disabled": true,
           "settings": {
             "upsell_mattress_product": "emma-shift",
             "upsell_mattress_text": "Discover the Shift : Perfect comfort with maximum cooling and adjustable firmness →"
@@ -290,7 +286,7 @@
           "settings": {
             "video": "shopify:\/\/files\/videos\/USP3_10YearWarranty.mp4",
             "title": "Developed by experts ",
-            "content": "The CliMax Hybrid was developed by a team of sleep experts and researchers, bringing top-notch technology to the USA. We know that the quality of your sleep is a long-term investment. Our products are built to last, having been tested and approved in our laboratories.",
+            "content": "The CliMax Hybrid was developed by a team of sleep experts and researchers, bringing top-notch technology to Canada. We know that the quality of your sleep is a long-term investment. Our products are built to last, having been tested and approved in our laboratories.",
             "reverse": true
           }
         }
@@ -345,20 +341,20 @@
             "desc": "CliMax Pocketed Springs are 4.7-inch premium and individually-wrapped coils designed to enhance airflow and provide the optimum level of tension and bounce — strong enough to support sleepers of all shape and size."
           }
         },
-        "0e7b3bb3-6109-4e78-851e-e5684c7b4d67": {
-          "type": "layers_info",
-          "settings": {
-            "layer_num": 5,
-            "title": "The edge of the mattress with added support",
-            "desc": "A reinforced perimeter that does not only help prevent active sleepers from falling off at night, but also help you sit up and get out of bed in the morning."
-          }
-        },
         "9088b2b9-37a7-498a-ab7b-1ce50ec43e1a": {
           "type": "layers_info",
           "settings": {
-            "layer_num": 6,
+            "layer_num": 5,
             "title": "The base foam that keeps your spine aligned",
             "desc": "HRX stands for High Resiliency Extra. Providing sufficient counter pressure, this layer is designed to keep your spine evenly aligned for maximum relief, rest and recovery – in any sleeping position."
+          }
+        },
+        "0e7b3bb3-6109-4e78-851e-e5684c7b4d67": {
+          "type": "layers_info",
+          "settings": {
+            "layer_num": 6,
+            "title": "The edge of the mattress with added support",
+            "desc": "A reinforced perimeter that does not only help prevent active sleepers from falling off at night, but also help you sit up and get out of bed in the morning."
           }
         }
       },
@@ -368,8 +364,8 @@
         "3b4dd04a-036c-426d-8c1f-9729dd673c3e",
         "bdebe803-1755-4362-ae36-1355b97d0e9d",
         "c9c66cb6-dfe8-4bc3-aef4-5f3af408a185",
-        "0e7b3bb3-6109-4e78-851e-e5684c7b4d67",
-        "9088b2b9-37a7-498a-ab7b-1ce50ec43e1a"
+        "9088b2b9-37a7-498a-ab7b-1ce50ec43e1a",
+        "0e7b3bb3-6109-4e78-851e-e5684c7b4d67"
       ],
       "settings": {
         "heading": "Emma CliMax Hybrid - Layer by Layer",
@@ -618,8 +614,15 @@
             "product": "emma-bed-frame"
           }
         },
+        "47ab8895-2699-43c3-8f72-c25e2d898486": {
+          "type": "catalog_item",
+          "settings": {
+            "product": "emma-mattress-protector"
+          }
+        },
         "07d5912c-d4c3-4ebb-97a6-f723fc8a4f3f": {
           "type": "catalog_item",
+          "disabled": true,
           "settings": {
             "product": "emma-original-mattress"
           }
@@ -628,6 +631,7 @@
       "block_order": [
         "72c7f33b-7788-4524-bf53-816aecb093b6",
         "f0f0b732-6803-4158-8c54-5c08c4bdbfa3",
+        "47ab8895-2699-43c3-8f72-c25e2d898486",
         "07d5912c-d4c3-4ebb-97a6-f723fc8a4f3f"
       ],
       "settings": {

@@ -20,9 +20,10 @@
         },
         "def90d36-6b56-4c80-99e9-566664031df6": {
           "type": "countdown",
+          "disabled": true,
           "settings": {
             "heading": "Victoria Day Sale Ending in",
-            "timer": "2023-05-23 11:00"
+            "timer": "2023-05-29 11:00"
           }
         },
         "9593f14f-4c86-4af9-953e-0fa248231b89": {
@@ -203,7 +204,7 @@
         "9593f14f-4c86-4af9-953e-0fa248231b89": {
           "type": "cta-button",
           "settings": {
-            "url": "shopify:\/\/collections\/mattresses",
+            "url": "shopify:\/\/products\/emma-climax-hybrid",
             "text": "Browse Emma products"
           }
         }
@@ -240,7 +241,7 @@
         "c15d1ab6-4b9b-4e30-ace7-dbf193ff2d4f": {
           "type": "column",
           "settings": {
-            "icon": "shopify:\/\/shop_images\/Maple_Icon_Leaf-01_3802.png",
+            "icon": "shopify:\/\/shop_images\/Maple_Icon_Leaf_r-01-01-01.jpg",
             "title": "Made for Canadian",
             "content": "Emma products are designed to seamlessly adapt to the unique shape and sleep habits of Canadian"
           }
@@ -261,6 +262,7 @@
     },
     "featured-products": {
       "type": "featured-products",
+      "disabled": true,
       "blocks": {
         "old-featured-products-1": {
           "type": "product-block",
@@ -291,7 +293,7 @@
           "settings": {
             "product": "emma-shift",
             "badge": "Best Comfort",
-            "image": "shopify:\/\/shop_images\/Shift_13-inch_Orange_Titanium.png",
+            "image": "shopify:\/\/shop_images\/Shift_comparision_image_corrected.png",
             "desc": "<p>Our best mattress, offering personalized comfort for every sleepers<br\/><br\/> • Maximum Comfort & Support<br\/> • 13\" Height<br\/> • Adjustable firmness & Lumbar Support<\/p>",
             "comfort_meter": 100,
             "cooling_meter": 100,
@@ -315,6 +317,7 @@
       "blocks": {
         "review-1": {
           "type": "review",
+          "disabled": true,
           "settings": {
             "title": "High quality mattress!",
             "date": "12 Jan 2023",
@@ -375,6 +378,7 @@
         },
         "b3b7f1ea-8fe5-41e7-9305-567392190a4e": {
           "type": "review",
+          "disabled": true,
           "settings": {
             "title": "Perfectly satisfied with my mattress...",
             "date": "3 Jul 2022",
@@ -385,6 +389,7 @@
         },
         "7370ca27-e47c-4832-b9fd-b8beb6dce18b": {
           "type": "review",
+          "disabled": true,
           "settings": {
             "title": "I can't wait for bedtime now!",
             "date": "8 Jul 2022",
@@ -395,6 +400,7 @@
         },
         "c4884297-13b5-40c7-9075-bed6e1cf82d8": {
           "type": "review",
+          "disabled": true,
           "settings": {
             "title": "Best sleeping with Emma",
             "date": "28 Jul 2022",
@@ -512,6 +518,12 @@
     "product-catalog": {
       "type": "product-catalog",
       "blocks": {
+        "07d5912c-d4c3-4ebb-97a6-f723fc8a4f3f": {
+          "type": "catalog_item",
+          "settings": {
+            "product": "emma-climax-hybrid"
+          }
+        },
         "72c7f33b-7788-4524-bf53-816aecb093b6": {
           "type": "catalog_item",
           "settings": {
@@ -524,23 +536,25 @@
             "product": "emma-bed-frame"
           }
         },
-        "07d5912c-d4c3-4ebb-97a6-f723fc8a4f3f": {
+        "c7de0117-89cc-43b9-bc3c-d96498f408df": {
           "type": "catalog_item",
           "settings": {
-            "product": "emma-climax-hybrid"
+            "product": "emma-mattress-protector"
           }
         },
         "c4650795-b884-4ddd-904e-babd57faad7b": {
           "type": "catalog_item",
+          "disabled": true,
           "settings": {
             "product": "emma-original-mattress"
           }
         }
       },
       "block_order": [
+        "07d5912c-d4c3-4ebb-97a6-f723fc8a4f3f",
         "72c7f33b-7788-4524-bf53-816aecb093b6",
         "f0f0b732-6803-4158-8c54-5c08c4bdbfa3",
-        "07d5912c-d4c3-4ebb-97a6-f723fc8a4f3f",
+        "c7de0117-89cc-43b9-bc3c-d96498f408df",
         "c4650795-b884-4ddd-904e-babd57faad7b"
       ],
       "settings": {

@@ -61,9 +61,12 @@
 				endif
 			%}
 
-			<a href="{{ btnUrl }}" class="site-subnav__cta compare-btn btn btn--secondary btn--compact">
-				{{ btnPrefix | append: link.title | escape }}
-			</a>
+			{% if link.title != "Mattresses" %}
+				<a href="{{ btnUrl }}"
+					 class="site-subnav__cta compare-btn btn btn--secondary btn--compact">
+					{{ btnPrefix | append: link.title | escape }}
+				</a>
+			{% endif %}
 		</div>
 		<div class="product-spotlight">
 			<div class="product-spotlight__media bg-wild-sand">
