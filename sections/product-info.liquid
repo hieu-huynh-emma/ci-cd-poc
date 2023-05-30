@@ -1,7 +1,6 @@
 {%- assign current_variant = product.selected_or_first_available_variant -%}
 {%- assign compare_at_price = current_variant.compare_at_price -%}
 {%- assign price = current_variant.price -%}
-{% assign price_badge = section.blocks | where: 'type', 'price_badge' | first %}
 {% assign tax = section.blocks | where: 'type', 'tax' | first %}
 {% assign stock = section.blocks | where: 'type', 'stock' | first %}
 {% assign affirm_widget = section.blocks | where: 'type', 'affirm_widget' | first %}
@@ -221,12 +220,6 @@
 				</div>
 				
 				<div id="price-{{ section.id }}" class="product__price -mb-1" {{ block.shopify_attributes }} >
-					{% if price_badge %}
-						<div class="price-badge-wrapper">
-							<p class="price-badge">{{ price_badge.settings.badge_text }}</p>
-						</div>
-					{% endif %}
-					
 					{% render 'product-price', variant: current_variant, product: product %}
 				</div>
 				
@@ -556,17 +549,6 @@
           "type": "text",
           "id": "desc",
           "label": "Description"
-        }
-      ]
-    },
-    {
-      "type": "price_badge",
-      "name": "Price Badge",
-      "settings": [
-        {
-          "type": "text",
-          "id": "badge_text",
-          "label": "Text"
         }
       ]
     },
