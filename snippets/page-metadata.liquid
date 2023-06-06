@@ -37,7 +37,13 @@
 			<script>
         const selectedVariantId = +`{{ manualSelectedVariant.id }}`;
 
-        if (!!selectedVariantId) window.location.href = window.location.href + "?variant=" + selectedVariantId;
+        if (!!selectedVariantId) {
+          const url = new URL(window.location.href)
+
+          url.searchParams.set('variant', selectedVariantId);
+
+          window.location.href = url.toString()
+        }
 			</script>
 		{% endif %}
 	{% endif %}
