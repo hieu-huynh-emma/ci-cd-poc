@@ -28,6 +28,7 @@
     font-family: 'Inter';
     font-weight: 600;
     font-size: 14px;
+    line-height: 14px;
     margin-left: 4px;
   }
 </style>
@@ -65,7 +66,7 @@
                   <p class="text-[13px] text-[#FF8900]">👁 Currently Viewing</p>
                 {% endif %}
               </div>
-              <img src="{{ block.settings.mattress_height | img_url: 'master' }}" alt=""/>
+              <img class="-mt-[7px] h-max" width="55px" src="{{ block.settings.mattress_height | img_url: 'master' }}" alt=""/>
             </div>
 
             <div class="mb-6 h-[185px] px-4">
@@ -79,52 +80,60 @@
             </div>
 
             <h3 class="px-4 mb-2 text-[24px] font-semibold font-inter">{{ block.settings.product_title }}</h3>
-            <div class="mb-3 px-4 h-[17px]">
+            <div class="mb-2 px-4 h-[17px]">
               {% render 'yotpo-review-stars-standalone', product: product %}
             </div>
             <div class="px-4 shopify-richtext mb-3 md:mb-auto">{{ block.settings.desc }}</div>
 
-            <div class="mb-4 px-4">
-              <div class="rounded bg-[#F2F1F1] p-4">
-                <div>
-                  <p class="mb-1 text-[14px] font-semibold">Comfort</p>
-                  <div style="grid-template-columns: repeat(8, 1fr);"
-                       class="mb-2 grid gap-[6px]">
-                    {% for i in (1..8) %}
-                      {% if i <= block.settings.comfort_meter %}
-                        <div class="h-3 rounded-xl bg-[#F4711E]">&nbsp;</div>
-                      {% else %}
-                        <div class="h-3 rounded-xl bg-[#D9D9D9]">&nbsp;</div>
-                      {% endif %}
-                    {% endfor %}
-                  </div>
+            {% if section.settings.show_first_meter or section.settings.show_second_meter or section.settings.show_third_meter %}
+              <div class="mb-4 px-4">
+                <div class="rounded bg-[#F2F1F1] p-4">
+                  <div>
+                    {% if section.settings.show_first_meter %}
+                      <p class="mb-1 text-[14px] font-semibold">{{ section.settings.first_meter_title }}</p>
+                      <div style="grid-template-columns: repeat(8, 1fr);"
+                           class="mb-2 grid gap-[6px]">
+                        {% for i in (1..8) %}
+                          {% if i <= block.settings.comfort_meter %}
+                            <div class="h-3 rounded-xl bg-[#F4711E]">&nbsp;</div>
+                          {% else %}
+                            <div class="h-3 rounded-xl bg-[#D9D9D9]">&nbsp;</div>
+                          {% endif %}
+                        {% endfor %}
+                      </div>
+                    {% endif %}
 
-                  <p class="mb-1 text-[14px] font-semibold">Cooling</p>
-                  <div style="grid-template-columns: repeat(8, 1fr);"
-                       class="mb-2 grid gap-[6px]">
-                    {% for i in (1..8) %}
-                      {% if i <= block.settings.cooling_meter %}
-                        <div class="h-3 rounded-xl bg-[#FF8C00]">&nbsp;</div>
-                      {% else %}
-                        <div class="h-3 rounded-xl bg-[#D9D9D9]">&nbsp;</div>
-                      {% endif %}
-                    {% endfor %}
-                  </div>
+                    {% if section.settings.show_second_meter %}
+                      <p class="mb-1 text-[14px] font-semibold">{{ section.settings.second_meter_title }}</p>
+                      <div style="grid-template-columns: repeat(8, 1fr);"
+                           class="mb-2 grid gap-[6px]">
+                        {% for i in (1..8) %}
+                          {% if i <= block.settings.cooling_meter %}
+                            <div class="h-3 rounded-xl bg-[#FF8C00]">&nbsp;</div>
+                          {% else %}
+                            <div class="h-3 rounded-xl bg-[#D9D9D9]">&nbsp;</div>
+                          {% endif %}
+                        {% endfor %}
+                      </div>
+                    {% endif %}
 
-                  <p class="mb-1 text-[14px] font-semibold">Motion Isolation</p>
-                  <div style="grid-template-columns: repeat(8, 1fr);"
-                       class="grid gap-[6px]">
-                    {% for i in (1..8) %}
-                      {% if i <= block.settings.motion_isolation_meter %}
-                        <div class="h-3 rounded-xl bg-[#FDB147]">&nbsp;</div>
-                      {% else %}
-                        <div class="h-3 rounded-xl bg-[#D9D9D9]">&nbsp;</div>
-                      {% endif %}
-                    {% endfor %}
+                    {% if section.settings.show_third_meter %}
+                      <p class="mb-1 text-[14px] font-semibold">{{ section.settings.third_meter_title }}</p>
+                      <div style="grid-template-columns: repeat(8, 1fr);"
+                           class="grid gap-[6px]">
+                        {% for i in (1..8) %}
+                          {% if i <= block.settings.motion_isolation_meter %}
+                            <div class="h-3 rounded-xl bg-[#FDB147]">&nbsp;</div>
+                          {% else %}
+                            <div class="h-3 rounded-xl bg-[#D9D9D9]">&nbsp;</div>
+                          {% endif %}
+                        {% endfor %}
+                      </div>
+                    {% endif %}
                   </div>
                 </div>
               </div>
-            </div>
+            {% endif %}
 
             <div class="rounded-bl-[6px] rounded-br-[6px] bg-[#FFF6EC]">
               <div class="p-4">
@@ -138,8 +147,14 @@
                 <div class="flex items-center justify-between gap-2">
                   <div>
                     <p class="text-[16px]">starting at</p>
-                    <p
-                      class="text-[16px] font-semibold">{{ product.price | money_without_trailing_zeros }}</p>
+                    <div class="flex items-center flex-wrap">
+                      {% if product.compare_at_price > product.price %}
+                        <p class="font-semibold mr-1">{{ product.price | money_without_trailing_zeros }}</p>
+                        <p class="line-through">{{ product.compare_at_price | money_without_trailing_zeros }}</p>
+                      {% else %}
+                        <p class="font-semibold">{{ product.price | money_without_trailing_zeros }}</p>
+                      {% endif %}
+                    </div>
                   </div>
 
                   <a class="btn" href="{{ product.url }}" rel="noreferrer">Shop Now</a>
@@ -177,7 +192,7 @@
                         <p class="text-[13px] text-[#FF8900]">👁 Currently Viewing</p>
                       {% endif %}
                     </div>
-                    <img src="{{ block.settings.mattress_height | img_url: 'master' }}" alt=""/>
+                    <img class="-mt-[7px] h-max" width="55px" src="{{ block.settings.mattress_height | img_url: 'master' }}" alt=""/>
                   </div>
 
                   <div class="mb-6 h-[185px] px-4">
@@ -191,52 +206,60 @@
                   </div>
 
                   <h3 class="px-4 mb-2 text-[24px] font-semibold font-inter">{{ block.settings.product_title }}</h3>
-                  <div class="mb-3 px-4 h-[17px]">
+                  <div class="mb-2 px-4 h-[17px]">
                     {% render 'yotpo-review-stars-standalone', product: product %}
                   </div>
                   <div class="px-4 shopify-richtext mb-auto">{{ block.settings.desc }}</div>
 
-                  <div class="mb-4 px-4">
-                    <div class="rounded bg-[#F2F1F1] p-4">
-                      <div>
-                        <p class="mb-1 text-[14px] font-semibold">Comfort</p>
-                        <div style="grid-template-columns: repeat(8, 1fr);"
-                             class="mb-2 grid gap-[6px]">
-                          {% for i in (1..8) %}
-                            {% if i <= block.settings.comfort_meter %}
-                              <div class="h-3 rounded-xl bg-[#F4711E]">&nbsp;</div>
-                            {% else %}
-                              <div class="h-3 rounded-xl bg-[#D9D9D9]">&nbsp;</div>
-                            {% endif %}
-                          {% endfor %}
-                        </div>
+                  {% if section.settings.show_first_meter or section.settings.show_second_meter or section.settings.show_third_meter %}
+                    <div class="mb-4 px-4">
+                      <div class="rounded bg-[#F2F1F1] p-4">
+                        <div>
+                          {% if section.settings.show_first_meter %}
+                            <p class="mb-1 text-[14px] font-semibold">{{ section.settings.first_meter_title }}</p>
+                            <div style="grid-template-columns: repeat(8, 1fr);"
+                                 class="mb-2 grid gap-[6px]">
+                              {% for i in (1..8) %}
+                                {% if i <= block.settings.comfort_meter %}
+                                  <div class="h-3 rounded-xl bg-[#F4711E]">&nbsp;</div>
+                                {% else %}
+                                  <div class="h-3 rounded-xl bg-[#D9D9D9]">&nbsp;</div>
+                                {% endif %}
+                              {% endfor %}
+                            </div>
+                          {% endif %}
 
-                        <p class="mb-1 text-[14px] font-semibold">Cooling</p>
-                        <div style="grid-template-columns: repeat(8, 1fr);"
-                             class="mb-2 grid gap-[6px]">
-                          {% for i in (1..8) %}
-                            {% if i <= block.settings.cooling_meter %}
-                              <div class="h-3 rounded-xl bg-[#FF8C00]">&nbsp;</div>
-                            {% else %}
-                              <div class="h-3 rounded-xl bg-[#D9D9D9]">&nbsp;</div>
-                            {% endif %}
-                          {% endfor %}
-                        </div>
+                          {% if section.settings.show_second_meter %}
+                            <p class="mb-1 text-[14px] font-semibold">{{ section.settings.second_meter_title }}</p>
+                            <div style="grid-template-columns: repeat(8, 1fr);"
+                                 class="mb-2 grid gap-[6px]">
+                              {% for i in (1..8) %}
+                                {% if i <= block.settings.cooling_meter %}
+                                  <div class="h-3 rounded-xl bg-[#FF8C00]">&nbsp;</div>
+                                {% else %}
+                                  <div class="h-3 rounded-xl bg-[#D9D9D9]">&nbsp;</div>
+                                {% endif %}
+                              {% endfor %}
+                            </div>
+                          {% endif %}
 
-                        <p class="mb-1 text-[14px] font-semibold">Motion Isolation</p>
-                        <div style="grid-template-columns: repeat(8, 1fr);"
-                             class="grid gap-[6px]">
-                          {% for i in (1..8) %}
-                            {% if i <= block.settings.motion_isolation_meter %}
-                              <div class="h-3 rounded-xl bg-[#FDB147]">&nbsp;</div>
-                            {% else %}
-                              <div class="h-3 rounded-xl bg-[#D9D9D9]">&nbsp;</div>
-                            {% endif %}
-                          {% endfor %}
+                          {% if section.settings.show_third_meter %}
+                            <p class="mb-1 text-[14px] font-semibold">{{ section.settings.third_meter_title }}</p>
+                            <div style="grid-template-columns: repeat(8, 1fr);"
+                                 class="grid gap-[6px]">
+                              {% for i in (1..8) %}
+                                {% if i <= block.settings.motion_isolation_meter %}
+                                  <div class="h-3 rounded-xl bg-[#FDB147]">&nbsp;</div>
+                                {% else %}
+                                  <div class="h-3 rounded-xl bg-[#D9D9D9]">&nbsp;</div>
+                                {% endif %}
+                              {% endfor %}
+                            </div>
+                          {% endif %}
                         </div>
                       </div>
                     </div>
-                  </div>
+                  {% endif %}
 
                   <div class="rounded-bl-[6px] rounded-br-[6px] bg-[#FFF6EC]">
                     <div class="p-4">
@@ -250,8 +273,14 @@
                       <div class="flex items-center justify-between gap-2">
                         <div>
                           <p class="text-[16px]">starting at</p>
-                          <p
-                            class="text-[16px] font-semibold">{{ product.price | money_without_trailing_zeros }}</p>
+                          <div class="flex items-center flex-wrap">
+                            {% if product.compare_at_price > product.price %}
+                              <p class="font-semibold mr-1">{{ product.price | money_without_trailing_zeros }}</p>
+                              <p class="line-through">{{ product.compare_at_price | money_without_trailing_zeros }}</p>
+                            {% else %}
+                              <p class="font-semibold">{{ product.price | money_without_trailing_zeros }}</p>
+                            {% endif %}
+                          </div>
                         </div>
 
                         <a class="btn" href="{{ product.url }}" rel="noreferrer">Shop Now</a>
@@ -393,6 +422,43 @@
       "type": "text",
       "label": "Subtitle",
       "default": "Our sleep experts have mastered designing award-winning mattresses crafted to keep you relaxed and recharged, no matter what kind of sleeper you are. Climb on your best sleep yet!"
+    },
+    {
+      "id": "first_meter_title",
+      "type": "text",
+      "label": "First Meter Title",
+      "default": "Comfort"
+    },
+    {
+
+      "id": "show_first_meter",
+      "type": "checkbox",
+      "label": "Show First Meter?",
+      "default": true
+    },
+    {
+      "id": "second_meter_title",
+      "type": "text",
+      "label": "Second Meter Title",
+      "default": "Cooling"
+    },
+    {
+      "id": "show_second_meter",
+      "type": "checkbox",
+      "label": "Show Second Meter?",
+      "default": true
+    },
+    {
+      "id": "third_meter_title",
+      "type": "text",
+      "label": "Third  Meter Title",
+      "default": "Motion Isolation"
+    },
+    {
+      "id": "show_third_meter",
+      "type": "checkbox",
+      "label": "Show Third Meter?",
+      "default": true
     },
     {
       "id": "show_secondary_badge",
