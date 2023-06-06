@@ -94,7 +94,6 @@
 />
 
 <script type="text/javascript">
-
   const PAYMENT_GATEWAYS_NOT_ALLOWED = ["offsite_v2"];
   const TAXES = [
     { value: "AB", labels: ["GST"], totalRate: 5 },
@@ -248,9 +247,16 @@
       totalShippingPrice.text("FREE");
     }
 
-    if (Shopify.Checkout.step !== "contact_information") {
+    let $provinceSelector = $("#checkout_shipping_address_province");
+
+    if ($provinceSelector.val()) {
       breakdownTax($);
     }
+
+    $provinceSelector.on("change", function (e) {
+      e.preventDefault();
+      breakdownTax($);
+    });
   }
 
   function breakdownTax($) {
@@ -263,7 +269,8 @@
       taxSubtotal.remove();
     }
 
-    let selectedProvince = Shopify.Checkout.shippingAddress.provinceCode;
+    let $selectedProvince = $("#checkout_shipping_address_province option:selected");
+    let selectedProvince = $selectedProvince.val();
     const taxApplied = TAXES.find((tax) => tax.value === selectedProvince);
     const { labels, totalRate } = taxApplied;
 		

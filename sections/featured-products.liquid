@@ -60,7 +60,7 @@
               <div>
                 <p
                   style="background-color: {{ block.settings.color }};"
-                  class="h-max rounded px-2 py-2 text-[13px] font-semibold uppercase leading-none text-white mb-1">{{ block.settings.secondary_badge }}</p>
+                  class="h-max inline-block rounded px-2 py-2 text-[13px] font-semibold uppercase leading-none text-white mb-1">{{ block.settings.secondary_badge }}</p>
                 {% if template.name == 'product' and request.path contains product.handle %}
                   <p class="text-[13px] text-[#FF8900]">👁 Currently Viewing</p>
                 {% endif %}
@@ -172,7 +172,7 @@
                     <div>
                       <p
                         style="background-color: {{ block.settings.color }};"
-                        class="h-max rounded px-2 py-2 text-[13px] font-semibold uppercase leading-none text-white mb-1">{{ block.settings.secondary_badge }}</p>
+                        class="h-max inline-block rounded px-2 py-2 text-[13px] font-semibold uppercase leading-none text-white mb-1">{{ block.settings.secondary_badge }}</p>
                       {% if template.name == 'product' and request.path contains product.handle %}
                         <p class="text-[13px] text-[#FF8900]">👁 Currently Viewing</p>
                       {% endif %}

@@ -11,7 +11,7 @@
       %}
       <li
         id="site-nav__{{ link.title | handleize }}"
-        class="site-nav__item{% if hasDropdown == true %} site-nav--has-dropdown{% endif %}{% if link.active %} site-nav--active{% endif %}{% if link.type != "product_link" %} site-nav--minimal{% endif %}"
+        class="site-nav__item{% if hasDropdown == true %} site-nav--has-dropdown{% endif %}{% if link.active %} site-nav--active{% endif %}{% if link.type != "product_link" %} site-nav--minimal{% endif %}{% if link.title == 'Sale' %} !hidden{% endif %}"
         aria-haspopup="true"
       >
         <div

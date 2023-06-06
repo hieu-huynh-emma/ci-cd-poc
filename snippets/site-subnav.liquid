@@ -31,7 +31,10 @@
 						data-index="{{ forloop.index0 }}"
 						data-product='{{ childlink.object | json | escape }}'
 						data-accentuate='{{ childlink.object.metafields.accentuate | json | escape }}'
-						class="site-subnav__item{% if childlink.active %} site-nav--active{% endif %}"
+						class="
+							site-subnav__item
+							{% if childlink.active %} site-nav--active{% endif %}
+						"
 					>
 						<a
 							href="{{ childlink.url }}"
@@ -61,12 +64,7 @@
 				endif
 			%}
 
-			{% if link.title != "Mattresses" %}
-				<a href="{{ btnUrl }}"
-					 class="site-subnav__cta compare-btn btn btn--secondary btn--compact">
-					{{ btnPrefix | append: link.title | escape }}
-				</a>
-			{% endif %}
+			<a href="{{ btnUrl }}"class="site-subnav__cta compare-btn btn btn--secondary btn--compact">{{ btnPrefix | append: link.title | escape }}</a>
 		</div>
 		<div class="product-spotlight">
 			<div class="product-spotlight__media bg-wild-sand">
