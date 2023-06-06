@@ -4,7 +4,7 @@
   "description": "Shopify template for Canada",
   "main": "index.js",
   "scripts": {
-    "start": "concurrently npm:serve:* --raw",
+    "start": "concurrently 'npm:serve:*' --raw",
     "serve:theme": "shopify theme dev -s emma-sleep-ca",
     "serve:scss": "gulp watch",
     "pull:live": "shopify theme pull -s emma-sleep-ca -l",

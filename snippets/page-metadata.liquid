@@ -49,7 +49,7 @@
 	{% render 'title-and-desc-meta-tags', variant_meta_title: variant_meta_title, variant_meta_desc: variant_meta_desc %}
 {% endif %}
 
-<link rel="canonical" href="{{ canonical_url }}">
+{% render 'canonical-meta-tag', variant_canonical_url: variant_canonical_url %}
 
 {% render 'social-meta-tags' %}
 
