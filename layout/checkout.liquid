@@ -1,228 +1,235 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="{{ locale }}" dir="{{ direction }}" class="{{ checkout_html_classes }}">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, height=device-height, minimum-scale=1.0, user-scalable=0"
+    >
+    <meta name="referrer" content="origin">
 
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, height=device-height, minimum-scale=1.0, user-scalable=0">
-  <meta name="referrer" content="origin">
+    {% if settings.favicon %}
+      <link rel="shortcut icon" href="{{ settings.favicon | img_url: '32x32' }}" type="image/png">
+    {% endif %}
 
-  {% if settings.favicon %}
-    <link rel="shortcut icon" href="{{ settings.favicon | img_url: '32x32' }}" type="image/png" />
-  {% endif %}
+    <title>{{ page_title }}</title>
 
-  <title>{{ page_title }}</title>
+    {{ content_for_header }}
+    {{ checkout_stylesheets }}
+    {{ checkout_scripts }}
 
-  {{ content_for_header }}
-  {{ checkout_stylesheets }}
-  {{ checkout_scripts }}
+    {% render 'checkout-vendors' %}
+    {% render 'checkout-scripts' %}
+    {% render 'custom-checkout' %}
+    {% render 'weglot_hreftags' %}
+    {% render 'weglot_switcher' %}
+  </head>
 
-  {% render 'checkout-vendors' %}
-  {% render 'checkout-scripts' %}
-  {% render 'custom-checkout' %}
-{% render 'weglot_hreftags' %}
-{% render 'weglot_switcher' %}
-</head>
-
-<body data-format="{{ shop.money_format }}">
-  {% render 'leaving-checkout-popup'%}
-  {{ skip_to_content_link }}
-  <header class="banner" data-header role="banner">
-    <div class="wrap">
-      {{ content_for_logo }}
-    </div>
-  </header>
-  {{ order_summary_toggle }}
-  <div class="content custome" data-content>
-    {% render 'checkout-banner' %}
-    <div class="wrap">
-      <div class="main">
-        <header class="main__header" role="banner">
-          {{ content_for_logo }}
-          {{ breadcrumb }}
-        </header>
-
-        <main class="main__content" role="main">
-          {% render 'checkout-countdown'%}
-          {{ alternative_payment_methods }}
-          {% section 'checkout-supported-payment-methods' %}
-          <div id="review-shipping-address">
-            <div class="heading1">{{ 'checkout.your_details' | t }}</div>
-            <p class="para">{{ 'checkout.shipping_address_review' | t }}</p>
-          </div>
-          {{ content_for_layout }}
-        </main>
-
-        <div class="main-award">
-          {% section 'checkout-shop-awards' %}
-        </div>
-
-        <footer class="main__footer" role="contentinfo">
-          {{ content_for_footer }}
-        </footer>
+  <body data-format="{{ shop.money_format }}">
+    {% render 'leaving-checkout-popup' %}
+    {{ skip_to_content_link }}
+    <header class="banner" data-header role="banner">
+      <div class="wrap">
+        {{ content_for_logo }}
       </div>
-      <aside class="sidebar" role="complementary">
-        <div class="sidebar__header">
-          {{ content_for_logo }}
+    </header>
+    {{ order_summary_toggle }}
+    <div class="content custome" data-content>
+      {% render 'checkout-banner' %}
+      <div class="wrap">
+        <div class="main">
+          <header class="main__header" role="banner">
+            {{ content_for_logo }}
+            {{ breadcrumb }}
+          </header>
+
+          <main class="main__content" role="main">
+            {% render 'checkout-countdown' %}
+            {{ alternative_payment_methods }}
+            <div id="review-shipping-address">
+              <div class="heading1">{{ 'checkout.your_details' | t }}</div>
+              <p class="para">{{ 'checkout.shipping_address_review' | t }}</p>
+            </div>
+            {{ content_for_layout }}
+          </main>
+
+          <div class="main-award">
+            {% section 'checkout-shop-awards' %}
+          </div>
+
+          <footer class="main__footer" role="contentinfo">
+            {{ content_for_footer }}
+          </footer>
         </div>
-        <div class="sidebar__content">
-          {{ content_for_order_summary }}
-        </div>
-      </aside>
+        <aside class="sidebar" role="complementary">
+          <div class="sidebar__header">
+            {{ content_for_logo }}
+          </div>
+          <div class="sidebar__content">
+            {{ content_for_order_summary }}
+          </div>
+        </aside>
+      </div>
     </div>
-  </div>
 
-  {{ tracking_code }}
+    {{ tracking_code }}
 
-  {% render 'freshchat' %}
-  {% render 'checkout-legacy-script' %}
+    {% render 'freshchat' %}
+    {% render 'checkout-legacy-script' %}
 
-  <script type="module">
-    (function($) {
-      // triggered on initial load
-      $(document).on("page:load", function() {
-        updateUIDynamically()
-      });
+    <script type="module">
+      (function ($) {
+        // triggered on initial load
+        $(document).on('page:load', function () {
+          updateUIDynamically();
+        });
 
-      // triggered after interact with page (apply promo code, etc.)
-      $(document).on("page:change", function () {
-        updateUIDynamically()
-      })
-    })(Checkout.$);
+        // triggered after interact with page (apply promo code, etc.)
+        $(document).on('page:change', function () {
+          updateUIDynamically();
+        });
+      })(Checkout.$);
 
-    function updateUIDynamically() {
-      if (Shopify.Checkout.step === 'contact_information') {
-        const button$ = $('.step__footer__continue-btn .btn__content')
-        const buttonText = button$.html()
-        const arrowIcon = `
-          <svg style="margin-top: 1px; margin-left: 6px;" width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M4.66797 10.5H16.3346" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M10.5 4.66699L16.3333 10.5003L10.5 16.3337" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        `
-        button$.html(`<span style="display: flex; align-items: center;justify-content: center;">${buttonText}${arrowIcon}</span>`)
-      }
+      function updateUIDynamically() {
+        if (Shopify.Checkout.step === 'contact_information') {
+          const button$ = $('.step__footer__continue-btn .btn__content');
+          const buttonText = button$.html();
+          const arrowIcon = `
+            <svg style="margin-top: 1px; margin-left: 6px;" width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M4.66797 10.5H16.3346" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M10.5 4.66699L16.3333 10.5003L10.5 16.3337" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          `;
+          button$.html(
+            `<span style="display: flex; align-items: center;justify-content: center;">${buttonText}${arrowIcon}</span>`
+          );
+        }
 
-      if (Shopify.Checkout.step === "payment_method" || Shopify.Checkout.step === "shipping_method") {
-        const links$ = $('.step__footer__previous-link')
-        if (links$ && links$.length === 1) {
-          links$.insertBefore('.step__footer')
-          links$.addClass('checkout-return-button')
+        if (Shopify.Checkout.step === 'payment_method' || Shopify.Checkout.step === 'shipping_method') {
+          const links$ = $('.step__footer__previous-link');
+          if (links$ && links$.length === 1) {
+            links$.insertBefore('.step__footer');
+            links$.addClass('checkout-return-button');
+          }
+        }
+
+        if (Shopify.Checkout.step === 'payment_method') {
+          $('.display-table .radio__input, .display-table .checkbox__input').css('float', 'left');
+          $('.section.section--payment-method .section__header').css('position', 'relative');
+          $('.section.section--payment-method .section__header').append(`
+            <div class="digicert-logo-payment">
+              <img src="{{ 'digicert.png' | asset_url }}" itemprop="logo" />
+            </div>
+          `);
         }
       }
 
-      if (Shopify.Checkout.step === "payment_method") {
-        $('.display-table .radio__input, .display-table .checkbox__input').css('float', 'left')
-        $('.section.section--payment-method .section__header').css('position', 'relative')
-        $('.section.section--payment-method .section__header').append(`
-          <div class="digicert-logo-payment">
-            <img src="{{ 'digicert.png' | asset_url }}" itemprop="logo" />
-          </div>
-        `)
+      removeRefundPolicy();
+      renderDigicertLogo();
+      renderAdditionalSidebarContent();
+
+      function removeRefundPolicy() {
+        document.querySelector('[data-modal="policy-refund-policy"]').closest('.policy-list__item').remove();
       }
-    }
 
-    removeRefundPolicy()
-    renderDigicertLogo()
-    renderAdditionalSidebarContent()
-
-    function removeRefundPolicy() {
-      document.querySelector('[data-modal="policy-refund-policy"]').closest('.policy-list__item').remove();
-    }
-
-    function renderDigicertLogo() {
-      if (Shopify.Checkout.step === 'contact_information' || Shopify.Checkout.step === "shipping_method") {
-        document.querySelector('.main__footer .policy-list').insertAdjacentHTML('beforeend', `<li class="digicert-logo"><img src="{{ 'digicert.png' | asset_url }}" itemprop="logo" /></li>`);
+      function renderDigicertLogo() {
+        if (Shopify.Checkout.step === 'contact_information' || Shopify.Checkout.step === 'shipping_method') {
+          document
+            .querySelector('.main__footer .policy-list')
+            .insertAdjacentHTML(
+              'beforeend',
+              `<li class="digicert-logo"><img src="{{ 'digicert.png' | asset_url }}" itemprop="logo" /></li>`
+            );
+        }
       }
-    }
 
-    function renderAdditionalSidebarContent() {
-      // Sidebar content generated by Shopify is stored within an accordion
-      // Inject additional content with JS to make it also stored within accordion
-      const SidebarOrnament = `
-        <div class="sidebar-ornament">
-          <div class="sidebar-ornament__content">
-            <h4 class="sidebar-ornament__title">{{ 'shopify.risk_reversals.title' | t | newline_to_br }}</h4>
-            <p class="sidebar-ornament__subtitle"><img src="{{ 'truck-free.svg' | asset_url }}" alt="truck-free.svg"> {{ 'shopify.risk_reversals.subtitle' | t | newline_to_br }}</p>
-            <div class="sidebar-ornament__benefits">
-              <div class="sidebar-ornament__benefit">
-                <img src="{{ '365-moon.svg' | asset_url }}" alt="365-moon.svg">
-                <p>{{ 'shopify.risk_reversals.benefit_1' | t | newline_to_br }}</p>
-              </div>
-              <div class="sidebar-ornament__benefit">
-                <img src="{{ 'warranty.svg' | asset_url }}" alt="warranty.svg">
-                <p>{{ 'shopify.risk_reversals.benefit_2' | t | newline_to_br }}</p>
-              </div>
-              <div class="sidebar-ornament__benefit">
-                <img src="{{ 'truck-free.svg' | asset_url }}" alt="truck-free.svg">
-                <p>{{ 'shopify.risk_reversals.benefit_3' | t | newline_to_br }}</p>
-              </div>
-            </div>
-          </div>
-          <div class="sidebar-ornament__footer">
-            <div class="sidebar-ornament__support-avatar">
-              <div class="sidebar-ornament__support-avatar-status"></div>
-              <img class="sidebar-ornament__support-avatar-image"
-                   src="{{ 'checkout-support-avatar.png' | asset_url }}"/>
-            </div>
-            <div class="sidebar-ornament__support">
-              <div class="sidebar-ornament__support-wrapper">
-                <div class="sidebar-ornament__support-heading">{{ 'shopify.risk_reversals.help' | t }}</div>
-                <div class="sidebar-ornament__support-info">
-                  <button onclick="openChatSupport()" id="sidebar-ornament__support-chat" class="sidebar-ornament__support-chat">
-                    <div>
-                      <svg width="9" height="10" viewBox="0 0 9 10" fill="none"
-                           xmlns="http://www.w3.org/2000/svg">
-                        <path
-                          d="M8.25 6.25C8.25 6.47101 8.1622 6.68298 8.00592 6.83926C7.84964 6.99554 7.63768 7.08333 7.41667 7.08333H2.41667L0.75 8.75V2.08333C0.75 1.86232 0.837797 1.65036 0.994078 1.49408C1.15036 1.3378 1.36232 1.25 1.58333 1.25H7.41667C7.63768 1.25 7.84964 1.3378 8.00592 1.49408C8.1622 1.65036 8.25 1.86232 8.25 2.08333V6.25Z"
-                          stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
-                      </svg>
-                    </div>
-                    <p class="sidebar-ornament__support-info-text">{{ 'shopify.risk_reversals.chat' | t }}</p>
-                  </button>
-                  <a href="tel:+18885853662" class="sidebar-ornament__support-chat">
-                    <div>
-                      <svg width="9" height="10" viewBox="0 0 9 10" fill="none"
-                           xmlns="http://www.w3.org/2000/svg">
-                        <path
-                          d="M7.59846 5.41641C7.50679 5.41641 7.41096 5.38724 7.31929 5.36641C7.13366 5.3255 6.95123 5.27119 6.77345 5.20391C6.58016 5.13359 6.36768 5.13724 6.17692 5.21416C5.98615 5.29108 5.83057 5.43584 5.74012 5.62057L5.64846 5.80807C5.24262 5.58232 4.8697 5.30192 4.54012 4.97474C4.21294 4.64517 3.93255 4.27224 3.70679 3.86641L3.88179 3.74974C4.06652 3.65929 4.21128 3.50371 4.2882 3.31295C4.36512 3.12218 4.36878 2.90971 4.29846 2.71641C4.2323 2.53825 4.17801 2.35591 4.13596 2.17058C4.11512 2.07891 4.09846 1.98308 4.08596 1.88724C4.03536 1.59375 3.88163 1.32797 3.65246 1.13776C3.4233 0.947549 3.13374 0.845412 2.83596 0.849742H1.58596C1.40638 0.848056 1.22856 0.885081 1.06458 0.958296C0.900609 1.03151 0.754334 1.1392 0.635718 1.27403C0.517101 1.40885 0.428928 1.56766 0.3772 1.73962C0.325472 1.91159 0.311405 2.09268 0.335955 2.27057C0.557929 4.01615 1.35513 5.63802 2.60164 6.88001C3.84815 8.12199 5.47292 8.91329 7.21929 9.12891H7.37762C7.68488 9.12936 7.98154 9.01663 8.21096 8.81224C8.34277 8.69434 8.44807 8.54982 8.5199 8.38821C8.59173 8.2266 8.62844 8.05159 8.62762 7.87474V6.62474C8.62252 6.33532 8.51712 6.05664 8.32943 5.83627C8.14174 5.6159 7.88338 5.4675 7.59846 5.41641ZM7.80679 7.91641C7.80671 7.97557 7.79404 8.03404 7.76961 8.08792C7.74519 8.1418 7.70957 8.18986 7.66512 8.22891C7.61856 8.26911 7.56412 8.29914 7.50529 8.31707C7.44645 8.33501 7.38452 8.34046 7.32346 8.33308C5.763 8.13299 4.31355 7.41911 3.20375 6.30403C2.09395 5.18895 1.38696 3.73613 1.19429 2.17474C1.18766 2.11371 1.19347 2.05196 1.21137 1.99324C1.22928 1.93451 1.2589 1.88003 1.29846 1.83308C1.3375 1.78863 1.38556 1.75301 1.43945 1.72858C1.49333 1.70416 1.55179 1.69148 1.61096 1.69141H2.86095C2.95785 1.68925 3.05246 1.72094 3.12852 1.78102C3.20457 1.8411 3.25729 1.92581 3.27762 2.02057C3.29429 2.13446 3.31512 2.24696 3.34012 2.35807C3.38825 2.57772 3.45231 2.79357 3.53179 3.00391L2.94845 3.27474C2.89858 3.29763 2.85371 3.33014 2.81644 3.37041C2.77916 3.41068 2.75021 3.45791 2.73123 3.50941C2.71226 3.5609 2.70365 3.61563 2.70589 3.67046C2.70813 3.72529 2.72118 3.77914 2.74429 3.82891C3.34396 5.11339 4.37647 6.14591 5.66095 6.74558C5.7624 6.78725 5.87618 6.78725 5.97762 6.74558C6.02959 6.72699 6.07734 6.69826 6.11811 6.66107C6.15888 6.62388 6.19186 6.57895 6.21512 6.52891L6.47345 5.94558C6.68886 6.02261 6.9087 6.08661 7.13179 6.13724C7.2429 6.16224 7.3554 6.18308 7.46929 6.19974C7.56405 6.22007 7.64876 6.2728 7.70884 6.34885C7.76892 6.4249 7.80061 6.51951 7.79846 6.61641L7.80679 7.91641Z"
-                          fill="white"/>
-                      </svg>
-                    </div>
-                    <p class="sidebar-ornament__support-info-text">1 (888) 585 EMMA</p>
-                  </a>
+      function renderAdditionalSidebarContent() {
+        // Sidebar content generated by Shopify is stored within an accordion
+        // Inject additional content with JS to make it also stored within accordion
+        const SidebarOrnament = `
+          <div class="sidebar-ornament">
+            <div class="sidebar-ornament__content">
+              <h4 class="sidebar-ornament__title">{{ 'shopify.risk_reversals.title' | t | newline_to_br }}</h4>
+              <p class="sidebar-ornament__subtitle"><img src="{{ 'truck-free.svg' | asset_url }}" alt="truck-free.svg"> {{ 'shopify.risk_reversals.subtitle' | t | newline_to_br }}</p>
+              <div class="sidebar-ornament__benefits">
+                <div class="sidebar-ornament__benefit">
+                  <img src="{{ '365-moon.svg' | asset_url }}" alt="365-moon.svg">
+                  <p>{{ 'shopify.risk_reversals.benefit_1' | t | newline_to_br }}</p>
+                </div>
+                <div class="sidebar-ornament__benefit">
+                  <img src="{{ 'warranty.svg' | asset_url }}" alt="warranty.svg">
+                  <p>{{ 'shopify.risk_reversals.benefit_2' | t | newline_to_br }}</p>
+                </div>
+                <div class="sidebar-ornament__benefit">
+                  <img src="{{ 'truck-free.svg' | asset_url }}" alt="truck-free.svg">
+                  <p>{{ 'shopify.risk_reversals.benefit_3' | t | newline_to_br }}</p>
                 </div>
               </div>
-              <p class="sidebar-ornament__support-subheading">{{ 'shopify.risk_reversals.support' | t }}</p>
+            </div>
+            <div class="sidebar-ornament__footer">
+              <div class="sidebar-ornament__support-avatar">
+                <div class="sidebar-ornament__support-avatar-status"></div>
+                <img class="sidebar-ornament__support-avatar-image"
+                     src="{{ 'checkout-support-avatar.png' | asset_url }}"/>
+              </div>
+              <div class="sidebar-ornament__support">
+                <div class="sidebar-ornament__support-wrapper">
+                  <div class="sidebar-ornament__support-heading">{{ 'shopify.risk_reversals.help' | t }}</div>
+                  <div class="sidebar-ornament__support-info">
+                    <button onclick="openChatSupport()" id="sidebar-ornament__support-chat" class="sidebar-ornament__support-chat">
+                      <div>
+                        <svg width="9" height="10" viewBox="0 0 9 10" fill="none"
+                             xmlns="http://www.w3.org/2000/svg">
+                          <path
+                            d="M8.25 6.25C8.25 6.47101 8.1622 6.68298 8.00592 6.83926C7.84964 6.99554 7.63768 7.08333 7.41667 7.08333H2.41667L0.75 8.75V2.08333C0.75 1.86232 0.837797 1.65036 0.994078 1.49408C1.15036 1.3378 1.36232 1.25 1.58333 1.25H7.41667C7.63768 1.25 7.84964 1.3378 8.00592 1.49408C8.1622 1.65036 8.25 1.86232 8.25 2.08333V6.25Z"
+                            stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                      </div>
+                      <p class="sidebar-ornament__support-info-text">{{ 'shopify.risk_reversals.chat' | t }}</p>
+                    </button>
+                    <a href="tel:+18885853662" class="sidebar-ornament__support-chat">
+                      <div>
+                        <svg width="9" height="10" viewBox="0 0 9 10" fill="none"
+                             xmlns="http://www.w3.org/2000/svg">
+                          <path
+                            d="M7.59846 5.41641C7.50679 5.41641 7.41096 5.38724 7.31929 5.36641C7.13366 5.3255 6.95123 5.27119 6.77345 5.20391C6.58016 5.13359 6.36768 5.13724 6.17692 5.21416C5.98615 5.29108 5.83057 5.43584 5.74012 5.62057L5.64846 5.80807C5.24262 5.58232 4.8697 5.30192 4.54012 4.97474C4.21294 4.64517 3.93255 4.27224 3.70679 3.86641L3.88179 3.74974C4.06652 3.65929 4.21128 3.50371 4.2882 3.31295C4.36512 3.12218 4.36878 2.90971 4.29846 2.71641C4.2323 2.53825 4.17801 2.35591 4.13596 2.17058C4.11512 2.07891 4.09846 1.98308 4.08596 1.88724C4.03536 1.59375 3.88163 1.32797 3.65246 1.13776C3.4233 0.947549 3.13374 0.845412 2.83596 0.849742H1.58596C1.40638 0.848056 1.22856 0.885081 1.06458 0.958296C0.900609 1.03151 0.754334 1.1392 0.635718 1.27403C0.517101 1.40885 0.428928 1.56766 0.3772 1.73962C0.325472 1.91159 0.311405 2.09268 0.335955 2.27057C0.557929 4.01615 1.35513 5.63802 2.60164 6.88001C3.84815 8.12199 5.47292 8.91329 7.21929 9.12891H7.37762C7.68488 9.12936 7.98154 9.01663 8.21096 8.81224C8.34277 8.69434 8.44807 8.54982 8.5199 8.38821C8.59173 8.2266 8.62844 8.05159 8.62762 7.87474V6.62474C8.62252 6.33532 8.51712 6.05664 8.32943 5.83627C8.14174 5.6159 7.88338 5.4675 7.59846 5.41641ZM7.80679 7.91641C7.80671 7.97557 7.79404 8.03404 7.76961 8.08792C7.74519 8.1418 7.70957 8.18986 7.66512 8.22891C7.61856 8.26911 7.56412 8.29914 7.50529 8.31707C7.44645 8.33501 7.38452 8.34046 7.32346 8.33308C5.763 8.13299 4.31355 7.41911 3.20375 6.30403C2.09395 5.18895 1.38696 3.73613 1.19429 2.17474C1.18766 2.11371 1.19347 2.05196 1.21137 1.99324C1.22928 1.93451 1.2589 1.88003 1.29846 1.83308C1.3375 1.78863 1.38556 1.75301 1.43945 1.72858C1.49333 1.70416 1.55179 1.69148 1.61096 1.69141H2.86095C2.95785 1.68925 3.05246 1.72094 3.12852 1.78102C3.20457 1.8411 3.25729 1.92581 3.27762 2.02057C3.29429 2.13446 3.31512 2.24696 3.34012 2.35807C3.38825 2.57772 3.45231 2.79357 3.53179 3.00391L2.94845 3.27474C2.89858 3.29763 2.85371 3.33014 2.81644 3.37041C2.77916 3.41068 2.75021 3.45791 2.73123 3.50941C2.71226 3.5609 2.70365 3.61563 2.70589 3.67046C2.70813 3.72529 2.72118 3.77914 2.74429 3.82891C3.34396 5.11339 4.37647 6.14591 5.66095 6.74558C5.7624 6.78725 5.87618 6.78725 5.97762 6.74558C6.02959 6.72699 6.07734 6.69826 6.11811 6.66107C6.15888 6.62388 6.19186 6.57895 6.21512 6.52891L6.47345 5.94558C6.68886 6.02261 6.9087 6.08661 7.13179 6.13724C7.2429 6.16224 7.3554 6.18308 7.46929 6.19974C7.56405 6.22007 7.64876 6.2728 7.70884 6.34885C7.76892 6.4249 7.80061 6.51951 7.79846 6.61641L7.80679 7.91641Z"
+                            fill="white"/>
+                        </svg>
+                      </div>
+                      <p class="sidebar-ornament__support-info-text">1 (888) 585 EMMA</p>
+                    </a>
+                  </div>
+                </div>
+                <p class="sidebar-ornament__support-subheading">{{ 'shopify.risk_reversals.support' | t }}</p>
+              </div>
             </div>
           </div>
-        </div>
-      `
+        `;
 
-      const SidebarBanner = `
-        <div class="sidebar-banner">
-          <div>
-            <svg class="sidebar-banner__icon" width="29" height="24" viewBox="0 0 29 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <g clip-path="url(#clip0_4254_24302)">
-                <path d="M25.0273 21.7664C24.8553 22.4116 24.4939 22.9211 23.9994 23.3465C22.7427 24.4293 20.0601 24.268 19.2537 22.0877C19.1607 21.8363 19.0503 21.7583 18.7853 21.759C16.1328 21.7704 13.4802 21.7657 10.8277 21.7657C10.728 21.7657 10.6283 21.7657 10.5352 21.7657C9.8701 23.5825 8.62613 24.102 7.06297 23.9642C6.02175 23.8728 5.00329 22.9923 4.6212 21.7657C4.51413 21.7657 4.39502 21.7657 4.27524 21.7657C3.53917 21.763 2.80309 21.7489 2.06701 21.7597C1.12818 21.7731 0.0903136 20.7421 0.100351 19.6922C0.137824 15.7503 0.136486 11.8063 0.0996819 7.86362C0.0903136 6.89039 0.989666 5.75989 2.17676 5.74914C2.62175 5.7451 3.06607 5.74914 3.55456 5.74914C3.53984 3.76706 4.36893 2.2185 5.90933 1.047C7.1339 0.116114 8.54583 -0.0895546 10.028 0.0314267C12.4738 0.230374 15.0895 2.53171 15.0461 5.74847C15.4556 5.74847 15.8651 5.74847 16.2753 5.74847C17.7187 5.74847 18.5016 6.52409 18.5244 7.97519C18.5257 8.05114 18.531 8.12709 18.5364 8.2353H18.9165C20.6115 8.2353 22.3071 8.24135 24.0021 8.22858C24.2651 8.22657 24.4391 8.30924 24.5977 8.5102C25.9842 10.2624 27.378 12.0086 28.7612 13.7635C28.8415 13.8656 28.889 14.0229 28.8896 14.1553C28.897 16.5528 28.8917 18.9495 28.8997 21.347C28.901 21.675 28.7665 21.7738 28.458 21.7711C27.3211 21.7603 26.1842 21.7671 25.0273 21.7671V21.7664ZM16.8494 20.0995C16.8494 19.951 16.8494 19.8199 16.8494 19.6889C16.8494 16.0487 16.8494 12.4085 16.8494 8.76829C16.8494 8.5559 16.8662 8.34284 16.8575 8.13045C16.8374 7.65123 16.6213 7.43615 16.1522 7.42674C15.7841 7.41935 15.4154 7.41129 15.0487 7.43414C14.9524 7.44019 14.8246 7.54033 14.7764 7.63174C14.5837 7.99469 14.4472 8.38989 14.235 8.73939C12.9502 10.8633 11.3215 12.7163 9.66466 14.5458C9.45187 14.7804 9.10257 14.7696 8.88375 14.5196C8.10351 13.6297 7.31189 12.7479 6.5611 11.8332C5.641 10.7127 4.74633 9.56946 4.07316 8.27294C3.92862 7.99468 3.86371 7.59343 3.6382 7.45968C3.39731 7.31719 3.00986 7.42338 2.68666 7.42473C2.01147 7.42742 1.77526 7.65661 1.77459 8.32806C1.77258 11.9568 1.77258 15.5863 1.77459 19.215C1.77459 19.8656 2.01482 20.1096 2.65989 20.1177C3.20593 20.1244 3.7533 20.1089 4.29933 20.1244C4.52886 20.1305 4.6386 20.0693 4.72827 19.8354C5.55267 17.692 8.03057 17.53 9.31269 18.4347C9.90489 18.8528 10.3077 19.4126 10.5118 20.0989H16.8494V20.0995ZM27.2188 15.1527H26.8828C24.8312 15.1527 22.7789 15.1494 20.7272 15.1568C20.4301 15.1581 20.2929 15.058 20.3083 14.7488C20.3224 14.4692 20.3103 14.1889 20.3123 13.9087C20.315 13.5134 20.3558 13.4731 20.7627 13.4731C22.4691 13.4731 24.1747 13.4731 25.8811 13.4731C25.9962 13.4731 26.1113 13.4731 26.2893 13.4731C25.3431 12.2828 24.4511 11.1536 23.5451 10.0359C23.4788 9.95391 23.3149 9.91762 23.1958 9.91694C21.7464 9.90888 20.2963 9.91157 18.8469 9.91291C18.7505 9.91291 18.6542 9.92568 18.5511 9.93307V20.0861C18.9053 20.1331 19.1507 20.0007 19.2872 19.6889C19.5234 19.1505 19.9048 18.7271 20.3813 18.4045C21.6734 17.5307 24.1353 17.7028 24.9496 19.8791C24.9831 19.9685 25.0708 20.1036 25.1357 20.1049C25.8236 20.1217 26.5121 20.115 27.2188 20.115V15.1527ZM9.28391 12.3211C9.7985 11.7007 10.2964 11.1557 10.7313 10.5635C11.4694 9.5587 12.2155 8.55456 12.8666 7.49328C13.3477 6.70825 13.4762 5.8103 13.232 4.88345C12.6458 2.66008 10.8096 1.65594 9.26651 1.69492C6.25663 1.7702 4.12937 5.09113 5.87253 7.80313C6.41455 8.64597 7.0014 9.46125 7.60365 10.2617C8.12559 10.9547 8.6984 11.608 9.28324 12.3211H9.28391ZM22.085 22.2906C22.7186 22.288 23.3958 21.6279 23.4039 21.0049C23.4126 20.3475 22.7287 19.6526 22.0763 19.6546C21.4205 19.6566 20.7493 20.3496 20.762 21.0123C20.7741 21.642 21.4479 22.2933 22.085 22.2906ZM7.56149 22.2906C8.1972 22.2947 8.87037 21.6447 8.88375 21.0143C8.89781 20.3536 8.22597 19.6586 7.56952 19.6539C6.90705 19.6492 6.2486 20.3247 6.25529 21.0022C6.26131 21.6387 6.91776 22.2866 7.56149 22.2906Z" fill="white"/>
-                <path d="M9.31318 3.71442C10.333 3.57597 11.3963 4.56465 11.3448 5.77648C11.2919 7.01318 10.519 7.79351 9.27839 7.8298C8.20305 7.86139 7.22607 6.96613 7.22072 5.75766C7.21604 4.61305 8.19234 3.56521 9.31318 3.71442ZM9.29311 5.26836C9.13452 5.49755 8.97191 5.62996 8.97191 5.76237C8.97191 5.87528 9.174 6.08767 9.26233 6.07557C9.39415 6.05743 9.58553 5.89209 9.60159 5.76909C9.61765 5.64744 9.44702 5.50226 9.29311 5.26769V5.26836Z" fill="white"/>
-              </g>
-              <defs>
-                <clipPath id="clip0_4254_24302">
-                  <rect width="28.8" height="24" fill="white" transform="translate(0.0996094)"/>
-                </clipPath>
-              </defs>
-            </svg>
+        const SidebarBanner = `
+          <div class="sidebar-banner">
+            <div>
+              <svg class="sidebar-banner__icon" width="29" height="24" viewBox="0 0 29 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g clip-path="url(#clip0_4254_24302)">
+                  <path d="M25.0273 21.7664C24.8553 22.4116 24.4939 22.9211 23.9994 23.3465C22.7427 24.4293 20.0601 24.268 19.2537 22.0877C19.1607 21.8363 19.0503 21.7583 18.7853 21.759C16.1328 21.7704 13.4802 21.7657 10.8277 21.7657C10.728 21.7657 10.6283 21.7657 10.5352 21.7657C9.8701 23.5825 8.62613 24.102 7.06297 23.9642C6.02175 23.8728 5.00329 22.9923 4.6212 21.7657C4.51413 21.7657 4.39502 21.7657 4.27524 21.7657C3.53917 21.763 2.80309 21.7489 2.06701 21.7597C1.12818 21.7731 0.0903136 20.7421 0.100351 19.6922C0.137824 15.7503 0.136486 11.8063 0.0996819 7.86362C0.0903136 6.89039 0.989666 5.75989 2.17676 5.74914C2.62175 5.7451 3.06607 5.74914 3.55456 5.74914C3.53984 3.76706 4.36893 2.2185 5.90933 1.047C7.1339 0.116114 8.54583 -0.0895546 10.028 0.0314267C12.4738 0.230374 15.0895 2.53171 15.0461 5.74847C15.4556 5.74847 15.8651 5.74847 16.2753 5.74847C17.7187 5.74847 18.5016 6.52409 18.5244 7.97519C18.5257 8.05114 18.531 8.12709 18.5364 8.2353H18.9165C20.6115 8.2353 22.3071 8.24135 24.0021 8.22858C24.2651 8.22657 24.4391 8.30924 24.5977 8.5102C25.9842 10.2624 27.378 12.0086 28.7612 13.7635C28.8415 13.8656 28.889 14.0229 28.8896 14.1553C28.897 16.5528 28.8917 18.9495 28.8997 21.347C28.901 21.675 28.7665 21.7738 28.458 21.7711C27.3211 21.7603 26.1842 21.7671 25.0273 21.7671V21.7664ZM16.8494 20.0995C16.8494 19.951 16.8494 19.8199 16.8494 19.6889C16.8494 16.0487 16.8494 12.4085 16.8494 8.76829C16.8494 8.5559 16.8662 8.34284 16.8575 8.13045C16.8374 7.65123 16.6213 7.43615 16.1522 7.42674C15.7841 7.41935 15.4154 7.41129 15.0487 7.43414C14.9524 7.44019 14.8246 7.54033 14.7764 7.63174C14.5837 7.99469 14.4472 8.38989 14.235 8.73939C12.9502 10.8633 11.3215 12.7163 9.66466 14.5458C9.45187 14.7804 9.10257 14.7696 8.88375 14.5196C8.10351 13.6297 7.31189 12.7479 6.5611 11.8332C5.641 10.7127 4.74633 9.56946 4.07316 8.27294C3.92862 7.99468 3.86371 7.59343 3.6382 7.45968C3.39731 7.31719 3.00986 7.42338 2.68666 7.42473C2.01147 7.42742 1.77526 7.65661 1.77459 8.32806C1.77258 11.9568 1.77258 15.5863 1.77459 19.215C1.77459 19.8656 2.01482 20.1096 2.65989 20.1177C3.20593 20.1244 3.7533 20.1089 4.29933 20.1244C4.52886 20.1305 4.6386 20.0693 4.72827 19.8354C5.55267 17.692 8.03057 17.53 9.31269 18.4347C9.90489 18.8528 10.3077 19.4126 10.5118 20.0989H16.8494V20.0995ZM27.2188 15.1527H26.8828C24.8312 15.1527 22.7789 15.1494 20.7272 15.1568C20.4301 15.1581 20.2929 15.058 20.3083 14.7488C20.3224 14.4692 20.3103 14.1889 20.3123 13.9087C20.315 13.5134 20.3558 13.4731 20.7627 13.4731C22.4691 13.4731 24.1747 13.4731 25.8811 13.4731C25.9962 13.4731 26.1113 13.4731 26.2893 13.4731C25.3431 12.2828 24.4511 11.1536 23.5451 10.0359C23.4788 9.95391 23.3149 9.91762 23.1958 9.91694C21.7464 9.90888 20.2963 9.91157 18.8469 9.91291C18.7505 9.91291 18.6542 9.92568 18.5511 9.93307V20.0861C18.9053 20.1331 19.1507 20.0007 19.2872 19.6889C19.5234 19.1505 19.9048 18.7271 20.3813 18.4045C21.6734 17.5307 24.1353 17.7028 24.9496 19.8791C24.9831 19.9685 25.0708 20.1036 25.1357 20.1049C25.8236 20.1217 26.5121 20.115 27.2188 20.115V15.1527ZM9.28391 12.3211C9.7985 11.7007 10.2964 11.1557 10.7313 10.5635C11.4694 9.5587 12.2155 8.55456 12.8666 7.49328C13.3477 6.70825 13.4762 5.8103 13.232 4.88345C12.6458 2.66008 10.8096 1.65594 9.26651 1.69492C6.25663 1.7702 4.12937 5.09113 5.87253 7.80313C6.41455 8.64597 7.0014 9.46125 7.60365 10.2617C8.12559 10.9547 8.6984 11.608 9.28324 12.3211H9.28391ZM22.085 22.2906C22.7186 22.288 23.3958 21.6279 23.4039 21.0049C23.4126 20.3475 22.7287 19.6526 22.0763 19.6546C21.4205 19.6566 20.7493 20.3496 20.762 21.0123C20.7741 21.642 21.4479 22.2933 22.085 22.2906ZM7.56149 22.2906C8.1972 22.2947 8.87037 21.6447 8.88375 21.0143C8.89781 20.3536 8.22597 19.6586 7.56952 19.6539C6.90705 19.6492 6.2486 20.3247 6.25529 21.0022C6.26131 21.6387 6.91776 22.2866 7.56149 22.2906Z" fill="white"/>
+                  <path d="M9.31318 3.71442C10.333 3.57597 11.3963 4.56465 11.3448 5.77648C11.2919 7.01318 10.519 7.79351 9.27839 7.8298C8.20305 7.86139 7.22607 6.96613 7.22072 5.75766C7.21604 4.61305 8.19234 3.56521 9.31318 3.71442ZM9.29311 5.26836C9.13452 5.49755 8.97191 5.62996 8.97191 5.76237C8.97191 5.87528 9.174 6.08767 9.26233 6.07557C9.39415 6.05743 9.58553 5.89209 9.60159 5.76909C9.61765 5.64744 9.44702 5.50226 9.29311 5.26769V5.26836Z" fill="white"/>
+                </g>
+                <defs>
+                  <clipPath id="clip0_4254_24302">
+                    <rect width="28.8" height="24" fill="white" transform="translate(0.0996094)"/>
+                  </clipPath>
+                </defs>
+              </svg>
+            </div>
+            <p class="sidebar-banner__text">{{ 'shopify.shipping_time' | t }}</p>
           </div>
-          <p class="sidebar-banner__text">{{ 'shopify.shipping_time' | t }}</p>
-        </div>
-      `
+        `;
 
-      const orderSummaryEl = document.getElementById('order-summary')
-      orderSummaryEl.insertAdjacentHTML('afterbegin', SidebarBanner)
-      orderSummaryEl.insertAdjacentHTML('beforeend', SidebarOrnament)
-    }
-  </script>
-</body>
-
+        const orderSummaryEl = document.getElementById('order-summary');
+        orderSummaryEl.insertAdjacentHTML('afterbegin', SidebarBanner);
+        orderSummaryEl.insertAdjacentHTML('beforeend', SidebarOrnament);
+      }
+    </script>
+  </body>
 </html>

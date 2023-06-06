@@ -137,14 +137,39 @@
       },
       "announcement-bar": {
         "type": "announcement-bar",
+        "blocks": {
+          "4befd056-3333-4649-85aa-04c5d05e968f": {
+            "type": "text_slide",
+            "settings": {
+              "text": "<p><strong>Buy Now, Pay Later and 0% Financing Available<\/strong><\/p>"
+            }
+          },
+          "67a40418-d09b-4eef-938a-4cc2fd8042ee": {
+            "type": "text_slide",
+            "disabled": true,
+            "settings": {
+              "text": "<p>Text Only - Slide 2<\/p>"
+            }
+          },
+          "624f85d1-ceeb-461a-8920-82816339774f": {
+            "type": "countdown_slide",
+            "disabled": true,
+            "settings": {
+              "text": "",
+              "timer_text": "<p>This countdown will end in<\/p>",
+              "end_time": "2023-06-01 00:00"
+            }
+          }
+        },
+        "block_order": [
+          "4befd056-3333-4649-85aa-04c5d05e968f",
+          "67a40418-d09b-4eef-938a-4cc2fd8042ee",
+          "624f85d1-ceeb-461a-8920-82816339774f"
+        ],
         "settings": {
-          "show_announcement": true,
           "home_page_only": false,
-          "text": "Buy Now, Pay Later and 0% Financing Available",
-          "countdown-date": "",
-          "link": "shopify:\/\/products\/emma-climax-hybrid",
-          "color_bg": "#ff8900",
-          "color_text": "#ffffff"
+          "background_color": "#ff563d",
+          "text_color": "#ffffff"
         }
       },
       "header": {

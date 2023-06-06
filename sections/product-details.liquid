@@ -797,9 +797,6 @@
             </div>
             <script src="{{ 'pickup-availability.js' | asset_url }}" defer="defer"></script>
 
-            {%- when 'add_on_pillows' %}
-              {% render 'add-on-pillows', pillowData: block.settings, productFormId: product_form_id %}
-
             {%- when 'mini-comparison-table' %}
               {% render 'mini-comparison-table', settings: block.settings %}
             
@@ -1314,36 +1311,6 @@ customElements.define('product-modal', ProductModal);
           "default": true,
           "label": "t:sections.main-product.blocks.buy_buttons.settings.show_dynamic_checkout.label",
           "info": "t:sections.main-product.blocks.buy_buttons.settings.show_dynamic_checkout.info"
-        }
-      ]
-    },
-    {
-      "type": "add_on_pillows",
-      "name": "Add on pillows",
-      "limit": 1,
-      "settings": [
-        {
-          "id": "pillow_image",
-          "type": "image_picker",
-          "label": "Pillow Image"
-        },
-        {
-          "id": "pillow_id",
-          "type": "text",
-          "label": "Pillow ID",
-          "default": "42347808358563"
-        },
-        {
-          "id": "pillow_price",
-          "type": "text",
-          "label": "Pillow Price",
-          "default": "$99"
-        },
-        {
-          "id": "pillow_label",
-          "type": "text",
-          "label": "Pillow Label",
-          "default": "2 Pack Pillow"
         }
       ]
     },
