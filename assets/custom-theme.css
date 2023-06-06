@@ -6,87 +6,65 @@ html {
   margin-bottom: 0
 }
 
-.h1,
-h1 {
+.h1, h1 {
   font-size: 60px
 }
 
-.h1,
-.h2,
-h1,
-h2 {
+.h1, .h2, h1, h2 {
   line-height: 1.2em
 }
 
-.h2,
-h2 {
+.h2, h2 {
   font-size: 50px
 }
 
-.h3,
-h3 {
+.h3, h3 {
   font-size: 40px
 }
 
-.h3,
-.h4,
-h3,
-h4 {
+.h3, .h4, h3, h4 {
   line-height: 1.2em
 }
 
-.h4,
-h4 {
+.h4, h4 {
   font-size: 36px
 }
 
-.h5,
-h5 {
+.h5, h5 {
   font-size: 33px
 }
 
-.h5,
-.h6,
-h5,
-h6 {
+.h5, .h6, h5, h6 {
   line-height: 1.2em
 }
 
-.h6,
-h6 {
+.h6, h6 {
   font-size: 30px
 }
 
 @media (max-width: 768px) {
-
-  .h1,
-  h1 {
+  .h1, h1 {
     font-size: 38px;
     line-height: 1.2em
   }
 
-  .h2,
-  h2 {
+  .h2, h2 {
     font-size: 35px
   }
 
-  .h3,
-  h3 {
+  .h3, h3 {
     font-size: 33px
   }
 
-  .h4,
-  h4 {
+  .h4, h4 {
     font-size: 30px
   }
 
-  .h5,
-  h5 {
+  .h5, h5 {
     font-size: 28px
   }
 
-  .h6,
-  h6 {
+  .h6, h6 {
     font-size: 25px
   }
 }
@@ -103,8 +81,17 @@ h6 {
   padding: 8px 48px
 }
 
-#emma-foam-pillow .main-content,
-#emma-original-mattress .main-content {
+.announcement-bar {
+  background-color: #ff563d !important;
+  box-shadow: 0 42px 65px rgba(0, 0, 0, .03), 0 9.38125px 14.5186px rgba(0, 0, 0, .018), 0 2.79304px 4.32257px rgba(0, 0, 0, .012)
+}
+
+.announcement-bar__message {
+  color: #fff !important;
+  font-weight: 600
+}
+
+#emma-foam-pillow .main-content, #emma-original-mattress .main-content {
   padding-bottom: 0
 }
 
@@ -145,94 +132,70 @@ h6 {
     margin-bottom: 0
   }
 
-  .h1,
-  h1 {
+  .h1, h1 {
     font-size: 60px
   }
 
-  .h1,
-  .h2,
-  h1,
-  h2 {
+  .h1, .h2, h1, h2 {
     line-height: 1.2em
   }
 
-  .h2,
-  h2 {
+  .h2, h2 {
     font-size: 50px
   }
 
-  .h3,
-  h3 {
+  .h3, h3 {
     font-size: 40px
   }
 
-  .h3,
-  .h4,
-  h3,
-  h4 {
+  .h3, .h4, h3, h4 {
     line-height: 1.2em
   }
 
-  .h4,
-  h4 {
+  .h4, h4 {
     font-size: 36px
   }
 
-  .h5,
-  h5 {
+  .h5, h5 {
     font-size: 33px
   }
 
-  .h5,
-  .h6,
-  h5,
-  h6 {
+  .h5, .h6, h5, h6 {
     line-height: 1.2em
   }
 
-  .h6,
-  h6 {
+  .h6, h6 {
     font-size: 30px
   }
 
   @media (max-width: 768px) {
-
-    .h1,
-    h1 {
+    .h1, h1 {
       font-size: 38px;
       line-height: 1.2em
     }
 
-    .h2,
-    h2 {
+    .h2, h2 {
       font-size: 35px
     }
 
-    .h3,
-    h3 {
+    .h3, h3 {
       font-size: 33px
     }
 
-    .h4,
-    h4 {
+    .h4, h4 {
       font-size: 30px
     }
 
-    .h5,
-    h5 {
+    .h5, h5 {
       font-size: 28px
     }
 
-    .h6,
-    h6 {
+    .h6, h6 {
       font-size: 25px
     }
-  }
-
-  .text-lg {
-    font-size: 18px
-  }
+  }.text-lg {
+     font-size: 18px
+   }
 
   .text-sm {
     font-size: 14px
@@ -242,8 +205,17 @@ h6 {
     padding: 8px 48px
   }
 
-  #emma-foam-pillow .main-content,
-  #emma-original-mattress .main-content {
+  .announcement-bar {
+    background-color: #ff563d !important;
+    box-shadow: 0 42px 65px rgba(0, 0, 0, .03), 0 9.38125px 14.5186px rgba(0, 0, 0, .018), 0 2.79304px 4.32257px rgba(0, 0, 0, .012)
+  }
+
+  .announcement-bar__message {
+    color: #fff !important;
+    font-weight: 600
+  }
+
+  #emma-foam-pillow .main-content, #emma-original-mattress .main-content {
     padding-bottom: 0
   }
 
@@ -266,19 +238,17 @@ h6 {
 
 
   @media (max-width: 1024px) {
-    .footer-logo {
-      margin-bottom: 50px
-    }
-
-    .newsletter--form {
-      margin: 0 auto;
-      width: 50%
-    }
+  .footer-logo {
+    margin-bottom: 50px
   }
 
-  @media (max-width: 600px) {
-    .newsletter--form {
-      width: 100%
-    }
+  .newsletter--form {
+    margin: 0 auto;
+    width: 50%
   }
+}@media (max-width: 600px) {
+  .newsletter--form {
+    width: 100%
+  }
+}
 }
