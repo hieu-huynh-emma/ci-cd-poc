@@ -7,6 +7,7 @@
     "start": "concurrently 'npm:serve:*' --raw",
     "serve:theme": "shopify theme dev -s emma-sleep-ca",
     "serve:scss": "gulp watch",
+    "sass:compile": "gulp sass",
     "pull:live": "shopify theme pull -s emma-sleep-ca -l",
     "pull:dev": "shopify theme pull -s emma-sleep-ca -t CA-DEV",
     "pull:local": "shopify theme pull -s emma-sleep-ca -d",

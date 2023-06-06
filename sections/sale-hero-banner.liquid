@@ -1,0 +1,131 @@
+{% assign wallpaper = section.blocks | where: "type", "wallpaper" | first %}
+{% assign countdownTimer = section.blocks | where: "type", "countdown_timer" | first %}
+{% assign cta = section.blocks | where: "type", "cta" | first %}
+
+{{ 'sale-hero-banner.css' | asset_url | stylesheet_tag }}
+
+<style>
+  #sale-hero-banner-section {
+    color: {{ section.settings.text_color }}
+  }
+
+  #sale-hero-banner-section .text-box > * {
+    color: inherit
+  }
+</style>
+
+<section id="sale-hero-banner-section">
+  <div class="page-boundary--full">
+    <div class="section-content">
+      <div class="text-box">
+        <h1 class="heading-1">{{ section.settings.title | remove: "<p>" | remove: "</p>" }}</h1>
+        <h2 class="heading-2 md:text-[32px] font-inter">{{ section.settings.subtitle }}</h2>
+        <p class="hidden md:inline-block">{{ section.settings.tagline | remove: "<p>" | remove: "</p>" }}</p>
+      </div>
+    </div>
+  </div>
+
+  {% if wallpaper != blank %}
+    <div class="wallpaper">
+      {{ wallpaper.settings.src | image_url: width: 2680 | image_tag: width: 2680, class: 'hidden md:block' }}
+      {{ wallpaper.settings.mobile_src | image_url: width: 768 | image_tag: width: 768, class: 'md:hidden' }}
+    </div>
+  {% endif %}
+</section>
+
+{% schema %}
+{
+  "name": "Hero Banner",
+  "blocks": [
+    {
+      "type": "wallpaper",
+      "name": "Wallpaper",
+      "limit": 1,
+      "settings": [
+        {
+          "id": "src",
+          "type": "image_picker",
+          "label": "Wallpaper Desktop Source"
+        },
+        {
+          "id": "mobile_src",
+          "type": "image_picker",
+          "label": "Wallpaper Mobile Source"
+        }
+      ]
+    },
+    {
+      "type": "countdown_timer",
+      "name": "Countdown Timer",
+      "limit": 1,
+      "settings": [
+        {
+          "id": "title",
+          "type": "text",
+          "label": "Countdown Title"
+        }
+      ]
+    },
+    {
+      "type": "cta",
+      "name": "CTA",
+      "limit": 1,
+      "settings": [
+        {
+          "id": "url",
+          "type": "url",
+          "label": "Button Url"
+        },
+        {
+          "id": "text",
+          "type": "text",
+          "label": "Button Text"
+        },
+        {
+          "id": "subtext",
+          "type": "text",
+          "label": "Subtext"
+        }
+      ]
+    },
+    {
+      "type": "award",
+      "name": "Award",
+      "limit": 3,
+      "settings": [
+        {
+          "id": "src",
+          "type": "image_picker",
+          "label": "Image"
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "id": "title",
+      "type": "richtext",
+      "label": "Title",
+      "default": "<p>Hit snooze! Sleep is about to get <i>wayyy better.</i></p>"
+    },
+    {
+      "id": "tagline",
+      "type": "richtext",
+      "label": "Tagline",
+      "default": "<p>Hit snooze! Sleep is about to get <i>wayyy better.</i></p>"
+    },
+    {
+      "id": "subtitle",
+      "type": "text",
+      "label": "Subtitle",
+      "default": "Our sleep experts have mastered designing award-winning mattresses crafted to keep you relaxed and recharged, no matter what kind of sleeper you are. Climb on your best sleep yet!"
+    },
+     {
+      "id": "text_color",
+      "type": "color",
+      "label": "Text Color",
+       "default": "#2e2f3c"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,148 @@
+#sale-hero-banner-section {
+  position: relative;
+  z-index: 1;
+
+  display: grid;
+  grid-template-rows: 0 minmax(0, 1fr);
+
+  min-height: 126px;
+  max-height: 126px;
+  margin: 12px;
+
+  @media screen and (min-width: 769px) {
+    height: 100%;
+    min-height: 384px;
+    max-height: 384px;
+
+    margin: 40px 64px;
+  }
+
+  .page-boundary {
+    display: flex;
+    justify-content: center;
+    @media screen and (min-width: 768px) {
+      justify-content: flex-start;
+    }
+
+  }
+
+  .section-content {
+    position: absolute;
+
+    height: 100%;
+
+
+    @media screen and (max-width: 768px) {
+      inset: 0;
+      width: 100%;
+    }
+
+    @media screen and (min-width: 768px) {
+      top: 0;
+      max-width: 528px;
+    }
+
+    .text-box {
+      display: grid;
+      gap: 16px;
+      align-content: center;
+      justify-items: center;
+      height: 100%;
+      text-align: center;
+      @media screen and (min-width: 768px) {
+        justify-items: flex-start;
+        text-align: left;
+      }
+    }
+
+    .heading-1 {
+      @media screen and (max-width: 769px) {
+        font-size: 32px;
+      }
+    }
+  }
+
+  .section-cta {
+    display: grid;
+    gap: 16px;
+    grid-template-columns: minmax(0, 1fr);
+    justify-content: center;
+    width: 100%;
+    max-width: 256px;
+    text-align: center;
+    @media screen and (min-width: 769px) {
+      max-width: 288px;
+    }
+
+    .cta-subtext {
+      margin-top: -8px;
+    }
+  }
+
+  .wallpaper {
+    z-index: -1;
+
+    width: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+
+    img {
+      object-fit: cover;
+      height: 100%;
+    }
+  }
+
+  .countdown {
+    display: grid;
+    gap: 4px;
+    justify-items: center;
+    @media screen and (min-width: 768px) {
+      justify-items: flex-start;
+    }
+
+    .countdown-timer {
+      display: grid;
+      gap: 4px;
+      grid-auto-flow: column;
+      grid-auto-columns: minmax(0, 1fr);
+      align-items: center;
+      justify-content: flex-start;
+      width: 100%;
+
+      .time-part {
+        display: grid;
+        justify-content: center;
+
+        padding: 10px;
+
+        background-color: white;
+        border-radius: 4px;
+
+        text-align: center;
+        @media screen and (min-width: 768px) {
+          width: 69px;
+          padding: 4px;
+        }
+
+        .digit {
+          font-size: 20px;
+          @media screen and (min-width: 768px) {
+            font-weight: 600;
+            font-size: 32px;
+            line-height: 125%;
+          }
+        }
+
+        .label {
+          font-size: 8px;
+          @media screen and (min-width: 768px) {
+            font-weight: 400;
+            font-size: 12px;
+            line-height: 16px;
+          }
+        }
+      }
+    }
+  }
+}
+

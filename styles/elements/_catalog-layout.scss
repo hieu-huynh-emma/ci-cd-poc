@@ -1,0 +1,12 @@
+.catalog-grid {
+  --item-width: 224px;
+
+  display: grid;
+  gap: 20px 16px;
+
+  @media screen and (min-width: 769px) {
+    --item-width: 304px;
+    gap: 80px 32px;
+    grid-template-columns: repeat(auto-fit, minmax(var(--item-width), max-content));
+  }
+}

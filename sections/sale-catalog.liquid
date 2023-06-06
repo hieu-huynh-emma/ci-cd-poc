@@ -1,0 +1,113 @@
+{% assign catalogItems = section.blocks | where: 'type', 'catalog_item' %}
+
+<section id="sale-catalog-section" class="section-container spacing-{{ section.settings.container_spacing }}">
+  <div class="section-chassis page-boundary">
+    <smart-tabs class='material'>
+      {% for collection in section.settings.sale_collection_list %}
+        <smart-tab-item label="{{ collection.title }}">
+          <div class="catalog-grid">
+            {% for product in collection.products %}
+              <a href="{{ product.url }}">
+                {% render 'product-card', product: product, landscape: true %}
+              </a>
+            {% endfor %}
+          </div>
+        </smart-tab-item>
+      {% endfor %}
+    </smart-tabs>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Sale Catalog",
+  "settings": [
+    {
+      "id": "heading",
+      "type": "text",
+      "label": "Heading",
+      "default": "Sale Catalog"
+    },
+    {
+      "id": "heading_alignment",
+      "type": "select",
+      "label": "Heading Alignment",
+      "options": [
+        {
+          "value": "start",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "end",
+          "label": "Right"
+        }
+      ],
+      "default": "start"
+    },
+    {
+      "type": "select",
+      "id": "container_spacing",
+      "options": [
+        {
+          "value": "lg",
+          "label": "Large (60px)"
+        },
+        {
+          "value": "md",
+          "label": "Medium (40px)"
+        }
+      ],
+      "default": "md",
+      "label": "Container Spacing"
+    },
+    {
+      "id": "sale_collection_list",
+      "type": "collection_list",
+      "label": "Sale Collection List"
+    },
+
+
+    {
+      "type": "header",
+      "content": "Product Assets",
+      "info": "Please visit the respective Accentuate Url of each product below to update its assets"
+    },
+    {
+      "type": "paragraph",
+      "content": "Original Mattress: [Accentuate](https://emma-sleep-us.myshopify.com/admin/apps/accentuate/app/edit?scope=product&id=7607820517539) "
+    },
+    {
+      "type": "paragraph",
+      "content": "Emma Climax Hybrid: [Accentuate](https://emma-sleep-us.myshopify.com/admin/apps/accentuate/app/edit?scope=product&id=7842236072099) "
+    },
+    {
+      "type": "paragraph",
+      "content": "Powerbase Pro Adjustable Bed: [Accentuate](https://emma-sleep-us.myshopify.com/admin/apps/accentuate/app/edit?scope=product&id=7376400515235) "
+    },
+    {
+      "type": "paragraph",
+      "content": "Powerbase Adjustable Bed: [Accentuate](https://emma-sleep-us.myshopify.com/admin/apps/accentuate/app/edit?scope=product&id=7376400515235) "
+    },
+    {
+      "type": "paragraph",
+      "content": "The Rustic Wooden Bed: [Accentuate](https://emma-sleep-us.myshopify.com/admin/apps/accentuate/app/edit?scope=product&id=7539433210019) "
+    },
+    {
+      "type": "paragraph",
+      "content": "Upholstered Platform: [Accentuate](https://emma-sleep-us.myshopify.com/admin/apps/accentuate/app/edit?scope=product&id=7864497537187) "
+    },
+    {
+      "type": "paragraph",
+      "content": "Emma Mattress Protector: [Accentuate](https://emma-sleep-us.myshopify.com/admin/apps/accentuate/app/edit?scope=product&id=7322945978531) "
+    },
+    {
+      "type": "paragraph",
+      "content": "Emma Foam Pillow: [Accentuate](https://emma-sleep-us.myshopify.com/admin/apps/accentuate/app/edit?scope=product&id=7322957676707) "
+    }
+  ]
+}
+{% endschema %}
