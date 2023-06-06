@@ -9,11 +9,18 @@
 {% assign total_line_price = 0.00 %}
 
 {% for item in checkout.line_items %}
-	{% if item.variant.compare_at_price != item.original_final_price %}
-		{% assign total_compare_at_price = item.variant.compare_at_price | times: item.quantity | plus: total_compare_at_price %}
-		{% assign total_line_level_discount = item.line_level_total_discount | plus: total_line_level_discount %}
-		{% assign total_line_price = item.variant.compare_at_price | times: item.quantity | minus: item.original_line_price | plus: total_line_price %}
-	{% endif %}
+  {% if item.variant.compare_at_price != item.original_final_price %}
+    {% assign total_compare_at_price = item.variant.compare_at_price
+      | times: item.quantity
+      | plus: total_compare_at_price
+    %}
+    {% assign total_line_level_discount = item.line_level_total_discount | plus: total_line_level_discount %}
+    {% assign total_line_price = item.variant.compare_at_price
+      | times: item.quantity
+      | minus: item.original_line_price
+      | plus: total_line_price
+    %}
+  {% endif %}
 {% endfor %}
 
 {% assign saved = total_line_price | plus: checkout.discounts_amount %}
@@ -24,76 +31,88 @@
 {% assign line_item_discount_code = '' %}
 
 {% for discount_application in checkout.discount_applications %}
-	{% if promo_codes == '' %}
-		{% assign promo_codes = discount_application.title %}
-	{% else %}
-		{% assign promo_codes = promo_codes | append: '|' | append: discount_application.title %}
-	{% endif %}
-	{% if discount_application.type != 'script' %}
-		{% assign promo_code_allow = false %}
-	{% endif %}
-	{% if discount_application.target_selection != 'all' %}
-		{% if discount_application.total_allocated_amount > 0 %}
-			{% assign line_item_discounted = line_item_discounted | plus: discount_application.total_allocated_amount %}
-			{% if line_item_discount_code == '' %}
-				{% assign line_item_discount_code = discount_application.title %}
-			{% else %}
-				{% assign line_item_discount_code = line_item_discount_code | append: '|' | append: discount_application.title %}
-			{% endif %}
-			{% assign sale_discount = sale_discount | plus: discount_application.total_allocated_amount %}
-			{% assign saved = saved | plus: discount_application.total_allocated_amount %}
-		{% endif %}
-	{% endif %}
+  {% if promo_codes == '' %}
+    {% assign promo_codes = discount_application.title %}
+  {% else %}
+    {% assign promo_codes = promo_codes | append: '|' | append: discount_application.title %}
+  {% endif %}
+  {% if discount_application.type != 'script' %}
+    {% assign promo_code_allow = false %}
+  {% endif %}
+  {% if discount_application.target_selection != 'all' %}
+    {% if discount_application.total_allocated_amount > 0 %}
+      {% assign line_item_discounted = line_item_discounted | plus: discount_application.total_allocated_amount %}
+      {% if line_item_discount_code == '' %}
+        {% assign line_item_discount_code = discount_application.title %}
+      {% else %}
+        {% assign line_item_discount_code = line_item_discount_code
+          | append: '|'
+          | append: discount_application.title
+        %}
+      {% endif %}
+      {% assign sale_discount = sale_discount | plus: discount_application.total_allocated_amount %}
+      {% assign saved = saved | plus: discount_application.total_allocated_amount %}
+    {% endif %}
+  {% endif %}
 {% endfor %}
 
 {% if request.locale.iso_code == 'fr' %}
-	{% assign saved_amount = saved | money_without_currency | replace: '.', ',' | append: ' $' %}
-	{% assign total_original_price = total_compare_at_price | money_without_currency | replace: '.', ',' | append: ' $' %}
-	{% assign promo_discount = total_line_level_discount | money_without_currency | replace: '.', ',' | append: ' $' %}
-	{% assign sale_discount = total_line_price | money_without_currency | replace: '.', ',' | append: ' $' %}
+  {% assign saved_amount = saved | money_without_currency | replace: '.', ',' | append: ' $' %}
+  {% assign total_original_price = total_compare_at_price | money_without_currency | replace: '.', ',' | append: ' $' %}
+  {% assign promo_discount = total_line_level_discount | money_without_currency | replace: '.', ',' | append: ' $' %}
+  {% assign sale_discount = total_line_price | money_without_currency | replace: '.', ',' | append: ' $' %}
 {% else %}
-	{% assign saved_amount = saved | money %}
-	{% assign total_original_price = total_compare_at_price | money %}
-	{% assign promo_discount = total_line_level_discount | money %}
-	{% assign sale_discount = total_line_price | money %}
+  {% assign saved_amount = saved | money %}
+  {% assign total_original_price = total_compare_at_price | money %}
+  {% assign promo_discount = total_line_level_discount | money %}
+  {% assign sale_discount = total_line_price | money %}
 {% endif %}
 
 <input
-	id="promo-codes" type="hidden"
-	value="{{ promo_codes }}"
-	disabled
-/>
+  id="promo-codes"
+  type="hidden"
+  value="{{ promo_codes }}"
+  disabled
+>
 <input
-	id="allow-more-promo-code" type="hidden"
-	value="{{ promo_code_allow }}"
-	disabled
-/>
+  id="allow-more-promo-code"
+  type="hidden"
+  value="{{ promo_code_allow }}"
+  disabled
+>
 <input
-	id="line-item-discount-code" type="hidden"
-	value="{{ line_item_discount_code | split: '|' | join: ' + ' }}"
-	disabled
-/>
+  id="line-item-discount-code"
+  type="hidden"
+  value="{{ line_item_discount_code | split: '|' | join: ' + ' }}"
+  disabled
+>
 <input
-	id="line-item-discounted" type="hidden"
-	value="{{ line_item_discounted | money }}"
-	disabled
-/>
+  id="line-item-discounted"
+  type="hidden"
+  value="{{ line_item_discounted | money }}"
+  disabled
+>
 
 {% if saved > 0 %}
-	<input
-		id="total-saved-amount" type="hidden"
-		value="{% if saved > 0 %}{{ 'checkout.order_summary.you_save' | t: saved: saved_amount }}{% endif %}"
-		disabled
-	/>
+  <input
+    id="total-saved-amount"
+    type="hidden"
+    value="{% if saved > 0 %}{{ 'checkout.order_summary.you_save' | t: saved: saved_amount }}{% endif %}"
+    disabled
+  >
 {% endif %}
 
 <input
-	id="promo-discount" type="hidden"
-	value="{% if total_line_price > 0 %}{{ promo_discount }}{% endif %}"
-	disabled
-/>
+  id="promo-discount"
+  type="hidden"
+  value="{% if total_line_price > 0 %}{{ promo_discount }}{% endif %}"
+  disabled
+>
 
 <script type="text/javascript">
+  
+  
+  
 
   const PAYMENT_GATEWAYS_NOT_ALLOWED = ["offsite_v2"];
   const TAXES = [
@@ -435,22 +454,31 @@
       });
     }
   }
+
+
+
 </script>
 
 <script src="{{ 'custom-checkout.js' | asset_url }}" defer="defer"></script>
 
 {% for item in checkout.line_items %}
-	{%- if item.variant.compare_at_price != item.final_price -%}
-		<input
-			id="{{ item.key }}" type="hidden" name="original_line_price"
-			value="{{ item.variant.compare_at_price | times: item.quantity | money }}" disabled
-		>
-	{% else %}
-		<input id="{{ item.key }}" type="hidden" name="original_line_price" value="" disabled>
-	{% endif %}
+  {%- if item.variant.compare_at_price != item.final_price -%}
+    <input
+      id="{{ item.key }}"
+      type="hidden"
+      name="original_line_price"
+      value="{{ item.variant.compare_at_price | times: item.quantity | money }}"
+      disabled
+    >
+  {% else %}
+    <input id="{{ item.key }}" type="hidden" name="original_line_price" value="" disabled>
+  {% endif %}
 {% endfor %}
 
 <script type="module">
+  
+  
+  
   (function ($) {
     let promoDiscount = '{{ promo_discount }}';
     let totalSavedText = '{% if saved > 0 %}{{ 'checkout.order_summary.you_save' | t: saved: saved_amount }}{% endif %}';
@@ -605,237 +633,240 @@
                 {{ settings.checkout.ssl | default: "Secure SSL encryption" }}</div>
             `);
   }
+
+
+
 </script>
 
 <style>
-    .tax-subtotal .total-line__name {
-        padding-left: 1rem;
-    }
+  .tax-subtotal .total-line__name {
+    padding-left: 1rem;
+  }
 
-    .paybright-messages {
-        margin-left: 2.8rem;
-        margin-bottom: 0.5rem;
-        cursor: not-allowed;
-    }
+  .paybright-messages {
+    margin-left: 2.8rem;
+    margin-bottom: 0.5rem;
+    cursor: not-allowed;
+  }
 
-    .disable-payment-method {
-        cursor: not-allowed;
-    }
+  .disable-payment-method {
+    cursor: not-allowed;
+  }
 
-    .error-message {
-        font-weight: 400;
-        color: #f01130;
-        margin-top: 0.5rem;
-        margin-left: 0.5rem;
-    }
+  .error-message {
+    font-weight: 400;
+    color: #f01130;
+    margin-top: 0.5rem;
+    margin-left: 0.5rem;
+  }
 
-    .field--error-plus-dynamic {
-        border: 2px solid #f01130 !important;
-    }
+  .field--error-plus-dynamic {
+    border: 2px solid #f01130 !important;
+  }
 
-    .disable-scrolling {
-        overflow: hidden;
-        height: 100%;
-    }
+  .disable-scrolling {
+    overflow: hidden;
+    height: 100%;
+  }
 
-    .section__title {
-        text-transform: capitalize;
-        color: #FF8200 !important;
-        font-size: 2em;
-        font-family: Kepler Std Bold Semicondensed Display;
-    }
+  .section__title {
+    text-transform: capitalize;
+    color: #ff8200 !important;
+    font-size: 2em;
+    font-family: Kepler Std Bold Semicondensed Display;
+  }
 
-    .alternative-payment-separator__content {
-        padding-bottom: 1rem;
-    }
+  .alternative-payment-separator__content {
+    padding-bottom: 1rem;
+  }
 
-    #review-shipping-address {
-        margin-bottom: 1rem;
-    }
+  #review-shipping-address {
+    margin-bottom: 1rem;
+  }
 
-    .original-line-price {
-        text-decoration: line-through;
-        font-weight: 400;
-        color: #33312f;
-        margin-right: 0.5rem;
-    }
+  .original-line-price {
+    text-decoration: line-through;
+    font-weight: 400;
+    color: #33312f;
+    margin-right: 0.5rem;
+  }
 
-    .field--info .field__input {
-        border-color: inherit;
-        -webkit-box-shadow: none;
-        box-shadow: none;
-    }
+  .field--info .field__input {
+    border-color: inherit;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
 
-    .field--info .field__message--error {
-        color: #b1b3d5;
-        display: block;
-    }
+  .field--info .field__message--error {
+    color: #b1b3d5;
+    display: block;
+  }
 
-    .radio__label__primary .tooltip-container {
-        height: 20px;
-        width: 20px;
-        display: inline-block;
-        vertical-align: middle;
-        margin-bottom: 2px;
-    }
+  .radio__label__primary .tooltip-container {
+    height: 20px;
+    width: 20px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-bottom: 2px;
+  }
 
-    #product_removal_tooltip {
-        height: 10px;
-        width: 15px;
-        display: inline-block;
-        margin-left: 7px;
-    }
+  #product_removal_tooltip {
+    height: 10px;
+    width: 15px;
+    display: inline-block;
+    margin-left: 7px;
+  }
 
-    #product-removal-wrapper .checkbox__input {
-        display: inline-block;
-    }
+  #product-removal-wrapper .checkbox__input {
+    display: inline-block;
+  }
 
-    label[for="checkout_product_removal"] {
-        display: inline !important;
-        width: auto !important;
-        vertical-align: baseline;
-    }
+  label[for='checkout_product_removal'] {
+    display: inline !important;
+    width: auto !important;
+    vertical-align: baseline;
+  }
 
-    @media (min-width: 641px) {
-        #tooltip-for-scheduled-delivery {
-            max-width: 90vw;
-            width: 400px;
-            -webkit-transform: rotateX(0deg) scale(1) translateX(50%);
-            transform: rotateX(0deg) scale(1) translateX(50%);
-            margin-right: 0;
-        }
+  @media (min-width: 641px) {
+    #tooltip-for-scheduled-delivery {
+      max-width: 90vw;
+      width: 400px;
+      -webkit-transform: rotateX(0deg) scale(1) translateX(50%);
+      transform: rotateX(0deg) scale(1) translateX(50%);
+      margin-right: 0;
     }
+  }
 
-    .promo-text-wrapper {
-        display: flex;
-    }
+  .promo-text-wrapper {
+    display: flex;
+  }
 
-    .discount-tooltip {
-        position: relative;
-        display: inline-block;
-        margin-left: 0.5rem;
-    }
+  .discount-tooltip {
+    position: relative;
+    display: inline-block;
+    margin-left: 0.5rem;
+  }
 
-    .discount-tooltip .discount-tooltip-text {
-        visibility: hidden;
-        width: 10rem;
-        background-color: black;
-        color: #fff;
-        text-align: center;
-        border-radius: 6px;
-        padding: 5px 0;
-        position: absolute;
-        z-index: 1;
-        left: 1.5rem;
-    }
+  .discount-tooltip .discount-tooltip-text {
+    visibility: hidden;
+    width: 10rem;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    left: 1.5rem;
+  }
 
-    .discount-tooltip:hover .discount-tooltip-text {
-        visibility: visible;
-    }
+  .discount-tooltip:hover .discount-tooltip-text {
+    visibility: visible;
+  }
 
-    .product__price {
-        display: flex;
-        height: 4rem;
-        align-items: center;
-        justify-content: flex-end;
-    }
+  .product__price {
+    display: flex;
+    height: 4rem;
+    align-items: center;
+    justify-content: flex-end;
+  }
 
-    [data-order-summary-section="line-items"] .reduction-code {
-        font-size: .8em;
-    }
+  [data-order-summary-section='line-items'] .reduction-code {
+    font-size: 0.8em;
+  }
 
-    [data-order-summary-section="line-items"] .product__price del {
-        display: none;
-    }
+  [data-order-summary-section='line-items'] .product__price del {
+    display: none;
+  }
 
-    .order-summary__section__content .product__price .order-summary__emphasis.skeleton-while-loading,
-    .total-saved-line {
-        color: #f70909 !important;
-        font-size: 14px;
-    }
+  .order-summary__section__content .product__price .order-summary__emphasis.skeleton-while-loading,
+  .total-saved-line {
+    color: #f70909 !important;
+    font-size: 14px;
+  }
 
-    .order-summary__section {
-        color: #33312f;
-        font-weight: 500;
-    }
+  .order-summary__section {
+    color: #33312f;
+    font-weight: 500;
+  }
 
-    .sidebar .order-summary__emphasis,
-    .original-line-price,
-    .sidebar .order-summary__small-text,
-    .sidebar .payment-due-label__total,
-    .sidebar .payment-due__currency,
-    .sidebar .payment-due__price {
-        color: #33312f;
-    }
+  .sidebar .order-summary__emphasis,
+  .original-line-price,
+  .sidebar .order-summary__small-text,
+  .sidebar .payment-due-label__total,
+  .sidebar .payment-due__currency,
+  .sidebar .payment-due__price {
+    color: #33312f;
+  }
 
-    .sidebar .reduction-code__text {
-        color: #3c4196;
-    }
+  .sidebar .reduction-code__text {
+    color: #3c4196;
+  }
 
-    span[data-checkout-total-shipping-target] {
-        color: #33312f !important;
-    }
+  span[data-checkout-total-shipping-target] {
+    color: #33312f !important;
+  }
 
-    span[data-checkout-total-shipping-target="0"] {
-        color: #F01130 !important;
-    }
+  span[data-checkout-total-shipping-target='0'] {
+    color: #f01130 !important;
+  }
 
-    .product__price .order-summary__small-text {
-        color: #f70909 !important;
-        font-size: 14px;
-        font-weight: 500;
-    }
+  .product__price .order-summary__small-text {
+    color: #f70909 !important;
+    font-size: 14px;
+    font-weight: 500;
+  }
 
-    .total-line__price {
-        font-weight: 500;
-    }
+  .total-line__price {
+    font-weight: 500;
+  }
 
-    .order-summary__section__content .product__price .order-summary__emphasis.skeleton-while-loading,
-    .total-saved-line {
-        color: #f70909 !important;
-        font-size: 14px;
-    }
+  .order-summary__section__content .product__price .order-summary__emphasis.skeleton-while-loading,
+  .total-saved-line {
+    color: #f70909 !important;
+    font-size: 14px;
+  }
 
-    .order-summary__section {
-        color: #33312f;
-        font-weight: 500;
-    }
+  .order-summary__section {
+    color: #33312f;
+    font-weight: 500;
+  }
 
-    .sidebar .order-summary__emphasis,
-    .original-line-price,
-    .sidebar .order-summary__small-text,
-    .sidebar .payment-due-label__total,
-    .sidebar .payment-due__currency,
-    .sidebar .payment-due__price {
-        color: #33312f;
-    }
+  .sidebar .order-summary__emphasis,
+  .original-line-price,
+  .sidebar .order-summary__small-text,
+  .sidebar .payment-due-label__total,
+  .sidebar .payment-due__currency,
+  .sidebar .payment-due__price {
+    color: #33312f;
+  }
 
-    .sidebar .reduction-code__text {
-        color: #3c4196;
-    }
+  .sidebar .reduction-code__text {
+    color: #3c4196;
+  }
 
-    span[data-checkout-total-shipping-target] {
-        color: #33312f !important;
-    }
+  span[data-checkout-total-shipping-target] {
+    color: #33312f !important;
+  }
 
-    span[data-checkout-total-shipping-target="0"] {
-        color: #F01130 !important;
-    }
+  span[data-checkout-total-shipping-target='0'] {
+    color: #f01130 !important;
+  }
 
-    .product__price .order-summary__small-text {
-        color: #f70909 !important;
-        font-size: 14px;
-        font-weight: 500;
-    }
+  .product__price .order-summary__small-text {
+    color: #f70909 !important;
+    font-size: 14px;
+    font-weight: 500;
+  }
 
-    .total-line__price {
-        font-weight: 500;
-    }
+  .total-line__price {
+    font-weight: 500;
+  }
 
-    .step__footer__previous-link[href="https://emma-sleep.ca/cart"],
+  .step__footer__previous-link[href="https://emma-sleep.ca/cart"],
     .step__footer__previous-link[href="https://qc.emma-sleep.ca/cart"],
-    .step__footer__previous-link[href="https://emma-sleep-ca.myshopify.com/cart"] {
-        display: none;
-    }
-
+    .step__footer__previous-link[href="https://emma-sleep-ca.myshopify.com/cart"]
+  {
+    display: none;
+  }
 </style>
