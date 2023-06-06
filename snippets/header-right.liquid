@@ -1,26 +1,14 @@
-<div class="site-header-right">
-	<a tabindex="-1" class="language-redirection"></a>
-
+<ul class="flex items-center gap-3 lg:gap-5">
+	<li><a tabindex="-1" class="language-redirection text-[14px]"></a></li>
 	{%- if shop.customer_accounts_enabled -%}
-		<a
-			href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}"
-			class="site-header-right__account"
-		>
-			<img src="{{ 'account.svg' | asset_url }}" loading="lazy" width="28" height="35">
-			<span class="visually-hidden">
-        {%- liquid
-					if customer
-						echo 'customer.account_fallback' | t
-					else
-						echo 'customer.log_in' | t
-					endif
-				-%}
-      </span>
-		</a>
-	{%- endif -%}
-
-	{% render 'cart-icon-bubble' %}
-</div>
+		<li>
+			<a href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}">
+				<img src="{{ 'account.svg' | asset_url }}" loading="lazy" width="28" height="35">
+			</a>
+		</li>
+	{% endif %}
+	<li>{% render 'cart-icon-bubble' %}</li>
+</ul>
 
 <script>
 	// Dont use "https://emma-sleep.ca" because it'll be auto converted to "https://qc.emma-sleep.ca" by shopify on french domain
@@ -33,7 +21,7 @@
 
 	function renderLanguageRedirection() {
 		const currentLanguage = $('html').attr('lang');
-		const $languageRedirection = $(".site-header-right .language-redirection");
+		const $languageRedirection = $(".language-redirection");
 		$languageRedirection.text(currentLanguage === 'en' ? "FRANÇAIS" : "ENGLISH");
 		$languageRedirection.attr("href", currentLanguage === 'en' ? franceUrl : englishUrl);
 	}

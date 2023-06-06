@@ -1,89 +1,102 @@
-{%- style -%}
-  {%- assign logo_max_width = section.settings.logo_max_width -%}
-  {%- assign header_color = section.settings.header_color -%}
+<navigation-bar id="header">
+  <nav class="flex items-center justify-between border-b bg-white px-3 py-4 lg:px-16 lg:py-0">
+    {% render 'header-left' %}
+    {% render 'navigation' %}
+    {% render 'header-right' %}
+  </nav>
+  {% render 'navigation-dropdown' %}
+  {% render 'hamburger-navigation' %}
+</navigation-bar>
 
-  {%- if section.settings.transparent_header_enable and request.page_type == 'index' -%}
-    {%- assign header_color_transparent = section.settings.transparent_header_color -%}
-
-    .header-wrapper.header-wrapper--transparent .site-nav__link,
-    .header-wrapper.header-wrapper--transparent .site-header__logo a {
-      color: {{ header_color_transparent }};
+<script type="module" defer>
+  class NavigationBar extends HTMLElement {
+    constructor() {
+      super();
+      this.$self = $(this)
     }
 
-    .header-wrapper.header-wrapper--transparent .site-header__logo a:hover,
-    .header-wrapper.header-wrapper--transparent .site-nav__link:hover,
-    .header-wrapper.header-wrapper--transparent .site-nav__link:focus,
-    .header-wrapper.header-wrapper--transparent .site-header__logo a:focus {
-      color: {{ header_color_transparent | color_modify: 'alpha', 0.75 }};
-    }
-
-    .header-wrapper.header-wrapper--transparent .burger-icon,
-    .header-wrapper.header-wrapper--transparent .site-nav__link:hover .burger-icon {
-      background: {{ header_color_transparent }};
-    }
-  {%- endif -%}
-
-  .header-wrapper .site-nav__link,
-  .header-wrapper .site-header__logo a,
-  .header-wrapper .site-nav__dropdown-link,
-  .header-wrapper .site-nav--has-dropdown > a.nav-focus,
-  .header-wrapper .site-nav--has-dropdown:hover > a {
-    color: {{ header_color }};
-  }
-
-  .header-wrapper .site-header__logo a:hover,
-  .header-wrapper .site-header__logo a:focus,
-  .header-wrapper .site-nav__link:hover,
-  .header-wrapper .site-nav__link:focus,
-  .header-wrapper .site-nav--has-dropdown a:hover,
-  .header-wrapper .site-nav--has-dropdown > a.nav-focus:hover,
-  .header-wrapper .site-nav--has-dropdown > a.nav-focus:focus,
-  .header-wrapper .site-nav--has-dropdown .site-nav__link:hover,
-  .header-wrapper .site-nav--has-dropdown .site-nav__link:focus,
-  .header-wrapper .site-nav__dropdown a:focus {
-    color: {{ header_color | color_modify: 'alpha', 0.75 }};
-  }
-
-  .header-wrapper .burger-icon,
-  .header-wrapper .site-nav--has-dropdown:hover > a:before,
-  .header-wrapper .site-nav--has-dropdown > a.nav-focus:before,
-    background: {{ header_color }};
-  }
-
-  .header-wrapper .site-nav__link:hover .burger-icon {
-    background: {{ header_color | color_modify: 'alpha', 0.75 }};
-  }
-
-  .site-header__logo img {
-    max-width: {{ logo_max_width | append: 'px' }};
-  }
-
-  @media screen and (max-width: 768px) {
-  .site-header__logo img {
-      max-width: 100%;
+    connectedCallback() {
+      const $navigationDropdowns = $('navigation-dropdown')
+      this.$self.mouseleave(() => $navigationDropdowns.hide())
     }
   }
+  customElements.define('navigation-bar', NavigationBar);
 
-  .site-nav__dropdown > li {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
+  class NavigationLink extends HTMLElement {
+    constructor() {
+      super();
+      this.$self = $(this)
+    }
+
+    connectedCallback() {
+      const $navigationDropdowns = $('navigation-dropdown')
+      const $navigationDropdown = $(`navigation-dropdown[data-link-title='${this.$self.data('link-title')}']`)
+
+      this.$self.mouseenter(() => {
+        $navigationDropdowns.hide()
+        $navigationDropdown.show()
+      })
+    }
   }
-{%- endstyle -%}
+  customElements.define('navigation-link', NavigationLink);
 
-{{ 'header.css' | asset_url | stylesheet_tag }}
+  class NavigationDropdownLink extends HTMLElement {
+    constructor() {
+      super();
+      this.$self = $(this)
+    }
 
-<div id="header" data-section-id="{{ section.id }}" data-section-type="header-section" data-template="{{ request.page_type }}">
-  <div class="header-container drawer__header-container">
-    <div class="header-wrapper" data-header-wrapper>
-      <header class="site-header" role="banner" {% if section.settings.transparent_header_enable %}data-transparent-header="true"{% endif %}>
-        {% render 'header-left' %}
-        {% render 'site-nav' %}
-        {% render 'header-right' %}
-      </header>
-    </div>
-  </div>
-</div>
+    connectedCallback() {
+      const $dropdownContent = $(`navigation-dropdown-content[data-childlink-title='${this.$self.data('childlink-title')}']`)
+
+      this.$self.hover($.debounce(100, () => {
+        this.$dropdownContents.hide()
+        $dropdownContent.show()
+      }))
+    }
+
+    setDropdownContents(elements) {
+      this.$dropdownContents = elements
+    }
+  }
+  customElements.define('navigation-dropdown-link', NavigationDropdownLink);
+
+  class NavigationDropdownContent extends HTMLElement {
+    constructor() {
+      super();
+    }
+  }
+  customElements.define('navigation-dropdown-content', NavigationDropdownContent);
+
+  class NavigationDropdown extends HTMLElement {
+    constructor() {
+      super();
+      this.$self = $(this)
+    }
+
+    connectedCallback() {
+      this.initDropdownLinkData()
+      this.hideOnMouseLeave()
+    }
+
+    hideOnMouseLeave() {
+      this.$self.mouseleave(() => this.$self.hide())
+    }
+
+    initDropdownLinkData() {
+      const dropdownLinks = this.querySelectorAll('navigation-dropdown-link')
+      const $dropdownContents = this.$self.find('navigation-dropdown-content')
+      for (const dropdownLink of dropdownLinks) {
+        dropdownLink.setDropdownContents($dropdownContents)
+      }
+    }
+  }
+  customElements.define('navigation-dropdown', NavigationDropdown);
+
+  $('#hamburger-navigation-button').click(function () {
+    $('#hamburger-navigation').toggle()
+  })
+</script>
 
 {% schema %}
 {

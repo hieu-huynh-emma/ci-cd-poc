@@ -1,0 +1,53 @@
+<style>
+  #header navigation-link a:after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #ff8900;
+    transform: scaleX(0);
+    transform-origin: bottom left;
+    transition: transform .15s ease-out;
+  }
+
+  #header navigation-link a:hover:after {
+    transform: scaleX(1);
+  }
+</style>
+
+<div>
+  <ul class="hidden lg:flex lg:gap-6">
+    {% for link in linklists[section.settings.main_menu_link_list].links %}
+      {% assign is_sale_link = false %}
+      {% if link.title == 'Sale' %}
+        {% assign is_sale_link = true %}
+      {% endif %}
+
+      {% if is_sale_link == true and section.settings.show_sale_link == true %}
+        <navigation-link data-link-title="{{ link.title }}" class="py-5">
+          <a href="{{ link.url }}" class="text-[#f03306] font-bold uppercase text-[14px] relative px-[6px] pb-1">{{ link.title | escape }}</a>
+        </navigation-link>
+      {% else %}
+        <navigation-link data-link-title="{{ link.title }}" class="py-5">
+          <a href="{{ link.url }}" class="text-[14px] relative px-[6px] pb-1">{{ link.title | escape }}</a>
+        </navigation-link>
+      {% endif %}
+    {% endfor %}
+  </ul>
+
+  <div class="lg:hidden">
+    <a href="{{ routes.root_url }}">
+      {% if section.settings.logo %}
+        <img
+          src="{{ section.settings.logo | img_url: image_size }}"
+          srcset="{{ section.settings.logo | img_url: image_size }} 1x, {{ section.settings.logo | img_url: image_size, scale: 2 }} 2x"
+          alt="{{ section.settings.logo.alt | default: shop.name }}">
+      {% else %}
+        {{ shop.name }}
+      {% endif %}
+    </a>
+  </div>
+
+</div>
