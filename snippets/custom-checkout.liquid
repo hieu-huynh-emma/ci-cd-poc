@@ -269,13 +269,30 @@
 
     if (Shopify.Checkout.step !== "contact_information") {
       breakdownTax($);
+
+      $('.section--shipping-method').on('click', function(){
+        setTimeout(
+        () => breakdownTax($),
+        100);
+      });
     }
   }
 
   function breakdownTax($) {
     let $taxLabel = $(".total-line.total-line--taxes .total-line__name");
     let $taxPrice = $(".total-line.total-line--taxes .total-line__price");
-    let checkoutSubtotal = extractPrice($(".total-line.total-line--subtotal [data-checkout-subtotal-price-target]").attr("data-checkout-subtotal-price-target"));
+    let discount = 0;
+    let shippingCost = 0; 
+    
+    $('[data-checkout-total-shipping-target]').each(function() {
+      shippingCost += extractPrice($(this).attr('data-checkout-total-shipping-target'));
+    });
+
+    $('[data-checkout-discount-amount-target]').each(function() {
+      discount += extractPrice($(this).attr('data-checkout-discount-amount-target'));
+    });
+
+    let checkoutSubtotal = extractPrice($(".total-line.total-line--subtotal [data-checkout-subtotal-price-target]").attr("data-checkout-subtotal-price-target")) - discount + shippingCost;
 
     const taxSubtotal = $(".tax-subtotal");
     if (taxSubtotal) {
