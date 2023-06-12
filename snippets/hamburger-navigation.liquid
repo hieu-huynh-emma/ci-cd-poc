@@ -23,7 +23,7 @@
               </button>
             </div>
             <div class="navigation-accordion__content pt-5">
-              {% if link.type == "product_link" %}
+              {% if link.type == "product_link" or link.url == "/collections/mattresses" %}
                 <div class="flex flex-col gap-4">
                   {% for childlink in link.links %}
                     <a href="{{ childlink.url }}" class="flex items-center w-max">

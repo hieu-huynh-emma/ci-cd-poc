@@ -1,6 +1,6 @@
 {% assign catalogItems = section.blocks | where: 'type', 'catalog_item' %}
 
-<section id="sale-catalog-section" class="section-container spacing-{{ section.settings.container_spacing }}">
+<section id="sale-catalog-section" class="section-container weglot-dynamic-content-translate spacing-{{ section.settings.container_spacing }}">
   <div class="section-chassis page-boundary">
     <smart-tabs class='material'>
       {% for collection in section.settings.sale_collection_list %}

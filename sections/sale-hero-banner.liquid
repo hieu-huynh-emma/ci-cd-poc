@@ -9,8 +9,14 @@
     color: {{ section.settings.text_color }}
   }
 
-  #sale-hero-banner-section .text-box > * {
-    color: inherit
+  #sale-hero-banner-section .section-content {
+    background-image: linear-gradient(45deg, #00000085, transparent);
+  }
+
+  @media (min-width: 768px) {
+    #sale-hero-banner-section .section-content {
+      background-image: none;
+    }
   }
 </style>
 
@@ -18,8 +24,8 @@
   <div class="page-boundary--full">
     <div class="section-content">
       <div class="text-box">
-        <h1 class="heading-1">{{ section.settings.title | remove: "<p>" | remove: "</p>" }}</h1>
-        <h2 class="heading-2 md:text-[32px] font-inter">{{ section.settings.subtitle }}</h2>
+        <h1 class="heading-1 md:text-[60px] font-bold md:text-black text-white">{{ section.settings.title | remove: "<p>" | remove: "</p>" }}</h1>
+        <h2 class="heading-2 md:text-[32px] font-bold md:text-black text-white font-inter">{{ section.settings.subtitle }}</h2>
         <p class="hidden md:inline-block">{{ section.settings.tagline | remove: "<p>" | remove: "</p>" }}</p>
       </div>
     </div>
