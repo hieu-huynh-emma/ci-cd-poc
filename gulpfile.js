@@ -4,23 +4,28 @@ const flatten = require('gulp-flatten');
 const purgecss = require('gulp-purgecss')
 const postcss = require('gulp-postcss')
 const cleanCSS = require('gulp-clean-css');
-
+const tailwindcss = require('tailwindcss');
+const autoprefixer = require('autoprefixer');
 const cssnano = require('cssnano')
 const cssnanoAdvanced = require('cssnano-preset-advanced')
 
-const sources = ['styles/base/*.scss', 'styles/layouts/*.scss', 'styles/pages/*.scss', 'styles/sections/*.scss']
+const sources = [
+  'styles/base/*.scss',
+  'styles/layouts/**/*.scss',
+  'styles/migrate/**/*.scss',
+  'styles/pages/*.scss',
+  'styles/sections/**/*.scss',
+  'styles/vendors/*.scss'
+];
 
 gulp.task('sass', function () {
   return gulp.src(sources)
     .pipe(sass({ outputStyle: 'compressed' }).on('error', sass.logError))
     .pipe(flatten())
-    .pipe(gulp.dest('assets'))
-});
-
-gulp.task('sass-uncompressed', function () {
-  return gulp.src(sources)
-    .pipe(sass({}).on('error', sass.logError))
-    .pipe(flatten())
+    .pipe(postcss([
+      tailwindcss('./tailwind.config.js'),
+      autoprefixer()
+    ]))
     .pipe(cleanCSS({ level: 2 }))
     .pipe(gulp.dest('assets'))
 });
@@ -36,8 +41,7 @@ gulp.task('clean', function () {
       safelist: {
         standard: [],
         deep: [],
-        greedy: [
-        ]
+        greedy: []
       }
     }))
     .pipe(postcss([

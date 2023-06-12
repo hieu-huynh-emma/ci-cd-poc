@@ -1,4 +1,4 @@
-tailwind.config = {
+module.exports = {
   theme: {
     extend: {
       colors: {
@@ -34,4 +34,14 @@ tailwind.config = {
       xxl: ['40px']
     }
   },
+  content: [
+    './assets/*.js',
+    './layout/*.liquid',
+    './templates/*.liquid',
+    './sections/*.liquid',
+    './snippets/*.liquid'
+  ],
+  plugins: [
+    require('@tailwindcss/typography'),
+  ],
 }
