@@ -287,6 +287,17 @@
         "show_secondary_badge": false
       }
     },
+    "mattress-firmness": {
+      "type": "mattress-firmness",
+      "settings": {
+        "title": "How does the Emma Shift feel?",
+        "subtitle": "MATTRESS FIRMNESS SCALE",
+        "description": "<p>The Emma Shift uses a Smart Valve control system that allows you to manually adjust the firmness or softness of the mattress infinitely and without using energy or electricity. You can choose your own level of comfort without compromising on fundamental support!<\/p>",
+        "firmness_point": 6,
+        "container_spacing": "md",
+        "is_animate_scaling": true
+      }
+    },
     "faqs-and-specs": {
       "type": "double-columns",
       "blocks": {
@@ -535,6 +546,7 @@
     "video-intro-3",
     "layer-description-section",
     "featured-products",
+    "mattress-firmness",
     "faqs-and-specs",
     "contact-us",
     "social-proof",

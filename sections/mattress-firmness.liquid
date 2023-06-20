@@ -11,30 +11,34 @@
     <p class="font-inter md:mb-2 text-center text-base font-semibold text-[#595959] text-[14px] text-pizazz">{{ section.settings.subtitle | remove: "<p>" | remove: "</p>" }}</p>
     <h2 class="heading-2 text-center">{{ section.settings.title | remove: "<p>" | remove: "</p>" }}</h2>
     <div class="scale-container">
-      
+
       <div class="metric-labels">
         <p class="metric-label text-scampi">SOFT</p>
-        
+
         <p class="metric-label text-scampi">FIRM</p>
       </div>
-      
+
       <div class="scale-pillar">
         <div class="scale-beam"></div>
-        <div class="scale-apex absolute z-[1] w-full">
+        <div class="scale-apex absolute z-[1] w-full {% if section.settings.is_animate_scaling %}scale-apex--animation{% endif %}">
           <div class="scale-pointer">
-            <p class="firmness-point font-tiempos">{{ section.settings.firmness_point }}</p>
+            <p class="firmness-point font-tiempos">
+              {% if section.settings.is_animate_scaling == false %}
+                {{ section.settings.firmness_point }}
+              {% endif %}
+            </p>
           </div>
         </div>
       </div>
-      
+
       <div class="metric-labels">
         <p class="metric-label text-lapis-blue">1</p>
-        
+
         <p class="metric-label text-lapis-blue">10</p>
       </div>
     </div>
-    
-    <p class="solid text-center text-comet px-2 md:px-24" >{{ section.settings.description | remove: "<p>" | remove: "</p>" }}</p>
+
+    <p class="solid text-center text-comet px-2 md:px-24">{{ section.settings.description | remove: "<p>" | remove: "</p>" }}</p>
   </div>
 </section>
 
@@ -87,6 +91,12 @@
       ],
       "default": "md",
       "label": "Container Spacing"
+    },
+    {
+      "type": "checkbox",
+      "id": "is_animate_scaling",
+      "label": "Animate Scaling?",
+      "default": false
     }
   ]
 }
