@@ -28,50 +28,84 @@
 		<div class="product-media">
 			<div id="affiliate-badge"></div>
 
-			<div class="media-masonry">
-				{% for block in productMedia %}
-					<div class="media-masonry__item{% if block.settings.full_width %} full-width{% endif %}">
-					<div class="image-wrapper">
-            {% if block.settings.is_video and block.settings.hosted_video != blank %}
-              {{ block.settings.hosted_video | video_tag: class: 'hosted-video', width: '100%', controls: false, autoplay: true, loop: true }}
-            {% else %}
-              <img
-                class="image-item"
-                src="{{ block.settings.image | image_url: width: 808, height: 486 }}"
-                loading="lazy"
-              >
-              {% if block.settings.award %}
+      <div class="desktop-mansory">
+        {% for block in productMedia %}
+          <div class="desktop-mansory__item{% if block.settings.full_width %} full-width{% endif %}">
+            <div class="image-wrapper">
+              {% if block.settings.is_video and block.settings.hosted_video != blank %}
+                {{
+                block.settings.hosted_video
+                | video_tag: class: 'hosted-video', width: '100%', controls: false, autoplay: true, loop: true
+                }}
+              {% else %}
                 <img
-                  class="image-award"
-                  src="{{ block.settings.award | image_url: width: 200, height: 200 }}"
+                  class="image-item"
+                  src="{{ block.settings.image | image_url: width: 808, height: 486 }}"
                   loading="lazy"
                 >
-              {% endif %}
-            {% endif %}
-					</div>
-
-					{% if forloop.index0 == 0 %}
-						<div class="caption-container">
-							<h3 class="heading-3 font-inter font-semibold">{{ section.settings.caption_headline }}</h3>
-							<p>{{ section.settings.caption_content }}</p>
-						</div>
-					{% endif %}
-				</div>
-
-			{% endfor %}
-		</div>
-
-		<div class="left-section mobile">
-			<div id="product-images-gallery" class="splide">
-				<ul class="splide__track">
-					<li class="splide__list">
-						{% for item in productMedia %}
-							<div class="image-wrapper splide__slide">
-                {% if item.settings.is_video and item.settings.hosted_video != blank %}
-                  {{ item.settings.hosted_video | video_tag: class: 'hosted-video', width: '100%', controls: false, autoplay: true, loop: true }}
-                {% else %}
+                {% if block.settings.award %}
                   <img
-                    src="{{ item.settings.image | image_url: width: 808, height: 486 }}"
+                    class="image-award"
+                    src="{{ block.settings.award | image_url: width: 200, height: 200 }}"
+                    loading="lazy"
+                  >
+                {% endif %}
+              {% endif %}
+            </div>
+
+            {% if forloop.index0 == 0 %}
+              <div class="caption-container">
+                <h3 class="heading-3 font-inter font-semibold">{{ section.settings.caption_headline }}</h3>
+                <p>{{ section.settings.caption_content }}</p>
+              </div>
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+
+      <div class="media-carousel">
+        <div id="main-carousel" class="splide">
+          <ul class="splide__track">
+            <li class="splide__list">
+              {% for item in productMedia %}
+
+                <div
+                  class="image-wrapper splide__slide"
+                >
+                  {% if item.settings.is_video and item.settings.hosted_video != blank %}
+                    {{ item.settings.hosted_video | video_tag: class: 'hosted-video', width: '100%', controls: false, autoplay: true, loop: true }}
+                  {% else %}
+                    <img
+                      src="{{ item.settings.image | image_url: width: 808, height: 486 }}"
+                      loading="lazy"
+                    >
+                    {% if item.settings.award %}
+                      <img
+                        class="image-award"
+                        src="{{ item.settings.award | image_url: width: 80, height: 80 }}"
+                        loading="lazy"
+                      >
+                    {% endif %}
+                  {% endif %}
+                </div>
+              {% endfor %}
+            </li>
+          </ul>
+        </div>
+
+        <div id="thumbnail-carousel" class="splide">
+          <ul class="splide__track">
+            <li class="splide__list">
+              {% for item in productMedia %}
+                <div
+                  class="image-wrapper splide__slide"
+                >
+                  {% assign thumbnail = item.settings.image %}
+                  {% if item.settings.is_video and item.settings.hosted_video != blank %}
+                    {% assign thumbnail = item.settings.hosted_video.preview_image %}
+                  {% endif %}
+                  <img
+                    src="{{ thumbnail | image_url: width: 808, height: 486 }}"
                     loading="lazy"
                   >
                   {% if item.settings.award %}
@@ -81,11 +115,12 @@
                       loading="lazy"
                     >
                   {% endif %}
-                {% endif %}
-							</div>
-						{% endfor %}
-					</li>
-				</ul></div>
+
+                </div>
+              {% endfor %}
+            </li>
+          </ul>
+        </div>
 			</div>
 		</div>
 		
@@ -457,34 +492,43 @@
 {% endunless %}
 
 <script>
-  document.addEventListener('DOMContentLoaded', function () {
-    var splide = new Splide('#product-images-gallery', {
-      arrows: false,
-    });
-    splide.mount();
-  });
+	document.addEventListener('DOMContentLoaded', function () {
+		const main = new Splide('#main-carousel', {
+			type: 'fade',
+			rewind: true,
+			pagination: false,
+			arrows: false,
+		});
+		const thumbnails = new Splide('#thumbnail-carousel', {
+			fixedWidth: 100,
+			gap: 10,
+			rewind: true,
+			pagination: false,
+			isNavigation: true
+		});
 
+		main.sync(thumbnails);
+		main.mount();
+		thumbnails.mount();
+	});
 
-  $(window).on('load', function () {
-    $('#ProductSection-{{ section.id }} .product-specification').beefup({
-      trigger: ".product-specification__header",
-      content: ".product-specification__content",
-      openSpeed: 500,
-      closeSpeed: 250
-    });
-  })
+	$(window).on('load', function () {
+		$('#ProductSection-{{ section.id }} .product-specification').beefup({
+			trigger: '.product-specification__header',
+			content: '.product-specification__content',
+			openSpeed: 500,
+			closeSpeed: 250,
+		});
+	});
 
+	const input = document.getElementById('Quantity-{{ section.id }}');
 
-  const input = document.getElementById("Quantity-{{ section.id }}")
-
-  $('.quantity-input__button[name="minus"]').click(function () {
-    if (input.value <= 1) {
-      return;
-    }
-    input.value--;
-  });
-
-
+	$('.quantity-input__button[name="minus"]').click(function () {
+		if (input.value <= 1) {
+			return;
+		}
+		input.value--;
+	});
 </script>
 
 {% schema %}
