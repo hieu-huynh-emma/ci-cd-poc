@@ -1,7 +1,5 @@
-/* Color custom properties */
-@function rgb($args...) {
-  @return #{'rgb('}#{$args}#{')'};
-}
+@import "../abstracts/index";
+@import "../components/button";
 
 :root,
 .color-background-1 {
@@ -212,7 +210,7 @@ h6:empty {
   background-color: transparent;
 }
 
-.media>*:not(.zoom):not(.deferred-media__poster-button),
+.media > *:not(.zoom):not(.deferred-media__poster-button),
 .media model-viewer {
   display: block;
   max-width: 100%;
@@ -223,7 +221,7 @@ h6:empty {
   width: 100%;
 }
 
-.media>img {
+.media > img {
   object-fit: cover;
   object-position: center center;
   transition: opacity 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -254,7 +252,7 @@ h6:empty {
   border-radius: 50%;
 }
 
-.media.media--hover-effect>img+img {
+.media.media--hover-effect > img + img {
   opacity: 0;
 }
 
@@ -275,7 +273,7 @@ deferred-media {
   width: 100%;
 }
 
-.select .icon-caret, .customer select+svg {
+.select .icon-caret, .customer select + svg {
   height: 0.6rem;
   pointer-events: none;
   position: absolute;
@@ -399,7 +397,7 @@ deferred-media {
 /* Select */
 
 .select .icon-caret,
-.customer select+svg {
+.customer select + svg {
   height: 0.6rem;
   pointer-events: none;
   position: absolute;
@@ -442,11 +440,87 @@ deferred-media {
   }
 }
 
-.button.loading>.loading-overlay__spinner {
+.button.loading > .loading-overlay__spinner {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   position: absolute;
   height: 100%;
   display: flex;
+}
+
+#user {
+  h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
+    display: block;
+    font-weight: 400;
+    font-style: normal;
+    margin: 0 0 0.5em;
+    line-height: 1.4;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1, .h1 {
+    font-size: 60px;
+    line-height: 1.2em;
+  }
+
+  h2, .h2 {
+    font-size: 50px;
+    line-height: 1.2em;
+  }
+
+  p {
+    margin: 0 0 15px;
+    text-rendering: optimizeLegibility;
+  }
+
+  .form-vertical input, .form-vertical select, .form-vertical textarea {
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  input, select, textarea {
+    border: 1px solid #212b57;
+    border-radius: 0;
+    max-width: 100%;
+    padding: 8px 10px
+  }
+
+  input, select, textarea {
+    background-color: #f7f7f7;
+    border-color: transparent;
+    color: #1c1d1d;
+    font-size: 1.28571em;
+    -webkit-transition: opacity .4s ease-out;
+    -moz-transition: opacity .4s ease-out;
+    -ms-transition: opacity .4s ease-out;
+    -o-transition: opacity .4s ease-out;
+    transition: opacity .4s ease-out
+  }
+
+  input[type='submit'] {
+    &.btn {
+      @include button
+    }
+  }
+}
+
+#fr_pop {
+  box-shadow: 4px 4px 4px black;
+
+  .step_head .sub_head {
+    line-height: 150%;
+  }
+
+  .pay_steps .para_txt {
+    text-align: center;
+  }
+
+  .product_step_inner {
+    padding: 0;
+
+    @media (min-width: 640px) {
+      padding: 48px 100px 0;
+    }
+  }
 }

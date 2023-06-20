@@ -1,12 +1,5 @@
-@import "../abstracts/functions";
-@import "../legacy/base-legacy";
-@import "../legacy/user-page";
-@import "../legacy/affirm-legacy";
-@import "../typography/index";
-@import "../elements/index";
-@import "../vendors/index";
-@import "./utils";
-@import "./global";
+@import "../abstracts/index";
+@import "../components/index";
 
 *,
 *::before,

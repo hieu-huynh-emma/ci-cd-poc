@@ -7,6 +7,11 @@
 {{ 'custom-theme-3.css' | asset_url | stylesheet_tag }}
 
 {{ 'base.css' | asset_url | stylesheet_tag }}
+{{ 'legacy.css' | asset_url | stylesheet_tag }}
+{{ 'typography.css' | asset_url | stylesheet_tag }}
+{{ 'vendors.css' | asset_url | stylesheet_tag }}
+{{ 'global.css' | asset_url | stylesheet_tag }}
+{{ 'fonts.css' | asset_url | stylesheet_tag }}
 
 {% comment %}DESIGN MIGRATE{% endcomment %}
 {% case template %}
