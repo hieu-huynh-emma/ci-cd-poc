@@ -16,11 +16,7 @@
             <li class="splide__slide">
               <div class="influencer">
                 <div class="influencer-media">
-                  <img
-                    class="influencer__image"
-                    src="{{ block.settings.image | image_url: height: 300 }}" width="300"
-                    height="300" loading="lazy"
-                  />
+		              {% render 'image-tag', image_src: block.settings.image, class: 'influencer__image', width: 300, height: 300 %}
                 </div>
                 
                 <div class="influencer-details">

@@ -92,12 +92,8 @@
 
   {% if wallpaper != blank %}
     <div class="wallpaper">
-      {{
-      wallpaper.settings.src
-      | image_url: width: 2680
-      | image_tag: width: 2680, class: 'hidden md:block'
-      }}
-      {{ wallpaper.settings.mobile_src | image_url: width: 768 | image_tag: width: 768, class: 'md:hidden' }}
+      {% render 'image-tag', image_src: wallpaper.settings.src, class: 'hidden md:block', width: 2680 %}
+      {% render 'image-tag', image_src: wallpaper.settings.mobile_src, class: 'md:hidden', width: 768 %}
     </div>
   {% endif %}
 </section>

@@ -53,7 +53,7 @@
             <p
               style="background-color: {{ block.settings.color }};"
               class="mx-auto mb-8 w-max rounded-full px-7 py-3 text-[13px] font-semibold uppercase leading-none text-white">{{ block.settings.primary_badge }}</p>
-          {%endif%}
+          {% endif %}
           <div
             style="border-color: {{ block.settings.color }}"
             class="rounded-[6px] border flex flex-col h-full">
@@ -66,17 +66,11 @@
                   <p class="text-[13px] text-[#FF8900]">👁 Currently Viewing</p>
                 {% endif %}
               </div>
-              <img class="-mt-[7px] h-max" width="55px" src="{{ block.settings.mattress_height | img_url: 'master' }}" alt=""/>
+              {% render 'image-tag', image_src: block.settings.mattress_height, class: '-mt-[7px] h-max', width: 55 %}
             </div>
 
             <div class="mb-6 h-[185px] px-4">
-              <img
-                style="aspect-ratio: 2576 / 1752;"
-                class="mx-auto h-full object-contain"
-                src="{{ block.settings.image | image_url: width: 800 }}" width="350"
-                height="179"
-                loading="lazy"
-              />
+              {% render 'image-tag', image_src: block.settings.image, class: 'mx-auto h-full object-contain', width: 800, height: 179, style: 'aspect-ratio: 2576 / 1752;' %}
             </div>
 
             <h3 class="px-4 mb-2 text-[24px] font-semibold font-inter">{{ block.settings.product_title }}</h3>

@@ -4,7 +4,7 @@
   <div class="mx-auto max-w-7xl px-4 sm:px-3 md:px-5">
     <div class="mb-16 lg:flex items-center justify-between">
       <a class="block mb-14 lg:mb-0" href="/">
-        <img class="block mx-auto" src="{{ section.settings.footer-logo | img_url: 'master' }}">
+        {% render 'image-tag', image_src: section.settings.footer-logo, width: 170, class:'block mx-auto' %}
       </a>
       <div class="flex gap-4 items-center justify-center">
         <p class="text-white">Follow Us</p>
@@ -143,7 +143,7 @@
 
     <div class="lg:flex lg:items-center lg:justify-between">
       <p class="text-white text-center mb-12 lg:mb-0">{{ section.settings.rights }}</p>
-      <img class="block mx-auto lg:ml-auto lg:mr-0" src="{{ section.settings.footer-payment-icons | img_url: 'master' }}">
+      {% render 'image-tag', image_src: section.settings.footer-payment-icons, width:304, class: 'block mx-auto lg:ml-auto lg:mr-0' %}
     </div>
   </div>
 </footer>

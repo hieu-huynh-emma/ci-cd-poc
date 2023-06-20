@@ -10,7 +10,7 @@
 				</h4>
 			</div>
 			<div class="right-column m-auto order-1 xl:order-2">
-				<img class="rounded-lg object-cover" src="{{ section.settings.right_column_image | img_url: 'master'}}" width="712" height="467" loading="lazy">
+        {% render 'image-tag', image_src: section.settings.right_column_image, width: 1920, height: 467, width_attr: 712, class: 'rounded-lg object-cover' %}
 			</div>
 		</div>
 	</div>

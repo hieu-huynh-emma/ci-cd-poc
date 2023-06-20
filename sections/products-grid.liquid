@@ -100,9 +100,13 @@
         {% if block.settings.product.published_at %}
           <a href="{{ block.settings.product.url }}" class="products-grid-item">
             <div class="product-image-container">
-              <img
-                src="{% if block.settings.image != blank %} {{ block.settings.image | img_url: 'medium' }} {% else %} {{ block.settings.product.featured_image | img_url: 'medium' }} {% endif %}"
-                alt="" class="item-image">
+              {% liquid
+                assign image_src = block.settings.product.featured_image
+                if block.settings.image != blank
+                  assign image_src = block.settings.image
+                endif
+                render 'image-tag', image_src: image_src, class: 'item-image', width: 240
+              %}
             </div>
             {% if block.settings.badge_text != blank %}
               <span class="badge">{{ block.settings.badge_text }}</span>

@@ -38,17 +38,9 @@
                 | video_tag: class: 'hosted-video', width: '100%', controls: false, autoplay: true, loop: true
                 }}
               {% else %}
-                <img
-                  class="image-item"
-                  src="{{ block.settings.image | image_url: width: 808, height: 486 }}"
-                  loading="lazy"
-                >
+                {% render 'image-tag', image_src: block.settings.image, width: 1200, height: 486, class: 'image-item' %}
                 {% if block.settings.award %}
-                  <img
-                    class="image-award"
-                    src="{{ block.settings.award | image_url: width: 200, height: 200 }}"
-                    loading="lazy"
-                  >
+                  {% render 'image-tag', image_src: block.settings.award, width: 200, height: 200, class: 'image-award' %}
                 {% endif %}
               {% endif %}
             </div>
@@ -68,23 +60,13 @@
           <ul class="splide__track">
             <li class="splide__list">
               {% for item in productMedia %}
-
-                <div
-                  class="image-wrapper splide__slide"
-                >
+                <div class="image-wrapper splide__slide">
                   {% if item.settings.is_video and item.settings.hosted_video != blank %}
                     {{ item.settings.hosted_video | video_tag: class: 'hosted-video', width: '100%', controls: false, autoplay: true, loop: true }}
                   {% else %}
-                    <img
-                      src="{{ item.settings.image | image_url: width: 808, height: 486 }}"
-                      loading="lazy"
-                    >
+                    {% render 'image-tag', image_src: item.settings.image, width: 1200, height: 486, class: 'image-item' %}
                     {% if item.settings.award %}
-                      <img
-                        class="image-award"
-                        src="{{ item.settings.award | image_url: width: 80, height: 80 }}"
-                        loading="lazy"
-                      >
+                      {% render 'image-tag', image_src: item.settings.award, width: 80, height: 80, class: 'image-award' %}
                     {% endif %}
                   {% endif %}
                 </div>
@@ -104,18 +86,11 @@
                   {% if item.settings.is_video and item.settings.hosted_video != blank %}
                     {% assign thumbnail = item.settings.hosted_video.preview_image %}
                   {% endif %}
-                  <img
-                    src="{{ thumbnail | image_url: width: 808, height: 486 }}"
-                    loading="lazy"
-                  >
-                  {% if item.settings.award %}
-                    <img
-                      class="image-award"
-                      src="{{ item.settings.award | image_url: width: 80, height: 80 }}"
-                      loading="lazy"
-                    >
-                  {% endif %}
 
+                  <img src="{{ thumbnail | image_url: width: 808, height: 486 }}" loading="lazy">
+                  {% if item.settings.award %}
+                    {% render 'image-tag', image_src: item.settings.award, width: 80, height: 80, class: 'image-award' %}
+                  {% endif %}
                 </div>
               {% endfor %}
             </li>
@@ -311,7 +286,7 @@
           <div class="rounded-2xl border-2 border-[#3C4196] px-4 py-4">
             <div style="grid-template-columns: minmax(100px, 1fr) 2fr;" class="grid gap-3">
               <div style="grid-row: 1 / 3;" class="self-center">
-                <img class="mx-auto h-min" src="{{ upsell_mattress_v2.settings.upsell_mattress_product_image | img_url: 'master' }}" alt="" />
+                {% render 'image-tag', image_src: upsell_mattress_v2.settings.upsell_mattress_product_image, width: 1200, class: 'mx-auto h-min' %}
               </div>
               <div class="px-4">
                 <p class="text-[15px]">Upgrade to the Climax Hybrid:</p>

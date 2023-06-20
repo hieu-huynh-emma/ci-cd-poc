@@ -21,11 +21,7 @@
           {% if section.settings.column_size == 'large' %} large{% endif %}
           {% if section.settings.horizontal_layout_on_mobile %} horizontal-layout-on-mobile{% endif %}
         ">
-					<img
-						class="multicolumn-card__icon" src="{{ block.settings.icon | image_url: width: imgSizeX2 }}"
-						width="{{ imgSize }}"
-						loading="lazy"
-					>
+          {% render 'image-tag', image_src: block.settings.icon, class: 'multicolumn-card__icon', width: imgSizeX2, width_attr: imgSize %}
 					<div class="multicolumn-card__details">
 						<h3 class="multicolumn-card__title{% if section.settings.solid_typo %} solid{% endif %}">{{ block.settings.title }}</h3>
 						<p class="multicolumn-card__content text-comet{% if section.settings.solid_typo %} solid{% endif %}">{{ block.settings.content | remove: "<p>" | remove: "</p>" }}</p>

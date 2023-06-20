@@ -8,7 +8,7 @@
     <div
       class="two-columns-layout{% if section.settings.inverted %} is-inverted{% endif %}">
       <div class="media-column">
-        {{ section.settings.image | image_url: width: 1280 | image_tag }}
+        {% render 'image-tag', image_src: section.settings.image, width: 1280 %}
       </div>
 
       <div class="content-column section-chassis">

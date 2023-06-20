@@ -10,7 +10,7 @@
 		
 		<div class="section-body">
 			<div class="layers-photo">
-				<img src="{{ layers_image.first.settings.image | image_url: width: 644 }}">
+        {% render 'image-tag', image_src: layers_image.first.settings.image, width: 832 %}
 			</div>
 			
 			<div class="info-wrapper hidden xl:block">

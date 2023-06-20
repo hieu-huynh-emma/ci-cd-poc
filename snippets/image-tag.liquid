@@ -1,0 +1,48 @@
+{% liquid
+  assign default_srcset = '352|832|1200|1920|2680' | split: '|'
+  assign data_srcset = ''
+
+  if is_product_image
+    assign default_srcset = '288|576|750|1100|1500' | split: '|'
+  endif
+
+  for srcset in default_srcset
+    assign srcset_num = srcset | plus: 0
+    if width >= srcset_num
+      assign image_url = image_src | image_url: width: srcset | append: ' ' | append: srcset | append: 'w'
+      if data_srcset != ''
+        assign data_srcset = data_srcset | append: ', '
+      endif
+      assign data_srcset = data_srcset | append: image_url
+    endif
+  endfor
+
+  assign classname = ''
+  if class != ''
+    assign classname = class | prepend: ' '
+  endif
+
+  assign data_sizes = 'auto'
+  if sizes
+    assign data_sizes = sizes
+  endif
+
+  if width_attr
+    assign width = width_attr
+  endif
+%}
+
+<img
+  data-src="{{ image_src | image_url: width: width }}"
+  class="lazyload{{classname}}"
+  width="{{ width }}"
+  data-sizes="{{ data_sizes }}"
+  data-srcset="{{ data_srcset }}"
+  {% if height %}
+    height="{{ height }}"
+  {% endif %}
+  {% if style %}
+    style="{{ style }}"
+  {% endif %}
+  alt="{{ alt }}"
+>

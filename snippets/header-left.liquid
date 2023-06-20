@@ -1,10 +1,10 @@
 <div>
 	<a class="hidden lg:inline" href="{{ routes.root_url }}">
 		{% if section.settings.logo %}
-			<img
-				src="{{ section.settings.logo | img_url: image_size }}"
-				srcset="{{ section.settings.logo | img_url: image_size }} 1x, {{ section.settings.logo | img_url: image_size, scale: 2 }} 2x"
-				alt="{{ section.settings.logo.alt | default: shop.name }}">
+			{% liquid
+				assign alt = section.settings.logo.alt | default: shop.name
+				render 'image-tag', image_src: section.settings.logo, width: 100, alt: alt
+			%}
 		{% else %}
 			{{ shop.name }}
 		{% endif %}

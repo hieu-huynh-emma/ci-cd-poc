@@ -14,10 +14,8 @@
 			<div class="product-item">
         <span class="badge">{{ block.settings.badge }}
         </span>
-				<img
-					src="{{ block.settings.image | img_url: 'grande' }}" width="100%" height="auto"
-					class="h-full" loading="lazy"
-				/>
+
+				{% render 'image-tag', image_src: block.settings.image, class: 'h-full', width: 1200 %}
 				<h3>{{ product.title }}</h3>
 				
 				<p class="product-price">

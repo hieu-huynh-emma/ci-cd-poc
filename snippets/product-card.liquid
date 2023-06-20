@@ -3,12 +3,8 @@
 
 		{% assign blockImg = blockImg | image_url: width: 450 %}
 		{% assign coverImg = product.featured_image | image_url: width: 450 %}
-
-		<img
-			src="{{ blockImg | default: product.metafields.accentuate.featured_image[0].src | default: coverImg }}"
-			alt="" class="product__image"
-			loading="lazy"
-		>
+		{% assign image_src = blockImg | default: product.metafields.accentuate.featured_image[0].src | default: coverImg %}
+		{% render 'image-tag', image_src: image_src, class: 'product__image', width: 450 %}
 	</div>
 
 	<div class="product-card-detail">

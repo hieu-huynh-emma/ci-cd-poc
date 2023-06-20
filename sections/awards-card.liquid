@@ -3,7 +3,7 @@
     <h1 class="mb-4 text-[33px] lg:text-[40px] text-[#3c4196]">{{ section.settings.title }}</h1>
     {% for block in section.blocks %}
       <div class="block items-center gap-10 lg:flex py-6">
-        <img class="mb-4 lg:w-1/5 mx-auto" src="{{ block.settings.logo | img_url: 'master' }}" alt="" />
+        {% render 'image-tag', image_src: block.settings.logo, class: 'mb-4 lg:w-1/5 mx-auto', width: 1024, height: 1024 %}
         <div class="mb-6 lg:w-3/5 lg:mb-0">
           <h6 class="mb-2 text-[25px] lg:text-[30px]">{{ block.settings.title }}</h6>
           <h3 class="mb-2 text-[20px] text-[#3c4196]">{{ block.settings.quote }}</h3>

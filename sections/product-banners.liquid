@@ -38,10 +38,7 @@
 				</div>
 				
 				<div class="card__image w-full h-full">
-					<img
-						src="{{ block.settings.image | img_url: '537x375' }}" width="100%" height="auto"
-						class="h-full" loading="lazy"
-					>
+					{% render 'image-tag', image_src: block.settings.image, class: 'h-full w-full', width: 1200 %}
 				</div>
 				
 				<div class="card__btn justify-center btn z-10 mt-auto">

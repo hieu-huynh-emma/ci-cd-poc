@@ -20,7 +20,7 @@
 							data-heading="{{ block.settings.heading | escape }}"
 						>
 							{% capture icon %}
-								{{ block.settings.icon | image_url: width: 1080 | image_tag }}
+                {% render 'image-tag', image_src: block.settings.icon, width: 1080 %}
 							{% endcapture %}
 							
 							{% if block.settings.link %}
