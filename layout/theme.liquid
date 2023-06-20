@@ -6,6 +6,8 @@
   {% render 'hso-no-follow-no-index' %}
   {% render 'page-metadata' %}
   {% render 'hreflang-tags' %}
+  {% render 'vendors', isOptimized: false %}
+  {% render 'page-scripts', isOptimized: false %}
   {% render 'page-styles', isOptimized: false %}
 
   {{ content_for_header }}
@@ -31,9 +33,6 @@
     <li id="a11y-selection-message">{{ 'general.accessibility.selection_help' | t }}</li>
     <li id="a11y-slideshow-info">{{ 'home_page.slideshow.navigation_instructions' | t }}</li>
   </ul>
-
-  {% render 'vendors', isOptimized: false %}
-  {% render 'page-scripts', isOptimized: false %}
 
   {% render 'cart-drawer' %}
   {% render 'affirm-popup' %}

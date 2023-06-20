@@ -16,10 +16,8 @@
 {% comment %}DESIGN MIGRATE{% endcomment %}
 {% case template %}
   {% when 'index', 'product.emma-original', 'product.emma-climax-hybrid' %}
-    {{ 'new-splide.css' | asset_url | stylesheet_tag }}
     {{ 'new-heading.css' | asset_url | stylesheet_tag }}
   {% else %}
-    {{ 'old-splide.css' | asset_url | stylesheet_tag }}
     {{ 'old-heading.css' | asset_url | stylesheet_tag }}
 {% endcase %}
 

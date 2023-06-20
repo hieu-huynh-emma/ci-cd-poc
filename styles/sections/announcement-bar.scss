@@ -1,4 +1,10 @@
 #shopify-section-announcement-bar {
+  [type=button], [type=reset], [type=submit], button {
+    -webkit-appearance: button;
+    background-color: transparent;
+    background-image: none;
+  }
+
   .announcement-bar {
     height: 70px;
     width: 100%;
