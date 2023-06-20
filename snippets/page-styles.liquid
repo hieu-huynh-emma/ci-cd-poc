@@ -1,40 +1,5 @@
-<!-- CSS ================================================== -->
-{{ 'timber.css' | asset_url | stylesheet_tag }}
-{{ 'theme.css' | asset_url | stylesheet_tag }}
-<!-- CUSTOM CSS ================================================== -->
-{{ 'custom-theme.css' | asset_url | stylesheet_tag }}
-{{ 'custom.css' | asset_url | stylesheet_tag }}
-{{ 'custom-theme-3.css' | asset_url | stylesheet_tag }}
-
-{{ 'base.css' | asset_url | stylesheet_tag }}
-{{ 'legacy.css' | asset_url | stylesheet_tag }}
-{{ 'typography.css' | asset_url | stylesheet_tag }}
-{{ 'vendors.css' | asset_url | stylesheet_tag }}
-{{ 'global.css' | asset_url | stylesheet_tag }}
-{{ 'fonts.css' | asset_url | stylesheet_tag }}
-
-{% comment %}DESIGN MIGRATE{% endcomment %}
-{% case template %}
-	{% when 'index', 'product.emma-original', 'product.emma-climax-hybrid' %}
-		{{ 'new-splide.css' | asset_url | stylesheet_tag }}
-		{{ 'new-heading.css' | asset_url | stylesheet_tag }}
-	{% else %}
-		{{ 'old-splide.css' | asset_url | stylesheet_tag }}
-		{{ 'old-heading.css' | asset_url | stylesheet_tag }}
-{% endcase %}
-
-{% liquid
-	assign pageStylesheet = ""
-	case template
-		when 'page.comparison'
-			assign pageStylesheet = 'comparison-page.css'
-		when 'page.competitor-comparison'
-			assign pageStylesheet = 'competitor-comparison.css'
-		when 'product.emma-original', 'product.emma-climax-hybrid'
-			assign pageStylesheet = 'product-detail.css'
-	endcase
-%}
-
-<link rel="stylesheet" href="{{ pageStylesheet | asset_url }}">
-
-{{ 'tailwind.css' | asset_url | stylesheet_tag }}
+{% if isOptimized == true %}
+	{% render 'old-page-styles' %}
+{% else %}
+	{% render 'old-page-styles' %}
+{% endif %}

@@ -1,0 +1,52 @@
+{% liquid
+  assign body_font_bold = settings.type_body_font | font_modify: 'weight', 'bold'
+  assign body_font_italic = settings.type_body_font | font_modify: 'style', 'italic'
+  assign body_font_bold_italic = body_font_bold | font_modify: 'style', 'italic'
+%}
+
+{% if settings.favicon %}
+  <link rel="shortcut icon" href="{{ settings.favicon | img_url: '32x32' }}" type="image/png" />
+{% endif %}
+
+{% if isOptimized == true %}
+  <template id="content_for_header">
+    <head>{{ content_for_header }}</head>
+  </template>
+  <template id="content_for_body">
+    <body></body>
+  </template>
+{% endif %}
+
+<style>
+  {{ body_font_bold | font_face: font_display: 'swap' }}
+  {{ body_font_italic | font_face: font_display: 'swap' }}
+  {{ body_font_bold_italic | font_face: font_display: 'swap' }}
+
+  :root {
+    --font-body-family: 'Inter';
+    --font-body-style: normal;
+    --font-body-weight: 400;
+    --font-heading-family: 'Tiempos';
+    --font-heading-style: normal;
+    --font-heading-weight: 400;
+    --color-base-text: 18, 18, 18;
+    --color-base-background-1: 255, 255, 255;
+    --color-base-background-2: 243, 243, 243;
+    --color-base-solid-button-labels: 255, 255, 255;
+    --color-base-outline-button-labels: 18, 18, 18;
+    --color-base-accent-1: 18, 18, 18;
+    --color-base-accent-2: 51, 79, 180;
+    --payment-terms-background-color: #FFFFFF;
+    --gradient-base-background-1: #FFFFFF;
+    --gradient-base-background-2: #F3F3F3;
+    --gradient-base-accent-1: #121212;
+    --gradient-base-accent-2: #334FB4;
+    --page-width: 160rem;
+    --page-width-margin: 2rem;
+    --color_drawer_text: #3c4196;
+    --color_drawer_background: ;
+    --color_drawer_border: #ffffff;
+    --color_drawer_button: #ffffff;
+    --color_drawer_button_text: #3c4196;
+  }
+</style>

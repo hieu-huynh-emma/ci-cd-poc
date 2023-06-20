@@ -1,0 +1,16 @@
+#bundle-sticky_add_to_cart {
+  top: 133px;
+  height: 90px;
+  z-index: 3;
+}
+
+#bundle-sticky_add_to_cart .sticky-product-details {
+  background-color: white;
+}
+
+@media (min-width: 768px) {
+  #bundle-sticky_add_to_cart {
+    top: 102px;
+    height: 40px;
+  }
+}

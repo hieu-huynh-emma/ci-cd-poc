@@ -1,0 +1,25 @@
+<script>
+  jQuery(window).on('load', function () {
+    switchAffirmMessage()
+  })
+  window.routes = {
+    cart_add_url: '{{ routes.cart_add_url }}',
+    cart_change_url: '{{ routes.cart_change_url }}',
+    cart_update_url: '{{ routes.cart_update_url }}',
+    predictive_search_url: '{{ routes.predictive_search_url }}',
+  }
+  window.variantStrings = {
+    addToCart: `{{ 'products.product.add_to_cart' | t }}`,
+    soldOut: `{{ 'products.product.sold_out' | t }}`,
+    unavailable: `{{ 'products.product.unavailable' | t }}`,
+  }
+</script>
+
+<script src="{{ 'global.js' | asset_url }}" defer="defer"></script>
+{{ 'helpers.js' | asset_url | script_tag }}
+
+{{ 'custom-elements.js' | asset_url | script_tag }}
+
+{{ 'quantity-adjuster.js' | asset_url | script_tag }}
+{{ 'variant-selector.js' | asset_url | script_tag }}
+{{ 'loading-overlay.js' | asset_url | script_tag }}
