@@ -19,7 +19,7 @@
 
     function render(time) {
       const { days, hours, minutes, seconds } = time;
-      message.innerHTML = '{{ timer_text }}&nbsp;';
+      message.innerHTML = `{{ timer_text }}&nbsp;`;
       timer.innerHTML =
         currentLanguage === 'en'
           ? `${format(days)} days ${format(hours)} hours ${format(minutes)} minutes ${format(seconds)} seconds`
@@ -27,7 +27,7 @@
     }
 
     function complete() {
-      message.innerHTML = '{{ text }}';
+      message.innerHTML = `{{ text }}`;
       timer.style.display = 'none';
     }
 
