@@ -5,16 +5,31 @@
   display: grid;
   grid-template-rows: 0 minmax(0, 1fr);
 
-  min-height: 126px;
-  max-height: 126px;
-  margin: 12px;
+  margin: 0 12px 12px;
+
+  &.sm {
+    min-height: 126px;
+    max-height: 126px;
+
+    @media screen and (min-width: 769px) {
+      min-height: 384px;
+      max-height: 384px;
+    }
+  }
+
+  &.lg {
+    min-height: 540px;
+    max-height: 540px;
+
+    @media screen and (min-width: 769px) {
+      max-height: 640px;
+      min-height: 640px;
+    }
+  }
 
   @media screen and (min-width: 769px) {
     height: 100%;
-    min-height: 384px;
-    max-height: 384px;
-
-    margin: 40px 64px;
+    margin: 0 64px 40px;
   }
 
   .page-boundary {
@@ -28,17 +43,28 @@
 
   .section-content {
     position: absolute;
+    display: grid;
+    gap: 16px;
+    grid-template-columns: minmax(0, 1fr);
+    align-items: center;
+    justify-content: center;
 
-    height: 100%;
 
 
     @media screen and (max-width: 768px) {
+      align-content: space-between;
+      justify-items: center;
+
       inset: 0;
-      width: 100%;
+      margin: 24px;
     }
 
     @media screen and (min-width: 768px) {
       top: 0;
+
+      align-content: center;
+
+      height: 100%;
       max-width: 528px;
     }
 

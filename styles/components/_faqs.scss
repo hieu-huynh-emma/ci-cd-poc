@@ -16,6 +16,7 @@ $faq: ".faq";
   @media screen and (min-width: 769px) {
     gap: 24px;
   }
+
   &.is-open {
     #{$faq}__icon {
       transform: rotate(180deg);
@@ -42,10 +43,21 @@ $faq: ".faq";
     font-weight: 600;
   }
 
-  &__answer > *{
-    font-family: 'Acumin Pro';
+  &__answer {
+    &.iframe-container {
+      min-height: 720px;
+
+    }
+
     @media screen and (max-width: 769px) {
-      font-size: 16px;
+      min-height: 1056px;
+    }
+
+    > * {
+      font-family: 'Acumin Pro';
+      @media screen and (max-width: 769px) {
+        font-size: 16px;
+      }
     }
   }
 

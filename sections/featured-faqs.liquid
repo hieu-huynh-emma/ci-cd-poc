@@ -1,4 +1,4 @@
-{% assign allFaqs = section.blocks | where: "type", "faq" %}
+{% assign allFaqs = section.blocks  %}
 
 {{ 'featured-faqs.css' | asset_url | stylesheet_tag }}
 
@@ -19,9 +19,24 @@
 							/>
 						</svg>
 					</div>
-					<div class="faq__answer shopify-richtext">
-						{{ block.settings.content }}
-					</div>
+          {% case block.type %}
+            {% when 'pdf' %}
+              <div class="faq__answer iframe-container">
+                <iframe
+                  id="pdf-iframe"
+                  src="{{ block.settings.source }}"
+                  frameborder="0"
+                  width="100%"
+                  height="100%"
+                  allow="fullscreen"
+                >
+                </iframe>
+              </div>
+            {% else %}
+              <div class="faq__answer shopify-richtext">
+                {{ block.settings.content }}
+              </div>
+          {% endcase %}
 				</li>
 				{% unless forloop.last %}<span class="separator"></span>{% endunless -%}
 			{% endfor %}
@@ -60,6 +75,23 @@
           "type": "richtext",
           "label": "Content",
           "default": "<p>Content</p>"
+        }
+      ]
+    },
+    {
+      "type": "pdf",
+      "name": "PDF FAQ",
+      "settings": [
+        {
+          "id": "title",
+          "type": "text",
+          "label": "Title",
+          "default": "Title"
+        },
+        {
+          "id": "source",
+          "type": "url",
+          "label": "Source"
         }
       ]
     }
