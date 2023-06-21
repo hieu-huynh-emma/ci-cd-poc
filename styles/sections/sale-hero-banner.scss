@@ -5,7 +5,7 @@
   display: grid;
   grid-template-rows: 0 minmax(0, 1fr);
 
-  margin: 0 12px 12px;
+  margin: 12px;
 
   &.sm {
     min-height: 126px;
@@ -29,7 +29,7 @@
 
   @media screen and (min-width: 769px) {
     height: 100%;
-    margin: 0 64px 40px;
+    margin: 40px 64px;
   }
 
   .page-boundary {
@@ -82,9 +82,10 @@
     }
 
     .heading-1 {
+      line-height: 120%;
+
       @media screen and (max-width: 769px) {
         font-size: 32px;
-        line-height: 120%;
       }
     }
   }
