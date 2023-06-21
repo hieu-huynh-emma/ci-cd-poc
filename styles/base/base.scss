@@ -57,8 +57,19 @@ body {
     list-style: initial;
   }
 
+  ol {
+    margin: 8px 0 8px 25px;
+
+    list-style: auto;
+  }
+
   strong {
     font-weight: 600;
+  }
+
+  a {
+    color: $colorPrimary;
+    font-size: 14px;
   }
 }
 
