@@ -94,7 +94,7 @@
         <cart-upsell-item class="upsell-item upsell-item--single" :productId="{{prod.id}}">
           <div class="upsell-item__media">
             {% assign img = prod.featured_image %}
-            {{ img | image_url: width: 70 | image_tag }}
+            {{ img | image_url: width: 70 | image_tag: loading: 'lazy' }}
           </div>
           <div class="upsell-item__details">
             <a href="{{ prod.url }}" class="paragraph-12 font-semibold text-chambray">
@@ -150,7 +150,7 @@
                 <cart-upsell-item class="upsell-item" :productId="{{prod.id}}">
                   <div class="upsell-item__media">
                     {% assign img = prod.featured_image %}
-                    {{ img | image_url: width: 70 | image_tag }}
+                    {{ img | image_url: width: 70 | image_tag: loading: 'lazy' }}
                   </div>
                   <div class="upsell-item__details">
                     <a href="{{ prod.url }}" class="paragraph-12 font-semibold text-chambray">

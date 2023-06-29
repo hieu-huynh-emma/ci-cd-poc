@@ -4,7 +4,7 @@
   <p class="text-comet font-light">{{ 'cart.drawer_empty.empty' | t }}</p>
 
   <div class="cart-drawer-empty__picture">
-    {% if picture != blank %}{{ picture | image_url: width: 140 | image_tag }} {% endif %}
+    {% if picture != blank %}{{ picture | image_url: width: 140 | image_tag: loading: 'lazy' }} {% endif %}
   </div>
 
   <p class="paragraph-14 text-center text-comet">
@@ -28,7 +28,7 @@
 
   <div class="discount-badge">{{ 'cart.drawer_empty.sale' | t }}</div>
 
-  <img src="{{ coreProduct.metafields.accentuate.cart_suggestion_image[0].src }}" alt="">
+  <img src="{{ coreProduct.metafields.accentuate.cart_suggestion_image[0].src }}" alt="" loading="lazy">
 </a>
 
 <div class="suggestion-catalog">
@@ -44,7 +44,7 @@
       </div>
 
       <div class="suggestion-catalog__image">
-        <img src="{{ product.metafields.accentuate.cart_suggestion_image[0].src | default: featuredImage }}" alt="" />
+        <img src="{{ product.metafields.accentuate.cart_suggestion_image[0].src | default: featuredImage }}" alt="" loading="lazy" />
       </div>
 
     </a>

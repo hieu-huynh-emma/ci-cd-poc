@@ -50,7 +50,7 @@
                     <navigation-dropdown-content data-childlink-title="{{ childlink.title }}" {% if forloop.first == false %}style="display: none;"{% endif %}>
                       <a href="/products/{{ childlink.object.handle }}" class="relative mb-4 rounded-md bg-gray-100 block h-[200px]">
                         <p class="absolute left-4 top-4 inline-block rounded bg-[#FF8900] p-2 text-[13px] leading-none text-white">Up to {{ childlink.object.metafields.accentuate.navigation_product_discount }}% off</p>
-                        <img class="h-full w-full object-contain" src="{{ childlink.object.metafields.accentuate.navigation_spotlight_image[0].src }}" alt="" />
+                        <img class="h-full w-full object-contain" src="{{ childlink.object.metafields.accentuate.navigation_spotlight_image[0].src }}" alt="" loading="lazy" />
                       </a>
                       <a class="text-[20px] font-semibold" href="/products/{{ childlink.object.handle }}">{{ childlink.object.title }}</a>
                       <p class="mt-1 text-[12px]">
@@ -93,13 +93,3 @@
     </ul>
   </div>
 </div>
-
-<script type="module">
-  $('.navigation-accordion-wrapper').beefup({
-    trigger: '.navigation-accordion',
-    content: '.navigation-accordion__content',
-    openSpeed: 100,
-    closeSpeed: 100,
-    openSingle: true
-  })
-</script>

@@ -1046,3 +1046,164 @@ class YotpoReviewStarsStandalone extends HTMLElement {
 }
 
 customElements.define('yotpo-review-stars-standalone', YotpoReviewStarsStandalone)
+
+class NavigationBar extends HTMLElement {
+  constructor() {
+    super();
+    this.$self = $(this)
+  }
+
+  connectedCallback() {
+    const $navigationDropdowns = $('navigation-dropdown')
+    this.$self.mouseleave(() => $navigationDropdowns.hide())
+  }
+}
+customElements.define('navigation-bar', NavigationBar);
+
+class NavigationLink extends HTMLElement {
+  constructor() {
+    super();
+    this.$self = $(this)
+  }
+
+  connectedCallback() {
+    const $navigationDropdowns = $('navigation-dropdown')
+    const $navigationDropdown = $(`navigation-dropdown[data-link-title='${this.$self.data('link-title')}']`)
+
+    this.$self.mouseenter(() => {
+      $navigationDropdowns.hide()
+      $navigationDropdown.show()
+    })
+  }
+}
+customElements.define('navigation-link', NavigationLink);
+
+class NavigationDropdownLink extends HTMLElement {
+  constructor() {
+    super();
+    this.$self = $(this)
+  }
+
+  connectedCallback() {
+    const $dropdownContent = $(`navigation-dropdown-content[data-childlink-title='${this.$self.data('childlink-title')}']`)
+
+    this.$self.hover($.debounce(100, () => {
+      this.$dropdownContents.hide()
+      $dropdownContent.show()
+    }))
+  }
+
+  setDropdownContents(elements) {
+    this.$dropdownContents = elements
+  }
+}
+customElements.define('navigation-dropdown-link', NavigationDropdownLink);
+
+class NavigationDropdownContent extends HTMLElement {
+  constructor() {
+    super();
+  }
+}
+customElements.define('navigation-dropdown-content', NavigationDropdownContent);
+
+class NavigationDropdown extends HTMLElement {
+  constructor() {
+    super();
+    this.$self = $(this)
+  }
+
+  connectedCallback() {
+    this.initDropdownLinkData()
+    this.hideOnMouseLeave()
+  }
+
+  hideOnMouseLeave() {
+    this.$self.mouseleave(() => this.$self.hide())
+  }
+
+  initDropdownLinkData() {
+    const dropdownLinks = this.querySelectorAll('navigation-dropdown-link')
+    const $dropdownContents = this.$self.find('navigation-dropdown-content')
+    for (const dropdownLink of dropdownLinks) {
+      dropdownLink.setDropdownContents($dropdownContents)
+    }
+  }
+}
+customElements.define('navigation-dropdown', NavigationDropdown);
+
+class CookieConsentBar extends HTMLElement {
+  constructor() {
+    super();
+    this.button = this.querySelector('#cookie-consent-button')
+    this.bar = this.querySelector('#cookie-consent-bar')
+  }
+
+  connectedCallback() {
+    const hasConsent = localStorage.getItem('emmaCookieConsent')
+    if (!hasConsent) this.bar.classList.remove('hidden')
+    this.button.addEventListener('click', this.handleClick.bind(this));
+  }
+
+  disconnectedCallback() {
+    this.button.removeEventListener('click', this.handleClick.bind(this));
+  }
+
+  handleClick(event) {
+    localStorage.setItem('emmaCookieConsent', "accepted")
+    this.bar.classList.add('hidden')
+  }
+}
+
+customElements.define('cookie-consent-bar', CookieConsentBar);
+
+class Countdown {
+  constructor(expiredDate, onRender, onComplete) {
+   this.setExpiredDate(expiredDate);
+ 
+   this.onRender = onRender;
+   this.onComplete = onComplete;
+  }
+ 
+  setExpiredDate(expiredDate) {
+   const currentTime = new Date().getTime();
+ 
+   this.timeRemaining = expiredDate - currentTime;
+ 
+   this.timeRemaining > 0 ? this.start() : this.complete();
+  }
+ 
+  complete() {
+   if (typeof this.onComplete === 'function') {
+    this.onComplete();
+   }
+  }
+ 
+  start() {
+   this.update();
+ 
+   const intervalId = setInterval(() => {
+    this.timeRemaining -= 1000;
+    if (this.timeRemaining < 0) {
+     this.complete();
+     clearInterval(intervalId);
+    } else {
+     this.update();
+    }
+   }, 1000);
+  }
+ 
+  getTime() {
+   return {
+    days: Math.floor(this.timeRemaining / 1000 / 60 / 60 / 24),
+    hours: Math.floor(this.timeRemaining / 1000 / 60 / 60) % 24,
+    minutes: Math.floor(this.timeRemaining / 1000 / 60) % 60,
+    seconds: Math.floor(this.timeRemaining / 1000) % 60
+   };
+  }
+ 
+  update() {
+   if (typeof this.onRender === 'function') {
+    this.onRender(this.getTime());
+   }
+  }
+ }

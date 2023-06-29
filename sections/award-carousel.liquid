@@ -1,6 +1,6 @@
 {% assign awards = section.blocks | where: "type", "item" %}
 
-{{ 'award-carousel.css' | asset_url | stylesheet_tag }}
+<link is="delay-stylesheet" href="{{ 'award-carousel.css' | asset_url }}">
 
 <section id="{{ section.id }}" class="award-carousel section-container sm md:lg">
 	<div class="section-chassis page-boundary">
@@ -37,7 +37,8 @@
 		</div>
 	</div>
 </section>
-<script type="module">
+
+<script is="delay-script" phase="interactive">
   function renderAwardQuote(slide) {
     if (slide.isClone) return
 
@@ -73,6 +74,7 @@
     awardCarousel.mount();
   })
 </script>
+
 {% schema %}
 {
   "name": "Award Carousel",

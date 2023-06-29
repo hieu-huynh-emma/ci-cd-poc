@@ -1,18 +1,14 @@
-
 {% assign cols = section.blocks | where: "type", "column" %}
-
 
 {% liquid
 	assign imgSize = 60
-	
 	if section.settings.column_size == 'large'
 		assign imgSize = 102
 		assign imgSizeX2 = imgSize | times: 2
 	endif
 %}
 
-<section id="{{ section.id }}"
-         class="multicolumn-text section-container spacing-{{ section.settings.container_spacing }}">
+<section id="{{ section.id }}" class="multicolumn-text section-container spacing-{{ section.settings.container_spacing }}">
 	<div class="page-boundary">
 		<ul class="multicolumn-list">
 			{%- for block in cols -%}

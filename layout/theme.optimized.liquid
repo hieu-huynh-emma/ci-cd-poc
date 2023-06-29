@@ -18,6 +18,7 @@
 
 <head>
   {% render 'critical-resources', isOptimized: isOptimized %}
+  {% render 'global-settings' %}
 
   {% render 'hso-no-follow-no-index' %}
   {% render 'page-metadata' %}
@@ -52,10 +53,10 @@
   {% render 'vendors', isOptimized: isOptimized %}
   {% render 'page-scripts', isOptimized: isOptimized %}
 
+
   {% render 'cart-drawer' %}
   {% render 'affirm-popup' %}
   {% render 'store-localization' %}
-  {% render 'freshchat' %}
   {% render 'cookie-consent-bar' %}
 </body>
 </html>

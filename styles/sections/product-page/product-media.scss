@@ -1,0 +1,153 @@
+#ProductMediaSection {
+  position: relative;
+  @media screen and (min-width: 769px) {
+    position: sticky;
+    top: 159px;
+    height: max-content;
+  }
+}
+
+.product-media {
+  position: relative;
+  @media screen and (min-width: 769px) {
+    position: sticky;
+    top: 159px;
+    height: max-content;
+  }
+}
+
+.desktop-mansory {
+  display: none;
+
+  @media screen and (min-width: 769px) {
+    display: grid;
+    gap: 10px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-content: flex-start;
+  }
+
+  .image-wrapper {
+    position: relative;
+
+    @media screen and (max-width: 769px) {
+      img {
+        aspect-ratio: 351 / 268;
+        object-fit: cover;
+      }
+    }
+
+    .image-item {
+      border-radius: 4px;
+      object-fit: contain;
+      z-index: 1;
+      width: 100%;
+      aspect-ratio: 1.6;
+
+      @media screen and (min-width: 769px) {
+        width: 100%;
+        object-fit: cover;
+      }
+    }
+
+    .image-award {
+      width: 50px;
+      height: 50px;
+      position: absolute;
+      top: 22px;
+      right: 23px;
+      z-index: 2;
+
+      @media screen and (min-width: 769px) {
+        width: 150px;
+        height: 150px;
+      }
+    }
+  }
+
+  .caption-container {
+    margin-top: 10px;
+
+    width: 100%;
+    color: black;
+    background-color: #f7f7f7;
+    border-radius: 4px;
+    padding: 1.75rem;
+  }
+
+  &__item {
+    &.full-width {
+      grid-column: 1 / span 2;
+    }
+  }
+}
+
+.media-carousel {
+  display: grid;
+  gap: 8px;
+  @media screen and (min-width: 769px) {
+    display: none;
+  }
+
+  .splide__track {
+    padding: 0;
+  }
+
+  #main-carousel,
+  #thumbnail-carousel {
+    padding: 0 12px;
+  }
+
+  #thumbnail-carousel {
+    .image-wrapper {
+      border-radius: 4px;
+    }
+
+    .splide__pagination__page {
+      height: 6px;
+      width: 6px;
+      background: #d2d3dd;
+      opacity: 0.65;
+
+      &.is-active {
+        background: #2e2f3c !important;
+        border-radius: 8px;
+        width: 12px;
+        opacity: 1;
+      }
+    }
+  }
+
+  .splide {
+    opacity: 1;
+
+    &__arrow {
+
+      background: #000 !important;
+
+      &--prev {
+        border-radius: 20px;
+      }
+
+      &--next {
+        border-radius: 20px;
+      }
+    }
+  }
+}
+
+#affiliate-badge {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 5;
+  width: 60px;
+  height: 60px;
+
+  margin: 12px;
+  border-radius: 100%;
+
+  @media screen and (min-width: 769px) {
+    width: 108px;
+    height: 108px;
+  }
+}

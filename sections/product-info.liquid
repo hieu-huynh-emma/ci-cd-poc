@@ -11,7 +11,6 @@
 {% assign uniqueSellingPoints = section.blocks | where: 'type', 'unique_selling_point' %}
 {% assign paymentProvidersBlock = section.blocks | where: 'type', 'payment_providers' | first %}
 {% assign productSpecifications = section.blocks | where: 'type', 'product_specification' %}
-{% assign productMedia = section.blocks | where: 'type', 'product_media' %}
 
 
 <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
@@ -24,445 +23,313 @@
 	data-enable-history-state="true"
 	data-ajax-enabled="{{ settings.enable_ajax }}"
 >
-	<div class="product-info-wrapper page-boundary">
-		<div class="product-media">
-			<div id="affiliate-badge"></div>
-
-      <div class="desktop-mansory">
-        {% for block in productMedia %}
-          <div class="desktop-mansory__item{% if block.settings.full_width %} full-width{% endif %}">
-            <div class="image-wrapper">
-              {% if block.settings.is_video and block.settings.hosted_video != blank %}
-                {{
-                block.settings.hosted_video
-                | video_tag: class: 'hosted-video', width: '100%', controls: false, autoplay: true, loop: true
-                }}
-              {% else %}
-                {% render 'image-tag', image_src: block.settings.image, width: 1200, height: 486, class: 'image-item' %}
-                {% if block.settings.award %}
-                  {% render 'image-tag', image_src: block.settings.award, width: 200, height: 200, class: 'image-award' %}
-                {% endif %}
-              {% endif %}
-            </div>
-
-            {% if forloop.index0 == 0 %}
-              <div class="caption-container">
-                <h3 class="heading-3 font-inter font-semibold">{{ section.settings.caption_headline }}</h3>
-                <p>{{ section.settings.caption_content }}</p>
-              </div>
-            {% endif %}
-          </div>
-        {% endfor %}
-      </div>
-
-      <div class="media-carousel">
-        <div id="main-carousel" class="splide">
-          <ul class="splide__track">
-            <li class="splide__list">
-              {% for item in productMedia %}
-                <div class="image-wrapper splide__slide">
-                  {% if item.settings.is_video and item.settings.hosted_video != blank %}
-                    {{ item.settings.hosted_video | video_tag: class: 'hosted-video', width: '100%', controls: false, autoplay: true, loop: true }}
-                  {% else %}
-                    {% render 'image-tag', image_src: item.settings.image, width: 1200, height: 486, class: 'image-item' %}
-                    {% if item.settings.award %}
-                      {% render 'image-tag', image_src: item.settings.award, width: 80, height: 80, class: 'image-award' %}
-                    {% endif %}
-                  {% endif %}
-                </div>
-              {% endfor %}
-            </li>
-          </ul>
-        </div>
-
-        <div id="thumbnail-carousel" class="splide">
-          <ul class="splide__track">
-            <li class="splide__list">
-              {% for item in productMedia %}
-                <div
-                  class="image-wrapper splide__slide"
-                >
-                  {% assign thumbnail = item.settings.image %}
-                  {% if item.settings.is_video and item.settings.hosted_video != blank %}
-                    {% assign thumbnail = item.settings.hosted_video.preview_image %}
-                  {% endif %}
-
-                  <img src="{{ thumbnail | image_url: width: 808, height: 486 }}" loading="lazy">
-                  {% if item.settings.award %}
-                    {% render 'image-tag', image_src: item.settings.award, width: 80, height: 80, class: 'image-award' %}
-                  {% endif %}
-                </div>
-              {% endfor %}
-            </li>
-          </ul>
-        </div>
-			</div>
+	<product-form class="right-section">
+		<h2 id="product-title" class="paragraph-24 font-inter font-semibold">
+			{{ section.settings.title | default: product.title }}
+		</h2>
+		
+		{% render 'yotpo-review-stars', product: product %}
+		
+		<div class="product-description">
+			{{ section.settings.desc | default: product.description }}
 		</div>
 		
-		<product-form class="right-section">
-			<h2 id="product-title" class="paragraph-24 font-inter font-semibold">
-				{{ section.settings.title | default: product.title }}
-			</h2>
-			
-			{% render 'yotpo-review-stars', product: product %}
-			
-			<div class="product-description">
-				{{ section.settings.desc | default: product.description }}
+		{% capture form_classes -%}
+			product-form product-form-{{ section.id }}
+			{%- if section.settings.enable_payment_button and product.has_only_default_variant %} product-form--payment-button-no-variants {%- endif -%}
+			{%- if current_variant.available == false %} product-form--variant-sold-out {%- endif -%}
+		{%- endcapture %}
+		
+		{% for block in section.blocks %}
+			{% case block.type %}
+				{% when 'tagline' %}
+					<h4>{{ block.settings.text }}</h4>
+				{% when 'trustpilot' %}
+					<div class="trustpilot-wrapper">
+						<div class="rating-stars-container">
+							{% for i in (1..block.settings.stars_num) %}
+								<img src="{{ 'trustpilot-rating-star.png' | asset_img_url }}" width="17" height="17"
+								     loading="lazy">
+							{% endfor %}
+						</div>
+						<img src="{{ 'trustpilot-logo.png' | asset_img_url }}" height="17" loading="lazy">
+					</div>
+				
+				{% when 'badge' %}
+					<div class="badge-wrapper">
+						{% if block.settings.badge_text != blank %}
+							<span class="badge">{{ block.settings.badge_text }} </span>
+						{% endif %}
+						<p class="text">{{ block.settings.desc }}</p>
+					</div>
+			{% endcase %}
+		{% endfor %}
+		
+		{% form 'product', product, class: form_classes, novalidate: 'novalidate', data-product-form: '' %}
+			<div class="overlay">
+				<svg aria-hidden="true" focusable="false" role="presentation" width="40" class="spinner"
+				     viewBox="0 0 66 66"
+				     xmlns="http://www.w3.org/2000/svg">
+					<circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
+				</svg>
 			</div>
 			
-			{% capture form_classes -%}
-				product-form product-form-{{ section.id }}
-				{%- if section.settings.enable_payment_button and product.has_only_default_variant %} product-form--payment-button-no-variants {%- endif -%}
-				{%- if current_variant.available == false %} product-form--variant-sold-out {%- endif -%}
-			{%- endcapture %}
-			
-			{% for block in section.blocks %}
-				{% case block.type %}
-					{% when 'tagline' %}
-						<h4>{{ block.settings.text }}</h4>
-					{% when 'trustpilot' %}
-						<div class="trustpilot-wrapper">
-							<div class="rating-stars-container">
-								{% for i in (1..block.settings.stars_num) %}
-									<img src="{{ 'trustpilot-rating-star.png' | asset_img_url }}" width="17" height="17"
-									     loading="lazy">
-								{% endfor %}
-							</div>
-							<img src="{{ 'trustpilot-logo.png' | asset_img_url }}" height="17" loading="lazy">
+			<variant-selects class="no-js-hidden emma-product__variant mb-4" data-section="{{ section.id }}"
+			                 data-url="{{ product.url }}" {{ block.shopify_attributes }}>
+				{%- for option in product.options_with_values -%}
+					<div class="product-form__input product-form__input--dropdown">
+						<label class="form__label" for="Option-{{ section.id }}-{{ forloop.index0 }}">
+							{{ option.name }}
+						</label>
+						<div class="select">
+							<select id="Option-{{ section.id }}-{{ forloop.index0 }}" class="select__select"
+							        name="options[{{ option.name | escape }}]" form="product-form-{{ section.id }}">
+								{%- for value in option.values -%}
+									<option value="{{ value | escape }}"
+									        {% if option.selected_value == value %}selected="selected" {% endif %}>
+										{{ value }}
+									</option>
+								{%- endfor -%}
+							</select>
+							{% render 'icon-caret' %}
 						</div>
-					
-					{% when 'badge' %}
-						<div class="badge-wrapper">
-							{% if block.settings.badge_text != blank %}
-								<span class="badge">{{ block.settings.badge_text }} </span>
-							{% endif %}
-							<p class="text">{{ block.settings.desc }}</p>
-						</div>
-				{% endcase %}
-			{% endfor %}
-			
-			{% form 'product', product, class: form_classes, novalidate: 'novalidate', data-product-form: '' %}
-				<div class="overlay">
-					<svg aria-hidden="true" focusable="false" role="presentation" width="40" class="spinner"
-					     viewBox="0 0 66 66"
-					     xmlns="http://www.w3.org/2000/svg">
-						<circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
-					</svg>
-				</div>
+					</div>
+				{%- endfor -%}
 				
-				<variant-selects class="no-js-hidden emma-product__variant mb-4" data-section="{{ section.id }}"
-				                 data-url="{{ product.url }}" {{ block.shopify_attributes }}>
-					{%- for option in product.options_with_values -%}
-						<div class="product-form__input product-form__input--dropdown">
-							<label class="form__label" for="Option-{{ section.id }}-{{ forloop.index0 }}">
-								{{ option.name }}
-							</label>
-							<div class="select">
-								<select id="Option-{{ section.id }}-{{ forloop.index0 }}" class="select__select"
-								        name="options[{{ option.name | escape }}]" form="product-form-{{ section.id }}">
-									{%- for value in option.values -%}
-										<option value="{{ value | escape }}"
-										        {% if option.selected_value == value %}selected="selected" {% endif %}>
-											{{ value }}
-										</option>
-									{%- endfor -%}
-								</select>
-								{% render 'icon-caret' %}
-							</div>
-						</div>
-					{%- endfor -%}
-					
-					<script type="application/json">
+				<script type="application/json">
                     {{ product.variants | json }}
 
 
                     </script>
-				</variant-selects>
+			</variant-selects>
+			
+			<select name="id" id="ProductSelect-{{ section.id }}" class="product-form__variants no-js">
+				{% for variant in product.variants %}
+					<option
+						value="{{ variant.id }}"
+						{%- if variant == current_variant %}
+							selected="selected"
+						{%- endif -%}
+					>
+						{{ variant.title }}
+						{%- if variant.available == false %} - {{ 'products.product.sold_out' | t }}{% endif %}
+					</option>
+				{% endfor %}
+			</select>
+			
+			
+			<div class="product-quantity-selector{% unless product.selected_or_first_available_variant.available %} mb-4 visibility-hidden{% endunless %}" {{ block.shopify_attributes }}>
+				<label class="product-quantity-selector__label" for="Quantity-{{ section.id }}">
+					{{ 'products.product.labels.quantity' | t }}
+				</label>
 				
-				<select name="id" id="ProductSelect-{{ section.id }}" class="product-form__variants no-js">
-					{% for variant in product.variants %}
-						<option
-							value="{{ variant.id }}"
-							{%- if variant == current_variant %}
-								selected="selected"
-							{%- endif -%}
-						>
-							{{ variant.title }}
-							{%- if variant.available == false %} - {{ 'products.product.sold_out' | t }}{% endif %}
-						</option>
-					{% endfor %}
-				</select>
-				
-				
-				<div class="product-quantity-selector{% unless product.selected_or_first_available_variant.available %} mb-4 visibility-hidden{% endunless %}" {{ block.shopify_attributes }}>
-					<label class="product-quantity-selector__label" for="Quantity-{{ section.id }}">
-						{{ 'products.product.labels.quantity' | t }}
-					</label>
-					
-					<quantity-input name="quantity" class="quantity-input" form="product-form-{{ section.id }}">
-						<button class="quantity-input__button no-js-hidden" name="minus" type="button">
-							-
-						</button>
-						<input class="quantity-input__native"
-						       type="number"
-						       name="quantity"
-						       id="Quantity-{{ section.id }}"
-						       value="1" min="1"
-						       pattern="[0-9]*"
-						       readonly
-						>
-						<button class="quantity-input__button no-js-hidden" name="plus" type="button">
-							+
-						</button>
-					</quantity-input>
-				</div>
-				
-				<div
-					class="product-form__error-message-wrapper product-form__error-message-wrapper--hidden{% if section.settings.enable_payment_button %} product-form__error-message-wrapper--has-payment-button{% endif %}"
-					data-error-message-wrapper
-					role="alert"
-				>
-					<span class="visually-hidden">{{ 'general.accessibility.error' | t }} </span>
-					{% include 'icon-error' %}
-					<span class="product-form__error-message" data-error-message>
+				<quantity-input name="quantity" class="quantity-input" form="product-form-{{ section.id }}">
+					<button class="quantity-input__button no-js-hidden" name="minus" type="button">
+						-
+					</button>
+					<input class="quantity-input__native"
+					       type="number"
+					       name="quantity"
+					       id="Quantity-{{ section.id }}"
+					       value="1" min="1"
+					       pattern="[0-9]*"
+					       readonly
+					>
+					<button class="quantity-input__button no-js-hidden" name="plus" type="button">
+						+
+					</button>
+				</quantity-input>
+			</div>
+			
+			<div
+				class="product-form__error-message-wrapper product-form__error-message-wrapper--hidden{% if section.settings.enable_payment_button %} product-form__error-message-wrapper--has-payment-button{% endif %}"
+				data-error-message-wrapper
+				role="alert"
+			>
+				<span class="visually-hidden">{{ 'general.accessibility.error' | t }} </span>
+				{% include 'icon-error' %}
+				<span class="product-form__error-message" data-error-message>
             {{- 'products.product.quantity_minimum_message' | t -}}
           </span>
+			</div>
+			
+			<div id="price-{{ section.id }}" class="product__price -mb-1" {{ block.shopify_attributes }} >
+				{% render 'product-price', variant: current_variant, product: product %}
+			</div>
+			
+			{% if tax %}
+				<div class="tax-wrapper">
+					<p class="tax-text">{{ tax.settings.text }}</p>
 				</div>
-				
-				<div id="price-{{ section.id }}" class="product__price -mb-1" {{ block.shopify_attributes }} >
-					{% render 'product-price', variant: current_variant, product: product %}
+			{% endif %}
+			
+			{% if stock %}
+				<div class="stock-wrapper">
+					<p class="stock-text">{{ stock.settings.text }}</p>
 				</div>
-				
-				{% if tax %}
-					<div class="tax-wrapper">
-						<p class="tax-text">{{ tax.settings.text }}</p>
-					</div>
+			{% endif %}
+			
+			
+			<div class="installment-widgets mb-4">
+				{%- if appBlock -%}
+					{% render appBlock %}
 				{% endif %}
 				
-				{% if stock %}
-					<div class="stock-wrapper">
-						<p class="stock-text">{{ stock.settings.text }}</p>
+				
+				{%- if affirm_widget -%}
+					<div {{ block.shopify_attributes }}>
+						{% render 'affirm-widget' %}
 					</div>
 				{% endif %}
-				
-				
-				<div class="installment-widgets mb-4">
-					{%- if appBlock -%}
-						{% render appBlock %}
-					{% endif %}
-					
-					
-					{%- if affirm_widget -%}
-            <div {{ block.shopify_attributes }}>
-              {% render 'affirm-widget' %}
-            </div>
-					{% endif %}
-				</div>
-				
-				<div class="product-form__controls-group product-form__controls-group--submit mb-4">
-					<div
-						class="
+			</div>
+			
+			<div class="product-form__controls-group product-form__controls-group--submit mb-4">
+				<div
+					class="
               product-form__item product-form__item--submit
               {%- if section.settings.enable_payment_button %} product-form__item--payment-button {%- endif -%}
               {%- if product.has_only_default_variant %} product-form__item--no-variants {%- endif -%}
             "
-					>
-						{% render 'add-to-cart-btn' %}
-						
-						
-						{% if section.settings.enable_payment_button %}
-							{{ form | payment_button }}
-						{% endif %}
+				>
+					{% render 'add-to-cart-btn' %}
+					
+					
+					{% if section.settings.enable_payment_button %}
+						{{ form | payment_button }}
+					{% endif %}
+				</div>
+			</div>
+			
+			{% if upsell_mattress %}
+				<div class="rounded border border-black py-2 px-3">
+					<a href="{{ upsell_mattress.settings.upsell_mattress_product }}"><p>{{ upsell_mattress.settings.upsell_mattress_text }}</p></a>
+				</div>
+			{% endif %}
+			
+			{% if upsell_mattress_v2 %}
+				<div class="rounded-2xl border-2 border-[#3C4196] px-4 py-4">
+					<div style="grid-template-columns: minmax(100px, 1fr) 2fr;" class="grid gap-3">
+						<div style="grid-row: 1 / 3;" class="self-center">
+							{% render 'image-tag', image_src: upsell_mattress_v2.settings.upsell_mattress_product_image, width: 1200, class: 'mx-auto h-min' %}
+						</div>
+						<div class="px-4">
+							<p class="text-[15px]">Upgrade to the Climax Hybrid:</p>
+							<ul class="ml-7 list-disc text-[15px]">
+								<li>Best in cooling</li>
+								<li>Additional support</li>
+							</ul>
+							<p class="text-[14px]">
+								<span>From {{ upsell_mattress_v2.settings.upsell_mattress_product.price | money_without_trailing_zeros }}</span>
+								<span class="line-through">{{ upsell_mattress_v2.settings.upsell_mattress_product.compare_at_price | money_without_trailing_zeros }}</span>
+							</p>
+						</div>
+						<div style="grid-column: 2 / 3;" class="px-4">
+							<a href="{{ upsell_mattress_v2.settings.upsell_mattress_product }}" class="block w-full rounded-lg border-2 border-[#3C4196] px-4 py-1 text-center text-[15px] font-semibold uppercase text-[#3C4196] transition-all duration-200 hover:bg-[#3C4196] hover:text-white">View product</a>
+						</div>
 					</div>
 				</div>
-
-        {% if upsell_mattress %}
-          <div class="rounded border border-black py-2 px-3">
-            <a href="{{ upsell_mattress.settings.upsell_mattress_product }}"><p>{{ upsell_mattress.settings.upsell_mattress_text }}</p></a>
-          </div>
-        {% endif %}
-
-        {% if upsell_mattress_v2 %}
-          <div class="rounded-2xl border-2 border-[#3C4196] px-4 py-4">
-            <div style="grid-template-columns: minmax(100px, 1fr) 2fr;" class="grid gap-3">
-              <div style="grid-row: 1 / 3;" class="self-center">
-                {% render 'image-tag', image_src: upsell_mattress_v2.settings.upsell_mattress_product_image, width: 1200, class: 'mx-auto h-min' %}
-              </div>
-              <div class="px-4">
-                <p class="text-[15px]">Upgrade to the Climax Hybrid:</p>
-                <ul class="ml-7 list-disc text-[15px]">
-                  <li>Best in cooling</li>
-                  <li>Additional support</li>
-                </ul>
-                <p class="text-[14px]">
-                  <span>From {{ upsell_mattress_v2.settings.upsell_mattress_product.price | money_without_trailing_zeros }}</span>
-                  <span class="line-through">{{ upsell_mattress_v2.settings.upsell_mattress_product.compare_at_price | money_without_trailing_zeros }}</span>
-                </p>
-              </div>
-              <div style="grid-column: 2 / 3;" class="px-4">
-                <a href="{{ upsell_mattress_v2.settings.upsell_mattress_product }}" class="block w-full rounded-lg border-2 border-[#3C4196] px-4 py-1 text-center text-[15px] font-semibold uppercase text-[#3C4196] transition-all duration-200 hover:bg-[#3C4196] hover:text-white">View product</a>
-              </div>
-            </div>
-          </div>
-        {% endif %}
-			{% endform %}
-
-			<p
-				class="visually-hidden"
-				data-loader-status
-				aria-live="assertive"
-				role="alert"
-				aria-hidden="true"
-			>
-				{{ 'products.product.loader_label' | t }}
-			</p>
+			{% endif %}
+		{% endform %}
+		
+		<p
+			class="visually-hidden"
+			data-loader-status
+			aria-live="assertive"
+			role="alert"
+			aria-hidden="true"
+		>
+			{{ 'products.product.loader_label' | t }}
+		</p>
+		
+		<button class="visually-hidden" data-add-to-cart></button>
+		
+		{% if mini_comparison_table %}
+			<div class="overflow-auto mb-8">
+				{% render 'mini-comparison-table', settings: mini_comparison_table.settings %}
+			</div>
+		{% endif %}
+		
+		<ul class="benefits">
+			{% for block in uniqueSellingPoints %}
+				<li class="unique-selling-point">
+					<img class="unique-selling-point__icon"
+					     src="{{ block.settings.icon | image_url: width: "25", height: "25" }}"
+					     loading="lazy"
+					>
+					<p class="title">
+						{{ block.settings.text }}
+					</p>
+					<div class="desc">
+						{{ block.settings.content }}
+					</div>
+				</li>
+			{% endfor %}
 			
-			<button class="visually-hidden" data-add-to-cart></button>
-
-      {% if mini_comparison_table %}
-        <div class="overflow-auto mb-8">
-          {% render 'mini-comparison-table', settings: mini_comparison_table.settings %}
-        </div>
-      {% endif %}
-
-			<ul class="benefits">
-				{% for block in uniqueSellingPoints %}
-					<li class="unique-selling-point">
-						<img class="unique-selling-point__icon"
-						     src="{{ block.settings.icon | image_url: width: "25", height: "25" }}"
-						     loading="lazy"
-						>
-						<p class="title">
-							{{ block.settings.text }}
-						</p>
-						<div class="desc">
-							{{ block.settings.content }}
+			{% if paymentProvidersBlock %}
+				<li class="payment-providers unique-selling-point">
+					<img class="unique-selling-point__icon"
+					     src="{{ paymentProvidersBlock.settings.icon | image_url: width: "25", height: "25" }}"
+					     loading="lazy">
+					<p class="title">
+						{{ paymentProvidersBlock.settings.text }}
+					</p>
+					<div class="payment-providers__listing"></div>
+					<script>
+            fetch(`?sections={{ paymentProvidersBlock.settings.payment_providers_section }}`)
+              .then((response) => response.json())
+              .then((res) => {
+                const html = new DOMParser().parseFromString(res['{{ paymentProvidersBlock.settings.payment_providers_section }}'], 'text/html')
+                $(".payment-providers.unique-selling-point .payment-providers__listing").html(html.querySelector('.payment-providers__listing').innerHTML)
+              });
+					</script>
+				</li>
+			{% endif %}
+		
+		</ul>
+		
+		<ul class="product-specifications">
+			{% for block in productSpecifications %}
+				<li class="product-specification">
+					<div class="product-specification__header">
+						<div class="title">
+							{{ block.settings.title }}
 						</div>
-					</li>
-				{% endfor %}
-				
-				{% if paymentProvidersBlock %}
-					<li class="payment-providers unique-selling-point">
-						<img class="unique-selling-point__icon"
-						     src="{{ paymentProvidersBlock.settings.icon | image_url: width: "25", height: "25" }}"
-						     loading="lazy">
-						<p class="title">
-							{{ paymentProvidersBlock.settings.text }}
-						</p>
-						<div class="payment-providers__listing"></div>
-						<script>
-              fetch(`?sections={{ paymentProvidersBlock.settings.payment_providers_section }}`)
-                .then((response) => response.json())
-                .then((res) => {
-                  const html = new DOMParser().parseFromString(res['{{ paymentProvidersBlock.settings.payment_providers_section }}'], 'text/html')
-                  $(".payment-providers.unique-selling-point .payment-providers__listing").html(html.querySelector('.payment-providers__listing').innerHTML)
-                });
-						</script>
-					</li>
-				{% endif %}
-			
-			</ul>
-			
-			<ul class="product-specifications">
-				{% for block in productSpecifications %}
-					<li class="product-specification">
-						<div class="product-specification__header">
-							<div class="title">
-								{{ block.settings.title }}
-							</div>
-							<svg class="product-specification__icon" width="24" height="25" viewBox="0 0 24 25"
-							     fill="none" xmlns="http://www.w3.org/2000/svg">
-								<path d="M21.5303 8.44739C21.2373 8.15442 20.7627 8.15442 20.4697 8.44739L12 16.9171L3.53028 8.44739C3.23731 8.15442 2.7627 8.15442 2.46973 8.44739C2.17676 8.74036 2.17676 9.21497 2.46973 9.50794L11.4697 18.5079C11.6162 18.6544 11.8081 18.7277 12 18.7277C12.1924 18.7277 12.3838 18.6544 12.5303 18.5079L21.5303 9.50793C21.8232 9.21496 21.8232 8.74036 21.5303 8.44739Z"
-								      fill="#2E2F3C"/>
-							</svg>
+						<svg class="product-specification__icon" width="24" height="25" viewBox="0 0 24 25"
+						     fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path d="M21.5303 8.44739C21.2373 8.15442 20.7627 8.15442 20.4697 8.44739L12 16.9171L3.53028 8.44739C3.23731 8.15442 2.7627 8.15442 2.46973 8.44739C2.17676 8.74036 2.17676 9.21497 2.46973 9.50794L11.4697 18.5079C11.6162 18.6544 11.8081 18.7277 12 18.7277C12.1924 18.7277 12.3838 18.6544 12.5303 18.5079L21.5303 9.50793C21.8232 9.21496 21.8232 8.74036 21.5303 8.44739Z"
+							      fill="#2E2F3C"/>
+						</svg>
+					
+					</div>
+					<div class="product-specification__content">
+						{% if block.settings.product_dimension %}
+							<ul class="product-dimensions">
+								{% for variant in product.variants %}
+									<li class="variant-dimension">
+										<h6 class="heading-6 font-semibold">{{ variant.title | split: " - " | first }} x {{ block.settings.product_dimension_height }}"</h6>
+										<p>{{ variant.metafields.accentuate.dimension }}</p>
+									</li>
+								{% endfor %}
+							</ul>
 						
-						</div>
-						<div class="product-specification__content">
-							{% if block.settings.product_dimension %}
-								<ul class="product-dimensions">
-									{% for variant in product.variants %}
-										<li class="variant-dimension">
-											<h6 class="heading-6 font-semibold">{{ variant.title | split: " - " | first }} x {{ block.settings.product_dimension_height }}"</h6>
-											<p>{{ variant.metafields.accentuate.dimension }}</p>
-										</li>
-									{% endfor %}
-								</ul>
+						{% else %}
 							
-							{% else %}
-								
-								{{ block.settings.content }}
-							{% endif %}
-						</div>
-					</li>
-					{% unless forloop.last %}<span class="separator"></span>{% endunless -%}
-				{% endfor %}
-			</ul>
-		</product-form>
-	</div>
+							{{ block.settings.content }}
+						{% endif %}
+					</div>
+				</li>
+				{% unless forloop.last %}<span class="separator"></span>{% endunless -%}
+			{% endfor %}
+		</ul>
+	</product-form>
 </section>
 
 {% unless product == empty %}
 	<script type="application/json" id="ProductJson-{{ section.id }}">
     {{ product | json }}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    </script>
+  </script>
 	<script type="application/json" id="ModelJson-{{ section.id }}">
     {{ product.media | where: 'media_type', 'model' | json }}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     </script>
 {% endunless %}
 
@@ -512,37 +379,6 @@
   "blocks": [
     {
       "type": "@app"
-    },
-    {
-      "type": "product_media",
-      "name": "Product Media",
-      "settings": [
-        {
-          "type": "image_picker",
-          "id": "image",
-          "label": "Image"
-        },
-        {
-          "type": "image_picker",
-          "id": "award",
-          "label": "Image"
-        },
-        {
-          "id": "hosted_video",
-          "type": "video",
-          "label": "Shopify-hosted video"
-        },
-        {
-          "type": "checkbox",
-          "id": "full_width",
-          "label": "Full Width?"
-        },
-        {
-          "type": "checkbox",
-          "id": "is_video",
-          "label": "Video?"
-        }
-      ]
     },
     {
       "type": "tagline",
@@ -733,16 +569,6 @@
       "id": "desc",
       "type": "richtext",
       "label": "Description"
-    },
-    {
-      "id": "caption_headline",
-      "type": "text",
-      "label": "Headline"
-    },
-    {
-      "type": "textarea",
-      "id": "caption_content",
-      "label": "Content"
     }
   ]
 }

@@ -2,7 +2,7 @@
   <ul class="utility-nav">
     <li class="customer-support utility-nav__item">
       <div class="customer-support__avatar">
-        {{ section.settings.support-avatar | image_url: width: 30 | image_tag }}
+        {{ section.settings.support-avatar | image_url: width: 30 | image_tag: loading: 'lazy' }}
       </div>
       <div>
         <div class="flex items-center gap-3 mb-1">
@@ -33,12 +33,6 @@
     </li>
   </ul>
 </div>
-
-<script>
-  $(document).ready(function () {
-    $("#CartDrawerCustomerSupport .live-chat").click(openChatSupport)
-  })
-</script>
 
 {% schema %}
 {

@@ -1,5 +1,41 @@
 {% if isOptimized == true %}
-	{% render 'old-page-styles' %}
+	<!-- CSS ================================================== -->
+	<link is="delay-stylesheet" href="{{ 'timber.css' | asset_url }}">
+	<link is="delay-stylesheet" href="{{ 'theme.css' | asset_url }}">
+	<!-- CUSTOM CSS ================================================== -->
+	<link is="delay-stylesheet" href="{{ 'custom-theme.css' | asset_url }}">
+	<link is="delay-stylesheet" href="{{ 'custom.css' | asset_url }}">
+	<link is="delay-stylesheet" href="{{ 'custom-theme-3.css' | asset_url }}">
+
+	<link is="delay-stylesheet" href="{{ 'base.css' | asset_url }}">
+	<link is="delay-stylesheet" href="{{ 'legacy.css' | asset_url }}">
+	<link is="delay-stylesheet" href="{{ 'typography.css' | asset_url }}">
+	<link is="delay-stylesheet" href="{{ 'vendors.css' | asset_url }}">
+	<link is="delay-stylesheet" href="{{ 'global.css' | asset_url }}">
+	<link is="delay-stylesheet" href="{{ 'fonts.css' | asset_url }}">
+
+	{% comment %}DESIGN MIGRATE{% endcomment %}
+	{% case template %}
+		{% when 'index', 'product.emma-original', 'product.emma-climax-hybrid' %}
+			<link is="delay-stylesheet" href="{{ 'new-heading.css' | asset_url }}">
+		{% else %}
+			<link is="delay-stylesheet" href="{{ 'old-heading.css' | asset_url }}">
+	{% endcase %}
+
+	{% liquid
+		assign pageStylesheet = ""
+		case template
+			when 'page.comparison'
+				assign pageStylesheet = 'comparison-page.css'
+			when 'page.competitor-comparison'
+				assign pageStylesheet = 'competitor-comparison.css'
+			when 'product.emma-climax-hybrid'
+				assign pageStylesheet = 'product-detail.css'
+		endcase
+	%}
+	<link is="delay-stylesheet" href="{{ pageStyleFile | asset_url }}">
+
+	<link is="delay-stylesheet" href="{{ 'tailwind.css' | asset_url }}">
 {% else %}
 	{% render 'old-page-styles' %}
 {% endif %}

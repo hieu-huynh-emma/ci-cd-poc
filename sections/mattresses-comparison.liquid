@@ -1,12 +1,9 @@
-{{ 'mattress-collection.css' | asset_url | stylesheet_tag }}
+<link is="delay-stylesheet" href="{{ 'mattress-collection.css' | asset_url }}">
 
 {% assign mattresses = section.blocks | where: "type", "mattress" %}
 
-
 <section class="mattresses-comparison-section">
-	
 	<h2>{{ section.settings.title }}</h2>
-	
 	<div class="double-mattresses comparison-table-row column-header">
 		<div></div>
 		{% for block in mattresses %}
@@ -22,7 +19,7 @@
 					from
 					{% if product.compare_at_price > product.price %}
 						<span class="font-semibold mr-1">{{ product.price | money_without_trailing_zeros }}</span>
-						<span class="line-through">{{ product.compare_at_price | money_without_trailing_zeros }}</span>
+						<span class="line-through font-normal">{{ product.compare_at_price | money_without_trailing_zeros }}</span>
 					{% else %}
 						<span class="font-semibold">{{ product.price | money_without_trailing_zeros }}</span>
 					{% endif %}
@@ -73,49 +70,25 @@
 		<li class="comparison-table-row">
 			<p class="criteria-title">Ergonomic Zoning & Support</p>
 			<div>
-				{% if section.settings.ergonomic_image_1 != blank %}
-					<img
-						src="{{ section.settings.ergonomic_image_1 | img_url: 'small' }}"
-						width="60px" height="60px"
-					/>
-				{% endif %}
 				<p>3 zones</p>
 			</div>
 			<div>
-				{% if section.settings.ergonomic_image_2 != blank %}
-					<img
-						src="{{ section.settings.ergonomic_image_2 | img_url: 'small' }}"
-						width="60px" height="60px"
-					/>
-				{% endif %}
 				<p>5 zones</p>
 			</div>
 			<div>
-              <p>Adjustable</p>
+				<p>Adjustable</p>
 			</div>
 		</li>
 		<li class="comparison-table-row">
 			<p class="criteria-title">Breathability & Cooling</p>
 			<div>
-				{% if section.settings.cooling_image_1 != blank %}
-					<img
-						src="{{ section.settings.cooling_image_1 | img_url: 'small' }}"
-						width="60px" height="60px"
-					/>
-				{% endif %}
 				<p>Breathable, moisture-wicking, and climate-regulating</p>
 			</div>
 			<div>
-				{% if section.settings.cooling_image_2 != blank %}
-					<img
-						src=" {{ section.settings.cooling_image_2 | img_url: 'small' }}"
-						width="60px" height="60px"
-					/>
-				{% endif %}
 				<p>Breathable, moisture-wicking, and cooling</p>
 			</div>
 			<div>
-              	<p>Breathable, and strong cooling</p>
+				<p>Breathable, and strong cooling</p>
 			</div>
 		</li>
 		<li class="comparison-table-row">
@@ -171,85 +144,44 @@
 			/>
 		</svg>
 	</div>
-	
-	<script>
-    $(document).ready(() => {
-      const swipeLeftObserser = new IntersectionObserver(function (entries) {
-        const [{ isIntersecting }] = entries;
-        $(".mattresses-comparison-section .swipe-left-icon")[isIntersecting ? "show" : "hide"]();
-
-      }, {
-        rootMargin: "-50% 0px -50% 0px",
-      });
-      swipeLeftObserser.observe($(".mattresses-comparison-section").get(0));
-    });
-	</script>
 </section>
 
+<script is="delay-script" phase="interactive" url="{{ 'mattresses-comparison.js' | asset_url }}"></script>
 
 {% schema %}
 {
-  "name": "Mattresses Comparison",
-  "class": "mattress-comparison-wrapper",
-  "blocks": [
-    {
-      "type": "mattress",
-      "name": "Mattress",
-      "settings": [
-        {
-          "id": "product",
-          "type": "product",
-          "label": "Product"
-        },
-        {
-          "id": "badge",
-          "type": "text",
-          "label": "Block Badge",
-          "default": "Best Value"
-        },
-        {
-          "id": "image",
-          "type": "image_picker",
-          "label": "Block Image"
-        }
-      ]
-    }
-  ],
-  "settings": [
-    {
-      "type": "header",
-      "content": "First Product"
-    },
-    {
-      "type": "image_picker",
-      "id": "ergonomic_image_1",
-      "label": "Ergonomic Image"
-    },
-    {
-      "type": "image_picker",
-      "id": "cooling_image_1",
-      "label": "Cooling Image"
-    },
-    {
-      "type": "header",
-      "content": "Second Product"
-    },
-    {
-      "type": "text",
-      "id": "cta_text_2",
-      "label": "CTA Text",
-      "default": "Learn more >"
-    },
-    {
-      "type": "image_picker",
-      "id": "ergonomic_image_2",
-      "label": "Ergonomic Image"
-    },
-    {
-      "type": "image_picker",
-      "id": "cooling_image_2",
-      "label": "Cooling Image"
-    }
-  ]
+	"name": "Mattresses Comparison",
+	"class": "mattress-comparison-wrapper",
+	"blocks": [
+		{
+			"type": "mattress",
+			"name": "Mattress",
+			"settings": [
+				{
+					"id": "product",
+					"type": "product",
+					"label": "Product"
+				},
+				{
+					"id": "badge",
+					"type": "text",
+					"label": "Block Badge",
+					"default": "Best Value"
+				},
+				{
+					"id": "image",
+					"type": "image_picker",
+					"label": "Block Image"
+				}
+			]
+		}
+	],
+	"settings": [
+		{
+			"type": "text",
+			"id": "title",
+			"label": "Title"
+		}
+	]
 }
 {% endschema %}

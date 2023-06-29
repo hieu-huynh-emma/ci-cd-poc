@@ -1,5 +1,5 @@
-<ul class="flex items-center gap-3 lg:gap-5">
-	<li><a tabindex="-1" class="language-redirection text-[14px]"></a></li>
+<ul id="header-right">
+	<li><a tabindex="-1" class="language-redirection"></a></li>
 	{%- if shop.customer_accounts_enabled -%}
 		<li>
 			<a href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}">
@@ -9,26 +9,3 @@
 	{% endif %}
 	<li>{% render 'cart-icon-bubble' %}</li>
 </ul>
-
-<script>
-	// Dont use "https://emma-sleep.ca" because it'll be auto converted to "https://qc.emma-sleep.ca" by shopify on french domain
-	const franceUrl = "https://qc.emma-sleep.ca";
-	const englishUrl = "https://emma-sleep" + ".ca";
-
-	setTimeout(function() {
-		renderLanguageRedirection();
-	}, 2000)
-
-	function renderLanguageRedirection() {
-		const currentLanguage = $('html').attr('lang');
-		const $languageRedirection = $(".language-redirection");
-		$languageRedirection.text(currentLanguage === 'en' ? "FRANÇAIS" : "ENGLISH");
-		$languageRedirection.attr("href", currentLanguage === 'en' ? franceUrl : englishUrl);
-	}
-
-	$('.language-redirection').click(function(e) {
-		e.preventDefault()
-		const currentLanguage = $('html').attr('lang');
-		location.href = currentLanguage === 'en' ? franceUrl : englishUrl;
-	})
-</script>

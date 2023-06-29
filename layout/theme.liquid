@@ -35,10 +35,11 @@
     <li id="a11y-slideshow-info">{{ 'home_page.slideshow.navigation_instructions' | t }}</li>
   </ul>
 
+  <script defer src="{{ 'layout-scripts.js' | asset_url }}"></script>
+
   {% render 'cart-drawer' %}
   {% render 'affirm-popup' %}
   {% render 'store-localization' %}
-  {% render 'freshchat' %}
   {% render 'cookie-consent-bar' %}
 </body>
 </html>

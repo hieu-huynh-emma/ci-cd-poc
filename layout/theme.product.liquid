@@ -1,0 +1,154 @@
+{% if request.design_mode == false %}
+    {% comment %}{% assign isOptimized = true %}{% endcomment %}
+{% endif %}
+
+{% capture contentForHeader %}
+    {{ content_for_header }}
+{% endcapture %}
+{% capture contentForLayout %}
+    {{ content_for_layout }}
+{% endcapture %}
+
+{% capture productSchema %}
+    {% liquid
+        case template
+            when 'product.emma-climax-hybrid'
+                sections 'schema-emma-climax-hybrid'
+            when 'product.emma-shift'
+                sections 'schema-emma-shift'
+            else
+                sections 'schema-emma-original'
+        endcase
+    %}
+{% endcapture %}
+
+<!doctype html>
+<html class="no-js" lang="{{ request.locale.iso_code }}">
+
+<head>
+    {% render 'critical-resources', isOptimized: isOptimized %}
+    {% render 'global-settings' %}
+
+    {% render 'hso-no-follow-no-index' %}
+    {% render 'page-metadata' %}
+    {% render 'hreflang-tags' %}
+    {% render 'page-styles', isOptimized: isOptimized %}
+
+    {{ contentForHeader }}
+</head>
+
+{% render 'shopify-theme-settings', isOptimized: isOptimized %}
+
+<body>
+
+<div class="sticky top-0 z-[101]">
+    {% section 'announcement-bar' %}
+    {% section 'header' %}
+</div>
+
+<style>
+    #product-main-layout {
+        display: grid;
+        gap: 16px;
+        width: 100%;
+        padding: 1rem 0 0;
+        background-color: #fff
+    }
+
+    @media screen and (min-width: 769px) {
+        #product-main-layout {
+            gap: 24px 87px;
+            grid-template-columns: minmax(0, .6fr) minmax(0, .4fr);
+            grid-template-rows:repeat(8, minmax(0, auto));
+            padding: 2.5rem 0
+        }
+
+        #product-main-layout .shopify-section {
+            grid-column: 2;
+        }
+    }
+
+    .product-info-box {
+        position: relative;
+        display: grid;
+        gap: 4px 8px;
+        grid-template-columns:minmax(0, auto) minmax(0, 1fr);
+        grid-template-rows:repeat(2, minmax(0, auto));
+        justify-content: flex-start;
+        align-items: flex-start;
+        border: 1px solid #b0b1c2;
+        border-radius: 8px;
+        padding: 1rem
+    }
+
+
+</style>
+
+{{ 'optimized-product-detail.css' | asset_url | stylesheet_tag }}
+
+<main
+        id="MainContent"
+        class="content-for-layout focus-none"
+        role="main"
+        tabindex="-1"
+>
+    <div class="page-boundary">
+        <div id="product-main-layout">
+            {{ productSchema }}
+        </div>
+    </div>
+
+    {{ contentForLayout }}
+
+    {% unless product == empty %}
+        <script type="application/json" id="ProductJson-{{ section.id }}">
+      {{ product | json }}
+        </script>
+        <script type="application/json" id="ModelJson-{{ section.id }}">
+      {{ product.media | where: 'media_type', 'model' | json }}
+        </script>
+        <script type="application/json" id="ProductMediaJson">
+    [
+        {% for block in productMedia %}
+        {{ block.settings | json }}
+        {% unless forloop.last %}{% endunless -%}
+            {% endfor %}
+    ]
+
+
+
+        </script>
+
+        <script type="application/json" id="ProductMediaJson">
+    [
+      {% for block in productMedia %}
+        {{ block.settings | json }}
+        {% unless forloop.last %}{% endunless -%}
+            {% endfor %}
+    ]
+
+
+
+        </script>
+    {% endunless %}
+</main>
+
+{% section 'footer' %}
+
+<ul hidden>
+    <li id="a11y-refresh-page-message">{{ 'general.accessibility.refresh_page' | t }}</li>
+    <li id="a11y-selection-message">{{ 'general.accessibility.selection_help' | t }}</li>
+    <li id="a11y-slideshow-info">{{ 'home_page.slideshow.navigation_instructions' | t }}</li>
+</ul>
+
+{% render 'vendors', isOptimized: isOptimized %}
+{% render 'page-scripts', isOptimized: isOptimized %}
+
+<script is="delay-script" phase="interactive" url="{{ 'layout-scripts.js' | asset_url }}"></script>
+
+{% render 'cart-drawer' %}
+{% render 'affirm-popup' %}
+{% render 'store-localization' %}
+{% render 'cookie-consent-bar' %}
+</body>
+</html>

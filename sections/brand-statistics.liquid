@@ -1,8 +1,7 @@
-{{ 'brand-statistics.css' | asset_url | stylesheet_tag }}
+<link is="delay-stylesheet" href="{{ 'brand-statistics.css' | asset_url }}">
 
 {% assign footerBtn = section.blocks | where: "type", "footer-button" | first %}
 {% assign wallpaper = section.blocks | where: "type", "wallpaper" | first %}
-
 
 <section id="brand-statistics-section">
 	<div class="wrapper {% if section.settings.borderless %} wrapper--borderless{% endif %}">

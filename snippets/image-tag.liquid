@@ -1,6 +1,8 @@
 {% liquid
   assign default_srcset = '352|832|1200|1920|2680' | split: '|'
   assign data_srcset = ''
+  assign loading_type = loading_type | default: 'lazy'
+  assign fetch_priority = fetch_priority | default: 'auto'
 
   if is_product_image
     assign default_srcset = '288|576|750|1100|1500' | split: '|'
@@ -45,4 +47,6 @@
     style="{{ style }}"
   {% endif %}
   alt="{{ alt }}"
+  loading="{{ loading_type }}"
+  fetchpriority="{{ fetch_priority }}"
 >

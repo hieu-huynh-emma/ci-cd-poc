@@ -1,10 +1,8 @@
 #hero-banner-section {
   position: relative;
   z-index: 1;
-
   display: grid;
   grid-template-rows: 0 minmax(0, 1fr);
-
   min-height: 540px;
   max-height: 540px;
   padding: 12px;
@@ -16,25 +14,35 @@
     padding: 0;
   }
 
-  .page-boundary {
-    display: flex;
-    justify-content: center;
-    @media screen and (min-width: 768px) {
-      justify-content: flex-start;
+  .page-boundary--full {
+    height: 100%;
+    padding: 0 12px;
+
+    @media screen and (min-width: 769px) {
+      padding: 0 20px;
     }
 
+    @media screen and (min-width: 1024px) {
+      padding: 0 40px;
+    }
+
+    @media screen and (min-width: 1200px) {
+      padding: 0 64px;
+    }
+
+    @media screen and (min-width: 1440px) {
+      max-width: 1440px;
+      margin: 0 auto;
+    }
   }
 
   .section-content {
     position: absolute;
-
     display: grid;
     gap: 24px;
     align-content: space-between;
     justify-items: center;
-
     height: 100%;
-
     padding: calc(24px + 12px) calc(16px + 12px);
 
     @media screen and (max-width: 768px) {
@@ -44,7 +52,6 @@
 
     @media screen and (min-width: 768px) {
       top: 0;
-
       gap: 40px;
       align-content: center;
       justify-items: flex-start;
@@ -66,6 +73,40 @@
       @media screen and (min-width: 768px) {
         justify-items: flex-start;
         text-align: left;
+      }
+    }
+  }
+
+  .hero-banner {
+    &__title {
+      font-style: normal;
+      font-weight: 600;
+      font-size: 40px;
+      line-height: 125%;
+
+      @media screen and (min-width: 768px) {
+        font-size: 60px;
+        line-height: 120%;
+      }
+    }
+
+    &__subtitle {
+      font-style: normal;
+      font-weight: 600;
+      font-size: 24px;
+      line-height: 125%;
+      font-family: Inter;
+
+      @media screen and (min-width: 768px) {
+        font-size: 32px;
+      }
+    }
+
+    &__tagline {
+      display: none;
+
+      @media screen and (min-width: 768px) {
+        display: inline-block;
       }
     }
   }
@@ -97,6 +138,7 @@
     img {
       object-fit: cover;
       height: 100%;
+      max-width: 100%;
     }
   }
 

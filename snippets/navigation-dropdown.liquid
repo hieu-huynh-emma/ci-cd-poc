@@ -1,4 +1,4 @@
-<div class="hidden lg:absolute lg:w-full lg:block">
+<div id="navigation-dropdown">
 	{% for link in linklists[section.settings.main_menu_link_list].links %}
 		{% assign is_sale_link = false %}
 		{% if link.title == 'Sale' %}
@@ -6,8 +6,8 @@
 		{% endif %}
 		{% if link.type == "product_link" or link.url == '/collections/mattresses' %}
 			<navigation-dropdown data-link-title="{{ link.title }}" style="display: none;">
-				<div class="bg-white pt-8 pb-6 shadow-lg">
-					<div class="mx-auto flex w-2/3 justify-between gap-32">
+				<div class="navigation-dropdown__container">
+					<div class="navigation-dropdown__wrapper">
 						<div class="grid w-2/5 gap-7 self-start">
 							<p class="text-[24px] font-semibold">{{ link.title | escape }}</p>
 							<div class="grid gap-5">
@@ -15,7 +15,7 @@
 									<navigation-dropdown-link data-childlink-title="{{ childlink.title }}">
 										<a href="{{ childlink.url }}" class="flex items-center w-max">
 											<span class="mr-2 font-semibold">{{ childlink.title | escape }}</span>
-											<span class="rounded bg-[#FF8900] px-2 py-[6px] text-[10px] font-semibold uppercase leading-none text-white">{{ childlink.object.metafields.accentuate.navigation_promotion_badge | default: "BEST VALUE" }}</span>
+											<span class="navigation-dropdown__childlink-badge">{{ childlink.object.metafields.accentuate.navigation_promotion_badge | default: "BEST VALUE" }}</span>
 										</a>
 									</navigation-dropdown-link>
 								{% endfor %}
@@ -40,7 +40,7 @@
 								<navigation-dropdown-content data-childlink-title="{{ childlink.title }}" {% if forloop.first == false %}style="display: none;"{% endif %}>
 									<a href="/products/{{ childlink.object.handle }}" class="relative mb-4 rounded-md bg-gray-100 block h-[260px]">
 										<p class="absolute left-4 top-4 inline-block rounded bg-[#FF8900] p-2 text-[13px] leading-none text-white">Up to {{ childlink.object.metafields.accentuate.navigation_product_discount }}% off</p>
-										<img class="h-full w-full object-contain" src="{{ childlink.object.metafields.accentuate.navigation_spotlight_image[0].src }}" alt="" />
+										<img class="h-full w-full object-contain" src="{{ childlink.object.metafields.accentuate.navigation_spotlight_image[0].src }}" alt="" loading="lazy" />
 									</a>
 									<a class="text-[20px] font-semibold" href="/products/{{ childlink.object.handle }}">{{ childlink.object.title }}</a>
 									<p class="mt-1 text-[12px]">

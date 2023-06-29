@@ -20,7 +20,7 @@
   font-size: 31px;
   color: #2e2f3c;
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 32px;
 }
 
 .swipe-left-icon {
@@ -95,17 +95,18 @@
 .product-item .badge {
   background: #ff8900;
   border-radius: 4px;
-  padding: 5px 8px 3px;
+  padding: 8px;
   color: white;
   font-weight: 700;
   font-size: 13px;
-  line-height: 20px;
   display: flex;
   align-items: center;
   width: max-content;
   max-width: 100%;
   margin-bottom: 1rem;
   word-break: break-word;
+  line-height: 1;
+  text-transform: uppercase;
 }
 
 .product-item h3 {

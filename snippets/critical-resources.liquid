@@ -1,9 +1,52 @@
+<script>
+  const blacklistUrls = [
+    "klaviyo.com",
+    "appsolve.io",
+    /(shopifycloud)(.*?)(.js|.css)/,
+    "yotpo.com",
+    "logico3c.com",
+    "wchat.eu.freshchat.com",
+    "s.pinimg.com",
+    "shop.pe",
+    "dwin1.com",
+    "signifyd.com",
+    "attn.tv",
+    "shareasale.com",
+    "cloudfront.net/awin-shopify-integration-code.js",
+    "optimize.js",
+    "connect.facebook.net/signals",
+    "connect.facebook.net/en_US/fbevents.js",
+    "trekkie.storefront",
+    "web-pixel-shopify-custom-pixel",
+    "b27ebbe9cwc6551374p82226fa4m8497296fm.js",
+    "/fonts/assistant"
+  ]
+  const whitelistUrls = [
+    "preview_bar_injector"
+  ];
+</script>
+
+{% comment %}
+    #############################################################################################
+    WARNING WARNING WARNING WARNING
+    Block all Shopify App assets listed on `blacklistUrls` excepts for those that are also listed on `whitelistUrls`.
+{% endcomment %}
+{{ 'blocker.min.js' | file_url | script_tag }}
+{% comment %}
+    WARNING WARNING WARNING WARNING
+    Uncomment import only for demonstration purpose. Will definitely break live website.
+    #############################################################################################
+{% endcomment %}
+
+{{ 'unpkg.com__ungap_custom-elements_1.2.0_min.js' | file_url | script_tag }}
+
+<script src="{{ 'delay-resource.js' | asset_url }}"></script>
+<script is="delay-script" url="{{ 'first-interactive.min.js' | file_url }}"></script>
+
 {% if isOptimized == true %}
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-  <script src="http://benalman.com/code/projects/jquery-throttle-debounce/jquery.ba-throttle-debounce.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/beefup@1.1.7/dist/js/jquery.beefup.min.js"></script>
+  <script defer src="{{ 'jquery-3.6.0.min.js' | file_url }}"></script>
+  <script defer src="{{ 'preconnect.min.js' | file_url }}"></script>
+  {% render 'critical-stylesheet' %}
 {% else %}
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-  <script src="http://benalman.com/code/projects/jquery-throttle-debounce/jquery.ba-throttle-debounce.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/beefup@1.1.7/dist/js/jquery.beefup.min.js"></script>
+  <script src="{{ 'jquery-3.6.0.min.js' | file_url }}"></script>
 {% endif %}

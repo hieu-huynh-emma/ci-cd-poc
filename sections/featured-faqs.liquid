@@ -1,6 +1,6 @@
 {% assign allFaqs = section.blocks  %}
 
-{{ 'featured-faqs.css' | asset_url | stylesheet_tag }}
+<link is="delay-stylesheet" href="{{ 'featured-faqs.css' | asset_url }}">
 
 <section id="featured-faqs-section" class="section-container spacing-{{ section.settings.container_spacing }}">
 	<div class="section-chassis page-boundary">
@@ -44,16 +44,7 @@
 	</div>
 </section>
 
-<script type="module">
-  $(window).on('load', function () {
-    $('#featured-faqs-section .faq').beefup({
-      trigger: ".faq__header",
-      content: ".faq__answer",
-      openSpeed: 500,
-      closeSpeed: 250
-    });
-  })
-</script>
+<script is="delay-script" phase="interactive" url="{{ 'featured-faqs.js' | asset_url }}"></script>
 
 
 {% schema %}

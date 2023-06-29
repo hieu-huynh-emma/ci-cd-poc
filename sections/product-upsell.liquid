@@ -1,0 +1,78 @@
+{% assign upsell_mattress = section.blocks | where: 'type', 'upsell_mattress' | first %}
+{% assign upsell_mattress_v2 = section.blocks | where: 'type', 'upsell_mattress_v2' | first %}
+
+<section id="ProductUpsell">
+  {% if upsell_mattress %}
+    <div class="rounded border border-black py-2 px-3">
+      <a href="{{ upsell_mattress.settings.upsell_mattress_product }}"><p>{{ upsell_mattress.settings.upsell_mattress_text }}</p></a>
+    </div>
+  {% endif %}
+
+  {% if upsell_mattress_v2 %}
+    <div class="rounded-2xl border-2 border-[#3C4196] px-4 py-4">
+      <div style="grid-template-columns: minmax(100px, 1fr) 2fr;" class="grid gap-3">
+        <div style="grid-row: 1 / 3;" class="self-center">
+          {% render 'image-tag', image_src: upsell_mattress_v2.settings.upsell_mattress_product_image, width: 1200, class: 'mx-auto h-min' %}
+        </div>
+        <div class="px-4">
+          <p class="text-[15px]">Upgrade to the Climax Hybrid:</p>
+          <ul class="ml-7 list-disc text-[15px]">
+            <li>Best in cooling</li>
+            <li>Additional support</li>
+          </ul>
+          <p class="text-[14px]">
+            <span>From {{ upsell_mattress_v2.settings.upsell_mattress_product.price | money_without_trailing_zeros }}</span>
+            <span class="line-through">{{ upsell_mattress_v2.settings.upsell_mattress_product.compare_at_price | money_without_trailing_zeros }}</span>
+          </p>
+        </div>
+        <div style="grid-column: 2 / 3;" class="px-4">
+          <a href="{{ upsell_mattress_v2.settings.upsell_mattress_product }}" class="block w-full rounded-lg border-2 border-[#3C4196] px-4 py-1 text-center text-[15px] font-semibold uppercase text-[#3C4196] transition-all duration-200 hover:bg-[#3C4196] hover:text-white">View product</a>
+        </div>
+      </div>
+    </div>
+  {% endif %}
+
+</section>
+
+{% schema %}
+{
+  "name": "Product Upsell",
+  "blocks": [
+    {
+      "type": "upsell_mattress",
+      "name": "Upsell Mattress",
+      "settings": [
+        {
+          "id": "upsell_mattress_product",
+          "type": "product",
+          "label": "Upsell Mattress Product"
+        },
+        {
+          "id": "upsell_mattress_text",
+          "type": "text",
+          "label": "Text"
+        }
+      ]
+    },
+    {
+      "type": "upsell_mattress_v2",
+      "name": "Upsell Mattress V2",
+      "settings": [
+        {
+          "id": "upsell_mattress_product_image",
+          "type": "image_picker",
+          "label": "Upsell Mattress Product Image"
+        },
+        {
+          "id": "upsell_mattress_product",
+          "type": "product",
+          "label": "Upsell Mattress Product"
+        }
+      ]
+    }
+  ],
+  "settings": [
+
+  ]
+}
+{% endschema %}

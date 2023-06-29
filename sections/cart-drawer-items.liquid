@@ -37,7 +37,7 @@
           >
 
             <a class="cart-item-media" href="{{ item.url }}">
-              {{ item.image | image_url: width: 120, height: 80 | image_tag }}
+              {{ item.image | image_url: width: 120, height: 80 | image_tag: loading: 'lazy' }}
             </a>
             <div class="cart-item-details">
               <a href="{{ item.url }}" class="product__name paragraph-14 font-semibold">

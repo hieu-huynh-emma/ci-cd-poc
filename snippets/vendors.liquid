@@ -1,5 +1,57 @@
 {% if isOptimized == true %}
-  {% render 'old-vendors' %}
+  <script is="delay-script" url="{{ 'jquery.ba-throttle-debounce.js' | asset_url }}"></script>
+  <script is="delay-script" url="{{ 'jquery.beefup.min.js' | asset_url }}"></script>
+  <script is="delay-script" url="{{ 'jquery.modal.min.js' | asset_url }}"></script>
+  <script is="delay-script" url="{{ 'jquery.fancybox.min.js' | asset_url }}"></script>
+  <script is="delay-script" url="{{ 'select2.min.js' | asset_url }}"></script>
+  <script is="delay-script" url="{{ 'splide.min.js' | asset_url }}"></script>
+  <script is="delay-script" url="{{ 'toastr.min.js' | asset_url }}"></script>
+  <script is="delay-script" url="{{ 'swiper-bundle.min.js' | asset_url }}"></script>
+  <script is="delay-script" url="{{ 'popper.min.js' | asset_url }}"></script>
+  <script is="delay-script" phase="interactive" url="{{ 'tippy-bundle.umd.min.js' | asset_url }}"></script>
+  <script is="delay-script" url="{{ 'mediabox.min.js' | asset_url }}"></script>
+  <script is="delay-script" url="{{ 'lazysizes.min.js' | asset_url }}"></script>
+
+  <link is="delay-stylesheet" href="{{ 'jquery.modal.min.css' | asset_url }}">
+  <link is="delay-stylesheet" href="{{ 'jquery.fancybox.css' | asset_url }}">
+  <link is="delay-stylesheet" href="{{ 'select2.min.css' | asset_url }}">
+  <link is="delay-stylesheet" href="{{ 'splide.min.css' | asset_url }}">
+  <link is="delay-stylesheet" href="{{ 'splide-core.min.css' | asset_url }}">
+  <link is="delay-stylesheet" href="{{ 'toastr.min.css' | asset_url }}">
+  <link is="delay-stylesheet" href="{{ 'swiper-bundle.min.css' | asset_url }}">
+  <link is="delay-stylesheet" href="{{ 'mediabox.min.css' | asset_url }}">
+
+  <script is="delay-script" url="{{ 'modernizr.min.js' | asset_url }}"></script>
+
+  {% if request.page_type contains 'customers/' %}
+    {{ 'shopify_common.js' | shopify_asset_url | script_tag }}
+  {% endif %}
+
+  {% if template == 'page.sale' %}
+    <link is="delay-stylesheet" href="{{ 'smart.default.css' | asset_url }}">
+    <script is="delay-script" url="{{ 'smart.element.js' | asset_url }}"></script>
+    <script is="delay-script" phase="interactive" url="{{ 'smart.tabs.min.js' | asset_url }}"></script>
+  {% endif %}
+
+  {% liquid
+    render 'google-optimize'
+    render 'google-tag-manager'
+    render 'tangoo'
+    render 'shop-back'
+    render 'upsellit'
+    render 'vitals-loader'
+    render 'weglot_hreftags'
+    render 'weglot_switcher'
+    render 'ms-clarity'
+  %}
+
+  {% case template %}
+    {% when 'index', 'product.emma-original', 'product.emma-climax-hybrid' %}
+      <link is="delay-stylesheet" href="{{ 'new-splide.css' | asset_url }}">
+    {% else %}
+      <link is="delay-stylesheet" href="{{ 'old-splide.css' | asset_url }}">
+  {% endcase %}
+
 {% else %}
   {% render 'old-vendors' %}
 {% endif %}

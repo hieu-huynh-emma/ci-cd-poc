@@ -17,8 +17,8 @@
   }
 </style>
 
-<div>
-  <ul class="hidden lg:flex lg:gap-6">
+<div id="navigation">
+  <ul class="navigation-list">
     {% for link in linklists[section.settings.main_menu_link_list].links %}
       {% assign is_sale_link = false %}
       {% if link.title == 'Sale' %}
@@ -27,11 +27,11 @@
 
       {% if is_sale_link == true and section.settings.show_sale_link == true %}
         <navigation-link data-link-title="{{ link.title }}" class="py-5">
-          <a href="{{ link.url }}" class="text-[#f03306] font-bold uppercase text-[14px] relative px-[6px] pb-1">{{ link.title | escape }}</a>
+          <a href="{{ link.url }}" class="navigation-list__link navigation-list__link--sale">{{ link.title | escape }}</a>
         </navigation-link>
       {% else %}
         <navigation-link data-link-title="{{ link.title }}" class="py-5">
-          <a href="{{ link.url }}" class="text-[14px] relative px-[6px] pb-1">{{ link.title | escape }}</a>
+          <a href="{{ link.url }}" class="navigation-list__link">{{ link.title | escape }}</a>
         </navigation-link>
       {% endif %}
     {% endfor %}
@@ -49,5 +49,4 @@
       {% endif %}
     </a>
   </div>
-
 </div>
