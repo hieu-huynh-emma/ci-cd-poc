@@ -1,0 +1,46 @@
+{{ 'mini-comparison-table.css' | asset_url | stylesheet_tag }}
+
+<style>
+  .col-start-3 {
+    grid-column-start: 3;
+  }
+
+  .col-start-4 {
+    grid-column-start: 4;
+  }
+</style>
+
+<div id="mini-comparison-table" class="md:min-w-[450px]">
+  <div class="mini-comparison-table weglot-dynamic-content-translate">
+    <div class="emma-highlighted">
+      <div class="badge flex flex-wrap">
+        <span class="hidden text-center lg:inline-block normal-case mr-1">Save up to</span>
+        <span class="lg:hidden">-</span>
+        <span>{{ settings.badge }}</span></div>
+    </div>
+
+
+    <div class="star-rating grid-row-12">
+      {% render 'star-ratings' %}
+      <p class="text-white">4.7 out of 5</p>
+    </div>
+  </div>
+
+
+  <p class="footer-note">{{ settings.note }}</p>
+</div>
+
+<script>
+  const MiniComparisonTableConfig = {
+    specs: {
+      ...{{ product.metafields.accentuate.mini_comparison_specifications | json }},
+    },
+    competitors: {{ product.metafields.accentuate.mini_comparison_competitors | json }},
+    product: {{ product | json }},
+    pillow: {{ all_products['emma-foam-pillow'] | json }},
+    protector: {{ all_products['emma-mattress-protector'] | json }},
+    topper: {{ all_products['emma-topper'] | json }},
+  }
+</script>
+
+{{ 'mini-comparison-table.js' | asset_url | script_tag }}

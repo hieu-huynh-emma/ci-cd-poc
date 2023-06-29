@@ -31,7 +31,7 @@
     WARNING WARNING WARNING WARNING
     Block all Shopify App assets listed on `blacklistUrls` excepts for those that are also listed on `whitelistUrls`.
 {% endcomment %}
-{{ 'blocker.min.js' | file_url | script_tag }}
+{% comment %}{{ 'blocker.min.js' | file_url | script_tag }}{% endcomment %}
 {% comment %}
     WARNING WARNING WARNING WARNING
     Uncomment import only for demonstration purpose. Will definitely break live website.
@@ -49,4 +49,6 @@
   {% render 'critical-stylesheet' %}
 {% else %}
   <script src="{{ 'jquery-3.6.0.min.js' | file_url }}"></script>
+  <script src="{{ 'jquery.ba-throttle-debounce.js' | asset_url }}"></script>
+  <script src="{{ 'jquery.beefup.min.js' | asset_url }}"></script>
 {% endif %}
