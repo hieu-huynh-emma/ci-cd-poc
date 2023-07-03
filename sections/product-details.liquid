@@ -433,7 +433,7 @@
 
         <div id="thumbnail-carousel" class="splide w-full">
           <div class="splide__track">
-            <ul class="splide__list justify-center">
+            <ul class="splide__list md:justify-center">
               {%- for media in product.media -%}
                 <li class="splide__slide{% if media.media_type != 'image' %} hide-modal {% endif %}"
                     data-media-id="{{ section.id }}-{{ media.id }}">
