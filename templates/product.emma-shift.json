@@ -478,35 +478,6 @@
       "settings": {
       }
     },
-    "brand-statistics": {
-      "type": "brand-statistics",
-      "blocks": {
-        "ca504ac7-3137-4ad7-997c-c1e12bd1d446": {
-          "type": "wallpaper",
-          "settings": {
-            "src": "shopify:\/\/shop_images\/wallpaper-1.png",
-            "color": "#ffdeb7"
-          }
-        },
-        "9593f14f-4c86-4af9-953e-0fa248231b89": {
-          "type": "footer-button",
-          "settings": {
-            "url": "shopify:\/\/products\/emma-climax-hybrid",
-            "text": "shop now"
-          }
-        }
-      },
-      "block_order": [
-        "ca504ac7-3137-4ad7-997c-c1e12bd1d446",
-        "9593f14f-4c86-4af9-953e-0fa248231b89"
-      ],
-      "settings": {
-        "borderless": true,
-        "review-number": 4000000,
-        "title": "<p>Happy Sleepers Worldwide<\/p>",
-        "subtitle": "Curious as to why millions of customers in over 30 countries have chosen Emma? See what they have to say about us."
-      }
-    },
     "products-grid": {
       "type": "products-grid",
       "blocks": {
@@ -552,6 +523,35 @@
       "settings": {
         "title": "You might also like"
       }
+    },
+    "brand-statistics": {
+      "type": "brand-statistics",
+      "blocks": {
+        "ca504ac7-3137-4ad7-997c-c1e12bd1d446": {
+          "type": "wallpaper",
+          "settings": {
+            "src": "shopify:\/\/shop_images\/wallpaper-1.png",
+            "color": "#ffdeb7"
+          }
+        },
+        "9593f14f-4c86-4af9-953e-0fa248231b89": {
+          "type": "footer-button",
+          "settings": {
+            "url": "shopify:\/\/products\/emma-climax-hybrid",
+            "text": "shop now"
+          }
+        }
+      },
+      "block_order": [
+        "ca504ac7-3137-4ad7-997c-c1e12bd1d446",
+        "9593f14f-4c86-4af9-953e-0fa248231b89"
+      ],
+      "settings": {
+        "borderless": true,
+        "review-number": 4000000,
+        "title": "<p>Happy Sleepers Worldwide<\/p>",
+        "subtitle": "Curious as to why millions of customers in over 30 countries have chosen Emma? See what they have to say about us."
+      }
     }
   },
   "order": [
@@ -567,7 +567,7 @@
     "contact-us",
     "social-proof",
     "168750959513a18e6e",
-    "brand-statistics",
-    "products-grid"
+    "products-grid",
+    "brand-statistics"
   ]
 }

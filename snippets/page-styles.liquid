@@ -17,7 +17,7 @@
 
 	{% comment %}DESIGN MIGRATE{% endcomment %}
 	{% case template %}
-		{% when 'index', 'product.emma-original', 'product.emma-climax-hybrid' %}
+		{% when 'index', 'product.emma-original', 'product.emma-climax-hybrid', 'product.emma-hybrid-pro' %}
 			<link is="delay-stylesheet" href="{{ 'new-heading.css' | asset_url }}">
 		{% else %}
 			<link is="delay-stylesheet" href="{{ 'old-heading.css' | asset_url }}">
@@ -30,7 +30,7 @@
 				assign pageStylesheet = 'comparison-page.css'
 			when 'page.competitor-comparison'
 				assign pageStylesheet = 'competitor-comparison.css'
-			when 'product.emma-climax-hybrid'
+			when 'product.emma-climax-hybrid', 'product.emma-hybrid-pro'
 				assign pageStylesheet = 'product-detail.css'
 		endcase
 	%}

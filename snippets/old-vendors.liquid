@@ -46,7 +46,7 @@
 {% render 'ms-clarity' %}
 
 {% case template %}
-  {% when 'index', 'product.emma-original', 'product.emma-climax-hybrid' %}
+  {% when 'index', 'product.emma-original', 'product.emma-climax-hybrid', 'product.emma-hybrid-pro' %}
     {{ 'new-splide.css' | asset_url | stylesheet_tag }}
   {% else %}
     {{ 'old-splide.css' | asset_url | stylesheet_tag }}
