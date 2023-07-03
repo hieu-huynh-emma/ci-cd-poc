@@ -494,9 +494,8 @@ function storeLocalization() {
 }
 
 function freshChat() {
-  var fc_JS=document.createElement('script', { is: "delay-script" });
-  fc_JS.setAttribute("phase", "interactive")
-  fc_JS.setAttribute("url", 'https://wchat.eu.freshchat.com/js/widget.js?t='+Date.now());
+  var fc_JS=document.createElement('script');
+  fc_JS.setAttribute("src", 'https://wchat.eu.freshchat.com/js/widget.js?t='+Date.now());
   (document.body?document.body:document.getElementsByTagName('head')[0]).appendChild(fc_JS);
   window.fcSettings = {
     token:'b2b2897c-9240-4bdd-a965-9f4381519c6e',
