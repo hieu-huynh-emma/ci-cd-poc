@@ -1,15 +1,15 @@
-{{ 'product-summary.css' | asset_url | stylesheet_tag }}
+<link is="delay-stylesheet" href="{{ 'product-summary.css' | asset_url }}">
 
 <section id="ProductSummary">
-    <h2 id="product-title" class="paragraph-24 font-inter font-semibold">
-        {{ section.settings.title | default: product.title }}
-    </h2>
+  <h2 id="product-title" class="paragraph-24 font-inter font-semibold">
+    {{ section.settings.title | default: product.title }}
+  </h2>
 
-    {% render 'yotpo-review-stars', product: product %}
+  {% render 'yotpo-review-stars', product: product %}
 
-    <div class="product-description">
-        {{ section.settings.desc | default: product.description }}
-    </div>
+  <div class="product-description">
+    {{ section.settings.desc | default: product.description }}
+  </div>
 </section>
 
 {% schema %}

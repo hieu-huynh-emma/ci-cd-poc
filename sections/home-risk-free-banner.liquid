@@ -1,63 +1,27 @@
 <style>
-  #home-risk-free-banner-section .risk-banner {
-    background: #3C4196;
-    padding: 8px;
-  }
-
-  #home-risk-free-banner-section .risk-banner__block {
-    color: white;
-    font-weight: bold;
-    font-size: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  #home-risk-free-banner-section .risk-banner__text {
-    line-height: 1;
-    margin: 0 4px;
-  }
-
-  #home-risk-free-banner-section .splide__track {
-    padding: 0;
-  }
-
-  @media (min-width: 768px) {
-    #home-risk-free-banner-section .splide__list {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-  }
-
-  @media (min-width: 1024px) {
-    #home-risk-free-banner-section .risk-banner__text {
-      margin-right: 24px;
-      margin-left: 14px;
-    }
-  }
+  #home-risk-free-banner-section{height: 41px;background: #3c4196;overflow: hidden}#home-risk-free-banner-section .risk-banner{background: #3C4196;padding: 8px}#home-risk-free-banner-section .risk-banner__block{color: white;font-weight: bold;font-size: 15px;display: flex;align-items: center;justify-content: center}#home-risk-free-banner-section .risk-banner__text{line-height: 1;margin: 0 4px}#home-risk-free-banner-section .splide__track{padding: 0}@media (min-width: 768px){#home-risk-free-banner-section .splide__list{display: flex;justify-content: center;align-items: center}}@media (min-width: 1024px){#home-risk-free-banner-section .risk-banner__text{margin-right: 24px;margin-left: 14px}}
 </style>
 
 <section id="home-risk-free-banner-section">
-  <div class="splide risk-banner">
+  <div class="splide risk-banner" style="display: none;">
     <div class="splide__track">
       <ul class="splide__list">
         <li class="splide__slide risk-banner__block">
-          <img src="{{ 'delivery.svg' | asset_url }}" width="25" height="25" loading="lazy" />
+          <img src="{{ 'delivery.svg' | asset_url }}" width="25" height="25" loading="lazy">
           <span class="risk-banner__text">Free Shipping & Returns</span>
         </li>
         <li class="splide__slide risk-banner__block">
-          <img src="{{ 'star.svg' | asset_url }}" width="20" height="20" loading="lazy" />
+          <img src="{{ 'star.svg' | asset_url }}" width="20" height="20" loading="lazy">
           <span class="risk-banner__text">{{ section.settings.night_trial }}-Night Money-Back Guarantee</span>
         </li>
         {% if section.settings.financing_available == true %}
           <li class="splide__slide risk-banner__block">
-            <img src="{{ 'credit-card.svg' | asset_url }}" width="20" height="20" loading="lazy" />
+            <img src="{{ 'credit-card.svg' | asset_url }}" width="20" height="20" loading="lazy">
             <span class="risk-banner__text">Financing Available</span>
           </li>
         {% endif %}
         <li class="splide__slide risk-banner__block">
-          <img src="{{ 'calendar.svg' | asset_url }}" width="20" height="20" loading="lazy" />
+          <img src="{{ 'calendar.svg' | asset_url }}" width="20" height="20" loading="lazy">
           <span class="risk-banner__text">{{ section.settings.year_warranty }}-Year Warranty</span>
         </li>
       </ul>

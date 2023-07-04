@@ -7,212 +7,225 @@
 
 {% assign appBlock = section.blocks | where: 'type', '@app' | first %}
 
-{{ 'product-information.css' | asset_url | stylesheet_tag }}
+<link is="delay-stylesheet" href="{{ 'product-information.css' | asset_url }}">
 
-<script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
+<script is="delay-script" phase="interactive" url="{{ 'product-form.js' | asset_url }}"></script>
 
 <section
-        class="product-info"
-        id="ProductSection-{{ section.id }}"
-        data-section-id="{{ section.id }}"
-        data-section-type="product"
-        data-enable-history-state="true"
-        data-ajax-enabled="{{ settings.enable_ajax }}"
+  class="product-info"
+  id="ProductSection-{{ section.id }}"
+  data-section-id="{{ section.id }}"
+  data-section-type="product"
+  data-enable-history-state="true"
+  data-ajax-enabled="{{ settings.enable_ajax }}"
 >
-    <product-form class="right-section">
-        {% capture form_classes -%}
-            product-form product-form-{{ section.id }}
-            {%- if section.settings.enable_payment_button and product.has_only_default_variant %} product-form--payment-button-no-variants {%- endif -%}
-            {%- if current_variant.available == false %} product-form--variant-sold-out {%- endif -%}
-        {%- endcapture %}
+  <product-form class="right-section">
+    {% capture form_classes -%}
+      product-form product-form-{{ section.id }}
+      {%- if section.settings.enable_payment_button and product.has_only_default_variant %} product-form--payment-button-no-variants {%- endif -%}
+      {%- if current_variant.available == false %} product-form--variant-sold-out {%- endif -%}
+    {%- endcapture %}
 
-        {% for block in section.blocks %}
-            {% case block.type %}
-                {% when 'tagline' %}
-                    <h4>{{ block.settings.text }}</h4>
-                {% when 'trustpilot' %}
-                    <div class="trustpilot-wrapper">
-                        <div class="rating-stars-container">
-                            {% for i in (1..block.settings.stars_num) %}
-                                <img src="{{ 'trustpilot-rating-star.png' | asset_img_url }}" width="17" height="17"
-                                     loading="lazy">
-                            {% endfor %}
-                        </div>
-                        <img src="{{ 'trustpilot-logo.png' | asset_img_url }}" height="17" loading="lazy">
-                    </div>
-
-                {% when 'badge' %}
-                    <div class="badge-wrapper">
-                        {% if block.settings.badge_text != blank %}
-                            <span class="badge">{{ block.settings.badge_text }} </span>
-                        {% endif %}
-                        <p class="text">{{ block.settings.desc }}</p>
-                    </div>
-            {% endcase %}
-        {% endfor %}
-
-        {% form 'product', product, class: form_classes, novalidate: 'novalidate', data-product-form: '' %}
-            <div class="overlay">
-                <svg aria-hidden="true" focusable="false" role="presentation" width="40" class="spinner"
-                     viewBox="0 0 66 66"
-                     xmlns="http://www.w3.org/2000/svg">
-                    <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
-                </svg>
+    {% for block in section.blocks %}
+      {% case block.type %}
+        {% when 'tagline' %}
+          <h4>{{ block.settings.text }}</h4>
+        {% when 'trustpilot' %}
+          <div class="trustpilot-wrapper">
+            <div class="rating-stars-container">
+              {% for i in (1..block.settings.stars_num) %}
+                <img src="{{ 'trustpilot-rating-star.png' | asset_img_url }}" width="17"
+                     height="17"
+                     loading="lazy">
+              {% endfor %}
             </div>
+            <img src="{{ 'trustpilot-logo.png' | asset_img_url }}" height="17"
+                 loading="lazy">
+          </div>
 
-            <variant-selects class="no-js-hidden emma-product__variant mb-4" data-section="{{ section.id }}"
-                             data-url="{{ product.url }}" {{ block.shopify_attributes }}>
-                {%- for option in product.options_with_values -%}
-                    <div class="product-form__input product-form__input--dropdown">
-                        <label class="form__label" for="Option-{{ section.id }}-{{ forloop.index0 }}">
-                            {{ option.name }}
-                        </label>
-                        <div class="select">
-                            <select id="Option-{{ section.id }}-{{ forloop.index0 }}" class="select__select"
-                                    name="options[{{ option.name | escape }}]" form="product-form-{{ section.id }}">
-                                {%- for value in option.values -%}
-                                    <option value="{{ value | escape }}"
-                                            {% if option.selected_value == value %}selected="selected" {% endif %}>
-                                        {{ value }}
-                                    </option>
-                                {%- endfor -%}
-                            </select>
-                            {% render 'icon-caret' %}
-                        </div>
-                    </div>
+        {% when 'badge' %}
+          <div class="badge-wrapper">
+            {% if block.settings.badge_text != blank %}
+              <span class="badge">{{ block.settings.badge_text }} </span>
+            {% endif %}
+            <p class="text">{{ block.settings.desc }}</p>
+          </div>
+      {% endcase %}
+    {% endfor %}
+
+    {% form 'product', product, class: form_classes, novalidate: 'novalidate', data-product-form: '' %}
+      <div class="overlay">
+        <svg aria-hidden="true" focusable="false" role="presentation" width="40"
+             class="spinner"
+             viewBox="0 0 66 66"
+             xmlns="http://www.w3.org/2000/svg">
+          <circle class="path" fill="none" stroke-width="6" cx="33" cy="33"
+                  r="30"></circle>
+        </svg>
+      </div>
+
+      <variant-selects class="no-js-hidden emma-product__variant mb-4"
+                       data-section="{{ section.id }}"
+                       data-url="{{ product.url }}" {{ block.shopify_attributes }}>
+        {%- for option in product.options_with_values -%}
+          <div class="product-form__input product-form__input--dropdown">
+            <label class="form__label" for="Option-{{ section.id }}-{{ forloop.index0 }}">
+              {{ option.name }}
+            </label>
+            <div class="select">
+              <select id="Option-{{ section.id }}-{{ forloop.index0 }}"
+                      class="select__select"
+                      name="options[{{ option.name | escape }}]"
+                      form="product-form-{{ section.id }}">
+                {%- for value in option.values -%}
+                  <option value="{{ value | escape }}"
+                          {% if option.selected_value == value %}selected="selected" {% endif %}>
+                    {{ value }}
+                  </option>
                 {%- endfor -%}
+              </select>
+              {% render 'icon-caret' %}
+            </div>
+          </div>
+        {%- endfor -%}
 
-                <script type="application/json">
+        <script type="application/json">
                     {{ product.variants | json }}
 
 
 
-                </script>
-            </variant-selects>
-
-            <select name="id" id="ProductSelect-{{ section.id }}" class="product-form__variants no-js">
-                {% for variant in product.variants %}
-                    <option
-                            value="{{ variant.id }}"
-                            {%- if variant == current_variant %}
-                                selected="selected"
-                            {%- endif -%}
-                    >
-                        {{ variant.title }}
-                        {%- if variant.available == false %} - {{ 'products.product.sold_out' | t }}{% endif %}
-                    </option>
-                {% endfor %}
-            </select>
 
 
-            <div class="product-quantity-selector{% unless product.selected_or_first_available_variant.available %} mb-4 visibility-hidden{% endunless %}" {{ block.shopify_attributes }}>
-                <label class="product-quantity-selector__label" for="Quantity-{{ section.id }}">
-                    {{ 'products.product.labels.quantity' | t }}
-                </label>
+        </script>
+      </variant-selects>
 
-                <quantity-input name="quantity" class="quantity-input" form="product-form-{{ section.id }}">
-                    <button class="quantity-input__button no-js-hidden" name="minus" type="button">
-                        -
-                    </button>
-                    <input class="quantity-input__native"
-                           type="number"
-                           name="quantity"
-                           id="Quantity-{{ section.id }}"
-                           value="1" min="1"
-                           pattern="[0-9]*"
-                           readonly
-                    >
-                    <button class="quantity-input__button no-js-hidden" name="plus" type="button">
-                        +
-                    </button>
-                </quantity-input>
-            </div>
+      <select name="id" id="ProductSelect-{{ section.id }}"
+              class="product-form__variants no-js">
+        {% for variant in product.variants %}
+          <option
+            value="{{ variant.id }}"
+            {%- if variant == current_variant %}
+              selected="selected"
+            {%- endif -%}
+          >
+            {{ variant.title }}
+            {%- if variant.available == false %} - {{ 'products.product.sold_out' | t }}{% endif %}
+          </option>
+        {% endfor %}
+      </select>
 
-            <div
-                    class="product-form__error-message-wrapper product-form__error-message-wrapper--hidden{% if section.settings.enable_payment_button %} product-form__error-message-wrapper--has-payment-button{% endif %}"
-                    data-error-message-wrapper
-                    role="alert"
-            >
-                <span class="visually-hidden">{{ 'general.accessibility.error' | t }} </span>
-                {% include 'icon-error' %}
-                <span class="product-form__error-message" data-error-message>
+
+      <div
+        class="product-quantity-selector{% unless product.selected_or_first_available_variant.available %} mb-4 visibility-hidden{% endunless %}" {{ block.shopify_attributes }}>
+        <label class="product-quantity-selector__label" for="Quantity-{{ section.id }}">
+          {{ 'products.product.labels.quantity' | t }}
+        </label>
+
+        <quantity-input name="quantity" class="quantity-input"
+                        form="product-form-{{ section.id }}">
+          <button class="quantity-input__button no-js-hidden" name="minus" type="button">
+            -
+          </button>
+          <input class="quantity-input__native"
+                 type="number"
+                 name="quantity"
+                 id="Quantity-{{ section.id }}"
+                 value="1" min="1"
+                 pattern="[0-9]*"
+                 readonly
+          >
+          <button class="quantity-input__button no-js-hidden" name="plus" type="button">
+            +
+          </button>
+        </quantity-input>
+      </div>
+
+      <div
+        class="product-form__error-message-wrapper product-form__error-message-wrapper--hidden{% if section.settings.enable_payment_button %} product-form__error-message-wrapper--has-payment-button{% endif %}"
+        data-error-message-wrapper
+        role="alert"
+      >
+        <span class="visually-hidden">{{ 'general.accessibility.error' | t }} </span>
+        {% include 'icon-error' %}
+        <span class="product-form__error-message" data-error-message>
             {{- 'products.product.quantity_minimum_message' | t -}}
           </span>
-            </div>
+      </div>
 
-            <div id="price-{{ section.id }}" class="product__price -mb-1" {{ block.shopify_attributes }} >
-                {% render 'product-price', variant: current_variant, product: product %}
-            </div>
+      <div id="price-{{ section.id }}"
+           class="product__price -mb-1" {{ block.shopify_attributes }} >
+        {% render 'product-price', variant: current_variant, product: product %}
+      </div>
 
-            {% if tax %}
-                <div class="tax-wrapper">
-                    <p class="tax-text">{{ tax.settings.text }}</p>
-                </div>
-            {% endif %}
+      {% if tax %}
+        <div class="tax-wrapper">
+          <p class="tax-text">{{ tax.settings.text }}</p>
+        </div>
+      {% endif %}
 
-            {% if stock %}
-                <div class="stock-wrapper">
-                    <p class="stock-text">{{ stock.settings.text }}</p>
-                </div>
-            {% endif %}
-
-
-            <div class="installment-widgets mb-4">
-                {%- if appBlock -%}
-                    {% render appBlock %}
-                {% endif %}
+      {% if stock %}
+        <div class="stock-wrapper">
+          <p class="stock-text">{{ stock.settings.text }}</p>
+        </div>
+      {% endif %}
 
 
-                {%- if affirm_widget -%}
-                    <div {{ block.shopify_attributes }}>
-                        {% render 'affirm-widget' %}
-                    </div>
-                {% endif %}
-            </div>
+      <div class="installment-widgets mb-4">
+        {%- if appBlock -%}
+          {% render appBlock %}
+        {% endif %}
 
-            <div class="product-form__controls-group product-form__controls-group--submit mb-4">
-                <div
-                        class="
+
+        {%- if affirm_widget -%}
+          <div {{ block.shopify_attributes }}>
+            {% render 'affirm-widget' %}
+          </div>
+        {% endif %}
+      </div>
+
+      <div class="product-form__controls-group product-form__controls-group--submit mb-4">
+        <div
+          class="
               product-form__item product-form__item--submit
               {%- if section.settings.enable_payment_button %} product-form__item--payment-button {%- endif -%}
               {%- if product.has_only_default_variant %} product-form__item--no-variants {%- endif -%}
             "
-                >
-                    {% render 'add-to-cart-btn' %}
-
-
-                    {% if section.settings.enable_payment_button %}
-                        {{ form | payment_button }}
-                    {% endif %}
-                </div>
-            </div>
-
-
-        {% endform %}
-
-        <p
-                class="visually-hidden"
-                data-loader-status
-                aria-live="assertive"
-                role="alert"
-                aria-hidden="true"
         >
-            {{ 'products.product.loader_label' | t }}
-        </p>
+          {% render 'add-to-cart-btn' %}
 
-        <button class="visually-hidden" data-add-to-cart></button>
-    </product-form>
+
+          {% if section.settings.enable_payment_button %}
+            {{ form | payment_button }}
+          {% endif %}
+        </div>
+      </div>
+
+
+    {% endform %}
+
+    <p
+      class="visually-hidden"
+      data-loader-status
+      aria-live="assertive"
+      role="alert"
+      aria-hidden="true"
+    >
+      {{ 'products.product.loader_label' | t }}
+    </p>
+
+    <button class="visually-hidden" data-add-to-cart></button>
+  </product-form>
 </section>
 
 <script>
-    const input = document.getElementById('Quantity-{{ section.id }}');
+  const input = document.getElementById('Quantity-{{ section.id }}');
 
-    $('.quantity-input__button[name="minus"]').click(function () {
-        if (input.value <= 1) {
-            return;
-        }
-        input.value--;
-    });
+  document.querySelector('.quantity-input__button[name="minus"]').addEventListener('click', () => {
+    if (input.value <= 1) {
+      return;
+    }
+    input.value - 1;
+  })
 </script>
 
 {% schema %}

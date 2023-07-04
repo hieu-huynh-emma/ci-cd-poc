@@ -1,24 +1,24 @@
 {% assign uniqueSellingPoints = section.blocks | where: 'type', 'unique_selling_point' %}
 
-{{ 'product-policies.css' | asset_url | stylesheet_tag }}
+<link is="delay-stylesheet" href="{{ 'product-policies.css' | asset_url }}">
 
 <section id="ProductPolicies">
-    <ul class="benefits">
-        {% for block in uniqueSellingPoints %}
-            <li class="unique-selling-point">
-                <img class="unique-selling-point__icon"
-                     src="{{ block.settings.icon | image_url: width: "25", height: "25" }}"
-                     loading="lazy"
-                >
-                <p class="title">
-                    {{ block.settings.text }}
-                </p>
-                <div class="desc">
-                    {{ block.settings.content }}
-                </div>
-            </li>
-        {% endfor %}
-    </ul>
+  <ul class="benefits">
+    {% for block in uniqueSellingPoints %}
+      <li class="unique-selling-point">
+        <img class="unique-selling-point__icon"
+             src="{{ block.settings.icon | image_url: width: "25", height: "25" }}"
+             loading="lazy"
+        >
+        <p class="title">
+          {{ block.settings.text }}
+        </p>
+        <div class="desc">
+          {{ block.settings.content }}
+        </div>
+      </li>
+    {% endfor %}
+  </ul>
 </section>
 
 {% schema %}

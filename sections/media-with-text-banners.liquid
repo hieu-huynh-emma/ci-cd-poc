@@ -1,6 +1,6 @@
 <link is="delay-stylesheet" href="{{ 'media-with-text-banners.css' | asset_url }}">
 
-<div id="mediaWithTextBannersSection" class="banners-container page-boundary">
+<div style="padding: 32px 12px;" id="mediaWithTextBannersSection" class="banners-container page-boundary">
   {% for block in section.blocks %}
     <div class="banner-item {% if block.settings.reverse %} is-reversed{% endif %}">
       <div class="media-wrapper">

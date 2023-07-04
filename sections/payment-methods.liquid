@@ -1,27 +1,21 @@
-<style>
-    #PaymentMethods .payment-providers__listing {
-        grid-column: 1 / span 2;
-    }
-</style>
+<section id="PaymentMethods" class="product-info-box mb-6">
+  <img style="grid-row: 1 / span 2;" class="product-info-box__icon lazyload"
 
-<section id="PaymentMethods" class="product-info-box">
-    <img class="product-info-box__icon lazyload"
-
-         src="{{ section.settings.icon | image_url: width: "25", height: "25" }}"
-         loading="lazy">
-    <p class="product-info-box__title">
-        {{ section.settings.text }}
-    </p>
-    <div class="payment-providers__listing"></div>
+       src="{{ section.settings.icon | image_url: width: "25", height: "25" }}"
+       loading="lazy">
+  <p class="product-info-box__title font-semibold">
+    {{ section.settings.text }}
+  </p>
+  <div class="payment-providers__listing"></div>
 </section>
 
-<script>
-    fetch(`?sections={{ section.settings.payment_providers_section_id }}`)
-        .then((response) => response.json())
-        .then((res) => {
-            const html = new DOMParser().parseFromString(res['{{ section.settings.payment_providers_section_id }}'], 'text/html')
-            $("#PaymentMethods .payment-providers__listing").html(html.querySelector('.payment-providers__listing').innerHTML)
-        });
+<script is="delay-script" phase="interactive">
+  fetch(`?sections={{ section.settings.payment_providers_section_id }}`)
+    .then((response) => response.json())
+    .then((res) => {
+      const html = new DOMParser().parseFromString(res['{{ section.settings.payment_providers_section_id }}'], "text/html");
+      $("#PaymentMethods .payment-providers__listing").html(html.querySelector(".payment-providers__listing").innerHTML);
+    });
 </script>
 
 {% schema %}

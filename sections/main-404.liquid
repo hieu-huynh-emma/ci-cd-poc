@@ -5,11 +5,6 @@
   {% assign home_page_url = 'https://qc.emma-sleep.ca/' %}
 {% endif %}
 
-<script>
-  console.log('abc', {{ request.locale.iso_code | json }});
-</script>
-
-
 <div class="page-404">
   <img class="page-404__image" src="{{ 'sleep-moon.svg' | asset_url }}" width="auto" height="auto" />
   <div class="page-404__message">{{ 'general.404.page_not_found_message' | t }}</div>

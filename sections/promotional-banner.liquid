@@ -1,21 +1,20 @@
-{% assign items = section.blocks | where: "type", "item" %}
+{% assign items = section.blocks | where: 'type', 'item' %}
 
 <style>
-  #promotional-banner-section .promotional-banner{display:grid;gap:8px;align-items:center;justify-content:center;min-height:48px;padding:8px 0}@media screen and (min-width:769px){#promotional-banner-section .promotional-banner{gap:40px;grid-template-columns:repeat(2,minmax(0,auto))}}#promotional-banner-section .section-content{display:grid;gap:8px;grid-template-columns:minmax(0,auto) minmax(0,1fr);align-items:center}#promotional-banner-section .top-brands{display:grid;gap:24px;grid-auto-flow:column;align-items:center;justify-content:center;justify-items:center}
+  #promotional-banner-section{height: 71px}#promotional-banner-section .promotional-banner{display: grid;gap: 8px;align-items: center;justify-content: center;min-height: 48px;padding: 8px 0}@media screen and (min-width: 769px){#promotional-banner-section{height: 48px}#promotional-banner-section .promotional-banner{gap: 40px;grid-template-columns: repeat(2, minmax(0, auto))}}#promotional-banner-section .section-content{display: grid;gap: 8px;grid-template-columns: minmax(0, auto) minmax(0, 1fr);align-items: center}#promotional-banner-section .top-brands{display: grid;gap: 24px;grid-auto-flow: column;align-items: center;justify-content: center;justify-items: center}
 </style>
 
 <section id="promotional-banner-section" class="bg-chambray">
   <div class="promotional-banner page-boundary">
     <div class="section-content">
-      <img src="{{ section.settings.lead_icon | image_url: width: 20 }}" width="20" height="20" loading="lazy" />
-      
-      <p class="text-white text-left">{{ section.settings.heading | remove: "<p>" | remove: "</p>" }}</p>
+      {% render 'image-tag', image_src: section.settings.lead_icon, width: 20, height: 20 %}
+      <p class="text-white text-left">{{ section.settings.heading | remove: '<p>' | remove: '</p>' }}</p>
     </div>
-    
+
     <div class="top-brands">
       {%- for block in items -%}
         <div class="banner-item">
-          <img src="{{ block.settings.icon | image_url: height: 23 }}" width="auto" height="23" loading="lazy" />
+          {% render 'image-tag', image_src: block.settings.icon, width: 60, height: 23 %}
         </div>
       {%- endfor -%}
     </div>
