@@ -79,8 +79,6 @@ function announcementBarSlide() {
     pauseOnHover: false,
     pauseOnFocus: false,
   }).mount();
-
-  $('#shopify-section-announcement-bar .splide').show();
 }
 
 function navigationHamburger() {

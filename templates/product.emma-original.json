@@ -1,6 +1,13 @@
 {
-  "layout": "theme.product",
   "sections": {
+    "banner": {
+      "type": "home-risk-free-banner",
+      "settings": {
+        "year_warranty": 10,
+        "night_trial": 365,
+        "financing_available": true
+      }
+    },
     "affiliate-banners": {
       "type": "affiliate-banners",
       "blocks": {
@@ -58,6 +65,194 @@
         "06c1ecb0-8c0c-4e2b-aa83-8e239e06fd10"
       ],
       "settings": {
+      }
+    },
+    "product-info": {
+      "type": "product-info",
+      "blocks": {
+        "f5f456c7-b29a-4f74-826f-648e09f5b1cd": {
+          "type": "product_media",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Gallery_1_desktop-100.jpg",
+            "full_width": true,
+            "is_video": false
+          }
+        },
+        "ae4539f2-6ea2-42a3-a132-a31010570bf1": {
+          "type": "product_media",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Original_Angle_View_Desktop-100.jpg",
+            "full_width": false,
+            "is_video": false
+          }
+        },
+        "e4cd7962-4d57-4250-8e6e-4c76dd76d6d6": {
+          "type": "product_media",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Gallery_3_desktop-100.jpg",
+            "full_width": false,
+            "is_video": false
+          }
+        },
+        "038c8f16-3a84-418c-9ee2-38f53be4a385": {
+          "type": "product_media",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Gallery_4_desktop-100.jpg",
+            "full_width": false,
+            "is_video": false
+          }
+        },
+        "72b3b893-b0bb-44ad-978c-733ee54620a1": {
+          "type": "product_media",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Gallery_5_desktop-100.jpg",
+            "full_width": false,
+            "is_video": false
+          }
+        },
+        "12e2c164-6e6a-42a2-a76a-b4363d4c2c09": {
+          "type": "product_media",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/MicrosoftTeams-image.png",
+            "full_width": true,
+            "is_video": false
+          }
+        },
+        "0a7cd906-1a13-44a7-bfe8-34d0b6373b48": {
+          "type": "tagline",
+          "disabled": true,
+          "settings": {
+            "text": "Our Best of the Best"
+          }
+        },
+        "00f4e92b-5e6c-4ec3-a58d-8079fafaa409": {
+          "type": "badge",
+          "disabled": true,
+          "settings": {
+            "badge_text": "",
+            "desc": "95% of BSB One buyers agree their back pain was improved"
+          }
+        },
+        "05167373-6c53-4bf6-b18f-7cae5ab215d7": {
+          "type": "unique_selling_point",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/shipping_truck_db437bec-0f66-475d-9a43-c2bdab9dc26d.png",
+            "text": "Free & Fast Delivery",
+            "content": "<p>Free no contact delivery for all orders <\/p><p>Dispatched in: <strong>1 business day <\/strong><br\/><\/p>"
+          }
+        },
+        "e82e034a-8517-497e-b8ef-f81bff8064d2": {
+          "type": "unique_selling_point",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/moon.png",
+            "text": "365-Night Trial",
+            "content": "<p>Take your time to decide whether or not Emma is for you<\/p>"
+          }
+        },
+        "167def1b-b3fa-4ffb-a44d-34d5942a0c56": {
+          "type": "unique_selling_point",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/badge.png",
+            "text": "10 Years Warranty",
+            "content": "<p>Every Emma product is top-notch quality<\/p>"
+          }
+        },
+        "c388cf85-1af2-4d6a-a985-19da8f6beb0b": {
+          "type": "product_specification",
+          "settings": {
+            "title": "Materials",
+            "content": "<p>Emma smoothly combines high-quality materials to create a dream-like mattress that conforms to every body type. Through the combination of our extensive research and advanced foam technology, Emma offers the comfiest sleep possible. Emma mattresses offer comfort point-elastic caving that enables an ideal and unique fit for your body. As a result, your spine stays straight while at the same time offering you the necessary amount of support and comfort.<\/p><ol><li><\/li><\/ol>",
+            "product_dimension": false,
+            "product_dimension_height": ""
+          }
+        },
+        "b10d93d5-1a38-4340-b997-737c94850770": {
+          "type": "product_specification",
+          "settings": {
+            "title": "Dimensions",
+            "content": "",
+            "product_dimension": true,
+            "product_dimension_height": "10"
+          }
+        },
+        "361b0dc3-3896-4fb3-9116-255bf53f8858": {
+          "type": "product_specification",
+          "settings": {
+            "title": "Certifications",
+            "content": "<p>Our top-of-the-line foams are all CertiPUR-US® certified, meaning, they are made without any ozone-depleting chemicals and safe from VOCs, formaldehyde, and phthalates.<\/p>",
+            "product_dimension": false,
+            "product_dimension_height": ""
+          }
+        },
+        "e6120535-6438-459e-a4f8-50816d7ab9dc": {
+          "type": "tax",
+          "disabled": true,
+          "settings": {
+            "text": "Incl. 20% Tax"
+          }
+        },
+        "c356b1b7-ae94-4361-890b-5b83d4d27efc": {
+          "type": "stock",
+          "disabled": true,
+          "settings": {
+            "text": "Only few left in stock"
+          }
+        },
+        "809302fb-d0b7-4e84-854b-40031868c836": {
+          "type": "payment_providers",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Icon.png",
+            "text": "Payment Methods",
+            "payment_providers_section": "payment-providers"
+          }
+        },
+        "d93b1b7f-a422-49e4-83d0-0146d0e74dd7": {
+          "type": "mini-comparison-table",
+          "settings": {
+            "badge": "$1,008",
+            "note": "*For queen sizes only. All prices and information from public sources listed as of October 10, 2022. Information may not reflect updated prices and promotions."
+          }
+        },
+        "ee70e296-2038-46e5-813c-014087cd98dd": {
+          "type": "affirm_widget",
+          "settings": {
+          }
+        },
+        "11e717f4-671f-4827-9403-88c69a78129f": {
+          "type": "upsell_mattress_v2",
+          "settings": {
+            "upsell_mattress_product_image": "shopify:\/\/shop_images\/layer2.png",
+            "upsell_mattress_product": "emma-climax-hybrid"
+          }
+        }
+      },
+      "block_order": [
+        "f5f456c7-b29a-4f74-826f-648e09f5b1cd",
+        "ae4539f2-6ea2-42a3-a132-a31010570bf1",
+        "e4cd7962-4d57-4250-8e6e-4c76dd76d6d6",
+        "038c8f16-3a84-418c-9ee2-38f53be4a385",
+        "72b3b893-b0bb-44ad-978c-733ee54620a1",
+        "12e2c164-6e6a-42a2-a76a-b4363d4c2c09",
+        "0a7cd906-1a13-44a7-bfe8-34d0b6373b48",
+        "00f4e92b-5e6c-4ec3-a58d-8079fafaa409",
+        "05167373-6c53-4bf6-b18f-7cae5ab215d7",
+        "e82e034a-8517-497e-b8ef-f81bff8064d2",
+        "167def1b-b3fa-4ffb-a44d-34d5942a0c56",
+        "c388cf85-1af2-4d6a-a985-19da8f6beb0b",
+        "b10d93d5-1a38-4340-b997-737c94850770",
+        "361b0dc3-3896-4fb3-9116-255bf53f8858",
+        "e6120535-6438-459e-a4f8-50816d7ab9dc",
+        "c356b1b7-ae94-4361-890b-5b83d4d27efc",
+        "809302fb-d0b7-4e84-854b-40031868c836",
+        "d93b1b7f-a422-49e4-83d0-0146d0e74dd7",
+        "ee70e296-2038-46e5-813c-014087cd98dd",
+        "11e717f4-671f-4827-9403-88c69a78129f"
+      ],
+      "settings": {
+        "title": "Emma Original Mattress",
+        "desc": "<h6>The smart and easy choice<\/h6><p>Our original claim to fame that's affordable, convenient, and an absolute dream to sleep on.<\/p><ul><li>Pressure relief<\/li><li>Long lasting and durable<\/li><li>Our best-selling mattress<\/li><\/ul>",
+        "caption_headline": "The mattress that put Emma on the map",
+        "caption_content": "The Emma Original changed the game when it comes to improving sleep"
       }
     },
     "content-1": {
@@ -568,7 +763,9 @@
     }
   },
   "order": [
+    "banner",
     "affiliate-banners",
+    "product-info",
     "content-1",
     "content-2",
     "content-3",

@@ -1,50 +1,39 @@
-<link is="delay-stylesheet" href="{{ 'mini-comparison-table.css' | asset_url }}">
-
-<style>
-  .col-start-3 {
-    grid-column-start: 3;
-  }
-
-  .col-start-4 {
-    grid-column-start: 4;
-  }
-</style>
+{{ 'mini-comparison-table.css' | asset_url | stylesheet_tag }}
 
 <div class="overflow-auto mb-8">
-  <div id="mini-comparison-table" class="md:min-w-[450px]">
-    <div class="mini-comparison-table weglot-dynamic-content-translate">
-      <div class="emma-highlighted">
-        <div class="badge flex flex-wrap">
-          <span
-            class="hidden text-center lg:inline-block normal-case mr-1">Save up to</span>
-          <span class="lg:hidden">-</span>
-          <span>{{ section.settings.badge }}</span></div>
-      </div>
+    <div id="mini-comparison-table" class="md:min-w-[450px]">
+        <div class="mini-comparison-table weglot-dynamic-content-translate">
+            <div class="emma-highlighted">
+                <div class="badge flex flex-wrap">
+                    <span class="hidden text-center lg:inline-block normal-case mr-1">Save up to</span>
+                    <span class="lg:hidden">-</span>
+                    <span>{{ section.settings.badge }}</span></div>
+            </div>
 
-      <div class="star-rating grid-row-12">
-        {% render 'star-ratings' %}
-        <p class="text-white">4.7 out of 5</p>
-      </div>
+            <div class="star-rating grid-row-12">
+                {% render 'star-ratings' %}
+                <p class="text-white">4.7 out of 5</p>
+            </div>
+        </div>
+
+        <p class="footer-note">{{ section.settings.note }}</p>
     </div>
-
-    <p class="footer-note">{{ section.settings.note }}</p>
-  </div>
 </div>
 
 <script>
-  const MiniComparisonTableConfig = {
-    specs: {
-      ...{{ product.metafields.accentuate.mini_comparison_specifications | json }},
-    },
-    competitors: {{ product.metafields.accentuate.mini_comparison_competitors | json }},
-    product: {{ product | json }},
-    pillow: {{ all_products['emma-foam-pillow'] | json }},
-    protector: {{ all_products['emma-mattress-protector'] | json }},
-    topper: {{ all_products['emma-topper'] | json }},
-  };
+    const MiniComparisonTableConfig = {
+        specs: {
+            ...{{ product.metafields.accentuate.mini_comparison_specifications | json }},
+        },
+        competitors: {{ product.metafields.accentuate.mini_comparison_competitors | json }},
+        product: {{ product | json }},
+        pillow: {{ all_products['emma-foam-pillow'] | json }},
+        protector: {{ all_products['emma-mattress-protector'] | json }},
+        topper: {{ all_products['emma-topper'] | json }},
+    }
 </script>
 
-<script is="delay-script" phase="interactive" url="{{ 'mini-comparison-table.js' | asset_url }}"></script>
+{{ 'mini-comparison-table.js' | asset_url | script_tag }}
 
 {% schema %}
 {

@@ -15,6 +15,4 @@ $(document).ready(function () {
       },
     },
   }).mount()
-
-  $('#home-risk-free-banner-section .splide').show();
 })

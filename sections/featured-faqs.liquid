@@ -1,11 +1,5 @@
 {% assign allFaqs = section.blocks  %}
 
-<style>
-  #featured-faqs-section .faqs .faq__answer__item { 
-    min-height: unset;
-  }
-</style>
-
 <link is="delay-stylesheet" href="{{ 'featured-faqs.css' | asset_url }}">
 
 <section id="featured-faqs-section" class="section-container spacing-{{ section.settings.container_spacing }}">
@@ -39,7 +33,7 @@
                 </iframe>
               </div>
             {% else %}
-              <div class="faq__answer shopify-richtext faq__answer__item">
+              <div class="faq__answer shopify-richtext">
                 {{ block.settings.content }}
               </div>
           {% endcase %}
