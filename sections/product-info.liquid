@@ -6,6 +6,7 @@
 {% assign affirm_widget = section.blocks | where: 'type', 'affirm_widget' | first %}
 {% assign upsell_mattress = section.blocks | where: 'type', 'upsell_mattress' | first %}
 {% assign upsell_mattress_v2 = section.blocks | where: 'type', 'upsell_mattress_v2' | first %}
+{% assign sold_out_upsell = section.blocks | where: 'type', 'sold_out_upsell' | first %}
 {% assign mini_comparison_table = section.blocks | where: 'type', 'mini-comparison-table' | first %}
 {% assign appBlock = section.blocks | where: 'type', '@app' | first %}
 {% assign uniqueSellingPoints = section.blocks | where: 'type', 'unique_selling_point' %}
@@ -274,6 +275,12 @@
 							{{ form | payment_button }}
 						{% endif %}
 					</div>
+
+					{% if sold_out_upsell %}
+						<a id="sold-out-upsell" class="{% if product.selected_or_first_available_variant.available == true %}hidden{% endif %}" href="{{ sold_out_upsell.settings.sold_out_upsell_product }}">
+							<p class="mt-2 mx-1 text-[#F03306] text-[14px] underline font-semibold">{{ sold_out_upsell.settings.sold_out_upsell_text }}</p>
+						</a>
+					{% endif %}
 				</div>
 
 				{% if upsell_mattress %}
@@ -719,6 +726,22 @@
 					"id": "upsell_mattress_product",
 					"type": "product",
 					"label": "Upsell Mattress Product"
+				}
+			]
+		},
+		{
+			"type": "sold_out_upsell",
+			"name": "Sold Out Upsell",
+			"settings": [
+				{
+					"id": "sold_out_upsell_product",
+					"type": "product",
+					"label": "Sold Out Upsell Product"
+				},
+				{
+					"id": "sold_out_upsell_text",
+					"type": "text",
+					"label": "Sold Out Upsell Text"
 				}
 			]
 		}

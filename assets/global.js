@@ -883,6 +883,16 @@ class VariantSelects extends HTMLElement {
     $('quantity-input .quantity-input__native').val(1)
   }
 
+  toggleSoldOutUpsell(show) {
+    const productForm = document.querySelector(`.product-form-${this.dataset.section}`);
+    const soldOutUpsell = productForm?.querySelector('#sold-out-upsell')
+    if (show) {
+      soldOutUpsell?.classList?.remove('hidden')
+    } else {
+      soldOutUpsell?.classList?.add('hidden')
+    }
+  }
+
   toggleAddButton(disable = true, text, modifyClass = true) {
     const productForm = document.querySelector(`.product-form-${this.dataset.section}`);
 
@@ -896,9 +906,11 @@ class VariantSelects extends HTMLElement {
     if (disable) {
       addButton.setAttribute('disabled', true);
       if (text) addButtonText.textContent = text;
+      this.toggleSoldOutUpsell(true)
     } else {
       addButton.removeAttribute('disabled');
       addButtonText.textContent = window.variantStrings.addToCart;
+      this.toggleSoldOutUpsell(false)
     }
 
     if (!modifyClass) return;
