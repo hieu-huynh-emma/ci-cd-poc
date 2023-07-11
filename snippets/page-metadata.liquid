@@ -4,22 +4,22 @@
 <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
 
 {% if template contains 'product' %}
+	{% assign shopifySelectedVariantSize = product.selected_or_first_available_variant.title | split: "|" | first | downcase | handleize %}
+	
 	{% assign variant_meta_title = product.selected_or_first_available_variant.metafields.accentuate.meta_title %}
 	{% assign variant_meta_desc = product.selected_or_first_available_variant.metafields.accentuate.meta_description %}
-	{% assign variant_canonical_url = product.selected_or_first_available_variant.metafields.accentuate.url %}
+	{% assign default_canonical_url = canonical_url | append: "/" | append: shopifySelectedVariantSize | append: "-size" %}
+	{% assign variant_canonical_url = default_canonical_url %}
 	
 	{% assign defaultProductUrl = '/products/' | append: handle %}
 	{% assign routeParams = request.path | remove: defaultProductUrl | split: "/" %}
 	
 	{% if routeParams != empty %}
-		
 		{% for routeParam in routeParams %}
 			{% if routeParam contains '-size' %}
 				{% assign variantSizeParam = routeParam | remove: "-size" %}
 			{% endif %}
 		{% endfor %}
-		
-		{% assign shopifySelectedVariantSize = product.selected_or_first_available_variant.title | split: "|" | first | downcase | handleize %}
 		
 		{% if variantSizeParam and shopifySelectedVariantSize != variantSizeParam %}
 			{%- for variant in product.variants -%}
@@ -33,17 +33,17 @@
 			
 			{% assign variant_meta_title = manualSelectedVariant.metafields.accentuate.meta_title | default: variant_meta_title %}
 			{% assign variant_meta_desc = manualSelectedVariant.metafields.accentuate.meta_description | default: variant_meta_desc %}
-			{% assign variant_canonical_url = manualSelectedVariant.metafields.accentuate.url | default: variant_canonical_url %}
+			{% assign variant_canonical_url = manualSelectedVariant.metafields.accentuate.canonical_url | default: default_canonical_url %}
 			
 			<script>
         const selectedVariantId = +`{{ manualSelectedVariant.id }}`;
 
         if (!!selectedVariantId) {
-          const url = new URL(window.location.href)
+          const url = new URL(window.location.href);
 
-          url.searchParams.set('variant', selectedVariantId);
+          url.searchParams.set("variant", selectedVariantId);
 
-          window.location.href = url.toString()
+          window.location.href = url.toString();
         }
 			</script>
 		{% endif %}
@@ -56,16 +56,16 @@
 	{% render 'title-and-desc-meta-tags', variant_meta_title: variant_meta_title, variant_meta_desc: variant_meta_desc %}
 {% endif %}
 
+
 {% render 'canonical-meta-tag', variant_canonical_url: variant_canonical_url %}
 
 {% render 'social-meta-tags' %}
-
 
 
 <!-- Google Search Console Verification ======================================= -->
 <meta name="google-site-verification" content="6PIbsoianPTw4f2E_enBdUZYqvDOW5cupcrNh7zyVbs" />
 <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
 <meta name="theme-color" content="{{ settings.color_primary }}">
-<meta name="google-site-verification" content="ECx3b-uuFXsoMOd08Jvv6o9Es--o5AyltTo9A-n9zCE"/>
+<meta name="google-site-verification" content="ECx3b-uuFXsoMOd08Jvv6o9Es--o5AyltTo9A-n9zCE" />
 
 
