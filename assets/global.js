@@ -1156,6 +1156,19 @@ class CookieConsentBar extends HTMLElement {
 
 customElements.define('cookie-consent-bar', CookieConsentBar);
 
+function calculateCountdownTime(endTime) {
+  const endDate = new Date(endTime).getTime()
+  const currentTime = new Date().getTime();
+  const timeRemaining = endDate - currentTime;
+
+  return {
+    days: Math.floor(timeRemaining / 1000 / 60 / 60 / 24),
+    hours: Math.floor(timeRemaining / 1000 / 60 / 60) % 24,
+    minutes: Math.floor(timeRemaining / 1000 / 60) % 60,
+    seconds: Math.floor(timeRemaining / 1000) % 60
+  }
+}
+
 class Countdown {
   constructor(expiredDate, onRender, onComplete) {
    this.setExpiredDate(expiredDate);
@@ -1207,3 +1220,105 @@ class Countdown {
    }
   }
  }
+
+class HeroBannerCountdownTimer extends HTMLElement {
+  constructor() {
+    super();
+    this.digitElements = Array.from(this.querySelectorAll('.digit'));
+    this.startTime = Date.now();
+    this.endTime = null;
+  }
+
+  connectedCallback() {
+    this.endTime = new Date(this.getAttribute('end-time').replace(' ', 'T'));
+    this.startTimer();
+  }
+
+  disconnectedCallback() {}
+
+  setValues(values) {
+    if (values.length !== this.digitElements.length) {
+      console.error('Invalid values provided.');
+      return;
+    }
+
+    values.forEach((value, index) => {
+      this.digitElements[index].textContent = value;
+    });
+  }
+
+  getTimeParts(delta) {
+    const days = Math.floor(delta / 86400);
+    delta -= days * 86400;
+
+    const hours = Math.floor(delta / 3600) % 24;
+    delta -= hours * 3600;
+
+    const minutes = Math.floor(delta / 60) % 60;
+    delta -= minutes * 60;
+
+    const seconds = Math.floor(delta % 60); // in theory the modulus is not required
+
+    return [days, hours, minutes, seconds];
+  }
+
+  renderTimer(delta) {
+    const timeParts = this.getTimeParts(delta);
+    this.setValues(timeParts);
+  }
+
+  startTimer() {
+    const intervalId = setInterval(() => {
+      const delta = (this.endTime - Date.now()) / 1000;
+      if (delta >= 0) {
+        this.renderTimer(delta);
+      } else {
+        this.querySelector('.countdown-timer').classList.add('!hidden')
+        clearInterval(intervalId);
+      }
+    }, 1000);
+  }
+}
+
+customElements.define('hero-banner-countdown-timer', HeroBannerCountdownTimer);
+
+class AnnouncementBarCountdownTimer extends HTMLElement {
+  constructor() {
+    super();
+    this.currentLanguage = document.querySelector('html').getAttribute('lang')
+    this.countdownSlide = document.querySelector('#shopify-section-announcement-bar .countdown-slide')
+    this.timer = this.querySelector('#countdown-timer');
+    this.message = this.querySelector('#announcement-message');
+    this.endTime = this.getAttribute('end-time')
+    this.timerText = this.getAttribute('timer-text')
+  }
+
+  connectedCallback() {
+    this.startCountdown()
+  }
+
+  disconnectedCallback() {}
+
+  startCountdown() {
+    const intervalReference = setInterval(() => {
+      const delta = (new Date(this.endTime) - Date.now()) / 1000;
+      if (delta >= 0) {
+        this.render(calculateCountdownTime(this.endTime))
+      } else {
+        this.countdownSlide.remove()
+        clearInterval(intervalReference)
+      }
+    }, 1000)
+  }
+
+  render(time) {
+    const { days, hours, minutes, seconds } = time;
+    this.message.innerHTML = `${this.timerText}&nbsp;`;
+    this.timer.innerHTML =
+      this.currentLanguage === 'en'
+        ? `${days} days ${hours} hours ${minutes} minutes ${seconds} seconds`
+        : `${days} jours ${hours} heures ${minutes} minutes ${seconds} secondes`;
+  }
+}
+
+customElements.define('announcement-bar-countdown-timer', AnnouncementBarCountdownTimer);

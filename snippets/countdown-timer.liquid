@@ -1,34 +1,4 @@
-<span id="announcement-message" class="weglot-dynamic-content-translate">{{ text }}&nbsp;</span>
-<span id="countdown-timer" class="font-bold"></span>
-
-<script is="delay-script" phase="interactive">
-  $(document).ready(function () {
-    const timer = document.getElementById('countdown-timer');
-    const message = document.getElementById('announcement-message');
-    const currentLanguage = $('html').attr('lang');
-
-    function getEndTime() {
-      return new Date('{{ end_time }}').getTime();
-    }
-
-    function format(t) {
-      return t < 10 ? '0' + t : t;
-    }
-
-    function render(time) {
-      const { days, hours, minutes, seconds } = time;
-      message.innerHTML = `{{ timer_text }}&nbsp;`;
-      timer.innerHTML =
-        currentLanguage === 'en'
-          ? `${format(days)} days ${format(hours)} hours ${format(minutes)} minutes ${format(seconds)} seconds`
-          : `${format(days)} jours ${format(hours)} heures ${format(minutes)} minutes ${format(seconds)} secondes`;
-    }
-
-    function complete() {
-      message.innerHTML = `{{ text }}`;
-      timer.style.display = 'none';
-    }
-
-    const countdownTimer = new Countdown(getEndTime(), render, complete);
-  });
-</script>
+<announcement-bar-countdown-timer end-time="{{ end_time }}" timer-text="{{ timer_text }}">
+  <span id="announcement-message" class="weglot-dynamic-content-translate">{{ text }}&nbsp;</span>
+  <span id="countdown-timer" class="font-bold"></span>
+</announcement-bar-countdown-timer>
