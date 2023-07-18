@@ -4,11 +4,12 @@
       "type": "product-comparison",
       "settings": {
         "emma-products": [
-          "emma-climax-hybrid",
-          "emma-original-mattress"
+          "emma-original-mattress",
+          "emma-hybrid-comfort"
         ],
         "title": "<p>Compare Emma<\/p>",
-        "subtitle": "See how others stack up against Emma, the world’s most-awarded mattress brand"
+        "subtitle": "See how others stack up against Emma, the world’s most-awarded mattress brand",
+        "note": "*For queen sizes only. All prices and information from public sources listed as of October 10, 2022. Information may not reflect updated prices and promotions."
       }
     },
     "product-awards": {
@@ -244,6 +245,7 @@
       ],
       "settings": {
         "title": "<p>Why sleepers <em>love<\/em> Emma<\/p>",
+        "subtitle": "",
         "borderless": false
       }
     },
@@ -261,7 +263,7 @@
         "e9a0e4f3-90cb-44c8-8ea9-5dc717188baa": {
           "type": "product-block",
           "settings": {
-            "product": "emma-climax-hybrid",
+            "product": "emma-hybrid-comfort",
             "image": "shopify:\/\/shop_images\/Rectangle_406.png",
             "desc": "Perfect balance of pressure-relief and support."
           }
@@ -272,6 +274,7 @@
         "e9a0e4f3-90cb-44c8-8ea9-5dc717188baa"
       ],
       "settings": {
+        "heading": ""
       }
     }
   },

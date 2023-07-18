@@ -1,6 +1,7 @@
 {%- assign current_variant = product.selected_or_first_available_variant -%}
 {%- assign compare_at_price = current_variant.compare_at_price -%}
 {%- assign price = current_variant.price -%}
+{% assign badge = section.blocks | where: 'type', 'badge' | first %}
 {% assign tax = section.blocks | where: 'type', 'tax' | first %}
 {% assign stock = section.blocks | where: 'type', 'stock' | first %}
 {% assign affirm_widget = section.blocks | where: 'type', 'affirm_widget' | first %}
@@ -101,8 +102,14 @@
 		</div>
 
 		<product-form class="right-section">
-			<h2 id="product-title" class="paragraph-24 font-inter font-semibold">
+			<h2 id="product-title" class="paragraph-24 font-inter font-semibold flex">
 				{{ section.settings.title | default: product.title }}
+
+              {% if section.settings.badge %}
+						<div class="bg-scarlet text-white py-[5px] px-[8px] uppercase">
+							{{ section.settings.badge }}
+						</div>
+              {% endif %}
 			</h2>
 
 			{% render 'yotpo-review-stars', product: product %}
@@ -130,14 +137,6 @@
 								{% endfor %}
 							</div>
 							<img src="{{ 'trustpilot-logo.png' | asset_img_url }}" height="17" loading="lazy">
-						</div>
-
-					{% when 'badge' %}
-						<div class="badge-wrapper">
-							{% if block.settings.badge_text != blank %}
-								<span class="badge">{{ block.settings.badge_text }} </span>
-							{% endif %}
-							<p class="text">{{ block.settings.desc }}</p>
 						</div>
 				{% endcase %}
 			{% endfor %}
@@ -296,7 +295,7 @@
 								{% render 'image-tag', image_src: upsell_mattress_v2.settings.upsell_mattress_product_image, width: 1200, class: 'mx-auto h-min' %}
 							</div>
 							<div class="px-4">
-								<p class="text-[15px]">Upgrade to the Climax Hybrid:</p>
+								<p class="text-[15px]">Upgrade to the Hybrid Comfort:</p>
 								<ul class="ml-7 list-disc text-[15px]">
 									<li>Best in cooling</li>
 									<li>Additional support</li>
@@ -389,8 +388,8 @@
 								<ul class="product-dimensions">
 									{% for variant in product.variants %}
 										<li class="variant-dimension">
-											<h6 class="heading-6 font-semibold">{{ variant.title | split: " - " | first }} x {{ block.settings.product_dimension_height }}"</h6>
-											<p>{{ variant.metafields.accentuate.dimension }}</p>
+											<h6 class="heading-6 font-semibold">{{ variant.title | split: " - " | first }} | {{ variant.metafields.accentuate.dimension }}</h6>
+				
 										</li>
 									{% endfor %}
 								</ul>
@@ -766,6 +765,11 @@
 			"type": "textarea",
 			"id": "caption_content",
 			"label": "Content"
+		},
+      {
+			"type": "text",
+			"id": "badge",
+			"label": "Badge"
 		}
 	]
 }

@@ -3,6 +3,24 @@
 {% assign countdown = section.blocks | where: 'type', 'countdown' | first %}
 
 <style>
+  #hero-banner-section .hero-banner-heading {
+    color: {{ countdown.settings.mobile_color }};
+  }
+
+  #hero-banner-section .hero-banner-subtext {
+    color: {{ cta.settings.mobile_color }};
+  }
+
+  @media (min-width: 768px) {
+    #hero-banner-section .hero-banner-heading {
+      color: {{ countdown.settings.desktop_color }};
+    }
+
+    #hero-banner-section .hero-banner-subtext {
+      color: {{ cta.settings.desktop_color }};
+    }
+  }
+
   #hero-banner-section{position:relative;z-index:1;display:grid;grid-template-rows:0 minmax(0,1fr);min-height:540px;max-height:540px;padding:12px}#hero-banner-section .\!hidden{display:none!important}#hero-banner-section .page-boundary--full{height:100%;padding:0 12px}@media screen and (min-width:769px){#hero-banner-section{height:100%;min-height:640px;padding:0}#hero-banner-section .page-boundary--full{padding:0 20px}}@media screen and (min-width:1024px){#hero-banner-section .page-boundary--full{padding:0 40px}}@media screen and (min-width:1200px){#hero-banner-section .page-boundary--full{padding:0 64px}}@media screen and (min-width:1440px){#hero-banner-section .page-boundary--full{max-width:1440px;margin:0 auto}}#hero-banner-section .section-content{position:absolute;display:grid;gap:24px;align-content:space-between;justify-items:center;height:100%;padding:calc(24px + 12px) calc(16px + 12px)}@media screen and (max-width:768px){#hero-banner-section .section-content{inset:0;width:100%}}@media screen and (min-width:768px){#hero-banner-section .section-content{top:0;gap:40px;align-content:center;justify-items:flex-start;max-width:528px;padding:0}}@media screen and (min-width:1024px){#hero-banner-section .section-content{margin-left:112px}}#hero-banner-section .section-content .text-box{display:grid;gap:16px;justify-items:center;text-align:center}#hero-banner-section .hero-banner__title{font-style:normal;font-weight:600;font-size:40px;line-height:125%}@media screen and (min-width:768px){#hero-banner-section .section-content .text-box{justify-items:flex-start;text-align:left}#hero-banner-section .hero-banner__title{font-size:60px;line-height:120%}}#hero-banner-section .hero-banner__subtitle{font-style:normal;font-weight:600;font-size:24px;line-height:125%;font-family:Inter}#hero-banner-section .hero-banner__tagline{display:none}@media screen and (min-width:768px){#hero-banner-section .hero-banner__subtitle{font-size:32px}#hero-banner-section .hero-banner__tagline{display:inline-block}}#hero-banner-section .section-cta{display:grid;gap:16px;grid-template-columns:minmax(0,1fr);justify-content:center;width:100%;max-width:256px;text-align:center}@media screen and (min-width:769px){#hero-banner-section .section-cta{max-width:288px}}#hero-banner-section .section-cta .cta-subtext{margin-top:-8px}#hero-banner-section .wallpaper{z-index:-1;width:100%;border-radius:8px;overflow:hidden}#hero-banner-section .wallpaper img{-o-object-fit:cover;object-fit:cover;height:100%;max-width:100%}#hero-banner-section .countdown{display:grid;gap:4px;justify-items:center}@media screen and (min-width:768px){#hero-banner-section .countdown{justify-items:flex-start}}#hero-banner-section .countdown .countdown-timer{display:grid;gap:4px;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr);align-items:center;justify-content:flex-start;width:100%}#hero-banner-section .countdown .countdown-timer .time-part{display:grid;justify-content:center;padding:10px;background-color:#fff;border-radius:4px;text-align:center}#hero-banner-section .countdown .countdown-timer .time-part .digit{font-size:20px}@media screen and (min-width:768px){#hero-banner-section .countdown .countdown-timer .time-part{width:69px;padding:4px}#hero-banner-section .countdown .countdown-timer .time-part .digit{font-weight:600;font-size:32px;line-height:125%}}#hero-banner-section .countdown .countdown-timer .time-part .label{font-size:8px}@media screen and (min-width:768px){#hero-banner-section .countdown .countdown-timer .time-part .label{font-weight:400;font-size:12px;line-height:16px}}
 </style>
 
@@ -18,7 +36,7 @@
       <div class="section-cta">
         {% if countdown != blank %}
           <div class="countdown">
-            <p class="paragraph-14 font-semibold text-white md:text-black">{{ countdown.settings.heading }}</p>
+            <p class="paragraph-14 font-semibold hero-banner-heading">{{ countdown.settings.heading }}</p>
             <hero-banner-countdown-timer end-time="{{ countdown.settings.timer }}">
               <div class="countdown-timer">
                 <div class="time-part">
@@ -47,7 +65,7 @@
             {{ cta.settings.text }}
           </a>
 
-          <p class="cta-subtext text-white md:text-black">{{ cta.settings.subtext }}</p>
+          <p class="cta-subtext hero-banner-subtext">{{ cta.settings.subtext }}</p>
         {% endif %}
       </div>
     </div>
@@ -82,6 +100,18 @@
           "type": "text",
           "id": "heading",
           "label": "Countdown Title"
+        },
+        {
+          "type": "color",
+          "id": "desktop_color",
+          "label": "Desktop Color",
+          "default": "#000000"
+        },
+        {
+          "type": "color",
+          "id": "mobile_color",
+          "label": "Mobile Color",
+          "default": "#000000"
         },
         {
           "type": "text",
@@ -127,6 +157,18 @@
           "id": "subtext",
           "type": "text",
           "label": "Subtext"
+        },
+        {
+          "type": "color",
+          "id": "desktop_color",
+          "label": "Desktop Color",
+          "default": "#000000"
+        },
+        {
+          "type": "color",
+          "id": "mobile_color",
+          "label": "Mobile Color",
+          "default": "#000000"
         }
       ]
     },

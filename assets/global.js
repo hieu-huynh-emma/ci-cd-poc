@@ -862,15 +862,17 @@ class VariantSelects extends HTMLElement {
     if (productForm) productForm.handleErrorMessage();
   }
 
-  renderProductInfo() {
+    renderProductInfo() {
     const originalPrice = this.currentVariant.compare_at_price / 100;
     const price = this.currentVariant.price / 100;
 
     const priceInCurrency = Currency.format(price, { maximumFractionDigits: price % 1 === 0 ? 0 : 2 });
     const originalPriceInCurrency = Currency.format(originalPrice, { maximumFractionDigits: originalPrice % 1 === 0 ? 0 : 2 });
+    const discountPercentage = Math.round((originalPrice - price) * 100 / originalPrice)
 
     $('.price-item.price-item--sale').text(priceInCurrency)
     $('.price-item.price-item--regular').text(originalPriceInCurrency)
+    $('.price__pricing-group .price-badge').text(`- ${discountPercentage}%`)
 
     const isAvail = !!this.currentVariant.available
 
@@ -882,6 +884,7 @@ class VariantSelects extends HTMLElement {
 
     $('quantity-input .quantity-input__native').val(1)
   }
+
 
   toggleSoldOutUpsell(show) {
     const productForm = document.querySelector(`.product-form-${this.dataset.section}`);
