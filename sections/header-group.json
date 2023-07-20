@@ -1,0 +1,110 @@
+{
+  "type": "header",
+  "name": "Header Group",
+  "sections": {
+    "announcement-bar": {
+      "type": "announcement-bar",
+      "blocks": {
+        "624f85d1-ceeb-461a-8920-82816339774f": {
+          "type": "countdown_slide",
+          "settings": {
+            "text": "<p>Current offers ending soon |<\/p>",
+            "timer_text": "<p>Current offers ending soon |<\/p>",
+            "end_time": "2023-07-20 11:00"
+          }
+        },
+        "4befd056-3333-4649-85aa-04c5d05e968f": {
+          "type": "text_slide",
+          "settings": {
+            "text": "<p>Free Shipping & Returns: Order ship out in 1 business day.<\/p>"
+          }
+        },
+        "67a40418-d09b-4eef-938a-4cc2fd8042ee": {
+          "type": "text_slide",
+          "settings": {
+            "text": "<p>Try Emma totally risk-free! Start your 365-Night Trial today.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "624f85d1-ceeb-461a-8920-82816339774f",
+        "4befd056-3333-4649-85aa-04c5d05e968f",
+        "67a40418-d09b-4eef-938a-4cc2fd8042ee"
+      ],
+      "settings": {
+        "home_page_only": false,
+        "background_color": "#ff563d",
+        "text_color": "#ffffff"
+      }
+    },
+    "header": {
+      "type": "header",
+      "settings": {
+        "show_sale_link": true,
+        "logo": "shopify:\/\/shop_images\/MicrosoftTeams-Logo_Emma_new.png",
+        "logo_max_width": 120,
+        "header_color": "#000000",
+        "transparent_header_enable": true,
+        "transparent_header_color": "#ffffff",
+        "search": "none",
+        "main_menu_link_list": "main-menu",
+        "drawer_bottom_link_list": "",
+        "drawer_search_enable": false,
+        "text": "Our Victoria Day Sale is here! 👑 Click here to take over 50% off our award-winning mattress.",
+        "link": "shopify:\/\/products\/emma-original-mattress"
+      }
+    },
+    "risk-free-banner": {
+      "type": "risk-free-banner",
+      "blocks": {
+        "605013b2-263f-4c29-b4c0-136f75610eda": {
+          "type": "banner-item",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/delivery.svg",
+            "text": "Free shipping & returns",
+            "url": ""
+          }
+        },
+        "9593f14f-4c86-4af9-953e-0fa248231b89": {
+          "type": "banner-item",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/star.svg",
+            "text": "365-Night Money-Back Guarantee",
+            "url": ""
+          }
+        },
+        "8b906a77-60bb-46b8-b714-8fe010db07ca": {
+          "type": "banner-item",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/credit-card.svg",
+            "text": "Financing Available",
+            "url": ""
+          }
+        },
+        "49138228-00c2-461a-bbdd-650d93f8503b": {
+          "type": "banner-item",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/calendar.svg",
+            "text": "10-Year Warranty",
+            "url": ""
+          }
+        }
+      },
+      "block_order": [
+        "605013b2-263f-4c29-b4c0-136f75610eda",
+        "9593f14f-4c86-4af9-953e-0fa248231b89",
+        "8b906a77-60bb-46b8-b714-8fe010db07ca",
+        "49138228-00c2-461a-bbdd-650d93f8503b"
+      ],
+      "settings": {
+        "text_color": "#2e2f3c",
+        "bg_color": "#ffffff"
+      }
+    }
+  },
+  "order": [
+    "announcement-bar",
+    "header",
+    "risk-free-banner"
+  ]
+}

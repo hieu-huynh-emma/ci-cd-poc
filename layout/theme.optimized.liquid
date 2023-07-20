@@ -31,11 +31,7 @@
 {% render 'shopify-theme-settings', isOptimized: isOptimized %}
 
 <body>
-
-  <div class="sticky top-0 z-[101]">
-    {% section 'announcement-bar' %}
-    {% section 'header' %}
-  </div>
+  {% sections 'header-group' %}
 
   <main id="MainContent" role="main">
     {{ content_for_layout }}

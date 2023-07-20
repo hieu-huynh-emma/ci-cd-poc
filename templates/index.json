@@ -1,14 +1,6 @@
 {
   "layout": "theme.optimized",
   "sections": {
-    "home-risk-free-banner": {
-      "type": "home-risk-free-banner",
-      "settings": {
-        "year_warranty": 10,
-        "night_trial": 365,
-        "financing_available": true
-      }
-    },
     "hero-banner": {
       "type": "hero-banner",
       "blocks": {
@@ -825,7 +817,6 @@
     }
   },
   "order": [
-    "home-risk-free-banner",
     "hero-banner",
     "promotional-banner",
     "winning-awards",

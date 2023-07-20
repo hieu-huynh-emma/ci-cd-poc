@@ -135,58 +135,6 @@
         "settings": {
         }
       },
-      "announcement-bar": {
-        "type": "announcement-bar",
-        "blocks": {
-          "624f85d1-ceeb-461a-8920-82816339774f": {
-            "type": "countdown_slide",
-            "settings": {
-              "text": "<p>Current offers ending soon |<\/p>",
-              "timer_text": "<p>Current offers ending soon |<\/p>",
-              "end_time": "2023-07-20 11:00"
-            }
-          },
-          "4befd056-3333-4649-85aa-04c5d05e968f": {
-            "type": "text_slide",
-            "settings": {
-              "text": "<p>Free Shipping & Returns: Order ship out in 1 business day.<\/p>"
-            }
-          },
-          "67a40418-d09b-4eef-938a-4cc2fd8042ee": {
-            "type": "text_slide",
-            "settings": {
-              "text": "<p>Try Emma totally risk-free! Start your 365-Night Trial today.<\/p>"
-            }
-          }
-        },
-        "block_order": [
-          "624f85d1-ceeb-461a-8920-82816339774f",
-          "4befd056-3333-4649-85aa-04c5d05e968f",
-          "67a40418-d09b-4eef-938a-4cc2fd8042ee"
-        ],
-        "settings": {
-          "home_page_only": false,
-          "background_color": "#ff563d",
-          "text_color": "#ffffff"
-        }
-      },
-      "header": {
-        "type": "header",
-        "settings": {
-          "show_sale_link": true,
-          "logo": "shopify:\/\/shop_images\/MicrosoftTeams-Logo_Emma_new.png",
-          "logo_max_width": 120,
-          "header_color": "#000000",
-          "transparent_header_enable": true,
-          "transparent_header_color": "#ffffff",
-          "search": "none",
-          "main_menu_link_list": "main-menu",
-          "drawer_bottom_link_list": "",
-          "drawer_search_enable": false,
-          "text": "Our Victoria Day Sale is here! 👑 Click here to take over 50% off our award-winning mattress.",
-          "link": "shopify:\/\/products\/emma-original-mattress"
-        }
-      },
       "featured-collections": {
         "type": "featured-collections",
         "blocks": {

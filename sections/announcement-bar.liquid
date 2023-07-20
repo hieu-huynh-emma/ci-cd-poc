@@ -9,9 +9,10 @@
     --section-setting-background-color: {{ background_color }};
     --section-setting-text-color: {{ text_color }};
   }
-
-  #shopify-section-announcement-bar [type="button"],#shopify-section-announcement-bar [type="reset"],#shopify-section-announcement-bar [type="submit"],#shopify-section-announcement-bar button{-webkit-appearance: button;background-color: transparent;background-image: none}#shopify-section-announcement-bar .announcement-bar{height: 70px;width: 100%;background-color: var(--section-setting-background-color);color: var(--section-setting-text-color);box-shadow: 0 42px 65px rgba(0, 0, 0, 0.03),0 9.38125px 14.5186px rgba(0, 0, 0, 0.018),0 2.79304px 4.32257px rgba(0, 0, 0, 0.012)}#shopify-section-announcement-bar .splide{width: 100%;text-align: center}#shopify-section-announcement-bar .announcement-bar__content{font-variant-numeric: tabular-nums;text-align: center;letter-spacing: 0;height: 100%;margin: 0;padding: 0 30px;display: flex;justify-content: center;align-items: center;flex-wrap: wrap}#shopify-section-announcement-bar .announcement-bar__content *{color: var(--section-setting-text-color)}@media (min-width: 768px){#shopify-section-announcement-bar .announcement-bar{height: 40px}}#shopify-section-announcement-bar .splide__list{width: 100%}#shopify-section-announcement-bar .splide__track{padding: 0}#shopify-section-announcement-bar .splide__arrow{transform: translateY(-50%);transition: opacity 0.3s}#shopify-section-announcement-bar .splide__arrow:disabled{opacity: 0;pointer-events: none}
 </style>
+
+<link rel="stylesheet" href="{{ 'announcement-bar.css' | asset_url }}"/>
+
 
 {% if home_page_only == false or request.page_type == 'index' %}
   <div class="announcement-bar">
@@ -40,11 +41,17 @@
       </div>
     </div>
   </div>
+
+  <script is="delay-script" phase="interactive" url="{{ 'announcement-bar.js' | asset_url }}"></script>
+
+
+
 {% endif %}
 
 {% schema %}
 {
   "name": "Announcement Bar",
+  "class": "announcement-bar-wrapper",
   "settings": [
     {
       "type": "checkbox",

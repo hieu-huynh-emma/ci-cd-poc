@@ -1,13 +1,5 @@
 {
   "sections": {
-    "banner": {
-      "type": "home-risk-free-banner",
-      "settings": {
-        "year_warranty": 10,
-        "night_trial": 365,
-        "financing_available": true
-      }
-    },
     "affiliate-banners": {
       "type": "affiliate-banners",
       "blocks": {
@@ -806,7 +798,6 @@
     }
   },
   "order": [
-    "banner",
     "affiliate-banners",
     "product-info",
     "media-with-text-banners",

@@ -1,4 +1,8 @@
-#shopify-section-announcement-bar {
+.announcement-bar-wrapper {
+  position: sticky;
+  top: -1px;
+  z-index: 999;
+
   [type=button], [type=reset], [type=submit], button {
     -webkit-appearance: button;
     background-color: transparent;
@@ -13,8 +17,8 @@
     color: var(--section-setting-text-color);
 
     box-shadow: 0 42px 65px rgba(0, 0, 0, 0.03),
-      0 9.38125px 14.5186px rgba(0, 0, 0, 0.018),
-      0 2.79304px 4.32257px rgba(0, 0, 0, 0.012);
+    0 9.38125px 14.5186px rgba(0, 0, 0, 0.018),
+    0 2.79304px 4.32257px rgba(0, 0, 0, 0.012);
 
     &__content {
       font-variant-numeric: tabular-nums;
@@ -41,6 +45,8 @@
   }
 
   .splide {
+    width: 100%;
+
     &__list {
       width: 100%;
     }

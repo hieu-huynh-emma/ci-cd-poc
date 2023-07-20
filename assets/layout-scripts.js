@@ -1,5 +1,4 @@
 $(document).ready(function () {
-  announcementBarSlide()
   navigationHamburger()
   languageSwitching()
   navigationAccordion()
@@ -7,7 +6,6 @@ $(document).ready(function () {
   storeLocalization()
   freshChat()
   cartDrawerCustomerSupport()
-  announcementBarCountdown()
   contactUs()
   switchAffirmMessage()
 });
@@ -34,51 +32,8 @@ function contactUs() {
   $('#ContactUsSection .live-chat').click(openChatSupport)
 }
 
-function announcementBarCountdown() {
-  const timer = document.getElementById('countdown-timer');
-  const message = document.getElementById('announcement-message');
-  const currentLanguage = $('html').attr('lang');
-
-  function getEndTime() {
-    return new Date('{{ end_time }}').getTime();
-  }
-
-  function format(t) {
-    return t < 10 ? '0' + t : t;
-  }
-
-  function render(time) {
-    const { days, hours, minutes, seconds } = time;
-    message.innerHTML = `{{ timer_text }}&nbsp;`;
-    timer.innerHTML =
-      currentLanguage === 'en'
-        ? `${format(days)} days ${format(hours)} hours ${format(minutes)} minutes ${format(seconds)} seconds`
-        : `${format(days)} jours ${format(hours)} heures ${format(minutes)} minutes ${format(seconds)} secondes`;
-  }
-
-  function complete() {
-    message.innerHTML = `{{ text }}`;
-    timer.style.display = 'none';
-  }
-
-  const countdownTimer = new Countdown(getEndTime(), render, complete);
-}
-
 function cartDrawerCustomerSupport() {
   $("#CartDrawerCustomerSupport .live-chat").click(openChatSupport)
-}
-
-function announcementBarSlide() {
-  new Splide('#shopify-section-announcement-bar .splide', {
-    pagination: false,
-    autoplay: true,
-    rewind: true,
-    interval: 8000,
-    perPage: 1,
-    perMove: 1,
-    pauseOnHover: false,
-    pauseOnFocus: false,
-  }).mount();
 }
 
 function navigationHamburger() {

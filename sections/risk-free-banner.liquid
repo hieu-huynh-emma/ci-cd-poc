@@ -1,0 +1,108 @@
+<style>
+  #risk-free-banner-section .risk-banner {
+    background: {{ section.settings.bg_color }};
+    padding: 8px;
+  }
+
+  #risk-free-banner-section .risk-banner__block {
+    color: white;
+    font-weight: bold;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #risk-free-banner-section .risk-banner__text {
+    line-height: 1;
+    margin: 0 4px;
+    color: {{ section.settings.text_color }};
+    font-weight: 300;
+  }
+
+  #risk-free-banner-section .splide__track {
+    padding: 0;
+  }
+
+  @media (min-width: 768px) {
+    #risk-free-banner-section .splide__list {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    #risk-free-banner-section .risk-banner__text {
+      margin-right: 24px;
+      margin-left: 14px;
+    }
+  }
+</style>
+
+{% assign bannerItems = section.blocks | where: "type", "banner-item" %}
+
+<section id="risk-free-banner-section">
+  <div class="splide risk-banner">
+    <div class="splide__track">
+      <ul class="splide__list">
+        {% for block in bannerItems %}
+          {% assign url = block.settings.url %}
+
+          <li class="splide__slide">
+            <a class="risk-banner__block"{% if url %} href="{{ url }}"{% endif %} target="_blank">
+              <img class="lazyload" data-src="{{ block.settings.icon | image_url: width: 25 }}" width="25" alt="">
+
+              <span class="risk-banner__text">{{ block.settings.text }}</span>
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</section>
+
+<script is="delay-script" phase="interactive" url="{{ 'risk-free-banner.js' | asset_url }}"></script>
+
+{% schema %}
+{
+  "name": "Risk Free Banner",
+  "blocks": [
+    {
+      "type": "banner-item",
+      "name": "Banner Item",
+      "settings": [
+        {
+          "id": "icon",
+          "type": "image_picker",
+          "label": "Banner Icon"
+        },
+        {
+          "id": "text",
+          "type": "text",
+          "label": "Banner Text"
+        },
+        {
+          "id": "url",
+          "type": "url",
+          "label": "Banner Url"
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "id": "text_color",
+      "type": "color",
+      "label": "Text Color",
+      "default": "#2e2f3c"
+    },
+    {
+      "id": "bg_color",
+      "type": "color",
+      "label": "Background Color",
+      "default": "#ffffff"
+    }
+  ]
+}
+{% endschema %}

@@ -1,5 +1,5 @@
 $(document).ready(function () {
-  new Splide('#home-risk-free-banner-section .splide', {
+  new Splide('#risk-free-banner-section .splide', {
     gap: '16px',
     pagination: false,
     autoplay: true,

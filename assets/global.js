@@ -1187,28 +1187,28 @@ function calculateCountdownTime(endTime) {
 class Countdown {
   constructor(expiredDate, onRender, onComplete) {
    this.setExpiredDate(expiredDate);
- 
+
    this.onRender = onRender;
    this.onComplete = onComplete;
   }
- 
+
   setExpiredDate(expiredDate) {
    const currentTime = new Date().getTime();
- 
+
    this.timeRemaining = expiredDate - currentTime;
- 
+
    this.timeRemaining > 0 ? this.start() : this.complete();
   }
- 
+
   complete() {
    if (typeof this.onComplete === 'function') {
     this.onComplete();
    }
   }
- 
+
   start() {
    this.update();
- 
+
    const intervalId = setInterval(() => {
     this.timeRemaining -= 1000;
     if (this.timeRemaining < 0) {
@@ -1219,7 +1219,7 @@ class Countdown {
     }
    }, 1000);
   }
- 
+
   getTime() {
    return {
     days: Math.floor(this.timeRemaining / 1000 / 60 / 60 / 24),
@@ -1228,7 +1228,7 @@ class Countdown {
     seconds: Math.floor(this.timeRemaining / 1000) % 60
    };
   }
- 
+
   update() {
    if (typeof this.onRender === 'function') {
     this.onRender(this.getTime());
@@ -1296,44 +1296,3 @@ class HeroBannerCountdownTimer extends HTMLElement {
 }
 
 customElements.define('hero-banner-countdown-timer', HeroBannerCountdownTimer);
-
-class AnnouncementBarCountdownTimer extends HTMLElement {
-  constructor() {
-    super();
-    this.currentLanguage = document.querySelector('html').getAttribute('lang')
-    this.countdownSlide = document.querySelector('#shopify-section-announcement-bar .countdown-slide')
-    this.timer = this.querySelector('#countdown-timer');
-    this.message = this.querySelector('#announcement-message');
-    this.endTime = this.getAttribute('end-time')
-    this.timerText = this.getAttribute('timer-text')
-  }
-
-  connectedCallback() {
-    this.startCountdown()
-  }
-
-  disconnectedCallback() {}
-
-  startCountdown() {
-    const intervalReference = setInterval(() => {
-      const delta = (new Date(this.endTime) - Date.now()) / 1000;
-      if (delta >= 0) {
-        this.render(calculateCountdownTime(this.endTime))
-      } else {
-        this.countdownSlide.remove()
-        clearInterval(intervalReference)
-      }
-    }, 1000)
-  }
-
-  render(time) {
-    const { days, hours, minutes, seconds } = time;
-    this.message.innerHTML = `${this.timerText}&nbsp;`;
-    this.timer.innerHTML =
-      this.currentLanguage === 'en'
-        ? `${days} days ${hours} hours ${minutes} minutes ${seconds} seconds`
-        : `${days} jours ${hours} heures ${minutes} minutes ${seconds} secondes`;
-  }
-}
-
-customElements.define('announcement-bar-countdown-timer', AnnouncementBarCountdownTimer);

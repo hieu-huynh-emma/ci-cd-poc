@@ -1,13 +1,5 @@
 {
   "sections": {
-    "banner": {
-      "type": "home-risk-free-banner",
-      "settings": {
-        "year_warranty": 3,
-        "night_trial": 60,
-        "financing_available": false
-      }
-    },
     "main": {
       "type": "product-details",
       "blocks": {
@@ -425,7 +417,6 @@
     }
   },
   "order": [
-    "banner",
     "main",
     "alternate-banners",
     "accessory-highlights",
