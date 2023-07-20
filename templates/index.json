@@ -25,7 +25,7 @@
             "heading": "Order Today For Fastest Shipping",
             "desktop_color": "#000000",
             "mobile_color": "#000000",
-            "timer": "2023-07-19 11:00"
+            "timer": "2023-07-20 11:00"
           }
         },
         "9593f14f-4c86-4af9-953e-0fa248231b89": {
@@ -44,9 +44,12 @@
         "def90d36-6b56-4c80-99e9-566664031df6",
         "9593f14f-4c86-4af9-953e-0fa248231b89"
       ],
+      "custom_css": [
+        "#hero-banner-section .hero-banner__tagline a {font-size: 14px;}"
+      ],
       "settings": {
         "title": "<p>Summer sales : up to 45% off<\/p>",
-        "tagline": "<p>A mattress with perfect support, maximum comfort, and staying cool while you sleep.<br\/><br\/>Terms & conditions apply*<br\/><\/p>",
+        "tagline": "<p>A mattress with perfect support, maximum comfort, and staying cool while you sleep.<br\/><br\/><a href=\"\/pages\/emma-first-time-customer-offer-promo-details\" title=\"Emma “First Time Customer Offer” Promo Details\">Terms & conditions apply*<\/a><br\/><\/p>",
         "subtitle": "Discover the new Emma Hybrid Comfort"
       }
     },
@@ -56,7 +59,6 @@
         "d22ef2ae-66f3-449d-ba55-b21a52a8c76a": {
           "type": "item",
           "settings": {
-            "icon": "shopify:\/\/shop_images\/Google_2015_logo_1.png"
           }
         },
         "8140edc8-79e5-4834-9f83-d32fcd2d2adf": {
@@ -289,7 +291,7 @@
           "type": "product-block",
           "settings": {
             "product": "emma-hybrid-comfort",
-            "color": "#f4711e",
+            "color": "#ff8900",
             "primary_badge": "COMFORT",
             "secondary_badge": "Biggest deal",
             "mattress_height": "shopify:\/\/shop_images\/mattres-height-13-v2.png",

@@ -394,7 +394,7 @@
                                 <ul class="product-dimensions">
                                     {% for variant in product.variants %}
                                         <li class="variant-dimension">
-                                            <h6 class="heading-6 font-semibold">{{ variant.title | split: " - " | first }}
+                                            <h6 class="heading-6 font-semibold">{{ variant.title | split: " | " | first }}
                                                 | {{ variant.metafields.accentuate.dimension }}</h6>
 
                                         </li>
