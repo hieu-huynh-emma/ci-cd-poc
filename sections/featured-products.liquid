@@ -51,16 +51,16 @@
         <div class="w-full flex flex-col md:max-w-[422px]">
           {% if section.settings.show_secondary_badge %}
             <p
-              style="background-color: {{ block.settings.color }};"
+              style="background-color: {{ block.settings.badge_color }};"
               class="mx-auto mb-8 w-max rounded-full px-7 py-3 text-[13px] font-semibold uppercase leading-none text-white">{{ block.settings.primary_badge }}</p>
           {% endif %}
           <div
-            style="border-color: {{ block.settings.color }}"
+            style="border-color: {{ block.settings.border_color }}"
             class="rounded-[6px] border flex flex-col h-full">
             <div class="flex justify-between p-4 gap-5">
               <div>
                 <p
-                  style="background-color: {{ block.settings.color }};"
+                  style="background-color: {{ block.settings.badge_color }};"
                   class="h-max inline-block rounded px-2 py-2 text-[13px] font-semibold uppercase leading-none text-white mb-1">{{ block.settings.secondary_badge }}</p>
                 {% if template.name == 'product' and request.path contains product.handle %}
                   <p class="text-[13px] text-[#FF8900]">👁 Currently Viewing</p>
@@ -171,16 +171,16 @@
               <div class="w-full h-full flex flex-col max-w-[320px]">
                 {% if section.settings.show_secondary_badge %}
                   <p
-                    style="background-color: {{ block.settings.color }};"
+                    style="background-color: {{ block.settings.badge_color }};"
                     class="mx-auto mb-8 w-max rounded-full px-7 py-3 text-[13px] font-semibold uppercase leading-none text-white">{{ block.settings.primary_badge }}</p>
                 {%endif%}
                 <div
-                  style="border-color: {{ block.settings.color }}"
+                  style="border-color: {{ block.settings.border_color }}"
                   class="rounded-[6px] border flex flex-col h-full">
                   <div class="flex justify-between p-4 gap-5">
                     <div>
                       <p
-                        style="background-color: {{ block.settings.color }};"
+                        style="background-color: {{ block.settings.badge_color }};"
                         class="h-max inline-block rounded px-2 py-2 text-[13px] font-semibold uppercase leading-none text-white mb-1">{{ block.settings.secondary_badge }}</p>
                       {% if template.name == 'product' and request.path contains product.handle %}
                         <p class="text-[13px] text-[#FF8900]">👁 Currently Viewing</p>
@@ -307,9 +307,16 @@
           "label": "Product"
         },
         {
-          "id": "color",
+          "id": "border_color",
           "type": "color",
-          "label": "Color"
+          "label": "Border Color",
+          "default": "#FF8900"
+        },
+        {
+          "id": "badge_color",
+          "type": "color",
+          "label": "Badge Color",
+          "default": "#FF8900"
         },
         {
           "id": "primary_badge",

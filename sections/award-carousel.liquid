@@ -2,78 +2,43 @@
 
 <link is="delay-stylesheet" href="{{ 'award-carousel.css' | asset_url }}">
 
-<section id="{{ section.id }}" class="award-carousel section-container sm md:lg">
-	<div class="section-chassis page-boundary">
-		<div class="section-header">
-			<h3 class="heading-3 text-center text-primary font-inter font-semibold">{{ section.settings.heading }}</h3>
-			{% comment %}<h2 class="quote text-center"></h2>{% endcomment %}
-			<p class="award-name"></p>
-		</div>
-		
-		<div class="awards splide">
-			{% render 'splide-arrows' %}
-			<div class="splide__track">
-				<ul class="splide__list">
-					{%- for block in awards -%}
-						<li
-							class="splide__slide" data-quote="{{ block.settings.quote | escape }}"
-							data-heading="{{ block.settings.heading | escape }}"
-						>
-							{% capture icon %}
-                {% render 'image-tag', image_src: block.settings.icon, width: 1080 %}
-							{% endcapture %}
-							
-							{% if block.settings.link %}
-								<a href="{{ block.settings.link }}" target="_blank" class="awards__item">
-									{{ icon }}
-								</a>
-							{% else %}
-								<div class="awards__item">{{ icon }}</div>
-							{% endif %}
-						</li>
-					{%- endfor -%}
-				</ul>
-			</div>
-		</div>
-	</div>
+<section id="award-carousel-section" class="award-carousel section-container sm md:lg">
+    <div class="section-chassis page-boundary">
+        <div class="section-header">
+            <h3 class="heading-3 text-center text-primary font-inter font-semibold">{{ section.settings.heading }}</h3>
+            {% comment %}<h2 class="quote text-center"></h2>{% endcomment %}
+            <p class="award-name"></p>
+        </div>
+
+        <div class="awards splide">
+            {% render 'splide-arrows' %}
+            <div class="splide__track">
+                <ul class="splide__list">
+                    {%- for block in awards -%}
+                        <li
+                                class="splide__slide" data-quote="{{ block.settings.quote | escape }}"
+                                data-heading="{{ block.settings.heading | escape }}"
+                        >
+                            {% capture icon %}
+                                {% render 'image-tag', image_src: block.settings.icon, width: 1080 %}
+                            {% endcapture %}
+
+                            {% if block.settings.link %}
+                                <a href="{{ block.settings.link }}" target="_blank" class="awards__item">
+                                    {{ icon }}
+                                </a>
+                            {% else %}
+                                <div class="awards__item">{{ icon }}</div>
+                            {% endif %}
+                        </li>
+                    {%- endfor -%}
+                </ul>
+            </div>
+        </div>
+    </div>
 </section>
 
-<script is="delay-script" phase="interactive">
-  function renderAwardQuote(slide) {
-    if (slide.isClone) return
-
-    // const quoteEl = $(slide.slide).data('quote')
-    const awardNameEl = $(slide.slide).data('heading')
-    // const quote = $($.parseHTML(quoteEl)).text()
-    const awardName = $($.parseHTML(awardNameEl)).text()
-		
-		{% comment %}$("#{{ section.id }} .quote").text(quote){% endcomment %}
-    $("#{{ section.id }} .award-name").text(awardName)
-  }
-
-  $(document).ready(function () {
-    const awardCarousel = new Splide('#{{ section.id }} .splide', {
-      gap: '1.6rem',
-      type: 'loop',
-      perMove: 1,
-      perPage: 5,
-      pagination: false,
-      arrows: true,
-      focus: 'center',
-      breakpoints: {
-        768: {
-          perPage: 3,
-          pagination: true,
-          arrows: false
-        }
-      }
-    })
-
-    awardCarousel.on('active', renderAwardQuote);
-
-    awardCarousel.mount();
-  })
-</script>
+<script is="delay-script" phase="interactive" url="{{ 'award-carousel.js' | asset_url }}"></script>
 
 {% schema %}
 {
