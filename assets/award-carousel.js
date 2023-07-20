@@ -1,30 +1,34 @@
-
-function renderAwardQuote(slide) {
-  if (slide.isClone) return
-  const awardNameEl = $(slide.slide).data('heading')
-  const awardName = $($.parseHTML(awardNameEl)).text()
-  $("#award-carousel-section .award-name").text(awardName)
-}
-
-$(document).ready(function () {
-  const awardCarousel = new Splide('#award-carousel-section .splide', {
-    gap: '1.6rem',
-    type: 'loop',
-    perMove: 1,
-    perPage: 5,
-    pagination: false,
-    arrows: true,
-    focus: 'center',
-    breakpoints: {
-      768: {
-        perPage: 3,
-        pagination: true,
-        arrows: false
-      }
+(async (sectionId) => {
+    function renderAwardQuote(slide) {
+        if (slide.isClone) return
+        const awardNameEl = $(slide.slide).data('heading')
+        const awardName = $($.parseHTML(awardNameEl)).text()
+        $(`#${sectionId} .award-name`).text(awardName)
     }
-  })
 
-  awardCarousel.on('active', renderAwardQuote);
+    window.addEventListener('complete', function () {
+        const awardCarousel = new Splide(`#${sectionId} .splide`, {
+            gap: '1.6rem',
+            type: 'loop',
+            perMove: 1,
+            perPage: 5,
+            pagination: false,
+            arrows: true,
+            focus: 'center',
+            breakpoints: {
+                768: {
+                    perPage: 3,
+                    pagination: true,
+                    arrows: false
+                }
+            }
+        })
 
-  awardCarousel.mount();
-})
+        awardCarousel.on('active', renderAwardQuote);
+
+        setTimeout(() => {
+            awardCarousel.mount();
+        })
+    })
+
+})(document.currentScript.closest('section.award-carousel').id);

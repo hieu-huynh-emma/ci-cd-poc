@@ -42,7 +42,9 @@
 
 <section id="promotional-banner-section" class="section-container spacing-{{ section.settings.container_spacing }}">
     <div class="section-chassis page-boundary">
-        {% render 'section-header' %}
+        <div class="section-header justify-{{ section.settings.heading_alignment }}">
+            <h2 class="heading-2 text-center font-{{ section.settings.header_font }}">{{ section.settings.heading }}</h2>
+        </div>
 
         <div class="section-content">
             {% if tagline %}

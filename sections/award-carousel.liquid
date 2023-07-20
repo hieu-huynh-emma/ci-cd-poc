@@ -2,7 +2,7 @@
 
 <link is="delay-stylesheet" href="{{ 'award-carousel.css' | asset_url }}">
 
-<section id="award-carousel-section" class="award-carousel section-container sm md:lg">
+<section id="{{ section.id }}" class="award-carousel section-container sm md:lg">
     <div class="section-chassis page-boundary">
         <div class="section-header">
             <h3 class="heading-3 text-center text-primary font-inter font-semibold">{{ section.settings.heading }}</h3>
@@ -36,9 +36,9 @@
             </div>
         </div>
     </div>
-</section>
 
-<script is="delay-script" phase="interactive" url="{{ 'award-carousel.js' | asset_url }}"></script>
+    <script is="delay-script" url="{{ 'award-carousel.js' | asset_url }}"></script>
+</section>
 
 {% schema %}
 {
