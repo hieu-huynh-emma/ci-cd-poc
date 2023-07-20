@@ -48,32 +48,41 @@
     "promotional-banner": {
       "type": "promotional-banner",
       "blocks": {
-        "d22ef2ae-66f3-449d-ba55-b21a52a8c76a": {
-          "type": "item",
+        "36c0fe95-7ff0-43ac-b673-b39719b89d37": {
+          "type": "tagline",
           "settings": {
+            "icon": "shopify:\/\/shop_images\/Star_filled.png",
+            "content": "<p><strong>75,000+<\/strong> 5-star reviews worldwide<\/p>"
+          }
+        },
+        "d22ef2ae-66f3-449d-ba55-b21a52a8c76a": {
+          "type": "logo",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Google_2015_logo_1.webp"
           }
         },
         "8140edc8-79e5-4834-9f83-d32fcd2d2adf": {
-          "type": "item",
+          "type": "logo",
           "settings": {
-            "icon": "shopify:\/\/shop_images\/Frame_34520.png"
+            "icon": "shopify:\/\/shop_images\/amazon_logo.webp"
           }
         },
         "8d40a1ab-28c7-48de-95f2-045c1feaf80f": {
-          "type": "item",
+          "type": "logo",
           "settings": {
-            "icon": "shopify:\/\/shop_images\/Yotpo-logo_1.png"
+            "icon": "shopify:\/\/shop_images\/yotpo_logo.webp"
           }
         }
       },
       "block_order": [
+        "36c0fe95-7ff0-43ac-b673-b39719b89d37",
         "d22ef2ae-66f3-449d-ba55-b21a52a8c76a",
         "8140edc8-79e5-4834-9f83-d32fcd2d2adf",
         "8d40a1ab-28c7-48de-95f2-045c1feaf80f"
       ],
       "settings": {
-        "lead_icon": "shopify:\/\/shop_images\/Star_filled.png",
-        "heading": "<p><strong>75,000+<\/strong> 5-star reviews worldwide<\/p>"
+        "text_color": "#2e2f3c",
+        "bg_color": "#ffffff"
       }
     },
     "winning-awards": {
