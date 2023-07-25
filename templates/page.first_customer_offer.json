@@ -1,0 +1,28 @@
+{
+  "layout": "theme",
+  "sections": {
+    "first-customer-offer-main": {
+      "type": "first-customer-offer-main",
+      "settings": {
+      }
+    },
+    "featured-collections": {
+      "type": "featured-collections",
+      "settings": {
+        "heading": "Emma's Advanced Sleep Range",
+        "header_font": "tiempos",
+        "heading_alignment": "start",
+        "container_spacing": "md",
+        "collection_list": [
+          "mattresses",
+          "beds",
+          "pillows"
+        ]
+      }
+    }
+  },
+  "order": [
+    "first-customer-offer-main",
+    "featured-collections"
+  ]
+}
