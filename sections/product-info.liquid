@@ -8,6 +8,7 @@
 {% assign upsell_mattress = section.blocks | where: 'type', 'upsell_mattress' | first %}
 {% assign upsell_mattress_v2 = section.blocks | where: 'type', 'upsell_mattress_v2' | first %}
 {% assign sold_out_upsell = section.blocks | where: 'type', 'sold_out_upsell' | first %}
+{% assign cta_message = section.blocks | where: 'type', 'cta_message' | first %}
 {% assign mini_comparison_table = section.blocks | where: 'type', 'mini-comparison-table' | first %}
 {% assign appBlock = section.blocks | where: 'type', '@app' | first %}
 {% assign uniqueSellingPoints = section.blocks | where: 'type', 'unique_selling_point' %}
@@ -282,6 +283,10 @@
                            href="{{ sold_out_upsell.settings.sold_out_upsell_product }}">
                             <p class="mt-2 mx-1 text-[#F03306] text-[14px] underline font-semibold">{{ sold_out_upsell.settings.sold_out_upsell_text }}</p>
                         </a>
+                    {% endif %}
+
+                  {% if cta_message %}
+                        <p style="color: {{ cta_message.settings.cta_message_color }}" class="mt-2 mx-1 text-[14px] font-semibold">{{ cta_message.settings.cta_message }}</p>
                     {% endif %}
                 </div>
 
@@ -750,6 +755,23 @@
           "id": "sold_out_upsell_text",
           "type": "text",
           "label": "Sold Out Upsell Text"
+        }
+      ]
+    },
+    {
+      "type": "cta_message",
+      "name": "CTA Message",
+      "settings": [
+        {
+          "id": "cta_message",
+          "type": "text",
+          "label": "CTA message"
+        },
+        {
+          "type": "color",
+          "id": "cta_message_color",
+          "label": "CTA message",
+          "default": "#000"
         }
       ]
     }
