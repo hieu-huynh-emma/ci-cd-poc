@@ -9,8 +9,9 @@
 {% assign no_collection_image = true %}
 <div
 	class="collection-card {{ grid_item_width }} collection-collage__item  text-center{% if collection_index == 1 %} row-span-2 h-[343px]{% else %} h-[192px]{% endif %} md:h-full" {{ block.shopify_attributes }}>
+	
 	<a
-		{% if collection_index == 1 %}href="{{ collection.url }}"{% endif %}
+		{% if collection_index == 1 %}href="{{ collection.url }}"{% else %}href="{{ collection.products[0].url }}"{% endif %}
 		class="collection-grid__item-link collection-collage__item-wrapper relative rounded-lg overflow-hidden"
 	>
 		{% comment %}

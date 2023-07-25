@@ -47,11 +47,11 @@
     align-content: space-between;
     justify-items: center;
     height: 100%;
-    padding: calc(24px + 12px) calc(16px + 12px);
 
     @media screen and (max-width: 768px) {
       inset: 0;
       width: 100%;
+      padding: calc(24px + 12px) calc(16px + 12px);
     }
 
     @media screen and (min-width: 768px) {
@@ -60,8 +60,10 @@
       align-content: center;
       justify-items: flex-start;
       max-width: 700px;
-      padding: 0;
+    }
 
+    @media screen and (min-width: 769px) and (max-width: 1500px) {
+      padding: 0 0 0 5rem;
     }
 
     .text-box {
@@ -99,6 +101,8 @@
 
       @media screen and (min-width: 768px) {
         font-size: 32px;
+
+        max-width: 528px;
       }
     }
 
@@ -133,11 +137,13 @@
   .wallpaper {
     z-index: -1;
 
-    width: 100%;
-    max-width: 91%;
     margin: 0 auto;
     border-radius: 8px;
     overflow: hidden;
+    @media screen and (min-width: 768px) {
+      width: 100%;
+      max-width: 91%;
+    }
 
     img {
       object-fit: cover;
