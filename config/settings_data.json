@@ -135,51 +135,6 @@
         "settings": {
         }
       },
-      "featured-collections": {
-        "type": "featured-collections",
-        "blocks": {
-          "featured-collections-0": {
-            "type": "collection",
-            "settings": {
-              "collection": ""
-            }
-          },
-          "featured-collections-1": {
-            "type": "collection",
-            "settings": {
-              "collection": ""
-            }
-          },
-          "featured-collections-2": {
-            "type": "collection",
-            "settings": {
-              "collection": ""
-            }
-          },
-          "featured-collections-3": {
-            "type": "collection",
-            "settings": {
-              "collection": ""
-            }
-          },
-          "featured-collections-4": {
-            "type": "collection",
-            "settings": {
-              "collection": ""
-            }
-          }
-        },
-        "block_order": [
-          "featured-collections-0",
-          "featured-collections-1",
-          "featured-collections-2",
-          "featured-collections-3",
-          "featured-collections-4"
-        ],
-        "settings": {
-          "title": "Collection list"
-        }
-      },
       "featured-products": {
         "type": "featured-products",
         "settings": {
@@ -388,45 +343,6 @@
       "checkout_button_color": "#000000",
       "checkout_error_color": "e32c2b",
       "sections": {
-        "featured-collections": {
-          "type": "featured-collections",
-          "blocks": {
-            "featured-collections-0": {
-              "type": "collection",
-              "settings": {
-              }
-            },
-            "featured-collections-1": {
-              "type": "collection",
-              "settings": {
-              }
-            },
-            "featured-collections-2": {
-              "type": "collection",
-              "settings": {
-              }
-            },
-            "featured-collections-3": {
-              "type": "collection",
-              "settings": {
-              }
-            },
-            "featured-collections-4": {
-              "type": "collection",
-              "settings": {
-              }
-            }
-          },
-          "block_order": [
-            "featured-collections-0",
-            "featured-collections-1",
-            "featured-collections-2",
-            "featured-collections-3",
-            "featured-collections-4"
-          ],
-          "settings": {
-          }
-        },
         "featured-products": {
           "type": "featured-products",
           "settings": {
@@ -444,7 +360,6 @@
         }
       },
       "content_for_index": [
-        "featured-collections",
         "featured-products",
         "featured-product",
         "newsletter"

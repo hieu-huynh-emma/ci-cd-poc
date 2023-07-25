@@ -8,6 +8,7 @@ class DelayScript extends HTMLScriptElement {
   constructor() {
     super();
 
+
     this.type = "javascript/blocked";
   }
 

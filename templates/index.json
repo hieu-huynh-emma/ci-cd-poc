@@ -209,6 +209,20 @@
         "heading": "Award-winning Comfort"
       }
     },
+    "featured-collections": {
+      "type": "featured-collections",
+      "settings": {
+        "heading": "Emma's Advanced Sleep Range",
+        "header_font": "tiempos",
+        "heading_alignment": "start",
+        "container_spacing": "md",
+        "collection_list": [
+          "mattresses",
+          "beds",
+          "pillows"
+        ]
+      }
+    },
     "emma-science": {
       "type": "image-with-text",
       "blocks": {
@@ -836,6 +850,7 @@
     "hero-banner",
     "promotional-banner",
     "winning-awards",
+    "featured-collections",
     "emma-science",
     "why-choose-us",
     "featured-products",

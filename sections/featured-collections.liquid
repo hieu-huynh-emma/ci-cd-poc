@@ -1,263 +1,92 @@
-<div data-section-id="{{ section.id }}" data-section-type="featured-collections-section">
-  <div class="global-wrapper">
-    {% if section.settings.title != blank %}
-      <div class="section-header text-center">
-        <h2 class="h1 section-header__title">{{ section.settings.title | escape }}</h2>
-        <hr class="hr--small">
-      </div>
-    {% endif %}
-
-    <div class="grid collection-grid">
-
-      {% comment %}
-        Show up to 9 collections.
-        Frontpage will be excluded if collections defined automatically.
-      {% endcomment %}
-      {% assign isEmpty = true %}
-      {% assign collection_index = 0 %}
-      {% assign collection_count = 0 %}
-      {% assign collection_limit = section.blocks.size %}
-
-      {% comment %}
-        Add one to the collection limit to offset chance of Frontpage being included
-      {% endcomment %}
-      {% assign collection_limit = collection_limit | plus: 1 %}
-
-      {% comment %}
-        Calculate number of collections to show, making sure Frontpage isn't one
-      {% endcomment %}
-      {% for collection in section.blocks limit: collection_limit %}
-          {% assign collection_count = collection_count | plus: 1 %}
-      {% endfor %}
-
-      {% if collection_count > 0 %}
-        {% assign isEmpty = false %}
-      {% endif %}
-
-      {% assign divisible_by_three = collection_count | modulo: 3 %}
-      {% assign divisible_by_two = collection_count | modulo: 2 %}
-
-      {% comment %}
-        Loop through the collections to display
-      {% endcomment %}
-      {% for block in section.blocks limit: collection_limit %}
-          {% assign collection = collections[block.settings.collection] %}
-          {% assign collection_index = collection_index | plus: 1 %}
-          {% assign collection_handle = collection.handle %}
-          {% include 'collection-grid-collage' %}
-      {% endfor %}
-
-      {% if isEmpty %}
-        <div class="global-wrapper">
-          <div class="global-grid">
-            <div class="grid__item">
-              <div class="rte text-center">
-                {{ 'home_page.onboarding.no_content' | t }}
-              </div>
-            </div>
-          </div>
-        </div>
-      {% endif %}
-
-    </div>
-  </div>
-</div>
+<section id="{{ section.id }}" data-section-type="featured-collections-section">
+	<div class="section-chassis page-boundary">
+		{% render 'section-header' %}
+		
+		<div class="grid md:grid-cols-2 md:grid-rows-[repeat(2,_minmax(0,_240px))] gap-5">
+			{% assign collection_index = 0 %}
+			{% for collection in section.settings.collection_list %}
+				{% assign collection_index = collection_index | plus: 1 %}
+				{% assign collection_handle = collection.handle %}
+    
+				{% include 'collection-grid-item' %}
+				
+			{% endfor %}
+		</div>
+	</div>
+</section>
 
 
 {% schema %}
 {
-  "name": {
-    "cs": "Seznam kolekcí",
-    "da": "Kollektionsliste",
-    "de": "Kategorieliste",
-    "en": "Collection list",
-    "es": "Lista de colecciones",
-    "fi": "Kokoelmaluettelo",
-    "fr": "Liste des collections",
-    "it": "Elenco delle collezioni",
-    "ja": "コレクションリスト",
-    "ko": "컬렉션 목록",
-    "nb": "Samlingsliste",
-    "nl": "Collectielijst",
-    "pl": "Lista kolekcji",
-    "pt-BR": "Lista de coleções",
-    "pt-PT": "Lista de coleções",
-    "sv": "Kollektionslista",
-    "th": "รายการคอลเลกชัน",
-    "tr": "Koleksiyon listesi",
-    "vi": "Danh sách bộ sưu tập",
-    "zh-CN": "产品系列列表",
-    "zh-TW": "商品系列清單"
-  },
-  "max_blocks": 9,
+  "name": "Featured Collections",
   "settings": [
     {
+      "id": "heading",
       "type": "text",
-      "id": "title",
-      "label": {
-        "cs": "Nadpis",
-        "da": "Overskrift",
-        "de": "Überschrift",
-        "en": "Heading",
-        "es": "Título",
-        "fi": "Otsake",
-        "fr": "Titre",
-        "it": "Heading",
-        "ja": "見出し",
-        "ko": "제목",
-        "nb": "Overskrift",
-        "nl": "Kop",
-        "pl": "Nagłówek",
-        "pt-BR": "Título",
-        "pt-PT": "Título",
-        "sv": "Rubrik",
-        "th": "ส่วนหัว",
-        "tr": "Başlık",
-        "vi": "Tiêu đề",
-        "zh-CN": "标题",
-        "zh-TW": "標題"
-      },
-      "default": {
-        "cs": "Seznam kolekcí",
-        "da": "Kollektionsliste",
-        "de": "Kategorieliste",
-        "en": "Collection list",
-        "es": "Lista de colecciones",
-        "fi": "Kokoelmaluettelo",
-        "fr": "Liste des collections",
-        "it": "Elenco delle collezioni",
-        "ja": "コレクションリスト",
-        "ko": "컬렉션 목록",
-        "nb": "Samlingsliste",
-        "nl": "Collectielijst",
-        "pl": "Lista kolekcji",
-        "pt-BR": "Lista de coleções",
-        "pt-PT": "Lista de coleções",
-        "sv": "Kollektionslista",
-        "th": "รายการคอลเลกชัน",
-        "tr": "Koleksiyon listesi",
-        "vi": "Danh sách bộ sưu tập",
-        "zh-CN": "产品系列列表",
-        "zh-TW": "商品系列清單"
-      }
-    }
-  ],
-  "presets": [
+      "label": "Heading",
+      "default": "Emma's Advanced Sleep Range"
+    },
     {
-      "name": {
-        "cs": "Seznam kolekcí",
-        "da": "Kollektionsliste",
-        "de": "Kategorieliste",
-        "en": "Collection list",
-        "es": "Lista de colecciones",
-        "fi": "Kokoelmaluettelo",
-        "fr": "Liste des collections",
-        "it": "Elenco delle collezioni",
-        "ja": "コレクションリスト",
-        "ko": "컬렉션 목록",
-        "nb": "Samlingsliste",
-        "nl": "Collectielijst",
-        "pl": "Lista kolekcji",
-        "pt-BR": "Lista de coleções",
-        "pt-PT": "Lista de coleções",
-        "sv": "Kollektionslista",
-        "th": "รายการคอลเลกชัน",
-        "tr": "Koleksiyon listesi",
-        "vi": "Danh sách bộ sưu tập",
-        "zh-CN": "产品系列列表",
-        "zh-TW": "商品系列清單"
-      },
-      "category": {
-        "cs": "Kolekce",
-        "da": "Kollektion",
-        "de": "Kategorie",
-        "en": "Collection",
-        "es": "Colección",
-        "fi": "Kokoelma",
-        "fr": "Collection",
-        "it": "Collezione",
-        "ja": "コレクション",
-        "ko": "컬렉션",
-        "nb": "Samling",
-        "nl": "Collectie",
-        "pl": "Kolekcja",
-        "pt-BR": "Coleção",
-        "pt-PT": "Coleção",
-        "sv": "Produktserie",
-        "th": "คอลเลกชัน",
-        "tr": "Koleksiyon",
-        "vi": "Bộ sưu tập",
-        "zh-CN": "收藏",
-        "zh-TW": "商品系列"
-      },
-      "blocks": [
+      "id": "header_font",
+      "type": "select",
+      "label": "Header Font",
+      "options": [
         {
-          "type": "collection"
+          "value": "inter",
+          "label": "Inter"
         },
         {
-          "type": "collection"
+          "value": "tiempos",
+          "label": "Tiempos"
+        }
+      ],
+      "default": "tiempos"
+    },
+    {
+      "id": "heading_alignment",
+      "type": "select",
+      "label": "Heading Alignment",
+      "options": [
+        {
+          "value": "start",
+          "label": "Left"
         },
         {
-          "type": "collection"
-        }
-      ]
-    }
-  ],
-  "blocks": [
-    {
-      "type": "collection",
-      "name": {
-        "cs": "Kolekce",
-        "da": "Kollektion",
-        "de": "Kategorie",
-        "en": "Collection",
-        "es": "Colección",
-        "fi": "Kokoelma",
-        "fr": "Collection",
-        "it": "Collezione",
-        "ja": "コレクション",
-        "ko": "컬렉션",
-        "nb": "Samling",
-        "nl": "Collectie",
-        "pl": "Kolekcja",
-        "pt-BR": "Coleção",
-        "pt-PT": "Coleção",
-        "sv": "Produktserie",
-        "th": "คอลเลกชัน",
-        "tr": "Koleksiyon",
-        "vi": "Bộ sưu tập",
-        "zh-CN": "收藏",
-        "zh-TW": "商品系列"
-      },
-      "settings": [
+          "value": "center",
+          "label": "Center"
+        },
         {
-          "id": "collection",
-          "type": "collection",
-          "label": {
-            "cs": "Kolekce",
-            "da": "Kollektion",
-            "de": "Kategorie",
-            "en": "Collection",
-            "es": "Colección",
-            "fi": "Kokoelma",
-            "fr": "Collection",
-            "it": "Collezione",
-            "ja": "コレクション",
-            "ko": "컬렉션",
-            "nb": "Samling",
-            "nl": "Collectie",
-            "pl": "Kolekcja",
-            "pt-BR": "Coleção",
-            "pt-PT": "Coleção",
-            "sv": "Produktserie",
-            "th": "คอลเลกชัน",
-            "tr": "Koleksiyon",
-            "vi": "Bộ sưu tập",
-            "zh-CN": "收藏",
-            "zh-TW": "商品系列"
-          }
+          "value": "end",
+          "label": "Right"
         }
-      ]
+      ],
+      "default": "start"
+    },
+    {
+      "type": "select",
+      "id": "container_spacing",
+      "options": [
+        {
+          "value": "md",
+          "label": "Medium (40px)"
+        },
+        {
+          "value": "lg",
+          "label": "Large (60px)"
+        },
+        {
+          "value": "xl",
+          "label": "XL (80px)"
+        }
+      ],
+      "default": "md",
+      "label": "Container Spacing"
+    },
+    {
+      "type": "collection_list",
+      "id": "collection_list",
+      "label": "Collections",
+      "limit": 9
     }
   ]
 }
