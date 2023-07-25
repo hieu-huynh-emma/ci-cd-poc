@@ -64,10 +64,6 @@
 
     }
 
-    @media screen and (min-width: 1024px) {
-      margin-left: 112px;
-    }
-
     .text-box {
       display: grid;
       gap: 16px;
@@ -136,6 +132,8 @@
     z-index: -1;
 
     width: 100%;
+    max-width: 91%;
+    margin: 0 auto;
     border-radius: 8px;
     overflow: hidden;
 

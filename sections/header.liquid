@@ -1,13 +1,19 @@
 <link rel="stylesheet" href="{{ 'header.css' | asset_url }}">
 
 <navigation-bar id="header">
-    <nav class="header-container">
-        {% render 'header-left' %}
-        {% render 'navigation' %}
-        {% render 'header-right' %}
-    </nav>
-    {% render 'navigation-dropdown' %}
-    {% render 'hamburger-navigation' %}
+	
+	<nav>
+		<div class="page-boundary">
+			<div class="header-container">
+				{% render 'header-left' %}
+				{% render 'navigation' %}
+				{% render 'header-right' %}
+			</div>
+		</div>
+	</nav>
+	
+	{% render 'navigation-dropdown' %}
+	{% render 'hamburger-navigation' %}
 </navigation-bar>
 
 {% schema %}

@@ -49,7 +49,7 @@
   }
 
   .w-2\/5 {
-    width:40%;
+    width: 40%;
   }
 
   .text-\[24px\] {
@@ -70,16 +70,19 @@
     }
   }
 
+  nav {
+    background-color: #ffffff;
+  }
+
   .header-container {
     display: flex;
-    padding: 1rem 0.75rem;
-    background-color: #ffffff;
+    padding: 1rem 0;
+
     justify-content: space-between;
     align-items: center;
-    border-bottom-width: 1px;
 
     @media (min-width: 1024px) {
-      padding: 0 4rem;
+      padding: 0;
     }
   }
 
