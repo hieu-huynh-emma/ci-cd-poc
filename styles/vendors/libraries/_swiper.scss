@@ -5,8 +5,9 @@
 .swiper {
   display: flex;
   align-items: center;
-
   max-width: 100%;
+  overflow: hidden;
+
   &-arrow {
     position: absolute;
 
