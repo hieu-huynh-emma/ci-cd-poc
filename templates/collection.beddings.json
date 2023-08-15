@@ -1,0 +1,44 @@
+{
+  "layout": "theme.optimized",
+  "sections": {
+    "products-layout": {
+      "type": "products-layout",
+      "blocks": {
+        "17044658-d29b-4190-9478-36b0c19f8885": {
+          "type": "product_card",
+          "settings": {
+            "badge_text": "",
+            "product": "emma-mattress-protector",
+            "product_desc": "",
+            "background_color": "#f1f0f5",
+            "mobile_image": "shopify:\/\/shop_images\/PROTECTOR_1.png",
+            "desktop_image": "shopify:\/\/shop_images\/PROTECTOR_1.png",
+            "card_width": "half"
+          }
+        },
+        "7e0a80d8-9fdb-46b0-906f-806235b98cf0": {
+          "type": "product_card",
+          "settings": {
+            "badge_text": "",
+            "product": "emma-foam-pillow",
+            "product_desc": "",
+            "background_color": "#f1f0f5",
+            "mobile_image": "shopify:\/\/shop_images\/PILLOW_1.png",
+            "desktop_image": "shopify:\/\/shop_images\/PILLOW_1.png",
+            "card_width": "half"
+          }
+        }
+      },
+      "block_order": [
+        "17044658-d29b-4190-9478-36b0c19f8885",
+        "7e0a80d8-9fdb-46b0-906f-806235b98cf0"
+      ],
+      "settings": {
+        "title": "Pillows & Bedding"
+      }
+    }
+  },
+  "order": [
+    "products-layout"
+  ]
+}

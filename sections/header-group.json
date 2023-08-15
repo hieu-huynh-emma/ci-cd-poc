@@ -10,7 +10,7 @@
           "settings": {
             "text": "<p>Current offers ending soon |<\/p>",
             "timer_text": "<p>Current offers ending soon |<\/p>",
-            "end_time": "2023-07-25 11:00"
+            "end_time": "2023-08-16 11:00"
           }
         },
         "4befd056-3333-4649-85aa-04c5d05e968f": {
@@ -54,58 +54,10 @@
         "text": "Our Victoria Day Sale is here! 👑 Click here to take over 50% off our award-winning mattress.",
         "link": "shopify:\/\/products\/emma-original-mattress"
       }
-    },
-    "risk-free-banner": {
-      "type": "risk-free-banner",
-      "blocks": {
-        "605013b2-263f-4c29-b4c0-136f75610eda": {
-          "type": "banner-item",
-          "settings": {
-            "icon": "shopify:\/\/shop_images\/Delivery.png",
-            "text": "Free shipping & returns",
-            "url": ""
-          }
-        },
-        "9593f14f-4c86-4af9-953e-0fa248231b89": {
-          "type": "banner-item",
-          "settings": {
-            "icon": "shopify:\/\/shop_images\/365_nights.png",
-            "text": "365-Night Money-Back Guarantee",
-            "url": ""
-          }
-        },
-        "8b906a77-60bb-46b8-b714-8fe010db07ca": {
-          "type": "banner-item",
-          "settings": {
-            "icon": "shopify:\/\/shop_images\/0_APR..png",
-            "text": "Financing Available",
-            "url": ""
-          }
-        },
-        "49138228-00c2-461a-bbdd-650d93f8503b": {
-          "type": "banner-item",
-          "settings": {
-            "icon": "shopify:\/\/shop_images\/Warranty.png",
-            "text": "10-Year Warranty",
-            "url": ""
-          }
-        }
-      },
-      "block_order": [
-        "605013b2-263f-4c29-b4c0-136f75610eda",
-        "9593f14f-4c86-4af9-953e-0fa248231b89",
-        "8b906a77-60bb-46b8-b714-8fe010db07ca",
-        "49138228-00c2-461a-bbdd-650d93f8503b"
-      ],
-      "settings": {
-        "text_color": "#2e2f3c",
-        "bg_color": "#ffffff"
-      }
     }
   },
   "order": [
     "announcement-bar",
-    "header",
-    "risk-free-banner"
+    "header"
   ]
 }

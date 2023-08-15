@@ -392,10 +392,6 @@ function storeLocalization() {
     });
   }
 
-  function closePopup() {
-    $.modal.close();
-  }
-
   function renderStoreOptions() {
     const $countryDropdown = $(".change-country__dropdown");
 

@@ -4,7 +4,7 @@
 		{% if link.title == 'Sale' %}
 			{% assign is_sale_link = true %}
 		{% endif %}
-		{% if link.type == "product_link" or link.url == '/collections/mattresses' %}
+		{% if link.type == "product_link" or link.url == '/collections/mattresses' or link.url == '/collections/beddings' %}
 			<navigation-dropdown data-link-title="{{ link.title }}" style="display: none;">
 				<div class="navigation-dropdown__container">
 					<div class="navigation-dropdown__wrapper">

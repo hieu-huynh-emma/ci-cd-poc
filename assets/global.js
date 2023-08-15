@@ -777,7 +777,7 @@ class VariantSelects extends HTMLElement {
 
   updateAffirm() {
     const price = this.currentVariant.price / 100;
-    const affirmPrice = Number((price / 6).toFixed(2))
+    const affirmPrice = Number((price / 12).toFixed(2))
     const priceInCurrency = Currency.format(affirmPrice, { maximumFractionDigits: affirmPrice % 1 === 0 ? 0 : 2 });
     $('#affirm-widget .pro_val').text(priceInCurrency)
   }

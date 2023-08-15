@@ -35,13 +35,19 @@
     {% render 'page-styles', isOptimized: isOptimized %}
 
     {{ contentForHeader }}
+{% render 'weglot_hreftags' %}
+{% render 'weglot_switcher' %}
 </head>
 
 {% render 'shopify-theme-settings', isOptimized: isOptimized %}
 
 <body>
 
-{% sections 'header-group' %}
+  <div class="sticky top-0 z-[101]">
+    {% sections 'header-group' %}
+  </div>
+
+  {% section 'risk-free-banner' %}
 
 <style>
     #product-main-layout {

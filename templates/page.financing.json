@@ -4,8 +4,8 @@
       "type": "financing-affirm",
       "settings": {
         "background_image": "shopify:\/\/shop_images\/0708_emma_original_neubau_franzi.png",
-        "title": "Hit the snooze button on payments.<br>Sleep in, stress-free.",
-        "description": "0% financing though Affirm<br>Easy interest-free payments over 6 months",
+        "title": "Hit the snooze button on payments.Sleep in, stress-free.",
+        "description": "0% financing though AffirmEasy interest-free payments over 12 months",
         "link": "https:\/\/www.affirm.com\/en-ca\/"
       }
     },
@@ -24,7 +24,7 @@
           "type": "affirm-benefit",
           "settings": {
             "image": "shopify:\/\/shop_images\/percentage-1649211670035.png",
-            "heading": "0% APR (over 6 months)",
+            "heading": "0% APR (over 12 months)",
             "subheading": "No secrets, no surprises."
           }
         },
@@ -120,6 +120,7 @@
         },
         "6314349a-fee8-4b36-9cf7-7ca1d46b962e": {
           "type": "question-answer",
+          "disabled": true,
           "settings": {
             "question": "Can I pay over 12 months instead of 6 months?",
             "answer": "<p>We only offer a 3 or 6 month interest-free payment plan through Affirm.<\/p>"
