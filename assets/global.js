@@ -1,8 +1,8 @@
 function getFocusableElements(container) {
   return Array.from(
     container.querySelectorAll(
-      "summary, a[href], button:enabled, [tabindex]:not([tabindex^='-']), [draggable], area, input:not([type=hidden]):enabled, select:enabled, textarea:enabled, object, iframe"
-    )
+      "summary, a[href], button:enabled, [tabindex]:not([tabindex^='-']), [draggable], area, input:not([type=hidden]):enabled, select:enabled, textarea:enabled, object, iframe",
+    ),
   );
 }
 
@@ -23,15 +23,15 @@ function trapFocus(container, elementToFocus = container) {
     )
       return;
 
-    document.addEventListener('keydown', trapFocusHandlers.keydown);
+    document.addEventListener("keydown", trapFocusHandlers.keydown);
   };
 
   trapFocusHandlers.focusout = function () {
-    document.removeEventListener('keydown', trapFocusHandlers.keydown);
+    document.removeEventListener("keydown", trapFocusHandlers.keydown);
   };
 
   trapFocusHandlers.keydown = function (event) {
-    if (event.code.toUpperCase() !== 'TAB') return; // If not TAB key
+    if (event.code.toUpperCase() !== "TAB") return; // If not TAB key
     // On the last focusable element and tab forward, focus the first element.
     if (event.target === last && !event.shiftKey) {
       event.preventDefault();
@@ -48,8 +48,8 @@ function trapFocus(container, elementToFocus = container) {
     }
   };
 
-  document.addEventListener('focusout', trapFocusHandlers.focusout);
-  document.addEventListener('focusin', trapFocusHandlers.focusin);
+  document.addEventListener("focusout", trapFocusHandlers.focusout);
+  document.addEventListener("focusin", trapFocusHandlers.focusin);
 
   elementToFocus.focus();
 }
@@ -62,71 +62,71 @@ try {
 }
 
 function focusVisiblePolyfill() {
-  const navKeys = ['ARROWUP', 'ARROWDOWN', 'ARROWLEFT', 'ARROWRIGHT', 'TAB', 'ENTER', 'SPACE', 'ESCAPE', 'HOME', 'END', 'PAGEUP', 'PAGEDOWN']
+  const navKeys = ["ARROWUP", "ARROWDOWN", "ARROWLEFT", "ARROWRIGHT", "TAB", "ENTER", "SPACE", "ESCAPE", "HOME", "END", "PAGEUP", "PAGEDOWN"];
   let currentFocusedElement = null;
   let mouseClick = null;
 
-  window.addEventListener('keydown', (event) => {
+  window.addEventListener("keydown", (event) => {
     if (navKeys.includes(event.code.toUpperCase())) {
       mouseClick = false;
     }
   });
 
-  window.addEventListener('mousedown', (event) => {
+  window.addEventListener("mousedown", (event) => {
     mouseClick = true;
   });
 
-  window.addEventListener('focus', () => {
-    if (currentFocusedElement) currentFocusedElement.classList.remove('focused');
+  window.addEventListener("focus", () => {
+    if (currentFocusedElement) currentFocusedElement.classList.remove("focused");
 
     if (mouseClick) return;
 
     currentFocusedElement = document.activeElement;
-    currentFocusedElement.classList.add('focused');
+    currentFocusedElement.classList.add("focused");
 
   }, true);
 }
 
 function pauseAllMedia() {
-  document.querySelectorAll('.js-youtube').forEach((video) => {
-    video.contentWindow.postMessage('{"event":"command","func":"' + 'pauseVideo' + '","args":""}', '*');
+  document.querySelectorAll(".js-youtube").forEach((video) => {
+    video.contentWindow.postMessage("{\"event\":\"command\",\"func\":\"" + "pauseVideo" + "\",\"args\":\"\"}", "*");
   });
-  document.querySelectorAll('.js-vimeo').forEach((video) => {
-    video.contentWindow.postMessage('{"method":"pause"}', '*');
+  document.querySelectorAll(".js-vimeo").forEach((video) => {
+    video.contentWindow.postMessage("{\"method\":\"pause\"}", "*");
   });
-  document.querySelectorAll('video').forEach((video) => video.pause());
-  document.querySelectorAll('product-model').forEach((model) => {
+  document.querySelectorAll("video").forEach((video) => video.pause());
+  document.querySelectorAll("product-model").forEach((model) => {
     if (model.modelViewerUI) model.modelViewerUI.pause();
   });
 }
 
 function removeTrapFocus(elementToFocus = null) {
-  document.removeEventListener('focusin', trapFocusHandlers.focusin);
-  document.removeEventListener('focusout', trapFocusHandlers.focusout);
-  document.removeEventListener('keydown', trapFocusHandlers.keydown);
+  document.removeEventListener("focusin", trapFocusHandlers.focusin);
+  document.removeEventListener("focusout", trapFocusHandlers.focusout);
+  document.removeEventListener("keydown", trapFocusHandlers.keydown);
 
   if (elementToFocus) elementToFocus.focus();
 }
 
 function onKeyUpEscape(event) {
-  if (event.code.toUpperCase() !== 'ESCAPE') return;
+  if (event.code.toUpperCase() !== "ESCAPE") return;
 
-  const openDetailsElement = event.target.closest('details[open]');
+  const openDetailsElement = event.target.closest("details[open]");
   if (!openDetailsElement) return;
 
-  const summaryElement = openDetailsElement.querySelector('summary');
-  openDetailsElement.removeAttribute('open');
+  const summaryElement = openDetailsElement.querySelector("summary");
+  openDetailsElement.removeAttribute("open");
   summaryElement.focus();
 }
 
 class QuantityInput extends HTMLElement {
   constructor() {
     super();
-    this.input = this.querySelector('input');
-    this.changeEvent = new Event('change', { bubbles: true })
+    this.input = this.querySelector("input");
+    this.changeEvent = new Event("change", { bubbles: true });
 
-    this.querySelectorAll('button').forEach(
-      (button) => button.addEventListener('click', this.onButtonClick.bind(this))
+    this.querySelectorAll("button").forEach(
+      (button) => button.addEventListener("click", this.onButtonClick.bind(this)),
     );
   }
 
@@ -134,12 +134,12 @@ class QuantityInput extends HTMLElement {
     event.preventDefault();
     const previousValue = this.input.value;
 
-    event.target.name === 'plus' ? this.input.stepUp() : this.input.stepDown();
+    event.target.name === "plus" ? this.input.stepUp() : this.input.stepDown();
     if (previousValue !== this.input.value) this.input.dispatchEvent(this.changeEvent);
   }
 }
 
-customElements.define('quantity-input', QuantityInput);
+customElements.define("quantity-input", QuantityInput);
 
 function debounce(fn, wait) {
   let t;
@@ -167,10 +167,10 @@ const serializeForm = form => {
   return JSON.stringify(obj);
 };
 
-function fetchConfig(type = 'json') {
+function fetchConfig(type = "json") {
   return {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json', 'Accept': `application/${type}` }
+    method: "POST",
+    headers: { "Content-Type": "application/json", "Accept": `application/${type}` },
   };
 }
 
@@ -178,14 +178,14 @@ function fetchConfig(type = 'json') {
  * Shopify Common JS
  *
  */
-if ((typeof window.Shopify) == 'undefined') {
+if ((typeof window.Shopify) == "undefined") {
   window.Shopify = {};
 }
 
 Shopify.bind = function (fn, scope) {
   return function () {
     return fn.apply(scope, arguments);
-  }
+  };
 };
 
 Shopify.setSelectorByValue = function (selector, value) {
@@ -199,13 +199,13 @@ Shopify.setSelectorByValue = function (selector, value) {
 };
 
 Shopify.addListener = function (target, eventName, callback) {
-  target.addEventListener ? target.addEventListener(eventName, callback, false) : target.attachEvent('on' + eventName, callback);
+  target.addEventListener ? target.addEventListener(eventName, callback, false) : target.attachEvent("on" + eventName, callback);
 };
 
 Shopify.postLink = function (path, options) {
   options = options || {};
-  var method = options['method'] || 'post';
-  var params = options['parameters'] || {};
+  var method = options["method"] || "post";
+  var params = options["parameters"] || {};
 
   var form = document.createElement("form");
   form.setAttribute("method", method);
@@ -226,9 +226,9 @@ Shopify.postLink = function (path, options) {
 Shopify.CountryProvinceSelector = function (country_domid, province_domid, options) {
   this.countryEl = document.getElementById(country_domid);
   this.provinceEl = document.getElementById(province_domid);
-  this.provinceContainer = document.getElementById(options['hideElement'] || province_domid);
+  this.provinceContainer = document.getElementById(options["hideElement"] || province_domid);
 
-  Shopify.addListener(this.countryEl, 'change', Shopify.bind(this.countryHandler, this));
+  Shopify.addListener(this.countryEl, "change", Shopify.bind(this.countryHandler, this));
 
   this.initCountry();
   this.initProvince();
@@ -236,13 +236,13 @@ Shopify.CountryProvinceSelector = function (country_domid, province_domid, optio
 
 Shopify.CountryProvinceSelector.prototype = {
   initCountry: function () {
-    var value = this.countryEl.getAttribute('data-default');
+    var value = this.countryEl.getAttribute("data-default");
     Shopify.setSelectorByValue(this.countryEl, value);
     this.countryHandler();
   },
 
   initProvince: function () {
-    var value = this.provinceEl.getAttribute('data-default');
+    var value = this.provinceEl.getAttribute("data-default");
     if (value && this.provinceEl.options.length > 0) {
       Shopify.setSelectorByValue(this.provinceEl, value);
     }
@@ -250,15 +250,15 @@ Shopify.CountryProvinceSelector.prototype = {
 
   countryHandler: function (e) {
     var opt = this.countryEl.options[this.countryEl.selectedIndex];
-    var raw = opt.getAttribute('data-provinces');
+    var raw = opt.getAttribute("data-provinces");
     var provinces = JSON.parse(raw);
 
     this.clearOptions(this.provinceEl);
     if (provinces && provinces.length == 0) {
-      this.provinceContainer.style.display = 'none';
+      this.provinceContainer.style.display = "none";
     } else {
       for (var i = 0; i < provinces.length; i++) {
-        var opt = document.createElement('option');
+        var opt = document.createElement("option");
         opt.value = provinces[i][0];
         opt.innerHTML = provinces[i][1];
         this.provinceEl.appendChild(opt);
@@ -276,85 +276,85 @@ Shopify.CountryProvinceSelector.prototype = {
 
   setOptions: function (selector, values) {
     for (var i = 0, count = values.length; i < values.length; i++) {
-      var opt = document.createElement('option');
+      var opt = document.createElement("option");
       opt.value = values[i];
       opt.innerHTML = values[i];
       selector.appendChild(opt);
     }
-  }
+  },
 };
 
 class MenuDrawer extends HTMLElement {
   constructor() {
     super();
 
-    this.mainDetailsToggle = this.querySelector('details');
-    const summaryElements = this.querySelectorAll('summary');
+    this.mainDetailsToggle = this.querySelector("details");
+    const summaryElements = this.querySelectorAll("summary");
     this.addAccessibilityAttributes(summaryElements);
 
-    if (navigator.platform === 'iPhone') document.documentElement.style.setProperty('--viewport-height', `${window.innerHeight}px`);
+    if (navigator.platform === "iPhone") document.documentElement.style.setProperty("--viewport-height", `${window.innerHeight}px`);
 
-    this.addEventListener('keyup', this.onKeyUp.bind(this));
-    this.addEventListener('focusout', this.onFocusOut.bind(this));
+    this.addEventListener("keyup", this.onKeyUp.bind(this));
+    this.addEventListener("focusout", this.onFocusOut.bind(this));
     this.bindEvents();
   }
 
   bindEvents() {
-    this.querySelectorAll('summary').forEach(summary => summary.addEventListener('click', this.onSummaryClick.bind(this)));
-    this.querySelectorAll('button').forEach(button => button.addEventListener('click', this.onCloseButtonClick.bind(this)));
+    this.querySelectorAll("summary").forEach(summary => summary.addEventListener("click", this.onSummaryClick.bind(this)));
+    this.querySelectorAll("button").forEach(button => button.addEventListener("click", this.onCloseButtonClick.bind(this)));
   }
 
   addAccessibilityAttributes(summaryElements) {
     summaryElements.forEach(element => {
-      element.setAttribute('role', 'button');
-      element.setAttribute('aria-expanded', false);
-      element.setAttribute('aria-controls', element.nextElementSibling.id);
+      element.setAttribute("role", "button");
+      element.setAttribute("aria-expanded", false);
+      element.setAttribute("aria-controls", element.nextElementSibling.id);
     });
   }
 
   onKeyUp(event) {
-    if (event.code.toUpperCase() !== 'ESCAPE') return;
+    if (event.code.toUpperCase() !== "ESCAPE") return;
 
-    const openDetailsElement = event.target.closest('details[open]');
+    const openDetailsElement = event.target.closest("details[open]");
     if (!openDetailsElement) return;
 
-    openDetailsElement === this.mainDetailsToggle ? this.closeMenuDrawer(this.mainDetailsToggle.querySelector('summary')) : this.closeSubmenu(openDetailsElement);
+    openDetailsElement === this.mainDetailsToggle ? this.closeMenuDrawer(this.mainDetailsToggle.querySelector("summary")) : this.closeSubmenu(openDetailsElement);
   }
 
   onSummaryClick(event) {
     const summaryElement = event.currentTarget;
     const detailsElement = summaryElement.parentNode;
-    const isOpen = detailsElement.hasAttribute('open');
+    const isOpen = detailsElement.hasAttribute("open");
 
     if (detailsElement === this.mainDetailsToggle) {
       if (isOpen) event.preventDefault();
       isOpen ? this.closeMenuDrawer(summaryElement) : this.openMenuDrawer(summaryElement);
     } else {
-      trapFocus(summaryElement.nextElementSibling, detailsElement.querySelector('button'));
+      trapFocus(summaryElement.nextElementSibling, detailsElement.querySelector("button"));
 
       setTimeout(() => {
-        detailsElement.classList.add('menu-opening');
+        detailsElement.classList.add("menu-opening");
       });
     }
   }
 
   openMenuDrawer(summaryElement) {
     setTimeout(() => {
-      this.mainDetailsToggle.classList.add('menu-opening');
+      this.mainDetailsToggle.classList.add("menu-opening");
     });
-    summaryElement.setAttribute('aria-expanded', true);
+    summaryElement.setAttribute("aria-expanded", true);
     trapFocus(this.mainDetailsToggle, summaryElement);
     document.body.classList.add(`overflow-hidden-${this.dataset.breakpoint}`);
   }
 
   closeMenuDrawer(event, elementToFocus = false) {
     if (event !== undefined) {
-      this.mainDetailsToggle.classList.remove('menu-opening');
-      this.mainDetailsToggle.querySelectorAll('details').forEach(details => {
-        details.removeAttribute('open');
-        details.classList.remove('menu-opening');
+      this.mainDetailsToggle.classList.remove("menu-opening");
+      this.mainDetailsToggle.querySelectorAll("details").forEach(details => {
+        details.removeAttribute("open");
+        details.classList.remove("menu-opening");
       });
-      this.mainDetailsToggle.querySelector('summary').setAttribute('aria-expanded', false);
+      this.mainDetailsToggle.querySelector("summary").setAttribute("aria-expanded", false);
       document.body.classList.remove(`overflow-hidden-${this.dataset.breakpoint}`);
       removeTrapFocus(elementToFocus);
       this.closeAnimation(this.mainDetailsToggle);
@@ -363,17 +363,17 @@ class MenuDrawer extends HTMLElement {
 
   onFocusOut(event) {
     setTimeout(() => {
-      if (this.mainDetailsToggle.hasAttribute('open') && !this.mainDetailsToggle.contains(document.activeElement)) this.closeMenuDrawer();
+      if (this.mainDetailsToggle.hasAttribute("open") && !this.mainDetailsToggle.contains(document.activeElement)) this.closeMenuDrawer();
     });
   }
 
   onCloseButtonClick(event) {
-    const detailsElement = event.currentTarget.closest('details');
+    const detailsElement = event.currentTarget.closest("details");
     this.closeSubmenu(detailsElement);
   }
 
   closeSubmenu(detailsElement) {
-    detailsElement.classList.remove('menu-opening');
+    detailsElement.classList.remove("menu-opening");
     removeTrapFocus();
     this.closeAnimation(detailsElement);
   }
@@ -391,18 +391,18 @@ class MenuDrawer extends HTMLElement {
       if (elapsedTime < 400) {
         window.requestAnimationFrame(handleAnimation);
       } else {
-        detailsElement.removeAttribute('open');
-        if (detailsElement.closest('details[open]')) {
-          trapFocus(detailsElement.closest('details[open]'), detailsElement.querySelector('summary'));
+        detailsElement.removeAttribute("open");
+        if (detailsElement.closest("details[open]")) {
+          trapFocus(detailsElement.closest("details[open]"), detailsElement.querySelector("summary"));
         }
       }
-    }
+    };
 
     window.requestAnimationFrame(handleAnimation);
   }
 }
 
-customElements.define('menu-drawer', MenuDrawer);
+customElements.define("menu-drawer", MenuDrawer);
 
 class HeaderDrawer extends MenuDrawer {
   constructor() {
@@ -410,111 +410,111 @@ class HeaderDrawer extends MenuDrawer {
   }
 
   openMenuDrawer(summaryElement) {
-    this.header = this.header || document.getElementById('shopify-section-header');
-    this.borderOffset = this.borderOffset || this.closest('.header-wrapper').classList.contains('header-wrapper--border-bottom') ? 1 : 0;
-    document.documentElement.style.setProperty('--header-bottom-position', `${parseInt(this.header.getBoundingClientRect().bottom - this.borderOffset)}px`);
+    this.header = this.header || document.getElementById("shopify-section-header");
+    this.borderOffset = this.borderOffset || this.closest(".header-wrapper").classList.contains("header-wrapper--border-bottom") ? 1 : 0;
+    document.documentElement.style.setProperty("--header-bottom-position", `${parseInt(this.header.getBoundingClientRect().bottom - this.borderOffset)}px`);
 
     setTimeout(() => {
-      this.mainDetailsToggle.classList.add('menu-opening');
+      this.mainDetailsToggle.classList.add("menu-opening");
     });
 
-    summaryElement.setAttribute('aria-expanded', true);
+    summaryElement.setAttribute("aria-expanded", true);
     trapFocus(this.mainDetailsToggle, summaryElement);
     document.body.classList.add(`overflow-hidden-${this.dataset.breakpoint}`);
   }
 }
 
-customElements.define('header-drawer', HeaderDrawer);
+customElements.define("header-drawer", HeaderDrawer);
 
 class ModalDialog extends HTMLElement {
   constructor() {
     super();
-    this.querySelector('[id^="ModalClose-"]').addEventListener(
-      'click',
-      this.hide.bind(this)
+    this.querySelector("[id^=\"ModalClose-\"]").addEventListener(
+      "click",
+      this.hide.bind(this),
     );
-    this.addEventListener('keyup', (event) => {
-      if (event.code.toUpperCase() === 'ESCAPE') this.hide();
+    this.addEventListener("keyup", (event) => {
+      if (event.code.toUpperCase() === "ESCAPE") this.hide();
     });
-    if (this.classList.contains('media-modal')) {
-      this.addEventListener('pointerup', (event) => {
-        if (event.pointerType === 'mouse' && !event.target.closest('deferred-media, product-model')) this.hide();
+    if (this.classList.contains("media-modal")) {
+      this.addEventListener("pointerup", (event) => {
+        if (event.pointerType === "mouse" && !event.target.closest("deferred-media, product-model")) this.hide();
       });
     } else {
-      this.addEventListener('click', (event) => {
-        if (event.target.nodeName === 'MODAL-DIALOG') this.hide();
+      this.addEventListener("click", (event) => {
+        if (event.target.nodeName === "MODAL-DIALOG") this.hide();
       });
     }
   }
 
   show(opener) {
     this.openedBy = opener;
-    const popup = this.querySelector('.template-popup');
-    document.body.classList.add('overflow-hidden');
-    this.setAttribute('open', '');
+    const popup = this.querySelector(".template-popup");
+    document.body.classList.add("overflow-hidden");
+    this.setAttribute("open", "");
     if (popup) popup.loadContent();
-    trapFocus(this, this.querySelector('[role="dialog"]'));
+    trapFocus(this, this.querySelector("[role=\"dialog\"]"));
     window.pauseAllMedia();
   }
 
   hide() {
-    document.body.classList.remove('overflow-hidden');
-    this.removeAttribute('open');
+    document.body.classList.remove("overflow-hidden");
+    this.removeAttribute("open");
     removeTrapFocus(this.openedBy);
     window.pauseAllMedia();
   }
 }
 
-customElements.define('modal-dialog', ModalDialog);
+customElements.define("modal-dialog", ModalDialog);
 
 class ModalOpener extends HTMLElement {
   constructor() {
     super();
 
-    const button = this.querySelector('button');
+    const button = this.querySelector("button");
 
     if (!button) return;
-    button.addEventListener('click', () => {
-      const modal = document.querySelector(this.getAttribute('data-modal'));
+    button.addEventListener("click", () => {
+      const modal = document.querySelector(this.getAttribute("data-modal"));
       if (modal) modal.show(button);
     });
   }
 }
 
-customElements.define('modal-opener', ModalOpener);
+customElements.define("modal-opener", ModalOpener);
 
 class DeferredMedia extends HTMLElement {
   constructor() {
     super();
-    const poster = this.querySelector('[id^="Deferred-Poster-"]');
+    const poster = this.querySelector("[id^=\"Deferred-Poster-\"]");
     if (!poster) return;
-    poster.addEventListener('click', this.loadContent.bind(this));
+    poster.addEventListener("click", this.loadContent.bind(this));
   }
 
   loadContent() {
     window.pauseAllMedia();
-    if (!this.getAttribute('loaded')) {
-      const content = document.createElement('div');
-      content.appendChild(this.querySelector('template').content.firstElementChild.cloneNode(true));
+    if (!this.getAttribute("loaded")) {
+      const content = document.createElement("div");
+      content.appendChild(this.querySelector("template").content.firstElementChild.cloneNode(true));
 
-      this.setAttribute('loaded', true);
-      this.appendChild(content.querySelector('video, model-viewer, iframe')).focus();
+      this.setAttribute("loaded", true);
+      this.appendChild(content.querySelector("video, model-viewer, iframe")).focus();
     }
   }
 }
 
-customElements.define('deferred-media', DeferredMedia);
+customElements.define("deferred-media", DeferredMedia);
 
 class SliderComponent extends HTMLElement {
   constructor() {
     super();
-    this.slider = this.querySelector('ul');
-    this.sliderItems = this.querySelectorAll('li');
-    this.pageCount = this.querySelector('.slider-counter--current');
-    this.pageTotal = this.querySelector('.slider-counter--total');
-    this.prevButton = this.querySelector('button[name="previous"]');
-    this.nextButton = this.querySelector('button[name="next"]');
-    this.productSlider = this.querySelector('.product-slider-box');
+    this.slider = this.querySelector("ul");
+    this.sliderItems = this.querySelectorAll("li");
+    this.pageCount = this.querySelector(".slider-counter--current");
+    this.pageTotal = this.querySelector(".slider-counter--total");
+    this.prevButton = this.querySelector("button[name=\"previous\"]");
+    this.nextButton = this.querySelector("button[name=\"next\"]");
+    this.productSlider = this.querySelector(".product-slider-box");
 
 
     if (!this.slider || !this.nextButton) return;
@@ -522,9 +522,9 @@ class SliderComponent extends HTMLElement {
     const resizeObserver = new ResizeObserver(entries => this.initPages());
     resizeObserver.observe(this.slider);
 
-    this.slider.addEventListener('scroll', this.update.bind(this));
-    this.prevButton.addEventListener('click', this.onButtonClick.bind(this));
-    this.nextButton.addEventListener('click', this.onButtonClick.bind(this));
+    this.slider.addEventListener("scroll", this.update.bind(this));
+    this.prevButton.addEventListener("click", this.onButtonClick.bind(this));
+    this.nextButton.addEventListener("click", this.onButtonClick.bind(this));
   }
 
   initPages() {
@@ -533,7 +533,7 @@ class SliderComponent extends HTMLElement {
     if (sliderItemsToShow.length === 0) return;
     this.slidesPerPage = Math.floor(this.slider.clientWidth / sliderItemsToShow[0].clientWidth);
     if (this.productSlider) {
-      this.totalPages = sliderItemsToShow.length - this.slidesPerPage + 4
+      this.totalPages = sliderItemsToShow.length - this.slidesPerPage + 4;
     } else {
       this.totalPages = sliderItemsToShow.length - this.slidesPerPage + 1;
     }
@@ -543,21 +543,21 @@ class SliderComponent extends HTMLElement {
   update() {
     if (!this.pageCount || !this.pageTotal) return;
     if (this.productSlider) {
-      this.currentPage = Math.round(this.slider.scrollLeft / this.sliderLastItem.clientWidth) + 4
+      this.currentPage = Math.round(this.slider.scrollLeft / this.sliderLastItem.clientWidth) + 4;
     } else {
       this.currentPage = Math.round(this.slider.scrollLeft / this.sliderLastItem.clientWidth) + 1;
     }
 
     if (this.currentPage === 1) {
-      this.prevButton.setAttribute('disabled', true);
+      this.prevButton.setAttribute("disabled", true);
     } else {
-      this.prevButton.removeAttribute('disabled');
+      this.prevButton.removeAttribute("disabled");
     }
 
     if (this.currentPage === this.totalPages) {
-      this.nextButton.setAttribute('disabled', true);
+      this.nextButton.setAttribute("disabled", true);
     } else {
-      this.nextButton.removeAttribute('disabled');
+      this.nextButton.removeAttribute("disabled");
     }
 
     this.pageCount.textContent = this.currentPage;
@@ -566,30 +566,32 @@ class SliderComponent extends HTMLElement {
 
   onButtonClick(event) {
     event.preventDefault();
-    const slideScrollPosition = event.currentTarget.name === 'next' ? this.slider.scrollLeft + this.sliderLastItem.clientWidth : this.slider.scrollLeft - this.sliderLastItem.clientWidth;
+    const slideScrollPosition = event.currentTarget.name === "next" ? this.slider.scrollLeft + this.sliderLastItem.clientWidth : this.slider.scrollLeft - this.sliderLastItem.clientWidth;
     this.slider.scrollTo({
-      left: slideScrollPosition
+      left: slideScrollPosition,
     });
   }
 }
 
-customElements.define('slider-component', SliderComponent);
+customElements.define("slider-component", SliderComponent);
 
 class OldVariantSelects extends HTMLElement {
   constructor() {
     super();
-    this.addEventListener('change', this.onVariantChange);
+    this.addEventListener("change", this.onVariantChange);
   }
 
   onVariantChange() {
     this.updateOptions();
     this.updateMasterId();
-    this.toggleAddButton(true, '', false);
+    this.toggleAddButton(true, "", false);
+
+
     this.updatePickupAvailability();
     this.removeErrorMessage();
 
     if (!this.currentVariant) {
-      this.toggleAddButton(true, '', true);
+      this.toggleAddButton(true, "", true);
       this.setUnavailable();
     } else {
       this.updateMedia();
@@ -600,7 +602,7 @@ class OldVariantSelects extends HTMLElement {
   }
 
   updateOptions() {
-    this.options = Array.from(this.querySelectorAll('select'), (select) => select.value);
+    this.options = Array.from(this.querySelectorAll("select"), (select) => select.value);
   }
 
   updateMasterId() {
@@ -615,7 +617,7 @@ class OldVariantSelects extends HTMLElement {
     if (!this.currentVariant) return;
     if (!this.currentVariant.featured_media) return;
     const newMedia = document.querySelector(
-      `[data-media-id="${this.dataset.section}-${this.currentVariant.featured_media.id}"]`
+      `[data-media-id="${this.dataset.section}-${this.currentVariant.featured_media.id}"]`,
     );
 
     if (!newMedia) return;
@@ -625,46 +627,46 @@ class OldVariantSelects extends HTMLElement {
     if (parent.firstChild == newMedia) return;
     modalContent.prepend(newMediaModal);
     parent.prepend(newMedia);
-    this.stickyHeader = this.stickyHeader || document.querySelector('sticky-header');
+    this.stickyHeader = this.stickyHeader || document.querySelector("sticky-header");
     if (this.stickyHeader) {
-      this.stickyHeader.dispatchEvent(new Event('preventHeaderReveal'));
+      this.stickyHeader.dispatchEvent(new Event("preventHeaderReveal"));
     }
     window.setTimeout(() => {
-      parent.querySelector('li.product__media-item').scrollIntoView({ behavior: "smooth" });
+      parent.querySelector("li.product__media-item").scrollIntoView({ behavior: "smooth" });
     });
   }
 
   updateURL() {
-    if (!this.currentVariant || this.dataset.updateUrl === 'false') return;
-    window.history.replaceState({}, '', `${this.dataset.url}?variant=${this.currentVariant.id}`);
+    if (!this.currentVariant || this.dataset.updateUrl === "false") return;
+    window.history.replaceState({}, "", `${this.dataset.url}?variant=${this.currentVariant.id}`);
   }
 
   updateVariantInput() {
     const productForms = document.querySelectorAll(`#product-form-${this.dataset.section}, #product-form-installment`);
     productForms.forEach((productForm) => {
-      const input = productForm.querySelector('input[name="id"]');
+      const input = productForm.querySelector("input[name=\"id\"]");
       input.value = this.currentVariant.id;
-      input.dispatchEvent(new Event('change', { bubbles: true }));
+      input.dispatchEvent(new Event("change", { bubbles: true }));
     });
   }
 
   updatePickupAvailability() {
-    const pickUpAvailability = document.querySelector('pickup-availability');
+    const pickUpAvailability = document.querySelector("pickup-availability");
     if (!pickUpAvailability) return;
 
     if (this.currentVariant && this.currentVariant.available) {
       pickUpAvailability.fetchAvailability(this.currentVariant.id);
     } else {
-      pickUpAvailability.removeAttribute('available');
-      pickUpAvailability.innerHTML = '';
+      pickUpAvailability.removeAttribute("available");
+      pickUpAvailability.innerHTML = "";
     }
   }
 
   removeErrorMessage() {
-    const section = this.closest('section');
+    const section = this.closest("section");
     if (!section) return;
 
-    const productForm = section.querySelector('product-form');
+    const productForm = section.querySelector("product-form");
     if (productForm) productForm.handleErrorMessage();
   }
 
@@ -673,45 +675,45 @@ class OldVariantSelects extends HTMLElement {
       .then((response) => response.text())
       .then((responseText) => {
         const id = `price-${this.dataset.section}`;
-        const html = new DOMParser().parseFromString(responseText, 'text/html')
+        const html = new DOMParser().parseFromString(responseText, "text/html");
         const destination = document.getElementById(id);
         const source = html.getElementById(id);
 
         if (source && destination) destination.innerHTML = source.innerHTML;
 
-        this.renderAffirmMessage(html)
+        this.renderAffirmMessage(html);
 
         const price = document.getElementById(`price-${this.dataset.section}`);
 
-        if (price) price.classList.remove('visibility-hidden');
+        if (price) price.classList.remove("visibility-hidden");
         this.toggleAddButton(!this.currentVariant.available, window.variantStrings.soldOut);
       });
   }
 
   renderAffirmMessage(html) {
-    const source = html.getElementById("product-affirm")
-    const destination = document.getElementById("product-affirm")
+    const source = html.getElementById("product-affirm");
+    const destination = document.getElementById("product-affirm");
     if (source && destination) {
-      destination.innerHTML = source.innerHTML
-      switchAffirmMessage()
+      destination.innerHTML = source.innerHTML;
+      switchAffirmMessage();
     }
   }
 
   toggleAddButton(disable = true, text, modifyClass = true) {
     const productForm = document.getElementById(`product-form-${this.dataset.section}`);
     if (!productForm) return;
-    const addButton = productForm.querySelector('[name="add"]');
-    const addButtonText = productForm.querySelector('[name="add"] > span');
+    const addButton = productForm.querySelector("[name=\"add\"]");
+    const addButtonText = productForm.querySelector("[name=\"add\"] > span");
 
     if (!addButton) return;
 
     this.toggleStickyAddButton(disable);
 
     if (disable) {
-      addButton.setAttribute('disabled', true);
+      addButton.setAttribute("disabled", true);
       if (text) addButtonText.textContent = text;
     } else {
-      addButton.removeAttribute('disabled');
+      addButton.removeAttribute("disabled");
       addButtonText.textContent = window.variantStrings.addToCart;
     }
 
@@ -721,50 +723,52 @@ class OldVariantSelects extends HTMLElement {
   toggleStickyAddButton(disable) {
     // override add to cart sticky button behavior
     // that disabled itself when changing variant
-    const stickyAddButton = document.getElementById('bundle-sticky_submit')
+    const stickyAddButton = document.getElementById("bundle-sticky_submit");
     if (!stickyAddButton) return;
 
     if (disable) {
-      stickyAddButton.setAttribute('disabled', true);
+      stickyAddButton.setAttribute("disabled", true);
     } else {
-      stickyAddButton.removeAttribute('disabled');
-      stickyAddButton.style.opacity = '1';
+      stickyAddButton.removeAttribute("disabled");
+      stickyAddButton.style.opacity = "1";
     }
   }
 
   setUnavailable() {
     const button = document.getElementById(`product-form-${this.dataset.section}`);
-    const addButton = button.querySelector('[name="add"]');
-    const addButtonText = button.querySelector('[name="add"] > span');
+    const addButton = button.querySelector("[name=\"add\"]");
+    const addButtonText = button.querySelector("[name=\"add\"] > span");
     const price = document.getElementById(`price-${this.dataset.section}`);
     if (!addButton) return;
     addButtonText.textContent = window.variantStrings.unavailable;
-    if (price) price.classList.add('visibility-hidden');
+    if (price) price.classList.add("visibility-hidden");
   }
 
   getVariantData() {
-    this.variantData = this.variantData || JSON.parse(this.querySelector('[type="application/json"]').textContent);
+    this.variantData = this.variantData || JSON.parse(this.querySelector("[type=\"application/json\"]").textContent);
     return this.variantData;
   }
 }
 
-customElements.define('old-variant-selects', OldVariantSelects);
+customElements.define("old-variant-selects", OldVariantSelects);
 
 class VariantSelects extends HTMLElement {
   constructor() {
     super();
-    this.addEventListener('change', this.onVariantChange);
+    this.addEventListener("change", this.onVariantChange);
+
+
   }
 
   onVariantChange() {
     this.updateOptions();
     this.updateMasterId();
-    this.toggleAddButton(true, '', false);
+    this.toggleCartState(true, "", false);
     this.updatePickupAvailability();
     this.removeErrorMessage();
 
     if (!this.currentVariant) {
-      this.toggleAddButton(true, '', true);
+      this.toggleCartState(true, "", true);
       this.setUnavailable();
     } else {
       this.updateMedia();
@@ -777,13 +781,13 @@ class VariantSelects extends HTMLElement {
 
   updateAffirm() {
     const price = this.currentVariant.price / 100;
-    const affirmPrice = Number((price / 12).toFixed(2))
+    const affirmPrice = Number((price / 12).toFixed(2));
     const priceInCurrency = Currency.format(affirmPrice, { maximumFractionDigits: affirmPrice % 1 === 0 ? 0 : 2 });
-    $('#affirm-widget .pro_val').text(priceInCurrency)
+    $("#affirm-widget .pro_val").text(priceInCurrency);
   }
 
   updateOptions() {
-    this.options = Array.from(this.querySelectorAll('select'), (select) => select.value);
+    this.options = Array.from(this.querySelectorAll("select"), (select) => select.value);
   }
 
   updateMasterId() {
@@ -798,7 +802,7 @@ class VariantSelects extends HTMLElement {
     if (!this.currentVariant) return;
     if (!this.currentVariant.featured_media) return;
     const newMedia = document.querySelector(
-      `[data-media-id="${this.dataset.section}-${this.currentVariant.featured_media.id}"]`
+      `[data-media-id="${this.dataset.section}-${this.currentVariant.featured_media.id}"]`,
     );
 
     if (!newMedia) return;
@@ -808,112 +812,155 @@ class VariantSelects extends HTMLElement {
     if (parent.firstChild == newMedia) return;
     modalContent.prepend(newMediaModal);
     parent.prepend(newMedia);
-    this.stickyHeader = this.stickyHeader || document.querySelector('sticky-header');
+    this.stickyHeader = this.stickyHeader || document.querySelector("sticky-header");
     if (this.stickyHeader) {
-      this.stickyHeader.dispatchEvent(new Event('preventHeaderReveal'));
+      this.stickyHeader.dispatchEvent(new Event("preventHeaderReveal"));
     }
     window.setTimeout(() => {
-      parent.querySelector('li.product__media-item').scrollIntoView({ behavior: "smooth" });
+      parent.querySelector("li.product__media-item").scrollIntoView({ behavior: "smooth" });
     });
   }
 
   updateURL() {
-    if (!this.currentVariant || this.dataset.updateUrl === 'false') return;
-    window.history.replaceState({}, '', `${this.dataset.url}?variant=${this.currentVariant.id}`);
+    if (!this.currentVariant || this.dataset.updateUrl === "false") return;
+    window.history.replaceState({}, "", `${this.dataset.url}?variant=${this.currentVariant.id}`);
   }
 
   updateVariantInput() {
     const productForms = document.querySelectorAll(`.product-form-${this.dataset.section}, #product-form-installment`);
     productForms.forEach((productForm) => {
-      const input = productForm.querySelector('input[name="id"]');
+      const input = productForm.querySelector("input[name=\"id\"]");
 
-      if(input) {
+      if (input) {
         input.value = this.currentVariant.id;
-        input.dispatchEvent(new Event('change', { bubbles: true }));
+        input.dispatchEvent(new Event("change", { bubbles: true }));
 
       }
 
-      const selectEl = productForm.querySelector('select[name="id"]');
+      const selectEl = productForm.querySelector("select[name=\"id\"]");
 
-      if(selectEl) {
+      if (selectEl) {
         selectEl.value = this.currentVariant.id;
-        selectEl.dispatchEvent(new Event('change', { bubbles: true }));
+        selectEl.dispatchEvent(new Event("change", { bubbles: true }));
       }
     });
   }
 
   updatePickupAvailability() {
-    const pickUpAvailability = document.querySelector('pickup-availability');
+    const pickUpAvailability = document.querySelector("pickup-availability");
     if (!pickUpAvailability) return;
 
     if (this.currentVariant && this.currentVariant.available) {
       pickUpAvailability.fetchAvailability(this.currentVariant.id);
     } else {
-      pickUpAvailability.removeAttribute('available');
-      pickUpAvailability.innerHTML = '';
+      pickUpAvailability.removeAttribute("available");
+      pickUpAvailability.innerHTML = "";
     }
   }
 
   removeErrorMessage() {
-    const section = this.closest('section');
+    const section = this.closest("section");
     if (!section) return;
 
-    const productForm = section.querySelector('product-form');
+    const productForm = section.querySelector("product-form");
     if (productForm) productForm.handleErrorMessage();
   }
 
-    renderProductInfo() {
+  renderProductInfo() {
     const originalPrice = this.currentVariant.compare_at_price / 100;
     const price = this.currentVariant.price / 100;
 
     const priceInCurrency = Currency.format(price, { maximumFractionDigits: price % 1 === 0 ? 0 : 2 });
     const originalPriceInCurrency = Currency.format(originalPrice, { maximumFractionDigits: originalPrice % 1 === 0 ? 0 : 2 });
-    const discountPercentage = Math.round((originalPrice - price) * 100 / originalPrice)
+    const discountPercentage = Math.round((originalPrice - price) * 100 / originalPrice);
 
-    $('.price-item.price-item--sale').text(priceInCurrency)
-    $('.price-item.price-item--regular').text(originalPriceInCurrency)
-    $('.price__pricing-group .price-badge').text(`- ${discountPercentage}%`)
+    $(".price-item.price-item--sale").text(priceInCurrency);
+    $(".price-item.price-item--regular").text(originalPriceInCurrency);
+    $(".price__pricing-group .price-badge").text(`- ${discountPercentage}%`);
 
-    const isAvail = !!this.currentVariant.available
+    const isAvail = !!this.currentVariant.available;
 
-    this.toggleAddButton(!isAvail, window.variantStrings.soldOut);
+    this.toggleCartState(!isAvail, window.variantStrings.soldOut);
 
-    const $qtySelector = $('.product-quantity-selector')
+    const $qtySelector = $(".product-quantity-selector");
 
-    $qtySelector[isAvail ? "removeClass" : "addClass"]('visibility-hidden')
+    $qtySelector[isAvail ? "removeClass" : "addClass"]("visibility-hidden");
 
-    $('quantity-input .quantity-input__native').val(1)
+    $("quantity-input .quantity-input__native").val(1);
   }
 
 
-  toggleSoldOutUpsell(show) {
+  toggleSoldOutUpsell(disable) {
     const productForm = document.querySelector(`.product-form-${this.dataset.section}`);
-    const soldOutUpsell = productForm?.querySelector('#sold-out-upsell')
-    if (show) {
-      soldOutUpsell?.classList?.remove('hidden')
+
+    const outOfStockNotice = productForm?.querySelector("#sold-out-upsell");
+
+    if (!outOfStockNotice) return;
+
+    const $outOfStockNotice = $(outOfStockNotice);
+
+
+    const defaultMsg = $outOfStockNotice.data("default");
+
+    const variantMsg = this.currentVariant.accentuate.out_of_stock_notice?.[Shop.locale];
+
+    if (disable) {
+      $outOfStockNotice.addClass("hidden");
+
     } else {
-      soldOutUpsell?.classList?.add('hidden')
+      $outOfStockNotice.removeClass("hidden");
+      $outOfStockNotice.find("p").text(variantMsg || defaultMsg);
     }
+  }
+
+  toggleDisclaimer(disable = true) {
+    const productForm = document.querySelector(`.product-form-${this.dataset.section}`);
+
+    const disclaimerEl = productForm?.querySelector("#product-disclaimer");
+
+    if (!disclaimerEl) return;
+
+    const $disclaimer = $(disclaimerEl);
+
+    const defaultMsg = $disclaimer.data("default");
+
+    const variantMsg = this.currentVariant.accentuate.disclaimer?.[Shop.locale];
+
+
+    if (disable) {
+      $disclaimer.addClass("hidden");
+    } else {
+      $disclaimer.removeClass("hidden");
+
+      $disclaimer.children(":first").text(variantMsg || defaultMsg);
+    }
+  }
+
+  toggleCartState(disable = true, text, modifyClass = true) {
+    const productForm = document.querySelector(`.product-form-${this.dataset.section}`);
+
+    if (!productForm) return;
+
+    this.toggleAddButton(...arguments);
+
+    this.toggleSoldOutUpsell(disable);
+    this.toggleDisclaimer(disable);
   }
 
   toggleAddButton(disable = true, text, modifyClass = true) {
     const productForm = document.querySelector(`.product-form-${this.dataset.section}`);
-
-    if (!productForm) return;
-    const addButton = productForm.querySelector('[name="add"]');
+    const addButton = productForm.querySelector("[name=\"add\"]");
 
     if (!addButton) return;
 
-    const addButtonText = addButton.querySelector('span');
+    const addButtonText = addButton.querySelector("span");
 
     if (disable) {
-      addButton.setAttribute('disabled', true);
+      addButton.setAttribute("disabled", true);
       if (text) addButtonText.textContent = text;
-      this.toggleSoldOutUpsell(true)
     } else {
-      addButton.removeAttribute('disabled');
+      addButton.removeAttribute("disabled");
       addButtonText.textContent = window.variantStrings.addToCart;
-      this.toggleSoldOutUpsell(false)
     }
 
     if (!modifyClass) return;
@@ -921,21 +968,37 @@ class VariantSelects extends HTMLElement {
 
   setUnavailable() {
     const button = document.getElementById(`product-form-${this.dataset.section}`);
-    const addButton = button.querySelector('[name="add"]');
-    const addButtonText = button.querySelector('[name="add"] > span');
+    const addButton = button.querySelector("[name=\"add\"]");
+    const addButtonText = button.querySelector("[name=\"add\"] > span");
     const price = document.getElementById(`price-${this.dataset.section}`);
     if (!addButton) return;
     addButtonText.textContent = window.variantStrings.unavailable;
-    if (price) price.classList.add('visibility-hidden');
+    if (price) price.classList.add("visibility-hidden");
+  }
+
+  composeVariantData() {
+    const rawVariants = JSON.parse(this.querySelector("[type=\"application/json\"]").textContent);
+    const rawAccentuates = JSON.parse(document.querySelector(`#AccentuateJson-${this.dataset.section}`).textContent);
+
+    return rawVariants.map(variant => {
+      const accentuateData = rawAccentuates.find(({ variantId }) => +variantId === variant.id);
+
+      variant.accentuate = accentuateData.accentuate;
+
+      return variant;
+    });
   }
 
   getVariantData() {
-    this.variantData = this.variantData || JSON.parse(this.querySelector('[type="application/json"]').textContent);
+    if (!this.variantData) {
+      this.variantData = this.composeVariantData();
+    }
+
     return this.variantData;
   }
 }
 
-customElements.define('variant-selects', VariantSelects);
+customElements.define("variant-selects", VariantSelects);
 
 class VariantRadios extends VariantSelects {
   constructor() {
@@ -943,236 +1006,241 @@ class VariantRadios extends VariantSelects {
   }
 
   updateOptions() {
-    const fieldsets = Array.from(this.querySelectorAll('fieldset'));
+    const fieldsets = Array.from(this.querySelectorAll("fieldset"));
     this.options = fieldsets.map((fieldset) => {
-      return Array.from(fieldset.querySelectorAll('input')).find((radio) => radio.checked).value;
+      return Array.from(fieldset.querySelectorAll("input")).find((radio) => radio.checked).value;
     });
   }
 }
 
-customElements.define('variant-radios', VariantRadios);
+customElements.define("variant-radios", VariantRadios);
 
 function isShippedOutNextDay(hour, minute) {
-  if (hour === 14 && minute === 0) return false
+  if (hour === 14 && minute === 0) return false;
   return hour >= 14 && hour <= 23;
 }
 
 async function onAddToCartSuccess() {
-  const cart = document.querySelector('cart-drawer')
-  const cartAffirm = document.querySelector('cart-drawer-affirm')
-  const cartScrollableContent = document.querySelector('cart-scrollable-content')
+  const cart = document.querySelector("cart-drawer");
+  const cartAffirm = document.querySelector("cart-drawer-affirm");
+  const cartScrollableContent = document.querySelector("cart-scrollable-content");
 
-  const cartSections = cart.getSectionsToRender().map((section) => section.section)
+  const cartSections = cart.getSectionsToRender().map((section) => section.section);
   // remove duplicate section IDs, due to it originally going to work for section rendering in cart bundle API
   // but not works for standalone section rendering
-  const sections = [...new Set(cartSections)].join(',')
+  const sections = [...new Set(cartSections)].join(",");
 
-  const cartRedeem = document.getElementById('CartRedeemCode');
-  const cartSummary = document.getElementById('CartDrawerSummary');
-  const codeRedeemed = cartRedeem.codeRedeemed
+  const cartRedeem = document.getElementById("CartRedeemCode");
+  const cartSummary = document.getElementById("CartDrawerSummary");
+  const codeRedeemed = cartRedeem.codeRedeemed;
 
-  if ($(cart).hasClass('is-empty')) {
-    $(cart).removeClass('is-empty')
+  if ($(cart).hasClass("is-empty")) {
+    $(cart).removeClass("is-empty");
   }
 
-  cart.open()
-  cartScrollableContent.loading = true
+  cart.open();
+  cartScrollableContent.loading = true;
 
-  const response = await fetch(`/?sections=${sections}`)
-  const responseData = await response.json()
+  const response = await fetch(`/?sections=${sections}`);
+  const responseData = await response.json();
 
-  await cartAffirm.refreshAffirm()
+  await cartAffirm.refreshAffirm();
 
-  cart.renderContents({ sections: responseData })
+  cart.renderContents({ sections: responseData });
 
   if (!!codeRedeemed) {
-    await cart.loadCheckout()
+    await cart.loadCheckout();
 
-    const isApplicable = cartRedeem.checkCodeApplicable()
+    const isApplicable = cartRedeem.checkCodeApplicable();
 
-    if (!isApplicable) return
+    if (!isApplicable) return;
 
-    cartSummary.computeDiscountedTotal()
+    cartSummary.computeDiscountedTotal();
     cartRedeem.refreshDiscountTag();
   }
 
-  cartScrollableContent.loading = false
+  cartScrollableContent.loading = false;
 }
 
 class ScrollToTopButton extends HTMLElement {
   constructor() {
     super();
-    this.querySelector('button').addEventListener('click', this.scrollToTop.bind(this));
+    this.querySelector("button").addEventListener("click", this.scrollToTop.bind(this));
   }
 
   scrollToTop() {
     window.scrollTo({
       top: 0,
-      behavior: 'smooth'
+      behavior: "smooth",
     });
   }
 }
 
-customElements.define('scroll-to-top-button', ScrollToTopButton);
+customElements.define("scroll-to-top-button", ScrollToTopButton);
 
 class YotpoReviewStarsStandalone extends HTMLElement {
   constructor() {
-    super()
+    super();
   }
 
   connectedCallback() {
-    const $element = $(this)
+    const $element = $(this);
     const starRatingObserver = new MutationObserver(() => {
-      starRatingObserver.disconnect()
+      starRatingObserver.disconnect();
 
-      $element.find('.yotpo-bottomline .yotpo-clr').remove()
+      $element.find(".yotpo-bottomline .yotpo-clr").remove();
 
-      const $reviewSource = $element.find('.yotpo-bottomline .text-m')
-      $reviewSource.addClass('yotpo-review-source').removeClass('text-m').html('')
+      const $reviewSource = $element.find(".yotpo-bottomline .text-m");
+      $reviewSource.addClass("yotpo-review-source").removeClass("text-m").html("");
 
-      const $starsContainer = $element.find('.yotpo-bottomline .yotpo-stars')
-      const $scoreEl = $starsContainer.find('.sr-only')
-      $scoreEl.removeClass('sr-only').addClass('yotpo-rating-score').text(parseFloat($scoreEl.text())).detach().insertAfter($starsContainer)
+      const $starsContainer = $element.find(".yotpo-bottomline .yotpo-stars");
+      const $scoreEl = $starsContainer.find(".sr-only");
+      $scoreEl.removeClass("sr-only").addClass("yotpo-rating-score").text(parseFloat($scoreEl.text())).detach().insertAfter($starsContainer);
 
-      $element.find('.yotpo-stars .yotpo-icon-star').replaceWith(`
+      $element.find(".yotpo-stars .yotpo-icon-star").replaceWith(`
           <svg width="14" height="13" viewBox="0 0 14 13" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M12.103 4.36677C12.6146 4.36677 13.0492 4.6798 13.2104 5.1643C13.3711 5.64738 13.211 6.15694 12.8026 6.46198L10.4151 8.24502L11.2058 11.1976C11.3391 11.6966 11.1437 12.199 10.7085 12.4776C10.271 12.7579 9.73151 12.7231 9.33217 12.3927L7.18683 10.612C7.07859 10.522 6.92108 10.522 6.81228 10.612L4.66779 12.3927C4.44875 12.5744 4.18757 12.6662 3.9241 12.6662C3.70677 12.6662 3.48831 12.6041 3.29063 12.477C2.85569 12.1985 2.66087 11.696 2.79445 11.1976L3.58457 8.24502L1.19769 6.46227C0.789246 6.15636 0.629168 5.64708 0.790098 5.16373C0.951028 4.67951 1.38568 4.36677 1.89695 4.36677H4.66323C4.78656 4.36677 4.89707 4.2893 4.93837 4.17423L5.90139 1.47973C6.06887 1.01033 6.5001 0.706985 6.99998 0.706985C7.49957 0.706985 7.9308 1.01033 8.09828 1.48001L9.06215 4.17451C9.10316 4.28959 9.21368 4.36677 9.33672 4.36677H12.103Z" fill="#FFBA00"/>
           </svg>
-        `)
+        `);
 
-      $element.find('.yotpo-stars .yotpo-icon-half-star').replaceWith(`
+      $element.find(".yotpo-stars .yotpo-icon-half-star").replaceWith(`
           <svg width="14" height="13" viewBox="0 0 14 13" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M11.8471 3.93846C12.3799 3.93846 12.8326 4.27533 13.0005 4.79672C13.1678 5.31658 13.0011 5.86494 12.5757 6.19322L10.0891 8.11203L10.9126 11.2894C11.0515 11.8264 10.8479 12.3671 10.3946 12.6669C9.93897 12.9685 9.37709 12.9311 8.96117 12.5756L6.72671 10.6592C6.72671 11.0234 6.5 0 6.72671 0.0158723C7.17838 0.0747844 7.51955 0.378499 7.67603 0.83189L8.67993 3.73156C8.72265 3.8554 8.83775 3.93846 8.96591 3.93846H11.8471Z" fill="#CDCDCD"/>
             <path d="M5.38787 0.831589C5.55752 0.340325 6.21198 0.0332128 6.72671 0.0158723V10.6592C6.72671 10.6592 6.44993 10.5623 6.3366 10.6592L4.10303 12.5756C3.8749 12.7711 3.60286 12.8698 3.32845 12.8698C3.10209 12.8698 2.87456 12.803 2.66867 12.6663C2.21566 12.3665 2.01275 11.8258 2.15188 11.2894L2.97482 8.11203L0.488791 6.19352C0.0633806 5.86432 -0.103347 5.31627 0.0642677 4.7961C0.231883 4.27502 0.684591 3.93846 1.2171 3.93846H4.09828C4.22674 3.93846 4.34184 3.85509 4.38486 3.73126L5.38787 0.831589Z" fill="#FFBA00"/>
           </svg>
-        `)
-    })
+        `);
+    });
 
     $(document).ready(async () => {
       starRatingObserver.observe(
-        this.querySelector('.yotpo.bottomLine'),
+        this.querySelector(".yotpo.bottomLine"),
         {
           childList: true,
           subtree: true,
         },
-      )
-    })
+      );
+    });
   }
 }
 
-customElements.define('yotpo-review-stars-standalone', YotpoReviewStarsStandalone)
+customElements.define("yotpo-review-stars-standalone", YotpoReviewStarsStandalone);
 
 class NavigationBar extends HTMLElement {
   constructor() {
     super();
-    this.$self = $(this)
+    this.$self = $(this);
   }
 
   connectedCallback() {
-    const $navigationDropdowns = $('navigation-dropdown')
-    this.$self.mouseleave(() => $navigationDropdowns.hide())
+    const $navigationDropdowns = $("navigation-dropdown");
+    this.$self.mouseleave(() => $navigationDropdowns.hide());
   }
 }
-customElements.define('navigation-bar', NavigationBar);
+
+customElements.define("navigation-bar", NavigationBar);
 
 class NavigationLink extends HTMLElement {
   constructor() {
     super();
-    this.$self = $(this)
+    this.$self = $(this);
   }
 
   connectedCallback() {
-    const $navigationDropdowns = $('navigation-dropdown')
-    const $navigationDropdown = $(`navigation-dropdown[data-link-title='${this.$self.data('link-title')}']`)
+    const $navigationDropdowns = $("navigation-dropdown");
+    const $navigationDropdown = $(`navigation-dropdown[data-link-title='${this.$self.data("link-title")}']`);
 
     this.$self.mouseenter(() => {
-      $navigationDropdowns.hide()
-      $navigationDropdown.show()
-    })
+      $navigationDropdowns.hide();
+      $navigationDropdown.show();
+    });
   }
 }
-customElements.define('navigation-link', NavigationLink);
+
+customElements.define("navigation-link", NavigationLink);
 
 class NavigationDropdownLink extends HTMLElement {
   constructor() {
     super();
-    this.$self = $(this)
+    this.$self = $(this);
   }
 
   connectedCallback() {
-    const $dropdownContent = $(`navigation-dropdown-content[data-childlink-title='${this.$self.data('childlink-title')}']`)
+    const $dropdownContent = $(`navigation-dropdown-content[data-childlink-title='${this.$self.data("childlink-title")}']`);
 
     this.$self.hover($.debounce(100, () => {
-      this.$dropdownContents.hide()
-      $dropdownContent.show()
-    }))
+      this.$dropdownContents.hide();
+      $dropdownContent.show();
+    }));
   }
 
   setDropdownContents(elements) {
-    this.$dropdownContents = elements
+    this.$dropdownContents = elements;
   }
 }
-customElements.define('navigation-dropdown-link', NavigationDropdownLink);
+
+customElements.define("navigation-dropdown-link", NavigationDropdownLink);
 
 class NavigationDropdownContent extends HTMLElement {
   constructor() {
     super();
   }
 }
-customElements.define('navigation-dropdown-content', NavigationDropdownContent);
+
+customElements.define("navigation-dropdown-content", NavigationDropdownContent);
 
 class NavigationDropdown extends HTMLElement {
   constructor() {
     super();
-    this.$self = $(this)
+    this.$self = $(this);
   }
 
   connectedCallback() {
-    this.initDropdownLinkData()
-    this.hideOnMouseLeave()
+    this.initDropdownLinkData();
+    this.hideOnMouseLeave();
   }
 
   hideOnMouseLeave() {
-    this.$self.mouseleave(() => this.$self.hide())
+    this.$self.mouseleave(() => this.$self.hide());
   }
 
   initDropdownLinkData() {
-    const dropdownLinks = this.querySelectorAll('navigation-dropdown-link')
-    const $dropdownContents = this.$self.find('navigation-dropdown-content')
+    const dropdownLinks = this.querySelectorAll("navigation-dropdown-link");
+    const $dropdownContents = this.$self.find("navigation-dropdown-content");
     for (const dropdownLink of dropdownLinks) {
-      dropdownLink.setDropdownContents($dropdownContents)
+      dropdownLink.setDropdownContents($dropdownContents);
     }
   }
 }
-customElements.define('navigation-dropdown', NavigationDropdown);
+
+customElements.define("navigation-dropdown", NavigationDropdown);
 
 class CookieConsentBar extends HTMLElement {
   constructor() {
     super();
-    this.button = this.querySelector('#cookie-consent-button')
-    this.bar = this.querySelector('#cookie-consent-bar')
+    this.button = this.querySelector("#cookie-consent-button");
+    this.bar = this.querySelector("#cookie-consent-bar");
   }
 
   connectedCallback() {
-    const hasConsent = localStorage.getItem('emmaCookieConsent')
-    if (!hasConsent) this.bar.classList.remove('hidden')
-    this.button.addEventListener('click', this.handleClick.bind(this));
+    const hasConsent = localStorage.getItem("emmaCookieConsent");
+    if (!hasConsent) this.bar.classList.remove("hidden");
+    this.button.addEventListener("click", this.handleClick.bind(this));
   }
 
   disconnectedCallback() {
-    this.button.removeEventListener('click', this.handleClick.bind(this));
+    this.button.removeEventListener("click", this.handleClick.bind(this));
   }
 
   handleClick(event) {
-    localStorage.setItem('emmaCookieConsent', "accepted")
-    this.bar.classList.add('hidden')
+    localStorage.setItem("emmaCookieConsent", "accepted");
+    this.bar.classList.add("hidden");
   }
 }
 
-customElements.define('cookie-consent-bar', CookieConsentBar);
+customElements.define("cookie-consent-bar", CookieConsentBar);
 
 function calculateCountdownTime(endTime) {
-  const endDate = new Date(endTime).getTime()
+  const endDate = new Date(endTime).getTime();
   const currentTime = new Date().getTime();
   const timeRemaining = endDate - currentTime;
 
@@ -1180,80 +1248,81 @@ function calculateCountdownTime(endTime) {
     days: Math.floor(timeRemaining / 1000 / 60 / 60 / 24),
     hours: Math.floor(timeRemaining / 1000 / 60 / 60) % 24,
     minutes: Math.floor(timeRemaining / 1000 / 60) % 60,
-    seconds: Math.floor(timeRemaining / 1000) % 60
-  }
+    seconds: Math.floor(timeRemaining / 1000) % 60,
+  };
 }
 
 class Countdown {
   constructor(expiredDate, onRender, onComplete) {
-   this.setExpiredDate(expiredDate);
+    this.setExpiredDate(expiredDate);
 
-   this.onRender = onRender;
-   this.onComplete = onComplete;
+    this.onRender = onRender;
+    this.onComplete = onComplete;
   }
 
   setExpiredDate(expiredDate) {
-   const currentTime = new Date().getTime();
+    const currentTime = new Date().getTime();
 
-   this.timeRemaining = expiredDate - currentTime;
+    this.timeRemaining = expiredDate - currentTime;
 
-   this.timeRemaining > 0 ? this.start() : this.complete();
+    this.timeRemaining > 0 ? this.start() : this.complete();
   }
 
   complete() {
-   if (typeof this.onComplete === 'function') {
-    this.onComplete();
-   }
+    if (typeof this.onComplete === "function") {
+      this.onComplete();
+    }
   }
 
   start() {
-   this.update();
+    this.update();
 
-   const intervalId = setInterval(() => {
-    this.timeRemaining -= 1000;
-    if (this.timeRemaining < 0) {
-     this.complete();
-     clearInterval(intervalId);
-    } else {
-     this.update();
-    }
-   }, 1000);
+    const intervalId = setInterval(() => {
+      this.timeRemaining -= 1000;
+      if (this.timeRemaining < 0) {
+        this.complete();
+        clearInterval(intervalId);
+      } else {
+        this.update();
+      }
+    }, 1000);
   }
 
   getTime() {
-   return {
-    days: Math.floor(this.timeRemaining / 1000 / 60 / 60 / 24),
-    hours: Math.floor(this.timeRemaining / 1000 / 60 / 60) % 24,
-    minutes: Math.floor(this.timeRemaining / 1000 / 60) % 60,
-    seconds: Math.floor(this.timeRemaining / 1000) % 60
-   };
+    return {
+      days: Math.floor(this.timeRemaining / 1000 / 60 / 60 / 24),
+      hours: Math.floor(this.timeRemaining / 1000 / 60 / 60) % 24,
+      minutes: Math.floor(this.timeRemaining / 1000 / 60) % 60,
+      seconds: Math.floor(this.timeRemaining / 1000) % 60,
+    };
   }
 
   update() {
-   if (typeof this.onRender === 'function') {
-    this.onRender(this.getTime());
-   }
+    if (typeof this.onRender === "function") {
+      this.onRender(this.getTime());
+    }
   }
- }
+}
 
 class HeroBannerCountdownTimer extends HTMLElement {
   constructor() {
     super();
-    this.digitElements = Array.from(this.querySelectorAll('.digit'));
+    this.digitElements = Array.from(this.querySelectorAll(".digit"));
     this.startTime = Date.now();
     this.endTime = null;
   }
 
   connectedCallback() {
-    this.endTime = new Date(this.getAttribute('end-time').replace(' ', 'T'));
+    this.endTime = new Date(this.getAttribute("end-time").replace(" ", "T"));
     this.startTimer();
   }
 
-  disconnectedCallback() {}
+  disconnectedCallback() {
+  }
 
   setValues(values) {
     if (values.length !== this.digitElements.length) {
-      console.error('Invalid values provided.');
+      console.error("Invalid values provided.");
       return;
     }
 
@@ -1288,11 +1357,11 @@ class HeroBannerCountdownTimer extends HTMLElement {
       if (delta >= 0) {
         this.renderTimer(delta);
       } else {
-        this.querySelector('.countdown-timer').classList.add('!hidden')
+        this.querySelector(".countdown-timer").classList.add("!hidden");
         clearInterval(intervalId);
       }
     }, 1000);
   }
 }
 
-customElements.define('hero-banner-countdown-timer', HeroBannerCountdownTimer);
+customElements.define("hero-banner-countdown-timer", HeroBannerCountdownTimer);

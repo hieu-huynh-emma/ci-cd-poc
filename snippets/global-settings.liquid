@@ -3,6 +3,7 @@
     id: "{{ shop.id | json }}",
     assetUrl: "{{ "a" | asset_url }}".match(/^.*\//g)[0],
     fileUrl: "{{ "a" | file_url }}".match(/^.*\//g)[0],
-    fileImgUrl: "{{ "a" | file_img_url }}".match(/^.*\//g)[0]
-  }
+    fileImgUrl: "{{ "a" | file_img_url }}".match(/^.*\//g)[0],
+    locale: "{{ shop.locale }}"
+  };
 </script>

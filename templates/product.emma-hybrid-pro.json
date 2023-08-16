@@ -224,6 +224,19 @@
             "cta_message": "Due to the high volume of order, we are currently experiencing some delivery delays in certain parts of Canada for this product",
             "cta_message_color": "#f03306"
           }
+        },
+        "4fa8a9ee-7e0c-4fc7-bbb3-8be46b75db66": {
+          "type": "disclaimer",
+          "settings": {
+            "default_message": ""
+          }
+        },
+        "5d696c18-3118-4f8f-8516-2980258d33f1": {
+          "type": "sold_out_upsell",
+          "settings": {
+            "sold_out_upsell_product": "",
+            "sold_out_upsell_text": ""
+          }
         }
       },
       "block_order": [
@@ -247,7 +260,9 @@
         "aca1fc41-0eb9-430f-8e6f-cd91209f6208",
         "4cbc7869-79e0-4a37-bbb4-96b1a2126e82",
         "c84bbed1-8413-4b34-bc21-8091dad8dc98",
-        "7b225c26-3236-4b1a-b7a5-9377c932ba71"
+        "7b225c26-3236-4b1a-b7a5-9377c932ba71",
+        "4fa8a9ee-7e0c-4fc7-bbb3-8be46b75db66",
+        "5d696c18-3118-4f8f-8516-2980258d33f1"
       ],
       "settings": {
         "title": "Emma Hybrid Comfort",

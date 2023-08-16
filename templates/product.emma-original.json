@@ -221,7 +221,13 @@
           "type": "sold_out_upsell",
           "settings": {
             "sold_out_upsell_product": "",
-            "sold_out_upsell_text": "We are experiencing some delivery delay for the Full size of Emma Original which will take 3 weeks to be delivered"
+            "sold_out_upsell_text": ""
+          }
+        },
+        "018c7c20-c01e-49e8-803a-51120cac25d5": {
+          "type": "disclaimer",
+          "settings": {
+            "default_message": ""
           }
         }
       },
@@ -246,15 +252,15 @@
         "d93b1b7f-a422-49e4-83d0-0146d0e74dd7",
         "ee70e296-2038-46e5-813c-014087cd98dd",
         "11e717f4-671f-4827-9403-88c69a78129f",
-        "954e106b-6ab2-41ff-9a59-2b88a5c0ad2e"
+        "954e106b-6ab2-41ff-9a59-2b88a5c0ad2e",
+        "018c7c20-c01e-49e8-803a-51120cac25d5"
       ],
       "settings": {
         "title": "Emma Original Mattress",
         "desc": "<h6>The smart and easy choice<\/h6><p>Our original claim to fame that's affordable, convenient, and an absolute dream to sleep on.<\/p><ul><li>Pressure relief<\/li><li>Long lasting and durable<\/li><li>Our best-selling mattress<\/li><\/ul>",
         "caption_headline": "The mattress that put Emma on the map",
         "caption_content": "The Emma Original changed the game when it comes to improving sleep",
-        "badge": "Sale",
-        "disclaimer": "<p>We are experiencing some delivery delay for the Full size of Emma Original which will take 3 weeks to be delivered<\/p>"
+        "badge": "Sale"
       }
     },
     "content-1": {

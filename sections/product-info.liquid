@@ -8,6 +8,9 @@
 {% assign upsell_mattress = section.blocks | where: 'type', 'upsell_mattress' | first %}
 {% assign upsell_mattress_v2 = section.blocks | where: 'type', 'upsell_mattress_v2' | first %}
 {% assign sold_out_upsell = section.blocks | where: 'type', 'sold_out_upsell' | first %}
+{% assign disclaimer = section.blocks | where: 'type', 'disclaimer' | first %}
+
+
 {% assign cta_message = section.blocks | where: 'type', 'cta_message' | first %}
 {% assign mini_comparison_table = section.blocks | where: 'type', 'mini-comparison-table' | first %}
 {% assign appBlock = section.blocks | where: 'type', '@app' | first %}
@@ -219,9 +222,11 @@
 						</div>
 					{%- endfor -%}
 					
-					<script type="application/json">
+					<script id="ProductVariants" type="application/json">
             {{ product.variants | json }}
-          
+					
+					
+					
 					
 					
 					</script>
@@ -324,27 +329,47 @@
 						<div
 							id="sold-out-upsell"
 							class="{% if product.selected_or_first_available_variant.available == true %}hidden{% endif %}"
+							data-default="{{ sold_out_upsell.settings.sold_out_upsell_text }}"
 						>
-							{% assign outOfStockNotice = product.selected_or_first_available_variant.metafields.accentuate.out_of_stock_notice %}
-							{% if outOfStockNotice %}
-								<p class="mt-2 mx-1 text-[#F03306] text-[14px] font-semibold">
-									{{ outOfStockNotice }}
-								</p>
+							{% assign variantOutOfStockNotice = product.selected_or_first_available_variant.metafields.accentuate.out_of_stock_notice[shop.locale] %}
 							
-							{% else %}
-								<a href="{{ sold_out_upsell.settings.sold_out_upsell_product }}">
-									<p class="mt-2 mx-1 text-[#F03306] text-[14px] underline font-semibold">
+							{% capture outOfStockMsg %}
+								<p class="mt-2 mx-1 text-[#F03306] text-[14px] font-semibold">
+									{% if variantOutOfStockNotice %}
+										{{ variantOutOfStockNotice }}
+									{% else %}
 										{{ sold_out_upsell.settings.sold_out_upsell_text }}
-									</p>
+									{% endif %}
+								</p>
+							{% endcapture %}
+							
+							{% if sold_out_upsell.settings.sold_out_upsell_product != blank %}
+								<a class="underline" href="{{ sold_out_upsell.settings.sold_out_upsell_product }}">
+									{{ outOfStockMsg }}
 								</a>
+							{% else %}
+								{{ outOfStockMsg }}
 							{% endif %}
 						</div>
 					{% endif %}
 					
-					{% if section.settings.disclaimer %}
-						<p class="mt-2 mx-1 text-center text-[#F03306] text-[14px] font-semibold">
-							{{ section.settings.disclaimer | remove: "<p>" | remove: "</p>" }}
-						</p>
+					{% if disclaimer %}
+						<div
+							id="product-disclaimer"
+							data-default="{{ disclaimer.settings.default_message | remove: "<p>" | remove: "</p>" }}"
+						>
+							<p class="mt-2 mx-1 text-center text-[#F03306] text-[14px] font-semibold">
+								{% assign variantDisclaimer = product.selected_or_first_available_variant.metafields.accentuate.disclaimer[shop.locale] %}
+								{% if variantDisclaimer %}
+									{{ variantDisclaimer }}
+								{% else %}
+									{{ disclaimer.settings.default_message | remove: "<p>" | remove: "</p>" }}
+								{% endif %}
+							</p>
+						
+						
+						</div>
+					
 					{% endif %}
 					
 					{% if cta_message %}
@@ -508,22 +533,39 @@
 			</ul>
 		</product-form>
 	</div>
+	
+	
+	{% unless product == empty %}
+		<script type="application/json" id="ProductJson-{{ section.id }}">
+    {{ product | json }}
+	
+		
+		
+		
+		
+		</script>
+		<script type="application/json" id="ModelJson-{{ section.id }}">
+    {{ product.media | where: 'media_type', 'model' | json }}
+		
+		
+		
+		</script>
+		<script type="application/json" id="AccentuateJson-{{ section.id }}">
+			[
+			{% for variant in product.variants %}
+				{
+	          "productId" : "{{ variant.product.id }}",
+	          "variantId": "{{ variant.id }}",
+	          "accentuate": {{ variant.metafields.accentuate | json }}
+				}
+				{% unless forloop.last %},{% endunless -%}
+			{% endfor %}
+			]
+		</script>
+	{% endunless %}
+
 </section>
 
-{% unless product == empty %}
-	<script type="application/json" id="ProductJson-{{ section.id }}">
-    {{ product | json }}
-  
-	
-	
-	</script>
-	<script type="application/json" id="ModelJson-{{ section.id }}">
-    {{ product.media | where: 'media_type', 'model' | json }}
-  
-	
-	
-	</script>
-{% endunless %}
 
 <script>
   document.addEventListener("DOMContentLoaded", function () {
@@ -793,7 +835,44 @@
         {
           "id": "sold_out_upsell_text",
           "type": "text",
-          "label": "Sold Out Upsell Text"
+          "label": "Sold Out Upsell Text",
+          "info": "If you want a variant specific out of stock notice, go to Accentuate follow links below"
+        },
+        {
+          "type": "paragraph",
+          "content": "[Emma Original Mattress](https://admin.shopify.com/store/emma-sleep-ca/apps/fa9557f87f6b23c6878ab205891bb8d9/app/edit?scope=product&id=6713686098058)"
+        },
+        {
+          "type": "paragraph",
+          "content": "[Emma Hybrid Comfort](https://admin.shopify.com/store/emma-sleep-ca/apps/fa9557f87f6b23c6878ab205891bb8d9/app/edit?scope=product&id=7741865164938)"
+        },
+        {
+          "type": "paragraph",
+          "content": "[Emma Shift](https://admin.shopify.com/store/emma-sleep-ca/apps/fa9557f87f6b23c6878ab205891bb8d9/app/edit?scope=product&id=7713717682314)"
+        }
+      ]
+    },
+    {
+      "type": "disclaimer",
+      "name": "Disclaimer",
+      "settings": [
+        {
+          "id": "default_message",
+          "type": "text",
+          "label": "Default Product Disclaimer",
+          "info": "If you want a variant specific disclaimer, go to Accentuate follow links below"
+        },
+        {
+          "type": "paragraph",
+          "content": "[Emma Original Mattress](https://admin.shopify.com/store/emma-sleep-ca/apps/fa9557f87f6b23c6878ab205891bb8d9/app/edit?scope=product&id=6713686098058)"
+        },
+        {
+          "type": "paragraph",
+          "content": "[Emma Hybrid Comfort](https://admin.shopify.com/store/emma-sleep-ca/apps/fa9557f87f6b23c6878ab205891bb8d9/app/edit?scope=product&id=7741865164938)"
+        },
+        {
+          "type": "paragraph",
+          "content": "[Emma Shift](https://admin.shopify.com/store/emma-sleep-ca/apps/fa9557f87f6b23c6878ab205891bb8d9/app/edit?scope=product&id=7713717682314)"
         }
       ]
     },
@@ -840,11 +919,6 @@
       "type": "text",
       "id": "badge",
       "label": "Badge"
-    },
-    {
-      "id": "disclaimer",
-      "type": "richtext",
-      "label": "Disclaimer"
     }
   ]
 }
