@@ -15,7 +15,7 @@
 
 {% comment %}DESIGN MIGRATE{% endcomment %}
 {% case template %}
-  {% when 'index', 'product.emma-original', 'product.emma-climax-hybrid', 'product.emma-hybrid-pro' %}
+  {% when 'index', 'product.emma-original', 'product.emma-climax-hybrid', 'product.emma-hybrid-pro', 'product.ready-to-sleep' %}
     {{ 'new-heading.css' | asset_url | stylesheet_tag }}
   {% else %}
     {{ 'old-heading.css' | asset_url | stylesheet_tag }}
@@ -28,7 +28,7 @@
       assign pageStylesheet = 'comparison-page.css'
     when 'page.competitor-comparison'
       assign pageStylesheet = 'competitor-comparison.css'
-    when 'product.emma-original', 'product.emma-climax-hybrid', 'product.emma-hybrid-pro'
+    when 'product.emma-original', 'product.emma-climax-hybrid', 'product.emma-hybrid-pro', 'product.ready-to-sleep'
       assign pageStylesheet = 'product-detail.css'
   endcase
 %}

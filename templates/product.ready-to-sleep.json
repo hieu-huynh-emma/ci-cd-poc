@@ -65,23 +65,23 @@
         "f5f456c7-b29a-4f74-826f-648e09f5b1cd": {
           "type": "product_media",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Hybrid_comfort_resized.png",
+            "image": "shopify:\/\/shop_images\/bundle_pic.webp",
             "full_width": true,
-            "is_video": false
-          }
-        },
-        "ae4539f2-6ea2-42a3-a132-a31010570bf1": {
-          "type": "product_media",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/Original_3.png",
-            "full_width": false,
             "is_video": false
           }
         },
         "e4cd7962-4d57-4250-8e6e-4c76dd76d6d6": {
           "type": "product_media",
           "settings": {
-            "image": "shopify:\/\/shop_images\/f80ce622ee744ca29f41905898bac316.thumbnail.0000000000_2048x_a55451c5-d423-4702-96f2-d21bcc06eb63.webp",
+            "image": "shopify:\/\/shop_images\/PILLOW_3.jpg",
+            "full_width": false,
+            "is_video": false
+          }
+        },
+        "ae4539f2-6ea2-42a3-a132-a31010570bf1": {
+          "type": "product_media",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/pillow_img.webp",
             "full_width": false,
             "is_video": false
           }
@@ -89,7 +89,7 @@
         "038c8f16-3a84-418c-9ee2-38f53be4a385": {
           "type": "product_media",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Hybrid_Comfort_Layer.png",
+            "image": "shopify:\/\/shop_images\/hybrid1.jpg",
             "full_width": false,
             "is_video": false
           }
@@ -97,7 +97,7 @@
         "72b3b893-b0bb-44ad-978c-733ee54620a1": {
           "type": "product_media",
           "settings": {
-            "image": "shopify:\/\/shop_images\/1Emma_Sleep_Photo_Shoot2391_copy_2_2.jpg",
+            "image": "shopify:\/\/shop_images\/Hybrid_Comfort_Layer.png",
             "full_width": false,
             "is_video": false
           }
@@ -199,6 +199,7 @@
         },
         "aca1fc41-0eb9-430f-8e6f-cd91209f6208": {
           "type": "mini-comparison-table",
+          "disabled": true,
           "settings": {
             "badge": "$1,018",
             "note": "*For queen sizes only. All prices and information from public sources listed as of July 18, 2023 for Douglas Alpine and Endy Hybrid. Information may not reflect updated prices and promotions."
@@ -241,8 +242,8 @@
       },
       "block_order": [
         "f5f456c7-b29a-4f74-826f-648e09f5b1cd",
-        "ae4539f2-6ea2-42a3-a132-a31010570bf1",
         "e4cd7962-4d57-4250-8e6e-4c76dd76d6d6",
+        "ae4539f2-6ea2-42a3-a132-a31010570bf1",
         "038c8f16-3a84-418c-9ee2-38f53be4a385",
         "72b3b893-b0bb-44ad-978c-733ee54620a1",
         "12e2c164-6e6a-42a2-a76a-b4363d4c2c09",
@@ -265,31 +266,40 @@
         "5d696c18-3118-4f8f-8516-2980258d33f1"
       ],
       "settings": {
-        "title": "Emma Hybrid Comfort",
-        "desc": "<h6>Perfect comfort for everyone <\/h6><p>Our newest 13-inch Hybrid mattress that can support added weight and movement without getting hot or stuffy<\/p><ul><li>Ultra-breathable and refreshing, no more overheating<\/li><li>7 ergonomic zones for optimal spinal alignment<\/li><li>Enhanced support for every size and weight<\/li><li>Ideal pressure distribution<\/li><li>Zero motion transfer<\/li><\/ul>",
-        "caption_headline": "The mattress that can hold its own",
-        "caption_content": "Designed to provide perfect support, maximal comfort, and stay cool while you sleep",
+        "title": "Ready to Sleep Bundle",
+        "desc": "<h6>What's included in the set?<\/h6><ul><li>50% discount on our newest 13-inch Emma Hybrid Comfort<\/li><li>50% discount on 2 Emma Original Adjustable Foam Pillows<\/li><\/ul>",
+        "caption_headline": "Best value for premium comfort",
+        "caption_content": "We offer an excellent sleep system that ensures a perfect night's sleep.",
         "badge": "New"
       }
     },
     "media-with-text-banners": {
       "type": "media-with-text-banners",
       "blocks": {
+        "57e597f8-8943-4def-820a-a0e469678641": {
+          "type": "video",
+          "settings": {
+            "video": "shopify:\/\/files\/videos\/USP3_10YearWarranty.mp4",
+            "title": "Why combine Emma products?",
+            "content": "Our team of sleep experts has developed complementary products to create a comprehensive sleep system that serves comfort, support, breathability, and durability.",
+            "reverse": true
+          }
+        },
         "7eddc7a1-60de-430c-ad1d-0fa4619d108d": {
           "type": "video",
           "settings": {
             "video": "shopify:\/\/files\/videos\/USP - Spinal Support 1920x1080.mp4",
-            "title": "Extra strength to provide optimal support",
-            "content": "Perfect for all types of sleepers, and activities that need the added reinforcement, the mattress can easily support all body types while maintaining its resilience so that you don’t sink too deep into the mattress.",
+            "title": "Ready to Sleep Bundle",
+            "content": "Our bundle prepares you for a perfect night's sleep through the synergy of our newest 13-inch Hybrid Comfort Mattress and Original Adjustable form pillow.",
             "reverse": false
           }
         },
-        "57e597f8-8943-4def-820a-a0e469678641": {
+        "258722e6-18c8-4c8d-bee9-c411c5312e58": {
           "type": "video",
           "settings": {
-            "video": "shopify:\/\/files\/videos\/original bed-ddtopper-sheet.mp4",
-            "title": "No more sweaty nights",
-            "content": "Designed with a plush and moisture-wicking cover, the Hybrid Comfort is climate-regulating and creates a cool sleep environment. The Airgocell foam allows heat to dissipate away from your body allowing you to fall asleep at the ideal temperature every night.",
+            "video": "shopify:\/\/files\/videos\/pillow 2.mp4",
+            "title": "Original Adjustable Foam Pillow",
+            "content": "Your spine stays aligned while you sleep, but it maintains the cloud-like touch that every pillow should have. Mix and match the layers and the order they’re in so that you find your ideal comfort.",
             "reverse": true
           }
         },
@@ -297,26 +307,17 @@
           "type": "video",
           "settings": {
             "video": "shopify:\/\/files\/videos\/zero-motion-technology-clean.mp4",
-            "title": "Undisturbed sleep with zero motion transfer",
-            "content": "Made with an open-celled foam that isolates motion, light sleepers can continue to snooze even as their partner tosses and turns in bed. The combined springs in the Hybrid Comfort also help hold the structure of the mattress during movement.",
+            "title": "Hybrid Comfort Mattress",
+            "content": "Enjoy zero motion transfer and exceptional breathability enabled by its open-pored Airgocell foams, facilitating heat dissipation for an impeccable night's sleep at your ideal temperature.",
             "reverse": false
-          }
-        },
-        "258722e6-18c8-4c8d-bee9-c411c5312e58": {
-          "type": "video",
-          "settings": {
-            "video": "shopify:\/\/files\/videos\/USP3_10YearWarranty.mp4",
-            "title": "Developed by experts ",
-            "content": "The Hybrid Comfort was developed by a team of sleep experts and researchers, bringing top-notch technology to Canada. We know that the quality of your sleep is a long-term investment. Our products are built to last, having been tested and approved in our laboratories.",
-            "reverse": true
           }
         }
       },
       "block_order": [
-        "7eddc7a1-60de-430c-ad1d-0fa4619d108d",
         "57e597f8-8943-4def-820a-a0e469678641",
-        "95f7a903-df98-4d58-9b15-0db125d9190c",
-        "258722e6-18c8-4c8d-bee9-c411c5312e58"
+        "7eddc7a1-60de-430c-ad1d-0fa4619d108d",
+        "258722e6-18c8-4c8d-bee9-c411c5312e58",
+        "95f7a903-df98-4d58-9b15-0db125d9190c"
       ],
       "settings": {
       }
@@ -430,9 +431,9 @@
           "settings": {
             "product": "emma-hybrid-comfort",
             "border_color": "#f4711e",
-            "badge_color": "#ff8900",
+            "badge_color": "#212b57",
             "primary_badge": "COMFORT",
-            "secondary_badge": "POPULAR UPGRADE",
+            "secondary_badge": "Included in set",
             "mattress_height": "shopify:\/\/shop_images\/mattres-height-13-v2.png",
             "image": "shopify:\/\/shop_images\/MicrosoftTeams-image_16.png",
             "product_title": "Emma Hybrid Comfort",
@@ -715,7 +716,7 @@
         "72c7f33b-7788-4524-bf53-816aecb093b6": {
           "type": "catalog_item",
           "settings": {
-            "product": "emma-foam-pillow"
+            "product": "emma-mattress-protector"
           }
         },
         "f0f0b732-6803-4158-8c54-5c08c4bdbfa3": {
@@ -813,7 +814,7 @@
         "428bf788-6243-4437-82ba-18a01f731a93": {
           "type": "shopify:\/\/apps\/yotpo-product-photo-reviews\/blocks\/reviews\/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
           "settings": {
-            "product": "{{product}}"
+            "product": "emma-hybrid-comfort"
           }
         }
       },
