@@ -40,6 +40,51 @@
       "settings": {
       }
     },
+    "hero-banner": {
+      "disabled":  true,
+      "type": "hero-banner",
+      "blocks": {
+        "ca504ac7-3137-4ad7-997c-c1e12bd1d446": {
+          "type": "wallpaper",
+          "settings": {
+            "src": "shopify:\/\/shop_images\/Emma_CA_Webshop_-_Back_to_School_BannerCream.jpg",
+            "mobile_src": "shopify:\/\/shop_images\/Emma_CA_Webshop_-_Back_to_School_BannerCreamM.jpg"
+          }
+        },
+        "def90d36-6b56-4c80-99e9-566664031df6": {
+          "type": "countdown",
+          "settings": {
+            "heading": "Order Today For The Fastest Shipping",
+            "desktop_color": "#000000",
+            "mobile_color": "#000000",
+            "timer": "2023-08-28 11:00"
+          }
+        },
+        "9593f14f-4c86-4af9-953e-0fa248231b89": {
+          "type": "cta",
+          "settings": {
+            "url": "shopify:\/\/products\/emma-hybrid-comfort",
+            "text": "Shop Now",
+            "subtext": "FREE 365-Night Trial",
+            "desktop_color": "#000000",
+            "mobile_color": "#000000"
+          }
+        }
+      },
+      "block_order": [
+        "ca504ac7-3137-4ad7-997c-c1e12bd1d446",
+        "def90d36-6b56-4c80-99e9-566664031df6",
+        "9593f14f-4c86-4af9-953e-0fa248231b89"
+      ],
+      "custom_css": [
+        "#hero-banner-section .hero-banner__tagline a {font-size: 12px;}"
+      ],
+      "settings": {
+        "title": "<p>Up to 45% off<\/p>",
+        "tagline": "<p>Discover The New Emma Hybrid Comfort<br\/><a href=\"\/pages\/emma-first-time-customer-offer-promo-details\" target=\"_blank\" title=\"Emma “First Time Customer Offer” Promo Details\">Terms & conditions apply*<\/a><br\/><\/p>",
+        "subtitle": "Back to School Sale"
+      }
+    },
     "promotional-banner": {
       "type": "promotional-banner",
       "blocks": {
@@ -843,6 +888,7 @@
   },
   "order": [
     "hero-split",
+    "hero-banner",
     "promotional-banner",
     "winning-awards",
     "featured-collections",
