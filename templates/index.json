@@ -1,8 +1,8 @@
 {
   "layout": "theme.optimized",
   "sections": {
-    "hero-banner": {
-      "type": "hero-banner",
+    "hero-split": {
+      "type": "hero-split",
       "blocks": {
         "657e9bc2-e4c4-4901-bcdb-dd186507722f": {
           "type": "hero-split",
@@ -842,7 +842,7 @@
     }
   },
   "order": [
-    "hero-banner",
+    "hero-split",
     "promotional-banner",
     "winning-awards",
     "featured-collections",

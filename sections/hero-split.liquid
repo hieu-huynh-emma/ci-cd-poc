@@ -1,0 +1,131 @@
+{% assign heroSplits = section.blocks | where: 'type', 'hero-split' %}
+
+{{ 'hero-split.css' | asset_url | stylesheet_tag }}
+
+<div id="hero-split-section" class="page-boundary">
+    <div class="hero-container">
+        {% for block in heroSplits %}
+            {% assign wallpaper = block.settings.wallpaper %}
+
+            <section class="hero-split">
+                <div class="hero-split-container">
+                    <div class="section-content">
+                        <h2 class="heading-2 text-white">{{ block.settings.title | remove: '<p>' | remove: '</p>' }}</h2>
+                        <p class="text-white">{{ block.settings.subtitle | remove: '<p>' | remove: '</p>' }}</p>
+                        <div class="section-content__tagline">{{ block.settings.tagline }}</div>
+                    </div>
+
+                    <div class="hero-split-features">
+                        {% if block.settings.timer %}
+                            <hero-banner-countdown-timer end-time="{{ block.settings.timer }}">
+                                <div class="countdown-timer">
+                                    <div class="time-part">
+                                        <p class="digit"></p>
+                                        <p class="label">Days</p>
+                                    </div>
+                                    <div class="time-part">
+                                        <p class="digit"></p>
+                                        <p class="label">Hours</p>
+                                    </div>
+                                    <div class="time-part">
+                                        <p class="digit"></p>
+                                        <p class="label">Minutes</p>
+                                    </div>
+                                    <div class="time-part">
+                                        <p class="digit"></p>
+                                        <p class="label">Seconds</p>
+                                    </div>
+                                </div>
+                            </hero-banner-countdown-timer>
+                        {% endif %}
+
+                        {% if block.settings.cta_url != blank %}
+                            <div class="section-cta">
+                                <a class="btn btn--lg" href="{{ block.settings.cta_url }}">
+                                    {{ block.settings.cta_text }}
+                                </a>
+                                <p class="cta-subtext hero-split-subtext">{{ block.settings.cta_subtext }}</p>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                {% if wallpaper != blank %}
+                    <div class="wallpaper">
+                        {{
+                        wallpaper
+                        | image_url: width: 2680
+                        | image_tag: width: 2680, height: 640, class: 'mx-auto', loading: 'eager'
+                        }}
+                    </div>
+                {% endif %}
+            </section>
+        {% endfor %}
+    </div>
+
+</div>
+
+{% schema %}
+{
+  "name": "Hero Banner",
+  "blocks": [
+    {
+      "type": "hero-split",
+      "name": "Hero Split",
+      "limit": 2,
+      "settings": [
+        {
+          "id": "wallpaper",
+          "type": "image_picker",
+          "label": "Wallpaper"
+        },
+        {
+          "id": "title",
+          "type": "richtext",
+          "label": "Title",
+          "default": "<p>Hit snooze! Sleep is about to get <i>wayyy better.</i></p>"
+        },
+        {
+          "id": "subtitle",
+          "type": "richtext",
+          "label": "Subtitle"
+        },
+        {
+          "id": "tagline",
+          "type": "richtext",
+          "label": "Tagline"
+        },
+        {
+          "type": "color",
+          "id": "mobile_color",
+          "label": "Mobile Color",
+          "default": "#000000"
+        },
+        {
+          "id": "cta_url",
+          "type": "url",
+          "label": "CTA Url"
+        },
+        {
+          "id": "cta_text",
+          "type": "text",
+          "label": "CTA Text"
+        },
+        {
+          "id": "cta_subtext",
+          "type": "richtext",
+          "label": "CTA Subtext"
+        },
+        {
+          "type": "text",
+          "id": "timer",
+          "label": "Countdown Timer",
+          "info": "Please follow format: YYYY-MM-DD HH:mm"
+        }
+      ]
+    }
+  ],
+  "settings": [
+  ]
+}
+{% endschema %}
