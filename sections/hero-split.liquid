@@ -7,11 +7,11 @@
         {% for block in heroSplits %}
             {% assign wallpaper = block.settings.wallpaper %}
 
-            <section class="hero-split">
+            <section class="hero-split" style="color: {{ block.settings.text_color }}">
                 <div class="hero-split-container">
                     <div class="section-content">
-                        <h2 class="heading-2 text-white">{{ block.settings.title | remove: '<p>' | remove: '</p>' }}</h2>
-                        <p class="text-white">{{ block.settings.subtitle | remove: '<p>' | remove: '</p>' }}</p>
+                        <h2 class="heading-2 ">{{ block.settings.title | remove: '<p>' | remove: '</p>' }}</h2>
+                        <p >{{ block.settings.subtitle | remove: '<p>' | remove: '</p>' }}</p>
                         <div class="section-content__tagline">{{ block.settings.tagline }}</div>
                     </div>
 
@@ -62,7 +62,6 @@
             </section>
         {% endfor %}
     </div>
-
 </div>
 
 {% schema %}
@@ -97,8 +96,8 @@
         },
         {
           "type": "color",
-          "id": "mobile_color",
-          "label": "Mobile Color",
+          "id": "text_color",
+          "label": "Text Color",
           "default": "#000000"
         },
         {
