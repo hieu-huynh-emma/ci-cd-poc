@@ -1,0 +1,75 @@
+@import "../abstracts/index";
+@import "../partials/bundle-detail/bundle-info";
+@import "../partials/product-detail/add-to-cart-btn";
+@import "../partials/product-detail/installment-widgets";
+@import "../partials/product-detail/yotpo-star-ratings";
+
+
+body {
+  background-color: white;
+}
+
+.splide {
+  &__pagination__page {
+    height: 8px;
+    width: 8px;
+  }
+
+  &__pagination__page.is-active {
+    transform: none;
+    background: #ff8900 !important;
+    border-radius: 8px;
+    width: 26.4px;
+    height: 8px;
+    opacity: 1;
+  }
+}
+
+@media (min-width: 769px) {
+  .page-boundary {
+    padding: 0 4rem;
+  }
+
+  #customer-sentiment-section {
+    padding: 2.5rem 0;
+
+
+    .page-boundary {
+      padding-left: 4rem;
+      padding-right: 0;
+    }
+  }
+
+  #product-grid-section {
+    .product-grid-section-wrapper {
+      padding: 2.5rem 0;
+    }
+  }
+}
+
+.product-form__error-message-wrapper {
+  display: flex;
+  flex-basis: 100%;
+  padding: 0.5rem 0;
+  margin: 0 calc((5 / (var(--font-size-base))) * 1em) 20px;
+}
+
+.product-form__controls-group ~ .product-form__error-message-wrapper {
+  margin-bottom: 0;
+}
+
+.product-form__error-message-wrapper--has-payment-button {
+  padding: 0.5rem 0;
+}
+
+.product-form__error-message-wrapper--hidden {
+  display: none;
+}
+
+.product-form__error-message {
+  margin-left: 0.5rem;
+  font-size: calc(((var(--font-size-base) - 2) / (var(--font-size-base))) * 1em);
+  line-height: 1.2;
+  color: var(--color-body-text);
+}
+

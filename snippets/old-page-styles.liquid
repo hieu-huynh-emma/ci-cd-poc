@@ -28,8 +28,10 @@
       assign pageStylesheet = 'comparison-page.css'
     when 'page.competitor-comparison'
       assign pageStylesheet = 'competitor-comparison.css'
-    when 'product.emma-original', 'product.emma-climax-hybrid', 'product.emma-hybrid-pro', 'product.ready-to-sleep'
+    when 'product.emma-original', 'product.emma-climax-hybrid', 'product.emma-hybrid-pro'
       assign pageStylesheet = 'product-detail.css'
+    when 'product.ready-to-sleep'
+      assign pageStylesheet = 'bundle-detail.css'
   endcase
 %}
 
