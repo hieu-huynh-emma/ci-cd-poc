@@ -15,7 +15,8 @@
             "cta_url": "shopify:\/\/products\/emma-hybrid-comfort",
             "cta_text": "Shop Now",
             "cta_subtext": "",
-            "timer": "2023-09-01 09:00"
+            "timer": "2023-09-01 09:00",
+            "discount_badge": false
           }
         },
         "f4269a60-543d-409b-9028-992432ca0401": {
@@ -29,7 +30,8 @@
             "cta_url": "shopify:\/\/products\/ready-to-sleep-bundle",
             "cta_text": "Shop Now",
             "cta_subtext": "",
-            "timer": ""
+            "timer": "",
+            "discount_badge": true
           }
         }
       },
@@ -38,6 +40,9 @@
         "f4269a60-543d-409b-9028-992432ca0401"
       ],
       "settings": {
+        "discount-percentage": "<p>-50%</p>",
+        "product_includes": "2 pillows +<\/br>1 mattress",
+        "badge_color": "#ff8900"
       }
     },
     "hero-banner": {

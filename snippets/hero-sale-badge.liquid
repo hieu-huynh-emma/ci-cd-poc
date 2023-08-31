@@ -1,0 +1,8 @@
+{{ 'hero-sale-badge.css' | asset_url | stylesheet_tag }}
+
+<div class="hero-sale-badge" style="background-color: {{ settings.badge_color }};">
+  <div class="badge">
+    <span class="discount-percent">{{ settings.discount-percentage | remove: '<p>' | remove: '</p>' }}</span>
+    {{ settings.product_includes | remove: '<p>' | remove: '</p>' }}
+  </div>
+</div>
