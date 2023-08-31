@@ -398,10 +398,9 @@
 								%}
 							</div>
 							<div class="px-4">
-								<p class="text-[15px]">Upgrade to the Hybrid Comfort:</p>
+								<p class="text-[15px]">{{ upsell_mattress_v2.settings.title }}</p>
 								<ul class="ml-7 list-disc text-[15px]">
-									<li>Best in cooling</li>
-									<li>Additional support</li>
+									{{ upsell_mattress_v2.settings.description }}
 								</ul>
 								<p class="text-[14px]">
                   <span
@@ -811,6 +810,16 @@
       "type": "upsell_mattress_v2",
       "name": "Upsell Mattress V2",
       "settings": [
+        {
+          "id": "title",
+          "type": "text",
+          "label": "Upsell Title"
+        },
+        {
+          "id": "description",
+          "type": "textarea",
+          "label": "Upsell Description"
+        },
         {
           "id": "upsell_mattress_product_image",
           "type": "image_picker",
