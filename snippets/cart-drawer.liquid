@@ -7,10 +7,10 @@
 <link is="delay-stylesheet" href="{{ 'cart-drawer.css' | asset_url }}">
 <link is="delay-stylesheet" href="{{ 'component-cart.css' | asset_url }}">
 
-<script is="delay-script" phase="interactive" url="{{ 'cart.js' | asset_url }}"></script>
-<script is="delay-script" phase="interactive" url="{{ 'cart-drawer.js' | asset_url }}"></script>
-<script is="delay-script" phase="interactive" url="{{ 'cart-item.js' | asset_url }}"></script>
-<script is="delay-script" phase="interactive" url="{{ 'cart-upsell.js' | asset_url }}"></script>
+<script is="delay-script" url="{{ 'cart.js' | asset_url }}"></script>
+<script is="delay-script" url="{{ 'cart-drawer.js' | asset_url }}"></script>
+<script is="delay-script" url="{{ 'cart-item.js' | asset_url }}"></script>
+<script is="delay-script" url="{{ 'cart-upsell.js' | asset_url }}"></script>
 
 <cart-drawer id="CartDrawer" class="{% if cart == empty %}is-empty{% endif %}">
   <div id="CartDrawer-Overlay" class="cart-drawer__overlay"></div>

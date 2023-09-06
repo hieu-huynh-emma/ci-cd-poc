@@ -403,16 +403,16 @@
 									{{ upsell_mattress_v2.settings.description }}
 								</ul>
 								<p class="text-[14px]">
-                  <span
-                  >From
-                    {{ upsell_mattress_v2.settings.upsell_mattress_product.price | money_without_trailing_zeros -}}
-                  </span>
-									<span class="line-through">
-                    {{-
-                    upsell_mattress_v2.settings.upsell_mattress_product.compare_at_price
-                    | money_without_trailing_zeros
-                    -}}
-                  </span>
+								<span
+								>From
+									{{ upsell_mattress_v2.settings.upsell_mattress_product.price | money_without_trailing_zeros -}}
+								</span>
+													<span class="line-through">
+									{{-
+									upsell_mattress_v2.settings.upsell_mattress_product.compare_at_price
+									| money_without_trailing_zeros
+									-}}
+								</span>
 								</p>
 							</div>
 							<div style="grid-column: 2 / 3;" class="px-4">
