@@ -1,0 +1,41 @@
+@import "../abstracts/index";
+
+.product-bundle {
+  &-hr {
+    background: $colorAthensGray;
+    border: 0;
+    height: 0.0625rem;
+    margin: 0;
+    width: 100%;
+  }
+
+  &-item {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: minmax(0, 3rem) minmax(0, 1fr);
+
+    &__media {
+      height: 3rem;
+    }
+
+    &__image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 0.25rem;
+    }
+
+    &__details {
+      display: grid;
+      align-content: center;
+    }
+
+    &__label {
+      color: $colorSteel;
+      font-size: .875rem;
+      letter-spacing: 0;
+      line-height: 1.25rem;
+    }
+
+  }
+}
