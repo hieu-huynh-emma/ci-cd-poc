@@ -1,7 +1,6 @@
 {%- assign current_variant = product.selected_or_first_available_variant -%}
 
-
-{% assign bundle_item_objects = current_variant.metafields.accentuate.bundle_items | split: '|' %}
+{% assign bundle_item_metaobjects = current_variant.metafields.custom.bundle_items.value %}
 {% assign configurable_product_handle = product.metafields.accentuate.configurable_product %}
 {% assign configurable_product = all_products[configurable_product_handle] %}
 
@@ -55,7 +54,11 @@
 			
 			<script id="ProductVariants" type="application/json">
             {{ product.variants | json }}
-	</script>
+	
+			
+			
+			
+			</script>
 		</bundle-variant-selects>
 		
 		<select name="id" id="ProductSelect-{{ section.id }}" class="product-form__variants no-js">
@@ -77,51 +80,47 @@
 <hr class="product-bundle-hr">
 
 <section id="buy-box-products">
-	{% for bundle_item_object in bundle_item_objects %}
-		{% assign bundle_item_handle = bundle_item_object | split: ':' | first %}
-		{% assign bundle_item_selected_variant_id = bundle_item_object | split: ':' | last | times: 1 %}
-		
-		{% assign bundle_item_product = all_products[bundle_item_handle] %}
-		{% assign bundle_item_variant = bundle_item_product.variants | where: 'id', bundle_item_selected_variant_id | first %}
-		
-		<div id="product-configuration-{{ bundle_item_handle }}" class="product-configuration">
-			<div class="product-bundle-item">
-				<div class="product-bundle-item__media">
-					{{ bundle_item_product.featured_image | image_url: width: 120, height: 80 | image_tag: loading: 'lazy', class: "product-bundle-item__image" }}
-				</div>
-				<div class="product-bundle-item__details">
-					<div class="product__name paragraph-14 font-semibold">
-						<span>{{ bundle_item_product.title }}</span>
+	{% for bundle_item_metaobject in bundle_item_metaobjects %}
+		{% assign bundle_item_variant = bundle_item_metaobject.product.value %}
+		{% if bundle_item_variant.product.handle != configurable_product_handle %}
+			<div id="product-configuration-{{ bundle_item_variant.product.handle }}" class="product-configuration">
+				<div class="product-bundle-item">
+					<div class="product-bundle-item__media">
+						{{ bundle_item_variant.product.featured_image | image_url: width: 120, height: 80 | image_tag: loading: 'lazy', class: "product-bundle-item__image" }}
+					</div>
+					<div class="product-bundle-item__details">
+						<div class="product__name paragraph-14 font-semibold">
+							<span>{{ bundle_item_variant.product.title }}</span>
+						</div>
+						
+						<div class="product-bundle-item__description">
+							<p class="product-bundle-item__label">
+								{% if bundle_item_variant.title != "Default Title" %}
+									{{ bundle_item_variant.title }}
+								{% endif %}
+							</p>
+						</div>
 					</div>
 					
-					<div class="product-bundle-item__description">
-						<p class="product-bundle-item__label">
-							{% if bundle_item_variant.title != "Default Title" %}
-								{{ bundle_item_variant.title }}
-							{% endif %}
-						</p>
-					</div>
+					<p class="product-bundle-item__quantity">
+						x{{ bundle_item_metaobject.quantity }}
+					</p>
 				</div>
+			
 			</div>
-		
-		</div>
-		
-		<hr class="product-bundle-hr">
+			
+			<hr class="product-bundle-hr">
+		{% endif %}
 	{% endfor %}
 </section>
 
-
 <script id="ProductBundle" type="application/json">
 	[
-	{% for bundle_item_object in bundle_item_objects %}
-		{% assign bundle_item_handle = bundle_item_object | split: ':' | first %}
-		{% assign bundle_item_selected_variant_id = bundle_item_object | split: ':' | last | times: 1 %}
+	{% for bundle_item_metaobject in bundle_item_metaobjects %}
+		{% assign bundle_item_variant = bundle_item_metaobject.product.value %}
 		
-		{% assign bundle_item_product = all_products[bundle_item_handle] %}
-		{% assign bundle_item_variant = bundle_item_product.variants | where: 'id', bundle_item_selected_variant_id | first %}
-		
-		{{ bundle_item_product | json }}
-		{% unless forloop.last %},{% endunless -%}
+		{{ bundle_item_variant.product | json }}
+		{% unless forloop.last %}{% endunless -%}
 	{% endfor %}
 	]
 </script>
