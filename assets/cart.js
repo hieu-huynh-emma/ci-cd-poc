@@ -6,7 +6,7 @@ customElements.define('cart-scrollable-content', CartScrollableContent);
 class CartIconBubble extends CustomButton {
 
   setupTooltips() {
-    tippy('cart-icon-bubble', {
+    tippy?.('cart-icon-bubble', {
       content: "Loading... Please Wait",
       onShow(instance) {
         const $el = $(instance.reference)

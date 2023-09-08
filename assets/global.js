@@ -905,10 +905,10 @@ class NavigationDropdownLink extends HTMLElement {
   connectedCallback() {
     const $dropdownContent = $(`navigation-dropdown-content[data-childlink-title='${this.$self.data("childlink-title")}']`);
 
-    this.$self.hover($.debounce(100, () => {
+    this.$self.hover(debounce(() => {
       this.$dropdownContents.hide();
       $dropdownContent.show();
-    }));
+    }, 100));
   }
 
   setDropdownContents(elements) {
