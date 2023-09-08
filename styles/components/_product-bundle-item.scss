@@ -27,27 +27,23 @@
       border-radius: 0.25rem;
     }
 
+    &__description {
+      display: grid;
+      gap: 4px;
+      grid-template-columns: repeat(3, minmax(0, auto));
+      align-items: flex-start;
+      justify-content: flex-start;
+
+      color: $colorSteel;
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: 0;
+      line-height: 1.25rem;
+    }
+
     &__details {
       display: grid;
       align-content: center;
     }
-
-    &__label {
-      color: $colorSteel;
-      font-size: .875rem;
-      letter-spacing: 0;
-      line-height: 1.25rem;
-    }
-
-    &__quantity {
-      color: $colorSteel;
-
-      font-size: 12px;
-      letter-spacing: 0;
-      line-height: 1.25rem;
-      font-weight: 400;
-    }
-
   }
-
 }

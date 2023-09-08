@@ -4,7 +4,7 @@
 {% assign configurable_product_handle = product.metafields.accentuate.configurable_product %}
 {% assign configurable_product = all_products[configurable_product_handle] %}
 
-<h2 class="buy-box-products-section__header">{{ 'products.bundle.what_inside' | t }}</h2>
+<p class="buy-box-products-section__header">{{ 'products.bundle.what_inside' | t }}</p>
 
 <div id="product-configuration-{{ configurable_product }}" class="product-configuration">
 	<div class="product-bundle-item">
@@ -59,6 +59,7 @@
 			
 			
 			
+			
 			</script>
 		</bundle-variant-selects>
 		
@@ -95,15 +96,16 @@
 						</div>
 						
 						<div class="product-bundle-item__description">
-							<p class="product-bundle-item__label">
-								{% if bundle_item_variant.title != "Default Title" %}
+							{% if bundle_item_variant.title != "Default Title" %}
+								<span class="product-bundle-item__label">
 									{{ bundle_item_variant.title }}
-								{% endif %}
-							</p>
+								</span>
+								<span>|</span>
+							{% endif %}
 							
-							<p class="product-bundle-item__quantity">
+							<span class="product-bundle-item__quantity">
 								{{ 'products.bundle.qty' | t }}: {{ bundle_item_metaobject.quantity }}
-							</p>
+							</span>
 						</div>
 					</div>
 				</div>
