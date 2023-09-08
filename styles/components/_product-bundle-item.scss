@@ -40,18 +40,12 @@
     }
 
     &__quantity {
-      position: absolute;
-      top: 0;
-      right: 0;
+      color: $colorSteel;
 
-      height: 1.5rem;
-      min-width: 1.5rem;
-      background-color: #efeff3;
-      border-radius: 100%;
-      text-align: center;
-      font-size: .75rem;
-      font-weight: 600;
-      line-height: 1.5rem;
+      font-size: .875rem;
+      letter-spacing: 0;
+      line-height: 1.25rem;
+      font-weight: 400;
     }
 
   }
