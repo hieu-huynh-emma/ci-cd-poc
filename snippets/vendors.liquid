@@ -43,10 +43,11 @@
     render 'weglot_switcher'
     render 'ms-clarity'
     render 'abtasty-async'
+    render 'ometria'
   %}
 
   {% case template %}
-    {% when 'index', 'product.emma-original', 'product.emma-climax-hybrid', 'product.emma-hybrid-pro', 'product.ready-to-sleep' %}
+    {% when 'index', 'product.emma-original', 'product.emma-climax-hybrid', 'product.emma-hybrid-pro', 'product.foam-pillow', 'product.ready-to-sleep' %}
       <link is="delay-stylesheet" href="{{ 'new-splide.css' | asset_url }}">
     {% else %}
       <link is="delay-stylesheet" href="{{ 'old-splide.css' | asset_url }}">
