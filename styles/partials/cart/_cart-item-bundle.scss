@@ -1,0 +1,28 @@
+@import "../../abstracts/index";
+
+.cart-item-bundle {
+  grid-column: 1 /span 3;
+
+  display: grid;
+  gap: 1rem;
+
+  &-header {
+    &__heading {
+      font-weight: 600;
+      font-size: .875rem;
+      letter-spacing: 0;
+      line-height: 1.25rem;
+    }
+  }
+
+  &-products {
+    display: grid;
+    gap: 1rem;
+    margin-left: 1.5rem;
+  }
+
+  .product-bundle-hr:last-child {
+    display: none;
+  }
+}
+

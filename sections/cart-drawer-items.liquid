@@ -13,14 +13,15 @@
     <div id="CartDrawer-CartItems" class="cart-drawer-items">
       {% for item in cart.items %}
         {% assign isFreeGift = false %}
-
+        
         {% if freeGiftId == item.id and item.final_line_price == 0 %}
           {% assign isFreeGift = true %}
         {% else %}
           {% assign isFreeGift = false %}
         {% endif %}
-
+        
         {% capture cartItem %}
+          
           <cart-item
             :key="{{ item.key }}"
             :itemId="{{ item.id }}"
@@ -35,7 +36,8 @@
               {% endif %}
             {% endfor %}
           >
-
+            
+            
             <a class="cart-item-media" href="{{ item.url }}">
               {{ item.image | image_url: width: 120, height: 80 | image_tag: loading: 'lazy' }}
             </a>
@@ -44,7 +46,7 @@
                 {% assign title = item.title | split: ' - ' %}
                 <span>{{ title[0] }}</span>
                 <script>
-
+                
                 </script>
                 {% if item.selling_plan_allocation %}
                   <span
@@ -52,7 +54,7 @@
                   >{{ item.selling_plan_allocation.selling_plan.name }}</span>
                 {% endif %}
               </a>
-
+              
               <div class="cart-item-actions">
                 {% if item.variant.title != "Default Title" %}
                   <cart-variant-selector
@@ -70,11 +72,33 @@
                   :index="{{ item.index }}" :value="{{ item.quantity }}" :max="{{ item.variant.inventory_quantity }}"
                 ></quantity-adjuster>
               </div>
+              
+              {% if item.product.metafields.accentuate.is_bundle %}
+                {% assign current_variant = item.variant %}
+                
+                {% assign bundle_item_metaobjects = current_variant.metafields.custom.bundle_items.value %}
+                
+                <div class="cart-item-description">
+                  {% for bundle_item_metaobject in bundle_item_metaobjects %}
+                    {% assign bundle_item_variant = bundle_item_metaobject.product.value %}
+                    
+                    <span>
+											{% if bundle_item_metaobject.quantity > 1 %}{{ bundle_item_metaobject.quantity }}x {% endif %}{{ bundle_item_variant.product.title }}
+                      {% if bundle_item_variant.title != "Default Title" %}
+                        ({{ bundle_item_variant.title }})
+                      {% endif %}
+										</span>
+                    
+                    {% unless forloop.last %}<span>/</span>{% endunless %}
+                  {% endfor %}
+                </div>
+              {% endif %}
+            
             </div>
-
+            
             <div class="cart-item-totals">
               <loading-overlay></loading-overlay>
-
+              
               <cart-item-remove-button
                 id="CartDrawer-Remove-{{ item.index | plus: 1 }}"
                 :index="{{ item.index }}"
@@ -83,15 +107,15 @@
               >
                 {% render 'icon-remove' %}
               </cart-item-remove-button>
-
-
+              
+              
               <div class="cart-pricing cart-pricing--row">
                 {% if item.variant.compare_at_price > item.variant.price %}
                   <p class="cart-pricing__price cart-pricing__price--original">
                     {{ item.variant.compare_at_price | times: item.quantity | money_without_trailing_zeros }}
                   </p>
                 {% endif %}
-
+                
                 <p
                   class="cart-pricing__price{% if item.variant.compare_at_price > item.variant.price %} text-red{% endif %}"
                 >
@@ -103,6 +127,60 @@
                 </p>
               </div>
             </div>
+            
+            {% if item.product.metafields.accentuate.is_bundle %}
+              {% assign current_variant = item.variant %}
+              
+              {% assign bundle_item_metaobjects = current_variant.metafields.custom.bundle_items.value %}
+              
+              <div class="cart-item-bundle accordion">
+                <div class="cart-item-bundle-header accordion__header">
+                  <svg class="plus-minus-toggle" xmlns="http://www.w3.org/2000/svg" width="13" viewBox="0 0 160 160">
+                    <rect class="vertical-line" x="60" width="40" height="160" />
+                    <rect class="horizontal-line" y="60" width="160" height="40" />
+                  </svg>
+                  
+                  <h6 class="cart-item-bundle-header__heading">
+                    What's in the bundle?
+                  </h6>
+                </div>
+                
+                <div class="cart-item-bundle-products">
+                  {% for bundle_item_metaobject in bundle_item_metaobjects %}
+                    {% assign bundle_item_variant = bundle_item_metaobject.product.value %}
+                    
+                    
+                    <div
+                      id="cart-item-bundle-item-{{ bundle_item_variant.product.handle }}" class="product-bundle-item"
+                    >
+                      <div class="product-bundle-item__media">
+                        {{ bundle_item_variant.product.featured_image | image_url: width: 120, height: 80 | image_tag: loading: 'lazy', class: "product-bundle-item__image" }}
+                      </div>
+                      <div class="product-bundle-item__details">
+                        <div class="product__name paragraph-14 font-semibold">
+                          <span>{{ bundle_item_variant.product.title }}</span>
+                        </div>
+                        
+                        <div class="product-bundle-item__description">
+                          {% if bundle_item_variant.title != "Default Title" %}
+                            <span class="product-bundle-item__label">
+															{{ bundle_item_variant.title }}
+														</span>
+                            <span>|</span>
+                          {% endif %}
+                          <span class="product-bundle-item__quantity">
+														{{ 'products.bundle.qty' | t }}: {{ bundle_item_metaobject.quantity }}
+													</span>
+                        </div>
+                      </div>
+                    
+                    </div>
+                    
+                    <hr class="product-bundle-hr">
+                  {% endfor %}
+                </div>
+              </div>
+            {% endif %}
           </cart-item>
         {% endcapture %}
         {% if isFreeGift %}
@@ -111,8 +189,8 @@
           {% assign cartItemsFragment = cartItemsFragment | append: cartItem %}
         {% endif %}
       {% endfor %}
-      {{cartItemsFragment}}
-      {{freeItemsFragment}}
+      {{ cartItemsFragment }}
+      {{ freeItemsFragment }}
     </div>
     <div id="CartDrawer-CartErrors" role="alert"></div>
   </form>

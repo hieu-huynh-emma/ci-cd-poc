@@ -113,6 +113,14 @@ cart-drawer-items {
     justify-items: flex-end;
   }
 
+  &-description {
+    color: $colorComet;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 1.25rem;
+  }
+
   .select2-container--default .select2-selection--single .select2-selection__rendered {
     @media screen and (max-width: 390px) {
       font-size: 10px;

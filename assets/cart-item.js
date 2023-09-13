@@ -1,64 +1,64 @@
 class CartItems extends CustomElement {
   get refs() {
     return {
-      allItems: this.querySelectorAll('cart-item'),
-      cartSummary: document.getElementById('CartDrawerSummary'),
-      cartRedeem: document.getElementById('CartRedeemCode'),
-      cartUpsell: document.getElementById('CartDrawerUpsell'),
-      cartFooter: document.getElementById('CartDrawerFooter'),
-      cartAffirm: document.getElementById('CartDrawerAffirm'),
-      scrollableContent: this.closest('cart-scrollable-content')
-    }
+      allItems: this.querySelectorAll("cart-item"),
+      cartSummary: document.getElementById("CartDrawerSummary"),
+      cartRedeem: document.getElementById("CartRedeemCode"),
+      cartUpsell: document.getElementById("CartDrawerUpsell"),
+      cartFooter: document.getElementById("CartDrawerFooter"),
+      cartAffirm: document.getElementById("CartDrawerAffirm"),
+      scrollableContent: this.closest("cart-scrollable-content"),
+    };
   }
 
   beforeMount() {
-    this.$cart = document.getElementById('CartDrawer');
+    this.$cart = document.getElementById("CartDrawer");
 
     this.debouncedOnChange = debounce(this.onQuantityChange.bind(this), 300);
 
-    this.addEventListener('change', this.debouncedOnChange.bind(this));
+    this.addEventListener("change", this.debouncedOnChange.bind(this));
   }
 
   async onQuantityChange(event) {
-    const quantityAdjuster = event.target
-    const $cartItem = $(quantityAdjuster).closest('cart-item')
-    const value = quantityAdjuster.value
+    const quantityAdjuster = event.target;
+    const $cartItem = $(quantityAdjuster).closest("cart-item");
+    const value = quantityAdjuster.value;
 
-    const hasGWP = await this.gwpGuard($cartItem, value)
+    const hasGWP = await this.gwpGuard($cartItem, value);
 
-    if (hasGWP) return
+    if (hasGWP) return;
 
-    await this.updateCartItem(value, $(quantityAdjuster).data('index'))
+    await this.updateCartItem(value, $(quantityAdjuster).data("index"));
   }
 
   async updateCartItem(value, index) {
     if (value === 0) {
-      await this.removeFromCart(index - 1)
+      await this.removeFromCart(index - 1);
     } else {
       await this.updateQuantity(index, value);
     }
   }
 
   async requestCart(payload = {}, url = routes.cart_change_url) {
-    const { cartSummary, cartRedeem, cartAffirm } = this.refs
+    const { cartSummary, cartRedeem, cartAffirm } = this.refs;
 
     try {
       const state = await fetch(`${url}`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Accept': `application/json` },
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Accept": `application/json` },
         body: JSON.stringify({
           ...payload,
           sections: this.getSectionsToRender().map((section) => section.section),
-          sections_url: window.location.pathname
-        })
-      }).then(res => res.json())
+          sections_url: window.location.pathname,
+        }),
+      }).then(res => res.json());
 
-      await cartAffirm.refreshAffirm()
+      await cartAffirm.refreshAffirm();
 
-      const codeRedeemed = cartRedeem.codeRedeemed
+      const codeRedeemed = cartRedeem.codeRedeemed;
 
       if (state.item_count === 0) {
-        await this.emptyCart()
+        await this.emptyCart();
       }
 
       if (!!codeRedeemed && state.item_count !== 0) {
@@ -66,37 +66,37 @@ class CartItems extends CustomElement {
 
         await this.$cart.getCheckoutData();
 
-        this.refreshSections(state)
+        this.refreshSections(state);
 
-        const isApplicable = cartRedeem.checkCodeApplicable()
+        const isApplicable = cartRedeem.checkCodeApplicable();
 
-        if (!isApplicable) return state
+        if (!isApplicable) return state;
 
-        cartSummary.computeDiscountedTotal()
+        cartSummary.computeDiscountedTotal();
         cartRedeem.refreshDiscountTag();
       } else {
-        this.refreshSections(state)
+        this.refreshSections(state);
       }
 
-      return state
+      return state;
     } catch (e) {
-      console.log(e)
+      console.log(e);
     }
   }
 
   async requestCartWithoutRendering(payload = {}, url = routes.cart_change_url) {
     try {
       await fetch(`${url}`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Accept': `application/json` },
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Accept": `application/json` },
         body: JSON.stringify({
           ...payload,
           sections: this.getSectionsToRender().map((section) => section.section),
-          sections_url: window.location.pathname
-        })
-      }).then(res => res.json())
+          sections_url: window.location.pathname,
+        }),
+      }).then(res => res.json());
     } catch (e) {
-      console.log(e)
+      console.log(e);
     }
   }
 
@@ -104,177 +104,177 @@ class CartItems extends CustomElement {
     const data = {
       "id": variantId,
       "quantity": qty,
-      properties
+      properties,
     };
 
-    return this.requestCart(data, routes.cart_add_url)
+    return this.requestCart(data, routes.cart_add_url);
   };
 
   async removeFromCart(index) {
-    const $cartItem = this.$el.find(`cart-item[\\:index='${index}']`)
+    const $cartItem = this.$el.find(`cart-item[\\:index='${index}']`);
 
-    const hasGWP = await this.gwpGuard($cartItem, 0)
+    const hasGWP = await this.gwpGuard($cartItem, 0);
 
-    if (hasGWP) return
+    if (hasGWP) return;
 
-    const cart = await fetch('/cart.json').then(res => res.json());
+    const cart = await fetch("/cart.json").then(res => res.json());
 
     if (cart.items.length == 1) {
       this.emptyCart();
     }
 
-    return this.updateQuantity(index + 1, 0)
+    return this.updateQuantity(index + 1, 0);
   }
 
   async gwpGuard($cartItem, value) {
-    if (!$cartItem.length) return false
+    if (!$cartItem.length) return false;
 
-    const cartItemNode = $cartItem.get(0)
+    const cartItemNode = $cartItem.get(0);
 
-    const { gwpTargetProductIds } = this.props
-    const { productId, key, hasGWP } = cartItemNode.props
+    const { gwpTargetProductIds } = this.props;
+    const { productId, key, hasGWP } = cartItemNode.props;
 
-    const gwpItem = this.$el.find(`cart-item[\\:variantId='${this.props.freeGiftId}'][\\:freeGift='true']`)
-    const hasFreeGift = !!gwpItem.length && !!hasGWP
+    const gwpItem = this.$el.find(`cart-item[\\:variantId='${this.props.freeGiftId}'][\\:freeGift='true']`);
+    const hasFreeGift = !!gwpItem.length && !!hasGWP;
 
     if (gwpTargetProductIds.includes(productId) && hasFreeGift) {
-      await this.updateGWP($cartItem, gwpItem, key, value)
+      await this.updateGWP($cartItem, gwpItem, key, value);
 
-      return true
+      return true;
     }
 
-    return false
+    return false;
   }
 
   async updateGWP($cartItem, gwpItem, targetProductKey, value) {
-    const prevValue = +$cartItem.find('.quantity-adjuster__value').text()
+    const prevValue = +$cartItem.find(".quantity-adjuster__value").text();
 
-    const offset = value - prevValue
-    const gwpQty = +gwpItem.find('.quantity-adjuster__value').text()
+    const offset = value - prevValue;
+    const gwpQty = +gwpItem.find(".quantity-adjuster__value").text();
 
     const data = {
       updates: {
         [targetProductKey]: value,
-        [gwpItem.get(0).props.key]: gwpQty + offset
-      }
+        [gwpItem.get(0).props.key]: gwpQty + offset,
+      },
     };
-    const { cartSummary, scrollableContent } = this.refs
+    const { cartSummary, scrollableContent } = this.refs;
 
-    scrollableContent.loading = true
-    cartSummary.loading = true
+    scrollableContent.loading = true;
+    cartSummary.loading = true;
 
-    await this.requestCart(data, routes.cart_update_url)
+    await this.requestCart(data, routes.cart_update_url);
 
-    scrollableContent.loading = false
-    cartSummary.loading = false
+    scrollableContent.loading = false;
+    cartSummary.loading = false;
   }
 
   async emptyCart() {
-    console.log('emptyCart')
-    const cartRedeemEl = document.getElementById('CartRedeemCode');
-    const codeRedeemed = cartRedeemEl.codeRedeemed
+    console.log("emptyCart");
+    const cartRedeemEl = document.getElementById("CartRedeemCode");
+    const codeRedeemed = cartRedeemEl.codeRedeemed;
 
-    $("#CartDrawer").addClass('is-empty')
+    $("#CartDrawer").addClass("is-empty");
 
     if (!!codeRedeemed) {
-      await cartRedeemEl.removeDiscount()
+      await cartRedeemEl.removeDiscount();
     }
   }
 
   async switchVariant(variantId, qty = 1, key) {
 
-    const { cartSummary, scrollableContent } = this.refs
+    const { cartSummary, scrollableContent } = this.refs;
 
-    const sourceItem = this.$el.find(`cart-item[\\:key='${key}']`)[0]
-    const hasGWP = sourceItem.props.hasGWP
+    const sourceItem = this.$el.find(`cart-item[\\:key='${key}']`)[0];
+    const hasGWP = sourceItem.props.hasGWP;
 
-    scrollableContent.loading = true
-    cartSummary.loading = true
+    scrollableContent.loading = true;
+    cartSummary.loading = true;
 
-    await this.requestCartWithoutRendering({ updates: { [key]: 0 } }, routes.cart_update_url)
+    await this.requestCartWithoutRendering({ updates: { [key]: 0 } }, routes.cart_update_url);
 
     const data = {
       id: variantId,
       quantity: qty,
       ...(hasGWP ? {
         properties: {
-          hasGWP: true
-        }
-      } : {})
+          hasGWP: true,
+        },
+      } : {}),
     };
 
-    await this.requestCart(data, routes.cart_add_url)
+    await this.requestCart(data, routes.cart_add_url);
 
-    scrollableContent.loading = false
-    cartSummary.loading = false
+    scrollableContent.loading = false;
+    cartSummary.loading = false;
 
   }
 
   async updateQuantity(line, quantity) {
-    console.log('updateQuantity')
+    console.log("updateQuantity");
 
-    if (!line) return
+    if (!line) return;
 
-    const { cartUpsell, cartSummary, cartFooter, cartAffirm } = this.refs
+    const { cartUpsell, cartSummary, cartFooter, cartAffirm } = this.refs;
 
     const $lineItem = this.$el.find(`#CartDrawer-Item-${line}`);
 
-    const lineItemNode = $lineItem.get(0)
+    const lineItemNode = $lineItem.get(0);
 
     lineItemNode.loading = true;
-    cartSummary.loading = true
+    cartSummary.loading = true;
 
-    this.disabled = true
-    cartUpsell.disabled = true
-    cartAffirm.disabled = true
-    cartFooter.disabled = true
+    this.disabled = true;
+    cartUpsell.disabled = true;
+    cartAffirm.disabled = true;
+    cartFooter.disabled = true;
 
 
     const payload = {
       line,
-      quantity
+      quantity,
     };
 
     try {
-      await this.requestCart(payload)
+      await this.requestCart(payload);
 
     } catch (e) {
-      console.log(e)
+      console.log(e);
 
     } finally {
-      console.log('updateQuantity finally')
-      lineItemNode.loading = false
-      cartSummary.loading = false
+      console.log("updateQuantity finally");
+      lineItemNode.loading = false;
+      cartSummary.loading = false;
 
-      this.disabled = false
-      cartUpsell.disabled = false
-      cartFooter.disabled = false
-      cartAffirm.disabled = false
+      this.disabled = false;
+      cartUpsell.disabled = false;
+      cartFooter.disabled = false;
+      cartAffirm.disabled = false;
     }
   }
 
   getSectionsToRender() {
     return [
       {
-        id: 'main-cart-items',
-        section: document.getElementById('main-cart-items').dataset.id,
-        selector: '.js-contents',
+        id: "main-cart-items",
+        section: document.getElementById("main-cart-items").dataset.id,
+        selector: ".js-contents",
       },
       {
-        id: 'cart-icon-bubble',
-        section: 'cart-icon-bubble',
-        selector: '.shopify-section'
+        id: "cart-icon-bubble",
+        section: "cart-icon-bubble",
+        selector: ".shopify-section",
       },
       {
-        id: 'cart-live-region-text',
-        section: 'cart-live-region-text',
-        selector: '.shopify-section'
+        id: "cart-live-region-text",
+        section: "cart-live-region-text",
+        selector: ".shopify-section",
       },
       {
-        id: 'main-cart-footer',
-        section: document.getElementById('main-cart-footer').dataset.id,
-        selector: '.js-contents',
-      }
+        id: "main-cart-footer",
+        section: document.getElementById("main-cart-footer").dataset.id,
+        selector: ".js-contents",
+      },
     ];
   }
 
@@ -289,31 +289,31 @@ class CartItems extends CustomElement {
 
   getSectionInnerHTML(html, selector = ".shopify-section") {
     const el = new DOMParser()
-      .parseFromString(html, 'text/html')
-      .querySelector(selector)
+      .parseFromString(html, "text/html")
+      .querySelector(selector);
 
-    return el?.innerHTML ?? ""
+    return el?.innerHTML ?? "";
   }
 }
 
-customElements.define('cart-items', CartItems);
+customElements.define("cart-items", CartItems);
 
 class CartDrawerItems extends CartItems {
   props = {
     freeGiftId: 0,
-    gwpTargetProductIds: []
-  }
+    gwpTargetProductIds: [],
+  };
 
   beforeMount() {
     super.beforeMount();
 
-    this.$el.attr('id', `CartDrawerItems`)
+    this.$el.attr("id", `CartDrawerItems`);
   }
 
   getSectionsToRender() {
     return [
       {
-        id: 'CartDrawerItems',
+        id: "CartDrawerItems",
         section: "cart-drawer-items",
         selector: "#CartDrawer-CartItems",
       },
@@ -332,7 +332,7 @@ class CartDrawerItems extends CartItems {
       {
         id: "cart-icon-bubble",
         section: "cart-icon-bubble",
-        selector: ".cart-icon-bubble"
+        selector: ".cart-icon-bubble",
       },
       {
         id: "shopify-section-cart-drawer-header",
@@ -341,27 +341,27 @@ class CartDrawerItems extends CartItems {
       },
       {
         id: "shopify-section-cart-drawer-upsell",
-        section: "cart-drawer-upsell"
-      }
+        section: "cart-drawer-upsell",
+      },
     ];
   }
 
   onDisabledChange(isDisabled) {
     super.onDisabledChange(isDisabled);
 
-    const { allItems } = this.refs
+    const { allItems } = this.refs;
 
-    if (!allItems.length) return
+    if (!allItems.length) return;
 
     if (isDisabled) {
-      allItems.forEach(item => item.disabled = true)
+      allItems.forEach(item => item.disabled = true);
     } else {
-      allItems.forEach(item => item.disabled = false)
+      allItems.forEach(item => item.disabled = false);
     }
   }
 
   onLoad(isLoading) {
-    this.$el[!!isLoading ? 'addClass' : 'removeClass']('is-loading')
+    this.$el[!!isLoading ? "addClass" : "removeClass"]("is-loading");
   }
 }
 
@@ -385,36 +385,52 @@ class CartItem extends CustomElement {
       removeBtn: this.querySelector("cart-item-remove-button"),
       quantityAdjuster: this.querySelector("quantity-adjuster"),
       // variantSelector: this.querySelector("cart-variant-selector"),
-    }
+    };
   }
 
   mounted() {
-    const { index } = this.props
+    const { index } = this.props;
 
-    this.$el.addClass("cart-item")
-    this.$el.attr('id', `CartDrawer-Item-${index + 1}`)
+    this.$el.addClass("cart-item");
+    this.$el.attr("id", `CartDrawer-Item-${index + 1}`);
+
+    this.renderBundle();
+
   }
 
   update(cart) {
     const { variantId } = this.props;
 
-    const itemData = cart.items.find(({ id }) => +id === +variantId)
+    const itemData = cart.items.find(({ id }) => +id === +variantId);
 
     if (!!itemData) {
-      this.renderPricing(itemData)
+      this.renderPricing(itemData);
     } else {
-      this.$el.remove()
+      this.$el.remove();
     }
+  }
+
+  renderBundle() {
+    const $bundle = this.$el.find(".cart-item-bundle");
+
+    if (!$bundle.length) return;
+
+    $bundle.beefup({
+      trigger: ".accordion__header",
+      content: ".cart-item-bundle-products",
+      openSpeed: 100,
+      closeSpeed: 100,
+    });
   }
 
   renderPricing(item) {
     const { originalPrice } = this.props;
-    const $originalPrice = this.$el.find('.cart-item-pricing__price--original')
-    const $price = this.$el.find('.cart-item-pricing__price:not(.cart-item-pricing__price--original)')
+    const $originalPrice = this.$el.find(".cart-item-pricing__price--original");
+    const $price = this.$el.find(".cart-item-pricing__price:not(.cart-item-pricing__price--original)");
 
-    $originalPrice.text(currencyFormatter.format(originalPrice * item.quantity * 10))
+    $originalPrice.text(currencyFormatter.format(originalPrice * item.quantity * 10));
 
-    $price.text(currencyFormatter.format(item.final_line_price * 10))
+    $price.text(currencyFormatter.format(item.final_line_price * 10));
   }
 
   onDisabledChange(isDisabled) {
@@ -435,7 +451,7 @@ class CartItem extends CustomElement {
   }
 }
 
-customElements.define('cart-item', CartItem);
+customElements.define("cart-item", CartItem);
 
 
 class CartItemRemoveButton extends CustomButton {
@@ -444,10 +460,10 @@ class CartItemRemoveButton extends CustomButton {
   };
 
   onClick() {
-    const { index } = this.props
+    const { index } = this.props;
 
-    this.closest('cart-drawer-items').removeFromCart(index);
+    this.closest("cart-drawer-items").removeFromCart(index);
   }
 }
 
-customElements.define('cart-item-remove-button', CartItemRemoveButton);
+customElements.define("cart-item-remove-button", CartItemRemoveButton);

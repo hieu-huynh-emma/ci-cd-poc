@@ -1,0 +1,33 @@
+.accordion {
+  &__header {
+
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: minmax(0, auto) minmax(0, 1fr);
+    align-items: center;
+
+    cursor: pointer;
+    font-size: 1.25rem;
+
+    padding: -3rem 1.5rem 1rem 0;
+    position: relative;
+    text-align: left;
+
+  }
+
+  .plus-minus-toggle {
+    rect {
+      transition: all 500ms;
+      transform: rotate(0);
+      transform-origin: 50% 50%;
+    }
+  }
+
+
+  &.is-open {
+    .plus-minus-toggle .vertical-line {
+      transform: rotate(450deg);
+    }
+  }
+
+}
