@@ -75,7 +75,7 @@
     .section-content {
       width: 100%;
 
-      .section-title { 
+      .section-title {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
@@ -161,9 +161,12 @@
       inset: 0;
 
       img {
-        object-fit: fill;
+        object-fit: cover;
         height: 100%;
         max-width: 100%;
+        @media screen and (min-width: 769px) {
+          object-fit: fill;
+        }
       }
     }
   }
