@@ -3,7 +3,7 @@
   ometria.raw_data={
     template: {{template|json}},
     cart_total:{{cart.total_price|json}},
-    cart_count:{{cart.item_count|json}}, I think 
+    cart_count:{{cart.item_count|json}},
     cart:[],
     product_id:{{product.id|json}},
     search_count:{{search.results_count|json}},
@@ -15,7 +15,7 @@
     current_page:{{current_page|json}},
     shop_currency:{{shop.currency|json}},
     customer_email:{{customer.email|json}},
-    namespace:"ca"
+    namespace:"ca:"
   };
   {% for item in cart.items %}
   ometria.raw_data.cart.push([{{ item.product.id|json}},{{item.variant.id|json}},

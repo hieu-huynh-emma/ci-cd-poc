@@ -17,7 +17,7 @@
 
 	{% comment %}DESIGN MIGRATE{% endcomment %}
 	{% case template %}
-		{% when 'index', 'product.emma-original', 'product.emma-climax-hybrid', 'product.emma-hybrid-pro', 'product.foam-pillow', 'product.ready-to-sleep', 'product.mattress-protector' %}
+		{% when 'index', 'product.emma-original', 'product.emma-climax-hybrid', 'product.emma-hybrid-pro', 'product.foam-pillow', 'product.ready-to-sleep', 'product.mattress-protector', 'product.sleep-essential-bundle' %}
 			<link is="delay-stylesheet" href="{{ 'new-heading.css' | asset_url }}">
 		{% else %}
 			<link is="delay-stylesheet" href="{{ 'old-heading.css' | asset_url }}">
@@ -32,7 +32,7 @@
 				assign pageStylesheet = 'competitor-comparison.css'
 			when 'product.emma-climax-hybrid', 'product.emma-hybrid-pro'
 				assign pageStylesheet = 'product-detail.css'
-			when 'product.ready-to-sleep'
+			when 'product.ready-to-sleep', 'product.sleep-essential-bundle'
 				assign pageStylesheet = 'bundle-detail.css'
 		endcase
 	%}

@@ -65,7 +65,7 @@
         "f5f456c7-b29a-4f74-826f-648e09f5b1cd": {
           "type": "product_media",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Hybrid_comfort_resized.png",
+            "image": "shopify:\/\/shop_images\/Gallery_1_desktop.png",
             "full_width": true,
             "is_video": false
           }
@@ -73,23 +73,25 @@
         "ae4539f2-6ea2-42a3-a132-a31010570bf1": {
           "type": "product_media",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Original_3.png",
+            "image": "shopify:\/\/shop_images\/PROTECTOR_1.png",
             "full_width": false,
             "is_video": false
           }
         },
         "e4cd7962-4d57-4250-8e6e-4c76dd76d6d6": {
           "type": "product_media",
+          "disabled": true,
           "settings": {
-            "image": "shopify:\/\/shop_images\/f80ce622ee744ca29f41905898bac316.thumbnail.0000000000_2048x_a55451c5-d423-4702-96f2-d21bcc06eb63.webp",
+            "image": "shopify:\/\/shop_images\/Gallery_4_desktop_1.png",
             "full_width": false,
             "is_video": false
           }
         },
         "038c8f16-3a84-418c-9ee2-38f53be4a385": {
           "type": "product_media",
+          "disabled": true,
           "settings": {
-            "image": "shopify:\/\/shop_images\/Hybrid_Comfort_Layer.png",
+            "image": "shopify:\/\/shop_images\/Brand_Block_2_desktop.png",
             "full_width": false,
             "is_video": false
           }
@@ -97,16 +99,8 @@
         "72b3b893-b0bb-44ad-978c-733ee54620a1": {
           "type": "product_media",
           "settings": {
-            "image": "shopify:\/\/shop_images\/1Emma_Sleep_Photo_Shoot2391_copy_2_2.jpg",
+            "image": "shopify:\/\/shop_images\/Gallery_5_desktop.png",
             "full_width": false,
-            "is_video": false
-          }
-        },
-        "12e2c164-6e6a-42a2-a76a-b4363d4c2c09": {
-          "type": "product_media",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/Hybrid_comfort_height_1.png",
-            "full_width": true,
             "is_video": false
           }
         },
@@ -136,7 +130,7 @@
           "type": "unique_selling_point",
           "settings": {
             "icon": "shopify:\/\/shop_images\/moon.png",
-            "text": "365-Night Trial",
+            "text": "60-Nights Risk-Free Trial",
             "content": "<p>Take your time to decide whether or not Emma is for you<\/p>"
           }
         },
@@ -144,7 +138,7 @@
           "type": "unique_selling_point",
           "settings": {
             "icon": "shopify:\/\/shop_images\/badge.png",
-            "text": "10 Years Warranty",
+            "text": "2 Years Warranty",
             "content": "<p>Every Emma product is top-notch quality<\/p>"
           }
         },
@@ -152,7 +146,7 @@
           "type": "product_specification",
           "settings": {
             "title": "Materials",
-            "content": "<p>Emma smoothly combines high-quality materials to create a dream-like mattress that conforms to every body type. Through the combination of our extensive research and advanced foam technology, Emma offers the comfiest sleep possible. Emma mattresses offer comfort point-elastic caving that enables an ideal and unique fit for your body. As a result, your spine stays straight while at the same time offering you the necessary amount of support and comfort.<\/p><ol><li><\/li><\/ol>",
+            "content": "<p>- Top: 100% Polyester with 3D knit design. White PU foil on the back side.<br\/>- Top fabrics treated with Purotex contains microcapsules that are filled with natural probiotics. Probiotics are a 100% natural remedy against allergenic sleep disrupters.<br\/>-Sides: 100% Polyester with 3D knit design. Dark gray knit fabric going into the bottom to attached to the mattress.<\/p>",
             "product_dimension": false,
             "product_dimension_height": ""
           }
@@ -161,8 +155,8 @@
           "type": "product_specification",
           "settings": {
             "title": "Dimensions",
-            "content": "",
-            "product_dimension": true,
+            "content": "<p>Twin: 38 x 75 x 13 in<br\/>Full: 54 x 75 x 13 in<br\/>Queen: 60 x 80 x 13 in<br\/>King: 76 x 80 x 13 in<\/p>",
+            "product_dimension": false,
             "product_dimension_height": "13"
           }
         },
@@ -170,7 +164,7 @@
           "type": "product_specification",
           "settings": {
             "title": "Certifications",
-            "content": "<p>Our top-of-the-line foams are all CertiPUR-US® certified, meaning, they are made without any ozone-depleting chemicals and safe from VOCs, formaldehyde, and phthalates.<\/p>",
+            "content": "<p>OEKO-Tex® 100 Certified Class 1 (ZHNO 042008) of OEKO-Tex Standard 100.<br\/><strong>What does it mean?<\/strong><br\/>Meets the highest standard and are therefore suitable for infants.<\/p>",
             "product_dimension": false,
             "product_dimension_height": ""
           }
@@ -195,13 +189,6 @@
             "icon": "shopify:\/\/shop_images\/Icon.png",
             "text": "Payment Methods",
             "payment_providers_section": "payment-providers"
-          }
-        },
-        "aca1fc41-0eb9-430f-8e6f-cd91209f6208": {
-          "type": "mini-comparison-table",
-          "settings": {
-            "badge": "$1,018",
-            "note": "*For queen sizes only. All prices and information from public sources listed as of July 18, 2023 for Douglas Alpine and Endy Hybrid. Information may not reflect updated prices and promotions."
           }
         },
         "4cbc7869-79e0-4a37-bbb4-96b1a2126e82": {
@@ -240,6 +227,7 @@
         },
         "50248832-df65-48c4-8cca-fc3c963370ad": {
           "type": "upsell_mattress_v2",
+          "disabled": true,
           "settings": {
             "title": "Upgrade to bundle",
             "description": "<li>2 additional pillow at -50%<\/li><li>Better sleep with Emma sleep system<\/li>",
@@ -254,7 +242,6 @@
         "e4cd7962-4d57-4250-8e6e-4c76dd76d6d6",
         "038c8f16-3a84-418c-9ee2-38f53be4a385",
         "72b3b893-b0bb-44ad-978c-733ee54620a1",
-        "12e2c164-6e6a-42a2-a76a-b4363d4c2c09",
         "0a7cd906-1a13-44a7-bfe8-34d0b6373b48",
         "00f4e92b-5e6c-4ec3-a58d-8079fafaa409",
         "05167373-6c53-4bf6-b18f-7cae5ab215d7",
@@ -266,7 +253,6 @@
         "e6120535-6438-459e-a4f8-50816d7ab9dc",
         "c356b1b7-ae94-4361-890b-5b83d4d27efc",
         "809302fb-d0b7-4e84-854b-40031868c836",
-        "aca1fc41-0eb9-430f-8e6f-cd91209f6208",
         "4cbc7869-79e0-4a37-bbb4-96b1a2126e82",
         "c84bbed1-8413-4b34-bc21-8091dad8dc98",
         "7b225c26-3236-4b1a-b7a5-9377c932ba71",
@@ -275,45 +261,46 @@
         "50248832-df65-48c4-8cca-fc3c963370ad"
       ],
       "settings": {
-        "title": "Emma Hybrid Comfort",
-        "desc": "<h6>Perfect comfort for everyone <\/h6><p>Our newest 13-inch Hybrid mattress that can support added weight and movement without getting hot or stuffy<\/p><ul><li>Ultra-breathable and refreshing, no more overheating<\/li><li>7 ergonomic zones for optimal spinal alignment<\/li><li>Enhanced support for every size and weight<\/li><li>Ideal pressure distribution<\/li><li>Zero motion transfer<\/li><\/ul>",
-        "caption_headline": "The mattress that can hold its own",
-        "caption_content": "Designed to provide perfect support, maximal comfort, and stay cool while you sleep",
-        "badge": "New"
+        "title": "Breathable Mattress Protector",
+        "desc": "<h6>Extra protection for your mattress<\/h6><p>Keep your mattress brand-new with our Breathable Mattress Protector with <strong>Tri-Protect™ Action:<\/strong><\/p><ul><li><strong>Waterproof & Hygienic:<\/strong> Protects your mattress investment from life's spills, keeping it fresh & brand new<\/li><li><strong>Hypoallergenic: <\/strong>Protects your health and sensitive skin from dust mites & allergens<\/li><li><strong>Breathable:<\/strong> Protects your comfort with material that promotes good airflow<\/li><\/ul>",
+        "caption_headline": "Compatible with all Emma mattress",
+        "caption_content": "You sleep better when your mattress is sparkling clean.",
+        "badge": "Sale"
       }
     },
     "media-with-text-banners": {
       "type": "media-with-text-banners",
       "blocks": {
         "7eddc7a1-60de-430c-ad1d-0fa4619d108d": {
-          "type": "video",
+          "type": "image",
           "settings": {
-            "video": "shopify:\/\/files\/videos\/USP - Spinal Support 1920x1080.mp4",
-            "title": "Extra strength to provide optimal support",
-            "content": "Perfect for all types of sleepers, and activities that need the added reinforcement, the mattress can easily support all body types while maintaining its resilience so that you don’t sink too deep into the mattress.",
+            "image": "shopify:\/\/shop_images\/Gallery_3_desktop.png",
+            "title": "Allergy-Busting",
+            "content": "Dust mites are responsible for triggering 70% of all respiratory allergies. Our mattress protector is made with revolutionary AllergyShield technology and is clinically proven to protect you from dust mites, and pet hair allergens.",
             "reverse": false
           }
         },
         "57e597f8-8943-4def-820a-a0e469678641": {
-          "type": "video",
+          "type": "image",
           "settings": {
-            "video": "shopify:\/\/files\/videos\/original bed-ddtopper-sheet.mp4",
-            "title": "No more sweaty nights",
-            "content": "Designed with a plush and moisture-wicking cover, the Hybrid Comfort is climate-regulating and creates a cool sleep environment. The Airgocell foam allows heat to dissipate away from your body allowing you to fall asleep at the ideal temperature every night.",
+            "image": "shopify:\/\/shop_images\/Brand_Block_1_desktop.png",
+            "title": "Maximum Protection",
+            "content": "Our mattress protector comes with a 100% waterproof EmmaGuard layer that protects your mattress from spills, crumbs and other unwanted nasties! It needs a clean? Simply pop it in your washing machine at a cool 40° C!",
             "reverse": true
           }
         },
         "95f7a903-df98-4d58-9b15-0db125d9190c": {
-          "type": "video",
+          "type": "image",
           "settings": {
-            "video": "shopify:\/\/files\/videos\/zero-motion-technology-clean.mp4",
-            "title": "Undisturbed sleep with zero motion transfer",
-            "content": "Made with an open-celled foam that isolates motion, light sleepers can continue to snooze even as their partner tosses and turns in bed. The combined springs in the Hybrid Comfort also help hold the structure of the mattress during movement.",
+            "image": "shopify:\/\/shop_images\/Gallery_2_desktop.png",
+            "title": "Breathable + Comfortable",
+            "content": "Our incredibly soft protector is highly breathable and keeps you fresh and cool throughout the night. It perfectly hugs your mattress with a 360°Grip and is crinkle-free - you'll feel the comfort but won't hear a thing.",
             "reverse": false
           }
         },
         "258722e6-18c8-4c8d-bee9-c411c5312e58": {
           "type": "video",
+          "disabled": true,
           "settings": {
             "video": "shopify:\/\/files\/videos\/USP3_10YearWarranty.mp4",
             "title": "Developed by experts ",
@@ -407,6 +394,7 @@
         "0e7b3bb3-6109-4e78-851e-e5684c7b4d67",
         "5be28f2b-260b-4c71-966c-fc325c5218b8"
       ],
+      "disabled": true,
       "settings": {
         "heading": "Emma Hybrid Comfort - Layer by Layer",
         "heading_alignment": "start",
@@ -479,6 +467,7 @@
         "old-featured-products-2",
         "5669a974-c41c-4819-895a-3683043506f7"
       ],
+      "disabled": true,
       "settings": {
         "title": "Sleeping will never be the same",
         "mobile_title": "Comfort that adapts",
@@ -494,6 +483,7 @@
     },
     "mattress-firmness": {
       "type": "mattress-firmness",
+      "disabled": true,
       "settings": {
         "title": "How does the Hybrid Comfort feel?",
         "subtitle": "MATTRESS FIRMNESS SCALE",
@@ -509,65 +499,67 @@
         "review-1": {
           "type": "review",
           "settings": {
-            "title": "High quality mattress!",
+            "title": "The mattress cover is perfect!",
             "date": "12 Jan 2023",
-            "product": "emma-original-mattress",
-            "content": "<p>I have used Emma Mattress for more than a month now and I'm totally in love with it. The quality of the mattress and comfort is definitely noteworthy. I would highly recommend using Emma if you are looking for premium quality mattress<\/p>",
-            "author": "Javeria A."
+            "product": "emma-mattress-protector",
+            "content": "<p>The mattress cover is perfect for spills and eating in bed<\/p>",
+            "author": "Tomi C."
           }
         },
         "ff353d7c-1ace-4d04-8600-da1cf999aa8c": {
           "type": "review",
           "settings": {
-            "title": "Excellent hybrid mattress",
+            "title": "Very satisfied",
             "date": "20 Feb 2023",
-            "product": "emma-climax-hybrid",
-            "content": "<p>Excellent mattress, not too firm and not too soft, either! I got the pillow too, which I got to adjust by taking out one layer. I'm a side sleeper so the flexibility here was a gamechanger for me<\/p>",
-            "author": "Ben A."
+            "product": "emma-mattress-protector",
+            "content": "<p>Very satisfied with the various products offered by Emma. My last purchase \"mattress protector\" and I am still not disappointed! I highly recommend it.<\/p>",
+            "author": "Duhamel M."
           }
         },
         "68d0393a-14cd-4864-a37c-8bee16a86c66": {
           "type": "review",
           "settings": {
-            "title": "Best quality sleep I've ever had!",
-            "date": "Nov 23 2022",
-            "product": "emma-climax-hybrid",
-            "content": "<p>I didn't realize how bad my previous mattress was until I received my Emma mattress. Not only do I sleep straight through the night (mind you, I sleep with my partner and dog and don't feel their movements at all!), I wake up energized and well rested. I no longer have any body aches and never feel too hot\/too cold. Highly recommend!<\/p>",
-            "author": "Jonathan W."
+            "title": "Highly recommended",
+            "date": "23 Nov 2022",
+            "product": "emma-mattress-protector",
+            "content": "<p>Highly recommended. Great service. Very nice mattress, very comfortable. I got the protector for it too which is essential since I always have my doggie on it too. The mattress protector adds a little extra firmness which is nice😉 I highly recommend the mattress and the protector. Also you can use the protector on any mattress which is another plus. 👍 11 out 10<\/p>",
+            "author": "Paul S."
           }
         },
         "296eeee5-4272-4b32-96f7-594c31dff0be": {
           "type": "review",
           "settings": {
-            "title": "Great for couples",
-            "date": "11 Oct 2022",
-            "product": "emma-climax-hybrid",
-            "content": "<p>We've tried orthopedic mattresses in the past, but returned it because they're TOO firm. I prefer soft ones, while my husband prefers firm. For some strange reason, this mattress just works for the both of us. His back pain's gone and I've been sleeping like a log every night!<\/p>",
-            "author": "Donna C."
+            "title": "Nice product",
+            "date": "02 Oct 2022",
+            "product": "emma-mattress-protector",
+            "content": "<p>Such a wonderful protector! Perfect for with little kids who have accidents from time to time . We are very happy with it.<\/p>",
+            "author": "Lexi F."
           }
         },
         "eed622ac-a32a-4209-9df0-ec26d8d88b68": {
           "type": "review",
+          "disabled": true,
           "settings": {
-            "title": "Uninterrupted sleep all night",
-            "date": "08 Oct 2022",
-            "product": "emma-climax-hybrid",
-            "content": "<p>This was recommended to me by my friend since I've been waking up in the middle of the night with my old mattress. So glad I listened cuz now I've been sleeping straight and waking up without a sweat<\/p>",
-            "author": "Nicole W"
+            "title": "A wonderful night's sleep and great value.",
+            "date": "29 Jul 2022",
+            "product": "emma-mattress-protector",
+            "content": "<p>Took a few nights to get used to the different feel \/ sensation of this mattress however, now we are absolutely loving it. I got the pillow as well and now I no longer feel any aches and pains when I get up in the morning. No more neck, shoulder or lower back issues. It has been life changing! Yes, the mattress did let off an odour for about a week. We just ensured that the room was well ventilated and, 2 - 3 weeks later it can only be detected if the room has been closed up for a period of time. We purchased one for our teenage daughter at the same time and she loves hers as well. The mattress protector is also very high quality. Very happy family here!!<\/p>",
+            "author": "Angela M."
           }
         },
         "77781754-0ea6-405a-a83b-f0065811a528": {
           "type": "review",
           "settings": {
-            "title": "Best quality sleep I've ever had!",
-            "date": "6 Apr 2022",
-            "product": "emma-original-mattress",
-            "content": "<p>I didn't realize how bad my previous mattress was until I received my Emma mattress. Not only do I sleep straight through the night (mind you, I sleep with my partner and dog and don't feel their movements at all!), I wake up energized and well rested. I no longer have any body aches and never feel too hot\/too cold. Highly recommend!<\/p>",
-            "author": "Jonathan W."
+            "title": "Perfect",
+            "date": "16 Jul 2022",
+            "product": "emma-mattress-protector",
+            "content": "<p>Perfect, I took 2 pillows, one of them I removed the middle layer (because they are removable) and so I alternate, I have one higher and one lower. The waterproof mattress protector<br\/>perfect.<\/p>",
+            "author": "Daniel M."
           }
         },
         "b3b7f1ea-8fe5-41e7-9305-567392190a4e": {
           "type": "review",
+          "disabled": true,
           "settings": {
             "title": "Perfectly satisfied with my mattress...",
             "date": "3 Jul 2022",
@@ -578,6 +570,7 @@
         },
         "7370ca27-e47c-4832-b9fd-b8beb6dce18b": {
           "type": "review",
+          "disabled": true,
           "settings": {
             "title": "I can't wait for bedtime now!",
             "date": "8 Jul 2022",
@@ -588,6 +581,7 @@
         },
         "c4884297-13b5-40c7-9075-bed6e1cf82d8": {
           "type": "review",
+          "disabled": true,
           "settings": {
             "title": "Best sleeping with Emma",
             "date": "28 Jul 2022",
@@ -728,32 +722,30 @@
             "product": "emma-foam-pillow"
           }
         },
+        "47ab8895-2699-43c3-8f72-c25e2d898486": {
+          "type": "catalog_item",
+          "settings": {
+            "product": "emma-hybrid-comfort"
+          }
+        },
+        "07d5912c-d4c3-4ebb-97a6-f723fc8a4f3f": {
+          "type": "catalog_item",
+          "settings": {
+            "product": "emma-original-mattress"
+          }
+        },
         "f0f0b732-6803-4158-8c54-5c08c4bdbfa3": {
           "type": "catalog_item",
           "settings": {
             "product": "emma-bed-frame"
           }
-        },
-        "47ab8895-2699-43c3-8f72-c25e2d898486": {
-          "type": "catalog_item",
-          "disabled": true,
-          "settings": {
-            "product": "emma-mattress-protector"
-          }
-        },
-        "07d5912c-d4c3-4ebb-97a6-f723fc8a4f3f": {
-          "type": "catalog_item",
-          "disabled": true,
-          "settings": {
-            "product": "emma-original-mattress"
-          }
         }
       },
       "block_order": [
         "72c7f33b-7788-4524-bf53-816aecb093b6",
-        "f0f0b732-6803-4158-8c54-5c08c4bdbfa3",
         "47ab8895-2699-43c3-8f72-c25e2d898486",
-        "07d5912c-d4c3-4ebb-97a6-f723fc8a4f3f"
+        "07d5912c-d4c3-4ebb-97a6-f723fc8a4f3f",
+        "f0f0b732-6803-4158-8c54-5c08c4bdbfa3"
       ],
       "settings": {
         "heading": "Some things are better together",
@@ -775,8 +767,8 @@
         "f3255c5f-527e-4927-a670-554ff22e9ef7": {
           "type": "column",
           "settings": {
-            "icon": "shopify:\/\/shop_images\/365_night_trial.png",
-            "title": "365-Night Trial",
+            "icon": "shopify:\/\/shop_images\/365_nights.png",
+            "title": "60-Night Trial",
             "content": "Get properly acquainted with Emma so you can be sure we’re the one"
           }
         },
@@ -784,7 +776,7 @@
           "type": "column",
           "settings": {
             "icon": "shopify:\/\/shop_images\/award-black.png",
-            "title": "10 Year Guarantee",
+            "title": "2 Year Guarantee",
             "content": "Our products are built to last. You’re covered if something goes wrong"
           }
         },
@@ -823,7 +815,7 @@
         "428bf788-6243-4437-82ba-18a01f731a93": {
           "type": "shopify:\/\/apps\/yotpo-product-photo-reviews\/blocks\/reviews\/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
           "settings": {
-            "product": "{{product}}"
+            "product": "emma-mattress-protector"
           }
         }
       },

@@ -154,7 +154,17 @@
                       id="cart-item-bundle-item-{{ bundle_item_variant.product.handle }}" class="product-bundle-item"
                     >
                       <div class="product-bundle-item__media">
-                        {{ bundle_item_variant.product.featured_image | image_url: width: 120, height: 80 | image_tag: loading: 'lazy', class: "product-bundle-item__image" }}
+                        {% assign featuredImg = bundle_item_variant.product.featured_image | image_url: width: 120, height: 80  %}
+                        {% assign accentuateImg = bundle_item_variant.product.metafields.accentuate.bundle_featured_image[0].src  %}
+          
+                          <img
+                            src="{{ accentuateImg | default: featuredImg }}"
+                            width="120"
+                            height="80"
+                            alt=""
+                            class="product-bundle-item__image"
+                            loading="lazy"
+                          />
                       </div>
                       <div class="product-bundle-item__details">
                         <div class="product__name paragraph-14 font-semibold">

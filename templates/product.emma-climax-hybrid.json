@@ -253,7 +253,8 @@
         "title": "",
         "desc": "<h6>A mattress for all shapes and sizes<\/h6><p>Hybrid mattress technology that can support added weight and movement without getting hot or stuffy<\/p><ul><li>Ideal for plus-sized sleepers or couples<\/li><li>Climate-regulation and cooling technology<\/li><li>Zero motion transfer<\/li><\/ul>",
         "caption_headline": "The mattress that can hold its own",
-        "caption_content": "Designed to support added weight, activity, and stay cool while you sleep"
+        "caption_content": "Designed to support added weight, activity, and stay cool while you sleep",
+        "badge": ""
       }
     },
     "media-with-text-banners": {
@@ -385,6 +386,8 @@
           "type": "product-block",
           "settings": {
             "product": "emma-original-mattress",
+            "border_color": "#ff8900",
+            "badge_color": "#ff8900",
             "primary_badge": "COOLING",
             "secondary_badge": "BEST VALUE",
             "mattress_height": "shopify:\/\/shop_images\/mattres-height-10.png",
@@ -401,8 +404,9 @@
         "old-featured-products-2": {
           "type": "product-block",
           "settings": {
-            "product": "emma-climax-hybrid",
+            "product": "emma-original-hybrid",
             "border_color": "#f4711e",
+            "badge_color": "#ff8900",
             "primary_badge": "COMFORT",
             "secondary_badge": "Biggest deal",
             "mattress_height": "shopify:\/\/shop_images\/mattres-height-11.png",
@@ -420,6 +424,8 @@
           "type": "product-block",
           "settings": {
             "product": "emma-shift",
+            "border_color": "#ff8900",
+            "badge_color": "#ff8900",
             "primary_badge": "COMFORT",
             "secondary_badge": "PREMIUM OPTION",
             "mattress_height": "shopify:\/\/shop_images\/mattres-height-13-v2.png",
@@ -439,6 +445,7 @@
         "old-featured-products-2",
         "5669a974-c41c-4819-895a-3683043506f7"
       ],
+      "disabled": true,
       "settings": {
         "title": "Sleeping will never be the same",
         "mobile_title": "Comfort that adapts",
@@ -481,7 +488,7 @@
           "settings": {
             "title": "Excellent hybrid mattress",
             "date": "20 Feb 2023",
-            "product": "emma-climax-hybrid",
+            "product": "",
             "content": "<p>Excellent mattress, not too firm and not too soft, either! I got the pillow too, which I got to adjust by taking out one layer. I'm a side sleeper so the flexibility here was a gamechanger for me<\/p>",
             "author": "Ben A."
           }
@@ -491,7 +498,7 @@
           "settings": {
             "title": "Best quality sleep I've ever had!",
             "date": "Nov 23 2022",
-            "product": "emma-climax-hybrid",
+            "product": "emma-original-hybrid",
             "content": "<p>I didn't realize how bad my previous mattress was until I received my Emma mattress. Not only do I sleep straight through the night (mind you, I sleep with my partner and dog and don't feel their movements at all!), I wake up energized and well rested. I no longer have any body aches and never feel too hot\/too cold. Highly recommend!<\/p>",
             "author": "Jonathan W."
           }
@@ -501,7 +508,7 @@
           "settings": {
             "title": "Great for couples",
             "date": "11 Oct 2022",
-            "product": "emma-climax-hybrid",
+            "product": "emma-original-hybrid",
             "content": "<p>We've tried orthopedic mattresses in the past, but returned it because they're TOO firm. I prefer soft ones, while my husband prefers firm. For some strange reason, this mattress just works for the both of us. His back pain's gone and I've been sleeping like a log every night!<\/p>",
             "author": "Donna C."
           }
@@ -511,7 +518,7 @@
           "settings": {
             "title": "Uninterrupted sleep all night",
             "date": "08 Oct 2022",
-            "product": "emma-climax-hybrid",
+            "product": "emma-original-hybrid",
             "content": "<p>This was recommended to me by my friend since I've been waking up in the middle of the night with my old mattress. So glad I listened cuz now I've been sleeping straight and waking up without a sweat<\/p>",
             "author": "Nicole W"
           }

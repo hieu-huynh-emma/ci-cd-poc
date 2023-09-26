@@ -15,7 +15,7 @@
 
 {% comment %}DESIGN MIGRATE{% endcomment %}
 {% case template %}
-  {% when 'index', 'product.emma-original', 'product.emma-climax-hybrid', 'product.emma-hybrid-pro', 'product.foam-pillow', 'product.ready-to-sleep', 'product.mattress-protector' %}
+  {% when 'index', 'product.emma-original', 'product.emma-climax-hybrid', 'product.emma-hybrid-pro', 'product.foam-pillow', 'product.ready-to-sleep', 'product.mattress-protector', 'product.sleep-essential-bundle' %}
     {{ 'new-heading.css' | asset_url | stylesheet_tag }}
   {% else %}
     {{ 'old-heading.css' | asset_url | stylesheet_tag }}
@@ -30,7 +30,7 @@
       assign pageStylesheet = 'competitor-comparison.css'
     when 'product.emma-original', 'product.emma-climax-hybrid', 'product.emma-hybrid-pro', 'product.foam-pillow', 'product.mattress-protector'
       assign pageStylesheet = 'product-detail.css'
-    when 'product.ready-to-sleep'
+    when 'product.ready-to-sleep', 'product.sleep-essential-bundle'
       assign pageStylesheet = 'bundle-detail.css'
   endcase
 %}
