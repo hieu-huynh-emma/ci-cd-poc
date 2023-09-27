@@ -100,13 +100,7 @@
 						</div>
 						
 						<div class="product-bundle-item__description">
-							{% if bundle_item_variant.title != "Default Title" %}
-								<span class="product-bundle-item__label">
-									{{ bundle_item_variant.title }}
-								</span>
-								<span>|</span>
-							{% endif %}
-							
+					
 							<span class="product-bundle-item__quantity">
 								{{ 'products.bundle.qty' | t }}: {{ bundle_item_metaobject.quantity }}
 							</span>
