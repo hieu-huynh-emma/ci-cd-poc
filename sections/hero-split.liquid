@@ -1,10 +1,11 @@
 {% assign heroSplits = section.blocks | where: 'type', 'hero-split' %}
 {% assign heroSaleBadge = section.blocks | where: 'type', 'hero-sale-badge' %}
 
+
 {{ 'hero-split.css' | asset_url | stylesheet_tag }}
 
 <div id="hero-split-section" class="page-boundary">
-    <div class="hero-container">
+    <div class="hero-container {% if heroSplits.size == 1 %}single-mode{% endif %}">
         {% for block in heroSplits %}
             {% assign wallpaper = block.settings.wallpaper %}
 
