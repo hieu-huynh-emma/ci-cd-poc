@@ -45,11 +45,18 @@ function navigationHamburger() {
 function languageSwitching() {
   // Dont use "https://emma-sleep.ca" because it'll be auto converted to "https://qc.emma-sleep.ca" by shopify on french domain
   const franceUrl = "https://qc.emma-sleep.ca";
-  const englishUrl = "https://emma-sleep" + ".ca";
+  const englishUrl = "https://emma-sleep.ca";
 
   setTimeout(function() {
     renderLanguageRedirection();
-  }, 2000)
+
+    // Ometria workaround
+    if($('html').attr('lang') === 'fr') {
+      const newsletterFormTags = $(`footer input[name="contact[tags]"]`)
+
+      newsletterFormTags.val(newsletterFormTags.val() + ",locale=fr")
+    }
+  }, 500)
 
   function renderLanguageRedirection() {
     const currentLanguage = $('html').attr('lang');
@@ -61,7 +68,7 @@ function languageSwitching() {
   $('.language-redirection').click(function(e) {
     e.preventDefault()
     const currentLanguage = $('html').attr('lang');
-    location.href = currentLanguage === 'en' ? franceUrl : englishUrl;
+    Weglot.switchTo(currentLanguage === 'en' ? "fr" : "en")
   })
 }
 
