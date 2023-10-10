@@ -38,6 +38,7 @@
         grid-template-rows: minmax(0, 310px);
       }
       @media screen and (min-width: 769px) {
+        grid-template-rows: minmax(0, 640px);
         grid-template-columns: initial;
       }
 
@@ -174,6 +175,7 @@
 
       img {
         object-fit: cover;
+        object-position: bottom;
         height: 100%;
         max-width: 100%;
       }
