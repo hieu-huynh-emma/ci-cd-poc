@@ -214,7 +214,7 @@
           "type": "upsell_mattress_v2",
           "settings": {
             "title": "Upgrade to the Hybrid Comfort:",
-            "description": "<li>Best in cooling<\/li><li>Additional support<\/li>",
+            "description": "<ul><li>Best in cooling<\/li><li>Additional support<\/li><\/ul>",
             "upsell_mattress_product_image": "shopify:\/\/shop_images\/MicrosoftTeams-image_16.png",
             "upsell_mattress_product": "emma-hybrid-comfort"
           }
@@ -665,6 +665,12 @@
     "product-catalog": {
       "type": "product-catalog",
       "blocks": {
+        "bae85a4a-d730-4da4-a992-fbc256f1794a": {
+          "type": "catalog_item",
+          "settings": {
+            "product": "premium-diamond-pillow"
+          }
+        },
         "72c7f33b-7788-4524-bf53-816aecb093b6": {
           "type": "catalog_item",
           "settings": {
@@ -698,6 +704,7 @@
         }
       },
       "block_order": [
+        "bae85a4a-d730-4da4-a992-fbc256f1794a",
         "72c7f33b-7788-4524-bf53-816aecb093b6",
         "f0f0b732-6803-4158-8c54-5c08c4bdbfa3",
         "bf11f54d-26c5-486a-bf7c-84cc9bae2610",

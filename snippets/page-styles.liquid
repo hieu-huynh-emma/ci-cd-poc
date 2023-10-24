@@ -27,11 +27,11 @@
 				assign pageStylesheet = 'competitor-comparison.css'
 			when 'product.emma-climax-hybrid', 'product.emma-hybrid-pro'
 				assign pageStylesheet = 'product-detail.css'
-			when 'product.ready-to-sleep', 'product.sleep-essential-bundle'
+			when 'product.ready-to-sleep', 'product.sleep-essential-bundle', 'product.perfect-sleep-bundle'
 				assign pageStylesheet = 'bundle-detail.css'
 		endcase
 	%}
-	<link is="delay-stylesheet" href="{{ pageStyleFile | asset_url }}">
+	<link is="delay-stylesheet" href="{{ pageStylesheet | asset_url }}">
 
 	<link is="delay-stylesheet" href="{{ 'tailwind.css' | asset_url }}">
 {% else %}

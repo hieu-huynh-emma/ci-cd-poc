@@ -227,12 +227,11 @@
         },
         "50248832-df65-48c4-8cca-fc3c963370ad": {
           "type": "upsell_mattress_v2",
-          "disabled": true,
           "settings": {
-            "title": "Upgrade to bundle",
-            "description": "<li>2 additional pillow at -50%<\/li><li>Better sleep with Emma sleep system<\/li>",
-            "upsell_mattress_product_image": "shopify:\/\/shop_images\/Emma_CA_-_Labour_Day_Banner.jpg",
-            "upsell_mattress_product": "ready-to-sleep-bundle"
+            "title": "Upgrade to",
+            "description": "<ul><li>Premium Cooling Pillow<\/li><\/ul>",
+            "upsell_mattress_product_image": "shopify:\/\/shop_images\/PILLOW_1_6d5a5f46-1c82-453b-954b-25bac554cd05.png",
+            "upsell_mattress_product": "premium-diamond-pillow"
           }
         }
       },
@@ -683,6 +682,12 @@
     "product-catalog": {
       "type": "product-catalog",
       "blocks": {
+        "f0a64288-44b6-4d4a-9ef2-3a21854d5ed6": {
+          "type": "catalog_item",
+          "settings": {
+            "product": "premium-diamond-pillow"
+          }
+        },
         "3cf84009-b3f6-43e8-b3d8-a899eb1d3425": {
           "type": "catalog_item",
           "disabled": true,
@@ -716,6 +721,7 @@
         }
       },
       "block_order": [
+        "f0a64288-44b6-4d4a-9ef2-3a21854d5ed6",
         "3cf84009-b3f6-43e8-b3d8-a899eb1d3425",
         "72c7f33b-7788-4524-bf53-816aecb093b6",
         "47ab8895-2699-43c3-8f72-c25e2d898486",

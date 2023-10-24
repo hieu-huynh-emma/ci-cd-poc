@@ -22,9 +22,9 @@
       assign pageStylesheet = 'comparison-page.css'
     when 'page.competitor-comparison'
       assign pageStylesheet = 'competitor-comparison.css'
-    when 'product.emma-original', 'product.emma-climax-hybrid', 'product.emma-hybrid-pro','product.diamond-pillow', 'product.foam-pillow', 'product.mattress-protector','product.down-alternative-pillow', 'product.emma-thermosync-mattress'
+    when 'product.emma-original', 'product.emma-climax-hybrid', 'product.emma-hybrid-comfort', 'product.emma-hybrid-pro','product.diamond-pillow', 'product.perfect-sleep-bundle', 'product.foam-pillow', 'product.mattress-protector','product.down-alternative-pillow', 'product.emma-thermosync-mattress'
       assign pageStylesheet = 'product-detail.css'
-    when 'product.ready-to-sleep', 'product.sleep-essential-bundle'
+    when 'product.ready-to-sleep', 'product.sleep-essential-bundle', 'product.perfect-sleep-bundle'
       assign pageStylesheet = 'bundle-detail.css'
   endcase
 %}

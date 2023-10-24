@@ -242,9 +242,9 @@
           "type": "upsell_mattress_v2",
           "settings": {
             "title": "Upgrade to bundle",
-            "description": "<li>2 pillows and a mattress protector at -55%<\/li><li>Better sleep with Emma sleep system<\/li>",
+            "description": "<ul><li>2 pillows and a mattress protector at -55%<\/li><li>Better sleep with Emma sleep system<\/li><\/ul>",
             "upsell_mattress_product_image": "shopify:\/\/shop_images\/EmmaCA-ThanksgivingBundle-02.jpg",
-            "upsell_mattress_product": "sleep-essential-bundle"
+            "upsell_mattress_product": "perfect-sleep-bundle"
           }
         }
       },
@@ -722,6 +722,12 @@
     "product-catalog": {
       "type": "product-catalog",
       "blocks": {
+        "3f2616db-ebbf-4f73-acb0-2c57a4f3e907": {
+          "type": "catalog_item",
+          "settings": {
+            "product": "premium-diamond-pillow"
+          }
+        },
         "72c7f33b-7788-4524-bf53-816aecb093b6": {
           "type": "catalog_item",
           "settings": {
@@ -750,11 +756,12 @@
         "5854d1f7-216e-46cf-abbd-b1119b72d075": {
           "type": "catalog_item",
           "settings": {
-            "product": "ready-to-sleep-bundle"
+            "product": "perfect-sleep-bundle"
           }
         }
       },
       "block_order": [
+        "3f2616db-ebbf-4f73-acb0-2c57a4f3e907",
         "72c7f33b-7788-4524-bf53-816aecb093b6",
         "f0f0b732-6803-4158-8c54-5c08c4bdbfa3",
         "47ab8895-2699-43c3-8f72-c25e2d898486",
