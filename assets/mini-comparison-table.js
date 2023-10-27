@@ -161,10 +161,21 @@ const MiniComparisonTable = {
     $cell.html(cellVal)
   },
 
+  renderBadge: function() {
+    const { product } = this.config
+
+    const productQueenVariant = product.variants.find(variant => variant.title.includes('Queen'));
+    const price = +productQueenVariant.price / 100
+    const originalPrice = +productQueenVariant.compare_at_price / 100
+
+    if(originalPrice>price) this.$table.find('.badge__saved-amount').text(Currency.format(originalPrice-price))
+
+  },
   init: function () {
     this.renderAllColHeaders();
     this.renderAllRowHeaders();
-    this.renderAllCells()
+    this.renderAllCells();
+    this.renderBadge()
   },
 };
 
