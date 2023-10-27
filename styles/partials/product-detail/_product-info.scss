@@ -7,6 +7,7 @@
   @media screen and (min-width: 769px) {
     padding: 2.5rem 0;
   }
+
   .product-info-wrapper {
     display: flex;
     flex-wrap: wrap;
@@ -390,6 +391,7 @@
       display: inline-block;
       position: relative;
       width: 100%;
+
       .icon {
         height: 0.6rem;
         pointer-events: none;
@@ -397,6 +399,7 @@
         top: calc(50% - 0.2rem);
         right: 1.5rem;
       }
+
       &__select {
         display: flex;
         width: 100%;
@@ -534,6 +537,7 @@
     .image-wrapper {
       border-radius: 4px;
     }
+
     .splide__pagination__page {
       height: 6px;
       width: 6px;
@@ -612,4 +616,45 @@
       }
     }
   }
+}
+
+.media-badge {
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  z-index: 5;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 70px;
+  width: 70px;
+  transform: rotate(10deg);
+  color: rgb(255, 255, 255);
+  background: rgb(255, 137, 0);
+  border-radius: 50%;
+
+  @media screen and (min-width: 768px) {
+    height: 120px;
+    width: 120px;
+  }
+
+  .badge {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 70%;
+    height: 100%;
+    font-weight: 500;
+    font-size: .8rem;
+    text-align: center;
+    @media screen and (min-width: 768px) {
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+
+  }
+
+
 }
