@@ -1,5 +1,5 @@
 <ul id="header-right">
-	<li><a tabindex="-1" class="language-redirection"></a></li>
+	<li><button tabindex="-1" class="language-redirection"></button></li>
 	{%- if shop.customer_accounts_enabled -%}
 		<li>
 			<a href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}">

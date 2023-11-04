@@ -62,12 +62,13 @@ function languageSwitching() {
     const currentLanguage = $('html').attr('lang');
     const $languageRedirection = $(".language-redirection");
     $languageRedirection.text(currentLanguage === 'en' ? "FRANÇAIS" : "ENGLISH");
-    $languageRedirection.attr("href", currentLanguage === 'en' ? franceUrl : englishUrl);
+    // $languageRedirection.attr("href", currentLanguage === 'en' ? franceUrl : englishUrl);
   }
 
   $('.language-redirection').click(function(e) {
     e.preventDefault()
     const currentLanguage = $('html').attr('lang');
+    
     Weglot.switchTo(currentLanguage === 'en' ? "fr" : "en")
   })
 }
