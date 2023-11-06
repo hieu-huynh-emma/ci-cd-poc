@@ -95,16 +95,18 @@
         gap: 1.5rem;
       }
 
-      &__link {
-        position: relative;
-        padding-bottom: 0.25rem;
-        font-size: 14px;
-
-        &--sale {
+      navigation-link {
+        &:first-child .navigation-list__link{
           font-weight: 700;
           text-transform: uppercase;
           color: #f03306;
         }
+      }
+
+      &__link {
+        position: relative;
+        padding-bottom: 0.25rem;
+        font-size: 14px;
       }
     }
   }
