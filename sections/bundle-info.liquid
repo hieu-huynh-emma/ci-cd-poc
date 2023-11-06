@@ -9,8 +9,6 @@
 {% assign upsell_mattress_v2 = section.blocks | where: 'type', 'upsell_mattress_v2' | first %}
 {% assign sold_out_upsell = section.blocks | where: 'type', 'sold_out_upsell' | first %}
 {% assign disclaimer = section.blocks | where: 'type', 'disclaimer' | first %}
-
-
 {% assign cta_message = section.blocks | where: 'type', 'cta_message' | first %}
 {% assign mini_comparison_table = section.blocks | where: 'type', 'mini-comparison-table' | first %}
 {% assign appBlock = section.blocks | where: 'type', '@app' | first %}
@@ -20,7 +18,6 @@
 {% assign productMedia = section.blocks | where: 'type', 'product_media' %}
 
 <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
-
 <section
 	class="product-info"
 	id="ProductSection-{{ section.id }}"
