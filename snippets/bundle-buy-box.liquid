@@ -89,6 +89,30 @@
         {% endif %}
       {% endfor %}
     </select>
+    
+    <div
+      class="product-quantity-selector{% unless product.selected_or_first_available_variant.available %} mb-4 visibility-hidden{% endunless %}"
+      {{ block.shopify_attributes }}
+    >
+      <label class="product-quantity-selector__label" for="Quantity-{{ section.id }}">
+        {{ 'products.product.quantity' | t }}
+      </label>
+      
+      <quantity-input name="quantity" class="quantity-input" form="product-form-{{ section.id }}">
+        <button class="quantity-input__button no-js-hidden" name="minus" type="button">-</button>
+        <input
+          class="quantity-input__native"
+          type="number"
+          name="quantity"
+          id="Quantity-{{ section.id }}"
+          value="1"
+          min="1"
+          pattern="[0-9]*"
+          readonly
+        >
+        <button class="quantity-input__button no-js-hidden" name="plus" type="button">+</button>
+      </quantity-input>
+    </div>
   </div>
 </div>
 

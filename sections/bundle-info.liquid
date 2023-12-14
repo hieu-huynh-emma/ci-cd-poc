@@ -201,30 +201,6 @@
 				{% render 'bundle-buy-box', product: product %}
 				
 				<div
-					class="product-quantity-selector{% unless product.selected_or_first_available_variant.available %} mb-4 visibility-hidden{% endunless %}"
-					{{ block.shopify_attributes }}
-				>
-					<label class="product-quantity-selector__label" for="Quantity-{{ section.id }}">
-						{{ 'products.product.quantity' | t }}
-					</label>
-					
-					<quantity-input name="quantity" class="quantity-input" form="product-form-{{ section.id }}">
-						<button class="quantity-input__button no-js-hidden" name="minus" type="button">-</button>
-						<input
-							class="quantity-input__native"
-							type="number"
-							name="quantity"
-							id="Quantity-{{ section.id }}"
-							value="1"
-							min="1"
-							pattern="[0-9]*"
-							readonly
-						>
-						<button class="quantity-input__button no-js-hidden" name="plus" type="button">+</button>
-					</quantity-input>
-				</div>
-				
-				<div
 					class="product-form__error-message-wrapper product-form__error-message-wrapper--hidden{% if section.settings.enable_payment_button %} product-form__error-message-wrapper--has-payment-button{% endif %}"
 					data-error-message-wrapper
 					role="alert"
@@ -459,19 +435,19 @@
                 <div class="payment-provider">
                     <img src="//cdn.shopify.com/s/files/1/0562/9873/3706/files/paypal_payment_provider.svg?v=1698141213&amp;width=1440">
                 </div>
-                 
+                
             
                
                 <div class="payment-provider">
                     <img src="//cdn.shopify.com/s/files/1/0562/9873/3706/files/visa_payment_provider.svg?v=1698141376&amp;width=1440">
                 </div>
-                 
+                
             
                
                 <div class="payment-provider">
                     <img src="//cdn.shopify.com/s/files/1/0562/9873/3706/files/master-cart_payment_provider.svg?v=1698141377&amp;width=1440">
                 </div>
-                 
+                
             
                
                 <div class="payment-provider">
@@ -482,25 +458,25 @@
                 <div class="payment-provider">
                     <img src="//cdn.shopify.com/s/files/1/0562/9873/3706/files/discover-payment-method.svg?v=1698141377&amp;width=1440">
                 </div>
-                 
+                
             
                
                 <div class="payment-provider">
                     <img src="//cdn.shopify.com/s/files/1/0562/9873/3706/files/apple_pay.svg?v=1698141377&amp;width=1440">
                 </div>
-                 
+                
             
                
                 <div class="payment-provider">
                     <img src="//cdn.shopify.com/s/files/1/0562/9873/3706/files/pay_google.svg?v=1698141377&amp;width=1440">
                 </div>
-                 
+                
             
                
                 <div class="payment-provider">
                     <img src="//cdn.shopify.com/s/files/1/0562/9873/3706/files/shop-pay.svg?v=1698141377&amp;width=1440">
                 </div>
-                     
+                
             
         
 
@@ -520,7 +496,7 @@
 						
 						
 						</script>
-                   {% endcomment %} 
+                   {% endcomment %}
 					</li>
 				{% endif %}
 			</ul>
@@ -546,12 +522,12 @@
 								/>
 							</svg>
 						</div>
-                                 
+      
 						<div class="product-specification__content">
 							{% if block.settings.product_dimension %}
 								<ul class="product-dimensions">
 									{% for variant in product.variants %}
-                                      {% if 
+                                      {% if
                                          variant.id == 43879027310730 or
                                          variant.id == 43879027277962 or
                                          variant.id == 43879027245194 or
