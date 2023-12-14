@@ -107,56 +107,6 @@
 	flex-basis: 100%
 }
 
-.product-info .product-info-wrapper .right-section .price-badge-wrapper {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	padding: 3px 4px 1px;
-	gap: 10px;
-	width: 45px;
-	height: 23.6px;
-	background: #f03306;
-	border-radius: 4px
-}
-
-.product-info .product-info-wrapper .right-section .price-badge-wrapper .price-badge {
-	font-weight: 500;
-	font-size: 12px;
-	line-height: 16px;
-	color: #fff
-}
-
-.product-info .product-info-wrapper .right-section .price__pricing-group {
-	display: flex;
-	flex-direction: column !important;
-	align-items: flex-start !important
-}
-
-.product-info .product-info-wrapper .right-section .price__pricing-group .price__badges,
-.product-info .product-info-wrapper .right-section .price__pricing-group .price__regular,
-.product-info .product-info-wrapper .right-section .price__pricing-group .price__sale {
-	width: 100%
-}
-
-.product-info .product-info-wrapper .right-section .price__pricing-group .price__sale {
-	display: flex;
-	flex-direction: column-reverse
-}
-
-.product-info .product-info-wrapper .right-section .price__pricing-group .price__sale .price-item--regular {
-	font-weight: 600;
-	font-size: 14px;
-	line-height: 20px
-}
-
-.product-info .product-info-wrapper .right-section .price__pricing-group .price__sale .price-item--sale {
-	margin-top: 6px;
-	font-weight: 600;
-	font-size: 32px;
-	line-height: 125%;
-	color: #f03306
-}
-
 .product-info .product-info-wrapper .right-section .quantity_wrapper {
 	display: grid;
 	gap: 24px;
@@ -392,10 +342,6 @@
 .product-info .installment-widgets {
 	display: grid;
 	gap: 8px
-}
-
-.product-info .price-item.price-item--sale {
-	margin-top: 10px
 }
 
 .product-info bundle-variant-selects {

@@ -80,24 +80,28 @@
         </p>
       </div>
     {%- endif %}
-    <div class="price__sale">
-      <dt>
-        <span class="visually-hidden visually-hidden--inline">{{ 'products.product.sale_price' | t }}</span>
-      </dt>
-      <dd>
-        <p class="price-item price-item--sale" data-sale-price>
-          {{ money_price }}
-        </p>
-      </dd>
-      <dt>
-        <span class="visually-hidden visually-hidden--inline">{{ 'products.product.regular_price' | t }}</span>
-      </dt>
-      <dd>
-        <s class="price-item price-item--regular line-though" data-regular-price>
-          {{ compare_at_price | money_without_trailing_zeros }}
-        </s>
-      </dd>
-    </div>
+    <dl class="price__sale">
+      <div>
+        <dt>
+          <span class="visually-hidden visually-hidden--inline">{{ 'products.product.sale_price' | t }}</span>
+        </dt>
+        <dd>
+          <p class="price-item price-item--sale" data-sale-price>
+            {{ money_price }}
+          </p>
+        </dd>
+      </div>
+     <div>
+       <dt>
+         <span class="visually-hidden visually-hidden--inline">{{ 'products.product.regular_price' | t }}</span>
+       </dt>
+       <dd>
+         <s class="price-item price-item--regular line-though" data-regular-price>
+           {{ compare_at_price | money_without_trailing_zeros }}
+         </s>
+       </dd>
+     </div>
+    </dl>
   </div>
   <div class="price__unit">
     <dt>
