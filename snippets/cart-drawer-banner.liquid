@@ -1,6 +1,6 @@
 <div
-  data-ship-next="{{ 'cart.banner.ship_next_business_day' | t }}"
-  data-ship-now="{{ 'cart.banner.ship_today' | t }}"
+  data-ship-next="{{ cart.general.ship_next_business_day | t | default: "Orders typically ship out the next business day." }}"
+  data-ship-now="{{ cart.general.ship_today | t | default: "Orders before 1 PM EST will ship out next day." }}"
   class="cart-banner"
 >
   <div class="cart-banner__free-shipping">
@@ -8,6 +8,8 @@
       src="//cdn.shopify.com/s/files/1/0592/8570/0771/files/free_delivery_blue.png?v=1664864442"
       width="28" height="auto" loading="lazy"
     >
+
+    <p>{{ 'cart.free_shipping' | t }}</p>
   </div>
-  <p class="cart-banner__content"></p>
+  <p class="cart-banner__content hidden"></p>
 </div>

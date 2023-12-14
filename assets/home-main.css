@@ -1,0 +1,148 @@
+#feedback-content {
+  height: 9rem;
+}
+
+.btn {
+  transition: 0.2s;
+}
+
+.our-blog-section a {
+  transition: 0.2s;
+}
+
+.card:hover .btn {
+  background-color: #3c4196;
+  color: white;
+}
+
+.why-us-section .btn{background-color: #ff8900 !important; transition: 0.2s !important;}
+.why-us-section .btn:hover {
+  background-color: #3c4196 !important;
+  color: white;
+}
+
+.our-blog-section a:hover {
+  text-decoration: underline;
+}
+
+.affiliate img {
+  opacity: 50%;
+  transition: 0.2s;
+}
+
+.affiliate img:hover {
+  opacity: 100%;
+  padding-bottom: 5px;
+  border-bottom: 3px solid black;
+}
+
+#review-splide {
+  background-color: #3c4196;
+  padding: 0 0 30px 0;
+}
+#review-splide .splide__track {
+  width: 80%;
+  margin: 0 auto;
+  padding: 0 0 50px 0;
+}
+#review-splide .splide__arrow {
+  transform: none;
+}
+#review-splide .splide__pagination {
+  bottom: 0;
+  margin: 0 0 30px 0;
+}
+
+.review-grid {
+  display: block;
+  justify-content: center;
+  align-content: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+.review-title {
+  background-color: #3c4196;
+  text-align: center;
+  line-height: 40px;
+}
+
+.review-title h2 {
+  padding-top: 30px;
+  font-size: 36px;
+  font-family: "Tiempos";
+  color: #ffffff !important;
+}
+
+.review-title p {
+  font-style: italic;
+  color: #ffffff !important;
+  font-size: 18px;
+  font-weight: normal;
+  padding-top: 10px;
+  padding-bottom: 40px;
+}
+
+.review-content-card {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+@media screen and (min-width: 500px) {
+  .review-content-card {
+    align-items: flex-start;
+  }
+}
+
+.review-content {
+  vertical-align: top;
+  display: inline-block;
+  padding: 30px;
+  background-color: #ffffff;
+  color: #000000 !important;
+  border-radius: 20px;
+  margin-right: 25px;
+}
+
+.review-content p {
+  font-size: 20px;
+  font-family: "Inter";
+  font-weight: 600;
+  text-align: left;
+  line-height: 30px;
+}
+
+@media screen and (max-width: 500px) {
+  div#shopify-section-template--15596666650787__multimedia-showcase .section-container {
+    border: 1px solid #f1f1f1;
+    padding: 10px;
+    margin: 0 0 20px;
+    border-radius: 10px;
+    box-shadow: 0 10px 10px rgba(0 0 0 /5%);
+}
+  .review-hide {
+    display: none !important;
+  }
+  .review-content {
+    margin-bottom: 20px;
+    display: block;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .review-content p {
+    font-size: 16px !important;
+    line-height: 26px !important;
+  }
+  .reviews-title {
+    line-height: 25px;
+  }
+}
+p.reviewer {
+  margin-top: 20px;
+  font-size: 16px;
+  font-weight: normal;
+}

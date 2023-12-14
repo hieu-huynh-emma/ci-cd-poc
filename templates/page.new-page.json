@@ -1,0 +1,51 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+      }
+    },
+    "165425073725b56235": {
+      "type": "rich-text",
+      "blocks": {
+        "16542507374a1f9691-0": {
+          "type": "heading",
+          "disabled": true,
+          "settings": {
+            "heading": "Talk about your brand",
+            "heading_size": "h1"
+          }
+        },
+        "16542507374a1f9691-1": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": ""
+          }
+        },
+        "16542507374a1f9691-2": {
+          "type": "button",
+          "disabled": true,
+          "settings": {
+            "button_label": "Button label",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "16542507374a1f9691-0",
+        "16542507374a1f9691-1",
+        "16542507374a1f9691-2"
+      ],
+      "settings": {
+        "color_scheme": "background-1",
+        "full_width": true
+      }
+    }
+  },
+  "order": [
+    "main",
+    "165425073725b56235"
+  ]
+}

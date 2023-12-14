@@ -1,9 +1,21 @@
 {% assign competitors = shop.metafields.globals.competitors %}
-
-<script>
+<section id="competitor-comparison-section">
+	<div class="wrapper">
+		<div class="competitor-comparison-table">
+			<div class="emma-highlighted">&nbsp;</div>
+			<a id="competitor-buy-btn" href="" class="emma-buy-now-btn grid-row-12">
+				Buy Now
+			</a>
+		</div>
+		<p class="font-inter text-[14px] text-center text-[#55576F]">{{ section.settings.note }}</p>
+	</div>
+</section>
+<script type="text/javascript">
 	const competitors = {{ competitors | json }}
+ console.log(competitors)
 	const competitor = getComparisonCompetitor(competitors)
-	const specifications = competitor.competitiveSpecs
+	const specifications = competitor.competitiveSpecs   
+
 	const compertitorName = competitor.brandName
 	const emmaLogo = "{{ 'emma-logo.svg' | asset_url }}";
 	const checkGreenIcon = "{{ 'icon-check-green.svg' | asset_url }}";
@@ -21,7 +33,7 @@
 		{% endfor %}
 	}
 
-	const emmaOriginalQueen = emmaProducts['emma-original-mattress'].info.variants.find(variant => variant.title.includes('Queen'));
+	const emmaOriginalQueen = emmaProducts['emma-original-mattress'].info.variants.find(variant => variant.title.includes('Queen | 60" x 80'));
 	const emmaOriginalSpecifications = {
 		price: `${currencyFormatter.format(emmaOriginalQueen.price / 100)} <span class='line-through font-medium text-sm'>${currencyFormatter.format(emmaOriginalQueen.compare_at_price / 100)}</span>`,
 		layers: "5",
@@ -34,7 +46,7 @@
 		free_shipping_and_returns: "Yes"
 	};
 
-	const emmaClimaxQueen = emmaProducts['emma-hybrid-comfort'].info.variants.find(variant => variant.title.includes('Queen'));
+	const emmaClimaxQueen = emmaProducts['emma-hybrid-comfort'].info.variants.find(variant => variant.title.includes('Queen | 60" x 80'));
 	const emmaHybridSpecifications = {
 		price: `${currencyFormatter.format(emmaClimaxQueen.price / 100)} <span class='line-through font-medium text-sm'>${currencyFormatter.format(emmaClimaxQueen.compare_at_price / 100)}</span>`,
 		layers: "6",
@@ -50,20 +62,8 @@
 </script>
 
 
-<script src="{{ 'competitor-comparison.js' | asset_url  }}"></script>
 
-<section id="competitor-comparison-section">
-	<div class="wrapper">
-		<div class="competitor-comparison-table">
-			<div class="emma-highlighted">&nbsp;</div>
-			<a id="competitor-buy-btn" href="" class="emma-buy-now-btn grid-row-12">
-				Buy Now
-			</a>
-		</div>
-		<p class="font-inter text-[14px] text-center text-[#55576F]">{{ section.settings.note }}</p>
-	</div>
-</section>
-
+<script async src="{{ 'competitor-comparison.js' | asset_url  }}"></script>
 {% schema %}
 {
 	"name": "Comparison Table",

@@ -1,0 +1,35 @@
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+      if (window.Extend && window.ExtendShopify && window.Shopify && window.Shopify.currency && window.Shopify.currency.active === 'USD') {
+        try {
+              // Get params from URL
+              const params = (new URL(document.location)).searchParams;
+
+              // Check if leadToken or leadtoken is in the URL
+              let leadToken = params.get('leadToken')
+                  ? params.get('leadToken')
+                  : params.get('leadtoken');
+
+              if (leadToken) {
+                  Extend.aftermarketModal.open({
+                      leadToken: leadToken,
+                      onClose: function (plan, product, quantity) {
+                          if (plan && product) {
+                              ExtendShopify.addPlanToCart({
+                                  plan: plan,
+                                  product: product,
+                                  leadToken: leadToken,
+                                  quantity: quantity || 1
+                              }, function () {
+                                  window.location = '/cart'
+                              })
+                          }
+                      }
+                  });
+              }
+          } catch (error) {
+              console.error("EXTEND: " + error);
+          }
+      }
+  });
+</script>

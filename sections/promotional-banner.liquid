@@ -1,70 +1,28 @@
-{% assign tagline = section.blocks | where: "type", "tagline" | first %}
-{% assign logos = section.blocks | where: "type", "logo" %}
-
 <style>
-    #promotional-banner-section {
-        background: {{ section.settings.bg_color }};
-    }
-
-    #promotional-banner-section .section-content {
-        display: grid;
-        gap: 8px;
-        grid-auto-flow: row;
-        align-items: center;
-        justify-content: center;
-    }
-
-    @media screen and (min-width: 769px) {
-        #promotional-banner-section .section-content {
-            gap: 40px;
-            grid-auto-flow: column;
-        }
-    }
-
-    #promotional-banner-section .tagline {
-        display: grid;
-        gap: 8px;
-        grid-template-columns:minmax(0, auto) minmax(0, 1fr);
-    }
-
-    #promotional-banner-section .logos {
-        display: grid;
-        gap: 24px;
-        grid-auto-flow: column;
-        justify-content: center;
-        justify-items: center
-    }
-
-    #promotional-banner-section .banner-item__content {
-        color: {{ section.settings.text_color }};
-    }
+    #promotional-banner-section .promotional-banner{min-height:68px}@media screen and (min-width:769px){#promotional-banner-section .promotional-banner{min-height:48px}}#promotional-banner-section .section-content,#promotional-banner-section .top-brands{display:none}
 </style>
 
-<section id="promotional-banner-section" class="section-container spacing-{{ section.settings.container_spacing }}">
-    <div class="section-chassis page-boundary">
-        <div class="section-header justify-{{ section.settings.heading_alignment }}">
-            <h2 class="heading-2 text-center font-{{ section.settings.header_font }}">{{ section.settings.heading }}</h2>
-        </div>
+<link is="delay-stylesheet" href="{{ 'promotional-banner.css' | asset_url }}">
 
-        <div class="section-content">
-            {% if tagline %}
-                <div class="tagline">
-                    <img src="{{ tagline.settings.icon | image_url: height: 20 }}" width="20" height="20" loading="lazy"/>
 
-                    <p class="banner-item__content text-left">{{ tagline.settings.content | remove: "<p>" | remove: "</p>" }}</p>
-                </div>
-            {% endif %}
+{% assign items = section.blocks | where: "type", "item" %}
 
-            <ul class="logos">
-                {%- for block in logos -%}
-                    <li class="logo">
-                        <img src="{{ block.settings.icon | image_url: height: 23 }}" width="auto" height="23"
-                             loading="lazy"/>
-                    </li>
-                {%- endfor -%}
-            </ul>
-        </div>
+<section id="promotional-banner-section" class="bg-chambray">
+  <div class="promotional-banner page-boundary">
+    <div class="section-content">
+      <img class="lazyload" data-src="{{ section.settings.lead_icon | image_url: width: 20 }}" width="20" height="20"/>
+
+      <p class="text-white text-left">{{ section.settings.heading | remove: "<p>" | remove: "</p>" }}</p>
     </div>
+
+    <div class="top-brands">
+      {%- for block in items -%}
+        <div class="banner-item">
+          <img class="lazyload" data-src="{{ block.settings.icon | image_url: height: 23 }}" width="auto" height="23"/>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
 </section>
 
 {% schema %}
@@ -72,24 +30,8 @@
   "name": "Promotional Banner",
   "blocks": [
     {
-      "type": "tagline",
-      "name": "Tagline",
-      "settings": [
-        {
-          "id": "icon",
-          "type": "image_picker",
-          "label": "Tagline Icon"
-        },
-        {
-          "id": "content",
-          "type": "richtext",
-          "label": "Tagline Content"
-        }
-      ]
-    },
-    {
-      "type": "logo",
-      "name": "Logo",
+      "type": "item",
+      "name": "Item",
       "settings": [
         {
           "id": "icon",
@@ -101,78 +43,14 @@
   ],
   "settings": [
     {
-      "id": "text_color",
-      "type": "color",
-      "label": "Text Color",
-      "default": "#2e2f3c"
-    },
-    {
-      "id": "bg_color",
-      "type": "color",
-      "label": "Background Color",
-      "default": "#ffffff"
+      "id": "lead_icon",
+      "type": "image_picker",
+      "label": "Lead Icon"
     },
     {
       "id": "heading",
-      "type": "text",
-      "label": "Heading",
-      "default": "World Leading Sleep Brand"
-    },
-    {
-      "id": "header_font",
-      "type": "select",
-      "label": "Header Font",
-      "options": [
-        {
-          "value": "inter",
-          "label": "Inter"
-        },
-        {
-          "value": "tiempos",
-          "label": "Tiempos"
-        }
-      ],
-      "default": "tiempos"
-    },
-    {
-      "id": "heading_alignment",
-      "type": "select",
-      "label": "Heading Alignment",
-      "options": [
-        {
-          "value": "start",
-          "label": "Left"
-        },
-        {
-          "value": "center",
-          "label": "Center"
-        },
-        {
-          "value": "end",
-          "label": "Right"
-        }
-      ],
-      "default": "center"
-    },
-    {
-      "type": "select",
-      "id": "container_spacing",
-      "options": [
-        {
-          "value": "md",
-          "label": "Medium (40px)"
-        },
-        {
-          "value": "lg",
-          "label": "Large (60px)"
-        },
-        {
-          "value": "xl",
-          "label": "XL (80px)"
-        }
-      ],
-      "default": "md",
-      "label": "Container Spacing"
+      "type": "richtext",
+      "label": "Heading"
     }
   ]
 }

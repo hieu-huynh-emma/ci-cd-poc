@@ -1,0 +1,112 @@
+{% assign awards = section.blocks | where: 'type', 'award' %}
+
+{{ 'brand-awards.css' | asset_url | stylesheet_tag }}
+
+<section id="brand-awards-section" class="bg-cultured">
+  <div class="wrapper">
+    <div class="headings">
+      <h2 class="heading-2 text-center text-charade">{{ section.settings.title | remove: '<p>' | remove: '</p>' }}</h2>
+      <h4 class="heading-4 mb-4">{{ section.settings.subtitle }}</h4>
+    </div>
+
+    <div class="awards splide">
+      {% render 'splide-arrows' %}
+      <div class="splide__track">
+        <ul class="splide__list">
+          {%- for block in awards -%}
+            <li class="splide__slide">
+              {% assign link = block.settings.link %}
+              <a
+                {% if link != blank %}
+                  href="{{ link }}"
+                {% endif %}
+                class="awards__item"
+              >
+                <div class="image_container">
+                  <img
+                    src="{{ block.settings.icon | image_url:width:150, height:150 }}"
+                    width="120"
+                    height="120"
+                    loading="lazy"
+                  >
+                </div>
+                <div>
+                  <h4 class="heading-4 awards__title">{{ block.settings.title | remove: '<p>' | remove: '</p>' }}</h4>
+                  <p class="awards__content">{{ block.settings.organizationName }}</p>
+                </div>
+              </a>
+            </li>
+          {%- endfor -%}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+<script defer type="module">
+  $(document).ready(function () {
+    new Splide('#brand-awards-section .splide', {
+      gap: '16px',
+      breakpoints: {
+        500: {
+          perPage: 1,
+          perMove: 1,
+        },
+        768: {
+          perPage: 3,
+          perMove: 3,
+        },
+        2560: {
+          perPage: 5,
+          perMove: 5,
+        },
+      },
+    }).mount();
+  });
+</script>
+{% schema %}
+{
+  "name": "Product Awards",
+  "blocks": [
+    {
+      "type": "award",
+      "name": "Award",
+      "settings": [
+        {
+          "id": "icon",
+          "type": "image_picker",
+          "label": "Icon"
+        },
+        {
+          "id": "title",
+          "type": "richtext",
+          "label": " Title"
+        },
+        {
+          "id": "organizationName",
+          "type": "text",
+          "label": "Award Organization Name"
+        },
+        {
+          "id": "link",
+          "type": "url",
+          "label": "Affiliate Link"
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "id": "title",
+      "type": "richtext",
+      "label": "Title",
+      "default": "<p>Why sleepers <i>love</i> Emma</p>"
+    },
+    {
+      "id": "subtitle",
+      "type": "text",
+      "label": "Subtitle",
+      "default": "Trust the experts"
+    }
+  ]
+}
+{% endschema %}

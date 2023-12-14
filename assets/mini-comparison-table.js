@@ -57,7 +57,6 @@ const MiniComparisonTable = {
     const {
       specs = {},
       competitors = [],
-      product
     } = this.config;
 
     const $baseCell = $(
@@ -75,11 +74,7 @@ const MiniComparisonTable = {
         .clone(true)
         .addClass("mini-comparison-table-cell--highlight");
 
-      if (product.handle === 'emma-hybrid-comfort') {
-        this.populateEmmaHybridComfortCell($emmaCell, specName, specVal)
-      } else {
-        this.populateEmmaCell($emmaCell, specName, specVal);
-      }
+      this.populateEmmaCell($emmaCell, specName, specVal);
 
       this.$table.append($emmaCell);
 
@@ -98,60 +93,34 @@ const MiniComparisonTable = {
     });
   },
 
-  populateEmmaHybridComfortCell: function ($cell, specName, specVal) {
-    const { product } = this.config
-
-    let cellVal = specVal
-
-    const productQueenVariant = product.variants.find(variant => variant.title.includes('Queen'));
-    const price = +productQueenVariant.price / 100
-    const originalPrice = +productQueenVariant.compare_at_price / 100
-
-    switch (specName) {
-      case "Price":
-        cellVal = `${Currency.format(price)} <span class='hidden lg:block line-through font-medium text-sm'>${Currency.format(originalPrice)}</span>`
-        break;
-      case "Ergonomic zone":
-        cellVal = "7"
-        break;
-      case "Height Layer":
-        cellVal = "13\""
-        break;
-      case "Sleep trial (Night)":
-        cellVal = "365"
-        break;
-    }
-
-    $cell.html(cellVal)
-  },
-
   populateEmmaCell: function ($cell, specName, specVal) {
-    const { product, pillow, protector, topper, specs = {} } = this.config
+    const { product, pillow, protector, specs = {} } = this.config
 
     let cellVal = specVal
 
     const productQueenVariant = product.variants.find(variant => variant.title.includes('Queen'));
+    console.log(productQueenVariant)
     const price = +productQueenVariant.price / 100
     const originalPrice = +productQueenVariant.compare_at_price / 100
 
     const pillowPrice = +pillow.variants[0].price / 100
     const pillowOriginalPrice = +pillow.variants[0].compare_at_price / 100
 
-    const topperQueenVariant = topper.variants.find(variant => variant.title.includes('Queen'));
-    const topperPrice = +topperQueenVariant.price / 100
-    const topperOriginalPrice = +topperQueenVariant.compare_at_price / 100
+    const protectorQueenVariant = protector.variants.find(variant => variant.title.includes('Queen'));
+    const protectorPrice = +protectorQueenVariant.price / 100
+    const protectorOriginalPrice = +protectorQueenVariant.compare_at_price / 100
 
-    const totalPrice = price + pillowPrice + topperPrice
+    const totalPrice = price + pillowPrice + protectorPrice
 
     switch (specName) {
-      case 'Mattress':
+      case 'Price':
         cellVal = `${Currency.format(price)} <span class='hidden lg:block line-through font-medium text-sm'>${Currency.format(originalPrice)}</span>`
         break;
       case "Pillows":
         cellVal = `${Currency.format(pillowPrice)} <span class='hidden lg:block line-through font-medium text-sm'>${Currency.format(pillowOriginalPrice)}</span>`
         break;
-      case "Topper":
-        cellVal = `${Currency.format(topperPrice)} <span class='hidden lg:block line-through font-medium text-sm'>${Currency.format(topperOriginalPrice)}</span>`
+      case "Protector":
+        cellVal = `${Currency.format(protectorPrice)} <span class='hidden lg:block line-through font-medium text-sm'>${Currency.format(protectorOriginalPrice)}</span>`
         break;
       case "Total Price":
         cellVal = Currency.format(totalPrice)
@@ -161,21 +130,10 @@ const MiniComparisonTable = {
     $cell.html(cellVal)
   },
 
-  renderBadge: function() {
-    const { product } = this.config
-
-    const productQueenVariant = product.variants.find(variant => variant.title.includes('Queen'));
-    const price = +productQueenVariant.price / 100
-    const originalPrice = +productQueenVariant.compare_at_price / 100
-
-    if(originalPrice>price) this.$table.find('.badge__saved-amount').text(Currency.format(originalPrice-price))
-
-  },
   init: function () {
     this.renderAllColHeaders();
     this.renderAllRowHeaders();
-    this.renderAllCells();
-    this.renderBadge()
+    this.renderAllCells()
   },
 };
 

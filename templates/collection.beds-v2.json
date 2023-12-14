@@ -1,0 +1,70 @@
+{
+  "layout": "theme.revamp",
+  "sections": {
+    "products-layout": {
+      "type": "products-layout",
+      "blocks": {
+        "667f0883-bf12-4f11-850c-507c28a48047": {
+          "type": "product_card",
+          "settings": {
+            "badge_text": "SAVE UP TO $100",
+            "product": "emma-powerbase-pro",
+            "product_desc": "",
+            "background_color": "#f1f0f5",
+            "mobile_image": "shopify:\/\/shop_images\/Rectangle_407.png",
+            "desktop_image": "shopify:\/\/shop_images\/Rectangle_406_638b3bea-a27c-4322-933b-8122e6157654.png",
+            "card_width": "full"
+          }
+        },
+        "38407203-f7ef-40ee-8ac1-f93ad1130052": {
+          "type": "product_card",
+          "settings": {
+            "badge_text": "SAVE UP TO $100",
+            "product": "emma-powerbase-1-0",
+            "product_desc": "",
+            "background_color": "#f1f0f5",
+            "mobile_image": "shopify:\/\/shop_images\/beds.webp",
+            "desktop_image": "shopify:\/\/shop_images\/beds.png",
+            "card_width": "half"
+          }
+        },
+        "39954d19-86e1-4746-944a-0f3ed1475f32": {
+          "type": "product_card",
+          "settings": {
+            "badge_text": "",
+            "product": "artisan-wooden-platform-bed",
+            "product_desc": "",
+            "background_color": "#f1f0f5",
+            "mobile_image": "shopify:\/\/shop_images\/6_070fe27c-f467-4589-87a5-f8a02c87e29e.png",
+            "desktop_image": "shopify:\/\/shop_images\/6_070fe27c-f467-4589-87a5-f8a02c87e29e.png",
+            "card_width": "half"
+          }
+        },
+        "d110fbce-1d92-4d00-ba3f-6cf69759438d": {
+          "type": "product_card",
+          "settings": {
+            "badge_text": "",
+            "product": "emma-upholstered-platform",
+            "product_desc": "",
+            "background_color": "#f1f0f5",
+            "mobile_image": "shopify:\/\/shop_images\/4bb3fb35-d9ef-4685-84b7-d44f4ed5-removebg-preview.png",
+            "desktop_image": "shopify:\/\/shop_images\/4bb3fb35-d9ef-4685-84b7-d44f4ed5-removebg-preview.png",
+            "card_width": "half"
+          }
+        }
+      },
+      "block_order": [
+        "667f0883-bf12-4f11-850c-507c28a48047",
+        "38407203-f7ef-40ee-8ac1-f93ad1130052",
+        "39954d19-86e1-4746-944a-0f3ed1475f32",
+        "d110fbce-1d92-4d00-ba3f-6cf69759438d"
+      ],
+      "settings": {
+        "title": "Beds"
+      }
+    }
+  },
+  "order": [
+    "products-layout"
+  ]
+}

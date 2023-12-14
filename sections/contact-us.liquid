@@ -1,23 +1,19 @@
-<section id="ContactUsSection" class="section-container">
-  <div class="page-boundary">
+<section id="ContactUsSection" class="p-3 lg:p-14 bg-[white]">
+  <div class="max-w-[1440px] my-0 mx-auto">
     <div class="bg-gradient-to-b from-athens-gray to-[#F6F6F9] rounded-[20px] py-10 px-7">
-      <h2 class="text-[30px] text-center lg:text-[39px]">
+      <h2 class="font-['Tiempos'] text-3xl text-center lg:text-[39px]">
         {{ section.settings.custom_title }}
       </h2>
-      <p class="text-neutral-800 text-center lg:text-xl mt-3 lg:mt-6">Shop
-        with our sleep experts today!
+      <p class="font-['Inter'] text-neutral-800 text-center lg:text-xl mt-3 lg:mt-6">Shop with our sleep experts today!
       </p>
       <div class="flex flex-col mt-2 lg:flex-row">
         <div class="flex mt-5 w-full lg:flex-wrap justify-center">
-          <div class="mr-4 lg:mr-0 w-1/4 lg:w-fit"><img
-              src="{{ 'chat-with-us.svg' | asset_url }}" height="60"
-              width="60">
+          <div class="mr-4 lg:mr-0 w-1/4 lg:w-fit"><img src="{{ 'chat-with-us.svg' | asset_url }}" height="60"
+                                                        width="60">
           </div>
           <div class="w-3/4 lg:w-full lg:text-center lg:mt-5">
-            <h3 class="text-[24px] lg:text-2xl">Chat With Us</h3>
-            <p
-              class="text-comet lg:w-2/3 lg:mx-auto lg:mt-3 live-chat cursor-pointer"><span
-                class="underline">Ask
+            <h3 class="text-xl lg:text-2xl">Chat With Us</h3>
+            <p class="text-comet lg:w-2/3 lg:mx-auto lg:mt-3 live-chat cursor-pointer"><span class="underline">Ask
                 away</span>—we're
               here to
               answer all things
@@ -25,34 +21,35 @@
           </div>
         </div>
         <div class="flex mt-5 w-full lg:flex-wrap justify-center">
-          <div class="mr-4 lg:mr-0 w-1/4 lg:w-fit"><img
-              src="{{ 'call-us.svg' | asset_url }}" height="60" width="60">
+          <div class="mr-4 lg:mr-0 w-1/4 lg:w-fit"><img src="{{ 'call-us.svg' | asset_url }}" height="60" width="60">
           </div>
           <div class="w-3/4 lg:w-full lg:text-center lg:mt-5">
-            <h3 class="text-[24px] lg:text-2xl">Call us</h3>
-            <p class="text-comet lg:w-2/3 lg:mx-auto lg:mt-3 mb-2">We'd love to hear from you.
-              Call
-              <a class="underline cursor-pointer" href="tel:+18885853662">1 (888) 585 EMMA.</a>
+            <h3 class="text-xl lg:text-2xl">Call us</h3>
+            <p class="text-comet lg:w-2/3 lg:mx-auto lg:mt-3 mb-2">We'd love to hear from you. Call
+              <a class="underline cursor-pointer" href="tel:+18555803662">(888) 585 EMMA.</a>
             </p>
             <p class="text-comet italic text-[13px]">Available from 08:00 to 18:00 GMT-6, Monday-Friday</p>
           </div>
         </div>
         <div class="flex mt-5 w-full lg:flex-wrap justify-center">
-          <div class="mr-4 lg:mr-0 w-1/4 lg:w-fit"><img
-              src="{{ 'email-us.svg' | asset_url }}" height="60" width="60">
+          <div class="mr-4 lg:mr-0 w-1/4 lg:w-fit"><img src="{{ 'email-us.svg' | asset_url }}" height="60" width="60">
           </div>
           <div class="w-3/4 lg:w-full lg:text-center lg:mt-5">
-            <h3 class="text-[24px] lg:text-2xl">Email us</h3>
-            <p class="text-comet lg:w-2/3 lg:mx-auto lg:mt-3">Drop us an <a
-                class="underline cursor-pointer"
-                href="mailto:support@emma-sleep.ca">email</a>
+            <h3 class="text-xl lg:text-2xl">Email us</h3>
+            <p class="text-comet lg:w-2/3 lg:mx-auto lg:mt-3">Drop us an <a class="underline cursor-pointer"
+                                                                            href="mailto:support@emma-sleep.com">email</a>
               and we'll respond in 24-48 hours.</p>
           </div>
         </div>
       </div>
     </div>
   </div>
+
+  <lazy-script src="{{ 'contact-us.js' | asset_url }}"></lazy-script>
+
 </section>
+
+
 {% schema %}
 {
   "name": "Contact Us",

@@ -1,130 +1,73 @@
-{% assign section_title = section.blocks | where: 'type', 'section_title' %}
-{% assign layers_image = section.blocks | where: 'type', 'layers_image' %}
-{% assign layers_info = section.blocks | where: 'type', 'layers_info' %}
+{% assign layerItems = section.blocks | where: 'type', 'layer_item' %}
 
 {{ 'mattress-layers.css' | asset_url | stylesheet_tag }}
 
 <section id="mattress-layers-section" class="section-container spacing-{{ section.settings.container_spacing }}">
-	<div class="section-chassis page-boundary">
-		{% render 'section-header' %}
-		
-		<div class="section-body">
-			<div class="layers-photo flex items-center">
-        {% render 'image-tag', image_src: layers_image.first.settings.image, width: 832 %}
-			</div>
-			
-			<div class="info-wrapper hidden xl:block">
-				<ul class="layer-specifications">
-					{% for item in layers_info %}
-						<li class="layer-info-item">
-							<span class="layer-info-item__number">{{ item.settings.layer_num }}</span>
-							<h4 class="heading-5">{{ item.settings.title }}</h4>
-							<p class="solid">{{ item.settings.desc }}</p>
-						</li>
-					{% endfor %}
-				</ul>
-			</div>
-			
-			<div class="info-wrapper mobile xl:hidden">
-				<div id="mattress-layers-controller">
-					{% for layer in layers_info %}
-						<button>
-							{{ layer.settings.layer_num }}
-						</button>
-					{% endfor %}
-				</div>
-				<div id="mattress-layers" class="layers-info-wrapper splide mobile xl:hidden">
-					<ul class="splide__pagination"></ul>
-					<div class="splide__track">
-						<div class="splide__list">
-							{% for item in layers_info %}
-								<div class="layer-info-item splide__slide">
-									<h4 class="heading-5">{{ item.settings.title }}</h4>
-									<p class="solid">{{ item.settings.desc }}</p>
-								</div>
-							{% endfor %}
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	
-	
-	</div>
+  <div class="section-chassis page-boundary">
+    {% render 'section-header' %}
+
+    <div class="section-body">
+      <div class="layers-photo flex items-center">
+        <img src="{{ section.settings.image | image_url: width: 644 }}">
+      </div>
+
+      <!-- <div class="info-wrapper hidden xl:block">
+        <ul class="layer-specifications">
+          {% for item in layerItems %}
+            <li class="layer-info-item">
+              <span class="layer-info-item__number">{{ forloop.index }}</span>
+              <h4 class="heading-5">{{ item.settings.title }}</h4>
+              <p class="solid">{{ item.settings.content }}</p>
+            </li>
+          {% endfor %}
+        </ul>
+      </div> -->
+
+      <div class="info-wrapper">
+        <div id="mattress-layers-controller">
+          {% for layer in layerItems %}
+            <button>
+              {{ forloop.index }}
+            </button>
+          {% endfor %}
+        </div>
+        <div id="mattress-layers" class="layers-info-wrapper splide">
+          <ul class="splide__pagination"></ul>
+          <div class="splide__track">
+            <div class="splide__list">
+              {% for item in layerItems %}
+                <div class="layer-info-item splide__slide">
+                  <h4 class="heading-5">{{ item.settings.title }}</h4>
+                  <p class="solid">{{ item.settings.content }}</p>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <lazy-script src="{{ 'mattress-layers.js' | asset_url }}"></lazy-script>
 </section>
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    var splide = new Splide('#mattress-layers', {
-      arrows: false,
-    });
-    splide.mount();
 
-    //extra custom pagination
-    const layersController = document.querySelector('#mattress-layers-controller');
-    const listItems = layersController.querySelectorAll('button');
 
-    splide.on('move', (destIndex) => {
-      listItems[destIndex].click();
-    });
-
-    listItems.forEach((item, index) => {
-      item.addEventListener('click', () => {
-        listItems.forEach((item) => {
-          item.classList.remove('active');
-        });
-        item.classList.add('active');
-
-        splide.go(index);
-      });
-    });
-
-    listItems[0].click();
-  });
-</script>
 {% schema %}
 {
   "name": "Mattress Layers",
   "blocks": [
     {
-      "type": "section_title",
-      "name": "Section Title",
+      "type": "layer_item",
+      "name": "Layer Information",
       "settings": [
         {
-          "type": "text",
           "id": "title",
-          "label": "Title"
-        }
-      ]
-    },
-    {
-      "type": "layers_image",
-      "name": "Layers Image",
-      "settings": [
-        {
-          "type": "image_picker",
-          "id": "image",
-          "label": "Image"
-        }
-      ]
-    },
-    {
-      "type": "layers_info",
-      "name": "Layer",
-      "settings": [
-        {
-          "type": "number",
-          "id": "layer_num",
-          "label": "Layer Number"
+          "type": "text",
+          "label": "Layer Title"
         },
         {
+          "id": "content",
           "type": "text",
-          "id": "title",
-          "label": "Title"
-        },
-        {
-          "type": "text",
-          "id": "desc",
-          "label": "Description"
+          "label": "Layer Content"
         }
       ]
     }
@@ -179,6 +122,16 @@
       ],
       "default": "md",
       "label": "Container Spacing"
+    },
+    {
+      "id": "image",
+      "type": "image_picker",
+      "label": "Layer Image"
+    },
+    {
+      "id": "carousel_mode",
+      "type": "checkbox",
+      "label": "Carousel Mode"
     }
   ]
 }

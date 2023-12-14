@@ -1,0 +1,63 @@
+<div class="mx-auto w-full px-4 py-12 md:px-8 lg:px-16">
+  <div class="rounded-xl bg-[#F0F0F5] p-8 lg:p-12">
+    <div class="max-w-7xl mx-auto">
+      <h2 class="font-tiempos mb-4 text-center text-[31px] lg:mb-[10px] lg:text-[39px]">{{ section.settings.title }}</h2>
+      <p class="font-inter mb-8 text-center text-[#55576F] lg:mb-10 lg:text-xl">{{ section.settings.subtitle }}</p>
+
+      <div class="lg:flex lg:gap-28">
+        {% for block in section.blocks %}
+          <div class="mb-5 flex gap-4 lg:mb-0 lg:block lg:flex-1">
+            <div class="lg:mx-auto lg:mb-5 lg:w-min">{{ block.settings.icon }}</div>
+            <div class="flex-1">
+              <p class="font-inter mb-2 text-xl text-[#2E2F3C] lg:mb-3 lg:text-center lg:text-2xl">{{ block.settings.title }}</p>
+              <p class="font-inter text-[#55576F] lg:text-center">{{ block.settings.subtitle | remove: "<p>" | remove: "</p>" | escape  }}</p>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "FAQ Contact",
+  "tag": "section",
+  "settings": [
+    {
+      "id": "title",
+      "type": "text",
+      "label": "Title"
+    },
+    {
+      "id": "subtitle",
+      "type": "text",
+      "label": "Subtitle"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "contact",
+      "name": "Contact",
+      "settings": [
+        {
+          "id": "icon",
+          "type": "html",
+          "label": "Icon",
+          "info": "Icon with SVG format"
+        },
+        {
+          "id": "title",
+          "type": "text",
+          "label": "Title"
+        },
+        {
+          "id": "subtitle",
+          "type": "richtext",
+          "label": "Subtitle"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

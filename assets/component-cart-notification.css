@@ -11,8 +11,8 @@ cart-notification {
 }
 
 .cart-notification {
-  background-color: rgb(var(--color-background));
-  border-color: rgba(var(--color-foreground), 0.2);
+  background-color: white;
+  border-color: rgba(black, 0.2);
   border-style: solid;
   border-width: 0 0 0.1rem;
   padding: 2.5rem 3.5rem;
@@ -76,7 +76,7 @@ cart-notification {
 }
 
 .cart-notification__heading .icon-checkmark {
-  color: rgb(var(--color-foreground));
+  color: rgb(black);
   margin-right: 1rem;
   width: 1.3rem;
 }
@@ -113,7 +113,7 @@ cart-notification {
 }
 
 .cart-notification-product__image {
-  border: 0.1rem solid rgba(var(--color-foreground), 0.03);
+  border: 0.1rem solid rgba(black, 0.03);
   margin-right: 1.5rem;
 }
 
@@ -123,7 +123,7 @@ cart-notification {
 }
 
 .cart-notification-product__option {
-  color: rgba(var(--color-foreground), 0.7);
+  color: rgba(black, 0.7);
   margin-top: 1rem;
 }
 

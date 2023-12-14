@@ -1,0 +1,41 @@
+<style>
+    #klarna-banner-section {
+        --first-msg: "{{ section.settings.first_message }}";
+        --second-msg: "{{ section.settings.second_message }}"
+    }
+
+</style>
+
+{{ 'klarna-banner.css' | asset_url | stylesheet_tag }}
+
+<section id="klarna-banner-section">
+  <div class="page-boundary section-content">
+    <div class="klarna-logo"><img src="{{ 'klarna-logo.svg' | asset_url }}" alt=""></div>
+
+    <klarna-placement
+        data-key="credit-promotion-auto-size"
+        data-locale="en-US"
+        data-purchase-amount="18000"
+    ></klarna-placement>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Klarna Banner",
+  "settings": [
+    {
+      "id": "first_message",
+      "type": "text",
+      "label": "First Message",
+      "default": "Pay as low as $30/mo at 0% APR. "
+    },
+    {
+      "id": "second_message",
+      "type": "text",
+      "label": "Second Message",
+      "default": "Prequalify in 30 seconds"
+    }
+  ]
+}
+{% endschema %}

@@ -39,7 +39,7 @@
 }
 
 .article-card {
-  background-color: rgba(var(--color-foreground), 0.04);
+  background-color:#efefef;
   align-self: flex-start;
   flex: 0 1 100%;
   display: flex;
@@ -72,10 +72,19 @@
 .article-content img {
   transition: transform 0.5s ease;
   max-height: 350px;
+  min-height: 350px;
   width: 100%;
   object-fit: cover;
 }
-
+@media(max-width:767px){
+  .article-card__header h2{
+    font-size:1.4rem;
+  }
+  .article-content img {
+    min-height:150px;
+    max-height:150px;
+  }
+}
 .article-content:hover img {
   transform: scale(1.07);
 }

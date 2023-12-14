@@ -5,85 +5,82 @@
 <section id="affiliate-announcement-bar-section"></section>
 
 <script>
-  const allAffiliateBanners = [
-		{% for block in affiliates %}
+    const allAffiliateBanners = [
+      {% for block in affiliates %}
       {% assign affiliate = block.settings %}
       {% assign badge = blank %}
       {% if affiliate.badge %}
-        {% assign badge = affiliate.badge | image_url: width: 400 %}
+      {% assign badge = affiliate.badge | image_url: width: 400 %}
       {% endif %}
-      {
-        source: "{{ affiliate.heading }}",
-        logo: "{{ affiliate.logo | image_url: width: 400 }}",
-        badge: "{{ badge }}",
-        message: "{{ affiliate.message }}",
-        background_color: "{{ affiliate.background_color }}",
-        text_color: "{{ affiliate.text_color }}",
-      }
+        {
+            source: "{{ affiliate.heading }}",
+            logo: "{{ affiliate.logo | image_url: width: 400 }}",
+            badge: "{{ badge }}",
+            message: "{{ affiliate.message }}",
+            background_color: "{{ affiliate.background_color }}",
+            text_color: "{{ affiliate.text_color }}",
+        }
       {%- if forloop.length > 0 -%}
-        {% unless forloop.last %},{% endunless -%}
+      {% unless forloop.last %},{% endunless -%}
       {%- endif -%}
-		{% endfor %}
-  ];
+      {% endfor %}
+    ];
 
-  function blockSearchIndexing() {
-    const meta = document.createElement('meta');
-    meta.setAttribute("name", "robots");
-    meta.setAttribute("content", "noindex");
+    function blockSearchIndexing() {
+        const meta = document.createElement('meta');
+        meta.setAttribute("name", "robots");
+        meta.setAttribute("content", "noindex");
 
-    document.getElementsByTagName('head')[0].appendChild(meta);
-  }
+        document.getElementsByTagName('head')[0].appendChild(meta);
+    }
 
-  function renderAffiliateBanner(affiliate) {
-    const {url, badge, logo, message, background_color, text_color} = affiliate;
+    function renderAffiliateBanner(affiliate) {
+        const {url, badge, logo, message, background_color, text_color} = affiliate;
 
-    const affiliateAnnouncementBarSection = $("#affiliate-announcement-bar-section")
-    affiliateAnnouncementBarSection.css({
-      '--bg-color': background_color,
-      '--text-color': text_color,
-       'display': "flex"
-    });
+        const $el = $("#affiliate-announcement-bar-section")
+        $el.css({
+            '--bg-color': background_color,
+            '--text-color': text_color,
+            'display': "flex"
+        });
 
-    affiliateAnnouncementBarSection.html(`
+        $el.html(`
           <a href="${url || "#"}" class="affiliate-container">
             <img class="affiliate-logo" src="${logo}"/>
             <p>${message}</p>
           </a>
         `)
 
-    $(".announcement-bar-wrapper").replaceWith(affiliateAnnouncementBarSection);
+        const $header = $("#shopify-section-sections--16283442413731__header")
 
-    $(".site-header-wrapper").css({
-      "top": "calc(50px - 1px)"
+        $header.css({
+            'top': 'calc(54px - 1px)'
+        })
+
+        $("#announcement-bar").replaceWith($el);
+
+        if (badge) $("#affiliate-badge").append(`<img src="${badge}" />`)
+    }
+
+    function guardAffiliateBanner() {
+        const urlParams = new URLSearchParams(window.location.search);
+
+        const targetSource = urlParams.get("affiliate_source");
+
+        if (!targetSource) return
+
+        const affiliate = allAffiliateBanners.find(({source}) => source === targetSource);
+
+        if (!affiliate) return
+
+        blockSearchIndexing();
+
+        renderAffiliateBanner(affiliate)
+    }
+
+    $(document).ready(function () {
+        setTimeout(guardAffiliateBanner, 500)
     })
-
-    $("#risk-free-banner-section").css({
-      "margin": 0
-    })
-
-
-    if(badge) $("#affiliate-badge").append(`<img src="${badge}" />`)
-  }
-
-  function guardAffiliateBanner() {
-    const urlParams = new URLSearchParams(window.location.search);
-
-    const targetSource = urlParams.get("affiliate_source");
-
-    if (!targetSource) return
-
-    const affiliate = allAffiliateBanners.find(({source}) => source === targetSource);
-
-    if (!affiliate) return
-
-    blockSearchIndexing();
-
-    renderAffiliateBanner(affiliate)
-  }
-
-  $(document).ready(function () {
-    setTimeout(guardAffiliateBanner, 500)
-  })
 </script>
 
 {% schema %}

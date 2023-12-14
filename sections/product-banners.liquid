@@ -1,86 +1,86 @@
-<link is="delay-stylesheet" href="{{ 'product-banners.css' | asset_url }}">
+{{ 'product-banners.css' | asset_url | stylesheet_tag }}
 
 {% assign productBlocks = section.blocks | where: "type", "product-block" %}
 
 <div class="text-center mt-10 md:mt-14">
-  <h1 class="text-[31px]">{{ section.settings.heading }}</h1>
+	<h1 class="text-[31px]">{{ section.settings.heading }}</h1>
 </div>
 
 <section id="product-banners-section">
-  <div class="wrapper">
-    {%- for block in productBlocks -%}
-      {% assign product = block.settings.product %}
-      {% assign discountedAmount = product.compare_at_price | minus: product.price %}
+	<div class="wrapper">
+		{%- for block in productBlocks -%}
+			{% assign product = block.settings.product %}
+			{% assign discountedAmount = product.compare_at_price | minus: product.price %}
 
-      <a
-        class="card w-full relative" href="{{ product.url }}"
-        rel="noreferrer"
-      >
-        <div class="card__header">
-          {% if discountedAmount != blank %}
-            <p class="mb-[10px] p-2 rounded-[4px] bg-green-pea text-[white] text-[11px] md:text-[13px] leading-none font-semibold uppercase">
-              SAVE UP TO {{ discountedAmount | money }}
-            </p>
-          {% endif %}
-          <h3 class="text-[24px] md:text-[28px] font-tiempos text-charade font-normal">{{ product.title }}</h3>
-          <div>
-            <p class="text-charade">{{ block.settings.desc }}</p>
-            <div class="mt-2">
-              <span class="font-semibold">From</span>
-              <span class="font-semibold">{{ product.price | money }}</span>
-              <span class="line-through">{{ product.compare_at_price | money }}</span>
-            </div>
-          </div>
+			<a
+				class="card w-full relative" href="{{ product.url }}"
+				rel="noreferrer"
+			>
+				<div class="card__header">
+					{% if discountedAmount != blank %}
+						<p class="mb-[10px] p-2 rounded-[4px] bg-green-pea text-[white] text-[11px] md:text-[13px] leading-none font-semibold uppercase">
+							SAVE UP TO {{ discountedAmount | money }}
+						</p>
+					{% endif %}
+					<h3 class="text-[24px] md:text-[28px] font-tiempos text-charade font-normal">{{ product.title }}</h3>
+					<div>
+						<p class="text-charade">{{ block.settings.desc }}</p>
+						<div class="mt-2">
+							<span class="font-semibold">From</span>
+							<span class="font-semibold">{{ product.price | money }}</span>
+							<span class="line-through">{{ product.compare_at_price | money }}</span>
+						</div>
+					</div>
 
-        </div>
+				</div>
 
-        <div class="card__image w-full h-full">
-          <img
-            src="{{ block.settings.image | img_url: '537x375' }}" width="100%" height="auto"
-            class="h-full" loading="lazy"
-          >
-        </div>
+				<div class="card__image w-full h-full">
+					<img
+						src="{{ block.settings.image | img_url: '537x375' }}" width="100%" height="auto"
+						class="h-full" loading="lazy"
+					>
+				</div>
 
-        <div class="card__btn justify-center btn z-10 mt-auto">
-          Shop Now
-        </div>
-      </a>
-    {%- endfor -%}
-  </div>
+				<div class="card__btn justify-center btn z-10 mt-auto">
+					Shop Now
+				</div>
+			</a>
+		{%- endfor -%}
+	</div>
 </section>
 
 {% schema %}
 {
-  "name": "Product Banner",
-  "settings": [
-    {
-      "type": "text",
-      "id": "heading",
-      "label": "Heading"
-    }
-  ],
-  "blocks": [
-    {
-      "type": "product-block",
-      "name": "Product Block",
-      "settings": [
-        {
-          "id": "product",
-          "type": "product",
-          "label": "Block Product"
-        },
-        {
-          "id": "image",
-          "type": "image_picker",
-          "label": "Block Image"
-        },
-        {
-          "id": "desc",
-          "type": "textarea",
-          "label": "Block Description"
-        }
-      ]
-    }
-  ]
+	"name": "Product Banner",
+	"settings": [
+		{
+			"type": "text",
+			"id": "heading",
+			"label": "Heading"
+		}
+	],
+	"blocks": [
+		{
+			"type": "product-block",
+			"name": "Product Block",
+			"settings": [
+				{
+					"id": "product",
+					"type": "product",
+					"label": "Block Product"
+				},
+				{
+					"id": "image",
+					"type": "image_picker",
+					"label": "Block Image"
+				},
+				{
+					"id": "desc",
+					"type": "textarea",
+					"label": "Block Description"
+				}
+			]
+		}
+	]
 }
 {% endschema %}

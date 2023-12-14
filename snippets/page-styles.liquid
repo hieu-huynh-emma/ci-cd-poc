@@ -1,39 +1,46 @@
 {% if isOptimized == true %}
-	<!-- CSS ================================================== -->
-	<link is="delay-stylesheet" href="{{ 'timber.css' | asset_url }}">
-	<link is="delay-stylesheet" href="{{ 'theme.css' | asset_url }}">
-	<!-- CUSTOM CSS ================================================== -->
-	<link is="delay-stylesheet" href="{{ 'custom-theme.css' | asset_url }}">
-	<link is="delay-stylesheet" href="{{ 'custom.css' | asset_url }}">
-	<link is="delay-stylesheet" href="{{ 'custom-theme-3.css' | asset_url }}">
+  <link is="delay-stylesheet" href="{{ 'base.css' | asset_url }}">
+  <link is="delay-stylesheet" href="{{ 'global.css' | asset_url }}">
+  <link is="delay-stylesheet" href="{{ 'typography.css' | asset_url }}">
+  <link is="delay-stylesheet" href="{{ 'fonts.css' | asset_url }}">
 
-	<link is="delay-stylesheet" href="{{ 'base.css' | asset_url }}">
-	<link is="delay-stylesheet" href="{{ 'legacy.css' | asset_url }}">
-	<link is="delay-stylesheet" href="{{ 'typography.css' | asset_url }}">
-	<link is="delay-stylesheet" href="{{ 'select2.min.css' | asset_url }}">
-	<link is="delay-stylesheet" href="{{ 'vendors.css' | asset_url }}">
-	<link is="delay-stylesheet" href="{{ 'global.css' | asset_url }}">
-	<link is="delay-stylesheet" href="{{ 'fonts.css' | asset_url }}">
+  {% liquid
+    case template
+      when 'page.comparison'
+        assign pageStyleFile = 'comparison-page.css'
+      when 'page.competitor-comparison'
+        assign pageStyleFile = 'competitor-comparison.css'
+      when 'page.generic1'
+        assign pageStyleFile = 'faq.css'
+      when 'page.financing'
+        assign pageStyleFile = 'financing.css'
+      when 'page.landing-page'
+        assign pageStyleFile = 'landing-page.css'
+      when 'product.emma-hybrid-comfort' or 'product.bed-frame-new' or 'product.mattress-protector-new' or 'product.hybrid-comfort-bundle' or 'product.new-diamond-pillow' or 'product.ready-to-sleep' or 'product.emma-hybrid-pro' or 'product.emma-original' or 'product.emma-climax-hybrid' or 'product.emma-original-plus-mattress-protector' or 'product.emma-original-plus-pillows' or 'product.emma-shift' or 'product.emma-climax-hybrid-plus-mattress-protector' or 'product.mattress-clarity-original'
+        assign pageStyleFile = 'revamp-product.css'
+      when 'page' or 'page.100-nights' or 'page.toc' or 'page.legal-notice'
+        assign pageStyleFile = 'static-page.css'
+    endcase
+  %}
 
-    <link is="delay-stylesheet" href="{{ 'new-heading.css' | asset_url }}">
-			
+  {% if pageStyleFile %}
+    <link is="delay-stylesheet" href="{{ pageStyleFile | asset_url }}">
+  {% endif %}
 
-	{% liquid
-		assign pageStylesheet = ""
-		case template
-			when 'page.comparison'
-				assign pageStylesheet = 'comparison-page.css'
-			when 'page.competitor-comparison'
-				assign pageStylesheet = 'competitor-comparison.css'
-			when 'product.emma-climax-hybrid', 'product.emma-hybrid-pro'
-				assign pageStylesheet = 'product-detail.css'
-			when 'product.ready-to-sleep', 'product.sleep-essential-bundle', 'product.perfect-sleep-bundle'
-				assign pageStylesheet = 'bundle-detail.css'
-		endcase
-	%}
-	<link is="delay-stylesheet" href="{{ pageStylesheet | asset_url }}">
 
-	<link is="delay-stylesheet" href="{{ 'tailwind.css' | asset_url }}">
+  <link is="delay-stylesheet" href="{{ 'tailwind.css' | asset_url }}">
+
+  {% liquid
+    assign vendorStylesheet = "vendors.css"
+    case template
+      when 'page.landing-page', 'product.new-original-mattress', 'product.climax-hybrid-mattress', 'product.emma-hybrid-comfort'
+        assign vendorStylesheet = "old-vendors.css"
+    endcase
+  %}
+
+  <link is="delay-stylesheet" id="vendor-custom-styles" href="{{ vendorStylesheet | asset_url }}">
+<link is="delay-stylesheet" href="{{ 'jquery.fancybox.css' | asset_url }}">
+
 {% else %}
-	{% render 'old-page-styles' %}
+  {% render 'old-page-styles' %}
 {% endif %}

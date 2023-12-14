@@ -1,0 +1,103 @@
+{% assign productBlocks = section.blocks | where: "type", "product-block" %}
+
+<section id="featured-products-section">
+  <div class="wrapper">
+    <div class="headings">
+      <h2 class="heading-2 text-center text-charade">{{ section.settings.title | remove: "<p>" | remove: "</p>" }}</h2>
+      <p class="subheading text-comet">{{ section.settings.subtitle }}</p>
+    </div>
+
+    <div class="customer-reviews">
+      {%- for block in productBlocks -%}
+        {% assign product = block.settings.product %}
+
+        <div class="card">
+          <div class="top-section">
+            <p class="card__badge">
+              {{ block.settings.badge }}
+            </p>
+            <div class="w-full">
+              <img
+                src="{{ block.settings.image | img_url: 'grande' }}" width="100%" height="auto"
+                class="h-full" loading="lazy"
+              />
+            </div>
+
+            <h3 class="text-[24px] font-tiempos text-charade font-normal text-center">{{ product.title }}</h3>
+            <p class="text-charade">{{ block.settings.desc | remove: "<p>" | remove: "</p>" }}</p>
+          </div>
+
+
+          <div class="footer-section">
+            <div class="starting-at">
+              <span class="text-[14px] font-normal">starting at</span>
+              <div class="flex items-center">
+                {% if product.compare_at_price > product.price %}
+                  <p class="font-semibold mr-1">{{ product.price | money_without_trailing_zeros }}</p>
+                  <p class="line-through">{{ product.compare_at_price | money_without_trailing_zeros }}</p>
+                {% else %}
+                  <p class="font-semibold">{{ product.price | money_without_trailing_zeros }}</p>
+                {% endif %}
+              </div>
+            </div>
+
+            <a class="btn" href="{{ product.url }}" rel="noreferrer">
+              Shop Now
+            </a>
+          </div>
+
+
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Featured Products",
+  "blocks": [
+    {
+      "type": "product-block",
+      "name": "Product Block",
+      "settings": [
+        {
+          "id": "product",
+          "type": "product",
+          "label": "Block Product"
+        },
+        {
+          "id": "badge",
+          "type": "text",
+          "label": "Block Badge",
+          "default": "Best Value"
+        },
+        {
+          "id": "image",
+          "type": "image_picker",
+          "label": "Block Image"
+        },
+        {
+          "id": "desc",
+          "type": "richtext",
+          "label": "Block Description"
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "id": "title",
+      "type": "richtext",
+      "label": "Title",
+      "default": "<p>Hit snooze! Sleep is about to get <i>wayyy better.</i></p>"
+    },
+    {
+      "id": "subtitle",
+      "type": "text",
+      "label": "Subtitle",
+      "default": "Our sleep experts have mastered designing award-winning mattresses crafted to keep you relaxed and recharged, no matter what kind of sleeper you are. Climb on your best sleep yet!"
+    }
+  ]
+}
+{% endschema %}

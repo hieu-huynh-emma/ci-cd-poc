@@ -1,50 +1,29 @@
-{% assign ctaBtn = section.blocks | where: "type", "cta-button" | first %}
-
 <section class="image-with-text section-container">
-	<div class="page-boundary">
-		<div class="two-columns-layout{% if section.settings.inverted %} is-inverted{% endif %}">
-			<div class="media-column">
-        {% render 'image-tag', image_src: section.settings.image, width: 1280 %}
-			</div>
-			
-			<div class="content-column">
-				<h2 class="heading-2">{{ section.settings.heading }}</h2>
-				<p class="lead-statement">
-					{{ section.settings.content | remove: "<p>" | remove: "</p>" }}
-				</p>
-				
-				{% if ctaBtn != blank %}
-					<a class="btn" href="{{ ctaBtn.settings.url }}">
-						{{ ctaBtn.settings.text }}
-					</a>
-				{% endif %}
-			</div>
-		</div>
-	</div>
+  <div class="page-boundary">
+    <div class="two-columns-layout{% if section.settings.inverted %} is-inverted{% endif %}">
+      <div class="media-column">
+        <img class="lazyload" data-src="{{ section.settings.image | image_url: width: 1280 }}" width="1280" alt="">
+      </div>
+
+      <div class="content-column">
+        <h2 class="heading-2">{{ section.settings.heading }}</h2>
+        <p class="lead-statement">
+          {{ section.settings.content | remove: "<p>" | remove: "</p>" }}
+        </p>
+
+        {% if block.settings.url != blank %}
+          <a class="btn" href="{{ block.settings.url }}">
+            {{ block.settings.text }}
+          </a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
 </section>
 
 {% schema %}
 {
   "name": "Image with Text Section",
-  "blocks": [
-    {
-      "type": "cta-button",
-      "name": "CTA Button",
-      "limit": 1,
-      "settings": [
-        {
-          "id": "url",
-          "type": "url",
-          "label": "Button Url"
-        },
-        {
-          "id": "text",
-          "type": "text",
-          "label": "Button Text"
-        }
-      ]
-    }
-  ],
   "settings": [
     {
       "id": "heading",
@@ -60,6 +39,16 @@
       "id": "image",
       "type": "image_picker",
       "label": "Section Image"
+    },
+    {
+      "id": "cta_url",
+      "type": "url",
+      "label": "Button Url"
+    },
+    {
+      "id": "cta_text",
+      "type": "text",
+      "label": "Button Text"
     },
     {
       "id": "inverted",

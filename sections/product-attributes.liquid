@@ -1,0 +1,97 @@
+{{ 'product-attributes.css' | asset_url | stylesheet_tag }}
+
+<section id=product-attributes-section class="flex justify-center w-full bg-white">
+
+  <div class="wrapper">
+    <div class="product-attributes-section__content">
+      <h2 class="title heading-2">{{ section.settings.title | strip_html }}</h2>
+      <div class="product-attributes">
+        {%- for block in section.blocks -%}
+          {%- case block.type -%}
+            {%- when 'text-section' -%}
+              <div class="product-attribute">
+                <img
+                  src="{{ block.settings.icon | img_url: 'original' }}" width="auto" height="auto"
+                  class="product-attribute__icon w-10 h-10 md:w-14 md:h-14" loading="lazy"
+                >
+                <h3 class="product-attribute__title heading-4">{{ block.settings.title | strip_html }}</h3>
+                <p class="product-attribute__content text-comet">{{ block.settings.content | strip_html }}</p>
+              </div>
+          {%- endcase -%}
+        {%- endfor -%}
+      </div>
+    </div>
+
+    <div class="gallery">
+      {%- for block in section.blocks -%}
+        {%- case block.type -%}
+          {%- when 'gallery' -%}
+            <div class="gallery__item">
+              <img
+                src="{{ block.settings.desktop_src | img_url: 'original' }}" width="auto" height="auto"
+                class="gallery__item w-full h-full hidden md:flex" loading="lazy"
+              >
+              <img
+                src="{{ block.settings.mobile_src | img_url: 'original' }}" width="auto" height="auto"
+                class="gallery__item w-full h-full md:hidden" loading="lazy"
+              >
+            </div>
+        {%- endcase -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Product Attributes",
+  "tag": "section",
+  "blocks": [
+    {
+      "type": "text-section",
+      "name": "Text Section",
+      "settings": [
+        {
+          "id": "icon",
+          "type": "image_picker",
+          "label": "Icon"
+        },
+        {
+          "id": "title",
+          "type": "richtext",
+          "label": "Title"
+        },
+        {
+          "id": "content",
+          "type": "richtext",
+          "label": "Content"
+        }
+      ]
+    },
+    {
+      "type": "gallery",
+      "name": "Gallery",
+      "settings": [
+        {
+          "id": "desktop_src",
+          "type": "image_picker",
+          "label": "Desktop Image"
+        },
+        {
+          "id": "mobile_src",
+          "type": "image_picker",
+          "label": "Mobile Image"
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "id": "title",
+      "type": "richtext",
+      "label": "Title",
+      "default": "<p>Engineered for a <br /><span>happy</span> back.</p>"
+    }
+  ]
+}
+{% endschema %}

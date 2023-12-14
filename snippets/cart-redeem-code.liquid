@@ -1,18 +1,18 @@
 <cart-redeem-code id="CartRedeemCode">
   <div class="redeem-box invisible-on-loading">
     <input
-      id="CartRedeemInput" class="redeem-code__input" placeholder="{{ 'cart.redeem_code.promo_placeholder' | t }}"
+      id="CartRedeemInput" class="redeem-code__input" placeholder="{{ 'cart.promo_placeholder' | t }}"
       onkeypress="return (event.key !== 'Enter')"
     />
     <button id="CartApplyDiscount" class="btn btn--secondary btn--sm">
       {% render 'loading-spinner', center: true %}
-      <p class="paragraph-14 text-white font-semibold">{{ 'cart.redeem_code.apply' | t }}</p>
+      <p class="paragraph-14 text-white font-semibold">Apply</p>
     </button>
   </div>
 
   <div class="discount-viewer summary-item hidden">
     <p class="summary-item__label paragraph-14">
-      {{ 'cart.redeem_code.promo_applied' | t }}
+      {{ 'cart.promo_applied' | t }}
     </p>
 
     <div class="discount-viewer__inner invisible-on-loading">

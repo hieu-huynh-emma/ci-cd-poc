@@ -1,0 +1,201 @@
+<style>
+  .hybrid-highlights-container {
+    padding: 30px 2.5rem;
+    border-radius: 20px;
+  }
+
+  .highlight-list {
+    width: 100%;
+    margin-top: 20px;
+  }
+
+  .highlight-item {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin-top: 20px;
+    line-height: 150%;
+    padding: 12px; 
+
+  }
+
+  .highlight-item h3 {
+    font-family: 'Tiempos';
+    font-size: 22px;
+    font-style: italic;
+  }
+
+  .highlight-item p {
+    color: #55576F;
+    margin-top: 8px;
+    font-size: 14.5px;
+    text-align: center;
+  }
+
+  @media (min-width: 900px) {
+    .hybrid-highlights-container {
+      padding: 50px 6.8rem 60px 6.8rem;
+    }
+
+    .hybrid-highlights-intro p {
+      font-size: 20px;
+      line-height: 30px;
+      padding: 0 12rem;
+      margin-top: 30px;
+    }
+
+    .highlights-list {
+      margin-top: 30px;
+      display: flex;
+    }
+
+    .highlight-item {
+      width: 100%;
+      display: flex;
+      flex-flow: column;
+      text-align: center;
+      justify-content: start;
+      align-items: center;
+    }
+
+    .highlight-item video {
+      width: 100%;
+      margin-bottom: 1.5rem;
+    }
+
+    .highlight-item p {
+      margin-top: 16px;
+    }
+  }
+  
+  @media (max-width: 899px) {
+    
+    .highlight-item {
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: column; 
+      text-align: center;
+	} 
+    
+  	.highlight-item video {
+      margin-bottom: 1.5rem;
+    }
+        
+</style>
+<section class="bg-[white] py-10 px-4 md:py-[50px] md:px-16">
+  <div class="hybrid-highlights-container bg-gradient-to-b from-athens-gray to-[#F6F6F9]">
+    <div class="hybrid-highlights-intro text-center">
+      <h2 class="heading-2">{{section.settings.title}}</h2>
+      <p class="text-neutral-800 mt-5">{{section.settings.subtitle}}</p>
+    </div>
+    <div class="highlights-list">
+      <div class="highlight-item">
+        <div class="flex items-center justify-center">
+          <img src="{{'highlight-back.gif' | asset_url}}" loading="lazy"/>
+        </div>
+        <div class="w-3/4">
+          <h3>{{section.settings.hightlight_title_1}}</h3>
+          <p>{{section.settings.hightlight_desc_1}}</p>
+        </div>
+      </div>
+      <div class="highlight-item">
+        <div class="flex items-center justify-center">
+          <video autoplay="autoplay" muted loop><source type="video/mp4" src="https://cdn.shopify.com/videos/c/o/v/4eba0be66aed4e1b921d129c0b545fb4.mp4" loading="lazy" /></video>
+        </div>
+        <div class="w-3/4">
+          <h3>{{section.settings.hightlight_title_2}}</h3>
+          <p>{{section.settings.hightlight_desc_2}}</p>
+        </div>
+      </div>
+      <div class="highlight-item">
+        <div class="flex items-center justify-center">
+          <img src="{{'highlight-motion.gif' | asset_url}}" loading="lazy"/>
+        </div>
+        <div class="w-3/4">
+          <h3>{{section.settings.hightlight_title_3}}</h3>
+          <p>{{section.settings.hightlight_desc_3}}</p>
+        </div>
+      </div>
+      <div class="highlight-item">
+        <div class="flex items-center justify-center">
+          <img src="{{'highlight-last.gif' | asset_url}}" loading="lazy"/>
+        </div>
+        <div class="w-3/4">
+          <h3>{{section.settings.hightlight_title_4}}</h3>
+          <p>{{section.settings.hightlight_desc_4}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+{% schema %}
+{
+"name": "Product Highlights",
+"settings": [
+{
+"id":"title",
+"type":"text",
+"label":"Title",
+"default":"Designed to adapt."
+},
+{
+"id":"subtitle",
+"type":"text",
+"label":"Subtitle",
+"default":"Lorem ipsum dolor sit amet"
+},
+{
+"id":"hightlight_title_1",
+"type":"text",
+"label":"Highlight Title 1",
+"default":"Relieves your aches & pains"
+},
+{
+"id":"hightlight_desc_1",
+"type":"text",
+"label":"Hightlight Description 1",
+"default":"Lorem ipsum dolor sit amet"
+},
+{
+"id":"hightlight_title_2",
+"type":"text",
+"label":"Highlight Title 2",
+"default":"Relieves your aches & pains"
+},
+{
+"id":"hightlight_desc_2",
+"type":"text",
+"label":"Hightlight Description 2",
+"default":"Lorem ipsum dolor sit amet"
+},
+{
+"id":"hightlight_title_3",
+"type":"text",
+"label":"Highlight Title 3",
+"default":"Relieves your aches & pains"
+},
+{
+"id":"hightlight_desc_3",
+"type":"text",
+"label":"Hightlight Description 3",
+"default":"Lorem ipsum dolor sit amet"
+},
+{
+"id":"hightlight_title_4",
+"type":"text",
+"label":"Highlight Title 4",
+"default":"Relieves your aches & pains"
+},
+{
+"id":"hightlight_desc_4",
+"type":"text",
+"label":"Hightlight Description 4",
+"default":"Lorem ipsum dolor sit amet"
+}
+]
+}
+{% endschema %}

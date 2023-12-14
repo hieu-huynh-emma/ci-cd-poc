@@ -1,0 +1,418 @@
+{
+  "sections": {
+    "main": {
+      "type": "product-details",
+      "blocks": {
+        "title": {
+          "type": "title",
+          "settings": {
+          }
+        },
+        "subtitle": {
+          "type": "text",
+          "settings": {
+            "text": "{{ product.metafields.descriptors.subtitle.value }}",
+            "text_style": "subtitle"
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {
+          }
+        },
+        "description": {
+          "type": "description",
+          "settings": {
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button"
+          }
+        },
+        "quantity_selector": {
+          "type": "quantity_selector",
+          "settings": {
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true
+          }
+        },
+        "edef1ba3-38b1-457d-830a-310bafdfc391": {
+          "type": "mini-review",
+          "settings": {
+            "title": "Solid Support!",
+            "content": "The slats of Emma Upholstered Platform are essentially boards, almost like you're laying your mattress on a foundation itself. Needless to say, the even support the slats provide is unparalleled! I would highly recommend!",
+            "customer_name": "Joel R."
+          }
+        },
+        "c34561e3-07eb-46ed-85e9-af914ad56b80": {
+          "type": "mini-review",
+          "settings": {
+            "title": "Fits Well in My Bedroom!",
+            "content": "The grey finish of the Emma Upholstered Platform blends in well with my bedroom's design, almost like it was customized for it. It has that premium durable feel to it too, and after a few nights with it, I just know that this platform is built to last!",
+            "customer_name": "Janica J."
+          }
+        },
+        "659402ac-b821-4ddf-880f-a6cebeb8cd01": {
+          "type": "mini-review",
+          "settings": {
+            "title": "Easy to Assemble!",
+            "content": "The instructions on the box were really easy to follow, and the overall process took me less than 10 minutes once I laid out all the parts. Not to mention, the finished product looked straight out of a hotel. Definitely one for the keeps!",
+            "customer_name": "Vera S."
+          }
+        },
+        "1321c1c8-c42a-442a-89a5-cea17d044d57": {
+          "type": "risk_reversal_item",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Group_225.png",
+            "title": "<p><strong>Free Shipping & Returns<\/strong><\/p>"
+          }
+        },
+        "9db50806-3d0b-43af-b709-32ad9194628d": {
+          "type": "risk_reversal_item",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Untitled_design_5.png",
+            "title": "<p><strong>60-Night Risk-Free Trial<\/strong><\/p>"
+          }
+        },
+        "009af120-fbff-46b8-9b8a-e4c968c7595e": {
+          "type": "risk_reversal_item",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/warranty_blue_1_1_82f9ff94-e59a-48e5-a13b-1b5dd10d18ff.png",
+            "title": "<p><strong>5-Year Warranty<\/strong><\/p>"
+          }
+        },
+        "82276ccd-c35e-4c58-9780-b9cb4182b134": {
+          "type": "award",
+          "disabled": true,
+          "settings": {
+            "src": "shopify:\/\/shop_images\/credit_card_2.png"
+          }
+        },
+        "6bf876c4-c616-4080-a7f4-8f87162accf2": {
+          "type": "risk_reversal_item",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/credit_card_2.png",
+            "title": "<p><strong>0% Financing<\/strong><\/p>"
+          }
+        },
+        "a749914b-bba7-44c9-a09d-71ea0b6776c2": {
+          "type": "risk_reversal_item",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Untitled_design_11.png",
+            "title": "<p><strong>24\/7 Customer Support<\/strong><\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "title",
+        "subtitle",
+        "price",
+        "description",
+        "variant_picker",
+        "quantity_selector",
+        "buy_buttons",
+        "edef1ba3-38b1-457d-830a-310bafdfc391",
+        "c34561e3-07eb-46ed-85e9-af914ad56b80",
+        "659402ac-b821-4ddf-880f-a6cebeb8cd01",
+        "1321c1c8-c42a-442a-89a5-cea17d044d57",
+        "9db50806-3d0b-43af-b709-32ad9194628d",
+        "009af120-fbff-46b8-9b8a-e4c968c7595e",
+        "82276ccd-c35e-4c58-9780-b9cb4182b134",
+        "6bf876c4-c616-4080-a7f4-8f87162accf2",
+        "a749914b-bba7-44c9-a09d-71ea0b6776c2"
+      ],
+      "settings": {
+        "enable_sticky_info": true,
+        "hide_variants": false,
+        "enable_video_looping": false,
+        "tab_title_1": "WHAT IT IS",
+        "tab_content_1": "<p style=\"font-weight: 600;\">Sleek and sturdy. Our upholstered platform is made of solid wood for strong support, and premium fabric for a sleek, minimalist Scandinavian design. Our upholstered platform uses the uniquely designed AirFlow® bed base to increase breathability for a comfy night’s sleep.<\/p>\n\n<ul>\n<li>Easily-assembled, no additional tools required!<\/li>\n<li>Uniquely-designed with FlexiSlats® that distribute your weight evenly throughout the bed frame to provide additional pressure-relief for your back and joints.<\/li>\n<li>Engineered with an AirFlow® bed base that lets air move easily through the bed frame and helps maximize breathability for a cool night’s sleep.<\/li>\n<\/ul>",
+        "tab_title_2": "WHO’S IT FOR",
+        "tab_content_2": "<p style=\"font-weight: 600;\">Sleek and sturdy. Our upholstered platform is made of solid wood for strong support, and premium fabric for a sleek, minimalist Scandinavian design. Our upholstered platform uses the uniquely designed AirFlow® bed base to increase breathability for a comfy night’s sleep.<\/p>\n\n<ul>\n<li>Great for couples and pet-lovers who want strong support<\/li>\n<li>Style seekers who won’t compromise on comfort and quality<\/li>\n<\/ul>"
+      }
+    },
+    "alternate-banners": {
+      "type": "alternate-banners",
+      "blocks": {
+        "1a40ff53-9e17-4bc1-8f32-cc39fbfd6e23": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Setting_up.png",
+            "title": "No Tool 5-Minute Setup",
+            "content": "Assembling furniture shouldn’t be rocket science – our upholstered platform can be set up as quick as 5 minutes without any tools. You can view this video guide if you have any trouble."
+          }
+        },
+        "3c7042bd-f91e-4ea9-b2e8-dea2a7bfe9fe": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Base_and_Original.png",
+            "title": "Silent, strong, and supportive",
+            "content": "There’s no need to worry about wobbles or squeaks interrupting your sleep with the durable slatted base design. You’ll have peace of mind knowing our upholstered platform gives you long-lasting support for whatever activities you do in bed."
+          }
+        },
+        "fc285559-d93f-4537-a582-d2bee0b5e6ea": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Base_bedroom.png",
+            "title": "Modern and stylish",
+            "content": "Our upholstered bed frame is made with premium foam and fabric that both looks and feels luxurious. Its sleek and minimalist design fits perfectly in any bedroom style, easily completing the room’s aesthetic as the centerpiece."
+          }
+        }
+      },
+      "block_order": [
+        "1a40ff53-9e17-4bc1-8f32-cc39fbfd6e23",
+        "3c7042bd-f91e-4ea9-b2e8-dea2a7bfe9fe",
+        "fc285559-d93f-4537-a582-d2bee0b5e6ea"
+      ],
+      "settings": {
+      }
+    },
+    "accessory-highlights": {
+      "type": "accessory-highlights",
+      "blocks": {
+        "76232b4f-41fc-4499-ab92-8f6dc9f657b9": {
+          "type": "highlight",
+          "settings": {
+            "title": "Lorem ipsum",
+            "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+          }
+        },
+        "665b1e19-6d3d-41ae-acca-13643cfae236": {
+          "type": "highlight",
+          "settings": {
+            "title": "Lorem ipsum",
+            "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+          }
+        },
+        "f76fb2dc-fbcb-4637-917e-e9427f7be812": {
+          "type": "highlight",
+          "settings": {
+            "title": "Lorem ipsum",
+            "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+          }
+        }
+      },
+      "block_order": [
+        "76232b4f-41fc-4499-ab92-8f6dc9f657b9",
+        "665b1e19-6d3d-41ae-acca-13643cfae236",
+        "f76fb2dc-fbcb-4637-917e-e9427f7be812"
+      ],
+      "disabled": true,
+      "settings": {
+        "highligh_content": "",
+        "title": "Lorem ipsum",
+        "subtitle": "ENGINEERED BY SLEEP EXPERTS"
+      }
+    },
+    "information-tabs": {
+      "type": "information-tabs",
+      "blocks": {
+        "82ffd23f-3e8b-4e5c-a165-5897fe51cbec": {
+          "type": "tab",
+          "settings": {
+            "tab_title": "Inside Dimensions",
+            "tab_content": "<p><strong>Twin<\/strong> - 38\" x 75\" x 14.5\"<\/p><p><em>Best for kids or single sleepers with small spaces (e.g. studio apartments).<\/em><br\/><strong>Twin XL<\/strong> - 38\" x 80\" x 14.5\"<\/p><p><em>Best for growing children, teens, or those looking for a split king set-up.<\/em><br\/><strong>Full<\/strong> - 54\" x 75\" x 14.5\"<\/p><p><em>Best for single sleepers who prefer more sleeping space, or couples who like to cuddle together.<\/em><br\/><strong>Queen<\/strong> - 60\" x 80\" x 14.5\"<\/p><p><em>Best for couples who prefer a comfortable sleeping space to move around in bed.<\/em><\/p><p><strong>King<\/strong> - 76\" x 80\" x 14.5\"<\/p><p><em>Best for couples who share the bed with their children or pets.<\/em><\/p><p><strong>Cal King<\/strong> - 72\" x 84\" x 14.5\"<\/p><p><em>Best for taller individuals (above 6 feet) who want a lot of sleeping space.<\/em><\/p>"
+          }
+        },
+        "46ebc01e-5f8d-47b4-b934-6a960f97d181": {
+          "type": "tab",
+          "settings": {
+            "tab_title": "Outside Dimensions",
+            "tab_content": "<p>See if the upholstered platform fits in your bedroom through the dimensions below.<\/p><p><\/p><p><strong>Twin<\/strong><\/p><p>41.50\" x 77.75\" x 14.5\"<br\/><strong>Twin XL<\/strong><\/p><p>41.50\" x 82.00\" x 14.5\"<br\/><strong>Full<\/strong><br\/>56.50\" x 77.75\" x 14.5\"<br\/><strong>Queen<\/strong><br\/>62.00\" x 82.00\" x 14.5\"<br\/><strong>King<\/strong><br\/>79.00\" x 82.00\" x 14.5\"<\/p>"
+          }
+        },
+        "e1cc5e35-c423-49f9-95ba-a2a2b4a3a087": {
+          "type": "tab",
+          "disabled": true,
+          "settings": {
+            "tab_title": "Tabbed content",
+            "tab_content": "<p><strong>Lorem ipsum<br\/><\/strong><br\/>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "82ffd23f-3e8b-4e5c-a165-5897fe51cbec",
+        "46ebc01e-5f8d-47b4-b934-6a960f97d181",
+        "e1cc5e35-c423-49f9-95ba-a2a2b4a3a087"
+      ],
+      "settings": {
+        "title": "Bed information",
+        "image": "shopify:\/\/shop_images\/zs_Beaudoin_Breeze_Jysk_latte_josua-ash_cote_v1.jpg"
+      }
+    },
+    "faqs-and-specs": {
+      "type": "double-columns",
+      "blocks": {
+        "78ca144d-5919-4a1b-9e22-082ef5384310": {
+          "type": "left_column",
+          "settings": {
+            "title": "What mattresses are compatible with the Emma Upholstered Platform?",
+            "content": "You won’t need a matchmaker to find a compatible mattress. Any mattress can be used with our Upholstered Platform, but for the best sleep experience, we recommend pairing it with our Emma mattresses."
+          }
+        },
+        "c68412f4-0251-42dc-9113-a0eecd22c518": {
+          "type": "left_column",
+          "settings": {
+            "title": "Do I need a box spring or foundation for the bed frame?",
+            "content": "Not at all! Emma’s Upholstered Platform is a frame and foundation in one. The solid wood construction will give you enough support without any squeaks or wobbles."
+          }
+        },
+        "a72149c3-5420-4a8c-80fe-7370288da216": {
+          "type": "left_column",
+          "settings": {
+            "title": "Is the Upholstered Bed Frame easy to clean?",
+            "content": "To prevent dirt, regular dusting is suggested. The best way to clean your fabric if you see a stain is to use water and mild soap. Wet a clean cloth and make light circular motions. It is important not to rub. To remove excess water, pat the area that was cleaned with a dry cloth. Allow to air dry, making sure the cleaned area is not exposed to direct sunlight, as this may damage the fabric. In the event of a more resistant stain, consult a fabric care professional."
+          }
+        },
+        "d9373dca-57f2-4b56-8838-1a8fc22e21ca": {
+          "type": "left_column",
+          "settings": {
+            "title": "Can I set up the Upholstered Bed Frame myself?",
+            "content": "Setting it up is easy peasy! It’ll just take you 5 minutes and require no tools to assemble."
+          }
+        },
+        "dc6becd9-d75d-4307-a1fd-f2ae96892001": {
+          "type": "right_column",
+          "settings": {
+            "title": "Dimensions and Weight",
+            "content": "<pre style='font-family: \"Inter\",sans-serif; font-size: 13px'><strong>Twin                                     Twin XL<\/strong>\n38”W × 75”L × 12”H      38”W × 80”L × 12”H \n\n<strong>Full                                        Queen<\/strong>\n54”W × 75”L × 12”H      60”W × 80”L × 12”H \n\n<strong>King                                      Cal King<\/strong>\n76”W × 80”L × 12”H      72”W × 84”L × 12”H\n\n<\/pre>"
+          }
+        },
+        "27a05c64-cb9c-4e17-9607-0124a2982c36": {
+          "type": "right_column",
+          "settings": {
+            "title": "Shipping, Warranty, & Returns",
+            "content": "<p><b>Free Delivery<\/b><\/p>\n<p>We work with UPS &amp; FedEx to ship your Emma products straight from our warehouse to your front door.<\/p>\n\n<p><b>Free Returns<\/b><\/p>\n<p>Enjoy a 60-nights free trial on your Emma Upholstered Platform. Of course, we've made returning of any unsuitable items super easy. Just contact our customer service and we'll take care of the rest.<\/p> \n\n<p><b>5-Year Warranty<\/b><\/p>\n<p>Enjoy a 5-Year Manufacturer Warranty for each Emma Upholstered Platform purchase.<\/p>\n\n<p>If you would like to contact us, please feel free to email our support team at <b>support@emma-sleep.com<\/b> or call them at <b>+1-855-580-3662<\/b>.<\/p>"
+          }
+        },
+        "0d3641f2-2024-410e-8331-1d71bd48b165": {
+          "type": "right_column",
+          "settings": {
+            "title": "Materials",
+            "content": "<p>- Polyester fabric upholstery<\/p>\n<p>- Polyurethane foam<\/p>\n<p>- Natural and sturdy North American Wood products<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "78ca144d-5919-4a1b-9e22-082ef5384310",
+        "c68412f4-0251-42dc-9113-a0eecd22c518",
+        "a72149c3-5420-4a8c-80fe-7370288da216",
+        "d9373dca-57f2-4b56-8838-1a8fc22e21ca",
+        "dc6becd9-d75d-4307-a1fd-f2ae96892001",
+        "27a05c64-cb9c-4e17-9607-0124a2982c36",
+        "0d3641f2-2024-410e-8331-1d71bd48b165"
+      ],
+      "settings": {
+        "heading_1": "FAQs",
+        "heading_2": "Specs"
+      }
+    },
+    "yotpo-main-widget": {
+      "type": "yotpo-main-widget",
+      "settings": {
+      }
+    },
+    "brand-statistics": {
+      "type": "brand-statistics",
+      "blocks": {
+        "ca504ac7-3137-4ad7-997c-c1e12bd1d446": {
+          "type": "wallpaper",
+          "settings": {
+            "src": "shopify:\/\/shop_images\/wallpaper-1.png",
+            "color": "#ffdeb7"
+          }
+        },
+        "9593f14f-4c86-4af9-953e-0fa248231b89": {
+          "type": "footer-button",
+          "settings": {
+            "url": "shopify:\/\/collections\/mattresses",
+            "text": "shop mattresses"
+          }
+        }
+      },
+      "block_order": [
+        "ca504ac7-3137-4ad7-997c-c1e12bd1d446",
+        "9593f14f-4c86-4af9-953e-0fa248231b89"
+      ],
+      "settings": {
+        "borderless": true,
+        "review-number": 4000000,
+        "title": "<p>Happy Sleepers Worldwide<\/p>",
+        "subtitle": "Curious as to why millions of customers in over 30 countries have chosen Emma? See what they have to say about us."
+      }
+    },
+    "products-grid": {
+      "type": "products-grid",
+      "blocks": {
+        "ddf828c5-6eed-47cf-bc7f-f8ba12792926": {
+          "type": "grid_item",
+          "settings": {
+            "product": "emma-foam-pillow",
+            "image": "shopify:\/\/shop_images\/2_4963b997-e724-4c0d-afe7-b31a62c76039.png",
+            "badge_text": "20% off",
+            "name": "Emma Foam Pillow"
+          }
+        },
+        "4f70ceb7-0ed5-4816-a3c6-7e5307241126": {
+          "type": "grid_item",
+          "settings": {
+            "product": "emma-mattress-protector",
+            "image": "shopify:\/\/shop_images\/4_c172c990-298d-422d-b099-a9e0346ae657.png",
+            "badge_text": "30% off",
+            "name": "Emma Mattress Protector"
+          }
+        },
+        "07c3a1bf-135a-4913-a567-74e6d897d945": {
+          "type": "grid_item",
+          "settings": {
+            "product": "emma-powerbase-1-0",
+            "image": "shopify:\/\/shop_images\/5_18982594-8cf7-4960-b4fc-7a1226a1ec94.png",
+            "badge_text": "8% off",
+            "name": "Emma Powerbase"
+          }
+        },
+        "5a957481-10d2-43ab-a92a-241d7d34bd5f": {
+          "type": "grid_item",
+          "settings": {
+            "product": "artisan-wooden-platform-bed",
+            "image": "shopify:\/\/shop_images\/6_070fe27c-f467-4589-87a5-f8a02c87e29e.png",
+            "badge_text": "4% off",
+            "name": "Rustic Wooden Bed"
+          }
+        }
+      },
+      "block_order": [
+        "ddf828c5-6eed-47cf-bc7f-f8ba12792926",
+        "4f70ceb7-0ed5-4816-a3c6-7e5307241126",
+        "07c3a1bf-135a-4913-a567-74e6d897d945",
+        "5a957481-10d2-43ab-a92a-241d7d34bd5f"
+      ],
+      "settings": {
+        "title": "You might also like"
+      }
+    },
+    "contact-us": {
+      "type": "contact-us",
+      "settings": {
+        "custom_title": "Need help deciding?"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "alternate-banners",
+    "accessory-highlights",
+    "information-tabs",
+    "faqs-and-specs",
+    "yotpo-main-widget",
+    "brand-statistics",
+    "products-grid",
+    "contact-us"
+  ]
+}

@@ -6,22 +6,9 @@ class CartDrawer extends CustomElement {
 
   firstVisit = true
 
-  constructor() {
-    super();
-
-    this.addEventListener(
-      "keyup",
-      (evt) => evt.code === "Escape" && this.close()
-    );
-    this.querySelector("#CartDrawer-Overlay").addEventListener(
-      "click",
-      this.close.bind(this)
-    );
-    this.setHeaderCartIconAccessibility();
-  }
-
   get refs() {
     return {
+      cartSurface: document.querySelector('cart-surface'),
       scrollableContent: this.$el.find('cart-scrollable-content').get(0),
       cartSummary: document.getElementById('CartDrawerSummary'),
       cartRedeem: document.getElementById('CartRedeemCode'),
@@ -34,9 +21,9 @@ class CartDrawer extends CustomElement {
   async mounted() {
     this.renderShipOutTime();
 
-    const isEmpty = this.$el.hasClass('is-empty')
+    const { cartRedeem, cartSurface } = this.refs
 
-    const { cartRedeem } = this.refs
+    const isEmpty = cartSurface.$el.hasClass('is-empty')
 
     if (!isEmpty) {
       await this.loadCheckout();
@@ -50,9 +37,9 @@ class CartDrawer extends CustomElement {
     if (!$shipOutTime.length) return
 
     const dateInEst = (new Date()).toLocaleString('en-US', { timeZone: 'America/New_York', hour12: false })
-    const estDate = new Date(dateInEst)
+    const currentHour = new Date(dateInEst).getHours()
 
-    $shipOutTime.find('.cart-banner__content').text(isShippedOutNextDay(estDate.getHours(), estDate.getMinutes()) ? $shipOutTime.data('shipNext') : $shipOutTime.data('shipNow'))
+    $shipOutTime.find('.cart-banner__content').text((currentHour > 14) ? $shipOutTime.data('shipNext') : $shipOutTime.data('shipNow'))
   }
 
   async loadCheckout() {
@@ -143,54 +130,6 @@ class CartDrawer extends CustomElement {
     }
   }
 
-  setHeaderCartIconAccessibility() {
-    const cartLink = document.querySelector("#cart-icon-bubble");
-    cartLink.setAttribute("role", "button");
-    cartLink.setAttribute("aria-haspopup", "dialog");
-    cartLink.addEventListener("click", (event) => {
-      event.preventDefault();
-      this.open(cartLink);
-    });
-    cartLink.addEventListener("keydown", (event) => {
-      if (event.code.toUpperCase() === "SPACE") {
-        event.preventDefault();
-        this.open(cartLink);
-      }
-    });
-  }
-
-  async open(triggeredBy) {
-    if (triggeredBy) this.setActiveElement(triggeredBy);
-    const cartDrawerNote = this.querySelector('[id^="Details-"] summary');
-    if (cartDrawerNote && !cartDrawerNote.hasAttribute("role"))
-      this.setSummaryAccessibility(cartDrawerNote);
-
-    setTimeout(() => {
-      this.classList.add("animate", "active");
-      this.querySelector(".drawer").classList.add("animate", "active");
-    });
-
-    this.addEventListener(
-      "transitionend",
-      () => {
-        const containerToTrapFocusOn = document.getElementById("CartDrawer");
-        const focusElement =
-          this.querySelector(".drawer") || this.querySelector(".drawer__close");
-        trapFocus(containerToTrapFocusOn, focusElement);
-      },
-      { once: true }
-    );
-
-    document.body.classList.add("no-scroll");
-  }
-
-  close() {
-    this.classList.remove("active");
-    this.querySelector(".drawer").classList.remove("active");
-    removeTrapFocus(this.activeElement);
-    document.body.classList.remove("no-scroll");
-  }
-
   setSummaryAccessibility(cartDrawerNote) {
     cartDrawerNote.setAttribute("role", "button");
     cartDrawerNote.setAttribute("aria-expanded", "false");
@@ -221,14 +160,6 @@ class CartDrawer extends CustomElement {
         section.selector
       );
     });
-
-    setTimeout(() => {
-      this.querySelector("#CartDrawer-Overlay").addEventListener(
-        "click",
-        this.close.bind(this)
-      );
-      this.open();
-    });
   }
 
   getSectionInnerHTML(html, selector = ".shopify-section") {
@@ -240,9 +171,9 @@ class CartDrawer extends CustomElement {
   getSectionsToRender() {
     return [
       {
-        id: 'CartDrawerItems',
+        id: 'shopify-section-cart-drawer-items',
         section: "cart-drawer-items",
-        selector: "#CartDrawer-CartItems",
+        selector: "cart-drawer-items"
       },
       {
         id: "shopify-section-cart-drawer-summary",
@@ -264,7 +195,7 @@ class CartDrawer extends CustomElement {
       {
         id: "shopify-section-cart-drawer-header",
         section: "cart-drawer-header",
-        selector: ".drawer-header",
+        selector: ".drawer-title-container",
       },
       {
         id: "shopify-section-cart-drawer-upsell",
@@ -277,10 +208,6 @@ class CartDrawer extends CustomElement {
     return new DOMParser()
       .parseFromString(html, "text/html")
       .querySelector(selector);
-  }
-
-  setActiveElement(element) {
-    this.activeElement = element;
   }
 
   onLoad(isLoading) {
@@ -304,6 +231,12 @@ class CartDrawerSummary extends CustomElement {
   }
 
   mounted() {
+    // Extend - Dispatch refreshAjaxSideCart on cart load
+    window.setTimeout(function() {
+      window.dispatchEvent(new CustomEvent('refreshAjaxSideCart'))
+    }, 1000)
+    // Extend - End code
+    
     const $originalPriceEl = this.$el.find('#CartOriginalPrice')
     const $totalPriceEl = this.$el.find("#CartTotalPrice")
     const $totalSavedEl = this.$el.find("#CartTotalSaved")
@@ -318,6 +251,11 @@ class CartDrawerSummary extends CustomElement {
   }
 
   onMutation(mutationRecords) {
+    console.log('mutation')
+    // Extend - Dispatch refreshAjaxSideCart on cart load
+    window.dispatchEvent(new CustomEvent('refreshAjaxSideCart'))
+    // Extend - End code
+    
     const hasCartTotalsChanged = mutationRecords.some(r => r.target.id === "CartTotals")
 
     const hasTotalPriceChanged = mutationRecords.some(r => r.target.id === "CartTotalPrice" && !!r.addedNodes.length)
@@ -345,6 +283,9 @@ class CartDrawerSummary extends CustomElement {
       $originalPriceEl.addClass('hidden')
       $totalSavedEl.addClass('hidden')
     }
+
+
+    this.refreshKlarnaWidget(discountedTotal || totalPrice)
   }
 
   clearTotalPrice() {
@@ -375,8 +316,8 @@ class CartDrawerSummary extends CustomElement {
 
     if (!cart || !checkout) return
 
-    const totalPrice = parseFloat(checkout.subtotal_price)
-    const originalPrice = parseFloat(checkout.line_items.reduce((r, item) => r + item.quantity * (+item.compare_at_price), 0));
+    const totalPrice = parseFloat(checkout.total_price)
+    const originalPrice = parseFloat(checkout.line_items.reduce((r, item) => r + item.quantity * (+item.compare_at_price || +item.price), 0));
 
     this.refreshCartPrices(totalPrice, originalPrice)
   }
@@ -394,6 +335,13 @@ class CartDrawerSummary extends CustomElement {
 
     $totalPriceEl.text(totalPriceInCurrency)
     $totalSavedEl.find(".saved-amount").text(totalSavedInCurrency)
+  }
+
+  refreshKlarnaWidget(totalPrice) {
+
+    document.getElementsByTagName("klarna-placement")[0].setAttribute("data-purchase-amount", parseFloat(totalPrice * 100).toFixed(0));
+
+    window.KlarnaOnsiteService.push({ eventName: 'refresh-placements' })
   }
 }
 
@@ -416,68 +364,6 @@ class CartDrawerFooter extends CustomElement {
 }
 
 customElements.define("cart-drawer-footer", CartDrawerFooter);
-
-class CartDrawerAffirm extends CustomElement {
-  get refs() {
-    return {
-      affirmEn: this.$el.find(".cart-drawer-affirm-en"),
-      affirmFr: this.$el.find(".cart-drawer-affirm-fr"),
-    }
-  }
-
-  async refreshAffirm() {
-    const response = await fetch('/?sections=cart-drawer-affirm')
-    const state = await response.json()
-    this.refreshSections(state)
-
-    const currentLanguage = $('html').attr('lang');
-    if (currentLanguage === 'en') {
-      $(this).find(".cart-drawer-affirm-en").show();
-      $(this).find(".cart-drawer-affirm-fr").hide();
-    } else {
-      $(this).find(".cart-drawer-affirm-fr").show();
-      $(this).find(".cart-drawer-affirm-en").hide();
-    }
-  }
-
-  onDisabledChange(isDisabled) {
-    super.onDisabledChange(isDisabled);
-
-    const { affirmEn, affirmFr } = this.refs
-
-    affirmEn[!!isDisabled ? 'attr' : 'removeAttr']('disabled', 'disabled')
-    affirmFr[!!isDisabled ? 'attr' : 'removeAttr']('disabled', 'disabled')
-  }
-
-  refreshSections(sections) {
-    this.getSectionsToRender().forEach((section => {
-      const elementToReplace = document.getElementById(section.id).querySelector(section.selector) || document.getElementById(section.id);
-
-      elementToReplace.innerHTML =
-        this.getSectionInnerHTML(sections[section.section], section.selector);
-    }));
-  }
-
-  getSectionsToRender() {
-    return [
-      {
-        id: "shopify-section-cart-drawer-affirm",
-        section: "cart-drawer-affirm",
-        selector: ".cart-drawer-affirm",
-      },
-    ]
-  }
-
-  getSectionInnerHTML(html, selector = ".shopify-section") {
-    const el = new DOMParser()
-      .parseFromString(html, 'text/html')
-      .querySelector(selector)
-
-    return el?.innerHTML ?? ""
-  }
-}
-
-customElements.define("cart-drawer-affirm", CartDrawerAffirm);
 
 class CartRedeemCode extends CustomElement {
 

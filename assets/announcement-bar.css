@@ -1,1 +1,50 @@
-.announcement-bar-wrapper{position:sticky;top:-1px;z-index:999}.announcement-bar-wrapper [type=button],.announcement-bar-wrapper [type=reset],.announcement-bar-wrapper [type=submit],.announcement-bar-wrapper button{-webkit-appearance:button;background-color:transparent;background-image:none}.announcement-bar-wrapper .announcement-bar{height:70px;width:100%;background-color:var(--section-setting-background-color);color:var(--section-setting-text-color);box-shadow:0 42px 65px rgba(0,0,0,.03),0 9.38125px 14.5186px rgba(0,0,0,.018),0 2.79304px 4.32257px rgba(0,0,0,.012)}.announcement-bar-wrapper .announcement-bar__content{font-variant-numeric:tabular-nums;text-align:center;letter-spacing:0;height:100%;margin:0;padding:0 30px;display:flex;justify-content:center;align-items:center;flex-wrap:wrap}.announcement-bar-wrapper .announcement-bar__content *{color:var(--section-setting-text-color)}@media (min-width:768px){.announcement-bar-wrapper .announcement-bar{height:40px}}.announcement-bar-wrapper .splide,.announcement-bar-wrapper .splide__list{width:100%}.announcement-bar-wrapper .splide__track{padding:0}.announcement-bar-wrapper .splide__arrow{transform:translateY(-50%);transition:opacity .3s}.announcement-bar-wrapper .splide__arrow:disabled{opacity:0;pointer-events:none}
+:root {
+    --color-primary: #ffa235;
+    --color-secondary: #3c4196;
+    --color-charade: #2e2f3c;
+    --color-comet: #55576f;
+    --color-chambray: #3c4196;
+    --color-pizazz: #ff8900;
+    --color-jade: #00b67a;
+    --color-cultured: #f7f7f9;
+    --color-spun-pearl: #b0b1c2;
+    --color-athens-gray: #e6e7ec;
+    --color-lochinvar: #288e7c;
+    --color-scampi: #6469aa;
+    --color-lapis-blue: #2c3183;
+    --color-steel: #7f819d;
+    --color-calm-600: #693f73;
+    --color-scarlet: #f03306;
+}
+.announcement-bar-wrapper {
+    position: sticky;
+    top: -1px;
+    z-index: 999;
+}
+#announcement-bar .anno-wrapper {
+    display: flex;
+    align-items: center;
+    background-color:var(--section-bgc) !important;
+    border-bottom: 0.1rem solid rgba(0, 0, 0, 0.08);
+}
+#announcement-bar .anno-text {
+    color: var(--section-text-color);
+}
+@media screen and (max-width: 769px) {
+    #announcement-bar .anno-cta,
+    #announcement-bar .countdown-container:empty {
+        display: none;
+    }
+}
+#announcement-bar .anno-tooltip {
+    display: block;
+}
+#announcement-bar countdown-timer .timer-display {
+    color: var(--section-text-color);
+}
+#announcement-bar .countdown-container {
+    display: block;
+}
+#announcement-bar .page-boundary{
+  justify-content:center !important;
+}

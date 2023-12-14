@@ -1,0 +1,54 @@
+<div class="emma-accordion">
+    {% for block in section.blocks %}
+        <div class="accordion">
+            {{block.settings.question}}
+            <span>&nbsp;</span>
+        </div>
+        <div class="container">
+            <div class="content">
+                <p>{{block.settings.answer}}</p>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+
+
+<script type="text/javascript" src="{{ 'jquery_accordion.js' | asset_url }}"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+$('.accordion').accordion({
+    animate: 200,
+    collapsible: true,
+    active: false,
+    cookieName: 'accordion_nav'
+});
+});
+</script>
+
+{% schema %}
+  {
+    "name": "Accordion",
+    "settings": [],
+    "blocks":[
+        {
+           "type":"slide",
+           "name":"Question",
+           "settings":[
+              {
+                 "type":"text",
+                 "id":"question",
+                 "label":"Question",
+                 "default": "Question"
+              },
+              {
+                "type": "richtext",
+                 "id":"answer",
+                 "label": "Add custom text below",
+                 "default": "<p>Add your text here</p>"
+              }
+           ]
+        }
+     ]
+  }
+{% endschema %}

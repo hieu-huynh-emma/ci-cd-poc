@@ -1,28 +1,41 @@
 {% assign catalogItems = section.blocks | where: 'type', 'catalog_item' %}
 
+<style>
+  .star-rating{
+    display:none
+  }
+  product-card .product-card-metadata{
+    align-content: start;
+  }
+</style>
 <section id="product-catalog-section" class="section-container spacing-{{ section.settings.container_spacing }}">
-	<div class="section-chassis page-boundary">
-		{% render 'section-header' %}
-		
-		<div class="grid-container splide">
-			{% include 'splide-arrows' %}
-			
-			<div class="splide__track">
-				<ul class="splide__list">
-					{% for block in catalogItems %}
-						<li class="splide__slide">
-							<a href="{{ block.settings.product.url }}">
-								{% render 'product-card', product: block.settings.product %}
-							</a>
-						</li>
-					{% endfor %}
-				</ul>
-			</div>
-		</div>
-	</div>
+  <div class="section-chassis page-boundary">
+    {% render 'section-header' %}
+
+    <lazy-component size="md">
+      <div>
+        <div class="grid-container splide">
+          {% include 'splide-arrows' %}
+
+          <div class="splide__track">
+            <ul class="splide__list">
+              {% for block in catalogItems %}
+                <li class="splide__slide">
+                  <a href="{{ block.settings.product.url }}">
+                    {% render 'product-card', product: block.settings.product %}
+                  </a>
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+      </div>
+      <lazy-script manual src="{{ 'product-catalog.js' | asset_url }}"></lazy-script>
+    </lazy-component>
+  </div>
+
 </section>
 
-<script is="delay-script" phase="interactive" url="{{ 'product-catalog.js' | asset_url }}"></script>
 
 {% schema %}
 {

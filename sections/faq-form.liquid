@@ -1,72 +1,10 @@
-<style>
-  #faq .faq__choices {
-    display: grid;
-    gap: 18px;
-    grid-template-columns:repeat(auto-fit, minmax(140px, 1fr))
-  }
-
-  #faq .faq__choices a {
-    height: 40px;
-    line-height: 1.2;
-    border-radius: 15px
-  }
-
-  #faq .accordion__content a,
-  #faq .accordion__content a:visited {
-    color: #3C4196;
-    font-weight: bold;
-    text-decoration: underline
-  }
-  #faq .accordion__content p {
-    font-size: 11px;
-    margin-bottom: 16px;
-  }
-  #faq .accordion__content p:last-child {
-    margin-bottom: 0;
-  }
-  #faq .accordion__content ul {
-    list-style: disc;
-    margin: inherit;
-    padding: 0 16px 0 24px;
-  }
-  #faq .accordion__content ul:last-child {
-    padding-bottom: 0;
-  }
-  #faq .accordion__content ul li {
-    font-size: 11px;
-    margin-bottom: 4px;
-  }
-  #faq .accordion__content tr:first-child td:after,
-  #faq .accordion__content tr:first-child th:after {
-    border-bottom: 0;
-  }
-
-  #faq .accordion-wrapper.is-open .accordion-icon {
-    transform: rotate(45deg)
-  }
-
-  #faq .faq-qa-section:nth-child(odd) {
-    background-color: #F7F7F9
-  }
-
-  #faq .faq-qa-section:nth-child(even) {
-    background-color: white
-  }
-  @media (min-width: 1024px) {
-    #faq .accordion__content p,
-    #faq .accordion__content ul li {
-      font-size: 16px;
-    }
-  }
-</style>
-
-<section id="faq-search-section">
+<div id="faq">
   <div class="bg-[#F7F7F9] py-8 lg:py-12">
     <div class="mx-auto max-w-3xl px-4 sm:px-3 md:px-5">
-      <h1 class="mb-8 text-center text-[26px] lg:mb-5 lg:text-[39px]">Frequently Asked Questions</h1>
+      <h1 class="font-tiempos mb-8 text-center text-[26px] lg:mb-5 lg:text-[39px]">Frequently Asked Questions</h1>
       <div class="relative mb-6">
         <div class="relative">
-          <input id="faq__search-input" class="outline-none shadow-none w-full border border-[#DDDDDF] py-3 pr-14 pl-5 text-sm font-medium lg:py-4 lg:pl-8 lg:text-lg" type="text" placeholder="How can we help you?" />
+          <input id="faq__search-input" class="outline-none shadow-none font-inter w-full border border-[#DDDDDF] py-3 pr-14 pl-5 text-sm font-medium lg:py-4 lg:pl-8 lg:text-lg" type="text" placeholder="How can we help you?" />
           <svg class="absolute right-3 top-1/2 -translate-y-1/2 transform" width="45" height="35" viewBox="0 0 45 35" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
             <rect y="-5" width="45" height="45" fill="url(#pattern0)" />
             <defs>
@@ -85,20 +23,20 @@
       {% if section.blocks.size > 0 %}
         <div class="faq__choices">
           {% for block in section.blocks %}
-            <a class="px-1 hover:underline self-center text-center flex w-full items-center justify-center bg-[#3C4196] text-sm font-medium text-white" href="#{{ block.settings.slug }}">{{ block.settings.title }}</a>
+            <a class="font-inter hover:underline self-center text-center flex w-full items-center justify-center bg-[#3C4196] text-sm font-medium text-white" href="#{{ block.settings.slug }}">{{ block.settings.title }}</a>
           {% endfor %}
         </div>
       {% endif %}
     </div>
   </div>
-</section>
+</div>
 
 <script type="module">
   const selectors = {
     searchInput$: $('#faq #faq__search-input'),
     autocomplete$: $('#faq #faq__search-autocomplete'),
     searchResultList$: $('#faq #faq__search-result-list'),
-    getQuestionsMatchSearchTerm: (searchTerm) => $(`#faq p.faq-data-search-term:contains(${searchTerm})`)
+    getQuestionsMatchSearchTerm: (searchTerm) => $(`#faq article[data-search-term*='${searchTerm}']`)
   }
 
   selectors.searchInput$.on({
@@ -144,7 +82,7 @@
       const question$ = $(question)
       const searchResult = document.createElement('li')
       searchResult.className = 'px-6 py-3 hover:bg-gray-100 cursor-pointer'
-      searchResult.innerText = question$.siblings('.faq-data-search').html()
+      searchResult.innerText = question$.data('search')
       searchResult.onclick = () => handleClickSearchResult(selectors, question$)
       selectors.searchResultList$.append(searchResult)
     }
@@ -154,18 +92,18 @@
     // hide autocomplete
     selectors.autocomplete$.addClass('hidden')
     // scroll to selected question
-    const questionDataContainer = $(question$.get(0)).parent().parent().get(0)
-    questionDataContainer.scrollIntoView()
+    question$.get(0).scrollIntoView()
     // expand accordion if not opened
-    if (!$(questionDataContainer).hasClass('is-open')) {
-      $(questionDataContainer).find('.accordion').click()
+    if (!question$.hasClass('is-open')) {
+      question$.find('.accordion').click()
     }
   }
 </script>
 
 {% schema %}
 {
-  "name": "FAQ Search",
+  "name": "FAQ",
+  "tag": "section",
   "blocks": [
     {
       "type": "qna-button",

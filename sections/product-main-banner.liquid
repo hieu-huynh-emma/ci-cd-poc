@@ -1,0 +1,78 @@
+{{ 'product-main-banner.css' | asset_url | stylesheet_tag }}
+
+<section id="product-main-banner">
+  <div class="product-main-banner {% if section.settings.rounded %} product-main-banner--rounded{% endif %}">
+    <div class="wallpaper">
+      <img
+        class="hidden md:flex" src="{{ section.settings.desktop_bg | img_url: '1312x419' }}"
+        alt="product-main-banner-bg-desktop.jpg" loading="lazy"
+      >
+      <img
+        class="md:hidden" src="{{ section.settings.mobile_bg | img_url: '343x500' }}" alt="product-main-banner-bg-mobile.jpg"
+        loading="lazy"
+      >
+    </div>
+    <div class="main-content">
+      <h2 class="main-content__title">{{ section.settings.title }}</h2>
+      <p class="main-content__subtitle text-base font-semibold indent-0">{{ section.settings.subtitle }}</p>
+
+      {% if section.settings.enable_cta == true %}
+        <a href="{{ section.settings.cta_btn_url }}" class="main-content__cta">
+          {{ section.settings.cta_btn_text }}
+        </a>
+      {% endif %}
+    </div>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Product Main Banner",
+  "settings": [
+    {
+      "id": "enable_cta",
+      "type": "checkbox",
+      "default": false,
+      "label": "t:sections.main-product.settings.enable_cta.label"
+    },
+    {
+      "id": "rounded",
+      "type": "checkbox",
+      "default": false,
+      "label": "t:sections.main-product.settings.rounded_banner.label"
+    },
+    {
+      "id": "title",
+      "type": "richtext",
+      "label": "Title",
+      "default": "<p>Engineered for a <br /><span>happy</span> back.</p>"
+    },
+    {
+      "id": "subtitle",
+      "type": "text",
+      "label": "Subtitle",
+      "default": "Emma is the most mentioned brand worldwide when it comes to good sleep."
+    },
+    {
+      "id": "cta_btn_text",
+      "type": "text",
+      "label": "CTA Button Text",
+      "default": "Show Mattress"
+    },
+    {
+      "id": "cta_btn_url",
+      "type": "url",
+      "label": "CTA Button URL"
+    },
+    {
+      "id": "desktop_bg",
+      "type": "image_picker",
+      "label": "Desktop Background"
+    },
+    {
+      "id": "mobile_bg",
+      "type": "image_picker",
+      "label": "Mobile Background"
+    }
+  ]
+}
+{% endschema %}

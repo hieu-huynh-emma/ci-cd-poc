@@ -2,11 +2,11 @@
   <ul class="utility-nav">
     <li class="customer-support utility-nav__item">
       <div class="customer-support__avatar">
-        {{ section.settings.support-avatar | image_url: width: 30 | image_tag: loading: 'lazy' }}
+        {{ section.settings.support-avatar | image_url: width: 30 | image_tag }}
       </div>
       <div>
         <div class="flex items-center gap-3 mb-1">
-          <div>{{ 'cart.customer_support.need_help' | t }}</div>
+          <div>Need help?</div>
           <div class="live-chat utility-nav__item cursor-pointer">
             <svg
               width="9" height="10" viewBox="0 0 9 10" fill="none"
@@ -17,22 +17,38 @@
                 stroke="white" stroke-linecap="round" stroke-linejoin="round"
               />
             </svg>
-            <p>{{ 'cart.customer_support.chat_now' | t }}</p>
+            <p>Chat now</p>
           </div>
           <div class="utility-nav__item phone">
             <img class="small-icon" src="{{ 'phone.svg' | asset_url }}" height="8" loading="lazy" />
-            <a href="tel:+18449063662">+1 844-906-3662</a>
+            <a></a>
           </div>
           <div class="email utility-nav__item">
             <img class="small-icon" src="{{ 'support-email.svg' | asset_url }}" height="8" loading="lazy" />
             <a href="mailto:{{ shop.email }}">{{ shop.email }}</a>
           </div>
         </div>
-        <p>{{ 'cart.customer_support.support_hour' | t }}</p>
+        <p>Live support available from 08:00 to 18:00 GMT-6, Mondays-Fridays</p>
       </div>
     </li>
   </ul>
 </div>
+
+<script>
+  function renderCartFooter() {
+    const { tel, vanityPhone } = parsePhoneNumbers("{{ shop.phone }}")
+    const $phoneItem = $("#CartDrawerCustomerSupport .phone a");
+
+    $phoneItem.attr('href', `tel:${tel}`)
+    $phoneItem.text(vanityPhone)
+  }
+
+  $(window).on("complete", function () {
+    renderCartFooter();
+
+    $("#CartDrawerCustomerSupport .live-chat").click(openChatSupport)
+  })
+</script>
 
 {% schema %}
 {

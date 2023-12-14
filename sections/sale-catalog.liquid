@@ -1,8 +1,22 @@
 {% assign catalogItems = section.blocks | where: 'type', 'catalog_item' %}
+<style>
+  .star-rating{
+    display:none
+  }
+  product-card .product-card-metadata{
+    align-content: start;
+  }
 
-<section id="sale-catalog-section" class="section-container weglot-dynamic-content-translate spacing-{{ section.settings.container_spacing }}">
+  .smart-tabs .smart-container {
+    gap: 80px;
+  }
+  .smart-tabs .smart-tabs-content-section {
+    padding: 0 !important;
+  }
+</style>
+<section id="sale-catalog-section" class="section-container spacing-{{ section.settings.container_spacing }}">
   <div class="section-chassis page-boundary">
-    <smart-tabs class='material'>
+    <smart-tabs class="material">
       {% for collection in section.settings.sale_collection_list %}
         <smart-tab-item label="{{ collection.title }}">
           <div class="catalog-grid">
@@ -75,38 +89,6 @@
       "type": "header",
       "content": "Product Assets",
       "info": "Please visit the respective Accentuate Url of each product below to update its assets"
-    },
-    {
-      "type": "paragraph",
-      "content": "Original Mattress: [Accentuate](https://emma-sleep-us.myshopify.com/admin/apps/accentuate/app/edit?scope=product&id=7607820517539) "
-    },
-    {
-      "type": "paragraph",
-      "content": "Emma Climax Hybrid: [Accentuate](https://emma-sleep-us.myshopify.com/admin/apps/accentuate/app/edit?scope=product&id=7842236072099) "
-    },
-    {
-      "type": "paragraph",
-      "content": "Powerbase Pro Adjustable Bed: [Accentuate](https://emma-sleep-us.myshopify.com/admin/apps/accentuate/app/edit?scope=product&id=7376400515235) "
-    },
-    {
-      "type": "paragraph",
-      "content": "Powerbase Adjustable Bed: [Accentuate](https://emma-sleep-us.myshopify.com/admin/apps/accentuate/app/edit?scope=product&id=7376400515235) "
-    },
-    {
-      "type": "paragraph",
-      "content": "The Rustic Wooden Bed: [Accentuate](https://emma-sleep-us.myshopify.com/admin/apps/accentuate/app/edit?scope=product&id=7539433210019) "
-    },
-    {
-      "type": "paragraph",
-      "content": "Upholstered Platform: [Accentuate](https://emma-sleep-us.myshopify.com/admin/apps/accentuate/app/edit?scope=product&id=7864497537187) "
-    },
-    {
-      "type": "paragraph",
-      "content": "Emma Mattress Protector: [Accentuate](https://emma-sleep-us.myshopify.com/admin/apps/accentuate/app/edit?scope=product&id=7322945978531) "
-    },
-    {
-      "type": "paragraph",
-      "content": "Emma Foam Pillow: [Accentuate](https://emma-sleep-us.myshopify.com/admin/apps/accentuate/app/edit?scope=product&id=7322957676707) "
     }
   ]
 }

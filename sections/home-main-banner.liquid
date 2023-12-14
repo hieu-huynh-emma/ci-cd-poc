@@ -1,0 +1,133 @@
+<style>
+ .main-banner-section {
+  padding: 0.75rem;
+  width: 100%;
+ }
+
+ .main-banner-container {
+  width: 100%;
+  height: 25rem;
+  background: url({{ "banner-bg-mobile.png" | asset_url}}) no-repeat center center;
+  background-size: cover;
+  border-radius: 7px;
+  font-family: 'Inter';
+  font-weight: 400;
+  display: flex;
+  justify-content: space-between;
+  flex-flow: column;
+  align-items: center;
+  padding: 1rem;
+ }
+
+ .main-banner-container h3 {
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: capitalize;
+ }
+
+ .main-banner-container h1 {
+  font-size: 31px;
+  font-family: 'Tiempos';
+ }
+
+ .main-banner-container p {
+  font-size: 16px;
+ }
+
+ .main-banner-container a {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  background-color: #FF8900;
+  color: white;
+  border-radius: 60px;
+  width: 20rem;
+  height: 3.125rem;
+  line-height: 150%;
+  font-family: 'Acumin Pro';
+  font-weight: 600;
+  max-width: 98%;
+  text-transform: uppercase;
+  transition: 0.2s;
+ }
+
+  .main-banner-container a:hover {background-color:#3c4196}
+
+ @media screen and (min-width: 768px) {
+  .main-banner-container {
+   background: url("https://cdn.shopify.com/s/files/1/0592/8570/0771/files/banner-bg-desktop.webp?v=1662607733") no-repeat center center;
+   background-size: cover;
+   justify-content: center;
+   align-items: start;
+   padding-left: 10rem;
+   height: 28rem;
+  }
+
+  .main-banner-container h1 {
+   font-size: 36px;
+  }
+  .main-banner-container p {
+   font-size: 20px;
+   line-height: 150%;
+  }
+  .content-container {
+    max-width: 25rem;
+  }
+
+  .main-banner-container a {
+   max-width: 12.5rem;
+   margin-top: 1.5rem;
+  }
+ }
+</style>
+<section class="main-banner-section">
+  
+ <div class="main-banner-container">
+  <div class="content-container">
+   <h3>{{section.settings.subtitle}}</h3>
+   <h1>{{section.settings.title}}</h1>
+   <p>{{section.settings.desc}}</p>
+  </div>
+  <a href="{{section.settings.button_link}}">{{section.settings.button_title}}</a>
+ </div>
+</section>
+
+{% schema %}
+{
+ "name": "Home main banner section",
+ "settings": [
+ {
+  "id": "subtitle",
+  "type": "text",
+  "label": "Subtitle",
+  "default":"LIMITED TIME"
+ },
+ {
+ "id": "title",
+ "type": "text",
+ "label": "Banner Title",
+ "default":"Up to 38% off sitewide"
+ },
+ {
+ "id": "desc",
+ "type": "text",
+ "label": "Content",
+ "default":"Get bedroom essentials at prices you won't lose sleep over"
+ },
+ {
+ "id": "button_title",
+ "type": "text",
+ "label": "Content",
+ "default":"Shop now"
+ },
+ {
+ "type": "url",
+ "id": "button_link",
+ "label": "Button link",
+ "default":"/collections"
+ }
+ ]
+}
+{% endschema %}

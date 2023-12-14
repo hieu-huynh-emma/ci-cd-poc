@@ -53,8 +53,8 @@ class CustomElement extends HTMLElement {
 
   constructor() {
     super();
-    this.$el = $(this)
-    this.mutationObserver = new MutationObserver(this.onMutation.bind(this));
+    this.$el = $(this);
+    this.setup()
   }
 
   connectedCallback() {
@@ -66,15 +66,18 @@ class CustomElement extends HTMLElement {
 
     setTimeout(() => {
       $(this).ready(this.mounted.bind(this))
-
-      this.setupTooltips()
     }, 0)
   }
 
   disconnectedCallback() {
-    this.mutationObserver.disconnect()
+    this.mutationObserver?.disconnect()
 
     this.onDestroy()
+  }
+
+
+  setup() {
+    this.mutationObserver = new MutationObserver(this.onMutation.bind(this));
   }
 
   init() {
@@ -117,13 +120,17 @@ class CustomElement extends HTMLElement {
   beforeMount() {
   }
 
-  render() {
+  template() {
+
   }
 
+  render() {
+    if (this.template()) {
+      this.innerHTML = this.template()
+    }
+  }
   mounted() {
   }
-
-  setupTooltips() {}
 
   onMutation() {
   }

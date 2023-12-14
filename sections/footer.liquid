@@ -1,200 +1,428 @@
-<link is="delay-stylesheet" href="{{ 'footer.css' | asset_url }}">
+<style>
+    .site-footer {
+        background-color: #2e2f3c;
+        padding: 60px 0
+    }
 
-<footer class="py-16 bg-[#3C4196] text-center lg:text-left">
-  <div class="mx-auto max-w-7xl px-4 sm:px-3 md:px-5">
-    <div class="mb-16 lg:flex items-center justify-between">
-      <a class="block mb-14 lg:mb-0" href="/">
-        {% render 'image-tag', image_src: section.settings.footer-logo, width: 170, class:'block mx-auto' %}
-      </a>
-      <div class="flex gap-4 items-center justify-center">
-        <p class="text-white">Follow Us</p>
-        <ul class="flex gap-5">
-          {% for block in section.blocks %}
-            <li>
-              <a href="{{ block.settings.footer-social-media-link }}" rel="nofollow" target="_blank">
-                <img class="img-fluid footer-social-icons" src="{{ block.settings.footer-social-icon | img_url: 'master' }}">
-              </a>
-            </li>
-          {% endfor %}
-        </ul>
-      </div>
-    </div>
+    .site-footer .footer-chassis {
+        display: grid;
+        gap: 127px;
+        grid-template-columns:minmax(0, .45fr) minmax(0, .55fr)
+    }
 
-    <div class="lg:flex lg:gap-8 mb-24">
-      <div class="mb-14 lg:w-1/3">
-        <p class="text-[18px] mb-4 font-semibold text-white">{{ section.settings.subscriber_header }}</p>
-        <p class="text-white mb-6 lg:w-4/5">{{ section.settings.subscriber_description }}</p>
+    .site-footer__heading {
+        margin-bottom: 16px;
+        color: #fff;
+        font-family: Inter;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 24px
+    }
 
-        <div class="w-[250px] mx-auto lg:m-0">
-          {% form 'customer' %}
-            {{ form.errors | default_errors }}
-            {% if form.posted_successfully? %}
-              <div class="note form-success">{{ 'general.newsletter_form.newsletter_confirmation' | t }}</div>
-            {% else %}
-              <input type="hidden" name="contact[tags]" value="newsletter">
-              <div>
-                <input type="email"
-                       value="{% if customer %}{{ customer.email }}{% endif %}"
-                       placeholder="{{ 'general.newsletter_form.newsletter_placeholder' | t }}"
-                       name="contact[email]" id="Email"
-                       class="rounded-md w-full h-[45px] mb-2 text-[16px] py-4 px-5 shadow-md shadow-inner" autocorrect="off"
-                       autocapitalize="off" />
-                <div class="footer-newsletter__checkbox mb-2">
-                  <label for="ContactFooterCheckbox" class="site-footer__link text-[12px] text-white">
-                    <input
-                      type="checkbox" id="ContactFooterCheckbox" name="customer[accepts_marketing]"
-                      value="privacypolicy" checked
-                    />
-                    Yes, I would like to receive
-                      newsletters, and I have read and
-                      accepted the <a href="/pages/privacy-policy">privacy
-                          policy.</a>
-                  </label>
+    .site-footer__link {
+        font-family: Inter;
+        font-size: 16px;
+        font-weight: 300;
+        color: #fff;
+        text-decoration: none
+    }
+
+    .footer-contact {
+        display: flex;
+        gap: 50px;
+/*         grid-template-columns:minmax(0, 1fr);
+        grid-auto-flow: row */
+      flex-direction:column;
+    }
+
+    .footer-contact__main {
+        display: grid;
+        gap: 30px;
+        grid-template-columns:minmax(0, 1fr)
+    }
+
+    .sitemap {
+        display: grid;
+        grid-template-columns:repeat(3, minmax(0, auto));
+        grid-gap: 70px
+    }
+.foot_info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+    @media screen and (max-width: 1024px) {
+      .site-footer .footer-chassis{
+        gap:20px;
+      }
+        .footer-contact {
+            flex-wrap: wrap
+        }
+
+        .sitemap {
+            grid-template-columns:1fr 1fr;
+            grid-auto-flow: unset;
+            grid-gap: inherit
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        .site-footer {
+            padding: 40px 0
+        }
+
+        .site-footer .footer-chassis {
+            gap: 50px;
+            grid-template-columns:minmax(0, 1fr);
+            grid-auto-flow: row
+        }
+
+        .sitemap {
+            display: none;
+            gap: 38px;
+            grid-template-columns:repeat(2, minmax(0, auto))
+        }
+    }
+
+    .sitemap.is-mobile {
+        display: none
+    }
+
+    .footer-follow-us__socials {
+        display: grid;
+        grid-gap: 16px;
+        grid-auto-flow: column;
+        justify-content: flex-start
+    }
+
+    .footer-customer-support li.site-footer__link {
+        display: grid;
+        grid-gap: 14px;
+        grid-auto-flow: column;
+        align-items: center;
+        justify-content: flex-start;
+        list-style-type: none
+    }
+</style>
+
+<lazy-stylesheet href="{{ 'footer.css' | asset_url }}"></lazy-stylesheet>
+
+<footer class="site-footer">
+    <div class="footer-chassis page-boundary">
+        <div class="footer-contact">
+            <div class="footer-contact__main">
+                <div class='site-footer__logo'>
+                    <img src='{{ ' emma-logo.svg' | asset_url }}' alt='' width="120px" height='24px' loading="lazy" />
                 </div>
-                <button id="Subscribe" type="submit" class="btn btn-no-hover w-full" aria-label="{{ 'general.newsletter_form.submit' | t }}">
-                  {{ 'general.newsletter_form.submit' | t }}
-                </button>
-              </div>
-            {% endif %}
-          {% endform %}
-        </div>
-      </div>
 
-      <script>
-        (function() {
-            const checkbox = document.querySelector('#shopify-section-{{section.id}} input[name="customer[accepts_marketing]"]'),
-                  submit = document.querySelector('#shopify-section-{{section.id}} [type="submit"]');
-            
-            checkbox.addEventListener('change', (event) => {
-              const checked = event.target.checked;
-              submit.toggleAttribute('disabled', !checked);
-            });
-        })();
-      </script>
+                <div class="footer-newsletter">
+                    <h6 class="site-footer__heading">
+                        Join our newsletter
+                    </h6>
 
-      <div class="lg:w-2/3 grid grid-cols-2 lg:grid-cols-4 text-left md:text-center lg:text-left gap-5">
-        <div>
-          {% assign menu = linklists.footer-products-menu %}
-          <p class="text-white mb-3 font-semibold">{{ menu.title }}</p>
-          <ul>
-            {% for link in linklists.footer-products-menu.links %}
-              <li class="mb-3">
-                <a class="text-[12px] text-white" href="{{ link.url }}">{{ link.title }}</a>
-              </li>
-            {% endfor %}
-          </ul>
+                    {% form 'customer', id: 'ContactFooter', class: 'footer-newsletter__form' -%}
+                        <div>
+                            <input type="hidden" name="contact[tags]" value="newsletter">
+                            <div>
+                                <div class="field footer-newsletter__field">
+                                    <input
+                                            id="NewsletterForm--{{ section.id }}" type="email" name="contact[email]"
+                                            class="emma-field__input text-charade" value="{{ form.email }}" aria-required="true"
+                                            autocorrect="off" autocapitalize="off" autocomplete="email" {% if form.errors %}
+                                        autofocus aria-invalid="true" aria-describedby="ContactFooter-error" {% elsif
+                                            form.posted_successfully? %} aria-describedby="ContactFooter-success" {% endif %}
+                                            placeholder="Your email" required
+                                    >
+                                    <button
+                                            type="submit" class="field__button footer-newsletter__button px-5" name="commit"
+                                            id="Subscribe" aria-label="{{ 'newsletter.button_label' | t }}"
+                                    >
+                                        <img src='{{ 'subscribe-email.svg' | asset_url }}' alt='' width='16' height="16" loading="lazy" />
+                                        Subscribe
+                                    </button>
+                                </div>
+                                {%- if form.errors -%}
+                                    <small class="newsletter-form__message form__message" id="ContactFooter-error">{% render
+                                                'icon-error' %}{{ form.errors.translated_fields['email'] | capitalize }} {{
+                                        form.errors.messages['email'] }}</small>
+                                {%- endif -%}
+                            </div>
+                            {%- if form.posted_successfully? -%}
+                                <h3
+                                        class="newsletter-form__message newsletter-form__message--success form__message"
+                                        id="ContactFooter-success" tabindex="-1" autofocus
+                                >{% render 'icon-success' %}{{
+                                    'newsletter.success' | t }}</h3>
+                            {%- endif -%}
+                        </div>
+                        <div class="footer-newsletter__checkbox">
+                            <label for="ContactFooterCheckbox" class="site-footer__link">
+                                <input
+                                        type="checkbox" id="ContactFooterCheckbox" name="customer[accepts_marketing]"
+                                        value="privacypolicy" checked
+                                >
+                                Yes, I would like to receive
+                                newsletters, and I have read and
+                                accepted the <a href="/pages/privacy-policy">privacy
+                                    policy.</a>
+                            </label>
+                        </div>
+
+                        {% comment %} <div><a href="#" class="emma-text--white emma-link--small">How do I unsubscribe?</a></div>
+                        {% endcomment %}
+                        <div class="site-footer__link">The email address will naturally be cared for according to our strict <a
+                                    href="/pages/privacy-policy"
+                            >privacy policy.</a></div>
+                    {%- endform %}
+                </div>
+            </div>
+
+            <div class="footer-customer-support">
+                <h6 class="site-footer__heading">
+                    Customer Support
+                </h6>
+                <ul class="site-footer__links foot_info">
+                    <li class="site-footer__link"><p class="text-white italic">Available from 08:00 to 18:00 GMT-6, Monday-Friday</p></li>
+                    <li class="site-footer__link">
+                        <img src="{{ 'phone.svg' | asset_url }}" width="20" height="20" loading="lazy" />
+                        <a href="tel:+1 (844) 906 3662">1 (844) 906 3662</a>
+                    </li>
+                    <li class="site-footer__link">
+                        <img src="{{ 'support-email.svg' | asset_url }}" width="20" height="20" loading="lazy" />
+                        <a href="mailto:{{ shop.email }}">{{ shop.email }}</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="footer-follow-us">
+                <h6 class="site-footer__heading">
+                    Follow Us
+                </h6>
+
+                <ul class="footer-follow-us__socials">
+                    <li><a
+                                href="https://www.facebook.com/EmmaSleepCanada/" class="site-footer__link--with-image"
+                        ><img
+                                    src="{{ 'icon-facebook.svg' | asset_url }}" loading="lazy" width="16"
+                                    height="16"
+                            /></a></li>
+                    <li><a
+                                href="https://www.instagram.com/emmasleep.canada/" class="site-footer__link--with-image"
+                        ><img
+                                    src="{{ 'icon-instagram.svg' | asset_url }}" loading="lazy" width="16"
+                                    height="16"
+                            /></a></li>
+                  
+                </ul>
+            </div>
         </div>
 
-        <div>
-          {% assign menu = linklists.footer-customer-support-menu %}
-          <p class="text-white mb-3 font-semibold">{{ menu.title }}</p>
-          <ul>
-            {% for link in linklists.footer-customer-support-menu.links %}
-              <li class="mb-3">
-                <a class="text-[12px] text-white" href="{{ link.url }}">{{ link.title }}</a>
-              </li>
-            {% endfor %}
-          </ul>
-        </div>
-
-        <div>
-          {% assign menu = linklists.footer-links-menu %}
-          {% assign blogMenu = linklists.footer-blog-menu %}
-          <p class="text-white mb-3 font-semibold">{{ menu.title }}</p>
-          <ul class="mb-6">
-            {% for link in linklists.footer-links-menu.links %}
-              <li class="mb-3">
-                <a class="text-[12px] text-white" href="{{ link.url }}">{{ link.title }}</a>
-              </li>
-            {% endfor %}
-          </ul>
-          <p class="text-white mb-3 font-semibold">{{ blogMenu.title }}</p>
-          <ul>
-            {% for link in linklists.footer-blog-menu.links %}
-              <li class="mb-3">
-                <a class="text-[12px] text-white" href="{{ link.url }}">{{ link.title }}</a>
-              </li>
-            {% endfor %}
-          </ul>
-        </div>
-
-        <div>
-          <p class="text-white mb-3 font-semibold">Contact Us</p>
-          <ul>
-            <li class="flex mb-3 md:justify-center lg:justify-start">
-              <svg class="w-3 h-3 mr-1" width="21" height="19" viewBox="0 0 21 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M14.29 6.71019C14.383 6.80391 14.4936 6.87831 14.6154 6.92908C14.7373 6.97985 14.868 7.00598 15 7.00598C15.132 7.00598 15.2627 6.97985 15.3846 6.92908C15.5064 6.87831 15.617 6.80391 15.71 6.71019L19.71 2.71019C19.8983 2.52188 20.0041 2.26649 20.0041 2.00019C20.0041 1.73388 19.8983 1.47849 19.71 1.29019C19.5217 1.10188 19.2663 0.996094 19 0.996094C18.7337 0.996094 18.4783 1.10188 18.29 1.29019L15 4.59019L13.71 3.29019C13.6168 3.19695 13.5061 3.12299 13.3842 3.07253C13.2624 3.02207 13.1319 2.99609 13 2.99609C12.7337 2.99609 12.4783 3.10188 12.29 3.29019C12.1968 3.38342 12.1228 3.49411 12.0723 3.61594C12.0219 3.73776 11.9959 3.86833 11.9959 4.00019C11.9959 4.26649 12.1017 4.52188 12.29 4.71019L14.29 6.71019ZM19 6.00019C18.7348 6.00019 18.4804 6.10554 18.2929 6.29308C18.1054 6.48062 18 6.73497 18 7.00019V16.0002C18 16.2654 17.8946 16.5198 17.7071 16.7073C17.5196 16.8948 17.2652 17.0002 17 17.0002H3C2.73478 17.0002 2.48043 16.8948 2.29289 16.7073C2.10536 16.5198 2 16.2654 2 16.0002V6.41019L7.88 12.3002C8.44125 12.8568 9.19951 13.1695 9.99 13.1702C10.8004 13.166 11.5764 12.8427 12.15 12.2702L13.87 10.5502C14.0583 10.3619 14.1641 10.1065 14.1641 9.84019C14.1641 9.57388 14.0583 9.31849 13.87 9.13019C13.6817 8.94188 13.4263 8.83609 13.16 8.83609C12.8937 8.83609 12.6383 8.94188 12.45 9.13019L10.7 10.8802C10.5131 11.0634 10.2618 11.166 10 11.166C9.73825 11.166 9.48693 11.0634 9.3 10.8802L3.41 5.00019H9C9.26522 5.00019 9.51957 4.89483 9.70711 4.70729C9.89464 4.51976 10 4.2654 10 4.00019C10 3.73497 9.89464 3.48062 9.70711 3.29308C9.51957 3.10554 9.26522 3.00019 9 3.00019H3C2.20435 3.00019 1.44129 3.31626 0.87868 3.87887C0.316071 4.44147 0 5.20454 0 6.00019L0 16.0002C0 16.7958 0.316071 17.5589 0.87868 18.1215C1.44129 18.6841 2.20435 19.0002 3 19.0002H17C17.7956 19.0002 18.5587 18.6841 19.1213 18.1215C19.6839 17.5589 20 16.7958 20 16.0002V7.00019C20 6.73497 19.8946 6.48062 19.7071 6.29308C19.5196 6.10554 19.2652 6.00019 19 6.00019Z" fill="white"/>
-              </svg>
-              <a href="mailto:support@emma-sleep.ca" class="text-[12px] text-white leading-tight">support@emma-sleep.ca</a>
-            </li>
-            <li class="flex mb-2 md:justify-center lg:justify-start">
-              <svg class="w-3 h-3 mr-1" width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M18.4401 11.0004C18.2201 11.0004 17.9901 10.9304 17.7701 10.8804C17.3246 10.7822 16.8868 10.6518 16.4601 10.4904C15.9962 10.3216 15.4862 10.3304 15.0284 10.515C14.5706 10.6996 14.1972 11.047 13.9801 11.4904L13.7601 11.9404C12.7861 11.3985 11.8911 10.7256 11.1001 9.94036C10.3149 9.14937 9.64192 8.25435 9.1001 7.28036L9.5201 7.00036C9.96347 6.78327 10.3109 6.40989 10.4955 5.95205C10.6801 5.49421 10.6889 4.98427 10.5201 4.52036C10.3613 4.09278 10.231 3.65515 10.1301 3.21036C10.0801 2.99036 10.0401 2.76036 10.0101 2.53036C9.88867 1.82598 9.51973 1.1881 8.96972 0.731596C8.41972 0.275093 7.7248 0.0299652 7.0101 0.0403564H4.0101C3.57913 0.0363098 3.15235 0.12517 2.75881 0.300887C2.36527 0.476604 2.01421 0.735052 1.72953 1.05864C1.44485 1.38222 1.23324 1.76335 1.10909 2.17607C0.984942 2.58879 0.95118 3.02342 1.0101 3.45036C1.54284 7.63974 3.45613 11.5322 6.44775 14.513C9.43938 17.4938 13.3388 19.3929 17.5301 19.9104H17.9101C18.6475 19.9114 19.3595 19.6409 19.9101 19.1504C20.2265 18.8674 20.4792 18.5205 20.6516 18.1327C20.8239 17.7448 20.9121 17.3248 20.9101 16.9004V13.9004C20.8979 13.2057 20.6449 12.5369 20.1944 12.008C19.744 11.4791 19.1239 11.123 18.4401 11.0004ZM18.9401 17.0004C18.9399 17.1423 18.9095 17.2827 18.8509 17.412C18.7923 17.5413 18.7068 17.6566 18.6001 17.7504C18.4884 17.8468 18.3577 17.9189 18.2165 17.962C18.0753 18.005 17.9267 18.0181 17.7801 18.0004C14.035 17.5202 10.5563 15.8068 7.89282 13.1306C5.2293 10.4545 3.53251 6.96769 3.0701 3.22036C3.05419 3.07387 3.06813 2.92569 3.1111 2.78475C3.15407 2.64381 3.22517 2.51304 3.3201 2.40036C3.41381 2.29369 3.52916 2.2082 3.65848 2.14957C3.7878 2.09095 3.92812 2.06054 4.0701 2.06036H7.0701C7.30265 2.05518 7.52972 2.13124 7.71224 2.27543C7.89476 2.41962 8.02131 2.62293 8.0701 2.85036C8.1101 3.12369 8.1601 3.39369 8.2201 3.66036C8.33562 4.1875 8.48936 4.70554 8.6801 5.21036L7.2801 5.86036C7.1604 5.91528 7.05272 5.9933 6.96326 6.08995C6.87379 6.1866 6.8043 6.29997 6.75877 6.42355C6.71324 6.54713 6.69257 6.67849 6.69795 6.81008C6.70332 6.94167 6.73464 7.0709 6.7901 7.19036C8.2293 10.2731 10.7073 12.7512 13.7901 14.1904C14.0336 14.2904 14.3066 14.2904 14.5501 14.1904C14.6748 14.1457 14.7894 14.0768 14.8873 13.9875C14.9851 13.8983 15.0643 13.7905 15.1201 13.6704L15.7401 12.2704C16.2571 12.4552 16.7847 12.6088 17.3201 12.7304C17.5868 12.7904 17.8568 12.8404 18.1301 12.8804C18.3575 12.9291 18.5608 13.0557 18.705 13.2382C18.8492 13.4207 18.9253 13.6478 18.9201 13.8804L18.9401 17.0004Z" fill="white"/>
-              </svg>
-              <a style="color: white;" class="text-[12px] text-white leading-tight" href="tel:+18449063662">1 (844) 906 3662</a>
-            </li>
-            <li>
-              <p class="text-[12px] text-white italic">Available from 08:00 to 18:00 GMT-6, Monday-Friday</p>
-            </li>
-          </ul>
-        </div>
-      </div>
+        {% render 'sitemap', sitemap: section.settings.footer_main_menu %}
+        
     </div>
-
-    <div class="lg:flex lg:items-center lg:justify-between">
-      <p class="text-white text-center mb-12 lg:mb-0">{{ section.settings.rights }}</p>
-      {% render 'image-tag', image_src: section.settings.footer-payment-icons, width:304, class: 'block mx-auto lg:ml-auto lg:mr-0' %}
-    </div>
-  </div>
 </footer>
+
+<script>
+    (function() {
+        const checkbox = document.querySelector('#shopify-section-{{section.id}} input[name="customer[accepts_marketing]"]'),
+            submit = document.querySelector('#shopify-section-{{section.id}} [type="submit"]');
+
+        checkbox.addEventListener('change', (event) => {
+            const checked = event.target.checked;
+            submit.toggleAttribute('disabled', !checked);
+        });
+    })();
+</script>
 
 {% schema %}
 {
-  "name": "Emma Sleep Footer",
-  "settings": [
-    {
-      "type": "text",
-      "id": "subscriber_header",
-      "label": "Subscribe Text"
-    },
-    {
-      "type": "text",
-      "id": "subscriber_description",
-      "label": "Subscribe Description"
-    },
-    {
-      "type": "text",
-      "id": "rights",
-      "label": "Rights"
-    },
-    {
-      "type": "image_picker",
-      "id": "footer-logo",
-      "label": "Footer Logo"
-    },
-    {
-      "type": "image_picker",
-      "id": "footer-payment-icons",
-      "label": "Footer Payment Icons"
-    }
-  ],
+  "name": "t:sections.footer.name",
   "blocks": [
     {
+      "type": "link_list",
+      "name": "t:sections.footer.blocks.link_list.name",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "default": "Quick links",
+          "label": "t:sections.footer.blocks.link_list.settings.heading.label",
+          "info": "t:sections.footer.blocks.link_list.settings.heading.info"
+        },
+        {
+          "type": "link_list",
+          "id": "menu",
+          "default": "footer",
+          "label": "t:sections.footer.blocks.link_list.settings.menu.label",
+          "info": "t:sections.footer.blocks.link_list.settings.menu.info"
+        }
+      ]
+    },
+    {
       "type": "text",
-      "name": "Social Blocks",
+      "name": "t:sections.footer.blocks.text.name",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "default": "Heading",
+          "label": "t:sections.footer.blocks.text.settings.heading.label"
+        },
+        {
+          "type": "richtext",
+          "id": "subtext",
+          "default": "<p>Share store details, promotions, or brand content with your customers.</p>",
+          "label": "t:sections.footer.blocks.text.settings.subtext.label"
+        }
+      ]
+    },
+    {
+      "type": "image",
+      "name": "Image",
       "settings": [
         {
           "type": "image_picker",
-          "id": "footer-social-icon",
-          "label": "Social Media Image"
+          "id": "image",
+          "label": "Image"
         },
         {
-          "type": "url",
-          "id": "footer-social-media-link",
-          "label": "Social Media Link"
+          "type": "range",
+          "id": "image_width",
+          "min": 50,
+          "max": 200,
+          "step": 5,
+          "unit": "px",
+          "label": "Image width",
+          "default": 100
+        },
+        {
+          "type": "select",
+          "id": "alignment",
+          "label": "Image alignment on large screen",
+          "options": [
+            {
+              "value": "",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "default": "center"
         }
       ]
     }
-  ]
+  ],
+  "settings": [
+    {
+      "type": "link_list",
+      "id": "footer_main_menu",
+      "label": "t:sections.footer.blocks.link_list.name"
+    },
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "options": [
+        {
+          "value": "accent-1",
+          "label": "t:sections.footer.settings.color_scheme.options__1.label"
+        },
+        {
+          "value": "accent-2",
+          "label": "t:sections.footer.settings.color_scheme.options__2.label"
+        },
+        {
+          "value": "background-1",
+          "label": "t:sections.footer.settings.color_scheme.options__3.label"
+        },
+        {
+          "value": "background-2",
+          "label": "t:sections.footer.settings.color_scheme.options__4.label"
+        },
+        {
+          "value": "inverse",
+          "label": "t:sections.footer.settings.color_scheme.options__5.label"
+        }
+      ],
+      "default": "background-1",
+      "label": "t:sections.footer.settings.color_scheme.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.footer.settings.header__1.content",
+      "info": "t:sections.footer.settings.header__1.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "newsletter_enable",
+      "default": true,
+      "label": "t:sections.footer.settings.newsletter_enable.label"
+    },
+    {
+      "type": "text",
+      "id": "newsletter_heading",
+      "default": "Subscribe to our emails",
+      "label": "t:sections.footer.settings.newsletter_heading.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.footer.settings.header__2.content",
+      "info": "t:sections.footer.settings.header__2.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_social",
+      "default": false,
+      "label": "t:sections.footer.settings.show_social.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.footer.settings.header__3.content",
+      "info": "t:sections.footer.settings.header__4.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_country_selector",
+      "default": true,
+      "label": "t:sections.footer.settings.enable_country_selector.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.footer.settings.header__5.content",
+      "info": "t:sections.footer.settings.header__6.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_language_selector",
+      "default": true,
+      "label": "t:sections.footer.settings.enable_language_selector.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.footer.settings.header__7.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "payment_enable",
+      "default": true,
+      "label": "t:sections.footer.settings.payment_enable.label"
+    }
+  ],
+  "default": {
+    "blocks": [
+      {
+        "type": "link_list"
+      },
+      {
+        "type": "text"
+      }
+    ]
+  }
 }
 {% endschema %}

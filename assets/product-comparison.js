@@ -14,6 +14,7 @@ const allEmmaProducts = comparisonConfig.emmaProducts.map(({ info, competitors, 
 });
 
 const allSpecLabels = ['Price'].concat(allEmmaProducts[0].specLabels);
+const defaultHandle = 'emma-climax-hybrid';
 
 let allCompetitors = allEmmaProducts[0].competitors;
 
@@ -256,11 +257,14 @@ $(document).ready(async function () {
 
   updateCompetitors();
 
-  $('#product-comparison .brand-selector, #product-comparison .emma__product-selector').select2({
+  let $emmaProductSelector = $('#product-comparison .brand-selector, #product-comparison .emma__product-selector');
+  $emmaProductSelector.select2({
     minimumResultsForSearch: -1,
     dropdownAutoWidth: true,
     width: 'auto',
     dropdownCssClass: 'product-comparison'
   });
 
+  $emmaProductSelector.val(defaultHandle);
+  $emmaProductSelector.trigger('change');
 })

@@ -1,0 +1,95 @@
+{% assign tabs = section.blocks | where: "type", "tab" %}
+
+<section id="reason-to-believe-section">
+  <div class="wrapper">
+    <h2 class="heading-2 text-center md:text-left text-charade">
+      {{ section.settings.title | remove: "<p>" | remove: "</p>" }}
+    </h2>
+
+    <div class="media">
+      {%- for tab in tabs -%}
+        <img class="tab-media" data-pill="{{ tab.settings.pill | handleize }}"
+             src="{{ tab.settings.image | img_url: '1024x1024' }}" alt="">
+      {%- endfor -%}
+    </div>
+
+    <div class="main-content">
+      <div class="tab">
+        {%- for tab in tabs -%}
+          <button class="tab-links" data-pill="{{ tab.settings.pill | handleize }}">{{ tab.settings.pill }}</button>
+        {%- endfor -%}
+      </div>
+      {%- for tab in tabs -%}
+        <p data-pill="{{ tab.settings.pill | handleize }}" class="tab-content">
+          {{ tab.settings.content }}
+        </p>
+      {%- endfor -%}
+
+    </div>
+
+  </div>
+
+</section>
+
+<script>
+
+  $("#reason-to-believe-section .tab-links").click(function () {
+    const allTabContents = $("#reason-to-believe-section .tab-content")
+    const allTabLinks = $("#reason-to-believe-section .tab-links")
+    const allTabMedias = $("#reason-to-believe-section .tab-media")
+
+    allTabContents.hide();
+    allTabLinks.removeClass('active')
+    allTabMedias.hide();
+
+    $(this).addClass('active');
+
+    const pill = $(this).data('pill')
+
+    const selectedTabContent = $(`#reason-to-believe-section .tab-content[data-pill=${pill}]`);
+    const selectedTabMedia = $(`#reason-to-believe-section .tab-media[data-pill=${pill}]`);
+
+    selectedTabMedia.show();
+    selectedTabContent.show()
+  })
+
+  $("#reason-to-believe-section .tab-links:first-child").click()
+</script>
+
+{% schema %}
+{
+  "name": "Comfort Layers",
+  "blocks": [
+    {
+      "type": "tab",
+      "name": "Tab",
+      "limit": 4,
+      "settings": [
+        {
+          "id": "pill",
+          "type": "text",
+          "label": "Tab Pill"
+        },
+        {
+          "id": "content",
+          "type": "textarea",
+          "label": "Tab Content"
+        },
+        {
+          "id": "image",
+          "type": "image_picker",
+          "label": "Image"
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "id": "title",
+      "type": "richtext",
+      "label": "Title",
+      "default": "<p>Why sleepers <i>love</i> Emma</p>"
+    }
+  ]
+}
+{% endschema %}

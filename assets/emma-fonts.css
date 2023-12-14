@@ -54,6 +54,13 @@
   font-display: swap;
 }
 @font-face {
+  font-family: "Utopia Std";
+  src: url("utopiastd-disp-webfont.woff2") format("woff2"), url("utopiastd-disp-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
   font-family: "Inter";
   src: url("Inter-Thin.ttf") format("truetype");
   font-weight: 100;

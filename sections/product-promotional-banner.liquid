@@ -1,0 +1,25 @@
+<div class="emma-promotional-banner page-width">
+    <div>
+        <div class="emma-promotional-banner__heading">
+            {{ section.settings.banner_heading }}
+        </div>
+    </div>
+  
+    <div class="emma-promotional-banner__image">
+        <img src="https://cdn.shopify.com/s/files/1/0592/8570/0771/files/emma-mattress.png" loading="lazy" />
+    </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Promotional Banner",
+    "settings": [
+        {
+          "id": "banner_heading",
+          "type": "text",
+          "label": "Heading",
+          "default": "Build your bedroom with these steals from Emma."
+        }
+    ]
+  }
+{% endschema %}

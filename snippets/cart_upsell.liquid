@@ -1,0 +1,136 @@
+{% assign upsell_count = 0 %}
+{% assign upsell_products = '' %}
+{% assign cart_product_handles = '' %}
+{% assign upsell_priority = 'emma-climax-hybrid|emma-original-mattress|premium-upholstered-breeze-platform|artisan-wooden-platform-bed|emma-powerbase-1-0|emma-powerbase-pro|emma-mattress-protector|emma-foam-pillow' | split: '|' %}
+{% for item in cart.items %}
+    {% if cart_product_handles == '' %}
+        {% assign cart_product_handles = item.product.handle %}
+    {% else %}
+        {% assign cart_product_handles = cart_product_handles | append: '|' | append: item.product.handle %}
+    {% endif %}
+{% endfor %}
+{% assign valid_upsell_product_handles = '' %}
+{% for handle in upsell_priority %}
+    {% if cart_product_handles contains handle %}
+        {% if valid_upsell_product_handles == '' %}
+            {% assign valid_upsell_product_handles = handle %}
+        {% else %}
+            {% assign valid_upsell_product_handles = valid_upsell_product_handles | append: '|' | append: handle %}
+        {% endif %}
+    {% endif %}
+{% endfor %}
+{% assign cart_product_handles = cart_product_handles | split: '|' %}
+{% for handle in valid_upsell_product_handles %}
+    {% assign this_product = all_products[handle] %}
+    {% assign upsell_products_meta = this_product.metafields.accentuate.upsell_products | split: '|' %}
+    {% if this_product and this_product.available and upsell_products_meta.size > 0 %}
+        {% for product_handle in upsell_products_meta %}
+            {% assign upsell_products = upsell_products | split: '|' %}
+            {% unless cart_product_handles contains product_handle or upsell_products contains product_handle %}
+                {% assign upsell_count = upsell_count | plus: 1 %}
+                {% assign upsell_products = upsell_products | join: '|' %}
+                {% if upsell_products == '' %}
+                    {% assign upsell_products = product_handle %}
+                {% else %}
+                    {% assign upsell_products = upsell_products | append: '|' | append: product_handle %}
+                {% endif %}
+            {% else %}
+                {% assign upsell_products = upsell_products | join: '|' %}
+            {% endunless %}
+        {% endfor %}
+    {% endif %}
+{% endfor %}
+{% assign upsell_products_meta = shop.metafields.accentuate.default_upsell_products | split: '|' %}
+{% if upsell_count < 4 and upsell_products_meta.size > 0 %}
+    {% for product_handle in upsell_products_meta %}
+        {% assign upsell_products = upsell_products | split: '|' %}
+        {% unless cart_product_handles contains product_handle or upsell_products contains product_handle %}
+            {% assign upsell_count = upsell_count | plus: 1 %}
+            {% assign upsell_products = upsell_products | join: '|' %}
+            {% if upsell_products == '' %}
+                {% assign upsell_products = product_handle %}
+            {% else %}
+                {% assign upsell_products = upsell_products | append: '|' | append: product_handle %}
+            {% endif %}
+        {% else %}
+            {% assign upsell_products = upsell_products | join: '|' %}
+        {% endunless %}
+    {% endfor %}
+{% endif %}
+{% assign upsell_products = upsell_products | split: '|' %}
+{% if upsell_products.size > 0 %}
+<div class="upsell_inner">
+    <div class="subtt">
+      <h6>
+        {% if cart.items.size == 0%}
+        shop our bestsellers
+        {% else %}
+        complete your set
+        {% endif%}
+      </h6>
+    </div>
+    <div class="prod_lists" id="cart__drawer_items">
+        {% for product_handle in upsell_products limit: 4 %}
+            {% assign prod = all_products[product_handle] %}
+            {% unless prod and prod.handle != blank %}
+                {% continue %}
+            {% endunless %}
+            <div class="prod_item" data-handle="{{prod.handle}}">
+                <div class="prod_tag" style="color: white">
+                    <p>Promo</p>
+                </div>
+                <div class="prod_img">
+                    <div class="prod_img_inner">
+                        {% assign img = prod.featured_image %}
+                        <div class="backimg" style="background-image:url({{ img | image_url }})">
+                            <svg class="transparent_svg" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 101 76">
+                                <rect class="cls-1" x="0.5" y="0.5" width="100" height="75"></rect>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <div class="prod_info">
+                    <div class="prod_tt">
+                        <a href="{{prod.url}}">{{prod.title}}</a>
+                    </div>
+                    <div class="compare_pro_price">
+                        <div class="prod_price">{{ prod.price | money }}</div>
+                        {% if prod.compare_at_price > prod.price %}
+                        <div class="prod_sale_price">{{ prod.compare_at_price | money }}</div>
+                        {% endif %}
+                    </div>
+                    {% assign variant = prod.first_available_variant %}
+                    <div class="prod_type">
+                        {% if variant.available %}
+                        <select name="id"
+                            class="js-select2 product-form__variants"
+                            id="ProductSelect-{{prod.id}}"
+                            {% if prod.has_only_default_variant %}
+                            style="display: none"
+                            data-default
+                            {% endif %}
+                        >
+                            {% for variant in prod.variants %}
+                                {% if variant.available %}
+                                <option
+                                    {% if variant == prod.first_available_variant %}selected{% endif %}
+                                    data-price="{{variant.price | money}}" data-compare_price="{{variant.compare_at_price | money}}"
+                                    data-availability="true" value="{{variant.id}}">{{variant.title}}</option>
+                                {% endif %}
+                            {% endfor %}
+                        </select>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="add_prod">
+                    <div class="add_btn">
+                        <a href="javascript:void(0);" class="btn btn--secondary btn--full marztop add-to-cart-button">
+                            <span class="icon icon-plus" aria-hidden="true"></span> ADD
+                        </a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+  </div>
+{% endif %}

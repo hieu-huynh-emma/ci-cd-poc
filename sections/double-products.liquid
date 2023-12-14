@@ -1,9 +1,13 @@
 <style>
   .double-products-section {
     padding: 1rem;
+    {% if page.handle == 'mattress-size-guide' %}
+    padding-bottom: 2rem;
+    {% endif %}
   }
 
   .double-products-section h2 {
+    font-family: "Tiempos", Times, serif;
     font-size: 31px;
     color: #2E2F3C;
     text-align: center;
@@ -22,12 +26,14 @@
   }
 
   .product.first {
+    background-color: {{ section.settings.background_color_1 }};
     background-image: url("{{ section.settings.background_image_1.src | image_url }}");
     background-size: cover;
     background-position: 50% 50%;
   }
 
   .product.second {
+    background-color: {{ section.settings.background_color_2 }};
     background-image: url("{{ section.settings.background_image_2.src | image_url }}");
     background-size: cover;
     background-position: 50% 50%;
@@ -42,6 +48,7 @@
   }
 
   .product-content h3 {
+    font-family: "Tiempos", Times, serif;
     font-size: 24px;
     margin-top: 10px;
     text-align: center;
@@ -72,18 +79,16 @@
     text-align: center;
   }
 
-  .product-content .product-price {
-    font-size: 14px;
-    font-weight: 600;
-  }
-
   .product-price .sale-price {
     font-weight: 400;
   }
 
-  @media (min-width: 769px) {
+  @media(min-width: 769px) {
     .double-products-section {
       padding-top: 1rem;
+      {% if page.handle == 'mattress-size-guide' %}
+      padding-bottom: 2rem;
+      {% endif %}
       max-width: 1440px;
       margin: 0 auto;
     }
@@ -129,25 +134,26 @@
       width: max-content;
     }
   }
+
 </style>
 <section class="double-products-section">
   <div>
     {% if section.settings.title %}
-      <h2>{{ section.settings.title }}
-      </h2>
+    <h2>{{ section.settings.title }}
+    </h2>
     {% endif %}
     <div class="double-products-container">
       <div class="product first">
         <div class="product-content">
           {% if section.settings.badge_1 != blank %}
-            <span class="badge">{{ section.settings.badge_1 }}
-            </span>
+          <span class="badge">{{section.settings.badge_1}}
+          </span>
           {% endif %}
           <h3>
-            {% if section.settings.product_title_1 != blank %}
-              {{ section.settings.product_title_1 }}
+            {% if section.settings.product_title_1 != blank%}
+            {{section.settings.product_title_1}}
             {% else %}
-              {{ section.settings.product_1.title }}
+            {{section.settings.product_1.title}}
             {% endif %}
           </h3>
           <p class="desc">{{ section.settings.product_desc_1 }}
@@ -156,27 +162,25 @@
             from
             {{ section.settings.product_1.price | money }}
             {% if section.settings.product_1.compare_at_price > section.settings.product_1.price %}
-              <del
-                class="sale-price">{{ section.settings.product_1.compare_at_price | money }}
-              </del>
+            <del class="sale-price">{{ section.settings.product_1.compare_at_price | money }}
+            </del>
             {% endif %}
           </p>
         </div>
-        <a class="btn product-url-cta"
-           href="{{ section.settings.product_1.url }}">{{ section.settings.btn_1 }}
+        <a class="btn product-url-cta" href="{{ section.settings.product_1.url }}">{{section.settings.btn_1}}
         </a>
       </div>
       <div class="product second">
         <div class="product-content">
           {% if section.settings.badge_2 != blank %}
-            <span class="badge">{{ section.settings.badge_2 }}
-            </span>
+          <span class="badge">{{section.settings.badge_2}}
+          </span>
           {% endif %}
           <h3>
-            {% if section.settings.product_title_2 != blank %}
-              {{ section.settings.product_title_2 }}
+            {% if section.settings.product_title_2 != blank%}
+            {{section.settings.product_title_2}}
             {% else %}
-              {{ section.settings.product_2.title }}
+            {{section.settings.product_2.title}}
             {% endif %}
           </h3>
           <p class="desc">{{ section.settings.product_desc_2 }}
@@ -185,14 +189,12 @@
             from
             {{ section.settings.product_2.price | money }}
             {% if section.settings.product_2.compare_at_price > section.settings.product_2.price %}
-              <del
-                class="sale-price">{{ section.settings.product_2.compare_at_price | money }}
-              </del>
+            <del class="sale-price">{{ section.settings.product_2.compare_at_price | money }}
+            </del>
             {% endif %}
           </p>
         </div>
-        <a class="btn product-url-cta"
-           href="{{ section.settings.product_2.url }}">{{ section.settings.btn_2 }}
+        <a class="btn product-url-cta" href="{{ section.settings.product_2.url }}">{{section.settings.btn_2}}
         </a>
       </div>
     </div>
@@ -200,88 +202,88 @@
 </section>
 {% schema %}
 {
-  "name": "Double Products",
-  "settings": [
-    {
-      "type": "header",
-      "content": "First Product"
-    },
-    {
-      "type": "text",
-      "id": "title",
-      "label": "Title",
-      "default": "Mattresses"
-    },
-    {
-      "type": "image_picker",
-      "id": "background_image_1",
-      "label": "Background Image"
-    },
-    {
-      "type": "text",
-      "id": "badge_1",
-      "label": "Badge",
-      "default": "SAVE UP TO $200"
-    },
-    {
-      "type": "text",
-      "id": "product_title_1",
-      "label": "Title"
-    },
-    {
-      "type": "text",
-      "id": "product_desc_1",
-      "label": "Description",
-      "default": "Perfect balance of pressure-relief and support."
-    },
-    {
-      "type": "product",
-      "id": "product_1",
-      "label": "Product"
-    },
-    {
-      "type": "text",
-      "id": "btn_1",
-      "label": "Button 1",
-      "default": "Shop now"
-    },
-    {
-      "type": "header",
-      "content": "Second Product"
-    },
-    {
-      "type": "image_picker",
-      "id": "background_image_2",
-      "label": "Background Image"
-    },
-    {
-      "type": "text",
-      "id": "badge_2",
-      "label": "Badge",
-      "default": "SAVE UP TO $200"
-    },
-    {
-      "type": "text",
-      "id": "product_title_2",
-      "label": "Product Title"
-    },
-    {
-      "type": "text",
-      "id": "product_desc_2",
-      "label": "Product Description",
-      "default": "Perfect balance of pressure-relief and support."
-    },
-    {
-      "type": "product",
-      "id": "product_2",
-      "label": "Product"
-    },
-    {
-      "type": "text",
-      "id": "btn_2",
-      "label": "Button 2",
-      "default": "Shop now"
-    }
-  ]
+"name": "Double Products",
+"settings": [
+{
+"type": "header",
+"content": "First Product"
+},
+{
+"type": "text",
+"id": "title",
+"label": "Title",
+"default": "Mattresses"
+},
+{
+"type": "image_picker",
+"id": "background_image_1",
+"label": "Background Image"
+},
+{
+"type": "text",
+"id": "badge_1",
+"label": "Badge",
+"default": "SAVE UP TO $200"
+}, {
+"type": "text",
+"id": "product_title_1",
+"label": "Title"
+}, {
+"type": "text",
+"id": "product_desc_1",
+"label": "Description",
+"default": "Perfect balance of pressure-relief and support."
+}, {
+"type": "product",
+"id": "product_1",
+"label": "Product"
+}, {
+"type": "text",
+"id": "btn_1",
+"label": "Button 1",
+"default": "Shop now"
+},
+{
+"type": "color",
+"id": "background_color_1",
+"label": "Background color 1"
+}
+, {
+"type": "header",
+"content": "Second Product"
+}, {
+"type": "image_picker",
+"id": "background_image_2",
+"label": "Background Image"
+}, {
+"type": "text",
+"id": "badge_2",
+"label": "Badge",
+"default": "SAVE UP TO $200"
+}, {
+"type": "text",
+"id": "product_title_2",
+"label": "Product Title"
+}, {
+"type": "text",
+"id": "product_desc_2",
+"label": "Product Description",
+"default": "Perfect balance of pressure-relief and support."
+}, {
+"type": "product",
+"id": "product_2",
+"label": "Product"
+}, {
+"type": "text",
+"id": "btn_2",
+"label": "Button 2",
+"default": "Shop now"
+},
+{
+"type": "color",
+"id": "background_color_2",
+"label": "Background color 2"
+}
+]
 }
 {% endschema %}

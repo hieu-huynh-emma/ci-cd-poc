@@ -31,10 +31,6 @@
     mythbustingList$: $('#competitor-myth-busting-section .mythbusting-list')
   }
 
-  renderHeading()
-  renderMythBustingList()
-  initSplide()
-
   function renderHeading() {
     const competitor = getComparisonCompetitor(competitors)
     elements.heading$.text(competitor.mythBusting.title)
@@ -85,4 +81,10 @@
       },
     }).mount();
   }
+
+  $(document).ready(function () {
+    renderHeading()
+    renderMythBustingList()
+    initSplide()
+  })
 </script>

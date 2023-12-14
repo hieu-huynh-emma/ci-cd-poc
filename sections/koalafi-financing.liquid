@@ -1,0 +1,761 @@
+<style>
+/* COMMON STYLES */
+.koalafi-financing-page {
+	font-family: 'Acumin Pro';
+	font-weight: 400;
+	font-style: normal;
+	font-weight: 400;
+	width: 100%;
+	color: #2e2f3c;
+}
+
+.section-title {
+	text-align: center;
+	width: 100%;
+	font-family: "Test Tiempos Headline";
+	font-weight: 400;
+}
+
+.section-subtitle {
+	text-align: center;
+}
+
+.apply-button-container {
+	width: 100%;
+	margin: auto;
+	cursor: pointer;
+}
+
+.apply-now-button {
+	border: none;
+	color: white;
+	background-color: #ff8800;
+	border-radius: 40px;
+}
+
+@media screen and (max-width: 600px) {
+	.section-title {
+		font-size: 3rem;
+		line-height: 3rem;
+	}
+
+	.section-subtitle {
+		font-size: 1.3rem;
+		margin: 1rem auto;
+		width: 90%;
+	}
+
+	.apply-now-button {
+		font-size: 1rem;
+		padding-top: 1rem;
+		padding-bottom: 1rem;
+		padding-right: 2rem;
+		padding-left: 2rem;
+	}
+}
+
+@media screen and (min-width: 600px) {
+	.section-title {
+		font-size: 5rem;
+		margin: 4rem auto 0 auto;
+	}
+
+	.section-subtitle {
+		font-size: 3rem;
+		width: 60%;
+		margin: 0.6rem auto;
+	}
+
+	.apply-now-button {
+		font-size: 1.5rem;
+		padding-top: 1.5rem;
+		padding-bottom: 1.5rem;
+		padding-right: 4rem;
+		padding-left: 4rem;
+	}
+}
+
+/* HEADER SECTION STYLES */
+.koalafi-header-section .header-title {
+	font-family: "Test Tiempos Headline";
+	font-weight: 400;
+}
+
+.merchant-logos {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+
+/* .koalfi-header-section .apply-button-container {
+  font-size: 3rem !important;
+} */
+
+@media screen and (min-width: 600px) {
+	.header-text-container {
+		margin: 4rem 0 3rem 4rem;
+	}
+
+	.koalafi-header-section .header-title {
+		font-size: 4rem;
+		line-height: 4rem;
+		width: 50%
+	}
+
+	.koalafi-header-section .header-subtitle {
+		font-size: 2.5rem;
+		margin-top: 1rem;
+		margin-bottom: 4rem;
+	}
+
+	.koalafi-header-section {
+		padding: 3.8rem 0;
+		background-image:
+		linear-gradient(90deg, rgba(255, 255, 255, 0.8) 50.15%, rgba(255, 255, 255, 0) 93.09%),
+		url("{{ 'koalafi_financing_header_desktop.png' | asset_url }}");
+		background-repeat: no-repeat;
+		background-position: top right;
+	}
+
+	.koalafi-header-section .approval-subtext {
+		font-size: 1.1rem;
+		margin-left: 3rem;
+		margin-top: 1rem;
+	}
+
+	.merchant-logos-container {
+		margin: 1rem 0 4rem 4rem;
+	}
+
+	#emma-logo {
+		height: 4rem;
+	}
+
+	#koalafi-logo {
+		height: 4rem;
+	}
+
+	#logo-plus {
+		margin: auto 1rem;
+		font-size: 1.5rem;
+	}
+}
+
+@media screen and (max-width: 600px) {
+
+	.koalafi-header-section .header-title {
+		font-size: 2rem;
+		line-height: 2rem;
+		width: 90%;
+	}
+
+	.koalafi-header-section .header-subtitle {
+		font-size: 1.2rem;
+		margin-top: 1rem;
+		margin-bottom: 2rem;
+	}
+
+	.koalafi-header-section .approval-subtext {
+		font-size: 0.8rem;
+		margin-left: 1rem;
+		margin-top: 0.5rem;
+	}
+
+	.merchant-logos-container {
+		margin: 0.25rem 0 0rem 0.75rem;
+	}
+
+	.header-text-container {
+		margin: 2rem 0 1rem 1rem;
+	}
+
+	.koalafi-header-section {
+		padding: 3.8rem 0;
+        background: white;
+		background-repeat: no-repeat;
+		background-position: bottom right;
+	}
+
+	#emma-logo {
+		height: 1.5rem;
+	}
+
+	#koalafi-logo {
+		height: 1.5rem;
+	}
+
+	#logo-plus {
+		margin: auto 0.5rem;
+		font-size: 1rem;
+	}
+
+	#header-apply-button {
+		font-size: 0.9rem;
+	}
+}
+
+
+/* HOW IT WORKS STYLES */
+.how-it-works {
+	background-color: #f0f0f5;
+	padding: 1.8rem 0;
+}
+
+.three-steps {
+	text-align: center;
+	justify-items: center;
+	align-items: start;
+}
+
+.step-container {}
+
+.circle-number {
+	text-align: center;
+}
+
+
+.three-steps-apply-button-container {
+	margin: 3rem auto;
+	text-align: center;
+}
+
+@media screen and (min-width: 600px) {
+	.three-steps {
+		grid-template-columns: auto auto auto;
+		display: grid;
+		margin-top: 1rem;
+	}
+
+	.three-steps-title {
+		font-size: 2.5rem;
+		line-height: 2.5rem;
+	}
+
+	.how-it-works {
+		padding: 1.8rem 0;
+	}
+
+	.circle-number {
+		width: 4rem;
+		height: 4rem;
+		margin: 1.5rem auto;
+	}
+
+	.three-steps-subtext {
+		width: 60%;
+		margin: 0.4rem auto 1.5rem auto;
+		font-size: 1.3rem;
+	}
+}
+
+@media screen and (max-width: 600px) {
+	.three-steps {
+		margin-top: 2.5rem;
+	}
+
+	.three-steps-title {
+		font-size: 1.7rem;
+		line-height: 1.7rem;
+	}
+
+	.how-it-works {
+		padding: 4rem 0;
+	}
+
+	.circle-number {
+		width: 3rem;
+		height: 3rem;
+		margin: 0.75rem auto;
+	}
+
+	.three-steps-subtext {
+		width: 80%;
+		margin: 0.4rem auto 0rem auto;
+		font-size: 1rem;
+	}
+
+	.step-container {
+		margin-top: 3rem;
+	}
+}
+
+/* WHY KOALAFI STYLES */
+
+.why-koalafi-reasons {
+	text-align: center;
+	justify-items: center;
+	align-items: center;
+}
+
+@media screen and (min-width: 600px) {
+	.why-koalafi-reasons {
+		display: grid;
+		grid-template-columns: auto auto auto auto;
+		margin-top: 4rem;
+		margin-bottom: 7rem;
+	}
+
+	.why-koalafi {
+		padding: 1.8rem 0;
+	}
+
+	.why-koalafi-subtitle {
+		font-size: 2rem;
+	}
+}
+
+@media screen and (max-width: 600px) {
+	.why-koalafi-reasons {
+		display: grid;
+		grid-template-columns: auto;
+		row-gap: 2rem;
+		margin-top: 4rem;
+		margin-bottom: 2rem;
+	}
+
+	.why-koalafi {
+		padding: 4rem 0;
+	}
+
+	.why-koalafi-subtitle {
+		font-size: 1rem;
+	}
+}
+
+.reason-icon {
+	height: 4rem;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.reason-description {
+	font-size: 1.5rem;
+}
+
+/* KOALAFI REVIEWS STYLES */
+.koalafi-reviews {
+	background-color: #3d4196;
+	color: white;
+}
+
+.reviews-subtitle {
+	color: white;
+}
+
+.koalafi-customer-reviews {
+	text-align: center;
+	justify-items: center;
+	margin-top: 4rem;
+	margin-bottom: 4rem;
+}
+
+.review-container {
+	color: #2e2f3c;
+	display: grid;
+	gap: 10px;
+	justify-items: flex-start;
+	width: 100%;
+	padding: 20px;
+	background: #FFFFFF;
+	backdrop-filter: blur(4px);
+	border-radius: 6px;
+	text-align: left;
+}
+
+.review-contents {
+
+	display: grid;
+	gap: 4px;
+	align-items: center;
+	align-content: center;
+
+}
+
+.reviewer {
+	display: grid;
+	gap: 4px;
+	align-items: center;
+	align-content: center;
+}
+
+.reviewer__name {
+	font-weight: 700;
+	font-size: 0.8rem;
+	line-height: 150%;
+}
+
+.reviewer__verified {
+	display: grid;
+	gap: 8px;
+	grid-auto-flow: column;
+	align-items: center;
+	align-content: center;
+	font-weight: 500;
+	font-size: 0.6rem;
+	line-height: 1rem;
+}
+
+
+@media screen and (min-width: 600px) {
+	.koalafi-customer-reviews {
+		font-size: 1rem;
+		display: grid;
+		grid-template-columns: auto auto auto;
+		column-gap: 1.8rem;
+		align-items: start;
+	}
+
+	.review-container {
+		width: 80%;
+	}
+
+	.koalafi-reviews {
+		padding: 1.8rem 0 5.6rem 0;
+	}
+
+	#review-star {
+		height: 1.8rem;
+	}
+}
+
+@media screen and (max-width: 600px) {
+	.koalafi-customer-reviews {
+		display: grid;
+		grid-template-columns: auto;
+		row-gap: 1.5rem;
+	}
+
+	.review-container {
+		width: 85%
+	}
+
+	.koalafi-reviews {
+		padding: 4rem 0 3rem 0;
+	}
+
+	#review-star {
+		height: 1.8rem;
+	}
+}
+
+
+/* AFTER CHECKOUT STYLES */
+.after-checkout {
+	display: grid;
+	background: linear-gradient(180deg, #FDF6ED 0%, rgba(253, 246, 237, 0) 100%);
+	padding-top: 2.8rem;
+	padding-bottom: 7rem;
+}
+
+.checkout-text {
+	text-align: center;
+	justify-items: center;
+	align-items: center;
+}
+
+@media screen and (max-width: 600px) {
+	.shipping-text {
+		margin-top: 2rem;
+	}
+
+	.after-checkout {
+		grid-template-columns: 70px auto 70px;
+	}
+
+	.truck-back {
+		align-self: end;
+	}
+
+	.truck-front {
+		align-self: end;
+	}
+}
+
+@media screen and (min-width: 600px) {
+	.after-checkout {
+		grid-template-columns: 150px auto 150px;
+	}
+
+	.truck-back {
+		height: 100%;
+		width: 100%;
+		justify-items: center;
+		align-self: center;
+	}
+
+	.truck-front {
+		height: 100%;
+		width: 100%;
+		justify-items: center;
+		align-items: center;
+	}
+}
+
+/* FAQ STYLES */
+.koalafi-faq {
+	background-color: #f0f0f5;
+}
+
+.question-title {
+	display: inline-block;
+	font-weight: bold;
+}
+
+.faq-response {
+	width: 80%;
+}
+
+@media screen and (min-width: 600px) {
+	.koalafi-faq {
+		padding-left: 3.8rem;
+		padding-top: 1.8rem;
+		padding-bottom: 5rem;
+	}
+
+	.faq-question-container {
+		margin: 3rem auto 3rem 4rem;
+	}
+
+	.question-title {
+		font-size: 2rem;
+	}
+
+	.faq-response {
+		font-size: 1.5rem;
+		width: 80%;
+		margin-top: 0.6rem;
+	}
+}
+
+@media screen and (max-width: 600px) {
+	.koalafi-faq {
+		padding-left: 0.5rem;
+		padding-top: 4rem;
+		padding-bottom: 5rem;
+	}
+
+	.faq-question-container {
+		margin: 2.4em auto 0rem 1.4rem;
+	}
+
+	.question-title {
+		font-size: 1.6rem;
+	}
+
+	.faq-response {
+		font-size: 1.2rem;
+		margin-top: 0.2rem;
+	}
+
+}
+</style>
+
+<script>
+window.addEventListener('DOMContentLoaded', () => {
+   document.getElementById('header-apply-button').addEventListener('click', () => {
+      const opt = {
+         // populate this object as per the instructions above
+      };
+
+      ChargeAfter.apply.present(opt);
+   })
+   document.getElementById('how-it-works-apply-button').addEventListener('click', () => {
+      const opt = {
+         // populate this object as per the instructions above
+      };
+
+      ChargeAfter.apply.present(opt);
+   })
+});
+</script>
+
+<section class="koalafi_financing_section">
+   <div class="koalafi-financing-page">
+      <!-- MAIN HEADER SECTION -->
+      <div class="koalafi-header-section">
+         <div class="merchant-logos-container">
+            <div class="merchant-logos">
+               <img id="emma-logo" src="{{ 'koalafi_financing_emma_logo.svg' | asset_url }}" />
+            </div>
+            <div class="merchant-logos" id="logo-plus"> + </div>
+            <div class="merchant-logos">
+               <img id="koalafi-logo" src="{{ 'koalafi_financing_koalafi_logo.svg' | asset_url }}"/>
+            </div>
+         </div>
+         <div class="header-text-container">
+            <div class="header-title">The perfect payment plan for a perfect night's sleep</div>
+            <p class="header-subtitle">Lease-to-own financing for customers building credit</p>
+            <div class="apply-button-container">
+               <button id="header-apply-button" class="apply-now-button">APPLY NOW | NO CREDIT NEEDED*</button>
+            </div>
+            <div class="approval-subtext">High chance of approval for up to $5,000</div>
+         </div>
+      </div>
+      <!-- HOW IT WORKS SECTION -->
+      <div class="how-it-works">
+         <div class="section-title">How It Works</div>
+         <div class="three-steps">
+            <div class="step-container">
+               <div class="circle-number">
+                  <img src="{{ 'koalafi_financing_circle_one.svg' | asset_url }}"/>
+               </div>
+               <div class="three-steps-title">
+                  Get an instant decision
+               </div>
+               <p class="three-steps-subtext">Quickly apply for a lease up to $5,000.  Koalafi looks beyond credit to give you a high chance of approval.</p>
+            </div>
+            <div class="step-container">
+               <div class="circle-number">
+                  <img src="{{ 'koalafi_financing_circle_two.svg' | asset_url }}"/>
+               </div>
+               <div class="three-steps-title">
+                  Review clear terms upfront
+               </div>
+               <p class="three-steps-subtext">If approved, you'll be able to review clear and simple terms before signing the agreement and placing your order.</p>
+            </div>
+            <div class="step-container">
+               <div class="circle-number">
+                  <img src="{{ 'koalafi_financing_circle_three.svg' | asset_url }}"/>
+               </div>
+               <div class="three-steps-title">
+                  Make flexible payments
+               </div>
+               <p class="three-steps-subtext">Make a low initial payment then split the cost into regular rental payments.  Pay off your lease early to save. </p>
+            </div>
+         </div>
+         <div class="apply-button-container three-steps-apply-button-container">
+            <button id="how-it-works-apply-button" class="apply-now-button">APPLY NOW</button>
+         </div>
+      </div>
+      <!-- WHY KOALAFI SECTION -->
+      <div class="why-koalafi">
+         <div class="section-title">Why Koalafi</div>
+         <div class="section-subtitle why-koalafi-subtitle">A Koalafi lease isn’t just a great way to manage a big expense—it can also help you build your credit.</div>
+         <div class="why-koalafi-reasons">
+            <div class="reason-container">
+               <img class="reason-icon"  src="{{ 'koalafi_financing_circle_checkmark.svg' | asset_url }}"/>
+               <div class="reason-description"> No credit needed</div>
+            </div>
+            <div class="reason-container">
+               <img class="reason-icon" src="{{ 'koalafi_financing_arrow_graph.svg' | asset_url }}"/>
+               <div class="reason-description"> High Chance of Approval</div>
+            </div>
+            <div class="reason-container">
+               <img class="reason-icon"  src="{{ 'koalafi_financing_eye.svg' | asset_url }}"/>
+               <div class="reason-description"> No Hidden Fees, No surprises</div>
+            </div>
+            <div class="reason-container">
+               <img class="reason-icon"  src="{{ 'koalafi_financing_dollar_sign.svg' | asset_url }}"/>
+               <div class="reason-description"> Discounted early purchase options</div>
+            </div>
+         </div>
+      </div>
+      <!-- DON'T TAKE OUR WORD FOR IT SECTION -->
+      <div class="koalafi-reviews">
+         <div class="section-title">
+            Don't just take our word for it
+         </div>
+         <p class="section-subtitle reviews-subtitle">Koalafi is trusted by 15,000 retailers and their customers.  See what Koalafi customers have to say.</p>
+         <div class="koalafi-customer-reviews">
+            <div class="review-container">
+               {% include 'star-ratings' %} 
+               <p class="review-contents">
+                  Easy, quick approval and payment terms. Truly helped me in time of need without having to touch my
+                  emergency fund.
+               </p>
+               <div class="reviewer">
+                  <p class="reviewer__name">Michelle C.</p>
+                  <div class="reviewer__verified">
+                     <svg width="12" height="13" viewBox="0 0 12 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                           d="M7.986 11.2933C8.78212 11.5456 9.6525 11.333 10.2431 10.7424C10.8337 10.1517 11.046 9.28137 10.794 8.48525C11.535 8.1005 12 7.33512 12 6.5C12 5.66488 11.535 4.8995 10.794 4.51475C11.0464 3.71863 10.8337 2.84825 10.2431 2.25762C9.6525 1.667 8.78212 1.45475 7.986 1.70675C7.60125 0.965375 6.8355 0.5 6 0.5C5.1645 0.5 4.39875 0.965375 4.014 1.70675C3.21825 1.45512 2.34863 1.66737 1.758 2.25725C1.16738 2.84713 0.95475 3.71675 1.206 4.51288C0.465 4.89762 0 5.663 0 6.49813C0 7.33325 0.465 8.09862 1.206 8.48337C0.9525 9.27987 1.16438 10.1514 1.75538 10.7428C2.34637 11.3341 3.21788 11.5464 4.01437 11.2933C4.39913 12.0346 5.16488 12.5 6 12.5C6.83512 12.5 7.60087 12.0346 7.98563 11.2933H7.986ZM3.44513 7.26125C3.3075 7.12813 3.25238 6.93125 3.30113 6.74638C3.34988 6.5615 3.49425 6.41675 3.6795 6.36837C3.86475 6.32 4.06125 6.37512 4.19438 6.51312L5.41425 7.73225L8.04788 4.28825C8.22563 4.05575 8.55825 4.0115 8.79037 4.18925C9.0225 4.367 9.06713 4.69963 8.88937 4.93175L6.255 8.37238C6.06975 8.6165 5.78813 8.768 5.4825 8.78863C5.17688 8.80925 4.87725 8.696 4.66125 8.47888L3.44588 7.26125H3.44513Z"
+                           fill="#2E2F3C"
+                           />
+                     </svg>
+                     verified customer
+                  </div>
+               </div>
+            </div>
+            <div class="review-container">
+               {% include 'star-ratings' %} 
+               <p class="review-contents">
+                  I know many people are trying to build their credit and this is an amazing way to do it!
+               </p>
+               <div class="reviewer">
+                  <p class="reviewer__name">Josephina P.</p>
+                  <div class="reviewer__verified">
+                     <svg width="12" height="13" viewBox="0 0 12 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                           d="M7.986 11.2933C8.78212 11.5456 9.6525 11.333 10.2431 10.7424C10.8337 10.1517 11.046 9.28137 10.794 8.48525C11.535 8.1005 12 7.33512 12 6.5C12 5.66488 11.535 4.8995 10.794 4.51475C11.0464 3.71863 10.8337 2.84825 10.2431 2.25762C9.6525 1.667 8.78212 1.45475 7.986 1.70675C7.60125 0.965375 6.8355 0.5 6 0.5C5.1645 0.5 4.39875 0.965375 4.014 1.70675C3.21825 1.45512 2.34863 1.66737 1.758 2.25725C1.16738 2.84713 0.95475 3.71675 1.206 4.51288C0.465 4.89762 0 5.663 0 6.49813C0 7.33325 0.465 8.09862 1.206 8.48337C0.9525 9.27987 1.16438 10.1514 1.75538 10.7428C2.34637 11.3341 3.21788 11.5464 4.01437 11.2933C4.39913 12.0346 5.16488 12.5 6 12.5C6.83512 12.5 7.60087 12.0346 7.98563 11.2933H7.986ZM3.44513 7.26125C3.3075 7.12813 3.25238 6.93125 3.30113 6.74638C3.34988 6.5615 3.49425 6.41675 3.6795 6.36837C3.86475 6.32 4.06125 6.37512 4.19438 6.51312L5.41425 7.73225L8.04788 4.28825C8.22563 4.05575 8.55825 4.0115 8.79037 4.18925C9.0225 4.367 9.06713 4.69963 8.88937 4.93175L6.255 8.37238C6.06975 8.6165 5.78813 8.768 5.4825 8.78863C5.17688 8.80925 4.87725 8.696 4.66125 8.47888L3.44588 7.26125H3.44513Z"
+                           fill="#2E2F3C"
+                           />
+                     </svg>
+                     verified customer
+                  </div>
+               </div>
+            </div>
+            <div class="review-container">
+               {% include 'star-ratings' %} 
+               <p class="review-contents">
+                  Since doing business with Koalafi I’ve gotten great customer service and good deals. Of course I’d recommend them to my peers.
+               </p>
+               <div class="reviewer">
+                  <p class="reviewer__name">Paula W.</p>
+                  <div class="reviewer__verified">
+                     <svg width="12" height="13" viewBox="0 0 12 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                           d="M7.986 11.2933C8.78212 11.5456 9.6525 11.333 10.2431 10.7424C10.8337 10.1517 11.046 9.28137 10.794 8.48525C11.535 8.1005 12 7.33512 12 6.5C12 5.66488 11.535 4.8995 10.794 4.51475C11.0464 3.71863 10.8337 2.84825 10.2431 2.25762C9.6525 1.667 8.78212 1.45475 7.986 1.70675C7.60125 0.965375 6.8355 0.5 6 0.5C5.1645 0.5 4.39875 0.965375 4.014 1.70675C3.21825 1.45512 2.34863 1.66737 1.758 2.25725C1.16738 2.84713 0.95475 3.71675 1.206 4.51288C0.465 4.89762 0 5.663 0 6.49813C0 7.33325 0.465 8.09862 1.206 8.48337C0.9525 9.27987 1.16438 10.1514 1.75538 10.7428C2.34637 11.3341 3.21788 11.5464 4.01437 11.2933C4.39913 12.0346 5.16488 12.5 6 12.5C6.83512 12.5 7.60087 12.0346 7.98563 11.2933H7.986ZM3.44513 7.26125C3.3075 7.12813 3.25238 6.93125 3.30113 6.74638C3.34988 6.5615 3.49425 6.41675 3.6795 6.36837C3.86475 6.32 4.06125 6.37512 4.19438 6.51312L5.41425 7.73225L8.04788 4.28825C8.22563 4.05575 8.55825 4.0115 8.79037 4.18925C9.0225 4.367 9.06713 4.69963 8.88937 4.93175L6.255 8.37238C6.06975 8.6165 5.78813 8.768 5.4825 8.78863C5.17688 8.80925 4.87725 8.696 4.66125 8.47888L3.44588 7.26125H3.44513Z"
+                           fill="#2E2F3C"
+                           />
+                     </svg>
+                     verified customer
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- AFTER CHECKOUT SECTION -->
+      <div class="after-checkout">
+         <img class="truck-front" src="{{ 'koalafi_financing_shipping_front.svg' | asset_url }}"></img>
+         <div class="checkout-text">
+            <div class="section-title">
+               After Checkout
+            </div>
+            <p class="section-subtitle shipping-text">
+               Koalafi will ship your order and send you a confirmation email with tracking information
+            </p>
+         </div>
+         <img class="truck-back" src="{{ 'koalafi_financing_shipping_back.svg' | asset_url }}"></img>
+      </div>
+      <!-- FAQ SECTION -->
+      <div class="koalafi-faq">
+         <div class="section-title">
+            Frequently Asked Questions
+         </div>
+         <div class="faq-question-container">
+            <div class="question-title">
+               What is Koalafi?
+            </div>
+            <div class="faq-response">Koalafi is a pay-over time provider, offering lease-to-own payment plans.  With Koalafi, customers can rent the items from Koalafi to make larger purchases more manageable.</div>
+         </div>
+         <div class="faq-question-container">
+            <div class="question-title">
+               Am I a good fit for Koalafi?
+            </div>
+            <div class="faq-response">Koalafi offer leases to customers who are still building credit.  You do not need credit to be eligible for a Koalafi lease.  Our technology allows us to make more informed decisions about applicants, resulting in high approval rates!</div>
+         </div>
+         <div class="faq-question-container">
+            <div class="question-title">
+               What do I need to apply?
+            </div>
+            <div class="faq-response">At the time of application, you will need to have your personal information, income details, bank and debit card information, and initial payment.</div>
+         </div>
+         <div class="faq-question-container">
+            <div class="question-title">
+               Who should I contact if I have questions?
+            </div>
+            <div class="faq-response">Give the Koalafi team a call at 844.937.8275 between 8:00am and 9:00pm ET Monday through Friday, or 8:00am to 8:00pm ET on Saturday.</div>
+         </div>
+      </div>
+   </div>
+</section>

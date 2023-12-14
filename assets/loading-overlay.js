@@ -1,21 +1,18 @@
-class LoadingOverlay extends CustomElement {
+class LoadingOverlay extends HTMLElement {
   props = {
     type: "spinner",
-    center: false,
   }
 
-  beforeMount() {
-    super.beforeMount();
+  constructor() {
+    super();
 
-    const { center } = this.props
-
-    if (center) {
-      this.$el.addClass('is-center')
-    }
-
-    this.hide()
+    this.$el = $(this)
   }
 
+
+  connectedCallback() {
+    this.render()
+  }
   render() {
     const { type } = this.props
 

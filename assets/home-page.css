@@ -1,0 +1,291 @@
+* {
+    font-variant-ligatures: none;
+}
+
+html {
+    scroll-padding-top: 10rem;
+    color: #2E2F3C;
+}
+
+body {
+    font-family: "Inter";
+    color: #2E2F3C;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+    letter-spacing: 0;
+}
+
+model-viewer::part(default-progress-mask) {
+    display: none;
+}
+
+model-viewer::part(default-progress-bar) {
+    display: none;
+}
+
+.grid {
+    margin-bottom: 0;
+}
+
+/* Buttons */
+.menu-btn {
+    font-family: "Inter";
+    font-weight: bold;
+    font-size: 13px;
+    cursor: pointer;
+    border-radius: 1.5rem;
+    padding: 10px 16px 8px 16px;
+}
+
+.btn {
+    display: inline-block;
+    font-family: "Acumin Pro";
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 1.5rem;
+}
+
+.circle {
+    border-radius: 50%;
+    display: inline-block;
+    font-family: "Inter";
+    font-weight: 700;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 13px;
+}
+
+/* Navigation Items */
+.mattresses:hover .mattresses-dropdown {
+    display: flex;
+}
+
+.beds:hover .beds-dropdown {
+    display: flex;
+}
+
+.accessories:hover .accessories-dropdown {
+    display: flex;
+}
+
+.gradient-background {
+    background: linear-gradient(0deg, #ffffff 0%, rgba(255, 137, 0, 0.3) 100%);
+}
+
+.card {
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+}
+
+.linear-gradient-bg:hover {
+    background: linear-gradient(180deg, #ffdeb7 0%, #ffa235 100%);
+    transition: opacity 5s linear;
+}
+
+.card:hover .gradient-background {
+    background: linear-gradient(0deg, #FFFFFF 0%, rgb(255, 137, 0) 100%);
+}
+
+@media (min-width: 1024px) {
+    .gradient-background {
+        background: linear-gradient(0deg, #FFFFFF 0%, rgba(255, 137, 0, 0.3) 100%);
+    }
+}
+.sale-bagde {
+    color: white;
+    background-color: #F03306;
+    width: max-content;
+    border-radius: 4px;
+    padding: 0 4px;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    letter-spacing: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    color: #2e2f3c;
+}
+
+.heading-1 {
+    font-family: "Tiempos";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 30px;
+}
+@media (min-width: 768px) {
+    .heading-1 {
+        font-size: 39px;
+        line-height: 47px;
+    }
+}
+
+.heading-2 {
+    font-family: "Tiempos";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 31px;
+    line-height: 37px;
+}
+@media (min-width: 768px) {
+    .heading-2 {
+        font-size: 39px;
+        line-height: 47px;
+    }
+}
+
+.heading-3 {
+    font-family: "Tiempos";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 25px;
+    line-height: 35px;
+    white-space: pre-wrap;
+}
+
+.heading-4 {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+}
+@media (min-width: 768px) {
+    .heading-4 {
+        font-size: 20px;
+        line-height: 30px;
+    }
+}
+
+.subheading {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 30px;
+}
+
+a,
+p {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.why-us-section {
+    background: #F0F0F5;
+    padding: 40px 0 60px;
+}
+
+.shopping-invitation {
+    padding: 40px 14px;
+    background: linear-gradient(180deg, rgba(255, 246, 236, 0) 0%, #fff6ec 100%);
+}
+.shopping-invitation__card {
+    background: linear-gradient(180deg, #ffdeb7 0%, #ffa235 100%);
+    transition: all 5s linear;
+}
+@media (min-width: 768px) {
+    .shopping-invitation__card {
+        background: #fff6ec;
+    }
+    .shopping-invitation__card:hover {
+        background: linear-gradient(180deg, #ffdeb7 0%, #ffa235 100%);
+    }
+}
+@media (min-width: 768px) {
+    .shopping-invitation {
+        padding: 60px 64px;
+    }
+}
+
+.our-blog-section {
+    overflow: hidden;
+    padding: 30px 16px;
+    background: linear-gradient(0deg, rgba(255, 246, 236, 0) 0%, #fff6ec 100%);
+}
+.our-blog-section .wallpaper {
+    position: absolute;
+    top: 50px;
+    z-index: 1;
+    display: block !important;
+    width: 500px;
+    height: 500px;
+    background: linear-gradient(0deg, rgba(255, 162, 53, 0) 0%, #ff8900 100%);
+    opacity: 0.4;
+    border-radius: 100%;
+}
+@media (min-width: 768px) {
+    .our-blog-section .wallpaper {
+        top: 50px;
+    }
+}
+@media (min-width: 768px) {
+    .our-blog-section {
+        padding: 60px 64px;
+    }
+}
+.our-blog-section .splide__arrow {
+    z-index: 3;
+    background: #ff8900;
+    opacity: 0.7;
+}
+.our-blog-section .splide__arrow svg {
+    fill: white;
+}
+.our-blog-section .splide__pagination__page {
+    background-color: #C5C6D3;
+}
+
+.splide__track {
+    z-index: 2;
+}
+.splide__arrows {
+    z-index: 3;
+}
+.splide__arrow {
+    z-index: 3;
+}
+.splide__pagination {
+    bottom: -1.5rem;
+    display: grid;
+    gap: 8px;
+    grid-template-columns: repeat(auto-fit, minmax(8px, auto));
+    justify-content: center;
+    padding: 0;
+}
+.splide__pagination__page {
+    width: 8px;
+    height: 8px;
+    margin: 0;
+    padding: 0;
+    background-color: #C5C6D3;
+    opacity: 0.5;
+    transition: all 0.2s linear;
+}
+.splide__pagination__page.is-active {
+    width: 26px;
+    background: #FF8900;
+    border-radius: 10px;
+    opacity: 1;
+    transform: none;
+}

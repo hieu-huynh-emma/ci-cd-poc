@@ -3,7 +3,9 @@
 {% assign available_upsell_products = '' %}
 {% assign valid_upsell_product_handles = '' %}
 {% assign cart_product_handles = '' %}
-{% assign upsell_priority = 'emma-hybrid-comfort|emma-original-mattress|emma-mattress-protector|emma-foam-pillow|emma-bed-frame|emma-topper' | split: '|' %}
+{% assign upsell_priority = 'emma-climax-hybrid|emma-original-mattress|emma-upholstered-platform|artisan-wooden-platform-bed|emma-powerbase-1-0|emma-powerbase-pro|emma-mattress-protector|emma-foam-pillow'
+  | split: '|'
+%}
 
 {% for item in cart.items %}
   {% if cart_product_handles == '' %}
@@ -21,7 +23,10 @@
       {% if valid_upsell_product_handles == '' %}
         {% assign valid_upsell_product_handles = cart_product_handle %}
       {% else %}
-        {% assign valid_upsell_product_handles = valid_upsell_product_handles | append: '|' | append: cart_product_handle %}
+        {% assign valid_upsell_product_handles = valid_upsell_product_handles
+          | append: '|'
+          | append: cart_product_handle
+        %}
       {% endif %}
     {% endif %}
   {% endfor %}
@@ -31,7 +36,6 @@
 {% for handle in valid_upsell_product_handles %}
   {% assign this_product = all_products[handle] %}
   {% assign upsell_products_meta = this_product.metafields.accentuate.upsell_products | split: '|' %}
-
   {% if this_product and this_product.available and upsell_products_meta.size > 0 %}
     {% for product_handle in upsell_products_meta %}
       {% assign upsell_products = upsell_products | split: '|' %}
@@ -81,10 +85,13 @@
 {% endfor %}
 {% assign available_upsell_products = available_upsell_products | split: '|' %}
 
-<cart-upsell id="CartDrawerUpsell" class="{% if available_upsell_products.size == 1 %}is-single{% endif %}">
+<cart-upsell
+  id="CartDrawerUpsell"
+  class="{% if available_upsell_products.size == 1 %}is-single{% endif %}" style="display:none;"
+>
   {% if available_upsell_products.size > 0 %}
     <p class="cart-upsell__title{% if available_upsell_products.size == 1 %} is-single{% endif %}">
-      {{ section.settings.title | default: 'cart.drawer_upsell.others_also_bought' | t }}
+      {{ section.settings.title | default: 'Others also bought' }}
     </p>
 
     {% if available_upsell_products.size == 1 %}
@@ -94,7 +101,7 @@
         <cart-upsell-item class="upsell-item upsell-item--single" :productId="{{prod.id}}">
           <div class="upsell-item__media">
             {% assign img = prod.featured_image %}
-            {{ img | image_url: width: 70 | image_tag: loading: 'lazy' }}
+            {{ img | image_url: width: 70 | image_tag }}
           </div>
           <div class="upsell-item__details">
             <a href="{{ prod.url }}" class="paragraph-12 font-semibold text-chambray">
@@ -104,8 +111,7 @@
             {% assign variant = prod.first_available_variant %}
             {% if variant.available %}
               <variant-selector
-                class="{% if variant.title == "Default Title" %}hidden{% endif %}"
-                :value="{{ variant.id }}"
+                :value="{{ prod.first_available_variant.id }}"
                 :options="{{ prod.variants | json | escape }}"
               >
               </variant-selector>
@@ -114,11 +120,13 @@
           <div class="upsell-item-footer">
             {%- if prod.selected_or_first_available_variant.available -%}
               <div class="upsell-item__pricing">
-                <div class="text-chambray">+{{ variant.price | money_without_trailing_zeros }}</div>
-                {% if variant.compare_at_price > variant.price %}
+                <div class="text-chambray">+{{ prod.price | money_without_trailing_zeros }}</div>
+                {% if prod.compare_at_price > prod.price %}
                   <div
                     class="font-light text-comet line-through"
-                  >{{ variant.compare_at_price | money_without_trailing_zeros }}</div>
+                  >
+                    {{ prod.compare_at_price | money_without_trailing_zeros }}
+                  </div>
                 {% endif %}
               </div>
             {%- else -%}
@@ -150,7 +158,7 @@
                 <cart-upsell-item class="upsell-item" :productId="{{prod.id}}">
                   <div class="upsell-item__media">
                     {% assign img = prod.featured_image %}
-                    {{ img | image_url: width: 70 | image_tag: loading: 'lazy' }}
+                    {{ img | image_url: width: 70 | image_tag }}
                   </div>
                   <div class="upsell-item__details">
                     <a href="{{ prod.url }}" class="paragraph-12 font-semibold text-chambray">
@@ -160,8 +168,7 @@
                     {% assign variant = prod.first_available_variant %}
                     {% if variant.available %}
                       <variant-selector
-                        class="{% if variant.title == "Default Title" %}hidden{% endif %}"
-                        :value="{{ variant.id }}"
+                        :value="{{ prod.first_available_variant.id }}"
                         :options="{{ prod.variants | json | escape }}"
                       >
                       </variant-selector>
@@ -170,11 +177,13 @@
                   <div class="upsell-item-footer">
                     {%- if prod.selected_or_first_available_variant.available -%}
                       <div class="upsell-item__pricing">
-                        <div class="text-chambray">+{{ variant.price | money_without_trailing_zeros }}</div>
-                        {% if variant.compare_at_price > variant.price %}
+                        <div class="text-chambray">+{{ prod.price | money_without_trailing_zeros }}</div>
+                        {% if prod.compare_at_price > prod.price %}
                           <div
                             class="font-light text-comet line-through"
-                          >{{ variant.compare_at_price | money_without_trailing_zeros }}</div>
+                          >
+                            {{ prod.compare_at_price | money_without_trailing_zeros }}
+                          </div>
                         {% endif %}
                       </div>
                     {%- else -%}
@@ -183,7 +192,10 @@
 
                     <button
                       class="btn btn--secondary btn--outlined btn--compact upsell-item__cta"
-                      {% if prod.selected_or_first_available_variant.available == false %}disabled{% endif %}>
+                      {% if prod.selected_or_first_available_variant.available == false %}
+                        disabled
+                      {% endif %}
+                    >
                       <span>Add</span>
                     </button>
                   </div>
@@ -194,7 +206,6 @@
         </div>
       </div>
     {% endif %}
-
   {% endif %}
 </cart-upsell>
 

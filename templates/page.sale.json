@@ -6,28 +6,35 @@
         "ca504ac7-3137-4ad7-997c-c1e12bd1d446": {
           "type": "wallpaper",
           "settings": {
-            "src": "shopify:\/\/shop_images\/Black_Friday_Banner_-_Week43y44_-_CA-03_1.jpg",
-            "mobile_src": "shopify:\/\/shop_images\/Black_Friday_Banner_-_Week43y44_-_CA_v_copy_2_81af4abc-79cd-458c-a438-42303c8ce14e.jpg"
+            "src": "shopify:\/\/shop_images\/Emma_US_Christmas_Hero_Banner_1300x420_120823_2_B.jpg",
+            "mobile_src": "shopify:\/\/shop_images\/Emma_US_Christmas_Hero_Banner_351x528_120823_4_B.jpg"
           }
         },
         "9593f14f-4c86-4af9-953e-0fa248231b89": {
           "type": "cta",
           "disabled": true,
           "settings": {
-            "url": "shopify:\/\/products\/emma-original-hybrid",
+            "url": "shopify:\/\/products\/emma-original-pillows",
             "text": "Shop Now",
             "subtext": "FREE 365-Night Trial"
+          }
+        },
+        "49db6ad0-dd00-4708-aa5c-be2bb442196e": {
+          "type": "countdown_timer",
+          "settings": {
+            "title": ""
           }
         }
       },
       "block_order": [
         "ca504ac7-3137-4ad7-997c-c1e12bd1d446",
-        "9593f14f-4c86-4af9-953e-0fa248231b89"
+        "9593f14f-4c86-4af9-953e-0fa248231b89",
+        "49db6ad0-dd00-4708-aa5c-be2bb442196e"
       ],
       "settings": {
-        "title": "<p>Up to 58% off<\/p>",
+        "title": "<p><strong>Holiday Sale<\/strong><\/p>",
         "tagline": "",
-        "subtitle": "Black Friday Sale",
+        "subtitle": "Up to 50% OFF",
         "text_color": "#ffffff",
         "wallpaper_size": "sm"
       }
@@ -41,10 +48,67 @@
         "sale_collection_list": [
           "sale",
           "mattresses",
-          "beddings",
           "beds",
           "pillows"
         ]
+      }
+    },
+    "special-services": {
+      "type": "multicolumn-text",
+      "blocks": {
+        "48ca0997-ffa4-4408-8013-4796cb7f17c4": {
+          "type": "column",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/freeshipping.svg",
+            "title": "Free Delivery and Returns",
+            "content": "Get your dream mattress delivered for free and return it stress-free if needed."
+          }
+        },
+        "f3255c5f-527e-4927-a670-554ff22e9ef7": {
+          "type": "column",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/sleep.svg",
+            "title": "365 Free Night Trial",
+            "content": "Sleep easy for a whole year with our 365-night trial."
+          }
+        },
+        "c15d1ab6-4b9b-4e30-ace7-dbf193ff2d4f": {
+          "type": "column",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Guarantee.svg",
+            "title": "10 Year Guarantee",
+            "content": "Rest easy knowing your mattress is backed by our decade-long guarantee."
+          }
+        },
+        "f9973382-ba4e-4931-817c-113225550dad": {
+          "type": "column",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/MicrosoftTeams-image_12.png",
+            "title": "0% APR Financing",
+            "content": "Make your dream mattress affordable with 0% APR financing."
+          }
+        }
+      },
+      "block_order": [
+        "48ca0997-ffa4-4408-8013-4796cb7f17c4",
+        "f3255c5f-527e-4927-a670-554ff22e9ef7",
+        "c15d1ab6-4b9b-4e30-ace7-dbf193ff2d4f",
+        "f9973382-ba4e-4931-817c-113225550dad"
+      ],
+      "custom_css": [
+        ".multicolumn-card {justify-items: center; text-align: center; border-radius: 10px; background: #f7f7f9; padding: 44px 10px; gap: 10px; width: 25%;}",
+        ".multicolumn-list {gap: 20px; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); justify-items: center; justify-content: space-between; display: flex;}",
+        ".multicolumn-card__details {gap: 12px; text-align: center;}",
+        ".multicolumn-card__title {margin: 0; font-weight: 600;}",
+        ".multicolumn-card__details p {line-height: normal; color: #55576f;}",
+        ".multicolumn-card__icon {margin: auto;}"
+      ],
+      "settings": {
+        "column_alignment": "left",
+        "column_size": "medium",
+        "container_spacing": "lg",
+        "horizontal_layout_on_mobile": true,
+        "solid_typo": false
       }
     },
     "customer-sentiment": {
@@ -65,7 +129,7 @@
           "settings": {
             "title": "Excellent hybrid mattress",
             "date": "12 Apr 2023",
-            "product": "emma-original-hybrid",
+            "product": "emma-climax-hybrid",
             "content": "<p>Excellent mattress, not too firm and not too soft, either! I got the pillow too, which I got to adjust by taking out one layer. I'm a side sleeper so the flexibility here was a gamechanger for me<\/p>",
             "author": "Ben A."
           }
@@ -75,7 +139,7 @@
           "settings": {
             "title": "Best quality sleep I've ever had!",
             "date": "25 Apr 2023",
-            "product": "emma-original-hybrid",
+            "product": "emma-climax-hybrid",
             "content": "<p>I didn't realize how bad my previous mattress was until I received my Emma mattress. Not only do I sleep straight through the night (mind you, I sleep with my partner and dog and don't feel their movements at all!), I wake up energized and well rested. I no longer have any body aches and never feel too hot\/too cold. Highly recommend!<\/p>",
             "author": "Jonathan W."
           }
@@ -85,7 +149,7 @@
           "settings": {
             "title": "Great for couples",
             "date": "05 May 2023",
-            "product": "emma-original-hybrid",
+            "product": "emma-climax-hybrid",
             "content": "<p>We've tried orthopedic mattresses in the past, but returned it because they're TOO firm. I prefer soft ones, while my husband prefers firm. For some strange reason, this mattress just works for the both of us. His back pain's gone and I've been sleeping like a log every night!<\/p>",
             "author": "Donna C."
           }
@@ -95,7 +159,7 @@
           "settings": {
             "title": "Uninterrupted sleep all night",
             "date": "20 May 2023",
-            "product": "emma-original-hybrid",
+            "product": "emma-climax-hybrid",
             "content": "<p>This was recommended to me by my friend since I've been waking up in the middle of the night with my old mattress. So glad I listened cuz now I've been sleeping straight and waking up without a sweat<\/p>",
             "author": "Nicole W"
           }
@@ -156,56 +220,6 @@
         "title": "<p>The honest truth from our customers<\/p>"
       }
     },
-    "special-services": {
-      "type": "multicolumn-text",
-      "blocks": {
-        "48ca0997-ffa4-4408-8013-4796cb7f17c4": {
-          "type": "column",
-          "settings": {
-            "icon": "shopify:\/\/shop_images\/truck-free-black.png",
-            "title": "Free Delivery",
-            "content": "We’ll bring your Emma order straight to your door at no extra cost"
-          }
-        },
-        "f3255c5f-527e-4927-a670-554ff22e9ef7": {
-          "type": "column",
-          "settings": {
-            "icon": "shopify:\/\/shop_images\/100-night-black.png",
-            "title": "365-Night Trial",
-            "content": "Get properly acquainted with Emma so you can be sure we’re the one"
-          }
-        },
-        "c15d1ab6-4b9b-4e30-ace7-dbf193ff2d4f": {
-          "type": "column",
-          "settings": {
-            "icon": "shopify:\/\/shop_images\/award-black.png",
-            "title": "10 Year Guarantee",
-            "content": "Our products are built to last. You’re covered if something goes wrong"
-          }
-        },
-        "f9973382-ba4e-4931-817c-113225550dad": {
-          "type": "column",
-          "settings": {
-            "icon": "shopify:\/\/shop_images\/package-black.png",
-            "title": "Free Returns",
-            "content": "If Emma isn’t for you, our customer service team will take care of you"
-          }
-        }
-      },
-      "block_order": [
-        "48ca0997-ffa4-4408-8013-4796cb7f17c4",
-        "f3255c5f-527e-4927-a670-554ff22e9ef7",
-        "c15d1ab6-4b9b-4e30-ace7-dbf193ff2d4f",
-        "f9973382-ba4e-4931-817c-113225550dad"
-      ],
-      "settings": {
-        "column_alignment": "left",
-        "column_size": "medium",
-        "container_spacing": "lg",
-        "horizontal_layout_on_mobile": true,
-        "solid_typo": false
-      }
-    },
     "image-with-faqs": {
       "type": "image-with-faqs",
       "blocks": {
@@ -245,6 +259,7 @@
         "a72149c3-5420-4a8c-80fe-7370288da216",
         "d24509aa-3b72-4264-887a-32b88503b5c5"
       ],
+      "disabled": true,
       "settings": {
         "heading": "A true worryfree sleeping experience.",
         "image": "shopify:\/\/shop_images\/image_1.png",
@@ -258,8 +273,8 @@
   "order": [
     "sale-hero-banner",
     "sale-catalog",
-    "customer-sentiment",
     "special-services",
+    "customer-sentiment",
     "image-with-faqs"
   ]
 }

@@ -1,18 +1,18 @@
-$(document).ready(function () {
-  new Splide('#risk-free-banner-section .splide', {
-    gap: '16px',
-    pagination: false,
-    autoplay: true,
-    interval: 3000,
-    type: 'loop',
-    width: '100%',
-    perPage: 1,
-    perMove: 1,
-    mediaQuery: 'min',
-    breakpoints: {
-      1024: {
-        destroy: true,
-      },
-    },
-  }).mount()
+$("#risk-free-banner-section").ready(async function () {
+    await ResourceCoordinator.requestVendor('Splide');
+
+    new Splide('#risk-free-banner .splide', {
+        pagination: false,
+        autoplay: true,
+        interval: 3000,
+        type: 'loop',
+        perPage: 1,
+        perMove: 1,
+        mediaQuery: 'min',
+        breakpoints: {
+            768: {
+                destroy: true,
+            }
+        }
+    }).mount();
 })

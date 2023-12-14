@@ -1,0 +1,30 @@
+{% if cart.item_count > 0 %}
+<div class="cart" id="cart-data" data-money-format="{{ shop.money_format }}">
+<div class="width">
+    <h1>Cart</h1>
+{% form 'cart',cart %}
+{% for item in cart.items %}
+{% render 'cart-item',item:item %}
+  {% endfor %}
+  <hr/>
+  <div class="cart-totals">
+    <p> Discounts: <strong id="total-discount">{{ cart.total_discounts |money }}</strong> </p>
+    <p>Total: <strong id="total-price">{{ cart.total_price |money }}</strong></p>
+  </div>
+  
+<div class="cart-buttons">
+  <button type="submit" name="checkout" class="button  full">Checkout</button>
+</div>
+
+  {% endform %}
+  
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"  defer="defer"></script>
+<script src="{{ 'mycart.js' | asset_url }}" defer="defer"></script>
+  {% else %}
+   <div class="page-boundary cart-drawer-empty" id="displayempty">
+ {% section 'cart-drawer-empty' %}
+  </div>
+{% endif %}
+  

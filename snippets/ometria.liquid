@@ -15,14 +15,14 @@
     current_page:{{current_page|json}},
     shop_currency:{{shop.currency|json}},
     customer_email:{{customer.email|json}},
-    namespace:"ca:"
+    namespace:"us:"
   };
   {% for item in cart.items %}
-  ometria.raw_data.cart.push([{{ item.product.id|json}},{{item.variant.id|json}},
-  {{item.quantity|json}},{{item.line_price|json}}]);
+    ometria.raw_data.cart.push([{{ item.product.id|json}},{{item.variant.id|json}},
+    {{item.quantity|json}},{{item.line_price|json}}]);
   {% endfor %}
   (function(){
-  var url=window.location.protocol+"//cdn.ometria.com/tags/765290d83c93ac27.js?v=2023100912dsfds";
+  var url=window.location.protocol+"//cdn.ometria.com/tags/f956f8fdda3fb069.js?v=2023091207dsfds";
   setTimeout(function(){var sc=document.createElement('script');sc.src=url;sc.setAttribute('async','true');
   document.getElementsByTagName("head")[0].appendChild(sc);},15);
   })();

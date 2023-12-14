@@ -1,0 +1,25 @@
+{% schema %}
+{
+  "name": "Custom Payment Icons",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "pro_icon",
+      "label": "Main Icon"
+    }
+  ],
+  "blocks": [
+     {
+       "name": "Payment Providers Icon",
+       "type": "image",
+       "settings": [
+         {
+           "type": "image_picker",
+           "id": "payment_provider_icons",
+           "label": "Payment Gatway Icon"
+         }
+       ]
+     }
+   ]
+}
+{% endschema %}

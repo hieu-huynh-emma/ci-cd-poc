@@ -49,12 +49,14 @@
 <section id="about-us-main-content-section">
   <div class="mx-auto max-w-7xl px-4 py-8 sm:px-6 md:px-8">
     <div class="mb-12 lg:flex lg:gap-10">
-      <div id="about-us-left-column-content" class="lg:w-3/4"></div>
+      <div id="about-us-left-column-content" class="lg:w-3/4">
+      
+      </div>
       <div id="about-us-right-column-content" class="lg:w-1/4"></div>
     </div>
   </div>
 </section>
-
+<script src="{{ 'jquery.beefup.min.js' | asset_url }}" defer="defer"></script>
 <script type="module" defer>
   $('.accordion-wrapper').beefup({ trigger: ".accordion", content: ".accordion__content", openSpeed: 100, closeSpeed: 100 })
   $('.about-us-accordion-button').click()

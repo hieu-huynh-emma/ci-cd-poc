@@ -1,0 +1,66 @@
+<div class="hidden emma-showcase emma-section">
+    <div class="emma-showcase__background">&nbsp;</div>
+    <div class="emma-showcase__circle emma-wave">&nbsp;</div>
+    <div class="emma-showcase-grid">
+
+        {%- for product in section.settings.collection.products limit: 5 -%}
+            <a    href="{{ product.url }}"
+                  class="emma-showcase-grid__item"
+                  data-aos-duration="3000"
+                  data-aos="{% if forloop.index == 1 %}fade-up{% else %}fade-down{% endif %}">
+                <div class="emma-showcase-grid__item-image">
+                    <img src="{% if forloop.index == 1 or forloop.index == 2 %}
+                                {{ product.media[0] | img_url: '533x' }}
+                                {% else %}
+                                {{ product.media[0] | img_url: '360x' }}
+                            {% endif %}" />
+                </div>
+                <div class="emma-showcase-grid__item-text">
+                    {%- if section.settings.show_subtitle -%}
+                        <div class="emma-showcase-grid__item-subtitle">
+                            {{ product.title }}
+                        </div>
+                    {%- endif -%}
+                    <div class="emma-showcase-grid__item-title">
+                        {{ product.title }}
+                    </div>
+                    {%- if section.settings.show_description -%}
+                        <div class="emma-showcase-grid__item-description">
+                            {{ product.description }}
+                        </div>
+                    {%- endif -%}
+                    <div>
+                        <span class="emma-showcase-grid__item-link">SHOP NOW →</span>
+                    </div>
+                </div>
+            </a>
+        {%- endfor -%}
+
+
+    </div>
+</div>
+
+{% schema %}
+{
+    "name": "Showcase",
+    "settings": [
+        {
+            "type": "collection",
+            "id": "collection",
+            "label": "t:sections.featured-collection.settings.collection.label"
+        },
+        {
+            "type": "checkbox",
+            "id": "show_description",
+            "default": true,
+            "label": "Show description?"
+        },
+        {
+            "type": "checkbox",
+            "id": "show_subtitle",
+            "default": false,
+            "label": "Show subtitle?"
+        }
+    ]
+}
+{% endschema %}

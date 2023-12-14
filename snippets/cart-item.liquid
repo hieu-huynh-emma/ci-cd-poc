@@ -1,0 +1,46 @@
+<div class="cart-item" data-key="{{ item.key }}">
+  <div class="cart-item-image">
+<img src="{{ item.image |image_url: width:400 }}"/>
+  </div>
+  <div class="cart-item-product">
+  <a href="{{ item.url }}" class="product_title">{{ item.product.title }}</a>
+    {% if item.variant.title != 'Default Title'  %}
+       <span class="product_info">{{ item.variant.title }}</span>
+      {% endif %}
+  </div>
+  
+  <div class="cart-item-quantity">
+    <div class="cart-quantity-selector">
+      <button type="button" class="minus">{% render 'icon-minus' %} </button>
+     <input name="updates[]" type="text" value="{{ item.quantity }}"/>
+      <button type="button" class="plus">{% render 'icon-plus' %}</button>
+    </div>
+  </div>
+
+  <div class="cart-item-total">
+    {% if item.final_line_price > 0 %}
+  <span class="line-item-price  text-red">{{ item.final_line_price | money }}</span>
+     {% endif %}
+  </div>
+
+   <div class="flex items-center gap-2">
+               {% if item.variant.compare_at_price > item.variant.price %}
+                  <span class="cart-pricing__price cart-pricing__price--original t">
+                    {{ item.variant.compare_at_price | times: item.quantity | money_without_trailing_zeros }}
+                  </span>
+              {% endif %}
+            <strong class="product_price">
+                {% if item.original_line_price != item.line_price %}{{ item.original_line_price | money }}{% endif %}
+              {{ item.line_price | money }}
+              {% for discount in item.discounts %}{{ discount.title }}{% endfor %}
+             </strong>
+            </div>
+  
+  <div class="cart-item-remove">
+  <a href="{{ item.url_to_remove }}" class="remove-item">
+
+    {% render 'icon-remove' %} 
+  </a>
+  </div>
+  
+</div>

@@ -1,0 +1,25 @@
+<div class="emma-product-section0 page-width">
+    <div class="emma-product__heading emma-product__heading--indigo">{{ section.settings.product_heading }}</div>
+    {{ section.settings.product_body }}
+</div>
+
+
+{% schema %}
+  {
+    "name": "t:sections.product-description",
+    "settings": [
+      {
+        "id": "product_heading",
+        "type": "text",
+        "label": "Heading",
+        "default": "Title"
+      },
+      {
+        "id": "product_body",
+        "type": "richtext",
+        "label": "Add custom text below",
+        "default": "<p>Add your text here</p>"
+      }
+    ]
+  }
+{% endschema %}

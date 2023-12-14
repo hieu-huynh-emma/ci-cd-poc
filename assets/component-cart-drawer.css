@@ -7,7 +7,7 @@
   height: 100%;
   display: flex;
   justify-content: flex-end;
-  background-color: rgba(var(--color-foreground), 0.5);
+  background-color: rgba(black, 0.5);
   transition: visibility var(--duration-default) ease;
 }
 
@@ -20,9 +20,9 @@
   width: 40rem;
   max-width: calc(100vw - 3rem);
   padding: 0 1.5rem;
-  border: 0.1rem solid rgba(var(--color-foreground), 0.2);
+  border: 0.1rem solid rgba(black, 0.2);
   border-right: 0;
-  background-color: rgb(var(--color-background));
+  background-color: white;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -33,7 +33,7 @@
 .drawer__inner-empty {
   height: 100%;
   padding: 0 1.5rem;
-  background-color: rgb(var(--color-background));
+  background-color: white;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -72,7 +72,7 @@ cart-drawer:not(.is-empty) .cart-drawer__collection {
 
 .drawer__header {
   position: relative;
-  background-color: rgb(var(--color-background));
+  background-color: white;
   padding: 1.5rem 0;
   display: flex;
   justify-content: space-between;
@@ -92,7 +92,7 @@ cart-drawer:not(.is-empty) .cart-drawer__collection {
   position: absolute;
   top: 10px;
   right: -10px;
-  color: rgb(var(--color-foreground));
+  color: rgb(black);
   background-color: transparent;
   border: none;
   cursor: pointer;
@@ -114,8 +114,8 @@ cart-drawer:not(.is-empty) .cart-drawer__collection {
 }
 
 .drawer__footer {
-  background-color: rgb(var(--color-background));
-  border-top: 0.1rem solid rgba(var(--color-foreground), 0.2);
+  background-color: white;
+  border-top: 0.1rem solid rgba(black, 0.2);
   padding: 1.5rem 0;
 }
 
@@ -125,7 +125,7 @@ cart-drawer-items.is-empty + .drawer__footer {
 
 .drawer__footer > details {
   margin-top: -1.5rem;
-  border-bottom: 0.1rem solid rgba(var(--color-foreground), 0.2);
+  border-bottom: 0.1rem solid rgba(black, 0.2);
 }
 
 .drawer__footer > details[open] {
@@ -246,7 +246,7 @@ cart-drawer-items {
 }
 
 .cart-drawer .cart-items th {
-  border-bottom: 0.1rem solid rgba(var(--color-foreground), 0.08);
+  border-bottom: 0.1rem solid rgba(black, 0.08);
 }
 
 .cart-drawer .cart-item:last-child {
@@ -376,7 +376,7 @@ cart-drawer-items::-webkit-scrollbar {
 }
 
 cart-drawer-items::-webkit-scrollbar-thumb {
-  background-color: rgba(var(--color-foreground), 0.7);
+  background-color: rgba(black, 0.7);
   border-radius: 100px;
 }
 

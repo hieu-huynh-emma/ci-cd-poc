@@ -1,9 +1,0 @@
-{% liquid
-  assign sizes = '(min-width: ' | append: settings.page_width | append: 'px)'
-  assign sizes = sizes | append: settings.page_width | minus: 100 | times: 0.64 | round | append: 'px,'
-  assign sizes = sizes | append: '(min-width: 750px) calc((100vw - 11.5rem) / 2), calc(100vw - 4rem)'
-  assign height = 576 | divided_by: media.preview_image.aspect_ratio | ceil
-  assign alt = media.preview_image.alt | escape
-
-  render 'image-tag', image_src: media, is_product_image: true, width: 1500, sizes: sizes, height: height, alt: alt
-%}

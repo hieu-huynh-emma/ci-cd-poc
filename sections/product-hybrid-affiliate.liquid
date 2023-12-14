@@ -1,0 +1,75 @@
+<style>
+    .as-seen-container {
+        padding: 2.5rem 1rem;
+        background: linear-gradient(180deg,
+                #f0f0f5 0%,
+                rgba(240, 240, 245, 0) 100%);
+    }
+
+    .logo-list {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    .logo {
+        width: 30%;
+        min-height: 3rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+     .logo:first-child {
+        width: 100%;
+    }
+
+    @media (min-width: 768px) {
+        .as-seen-container {
+            min-height: 14rem;
+        }
+
+        .logo-list {
+            display: flex;
+            justify-content: space-evenly;
+            flex-wrap: nowrap;
+        }
+
+        .logo {
+            width: 14%;
+        }
+        .logo:first-child {
+            width: inherit;
+        }
+    }
+</style>
+<section class="bg-[white]">
+    <div class="as-seen-container py-10 px-2">
+        <h2 class="heading-2 text-center">As Seen In</h2>
+        <div class="logo-list mt-4">
+            <div class="logo" id="sleep-foundation">
+                <img src="{{ 'sleep-foundation.png' | asset_url }}" width="250" height="29" loading="lazy"/>
+            </div>
+            <div class="logo" id="the-strategist">
+                <img src="{{ 'the-strategist.png' | asset_url }}" width="110" height="29" loading="lazy"/>
+            </div>
+            <div class="logo" id="real-homes">
+                <img src="{{ 'real-homes-logo.svg' | asset_url }}" width="65" height="29" loading="lazy"/>
+            </div>
+            <div class="logo" id="sleepopolis">
+                <img src="{{ 'sleepopolis-logo.svg' | asset_url }}" width="130" height="30" loading="lazy"/>
+            </div>
+            <div class="logo" id="t3">
+                <img src="{{ 't3-logo.svg' | asset_url }}" width="47" height="29" loading="lazy"/>
+            </div>
+            <div class="logo" id="daily-beast">
+                <img src="{{ 'daily-beast-logo.svg' | asset_url }}" width="144" height="17" loading="lazy"/>
+            </div>
+            <div class="logo" id="tuck">
+                <img src="{{ 'tuck-logo.svg' | asset_url }}" width="78" height="25" loading="lazy"/>
+            </div>
+        </div>
+    </div>
+</section>
+{% schema %} { "name": "Hybrid Affiliate" } {% endschema %}

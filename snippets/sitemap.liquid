@@ -1,0 +1,207 @@
+<style>
+  .payment_sec {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 20px 0 0;
+}
+
+.payment_card ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.payment_card strong {
+    display: block;
+    margin: 0 0 6px;
+
+    color: #fff;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.payment_card ul li img {
+    width: 60px;
+}
+@media screen and (max-width:768px) {
+      .payment_sec{
+    justify-content:center;
+    text-align:center;
+    gap:20px;
+      }
+   .payment_sec .payment_card ul{
+     justify-content:center;
+   }
+  )
+</style>
+{% capture sitemapHTML %}
+  {% for link in linklists[sitemap].links %}
+    <div class="sitemap__item">
+      <div class="sitemap__header">
+        <h6 class="site-footer__heading">
+          {{ link.title }}
+        </h6>
+
+        <svg class="plus-minus-toggle" xmlns="http://www.w3.org/2000/svg" width="13" viewBox="0 0 160 160">
+          <rect class="vertical-line" x="60" width="40" height="160"/>
+          <rect class="horizontal-line" y="60" width="160" height="40"/>
+        </svg>
+      </div>
+
+      <ul class="site-footer__links">
+        {% for childlink in link.links %}
+          <li class="site-footer__link"><a href="{{ childlink.url }}">{{ childlink.title }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+  {% endfor %}
+{% endcapture %}
+<div class="foot_right">
+  <div class="sitemap">
+  <div class="sitemap">
+  
+  
+    <div class="sitemap__item">
+      <div class="sitemap__header">
+        <h6 class="site-footer__heading">
+          Products
+        </h6>
+
+        <svg class="plus-minus-toggle" xmlns="http://www.w3.org/2000/svg" width="13" viewBox="0 0 160 160">
+          <rect class="vertical-line" x="60" width="40" height="160"></rect>
+          <rect class="horizontal-line" y="60" width="160" height="40"></rect>
+        </svg>
+      </div>
+
+      <ul class="site-footer__links">
+        
+          <li class="site-footer__link"><a href="/products/emma-original-mattress">Emma Original Mattress</a></li>
+        
+          <li class="site-footer__link"><a href="/products/emma-hybrid-comfort">Emma Hybrid Comfort</a></li>
+        
+          <li class="site-footer__link"><a href="/products/emma-shift">Emma Shift Mattress</a></li>
+        
+          <li class="site-footer__link"><a href="/products/emma-bed-frame">Upholstered Bed Frame</a></li>
+        
+          <li class="site-footer__link"><a href="/products/emma-foam-pillow">Original Foam Pillow</a></li>
+        
+          <li class="site-footer__link"><a href="/products/emma-mattress-protector">Breathable Mattress Protector</a></li>
+        
+      </ul>
+    </div>
+  
+    <div class="sitemap__item">
+      <div class="sitemap__header">
+        <h6 class="site-footer__heading">
+          Customer Support
+        </h6>
+
+        <svg class="plus-minus-toggle" xmlns="http://www.w3.org/2000/svg" width="13" viewBox="0 0 160 160">
+          <rect class="vertical-line" x="60" width="40" height="160"></rect>
+          <rect class="horizontal-line" y="60" width="160" height="40"></rect>
+        </svg>
+      </div>
+
+      <ul class="site-footer__links">
+        
+          <li class="site-footer__link"><a href="/pages/faq">Frequently Asked Questions</a></li>
+        
+          <li class="site-footer__link"><a href="/pages/trial">365-Night Trial</a></li>
+        
+          <li class="site-footer__link"><a href="/pages/terms-and-conditions">Terms and Conditions</a></li>
+        
+          <li class="site-footer__link"><a href="/pages/privacy-policy">Privacy Policy</a></li>
+        
+          <li class="site-footer__link"><a href="/pages/legal-notice">Legal Notice</a></li>
+        
+          <li class="site-footer__link"><a href="/pages/product-warranty">Product Warranty</a></li>
+        
+          <li class="site-footer__link"><a href="/pages/financing">Financing</a></li>
+        
+          <li class="site-footer__link"><a href="https://emma-sleep.ca/apps/track-order">Track My Order</a></li>
+        
+      </ul>
+    </div>
+  
+    <div class="sitemap__item">
+      <div class="sitemap__header">
+        <h6 class="site-footer__heading">
+          Resources
+        </h6>
+
+        <svg class="plus-minus-toggle" xmlns="http://www.w3.org/2000/svg" width="13" viewBox="0 0 160 160">
+          <rect class="vertical-line" x="60" width="40" height="160"></rect>
+          <rect class="horizontal-line" y="60" width="160" height="40"></rect>
+        </svg>
+      </div>
+
+      <ul class="site-footer__links">
+        
+          <li class="site-footer__link"><a href="/pages/about-emma">About Us</a></li>
+        
+          <li class="site-footer__link"><a href="/pages/reviews">Reviews</a></li>
+        
+          <li class="site-footer__link"><a href="/pages/awards">Awards</a></li>
+        
+          <li class="site-footer__link"><a href="/pages/mattress-guide">Mattress Size Guide</a></li>
+        
+          <li class="site-footer__link"><a href="https://team.emma-sleep.com/job">Careers</a></li>
+        
+      </ul>
+      <div class="sitemap__item">
+      <div class="sitemap__header">
+        <h6 class="site-footer__heading">
+          Blog
+        </h6>
+
+        <svg class="plus-minus-toggle" xmlns="http://www.w3.org/2000/svg" width="13" viewBox="0 0 160 160">
+          <rect class="vertical-line" x="60" width="40" height="160"></rect>
+          <rect class="horizontal-line" y="60" width="160" height="40"></rect>
+        </svg>
+      </div>
+
+      <ul class="site-footer__links">
+        
+          <li class="site-footer__link"><a href="https://emma-sleep.ca/blogs/curiosity-on-sleep">Curiosity on Sleep</a></li>
+        
+          <li class="site-footer__link"><a href="/blogs/guides">Guides</a></li>
+        
+          <li class="site-footer__link"><a href="/blogs/health-science">Health &amp; Science</a></li>
+        
+          <li class="site-footer__link"><a href="/blogs/lifestyle">Lifestyle</a></li>
+        
+      </ul>
+    </div>
+  
+
+  
+</div>
+    </div>
+  
+    
+  
+</div>
+
+<div class="sitemap is-mobile">
+  {{ sitemapHTML }}
+</div>
+  <div class="payment_sec">
+
+     <div class="payment_card">
+   
+      <ul>
+        <li><img src="{{ 'visa.png' | asset_url }}" loading="lazy" width="92" height="40"   title="Visa"/></li>
+       <li><img src="{{ 'mastro.png' | asset_url }}" loading="lazy" width="92" height="40"   title="Mastercard"/></li>
+        <li><img src="{{ 'paypal.png' | asset_url }}" loading="lazy" width="92" height="40"   title="PayPal"/></li>
+       
+      </ul>
+    </div>
+        </div>
+</div>
+
+
+<lazy-script src="{{ 'sitemap.js' | asset_url }}"></lazy-script>

@@ -1,0 +1,77 @@
+<style>
+ .recommendations-container {
+  display: flex;
+  flex-wrap: nowrap;
+  padding: 2rem 4rem;
+  justify-content: space-between;
+  align-items: center;
+ }
+
+ .recommendations-container a {
+  display: block;
+  width: 24%;
+  max-width: 20rem;
+ }
+
+  .recommendations-container:hover a:hover {
+  text-decoration: underline;
+ }
+  
+ @media (max-width: 749px) {
+  .recommendations-container {
+   flex-wrap: wrap;
+   padding: 1rem;
+  }
+
+  .recommendations-container a {
+   display: block;
+   width: 49%;
+  }
+ }
+</style>
+<section class="bg-[white]">
+ <h2 class="heading-2 text-center">You might also like</h2>
+ <div class="recommendations-container">
+  <a href="/products/emma-powerbase-pro">
+   <div class="bg-wild-sand rounded h-44 flex items-center mb-4 justify-center overflow-hidden">
+    <Image src="{{'bed-sample-01.png' | asset_url}}" class="w-full object-cover" loading="lazy"/>
+   </div>
+   <h3 class="font-bold mb-2">Powerbase Pro</h3>
+   <p class="text-xs mb-2">
+    From <span class="font-bold">$1399</span>
+   </p>
+  </a>
+  <a href="/products/emma-powerbase-1-0">
+   <div class="bg-wild-sand rounded h-44 flex items-center mb-4 justify-center overflow-hidden">
+    <Image src="{{'bed-sample-02.png' | asset_url}}" class="w-full object-cover" loading="lazy"/>
+   </div>
+   <h3 class="font-bold mb-2">Powerbase</h3>
+   <p class="text-xs mb-2">
+    From <span class="font-bold">$645</span>
+   </p>
+  </a>
+  <a href="/products/artisan-wooden-platform-bed">
+   <div class="bg-wild-sand rounded h-44 flex items-center justify-center mb-4 overflow-hidden">
+    <Image src="{{'bed-sample-03.jpg' | asset_url}}" class="w-full object-cover" loading="lazy"/>
+   </div>
+   <h3 class="font-bold mb-2">Rustic Wooden Bed</h3>
+   <p class="text-xs mb-2">
+    From <span class="font-bold">$495</span>
+   </p>
+  </a>
+  <a href="/products/emma-mattress-protector">
+   <div class="bg-wild-sand rounded h-44 flex items-center justify-center mb-4 overflow-hidden">
+    <Image src="{{'protector-sample-01.png' | asset_url}}" class="w-full object-cover" loading="lazy"/>
+   </div>
+   <h3 class="font-bold mb-2">Mattress Protector</h3>
+   <p class="text-xs mb-2">
+    From <span class="font-bold">$76.30</span>
+   </p>
+  </a>
+ </div>
+</section>
+{% schema %}
+{
+"name": "Product Recommendations"
+}
+{% endschema %}

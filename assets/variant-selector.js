@@ -29,12 +29,14 @@ class VariantSelector extends CustomElement {
     this.innerHTML = template
   }
 
-  mounted() {
+ async mounted() {
     const { $select } = this.refs
 
-    $select.change(this.handleSelectVariant.bind(this))
+    $select.change(this.handleSelectVariant.bind(this));
 
-    $select.select2({
+   await ResourceCoordinator.requestVendor('Select2');
+
+   $select.select2({
       minimumResultsForSearch: -1,
       dropdownAutoWidth: true,
       width: 'auto'

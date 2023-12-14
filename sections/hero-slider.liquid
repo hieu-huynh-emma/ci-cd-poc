@@ -1,0 +1,282 @@
+<style>
+  .hero-slider-section {
+    background-color: white;
+  }
+
+  .slider {
+    display: none;
+  }
+
+  /* Slideshow container */
+  .slideshow-container {
+    position: relative;
+    margin: auto;
+    max-width: 1440px;
+  }
+
+  .content-wrapper {
+    padding: 1.5rem;
+  }
+
+  .content-wrapper .arrow,
+  .content-wrapper .desktop.nav-dots {
+    display: none;
+  }
+
+  .slider .subtitle {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    color: #2E2F3C;
+    text-align: center;
+  }
+
+  .slider .title {
+    font-family: 'Tiempos';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    text-align: center;
+    color: #2E2F3C;
+    margin: 0;
+    line-height: 2.5rem;
+  }
+
+  .slider .desc {
+    font-family: 'Inter';
+    font-size: 16px;
+    text-align: center;
+  }
+
+  /* Next & previous buttons */
+  .prev,
+  .next {
+    cursor: pointer;
+    position: absolute;
+    top: 65%;
+    width: 24px;
+    height: 36px;
+    padding: 16px;
+    font-weight: bold;
+    font-size: 18px;
+    user-select: none;
+    background: rgba(255, 255, 255, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* Position the "next button" to the right */
+  .next {
+    right: 0;
+  }
+
+  /* The dots/bullets/indicators */
+  .dot {
+    cursor: pointer;
+    height: 6px;
+    width: 10px;
+    margin: 0 2px;
+    background: rgba(255, 137, 0, 0.5);
+    border-radius: 10px;
+    display: inline-block;
+    transition: background-color 0.2s ease;
+    transition: width 0.2s ease;
+  }
+
+  .dot.active,
+  .dot:hover {
+    background: #FF8900;
+    width: 30px;
+  }
+
+  .hero-slider-section .nav-dots {
+    text-align: center;
+  }
+
+  /* Fading animation */
+  .fade {
+    animation-name: fade;
+    animation-duration: 1.5s;
+  }
+
+  @keyframes fade {
+    from {
+      opacity: .4
+    }
+
+    to {
+      opacity: 1
+    }
+  }
+
+
+  @media(min-width: 768px) {
+    .hero-slider-section {
+      position: relative;
+      padding: 1rem;
+    }
+
+    .content-wrapper {
+      height: 50%;
+      width: 50%;
+      max-width: 32rem;
+      background: rgba(255, 255, 255, 0.5);
+      position: absolute;
+      top: 50%;
+      left: 6rem;
+      transform: translateY(-50%);
+      border-radius: 10px;
+      backdrop-filter: blur(10px);
+      padding: 5rem 3.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .prev,
+    .next {
+      display: none;
+    }
+
+    .content-wrapper .arrow {
+      border: solid rgba(46, 47, 60, 0.25);
+      border-width: 0 3px 3px 0;
+      display: inline-block;
+      padding: 3px;
+      width: 15px;
+      height: 15px;
+      position: absolute;
+      left: 50%;
+    }
+
+    .arrow.up {
+      transform: rotate(-135deg);
+      -webkit-transform: rotate(-135deg);
+      top: 2rem;
+    }
+
+    .arrow.down {
+      bottom: 2rem;
+      transform: rotate(45deg);
+      -webkit-transform: rotate(45deg);
+    }
+
+    .slider .subtitle,
+    .slider .title,
+    .slider .desc {
+      text-align: start;
+    }
+
+    .hero-slider-section .nav-dots {
+      transform: rotate(90deg) translateY(-50%);
+      position: absolute;
+      top: 50%;
+      left: 5rem;
+      width: 100px;
+    }
+  }
+
+</style>
+<section class="hero-slider-section">
+  <div class="slideshow-container">
+    {% for block in section.blocks %}
+    <div class="slider fade">
+      <div class="content-wrapper">
+        <div>
+          <span class="arrow up" onclick="plusSlides(-1)"></span>
+          <h4 class="title">{{ block.settings.title }}
+          </h4>
+          <p class="desc">{{ block.settings.desc }}
+          </p>
+        </div>
+        <span class="arrow down" onclick="plusSlides(1)"></span>
+      </div>
+      <picture>
+        <source media="(max-width:768px)" srcset="{{ block.settings.mobile_image | img_url: 'large' }}">
+        <img class="w-full h-[18rem] object-cover object-center md:h-[37rem] md:rounded-xl"
+          src="{{ block.settings.image | img_url: '1024x1024' }}">
+      </picture>
+    </div>
+    {% endfor %}
+
+    <a class="prev" onclick="plusSlides(-1)">&#8592;</a>
+    <a class="next" onclick="plusSlides(1)">&#8594;</a>
+    <div class="nav-dots">
+      {% for block in section.blocks %}
+      {% assign num = forloop.index %}
+      <span class="dot" onclick="currentSlide({{num}})"></span>
+      {% endfor %}
+
+    </div>
+
+  </div>
+</section>
+
+<script>
+  let slideIndex = 1;
+  showSlides(slideIndex);
+
+  function plusSlides(n) {
+    showSlides(slideIndex += n);
+  }
+
+  function currentSlide(n) {
+    showSlides(slideIndex = n);
+  }
+
+  function showSlides(n) {
+    let i;
+    let slides = document.getElementsByClassName("slider");
+    let dots = document.getElementsByClassName("dot");
+    if (n > slides.length) {
+      slideIndex = 1
+    }
+    if (n < 1) {
+      slideIndex = slides.length
+    }
+    for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+    }
+    for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slideIndex - 1].style.display = "block";
+    dots[slideIndex - 1].className += " active";
+  }
+</script>
+
+{% schema %}
+{
+"name": "Hero Slider",
+"max_blocks": 4,
+"blocks": [
+{
+"type": "slide",
+"name": "Slide",
+"settings": [
+{
+"type": "text",
+"id": "title",
+"label": "Title",
+"default": "Best for plus size people"
+}, {
+"type": "text",
+"id": "desc",
+"label": "Description",
+"default": "Lorem ipsum dolor sit amet, sed do eiusmod tempor."
+}, {
+"type": "image_picker",
+"id": "image",
+"label": "Image"
+}, {
+"type": "image_picker",
+"id": "mobile_image",
+"label": "Image for mobile view"
+}
+]
+}
+]
+}
+{% endschema %}

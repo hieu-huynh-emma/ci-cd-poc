@@ -1,0 +1,56 @@
+<style>
+    .emma-product-faq {
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+    }
+
+    .emma-product-faq .emma__subheading {
+        margin-bottom: 1rem;
+    }
+</style>
+
+<div class="emma--center emma-product-faq">
+    <div class="emma__subheading emma__heading--indigo">Before You Buy</div>
+    <div class="emma__heading emma__heading--indigo">Frequently Asked Questions</div>
+</div>
+
+<div class="emma-accordion">
+    {% for block in section.blocks %}
+        <div class="accordion accordion">
+            {{block.sxettings.question}}
+            <span>&nbsp;</span>
+        </div>
+        <div class="container">
+            <div class="content">
+                <p>{{block.settings.answer}}</p>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+    {% schema %}
+      {
+        "name": "Emma Product FAQ",
+        "settings": [],
+        "blocks":[
+            {
+               "type":"slide",
+               "name":"Question",
+               "settings":[
+                  {
+                     "type":"text",
+                     "id":"question",
+                     "label":"Question",
+                     "default": "Question"
+                  },
+                  {
+                    "type": "richtext",
+                     "id":"answer",
+                     "label": "Add custom text below",
+                     "default": "<p>Add your text here</p>"
+                  }
+               ]
+            }
+         ]
+      }
+    {% endschema %}

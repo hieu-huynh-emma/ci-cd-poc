@@ -1,34 +1,25 @@
-<!-- CSS ================================================== -->
-{{ 'timber.css' | asset_url | stylesheet_tag }}
-{{ 'theme.css' | asset_url | stylesheet_tag }}
-<!-- CUSTOM CSS ================================================== -->
-{{ 'custom-theme.css' | asset_url | stylesheet_tag }}
-{{ 'custom.css' | asset_url | stylesheet_tag }}
-{{ 'custom-theme-3.css' | asset_url | stylesheet_tag }}
-
 {{ 'base.css' | asset_url | stylesheet_tag }}
-{{ 'legacy.css' | asset_url | stylesheet_tag }}
-{{ 'typography.css' | asset_url | stylesheet_tag }}
-{{ 'vendors.css' | asset_url | stylesheet_tag }}
 {{ 'global.css' | asset_url | stylesheet_tag }}
+{{ 'typography.css' | asset_url | stylesheet_tag }}
 {{ 'fonts.css' | asset_url | stylesheet_tag }}
+{{ 'bundle-detail.css' | asset_url | stylesheet_tag }}
 
-{{ 'new-heading.css' | asset_url | stylesheet_tag }}
-
-{% liquid
-  assign pageStylesheet = ""
-  case template
-    when 'page.comparison'
-      assign pageStylesheet = 'comparison-page.css'
-    when 'page.competitor-comparison'
-      assign pageStylesheet = 'competitor-comparison.css'
-    when 'product.emma-original', 'product.emma-climax-hybrid', 'product.emma-hybrid-comfort', 'product.emma-hybrid-pro','product.diamond-pillow', 'product.perfect-sleep-bundle', 'product.foam-pillow', 'product.mattress-protector','product.down-alternative-pillow', 'product.emma-thermosync-mattress'
-      assign pageStylesheet = 'product-detail.css'
-    when 'product.ready-to-sleep', 'product.sleep-essential-bundle', 'product.perfect-sleep-bundle'
-      assign pageStylesheet = 'bundle-detail.css'
-  endcase
-%}
-
-<link rel="stylesheet" href="{{ pageStylesheet | asset_url }}">
+{% case template %}
+  {% when 'page.comparison' %}
+    {{ 'comparison-page.css' | asset_url | stylesheet_tag }}
+  {% when 'page.competitor-comparison' %}
+    {{ 'competitor-comparison.css' | asset_url | stylesheet_tag }}
+  {% when 'page.generic1' %}
+    {{ 'faq.css' | asset_url | stylesheet_tag }}
+  {% when 'page.financing' %}
+    {{ 'financing.css' | asset_url | stylesheet_tag }}
+  {% when 'page.landing-page' %}
+    {{ 'landing-page.css' | asset_url | stylesheet_tag }}
+  {% when 'product.new-diamond-pillow' or 'product.bed-frame-new' or 'product.mattress-protector-new' or 'product.ready-to-sleep' or 'product.emma-hybrid-comfort' or 'product.emma-original' or 'product.diamond-pillow' or 'product.new-diamond-pillow'  or 'product.foam-pillow' or 'product.mattress-protector' or 'product.emma-thermosync-mattress' or 'product.perfect-sleep-bundle' or 'product.new-diamond-pillow' or 'product.sleep-essential-bundle' or 'product.emma-climax-hybrid'   or 'product.emma-shift'  or 'product.emma-hybrid-pro' %}
+    {{ 'revamp-product.css' | asset_url | stylesheet_tag }}
+  {% when 'page' or 'page.100-nights' or 'page.toc' or 'page.legal-notice' %}
+    {{ 'static-page.css' | asset_url | stylesheet_tag }}
+{% endcase %}
 
 {{ 'tailwind.css' | asset_url | stylesheet_tag }}
+{{ 'tailwind-new.css' | asset_url | stylesheet_tag }}

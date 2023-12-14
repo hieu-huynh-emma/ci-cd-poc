@@ -1,0 +1,14 @@
+<style>
+    cart-surface {
+        visibility: hidden;
+    }
+</style>
+<link is="delay-stylesheet" href="{{ 'cart-surface.css' | asset_url }}">
+
+<cart-surface id="CartDrawer-Crust" class="{% if cart == empty %} is-empty{% endif %}">
+    <div id="CartDrawer-Overlay" class="cart-drawer-overlay"></div>
+
+    <div id="CartDrawer-Frame" class="cart-drawer-frame overflow-full">
+        {% render 'cart-drawer-markup' %}
+    </div>
+</cart-surface>

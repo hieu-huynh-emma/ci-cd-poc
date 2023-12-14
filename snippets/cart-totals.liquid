@@ -1,5 +1,5 @@
 {% for item in cart.items %}
-  {% assign compare_price = item.variant.compare_at_price | times: item.quantity %}
+  {% assign compare_price = item.variant.compare_at_price | default: item.variant.price | times: item.quantity %}
   {% assign total_cart_compare_price = total_cart_compare_price | plus: compare_price %}
 {% endfor %}
 
@@ -7,7 +7,7 @@
 <div id="CartTotals">
   <div class="cart-totals">
     <p class="font-medium">
-      {{ 'cart.total.total' | t }}
+      {{ 'cart.total' | t }}
     </p>
 
     <div class="cart-totals__inner invisible-on-loading">
@@ -26,7 +26,9 @@
       </p>
 
       <p id="CartTotalSaved" class="summary-item__value paragraph-14 text-red font-bold">
-        You save <span class="saved-amount">{{ total_cart_compare_price | minus: cart.total_price | money_without_trailing_zeros }}</span>!
+        You save <span
+          class="saved-amount"
+        >{{ total_cart_compare_price | minus: cart.total_price | money_without_trailing_zeros }}</span>!
       </p>
     </div>
   </div>

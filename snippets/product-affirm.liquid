@@ -1,6 +1,19 @@
 {% assign selected_variant = product.selected_or_first_available_variant %}
+<link is="delay-stylesheet"  href="{{ 'custom.css' | asset_url }}" />
+<link is="delay-stylesheet"   href="{{ 'jquery.fancybox.css' | asset_url }}" />
+<script is="delay-script" defer  src="{{ 'jquery.fancybox.js' | asset_url }}"></script>
+<script>
+      // Enable Fancybox for any element with the `data-fancybox` attribute
+      Fancybox.bind('[data-fancybox]', {
+        // Your custom options
+      });   
 
+
+    </script>
 {% if selected_variant.price > 30000 %}
+   <div id="pro_step"  style="display:none;">
+      {% render 'product_step' %}
+</div>
   <div id="product-affirm">
     <div class="pro_info cart-drawer-affirm-en">
       or
@@ -12,7 +25,7 @@
       financing <a data-fancybox data-src="#pro_step" href="javascript:" class="que">?</a>
     </div>
 
-    <div data-fancybox data-src="#fr_pop" href="javascript:" class="fr_pop cart-drawer-affirm-fr" style="display: block;">
+    <div data-fancybox data-src="#fr_pop" href="javascript:" class="fr_pop cart-drawer-affirm-fr" style="display: none;">
       <a class="fr_txt">Option de crédit</a>
       <a class="que">?</a>
     </div>

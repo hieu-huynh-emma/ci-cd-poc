@@ -1,6 +1,70 @@
 {% assign subtopicBlocks = section.blocks | where: "type", "subtopic" %}
 {% assign questionAnswerBlocks = section.blocks | where: "type", "question_and_answer" %}
+<style>
+    #faq .faq__choices {
+                            display: grid;
+                            gap: 18px;
+                            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr))
+                        }
 
+                        #faq .faq__choices a {
+                            height: 40px;
+                            line-height: 1.2;
+                            border-radius: 15px
+                        }
+
+                        #faq .accordion__content a, #faq .accordion__content a:visited {
+                            color: #3C4196;
+                            font-weight: bold;
+                            text-decoration: underline
+                        }
+
+                        #faq .accordion__content p {
+                            font-size: 11px;
+                            margin-bottom: 16px;
+                        }
+
+                        #faq .accordion__content p:last-child {
+                            margin-bottom: 0;
+                        }
+
+                        #faq .accordion__content ul {
+                            list-style: disc;
+                            margin: inherit;
+                            padding: 0 16px 0 24px;
+                        }
+
+                        #faq .accordion__content ul:last-child {
+                            padding-bottom: 0;
+                        }
+
+                        #faq .accordion__content ul li {
+                            font-size: 11px;
+                            margin-bottom: 4px;
+                        }
+
+                        #faq .accordion__content tr:first-child td:after, #faq .accordion__content tr:first-child th:after {
+                            border-bottom: 0;
+                        }
+
+                        #faq .accordion-wrapper.is-open .accordion-icon {
+                            transform: rotate(45deg)
+                        }
+
+                        #faq .faq-qa-section:nth-child(odd) {
+                            background-color: #F7F7F9
+                        }
+
+                        #faq .faq-qa-section:nth-child(even) {
+                            background-color: white
+                        }
+
+                        @media (min-width: 1024px) {
+                            #faq .accordion__content p, #faq .accordion__content ul li {
+                                font-size: 16px;
+                            }
+                        }
+</style>
 <div id="{{ section.settings.slug }}" class="faq-qna-section py-4 lg:py-24">
   <div class="mx-auto max-w-7xl px-4 sm:px-3 md:px-5">
     <div class="lg:flex lg:gap-60">
@@ -19,6 +83,7 @@
     </div>
   </div>
 </div>
+<script src="{{ 'jquery.beefup.min.js' | asset_url }}" defer="defer"></script>
 
 <script type="module">
   $('.accordion-wrapper').beefup({

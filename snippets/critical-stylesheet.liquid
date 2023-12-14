@@ -1,12 +1,45 @@
 <style>
-  .splide:not(.is-initialized) {
-    display: none;
-  }
+    body {
+        margin: 0
+    }
 
-  img {
-    height: auto
-  }
-  .shopify-challenge__button{
-      background-color: var(--color-primary);
-  }
+    .splide:not(.is-initialized)  {
+        display: none;
+    }
+
+    .visually-hidden {
+        position: absolute !important;
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+        height: 1px;
+        width: 1px;
+        margin: -1px;
+        padding: 0;
+        border: 0
+    }
+
+    h1, h2, h3, h4, h5, h6, p {
+        margin: 0;
+        opacity: 0
+    }
+
+    lazy-script {
+        display: block;
+        width: 1px;
+        height: 1px
+    }
+
+    lazy-component {
+        position: relative;
+    }
+
+    loading-overlay {
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+    }
+
+    img {
+        height: auto
+    }
 </style>

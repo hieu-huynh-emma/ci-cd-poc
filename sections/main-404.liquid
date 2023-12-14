@@ -1,17 +1,8 @@
-{{ 'main-404.css' | asset_url | stylesheet_tag }}
-
-{% assign home_page_url = 'https://emma-sleep.ca/' %}
-{% if request.locale.iso_code == 'fr' %}
-  {% assign home_page_url = 'https://qc.emma-sleep.ca/' %}
-{% endif %}
-
-<script>
-  console.log('abc', {{ request.locale.iso_code | json }});
-</script>
-
-
-<div class="page-404">
-  <img class="page-404__image" src="{{ 'sleep-moon.svg' | asset_url }}" width="auto" height="auto" />
-  <div class="page-404__message">{{ 'general.404.page_not_found_message' | t }}</div>
-  <a href="{{ home_page_url }}" class="page-404__home-link">{{ 'general.404.continue_shopping' | t }}</a>
+<div class="w-full flex flex-col items-center justify-start text-center my-16">
+  <img src="{{ 'sleep-moon.svg' | asset_url }}" width="auto" height="auto" class="w-9 h-9 md:w-16 md:h-16" />
+  <div class="py-4">Oops! Looks like this page is on snooze</div>
+  <a href="{{ routes.all_products_collection_url }}"
+    class="text-white text-2xl uppercase font-semibold rounded-lg bg-chambray hover:bg-blue-800 px-10 py-1">
+    {{ 'general.continue_shopping' | t }}
+  </a>
 </div>

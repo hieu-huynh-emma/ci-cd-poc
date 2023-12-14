@@ -1,11 +1,84 @@
 {% assign heroSplits = section.blocks | where: 'type', 'hero-split' %}
 {% assign heroSaleBadge = section.blocks | where: 'type', 'hero-sale-badge' %}
 
-
 {{ 'hero-split.css' | asset_url | stylesheet_tag }}
 
 <div id="hero-split-section" class="page-boundary">
-    <div class="hero-container {% if heroSplits.size == 1 %}single-mode{% endif %}">
+    <div class="section-frame {% if heroSplits.size == 1 %}single-mode{% endif %}">
+        <div class="section-container">
+            {% for block in heroSplits %}
+                <section class="hero-split section-panel" style="color: {{ block.settings.text_color }}">
+                    <div class="hero-split-container">
+                        <div class="section-content">
+                            <div class="section-title relative">
+                                <h2 class="heading-2">{{ block.settings.title | remove: '<p>' | remove: '</p>' }}</h2>
+                                <span class="sale-badge">
+                                    {% if block.settings.discount_badge %}
+                                        {% render 'hero-sale-badge', settings: section.settings %}
+                                    {% endif %}
+                                </span>
+                            </div>
+                            <p class="sub-heading">{{ block.settings.subtitle | remove: '<p>' | remove: '</p>' }}</p>
+                            <div class="section-content__tagline">{{ block.settings.tagline }}</div>
+                        </div>
+                    </div>
+                </section>
+            {% endfor %}
+        </div>
+        <div class="section-container hero-split-features">
+            {% for block in heroSplits %}
+                <div class="section-panel">
+                    {% if block.settings.timer %}
+                        <hero-banner-countdown-timer end-time="{{ block.settings.timer }}">
+                            <div class="countdown-timer" style="color: black;">
+                                <div class="time-part">
+                                    <p class="digit"></p>
+                                    <p class="label">Days</p>
+                                </div>
+                                <div class="time-part">
+                                    <p class="digit"></p>
+                                    <p class="label">Hours</p>
+                                </div>
+                                <div class="time-part">
+                                    <p class="digit"></p>
+                                    <p class="label">Minutes</p>
+                                </div>
+                                <div class="time-part">
+                                    <p class="digit"></p>
+                                    <p class="label">Seconds</p>
+                                </div>
+                            </div>
+                        </hero-banner-countdown-timer>
+                    {% endif %}
+
+                    {% if block.settings.cta_url != blank %}
+                        <div class="section-cta">
+                            <a class="btn btn--lg" href="{{ block.settings.cta_url }}">
+                                {{ block.settings.cta_text }}
+                            </a>
+                            <p class="cta-subtext hero-split-subtext">{{ block.settings.cta_subtext }}</p>
+                        </div>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+        <section class="section-container wallpaper-container">
+            {% for block in heroSplits %}
+                {% assign wallpaper = block.settings.wallpaper %}
+                {% if wallpaper != blank %}
+                    <div class="wallpaper">
+                        {{
+                        wallpaper
+                        | image_url: width: 2680
+                        | image_tag: width: 2680, height: 640, class: 'mx-auto', loading: 'eager'
+                        }}
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </section>
+    </div>
+
+    <div class="mobile-section-frame {% if heroSplits.size == 1 %}single-mode{% endif %}">
         {% for block in heroSplits %}
             {% assign wallpaper = block.settings.wallpaper %}
 
@@ -13,12 +86,12 @@
                 <div class="hero-split-container">
                     <div class="section-content">
                         <div class="section-title relative">
-                          <h2 class="heading-2">{{ block.settings.title | remove: '<p>' | remove: '</p>' }}</h2>
-                          <span class="sale-badge">
-                            {% if block.settings.discount_badge %}
-                              {% render 'hero-sale-badge', settings: section.settings %}
-                            {% endif %}
-                          </span>
+                            <h2 class="heading-2">{{ block.settings.title | remove: '<p>' | remove: '</p>' }}</h2>
+                            <span class="sale-badge">
+                                {% if block.settings.discount_badge %}
+                                    {% render 'hero-sale-badge', settings: section.settings %}
+                                {% endif %}
+                              </span>
                         </div>
                         <p class="sub-heading">{{ block.settings.subtitle | remove: '<p>' | remove: '</p>' }}</p>
                         <div class="section-content__tagline">{{ block.settings.tagline }}</div>
@@ -71,11 +144,13 @@
             </section>
         {% endfor %}
     </div>
+
 </div>
+
 
 {% schema %}
 {
-  "name": "Hero Banner",
+  "name": "Hero Split",
   "blocks": [
     {
       "type": "hero-split",
@@ -156,6 +231,17 @@
       "id": "badge_color",
       "label": "Badge Color",
       "default": "#ff8900"
+    },
+    {
+      "type": "checkbox",
+      "id": "match_cta_offset_top",
+      "label": "Match CTA Buttons Offset Top",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero Split"
     }
   ]
 }

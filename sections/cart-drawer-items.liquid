@@ -1,79 +1,79 @@
-{% assign freeGift = section.settings.freeGift %}
-{% assign gwpTargetProducts = section.settings.gwpTargetProducts %}
-
-{% assign freeGiftId = freeGift.selected_or_first_available_variant.id %}
+{% assign addonServices = shop.metafields.globals.addon_services %}
 
 {% assign cartItemsFragment = '' %}
 {% assign freeItemsFragment = '' %}
 
-<cart-drawer-items
-  :freeGiftId="{{ freeGiftId }}" :gwpTargetProductIds="{{ gwpTargetProducts | map: 'id' | json | escape }}"
->
-  <form action="{{ routes.cart_url }}" id="CartDrawer-Form" method="post">
-    <div id="CartDrawer-CartItems" class="cart-drawer-items">
-      {% for item in cart.items %}
-        {% assign isFreeGift = false %}
-        
-        {% if freeGiftId == item.id and item.final_line_price == 0 %}
-          {% assign isFreeGift = true %}
-        {% else %}
-          {% assign isFreeGift = false %}
-        {% endif %}
-        
-        {% capture cartItem %}
-          
-          <cart-item
-            :key="{{ item.key }}"
-            :itemId="{{ item.id }}"
-            :index="{{ item.index }}"
-            :variantId="{{ item.id }}"
-            :productId="{{ item.product_id }}"
-            :originalPrice="{{ item.variant.compare_at_price }}"
-            :quantity="{{ item.quantity }}"
-            {% for property in item.properties %}
-              {% if property contains 'freeGift' or property contains 'hasGWP' %}
-                :{{ property | first }}="{{ property | last }}"
-              {% endif %}
-            {% endfor %}
-          >
-            
-            
-            <a class="cart-item-media" href="{{ item.url }}">
-              {{ item.image | image_url: width: 120, height: 80 | image_tag: loading: 'lazy' }}
-            </a>
-            <div class="cart-item-details">
-              <a href="{{ item.url }}" class="product__name paragraph-14 font-semibold">
-                {% assign title = item.title | split: ' - ' %}
-                <span>{{ title[0] }}</span>
-                <script>
-                
-                </script>
-                {% if item.selling_plan_allocation %}
-                  <span
-                    class="ajaxcart__product-meta"
-                  >{{ item.selling_plan_allocation.selling_plan.name }}</span>
-                {% endif %}
-              </a>
-              
-              <div class="cart-item-actions">
-                {% if item.variant.title != "Default Title" %}
-                  <cart-variant-selector
-                    class="variant-selector{% if isFreeGift %} hidden{% endif %}"
-                    :key="{{ item.key }}"
-                    :value="{{ item.variant_id }}"
-                    :options="{{ item.product.variants | json | escape }}"
-                    :quantity="{{ item.quantity }}"
-                  >
-                  </cart-variant-selector>
-                {% endif %}
-                <quantity-adjuster
-                  {% if isFreeGift %}readOnly{% endif %}
-                  :inventoryPolicy="{{ item.variant.inventory_policy }}"
-                  :index="{{ item.index }}" :value="{{ item.quantity }}" :max="{{ item.variant.inventory_quantity }}"
-                ></quantity-adjuster>
-              </div>
-              
-              {% if item.product.metafields.accentuate.is_bundle %}
+{% assign maxAddonQty = 0 %}
+
+<cart-drawer-items>
+  {% for item in cart.items %}
+    {% assign isAddonService = false %}
+    {% assign hasAddonService = false %}
+    {% assign addonServiceData = blank %}
+    {% assign addonServiceFor = blank %}
+
+    {% for property in item.properties %}
+      {% if property.first == '_addonService' %}
+        {% assign hasAddonService = true %}
+        {% assign addonServiceData = property.last %}
+
+        {% assign maxAddonQty = maxAddonQty | plus: item.quantity %}
+      {% endif %}
+
+      {% if property.first == '_addonServiceFor' %}
+        {% assign isAddonService = true %}
+        {% assign addonServiceFor = property.last %}
+      {% endif %}
+    {% endfor %}
+
+    {% capture cartItem %}
+      <cart-item
+          :key="{{ item.key }}"
+          :itemId="{{ item.id }}"
+          :index="{{ item.index }}"
+          :variantId="{{ item.id }}"
+          :productId="{{ item.product_id }}"
+          :originalPrice="{{ item.variant.compare_at_price }}"
+          :quantity="{{ item.quantity }}"
+          {% if hasAddonService %}:addonService="{{ addonServiceData }}"{% endif %}
+        {% if isAddonService %}:addonServiceFor="{{ addonServiceFor }}"{% endif %}
+      >
+        <a class="cart-item-media" href="{{ item.url }}">
+          {{ item.image | image_url: width: 120, height: 80 | image_tag }}
+        </a>
+        <div class="cart-item-details">
+          <a href="{{ item.url }}" class="product__name paragraph-14 font-semibold">
+            {% assign title = item.title | split: ' - ' %}
+            <span>{{ title[0] }}</span>
+
+            {% if item.selling_plan_allocation %}
+              <span
+                  class="ajaxcart__product-meta"
+              >{{ item.selling_plan_allocation.selling_plan.name }}</span>
+            {% endif %}
+          </a>
+
+          <div class="cart-item-actions">
+            {%  comment  %} Extend - Hide default metadata if item vendor is Extend {% endcomment %}
+            {% if item.variant.title != "Default Title" and item.vendor != 'Extend' %}
+              <p class="text-sm">{{ item.variant.title }}</p>
+              {% comment %}<cart-variant-selector{% endcomment %}
+              {% comment %}class="variant-selector{% if isGWP %} hidden{% endif %}"{% endcomment %}
+              {% comment %}:key="{{ item.key }}"{% endcomment %}
+              {% comment %}:value="{{ item.variant_id }}"{% endcomment %}
+              {% comment %}:options="{{ item.product.variants | json | escape }}"{% endcomment %}
+              {% comment %}:quantity="{{ item.quantity }}"{% endcomment %}
+              {% comment %}>{% endcomment %}
+              {% comment %}</cart-variant-selector>{% endcomment %}
+            {% endif %}
+            <quantity-adjuster
+                :index="{{ item.index }}"
+                :value="{{ item.quantity }}"
+                :inventoryPolicy="{{ item.variant.inventory_policy }}"
+                {% unless isAddonService %}:max="{{ item.variant.inventory_quantity }}"{% endunless %}
+            ></quantity-adjuster>
+          </div>
+          {% if item.product.metafields.accentuate.is_bundle %}
                 {% assign current_variant = item.variant %}
                 
                 {% assign bundle_item_metaobjects = current_variant.metafields.custom.bundle_items.value %}
@@ -93,130 +93,83 @@
                   {% endfor %}
                 </div>
               {% endif %}
-            
-            </div>
-            
-            <div class="cart-item-totals">
-              <loading-overlay></loading-overlay>
-              
-              <cart-item-remove-button
-                id="CartDrawer-Remove-{{ item.index | plus: 1 }}"
-                :index="{{ item.index }}"
-                aria-label="{{ 'sections.cart.remove_title' | t: title: item.title }}"
-                class="{% if isFreeGift %}hidden{% endif %}"
-              >
-                {% render 'icon-remove' %}
-              </cart-item-remove-button>
-              
-              
-              <div class="cart-pricing cart-pricing--row">
-                {% if item.variant.compare_at_price > item.variant.price %}
-                  <p class="cart-pricing__price cart-pricing__price--original">
-                    {{ item.variant.compare_at_price | times: item.quantity | money_without_trailing_zeros }}
-                  </p>
-                {% endif %}
+       {% if item.product.metafields.accentuate.has_pillow_addon %}
+                {% assign product_handle = item.product.metafields.accentuate.pillow_addon | split: ':' | first %}
+                {% assign variant_id = item.product.metafields.accentuate.pillow_addon | split: ':' | last | plus: 0 %}
                 
-                <p
-                  class="cart-pricing__price{% if item.variant.compare_at_price > item.variant.price %} text-red{% endif %}"
-                >
-                  {% if item.final_line_price > 0 %}
-                    {{ item.final_line_price | money_without_trailing_zeros }}
-                  {% else %}
-                    FREE
-                  {% endif %}
-                </p>
-              </div>
-            </div>
-            
-            {% if item.product.metafields.accentuate.is_bundle %}
-              {% assign current_variant = item.variant %}
-              
-              {% assign bundle_item_metaobjects = current_variant.metafields.custom.bundle_items.value %}
-              
-              <div class="cart-item-bundle accordion">
-                <div class="cart-item-bundle-header accordion__header">
-                  <svg class="plus-minus-toggle" xmlns="http://www.w3.org/2000/svg" width="13" viewBox="0 0 160 160">
-                    <rect class="vertical-line" x="60" width="40" height="160" />
-                    <rect class="horizontal-line" y="60" width="160" height="40" />
-                  </svg>
-                  
-                  <h6 class="cart-item-bundle-header__heading">
-                    What's in the bundle?
-                  </h6>
-                </div>
+                {% assign referenced_product = all_products[product_handle] %}
+                {% assign referenced_variant = referenced_product.variants | where: "id", variant_id | first %}
                 
-                <div class="cart-item-bundle-products">
-                  {% for bundle_item_metaobject in bundle_item_metaobjects %}
-                    {% assign bundle_item_variant = bundle_item_metaobject.product.value %}
-                    
-                    
-                    <div
-                      id="cart-item-bundle-item-{{ bundle_item_variant.product.handle }}" class="product-bundle-item"
-                    >
-                      <div class="product-bundle-item__media">
-                        {% assign featuredImg = bundle_item_variant.product.featured_image | image_url: width: 120, height: 80  %}
-                        {% assign accentuateImg = bundle_item_variant.product.metafields.accentuate.bundle_featured_image[0].src  %}
-          
-                          <img
-                            src="{{ accentuateImg | default: featuredImg }}"
-                            width="120"
-                            height="80"
-                            alt=""
-                            class="product-bundle-item__image"
-                            loading="lazy"
-                          />
-                      </div>
-                      <div class="product-bundle-item__details">
-                        <div class="product__name paragraph-14 font-semibold">
-                          <span>{{ bundle_item_variant.product.title }}</span>
-                        </div>
-                        
-                        <div class="product-bundle-item__description">
-                          <span class="product-bundle-item__quantity">
-														{{ 'products.bundle.qty' | t }}: {{ bundle_item_metaobject.quantity }}
-													</span>
-                        </div>
-                      </div>
-                    
-                    </div>
-                    
-                    <hr class="product-bundle-hr">
-                  {% endfor %}
+                <div class="cart-item-description">
+                    <span>
+											{{ item.product.title }}
+                      {% if item.variant.title != "Default Title" %}
+                        ({{ item.variant.title }})
+                      {% endif %}
+										</span>
+                  /
+                  <span>
+                    {{ item.product.metafields.accentuate.pillow_addon_quantity }}x {{ referenced_product.title }}
+                    for free
+                  </span>
                 </div>
-              </div>
+              {% endif %}
+        </div>
+
+        <div class="cart-item-totals">
+          <loading-overlay class="hidden"></loading-overlay>
+
+          <cart-item-remove-button
+              id="CartDrawer-Remove-{{ item.index | plus: 1 }}"
+              :index="{{ item.index }}"
+              aria-label="{{ 'sections.cart.remove_title' | t: title: item.title }}"
+              class="{% if isAddonService %}hidden{% endif %}"
+          >
+            {% render 'icon-remove' %}
+          </cart-item-remove-button>
+
+
+          <div class="cart-pricing cart-pricing--row">
+            {% if item.variant.compare_at_price > item.variant.price %}
+              <p class="cart-pricing__price cart-pricing__price--original">
+                {{ item.variant.compare_at_price | times: item.quantity | money_without_trailing_zeros }}
+              </p>
             {% endif %}
-          </cart-item>
-        {% endcapture %}
-        {% if isFreeGift %}
-          {% assign freeItemsFragment = freeItemsFragment | append: cartItem %}
-        {% else %}
-          {% assign cartItemsFragment = cartItemsFragment | append: cartItem %}
-        {% endif %}
-      {% endfor %}
-      {{ cartItemsFragment }}
-      {{ freeItemsFragment }}
-    </div>
-    <div id="CartDrawer-CartErrors" role="alert"></div>
-  </form>
+
+            <p
+                class="cart-pricing__price{% if item.variant.compare_at_price > item.variant.price %} text-red{% endif %}"
+            >
+              {% if item.final_line_price > 0 %}
+                {{ item.final_line_price | money_without_trailing_zeros }}
+              {% else %}
+                FREE
+              {% endif %}
+            </p>
+          </div>
+        </div>
+
+        <div class="cart-item-properties">
+        </div>
+        
+      </cart-item>
+    {% endcapture %}
+    {% if isAddonService %}
+      {% assign freeItemsFragment = freeItemsFragment | append: cartItem %}
+    {% else %}
+      {% assign cartItemsFragment = cartItemsFragment | append: cartItem %}
+    {% endif %}
+  {% endfor %}
+
+  {{ cartItemsFragment }}
+  {{ freeItemsFragment }}
 </cart-drawer-items>
+
+<div id="CartDrawer-CartErrors" role="alert"></div>
 
 {% schema %}
 {
   "name": "Cart Drawer Items",
   "class": "cart-drawer-items-wrapper",
-  "limit": 1,
-  "settings": [
-    {
-      "id": "freeGift",
-      "type": "product",
-      "label": "Free Gift"
-    },
-    {
-      "id": "gwpTargetProducts",
-      "type": "product_list",
-      "label": "GWP Target Products",
-      "limit": 2
-    }
-  ]
+  "limit": 1
 }
 {% endschema %}

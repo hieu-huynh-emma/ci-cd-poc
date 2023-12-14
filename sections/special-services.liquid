@@ -1,7 +1,6 @@
 {{ 'special-services.css' | asset_url | stylesheet_tag }}
 
-{% assign services = section.blocks | where: "type", "service" %}
-
+{% assign services = section.blocks | where: 'type', 'service' %}
 
 <section id="special-services-section">
   <div class="page-boundary">
@@ -9,12 +8,15 @@
       {%- for block in services -%}
         <li class="special-service">
           <img
-            class="special-service__icon" src="{{ block.settings.icon | image_url: width: 60 }}" width="60" height="60"
+            class="special-service__icon"
+            src="{{ block.settings.icon | image_url: width: 60 }}"
+            width="60"
+            height="60"
             loading="lazy"
           >
           <div class="special-service__details">
-            <h3 class="heading-5">{{ block.settings.title | remove: "<p>" | remove: "</p>" }}</h3>
-            <p class="lead-statement">{{ block.settings.content | remove: "<p>" | remove: "</p>" }}</p>
+            <h3 class="heading-5">{{ block.settings.title | remove: '<p>' | remove: '</p>' }}</h3>
+            <p class="lead-statement">{{ block.settings.content | remove: '<p>' | remove: '</p>' }}</p>
           </div>
         </li>
       {%- endfor -%}
@@ -23,7 +25,6 @@
 </section>
 
 {% schema %}
-
 {
   "name": "Special Services",
   "max_blocks": 5,
@@ -51,5 +52,4 @@
     }
   ]
 }
-
 {% endschema %}

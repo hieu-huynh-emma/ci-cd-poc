@@ -10,7 +10,7 @@
 				</h4>
 			</div>
 			<div class="right-column m-auto order-1 xl:order-2">
-        {% render 'image-tag', image_src: section.settings.right_column_image, width: 1920, height: 467, width_attr: 712, class: 'rounded-lg object-cover' %}
+				<img class="rounded-lg object-cover" src="{{ section.settings.right_column_image | img_url: 'master'}}" width="712" height="467" loading="lazy">
 			</div>
 		</div>
 	</div>
@@ -18,25 +18,25 @@
 
 {% schema %}
 {
-  "name": "Emma Awards Summary",
-  "settings": [
-    {
-      "id": "left_column_title",
-      "type": "text",
-      "label": "Title",
-      "default": "Emma’s #1 for the most prestigious consumer organizations & test institutions globally, and we win more each year."
-    },
-    {
-      "id": "left_column_desc",
-      "type": "richtext",
-      "label": "Description",
-      "default": "<p>Not only do we have tons of awards from different publications, but we are also tested and ranked 1st by several of the most prestigious independent consumer associations globally That makes the Emma Original & CliMax great based on the testimonies of real people and stringent scientific testing.</p>"
-    },
-    {
-      "id": "right_column_image",
-      "type": "image_picker",
-      "label": "Image"
-    }
-  ]
+"name": "Emma Awards Summary",
+"settings": [
+{
+"id": "left_column_title",
+"type": "text",
+"label": "Title",
+"default": "Emma’s #1 for the most prestigious consumer organizations & test institutions globally, and we win more each year."
+},
+{
+"id": "left_column_desc",
+"type": "richtext",
+"label": "Description",
+"default": "<p>Not only do we have tons of awards from different publications, but we are also tested and ranked 1st by several of the most prestigious independent consumer associations globally That makes the Emma Original & CliMax great based on the testimonies of real people and stringent scientific testing.</p>"
+},
+{
+"id": "right_column_image",
+"type": "image_picker",
+"label": "Image"
+}
+]
 }
 {% endschema %}

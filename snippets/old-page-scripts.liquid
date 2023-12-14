@@ -1,27 +1,67 @@
+
+
+<script src="{{ 'resource-coordinator.js' | asset_url }}"></script>
+<script src="{{ 'custom-elements.js' | asset_url }}"></script>
+<script src="{{ 'global.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'lazy.min.js' | file_url }}"></script>
+<script src="{{ 'lazy-component.js' | asset_url }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script>
+
+{{ 'loading-overlay.js' | asset_url | script_tag }}
+<script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+{{ 'main-navigation.js' | asset_url | script_tag }}
+{{ 'site-nav.js' | asset_url | script_tag }}
+{{ 'site-subnav.js' | asset_url | script_tag }}
+{{ 'countdown-timer.js' | asset_url | script_tag }}
+{{ 'star-rating.js' | asset_url | script_tag }}
+{{ 'product-card.js' | asset_url | script_tag }}
+{{ 'addon-service.js' | asset_url | script_tag }}
+
+<script src="{{ 'custom-tabs.js' | asset_url }}"></script>
+
+<script src="{{ 'cart-surface.js' | asset_url }}"></script>
+<script src="{{ 'store-localization-surface.js' | asset_url }}"></script>
+<script src="{{ 'cookie-consent-bar.js' | asset_url }}"></script>
+
+  <script is="delay-script" url="{{ 'layout-script.js' | asset_url }}"></script>
 <script>
-  jQuery(window).on('load', function () {
-    switchAffirmMessage()
-  })
-  window.routes = {
-    cart_add_url: '{{ routes.cart_add_url }}',
-    cart_change_url: '{{ routes.cart_change_url }}',
-    cart_update_url: '{{ routes.cart_update_url }}',
-    predictive_search_url: '{{ routes.predictive_search_url }}',
-  }
-  window.variantStrings = {
-    addToCart: `{{ 'products.product.add_to_cart' | t }}`,
-    soldOut: `{{ 'products.product.sold_out' | t }}`,
-    unavailable: `{{ 'products.product.unavailable' | t }}`,
-  }
+    toastr.options.closeButton = true;
+    toastr.options.timeOut = 10 * 1000
+    toastr.options.preventOpenDuplicates = true
+
+    const ENV = {
+        logo: "{{ 'emma-logo.svg' | asset_url }}",
+        checkGreenIcon: "{{ 'icon-check-green.svg' | asset_url }}",
+        checkGrayIcon: "{{ 'icon-check-gray.svg' | asset_url }}",
+        cancelIcon: "{{ 'icon-cancel.svg' | asset_url }}",
+    };
+
+    hiddenProductGuard();
+
+    function hiddenProductGuard() {
+        const extend = /\/products\/extend-/;
+        const freePillow = /\/products\/2-pack-pillow/;
+        const url = new URL(window.location.href);
+        if (!extend.test(url.pathname) && !freePillow.test(url.pathname)) return;
+
+        // redirect user
+        window.location.replace('/');
+    }
 </script>
 
-<script src="{{ 'global.js' | asset_url }}" defer="defer"></script>
-<script src="{{ 'variant-selects.js' | asset_url }}" defer="defer"></script>
-
-{{ 'helpers.js' | asset_url | script_tag }}
-
-{{ 'custom-elements.js' | asset_url | script_tag }}
-
-{{ 'quantity-adjuster.js' | asset_url | script_tag }}
-{{ 'variant-selector.js' | asset_url | script_tag }}
-{{ 'loading-overlay.js' | asset_url | script_tag }}
+<script id="All-Product-JSON" type="application/json">
+[
+    {% for product in collections.all.products %}
+      {{ product | json }}
+      {% unless forloop.last %},{% endunless -%}
+    {% endfor %}
+]
+</script>
+<script id="All-Mattresses-JSON" type="application/json">
+[
+    {% for product in collections.mattresses.products %}
+      {{ product | json }}
+      {% unless forloop.last %},{% endunless -%}
+    {% endfor %}
+]
+</script>

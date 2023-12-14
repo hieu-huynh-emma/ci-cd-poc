@@ -1,0 +1,111 @@
+{{ 'product-customizable-faq.css' | asset_url | stylesheet_tag }}
+
+<section id="product-faq-section" class="product-faq">
+  <div class="faq-intro">
+    <h2 class="heading-2">{{ section.settings.title | strip_html }}</h2>
+    <p>{{ section.settings.subtitle }}</p>
+  </div>
+  <div class="faq-details">
+    {% assign allDimensionItems = section.blocks | where: 'type', 'dimension-item' %}
+
+    {%- for block in section.blocks -%}
+      {%- if block.type != 'dimension-item' -%}
+        <div class="accordion-wrapper">
+          <div class="product__accordion accordion">
+            <h4 class="heading-4 accordion__title">
+              {{ block.settings.title | strip_html }}
+            </h4>
+            <div class="accordion__circle">
+              <i class="arrow down"></i>
+            </div>
+          </div>
+
+          {%- case block.type -%}
+            {%- when 'size-guide' -%}
+              <div class="accordion__content dimension-section">
+
+                {%- for dimension in allDimensionItems -%}
+                  <div class="size-option">
+                    <div class="size-option__label">{{ dimension.settings.title | strip_html }}</div>
+                    <div class="size-option__content">{{ dimension.settings.content | strip_html }}</div>
+                  </div>
+                {%- endfor -%}
+
+              </div>
+            {%- when 'faq-item' -%}
+              <div class="accordion__content">
+                {{ block.settings.content }}
+              </div>
+          {%- endcase -%}
+        </div>
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Product FAQ",
+  "tag": "section",
+  "blocks": [
+    {
+      "type": "size-guide",
+      "name": "Size Guide",
+      "settings": [
+        {
+          "id": "title",
+          "type": "text",
+          "label": "Title",
+          "default": "Dimensions and Weight"
+        }
+      ]
+    },
+    {
+      "type": "dimension-item",
+      "name": "Dimension Item",
+      "settings": [
+        {
+          "id": "title",
+          "type": "text",
+          "label": "Title"
+        },
+        {
+          "id": "content",
+          "type": "richtext",
+          "label": "Product Dimensions"
+        }
+      ]
+    },
+    {
+      "type": "faq-item",
+      "name": "FAQ Item",
+      "settings": [
+        {
+          "id": "title",
+          "type": "text",
+          "label": "Title"
+        },
+        {
+          "id": "content",
+          "type": "richtext",
+          "label": "Content"
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "id": "title",
+      "type": "text",
+      "label": "Title",
+      "default": "<p>FAQs</p>"
+    },
+    {
+      "id": "subtitle",
+      "type": "text",
+      "label": "Subtitle",
+      "default": "Lorem ipsum dolor sit amet"
+    }
+  ]
+}
+{% endschema %}

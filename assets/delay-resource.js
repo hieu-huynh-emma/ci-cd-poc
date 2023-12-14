@@ -1,68 +1,69 @@
-window.addEventListener("load", () => {
-  setTimeout(() => {
-    window.dispatchEvent(new Event("complete"));
-  }, 100);
-}, { once: true });
+window.addEventListener('load', () => {
+    setTimeout(() => {
+        window.dispatchEvent(new Event("complete"));
+
+        $('#site-loading-overlay').fadeOut(200);
+    }, 100)
+}, {once: true});
 
 class DelayScript extends HTMLScriptElement {
-  constructor() {
-    super();
+    constructor() {
+        super();
 
+        this.type = 'javascript/blocked'
+    }
 
-    this.type = "javascript/blocked";
-  }
+    connectedCallback() {
+        const phase = this.getAttribute('phase') || "load"
 
-  connectedCallback() {
-    const phase = this.getAttribute("phase") || "load";
+        window.addEventListener(phase === 'load' ? 'DOMContentLoaded' : "FirstInteractive", () => {
+            setTimeout(this.load.bind(this), 0)
+        }, false);
 
-    window.addEventListener(phase === "load" ? "DOMContentLoaded" : "FirstInteractive", () => {
-      setTimeout(this.load.bind(this), 0);
-    }, false);
+        this.type = 'javascript/blocked'
+        this.setAttribute('metric', phase === 'load' ? 'fcp' : 'fid')
+    }
 
-    this.type = "javascript/blocked";
-    this.setAttribute("metric", phase === "load" ? "fcp" : "fid");
-  }
+    load = () => {
 
-  load = () => {
+        const script = document.createElement("script");
 
-    const script = document.createElement("script");
+        Array.from(this.attributes).forEach((attr) => {
+            if (!['type', 'is', 'metric', 'url', 'phase'].includes(attr.name)) {
+                script.setAttribute(attr.name, this.getAttribute(attr.name))
+            }
+        });
 
-    Array.from(this.attributes).forEach((attr) => {
-      if (!["type", "is", "metric", "url", "phase"].includes(attr.name)) {
-        script.setAttribute(attr.name, this.getAttribute(attr.name));
-      }
-    });
+        if (!script.src && !!this.hasAttribute('url')) script.src = this.getAttribute('url')
 
-    if (!script.src && !!this.hasAttribute("url")) script.src = this.getAttribute("url");
+        script.innerHTML = this.innerHTML
 
-    script.innerHTML = this.innerHTML;
+        script.onload = () => {
+            this.dispatchEvent(new Event('load'))
+        }
 
-    script.onload = () => {
-      this.dispatchEvent(new Event("load"));
-    };
-
-    this.replaceWith(script);
-  };
+        this.replaceWith(script);
+    }
 }
 
-customElements.define("delay-script", DelayScript, { extends: "script" });
+customElements.define('delay-script', DelayScript, {extends: 'script'});
 
 class DelayStylesheet extends HTMLLinkElement {
-  constructor() {
-    super();
+    constructor() {
+        super();
 
-    window.addEventListener("DOMContentLoaded", () => {
-      setTimeout(this.load, 0);
-    });
-  }
+        window.addEventListener('DOMContentLoaded', () => {
+            setTimeout(this.load, 0)
+        })
+    }
 
-  connectedCallback() {
-    this.rel = "";
-  }
+    connectedCallback() {
+        this.rel = ''
+    }
 
-  load = () => {
-    this.rel = "stylesheet";
-  };
+    load = () => {
+        this.rel = 'stylesheet'
+    }
 }
 
-customElements.define("delay-stylesheet", DelayStylesheet, { extends: "link" });
+customElements.define('delay-stylesheet', DelayStylesheet, {extends: 'link'});

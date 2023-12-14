@@ -1,0 +1,52 @@
+{% for block in section.blocks %}
+<div class="hidden emma-founder-story emma-section" data-aos="fade-up" data-aos-duration="3000">
+    <div class="emma-founder-story__image">
+        <img src="{{ block.settings.image |  img_url: '375x'}}" loading="lazy" />
+    </div>
+    <div class="emma-founder-story__text">
+        <div class="emma__subtitle">{{ block.settings.subtitle }}</div>
+        <div class="emma-founder-story__heading">{{ block.settings.title }}</div>
+        <div class="emma__p">
+            {{ block.settings.body }}
+        </div>
+    </div>
+</div>
+{% endfor %}
+
+{% schema %}
+  {
+    "name": "Emma Home Team",
+    "settings": [],
+    "blocks":[
+        {
+           "type":"slide",
+           "name":"Stories",
+           "settings":[
+            {
+                "type":"image_picker",
+                "id":"image",
+                "label":"Image"
+             },
+              {
+                 "type":"text",
+                 "id":"subtitle",
+                 "label":"Subtitle",
+                 "default": "Subtitle"
+              },
+              {
+                "type":"text",
+                "id":"title",
+                "label":"Title",
+                "default": "Title"
+             },
+              {
+                "type": "richtext",
+                 "id":"body",
+                 "label": "Add custom text below",
+                 "default": "<p>Add your text here</p>"
+              }
+           ]
+        }
+     ]
+  }
+{% endschema %}

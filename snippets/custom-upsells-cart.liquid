@@ -1,0 +1,222 @@
+<style>
+  .upsell-container{
+    background:#f7f7f9;
+    padding:50px 0;
+  }
+  .upsell_card{
+    background:#fff;
+    border-radius:8px;
+    overflow:hidden;
+    width:313px;
+  }
+  .upsell_card .card_thumb img{
+      height:180px;
+    object-fit:cover;
+    width:100%;
+  }
+  .upsell_card  .block_content{
+    padding:15px;
+  }
+  .upsell_card  .block_content strong{
+    font-size:18px;
+    color:#3B4093;
+  }
+  .pricing-sec{
+    display:flex;
+    align-items:center;
+    justify-content:start;
+    gap:2px;
+  }
+</style>
+
+{% assign upsell_count = 0 %}
+{% assign upsell_products = '' %}
+{% assign available_upsell_products = '' %}
+{% assign valid_upsell_product_handles = '' %}
+{% assign cart_product_handles = '' %}
+{% assign upsell_priority = 'emma-climax-hybrid|emma-original-mattress|emma-upholstered-platform|artisan-wooden-platform-bed|emma-powerbase-1-0|emma-powerbase-pro|emma-mattress-protector|emma-foam-pillow' | split: '|' %}
+
+{% for item in cart.items %}
+  {% if cart_product_handles == '' %}
+    {% assign cart_product_handles = item.product.handle %}
+  {% else %}
+    {% assign cart_product_handles = cart_product_handles | append: '|' | append: item.product.handle %}
+  {% endif %}
+{% endfor %}
+
+{% assign cart_product_handles = cart_product_handles | split: '|' %}
+
+{% for cart_product_handle in cart_product_handles %}
+  {% for upsell_priority_handle in upsell_priority %}
+    {% if cart_product_handle == upsell_priority_handle %}
+      {% if valid_upsell_product_handles == '' %}
+        {% assign valid_upsell_product_handles = cart_product_handle %}
+      {% else %}
+        {% assign valid_upsell_product_handles = valid_upsell_product_handles | append: '|' | append: cart_product_handle %}
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+{% endfor %}
+
+{% assign valid_upsell_product_handles = valid_upsell_product_handles | split: '|' %}
+{% for handle in valid_upsell_product_handles %}
+  {% assign this_product = all_products[handle] %}
+  {% assign upsell_products_meta = this_product.metafields.accentuate.upsell_products | split: '|' %}
+  {% if this_product and this_product.available and upsell_products_meta.size > 0 %}
+    {% for product_handle in upsell_products_meta %}
+      {% assign upsell_products = upsell_products | split: '|' %}
+      {% unless cart_product_handles contains product_handle or upsell_products contains product_handle %}
+        {% assign upsell_count = upsell_count | plus: 1 %}
+        {% assign upsell_products = upsell_products | join: '|' %}
+        {% if upsell_products == '' %}
+          {% assign upsell_products = product_handle %}
+        {% else %}
+          {% assign upsell_products = upsell_products | append: '|' | append: product_handle %}
+        {% endif %}
+      {% else %}
+        {% assign upsell_products = upsell_products | join: '|' %}
+      {% endunless %}
+    {% endfor %}
+  {% endif %}
+{% endfor %}
+
+{% assign upsell_products_meta = shop.metafields.accentuate.default_upsell_products | split: '|' %}
+{% if upsell_count < 4 and upsell_products_meta.size > 0 %}
+  {% for product_handle in upsell_products_meta %}
+    {% assign upsell_products = upsell_products | split: '|' %}
+    {% unless cart_product_handles contains product_handle or upsell_products contains product_handle %}
+      {% assign upsell_count = upsell_count | plus: 1 %}
+      {% assign upsell_products = upsell_products | join: '|' %}
+      {% if upsell_products == '' %}
+        {% assign upsell_products = product_handle %}
+      {% else %}
+        {% assign upsell_products = upsell_products | append: '|' | append: product_handle %}
+      {% endif %}
+    {% else %}
+      {% assign upsell_products = upsell_products | join: '|' %}
+    {% endunless %}
+  {% endfor %}
+{% endif %}
+{% assign upsell_products = upsell_products | split: '|' %}
+
+{% for handle in upsell_products %}
+  {% assign product = all_products[handle] %}
+  {% if product.first_available_variant.available %}
+    {% if available_upsell_products == '' %}
+      {% assign available_upsell_products = handle %}
+    {% else %}
+      {% assign available_upsell_products = available_upsell_products | append: '|' | append: handle %}
+    {% endif %}
+  {% endif %}
+{% endfor %}
+{% assign available_upsell_products = available_upsell_products | split: '|' %}
+
+<section id="cart-upsells-products-section" class="section-container upsell-container">
+    {% if available_upsell_products.size > 0 %}
+  <div class="page-boundary">
+     <div class="section-header flex justify-between items-center">
+      <p class="text-comet text-left solid text-[16px] text-[#2E2F3C] hidden">{{ section.settings.subtitle }}</p>
+        <h2 class="text-xl md:text-xxl text-left text-charade font-semibold mb-5">
+        <span class="hidden">{{ section.settings.title }}</span>
+        <span class="">Other Also Bought</span>
+      </h2>
+    </div>
+   <div class="splide ">
+     
+
+      <div class="splide__track">
+        {% assign count = 0 %}
+   <ul class="splide__list">
+   {% for product_handle in available_upsell_products %}
+           
+            {% assign prod = all_products[product_handle] %}
+
+            {% if prod.selected_or_first_available_variant.available %}
+              {% assign count = count | plus: 1 %}
+      <li class="splide__slide">
+        <div class="w-full flex flex-col upsell_card">
+       <a href="{{ prod.url }}" class="image_block">
+         {% assign img = prod.featured_image %}
+         <div class="card_thumb">
+            {{ img | img_url: '600x600' | img_tag }}
+             
+         </div>
+    </a>
+    <div class="block_content"> 
+      <strong class="text-sm text font-inter">{{ prod.title}}</strong>
+          
+    {% for product_option in product.options_with_values %}
+{% if product_option.name == 'Sizes' or product_option.name == 'sizes' or product_option.name == 'size' or product_option.name == 'Size' %}
+        <ul>
+          {% for value in product_option.values %}
+            
+          <li>{{ value }}</li>
+             
+          {% endfor %}
+        </ul>
+{% endif %}
+{% endfor %}
+     <div class="card_foot">
+       {%- if prod.selected_or_first_available_variant.available -%}
+       <div class="pricing-sec">
+       
+                        <p class="font-semibold mr-1">+{{ prod.price | money_without_trailing_zeros }}</p>
+          {% if prod.compare_at_price > prod.price %}
+                        <p class="line-through ">{{ prod.compare_at_price | money_without_trailing_zeros }}</p>
+                 {%- endif -%}
+                      
+            </div>
+       {%- else -%}
+                      {{ 'products.product.sold_out' | t }}
+                    {%- endif -%}
+
+      <a href="{{ prod.url }}">Shop Now</a>
+       <form method="post" action="/cart/add">
+        <input name="id" value="{{ product.variants.first.id }}" type="hidden" />
+        <input name="add" value="Add to Cart" type="submit" />
+        </form>
+       
+   </div>
+    </div>
+       
+
+    </div>
+      </li>
+{% endif %}
+          {% endfor %}
+   </ul>
+      </div>
+   </div>
+    </div>
+   {% endif %}
+</section>
+
+
+<script>
+  $("#cart-upsells-products-section").ready(async () => {
+    await ResourceCoordinator.requestVendor('Splide');
+
+    new Splide('#cart-upsells-products-section .splide', {
+        autoWidth: true,
+        padding: {right: '5rem'},
+       preventClicksPropagation: false,
+      preventClicks: false,
+      touchStartPreventDefault: false,
+      loop: true,
+      slidesPerView: "auto",
+        perPage: 4,
+        perMove: 1,
+        gap: '20px',
+        pagination: false,
+        breakpoints: {
+            768: {
+                perPage: 1,
+                loop: true,
+                arrows: true,
+                pagination: true,
+                gap: '12px',
+            }
+        }
+    }).mount();
+})
+</script>

@@ -2,10 +2,26 @@
   "sections": {
     "main": {
       "type": "main-404",
-      "settings": {}
+      "settings": {
+      }
+    },
+    "16449986532a8cae01": {
+      "type": "featured-blog",
+      "disabled": true,
+      "settings": {
+        "heading": "Blog posts",
+        "blog": "stories",
+        "post_limit": 4,
+        "show_image": true,
+        "show_date": true,
+        "show_author": false,
+        "soft_background": false,
+        "show_view_all": true
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "16449986532a8cae01"
   ]
 }

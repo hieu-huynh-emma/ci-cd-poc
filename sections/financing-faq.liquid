@@ -25,7 +25,7 @@
     {% endfor %}
   </div>
 </section>
-
+<script src="{{ 'jquery.beefup.min.js' | asset_url }}" defer="defer"></script>
 <script type="module" defer>
   $('.accordion-wrapper').beefup({ trigger: ".accordion", content: ".accordion__content", openSingle: true, openSpeed: 100, closeSpeed: 100 });
 </script>

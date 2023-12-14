@@ -35,7 +35,8 @@
   {%- if available == false %} price--sold-out {% endif -%}
   {%- if compare_at_price > price %} price--on-sale {% endif -%}
   {%- if product.price_varies == false and product.compare_at_price_varies %} price--no-compare{% endif -%}
-  {%- if show_badges %} price--show-badge{% endif -%}">
+ {%- if show_badges %} price--show-badge{% endif -%} ">
+  
   <div>
     {%- comment -%}
       Explanation of description list:
@@ -80,10 +81,28 @@
     {% comment %}</small>{% endcomment %}
   </div>
   {%- if show_badges -%}
+    {% comment %}
     <span class="badge price__badge-sale color-{{ settings.sale_badge_color_scheme }} text-white" aria-hidden="true">
       {{ 'products.product.on_sale' | t }}
     </span>
-
+     {% endcomment %}
+     {% if compare_at_price > price -%}
+      <div class="price-badge-wrapper">
+        <p class="font-semibold price-badge" style="color:#F03306">
+          {{
+            compare_at_price
+            | minus: price
+            | times: 100.0
+            | divided_by: compare_at_price
+            | money_without_currency
+            | times: 100
+            | remove: '.0'
+          -}}
+          %
+          off
+        </p>
+      </div>
+    {%- endif %}
     <span class="badge price__badge-sold-out color-{{ settings.sold_out_badge_color_scheme }}" aria-hidden="true">
       {{ 'products.product.sold_out' | t }}
     </span>

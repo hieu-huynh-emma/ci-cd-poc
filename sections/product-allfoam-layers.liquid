@@ -1,0 +1,282 @@
+<style>
+    .hybrid-layers-container {
+        background: linear-gradient(180deg, rgba(255, 247, 239, 0) 41.15%, #FFF6EC 100%);
+        padding: 3rem 1.8rem;
+    }
+
+    .hybrid-layers-container p {
+        font-size: 13px;
+        line-height: 19.5px;
+        color: #55576F;
+        text-align: center;
+    }
+
+    .hybrid-layers-intro {
+        display: none;
+    }
+
+    .layer-heading {
+        text-align: center;
+    }
+    .layer-heading p {
+        font-family: "Tiempos";
+        font-size: 16px;
+        line-height: 24px;
+        text-align: center;
+        font-weight: 500;
+        cursor: pointer;
+    }
+
+    .layer-circles {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 1.25rem;
+    }
+
+    .layer-circle {
+        height: 24px;
+        width: 24px;
+        border-radius: 50%;
+        background-color: #FF8900;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 12px;
+        line-height: 16px;
+        margin: 0 2px;
+        font-weight: 700;
+    }
+
+    #hybrid-layers-carousel .splide__slide {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-flow: column;
+    }
+
+    #hybrid-layers-carousel .splide__slide img {
+        max-width: 30rem;
+        object-fit: cover;
+    }
+
+    @media (min-width: 749px) {
+        .hybrid-layers-container {
+            padding: 4rem 10rem;
+        }
+
+        .hybrid-layers-intro {
+            width: 100%;
+            min-height: 27rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hybrid-layers {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .layer {
+            width: 30%;
+        }
+
+        .layer-circles {
+            margin-bottom: 2.5rem;
+        }
+
+        #layer-image {
+            max-height: 28rem;
+        }
+    }
+</style>
+<section class="hybrid-layers-container">
+    <div class="hybrid-layers-intro">
+        <img id="layer-image" src="{{ section.settings.first_section_image | img_url: 'master' }}" loading="lazy"/>
+    </div>
+    <div class="hidden md:flex hybrid-layers">
+        <div class="layer">
+            <h3 id="all-foam-mattress-feel-layer-title" class="layer-heading">{{ section.settings.first_section_title }}</h3>
+            <p class="mt-5 mb-2.5">{{ section.settings.first_section_subtitle }}</p>
+            <div class="layer-circles">
+                <div class="layer-circle">A</div>
+                <div class="layer-circle">B</div>
+                <div class="layer-circle">C</div>
+                <div class="layer-circle">D</div>
+            </div>
+            <p>{{ section.settings.first_section_desc }}</p>
+        </div>
+        <div class="layer">
+            <h3 id="all-foam-particle-cool-layer-title" class="layer-heading">{{ section.settings.second_section_title }}</h3>
+            <p class="mt-5 mb-2.5">{{ section.settings.second_section_subtitle }}</p>
+            <div class="layer-circles">
+                <div class="layer-circle">A</div>
+                <div class="layer-circle">B</div>
+                <div class="layer-circle">D</div>
+            </div>
+            <p>{{ section.settings.second_section_desc }}</p>
+        </div>
+        <div class="layer">
+            <h3 id="all-foam-movement-layer-title" class="layer-heading">{{ section.settings.third_section_title }}</h3>
+            <p class="mt-5 mb-2.5">{{ section.settings.third_section_subtitle }}</p>
+            <div class="layer-circles">
+                <div class="layer-circle">A</div>
+                <div class="layer-circle">B</div>
+                <div class="layer-circle">C</div>
+                <div class="layer-circle">D</div>
+            </div>
+            <p>{{ section.settings.third_section_desc }}</p>
+        </div>
+    </div>
+
+    <div class="md:hidden w-full">
+        <div id="hybrid-layers-carousel" class="splide">
+            <div class="splide__track">
+                <ul class="splide__list">
+                    <li class="splide__slide">
+                        <img src="{{ section.settings.first_section_image | img_url: 'master' }}"/>
+
+                        <div class="layer">
+                            <h3 class="layer-heading">{{ section.settings.first_section_title }}</h3>
+                            <p class="mt-5 mb-2.5">{{ section.settings.first_section_subtitle }}</p>
+                            <div class="layer-circles">
+                                <div class="layer-circle">A</div>
+                                <div class="layer-circle">B</div>
+                                <div class="layer-circle">C</div>
+                                <div class="layer-circle">D</div>
+                            </div>
+                            <p>{{ section.settings.first_section_desc }}</p>
+                        </div>
+                    </li>
+                    <li class="splide__slide">
+                        <img src="{{ section.settings.second_section_image | img_url: 'master' }}"/>
+                        <div class="layer">
+                            <h3 class="layer-heading">{{ section.settings.second_section_title }}</h3>
+                            <p class="mt-5 mb-2.5">{{ section.settings.second_section_subtitle }}</p>
+                            <div class="layer-circles">
+                                <div class="layer-circle">A</div>
+                                <div class="layer-circle">B</div>
+                                <div class="layer-circle">D</div>
+                            </div>
+                            <p>{{ section.settings.second_section_desc }}</p>
+                        </div>
+                    </li>
+                    <li class="splide__slide">
+                        <img src="{{ section.settings.third_section_image | img_url: 'master' }}"/>
+                        <div class="layer">
+                            <h3 class="layer-heading">{{ section.settings.third_section_title }}</h3>
+                            <p class="mt-5 mb-2.5">{{ section.settings.third_section_subtitle }}</p>
+                            <div class="layer-circles">
+                                <div class="layer-circle">A</div>
+                                <div class="layer-circle">B</div>
+                                <div class="layer-circle">C</div>
+                                <div class="layer-circle">D</div>
+                            </div>
+                            <p>{{ section.settings.third_section_desc }}</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+
+<script defer type="module">
+    new Splide('#hybrid-layers-carousel', {
+        perPage: 1,
+        perMove: 1,
+        arrows: false
+    }).mount();
+
+    $('#all-foam-mattress-feel-layer-title').on('click', function () {
+        $('#layer-image').attr('src', `{{ section.settings.first_section_image | img_url: 'master' }}`);
+    });
+    $('#all-foam-particle-cool-layer-title').on('click', function () {
+        $('#layer-image').attr('src', `{{ section.settings.second_section_image | img_url: 'master' }}`);
+    });
+    $('#all-foam-movement-layer-title').on('click', function () {
+        $('#layer-image').attr('src', `{{ section.settings.third_section_image | img_url: 'master' }}`);
+    });
+</script>
+
+{% schema %}
+{
+  "name": "Hybrid All Foam Layers",
+  "settings": [
+    {
+      "id": "first_section_image",
+      "type": "image_picker",
+      "label": "First Section Image"
+    },
+    {
+      "id": "first_section_title",
+      "type": "richtext",
+      "label": "First Section Title",
+      "default": "<p>Wake up restored with Emma Original Hybrid</p>"
+    },
+    {
+      "id": "first_section_subtitle",
+      "type": "text",
+      "label": "First Section Subtitle",
+      "default": "Developed within layers"
+    },
+    {
+      "id": "first_section_desc",
+      "type": "text",
+      "label": "First Section Description",
+      "default": "Our mattress was designed to adapt to your body weight and shape, giving you the right firmness and support in all the right places."
+    },
+    {
+      "id": "second_section_image",
+      "type": "image_picker",
+      "label": "Second Section Image"
+    },
+    {
+      "id": "second_section_title",
+      "type": "richtext",
+      "label": "Second Section Title",
+      "default": "<p>Stay fresh while you sleep with ParticleCool</p>"
+    },
+    {
+      "id": "second_section_subtitle",
+      "type": "text",
+      "label": "Second Section Subtitle",
+      "default": "Developed within layers"
+    },
+    {
+      "id": "second_section_desc",
+      "type": "text",
+      "label": "All Foam Particle Cool Description",
+      "default": "The right sleep temperature makes all the difference. ParticleCool™ allows optimal sleep so you fall asleep without a hitch."
+    },
+    {
+      "id": "third_section_image",
+      "type": "image_picker",
+      "label": "Third Section Image"
+    },
+    {
+      "id": "third_section_title",
+      "type": "richtext",
+      "label": "Third Section Title",
+      "default": "<p>Sleep Undisturbed with Motion Isolation</p>"
+    },
+    {
+      "id": "third_section_subtitle",
+      "type": "text",
+      "label": "Third Section Subtitle",
+      "default": "Developed within layers"
+    },
+    {
+      "id": "third_section_desc",
+      "type": "text",
+      "label": "All Foam Movement Description",
+      "default": "Keep your movements to yourself. ComfortAdapt™ absorbs and isolates motion so partners rest easy."
+    }
+  ]
+}
+{% endschema %}

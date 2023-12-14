@@ -95,26 +95,26 @@ let CompetitorComparison = {
       }
     });
 
-    Object.values(specifications).forEach((competitorSpec, i) => {
+    Object.values(specifications).forEach((competitiveSpecs, i) => {
       let $cellContent = $table.find(
         `.competitor-comparison-table-cell.grid-row-${
           i + 2
         }[data-competitor-col-index="0"] .cell-content`
       );
-      if (competitorSpec === "Yes") {
+      if (competitiveSpecs === "Yes") {
         $cellContent.append(`<img src="${checkGrayIcon}" alt="">`);
-      } else if (competitorSpec === "No") {
+      } else if (competitiveSpecs === "No") {
         $cellContent.append(`<img src="${cancelIcon}" alt="">`);
       } else {
         if (i === 0) {
-          if (typeof competitorSpec === "string") {
-            $cellContent.text(competitorSpec);
+          if (typeof competitiveSpecs === "string") {
+            $cellContent.text(competitiveSpecs);
           } else {
-            const { price, originalPrice } = competitorSpec
+            const { price, originalPrice } = competitiveSpecs
             $cellContent.html(`${price} <span class="line-through font-medium text-sm">${originalPrice}</span>`)
           }
         } else {
-          $cellContent.text(competitorSpec);
+          $cellContent.text(competitiveSpecs);
         }
       }
     });
@@ -125,7 +125,7 @@ let CompetitorComparison = {
     } else {
       $("#competitor-buy-btn").attr(
         "href",
-        "/products/emma-climax-hybrid"
+        "/products/emma-hybrid-comfort"
       );
     }
   },

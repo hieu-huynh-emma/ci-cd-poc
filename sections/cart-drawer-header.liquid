@@ -1,16 +1,19 @@
 <div id="CartDrawerHeader" class="drawer-header">
-  <div class="drawer-title {% if cart.item_count == 0 %}is-empty{% endif %}">
-    {% if cart.item_count == 0 %}
-      <h2 class="text-white">{{ 'cart.drawer_header.title' | t }}</h2>
-    {% else %}
-      <h2 class="text-white">{{ 'cart.drawer_header.items_in_cart' | t: count: cart.item_count }}{% if cart.item_count > 1 %}s{% endif %}</h2>
-    {% endif %}
+  <div class="drawer-title-container">
+    <div class="drawer-title font-tiempos {% if cart.item_count == 0 %}is-empty{% endif %}">
+      <h2 class="text-white">{{ 'cart.title' | t }}</h2>
+      {% if cart.item_count != 0 %}
+        <span>-</span>
+        <div class="cart-item-count">{{ cart.item_count | json }} Item{% if cart.item_count > 1 %}s{% endif %}</div>
+      {% endif %}
+
+    </div>
   </div>
 
   <button
-    class="drawer-close-btn"
-    type="button" onclick="this.closest('cart-drawer').close()"
-    aria-label="{{ 'accessibility.close' | t }}"
+      id="CartDrawer-Close"
+      class="drawer-close-btn"
+      aria-label="{{ 'accessibility.close' | t }}"
   >
     {% render 'icon-close-small' %}
   </button>

@@ -29,7 +29,10 @@ class CartUpsell extends CustomElement {
     this.$el.find("button").click(this.onAddUpsell)
   }
 
-  initSwiper() {
+  async initSwiper() {
+    await ResourceCoordinator.requestVendor('Swiper');
+
+
     new Swiper('#shopify-section-cart-drawer-upsell .swiper', {
       preventClicksPropagation: false,
       preventClicks: false,
@@ -77,15 +80,15 @@ class CartUpsell extends CustomElement {
     scrollableContentEl.loading = true
     cartSummaryNode.loading = true
 
-    const productId = $upsellItem.attr(':productid')
+    // const productId = $upsellItem.attr(':productid')
 
-    const { freeGiftId, gwpTargetProductIds } = cartItems.props
+    // const { freeGiftId, gwpTargetProductIds } = cartItems.props
 
-    const isGWPTargetProduct = freeGiftId && gwpTargetProductIds.includes(+productId)
+    // const isGWPTargetProduct = freeGiftId && gwpTargetProductIds.includes(+productId)
 
-    await cartItems.addToCart(variantId, 1, isGWPTargetProduct ? { hasGWP: true } : {});
-
-    isGWPTargetProduct && await cartItems.addToCart(freeGiftId, 1, { freeGift: true });
+    await cartItems.addToCart(variantId, 1);
+    
+    // isGWPTargetProduct && await cartItems.addToCart(freeGiftId, 1, { freeGift: true });
 
     scrollableContentEl.loading = false
     cartSummaryNode.loading = false

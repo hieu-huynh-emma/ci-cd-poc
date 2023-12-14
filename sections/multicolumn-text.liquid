@@ -1,35 +1,93 @@
-{% assign cols = section.blocks | where: "type", "column" %}
-
+{% assign cols = section.blocks | where: 'type', 'column' %}
 {% liquid
-	assign imgSize = 60
-	if section.settings.column_size == 'large'
-		assign imgSize = 102
-		assign imgSizeX2 = imgSize | times: 2
-	endif
-%}
+  assign imgSize = 60
 
-<section id="{{ section.id }}" class="multicolumn-text section-container spacing-{{ section.settings.container_spacing }}">
-	<div class="page-boundary">
-		<ul class="multicolumn-list">
-			{%- for block in cols -%}
-				<li class="multicolumn-card
-          {% if section.settings.column_alignment == 'center' %} center{% endif %}
-          {% if section.settings.column_size == 'large' %} large{% endif %}
-          {% if section.settings.horizontal_layout_on_mobile %} horizontal-layout-on-mobile{% endif %}
-        ">
-          {% render 'image-tag', image_src: block.settings.icon, class: 'multicolumn-card__icon', width: imgSizeX2, width_attr: imgSize %}
-					<div class="multicolumn-card__details">
-						<h3 class="multicolumn-card__title{% if section.settings.solid_typo %} solid{% endif %}">{{ block.settings.title }}</h3>
-						<p class="multicolumn-card__content text-comet{% if section.settings.solid_typo %} solid{% endif %}">{{ block.settings.content | remove: "<p>" | remove: "</p>" }}</p>
-					</div>
-				</li>
-			{%- endfor -%}
-		</ul>
-	</div>
+  if section.settings.column_size == 'large'
+    assign imgSize = 102
+    assign imgSizeX2 = imgSize | times: 2
+  endif
+%}
+<style>
+  /*     .new_service_info ul {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .new_service_info .multicolumn-card__details {
+        padding: 15px 0;
+    }
+        .new_service_info .multicolumn-card {
+             background: #F7F7F9;
+        padding: 16px 8px;
+        text-align: center;
+        gap: 10px;
+        border-radius: 8px;
+        width: 25%;
+      }
+
+      .new_service_info .multicolumn-card img {
+          margin: auto auto 10px;
+          width: 80px;
+      }
+      .new_service_info .multicolumn-card p{
+          font-size:14px;
+        line-height:20px;
+      }
+      .new_service_info .multicolumn-card h3{
+          font-size: 20px;
+        margin: 0 0 12px
+      } */
+      @media (max-width:769px){
+  /*       .new_service_info .multicolumn-card img{
+          width:80px !important;
+          margin-bottom:0 !important
+        }
+      .new_service_info ul{
+        flex-direction:column;
+      }
+        .new_service_info .multicolumn-card{
+          flex-direction:column;
+          display:flex;
+          width:100%;
+        } */
+      }
+</style>
+<section
+  id="{{ section.id }}"
+  class="multicolumn-text new_service_info section-container spacing-{{ section.settings.container_spacing }}"
+>
+  <div class="page-boundary">
+    <ul class="multicolumn-list">
+      {%- for block in cols -%}
+        <li
+          class="
+            multicolumn-card
+            {% if section.settings.column_alignment == 'center' %} center{% endif %}
+            {% if section.settings.column_size == 'large' %} large{% endif %}
+            {% if section.settings.horizontal_layout_on_mobile %} horizontal-layout-on-mobile{% endif %}
+          "
+        >
+          <img
+            class="lazyload multicolumn-card__icon"
+            data-src="{{ block.settings.icon | image_url: width: imgSizeX2 }}"
+            width="{{ imgSize }}"
+            height="{{ imgSize }}"
+          >
+          <div class="multicolumn-card__details">
+            <h3 class="multicolumn-card__title{% if section.settings.solid_typo %} solid{% endif %}">
+              {{ block.settings.title }}
+            </h3>
+            <p class="multicolumn-card__content text-comet{% if section.settings.solid_typo %} solid{% endif %}">
+              {{ block.settings.content | remove: '<p>' | remove: '</p>' }}
+            </p>
+          </div>
+        </li>
+      {%- endfor -%}
+    </ul>
+  </div>
 </section>
 
 {% schema %}
-
 {
   "name": "MultiColumn Text",
   "max_blocks": 4,
@@ -116,7 +174,12 @@
       "label": "Solid Typography",
       "default": false
     }
-  ]
-}
+  ],
+  "presets": [
+        {
+           "name": "Multicolumn text"
 
+        }
+    ]
+}
 {% endschema %}

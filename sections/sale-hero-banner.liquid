@@ -1,12 +1,68 @@
 {% assign wallpaper = section.blocks | where: "type", "wallpaper" | first %}
-{% assign countdownTimer = section.blocks | where: "type", "countdown_timer" | first %}
 {% assign cta = section.blocks | where: "type", "cta" | first %}
+{% assign countdownTimer = section.blocks | where: "type", "countdown_timer" |first %}
 
 {{ 'sale-hero-banner.css' | asset_url | stylesheet_tag }}
 
 <style>
   #sale-hero-banner-section {
-    color: {{ section.settings.text_color }}
+    color: {{section.settings.text_color}}
+  }
+
+  #sale-hero-banner-section .text-box > *{
+    color: inherit
+  }
+
+  #sale-hero-banner-section .countdown-timer {
+    display: grid;
+    gap: 16px;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(0, 1fr);
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%
+  }
+
+  #sale-hero-banner-section .countdown-timer .time-part {
+    display: grid;
+    justify-content: center;
+    padding: 4px 8px;
+    background-color: #fff;
+    border-radius: 4px;
+    text-align: center
+  }
+  
+  #sale-hero-banner-section .countdown-timer .time-part .digit {
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: 0;
+    line-height: 125%
+  }
+  
+  @media screen and (min-width: 768px) {
+      #sale-hero-banner-section .countdown-timer {
+            grid-auto-columns: minmax(0, auto);
+      }
+    #sale-hero-banner-section .countdown-timer .time-part {
+      width: 69px;
+      padding: 4px
+    }
+    #sale-hero-banner-section .countdown-timer .time-part .digit {
+      font-size: 32px
+    }
+  }
+  
+  #sale-hero-banner-section .countdown-timer .time-part .label {
+    font-weight: 400;
+    font-size: .75rem;
+    letter-spacing: 0;
+    line-height: 1rem
+  }
+  
+  @media screen and (min-width: 768px) {
+    #sale-hero-banner-section .countdown-timer .time-part .label {
+      font-size: 12px
+    }
   }
 </style>
 
@@ -14,25 +70,54 @@
   <div class="page-boundary--full">
     <div class="section-content">
       <div class="text-box">
-        <h1 class="heading-1 md:text-[60px] font-bold">{{ section.settings.title | remove: "<p>" | remove: "</p>" }}</h1>
-        <h2 class="heading-2 md:text-[32px] font-bold font-inter">{{ section.settings.subtitle }}</h2>
+        <h1 class="heading-1">{{ section.settings.title | remove: "<p>" | remove: "</p>" }}</h1>
+        <h2 class="heading-2 md:text-[32px] font-inter">{{ section.settings.subtitle }}</h2>
         <p class="hidden md:inline-block">{{ section.settings.tagline | remove: "<p>" | remove: "</p>" }}</p>
       </div>
-      
-      <div class="section-cta">
-        {% if cta != blank %}
-          <a class="btn btn--lg" href="{{ cta.settings.url }}">
-            {{ cta.settings.text }}
-          </a>
-        {% endif %}
+      <div class="section-features">
+          {% if countdownTimer %}
+              <hero-banner-countdown-timer end-time="{{ settings.sale_timer }}">
+                  <div class="countdown-timer" style="color: black;">
+                      <div class="time-part">
+                          <p class="digit"></p>
+                          <p class="label">Days</p>
+                      </div>
+                      <div class="time-part">
+                          <p class="digit"></p>
+                          <p class="label">Hours</p>
+                      </div>
+                      <div class="time-part">
+                          <p class="digit"></p>
+                          <p class="label">Minutes</p>
+                      </div>
+                      <div class="time-part">
+                          <p class="digit"></p>
+                          <p class="label">Seconds</p>
+                      </div>
+                  </div>
+              </hero-banner-countdown-timer>
+          {% endif %}
       </div>
+      
+        {% if cta != blank %}
+          <div class="section-cta">
+            <a class="btn btn--lg" href="{{ cta.settings.url }}">
+              {{ cta.settings.text }}
+            </a>
+          </div>
+        {% endif %}
+    
     </div>
   </div>
 
   {% if wallpaper != blank %}
     <div class="wallpaper">
-      {% render 'image-tag', image_src: wallpaper.settings.src, width: 2680, class: 'hidden md:block' %}
-      {% render 'image-tag', image_src: wallpaper.settings.mobile_src, width: 768, class: 'md:hidden' %}
+      {{
+      wallpaper.settings.src
+      | image_url: width: 2680
+      | image_tag: width: 2680, class: 'hidden md:block'
+      }}
+      {{ wallpaper.settings.mobile_src | image_url: width: 768 | image_tag: width: 768, class: 'md:hidden' }}
     </div>
   {% endif %}
 </section>
@@ -49,7 +134,7 @@
         {
           "id": "src",
           "type": "image_picker",
-          "label": "Wallpaper Desktop Source"
+          "label": "Wallpaper Desktop Srouce"
         },
         {
           "id": "mobile_src",
@@ -124,11 +209,11 @@
       "label": "Subtitle",
       "default": "Our sleep experts have mastered designing award-winning mattresses crafted to keep you relaxed and recharged, no matter what kind of sleeper you are. Climb on your best sleep yet!"
     },
-     {
+    {
       "id": "text_color",
       "type": "color",
       "label": "Text Color",
-       "default": "#2e2f3c"
+      "default": "#2e2f3c"
     },
     {
       "type": "select",

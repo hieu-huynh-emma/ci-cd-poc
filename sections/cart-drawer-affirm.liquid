@@ -1,6 +1,7 @@
 <cart-drawer-affirm id="CartDrawerAffirm" class="cart-drawer-affirm">
   <div>
     {% if cart.total_price > 30000 %}
+      
       <button class="pro_info cart-drawer-affirm-en">
         Pay as low as
         <strong><span class="pro_val">{{ cart.total_price | divided_by: 12 | money }}</span></strong>

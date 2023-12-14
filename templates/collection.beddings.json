@@ -1,5 +1,5 @@
 {
-  "layout": "theme.optimized",
+  "layout": "theme.revamp",
   "sections": {
     "products-layout": {
       "type": "products-layout",
@@ -11,8 +11,8 @@
             "product": "emma-mattress-protector",
             "product_desc": "",
             "background_color": "#f1f0f5",
-            "mobile_image": "shopify:\/\/shop_images\/PROTECTOR_1.png",
-            "desktop_image": "shopify:\/\/shop_images\/PROTECTOR_1.png",
+            "mobile_image": "shopify:\/\/shop_images\/protector_transparent.png",
+            "desktop_image": "shopify:\/\/shop_images\/protector_transparent.png",
             "card_width": "half"
           }
         },
@@ -23,20 +23,31 @@
             "product": "emma-foam-pillow",
             "product_desc": "",
             "background_color": "#f1f0f5",
-            "mobile_image": "shopify:\/\/shop_images\/PILLOW_1.png",
-            "desktop_image": "shopify:\/\/shop_images\/PILLOW_1.png",
+            "mobile_image": "shopify:\/\/shop_images\/PILLOW_1_6d5a5f46-1c82-453b-954b-25bac554cd05.png",
+            "desktop_image": "shopify:\/\/shop_images\/PILLOW_1_6d5a5f46-1c82-453b-954b-25bac554cd05.png",
             "card_width": "half"
           }
         },
-        "3e69639b-680c-41c5-88f8-7e99400ddbbd": {
+        "f1dc2787-0f98-42cf-82aa-f6055061dd64": {
           "type": "product_card",
           "settings": {
             "badge_text": "",
             "product": "premium-cooling-pillow",
             "product_desc": "",
             "background_color": "#f1f0f5",
-            "mobile_image": "shopify:\/\/shop_images\/PILLOW_1_6d5a5f46-1c82-453b-954b-25bac554cd05.png",
-            "desktop_image": "shopify:\/\/shop_images\/PILLOW_1_6d5a5f46-1c82-453b-954b-25bac554cd05.png",
+            "mobile_image": "shopify:\/\/shop_images\/PILLOW_1_e72c737f-9817-4022-bb78-b6ad780a2477.png",
+            "desktop_image": "shopify:\/\/shop_images\/PILLOW_1_e72c737f-9817-4022-bb78-b6ad780a2477.png",
+            "card_width": "half"
+          }
+        },
+        "0f1eb6b2-b744-4991-8846-5d98cbd67ee6": {
+          "type": "product_card",
+          "settings": {
+            "badge_text": "",
+            "product": "emma-down-alternative-pillow",
+            "product_desc": "",
+            "background_color": "#f1f0f5",
+            "desktop_image": "shopify:\/\/shop_images\/Essential_Cloud_Pillow_-_CA_v_copy_8.jpg",
             "card_width": "half"
           }
         }
@@ -44,7 +55,8 @@
       "block_order": [
         "17044658-d29b-4190-9478-36b0c19f8885",
         "7e0a80d8-9fdb-46b0-906f-806235b98cf0",
-        "3e69639b-680c-41c5-88f8-7e99400ddbbd"
+        "f1dc2787-0f98-42cf-82aa-f6055061dd64",
+        "0f1eb6b2-b744-4991-8846-5d98cbd67ee6"
       ],
       "settings": {
         "title": "Pillows & Bedding"

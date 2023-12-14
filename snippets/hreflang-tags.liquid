@@ -1,18 +1,18 @@
 <!--International SEO: hreflang tags-->
 {% if template contains 'product' %}
-    {% assign productHreflangs = product.metafields.accentuate.hreflangs %}
+  {% assign productHreflangs = product.metafields.accentuate.hreflangs %}
 
-    {% if productHreflangs != blank %}
-        {{ productHreflangs | strip }}
-    {% else %}
-        {% render 'global-hreflangs' %}
-    {% endif %}
+  {% if productHreflangs != blank %}
+    {{ productHreflangs | strip }}
+  {% else %}
+    {% render 'global-hreflangs' %}
+  {% endif %}
 {% else %}
-    {% assign pageHreflangs = page.metafields.accentuate.hreflangs %}
+  {% assign pageHreflangs = page.metafields.accentuate.hreflangs %}
 
-    {% if pageHreflangs != blank %}
-        {{ pageHreflangs | strip }}
-    {% else %}
-        {% render 'global-hreflangs' %}
-    {% endif %}
+  {% if pageHreflangs != blank %}
+    {{ pageHreflangs | strip }}
+  {% else %}
+    {% render 'global-hreflangs' %}
+  {% endif %}
 {% endif %}

@@ -82,17 +82,14 @@
       padding: 30px;
       align-items: flex-start;
     }
-
-    .product .product-content {
+    .product  .product-content {
       align-items: flex-start;
       padding: 0;
     }
-
     .product-content h2 {
       font-size: 28px;
       text-align: start;
     }
-
     .product-content p {
       font-size: 16px;
       text-align: start;
@@ -108,52 +105,52 @@
 
 <section id="products-layout-section">
   {% if section.settings.title != blank %}
-    <h1>{{ section.settings.title }}</h1>
+  <h1>{{ section.settings.title }}</h1>
   {% endif %}
 
   <div class="product-cards-container">
     {% for card in product_cards %}
-      <style>
-        #products-layout-section .product-{{ forloop.index0 }} {
-          background-image: url("{{ card.settings.mobile_image.src | image_url }}");
-          background-color: {{ card.settings.background_color }};
-          background-repeat: no-repeat;
-          background-size: contain;
-          background-position: 50% 80%;
+    <style>
+      #products-layout-section .product-{{forloop.index0}} {
+        background-image: url("{{ card.settings.mobile_image.src | image_url }}");
+        background-color: {{ card.settings.background_color }};
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: 50% 80%;
+      }
+
+      @media (min-width: 769px) {
+        #products-layout-section .product-{{forloop.index0}} {
+          background-image: url("{{ card.settings.desktop_image.src | image_url }}");
+          width: {% if card.settings.card_width=="full" %}100%{% else %}49%{% endif %};
+          background-position: {% if card.settings.card_width=="full" %}center right{% else %}bottom 40px right -70px{% endif %};
+          justify-content: {% if card.settings.card_width=="full" %}center{% else %}space-between{% endif %};
         }
 
-        @media (min-width: 769px) {
-          #products-layout-section .product-{{ forloop.index0 }} {
-            background-image: url("{{ card.settings.desktop_image.src | image_url }}");
-            width: {% if card.settings.card_width == "full" %}100%{% else %}49%{% endif %};
-            background-position: {% if card.settings.card_width == "full" %}center right{% else %}50% 80%{% endif %};
-            justify-content: {% if card.settings.card_width == "full" %}center{% else %}space-between{% endif %};
-          }
-
-          .product-{{forloop.index0}} .product-content {
-            max-width: {% if card.settings.card_width == "full" %}40%{% else %}auto{% endif %};
-          }
-
+        .product-{{forloop.index0}} .product-content {
+          max-width: {% if card.settings.card_width=="full" %}40%{% else %}auto{% endif %};
         }
 
-      </style>
-      <div class="product product-{{ forloop.index0 }}">
-        <div class="product-content">
-          {% if card.settings.badge_text != blank %}
-            <span class="badge">{{ card.settings.badge_text }}</span>
+      }
+
+    </style>
+    <div class="product product-{{forloop.index0}}">
+      <div class="product-content">
+        {% if card.settings.badge_text != blank %}
+        <span class="badge">{{ card.settings.badge_text }}</span>
+        {% endif %}
+        <h2>{{ card.settings.product.title }}</h2>
+        <p class="desc">{{ card.settings.product_desc }}</p>
+        <p class="mt-1 font-semibold">
+          from
+          {{ card.settings.product.price | money }}
+          {% if card.settings.product.compare_at_price > card.settings.product.price %}
+          <del class="font-normal">{{ card.settings.product.compare_at_price | money }}</del>
           {% endif %}
-          <h2>{{ card.settings.product.title }}</h2>
-          <p class="desc">{{ card.settings.product_desc }}</p>
-          <p class="mt-1 font-semibold">
-            from
-            {{ card.settings.product.price | money }}
-            {% if card.settings.product.compare_at_price > card.settings.product.price %}
-              <del class="font-normal">{{ card.settings.product.compare_at_price | money }}</del>
-            {% endif %}
-          </p>
-        </div>
-        <a class="btn product-url-cta" href="{{ card.settings.product.url }}">SHOP NOW</a>
+        </p>
       </div>
+      <a class="btn product-url-cta" href="{{ card.settings.product.url }}">SHOP NOW</a>
+    </div>
     {% endfor %}
   </div>
 
@@ -161,67 +158,67 @@
 
 {% schema %}
 {
-  "name": "Products Layout Section",
-  "blocks": [
-    {
-      "type": "product_card",
-      "name": "Product Card",
-      "settings": [
-        {
-          "type": "text",
-          "id": "badge_text",
-          "label": "Badge Text"
-        },
-        {
-          "type": "product",
-          "id": "product",
-          "label": "Product"
-        },
-        {
-          "type": "text",
-          "id": "product_desc",
-          "label": "Product Description"
-        },
-        {
-          "type": "color",
-          "id": "background_color",
-          "label": "Background Color"
-        },
-        {
-          "type": "image_picker",
-          "id": "mobile_image",
-          "label": "Mobile View Image"
-        },
-        {
-          "type": "image_picker",
-          "id": "desktop_image",
-          "label": "Desktop View Image"
-        },
-        {
-          "type": "radio",
-          "id": "card_width",
-          "label": "Card Width",
-          "options": [
-            {
-              "value": "full",
-              "label": "Full"
-            },
-            {
-              "value": "half",
-              "label": "Half"
-            }
-          ],
-          "default": "full"
-        }
-      ]
-    }
-  ],
-  "settings": [
-    {
-      "type": "text",
-      "id": "title",
-      "label": "Title"
-    }
-  ]
+"name": "Products Layout Section",
+"blocks": [
+{
+"type": "product_card",
+"name": "Product Card",
+"settings": [
+{
+"type": "text",
+"id": "badge_text",
+"label":"Badge Text"
+},
+{
+"type": "product",
+"id": "product",
+"label": "Product"
+},
+{
+"type": "text",
+"id": "product_desc",
+"label":"Product Description"
+},
+{
+"type": "color",
+"id": "background_color",
+"label": "Background Color"
+},
+{
+"type": "image_picker",
+"id": "mobile_image",
+"label": "Mobile View Image"
+},
+{
+"type": "image_picker",
+"id": "desktop_image",
+"label": "Desktop View Image"
+},
+{
+"type": "radio",
+"id": "card_width",
+"label": "Card Width",
+"options": [
+{
+"value": "full",
+"label": "Full"
+},
+{
+"value": "half",
+"label": "Half"
+}
+],
+"default": "full"
+}
+]
+}
+],
+"settings": [
+{
+"type":"text",
+"id": "title",
+"label": "Title"
+}
+]
 }
 {% endschema %}

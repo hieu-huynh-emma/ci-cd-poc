@@ -1,0 +1,32 @@
+<div id="countdown-bar" class="py-3 bg-charade">
+  <p class="timer text-center mx-auto text-[13px] font-[Inter] text-[white]"></p>
+</div>
+
+<script>
+  function makeTimer() {
+    let end = new Date("2022-09-09T00:00:00");
+    end = (Date.parse(end) / 1000);
+
+    let now = new Date();
+    now = (Date.parse(now) / 1000);
+
+    let timeLeft = end - now;
+
+    if (timeLeft <= 0) {
+      $("#countdown-bar").css('display', 'none');
+    } else {
+      let days = Math.floor(timeLeft / 86400);
+      let hours = Math.floor((timeLeft - (days * 86400)) / 3600);
+      let minutes = Math.floor((timeLeft - (days * 86400) - (hours * 3600)) / 60);
+      let seconds = Math.floor((timeLeft - (days * 86400) - (hours * 3600) - (minutes * 60)));
+
+      if (hours < "10") { hours = "0" + hours; }
+      if (minutes < "10") { minutes = "0" + minutes; }
+      if (seconds < "10") { seconds = "0" + seconds; }
+
+      $("#countdown-bar .timer").html(`<span>Get up to 42% off this Labor Day Sale | Promo</span> ends in <span class="font-bold">${days}</span> days <span class="font-bold">${hours}</span> hours <span class="font-bold">${minutes}</span> mins <span class="font-bold">${seconds}</span> secs`);
+    }
+  }
+
+  setInterval(function () { makeTimer(); }, 1000);
+</script>

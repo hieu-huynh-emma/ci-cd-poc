@@ -1,0 +1,109 @@
+<script>
+
+// run scripts on DOMContentLoaded to avoid affecting site load time
+window.addEventListener('DOMContentLoaded', function() {
+
+    // Only run ajax integration if Extend and ExtendShopify is defined, the currency is set to USD and analytics are enabled
+    if (window.Extend && window.ExtendShopify && Extend.integration.analytics && window.Shopify && window.Shopify.currency && window.Shopify.currency.active === 'USD') {
+
+        /***********************/
+        /* util functions      */
+        /***********************/
+
+        // getPlanId - Takes in the cart and a product ID and returns the plan ID for that product
+        function getPlanId(cart, productId) {
+            let planId;
+            cart.items.forEach(function(item) {
+                if (item.properties.Ref && item.properties.Ref === productId) 
+                    planId = item.sku.toString();
+                
+            })
+            return planId
+        }
+
+        /***********************/
+        /* end util functions  */
+        /***********************/
+
+        // productAnalytics() - Takes in the product ID and quantity at the time it is added to the cart
+        let productAnalytics = function(prodId, prodQty) {
+            if (prodId) {
+                if (!prodQty) 
+                    prodQty = 1;
+                
+                Extend.trackProductAddedToCart({productId: prodId.toString(), productQuantity: parseInt(prodQty)});
+            } else {
+                console.warn("Extend: Product id is " + prodId)
+            }
+        }
+
+        // cartAnalytics() - Takes in the oldCart and the newCart at a point where the cart updates
+        let cartAnalytics = function(oldCart, newCart) {
+            try{
+                //if there is an old or new cart with items. 
+                if (oldCart && newCart && oldCart.items && newCart.items) { 
+                    // Triggers if an item has been removed
+                    if (oldCart.items.length > newCart.items.length) {
+                        oldCart.items.forEach(function(currentItem) {
+                            let productFound = false
+                            newCart.items.forEach(function(currentNewItem) {
+                                if (currentItem.id == currentNewItem.id) {
+                                    productFound = true
+                                }
+                            })
+
+                            // making sdk call of which product was removed from cart
+                            if (productFound === false) {
+                                if (currentItem.vendor === 'Extend' && currentItem && currentItem.sku && currentItem.properties.Ref) {
+                                    Extend.trackOfferRemovedFromCart({productId: currentItem.properties.Ref.toString(), planId: currentItem.sku.toString()});
+                                } else if (currentItem.id) {
+                                    Extend.trackProductRemovedFromCart({productId: currentItem.id.toString()})
+                                }
+                            }
+                        })
+
+                        // Triggers if an item quantity has changed
+                    } else if (oldCart.item_count != newCart.item_count) {
+                        oldCart.items.forEach(function(currentItem) {
+                            newCart.items.forEach(function(currentNewItem) {
+
+                                // Runs when the updated item is found if its not an Extend warranty
+                                if (currentItem.id == currentNewItem.id && currentItem.quantity != currentNewItem.quantity && currentItem.vendor != 'Extend') {
+                                    if (currentItem.id && currentNewItem.quantity && ExtendShopify.warrantyAlreadyInCart(currentItem.id.toString(), oldCart.items)) { // Gets the associated plan ID using the product ID
+                                        let planId = getPlanId(newCart, currentItem.id.toString())
+
+                                        // Product has warranty in cart
+                                        Extend.trackOfferUpdated({
+                                            productId: currentItem.id.toString(),
+                                            planId: planId,
+                                            updates: {
+                                                warrantyQuantity: parseInt(currentNewItem.quantity),
+                                                productQuantity: parseInt(currentNewItem.quantity)
+                                            }
+                                        });
+                                    } else if (currentItem.id && currentNewItem.quantity) { // Product has no warranty in cart
+                                        Extend.trackProductUpdated({
+                                            productId: currentItem.id.toString(),
+                                            updates: {
+                                                productQuantity: parseInt(currentNewItem.quantity)
+                                            }
+                                        });
+                                    }
+                                }
+                            })
+                        })
+                    }
+                } else {
+                    console.warn("EXTEND: corrupt cart objects");
+                }
+            }catch(error){
+                console.error("EXTEND: "+ error);
+            }
+        }
+
+        window.Extend.integration.productAnalytics = productAnalytics;
+        window.Extend.integration.cartAnalytics = cartAnalytics;
+
+    }
+}) 
+</script>

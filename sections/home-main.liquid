@@ -1,0 +1,701 @@
+{{ 'home-main.css' | asset_url | stylesheet_tag }}
+
+<style>
+    .double-banner .banner-left {
+        background-image: url({{ 'left-banner-bg-mobile.png' | asset_url }}), url({{ 'left-ellipse-mobile.png' | asset_url }});
+        background-repeat: no-repeat;
+        background-position: bottom center;
+        background-size: contain;
+    }
+
+    @media (min-width: 768px) {
+        #feedback-content {
+            height: 5rem;
+        }
+
+        .double-banner .banner-left {
+            background-image: url({{ 'double-banner-left.png' | asset_url }}),
+            url({{ 'left-ellipse-desktop.png' | asset_url }});
+            background-repeat: no-repeat;
+            background-position: right bottom;
+            background-size: contain, 30rem;
+        }
+    }
+
+</style>
+
+<section class="px-3 lg:px-16 py-8 bg-gradient-to-b from-athens-gray to-[#F6F6F9] text-center">
+	<h2 class="font-['Tiempos'] text-3xl lg:text-[39px] w-full lg:w-1/2 lg:mx-auto leading-[47px]">Comfort <span
+			class="italic font-thin"
+		>celebrated &amp; trusted </span><br />around the world</h2>
+	<p class="font-['Inter'] mt-10 mx-6 text-xl text-black-65 lg:text-2xl lg:w-3/5 lg:mx-auto" id="feedback-content">
+		“..provides an all-encompassing sleeping experience that's both supportive and luxuriously soft.”</p>
+	<div class="affiliate flex flex-wrap justify-between mx-auto mt-5 lg:flex-nowrap h-[10rem] lg:h-auto">
+		<div class="w-full flex justify-center lg:w-max cursor-pointer items-center" id="sleep-foundation">
+			<img src="{{ 'sleep-foundation.svg' | asset_url }}" width="250" height="29">
+		</div>
+		<div class=" w-1/3 flex justify-center lg:w-max cursor-pointer items-center" id="the-strategist">
+			<img src="{{ 'the-strategist.svg' | asset_url }}" width="110" height="29">
+		</div>
+		<div class="w-1/3 flex justify-center lg:w-max cursor-pointer" id="real-homes">
+			<img src="{{ 'real-homes-logo.svg' | asset_url }}" width="65" height="29">
+		</div>
+		<div class="w-1/3 flex justify-center lg:w-max cursor-pointer" id="sleepopolis">
+			<img class="active" src="{{ 'sleepopolis-logo.svg' | asset_url }}" width="130" height="30">
+		</div>
+		<div class="w-1/3 flex justify-center lg:w-max cursor-pointer" id="t3">
+			<img src="{{ 't3-logo.svg' | asset_url }}" width="47" height="29">
+		</div>
+		<div class="w-1/3 flex justify-center lg:w-max cursor-pointer" id="daily-beast">
+			<img src="{{ 'daily-beast-logo.svg' | asset_url }}" width="144" height="17">
+		</div>
+		<div class="w-1/3 flex justify-center lg:w-max cursor-pointer" id="tuck"><img
+				src="{{ 'tuck-logo.svg' | asset_url }}" width="78" height="25"
+			>
+		</div>
+	</div>
+</section>
+
+<section class="comfortadapt px-3 pb-8 pt-6 lg:pt-10 lg:pb-14">
+	<h2 class="text-center font-['Tiempos'] text-3xl lg:text-[39px]">
+		Meet World's #1 Sleep Brand </h2>
+	<h3 class="w-full lg:w-3/5 text-center mx-auto text-comet px-2 lg:px-0 mt-3 lg:mt-6 text-base lg:text-2xl">With over
+	                                                                                                           70 product
+	                                                                                                           awards,
+	                                                                                                           over 70,000
+	                                                                                                           5-Star
+	                                                                                                           Reviews,
+	                                                                                                           and a
+	                                                                                                           community
+	                                                                                                           of
+	                                                                                                           4,000,000
+	                                                                                                           Happy
+	                                                                                                           Sleepers
+	                                                                                                           globally,
+	                                                                                                           Emma has
+	                                                                                                           taken over
+	                                                                                                           as the
+	                                                                                                           leading
+	                                                                                                           direct-to-consumer
+	                                                                                                           international
+	                                                                                                           sleep
+	                                                                                                           brand.
+	                                                                                                           Climb on
+	                                                                                                           our
+	                                                                                                           best-selling
+	                                                                                                           mattresses
+	                                                                                                           now!
+	</h3>
+	<div class="w-full lg:w-4/6 flex justify-evenly align-middle mt-8 lg:mx-auto flex-wrap lg:flex-nowrap">
+		<a
+			href="/products/emma-original-mattress"
+			class="card max-w-md w-full lg:w-1/2 font-['Inter'] rounded-lg text-center shadow-[0_4px_10px_rgba(0,0,0,0.1)] mb-6 lg:mb-0 lg:mr-3 cursor-pointer"
+		>
+			<div class="gradient-background rounded-t-lg p-3"><img
+					class="-ml-3 allfoam"
+					src="{{ 'home_allfoam.png' | asset_url }}" width="100%" height="100%" loading="lazy"
+				>
+				<h3 class="hidden lg:inline-block text-sm font-semibold">BEST BODY-CONTOURING​​</h3>
+			</div>
+			<div class="w-full lg:mx-auto flex-grow px-3">
+				<div class="flex items-center justify-center h-12">
+					<h2 class="font-['Tiempos'] text-2xl lg:text-[33px]">
+						Emma Original</h2>
+				</div>
+				<div class="text-sm lg:text-xl mt-2">
+					<p>The World's #1 Best-Selling Online Mattress.
+					   Awaken your best with our most globally-awarded mattress. Perfect for solo sleepers and pet lovers for
+					   premium comfort, great support, active cooling technology, and minimal motion transfer.</p>
+				</div>
+			</div>
+			<div class="p-3 lg:pb-8">
+				<div
+					class="lg:uppercase text-[13px] lg:text-base btn bg-pizazz text-[white] px-8 lg:px-24 py-2 lg:py-3 rounded-[60px] mb-3 lg:my-5"
+				>
+					Shop now
+				</div>
+				<p class="font-bold text-[11px] lg:text-base">starting at <font color="scarlet">$495</font> <s>$545</s></p>
+			</div>
+		</a>
+		<a
+			href="/products/emma-original-hybrid-mattress"
+			class="card max-w-md w-full lg:w-1/2 font-['Inter'] rounded-lg text-center shadow-[0_4px_10px_rgba(0,0,0,0.1)] cursor-pointer"
+		>
+			<div class="gradient-background rounded-t-lg p-3"><img
+					src="{{ 'home_hybrid.png' | asset_url }}" width="100%" height="100%" loading="lazy"
+				>
+				<h3 class="hidden lg:inline-block text-sm font-semibold">BEST SUPPORT & COOLING​​</h3>
+			</div>
+			<div class="w-full lg:mx-auto flex-grow px-3">
+				<div class="flex items-center justify-center h-12">
+					<h2 class="font-['Tiempos'] text-2xl lg:text-[33px]">Emma Original Hybrid</h2>
+				</div>
+				<div class="text-sm lg:text-xl mt-2">
+					<p>Our top-rated product. Wake up relaxed and recharged with our masterfully crafted mattress. Perfect for
+					   couples and pet lovers for luxurious comfort, maximum support, dual active cooling technology, and zero
+					   motion transfer.</p>
+				</div>
+			</div>
+			<div class="p-3 lg:pb-8">
+				<div
+					class="lg:uppercase text-[13px] lg:text-base btn bg-pizazz text-[white] px-8 lg:px-24 py-2 lg:py-3 rounded-[60px] mb-3 lg:my-5"
+				>
+					Shop now
+				</div>
+				<p class="font-bold text-[11px] lg:text-base">starting at <font color="scarlet">$595</font> <s>$945</s></p>
+			</div>
+		</a>
+	</div>
+</section>
+
+<!--Reviews-->
+<section class="review-grid">
+	<div id="review-splide" class="splide">
+		<div class="review-title">
+			<h2>Don't just take our word for it</h2>
+			<p>See what customers say about us</p>
+		</div>
+		
+		<div class="splide__track">
+			<ul class="splide__list">
+				<li class="splide__slide">
+					<div class="review-content-card center">
+						<div class="review-content shadow-[20px_30px_10px_rgba(0,0,0,0.15)]">
+							<p>This mattress is quite simply <span class="italic" style="color:#3c4196">life changing</span>. I was
+							   previously experiencing back problems and poor sleep due to sleeping on a bad quality mattress. We
+							   decided to invest in an Emma mattress and were genuinely overwhelmed by how good it was.</p>
+							<img src="https://cdn.shopify.com/s/files/1/0592/8570/0771/files/stars.webp?v=1662617102" width="178.6px" height="30px" style="margin-top:20px" loading="lazy">
+							<p class="reviewer">—— Elizabeth S.</p>
+						</div>
+					</div>
+				</li>
+              
+				<li class="splide__slide">
+					<div class="review-content-card center">
+						<div class="review-content shadow-[20px_30px_10px_rgba(0,0,0,0.15)]">
+							<p>I absolutely <span class="italic" style="color:#3c4196">love</span> my EMMA mattress. It was the best
+							   purchase I have made in a long time—sleeping on it is sheer <span class="italic" style="color:#3c4196">heaven</span>
+							   without doubt.</p>
+							<img src="https://cdn.shopify.com/s/files/1/0592/8570/0771/files/stars.webp?v=1662617102" loading="lazy" width="178.6px" height="30px" style="margin-top:20px" >
+							<p class="reviewer">—— Diana C.</p>
+						</div>
+					</div>
+				</li>              
+				
+				<li class="splide__slide">
+					<div class="review-content-card center">
+						<div class="review-content shadow-[20px_30px_10px_rgba(0,0,0,0.15)]">
+							<p>It has been absolutely fantastic so far. My partner could not sleep without waking up with <span
+									class="italic" style="color:#3c4196"
+								>back pain</span> for months, the Emma mattress has <span class="italic" style="color:#3c4196">completely </span>solved
+							   that problem. Such a relief.</p>
+							<img src="{{ 'stars.png' | asset_url }}" width="178.6px" height="30px" style="margin-top:20px" loading="lazy">
+							<p class="reviewer">—— Callum I.</p>
+						</div>
+					</div>
+				</li>
+				
+				<li class="splide__slide">
+					<div class="review-content-card center">
+						<div class="review-content shadow-[20px_30px_10px_rgba(0,0,0,0.15)]">
+							<p><span class="italic" style="color:#3c4196">Fantastic</span> mattress. Comfortable and soft, would
+							                                                               definitely recommend.</p>
+							<img src="{{ 'stars.png' | asset_url }}" width="178.6px" height="30px" style="margin-top:20px" loading="lazy">
+							<p class="reviewer">—— Sara N.</p>
+						</div>
+					</div>
+				</li>
+				
+				<li class="splide__slide">
+					<div class="review-content-card center">
+						<div class="review-content shadow-[20px_30px_10px_rgba(0,0,0,0.15)]">
+							<p>Just the right firmness, no dipping or changing shape. Weight transfer is no problem so when my
+							   boyfriend rolls over it no longer wakes me up! <span class="italic" style="color:#3c4196">Comfiest mattress I've owned</span>,
+							   only downside is that it's made it much harder to leave my bed each morning haha.</p>
+							<img src="{{ 'stars.png' | asset_url }}" width="178.6px" height="30px" style="margin-top:20px">
+							<p class="reviewer">—— Jade F.</p>
+						</div>
+					</div>
+				</li>
+				
+				<li class="splide__slide">
+					<div class="review-content-card center">
+						<div class="review-content shadow-[20px_30px_10px_rgba(0,0,0,0.15)]">
+							<p>Love, love, love this bed! <span
+									class="italic" style="color:#3c4196"
+								>Suits all types of sleepers.</span> Great feedback from our guests, too. Highly recommend this
+							   mattress!</p>
+							<img src="{{ 'stars.png' | asset_url }}" width="178.6px" height="30px" style="margin-top:20px">
+							<p class="reviewer">—— Laura P.</p>
+						</div>
+					</div>
+				</li>
+				
+				<li class="splide__slide">
+					<div class="review-content-card center">
+						<div class="review-content shadow-[20px_30px_10px_rgba(0,0,0,0.15)]">
+							<p>I have had my Emma mattress a few months now. I am genuinely enjoying a <span
+									class="italic" style="color:#3c4196"
+								>better quality of sleep and less backache.</span></p>
+							<img src="{{ 'stars.png' | asset_url }}" width="178.6px" height="30px" style="margin-top:20px">
+							<p class="reviewer">—— Kay H.</p>
+						</div>
+					</div>
+				</li>
+				
+				<li class="splide__slide">
+					<div class="review-content-card center">
+						<div class="review-content shadow-[20px_30px_10px_rgba(0,0,0,0.15)]">
+							<p>Since owning an Emma mattress, my sleep pattern has been <span class="italic" style="color:#3c4196">transformed</span>.
+							   I used to often wake in the night and enjoying a lay-in was out of the question. Now with the Emma
+							   mattress ,I can sleep through the night and late into the morning if I want to.</p>
+							<img src="{{ 'stars.png' | asset_url }}" width="178.6px" height="30px" style="margin-top:20px">
+							<p class="reviewer">—— Angela Y.</p>
+						</div>
+					</div>
+				</li>
+				
+				<li class="splide__slide">
+					<div class="review-content-card center">
+						<div class="review-content shadow-[20px_30px_10px_rgba(0,0,0,0.15)]">
+							<p>
+								<span class="italic" style="color:#3c4196">Extremely happy</span>
+								with our new mattress. Very
+								comfortable and we can finally get a
+								good nights sleep without waking up
+								with a sore back. Highly recommend!
+							</p>
+							<img src="{{ 'stars.png' | asset_url }}" width="150px" height="30px" style="margin-top:20px">
+							<p class="reviewer">—— Kimberley H.</p>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+</section>
+
+<section class="why-us-section flex justify-center w-full bg-athens-gray">
+	<div class="flex flex-col items-center w-11/12 md:w-9/12">
+		<h2 class="heading-2 text-center text-charade">Why sleepers <span class="italic font-thin">love</span> Emma</h2>
+		<div class="grid grid-rows-3 gap-8  md:flex md:flex-nowrap mt-9 md:mt-14">
+			<div class=" w-full flex flex-col items-center justify-start text-center">
+				<img
+					src="{{ 'three-star-round.svg' | asset_url }}" width="auto" height="auto"
+					class="w-9 h-9 md:w-16 md:h-16" loading="lazy"
+				>
+				<h3 class="heading-3 mt-5 mb-2 h-16	">#1 Sleep Brand<br />in the World
+				</h3>
+				<p class="text-comet">As the biggest sleep company in the world, we guarantee you sleep that energizes
+				                      and empowers you. Join more than 4 million happy sleepers who Awakened their Best with
+				                      us!</p>
+			</div>
+			<div class=" w-full flex flex-col items-center justify-start text-center">
+				<img
+					src="{{ 'atom.svg' | asset_url }}" width="auto" height="auto" class="w-9 h-9 md:w-16 md:h-16" loading="lazy"
+				>
+				<h3 class="heading-3 mt-5 mb-2 h-16	">Masters of <br />Sleep Technology</h3>
+				<p class="text-comet">Our sleep experts have mastered designing award-winning mattresses crafted to keep
+				                      you relaxed and recharged, no matter what kind of sleeper you are. </p>
+			</div>
+			<div class=" w-full flex flex-col items-center justify-start text-center">
+				<img
+					src="{{ 'sleep-moon.svg' | asset_url }}" width="auto" height="auto"
+					class="w-9 h-9 md:w-16 md:h-16" loading="lazy"
+				>
+				<h3 class="heading-3 mt-5 mb-2 h-16	">Sleep with Ease, <br />Shop with Ease</h3>
+				<p class=" text-comet">We take the stress out of sleep shopping. We got you covered through our free
+				                       shipping, 365-night trial, 10-year warranty, and 100% money-back guarantee (yup, free
+				                       returns).</p>
+			</div>
+		</div>
+		<a
+			class="btn bg-chambray text-[white] uppercase px-24 py-3 rounded-[60px] mt-6 md:mt-9"
+			href="/pages/meet-the-sleep-experts"
+		>learn more</a>
+	</div>
+</section>
+
+<section class="shopping-invitation flex flex-col items-start w-full">
+	<h2 class="heading-2">Shop our products</h2>
+	<div class="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-4 w-full mt-5 md:mt-8 ml-0 lg:-ml-2">
+		<a
+			class="shopping-invitation__card flex flex-col items-start rounded-[8px]" href="/collections/mattresses"
+			rel="noreferrer"
+		>
+			<div class="flex flex-col items-start m-2.5 md:m-6">
+				<p
+					class="hidden md:block mb-[10px] py-1.5 px-2 rounded-[4px] bg-green-pea text-[white] text-[11px] md:text-[13px] uppercase"
+				>
+					UP TO 42% OFF</p>
+				<p class="text-[13px] md:text-[31px] text-charade font-semibold md:font-normal">Mattresses</p>
+				<p
+					class="md:hidden py-[3px] md:py-1.5 px-[6.5px] md:px-2 rounded-[4px] bg-green-pea text-[white] text-[11px] md:text-[13px] uppercase"
+				>
+					UP TO 42% OFF</p>
+			</div>
+			<img
+				src="{{ 'sample-mattress.png' | asset_url }}" width="100%" height="100%"
+				class="flex flex-1 items-end mb-2 md:mb-6 scale-[0.8] origin-bottom-left md:transform-non" loading="lazy"
+			>
+		</a>
+		<a
+			class="shopping-invitation__card flex flex-col items-start rounded-[8px]" href="/collections/pillows"
+			rel="noreferrer"
+		>
+			<div class="flex flex-col items-start m-2.5 md:m-6">
+				<p
+					class="hidden md:block mb-[10px] py-1.5 px-2 rounded-[4px] bg-green-pea text-[white] text-[11px] md:text-[13px] uppercase"
+				>
+					Up to 20% off</p>
+				<p class="text-[13px] md:text-[31px] text-charade font-semibold md:font-normal">Pillows</p>
+				<p
+					class="md:hidden py-[3px] md:py-1.5 px-[6.5px] md:px-2 rounded-[4px] bg-green-pea text-[white] text-[11px] md:text-[13px] uppercase"
+				>
+					Up to 20% off</p>
+			</div>
+			<img
+				src="{{ 'sample-pillows.png' | asset_url }}" width="100%" height="100%"
+				class="flex flex-1 items-end mb-2 md:mb-6 scale-[0.8] origin-bottom-left md:transform-none" loading="lazy"
+			>
+		</a>
+		<a
+			class="shopping-invitation__card flex flex-col items-start rounded-[8px]" href="/collections/beds"
+			rel="noreferrer"
+		>
+			<div class="flex flex-col items-start m-2.5 md:m-6">
+				<p class="text-[13px] md:text-[31px] text-charade font-semibold md:font-normal">Beds</p>
+			</div>
+			<img
+				src="{{ 'sample-bed.png' | asset_url }}" width="100%" height="100%"
+				class="flex flex-1 items-end scale-[0.8] origin-bottom md:transform-none" loading="lazy"
+			>
+		</a>
+		<a
+			class="shopping-invitation__card flex flex-col items-start rounded-[8px]" href="/collections/accessories"
+			rel="noreferrer"
+		>
+			<div class="flex flex-col items-start m-2.5 md:m-6">
+				<p
+					class="hidden md:block mb-[10px] py-1.5 px-2 rounded-[4px] bg-green-pea text-[white] text-[11px] md:text-[13px] uppercase"
+				>
+					Up to 10% off</p>
+				<p class="text-[13px] md:text-[31px] text-charade font-semibold md:font-normal">Accessories</p>
+				<p
+					class="md:hidden py-[3px] md:py-1.5 px-[6.5px] md:px-2 rounded-[4px] bg-green-pea text-[white] text-[11px] md:text-[13px] uppercase"
+				>
+					Up to 10% off</p>
+			</div>
+			<img
+				src="{{ 'sample-accessories.png' | asset_url }}" width="100%" height="100%"
+				class="flex flex-1 items-end mb-2 md:mb-6 scale-[0.8] origin-bottom-left md:transform-none" loading="lazy"
+			>
+		</a>
+	</div>
+</section>
+
+<section class="our-blog-section relative flex flex-col items-center w-full">
+	<h2 class="heading-2 text-center z-20 text-charade">Wake up to <i class="font-thin">better, happier</i> mornings
+	</h2>
+	<h4 class="z-20 heading-4 text-comet mt-2.5 font-normal text-center">Discover how to awaken your best</h4>
+	<div class="wallpaper"></div>
+	<div class="hidden z-20 md:grid grid-cols-4 gap-4 w-full mt-10">
+		<a
+			class="flex flex-col items-start w-full rounded-[8px]" href="/blogs/stories/how-to-buy-mattress-emma-sleep"
+			rel="noreferrer"
+		><img
+				src="{{ 'blog-sample-1.png' | asset_url }}" width="100%"
+				height="100%" loading="lazy"
+			>
+			<p class="md:mt-[15px] text-[20px] text-charade font-semibold">Mattress Buying 101: Everything You Need To
+			                                                               Know</p>
+		</a><a
+			class="flex flex-col items-start w-full rounded-[8px]" href="/blogs/stories/get-energized-naturally"
+			rel="noreferrer"
+		><img
+				src="{{ 'blog-sample-2.png' | asset_url }}" width="100%"
+				height="100%" loading="lazy"
+			>
+			<p class="md:mt-[15px] text-[20px] text-charade font-semibold">Get Energized Naturally: How to Awaken Your
+			                                                               Best</p>
+		</a><a
+			class="flex flex-col items-start w-full rounded-[8px]"
+			href="/blogs/stories/coronasomnia-why-you-may-not-be-sleeping-well-during-the-pandemic" rel="noreferrer"
+		><img
+				src="{{ 'blog-sample-3.png' | asset_url }}" width="100%" height="100%" loading="lazy"
+			>
+			<p class="md:mt-[15px] text-[20px] text-charade font-semibold">Coronasomnia: Why You May Not Be Sleeping
+			                                                               Well During The Pandemic</p>
+		</a><a
+			class="flex flex-col items-start w-full rounded-[8px]"
+			href="/blogs/stories/make-the-most-out-of-your-day-based-on-your-chronotype" rel="noreferrer"
+		><img
+				src="{{ 'blog-sample-4.png' | asset_url }}" width="100%" height="100%" loading="lazy"
+			>
+			<p class="md:mt-[15px] text-[20px] text-charade font-semibold">Make The Most Out Of Your Day Based On Your
+			                                                               Chronotype</p>
+		</a>
+	
+	</div>
+	
+	<div class="md:hidden z-20 w-full mt-8">
+		<div id="blog-splide" class="splide">
+			<div class="splide__track">
+				<ul class="splide__list">
+					<li class="splide__slide"><a
+							class="flex flex-col items-start w-full rounded-[8px]"
+							href="/blogs/stories/how-to-buy-mattress-emma-sleep"
+							rel="noreferrer"
+						><img
+								src="{{ 'blog-sample-1.png' | asset_url }}" width="100%" height="100%" loading="lazy"
+							>
+							<p class="mt-2.5 text-[20px] text-charade font-semibold">Mattress Buying 101:
+							                                                         Everything
+							                                                         You Need To
+							                                                         Know</p>
+						</a></li>
+					<li class="splide__slide"><a
+							class="flex flex-col items-start w-full rounded-[8px]"
+							href="/blogs/stories/get-energized-naturally" rel="noreferrer"
+						><img
+								src="{{ 'blog-sample-2.png' | asset_url }}" width="100%" height="100%" loading="lazy"
+							>
+							<p class="mt-2.5 text-[20px] text-charade font-semibold">Get Energized Naturally: How
+							                                                         to
+							                                                         Awaken Your
+							                                                         Best</p>
+						</a></li>
+					<li class="splide__slide"><a
+							class="flex flex-col items-start w-full rounded-[8px]"
+							href="/blogs/stories/coronasomnia-why-you-may-not-be-sleeping-well-during-the-pandemic"
+							rel="noreferrer"
+						><img
+								src="{{ 'blog-sample-3.png' | asset_url }}"
+								width="100%" height="100%" loading="lazy"
+							>
+							<p class="mt-2.5 text-[20px] text-charade font-semibold">Coronasomnia: Why You May Not
+							                                                         Be
+							                                                         Sleeping
+							                                                         Well During The Pandemic</p>
+						</a></li>
+					<li class="splide__slide"><a
+							class="flex flex-col items-start w-full rounded-[8px]"
+							href="/blogs/stories/make-the-most-out-of-your-day-based-on-your-chronotype"
+							rel="noreferrer"
+						><img
+								src="{{ 'blog-sample-4.png' | asset_url }}"
+								width="100%"
+								height="100%" loading="lazy"
+							>
+							<p class="mt-2.5 text-[20px] text-charade font-semibold">Make The Most Out Of Your Day
+							                                                         Based On Your
+							                                                         Chronotype</p>
+						</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+</section>
+<script defer type="module">
+
+  document.addEventListener('DOMContentLoaded', function () {
+    new Splide('#blog-splide', {
+      perPage: 1,
+      perMove: 1
+    }).mount();
+
+    new Splide('#review-splide', {
+      perPage: 3,
+      perMove: 3,
+      breakpoints: {
+        500: {
+          perPage: 1,
+          perMove: 1
+        },
+      },
+    }).mount();
+  });
+
+
+  // Update feedback on click
+  $('#tuck img').click(function () {
+    $('.affiliate img').removeClass('active');
+    $('#tuck img').addClass('active');
+  });
+  $('#tuck').on('click', function () {
+    $('#feedback-content').text(`"The Emma Mattress is a great example of a high-value memory foam bed that won’t break the bank."`);
+  });
+  $('#sleepopolis').on('click', function () {
+    $('#feedback-content').text(`"..provides an all-encompassing sleeping experience that's both supportive and luxuriously soft."`);
+  });
+  $('#sleepopolis img').click(function () {
+    $('.affiliate img').removeClass('active');
+    $('#sleepopolis img').addClass('active');
+  });
+  $('#daily-beast').on('click', function () {
+    $('#feedback-content').text(`"This Is the Foam Mattress Taking Europe by Storm: shockingly supportive - perfect for side-sleepers."`);
+  });
+  $('#daily-beast img').click(function () {
+    $('.affiliate img').removeClass('active');
+    $('#daily-beast img').addClass('active');
+  });
+  $('#real-homes').on('click', function () {
+    $('#feedback-content').text(`"There's pretty much nothing we don't like about this mattress."`);
+  });
+  $('#real-homes img').click(function () {
+    $('.affiliate img').removeClass('active');
+    $('#real-homes img').addClass('active');
+  });
+  $('#t3').on('click', function () {
+    $('#feedback-content').text(`"Extremely comfortable and supportive, sleeping on the new Emma mattress is like a dream. Can there be a better mattress than this?"`);
+  });
+  $('#t3 img').click(function () {
+    $('.affiliate img').removeClass('active');
+    $('#t3 img').addClass('active');
+  });
+  $('#the-strategist').on('click', function () {
+    $('#feedback-content').text(`"A solid choice for side-sleepers who get hot easily."`);
+  });
+  $('#the-strategist img').click(function () {
+    $('.affiliate img').removeClass('active');
+    $('#the-strategist img').addClass('active');
+  });
+  $('#sleep-foundation').on('click', function () {
+    $('#feedback-content').text(`"Each layer in the comfort system conforms to the shape of the sleeper's body."`);
+  });
+  $('#sleep-foundation img').click(function () {
+    $('.affiliate img').removeClass('active');
+    $('#sleep-foundation img').addClass('active');
+  });
+</script>
+
+<section class="p-3 lg:px-14 pb-14">
+	<div class="bg-gradient-to-b from-athens-gray to-[#F6F6F9] rounded-[20px] py-10 px-7">
+		<h2 class="font-['Tiempos'] text-3xl text-center lg:text-[39px]">We got your <span
+				class="italic font-thin"
+			>back.</span>
+		</h2>
+		<p class="font-['Inter'] text-neutral-800 text-center lg:text-xl lg:mt-3">Shop with our sleep experts today!</p>
+		<div class="flex flex-col mt-2 lg:flex-row">
+			<div class="flex mt-5 w-full lg:flex-wrap justify-center">
+				<div class="mr-4 lg:mr-0 w-1/4 lg:w-fit"><img
+						src="{{ 'chat-with-us.svg' | asset_url }}" height="60"
+						width="60"
+					></div>
+				<div class="w-3/4 lg:w-full lg:text-center lg:mt-5">
+					<h3 class="text-xl lg:text-2xl">Chat With Us</h3>
+					<p class="text-comet lg:w-2/3 lg:mx-auto lg:mt-3">Ask away—we're here to answer all things
+					                                                  sleep.</p>
+				</div>
+			</div>
+			<div class="flex mt-5 w-full lg:flex-wrap justify-center">
+				<div class="mr-4 lg:mr-0 w-1/4 lg:w-fit"><img
+						src="{{ 'call-us.svg' | asset_url }}" height="60"
+						width="60"
+					></div>
+				<div class="w-3/4 lg:w-full lg:text-center lg:mt-5">
+					<h3 class="text-xl lg:text-2xl">Call us</h3>
+					<p class="text-comet lg:w-2/3 lg:mx-auto lg:mt-3">We'd love to hear from you.</p>
+					<p class="text-comet lg:mx-auto lg:mt-3"><a href="tel:+18555803662">Call 1 (855) 580 EMMA</a></p>
+				</div>
+			</div>
+			<div class="flex mt-5 w-full lg:flex-wrap justify-center">
+				<div class="mr-4 lg:mr-0 w-1/4 lg:w-fit"><img
+						src="{{ 'email-us.svg' | asset_url }}" height="60"
+						width="60"
+					></div>
+				<div class="w-3/4 lg:w-full lg:text-center lg:mt-5">
+					<h3 class="text-xl lg:text-2xl">Got questions?</h3>
+					<p class="text-comet lg:w-2/3 lg:mx-auto lg:mt-3">Drop us an <a
+							href="mailto:support@emma-sleep.com" class="underline"
+						>email</a> anytime.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+{% schema %}
+{
+  "name": "Home Main",
+  "settings": [
+    {
+      "id": "hero_subtitle",
+      "type": "text",
+      "label": "Hero Subtitle",
+      "default": "Enter text here"
+    },
+    {
+      "id": "hero_title",
+      "type": "richtext",
+      "label": "Hero Title",
+      "default": "<p>Text.</p>"
+    },
+    {
+      "id": "hero_cta",
+      "type": "text",
+      "label": "Hero CTA text",
+      "default": "Enter text here"
+    },
+    {
+      "id": "hero_url",
+      "type": "url",
+      "label": "Hero URL"
+    },
+    {
+      "id": "hero_image",
+      "type": "image_picker",
+      "label": "Hero Image"
+    },
+    {
+      "id": "subhero_image1",
+      "type": "image_picker",
+      "label": "Subhero Image 1"
+    },
+    {
+      "id": "subhero_image2",
+      "type": "image_picker",
+      "label": "Subhero Image 2"
+    },
+    {
+      "id": "subhero_text",
+      "type": "text",
+      "label": "Subhero Text",
+      "default": "Enter text here"
+    },
+    {
+      "id": "subhero_text2",
+      "type": "text",
+      "label": "Subhero Text 2",
+      "default": "Enter text here"
+    }
+  ],
+  "presets": [
+    {
+      "name": "custom-text",
+      "category": "Custom"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "home_banner",
+      "name": "Home Banner",
+      "settings": [
+        {
+          "type": "text",
+          "id": "banner_title",
+          "label": "Banner Title",
+          "default": "Title"
+        },
+        {
+          "type": "text",
+          "id": "banner_body",
+          "label": "Banner Body",
+          "default": "Insert text here"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

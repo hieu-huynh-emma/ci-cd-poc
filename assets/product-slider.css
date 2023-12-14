@@ -70,7 +70,7 @@ slider-component {
 }
 
 .slider {
-    scrollbar-color: rgb(var(--color-foreground)) rgba(var(--color-foreground), 0.04);
+    scrollbar-color: rgb(black) rgba(black, 0.04);
     -ms-overflow-style: none;
     scrollbar-width: none;
 }
@@ -91,13 +91,13 @@ slider-component {
 }
 
 .slider::-webkit-scrollbar-thumb {
-    background-color: rgb(var(--color-foreground));
+    background-color: rgb(black);
     border-radius: 0.4rem;
     border: 0;
 }
 
 .slider::-webkit-scrollbar-track {
-    background: rgba(var(--color-foreground), 0.04);
+    background: rgba(black, 0.04);
     border-radius: 0.4rem;
 }
 
@@ -112,7 +112,7 @@ slider-component {
 }
 
 .slider-button {
-    color: rgba(var(--color-foreground), 0.75);
+    color: rgba(black, 0.75);
     background: transparent;
     border: none;
     cursor: pointer;
@@ -121,7 +121,7 @@ slider-component {
 }
 
 .slider-button:not([disabled]):hover {
-    color: rgb(var(--color-foreground));
+    color: rgb(black);
 }
 
 .slider-button .icon {
@@ -129,7 +129,7 @@ slider-component {
 }
 
 .slider-button[disabled] .icon {
-    color: rgba(var(--color-foreground), 0.3);
+    color: rgba(black, 0.3);
 }
 
 .slider-button--next .icon {

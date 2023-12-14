@@ -1,0 +1,46 @@
+<div class="hidden emma-section emma-engineered">
+    <div>
+        <div class="emma-engineered__heading">{{ section.settings.title }}</div>
+        <div class="emma__p">{{ section.settings.body }}</div>
+        <a href="{{ section.settings.url }}" class="emma-button__secondary emma-engineered__cta">{{ section.settings.cta }}</a>
+    </div>
+
+    <div class="emma-engineered__image">
+        <img src="https://cdn.shopify.com/s/files/1/0592/8570/0771/files/mattress-layers.png" alt="Engineered to get you from slumber to party."/>
+    </div>
+</div>
+
+{% schema %}
+{
+    "name": "Engineered",
+    "settings":
+        [{
+            "id": "title",
+            "type": "text",
+            "label": "Title",
+            "default": "Enter text here"
+        },
+        {
+            "id": "body",
+            "type": "text",
+            "label": "Add custom text below",
+            "default": "Text goes here"
+        },
+        {
+            "id": "url",
+            "type": "url",
+            "label": "URL"
+        },
+        {
+            "id": "cta",
+            "type": "text",
+            "label": "Add custom text below",
+            "default": "Text goes here"
+        }],
+        "presets":
+        [{
+            "name": "custom-text",
+            "category": "Custom"
+        }]
+    }
+{% endschema %}

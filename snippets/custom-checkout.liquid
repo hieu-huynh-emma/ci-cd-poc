@@ -1,7 +1,8 @@
 {{ 'emma-fonts.css' | asset_url | stylesheet_tag }}
-{{ 'custom-checkout.css' | asset_url | stylesheet_tag }}
-{{ 'checkout-style.css' | asset_url | stylesheet_tag }}
-{{ 'checkout-legacy-style.css' | asset_url | stylesheet_tag }}
+{{ 'checkout.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'custom-checkout.js' | asset_url }}" defer="defer"></script>
+
+{% assign recycling_fee_states = 'California|Connecticut|Rhode Island' | split: '|' %}
 
 {% assign saved = 0.00 %}
 {% assign total_compare_at_price = 0.00 %}
@@ -9,21 +10,17 @@
 {% assign total_line_price = 0.00 %}
 
 {% for item in checkout.line_items %}
-  {% if item.variant.compare_at_price != item.original_final_price %}
-    {% assign total_compare_at_price = item.variant.compare_at_price
-      | times: item.quantity
-      | plus: total_compare_at_price
-    %}
-    {% assign total_line_level_discount = item.line_level_total_discount | plus: total_line_level_discount %}
-    {% assign total_line_price = item.variant.compare_at_price
-      | times: item.quantity
-      | minus: item.original_line_price
-      | plus: total_line_price
-    %}
-  {% endif %}
+  {% assign originalPrice = item.variant.compare_at_price | default: item.variant.price %}
+
+  {% assign total_compare_at_price = originalPrice | times: item.quantity | plus: total_compare_at_price %}
+  {% assign total_line_level_discount = item.line_level_total_discount | plus: total_line_level_discount %}
+  {% assign total_line_price = originalPrice | times: item.quantity | minus: item.original_line_price | plus: total_line_price %}
 {% endfor %}
 
 {% assign saved = total_line_price | plus: checkout.discounts_amount %}
+{% assign total_original_price = total_compare_at_price | money %}
+{% assign promo_discount = total_line_level_discount | money %}
+{% assign sale_discount = total_line_price %}
 
 {% assign promo_code_allow = true %}
 {% assign promo_codes = '' %}
@@ -40,536 +37,186 @@
     {% assign promo_code_allow = false %}
   {% endif %}
   {% if discount_application.target_selection != 'all' %}
-    {% if discount_application.total_allocated_amount > 0 %}
+    {% if discount_application.type != 'script' and discount_application.total_allocated_amount > 0 %}
       {% assign line_item_discounted = line_item_discounted | plus: discount_application.total_allocated_amount %}
       {% if line_item_discount_code == '' %}
         {% assign line_item_discount_code = discount_application.title %}
       {% else %}
-        {% assign line_item_discount_code = line_item_discount_code
-          | append: '|'
-          | append: discount_application.title
-        %}
+        {% assign line_item_discount_code = line_item_discount_code | append: '|' | append: discount_application.title %}
       {% endif %}
+    {% else %}
       {% assign sale_discount = sale_discount | plus: discount_application.total_allocated_amount %}
       {% assign saved = saved | plus: discount_application.total_allocated_amount %}
     {% endif %}
   {% endif %}
 {% endfor %}
 
-{% if request.locale.iso_code == 'fr' %}
-  {% assign saved_amount = saved | money_without_currency | replace: '.', ',' | append: ' $' %}
-  {% assign total_original_price = total_compare_at_price | money_without_currency | replace: '.', ',' | append: ' $' %}
-  {% assign promo_discount = total_line_level_discount | money_without_currency | replace: '.', ',' | append: ' $' %}
-  {% assign sale_discount = total_line_price | money_without_currency | replace: '.', ',' | append: ' $' %}
-{% else %}
-  {% assign saved_amount = saved | money %}
-  {% assign total_original_price = total_compare_at_price | money %}
-  {% assign promo_discount = total_line_level_discount | money %}
-  {% assign sale_discount = total_line_price | money %}
-{% endif %}
+{% assign saved_amount = saved | money | replace: '.00', '' %}
+{% assign sale_discount = sale_discount | money %}
 
 <input
-  id="promo-codes"
-  type="hidden"
+  id="promo-codes" type="hidden"
   value="{{ promo_codes }}"
   disabled
 >
 <input
-  id="allow-more-promo-code"
-  type="hidden"
+  id="allow-more-promo-code" type="hidden"
   value="{{ promo_code_allow }}"
   disabled
 >
 <input
-  id="line-item-discount-code"
-  type="hidden"
+  id="line-item-discount-code" type="hidden"
   value="{{ line_item_discount_code | split: '|' | join: ' + ' }}"
   disabled
 >
 <input
-  id="line-item-discounted"
-  type="hidden"
+  id="line-item-discounted" type="hidden"
   value="{{ line_item_discounted | money }}"
   disabled
 >
 
+<input
+    id="load-up-disclaimer-text" type="hidden"
+    value="{{ 'shopify.checkout.load-up-disclaimer' | t }}"
+    disabled
+>
+
 {% if saved > 0 %}
   <input
-    id="total-saved-amount"
-    type="hidden"
-    value="{% if saved > 0 %}{{ 'checkout.order_summary.you_save' | t: saved: saved_amount }}{% endif %}"
+    id="total-saved-amount" type="hidden"
+    value="{% if saved > 0 %}{{ 'shopify.checkout.order_summary.you_save' | t: saved: saved_amount }}{% endif %}"
     disabled
   >
 {% endif %}
 
 <input
-  id="promo-discount"
-  type="hidden"
+  id="promo-discount" type="hidden"
   value="{% if total_line_price > 0 %}{{ promo_discount }}{% endif %}"
   disabled
 >
 
-<script type="text/javascript">
-  
-  
-  
-
-  const PAYMENT_GATEWAYS_NOT_ALLOWED = ["offsite_v2"];
-  const TAXES = [
-    { value: "AB", labels: ["GST"], totalRate: 5 },
-    { value: "NT", labels: ["GST"], totalRate: 5 },
-    { value: "NU", labels: ["GST"], totalRate: 5 },
-    { value: "YT", labels: ["GST"], totalRate: 5 },
-    { value: "NB", labels: ["HST"], totalRate: 15 },
-    { value: "NL", labels: ["HST"], totalRate: 15 },
-    { value: "NS", labels: ["HST"], totalRate: 15 },
-    { value: "ON", labels: ["HST"], totalRate: 13 },
-    { value: "PE", labels: ["HST"], totalRate: 15 },
-    { value: "BC", labels: [{ subLabel: "PST", rate: 7 }, { subLabel: "GST", rate: 5 }] },
-    { value: "MB", labels: [{ subLabel: "GST", rate: 5 }, { subLabel: "RST", rate: 7 }] },
-    { value: "QC", labels: [{ subLabel: "GST", rate: 5 }, { subLabel: "QST", rate: 9.98 }] },
-    { value: "SK", labels: [{ subLabel: "PST", rate: 6 }, { subLabel: "GST", rate: 5 }] },
-  ];
-
-  (function ($) {
-    var discountCode = $(".reduction-code").length ? $(".reduction-code").text() : null;
-
-    window.PhoneNumberInputFormatter = function () {
-      return false;
-    };
-
-    $(this).scrollTop(0);
-
-    $(document).on("page:load page:change", function () {
-      $(".main__header .logo").on("click", function (e) {
-        e.preventDefault();
-        showConfirmPopup($);
-      });
-
-      $(".banner .logo").on("click", function (e) {
-        e.preventDefault();
-        showConfirmPopup($);
-      });
-
-      addTaxesBreakdown($);
-
-      if (Shopify.Checkout.step === "contact_information") {
-        $("body").addClass("upselll_show_information");
-        $("#review-shipping-address").remove();
-
-        var $dynamicCheckoutTitle = $(".dynamic-checkout h2.dynamic-checkout__title");
-        if ($dynamicCheckoutTitle) {
-          $dynamicCheckoutTitle.addClass("section__title");
-        }
-
-        var $alternativePaymentSeparatorContent = $(".alternative-payment-separator__content");
-        if ($alternativePaymentSeparatorContent) {
-          var content = "{{ 'checkout.continue_with_credit' | t }}";
-          $alternativePaymentSeparatorContent.text(content);
-        }
-
-
-        let $phoneField = $("#checkout_billing_address_phone");
-        phoneNumberValidated = false;
-        validatePhoneNumber($phoneField);
-
-        // Run validator if there is a previously cached phone number
-        if ($phoneField.val() !== "") {
-          validatePhoneNumber($phoneField);
-        }
-        ;
-
-        $phoneField.blur(function () {
-          validatePhoneNumber($phoneField);
-        });
-
-        // Validate phone number when modified
-        $phoneField.on("input", function () {
-          validatePhoneNumber($(this));
-        });
-
-        $("[data-step] form [type=\"submit\"]").on("click", function (e) {
-          e.preventDefault();
-          validatePhoneNumber($phoneField);
-          if (phoneNumberValidated) {
-            $("[data-step] form").trigger("submit");
-          }
-        });
-
-        $("[data-step] form").on("keypress", function (e) {
-          if (e.keyCode === 13) {
-            e.preventDefault();
-            $("[data-step] form [type=\"submit\"]").trigger("click");
-          }
-        });
-      } else if (Shopify.Checkout.step === "shipping_method") {
-        addShippingSectionSubtitle($);
-				
-				{% if request.locale.iso_code == 'fr' %}
-        $("[data-shipping-method-label-title=\"Standard Delivery\"]").text("Livraison Standard");
-				{% endif %}
-
-        $(".order-summary-toggle").click(function () {
-          $(".checkout_upsell").addClass("order-summary--is-expanded");
-        });
-      } else if (Shopify.Checkout.step === "payment_method") {
-        disableAffirmPaymentMethod($);
-      }
-
-      const newDiscountCode = $(".reduction-code").length ? $(".reduction-code").text() : null;
-      if (newDiscountCode === discountCode) {
-        return;
-      }
-      discountCode = newDiscountCode;
-
-    });
-  })(Checkout.$);
-
-
-  function showConfirmPopup($) {
-    $("#leaving-checkout-popup").css("display", "block");
-    $("html, body").addClass("disable-scrolling");
-  }
-
-  // CONTACT INFORMATION
-  function validatePhoneNumber($phoneField) {
-    phoneNumberValidated = false;
-    // Remove automatic formatting triggers
-    $phoneField.removeAttr("data-phone-formatter data-phone-formatter-country-select");
-    let extractedPhoneVal = $phoneField.val() ? $phoneField.val().replace(/[^0-9]/g) : "";
-    $phoneField.val(extractedPhoneVal);
-
-    let errorClass = "field--error-plus-dynamic";
-    let errorMessageSelector = ".field__message--error-plus-dynamic";
-
-    // Check input for character limit and remove letters
-    let minChars = 11, maxChars = 13;
-    let errorMessage = "Enter a valid phone number (11-13 digits)";
-
-    let phoneLength = $phoneField.val() ? $phoneField.val().length : 0;
-    if (phoneLength !== 0 && (phoneLength < minChars || phoneLength > maxChars)) {
-      // Not enough characters, show error on input.
-      if (!$phoneField.hasClass(errorClass)) {
-        $phoneField.addClass(errorClass);
-        $phoneField.closest("[data-address-field]").after("<p class='error-message field__message--error-plus-dynamic'>" + errorMessage + "</p>");
-      }
-    } else {
-      // Phone number is valid. Remove errors and continue.
-      $phoneField.removeClass(errorClass);
-      $phoneField.closest("[data-address-field]").nextAll(errorMessageSelector).remove();
-      phoneNumberValidated = true;
-    }
-  }
-
-  function addTaxesBreakdown($) {
-    let totalShippingPrice = $(".total-line.total-line--shipping .total-line__price span");
-    if (totalShippingPrice) {
-      totalShippingPrice.text("FREE");
-    }
-
-    if (Shopify.Checkout.step !== "contact_information") {
-      breakdownTax($);
-
-      $('.section--shipping-method').on('click', function(){
-        setTimeout(
-        () => breakdownTax($),
-        100);
-      });
-    }
-  }
-
-  function breakdownTax($) {
-    let $taxLabel = $(".total-line.total-line--taxes .total-line__name");
-    let $taxPrice = $(".total-line.total-line--taxes .total-line__price");
-    let discount = 0;
-    let shippingCost = 0; 
-    
-    $('[data-checkout-total-shipping-target]').each(function() {
-      shippingCost += extractPrice($(this).attr('data-checkout-total-shipping-target'));
-    });
-
-    $('[data-checkout-discount-amount-target]').each(function() {
-      discount += extractPrice($(this).attr('data-checkout-discount-amount-target'));
-    });
-
-    let checkoutSubtotal = extractPrice($(".total-line.total-line--subtotal [data-checkout-subtotal-price-target]").attr("data-checkout-subtotal-price-target")) - discount + shippingCost;
-
-    const taxSubtotal = $(".tax-subtotal");
-    if (taxSubtotal) {
-      taxSubtotal.remove();
-    }
-
-    let selectedProvince = Shopify.Checkout.shippingAddress.provinceCode;
-    const taxApplied = TAXES.find((tax) => tax.value === selectedProvince);
-    const { labels, totalRate } = taxApplied;
-		
-		{% if request.locale.iso_code == 'fr' %}
-    if (labels && (labels.length === 1)) {
-      $taxLabel.text(`${labels}`);
-      const value = (checkoutSubtotal / 10000 * totalRate).toFixed(2);
-      $taxPrice.html(`<span class="order-summary__emphasis">${value.replace(".", ",")} $</span>`);
-    } else if (labels && (labels.length > 1)) {
-      let taxTotal = 0;
-      const $totalTable = $(".total-line-table__tbody");
-      labels.forEach((label) => {
-        const { subLabel, rate } = label;
-        const value = (checkoutSubtotal / 10000 * rate).toFixed(2);
-        $totalTable.append(`<tr class="total-line tax-subtotal"><th class="total-line__name">Tax (${subLabel} ${rate}%)</th><td class="total-line__price"><span class="order-summary__emphasis">${value.replace(".", ",")} $</span></td></tr>`);
-        taxTotal += (+value);
-      });
-
-      $taxLabel.text("Taxes");
-      $taxPrice.html(`<span class="order-summary__emphasis">${taxTotal.toFixed(2).replace(".", ",")} $</span>`);
-    }
-		{% else %}
-    if (labels && (labels.length === 1)) {
-      $taxLabel.text(`${labels}`);
-      const value = ((checkoutSubtotal / 10000) * totalRate).toFixed(2);
-      $taxPrice.html(`<span class="order-summary__emphasis">$${value}</span>`);
-    } else if (labels && (labels.length > 1)) {
-      let taxTotal = 0;
-      const $totalTable = $(".total-line-table__tbody");
-      labels.forEach((label) => {
-        const { subLabel, rate } = label;
-        const value = ((checkoutSubtotal / 10000) * rate).toFixed(2);
-        $totalTable.append(`<tr class="total-line tax-subtotal"><th class="total-line__name">Tax (${subLabel} ${rate}%)</th><td class="total-line__price"><span class="order-summary__emphasis">$${value}</span></td></tr>`);
-        taxTotal += (+value);
-      });
-
-      $taxLabel.text("Taxes");
-      $taxPrice.html(`<span class="order-summary__emphasis">$${taxTotal.toFixed(2)}</span>`);
-    }
-		{% endif %}
-  }
-
-  function extractPrice(string) {
-    if (string) {
-      const commaPrice = string.match(/([\d,.]+)/g);
-      const price = commaPrice.length ? commaPrice[0].replace(/,/, "") : "";
-      return price ? +price : "";
-    }
-  }
-
-  function extractPriceFrench(string) {
-    if (string) {
-      const commaPrice = string.match(/([\d,.]+)/g);
-      const price = commaPrice.length ? commaPrice[0].replace(/,/, ".") : "";
-      return price ? +price : "";
-    }
-  }
-
-  // SHIPPING METHOD
-  function addShippingSectionSubtitle($) {
-
-    var node = document.querySelector(".section--shipping-method > .section__header > .section__title"),
-      ele = document.createElement("p");
-
-    ele.className = "para";
-    ele.innerHTML = '{{ 'checkout.shipping_method.subtitle' | t }}';
-    node.parentNode.insertBefore(ele, node.nextSibling);
-
-    const $node1 = $(".content-box > .content-box__row > .radio-wrapper");
-    
-    const hasEmmaShift = !!$(".product[data-product-id='7713717682314']").length;
-    
-    $node1.after(`
-        <p class="para2">
-          {{ 'checkout.shipping_method.standart_delivery_no_contact' | t }} ${hasEmmaShift ? "{{ 'checkout.shipping_method.shift_dropshipping' | t }}" : ""}
-        </p>
-    `);
-
-    // Scheduled Delivery with In-Home Setup
-    const label = $("[data-shipping-method-label-title=\"Scheduled Delivery with In-Home Setup\"]");
-    if (!label || !label.length) return;
-    const contentBox = label.parent().parent().parent();
-    const sectionContent = contentBox.closest(".section__content");
-
-
-    contentBox.append(`
-      <p class="para2">
-        {{ 'checkout.scheduled_delivery_with_in_home_setup_description' | t }}
-      </p>
-    `);
-    label.append(`
-      <div data-tooltip="true" id="scheduled_delivery_tooltip" class="tooltip-container">
-        <button type="button" class="tooltip-control" data-tooltip-control="true" aria-label="More information" aria-describedby="tooltip-for-scheduled-delivery" aria-controls="tooltip-for-scheduled-delivery" aria-pressed="false" placeholder="scheduled_delivery">
-          <svg class="icon-svg icon-svg--color-adaptive-lighter icon-svg--size-16 icon-svg--block icon-svg--center" role="presentation" aria-hidden="true" focusable="false">
-             <path
-              d="M8 0C3.6 0 0 3.6 0 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8zm.7 13H6.8v-2h1.9v2zm2.6-7.1c0 1.8-1.3 2.6-2.8 2.8l-.1 1.1H7.3L7 7.5l.1-.1c1.8-.1 2.6-.6 2.6-1.6 0-.8-.6-1.3-1.6-1.3-.9 0-1.6.4-2.3 1.1L4.7 4.5c.8-.9 1.9-1.6 3.4-1.6 1.9.1 3.2 1.2 3.2 3z">
-            </path>
-          </svg>
-        </button>
-        <span class="tooltip" role="tooltip" id="tooltip-for-scheduled-delivery">
-          {{ 'checkout.scheduled_delivery_with_in_home_setup_faq_1' | t }}
-        </span>
-      </div>
-    `);
-    sectionContent.append(`
-      <div id="product-removal-wrapper" class="checkbox-wrapper" style="margin-top: 0.9285714286em; {% if checkout.shipping_method.title != 'Scheduled Delivery with In-Home Setup' %}display: none{% endif %}">
-        <div class="checkbox__input">
-          <input name="checkout[attributes][Product Removal]" type="hidden" value="No" autocomplete="off">
-          <input class="input-checkbox" type="checkbox" value="Yes" {% if checkout.attributes["Product Removal"] == 'Yes' and checkout.shipping_method.title == 'Scheduled Delivery with In-Home Setup' %}checked{% endif %} name="checkout[attributes][Product Removal]" id="checkout_product_removal" autocomplete="off">
-        </div>
-        <label class="checkbox__label" for="checkout_product_removal">
-          {{ 'checkout.product_removal' | t }}
-        </label>
-        <div data-tooltip="true" id="product_removal_tooltip" class="tooltip-container">
-          <button type="button" class="tooltip-control" data-tooltip-control="true" aria-label="More information" aria-describedby="tooltip-for-scheduled-delivery" aria-controls="tooltip-for-product-removal" aria-pressed="false" placeholder="product_removal">
-            <svg class="icon-svg icon-svg--color-adaptive-lighter icon-svg--size-16 icon-svg--block icon-svg--center" role="presentation" aria-hidden="true" focusable="false">
-              <path
-              d="M8 0C3.6 0 0 3.6 0 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8zm.7 13H6.8v-2h1.9v2zm2.6-7.1c0 1.8-1.3 2.6-2.8 2.8l-.1 1.1H7.3L7 7.5l.1-.1c1.8-.1 2.6-.6 2.6-1.6 0-.8-.6-1.3-1.6-1.3-.9 0-1.6.4-2.3 1.1L4.7 4.5c.8-.9 1.9-1.6 3.4-1.6 1.9.1 3.2 1.2 3.2 3z">
-            </path>
-            </svg>
-          </button>
-          <span class="tooltip" role="tooltip" id="tooltip-for-product-removal">
-            {{ 'checkout.scheduled_delivery_with_in_home_setup_faq_2' | t }}
-          </span>
-        </div>
-      </div>
-    `);
-    $("[name=\"checkout[shipping_rate][id]\"]").change(function () {
-      const checked = $("[name=\"checkout[shipping_rate][id]\"]:checked").val().includes("shopify-Scheduled%20Delivery%20with%20In-Home%20Setup");
-      if (checked) {
-        $("#product-removal-wrapper").show();
-      } else {
-        $("#product-removal-wrapper").hide();
-      }
-    });
-  }
-
-
-  // PAYMENT METHOD
-  function disableAffirmPaymentMethod($) {
-    let hasDiscountApplied = $(".reduction-code").length || $(".reduction-code__text").length;
-    let $paymentSection = $(".section--payment-method [data-payment-subform='required']");
-    if (hasDiscountApplied) {
-      let $gatewayFields = $paymentSection.find(`[data-gateway-name]`);
-      $gatewayFields.each(function (i, elem) {
-        let dataGatewayName = $(elem).attr("data-gateway-name");
-        if (PAYMENT_GATEWAYS_NOT_ALLOWED.includes(dataGatewayName)) {
-          const alreadySelected = $(elem).find(".input-radio").is(":checked");
-
-          if (alreadySelected) {
-            const firstGateway = $($gatewayFields[0]);
-
-            firstGateway.find(".input-radio").trigger("click");
-          }
-
-          let paybrightIsNotAllowMsg = "Affirm cannot be used in conjunction with other discounts and promotions.";
-          let dataSubfield = $(elem).attr("data-select-gateway");
-          let $gateway = $paymentSection.find(`#checkout_payment_gateway_${dataSubfield}`);
-          let $gatewaySubfields = $paymentSection.find(`#payment-gateway-subfields-${dataSubfield}`);
-          $gatewaySubfields.hide();
-          $(elem).attr("disabled", "disabled");
-          $(elem).addClass("disable-payment-method");
-          $(elem).children().attr("disabled", "disabled");
-          $(elem).children().addClass("disable-payment-method");
-          $gateway.attr("disabled", "disabled");
-          $gateway.addClass("disable-payment-method");
-          $(elem).after(`<p class="paybright-messages">${paybrightIsNotAllowMsg}</p>`);
-        }
-      });
-    }
-  }
-
-
-
-</script>
-
-<script src="{{ 'custom-checkout.js' | asset_url }}" defer="defer"></script>
-
+{% assign valid_for_recycling_fee = false %}
+{% assign is_los_angeles = false %}
+{% assign zip = checkout.shipping_address.zip | times: 1 %}
+{% if zip >= 90001 and zip <= 90230 %}
+  {% assign is_los_angeles = true %}
+{% endif %}
+{% assign recycling_fees = 0.0 %}
 {% for item in checkout.line_items %}
-  {%- if item.variant.compare_at_price != item.final_price -%}
-    <input
-      id="{{ item.key }}"
-      type="hidden"
-      name="original_line_price"
-      value="{{ item.variant.compare_at_price | times: item.quantity | money }}"
-      disabled
-    >
-  {% else %}
-    <input id="{{ item.key }}" type="hidden" name="original_line_price" value="" disabled>
+  {% if item.product.tags contains 'Mattresses' %}
+    {% assign valid_for_recycling_fee = true %}
+    {% case checkout.shipping_address.province %}
+      {% when 'California' %}
+        {% assign recycling_fees = item.quantity | times: 10.5 | plus: recycling_fees %}
+      {% when 'Connecticut' %}
+        {% assign recycling_fees = item.quantity | times: 16.0 | plus: recycling_fees %}
+      {% when 'Rhode Island' %}
+        {% assign recycling_fees = item.quantity | times: 11.75 | plus: recycling_fees %}
+    {% endcase %}
   {% endif %}
 {% endfor %}
 
-<script type="module">
-  
-  
-  
+<script type="text/javascript" defer>
+
   (function ($) {
+    let discountCodes = $('#promo-codes').val().split('|');
     let promoDiscount = '{{ promo_discount }}';
-    let totalSavedText = '{% if saved > 0 %}{{ 'checkout.order_summary.you_save' | t: saved: saved_amount }}{% endif %}';
+    let totalSavedText = '{% if saved > 0 %}{{ 'shopify.checkout.order_summary.you_save' | t: saved: saved_amount }}{% endif %}';
+    let observer = null;
 
-    $(document).on("page:load page:change", function () {
-      setTimeout(() => {
-        let freeGiftCount = 0;
-        $("[data-order-summary-section=\"line-items\"] .reduction-code").each(function () {
-          const $this = $(this), text = $this.text().trim(), $product = $this.closest(".product");
-          if (text.includes("🎁 FREE GIFT")) {
-            $this.text("🎁 FREE GIFT");
-            freeGiftCount += parseInt($product.find(".product-thumbnail__quantity").text());
-          }
-        });
+    function refreshCheckoutUI() {
+      const $recyclingFeesEl = $('.recycling-fee .total-line__name span');
+      if ($recyclingFeesEl.length && !$recyclingFeesEl.text().startsWith('Recycling fee')) {
+        $recyclingFeesEl.text(`Recycling fee${Shopify.Checkout.step === "contact_information" ? " (estimated)" : ""}`);
+      }
+      let $promoCode = $('.total-line--reduction:not(.detached)');
+      if ($promoCode.length) {
+        $promoCode.detach().addClass('detached');
+        $('.total-line.total-line--subtotal').after($promoCode);
+      }
+    }
 
-        let discountCodes = $("#promo-codes").val().split("|");
-        let allowPromoCode = $("#allow-more-promo-code").val() === "true";
-        let discountCode = $(".reduction-code").length ? $(".reduction-code").text() : null;
-        let onlyOneCodeAllowedText = '{{ 'checkout.order_summary.only_one_code_allowed' | t }}';
-        let promoText = '{{ 'checkout.order_summary.no_promo_yet' | t }}';
-        let promoCodeText = $(".order-summary__section--discount .reduction-code__text").text();
+    {% if valid_for_recycling_fee and checkout.shipping_address.country_code == 'US' and recycling_fee_states contains checkout.shipping_address.province %}
+    $(document).ready(function () {
+      observer = new MutationObserver(function () {
+        refreshCheckoutUI();
+        observer && observer.disconnect();
+      });
+      $('body').click('#checkout_submit, .tag__button', function () {
+        observer && observer.observe(document.querySelector('.sidebar'), { subtree: true, childList: true });
+      });
+    });
+    {% endif %}
 
+    $(document).on('page:load page:change', function () {
+      if (Shopify.Checkout.step === 'shipping_method') {
+        addShippingSectionSubtitle($);
+      }
 
-        let totalOriginalPrice = '{{ total_original_price }}';
-        let saleDiscount = '{{ sale_discount }}';
+      {% if valid_for_recycling_fee and checkout.shipping_address.country_code == 'US' and recycling_fee_states contains checkout.shipping_address.province %}
+      setTimeout(refreshCheckoutUI, 100);
+      {% endif %}
+      let discountCodes = $('#promo-codes').val().split('|');
+      let allowPromoCode = $('#allow-more-promo-code').val() === 'true';
+      let onlyOneCodeAllowedText = '{{ 'shopify.checkout.order_summary.only_one_code_allowed' | t }}';
+      let promoText = '{{ 'shopify.checkout.order_summary.no_promo_yet' | t }}';
+      let promoCodeText = $('.order-summary__section--discount .reduction-code__text').text();
 
-        const $totalTable = $(".total-line-table__tbody");
+      let totalOriginalPrice = '{{ total_original_price }}';
+      let saleDiscount = '{{ sale_discount }}';
 
-        let lineItemDiscounted = $("#line-item-discounted").val();
-        let lineItemDiscountCode = $("#line-item-discount-code").val();
-        if (lineItemDiscountCode.includes("FREE GIFT: 1")) {
-          lineItemDiscountCode = lineItemDiscountCode.replace("1", freeGiftCount);
-        }
-        if (lineItemDiscounted) {
-          $(".total-line--subtotal").before(`<tr class="total-line promo-code"><th class="total-line__name">${lineItemDiscountCode}</th><td class="total-line__price"><span class="order-summary__emphasis" style="color: red"> - ${lineItemDiscounted}</span></td></tr>`);
-        }
+      const $totalTable = $('.total-line-table__tbody');
 
-        $totalTable.prepend(`<tr class="total-line sale-discount"><th class="total-line__name">{{ 'checkout.order_summary.sale_discount' | t }}</th><td class="total-line__price"><span class="order-summary__emphasis">- ${saleDiscount}</span></td></tr>`);
-        $(".total-line.total-line--reduction").insertAfter(".total-line.sale-discount");
-        $totalTable.prepend(`<tr class="total-line original_price"><th class="total-line__name">{{ 'checkout.order_summary.original_price' | t }}</th><td class="total-line__price"><span class="order-summary__emphasis">${totalOriginalPrice}</span></td></tr>`);
+      let lineItemDiscounted = $('#line-item-discounted').val();
+      let lineItemDiscountCode = $('#line-item-discount-code').val();
+      if (lineItemDiscounted) {
+        $('.total-line--subtotal').before(`<tr class="total-line promo-code"><th class="total-line__name">{{ 'shopify.checkout.order_summary.promo_code' | t }} (${lineItemDiscountCode}) </th><td class="total-line__price"><span class="order-summary__emphasis" style="color: red"> - ${lineItemDiscounted}</span></td></tr>`);
+      }
 
-        let $promoCode = $(".total-line--reduction:not(.detached)");
-        if ($promoCode.length) {
-          $promoCode.detach().addClass("detached");
-          $(".total-line.total-line--subtotal").after($promoCode);
-        }
+      $totalTable.prepend(`<tr class="total-line sale-discount"><th class="total-line__name">{{ 'shopify.checkout.order_summary.sale_discount' | t }}</th><td class="total-line__price"><span class="order-summary__emphasis">- ${saleDiscount}</span></td></tr>`);
+      $('.total-line.total-line--reduction').insertAfter('.total-line.sale-discount');
+      $totalTable.prepend(`<tr class="total-line original_price"><th class="total-line__name">{{ 'shopify.checkout.order_summary.original_price' | t }}</th><td class="total-line__price"><span class="order-summary__emphasis">${totalOriginalPrice}</span></td></tr>`);
 
-        if (lineItemDiscountCode) {
-          $(".total-line.promo-code").show();
-        } else {
-          $(".total-line.promo-code").hide();
-        }
+      let $taxLine = $('.total-line--taxes');
+      if ($taxLine.length && !$taxLine.hasClass('detached')) {
+        $taxLine.detach().addClass('detached');
+        $('.total-line.total-line--subtotal').after($taxLine);
+      }
 
-        if (!allowPromoCode) {
-          $(".order-summary__section--discount form.edit_checkout .fieldset").hide();
-          promoText = '{{ 'checkout.order_summary.promo_applied' | t }}';
-        } else {
-          $(".order-summary__section--discount form.edit_checkout .fieldset").show();
-        }
+      let $promoCode = $('.total-line--reduction:not(.detached)');
+      if ($promoCode.length) {
+        $promoCode.detach().addClass('detached');
+        $('.total-line.total-line--subtotal').after($promoCode);
+      }
 
-        if (!$(".promo-text-wrapper").length) {
-          let $discountSection = $("#order-summary .order-summary__section--discount").first();
-          $discountSection.prepend(
-            `<div class="promo-text-wrapper">
-              <p>${promoText}</p>
-              <div class="discount-tooltip">&#9432;
-                <span class="discount-tooltip-text">${onlyOneCodeAllowedText}</span>
-              </div>
-            </div>`,
-          );
-        }
+      if (lineItemDiscountCode) {
+        $(".total-line.promo-code").show();
+      } else {
+        $(".total-line.promo-code").hide();
+      }
 
-        if (!$(".total-saved-line").length) {
-          $(".total-line-table__footer").append(`
+      if (!allowPromoCode) {
+        var replacementTag = 'div';
+        $(".order-summary__section--discount form.edit_checkout .fieldset").hide();
+        promoText = '{{ 'shopify.checkout.order_summary.promo_applied' | t }}';
+      } else {
+        $(".order-summary__section--discount form.edit_checkout .fieldset").show();
+      }
+
+      if (!$('.promo-text-wrapper').length) {
+        let $discountSection = $('#order-summary .order-summary__section--discount').first();
+        $discountSection.prepend(
+          `<div class="promo-text-wrapper">
+            <p>${promoText}</p>
+            <div class="discount-tooltip">&#9432;
+              <span class="discount-tooltip-text">${onlyOneCodeAllowedText}</span>
+            </div>
+          </div>`
+        );
+      }
+
+      if (!$('.total-saved-line').length) {
+        $('.total-line-table__footer').append(`
           <tr class="total-saved-line">
             <td></td>
             <td class="total-line__price payment-due" style="text-align: right; padding-top: 5px">
@@ -577,12 +224,18 @@
             </td>
           </tr>
         `);
-        }
+      }
 
-        renderSSLText();
-      }, 0);
+      renderSSLText();
+
+      {% if valid_for_recycling_fee and checkout.shipping_address.country_code == 'US' and recycling_fee_states contains checkout.shipping_address.province %}
+      renderRecyclingFees();
+      {% endif %}
+
+      setTimeout(reFormatPrices, 100);
     });
 
+    // intercept http request to handling user interaction with promo code
     const oldXMLHttpRequest = XMLHttpRequest;
     XMLHttpRequest = function () {
       var actual = new oldXMLHttpRequest();
@@ -592,23 +245,22 @@
         if (this.readyState == 4) {
           const url = new URL(self.responseURL)
           const searchParams = new URLSearchParams(url.search);
-          const onThankYouPage = window.location.pathname.includes('/orders/') || window.location.pathname.includes('thank_you');
-          
-          if (self.responseURL.includes('/checkouts/') && searchParams.has('step')) {            
+          const onThankYouPage = window.location.pathname.includes('/orders/') || window.location.pathname.includes('thank_you')
+          if (self.responseURL.includes('/checkouts/') && searchParams.has('step')) {
             const parser = new DOMParser();
-            const doc = parser.parseFromString(self.responseText, "text/html");
-            totalSavedText = doc.querySelector("#total-saved-amount").value;
-            const promoCodes = doc.querySelector("#promo-codes").value;
-            const allowPromoCode = doc.querySelector("#allow-more-promo-code").value;
-            const lineItemDiscounted = doc.querySelector("#line-item-discounted").value;
-            const lineItemDiscountCode = doc.querySelector("#line-item-discount-code").value;
-            $(".total-saved-text").text(totalSavedText);
-            promoDiscount = doc.querySelector("#promo-discount").value;
-            $(".promo-code .total-line__price").text(`- ${promoDiscount}`);
-            $("#promo-codes").val(promoCodes);
-            $("#allow-more-promo-code").val(allowPromoCode);
-            $("#line-item-discounted").val(lineItemDiscounted);
-            $("#line-item-discount-code").val(lineItemDiscountCode);
+            const doc = parser.parseFromString(self.responseText, 'text/html');
+            totalSavedText = doc.querySelector('#total-saved-amount').value;
+            const promoCodes = doc.querySelector('#promo-codes').value;
+            const allowPromoCode = doc.querySelector('#allow-more-promo-code').value;
+            const lineItemDiscounted = doc.querySelector('#line-item-discounted').value;
+            const lineItemDiscountCode = doc.querySelector('#line-item-discount-code').value;
+            $('.total-saved-text').text(totalSavedText);
+            promoDiscount = doc.querySelector('#promo-discount').value;
+            $('.promo-code .total-line__price').text(`- ${promoDiscount}`);
+            $('#promo-codes').val(promoCodes);
+            $('#allow-more-promo-code').val(allowPromoCode);
+            $('#line-item-discounted').val(lineItemDiscounted);
+            $('#line-item-discount-code').val(lineItemDiscountCode);
           } else if (onThankYouPage) {
             // remove intercepting network request
             // due to user cannot interact with promo code on thank you page
@@ -623,7 +275,7 @@
         Object.defineProperty(self, item, {
           get: function () {
             return actual[item];
-          },
+          }
         });
       });
       ["ontimeout, timeout", "withCredentials", "onload", "onerror", "onprogress"].forEach(function (item) {
@@ -633,265 +285,205 @@
           },
           set: function (val) {
             actual[item] = val;
-          },
+          }
         });
       });
       ["addEventListener", "send", "open", "abort", "getAllResponseHeaders", "getResponseHeader", "overrideMimeType", "setRequestHeader"].forEach(function (item) {
         Object.defineProperty(self, item, {
           value: function () {
             return actual[item].apply(actual, arguments);
-          },
+          }
         });
       });
-    };
+    }
 
+    $(document).ready(function () {
+      $('.breadcrumb__item .breadcrumb__link').each(function () {
+        if ($(this).attr('href').includes('/cart')) {
+          $(this).parent().remove();
+        }
+      });
+      $('.step__footer__previous-link').each(function () {
+        if ($(this).attr('href').includes('/cart')) {
+          $(this).remove();
+        }
+      });
+    });
   })(Checkout.$);
+
+  function extractPrice(string) {
+    if (string) {
+      const commaPrice = string.match(/([\d,.]+)/g);
+      const price = commaPrice.length ? commaPrice[0].replace(/,/, '') : '';
+      return price ? +price : '';
+    }
+  }
 
   function renderSSLText() {
 
     const $header = $(".main .main__header");
 
-    if (!!$header.find("nav .ssl").length) return;
+    if (!!$header.find("nav .ssl").length) return
 
     $header.find("nav").append(`<div class='ssl'>
-                {% render 'icon-lock' %}
-                {{ settings.checkout.ssl | default: "Secure SSL encryption" }}</div>
-            `);
+      {% render 'icon-lock' %}
+      {{ settings.shopify.checkout.general.ssl | default: "Secure SSL encryption" }}</div>
+    `);
   }
 
+  function reFormatPrices() {
+    $('.original-line-price, .custom-original-line-price, .total-line__price > span, .payment-due__price, .section--shipping-method .content-box__emphasis').each(function () {
+      const price = $(this).text().replace('.00', '');
+      $(this).text(price);
+    });
+  }
 
+  function renderRecyclingFees() {
+    const defaultShipping = $('.total-line--shipping');
+    defaultShipping.find('.skeleton-while-loading').toggleClass('order-summary__small-text', false);
+    const recyclingFees = defaultShipping.clone();
+    const shipping = defaultShipping.clone();
+    shipping.find('[data-checkout-total-shipping-target]').removeAttr('data-checkout-total-shipping-target');
+    shipping.find('.total-line__price .skeleton-while-loading').text($('input[data-checkout-shipping-rate]:checked').attr('data-checkout-shipping-rate')).attr('data-price', $('input[data-checkout-shipping-rate]:checked').attr('data-checkout-shipping-rate'));
+    defaultShipping.hide();
+    recyclingFees.toggleClass('recycling-fee', true).toggleClass('total-line--shipping', false);
+    recyclingFees.find('[data-checkout-total-shipping-target]').removeAttr('data-checkout-total-shipping-target');
+    recyclingFees.find('.total-line__name span').text(`Recycling fee${Shopify.Checkout.step === "contact_information" ? " (estimated)" : ""}`);
+    recyclingFees.find('.icon-svg').remove();
+    recyclingFees.find('.skeleton-while-loading').text('{{ recycling_fees | times: 100 | money | replace: '.00', '' }}');
+    defaultShipping.after(recyclingFees);
+    recyclingFees.after(shipping);
+    {% if valid_for_recycling_fee %}
+    $('.section.section--shipping-method [data-shipping-method]').each(function () {
+      let $this = $(this), $price = $this.find('.radio__label .radio__label__accessory .content-box__emphasis');
+      let price = $price.text().trim().toLowerCase().replace('$', '');
+      if (price === 'free') {
+        $this.find('input.input-radio').attr('data-checkout-shipping-rate', 'FREE');
+      }
+    });
+    {% endif %}
+    if (Shopify.Checkout.step !== "contact_information" && !$('.recycling-fee-section').length) {
+      $('.step__sections').append(`
+        <div class="section recycling-fee-section">
+          <div class="section__header">
+            <h2 class="section__title" id="main-header" tabindex="-1">State Recycling Fees</h2>
+          </div>
+          <div class="section__content">
+            <fieldset class="content-box">
+              <legend class="visually-hidden">State Recycling Fees</legend>
+              <div class="content-box__row">
+                <div class="radio-wrapper">
+                  <label class="radio__label">
+                    <span class="radio__label__primary">State Recycling Fees
+                      <br>
+                      <span class="small-text">State laws in CA, CT & RI require retailers to collect a recycling fee for every mattress, foundation, or bed frame sold</span>
+                    </span>
+                    <span class="radio__label__accessory">
+                      <span class="content-box__emphasis">{{ recycling_fees | times: 100 | money }}</span>
+                    </span>
+                  </label>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+        </div>
+      `);
 
+    }
+
+  }
+
+  function addShippingSectionSubtitle($) {
+    {% if valid_for_recycling_fee %}
+    $('.section.section--shipping-method [data-shipping-method]').each(function () {
+      let $this = $(this), $price = $this.find('.radio__label .radio__label__accessory .content-box__emphasis');
+      let price = $price.text().trim().toLowerCase().replace('$', '');
+      if (price !== 'free') {
+        const newPrice = parseFloat(price) - {{ recycling_fees }},
+          priceText = newPrice ? `$${newPrice.toFixed(2).replace('.00', '')}` : 'FREE';
+        $price.text(priceText).css('color', newPrice ? 'inherit' : 'red');
+        $this.find('input.input-radio').attr('data-checkout-shipping-rate', priceText);
+      }
+    });
+    {% endif %}
+
+    // const node = document.querySelector(".section--shipping-method > .section__header > .section__title"),
+    //     ele = document.createElement("p");
+
+    // ele.className = "para";
+    {% comment %}ele.innerHTML = '{{ 'shopify.checkout.shipping_method.subtitle' | t }}';{% endcomment %}
+    // node.parentNode.insertBefore(ele, node.nextSibling);
+
+    const $node = $(".content-box > .content-box__row > .radio-wrapper");
+  
+    const cartItemCount = $(".product").size();
+
+    $node.after(`
+        <p class="para2">
+          {{ 'shopify.checkout.shipping_method.standard_delivery_no_contact' | t }}
+        </p>
+    `);
+
+    // Scheduled Delivery with In-Home Setup
+    const label = $('[data-shipping-method-label-title="Scheduled Delivery with In-Home Setup"]');
+    if (!label || !label.length) return;
+    const contentBox = label.parent().parent().parent();
+    const sectionContent = contentBox.closest('.section__content');
+    label.find('br').before(`
+      <div data-tooltip="true" id="scheduled_delivery_tooltip" class="tooltip-container">
+        <button type="button" class="tooltip-control" data-tooltip-control="true" aria-label="More information" aria-describedby="tooltip-for-scheduled-delivery" aria-controls="tooltip-for-scheduled-delivery" aria-pressed="false" placeholder="scheduled_delivery">
+          <svg class="icon-svg icon-svg--color-adaptive-lighter icon-svg--size-16 icon-svg--block icon-svg--center" role="presentation" aria-hidden="true" focusable="false">
+             <path
+              d="M8 0C3.6 0 0 3.6 0 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8zm.7 13H6.8v-2h1.9v2zm2.6-7.1c0 1.8-1.3 2.6-2.8 2.8l-.1 1.1H7.3L7 7.5l.1-.1c1.8-.1 2.6-.6 2.6-1.6 0-.8-.6-1.3-1.6-1.3-.9 0-1.6.4-2.3 1.1L4.7 4.5c.8-.9 1.9-1.6 3.4-1.6 1.9.1 3.2 1.2 3.2 3z">
+            </path>
+          </svg>
+        </button>
+        <span class="tooltip" role="tooltip" id="tooltip-for-scheduled-delivery">
+          {{ 'shopify.checkout.scheduled_delivery_with_in_home_setup_faq_1' | t }}
+        </span>
+      </div>
+    `);
+    sectionContent.append(`
+      <div id="product-removal-wrapper" class="checkbox-wrapper" style="margin-top: 0.9285714286em; {% if checkout.shipping_method.title != 'Scheduled Delivery with In-Home Setup' %}display: none{% endif %}">
+        <div class="checkbox__input">
+          <input name="checkout[attributes][Product Removal]" type="hidden" value="No" autocomplete="off">
+          <input class="input-checkbox" type="checkbox" value="Yes" {% if checkout.attributes["Product Removal"] == 'Yes' and checkout.shipping_method.title == 'Scheduled Delivery with In-Home Setup' %}checked{% endif %} name="checkout[attributes][Product Removal]" id="checkout_product_removal" autocomplete="off">
+        </div>
+        <label class="checkbox__label" for="checkout_product_removal">
+          {{ 'shopify.checkout.product_removal' | t }}
+        </label>
+        <div data-tooltip="true" id="product_removal_tooltip" class="tooltip-container">
+          <button type="button" class="tooltip-control" data-tooltip-control="true" aria-label="More information" aria-describedby="tooltip-for-scheduled-delivery" aria-controls="tooltip-for-product-removal" aria-pressed="false" placeholder="product_removal">
+            <svg class="icon-svg icon-svg--color-adaptive-lighter icon-svg--size-16 icon-svg--block icon-svg--center" role="presentation" aria-hidden="true" focusable="false">
+              <path
+              d="M8 0C3.6 0 0 3.6 0 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8zm.7 13H6.8v-2h1.9v2zm2.6-7.1c0 1.8-1.3 2.6-2.8 2.8l-.1 1.1H7.3L7 7.5l.1-.1c1.8-.1 2.6-.6 2.6-1.6 0-.8-.6-1.3-1.6-1.3-.9 0-1.6.4-2.3 1.1L4.7 4.5c.8-.9 1.9-1.6 3.4-1.6 1.9.1 3.2 1.2 3.2 3z">
+            </path>
+            </svg>
+          </button>
+          <span class="tooltip" role="tooltip" id="tooltip-for-product-removal">
+            {{ 'shopify.checkout.scheduled_delivery_with_in_home_setup_faq_2' | t }}
+          </span>
+        </div>
+      </div>
+    `);
+    $('[name="checkout[shipping_rate][id]"]').change(function () {
+      const checked = $('[name="checkout[shipping_rate][id]"]:checked').val().includes('white-glove-delivery');
+      if (checked) {
+        $('#product-removal-wrapper').show();
+      } else {
+        $('#product-removal-wrapper').hide();
+      }
+      $('.total-line.total-line--shipping .skeleton-while-loading').text($('input[data-checkout-shipping-rate]:checked').attr('data-checkout-shipping-rate')).attr('data-price', $('input[data-checkout-shipping-rate]:checked').attr('data-checkout-shipping-rate'));
+      setTimeout(reFormatPrices, 10);
+    });
+  }
 </script>
 
-<style>
-  .tax-subtotal .total-line__name {
-    padding-left: 1rem;
-  }
-
-  .paybright-messages {
-    margin-left: 2.8rem;
-    margin-bottom: 0.5rem;
-    cursor: not-allowed;
-  }
-
-  .disable-payment-method {
-    cursor: not-allowed;
-  }
-
-  .error-message {
-    font-weight: 400;
-    color: #f01130;
-    margin-top: 0.5rem;
-    margin-left: 0.5rem;
-  }
-
-  .field--error-plus-dynamic {
-    border: 2px solid #f01130 !important;
-  }
-
-  .disable-scrolling {
-    overflow: hidden;
-    height: 100%;
-  }
-
-  .section__title {
-    text-transform: capitalize;
-    color: #ff8200 !important;
-    font-size: 2em;
-    font-family: Kepler Std Bold Semicondensed Display;
-  }
-
-  .alternative-payment-separator__content {
-    padding-bottom: 1rem;
-  }
-
-  #review-shipping-address {
-    margin-bottom: 1rem;
-  }
-
-  .original-line-price {
-    text-decoration: line-through;
-    font-weight: 400;
-    color: #33312f;
-    margin-right: 0.5rem;
-  }
-
-  .field--info .field__input {
-    border-color: inherit;
-    -webkit-box-shadow: none;
-    box-shadow: none;
-  }
-
-  .field--info .field__message--error {
-    color: #b1b3d5;
-    display: block;
-  }
-
-  .radio__label__primary .tooltip-container {
-    height: 20px;
-    width: 20px;
-    display: inline-block;
-    vertical-align: middle;
-    margin-bottom: 2px;
-  }
-
-  #product_removal_tooltip {
-    height: 10px;
-    width: 15px;
-    display: inline-block;
-    margin-left: 7px;
-  }
-
-  #product-removal-wrapper .checkbox__input {
-    display: inline-block;
-  }
-
-  label[for='checkout_product_removal'] {
-    display: inline !important;
-    width: auto !important;
-    vertical-align: baseline;
-  }
-
-  @media (min-width: 641px) {
-    #tooltip-for-scheduled-delivery {
-      max-width: 90vw;
-      width: 400px;
-      -webkit-transform: rotateX(0deg) scale(1) translateX(50%);
-      transform: rotateX(0deg) scale(1) translateX(50%);
-      margin-right: 0;
-    }
-  }
-
-  .promo-text-wrapper {
-    display: flex;
-  }
-
-  .discount-tooltip {
-    position: relative;
-    display: inline-block;
-    margin-left: 0.5rem;
-  }
-
-  .discount-tooltip .discount-tooltip-text {
-    visibility: hidden;
-    width: 10rem;
-    background-color: black;
-    color: #fff;
-    text-align: center;
-    border-radius: 6px;
-    padding: 5px 0;
-    position: absolute;
-    z-index: 1;
-    left: 1.5rem;
-  }
-
-  .discount-tooltip:hover .discount-tooltip-text {
-    visibility: visible;
-  }
-
-  .product__price {
-    display: flex;
-    height: 4rem;
-    align-items: center;
-    justify-content: flex-end;
-  }
-
-  [data-order-summary-section='line-items'] .reduction-code {
-    font-size: 0.8em;
-  }
-
-  [data-order-summary-section='line-items'] .product__price del {
-    display: none;
-  }
-
-  .order-summary__section__content .product__price .order-summary__emphasis.skeleton-while-loading,
-  .total-saved-line {
-    color: #f70909 !important;
-    font-size: 14px;
-  }
-
-  .order-summary__section {
-    color: #33312f;
-    font-weight: 500;
-  }
-
-  .sidebar .order-summary__emphasis,
-  .original-line-price,
-  .sidebar .order-summary__small-text,
-  .sidebar .payment-due-label__total,
-  .sidebar .payment-due__currency,
-  .sidebar .payment-due__price {
-    color: #33312f;
-  }
-
-  .sidebar .reduction-code__text {
-    color: #3c4196;
-  }
-
-  span[data-checkout-total-shipping-target] {
-    color: #33312f !important;
-  }
-
-  span[data-checkout-total-shipping-target='0'] {
-    color: #f01130 !important;
-  }
-
-  .product__price .order-summary__small-text {
-    color: #f70909 !important;
-    font-size: 14px;
-    font-weight: 500;
-  }
-
-  .total-line__price {
-    font-weight: 500;
-  }
-
-  .order-summary__section__content .product__price .order-summary__emphasis.skeleton-while-loading,
-  .total-saved-line {
-    color: #f70909 !important;
-    font-size: 14px;
-  }
-
-  .order-summary__section {
-    color: #33312f;
-    font-weight: 500;
-  }
-
-  .sidebar .order-summary__emphasis,
-  .original-line-price,
-  .sidebar .order-summary__small-text,
-  .sidebar .payment-due-label__total,
-  .sidebar .payment-due__currency,
-  .sidebar .payment-due__price {
-    color: #33312f;
-  }
-
-  .sidebar .reduction-code__text {
-    color: #3c4196;
-  }
-
-  span[data-checkout-total-shipping-target] {
-    color: #33312f !important;
-  }
-
-  span[data-checkout-total-shipping-target='0'] {
-    color: #f01130 !important;
-  }
-
-  .product__price .order-summary__small-text {
-    color: #f70909 !important;
-    font-size: 14px;
-    font-weight: 500;
-  }
-
-  .total-line__price {
-    font-weight: 500;
-  }
-
-  .step__footer__previous-link[href="https://emma-sleep.ca/cart"],
-    .step__footer__previous-link[href="https://qc.emma-sleep.ca/cart"],
-    .step__footer__previous-link[href="https://emma-sleep-ca.myshopify.com/cart"]
-  {
-    display: none;
-  }
-</style>
+{% for item in checkout.line_items %}
+  {% assign originalPrice = item.variant.compare_at_price | default: item.variant.price %}
+  <input
+    id="{{ item.key }}" type="hidden" name="original_line_price"
+    value="{{ originalPrice | times: item.quantity | money_without_trailing_zeros }}" disabled
+    data-price="{{ item.variant.price | times: item.quantity | money_without_trailing_zeros }}"
+  >
+{% endfor %}
