@@ -9,14 +9,18 @@ const autoprefixer = require('autoprefixer');
 const cssnano = require('cssnano')
 const cssnanoAdvanced = require('cssnano-preset-advanced')
 
+// const sources = [
+//   'styles/base/*.scss',
+//   'styles/layouts/**/*.scss',
+//   'styles/migrate/**/*.scss',
+//   'styles/pages/*.scss',
+//   'styles/sections/**/*.scss',
+//   'styles/vendors/*.scss'
+// ];
+
 const sources = [
-  'styles/base/*.scss',
-  'styles/layouts/**/*.scss',
-  'styles/migrate/**/*.scss',
-  'styles/pages/*.scss',
-  'styles/sections/**/*.scss',
-  'styles/vendors/*.scss'
-];
+  'styles/vendors/tailwind.scss'
+]
 
 gulp.task('sass', function () {
   return gulp.src(sources)

@@ -240,81 +240,81 @@
           </svg>
         </div>
 
-        <variant-selects
+        <div class="variant-configuration">
+          <variant-selects
             class="no-js-hidden emma-product__variant"
             data-section="{{ section.id }}"
             data-url="{{ product.url }}"
             {{ block.shopify_attributes }}
-        >
-          {%- for option in product.options_with_values -%}
-            <div class="product-form__input product-form__input--dropdown">
-              <label class="form__label" for="Option-{{ section.id }}-{{ forloop.index0 }}">
-                {{ option.name }}
-              </label>
-              <div class="select">
-                <select
+          >
+            {%- for option in product.options_with_values -%}
+              <div class="product-form__input product-form__input--dropdown">
+                <label class="form__label" for="Option-{{ section.id }}-{{ forloop.index0 }}">
+                  {{ option.name }}
+                </label>
+                <div class="select">
+                  <select
                     id="Option-{{ section.id }}-{{ forloop.index0 }}"
                     class="select__select"
                     name="options[{{ option.name | escape }}]"
                     form="product-form-{{ section.id }}"
-                >
-                  {%- for value in option.values -%}
-                    <option
+                  >
+                    {%- for value in option.values -%}
+                      <option
                         value="{{ value | escape }}"
                         {% if option.selected_value == value %}
                           selected="selected"
                         {% endif %}
-                    >
-                      {{ value }}
-                    </option>
-                  {%- endfor -%}
-                </select>
-                {% render 'icon-caret' %}
+                      >
+                        {{ value }}
+                      </option>
+                    {%- endfor -%}
+                  </select>
+                  {% render 'icon-caret' %}
+                </div>
               </div>
-            </div>
-          {%- endfor -%}
-
-          <script type="application/json">
+            {%- endfor -%}
+            
+            <script type="application/json">
             {{ product.variants | json }}
 
           </script>
-        </variant-selects>
-
-        <select name="id" id="ProductSelect-{{ section.id }}" class="product-form__variants no-js">
-          {% for variant in product.variants %}
-            <option
+          </variant-selects>
+          
+          <select name="id" id="ProductSelect-{{ section.id }}" class="product-form__variants no-js">
+            {% for variant in product.variants %}
+              <option
                 value="{{ variant.id }}"
                 {%- if variant == current_variant %}
                   selected="selected"
                 {%- endif -%}
-            >
-              {{ variant.title }}
-              {%- if variant.available == false %} - {{ 'products.product.sold_out' | t }}{% endif %}
-            </option>
-          {% endfor %}
-        </select>
-
-        <div  class="product-quantity-selector{% unless product.selected_or_first_available_variant.available %}  visibility-hidden{% endunless %}"
-            {{ block.shopify_attributes }}
-        >
-          <label class="product-quantity-selector__label" for="Quantity-{{ section.id }}">
-            {{ 'products.product.quantity' | t }}
-          </label>
-
-          <quantity-input name="quantity" class="quantity-input" form="product-form-{{ section.id }}">
-            <button class="quantity-input__button no-js-hidden" name="minus" type="button">-</button>
-            <input
+              >
+                {{ variant.title }}
+                {%- if variant.available == false %} - {{ 'products.product.sold_out' | t }}{% endif %}
+              </option>
+            {% endfor %}
+          </select>
+          
+          <div  class="product-quantity-selector{% unless product.selected_or_first_available_variant.available %} visibility-hidden{% endunless %}"{{ block.shopify_attributes }}>
+            <label class="product-quantity-selector__label" for="Quantity-{{ section.id }}">
+              {{ 'products.product.quantity' | t }}
+            </label>
+            
+            <quantity-input name="quantity" class="quantity-input" form="product-form-{{ section.id }}">
+              <button class="quantity-input__button no-js-hidden" name="minus" type="button">-</button>
+              <input
                 class="quantity-input__native"
-                type="number"
+                type="number"0
                 name="quantity"
                 id="Quantity-{{ section.id }}"
                 value="1"
                 min="1"
                 pattern="[0-9]*"
                 readonly
-            >
-            <button class="quantity-input__button no-js-hidden" name="plus" type="button">+</button>
-          </quantity-input>
+              >
+              <button class="quantity-input__button no-js-hidden" name="plus" type="button">+</button>
+            </quantity-input>
+          </div>
         </div>
 
         <div
@@ -505,19 +505,19 @@
                 <div class="payment-provider">
                     <img src="//cdn.shopify.com/s/files/1/0562/9873/3706/files/paypal_payment_provider.svg?v=1698141213&amp;width=1440">
                 </div>
-                 
+                
             
                
                 <div class="payment-provider">
                     <img src="//cdn.shopify.com/s/files/1/0562/9873/3706/files/visa_payment_provider.svg?v=1698141376&amp;width=1440">
                 </div>
-                 
+                
             
                
                 <div class="payment-provider">
                     <img src="//cdn.shopify.com/s/files/1/0562/9873/3706/files/master-cart_payment_provider.svg?v=1698141377&amp;width=1440">
                 </div>
-                 
+                
             
                
                 <div class="payment-provider">
@@ -528,25 +528,25 @@
                 <div class="payment-provider">
                     <img src="//cdn.shopify.com/s/files/1/0562/9873/3706/files/discover-payment-method.svg?v=1698141377&amp;width=1440">
                 </div>
-                 
+                
             
                
                 <div class="payment-provider">
                     <img src="//cdn.shopify.com/s/files/1/0562/9873/3706/files/apple_pay.svg?v=1698141377&amp;width=1440">
                 </div>
-                 
+                
             
                
                 <div class="payment-provider">
                     <img src="//cdn.shopify.com/s/files/1/0562/9873/3706/files/pay_google.svg?v=1698141377&amp;width=1440">
                 </div>
-                 
+                
             
                
                 <div class="payment-provider">
                     <img src="//cdn.shopify.com/s/files/1/0562/9873/3706/files/shop-pay.svg?v=1698141377&amp;width=1440">
                 </div>
-                     
+                
             
         
 
@@ -568,7 +568,7 @@
                         );
                     });
             </script>
-          {% endcomment %} 
+          {% endcomment %}
           </li>
         {% endif %}
       </ul>
