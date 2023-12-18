@@ -682,29 +682,34 @@ class VariantSelects extends HTMLElement {
     const priceInCurrency = Currency.format(price, { maximumFractionDigits: price % 1 === 0 ? 0 : 2 });
     const originalPriceInCurrency = Currency.format(originalPrice, { maximumFractionDigits: originalPrice % 1 === 0 ? 0 : 2 });
 
-    $('.price-item.price-item--sale').text(priceInCurrency)
-    $('.price-item.price-item--regular').text(originalPriceInCurrency)
+    $('[data-sale-price]').text(priceInCurrency)
+    $('[data-regular-price]').text(originalPriceInCurrency)
 
     const isAvail = !!this.currentVariant.available
 
+    const attrConfiguratorEl = $("#attribute-configurator")
+
+    attrConfiguratorEl[isAvail ? "removeClass" : "addClass"]('attribute-configurator--single')
+
+    const $qtySelector = $('[data-quantity-selector]')
+
+    $qtySelector[isAvail ? "removeClass" : "addClass"]('opacity-0\t')
+
+    $("[data-quantity-selector-input]").val(1);
+
     this.toggleAddButton(!isAvail, window.variantStrings.soldOut);
 
-    const $qtySelector = $('.product-quantity-selector')
-
-    $qtySelector[isAvail ? "removeClass" : "addClass"]('visibility-hidden')
-
-    $('quantity-input .quantity-input__native').val(1)
   }
 
   toggleAddButton(disable = true, text, modifyClass = true) {
     const productForm = document.querySelector(`.product-form-${this.dataset.section}`);
 
     if (!productForm) return;
-    const addButton = productForm.querySelector('[name="add"]');
+    const addButton = productForm.querySelector('button[name="add"]');
 
     if (!addButton) return;
 
-    const addButtonText = addButton.querySelector('span');
+    const addButtonText = addButton.querySelector('[data-add-to-cart-text]');
 
     if (disable) {
       addButton.setAttribute('disabled', true);
@@ -928,7 +933,7 @@ class HeroBannerCountdownTimer extends HTMLElement {
         this.renderTimer(delta);
       } else {
         this.classList.add("hidden");
-        
+
         clearInterval(intervalId);
       }
     }, 1000);

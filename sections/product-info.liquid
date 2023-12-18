@@ -16,64 +16,65 @@
 {% assign paymentProvidersBlock = section.blocks | where: 'type', 'payment_providers' | first %}
 {% assign productSpecifications = section.blocks | where: 'type', 'product_specification' %}
 {% assign productMedia = section.blocks | where: 'type', 'product_media' %}
-{% assign campaignTeaser = section.blocks | where: 'type', 'campaign_teaser'| first  %}
+{% assign campaignTeaser = section.blocks | where: 'type', 'campaign_teaser' | first %}
 {% assign upsell_widget = section.blocks | where: 'type', 'upsell_widget' | first %}
-
 
 
 <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
 <script>
-   function switchAffirmMessage() {
-  const lang = $('html').attr('lang')
-  if (lang === 'en') {
-    $('.fr_pop').hide()
-    $('.pro_info').css('display', 'block')
-    $('.img_bann.first_bann').addClass('eng')
-    $('.img_bann.sec_bann').addClass('eng')
-  } else {
-    $('.pro_info').hide()
-    $('.fr_pop').css('display', 'block')
-    $('.img_bann').addClass('updfr')
-    $('.img_bann>.tImHU').css('background', 'rgba(255,137,0,1)')
-    $('.img_bann').css('display', 'flex')
-    $('.img_bann.first_bann').css('background-image', '')
+  function switchAffirmMessage() {
+    const lang = $("html").attr("lang");
+    if (lang === "en") {
+      $(".fr_pop").hide();
+      $(".pro_info").css("display", "block");
+      $(".img_bann.first_bann").addClass("eng");
+      $(".img_bann.sec_bann").addClass("eng");
+    } else {
+      $(".pro_info").hide();
+      $(".fr_pop").css("display", "block");
+      $(".img_bann").addClass("updfr");
+      $(".img_bann>.tImHU").css("background", "rgba(255,137,0,1)");
+      $(".img_bann").css("display", "flex");
+      $(".img_bann.first_bann").css("background-image", "");
+    }
   }
-}
 </script>
 <style>
-  .addon_two_card{
-    border-color:#2e2f3c !important;
-  }
-  .addon_two_card .view_btn{
-    color:#2e2f3c !important;
-    border-color:#2e2f3c !important;
-  }
-  .addon_two_card .view_btn:hover{
-    background-color:#2e2f3c !important;
-    border-color:#2e2f3c !important;
-    color:#fff !important;
-  }
+    .addon_two_card {
+        border-color: #2e2f3c !important;
+    }
+
+    .addon_two_card .view_btn {
+        color: #2e2f3c !important;
+        border-color: #2e2f3c !important;
+    }
+
+    .addon_two_card .view_btn:hover {
+        background-color: #2e2f3c !important;
+        border-color: #2e2f3c !important;
+        color: #fff !important;
+    }
 </style>
 <section
-    class="product-info"
-    id="ProductSection-{{ section.id }}"
-    data-section-id="{{ section.id }}"
-    data-section-type="product"
-    data-enable-history-state="true"
-    data-ajax-enabled="{{ settings.enable_ajax }}"
+  class="product-info"
+  id="ProductSection-{{ section.id }}"
+  data-section-id="{{ section.id }}"
+  data-section-type="product"
+  data-enable-history-state="true"
+  data-ajax-enabled="{{ settings.enable_ajax }}"
 >
   <div class="product-info-wrapper page-boundary">
     <div class="product-media">
       <div id="affiliate-badge"></div>
       {% if campaignTeaser %}
-          <div class="campaign-teaser">
-              <h2 class="text-sm font-bold">{{ campaignTeaser.settings.title }}</h2>
-              <div class="text-xs md:text-sm">
-                {% render 'rtf-viewer', content: campaignTeaser.settings.content %}
-              </div>
+        <div class="campaign-teaser">
+          <h2 class="text-sm font-bold">{{ campaignTeaser.settings.title }}</h2>
+          <div class="text-xs md:text-sm">
+            {% render 'rtf-viewer', content: campaignTeaser.settings.content %}
           </div>
+        </div>
       {% endif %}
- <div class="countdown-timer-block" countdown-timer-id="clocrprh260833418yjgrkmpfjn"></div>
+      <div class="countdown-timer-block" countdown-timer-id="clocrprh260833418yjgrkmpfjn"></div>
       <div class="desktop-mansory">
         
         {% for block in productMedia %}
@@ -86,20 +87,20 @@
                 }}
               {% else %}
                 <img
-                    class="image-item"
-                    src="{{ block.settings.image | image_url: width: 808, height: 486 }}"
-                    loading="lazy"
+                  class="image-item"
+                  src="{{ block.settings.image | image_url: width: 808, height: 486 }}"
+                  loading="lazy"
                 >
                 {% if block.settings.award %}
                   <img
-                      class="image-award"
-                      src="{{ block.settings.award | image_url: width: 200, height: 200 }}"
-                      loading="lazy"
+                    class="image-award"
+                    src="{{ block.settings.award | image_url: width: 200, height: 200 }}"
+                    loading="lazy"
                   >
                 {% endif %}
               {% endif %}
             </div>
-
+            
             {% if forloop.index0 == 0 %}
               <div class="caption-container">
                 <h3 class="heading-3 font-inter font-semibold">{{ section.settings.caption_headline }}</h3>
@@ -109,29 +110,29 @@
           </div>
         {% endfor %}
       </div>
-
+      
       <div class="media-carousel">
         
         <div id="main-carousel" class="splide">
           <ul class="splide__track">
             <li class="splide__list">
               {% for item in productMedia %}
-
+                
                 <div
-                    class="image-wrapper splide__slide"
+                  class="image-wrapper splide__slide"
                 >
                   {% if item.settings.is_video and item.settings.hosted_video != blank %}
                     {{ item.settings.hosted_video | video_tag: class: 'hosted-video', width: '100%', controls: false, autoplay: true, loop: true }}
                   {% else %}
                     <img
-                        src="{{ item.settings.image | image_url: width: 808, height: 486 }}"
-                        loading="lazy"
+                      src="{{ item.settings.image | image_url: width: 808, height: 486 }}"
+                      loading="lazy"
                     >
                     {% if item.settings.award %}
                       <img
-                          class="image-award"
-                          src="{{ item.settings.award | image_url: width: 80, height: 80 }}"
-                          loading="lazy"
+                        class="image-award"
+                        src="{{ item.settings.award | image_url: width: 80, height: 80 }}"
+                        loading="lazy"
                       >
                     {% endif %}
                   {% endif %}
@@ -140,30 +141,30 @@
             </li>
           </ul>
         </div>
-
+        
         <div id="thumbnail-carousel" class="splide hidden">
           <ul class="splide__track">
             <li class="splide__list">
               {% for item in productMedia %}
                 <div
-                    class="image-wrapper splide__slide"
+                  class="image-wrapper splide__slide"
                 >
                   {% assign thumbnail = item.settings.image %}
                   {% if item.settings.is_video and item.settings.hosted_video != blank %}
                     {% assign thumbnail = item.settings.hosted_video.preview_image %}
                   {% endif %}
                   <img
-                      src="{{ thumbnail | image_url: width: 808, height: 486 }}"
-                      loading="lazy"
+                    src="{{ thumbnail | image_url: width: 808, height: 486 }}"
+                    loading="lazy"
                   >
                   {% if item.settings.award %}
                     <img
-                        class="image-award"
-                        src="{{ item.settings.award | image_url: width: 80, height: 80 }}"
-                        loading="lazy"
+                      class="image-award"
+                      src="{{ item.settings.award | image_url: width: 80, height: 80 }}"
+                      loading="lazy"
                     >
                   {% endif %}
-
+                
                 </div>
               {% endfor %}
             </li>
@@ -171,31 +172,31 @@
         </div>
       </div>
     </div>
-
+    
     <product-form class="right-section">
       <h2 id="product-title" class="paragraph-24 font-inter font-semibold">
         {{ section.settings.title | default: product.title }}
         {% if section.settings.badge != blank %}
-					<div
-						class="inline-flex bg-scarlet text-white py-[5px] px-[8px] uppercase rounded text-[13px] ml-[10px] leading-normal"
-					>
-						{{ section.settings.badge }}
-					</div>
-				{% endif %}
+          <div
+            class="inline-flex bg-scarlet text-white py-[5px] px-[8px] uppercase rounded text-[13px] ml-[10px] leading-normal"
+          >
+            {{ section.settings.badge }}
+          </div>
+        {% endif %}
       </h2>
-
+      
       {% render 'yotpo-review-stars', product: product %}
-
+      
       <div class="product-description">
         {{ section.settings.desc | default: product.description }}
       </div>
-
+      
       {% capture form_classes -%}
         product-form product-form-{{ section.id }}
         {%- if section.settings.enable_payment_button and product.has_only_default_variant %} product-form--payment-button-no-variants {%- endif -%}
         {%- if current_variant.available == false %} product-form--variant-sold-out {%- endif -%}
       {%- endcapture %}
-
+      
       {% for block in section.blocks %}
         {% case block.type %}
           {% when 'tagline' %}
@@ -205,16 +206,16 @@
               <div class="rating-stars-container">
                 {% for i in (1..block.settings.stars_num) %}
                   <img
-                      src="{{ 'trustpilot-rating-star.png' | asset_img_url }}"
-                      width="17"
-                      height="17"
-                      loading="lazy"
+                    src="{{ 'trustpilot-rating-star.png' | asset_img_url }}"
+                    width="17"
+                    height="17"
+                    loading="lazy"
                   >
                 {% endfor %}
               </div>
               <img src="{{ 'trustpilot-logo.png' | asset_img_url }}" height="17" loading="lazy">
             </div>
-
+          
           {% when 'badge' %}
             <div class="badge-wrapper">
               {% if block.settings.badge_text != blank %}
@@ -224,23 +225,43 @@
             </div>
         {% endcase %}
       {% endfor %}
-
+      
       {% form 'product', product, class: form_classes, novalidate: 'novalidate', data-product-form: '' %}
         <div class="overlay">
           <svg
-              aria-hidden="true"
-              focusable="false"
-              role="presentation"
-              width="40"
-              class="spinner"
-              viewBox="0 0 66 66"
-              xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+            focusable="false"
+            role="presentation"
+            width="40"
+            class="spinner"
+            viewBox="0 0 66 66"
+            xmlns="http://www.w3.org/2000/svg"
+            
           >
             <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
           </svg>
         </div>
-
-        <div class="attribute-configurator">
+        
+        {% liquid
+          assign qtySelectorOrientation = "horizontal"
+          
+          if product.has_only_default_variant == false
+            assign qtySelectorOrientation = "vertical"
+          endif
+        %}
+       
+        <script>
+          console.log({{ product.selected_or_first_available_variant.available }})
+        </script>
+        
+        <div id="attribute-configurator" class="
+          attribute-configurator
+          {% if product.has_only_default_variant == true or product.selected_or_first_available_variant.available == false %}
+            attribute-configurator--single
+          {% endif %}
+          "
+        >
+          
           <variant-selects
             class="no-js-hidden emma-product__variant"
             data-section="{{ section.id }}"
@@ -277,8 +298,7 @@
             
             <script type="application/json">
             {{ product.variants | json }}
-
-          </script>
+            </script>
           </variant-selects>
           
           <select name="id" id="ProductSelect-{{ section.id }}" class="product-form__variants no-js">
@@ -295,32 +315,13 @@
             {% endfor %}
           </select>
           
-          <div  class="product-quantity-selector{% unless product.selected_or_first_available_variant.available %} visibility-hidden{% endunless %}"{{ block.shopify_attributes }}>
-            <label class="product-quantity-selector__label" for="Quantity-{{ section.id }}">
-              {{ 'products.product.quantity' | t }}
-            </label>
-            
-            <quantity-input name="quantity" class="quantity-input" form="product-form-{{ section.id }}">
-              <button class="quantity-input__button no-js-hidden" name="minus" type="button">-</button>
-              <input
-                class="quantity-input__native"
-                type="number"0
-                name="quantity"
-                id="Quantity-{{ section.id }}"
-                value="1"
-                min="1"
-                pattern="[0-9]*"
-                readonly
-              >
-              <button class="quantity-input__button no-js-hidden" name="plus" type="button">+</button>
-            </quantity-input>
-          </div>
+          {% render 'product-quantity-selector', orientation: qtySelectorOrientation %}
         </div>
-
+        
         <div
-            class="product-form__error-message-wrapper product-form__error-message-wrapper--hidden{% if section.settings.enable_payment_button %} product-form__error-message-wrapper--has-payment-button{% endif %}"
-            data-error-message-wrapper
-            role="alert"
+          class="product-form__error-message-wrapper product-form__error-message-wrapper--hidden{% if section.settings.enable_payment_button %} product-form__error-message-wrapper--has-payment-button{% endif %}"
+          data-error-message-wrapper
+          role="alert"
         >
           <span class="visually-hidden">{{ 'general.accessibility.error' | t }} </span>
           {% include 'icon-error' %}
@@ -328,12 +329,17 @@
             {{- 'products.product.quantity_minimum_message' | t -}}
           </span>
         </div>
-{% for block in bundleProductTemp %}
+        {% for block in bundleProductTemp %}
           {% assign benefitUrl = block.settings.url %}
           <div class="tempBundle">
-            <a class="unique-selling-point"{% if benefitUrl != blank %} href="{{ benefitUrl }}"{% endif %}
-               target="_blank">
-              <img class="unique-selling-point__icon"  src="{{ block.settings.icon | image_url: width: "48", height: "48" }}"   loading="lazy" >
+            <a
+              class="unique-selling-point"{% if benefitUrl != blank %} href="{{ benefitUrl }}"{% endif %}
+              target="_blank"
+            >
+              <img
+                class="unique-selling-point__icon"
+                src="{{ block.settings.icon | image_url: width: "48", height: "48" }}" loading="lazy"
+              >
               <p class="title">
                 {{ block.settings.text }}
               </p>
@@ -346,62 +352,62 @@
         <div id="price-{{ section.id }}" class="product__price" {{ block.shopify_attributes }}>
           {% render 'product-price', variant: current_variant, product: product %}
         </div>
-
+        
         {% if tax %}
           <div class="tax-wrapper">
             <p class="tax-text">{{ tax.settings.text }}</p>
           </div>
         {% endif %}
-
+        
         {% if stock %}
           <div class="stock-wrapper">
             <p class="stock-text">{{ stock.settings.text }}</p>
           </div>
         {% endif %}
-
+        
         <div class="installment-widgets mb-4">
-					{%- if appBlock -%}
-						{% render appBlock %}
-					{% endif %}
-					
-					{%- if affirm_widget -%}
-						<div {{ block.shopify_attributes }}>
-							{% render 'affirm-widget' %}
-						</div>
-					{% endif %}
-				</div>
-
+          {%- if appBlock -%}
+            {% render appBlock %}
+          {% endif %}
+          
+          {%- if affirm_widget -%}
+            <div {{ block.shopify_attributes }}>
+              {% render 'affirm-widget' %}
+            </div>
+          {% endif %}
+        </div>
+        
         <div class="product-form__controls-group product-form__controls-group--submit">
           <div
-              class="
+            class="
               product-form__item product-form__item--submit
               {%- if section.settings.enable_payment_button %} product-form__item--payment-button {%- endif -%}
               {%- if product.has_only_default_variant %} product-form__item--no-variants {%- endif -%}
             "
           >
             {% render 'add-to-cart-btn' %}
-
+            
             {% if section.settings.enable_payment_button %}
               {{ form | payment_button }}
             {% endif %}
           </div>
         </div>
-
+        
         {% if section.settings.disclaimer != blank %}
-            <p class="text-center py-4 text-scarlet font-semibold">
-              {{ section.settings.disclaimer }}
-            </p>
+          <p class="text-center py-4 text-scarlet font-semibold">
+            {{ section.settings.disclaimer }}
+          </p>
         {% endif %}
-
+        
         {% if loadUpService %}
           <h5>Recommended add-on:</h5>
           {% render 'load-up-widget', settings: loadUpService.settings %}
         {% endif %}
-
         
-
+        
+        
         {% if upsell_widget %}
-            {% render 'product-upsell-widget', settings: upsell_widget.settings %}
+          {% render 'product-upsell-widget', settings: upsell_widget.settings %}
         {% endif %}
         
         {% if upsell_mattress %}
@@ -409,9 +415,9 @@
             <div style="grid-template-columns: minmax(100px, 1fr) 2fr;" class="grid gap-3">
               <div style="grid-row: 1 / 3;" class="self-center">
                 <img
-                    class="mx-auto h-auto"
-                    src="{{ upsell_mattress.settings.upsell_mattress_product_image | img_url: 'master' }}"
-                    alt=""
+                  class="mx-auto h-auto"
+                  src="{{ upsell_mattress.settings.upsell_mattress_product_image | img_url: 'master' }}"
+                  alt=""
                 >
               </div>
               <div class="px-4">
@@ -425,7 +431,7 @@
                   >From {{ upsell_mattress.settings.upsell_mattress_product.price | money_without_trailing_zeros -}}
                   </span>
                   <span
-                      class="line-through"
+                    class="line-through"
                   >
                     {{-
                     upsell_mattress.settings.upsell_mattress_product.compare_at_price
@@ -436,8 +442,8 @@
               </div>
               <div style="grid-column: 2 / 3;" class="px-4">
                 <a
-                    href="{{ upsell_mattress.settings.upsell_mattress_product }}"
-                    class="block w-full rounded-lg border-2  px-4 py-1 text-center text-[15px] font-semibold uppercase transition-all duration-200 view_btn"
+                  href="{{ upsell_mattress.settings.upsell_mattress_product }}"
+                  class="block w-full rounded-lg border-2  px-4 py-1 text-center text-[15px] font-semibold uppercase transition-all duration-200 view_btn"
                 >View product</a
                 >
               </div>
@@ -445,20 +451,20 @@
           </div>
         {% endif %}
       {% endform %}
-
+      
       <p
-          class="visually-hidden"
-          data-loader-status
-          aria-live="assertive"
-          role="alert"
-          aria-hidden="true"
+        class="visually-hidden"
+        data-loader-status
+        aria-live="assertive"
+        role="alert"
+        aria-hidden="true"
       >
         {{ 'products.product.loader_label' | t }}
       </p>
-
+      
       <button class="visually-hidden" data-add-to-cart></button>
-
-
+      
+      
       {% if mini_comparison_table %}
         <div class="overflow-auto mb-8">
           {% render 'mini-comparison-table', settings: mini_comparison_table.settings %}
@@ -469,14 +475,19 @@
           {% render 'mini-comparison-specs', settings: mini_comparison_specs.settings %}
         </div>
       {% endif %}
-
+      
       <ul class="benefits">
         {% for block in uniqueSellingPoints %}
           {% assign benefitUrl = block.settings.url %}
           <li>
-            <a class="unique-selling-point"{% if benefitUrl != blank %} href="{{ benefitUrl }}"{% endif %}
-               target="_blank">
-              <img class="unique-selling-point__icon" src="{{ block.settings.icon | image_url: width: "25", height: "25" }}" loading="lazy">
+            <a
+              class="unique-selling-point"{% if benefitUrl != blank %} href="{{ benefitUrl }}"{% endif %}
+              target="_blank"
+            >
+              <img
+                class="unique-selling-point__icon"
+                src="{{ block.settings.icon | image_url: width: "25", height: "25" }}" loading="lazy"
+              >
               <p class="title">
                 {{ block.settings.text }}
               </p>
@@ -486,93 +497,92 @@
             </a>
           </li>
         {% endfor %}
-
+        
         {% if paymentProvidersBlock %}
           <li class="payment-providers unique-selling-point">
             <img
-                class="unique-selling-point__icon"
-                src="{{ paymentProvidersBlock.settings.icon | image_url: width: "25", height: "25" }}"
-                loading="lazy"
+              class="unique-selling-point__icon"
+              src="{{ paymentProvidersBlock.settings.icon | image_url: width: "25", height: "25" }}"
+              loading="lazy"
             >
             <p class="title">
               {{ paymentProvidersBlock.settings.text }}
             </p>
-                    <div class="payment-providers__listing_new">
-        
-        
+            <div class="payment-providers__listing_new">
+              
+              
+              <div class="payment-provider">
+                <img
+                  src="//cdn.shopify.com/s/files/1/0562/9873/3706/files/paypal_payment_provider.svg?v=1698141213&amp;width=1440"
+                >
+              </div>
+              
+              
+              <div class="payment-provider">
+                <img
+                  src="//cdn.shopify.com/s/files/1/0562/9873/3706/files/visa_payment_provider.svg?v=1698141376&amp;width=1440"
+                >
+              </div>
+              
+              
+              <div class="payment-provider">
+                <img
+                  src="//cdn.shopify.com/s/files/1/0562/9873/3706/files/master-cart_payment_provider.svg?v=1698141377&amp;width=1440"
+                >
+              </div>
+              
+              
+              <div class="payment-provider">
+                <img
+                  src="//cdn.shopify.com/s/files/1/0562/9873/3706/files/american_express.svg?v=1698141377&amp;width=1440"
+                >
+              </div>
+              
+              
+              <div class="payment-provider">
+                <img
+                  src="//cdn.shopify.com/s/files/1/0562/9873/3706/files/discover-payment-method.svg?v=1698141377&amp;width=1440"
+                >
+              </div>
+              
+              
+              <div class="payment-provider">
+                <img src="//cdn.shopify.com/s/files/1/0562/9873/3706/files/apple_pay.svg?v=1698141377&amp;width=1440">
+              </div>
+              
+              
+              <div class="payment-provider">
+                <img src="//cdn.shopify.com/s/files/1/0562/9873/3706/files/pay_google.svg?v=1698141377&amp;width=1440">
+              </div>
+              
+              
+              <div class="payment-provider">
+                <img src="//cdn.shopify.com/s/files/1/0562/9873/3706/files/shop-pay.svg?v=1698141377&amp;width=1440">
+              </div>
             
-               
-                <div class="payment-provider">
-                    <img src="//cdn.shopify.com/s/files/1/0562/9873/3706/files/paypal_payment_provider.svg?v=1698141213&amp;width=1440">
-                </div>
-                
             
-               
-                <div class="payment-provider">
-                    <img src="//cdn.shopify.com/s/files/1/0562/9873/3706/files/visa_payment_provider.svg?v=1698141376&amp;width=1440">
-                </div>
-                
+            </div>
             
-               
-                <div class="payment-provider">
-                    <img src="//cdn.shopify.com/s/files/1/0562/9873/3706/files/master-cart_payment_provider.svg?v=1698141377&amp;width=1440">
-                </div>
-                
-            
-               
-                <div class="payment-provider">
-                    <img src="//cdn.shopify.com/s/files/1/0562/9873/3706/files/american_express.svg?v=1698141377&amp;width=1440">
-                </div>
-                
-               
-                <div class="payment-provider">
-                    <img src="//cdn.shopify.com/s/files/1/0562/9873/3706/files/discover-payment-method.svg?v=1698141377&amp;width=1440">
-                </div>
-                
-            
-               
-                <div class="payment-provider">
-                    <img src="//cdn.shopify.com/s/files/1/0562/9873/3706/files/apple_pay.svg?v=1698141377&amp;width=1440">
-                </div>
-                
-            
-               
-                <div class="payment-provider">
-                    <img src="//cdn.shopify.com/s/files/1/0562/9873/3706/files/pay_google.svg?v=1698141377&amp;width=1440">
-                </div>
-                
-            
-               
-                <div class="payment-provider">
-                    <img src="//cdn.shopify.com/s/files/1/0562/9873/3706/files/shop-pay.svg?v=1698141377&amp;width=1440">
-                </div>
-                
-            
-        
-
-    
-    </div>
-
-                  {% comment %}
-            <div class="payment-providers__listing"></div>
-            <script>
-                fetch(`?sections={{ paymentProvidersBlock.settings.payment_providers_section }}`)
-                    .then((response) => response.json())
-                    .then((res) => {
-                        const html = new DOMParser().parseFromString(
-                            res['{{ paymentProvidersBlock.settings.payment_providers_section }}'],
-                            'text/html'
-                        );
-                        $('.payment-providers.unique-selling-point .payment-providers__listing').html(
-                            html.querySelector('.payment-providers__listing').innerHTML
-                        );
-                    });
-            </script>
-          {% endcomment %}
+            {% comment %}
+      <div class="payment-providers__listing"></div>
+      <script>
+          fetch(`?sections={{ paymentProvidersBlock.settings.payment_providers_section }}`)
+              .then((response) => response.json())
+              .then((res) => {
+                  const html = new DOMParser().parseFromString(
+                      res['{{ paymentProvidersBlock.settings.payment_providers_section }}'],
+                      'text/html'
+                  );
+                  $('.payment-providers.unique-selling-point .payment-providers__listing').html(
+                      html.querySelector('.payment-providers__listing').innerHTML
+                  );
+              });
+      </script>
+    {% endcomment %}
           </li>
         {% endif %}
       </ul>
-
+      
       <ul class="product-specifications">
         {% for block in productSpecifications %}
           <li class="product-specification">
@@ -581,16 +591,17 @@
                 {{ block.settings.title }}
               </div>
               <svg
-                  class="product-specification__icon"
-                  width="24"
-                  height="25"
-                  viewBox="0 0 24 25"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
+                class="product-specification__icon"
+                width="24"
+                height="25"
+                viewBox="0 0 24 25"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
               >
                 <path
-                    d="M21.5303 8.44739C21.2373 8.15442 20.7627 8.15442 20.4697 8.44739L12 16.9171L3.53028 8.44739C3.23731 8.15442 2.7627 8.15442 2.46973 8.44739C2.17676 8.74036 2.17676 9.21497 2.46973 9.50794L11.4697 18.5079C11.6162 18.6544 11.8081 18.7277 12 18.7277C12.1924 18.7277 12.3838 18.6544 12.5303 18.5079L21.5303 9.50793C21.8232 9.21496 21.8232 8.74036 21.5303 8.44739Z"
-                    fill="#2E2F3C"/>
+                  d="M21.5303 8.44739C21.2373 8.15442 20.7627 8.15442 20.4697 8.44739L12 16.9171L3.53028 8.44739C3.23731 8.15442 2.7627 8.15442 2.46973 8.44739C2.17676 8.74036 2.17676 9.21497 2.46973 9.50794L11.4697 18.5079C11.6162 18.6544 11.8081 18.7277 12 18.7277C12.1924 18.7277 12.3838 18.6544 12.5303 18.5079L21.5303 9.50793C21.8232 9.21496 21.8232 8.74036 21.5303 8.44739Z"
+                  fill="#2E2F3C"
+                />
               </svg>
             </div>
             <div class="product-specification__content">
@@ -599,16 +610,16 @@
                   {% for variant in product.variants %}
                     <li class="variant-dimension">
                       <h6 class="heading-6 font-semibold">
-                         {% if variant.metafields.accentuate.dimension %}
-  				             {{ variant.title | split: ' | ' | first }} | {{ variant.metafields.accentuate.dimension }}
-                         {% else %}
-                             {{ variant.title }}
-                         {% endif %}
-					  </h6>
+                        {% if variant.metafields.accentuate.dimension %}
+                          {{ variant.title | split: ' | ' | first }} | {{ variant.metafields.accentuate.dimension }}
+                        {% else %}
+                          {{ variant.title }}
+                        {% endif %}
+                      </h6>
                     </li>
                   {% endfor %}
                 </ul>
-
+              
               {% else %}
                 {{ block.settings.content }}
               {% endif %}
@@ -624,50 +635,52 @@
 {% unless product == empty %}
   <script type="application/json" id="ProductJson-{{ section.id }}">
     {{ product | json }}
+  
   </script>
   <script type="application/json" id="ModelJson-{{ section.id }}">
     {{ product.media | where: 'media_type', 'model' | json }}
+  
   </script>
 {% endunless %}
 
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const main = new Splide('#main-carousel', {
-            type: 'fade',
-            rewind: true,
-            pagination: true,
-            arrows: true,
-        });
-        const thumbnails = new Splide('#thumbnail-carousel', {
-            fixedWidth: 100,
-            gap: 10,
-            rewind: true,
-            pagination: false,
-            isNavigation: true
-        });
-
-        main.sync(thumbnails);
-        main.mount();
-        thumbnails.mount();
+  document.addEventListener("DOMContentLoaded", function () {
+    const main = new Splide("#main-carousel", {
+      type: "fade",
+      rewind: true,
+      pagination: true,
+      arrows: true,
+    });
+    const thumbnails = new Splide("#thumbnail-carousel", {
+      fixedWidth: 100,
+      gap: 10,
+      rewind: true,
+      pagination: false,
+      isNavigation: true,
     });
 
-    $(window).on('load', function () {
-        $('#ProductSection-{{ section.id }} .product-specification').beefup({
-            trigger: '.product-specification__header',
-            content: '.product-specification__content',
-            openSpeed: 500,
-            closeSpeed: 250,
-        });
-    });
+    main.sync(thumbnails);
+    main.mount();
+    thumbnails.mount();
+  });
 
-    const input = document.getElementById('Quantity-{{ section.id }}');
-
-    $('.quantity-input__button[name="minus"]').click(function () {
-        if (input.value <= 1) {
-            return;
-        }
-        input.value--;
+  $(window).on("load", function () {
+    $('#ProductSection-{{ section.id }} .product-specification').beefup({
+      trigger: ".product-specification__header",
+      content: ".product-specification__content",
+      openSpeed: 500,
+      closeSpeed: 250,
     });
+  });
+
+  const input = document.getElementById('Quantity-{{ section.id }}');
+
+  $(".quantity-input__button[name=\"minus\"]").click(function () {
+    if (input.value <= 1) {
+      return;
+    }
+    input.value--;
+  });
 </script>
 
 {% schema %}
@@ -842,11 +855,9 @@
         }
       ]
     },
-
-      {
+    {
       "type": "custom_payment_providers",
       "name": "Custom Payment Providers",
-
       "settings": [
         {
           "type": "image_picker",
@@ -953,7 +964,7 @@
         }
       ]
     },
-     {
+    {
       "type": "campaign_teaser",
       "limit": 1,
       "name": "Campaign Teaser",
@@ -970,7 +981,7 @@
         }
       ]
     },
-     {
+    {
       "type": "upsell_widget",
       "name": "Upsell Widget",
       "settings": [

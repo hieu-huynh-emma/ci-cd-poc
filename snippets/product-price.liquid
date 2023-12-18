@@ -86,7 +86,7 @@
           <span class="visually-hidden visually-hidden--inline">{{ 'products.product.sale_price' | t }}</span>
         </dt>
         <dd>
-          <p class="price-item price-item--sale" data-sale-price>
+          <p class="text-scarlet items-end font-semibold text-[32px] leading-[125%]" data-sale-price>
             {{ money_price }}
           </p>
         </dd>
@@ -96,7 +96,7 @@
          <span class="visually-hidden visually-hidden--inline">{{ 'products.product.regular_price' | t }}</span>
        </dt>
        <dd>
-         <s class="price-item price-item--regular line-though" data-regular-price>
+         <s class="items-end font-semibold text-md leading-[125%] line-though" data-regular-price>
            {{ compare_at_price | money_without_trailing_zeros }}
          </s>
        </dd>

@@ -794,21 +794,9 @@ body {
 }
 
 /* new-css/end */
-@media (min-width: 769px) {
-  .page-boundary {
-    padding: 0 4rem;
-  }
-  #customer-sentiment-section {
-    padding: 2.5rem 0;
-  }
-  #customer-sentiment-section .page-boundary {
-    padding-left: 4rem;
-    padding-right: 0;
-  }
-  #product-grid-section .product-grid-section-wrapper {
-    padding: 2.5rem 0;
-  }
-}
+@media (min-width: 769px)
+
+
 
 .product-info .product-quantity-selector .quantity-input {
   display: flex;
@@ -832,6 +820,11 @@ body {
   gap: 20px;
   grid-template-columns: minmax(0, .6fr) minmax(0, .4fr);
   align-items: flex-end;
+  transition: 500ms;
+}
+
+.attribute-configurator--single {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0);
 }
 
 .product-info .product-quantity-selector .quantity-input__button {

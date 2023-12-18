@@ -35,7 +35,7 @@ gulp.task('sass', function () {
 });
 
 gulp.task('watch', function () {
-  gulp.watch('styles/**/*.scss', gulp.series('sass'))
+  gulp.watch(['sections/**/*.liquid', 'snippets/**/*.liquid', 'layout/**/*.liquid', 'templates/**/*.liquid'], gulp.series('sass'))
 })
 
 gulp.task('clean', function () {
