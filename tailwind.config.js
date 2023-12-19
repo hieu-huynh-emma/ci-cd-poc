@@ -19,6 +19,7 @@ module.exports = {
         "neutral-300": "#D2D3DD",
         "cultured": "#F7F7F9",
         red: "#FF0000",
+        "calm-600": "#693F73"
       },
     },
     fontFamily: {
