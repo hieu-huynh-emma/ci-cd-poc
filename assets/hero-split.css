@@ -76,6 +76,7 @@
 
 
 #hero-split-section .hero-split .section-content {
+    z-index: 2;
     width: 100%
 }
 
@@ -195,6 +196,7 @@
 
 
 #hero-split-section .section-container {
+    z-index: 2;
     display: grid;
     gap: .75rem;
     justify-content: flex-start;
@@ -205,16 +207,20 @@
     #hero-split-section .section-container {
         gap: 0;
         grid-template-rows:minmax(0, auto);
-        grid-template-columns:60% 40%;
+        grid-template-columns: 60% 40%;
         height: fit-content;
     }
 }
 
 #hero-split-section .wallpaper-container {
-    z-index: -1;
+    z-index: 1;
     position: absolute;
     inset: 0;
     height: 100%;
+}
+
+#hero-split-section .wallpaper-container .wallpaper:first-child{
+   aspect-ratio: 4/3
 }
 
 #hero-split-section .section-container.hero-split-features {
@@ -240,6 +246,7 @@
 }
 
 #hero-split-section .mobile-section-frame .hero-split .hero-split-features {
+    z-index: 2;
     display: grid;
     gap: 1rem;
     width: 100%;
@@ -252,11 +259,10 @@
 }
 
 #hero-split-section .mobile-section-frame .hero-split-container {
-    grid-template-rows: minmax(0, 1fr);
+    grid-template-rows: repeat(2, minmax(0, auto));
 }
 
 #hero-split-section .mobile-section-frame .wallpaper {
-    z-index: -1;
     position: absolute;
     inset: 0
 }

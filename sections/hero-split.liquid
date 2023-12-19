@@ -66,13 +66,13 @@
             {% for block in heroSplits %}
                 {% assign wallpaper = block.settings.wallpaper %}
                 {% if wallpaper != blank %}
-                    <div class="wallpaper">
+                    <a href="{{ block.settings.cta_url }}" class="wallpaper">
                         {{
                         wallpaper
                         | image_url: width: 2680
                         | image_tag: width: 2680, height: 640, class: 'mx-auto', loading: 'eager'
                         }}
-                    </div>
+                    </a>
                 {% endif %}
             {% endfor %}
         </section>
@@ -133,13 +133,13 @@
                 </div>
 
                 {% if wallpaper != blank %}
-                    <div class="wallpaper">
+                    <a href="{{ block.settings.cta_url }}" class="wallpaper">
                         {{
                         wallpaper
                         | image_url: width: 2680
                         | image_tag: width: 2680, height: 640, class: 'mx-auto', loading: 'eager'
                         }}
-                    </div>
+                    </a>
                 {% endif %}
             </section>
         {% endfor %}
