@@ -5,20 +5,37 @@
 {{ 'bundle-detail.css' | asset_url | stylesheet_tag }}
 
 {% case template %}
-  {% when 'page.comparison' %}
-    {{ 'comparison-page.css' | asset_url | stylesheet_tag }}
-  {% when 'page.competitor-comparison' %}
-    {{ 'competitor-comparison.css' | asset_url | stylesheet_tag }}
-  {% when 'page.generic1' %}
-    {{ 'faq.css' | asset_url | stylesheet_tag }}
-  {% when 'page.financing' %}
-    {{ 'financing.css' | asset_url | stylesheet_tag }}
-  {% when 'page.landing-page' %}
-    {{ 'landing-page.css' | asset_url | stylesheet_tag }}
-  {% when 'product.new-diamond-pillow' or 'product.bed-frame-new' or 'product.mattress-protector-new' or 'product.ready-to-sleep' or 'product.emma-hybrid-comfort' or 'product.emma-original' or 'product.diamond-pillow' or 'product.new-diamond-pillow'  or 'product.foam-pillow' or 'product.mattress-protector' or 'product.emma-thermosync-mattress' or 'product.perfect-sleep-bundle' or 'product.new-diamond-pillow' or 'product.sleep-essential-bundle' or 'product.emma-climax-hybrid'   or 'product.emma-shift'  or 'product.emma-hybrid-pro' %}
-    {{ 'revamp-product.css' | asset_url | stylesheet_tag }}
-  {% when 'page' or 'page.100-nights' or 'page.toc' or 'page.legal-notice' %}
-    {{ 'static-page.css' | asset_url | stylesheet_tag }}
+    {% when 'page.comparison' %}
+        {{ 'comparison-page.css' | asset_url | stylesheet_tag }}
+    {% when 'page.competitor-comparison' %}
+        {{ 'competitor-comparison.css' | asset_url | stylesheet_tag }}
+    {% when 'page.generic1' %}
+        {{ 'faq.css' | asset_url | stylesheet_tag }}
+    {% when 'page.financing' %}
+        {{ 'financing.css' | asset_url | stylesheet_tag }}
+    {% when 'page.landing-page' %}
+        {{ 'landing-page.css' | asset_url | stylesheet_tag }}
+    {% when 'product.new-diamond-pillow'
+        or 'product.bed-frame-new'
+        or 'product.mattress-protector-new'
+        or 'product.ready-to-sleep'
+        or 'product.emma-hybrid-comfort'
+        or 'product.emma-original'
+        or 'product.diamond-pillow'
+        or 'product.new-diamond-pillow'
+        or 'product.foam-pillow'
+        or 'product.mattress-protector'
+        or 'product.emma-thermosync-mattress'
+        or 'product.perfect-sleep-bundle'
+        or 'product.hybrid-comfort-bundle'
+        or 'product.new-diamond-pillow'
+        or 'product.sleep-essential-bundle'
+        or 'product.emma-shift'
+        or 'product.emma-hybrid-pro'
+    %}
+        {{ 'revamp-product.css' | asset_url | stylesheet_tag }}
+    {% when 'page' or 'page.100-nights' or 'page.toc' or 'page.legal-notice' %}
+        {{ 'static-page.css' | asset_url | stylesheet_tag }}
 {% endcase %}
 
 {{ 'tailwind.css' | asset_url | stylesheet_tag }}
