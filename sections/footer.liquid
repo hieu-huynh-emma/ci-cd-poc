@@ -183,7 +183,7 @@
                     Customer Support
                 </h6>
                 <ul class="site-footer__links foot_info">
-                    <li class="site-footer__link"><p class="text-white italic">Available from 08:00 to 18:00 GMT-6, Monday-Friday</p></li>
+                    <li class="site-footer__link"><p class="text-white italic">{{ settings.availability_schedule }}</p></li>
                     <li class="site-footer__link">
                         <img src="{{ 'phone.svg' | asset_url }}" width="20" height="20" loading="lazy" />
                         <a href="tel:+1 (844) 906 3662">1 (844) 906 3662</a>
@@ -213,13 +213,13 @@
                                     src="{{ 'icon-instagram.svg' | asset_url }}" loading="lazy" width="16"
                                     height="16"
                             /></a></li>
-                  
+
                 </ul>
             </div>
         </div>
 
         {% render 'sitemap', sitemap: section.settings.footer_main_menu %}
-        
+
     </div>
 </footer>
 
