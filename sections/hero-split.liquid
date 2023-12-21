@@ -3,149 +3,154 @@
 
 {{ 'hero-split.css' | asset_url | stylesheet_tag }}
 
-<div id="hero-split-section" class="page-boundary">
-    <div class="section-frame {% if heroSplits.size == 1 %}single-mode{% endif %}">
-        <div class="section-container">
-            {% for block in heroSplits %}
-                <section class="hero-split section-panel" style="color: {{ block.settings.text_color }}">
-                    <div class="hero-split-container">
-                        <div class="section-content">
-                            <div class="section-title relative">
-                                <h2 class="heading-2">{{ block.settings.title | remove: '<p>' | remove: '</p>' }}</h2>
-                                <span class="sale-badge">
+<section id="hero-split-section" class="page-boundary">
+  <div class="section-container {% if heroSplits.size == 1 %}single-mode{% endif %}">
+    <div class="section-interior unintrusive-bg">
+      <div class="section-frame">
+        {% for block in heroSplits %}
+          <div class="section-panel overlay-bg">
+            <section class="hero-split" style="color: {{ block.settings.text_color }}">
+              <div class="section-content">
+                <div class="section-title relative">
+                  <h2 class="heading-2">{{ block.settings.title | remove: '<p>' | remove: '</p>' }}</h2>
+                  <span class="sale-badge">
                                     {% if block.settings.discount_badge %}
-                                        {% render 'hero-sale-badge', settings: section.settings %}
+                                      {% render 'hero-sale-badge', settings: section.settings %}
                                     {% endif %}
                                 </span>
-                            </div>
-                            <p class="sub-heading">{{ block.settings.subtitle | remove: '<p>' | remove: '</p>' }}</p>
-                            <div class="section-content__tagline">{{ block.settings.tagline }}</div>
-                        </div>
-                    </div>
-                </section>
-            {% endfor %}
-        </div>
-        <div class="section-container hero-split-features">
-            {% for block in heroSplits %}
-                <div class="section-panel">
-                    {% if block.settings.timer %}
-                        <hero-banner-countdown-timer end-time="{{ block.settings.timer }}">
-                            <div class="countdown-timer" style="color: black;">
-                                <div class="time-part">
-                                    <p class="digit"></p>
-                                    <p class="label">Days</p>
-                                </div>
-                                <div class="time-part">
-                                    <p class="digit"></p>
-                                    <p class="label">Hours</p>
-                                </div>
-                                <div class="time-part">
-                                    <p class="digit"></p>
-                                    <p class="label">Minutes</p>
-                                </div>
-                                <div class="time-part">
-                                    <p class="digit"></p>
-                                    <p class="label">Seconds</p>
-                                </div>
-                            </div>
-                        </hero-banner-countdown-timer>
-                    {% endif %}
-
-                    {% if block.settings.cta_url != blank %}
-                        <div class="section-cta">
-                            <a class="btn btn--lg" href="{{ block.settings.cta_url }}">
-                                {{ block.settings.cta_text }}
-                            </a>
-                            <p class="cta-subtext hero-split-subtext">{{ block.settings.cta_subtext }}</p>
-                        </div>
-                    {% endif %}
                 </div>
-            {% endfor %}
-        </div>
-        <section class="section-container wallpaper-container">
-            {% for block in heroSplits %}
-                {% assign wallpaper = block.settings.wallpaper %}
-                {% if wallpaper != blank %}
-                    <a href="{{ block.settings.cta_url }}" class="wallpaper">
-                        {{
-                        wallpaper
-                        | image_url: width: 2680
-                        | image_tag: width: 2680, height: 640, class: 'mx-auto', loading: 'eager'
-                        }}
-                    </a>
-                {% endif %}
-            {% endfor %}
-        </section>
-    </div>
-
-    <div class="mobile-section-frame {% if heroSplits.size == 1 %}single-mode{% endif %}">
+                <p class="sub-heading">{{ block.settings.subtitle | remove: '<p>' | remove: '</p>' }}</p>
+                <div class="section-content__tagline">{{ block.settings.tagline }}</div>
+              </div>
+            </section>
+          </div>
+        {% endfor %}
+      </div>
+      <div class="section-frame hero-split-features">
         {% for block in heroSplits %}
-            {% assign wallpaper = block.settings.wallpaper %}
-
-            <section class="hero-split" style="color: {{ block.settings.text_color }}">
-                <div class="hero-split-container">
-                    <div class="section-content">
-                        <div class="section-title relative">
-                            <h2 class="heading-2">{{ block.settings.title | remove: '<p>' | remove: '</p>' }}</h2>
-                            <span class="sale-badge">
+          <div class="section-panel">
+            {% if block.settings.timer %}
+              <hero-banner-countdown-timer end-time="{{ block.settings.timer }}">
+                <div class="countdown-timer" style="color: black;">
+                  <div class="time-part">
+                    <p class="digit"></p>
+                    <p class="label">Days</p>
+                  </div>
+                  <div class="time-part">
+                    <p class="digit"></p>
+                    <p class="label">Hours</p>
+                  </div>
+                  <div class="time-part">
+                    <p class="digit"></p>
+                    <p class="label">Minutes</p>
+                  </div>
+                  <div class="time-part">
+                    <p class="digit"></p>
+                    <p class="label">Seconds</p>
+                  </div>
+                </div>
+              </hero-banner-countdown-timer>
+            {% endif %}
+            
+            {% if block.settings.cta_url != blank %}
+              <div class="section-cta">
+                <a class="btn btn--lg" href="{{ block.settings.cta_url }}">
+                  {{ block.settings.cta_text }}
+                </a>
+                <p class="cta-subtext hero-split-subtext">{{ block.settings.cta_subtext }}</p>
+              </div>
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="frame-foundation section-frame">
+      {% for block in heroSplits %}
+        {% assign wallpaper = block.settings.wallpaper %}
+        <a href="{{ block.settings.cta_url }}" class="section-flooring">
+          {% if wallpaper != blank %}
+            {{
+            wallpaper
+            | image_url: width: 2680
+            | image_tag: width: 2680, height: 640, class: 'mx-auto wallpaper', loading: 'eager'
+            }}
+          {% endif %}
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+  
+  <div class="section-container--mobile {% if heroSplits.size == 1 %}single-mode{% endif %}">
+    {% for block in heroSplits %}
+      {% assign wallpaper = block.settings.wallpaper %}
+      <div class="hero-split section-frame" style="color: {{ block.settings.text_color }}">
+        <div class="section-interior unintrusive-bg">
+          <div class="section-panel">
+            <div class="section-content">
+              <div class="section-title relative">
+                <h2 class="heading-2">{{ block.settings.title | remove: '<p>' | remove: '</p>' }}</h2>
+                <span class="sale-badge">
                                 {% if block.settings.discount_badge %}
-                                    {% render 'hero-sale-badge', settings: section.settings %}
+                                  {% render 'hero-sale-badge', settings: section.settings %}
                                 {% endif %}
                               </span>
-                        </div>
-                        <p class="sub-heading">{{ block.settings.subtitle | remove: '<p>' | remove: '</p>' }}</p>
-                        <div class="section-content__tagline">{{ block.settings.tagline }}</div>
+              </div>
+              <p class="sub-heading">{{ block.settings.subtitle | remove: '<p>' | remove: '</p>' }}</p>
+              <div class="section-content__tagline">{{ block.settings.tagline }}</div>
+            </div>
+            
+            <div class="hero-split-features">
+              {% if block.settings.timer %}
+                <hero-banner-countdown-timer end-time="{{ block.settings.timer }}">
+                  <div class="countdown-timer" style="color: black;">
+                    <div class="time-part">
+                      <p class="digit"></p>
+                      <p class="label">Days</p>
                     </div>
-
-                    <div class="hero-split-features">
-                        {% if block.settings.timer %}
-                            <hero-banner-countdown-timer end-time="{{ block.settings.timer }}">
-                                <div class="countdown-timer" style="color: black;">
-                                    <div class="time-part">
-                                        <p class="digit"></p>
-                                        <p class="label">Days</p>
-                                    </div>
-                                    <div class="time-part">
-                                        <p class="digit"></p>
-                                        <p class="label">Hours</p>
-                                    </div>
-                                    <div class="time-part">
-                                        <p class="digit"></p>
-                                        <p class="label">Minutes</p>
-                                    </div>
-                                    <div class="time-part">
-                                        <p class="digit"></p>
-                                        <p class="label">Seconds</p>
-                                    </div>
-                                </div>
-                            </hero-banner-countdown-timer>
-                        {% endif %}
-
-                        {% if block.settings.cta_url != blank %}
-                            <div class="section-cta">
-                                <a class="btn btn--lg" href="{{ block.settings.cta_url }}">
-                                    {{ block.settings.cta_text }}
-                                </a>
-                                <p class="cta-subtext hero-split-subtext">{{ block.settings.cta_subtext }}</p>
-                            </div>
-                        {% endif %}
+                    <div class="time-part">
+                      <p class="digit"></p>
+                      <p class="label">Hours</p>
                     </div>
+                    <div class="time-part">
+                      <p class="digit"></p>
+                      <p class="label">Minutes</p>
+                    </div>
+                    <div class="time-part">
+                      <p class="digit"></p>
+                      <p class="label">Seconds</p>
+                    </div>
+                  </div>
+                </hero-banner-countdown-timer>
+              {% endif %}
+              
+              {% if block.settings.cta_url != blank %}
+                <div class="section-cta">
+                  <a class="btn btn--lg" href="{{ block.settings.cta_url }}">
+                    {{ block.settings.cta_text }}
+                  </a>
+                  <p class="cta-subtext hero-split-subtext">{{ block.settings.cta_subtext }}</p>
                 </div>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+        
+        <div class="frame-foundation">
+          {% if wallpaper != blank %}
+            <a href="{{ block.settings.cta_url }}" class="section-flooring">
+              {{
+              wallpaper
+              | image_url: width: 2680
+              | image_tag: width: 2680, height: 640, class: 'mx-auto wallpaper', loading: 'eager'
+              }}
+            </a>
+          {% endif %}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
 
-                {% if wallpaper != blank %}
-                    <a href="{{ block.settings.cta_url }}" class="wallpaper">
-                        {{
-                        wallpaper
-                        | image_url: width: 2680
-                        | image_tag: width: 2680, height: 640, class: 'mx-auto', loading: 'eager'
-                        }}
-                    </a>
-                {% endif %}
-            </section>
-        {% endfor %}
-    </div>
-
-</div>
+</section>
 
 
 {% schema %}
