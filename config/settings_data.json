@@ -14,9 +14,9 @@
     "color_drawer_button_text": "#3c4196",
     "type_header_font": "assistant_n4",
     "type_body_font": "assistant_n4",
-    "sale_timer": "2023-12-21 05:00",
-    "availability_schedule": "Available from 08:00 to 18:00 GMT-6, Monday-Friday",
+    "sale_timer": "2023-12-25 05:00",
     "page_width": "1600",
+    "availability_schedule": "Available from 08:00 to 18:00 GMT-6, Monday-Friday",
     "favicon": "shopify:\/\/shop_images\/MicrosoftTeams-image_3.png",
     "currency_code_enabled": false,
     "show_vendor": false,
@@ -480,6 +480,18 @@
         "type": "shopify:\/\/apps\/estimated-delivery-date-plus\/blocks\/app_setting\/4a0685bc-c234-45b2-8382-5ad6a8e3e3fd",
         "disabled": false,
         "settings": {
+        }
+      },
+      "15683396631634586217": {
+        "type": "shopify:\/\/apps\/inbox\/blocks\/chat\/841fc607-4181-4ad1-842d-e24d7f8bad6b",
+        "disabled": true,
+        "settings": {
+          "button_color": "#3c4196",
+          "button_icon": "chat_bubble",
+          "button_text": "chat_with_us",
+          "button_horizontal_position": "bottom_right",
+          "button_vertical_position": "lowest",
+          "greeting_message": "👋 Hello! Please message us if you have questions, or give us an idea of what you’re looking for. We’re happy to make recommendations."
         }
       }
     }
