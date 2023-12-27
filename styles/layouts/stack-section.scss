@@ -1,0 +1,25 @@
+.stack-layout-section {
+  position: relative;
+
+  padding: 2.5rem 0;
+
+
+  &.flex-container {
+    display: flex;
+    gap: 0.5rem;
+    flex-direction: column;
+
+    @media screen and (min-width: 768px) {
+      gap: 1rem;
+
+    }
+  }
+
+
+  &__content-item {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+  }
+}
+

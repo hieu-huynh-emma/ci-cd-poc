@@ -1,0 +1,9 @@
+.widget-layout-section {
+  position: relative;
+
+  .widget-wrapper {
+    display: flex;
+    height: 100%;
+    min-height: 500px;
+  }
+}

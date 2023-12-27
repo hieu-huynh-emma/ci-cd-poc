@@ -359,12 +359,28 @@
             "cooling_meter": 8,
             "motion_isolation_meter": 8
           }
+        },
+        "95bee6a1-5a6f-4ba8-9fac-03c161a01953": {
+          "type": "explore-button",
+          "settings": {
+            "url": "shopify://pages/comparison",
+            "text": "<p>Compare all mattresses<\/p>"
+          }
+        },
+        "95bee6a1-5a6f-4ba8-9fac-03c161a01954": {
+          "type": "explore-button",
+          "settings": {
+            "url": "shopify:\/\/pages\/product-quizz",
+            "text": "<p>Find your perfect match<\/p>"
+          }
         }
       },
       "block_order": [
         "old-featured-products-1",
         "45135bc9-b9df-4a06-9cc5-cd1d467f439f",
-        "5669a974-c41c-4819-895a-3683043506f7"
+        "5669a974-c41c-4819-895a-3683043506f7",
+        "95bee6a1-5a6f-4ba8-9fac-03c161a01953",
+        "95bee6a1-5a6f-4ba8-9fac-03c161a01954"
       ],
       "custom_css": [
         "h1 {font-size: 18px; margin: 0 0 10px;}"
@@ -372,9 +388,7 @@
       "settings": {
         "title": "Sleeping will never be the same",
         "mobile_title": "Comfort that adapts",
-        "subtitle": "Experience rave-worthy comfort on a mattress that suits your every sleep need",
-        "compare-url": "shopify:\/\/pages\/comparison",
-        "compare-button-text": "Compare All Mattresses",
+        "subtitle": "<p>Experience rave-worthy comfort on a mattress that suits your every sleep need</p>",
         "first_meter_title": "Comfort",
         "show_first_meter": true,
         "second_meter_title": "Cooling",

@@ -35,7 +35,7 @@
   display:flex;
   flex-direction:column;
   gap:4px
-  
+
 }
   .collage_card .card_content p {
     color: #fff;
@@ -74,7 +74,7 @@
   padding:24px;
   gap:8px;
 }
- 
+
   .collage_container > div {
     width: 50%;
 }
@@ -135,7 +135,7 @@
     </div>
   <div class="collage_container">
   <div class="big_column">
- 
+
     <div class="collage_card">
      <a href="{{ section.settings.col-link-left }}">
         <img src="{{ section.settings.image-col-left |  img_url: 'master'}}"/>
@@ -145,7 +145,7 @@
       </div>
      </a>
     </div>
-   
+
   </div>
   <div class="small_column">
     {% for block in section.blocks %}
@@ -155,7 +155,7 @@
       <div class="card_content">
         <strong>{{ block.settings.col-title-right }}</strong>
         <p>{{ block.settings.col-text-right }}</p>
-   
+
       </div>
        </a>
     </div>
@@ -166,6 +166,7 @@
 {% schema %}
   {
     "name": "Home Collage Collection",
+    "class": "section-container",
     "settings": [
       {
       "id": "title",
@@ -177,7 +178,7 @@
       "type": "text",
       "label": "Mobile Title"
     },
-        
+
       {
                     "type": "image_picker",
                     "id": "image-col-left",
@@ -236,7 +237,7 @@
     "presets": [
         {
            "name": "Home Collage Collection"
-           
+
         }
     ]
 }

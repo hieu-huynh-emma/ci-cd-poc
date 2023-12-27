@@ -119,16 +119,23 @@
             "cooling_meter": 8,
             "motion_isolation_meter": 8
           }
+        },
+        "95bee6a1-5a6f-4ba8-9fac-03c161a01954": {
+          "type": "explore-button",
+          "settings": {
+            "url": "shopify:\/\/pages\/product-quizz",
+            "text": "<p>Find your perfect match<\/p>"
+          }
         }
       },
       "block_order": [
         "dc648e6a-73d1-4d9c-aa18-80fedeab1b00",
         "de83e3a7-7ae2-4d8f-9917-fd290fbf9e2e",
         "c331d24a-badc-4376-ad8f-078a999be775",
-        "f634c250-61e1-4006-8387-c5a5ea529c2f"
+        "f634c250-61e1-4006-8387-c5a5ea529c2f",
+        "95bee6a1-5a6f-4ba8-9fac-03c161a01954"
       ],
       "custom_css": [
-        ".sec_btn {display: none !important;}",
         ".shopify-richtext {display: flex; flex-direction: column; gap: 18px;}",
         ".shopify-richtext p strong {font-weight: 700;}",
         ".shopify-richtext p {color: #2e2f3c;}",
@@ -140,8 +147,6 @@
         "title": "Which mattress is right for you?",
         "mobile_title": "Which mattress is right for you ?",
         "subtitle": "",
-        "compare-url": "",
-        "compare-button-text": "",
         "first_meter_title": "Comfort",
         "show_first_meter": true,
         "second_meter_title": "Cooling",
@@ -223,7 +228,7 @@
       "type": "contact-us",
       "disabled": true,
       "settings": {
-        "custom_title": "Need help deciding?"
+        "title": "Need help deciding?"
       }
     }
   },
