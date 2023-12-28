@@ -6,13 +6,16 @@
         "5c4b464b-2041-4c6f-8e5d-1f5dd926054b": {
           "type": "heading",
           "settings": {
-            "heading": "Buyer's Guide"
+            "heading": "Buyer's Guide",
+            "full_width": true,
+            "heading_size": "heading-2"
           }
         },
         "cb7611d0-3970-49e7-be16-bcace516f082": {
           "type": "text",
           "settings": {
-            "text": "<p>Find the perfect product for you in just 30 seconds with this quiz!<\/p>"
+            "full_width": true,
+            "text": "<p>Find the perfect mattress for you in just 30 seconds with this quiz!<\/p>"
           }
         }
       },
@@ -21,13 +24,14 @@
         "cb7611d0-3970-49e7-be16-bcace516f082"
       ],
       "settings": {
+        "container_type": "flex"
       }
     },
     "landbot-widget": {
       "type": "landbot-widget",
       "settings": {
-        "boundless": true,
-        "url": "https://landbot.pro/v3/H-2073979-LPAQTJ6XMGZNCUF2/index.html"
+        "url": "https:\/\/landbot.pro\/v3\/H-2073979-LPAQTJ6XMGZNCUF2\/index.html",
+        "boundless": true
       }
     },
     "47cdc402-f526-47ac-8d3e-c8942fbf3252": {

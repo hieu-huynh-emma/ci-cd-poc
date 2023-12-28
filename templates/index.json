@@ -15,7 +15,7 @@
             "cta_url": "shopify:\/\/products\/emma-hybrid-comfort",
             "cta_text": "Shop Now",
             "cta_subtext": "",
-            "timer": "2023-12-27 05:00",
+            "timer": "2023-12-28 05:00",
             "discount_badge": false
           }
         },
@@ -396,7 +396,7 @@
         "95bee6a1-5a6f-4ba8-9fac-03c161a01953": {
           "type": "explore-button",
           "settings": {
-            "url": "shopify://pages/comparison",
+            "url": "shopify:\/\/pages\/comparison",
             "text": "<p>Compare all mattresses<\/p>"
           }
         },
@@ -422,7 +422,8 @@
       "settings": {
         "title": "Sleeping will never be the same",
         "mobile_title": "Comfort that adapts",
-        "subtitle": "<p>Our Bestseller Mattresses</p>",
+        "subtitle": "<p>Our Bestseller Mattresses<\/p>",
+        "heading_alignment": "start",
         "first_meter_title": "Comfort",
         "show_first_meter": true,
         "second_meter_title": "Cooling",
