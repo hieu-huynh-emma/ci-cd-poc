@@ -1,0 +1,39 @@
+{
+    "sections": {
+        "cart-page": {
+            "type": "cart-page",
+            "settings": {
+
+            }
+        },
+        "cart-empty": {
+            "type": "cart-empty",
+            "settings": {
+                "core-product": "emma-hybrid-premium",
+                "suggestion-catalog": [
+                    "emma-mattress-protector",
+                    "emma-bed-frame"
+                ],
+                "picture": "shopify:\/\/shop_images\/Group_34574.png",
+                "finance-tagline": "<p>As low as $450\/mo or 0% APR. <a href=\"\/products\/emma-original-mattress\" title=\"Emma Original Mattress\">Learn more<\/a><\/p>"
+            }
+        },
+        "cart-upsell": {
+            "type": "cart-upsell",
+            "settings": {
+
+            }
+        },
+        "contact-us": {
+            "type": "contact-us",
+            "settings": {
+            }
+        }
+    },
+    "order": [
+        "cart-page",
+        "cart-empty",
+        "cart-upsell",
+        "contact-us"
+    ]
+}
