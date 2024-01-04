@@ -8,14 +8,14 @@
           "type": "hero-split",
           "settings": {
             "wallpaper": "shopify:\/\/shop_images\/Christmas_Sale_Banner_-_CA_vh_copy_cb4d6440-d202-4ba3-9334-2f524b7bb356.jpg",
-            "title": "<p>Boxing day: up to 50% off + 2 free pillows *<\/p>",
+            "title": "<p>Extended Boxing sale: up to 50% off + 2 free pillows *<\/p>",
             "subtitle": "",
             "tagline": "<p>Enjoy our Exclusive Boxing Sale offers, limited quantities hurry! <br\/><a href=\"\/pages\/emma-first-time-customer-offer-promo-details\" target=\"_blank\" title=\"Emma “First Time Customer Offer” Promo Details\">New Customers Only - Terms apply*<\/a><\/p>",
             "text_color": "#ffffff",
             "cta_url": "shopify:\/\/products\/emma-hybrid-comfort",
             "cta_text": "Shop Now",
             "cta_subtext": "",
-            "timer": "2023-12-28 05:00",
+            "timer": "2024-01-04 05:00",
             "discount_badge": false
           }
         },
@@ -200,6 +200,15 @@
     "winning-awards": {
       "type": "logo-carousel",
       "blocks": {
+        "2f001268-c2a2-458a-9d8f-c90ca820b239": {
+          "type": "item",
+          "settings": {
+            "heading": "",
+            "icon": "shopify:\/\/shop_images\/Sleepopolis-Badges-2023_Best_Mattress.png",
+            "quote": "",
+            "link": ""
+          }
+        },
         "82bba997-40ba-439c-909f-62c6e739e43d": {
           "type": "item",
           "settings": {
@@ -272,15 +281,6 @@
             "link": ""
           }
         },
-        "cdaa5407-252a-4bb3-9102-30c3c7210607": {
-          "type": "item",
-          "settings": {
-            "heading": "",
-            "icon": "shopify:\/\/shop_images\/MC_Badges__Best_Mattress_For_Couples_2023.png",
-            "quote": "",
-            "link": ""
-          }
-        },
         "06647c2d-8c4a-4458-88b8-c1a43932dbd9": {
           "type": "item",
           "settings": {
@@ -290,17 +290,18 @@
             "link": ""
           }
         },
-        "2f001268-c2a2-458a-9d8f-c90ca820b239": {
+        "cdaa5407-252a-4bb3-9102-30c3c7210607": {
           "type": "item",
           "settings": {
             "heading": "",
-            "icon": "shopify:\/\/shop_images\/Sleepopolis-Badges-2023_Best_Mattress.png",
+            "icon": "shopify:\/\/shop_images\/MC_Badges__Best_Mattress_For_Couples_2023.png",
             "quote": "",
             "link": ""
           }
         }
       },
       "block_order": [
+        "2f001268-c2a2-458a-9d8f-c90ca820b239",
         "82bba997-40ba-439c-909f-62c6e739e43d",
         "88cc9342-d38c-4646-9f74-5f085daed0f8",
         "f75c2641-2a79-460d-a1e5-f38a105dc137",
@@ -309,9 +310,8 @@
         "e5cbf038-9d6e-4505-8e33-8c03ba6c31b8",
         "3534d7d4-8219-4c6f-a5a3-84023b604817",
         "5d11e8f7-8789-4531-a649-61e01a6fd3b7",
-        "cdaa5407-252a-4bb3-9102-30c3c7210607",
         "06647c2d-8c4a-4458-88b8-c1a43932dbd9",
-        "2f001268-c2a2-458a-9d8f-c90ca820b239"
+        "cdaa5407-252a-4bb3-9102-30c3c7210607"
       ],
       "custom_css": [
         ".logo-carousel {padding: 40px 0;}"
@@ -404,7 +404,7 @@
           "type": "explore-button",
           "settings": {
             "url": "shopify:\/\/pages\/product-quizz",
-            "text": "<p>Find your perfect match<\/p>"
+            "text": "<p>Find your perfect mattress<\/p>"
           }
         }
       },

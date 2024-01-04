@@ -234,7 +234,7 @@
         "70d9c3e6-227c-45f4-ad8f-46d64fa8c84a": {
           "type": "campaign_teaser",
           "settings": {
-            "title": "Boxing Day offer",
+            "title": "Extended Boxing Sale",
             "content": "<p>Exclusive offer : 55% off<\/p>"
           }
         }
@@ -409,7 +409,7 @@
         "heading": "Emma Hybrid Comfort - Layer by Layer",
         "heading_alignment": "start",
         "container_spacing": "sm",
-        "image": "shopify:\/\/shop_images\/Hybrid_Comfort_Layer_numbered.png",
+        "image": "shopify:\/\/shop_images\/Emma-Hybrid-comfort-compressednumbers.jpg",
         "carousel_mode": false
       }
     },
@@ -501,7 +501,7 @@
         "95bee6a1-5a6f-4ba8-9fac-03c161a01953": {
           "type": "explore-button",
           "settings": {
-            "url": "shopify://pages/comparison",
+            "url": "shopify:\/\/pages\/comparison",
             "text": "<p>Compare all mattresses<\/p>"
           }
         },
@@ -509,7 +509,7 @@
           "type": "explore-button",
           "settings": {
             "url": "shopify:\/\/pages\/product-quizz",
-            "text": "<p>Find your perfect match<\/p>"
+            "text": "<p>Find your perfect mattress<\/p>"
           }
         }
       },
@@ -527,7 +527,8 @@
       "settings": {
         "title": "Sleeping will never be the same",
         "mobile_title": "Comfort that adapts",
-        "subtitle": "<p>Experience rave-worthy comfort on a mattress that suits your every sleep need</p>",
+        "subtitle": "<p>Experience rave-worthy comfort on a mattress that suits your every sleep need<\/p>",
+        "heading_alignment": "start",
         "first_meter_title": "Comfort",
         "show_first_meter": true,
         "second_meter_title": "Cooling",
@@ -871,6 +872,7 @@
     "contact-us": {
       "type": "contact-us",
       "settings": {
+        "title": "Need help deciding?"
       }
     }
   },
