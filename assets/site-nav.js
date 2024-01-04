@@ -93,9 +93,7 @@ class SiteNavItem extends CustomElement {
         const {siteNav, siteSubnavEl, navDropdown} = this.refs
         const {isMinimal, index} = this.props
 
-        if (isMinimal) return
-
-        if (siteNav.activeIndex === index) return
+        if (siteNav.activeIndex === index || isMinimal) return
 
         siteNav.changeActive(index)
 

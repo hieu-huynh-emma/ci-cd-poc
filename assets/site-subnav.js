@@ -1,6 +1,10 @@
 class SiteSubnav extends CustomElement {
+    parentIndex = null
 
-    data = {}
+    data = {
+        title: "",
+        url: ""
+    }
 
     get refs() {
         const siteNav = document.querySelector('site-nav')
@@ -26,6 +30,10 @@ class SiteSubnav extends CustomElement {
     }
 
     refresh() {
+        const {siteNav} = this.refs;
+
+        if (siteNav.activeIndex === this.parentIndex) return
+
         this.getActiveNavLink()
 
         this.render();
@@ -66,7 +74,7 @@ class SiteSubnav extends CustomElement {
         this.data = mainNavigationMenu[this.parentIndex]
     }
 
-   renderSubnavItems() {
+    renderSubnavItems() {
         const {children} = this.data
 
         return children.map((childlink, i) => {
@@ -87,9 +95,9 @@ class SiteSubnav extends CustomElement {
                       <p class="font-semibold font-inter weglot-tr">
                     ${childlink.title}
                   </p>
-                 ${childlink.subnavHtmlContent } 
+                 ${childlink.subnavHtmlContent} 
                    </div>
-              <img src="${childlink.submenuThumbImage }&transform=resize=600" class="spotlight__image w-full h-full object-contain" loading="lazy" />
+              <img src="${childlink.submenuThumbImage}&transform=resize=600" class="spotlight__image w-full h-full object-contain" loading="lazy" />
                   </div>
                 </a>
               </site-subnav-item>`
@@ -179,6 +187,7 @@ class NavSpotlight extends CustomElement {
         url: "#",
         badgeText: ""
     }
+
     constructor() {
         super();
     }
@@ -201,27 +210,27 @@ class NavSpotlight extends CustomElement {
         <a href="${url}" class="spotlight__link">
           <p class="spotlight__name text-xl font-semibold weglot-tr">${name}</p>
         </a>
-        <p class="text-md">
-          ${originalPrice ? `<span class="weglot-tr">From</span> ` : ""}<span class="spotlight__price text-scarlet font-bold">${price}</span>
+        <div class="flex items-center gap-2 text-md">
+          ${originalPrice ? `<p class="inline weglot-tr">From</p> ` : ""}<span class="spotlight__price text-scarlet font-bold">${price}</span>
           ${originalPrice ? `<span class="spotlight__original-price line-through text-xs">${originalPrice}</span>` : ""}
-        </p>
+        </div>
       </div>
     `
     }
 
-    refresh({name, price, url, originalPrice,featuredImage, accentuate}) {
+    refresh({name, price, url, originalPrice, featuredImage, accentuate}) {
 
         this.data.name = name;
         this.data.price = currencyFormatter.format(price / 100);
         this.data.originalPrice = originalPrice ? currencyFormatter.format(originalPrice / 100) : null
-        this.data.imageUrl = accentuate.navigation_spotlight_image? `${accentuate.navigation_spotlight_image[0].src}&transform=resize=600` : featuredImage;
+        this.data.imageUrl = accentuate.navigation_spotlight_image ? `${accentuate.navigation_spotlight_image[0].src}&transform=resize=600` : featuredImage;
         this.data.url = url;
 
         const discountedAmount = originalPrice - price;
 
         const discountedPrice = accentuate.upto_discount || (100 * discountedAmount / originalPrice).toFixed(0);
 
-        this.data.badgeText = discountedPrice  > 0 ? `Up to ${discountedPrice}% off` : "";
+        this.data.badgeText = discountedPrice > 0 ? `Up to ${discountedPrice}% off` : "";
 
         this.render()
     }
