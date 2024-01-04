@@ -182,8 +182,8 @@
 {% assign imageBlocks = section.blocks | where: "type", "image-block" %}
 {% assign exploreBtns = section.blocks | where: "type", "explore-button" %}
 
-<section id="featured-products-section" class="section-container mb-8">
-    <div class="section-chassis page-boundary mb-5 pb-5 md:mb-0 md:pb-0">
+<section id="featured-products-section" class="section-container">
+    <div class="section-chassis page-boundary">
         <div class="section-header flex justify-between items-center">
             <div class="flex flex-1 flex-col items-{{ section.settings.heading_alignment }}">
                 <div class="text-comet text-left solid text-[16px] text-[#2E2F3C]">
@@ -195,20 +195,14 @@
                 </h2>
             </div>
 
-            <script>
-                console.log({{ exploreBtns.size }})
-            </script>
-
             {% if exploreBtns.size > 0 %}
                 <div class="flex flex-col gap-2">
                     {% for block in exploreBtns %}
                         <a href="{{ block.settings.url }}"
-                           class="font-inter text-[16px] font-bold rounded-full border border-{#2E2F3C} hidden md:block sec_btn">{{ block.settings.text }}</a>
+                           class="font-inter text-[16px] font-bold rounded-full border border-{#2E2F3C} text-center hidden md:block sec_btn">{{ block.settings.text }}</a>
                     {% endfor %}
                 </div>
             {% endif %}
-            {% comment %}<a href="{{ section.settings.compare-url }}"{% endcomment %}
-               {% comment %}class="font-inter text-[16px] font-bold rounded-full border border-{#2E2F3C} hidden md:block sec_btn">{{ section.settings.compare-button-text }}</a>{% endcomment %}
         </div>
 
         <div class="hidden md:flex md:justify-center md:gap-5 desktop_view">
@@ -546,15 +540,18 @@
                 </ul>
             </div>
         </div>
-    </div>
 
-    <div class="text-center mt-10 pt-6 mb-10  md:hidden">
-        <a href="{{ section.settings.compare-url }}"
-           class="font-inter text-[16px] font-bold rounded-full border border-{#2E2F3C} sec_btn">{{ section.settings.compare-button-text }}</a>
+        {% if exploreBtns.size > 0 %}
+            <div class="flex flex-col gap-2 items-center md:hidden">
+                {% for block in exploreBtns %}
+                    <a href="{{ block.settings.url }}"
+                       class="font-inter text-[16px] font-bold rounded-full border border-{#2E2F3C} sec_btn">{{ block.settings.text }}</a>
+                {% endfor %}
+            </div>
+        {% endif %}
     </div>
 
     <lazy-script src="{{ 'featured-products.js' | asset_url }}"></lazy-script>
-
 </section>
 
 {% schema %}
