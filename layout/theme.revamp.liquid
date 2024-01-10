@@ -2,18 +2,18 @@
 <html lang="{{ request.locale.iso_code }}">
 
 {% if request.design_mode == false %}
-  {% liquid
-    case template
-      when 'index'
-        assign isOptimized = true
-      else
-        if template contains 'collection'
-          assign isOptimized = true
-        else
-          assign isOptimized = false
-        endif
-    endcase
-  %}
+    {% liquid
+        case template
+            when 'index'
+                assign isOptimized = true
+            else
+                if template contains 'collection'
+                    assign isOptimized = true
+                else
+                    assign isOptimized = false
+                endif
+        endcase
+    %}
 {% endif %}
 
 
@@ -21,40 +21,42 @@
 
 
 <head>
-  {% render 'critical-resources', isOptimized: isOptimized %}
+    {% render 'critical-resources', isOptimized: isOptimized %}
 
-  {% render 'page-metadata' %}
+    {% render 'page-metadata' %}
 
-  {% render 'hreflang-tags' %}
+    {% render 'hreflang-tags' %}
 
-  {% render 'page-styles', isOptimized: isOptimized %}
+    {% render 'page-styles', isOptimized: isOptimized %}
 
-  {% capture contentForHeader %}
-    {{ content_for_header }}
-  {% endcapture %}
+    {% capture contentForHeader %}
+        {{ content_for_header }}
+    {% endcapture %}
 
-  <!-- Extend - Render extend-configuration -->
-  {% render 'extend-configuration' %}
-  <!-- Extend - End code -->
-  {% render 'weglot_hreftags' %}
-{% render 'weglot_switcher' %}
+    <!-- Extend - Render extend-configuration -->
+    {% render 'extend-configuration' %}
+    <!-- Extend - End code -->
+    {% render 'weglot_hreftags' %}
+    {% render 'weglot_switcher' %}
 </head>
 
 <body class="gradient">
+{% section 'splash-screen' %}
+
 <a class="skip-to-content-link button visually-hidden" href="#MainContent">
-  {{ "accessibility.skip_to_text" | t }}
+    {{ "accessibility.skip_to_text" | t }}
 </a>
 
 {% sections 'header-group' %}
 
 <main id="MainContent" class="content-for-layout focus-none" role="main" tabindex="-1">
-  {{ content_for_layout }}
+    {{ content_for_layout }}
 </main>
 
 {% sections 'footer-group' %}
 
 <ul hidden>
-  <li id="a11y-refresh-page-message">{{ 'accessibility.refresh_page' | t }}</li>
+    <li id="a11y-refresh-page-message">{{ 'accessibility.refresh_page' | t }}</li>
 </ul>
 
 {% render 'vendors', isOptimized: isOptimized %}
