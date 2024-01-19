@@ -308,6 +308,12 @@
           $(this).remove();
         }
       });
+      $('body').on('click', '#continue_button', function(e){
+        if (checkPOBoxAddress()) {
+          e.preventDefault();
+          alert('We do not support shipping to PO BOX addresses.\nPlease enter a residential or commercial address to proceed.');
+        }
+      });
     });
   })(Checkout.$);
 
@@ -336,6 +342,12 @@
       const price = $(this).text().replace('.00', '');
       $(this).text(price);
     });
+  }
+
+  function checkPOBoxAddress() {
+    const poRegex = /\bP(ost|ostal)?([ \.]*O(ffice)?)?([ \.]*Box)?\b/i;
+    const address = Shopify.Checkout.step === 'contact_information' ? $('#checkout_shipping_address_address1').val() : {{ checkout.shipping_address.address1 | json }};
+    return poRegex.test(address);
   }
 
   function renderRecyclingFees() {
