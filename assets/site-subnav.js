@@ -27,8 +27,6 @@ class SiteSubnav extends CustomElement {
 
         // console.log(document.getElementById("main-navigation-menu").textContent)
         this.eagerLoadSpotlight();
-
-
     }
 
     refresh() {
@@ -36,44 +34,31 @@ class SiteSubnav extends CustomElement {
 
         if (siteNav.activeIndex === this.parentIndex) return
 
-        this.getActiveNavLink();
+        this.getActiveNavLink()
 
         this.render();
 
         this.clear()
     }
 
-    async render() {
-        if (this.template()) {
-            this.innerHTML = `<loading-overlay></loading-overlay>`
-            this.innerHTML = await this.template()
-        }
-    }
-
-    async template() {
+    template() {
 
         if (!this.data) return null
 
         const {title, url} = this.data;
 
-        const btnText = title === "Mattresses" ? "Compare " : "Shop " + title
-
-        const [i18nTitle, i18nTitleBtnText] = await weglotTranslate([title, btnText]);
-
-        const subnavItems = await this.renderSubnavItems()
-
         return `
         <div class="subnav-container ${title}" data-name="${title}">
-          <p class="subnav-container__title paragraph-20 font-semibold">${i18nTitle}</p>
+          <p class="subnav-container__title paragraph-20 font-semibold weglot-tr">${title}</p>
 
           <ul
             class="subnav-container__links"
           >
-            ${subnavItems.join('')}
+            ${this.renderSubnavItems()}
           </ul>
 
           <a href="${url}" class="compare-btn btn btn--secondary btn--compact weglot-tr">
-            ${i18nTitleBtnText}
+            ${title === "Mattresses" ? "Compare " : "Shop " + title}
           </a>
         </div>
 
@@ -89,11 +74,10 @@ class SiteSubnav extends CustomElement {
         this.data = mainNavigationMenu[this.parentIndex]
     }
 
-    async renderSubnavItems() {
+    renderSubnavItems() {
         const {children} = this.data
 
-        return Promise.all(children.map(async (childlink, i) => {
-            const [i18nTitle] = await weglotTranslate([childlink.title]);
+        return children.map((childlink, i) => {
 
             return `<site-subnav-item
                 :path="[${this.parentIndex}].children[${i}]"
@@ -108,8 +92,8 @@ class SiteSubnav extends CustomElement {
                  <p class="subnav-container__badge">${childlink.promotionCapsule}</p>
                   <div class="sub-item-content">
                      <div class="title_dis">
-                      <p class="font-semibold font-inter">
-                    ${i18nTitle}
+                      <p class="font-semibold font-inter weglot-tr">
+                    ${childlink.title}
                   </p>
                  ${childlink.subnavHtmlContent} 
                    </div>
@@ -117,7 +101,7 @@ class SiteSubnav extends CustomElement {
                   </div>
                 </a>
               </site-subnav-item>`
-        }))
+        }).join('')
     }
 
     eagerLoadSpotlight() {
