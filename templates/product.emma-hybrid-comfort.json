@@ -333,9 +333,9 @@
         "258722e6-18c8-4c8d-bee9-c411c5312e58": {
           "type": "video",
           "settings": {
-            "source": "shopify:\/\/files\/videos\/USP3_10YearWarranty.mp4",
-            "heading": "Developed by experts ",
-            "content": "The Hybrid Comfort was developed by a team of sleep experts and researchers, bringing top-notch technology to Canada. We know that the quality of your sleep is a long-term investment. Our products are built to last, having been tested and approved in our laboratories.",
+            "source": "shopify:\/\/files\/videos\/Mon film.mp4",
+            "heading": "Easy set-up",
+            "content": "Experience unparalleled convenience while setting up your Hybrid Comfort mattress. Effortless installation, perfect sleep in minutes, making bedtime a breeze!",
             "inverted": true,
             "cta_url": "",
             "cta_text": ""
@@ -545,6 +545,16 @@
     "social-proof": {
       "type": "social-proof",
       "blocks": {
+        "influencer_9aiti7": {
+          "type": "influencer",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Screenshot_2024-01-17_133004.png",
+            "heading": "",
+            "tag": "@chelseadram",
+            "content": "<p>Quality time with my loved ones is my absolute favourite during the Holidays ❤️<br\/><br\/>My two little monkeys love jumping, playing and cuddling on our new Emma Hybrid Comfort Mattress 🙊🐒<a href=\"https:\/\/www.instagram.com\/explore\/tags\/ad\/\">#AD<\/a>Give yourself and\/or your loved ones the gift of a better sleep with the best mattress.<\/p>",
+            "product": ""
+          }
+        },
         "aac56195-7cea-4539-a32b-50ebb2d4066e": {
           "type": "influencer",
           "settings": {
@@ -627,6 +637,7 @@
         }
       },
       "block_order": [
+        "influencer_9aiti7",
         "aac56195-7cea-4539-a32b-50ebb2d4066e",
         "f035f2bc-9493-4be0-91dc-b9f8b55974a5",
         "fb9cbc43-31ea-4606-ad71-783fcb509cce",
@@ -740,6 +751,16 @@
             "url": "shopify:\/\/pages\/reviews",
             "text": "See All Reviews"
           }
+        },
+        "review_LLa7mp": {
+          "type": "review",
+          "settings": {
+            "title": "",
+            "date": "",
+            "product": "",
+            "content": "",
+            "author": ""
+          }
         }
       },
       "block_order": [
@@ -752,7 +773,8 @@
         "b3b7f1ea-8fe5-41e7-9305-567392190a4e",
         "7370ca27-e47c-4832-b9fd-b8beb6dce18b",
         "c4884297-13b5-40c7-9075-bed6e1cf82d8",
-        "344eb1b3-400d-4a5f-89a3-3e86752850cf"
+        "344eb1b3-400d-4a5f-89a3-3e86752850cf",
+        "review_LLa7mp"
       ],
       "settings": {
         "title": "<p>Why our customers love Emma<\/p>"

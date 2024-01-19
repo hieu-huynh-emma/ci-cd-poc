@@ -15,7 +15,7 @@
             "cta_url": "shopify:\/\/products\/emma-hybrid-comfort",
             "cta_text": "Shop Now",
             "cta_subtext": "",
-            "timer": "2024-01-16 06:00",
+            "timer": "2024-01-20 06:00",
             "discount_badge": false
           }
         },
@@ -946,14 +946,34 @@
     "social-proof": {
       "type": "social-proof",
       "blocks": {
+        "influencer_LAdKMx": {
+          "type": "influencer",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Screenshot_2024-01-17_133004.png",
+            "heading": "",
+            "tag": "@chelseadram",
+            "content": "<p>Quality time with my loved ones is my absolute favourite during the Holidays ❤️<br\/><br\/>My two little monkeys love jumping, playing and cuddling on our new Emma Hybrid Comfort Mattress 🙊🐒<a href=\"https:\/\/www.instagram.com\/explore\/tags\/ad\/\">#AD<\/a>Give yourself and\/or your loved ones the gift of a better sleep with the best mattress.<\/p>",
+            "product": "emma-hybrid-comfort"
+          }
+        },
+        "influencer_TB3f4J": {
+          "type": "influencer",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Cover_photo_2.jpg",
+            "heading": "",
+            "tag": "@xo_jennsjourney",
+            "content": "<p>Surprise from <a href=\"https:\/\/www.instagram.com\/emmasleep.canada\/\">@emmasleep.canada<\/a>!<br\/>Their Hybrid Comfort Mattress is on sale now - up to 60% off and you can use my code JENNSJOURNEY (link in bio) for an extra 5% 🙌🏼 PLUS Emma will gift you TWO of their original cloud pillows. Don't sleep on this deal!<\/p>",
+            "product": "emma-hybrid-comfort"
+          }
+        },
         "98cef3fe-c125-480a-8246-2ad38059cab6": {
           "type": "influencer",
           "settings": {
             "image": "shopify:\/\/shop_images\/m.for.mai.webp",
             "heading": "Mai Le, Mom",
-            "tag": "@@m.for.mai",
+            "tag": "@m.for.mai",
             "content": "<p>We've had our emma mattress for about 2 weeks and holy smokes I can attest to the zero partner disturbance... because I co-sleep and even with me moving around getting up it doesn't disturb my baby girl 🙌<\/p>",
-            "product": ""
+            "product": "emma-original-mattress"
           }
         },
         "11dbf26d-2b52-4e72-85e6-13c984bf43e5": {
@@ -963,7 +983,7 @@
             "heading": "Alex Liang, Interior Designer",
             "tag": "@alexanderkenton",
             "content": "<p>No bedroom redesign would be complete without a new mattress! And we’ve been really enjoying my new Emma Original. It’s soft, yet supportive and keeps us comfortable and cool all night long. I also love that the entire cover of the mattress can be removed and machine washed, to keep the mattress fresh and new.<\/p>",
-            "product": ""
+            "product": "emma-original-mattress"
           }
         },
         "5bb7873f-6347-4c76-bc0e-f0b9fe398615": {
@@ -1028,6 +1048,8 @@
         }
       },
       "block_order": [
+        "influencer_LAdKMx",
+        "influencer_TB3f4J",
         "98cef3fe-c125-480a-8246-2ad38059cab6",
         "11dbf26d-2b52-4e72-85e6-13c984bf43e5",
         "5bb7873f-6347-4c76-bc0e-f0b9fe398615",
