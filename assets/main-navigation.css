@@ -268,13 +268,15 @@ site-subnav .site-subnav__link {
   align-items: center;
   justify-content: flex-start;
 }
-site-subnav .subnav-container {
+nav-sidebar {
+  position: relative;
   display: grid;
   gap: 30px;
   align-content: flex-start;
+  height: 100%;
 }
 @media screen and (max-width: 1024px) {
-  
+
   nav-dropdown{
     left: 50%;
     -webkit-transform: translateX(-50%);
@@ -327,6 +329,8 @@ site-subnav .subnav-container .compare-btn {
 nav-spotlight {
   display: grid;
   gap: 12px;
+  transition: opacity 0.25s ease, visibility 0s ease .25s;
+  height: 100%;
 }
 nav-spotlight .spotlight__badge {
   position: absolute;
@@ -370,6 +374,7 @@ nav-spotlight .spotlight-media {
     gap: 8.75rem;
     grid-template-columns: minmax(0, 0.4fr) minmax(0, 0.6fr);
     width: 90%;
+    min-height: 250px;
     padding: 20px 0 20px;
   }
   site-subnav .subnav-container .compare-btn {

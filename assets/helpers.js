@@ -6,12 +6,14 @@ function parsePhoneNumbers(phone) {
 
     return {tel, vanityPhone}
 }
+
 function getComparisonCompetitor(competitors) {
-  const emmaWithCompetitor = location.pathname.replace('/pages/', '')
-  const competitorParam = emmaWithCompetitor.replace('emma-vs-', '')
-  const competitor = competitors.find(c => c.brandName.toLowerCase().split(' ').join('-') === competitorParam)
-  return competitor ?? competitors.find(c => c.brandName.toLowerCase().split(' ').join('-') === 'casper')
+    const emmaWithCompetitor = location.pathname.replace('/pages/', '')
+    const competitorParam = emmaWithCompetitor.replace('emma-vs-', '')
+    const competitor = competitors.find(c => c.brandName.toLowerCase().split(' ').join('-') === competitorParam)
+    return competitor ?? competitors.find(c => c.brandName.toLowerCase().split(' ').join('-') === 'casper')
 }
+
 function openChatSupport() {
     if (!window.fcWidget.isOpen()) {
         window.fcWidget.open();
@@ -93,4 +95,17 @@ function debounce(fn, wait) {
 
 function partition(collection, predicate) {
     return collection.reduce((r, value) => (r[predicate(value) ? 0 : 1].push(value), r), [[], []])
+}
+
+function translateWeglot(words) {
+    return new Promise(resolve => {
+        Weglot.translate(
+            {
+                'words': words.map(w => ({"t": 1, w}))
+            }
+            , function (data) {
+                resolve(data)
+            }
+        );
+    })
 }
