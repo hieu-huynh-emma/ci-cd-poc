@@ -157,7 +157,6 @@ class NavSidebar extends CustomElement {
         const firstSubNavItem = $subNavItems.first().get(0)
 
         if ($navSpotlight.get(0)?.mounted) {
-            console.log('mounted')
             firstSubNavItem?.renderSpotLight()
         } else {
             $navSpotlight.on('mounted', () => {
@@ -284,7 +283,6 @@ class NavSpotlight extends CustomElement {
     }
 
     async mounted() {
-        console.log("=>(site-subnav.js:287) mounted");
         super.mounted();
         const {parentIndex} = this.props
 
@@ -292,7 +290,6 @@ class NavSpotlight extends CustomElement {
         const {mainNavigationMenu} = this.refs
 
         const data = _.get(mainNavigationMenu, path)
-        console.log("=>(site-subnav.js:294) data", data);
 
         const {object, featuredImage, url, accentuate} = data
 
@@ -307,15 +304,10 @@ class NavSpotlight extends CustomElement {
     }
 
     async template() {
-        console.log("=>(site-subnav.js:309) template");
         if(!this.data.name) return
         const {name, price, originalPrice, url, imageUrl, badgeText} = this.data;
-        console.dir("=>(site-subnav.js:310) this.data");
-        console.dir(this.data)
 
         const [i18nBadge = badgeText, i18nName = name, i18nFromText = 'From'] = await translateWeglot([badgeText, name, 'From'])
-
-        console.log("=>(site-subnav.js:314) [i18nBadge, i18nName, i18nFromText]", [i18nBadge, i18nName, i18nFromText]);
 
         return `
       <div class="spotlight-media bg-wild-sand">
