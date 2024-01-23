@@ -329,7 +329,7 @@ site-subnav .subnav-container .compare-btn {
 nav-spotlight {
   display: grid;
   gap: 12px;
-  transition: opacity 0.25s ease, visibility 0s ease .25s;
+  transition: opacity 250ms ease;
   height: 100%;
 }
 nav-spotlight .spotlight__badge {

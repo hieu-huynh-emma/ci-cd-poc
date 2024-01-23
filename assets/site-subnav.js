@@ -268,10 +268,9 @@ class NavSpotlight extends CustomElement {
 
     async render() {
         this.$el.css("opacity", 0)
+        await wait(250)
         this.innerHTML = await this.template();
-        setTimeout(() => {
-            this.$el.css("opacity", 1)
-        }, 500)
+        this.$el.css("opacity", 1)
     }
 
     mounted() {
