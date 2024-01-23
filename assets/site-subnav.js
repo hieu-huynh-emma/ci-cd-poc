@@ -24,6 +24,9 @@ class SiteSubnav extends CustomElement {
 
     mounted() {
         super.mounted();
+
+        // console.log(document.getElementById("main-navigation-menu").textContent)
+        this.eagerLoadSpotlight();
     }
 
     refresh() {
@@ -34,23 +37,32 @@ class SiteSubnav extends CustomElement {
         this.getActiveNavLink()
 
         this.render();
-    }
 
-    render() {
-        this.innerHTML = this.template();
+        this.clear()
     }
 
     template() {
+
         if (!this.data) return null
 
-        const {title} = this.data;
+        const {title, url} = this.data;
 
         return `
         <div class="subnav-container ${title}" data-name="${title}">
-            <nav-sidebar :parentIndex="${this.parentIndex}"></nav-sidebar>
+          <p class="subnav-container__title paragraph-20 font-semibold weglot-tr">${title}</p>
+
+          <ul
+            class="subnav-container__links"
+          >
+            ${this.renderSubnavItems()}
+          </ul>
+
+          <a href="${url}" class="compare-btn btn btn--secondary btn--compact weglot-tr">
+            ${title === "Mattresses" ? "Compare " : "Shop " + title}
+          </a>
         </div>
 
-        <nav-spotlight class="spotlight" :parentIndex="${this.parentIndex}"></nav-spotlight>
+        <nav-spotlight class="spotlight"></nav-spotlight>
     `
     }
 
@@ -60,6 +72,52 @@ class SiteSubnav extends CustomElement {
         this.parentIndex = siteNav.activeIndex
 
         this.data = mainNavigationMenu[this.parentIndex]
+    }
+
+    renderSubnavItems() {
+        const {children} = this.data
+
+        return children.map((childlink, i) => {
+
+            return `<site-subnav-item
+                :path="[${this.parentIndex}].children[${i}]"
+                class="site-subnav__item"
+              >
+                <a
+                  href="${childlink.url}"
+                  class="site-subnav__link"
+                  ${childlink.active ? `aria-current="page"` : ""}
+                  tabindex="-1"
+                >
+                 <p class="subnav-container__badge">${childlink.promotionCapsule}</p>
+                  <div class="sub-item-content">
+                     <div class="title_dis">
+                      <p class="font-semibold font-inter weglot-tr">
+                    ${childlink.title}
+                  </p>
+                 ${childlink.subnavHtmlContent} 
+                   </div>
+              <img src="${childlink.submenuThumbImage}&transform=resize=600" class="spotlight__image w-full h-full object-contain" loading="lazy" />
+                  </div>
+                </a>
+              </site-subnav-item>`
+        }).join('')
+    }
+
+    eagerLoadSpotlight() {
+        const {$subNavItems} = this.refs;
+
+        const firstSubNavItem = $subNavItems.first().get(0)
+
+        firstSubNavItem?.renderSpotLight()
+    }
+
+    clear() {
+        const {$subNavItems} = this.refs;
+
+        const firstSubNavItem = $subNavItems.first().get(0)
+
+        firstSubNavItem?.renderSpotLight()
     }
 }
 
@@ -118,118 +176,8 @@ class SiteSubavItem extends CustomElement {
 
 customElements.define('site-subnav-item', SiteSubavItem);
 
-class NavSidebar extends CustomElement {
-    props = {
-        parentIndex: 0
-    }
-
-    get refs() {
-        const siteNav = document.querySelector('site-nav')
-
-        return {
-            $subNavItems: this.$el.find("site-subnav-item"),
-            siteNav,
-            $navSpotlight: this.$el.find('nav-spotlight'),
-            mainNavigationMenu: JSON.parse(document.getElementById("main-navigation-menu").textContent)
-        }
-    }
-
-    async render() {
-        if (!isMobileViewport()) {
-            this.innerHTML = `<loading-overlay></loading-overlay>`
-        }
-
-        this.innerHTML = await this.template();
-
-        this.populateSpotlight()
-    }
-
-    populateSpotlight() {
-        const {$subNavItems, $navSpotlight} = this.refs;
-
-        const firstSubNavItem = $subNavItems.first().get(0)
-
-        if ($navSpotlight.get(0)?.mounted) {
-            console.log('mounted')
-            firstSubNavItem?.renderSpotLight()
-        } else {
-            $navSpotlight.on('mounted', () => {
-                firstSubNavItem?.renderSpotLight()
-
-            })
-        }
-    }
-
-    async template() {
-        const {mainNavigationMenu} = this.refs;
-        const {parentIndex} = this.props
-
-        this.data = mainNavigationMenu[parentIndex]
-
-        if (!this.data) return null
-
-        const {title, url} = this.data
-        const btnText = title === "Mattresses" ? "Compare " : "Shop " + title
-
-        const [i18nTitle, i18nBtnText] = await translateWeglot([title, btnText]);
-
-        const navItems = await this.renderSubnavItems();
-
-        return `
-          <p class="subnav-container__title paragraph-20 font-semibold">${i18nTitle}</p>
-
-          <ul
-            class="subnav-container__links"
-          >
-            ${navItems.join('')}
-          </ul>
-
-          <a href="${url}" class="compare-btn btn btn--secondary btn--compact">
-            ${i18nBtnText}
-          </a>
-    `
-    }
-
-    async renderSubnavItems() {
-        const {children} = this.data
-        const {parentIndex} = this.props
-
-        return Promise.all(children.map(async (childlink, i) => {
-            const [i18nTitle] = await translateWeglot([childlink.title])
-
-            return `<site-subnav-item
-                :path="[${parentIndex}].children[${i}]"
-                class="site-subnav__item"
-              >
-                <a
-                  href="${childlink.url}"
-                  class="site-subnav__link"
-                  ${childlink.active ? `aria-current="page"` : ""}
-                  tabindex="-1"
-                >
-                 <p class="subnav-container__badge">${childlink.promotionCapsule}</p>
-                  <div class="sub-item-content">
-                     <div class="title_dis">
-                      <p class="font-semibold font-inter">
-                        ${i18nTitle}
-                      </p>
-                 ${childlink.subnavHtmlContent} 
-                   </div>
-              <img src="${childlink.submenuThumbImage}&transform=resize=600" class="spotlight__image w-full h-full object-contain" loading="lazy" />
-                  </div>
-                </a>
-              </site-subnav-item>`
-        }))
-    }
-
-}
-
-customElements.define('nav-sidebar', NavSidebar);
-
 class NavSpotlight extends CustomElement {
-    props = {
-        parentIndex: 0
-    }
+    props = {}
 
     data = {
         name: "",
@@ -240,68 +188,19 @@ class NavSpotlight extends CustomElement {
         badgeText: ""
     }
 
-    get refs() {
-        return {
-            mainNavigationMenu: JSON.parse(document.getElementById("main-navigation-menu").textContent)
-        }
-    }
-
     constructor() {
         super();
-    }
-
-    async connectedCallback() {
-        this.extractProps();
-        this.init();
-
-        this.beforeMount()
-        await this.render();
-
-        setTimeout(() => {
-            $(this).ready(this.mounted.bind(this))
-        }, 0)
     }
 
     init() {
         super.init();
     }
 
-    async render() {
-        this.$el.css("opacity", 0)
-        this.innerHTML = await this.template();
-        setTimeout(() => {
-            this.$el.css("opacity", 1)
-        }, 500)
-    }
-
-    mounted() {
-        super.mounted();
-        const {parentIndex} = this.props
-
-        const path = `[${parentIndex}].children[0]`;
-        const {mainNavigationMenu} = this.refs
-
-        const data = _.get(mainNavigationMenu, path)
-        const {object, featuredImage, url, accentuate} = data
-
-        this.refresh({
-            name: object.title,
-            price: object.price,
-            originalPrice: object.compare_at_price,
-            url: url,
-            featuredImage,
-            accentuate
-        })
-    }
-
-    async template() {
-        const {name, price, originalPrice, url, imageUrl, badgeText} = this.data;
-
-        const [i18nBadge, i18nName, i18nFromText] = await translateWeglot([badgeText, name, 'From'])
-
+    template() {
+        const {name, price, originalPrice, url, imageUrl, badgeText} = this.data
         return `
       <div class="spotlight-media bg-wild-sand">
-        ${badgeText ? `<p class="spotlight__badge absolute top-5 left-4 text-[13px]">${i18nBadge}</p>` : ""}
+        ${badgeText ? `<p class="spotlight__badge absolute top-5 left-4 text-[13px] weglot-tr">${badgeText}</p>` : ""}
         <a href="${url}" class="spotlight__link">
           <img src="${imageUrl}" class="spotlight__image w-full h-full object-contain" loading="lazy" />
         </a>
@@ -309,10 +208,10 @@ class NavSpotlight extends CustomElement {
 
       <div class="spotlight-body">
         <a href="${url}" class="spotlight__link">
-          <p class="spotlight__name text-xl font-semibold">${i18nName}</p>
+          <p class="spotlight__name text-xl font-semibold weglot-tr">${name}</p>
         </a>
         <div class="flex items-center gap-2 text-md">
-          ${originalPrice ? `<p class="inline">${i18nFromText}</p> ` : ""}<span class="spotlight__price text-scarlet font-bold">${price}</span>
+          ${originalPrice ? `<p class="inline weglot-tr">From</p> ` : ""}<span class="spotlight__price text-scarlet font-bold">${price}</span>
           ${originalPrice ? `<span class="spotlight__original-price line-through text-xs">${originalPrice}</span>` : ""}
         </div>
       </div>
