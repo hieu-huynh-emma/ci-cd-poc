@@ -67,7 +67,8 @@ customElements.define('site-subnav', SiteSubnav);
 
 class SiteSubavItem extends CustomElement {
     props = {
-        path: ""
+        path: "",
+        index: 0
     }
 
     data = {}
@@ -102,8 +103,13 @@ class SiteSubavItem extends CustomElement {
     }
 
     renderSpotLight = debounce(() => {
+        const {index} = this.props
         const {object, featuredImage, url, accentuate} = this.data
         const {navSpotlight} = this.refs;
+
+        if (index === navSpotlight.activeIndex) return
+
+        navSpotlight.activeIndex = index;
 
         navSpotlight?.refresh({
             name: object.title,
@@ -113,6 +119,7 @@ class SiteSubavItem extends CustomElement {
             featuredImage,
             accentuate
         })
+
     }, 200)
 }
 
@@ -199,6 +206,7 @@ class NavSidebar extends CustomElement {
 
             return `<site-subnav-item
                 :path="[${parentIndex}].children[${i}]"
+                :index="${i}"
                 class="site-subnav__item"
               >
                 <a
@@ -230,6 +238,8 @@ class NavSpotlight extends CustomElement {
     props = {
         parentIndex: 0
     }
+
+    activeIndex = 0
 
     data = {
         name: "",
@@ -273,7 +283,8 @@ class NavSpotlight extends CustomElement {
         this.$el.css("opacity", 1)
     }
 
-    mounted() {
+    async mounted() {
+        console.log("=>(site-subnav.js:287) mounted");
         super.mounted();
         const {parentIndex} = this.props
 
@@ -281,9 +292,11 @@ class NavSpotlight extends CustomElement {
         const {mainNavigationMenu} = this.refs
 
         const data = _.get(mainNavigationMenu, path)
+        console.log("=>(site-subnav.js:294) data", data);
+
         const {object, featuredImage, url, accentuate} = data
 
-        this.refresh({
+        await this.refresh({
             name: object.title,
             price: object.price,
             originalPrice: object.compare_at_price,
@@ -294,9 +307,15 @@ class NavSpotlight extends CustomElement {
     }
 
     async template() {
+        console.log("=>(site-subnav.js:309) template");
+        if(!this.data.name) return
         const {name, price, originalPrice, url, imageUrl, badgeText} = this.data;
+        console.dir("=>(site-subnav.js:310) this.data");
+        console.dir(this.data)
 
-        const [i18nBadge, i18nName, i18nFromText] = await translateWeglot([badgeText, name, 'From'])
+        const [i18nBadge = badgeText, i18nName = name, i18nFromText = 'From'] = await translateWeglot([badgeText, name, 'From'])
+
+        console.log("=>(site-subnav.js:314) [i18nBadge, i18nName, i18nFromText]", [i18nBadge, i18nName, i18nFromText]);
 
         return `
       <div class="spotlight-media bg-wild-sand">
@@ -318,7 +337,7 @@ class NavSpotlight extends CustomElement {
     `
     }
 
-    refresh({name, price, url, originalPrice, featuredImage, accentuate}) {
+    async refresh({name, price, url, originalPrice, featuredImage, accentuate}) {
 
         this.data.name = name;
         this.data.price = currencyFormatter.format(price / 100);
@@ -332,7 +351,7 @@ class NavSpotlight extends CustomElement {
 
         this.data.badgeText = discountedPrice > 0 ? `Up to ${discountedPrice}% off` : "";
 
-        this.render()
+        await this.render()
     }
 }
 

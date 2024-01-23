@@ -98,14 +98,10 @@ function partition(collection, predicate) {
 }
 
 function translateWeglot(words) {
-    return new Promise(resolve => {
-        Weglot.translate(
-            {
-                'words': words.map(w => ({"t": 1, w}))
-            }
-            , function (data) {
-                resolve(data)
-            }
-        );
-    })
+    return Promise.all(words.map(w => Weglot.translate(
+        {
+            'words': [{"t": 1, w}],
+            languageTo: Weglot.getCurrentLang()
+        }
+    )));
 }
