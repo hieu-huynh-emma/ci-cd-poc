@@ -6,20 +6,18 @@
 
     {% liquid
         case template
-            when 'page.comparison'
+            when 'page.compare-emma'
                 assign pageStyleFile = 'comparison-page.css'
             when 'page.competitor-comparison'
                 assign pageStyleFile = 'competitor-comparison.css'
-            when 'page.generic1'
-                assign pageStyleFile = 'faq.css'
             when 'page.financing'
                 assign pageStyleFile = 'financing.css'
             when 'page.landing-page'
                 assign pageStyleFile = 'landing-page.css'
-            when 'product.emma-hybrid-comfort' or 'product.hybrid-comfort-bundle' or 'product.bed-frame-new' or 'product.mattress-protector-new' or 'product.new-diamond-pillow' or 'product.ready-to-sleep' or 'product.emma-hybrid-pro' or 'product.emma-original' or 'product.emma-original-plus-mattress-protector' or 'product.emma-original-plus-pillows' or 'product.emma-shift' or 'product.emma-climax-hybrid-plus-mattress-protector' or 'product.mattress-clarity-original'
-                assign pageStyleFile = 'revamp-product.css'
-            when 'page' or 'page.100-nights' or 'page.toc' or 'page.legal-notice'
+            when 'page' or 'page.365-night-trial' or 'page.100-day-moneyback' or 'page.legal-notice'
                 assign pageStyleFile = 'static-page.css'
+            else
+               assign pageStyleFile = 'revamp-product.css'
         endcase
     %}
 
