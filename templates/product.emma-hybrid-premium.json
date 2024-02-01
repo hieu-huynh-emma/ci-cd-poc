@@ -507,6 +507,23 @@
         "show_secondary_badge": false
       }
     },
+    "1706756294a806f92d": {
+      "type": "apps",
+      "blocks": {
+        "yotpo_product_photo_reviews_reviews_rYq3JP": {
+          "type": "shopify:\/\/apps\/yotpo-product-photo-reviews\/blocks\/reviews\/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
+          "settings": {
+            "product": "{{product}}"
+          }
+        }
+      },
+      "block_order": [
+        "yotpo_product_photo_reviews_reviews_rYq3JP"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    },
     "customer-sentiment": {
       "type": "customer-sentiment",
       "blocks": {
@@ -723,23 +740,6 @@
         "heading_alignment": "start"
       }
     },
-    "1685402594226951ca": {
-      "type": "apps",
-      "blocks": {
-        "7ff6a1da-6807-45e3-b28c-7f24e3979f9a": {
-          "type": "shopify:\/\/apps\/yotpo-product-photo-reviews\/blocks\/reviews\/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
-          "settings": {
-            "product": "{{product}}"
-          }
-        }
-      },
-      "block_order": [
-        "7ff6a1da-6807-45e3-b28c-7f24e3979f9a"
-      ],
-      "settings": {
-        "include_margins": true
-      }
-    },
     "product-catalog": {
       "type": "product-catalog",
       "blocks": {
@@ -808,9 +808,9 @@
     "mattress-layers",
     "mattress-firmness",
     "featured-products",
+    "1706756294a806f92d",
     "customer-sentiment",
     "social-proof",
-    "1685402594226951ca",
     "product-catalog",
     "contact-us"
   ]
