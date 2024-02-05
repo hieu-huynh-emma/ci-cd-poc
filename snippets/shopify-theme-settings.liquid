@@ -6,8 +6,6 @@
 {%- if settings.favicon != blank -%}
   <link rel="icon" type="image/png" href="{{ settings.favicon | img_url: '32x32' }}">
 {%- endif -%}
-
-{% if isOptimized == true %}<template id="content_for_header"><head>{{ content_for_header }}</head></template><template id="content_for_body"><body></body></template>{% endif %}
 <style>
   {{ body_font_bold | font_face: font_display: 'swap' }}
   {{ body_font_italic | font_face: font_display: 'swap' }}

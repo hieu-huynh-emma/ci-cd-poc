@@ -35,8 +35,10 @@ $(document).ready(function () {
   })
 }
 function freshChat() {
-  var fc_JS=document.createElement('script');
+  var fc_JS=document.createElement('warp-script');
   fc_JS.setAttribute("src", 'https://wchat.eu.freshchat.com/js/widget.js?t='+Date.now());
+  fc_JS.setAttribute("loading", "delayed");
+
   (document.body?document.body:document.getElementsByTagName('head')[0]).appendChild(fc_JS);
   window.fcSettings = {
     token:'b2b2897c-9240-4bdd-a965-9f4381519c6e',
