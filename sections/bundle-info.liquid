@@ -20,6 +20,7 @@
 {% assign productMedia = section.blocks | where: 'type', 'product_media' %}
 {% assign campaignTeaser = section.blocks | where: 'type', 'campaign_teaser'| first  %}
 {% assign upsell_widget = section.blocks | where: 'type', 'upsell_widget' | first %}
+{% assign yotpo_reviews_star_rating = section.blocks | where: 'type', 'yotpo_reviews_star_rating' | first %}
 
 
 <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
@@ -64,7 +65,7 @@
 								{% endif %}
 							{% endif %}
 						</div>
-						
+
 						{% if forloop.index0 == 0 %}
 							<div class="caption-container">
 								<h3 class="heading-3 font-inter font-semibold">{{ section.settings.caption_headline }}</h3>
@@ -74,7 +75,7 @@
 					</div>
 				{% endfor %}
 			</div>
-			
+
 			<div class="media-carousel">
 				<div id="main-carousel" class="splide">
 					<ul class="splide__track">
@@ -107,7 +108,7 @@
 						</li>
 					</ul>
 				</div>
-				
+
 				<div id="thumbnail-carousel" class="splide hidden">
 					<ul class="splide__track">
 						<li class="splide__list">
@@ -119,7 +120,7 @@
 									{% if item.settings.is_video and item.settings.hosted_video != blank %}
 										{% assign thumbnail = item.settings.hosted_video.preview_image %}
 									{% endif %}
-									
+
 									<img src="{{ thumbnail | image_url: width: 808, height: 486 }}" loading="lazy">
 									{% if item.settings.award %}
 										{% render 'image-tag',
@@ -136,11 +137,11 @@
 				</div>
 			</div>
 		</div>
-		
+
 		<product-form class="right-section text">
 			<h2 id="product-title" class="paragraph-24 font-inter font-semibold flex items-center">
 				{{ section.settings.title | default: product.title }}
-				
+
 				{% if section.settings.badge %}
 					<div
 						class="inline-flex bg-scarlet text-white py-[5px] px-[8px] uppercase rounded text-[13px] ml-[10px] leading-normal"
@@ -149,19 +150,19 @@
 					</div>
 				{% endif %}
 			</h2>
-			
-			{% render 'yotpo-review-stars', product: product %}
-			
+
+            {% render 'yotpo_reviews_star_rating', settings: yotpo_reviews_star_rating.settings %}
+
 			<div class="product-description">
 				{{ section.settings.desc | default: product.description }}
 			</div>
-			
+
 			{% capture form_classes -%}
 				product-form product-form-{{ section.id }}
 				{%- if section.settings.enable_payment_button and product.has_only_default_variant %} product-form--payment-button-no-variants {%- endif -%}
 				{%- if current_variant.available == false %} product-form--variant-sold-out {%- endif -%}
 			{%- endcapture %}
-			
+
 			{% for block in section.blocks %}
 				{% case block.type %}
 					{% when 'tagline' %}
@@ -182,7 +183,7 @@
 						</div>
 				{% endcase %}
 			{% endfor %}
-			
+
         {% form 'product', product, class: form_classes, novalidate: 'novalidate', data-product-form: '' %}
           <div class="overlay">
             <svg
@@ -197,11 +198,11 @@
               <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
             </svg>
           </div>
-          
+
           {% render 'bundle-buy-box', product: product %}
-      
+
           {% render 'product-quantity-selector' %}
-          
+
           <div
             class="product-form__error-message-wrapper product-form__error-message-wrapper--hidden{% if section.settings.enable_payment_button %} product-form__error-message-wrapper--has-payment-button{% endif %}"
             data-error-message-wrapper
@@ -231,31 +232,31 @@
           <div id="price-{{ section.id }}" class="product__price -mb-1" {{ block.shopify_attributes }}>
             {% render 'product-price', variant: current_variant, product: product %}
           </div>
-          
+
           {% if tax %}
             <div class="tax-wrapper">
               <p class="tax-text">{{ tax.settings.text }}</p>
             </div>
           {% endif %}
-          
+
           {% if stock %}
             <div class="stock-wrapper">
               <p class="stock-text">{{ stock.settings.text }}</p>
             </div>
           {% endif %}
-          
+
           <div class="installment-widgets mb-4">
             {%- if appBlock -%}
               {% render appBlock %}
             {% endif %}
-            
+
             {%- if affirm_widget -%}
               <div {{ block.shopify_attributes }}>
                 {% render 'affirm-widget' %}
               </div>
             {% endif %}
           </div>
-          
+
           <div class="product-form__controls-group product-form__controls-group--submit">
             <div
               class="
@@ -265,12 +266,12 @@
               "
             >
               {% render 'add-to-cart-btn' %}
-              
+
               {% if section.settings.enable_payment_button %}
                 {{ form | payment_button }}
               {% endif %}
             </div>
-            
+
             {% if sold_out_upsell %}
               <div
                 id="sold-out-upsell"
@@ -278,7 +279,7 @@
                 data-default="{{ sold_out_upsell.settings.sold_out_upsell_text }}"
               >
                 {% assign variantOutOfStockNotice = product.selected_or_first_available_variant.metafields.accentuate.out_of_stock_notice[shop.locale] %}
-                
+
                 {% capture outOfStockMsg %}
                   <p class="mt-2 mx-1 text-[#F03306] text-[14px] font-semibold">
                     {% if variantOutOfStockNotice %}
@@ -288,7 +289,7 @@
                     {% endif %}
                   </p>
                 {% endcapture %}
-                
+
                 {% if sold_out_upsell.settings.sold_out_upsell_product != blank %}
                   <a class="underline" href="{{ sold_out_upsell.settings.sold_out_upsell_product }}">
                     {{ outOfStockMsg }}
@@ -298,7 +299,7 @@
                 {% endif %}
               </div>
             {% endif %}
-            
+
             {% if disclaimer %}
               <div
                 id="product-disclaimer"
@@ -312,29 +313,29 @@
                     {{ disclaimer.settings.default_message | remove: "<p>" | remove: "</p>" }}
                   {% endif %}
                 </p>
-              
-              
+
+
               </div>
-            
+
             {% endif %}
-            
+
             {% if cta_message %}
               <p style="color: {{ cta_message.settings.cta_message_color }}" class="mt-2 mx-1 text-[14px] font-semibold">
                 {{ cta_message.settings.cta_message }}
               </p>
             {% endif %}
           </div>
-  
+
                   {% if section.settings.disclaimer != blank %}
                       <p class="text-center text-scarlet font-semibold text-[14px] italic">
                         {{ section.settings.disclaimer }}
                       </p>
                   {% endif %}
-  
+
                  {% if upsell_widget %}
                       {% render 'product-upsell-widget', settings: upsell_widget.settings %}
                  {% endif %}
-          
+
           {% if upsell_mattress %}
             <div class="rounded border border-black py-2 px-3">
               <a href="{{ upsell_mattress.settings.upsell_mattress_product }}">
@@ -342,7 +343,7 @@
               </a>
             </div>
           {% endif %}
-          
+
           {% if upsell_mattress_v2 %}
             <div class="rounded-2xl border-2 border-[#3C4196] px-4 py-4">
               <div style="grid-template-columns: minmax(100px, 1fr) 2fr;" class="grid gap-3">
@@ -383,7 +384,7 @@
             </div>
           {% endif %}
 			{% endform %}
-			
+
 			<p
 				class="visually-hidden"
 				data-loader-status
@@ -393,15 +394,15 @@
 			>
 				{{ 'products.product.loader_label' | t }}
 			</p>
-			
+
 			<button class="visually-hidden" data-add-to-cart></button>
-			
+
 			{% if mini_comparison_table %}
 				<div class="overflow-auto mb-8">
 					{% render 'mini-comparison-table', settings: mini_comparison_table.settings %}
 				</div>
 			{% endif %}
-			
+
 			<ul class="benefits">
 				{% for block in uniqueSellingPoints %}
 					<li class="unique-selling-point">
@@ -418,7 +419,7 @@
 						</div>
 					</li>
 				{% endfor %}
-				
+
 				{% if paymentProvidersBlock %}
 					<li class="payment-providers unique-selling-point">
 						<img
@@ -430,59 +431,59 @@
 							{{ paymentProvidersBlock.settings.text }}
 						</p>
                       <div class="payment-providers__listing_new">
-        
-        
-            
-               
+
+
+
+
                 <div class="payment-provider">
                     <img src="//cdn.shopify.com/s/files/1/0562/9873/3706/files/paypal_payment_provider.svg?v=1698141213&amp;width=1440">
                 </div>
-                
-            
-               
+
+
+
                 <div class="payment-provider">
                     <img src="//cdn.shopify.com/s/files/1/0562/9873/3706/files/visa_payment_provider.svg?v=1698141376&amp;width=1440">
                 </div>
-                
-            
-               
+
+
+
                 <div class="payment-provider">
                     <img src="//cdn.shopify.com/s/files/1/0562/9873/3706/files/master-cart_payment_provider.svg?v=1698141377&amp;width=1440">
                 </div>
-                
-            
-               
+
+
+
                 <div class="payment-provider">
                     <img src="//cdn.shopify.com/s/files/1/0562/9873/3706/files/american_express.svg?v=1698141377&amp;width=1440">
                 </div>
-                
-               
+
+
                 <div class="payment-provider">
                     <img src="//cdn.shopify.com/s/files/1/0562/9873/3706/files/discover-payment-method.svg?v=1698141377&amp;width=1440">
                 </div>
-                
-            
-               
+
+
+
                 <div class="payment-provider">
                     <img src="//cdn.shopify.com/s/files/1/0562/9873/3706/files/apple_pay.svg?v=1698141377&amp;width=1440">
                 </div>
-                
-            
-               
+
+
+
                 <div class="payment-provider">
                     <img src="//cdn.shopify.com/s/files/1/0562/9873/3706/files/pay_google.svg?v=1698141377&amp;width=1440">
                 </div>
-                
-            
-               
+
+
+
                 <div class="payment-provider">
                     <img src="//cdn.shopify.com/s/files/1/0562/9873/3706/files/shop-pay.svg?v=1698141377&amp;width=1440">
                 </div>
-                
-            
-        
 
-    
+
+
+
+
     </div>
                         {% comment %}
 						<div class="payment-providers__listing"></div>
@@ -495,14 +496,14 @@
                   const html = new DOMParser().parseFromString(res['{{ paymentProvidersBlock.settings.payment_providers_section }}'], "text/html");
                   $(".payment-providers.unique-selling-point .payment-providers__listing").html(html.querySelector(".payment-providers__listing").innerHTML);
                 });
-						
-						
+
+
 						</script>
                    {% endcomment %}
 					</li>
 				{% endif %}
 			</ul>
-			
+
 			<ul class="product-specifications">
 				{% for block in productSpecifications %}
 					<li class="product-specification">
@@ -524,7 +525,7 @@
 								/>
 							</svg>
 						</div>
-      
+
 						<div class="product-specification__content">
 							{% if block.settings.product_dimension %}
 								<ul class="product-dimensions">
@@ -544,7 +545,7 @@
 									  {% endif %}
 									{% endfor %}
 								</ul>
-							
+
 							{% else %}
 								{{ block.settings.content }}
 							{% endif %}
@@ -555,8 +556,8 @@
 			</ul>
 		</product-form>
 	</div>
-	
-	
+
+
 	{% unless product == empty %}
 		<script type="application/json" id="ProductJson-{{ section.id }}">
     {{ product | json }}
@@ -973,6 +974,27 @@
           "id": "product",
           "type": "product",
           "label": "Upsell  Product"
+        }
+      ]
+    },
+    {
+      "type": "yotpo_reviews_star_rating",
+      "name": "Yotpo Product Reviews",
+      "settings": [
+        {
+          "id": "product",
+          "type": "product",
+          "label": "Product"
+        },
+        {
+          "id": "icon",
+          "type": "image_picker",
+          "label": "Icon"
+        },
+        {
+          "id": "new_layout",
+          "type": "checkbox",
+          "label": "Enable New Layout?"
         }
       ]
     }

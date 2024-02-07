@@ -82,6 +82,12 @@
     "product-info": {
       "type": "product-info",
       "blocks": {
+        "yotpo_reviews_star_rating": {
+          "type": "yotpo_reviews_star_rating",
+          "settings": {
+            "product": "{{product}}"
+          }
+        },
         "f5f456c7-b29a-4f74-826f-648e09f5b1cd": {
           "type": "product_media",
           "settings": {
@@ -257,6 +263,7 @@
         }
       },
       "block_order": [
+        "yotpo_reviews_star_rating",
         "f5f456c7-b29a-4f74-826f-648e09f5b1cd",
         "ae4539f2-6ea2-42a3-a132-a31010570bf1",
         "e4cd7962-4d57-4250-8e6e-4c76dd76d6d6",

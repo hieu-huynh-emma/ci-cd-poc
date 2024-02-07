@@ -18,6 +18,7 @@
 {% assign productMedia = section.blocks | where: 'type', 'product_media' %}
 {% assign campaignTeaser = section.blocks | where: 'type', 'campaign_teaser' | first %}
 {% assign upsell_widget = section.blocks | where: 'type', 'upsell_widget' | first %}
+{% assign yotpo_reviews_star_rating = section.blocks | where: 'type', 'yotpo_reviews_star_rating' | first %}
 
 
 <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
@@ -76,7 +77,7 @@
       {% endif %}
       <div class="countdown-timer-block" countdown-timer-id="clocrprh260833418yjgrkmpfjn"></div>
       <div class="desktop-mansory">
-        
+
         {% for block in productMedia %}
           <div class="desktop-mansory__item{% if block.settings.full_width %} full-width{% endif %}">
             <div class="image-wrapper">
@@ -100,7 +101,7 @@
                 {% endif %}
               {% endif %}
             </div>
-            
+
             {% if forloop.index0 == 0 %}
               <div class="caption-container">
                 <h3 class="heading-3 font-inter font-semibold">{{ section.settings.caption_headline }}</h3>
@@ -110,14 +111,14 @@
           </div>
         {% endfor %}
       </div>
-      
+
       <div class="media-carousel">
-        
+
         <div id="main-carousel" class="splide">
           <ul class="splide__track">
             <li class="splide__list">
               {% for item in productMedia %}
-                
+
                 <div
                   class="image-wrapper splide__slide"
                 >
@@ -141,7 +142,7 @@
             </li>
           </ul>
         </div>
-        
+
         <div id="thumbnail-carousel" class="splide hidden">
           <ul class="splide__track">
             <li class="splide__list">
@@ -164,7 +165,7 @@
                       loading="lazy"
                     >
                   {% endif %}
-                
+
                 </div>
               {% endfor %}
             </li>
@@ -172,7 +173,7 @@
         </div>
       </div>
     </div>
-    
+
     <product-form class="right-section">
       <h2 id="product-title" class="paragraph-24 font-inter font-semibold">
         {{ section.settings.title | default: product.title }}
@@ -184,19 +185,19 @@
           </div>
         {% endif %}
       </h2>
-      
-      {% render 'yotpo-review-stars', product: product %}
-      
+
+      {% render 'yotpo_reviews_star_rating', settings: yotpo_reviews_star_rating.settings %}
+
       <div class="product-description">
         {{ section.settings.desc | default: product.description }}
       </div>
-      
+
       {% capture form_classes -%}
         product-form product-form-{{ section.id }}
         {%- if section.settings.enable_payment_button and product.has_only_default_variant %} product-form--payment-button-no-variants {%- endif -%}
         {%- if current_variant.available == false %} product-form--variant-sold-out {%- endif -%}
       {%- endcapture %}
-      
+
       {% for block in section.blocks %}
         {% case block.type %}
           {% when 'tagline' %}
@@ -215,7 +216,7 @@
               </div>
               <img src="{{ 'trustpilot-logo.png' | asset_img_url }}" height="17" loading="lazy">
             </div>
-          
+
           {% when 'badge' %}
             <div class="badge-wrapper">
               {% if block.settings.badge_text != blank %}
@@ -225,7 +226,7 @@
             </div>
         {% endcase %}
       {% endfor %}
-      
+
       {% form 'product', product, class: form_classes, novalidate: 'novalidate', data-product-form: '' %}
         <div class="overlay">
           <svg
@@ -236,24 +237,24 @@
             class="spinner"
             viewBox="0 0 66 66"
             xmlns="http://www.w3.org/2000/svg"
-            
+
           >
             <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
           </svg>
         </div>
-        
+
         {% liquid
           assign qtySelectorOrientation = "horizontal"
-          
+
           if product.has_only_default_variant == false
             assign qtySelectorOrientation = "vertical"
           endif
         %}
-       
+
         <script>
           console.log({{ product.selected_or_first_available_variant.available }})
         </script>
-        
+
         <div id="attribute-configurator" class="
           attribute-configurator
           {% if product.has_only_default_variant == true or product.selected_or_first_available_variant.available == false %}
@@ -261,7 +262,7 @@
           {% endif %}
           "
         >
-          
+
           <variant-selects
             class="no-js-hidden emma-product__variant"
             data-section="{{ section.id }}"
@@ -295,12 +296,12 @@
                 </div>
               </div>
             {%- endfor -%}
-            
+
             <script type="application/json">
             {{ product.variants | json }}
             </script>
           </variant-selects>
-          
+
           <select name="id" id="ProductSelect-{{ section.id }}" class="product-form__variants no-js">
             {% for variant in product.variants %}
               <option
@@ -314,10 +315,10 @@
               </option>
             {% endfor %}
           </select>
-          
+
           {% render 'product-quantity-selector', orientation: qtySelectorOrientation %}
         </div>
-        
+
         <div
           class="product-form__error-message-wrapper product-form__error-message-wrapper--hidden{% if section.settings.enable_payment_button %} product-form__error-message-wrapper--has-payment-button{% endif %}"
           data-error-message-wrapper
@@ -352,31 +353,31 @@
         <div id="price-{{ section.id }}" class="product__price" {{ block.shopify_attributes }}>
           {% render 'product-price', variant: current_variant, product: product %}
         </div>
-        
+
         {% if tax %}
           <div class="tax-wrapper">
             <p class="tax-text">{{ tax.settings.text }}</p>
           </div>
         {% endif %}
-        
+
         {% if stock %}
           <div class="stock-wrapper">
             <p class="stock-text">{{ stock.settings.text }}</p>
           </div>
         {% endif %}
-        
+
         <div class="installment-widgets mb-4">
           {%- if appBlock -%}
             {% render appBlock %}
           {% endif %}
-          
+
           {%- if affirm_widget -%}
             <div {{ block.shopify_attributes }}>
               {% render 'affirm-widget' %}
             </div>
           {% endif %}
         </div>
-        
+
         <div class="product-form__controls-group product-form__controls-group--submit">
           <div
             class="
@@ -386,30 +387,30 @@
             "
           >
             {% render 'add-to-cart-btn' %}
-            
+
             {% if section.settings.enable_payment_button %}
               {{ form | payment_button }}
             {% endif %}
           </div>
         </div>
-        
+
         {% if section.settings.disclaimer != blank %}
           <p class="text-center py-4 text-scarlet font-semibold">
             {{ section.settings.disclaimer }}
           </p>
         {% endif %}
-        
+
         {% if loadUpService %}
           <h5>Recommended add-on:</h5>
           {% render 'load-up-widget', settings: loadUpService.settings %}
         {% endif %}
-        
-        
-        
+
+
+
         {% if upsell_widget %}
           {% render 'product-upsell-widget', settings: upsell_widget.settings %}
         {% endif %}
-        
+
         {% if upsell_mattress %}
           <div class="rounded-2xl border-2 px-4 py-4 addon_two_card">
             <div style="grid-template-columns: minmax(100px, 1fr) 2fr;" class="grid gap-3">
@@ -451,7 +452,7 @@
           </div>
         {% endif %}
       {% endform %}
-      
+
       <p
         class="visually-hidden"
         data-loader-status
@@ -461,10 +462,10 @@
       >
         {{ 'products.product.loader_label' | t }}
       </p>
-      
+
       <button class="visually-hidden" data-add-to-cart></button>
-      
-      
+
+
       {% if mini_comparison_table %}
         <div class="overflow-auto mb-8">
           {% render 'mini-comparison-table', settings: mini_comparison_table.settings %}
@@ -475,7 +476,7 @@
           {% render 'mini-comparison-specs', settings: mini_comparison_specs.settings %}
         </div>
       {% endif %}
-      
+
       <ul class="benefits">
         {% for block in uniqueSellingPoints %}
           {% assign benefitUrl = block.settings.url %}
@@ -497,7 +498,7 @@
             </a>
           </li>
         {% endfor %}
-        
+
         {% if paymentProvidersBlock %}
           <li class="payment-providers unique-selling-point">
             <img
@@ -509,60 +510,60 @@
               {{ paymentProvidersBlock.settings.text }}
             </p>
             <div class="payment-providers__listing_new">
-              
-              
+
+
               <div class="payment-provider">
                 <img
                   src="//cdn.shopify.com/s/files/1/0562/9873/3706/files/paypal_payment_provider.svg?v=1698141213&amp;width=1440"
                 >
               </div>
-              
-              
+
+
               <div class="payment-provider">
                 <img
                   src="//cdn.shopify.com/s/files/1/0562/9873/3706/files/visa_payment_provider.svg?v=1698141376&amp;width=1440"
                 >
               </div>
-              
-              
+
+
               <div class="payment-provider">
                 <img
                   src="//cdn.shopify.com/s/files/1/0562/9873/3706/files/master-cart_payment_provider.svg?v=1698141377&amp;width=1440"
                 >
               </div>
-              
-              
+
+
               <div class="payment-provider">
                 <img
                   src="//cdn.shopify.com/s/files/1/0562/9873/3706/files/american_express.svg?v=1698141377&amp;width=1440"
                 >
               </div>
-              
-              
+
+
               <div class="payment-provider">
                 <img
                   src="//cdn.shopify.com/s/files/1/0562/9873/3706/files/discover-payment-method.svg?v=1698141377&amp;width=1440"
                 >
               </div>
-              
-              
+
+
               <div class="payment-provider">
                 <img src="//cdn.shopify.com/s/files/1/0562/9873/3706/files/apple_pay.svg?v=1698141377&amp;width=1440">
               </div>
-              
-              
+
+
               <div class="payment-provider">
                 <img src="//cdn.shopify.com/s/files/1/0562/9873/3706/files/pay_google.svg?v=1698141377&amp;width=1440">
               </div>
-              
-              
+
+
               <div class="payment-provider">
                 <img src="//cdn.shopify.com/s/files/1/0562/9873/3706/files/shop-pay.svg?v=1698141377&amp;width=1440">
               </div>
-            
-            
+
+
             </div>
-            
+
             {% comment %}
       <div class="payment-providers__listing"></div>
       <script>
@@ -582,7 +583,7 @@
           </li>
         {% endif %}
       </ul>
-      
+
       <ul class="product-specifications">
         {% for block in productSpecifications %}
           <li class="product-specification">
@@ -619,7 +620,7 @@
                     </li>
                   {% endfor %}
                 </ul>
-              
+
               {% else %}
                 {{ block.settings.content }}
               {% endif %}
@@ -635,11 +636,11 @@
 {% unless product == empty %}
   <script type="application/json" id="ProductJson-{{ section.id }}">
     {{ product | json }}
-  
+
   </script>
   <script type="application/json" id="ModelJson-{{ section.id }}">
     {{ product.media | where: 'media_type', 'model' | json }}
-  
+
   </script>
 {% endunless %}
 
@@ -1004,6 +1005,27 @@
           "id": "product",
           "type": "product",
           "label": "Upsell  Product"
+        }
+      ]
+    },
+    {
+      "type": "yotpo_reviews_star_rating",
+      "name": "Yotpo Product Reviews",
+      "settings": [
+        {
+          "id": "product",
+          "type": "product",
+          "label": "Product"
+        },
+        {
+          "id": "icon",
+          "type": "image_picker",
+          "label": "Icon"
+        },
+        {
+          "id": "new_layout",
+          "type": "checkbox",
+          "label": "Enable New Layout?"
         }
       ]
     }
