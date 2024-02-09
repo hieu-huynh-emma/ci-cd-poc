@@ -85,7 +85,8 @@
         "yotpo_reviews_star_rating": {
           "type": "yotpo_reviews_star_rating",
           "settings": {
-            "product": "emma-hybrid-comfort"
+            "product": "emma-hybrid-comfort",
+            "new_layout": false
           }
         },
         "f5f456c7-b29a-4f74-826f-648e09f5b1cd": {
@@ -240,7 +241,7 @@
         "70d9c3e6-227c-45f4-ad8f-46d64fa8c84a": {
           "type": "campaign_teaser",
           "settings": {
-            "title": "Winter Sale",
+            "title": "Product of the Year Sale",
             "content": "<p>Exclusive offer: 53% off<\/p>"
           }
         }
@@ -273,7 +274,7 @@
       ],
       "settings": {
         "title": "",
-        "desc": "<p><strong>Experience the best sleep with premium comfort<\/strong><\/p><ul><li>53% discount on our newest 13-inch Emma Hybrid Comfort<\/li><li>53% discount on 2 Premium Cooling Pillows<\/li><li>53% discount on our Emma Breathable Mattress Protector<\/li><\/ul>",
+        "desc": "<p><strong>Experience the best sleep with premium and awarded comfort<\/strong><\/p><ul><li>53% discount on our newest 13-inch Emma Hybrid Comfort - Product of the Year<\/li><li>53% discount on 2 Premium Cooling Pillows<\/li><li>53% discount on our Emma Breathable Mattress Protector<\/li><\/ul>",
         "caption_headline": "Best sleep with premium comfort",
         "caption_content": "We offer an excellent sleep system that ensures a perfect night's sleep.",
         "badge": "New",
@@ -306,23 +307,23 @@
             "cta_text": ""
           }
         },
+        "258722e6-18c8-4c8d-bee9-c411c5312e58": {
+          "type": "video",
+          "settings": {
+            "source": "shopify:\/\/files\/videos\/Hybridcomfort.mp4",
+            "heading": "Hybrid Comfort Mattress",
+            "content": "Meet our Product of the Year Mattress with zero motion transfer and exceptional breathability enabled by its open-pored Airgocell foams, facilitating heat dissipation for an impeccable night's sleep at your ideal temperature.",
+            "inverted": false,
+            "cta_url": "",
+            "cta_text": ""
+          }
+        },
         "95f7a903-df98-4d58-9b15-0db125d9190c": {
           "type": "video",
           "settings": {
             "source": "shopify:\/\/files\/videos\/Brand_Block_1_desktop.mp4",
             "heading": "Emma Premium Cooling Pillow",
             "content": "No more waking up in a sweat! The Cooling Pillow features our special Thermosync foam, capturing excess heat for optimum sleep temperature. A regulated temperature favorises deep sleep phases and promotes a restful sleep without micro-awakenings throughout the night.",
-            "inverted": false,
-            "cta_url": "",
-            "cta_text": ""
-          }
-        },
-        "258722e6-18c8-4c8d-bee9-c411c5312e58": {
-          "type": "video",
-          "settings": {
-            "source": "shopify:\/\/files\/videos\/Hybridcomfort.mp4",
-            "heading": "Hybrid Comfort Mattress",
-            "content": "Enjoy zero motion transfer and exceptional breathability enabled by its open-pored Airgocell foams, facilitating heat dissipation for an impeccable night's sleep at your ideal temperature.",
             "inverted": true,
             "cta_url": "",
             "cta_text": ""
@@ -343,8 +344,8 @@
       "block_order": [
         "7eddc7a1-60de-430c-ad1d-0fa4619d108d",
         "57e597f8-8943-4def-820a-a0e469678641",
-        "95f7a903-df98-4d58-9b15-0db125d9190c",
         "258722e6-18c8-4c8d-bee9-c411c5312e58",
+        "95f7a903-df98-4d58-9b15-0db125d9190c",
         "66511993-3f5d-49e1-a113-a15cae21edda"
       ],
       "settings": {

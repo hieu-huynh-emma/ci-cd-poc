@@ -85,7 +85,8 @@
         "yotpo_reviews_star_rating": {
           "type": "yotpo_reviews_star_rating",
           "settings": {
-            "product": "emma-original-mattress"
+            "product": "emma-original-mattress",
+            "new_layout": false
           }
         },
         "f5f456c7-b29a-4f74-826f-648e09f5b1cd": {
@@ -240,8 +241,8 @@
         "70d9c3e6-227c-45f4-ad8f-46d64fa8c84a": {
           "type": "campaign_teaser",
           "settings": {
-            "title": "Winter Sale",
-            "content": "<p>Exclusive offer: 40% off<\/p>"
+            "title": "Product of the Year Sale",
+            "content": "<p>40% off<\/p>"
           }
         }
       },

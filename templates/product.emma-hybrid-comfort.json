@@ -1,5 +1,4 @@
 {
-  "layout": "theme.revamp",
   "sections": {
     "affiliate-banners": {
       "type": "affiliate-banners",
@@ -93,7 +92,7 @@
         "f5f456c7-b29a-4f74-826f-648e09f5b1cd": {
           "type": "product_media",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Hybridcomfort_PDPhero_dcc375dd-5a28-4204-81de-87b0f1033bf2.jpg",
+            "image": "shopify:\/\/shop_images\/img_1_1.png",
             "full_width": true,
             "is_video": false
           }
@@ -251,15 +250,15 @@
         "4ed1b304-2430-4843-a7d4-875e743c3c27": {
           "type": "campaign_teaser",
           "settings": {
-            "title": "Winter Sale",
+            "title": "Product of the Year Sale",
             "content": "<p>50% off<\/p>"
           }
         },
         "40770334-266c-4992-86e4-9709af68cc26": {
           "type": "upsell_widget",
           "settings": {
-            "title": "Flash Sale on our Hybrid Premium Mattress:",
-            "content": "<p><strong>53% off:  <\/strong>Improved cooling & motion isolation<\/p>",
+            "title": "Upgrade to Hybrid Premium Mattress:",
+            "content": "<p><strong>50% off<\/strong><\/p><ul><li>Improved Cooling & Motion Isolation<\/li><li>Advanced Thermosync Technology<\/li><\/ul>",
             "image": "shopify:\/\/shop_images\/Hybrid_Premium_front_view_room_render.jpg",
             "product": "emma-hybrid-premium"
           }
@@ -296,10 +295,10 @@
       ],
       "settings": {
         "title": "Emma Hybrid Comfort",
-        "desc": "<h6>Perfect comfort for everyone <\/h6><p>Our newest 13-inch Hybrid mattress that can support added weight and movement without getting hot or stuffy<\/p><ul><li>Ultra-breathable and refreshing, no more overheating<\/li><li>7 ergonomic zones for optimal spinal alignment<\/li><li>Enhanced support for every size and weight<\/li><li>Ideal pressure distribution<\/li><li>Zero motion transfer<\/li><\/ul>",
+        "desc": "<h6>Perfect comfort for everyone: Product of the Year 2024 <\/h6><p>Our newest 13-inch Hybrid mattress that can support added weight and movement without getting hot or stuffy<\/p><ul><li>Ultra-breathable and refreshing, no more overheating<\/li><li>7 ergonomic zones for optimal spinal alignment<\/li><li>Enhanced support for every size and weight<\/li><li>Ideal pressure distribution<\/li><li>Zero motion transfer<\/li><\/ul>",
         "caption_headline": "The mattress that can hold its own",
         "caption_content": "Designed to provide perfect support, maximal comfort, and stay cool while you sleep",
-        "badge": "New",
+        "badge": "Sale",
         "disclaimer": ""
       }
     },
@@ -534,21 +533,51 @@
         "show_secondary_badge": false
       }
     },
-    "1685402594226951ca": {
-      "type": "apps",
+    "product-catalog": {
+      "type": "product-catalog",
       "blocks": {
-        "7ff6a1da-6807-45e3-b28c-7f24e3979f9a": {
-          "type": "shopify:\/\/apps\/yotpo-product-photo-reviews\/blocks\/reviews\/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
+        "72c7f33b-7788-4524-bf53-816aecb093b6": {
+          "type": "catalog_item",
+          "settings": {
+            "product": "emma-foam-pillow"
+          }
+        },
+        "f0f0b732-6803-4158-8c54-5c08c4bdbfa3": {
+          "type": "catalog_item",
+          "settings": {
+            "product": "premium-cooling-pillow"
+          }
+        },
+        "07d5912c-d4c3-4ebb-97a6-f723fc8a4f3f": {
+          "type": "catalog_item",
+          "settings": {
+            "product": "emma-mattress-protector"
+          }
+        },
+        "c4650795-b884-4ddd-904e-babd57faad7b": {
+          "type": "catalog_item",
+          "settings": {
+            "product": "emma-bed-frame"
+          }
+        },
+        "d8319461-aedd-4805-884a-95b7ed1a5893": {
+          "type": "catalog_item",
           "settings": {
             "product": "emma-hybrid-comfort"
           }
         }
       },
       "block_order": [
-        "7ff6a1da-6807-45e3-b28c-7f24e3979f9a"
+        "72c7f33b-7788-4524-bf53-816aecb093b6",
+        "f0f0b732-6803-4158-8c54-5c08c4bdbfa3",
+        "07d5912c-d4c3-4ebb-97a6-f723fc8a4f3f",
+        "c4650795-b884-4ddd-904e-babd57faad7b",
+        "d8319461-aedd-4805-884a-95b7ed1a5893"
       ],
       "settings": {
-        "include_margins": true
+        "heading": "Some things are better together",
+        "heading_alignment": "start",
+        "container_spacing": "md"
       }
     },
     "social-proof": {
@@ -789,51 +818,21 @@
         "title": "<p>Why our customers love Emma<\/p>"
       }
     },
-    "product-catalog": {
-      "type": "product-catalog",
+    "1685402594226951ca": {
+      "type": "apps",
       "blocks": {
-        "72c7f33b-7788-4524-bf53-816aecb093b6": {
-          "type": "catalog_item",
-          "settings": {
-            "product": "emma-foam-pillow"
-          }
-        },
-        "f0f0b732-6803-4158-8c54-5c08c4bdbfa3": {
-          "type": "catalog_item",
-          "settings": {
-            "product": "premium-cooling-pillow"
-          }
-        },
-        "07d5912c-d4c3-4ebb-97a6-f723fc8a4f3f": {
-          "type": "catalog_item",
-          "settings": {
-            "product": "emma-mattress-protector"
-          }
-        },
-        "c4650795-b884-4ddd-904e-babd57faad7b": {
-          "type": "catalog_item",
-          "settings": {
-            "product": "emma-bed-frame"
-          }
-        },
-        "d8319461-aedd-4805-884a-95b7ed1a5893": {
-          "type": "catalog_item",
+        "7ff6a1da-6807-45e3-b28c-7f24e3979f9a": {
+          "type": "shopify:\/\/apps\/yotpo-product-photo-reviews\/blocks\/reviews\/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
           "settings": {
             "product": "emma-hybrid-comfort"
           }
         }
       },
       "block_order": [
-        "72c7f33b-7788-4524-bf53-816aecb093b6",
-        "f0f0b732-6803-4158-8c54-5c08c4bdbfa3",
-        "07d5912c-d4c3-4ebb-97a6-f723fc8a4f3f",
-        "c4650795-b884-4ddd-904e-babd57faad7b",
-        "d8319461-aedd-4805-884a-95b7ed1a5893"
+        "7ff6a1da-6807-45e3-b28c-7f24e3979f9a"
       ],
       "settings": {
-        "heading": "Some things are better together",
-        "heading_alignment": "start",
-        "container_spacing": "md"
+        "include_margins": true
       }
     },
     "special-services": {
@@ -901,10 +900,10 @@
     "mattress-layers",
     "mattress-firmness",
     "featured-products",
-    "1685402594226951ca",
+    "product-catalog",
     "social-proof",
     "customer-sentiment",
-    "product-catalog",
+    "1685402594226951ca",
     "special-services",
     "contact-us"
   ]
