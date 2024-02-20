@@ -8,13 +8,22 @@
         "f20c1dc5-1445-4727-82f1-38fc8e740656": {
           "type": "announcement_content",
           "settings": {
-            "text": "<p>Product of the Year Sale: <strong>up to 53% Off.<\/strong><\/p>",
+            "text": "<p>Family Day Sale: <strong>up to 45% Off.<\/strong><\/p>",
             "tooltip": "Save 53% on Emma Hybrid Premium & 50% on Emma Hybrid comfort"
+          }
+        },
+        "announcement_content_7yRzRg": {
+          "type": "announcement_content",
+          "disabled": true,
+          "settings": {
+            "text": "",
+            "tooltip": ""
           }
         }
       },
       "block_order": [
-        "f20c1dc5-1445-4727-82f1-38fc8e740656"
+        "f20c1dc5-1445-4727-82f1-38fc8e740656",
+        "announcement_content_7yRzRg"
       ],
       "custom_css": [
         ".anno-wrapper {border: 1, 1, transparent; border-bottom: 0rem;}",

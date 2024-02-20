@@ -111,14 +111,14 @@
 #hero-split-section .hero-split-features .countdown-timer .time-part {
     display: grid;
     justify-content: center;
-    padding: 4px 8px;
+    padding: 2px 4px;
     background-color: #fff;
     border-radius: 4px;
-    text-align: center
+    text-align: center;
 }
 
 #hero-split-section .hero-split-features .countdown-timer .time-part .digit {
-    font-size: 24px;
+    font-size: 16px;
     font-weight: 600;
     letter-spacing: 0;
     line-height: 125%
@@ -223,9 +223,9 @@
 #hero-split-section .section-container--mobile .section-frame .hero-split-features {
 
     display: grid;
-    gap: 1rem;
+    gap: .5rem;
     width: 100%;
-    max-width: 352px;
+    max-width: 70%;
     margin: 0 auto;
 }
 
@@ -253,6 +253,13 @@
     gap: 0
 }
 
+#hero-split-section .section-container--mobile .hero-split-features .section-cta a.btn {
+    min-height: 36px;
+    padding: 0;
+
+    font-size: 14px;
+}
+
 #hero-split-section .section-container--mobile:not(.single-mode) .section-frame:last-child .sub-heading {
     display: none
 }
@@ -269,6 +276,12 @@
 #hero-split-section .section-panel.overlay-bg {
     background: linear-gradient(180deg, rgba(0, 0, 0, .75) 3.5%, transparent 60%);
 
+}
+
+@media screen and (min-width: 480px) {
+    #hero-split-section .section-container--mobile .section-frame .hero-split-features {
+        max-width: 352px;
+    }
 }
 
 @media screen and (min-width: 769px) {
