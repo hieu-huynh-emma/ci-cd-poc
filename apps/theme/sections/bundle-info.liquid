@@ -20,7 +20,7 @@
 {% assign productMedia = section.blocks | where: 'type', 'product_media' %}
 {% assign campaignTeaser = section.blocks | where: 'type', 'campaign_teaser'| first  %}
 {% assign upsell_widget = section.blocks | where: 'type', 'upsell_widget' | first %}
-{% assign yotpo_reviews_star_rating = section.blocks | where: 'type', 'yotpo_reviews_star_rating' | first %}
+{% assign yotpo_star_rating = section.blocks | where: 'type', 'yotpo_star_rating' | first %}
 
 
 <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
@@ -151,7 +151,7 @@
 				{% endif %}
 			</h2>
 
-            {% render 'yotpo_reviews_star_rating', settings: yotpo_reviews_star_rating.settings %}
+            {% render 'yotpo_star_rating', settings: yotpo_star_rating.settings %}
 
 			<div class="product-description">
 				{{ section.settings.desc | default: product.description }}
@@ -978,7 +978,7 @@
       ]
     },
     {
-      "type": "yotpo_reviews_star_rating",
+      "type": "yotpo_star_rating",
       "name": "Yotpo Product Reviews",
       "settings": [
         {
