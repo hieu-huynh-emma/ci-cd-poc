@@ -14,7 +14,7 @@ const sources = [
   'styles/layouts/**/*.scss',
   // 'styles/migrate/**/*.scss',
   // 'styles/pages/*.scss',
-  // 'styles/sections/**/*.scss',
+  'styles/sections/**/*.scss',
   // 'styles/vendors/*.scss'
 ];
 

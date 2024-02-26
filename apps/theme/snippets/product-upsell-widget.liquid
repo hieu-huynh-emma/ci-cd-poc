@@ -1,39 +1,61 @@
 {% assign blockImg = settings.image | image_url: width: 500 %}
-{% assign coverImg =  settings.product.featured_image | image_url: width: 450 %}
+{% assign coverImg = settings.product.featured_image | image_url: width: 450 %}
 
-<div class="rounded-2xl border-2 px-4 py-4" style="border-color: #2e2f3c">
-  <div style="grid-template-columns: minmax(100px, 1fr) 2fr;" class="grid gap-3">
-    <div style="grid-row: 1 / 3;" class="self-center">
-      <img
-        class="mx-auto h-auto"
-        src="{{ blockImg | default: settings.product.metafields.accentuate.featured_image[0].src | default: coverImg }}"
-        alt=""
-        width="100"
-        height="57"
-      >
-    </div>
-    <div class="px-4">
-      <p class="text-[15px]">{{ settings.title }}</p>
-      <div>
-        {% render 'rtf-viewer', content: settings.content  %}
-      </div>
-      
-      <p class="text-[14px]">
-        <span>From {{ settings.product.price | money_without_trailing_zeros -}}</span>
-        <span
-          class="line-through"
-        >
-          {{- settings.product.compare_at_price | money_without_trailing_zeros -}}
-        </span>
-      </p>
-    </div>
-    <div style="grid-column: 2 / 3;" class="px-4">
-      <a
-        href="{{ settings.product }}"
-        class="block w-full rounded-lg border-2 px-4 py-1 text-center text-[15px] font-semibold uppercase transition-all duration-200 view_btn"
-        style="border-color: #2e2f3c">
-        View product
-      </a>
-    </div>
-  </div>
-</div>
+
+<product-auxiliary
+        type="widget"
+        id="up-selling-addon-{{ product.handle }}"
+        name="up-sell-widget"
+        :product="{{ product | json | escape }}"
+        :eventName="up_selling"
+>
+    <a href="{{ settings.product }}">
+        {% assign product = settings.product %}
+        <div class="auxiliary-container">
+
+            <div class="self-center">
+                <img
+                        class="mx-auto h-auto"
+                        src="{{ blockImg | default: settings.product.metafields.accentuate.featured_image[0].src | default: coverImg }}"
+                        alt=""
+                        width="100"
+                        height="57"
+                >
+            </div>
+            <div class="product-details">
+                <div class="product-content">
+                    <p class="text-sm font-semibold">{{ settings.title }}</p>
+                    <div class="text-sm">
+                        {% render 'rtf-viewer', content: settings.content %}
+                    </div>
+                </div>
+                <p class="product-price-container ">
+                    {% if settings.product.compare_at_price > settings.product.price %}
+                        From
+                    {% endif %}
+                    <span class="text-scarlet font-bold">{{ settings.product.price | money }}</span>
+
+                    {% if settings.product.compare_at_price > settings.product.price %}
+                        <del class="line-through text-xs">{{ settings.product.compare_at_price | money }}</del>
+                    {% endif %}
+                </p>
+                {% comment %}<p class="text-[14px]">{% endcomment %}
+                {% comment %}<span>From {{ settings.product.price | money_without_trailing_zeros -}}</span>{% endcomment %}
+                {% comment %}<span{% endcomment %}
+                {% comment %}class="line-through"{% endcomment %}
+                {% comment %}>{% endcomment %}
+                {% comment %}{{- settings.product.compare_at_price | money_without_trailing_zeros -}}{% endcomment %}
+                {% comment %}</span>{% endcomment %}
+                {% comment %}</p>{% endcomment %}
+            </div>
+            {% comment %}<div style="grid-column: 2 / 3;" class="px-4">{% endcomment %}
+            {% comment %}<a{% endcomment %}
+            {% comment %}{% endcomment %}
+            {% comment %}class="block w-full rounded-lg border-2 px-4 py-1 text-center text-[15px] font-semibold uppercase transition-all duration-200 view_btn"{% endcomment %}
+            {% comment %}style="border-color: #2e2f3c">{% endcomment %}
+            {% comment %}View product{% endcomment %}
+            {% comment %}</a>{% endcomment %}
+            {% comment %}</div>{% endcomment %}
+        </div>
+    </a>
+</product-auxiliary>

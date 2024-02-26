@@ -1,7 +1,7 @@
 {% assign blockImg = settings.image | image_url: width: 500 %}
 {% assign coverImg =  settings.product.featured_image | image_url: width: 450 %}
 
-<div class="rounded-2xl border-2 px-4 py-4" style="border-color: #2e2f3c">
+<div id="product-upsell-widget-old" class="rounded-2xl border-2 px-4 py-4" style="border-color: #2e2f3c">
   <div style="grid-template-columns: minmax(100px, 1fr) 2fr;" class="grid gap-3">
     <div style="grid-row: 1 / 3;" class="self-center">
       <img
@@ -17,7 +17,7 @@
       <div>
         {% render 'rtf-viewer', content: settings.content  %}
       </div>
-      
+
       <p class="text-[14px]">
         <span>From {{ settings.product.price | money_without_trailing_zeros -}}</span>
         <span

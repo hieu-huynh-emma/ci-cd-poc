@@ -212,7 +212,7 @@
   }
   .product-info .product-info-wrapper {
     display: grid;
-    gap: 87px;
+    gap: 40px;
     grid-template-columns: minmax(0, .6fr) minmax(0, .4fr);
   }
   .product-info .product-info-wrapper .right-section {
@@ -228,6 +228,22 @@
     height: max-content;
   }
 }
+
+@media screen and (min-width: 1200px) {
+  .product-info .product-info-wrapper {
+    gap: 60px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .product-info .product-info-wrapper {
+    gap: 87px;
+  }
+}
+
+
+
+
 
 .product-info .desktop-mansory {
   display: none;

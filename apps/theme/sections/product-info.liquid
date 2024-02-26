@@ -18,8 +18,10 @@
 {% assign productMedia = section.blocks | where: 'type', 'product_media' %}
 {% assign campaignTeaser = section.blocks | where: 'type', 'campaign_teaser' | first %}
 {% assign upsell_widget = section.blocks | where: 'type', 'upsell_widget' | first %}
+{% assign cross_sell_widget = section.blocks | where: 'type', 'cross_sell_widget' | first %}
 {% assign yotpo_star_rating = section.blocks | where: 'type', 'yotpo_star_rating' | first %}
 
+{{ 'product-auxiliary.css' | asset_url | stylesheet_tag }}
 
 <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
 <script>
@@ -176,7 +178,8 @@
 
     <product-form class="right-section">
       <h2 id="product-title" class="paragraph-24 font-inter font-semibold">
-        {{ section.settings.title | default: product.title }}
+        {{ product.title }}
+        {% comment %}{{ section.settings.title | default: product.title }}{% endcomment %}
         {% if section.settings.badge != blank %}
           <div
             class="inline-flex bg-scarlet text-white py-[5px] px-[8px] uppercase rounded text-[13px] ml-[10px] leading-normal"
@@ -250,10 +253,6 @@
             assign qtySelectorOrientation = "vertical"
           endif
         %}
-
-        <script>
-          console.log({{ product.selected_or_first_available_variant.available }})
-        </script>
 
         <div id="attribute-configurator" class="
           attribute-configurator
@@ -330,6 +329,16 @@
             {{- 'products.product.quantity_minimum_message' | t -}}
           </span>
         </div>
+
+        {% if upsell_widget %}
+          {% render 'product-upsell-widget', settings: upsell_widget.settings %}
+        {% endif %}
+
+        {% if cross_sell_widget %}
+          {% render 'cross-selling-addon' %}
+        {% endif %}
+
+
         {% for block in bundleProductTemp %}
           {% assign benefitUrl = block.settings.url %}
           <div class="tempBundle">
@@ -350,6 +359,7 @@
             </a>
           </div>
         {% endfor %}
+
         <div id="price-{{ section.id }}" class="product__price" {{ block.shopify_attributes }}>
           {% render 'product-price', variant: current_variant, product: product %}
         </div>
@@ -405,10 +415,8 @@
           {% render 'load-up-widget', settings: loadUpService.settings %}
         {% endif %}
 
-
-
         {% if upsell_widget %}
-          {% render 'product-upsell-widget', settings: upsell_widget.settings %}
+          {% render 'product-upsell-widget-old', settings: upsell_widget.settings %}
         {% endif %}
 
         {% if upsell_mattress %}
@@ -980,6 +988,13 @@
           "type": "richtext",
           "label": "Content"
         }
+      ]
+    },
+    {
+      "type": "cross_sell_widget",
+      "name": "Cross-sell Widget",
+      "settings": [
+
       ]
     },
     {

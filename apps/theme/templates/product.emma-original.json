@@ -251,7 +251,13 @@
             "image": "shopify:\/\/shop_images\/Emma_hybrid-comfort_exploded_2.png",
             "product": "emma-hybrid-comfort"
           }
+        },
+        "cross_sell_widget_tXLCDN": {
+          "type": "cross_sell_widget",
+          "settings": {
+          }
         }
+
       },
       "block_order": [
         "yotpo_star_rating",
@@ -275,10 +281,12 @@
         "8c61e5e7-7152-452e-88a6-8f61c8afbbfc",
         "78340a5f-79af-436d-b68c-7aa1da0df629",
         "cfce0226-3426-4dc5-beec-1c0f5dc15658",
-        "3d66a516-6f44-40e9-b6c1-53de5855535f"
+        "3d66a516-6f44-40e9-b6c1-53de5855535f",
+        "cross_sell_widget_tXLCDN"
       ],
       "custom_css": [
         "h2 > div {display: none;}"
+
       ],
       "settings": {
         "title": "Emma Original Mattress",

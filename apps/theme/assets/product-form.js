@@ -1,143 +1,192 @@
-if (!customElements.get('product-form')) {
-  customElements.define('product-form', class ProductForm extends HTMLElement {
+if (!customElements.get("product-form")) {
+  customElements.define("product-form", class ProductForm extends HTMLElement {
     constructor() {
       super();
-      
-      this.form                                     = this.querySelector('form');
-      this.form.querySelector('[name=id]').disabled = false;
-      this.form.addEventListener('submit', this.onSubmitHandler.bind(this));
-      this.cartSurface = document.querySelector('cart-surface')
+
+      this.form = this.querySelector("form");
+      this.form.querySelector("[name=id]").disabled = false;
+      this.form.addEventListener("submit", this.onSubmitHandler.bind(this));
+      this.cartSurface = document.querySelector("cart-surface");
     }
-    
+
     async onSubmitHandler(evt) {
       evt.preventDefault();
-      
-      this.submitButton = this.querySelector('[type="submit"]');
-      if (document.querySelector('cart-drawer')) this.submitButton.setAttribute('aria-haspopup', 'dialog');
-      
+
+      this.submitButton = this.querySelector("[type=\"submit\"]");
+      if (document.querySelector("cart-drawer")) this.submitButton.setAttribute("aria-haspopup", "dialog");
+
       // const pillowCheckbox$ = $('#add-on-pillows .add-on-checkbox-input')
-      
-      if (this.submitButton.classList.contains('loading')) return;
-      
+
+      if (this.submitButton.classList.contains("loading")) return;
+
       this.handleErrorMessage();
-      
-      this.submitButton.setAttribute('aria-disabled', true);
-      this.submitButton.classList.add('loading');
-      this.querySelector('.loading-overlay__spinner').classList.remove('hidden');
-      
+
+      this.submitButton.setAttribute("aria-disabled", true);
+      this.submitButton.classList.add("loading");
+      this.querySelector(".loading-overlay__spinner").classList.remove("hidden");
+
       await waitUntil(_ => !!this.cartSurface.loading === false);
-      
-      
-      const config                       = fetchConfig('javascript');
-      config.headers['X-Requested-With'] = 'XMLHttpRequest';
-      const formData                     = JSON.parse(serializeForm(this.form))
-      
-      
-      const $loadUpAddonService = $('#load-up-widget');
-      
-      const hasLoadUpService = $loadUpAddonService.find('.addon-checkbox__input').is(":checked")
-      
+
+
+      const config = fetchConfig("javascript");
+      config.headers["X-Requested-With"] = "XMLHttpRequest";
+      const formData = JSON.parse(serializeForm(this.form));
+
       formData.properties = {
-        _reset: true
-      }
-      
-      if (hasLoadUpService) {
-        const qty                   = formData.quantity
-        const productId             = formData.id
-        const addonServiceProductId = $loadUpAddonService.attr(":productId")
-        const addonServiceVariantId = $loadUpAddonService.attr(":variantId")
-        
-        delete formData.id
-        delete formData.quantity
-        delete formData.properties
-        
-        formData.items = [{
-          id: addonServiceVariantId, quantity: qty ? parseInt(qty) : 1, properties: {
-            _addonServiceFor: productId
+        _reset: true,
+      };
+
+      const $addonServices = $("addon-service.cross-selling-addon").filter(function() {
+        return $(this).find('.addon-checkbox__input').is(':checked');
+      });
+
+      if ($addonServices.length > 0) {
+        const qty = formData.quantity;
+        const productId = formData.id
+
+        const productSize = $(`select[name="options[Size]"]`).val().split("|")[0].trim()
+
+        const allAddonProducts = $addonServices.toArray().map( (el) => {
+          const $addonEl = $(el);
+
+          const addonProd = JSON.parse($addonEl.find("[data-product-json]").text());
+
+          const allVariants = addonProd.variants
+
+
+          const defaultVariant = allVariants[0];
+          const selectedVariantId = $addonEl.data("variantId")
+
+          const isConfigurable = allVariants.length > 1 && !selectedVariantId
+
+          if(isConfigurable) {
+            const selectedVariant = addonProd.variants.find(variant => variant.title.includes(productSize))
+
+            return {
+              id: selectedVariant.id, quantity: qty ? parseInt(qty) : 1
+            }
           }
-        }, {
-          id: productId, quantity: qty, properties: {
-            _addonService: JSON.stringify({
-              productId: addonServiceProductId, variantId: addonServiceVariantId,
-            })
+
+          return {
+            id: selectedVariantId ||  defaultVariant.id, quantity: qty ? parseInt(qty) : 1
           }
-        }]
+        });
+
+        delete formData.id;
+        delete formData.quantity;
+        delete formData.properties;
+
+        formData.items = [
+          ...allAddonProducts,
+          {
+            id: productId, quantity: qty,
+          },
+        ];
       }
-      
-      
+
+
+      // const $loadUpAddonService = $("#load-up-widget");
+      //
+      // const hasLoadUpService = $loadUpAddonService.find(".addon-checkbox__input").is(":checked");
+
+
+      // if (hasLoadUpService) {
+      //   const qty = formData.quantity;
+      //   const productId = formData.id;
+      //   const addonServiceProductId = $loadUpAddonService.attr(":productId");
+      //   const addonServiceVariantId = $loadUpAddonService.attr(":variantId");
+      //
+      //   delete formData.id;
+      //   delete formData.quantity;
+      //   delete formData.properties;
+      //
+      //   formData.items = [{
+      //     id: addonServiceVariantId, quantity: qty ? parseInt(qty) : 1, properties: {
+      //       _addonServiceFor: productId,
+      //     },
+      //   }, {
+      //     id: productId, quantity: qty, properties: {
+      //       _addonService: JSON.stringify({
+      //         productId: addonServiceProductId, variantId: addonServiceVariantId,
+      //       }),
+      //     },
+      //   }];
+      // }
+
+
       if (this.cartSurface) {
-        formData.sections     = this.cartSurface.getCartPartsToRender().map((section) => section.section)
-        formData.sections_url = window.location.pathname
-        
+        formData.sections = this.cartSurface.getCartPartsToRender().map((section) => section.section);
+        formData.sections_url = window.location.pathname;
+
         this.cartSurface.setActiveElement(document.activeElement);
       }
-      
-      config.body = JSON.stringify(formData)
-      
-      const previousEmpty = this.cartSurface.$el.hasClass('is-empty')
-      
+
+      config.body = JSON.stringify(formData);
+
+      const previousEmpty = this.cartSurface.$el.hasClass("is-empty");
+
       fetch(`${routes.cart_add_url}`, config)
-      .then((response) => response.json())
-      .then(async (response) => {
-        if (response.status) {
-          this.handleErrorMessage(response.description);
-          const soldOutMessage = this.submitButton.querySelector('.sold-out-message');
-          if (!soldOutMessage) return;
-          this.submitButton.setAttribute('aria-disabled', true);
-          this.submitButton.querySelector('span').classList.add('hidden');
-          soldOutMessage.classList.remove('hidden');
-          this.error = true;
-          
-          return;
-        }
-        
-        this.error = false;
-        
-        await this.cartSurface.open();
-        
-        this.cart = document.querySelector('cart-drawer');
-        
-        await wait(100)
-        
-        await waitUntil(_ => !!this.cart.loading === false);
-        
-        this.cart.renderContents(response);
-        
-        const cartRedeem   = document.getElementById('CartRedeemCode');
-        const cartSummary  = document.getElementById('CartDrawerSummary');
-        const codeRedeemed = cartRedeem.codeRedeemed
-        
-        if (previousEmpty) {
-          this.cartSurface.$el.removeClass('is-empty')
-        }
-        
-        if (!!codeRedeemed) {
-          await this.cart.loadCheckout()
-          
-          const isApplicable = cartRedeem.checkCodeApplicable()
-          
-          if (!isApplicable) return
-          
-          cartSummary.computeDiscountedTotal()
-          cartRedeem.refreshDiscountTag();
-        }
-      })
-      .catch((e) => {
-        console.error(e);
-      })
-      .finally(() => {
-        this.submitButton.classList.remove('loading');
-        this.submitButton.removeAttribute('aria-disabled');
-        this.querySelector('.loading-overlay__spinner').classList.add('hidden');
-      });
+        .then((response) => response.json())
+        .then(async (response) => {
+          if (response.status) {
+            this.handleErrorMessage(response.description);
+            const soldOutMessage = this.submitButton.querySelector(".sold-out-message");
+            if (!soldOutMessage) return;
+            this.submitButton.setAttribute("aria-disabled", true);
+            this.submitButton.querySelector("span").classList.add("hidden");
+            soldOutMessage.classList.remove("hidden");
+            this.error = true;
+
+            return;
+          }
+
+          this.error = false;
+
+          await this.cartSurface.open();
+
+          this.cart = document.querySelector("cart-drawer");
+
+          await wait(100);
+
+          await waitUntil(_ => !!this.cart.loading === false);
+
+          this.cart.renderContents(response);
+
+          const cartRedeem = document.getElementById("CartRedeemCode");
+          const cartSummary = document.getElementById("CartDrawerSummary");
+          const codeRedeemed = cartRedeem.codeRedeemed;
+
+          if (previousEmpty) {
+            this.cartSurface.$el.removeClass("is-empty");
+          }
+
+          if (!!codeRedeemed) {
+            await this.cart.loadCheckout();
+
+            const isApplicable = cartRedeem.checkCodeApplicable();
+
+            if (!isApplicable) return;
+
+            cartSummary.computeDiscountedTotal();
+            cartRedeem.refreshDiscountTag();
+          }
+        })
+        .catch((e) => {
+          console.error(e);
+        })
+        .finally(() => {
+          this.submitButton.classList.remove("loading");
+          this.submitButton.removeAttribute("aria-disabled");
+          this.querySelector(".loading-overlay__spinner").classList.add("hidden");
+        });
     }
-    
+
     handleErrorMessage(errorMessage = false) {
-      this.errorMessageWrapper = this.errorMessageWrapper || this.querySelector('.product-form__error-message-wrapper');
-      this.errorMessage        = this.errorMessage || this.errorMessageWrapper.querySelector('.product-form__error-message');
-      
-      this.errorMessageWrapper.toggleAttribute('hidden', !errorMessage);
-      
+      this.errorMessageWrapper = this.errorMessageWrapper || this.querySelector(".product-form__error-message-wrapper");
+      this.errorMessage = this.errorMessage || this.errorMessageWrapper.querySelector(".product-form__error-message");
+
+      this.errorMessageWrapper.toggleAttribute("hidden", !errorMessage);
+
       if (errorMessage) {
         this.errorMessage.textContent = errorMessage;
       }

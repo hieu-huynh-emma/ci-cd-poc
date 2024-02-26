@@ -59,7 +59,7 @@
     gap: 1rem;
     align-content: center;
     grid-template-columns: repeat(2,  minmax(0, auto));
-    justify-content: flex-start;
+    justify-content: space-between;
 }
 
 .btn--full {
@@ -68,7 +68,7 @@
 .catalog-grid{
   display:flex !important;
   flex-wrap:wrap !important;
-  
+
 }
 .catalog-grid > a {
     width: 22%;
@@ -574,6 +574,7 @@ loading-overlay svg {
     }
 }
 .section-container {
+    position: relative;
     padding: 32px 0;
 }
 .section-container.sm {
@@ -607,6 +608,12 @@ loading-overlay svg {
     .section-chassis {
         gap: 40px;
     }
+}
+
+.section-wallpaper {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
 }
 .section-header {
     display: grid;
@@ -915,17 +922,31 @@ countdown-timer.sm .timer-display .time-part .digit {
         font-size: 18px;
     }
 }
+.cross-selling-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
 addon-service {
     position: relative;
     display: grid;
     gap: 8px;
     align-items: center;
-    grid-template-columns: minmax(0, auto) minmax(0, 1fr) minmax(0, auto);
+    grid-template-columns: minmax(0, auto) minmax(0, 1fr);
     width: 100%;
-    padding: 16px;
+    padding: 8px 16px;
     border: 2px solid #2e2f3c;
     border-radius: 8px;
     cursor: pointer;
+}
+.addon-service-details {
+    display: grid;
+    gap: .5rem;
+    grid-template-columns: minmax(0, 1fr);
+    align-content: space-between;
+    align-items: center;
+    justify-content: space-between;
 }
 addon-service .add-on-content-wrapper {
     --check-icon-width: 24px;
@@ -946,7 +967,7 @@ addon-service .add-on-label__text {
 }
 @media screen and (min-width: 750px) {
     addon-service {
-        margin: 0.5rem 0 0;
+        padding: 8px 16px;
     }
     addon-service .add-on-content-wrapper {
         --check-icon-width: 27px;
@@ -955,6 +976,12 @@ addon-service .add-on-label__text {
     }
     addon-service .add-on-label__text {
         font-size: 1.3rem;
+    }
+
+    .addon-service-details {
+        gap: 1rem;
+        grid-template-columns: repeat(2, minmax(0, auto));
+        align-content: center;
     }
 }
 addon-service .add-on-label__price {
