@@ -14,11 +14,12 @@
 
   <div class="product-card-detail">
     <div class="product-card-badge-container">
-      {% if product.metafields.accentuate.upto_discount %}
+      {% assign uptoDiscount =  product.metafields.accentuate.upto_discount | times: 1 %}
+      {% if uptoDiscount > 0 %}
         <div
           class="product-card-badge bg-scarlet"
         >
-          {{ product.metafields.accentuate.upto_discount | prepend: '- ' | append: ' %' }}
+          {{ uptoDiscount | prepend: '- ' | append: ' %' }}
         </div>
       {% endif %}
 
