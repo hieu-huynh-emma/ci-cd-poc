@@ -347,8 +347,10 @@
   function checkPOBoxAddress() {
     const poRegex = /po box/i;
     const poRegex2 = /p.o. box/i;
+    const poRegex3 = /po. box/i;
+    const poRegex4 = /box [0-9]/i;
     const address = Shopify.Checkout.step === 'contact_information' ? $('#checkout_shipping_address_address1').val() : {{ checkout.shipping_address.address1 | json }};
-    return poRegex.test(address) || poRegex2.test(address);
+    return poRegex.test(address) || poRegex2.test(address) || poRegex3.test(address) || poRegex4.test(address);
   }
 
   function renderRecyclingFees() {
