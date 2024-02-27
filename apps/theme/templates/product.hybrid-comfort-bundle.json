@@ -361,52 +361,73 @@
       "type": "mattress-layers",
       "blocks": {
         "4441c420-9648-469d-9fb2-bf8dbb9cf6ba": {
-          "type": "layer_item",
+          "type": "cover_layer",
           "settings": {
+            "image": "shopify:\/\/shop_images\/07_comfort_nn.png",
             "title": "Breathable and moisture-wicking Top cover",
-            "content": "The Emma cover is soft-to-touch, making it very comfortable to lie on. Built with light fibers, our cover wicks away moisture away and prevents heat from getting trapped on the surface."
+            "content": "The Emma cover is soft-to-touch, making it very comfortable to lie on. Built with light fibers, our cover wicks away moisture away and prevents heat from getting trapped on the surface.",
+            "gutter": 6,
+            "bullet_gutter": 50
           }
         },
         "3b4dd04a-036c-426d-8c1f-9729dd673c3e": {
-          "type": "layer_item",
+          "type": "internal_layer",
           "settings": {
+            "image": "shopify:\/\/shop_images\/06_comfort_nn.png",
             "title": "The Breezy Airgocell® foam",
-            "content": "Our signature Point Elastic Airgocell technology absorbs and releases excess body heat and moisture, creating an ideal sleeping environment for peaceful sleep."
+            "content": "Our signature Point Elastic Airgocell technology absorbs and releases excess body heat and moisture, creating an ideal sleeping environment for peaceful sleep.",
+            "gutter": 6,
+            "bullet_gutter": 28
           }
         },
         "bdebe803-1755-4362-ae36-1355b97d0e9d": {
-          "type": "layer_item",
+          "type": "internal_layer",
           "settings": {
+            "image": "shopify:\/\/shop_images\/05_comfort_nn.png",
             "title": "The Cool foam layer that isolates motion",
-            "content": "Find comfort in any sleeping position. Memory foam molds to the unique shape of your body for even pressure distribution and provides great motion isolation so you can sleep undisturbed, even with a fussy partner"
+            "content": "Find comfort in any sleeping position. Memory foam molds to the unique shape of your body for even pressure distribution and provides great motion isolation so you can sleep undisturbed, even with a fussy partner",
+            "gutter": 6,
+            "bullet_gutter": 36
           }
         },
         "c9c66cb6-dfe8-4bc3-aef4-5f3af408a185": {
-          "type": "layer_item",
+          "type": "internal_layer",
           "settings": {
+            "image": "shopify:\/\/shop_images\/04_comfort_nn.png",
             "title": "The Supportive HRX foam",
-            "content": "Durable HRX foam supports you with just the right level of firmness, without hollows or bumps. Lie back and move freely until you've found your position for a deep sleep."
+            "content": "Durable HRX foam supports you with just the right level of firmness, without hollows or bumps. Lie back and move freely until you've found your position for a deep sleep.",
+            "gutter": 6,
+            "bullet_gutter": 42
           }
         },
         "0e7b3bb3-6109-4e78-851e-e5684c7b4d67": {
-          "type": "layer_item",
+          "type": "internal_layer",
           "settings": {
+            "image": "shopify:\/\/shop_images\/03_comfort_nn.png",
             "title": "The Ergonomic, 7-Zone edge-to-edge pocket springs",
-            "content": "Say goodbye to restless nights! Our individually-wrapped coils are designed to enhance airflow and provide the optimum level of tension and bounce all over the mattress — strong enough to support sleepers of all shape and size. Rest comfortably as our pocket springs adapt to your spine for longer and deeper restorative sleep."
+            "content": "Say goodbye to restless nights! Our individually-wrapped coils are designed to enhance airflow and provide the optimum level of tension and bounce all over the mattress — strong enough to support sleepers of all shape and size. Rest comfortably as our pocket springs adapt to your spine for longer and deeper restorative sleep.",
+            "gutter": 5,
+            "bullet_gutter": 32
           }
         },
         "9088b2b9-37a7-498a-ab7b-1ce50ec43e1a": {
-          "type": "layer_item",
+          "type": "internal_layer",
           "settings": {
+            "image": "shopify:\/\/shop_images\/02_comfort_nn.png",
             "title": "The Stabilizing layer",
-            "content": "Long-lasting mattresses need a good foundation. Our base is built to last, providing added stability for decades of quality sleep."
+            "content": "Long-lasting mattresses need a good foundation. Our base is built to last, providing added stability for decades of quality sleep.",
+            "gutter": 2,
+            "bullet_gutter": 50
           }
         },
         "b2f4cd49-b521-43ab-a48e-92c7a027621c": {
-          "type": "layer_item",
+          "type": "base_layer",
           "settings": {
+            "image": "shopify:\/\/shop_images\/01_comfort_nn.png",
             "title": "The Resistant, anti-slip, lower cover with handles",
-            "content": "Innovative mattress lower cover, designed with exceptional durability and a convenient handle for effortless maneuverability."
+            "content": "Innovative mattress lower cover, designed with exceptional durability and a convenient handle for effortless maneuverability.",
+            "gutter": 2,
+            "bullet_gutter": 27
           }
         }
       },
@@ -420,10 +441,10 @@
         "b2f4cd49-b521-43ab-a48e-92c7a027621c"
       ],
       "settings": {
-        "heading": "Emma Hybrid Comfort - Layer by Layer",
-        "heading_alignment": "start",
+        "wallpaper": "shopify:\/\/shop_images\/orange_1_fbe2a1ac-9453-4dd5-a57a-098062d6a1bc.png",
+        "heading": "Let's take a look under the covers",
+        "heading_alignment": "center",
         "container_spacing": "sm",
-        "image": "shopify:\/\/shop_images\/Emma-Hybrid-comfort-compressednumbers.jpg",
         "carousel_mode": false
       }
     },
