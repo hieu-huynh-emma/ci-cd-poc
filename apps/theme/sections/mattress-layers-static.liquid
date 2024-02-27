@@ -1,0 +1,138 @@
+{% assign layerItems = section.blocks | where: 'type', 'layer_item' %}
+
+{{ 'mattress-layers-static.css' | asset_url | stylesheet_tag }}
+
+<section id="mattress-layers-static-section" class="section-container spacing-{{ section.settings.container_spacing }}">
+  <div class="section-chassis page-boundary">
+    {% render 'section-header' %}
+
+    <div class="section-body">
+      <div class="layers-photo flex items-center">
+        <img src="{{ section.settings.image | image_url: width: 644 }}">
+      </div>
+
+      <!-- <div class="info-wrapper hidden xl:block">
+        <ul class="layer-specifications">
+          {% for item in layerItems %}
+            <li class="layer-info-item">
+              <span class="layer-info-item__number">{{ forloop.index }}</span>
+              <h4 class="heading-5">{{ item.settings.title }}</h4>
+              <p class="solid">{{ item.settings.content }}</p>
+            </li>
+          {% endfor %}
+        </ul>
+      </div> -->
+
+      <div class="info-wrapper">
+        <div id="mattress-layers-controller">
+          {% for layer in layerItems %}
+            <button>
+              {{ forloop.index }}
+            </button>
+          {% endfor %}
+        </div>
+        <div id="mattress-layers" class="layers-info-wrapper splide">
+          <ul class="splide__pagination"></ul>
+          <div class="splide__track">
+            <div class="splide__list">
+              {% for item in layerItems %}
+                <div class="layer-info-item splide__slide">
+                  <h4 class="heading-5">{{ item.settings.title }}</h4>
+                  <p class="solid">{{ item.settings.content }}</p>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <lazy-script src="{{ 'mattress-layers.js' | asset_url }}"></lazy-script>
+</section>
+
+
+{% schema %}
+{
+  "name": "Mattress Layers",
+  "blocks": [
+    {
+      "type": "layer_item",
+      "name": "Layer Information",
+      "settings": [
+        {
+          "id": "title",
+          "type": "text",
+          "label": "Layer Title"
+        },
+        {
+          "id": "content",
+          "type": "text",
+          "label": "Layer Content"
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "id": "heading",
+      "type": "text",
+      "label": "Heading",
+      "default": "Emma Original - Layer by Layer"
+    },
+    {
+      "id": "heading_alignment",
+      "type": "select",
+      "label": "Heading Alignment",
+      "options": [
+        {
+          "value": "start",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "end",
+          "label": "Right"
+        }
+      ],
+      "default": "start"
+    },
+    {
+      "type": "select",
+      "id": "container_spacing",
+      "options": [
+        {
+          "value": "sm",
+          "label": "Small (24px)"
+        },
+        {
+          "value": "md",
+          "label": "Medium (40px)"
+        },
+        {
+          "value": "lg",
+          "label": "Large (60px)"
+        },
+        {
+          "value": "xl",
+          "label": "XL (80px)"
+        }
+      ],
+      "default": "md",
+      "label": "Container Spacing"
+    },
+    {
+      "id": "image",
+      "type": "image_picker",
+      "label": "Layer Image"
+    },
+    {
+      "id": "carousel_mode",
+      "type": "checkbox",
+      "label": "Carousel Mode"
+    }
+  ]
+}
+{% endschema %}

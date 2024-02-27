@@ -1,29 +1,53 @@
 $("#mattress-layers-section").ready(async () => {
-    await ResourceCoordinator.requestVendor('Splide');
+    const $layerSpecs = $("#mattress-layers-section .layer-info-item")
+    const $internalLayers = $("#mattress-layers-section .internal-layer-item")
+    const $coverLayer = $("#mattress-layers-section .cover-layer-item")
+    const $baseLayer = $("#mattress-layers-section .base-layer-item")
+    const $outerContainer = $("#mattress-layers-section .outer-container")
 
-    var splide = new Splide('#mattress-layers', {
-        arrows: false,
+    $coverLayer.click(function () {
+        $(this).addClass("active move-up");
+        $outerContainer.removeClass("move-up")
+        $internalLayers.removeClass("move-up move-down active")
+        $baseLayer.removeClass("active");
+        $layerSpecs.addClass('hidden')
+        $layerSpecs.filter(".cover-layer").removeClass('hidden');
     });
-    splide.mount();
+    $internalLayers.each(function (i) {
+        const $layer = $(this);
+        $layer.click(() => {
+            $layer.removeClass("move-up move-down").addClass("active");
 
-    //extra custom pagination
-    const layersController = document.querySelector('#mattress-layers-controller');
-    const listItems = layersController.querySelectorAll('button');
-
-    splide.on('move', (destIndex) => {
-        listItems[destIndex].click();
-    });
-
-    listItems.forEach((item, index) => {
-        item.addEventListener('click', () => {
-            listItems.forEach((item) => {
-                item.classList.remove('active');
+            $layer.siblings().each(function () {
+                $(this).removeClass("active move-up move-down");
             });
-            item.classList.add('active');
 
-            splide.go(index);
+            $outerContainer.addClass('move-up')
+            $baseLayer.removeClass("active");
+
+            $layerSpecs.addClass('hidden')
+            $layerSpecs.eq(i+1).removeClass('hidden');
+
+            $layer.prevAll().addClass("move-up")
+
+            const isCoverLayer = $layer.hasClass('cover-layer')
+
+            if (!isCoverLayer) {
+                $layer.nextUntil($baseLayer).addClass("move-down")
+            }
         });
     });
+    $baseLayer.click(function () {
+        $(this).addClass("active");
+        $outerContainer.addClass('move-up')
+        $coverLayer.removeClass("active")
+        $internalLayers.removeClass("move-up move-down active")
 
-    listItems[0].click();
+        $layerSpecs.addClass('hidden')
+        $layerSpecs.filter(".base-layer").removeClass('hidden');
+
+    });
+
+
+    $coverLayer.trigger("click")
 });

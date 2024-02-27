@@ -1,0 +1,369 @@
+
+#mattress-layers-section {
+  --base-spacing: 3rem;
+  @media screen and (min-width: 1024px) {
+    padding: 0;
+  }
+
+  .section-chassis {
+    gap: 0;
+  }
+
+  .section-body {
+    display: grid;
+    gap: 0;
+    align-content: center;
+    align-items: center;
+
+    @media screen and (min-width: 1024px) {
+      grid-template-columns:minmax(0, .7fr) minmax(0, .3fr);
+    }
+
+  }
+
+  .section-wallpaper {
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .layer-gallery {
+    position: relative;
+    overflow: hidden;
+    padding: 3rem 2rem;
+    transform: translateY(-2rem);
+    @media screen and (max-width: 1024px) {
+      padding: 2rem 1rem;
+    }
+  }
+
+  .move-up {
+    &:not(.cover-layer-item):not(.layer-item--thin) {
+      transform: translateY(-1rem);
+      @media screen and (min-width: 1024px) {
+        transform: translateY(-2rem);
+      }
+    }
+    &.layer-item--thin {
+      transform: translateY(-0.5rem);
+    }
+  }
+
+  .move-down {
+    transform: translateY(1rem);
+    @media screen and (min-width: 1024px) {
+      transform: translateY(2rem);
+    }
+  }
+
+  .layer-item {
+    --divider: 7;
+    position: relative;
+    top: calc(var(--gutter) / var(--divider) * 1rem);
+    width: 100%;
+    cursor: pointer;
+    transition: transform 0.5s cubic-bezier(0.33, 0, 0.25, 1) 0s;
+    pointer-events: none;
+    @media screen and (min-width: 768px) {
+      --divider: 4;
+    }
+    @media screen and (min-width: 1024px) and (max-width: 1280px) {
+      --divider: 2;
+    }
+    @media screen and (min-width: 1280px) {
+      --divider: 1;
+    }
+
+    &:hover {
+      .layer-photo {
+        opacity: 0.9;
+      }
+    }
+
+    &.active {
+      .layer-photo {
+        opacity: 1;
+        transform: scale(1.03);
+      }
+
+      .layer-bullet {
+        transform: scale(1.15);
+        background-color: rgb(30, 48, 110);
+        color: rgb(255, 255, 255);
+
+        &:after {
+          width: 50rem;
+        }
+      }
+
+      .layer-number {
+        &:before, &:after {
+          display: none;
+        }
+      }
+    }
+
+    .layer-photo {
+      opacity: .6;
+      transition: opacity 0.1s ease-out 0s, visibility 0.15s ease-out 0s, transform 0.2s cubic-bezier(0.33, 0, 0.25, 1) 0s;
+      pointer-events: all;
+
+      img {
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+      }
+    }
+
+    .layer-bullet {
+      position: absolute;
+      top: var(--bullet_gutter);
+      left: auto;
+      right: 1rem;
+      z-index: 200;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 1.5rem;
+      height: 1.5rem;
+
+      border-radius: 50%;
+      background-color: rgb(255, 255, 255);
+      border: 1px solid rgb(30, 48, 110);
+      color: rgb(30, 48, 110);
+
+      font-style: normal;
+      font-weight: 500;
+
+
+      transition: opacity 0.15s ease-out 1s, transform 0.3s ease-out 0s, color 0.15s ease-out 0s, background-color 0.15s ease-out 0s;
+      box-shadow: rgba(30, 48, 110, 0.4) 0px 0px 0px 0px;
+
+      @media screen and (min-width: 1024px) {
+        right: 5rem;
+
+        width: 1.75rem;
+        height: 1.75rem;
+      }
+
+      &:after {
+
+        position: absolute;
+        top: 50%;
+        left: 100%;
+        background-color: rgb(30, 48, 110);
+        width: 0px;
+        height: 1px;
+        transition: width 0.15s ease-out 0s;
+        @media screen and (min-width: 1024px) {
+          content: "";
+        }
+      }
+    }
+
+    .layer-number {
+      position: relative;
+      color: inherit;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+
+      width: 1.75rem;
+      height: 1.75rem;
+      z-index: 1;
+      line-height: 1rem;
+
+      &:after, &:before {
+        content: "";
+
+        position: absolute;
+        z-index: -1;
+
+        display: block;
+
+        width: 300%;
+        height: 300%;
+        border-radius: 100%;
+        box-shadow: rgb(30, 48, 110) 0px 0px 0.1875rem 0.1875rem;
+        animation-duration: 2s;
+        animation-iteration-count: infinite;
+        animation-timing-function: ease-out;
+      }
+
+      &:before {
+        animation-name: ripple-2;
+      }
+
+      &:after {
+        animation-name: ripple-1;
+      }
+    }
+  }
+
+  .outer-container {
+    position: relative;
+    z-index: 3;
+    top: 30px;
+    width: 100%;
+
+    padding: 0 0.65rem;
+    transition: transform 0.5s cubic-bezier(0.33, 0, 0.25, 1) 0s;
+
+  }
+
+  .cover-layer-item {
+    z-index: 2;
+  }
+
+  .internal-layer-item {
+    &:nth-child(even) .layer-bullet {
+      right: 5rem;
+      @media screen and (min-width: 1024px) {
+        right: 10rem;
+      }
+      @media screen and (min-width: 1200px) {
+        right: 13rem;
+      }
+    }
+
+    @for $i from 1 through 7 {
+      &:nth-last-child(#{$i+1}) {
+        z-index: $i;
+      }
+    }
+  }
+
+  .base-layer-item {
+    --divider: 3;
+    z-index: 2;
+    top: calc(var(--gutter) / var(--divider) * -1 * 1rem);
+    @media screen and (min-width: 1024px) {
+      --divider: 1;
+    }
+  }
+
+  .shadow-layer-item {
+    position: absolute;
+    bottom: -2rem;
+  }
+
+  .info-wrapper {
+    display: grid;
+    gap: 2rem;
+    align-items: center;
+    align-content: center;
+
+    background-color: white;
+
+    padding: 1.5rem;
+    border-radius: .5rem;
+
+    @media screen and (min-width: 1024px) {
+      box-shadow: rgba(0, 0, 0, .24) 0 2px 18px 3px;
+    }
+
+    .splide__pagination {
+      margin-bottom: 1.5rem
+    }
+
+    #mattress-layers-controller {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 1rem
+    }
+
+    #mattress-layers-controller button {
+      background: #efeff3;
+      width: 24px;
+      height: 24px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0;
+      border-radius: 32px;
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 20px;
+      margin-right: 10px
+    }
+
+    #mattress-layers-controller button:last-child {
+      margin-right: 0
+    }
+
+    #mattress-layers-controller button.active {
+      background: #ff8900;
+      color: #fff;
+      border: none
+    }
+  }
+
+  .layer-specifications {
+    display: grid;
+    gap: 16px;
+  }
+
+
+  @media screen and (max-width: 1280px) {
+    .section-header {
+      justify-content: center;
+      text-align: center
+    }
+
+    .section-chassis {
+      gap: 0
+    }
+  }
+  @media screen and (min-width: 524px) {
+    --base-spacing: 5rem;
+  }
+  @media screen and (min-width: 1024px) {
+    --base-spacing: 7rem;
+  }
+
+}
+
+
+@keyframes ripple-1 {
+  0% {
+    transform: scale(0.3);
+    opacity: 0;
+  }
+
+  2.5% {
+    opacity: 0.6;
+  }
+
+  50% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+
+  100% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+}
+
+@keyframes ripple-2 {
+  0% {
+    transform: scale(0.3);
+    opacity: 0;
+  }
+
+
+  6% {
+    transform: scale(0.3);
+    opacity: 0.6;
+  }
+
+  100% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+}
