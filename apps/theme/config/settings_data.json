@@ -474,12 +474,6 @@
         "settings": {
         }
       },
-      "16278478101612877664": {
-        "type": "shopify:\/\/apps\/pagefly-page-builder\/blocks\/app-embed\/83e179f7-59a0-4589-8c66-c0dddf959200",
-        "disabled": false,
-        "settings": {
-        }
-      },
       "17985673643287205206": {
         "type": "shopify:\/\/apps\/estimated-delivery-date-plus\/blocks\/app_setting\/4a0685bc-c234-45b2-8382-5ad6a8e3e3fd",
         "disabled": false,
@@ -496,6 +490,19 @@
           "button_horizontal_position": "bottom_right",
           "button_vertical_position": "lowest",
           "greeting_message": "👋 Hello! Please message us if you have questions, or give us an idea of what you’re looking for. We’re happy to make recommendations."
+        }
+      },
+      "16278478101612877664": {
+        "type": "shopify:\/\/apps\/pagefly-page-builder\/blocks\/app-embed\/83e179f7-59a0-4589-8c66-c0dddf959200",
+        "disabled": true,
+        "settings": {
+        }
+      },
+      "14339172867238703359": {
+        "type": "shopify:\/\/apps\/yotpo-product-photo-reviews\/blocks\/reviews_tab\/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
+        "disabled": true,
+        "settings": {
+          "product": ""
         }
       }
     }

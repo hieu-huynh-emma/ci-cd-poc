@@ -769,10 +769,17 @@
           "settings": {
             "product": "{{product}}"
           }
+        },
+        "yotpo_product_photo_reviews_questions_and_answers_ekY3cT": {
+          "type": "shopify:\/\/apps\/yotpo-product-photo-reviews\/blocks\/questions_and_answers\/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
+          "settings": {
+            "product": "{{product}}"
+          }
         }
       },
       "block_order": [
-        "ec48ba11-8792-437a-81c3-42e63b297715"
+        "ec48ba11-8792-437a-81c3-42e63b297715",
+        "yotpo_product_photo_reviews_questions_and_answers_ekY3cT"
       ],
       "custom_css": [
         ".yotpo.yotpo-main-widget,.yotpo .yotpo-modal-dialog {width: 100% important;}"
