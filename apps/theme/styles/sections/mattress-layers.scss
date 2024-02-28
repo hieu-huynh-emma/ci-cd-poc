@@ -1,12 +1,15 @@
 
 #mattress-layers-section {
   --base-spacing: 3rem;
-  @media screen and (min-width: 1024px) {
-    padding: 0;
-  }
 
   .section-chassis {
     gap: 0;
+  }
+
+  .section-header {
+    > * {
+      color: white;
+    }
   }
 
   .section-body {
@@ -31,10 +34,10 @@
   .layer-gallery {
     position: relative;
     overflow: hidden;
-    padding: 3rem 2rem;
+    padding: 0 2rem;
     transform: translateY(-2rem);
     @media screen and (max-width: 1024px) {
-      padding: 2rem 1rem;
+      padding: 0 1rem;
     }
   }
 
@@ -45,6 +48,7 @@
         transform: translateY(-2rem);
       }
     }
+
     &.layer-item--thin {
       transform: translateY(-0.5rem);
     }
@@ -134,7 +138,6 @@
       background-color: rgb(255, 255, 255);
       border: 1px solid rgb(30, 48, 110);
       color: rgb(30, 48, 110);
-
       font-style: normal;
       font-weight: 500;
 
@@ -166,16 +169,25 @@
 
     .layer-number {
       position: relative;
+      z-index: 1;
+
       color: inherit;
       display: flex;
       align-items: center;
       justify-content: center;
 
+      width: 1.5rem;
+      height: 1.5rem;
 
-      width: 1.75rem;
-      height: 1.75rem;
-      z-index: 1;
-      line-height: 1rem;
+      font-size: 14px;
+      line-height: 14px;
+
+      @media screen and (min-width: 1024px) {
+        width: 1.75rem;
+        height: 1.75rem;
+        font-size: 1rem;
+        line-height: 1rem;
+      }
 
       &:after, &:before {
         content: "";
