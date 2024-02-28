@@ -29,7 +29,7 @@ gulp.task('sass', function () {
       autoprefixer()
     ]))
     .pipe(cleanCSS({ level: 2 }))
-    .pipe(gulp.dest('assets'))
+    .pipe(gulp.dest('./assets'))
 });
 
 gulp.task('watch', function () {
