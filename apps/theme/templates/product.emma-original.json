@@ -91,7 +91,7 @@
         "f5f456c7-b29a-4f74-826f-648e09f5b1cd": {
           "type": "product_media",
           "settings": {
-            "image": "shopify:\/\/shop_images\/OGawardleft.jpg",
+            "image": "shopify:\/\/shop_images\/OGawardleft.png",
             "full_width": true,
             "is_video": false
           }
@@ -99,7 +99,7 @@
         "72b3b893-b0bb-44ad-978c-733ee54620a1": {
           "type": "product_media",
           "settings": {
-            "image": "shopify:\/\/shop_images\/OGcouple.jpg",
+            "image": "shopify:\/\/shop_images\/OGcouple.png",
             "full_width": false,
             "is_video": false
           }
@@ -257,7 +257,6 @@
           "settings": {
           }
         }
-
       },
       "block_order": [
         "yotpo_star_rating",
@@ -286,7 +285,6 @@
       ],
       "custom_css": [
         "h2 > div {display: none;}"
-
       ],
       "settings": {
         "title": "Emma Original Mattress",
@@ -361,6 +359,7 @@
             "image": "shopify:\/\/shop_images\/9RP2YPY2_Original_layer_4.png",
             "title": "The foam that regulates temperature",
             "content": "Our groundbreaking Point Elastic Airgocell® technology enhances breathability and regulates temperature by absorbing and then evaporating sweat so that rising temperatures won’t disturb your sleep.",
+            "is_thin": false,
             "gutter": 4,
             "bullet_gutter": 25
           }
@@ -371,6 +370,7 @@
             "image": "shopify:\/\/shop_images\/9RP2YPY2_Original_layer_3.png",
             "title": "The memory foam that hugs your body",
             "content": "Our innovative Halo Memory Foam™ adapts to your body shape for targeted spinal alignment, enhanced pressure relief and body-hugging comfort.",
+            "is_thin": false,
             "gutter": 3,
             "bullet_gutter": 28
           }
@@ -381,6 +381,7 @@
             "image": "shopify:\/\/shop_images\/9RP2YPY2_Original_layer_2.png",
             "title": "The base layer that keeps your spine aligned",
             "content": "HRX stands for High Resiliency Extra. With 3 adaptive cut-out zones providing sufficient counter pressure, this layer is designed to keep your spine evenly aligned for maximum relief, rest and recovery – in any sleeping position.",
+            "is_thin": false,
             "gutter": 2,
             "bullet_gutter": 50
           }
