@@ -351,42 +351,66 @@
       "settings": {
       }
     },
-    "mattress-layers-static": {
-      "type": "mattress-layers-static",
+    "mattress-layers": {
+      "type": "mattress-layers",
       "blocks": {
         "4441c420-9648-469d-9fb2-bf8dbb9cf6ba": {
-          "type": "layer_item",
+          "type": "cover_layer",
           "settings": {
+            "image": "shopify:\/\/shop_images\/9RP2YPY2_Original_layer_5.png",
             "title": "The covers that are super easy to wash",
-            "content": "The Emma cover is soft-to-touch, making it very comfortable to lie on. It is also completely removable, making it extremely easy to wash."
+            "content": "The Emma cover is soft-to-touch, making it very comfortable to lie on. It is also completely removable, making it extremely easy to wash.",
+            "gutter": 4,
+            "bullet_gutter": 70
           }
         },
         "3b4dd04a-036c-426d-8c1f-9729dd673c3e": {
-          "type": "layer_item",
+          "type": "internal_layer",
           "settings": {
+            "image": "shopify:\/\/shop_images\/9RP2YPY2_Original_layer_4.png",
             "title": "The foam that regulates temperature",
-            "content": "Our groundbreaking Point Elastic Airgocell® technology enhances breathability and regulates temperature by absorbing and then evaporating sweat so that rising temperatures won’t disturb your sleep."
+            "content": "Our groundbreaking Point Elastic Airgocell® technology enhances breathability and regulates temperature by absorbing and then evaporating sweat so that rising temperatures won’t disturb your sleep.",
+            "is_thin": false,
+            "gutter": 4,
+            "bullet_gutter": 25
           }
         },
         "bdebe803-1755-4362-ae36-1355b97d0e9d": {
-          "type": "layer_item",
+          "type": "internal_layer",
           "settings": {
+            "image": "shopify:\/\/shop_images\/9RP2YPY2_Original_layer_3.png",
             "title": "The memory foam that hugs your body",
-            "content": "Our innovative Halo Memory Foam™ adapts to your body shape for targeted spinal alignment, enhanced pressure relief and body-hugging comfort."
+            "content": "Our innovative Halo Memory Foam™ adapts to your body shape for targeted spinal alignment, enhanced pressure relief and body-hugging comfort.",
+            "is_thin": false,
+            "gutter": 3,
+            "bullet_gutter": 28
           }
         },
         "c9c66cb6-dfe8-4bc3-aef4-5f3af408a185": {
-          "type": "layer_item",
+          "type": "internal_layer",
           "settings": {
+            "image": "shopify:\/\/shop_images\/9RP2YPY2_Original_layer_2.png",
             "title": "The base layer that keeps your spine aligned",
-            "content": "HRX stands for High Resiliency Extra. With 3 adaptive cut-out zones providing sufficient counter pressure, this layer is designed to keep your spine evenly aligned for maximum relief, rest and recovery – in any sleeping position."
+            "content": "HRX stands for High Resiliency Extra. With 3 adaptive cut-out zones providing sufficient counter pressure, this layer is designed to keep your spine evenly aligned for maximum relief, rest and recovery – in any sleeping position.",
+            "is_thin": false,
+            "gutter": 2,
+            "bullet_gutter": 50
           }
         },
         "72c945db-310d-4f05-905a-b523e378d2f4": {
-          "type": "layer_item",
+          "type": "base_layer",
           "settings": {
+            "image": "shopify:\/\/shop_images\/9RP2YPY2_Original_layer_1.png",
             "title": "The Resistant, anti-slip, lower cover with handles",
-            "content": "Innovative mattress lower cover, designed with exceptional durability and a convenient handle for effortless maneuverability."
+            "content": "Innovative mattress lower cover, designed with exceptional durability and a convenient handle for effortless maneuverability.",
+            "gutter": 1,
+            "bullet_gutter": 35
+          }
+        },
+        "shadow_TWYLez": {
+          "type": "shadow",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/9RP2YPY2_Original_layer_1_sh_bcf1009a-0849-474c-bb42-481c81e43054.png"
           }
         }
       },
@@ -395,13 +419,14 @@
         "3b4dd04a-036c-426d-8c1f-9729dd673c3e",
         "bdebe803-1755-4362-ae36-1355b97d0e9d",
         "c9c66cb6-dfe8-4bc3-aef4-5f3af408a185",
-        "72c945db-310d-4f05-905a-b523e378d2f4"
+        "72c945db-310d-4f05-905a-b523e378d2f4",
+        "shadow_TWYLez"
       ],
       "settings": {
-        "heading": "Emma Original - Layer by Layer",
-        "heading_alignment": "start",
+        "wallpaper": "shopify:\/\/shop_images\/orange_1.png",
+        "heading": "Let's take a look under the covers",
+        "heading_alignment": "center",
         "container_spacing": "sm",
-        "image": "shopify:\/\/shop_images\/Emma-Original-exploded-viewnumbers.jpg",
         "carousel_mode": false
       }
     },
@@ -920,7 +945,7 @@
     "affiliate-banners",
     "bundle-info",
     "multimedia-showcase",
-    "mattress-layers-static",
+    "mattress-layers",
     "mattress-firmness",
     "featured-products",
     "social-proof",
