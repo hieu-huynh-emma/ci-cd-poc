@@ -100,7 +100,7 @@
         "ae4539f2-6ea2-42a3-a132-a31010570bf1": {
           "type": "product_media",
           "settings": {
-            "image": "shopify:\/\/shop_images\/HybridComfortSleepingCouple.jpg",
+            "image": "shopify:\/\/shop_images\/HybridComfortSleepingCouple.png",
             "full_width": false,
             "is_video": false
           }
@@ -116,7 +116,7 @@
         "038c8f16-3a84-418c-9ee2-38f53be4a385": {
           "type": "product_media",
           "settings": {
-            "image": "shopify:\/\/shop_images\/f80ce622ee744ca29f41905898bac316.thumbnail.0000000000_2048x_a55451c5-d423-4702-96f2-d21bcc06eb63.webp",
+            "image": "shopify:\/\/shop_images\/Untitled_design_8.jpg",
             "full_width": false,
             "is_video": false
           }
@@ -124,7 +124,7 @@
         "72b3b893-b0bb-44ad-978c-733ee54620a1": {
           "type": "product_media",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Accesories_US_-_VIOO_photos-04.jpg",
+            "image": "shopify:\/\/shop_images\/Accesories_US_-_VIOO_photos-04_652366c2-4d1c-4a23-b1de-d08cb5ff5c91.jpg",
             "full_width": false,
             "is_video": false
           }
@@ -132,7 +132,7 @@
         "12e2c164-6e6a-42a2-a76a-b4363d4c2c09": {
           "type": "product_media",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Emma_1.jpg",
+            "image": "shopify:\/\/shop_images\/Emma_1_ae0eb3a6-8989-45ca-9fe7-3d0e5ef89d7f.jpg",
             "full_width": true,
             "is_video": false
           }
@@ -417,6 +417,7 @@
             "image": "shopify:\/\/shop_images\/9RP2YPY2_Hybrid_25_layer_3.png",
             "title": "The Ergonomic, 7-Zone edge-to-edge pocket springs",
             "content": "Say goodbye to restless nights! Our individually-wrapped coils are designed to enhance airflow and provide the optimum level of tension and bounce all over the mattress — strong enough to support sleepers of all shape and size. Rest comfortably as our pocket springs adapt to your spine for longer and deeper restorative sleep.",
+            "is_thin": false,
             "gutter": 5,
             "bullet_gutter": 32
           }
@@ -427,6 +428,7 @@
             "image": "shopify:\/\/shop_images\/9RP2YPY2_Hybrid_25_layer_2.png",
             "title": "The Stabilizing layer",
             "content": "Long-lasting mattresses need a good foundation. Our base is built to last, providing added stability for decades of quality sleep.",
+            "is_thin": false,
             "gutter": 3,
             "bullet_gutter": 50
           }
@@ -930,12 +932,6 @@
         "solid_typo": false
       }
     },
-    "contact-us": {
-      "type": "contact-us",
-      "settings": {
-        "title": "Need help deciding?"
-      }
-    },
     "featured-faqs": {
       "type": "featured-faqs",
       "blocks": {
@@ -964,7 +960,7 @@
           "type": "faq",
           "settings": {
             "title": "How long does shipping take?",
-            "content": "<p>Our free shipping takes approximately 3-5 business days nationwide.<\/p>"
+            "content": "<p>Our free shipping takes approximately 5-7 days nationwide.<\/p>"
           }
         }
       },
@@ -979,6 +975,12 @@
         "header_font": "inter",
         "heading_alignment": "center",
         "container_spacing": "sm"
+      }
+    },
+    "contact-us": {
+      "type": "contact-us",
+      "settings": {
+        "title": "Need help deciding?"
       }
     }
   },
@@ -996,6 +998,5 @@
     "special-services",
     "featured-faqs",
     "contact-us"
-
   ]
 }

@@ -84,7 +84,8 @@
         "yotpo_star_rating": {
           "type": "yotpo_star_rating",
           "settings": {
-            "product": "{{product}}"
+            "product": "{{product}}",
+            "new_layout": false
           }
         },
         "f5f456c7-b29a-4f74-826f-648e09f5b1cd": {
@@ -886,7 +887,7 @@
           "type": "faq",
           "settings": {
             "title": "How long does shipping take?",
-            "content": "<p>Our free shipping takes approximately 3-5 business days nationwide.<\/p>"
+            "content": "<p>Our free shipping takes approximately 5-7 days nationwide.<\/p>"
           }
         }
       },
