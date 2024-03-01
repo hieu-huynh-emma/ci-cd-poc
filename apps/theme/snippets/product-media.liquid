@@ -7,7 +7,7 @@
     <div class="desktop-mansory">
 
         <div class="lead-item desktop-mansory__item full-width">
-            <div id="affiliate-badge"></div>
+            <div class="affiliate-badge"></div>
 
             <div class="image-wrapper">
                 {% if leadItem.settings.is_video and leadItem.settings.hosted_video != blank %}
@@ -67,12 +67,12 @@
     </div>
 
     <div class="media-carousel">
+        <div class="affiliate-badge"></div>
 
         <div id="main-carousel" class="splide">
             <ul class="splide__track">
                 <li class="splide__list">
-                    {% for item in productMedia %}
-
+                    {% for item in allItems %}
                         <div
                                 class="image-wrapper splide__slide"
                         >
@@ -100,7 +100,7 @@
         <div id="thumbnail-carousel" class="splide hidden">
             <ul class="splide__track">
                 <li class="splide__list">
-                    {% for item in productMedia %}
+                    {% for item in allItems %}
                         <div
                                 class="image-wrapper splide__slide"
                         >
@@ -127,3 +127,25 @@
         </div>
     </div>
 </div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const main = new Splide("#main-carousel", {
+            type: "fade",
+            rewind: true,
+            pagination: true,
+            arrows: true,
+        });
+        const thumbnails = new Splide("#thumbnail-carousel", {
+            fixedWidth: 100,
+            gap: 10,
+            rewind: true,
+            pagination: false,
+            isNavigation: true,
+        });
+
+        main.sync(thumbnails);
+        main.mount();
+        thumbnails.mount();
+    });
+</script>

@@ -544,25 +544,7 @@
 {% endunless %}
 
 <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const main = new Splide("#main-carousel", {
-      type: "fade",
-      rewind: true,
-      pagination: true,
-      arrows: true,
-    });
-    const thumbnails = new Splide("#thumbnail-carousel", {
-      fixedWidth: 100,
-      gap: 10,
-      rewind: true,
-      pagination: false,
-      isNavigation: true,
-    });
 
-    main.sync(thumbnails);
-    main.mount();
-    thumbnails.mount();
-  });
 
   $(window).on("load", function () {
     $('#ProductSection-{{ section.id }} .product-specification').beefup({

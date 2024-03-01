@@ -48,7 +48,7 @@ class AffiliateControl extends HTMLElement {
     renderBadge(affiliate) {
         const {badge} = affiliate;
 
-        const $container = $("#affiliate-badge")
+        const $container = $(".affiliate-badge")
 
         if (badge) $container.append(`<img src="${badge}" />`)
 
