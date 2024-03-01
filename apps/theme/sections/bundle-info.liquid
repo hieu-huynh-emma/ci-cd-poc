@@ -17,8 +17,7 @@
 {% assign uniqueSellingPoints = section.blocks | where: 'type', 'unique_selling_point' %}
 {% assign paymentProvidersBlock = section.blocks | where: 'type', 'payment_providers' | first %}
 {% assign productSpecifications = section.blocks | where: 'type', 'product_specification' %}
-{% assign productMedia = section.blocks | where: 'type', 'product_media' %}
-{% assign campaignTeaser = section.blocks | where: 'type', 'campaign_teaser'| first  %}
+
 {% assign upsell_widget = section.blocks | where: 'type', 'upsell_widget' | first %}
 {% assign yotpo_star_rating = section.blocks | where: 'type', 'yotpo_star_rating' | first %}
 
@@ -481,26 +480,6 @@
 
 
 <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const main = new Splide("#main-carousel", {
-      type: "fade",
-      rewind: true,
-      pagination: true,
-      arrows: true,
-    });
-    const thumbnails = new Splide("#thumbnail-carousel", {
-      fixedWidth: 100,
-      gap: 10,
-      rewind: true,
-      pagination: false,
-      isNavigation: true,
-    });
-
-    main.sync(thumbnails);
-    main.mount();
-    thumbnails.mount();
-  });
-
   $(window).on("load", function () {
     $('#ProductSection-{{ section.id }} .product-specification').beefup({
       trigger: ".product-specification__header",
