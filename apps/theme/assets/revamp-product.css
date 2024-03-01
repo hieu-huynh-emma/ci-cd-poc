@@ -202,10 +202,6 @@
   color: #f03306;
 }
 
-.product-info .product-media {
-  position: relative;
-}
-
 @media screen and (min-width: 769px) {
   .product-info {
     padding: 2.5rem 0;
@@ -220,12 +216,6 @@
     height: -moz-max-content;
     height: max-content;
     top: 0;
-  }
-  .product-info .product-media {
-    position: sticky;
-    top: 159px;
-    height: -moz-max-content;
-    height: max-content;
   }
 }
 
@@ -308,6 +298,11 @@
 .product-info .desktop-mansory__item.full-width {
   grid-column: 1/span 2;
 }
+
+.product-info .desktop-mansory__item.lead-item {
+  position: relative;
+}
+
 
 .product-info .benefits {
   display: grid;
@@ -550,16 +545,34 @@
   background-color: #fff;
 }
 
+#product-viewer {
+  position: relative;
+}
+@media screen and (min-width: 769px) {
+  #product-viewer {
+    position: sticky;
+    top: 159px;
+    height: -moz-max-content;
+    height: max-content;
+  }
+}
+
 #affiliate-badge {
   position: absolute;
-  top: 20%;
+  bottom: 0;
   right: 0;
   z-index: 5;
+
+  display: flex;
+  align-items: flex-end;
+
   width: 60px;
   height: 60px;
   margin: 12px;
   border-radius: 100%
 }
+
+
 
 @media screen and (min-width: 769px) {
   #affiliate-badge {
