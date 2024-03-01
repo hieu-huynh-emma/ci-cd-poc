@@ -151,20 +151,6 @@
         width: 1.75rem;
         height: 1.75rem;
       }
-
-      &:after {
-
-        position: absolute;
-        top: 50%;
-        left: 100%;
-        background-color: rgb(30, 48, 110);
-        width: 0px;
-        height: 1px;
-        transition: width 0.15s ease-out 0s;
-        @media screen and (min-width: 1024px) {
-          content: "";
-        }
-      }
     }
 
     .layer-number {
