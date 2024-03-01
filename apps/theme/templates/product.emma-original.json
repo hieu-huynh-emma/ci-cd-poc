@@ -349,7 +349,7 @@
             "image": "shopify:\/\/shop_images\/9RP2YPY2_Original_layer_5.png",
             "title": "The covers that are super easy to wash",
             "content": "The Emma cover is soft-to-touch, making it very comfortable to lie on. It is also completely removable, making it extremely easy to wash.",
-            "gutter": 4,
+            "gutter": 5,
             "bullet_gutter": 70
           }
         },
@@ -359,8 +359,8 @@
             "image": "shopify:\/\/shop_images\/9RP2YPY2_Original_layer_4.png",
             "title": "The foam that regulates temperature",
             "content": "Our groundbreaking Point Elastic Airgocell® technology enhances breathability and regulates temperature by absorbing and then evaporating sweat so that rising temperatures won’t disturb your sleep.",
-            "is_thin": false,
-            "gutter": 4,
+            "is_thin": true,
+            "gutter": 5,
             "bullet_gutter": 25
           }
         },
@@ -370,8 +370,8 @@
             "image": "shopify:\/\/shop_images\/9RP2YPY2_Original_layer_3.png",
             "title": "The memory foam that hugs your body",
             "content": "Our innovative Halo Memory Foam™ adapts to your body shape for targeted spinal alignment, enhanced pressure relief and body-hugging comfort.",
-            "is_thin": false,
-            "gutter": 3,
+            "is_thin": true,
+            "gutter": 5,
             "bullet_gutter": 28
           }
         },
@@ -382,7 +382,7 @@
             "title": "The base layer that keeps your spine aligned",
             "content": "HRX stands for High Resiliency Extra. With 3 adaptive cut-out zones providing sufficient counter pressure, this layer is designed to keep your spine evenly aligned for maximum relief, rest and recovery – in any sleeping position.",
             "is_thin": false,
-            "gutter": 2,
+            "gutter": 3,
             "bullet_gutter": 50
           }
         },
@@ -766,21 +766,14 @@
       "type": "apps",
       "blocks": {
         "ec48ba11-8792-437a-81c3-42e63b297715": {
-          "type": "shopify:\/\/apps\/yotpo-product-photo-reviews\/blocks\/reviews\/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
-          "settings": {
-            "product": "{{product}}"
-          }
-        },
-        "yotpo_product_photo_reviews_questions_and_answers_ekY3cT": {
-          "type": "shopify:\/\/apps\/yotpo-product-photo-reviews\/blocks\/questions_and_answers\/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
+          "type": "shopify:\/\/apps\/yotpo-product-reviews-ugc\/blocks\/reviews\/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
           "settings": {
             "product": "{{product}}"
           }
         }
       },
       "block_order": [
-        "ec48ba11-8792-437a-81c3-42e63b297715",
-        "yotpo_product_photo_reviews_questions_and_answers_ekY3cT"
+        "ec48ba11-8792-437a-81c3-42e63b297715"
       ],
       "custom_css": [
         ".yotpo.yotpo-main-widget,.yotpo .yotpo-modal-dialog {width: 100% important;}"

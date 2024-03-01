@@ -104,18 +104,10 @@
             "is_video": false
           }
         },
-        "e4cd7962-4d57-4250-8e6e-4c76dd76d6d6": {
-          "type": "product_media",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/Accesories_US_-_PILLOWS_Images_v_1.jpg",
-            "full_width": false,
-            "is_video": false
-          }
-        },
         "038c8f16-3a84-418c-9ee2-38f53be4a385": {
           "type": "product_media",
           "settings": {
-            "image": "shopify:\/\/shop_images\/original_1.png",
+            "image": "shopify:\/\/shop_images\/Customizable_Foam_Pillow_Gallery_2_b0c9214e-1008-4641-bced-f0950e9e67dc.jpg",
             "full_width": false,
             "is_video": false
           }
@@ -123,7 +115,15 @@
         "72b3b893-b0bb-44ad-978c-733ee54620a1": {
           "type": "product_media",
           "settings": {
-            "image": "shopify:\/\/shop_images\/original_2_b145bef6-60ce-4ecf-9a1a-0251c0bafefd.png",
+            "image": "shopify:\/\/shop_images\/Customizable_Foam_Pillow_Side_view_Gallery_2_c7af4602-3b7d-4953-9708-9e818d6cf0f8.jpg",
+            "full_width": false,
+            "is_video": false
+          }
+        },
+        "e4cd7962-4d57-4250-8e6e-4c76dd76d6d6": {
+          "type": "product_media",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Accesories_US_-_PILLOWS_Images_v_1.jpg",
             "full_width": false,
             "is_video": false
           }
@@ -229,9 +229,9 @@
         "yotpo_star_rating",
         "f5f456c7-b29a-4f74-826f-648e09f5b1cd",
         "ae4539f2-6ea2-42a3-a132-a31010570bf1",
-        "e4cd7962-4d57-4250-8e6e-4c76dd76d6d6",
         "038c8f16-3a84-418c-9ee2-38f53be4a385",
         "72b3b893-b0bb-44ad-978c-733ee54620a1",
+        "e4cd7962-4d57-4250-8e6e-4c76dd76d6d6",
         "0a7cd906-1a13-44a7-bfe8-34d0b6373b48",
         "00f4e92b-5e6c-4ec3-a58d-8079fafaa409",
         "05167373-6c53-4bf6-b18f-7cae5ab215d7",
@@ -253,7 +253,7 @@
         "desc": "<h6>Firm for extra support<\/h6><p>Our memory foam pillow with adjustable layers for the perfect height<\/p><ul><li>Pressure-relieving foam<\/li><li>Individually removable layers<\/li><li>For all sleeping positions and body types<\/li><li>Try it for 60 days with the Emma promise<\/li><\/ul>",
         "caption_headline": "Loved by back, side, and stomach sleepers",
         "caption_content": "Breathable and hypoallergenic for sensitive and hot sleepers",
-        "badge": "sale",
+        "badge": "",
         "disclaimer": ""
       }
     },
@@ -752,7 +752,7 @@
       "type": "apps",
       "blocks": {
         "ec48ba11-8792-437a-81c3-42e63b297715": {
-          "type": "shopify:\/\/apps\/yotpo-product-photo-reviews\/blocks\/reviews\/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
+          "type": "shopify:\/\/apps\/yotpo-product-reviews-ugc\/blocks\/reviews\/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
           "settings": {
             "product": "{{product}}"
           }
