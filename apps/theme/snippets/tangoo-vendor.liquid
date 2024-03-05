@@ -1,6 +1,7 @@
-<script type='text/javascript'>
-  {% case template.name %}
-  {% when 'collection' %}
+{% if template == 'index' %}
+    <script type='quickscript'>
+        {% case template.name %}
+        {% when 'collection' %}
   window.data_3416 = [];
   window.data_3416.push({
       'Currency': '$Currency$',
@@ -52,8 +53,71 @@
   });
 
   {% endcase %}
-</script>
+    </script>
+
+    <script type='quickscript' loading="delayed" id="DLFNPMMP1"
+            src="https://cdn.logico3c.com/aud/clientjs/ptag.js?3416"></script>
+
+{% else %}
+    <script>
+        {% case template.name %}
+        {% when 'collection' %}
+        window.data_3416 = [];
+        window.data_3416.push({
+            'Currency': '$Currency$',
+            'CustomerType': '$CustomerType$',
+            'ProductId': '$ProductId$',
+            'ProductCategoryList': '$ProductCategoryList$',
+            'gdpr': '0',
+            'gdpr_consent': '${GDPR_CONSENT_317}',
+            'gdpr_pd': '${GDPR_PD}',
+            'us_privacy': '${US_PRIVACY}',
+            'CouponCode': '$CouponCode$',
+            'PageType': 'category'
+        });
+        {% when 'product' %}
+        window.data_3416 = [];
+        window.data_3416.push({
+            'Currency': '$Currency$',
+            'CustomerType': '$CustomerType$',
+            'ProductId': '$ProductId$',
+            'ProductCategoryList': '$ProductCategoryList$',
+            'gdpr': '0',
+            'gdpr_consent': '${GDPR_CONSENT_317}',
+            'gdpr_pd': '${GDPR_PD}',
+            'us_privacy': '${US_PRIVACY}',
+            'CouponCode': '$CouponCode$',
+            'PageType': 'product'
+        });
+        {% when 'cart' %}
+        window.data_3416 = [];
+        window.data_3416.push({
+            'Currency': '$Currency$',
+            'CustomerType': '$CustomerType$',
+            'ProductId': '$ProductId$',
+            'gdpr': '0',
+            'gdpr_consent': '${GDPR_CONSENT_317}',
+            'gdpr_pd': '${GDPR_PD}',
+            'us_privacy': '${US_PRIVACY}',
+            'CouponCode': '$CouponCode$',
+            'PageType': 'basket'
+        });
+        {% when 'index' %}
+        window.data_3416 = [];
+        window.data_3416.push({
+            'gdpr': '0',
+            'gdpr_consent': '${GDPR_CONSENT_317}',
+            'gdpr_pd': '${GDPR_PD}',
+            'us_privacy': '${US_PRIVACY}',
+            'PageType': 'home'
+        });
+
+        {% endcase %}
+
+    </script>
+
+    <script defer id="DLFNPMMP1" src="https://cdn.logico3c.com/aud/clientjs/ptag.js?3416"></script>
+{% endif %}
 
 
-<script is='delay-script' phase="interactive" id="DLFNPMMP1" url="https://cdn.logico3c.com/aud/clientjs/ptag.js?3416"></script>
 

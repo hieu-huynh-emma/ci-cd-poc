@@ -1,11 +1,3 @@
-window.addEventListener('load', () => {
-    setTimeout(() => {
-        window.dispatchEvent(new Event("complete"));
-
-        $('#site-loading-overlay').fadeOut(200);
-    }, 100)
-}, {once: true});
-
 class DelayScript extends HTMLScriptElement {
     constructor() {
         super();

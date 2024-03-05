@@ -1,0 +1,72 @@
+<script>
+    window.routes = {
+        cart_add_url: '{{ routes.cart_add_url }}',
+        cart_change_url: '{{ routes.cart_change_url }}',
+        cart_update_url: '{{ routes.cart_update_url }}',
+        cart_clear_url: '{{ routes.cart_clear_url }}',
+        predictive_search_url: '{{ routes.predictive_search_url }}'
+    };
+
+    window.cartStrings = {
+        error: `{{ 'sections.cart.cart_error' | t }}`,
+        quantityError: `{{ 'sections.cart.cart_quantity_error_html' | t }}`
+    }
+
+    window.variantStrings = {
+        addToCart: `{{ 'products.product.add_to_cart' | t }}`,
+        soldOut: `{{ 'products.product.sold_out' | t }}`,
+        unavailable: `{{ 'products.product.unavailable' | t }}`,
+    }
+
+    window.accessibilityStrings = {
+        shareSuccess: `{{ 'general.share.success_message' | t }}`,
+    }
+
+</script>
+
+<script type="quickscript" src="{{ 'helpers.js' | asset_url }}"></script>
+
+<script type="quickscript" src="{{ 'resource-coordinator.js' | asset_url }}"></script>
+<script type="quickscript" src="{{ 'custom-elements.js' | asset_url }}"></script>
+<script type="quickscript" src="{{ 'lazy-component.js' | asset_url }}"></script>
+<script type="quickscript" src="{{ 'loading-overlay.js' | asset_url }}"></script>
+<script type="quickscript" src="{{ 'countdown-timer.js' | asset_url }}"></script>
+<script type="quickscript" src="{{ 'star-rating.js' | asset_url }}"></script>
+<script type="quickscript" src="{{ 'product-card.js' | asset_url }}"></script>
+<script type="quickscript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script>
+
+<script type="quickscript" loading="delayed" src="{{ 'global.js' | asset_url }}"></script>
+<script type="quickscript" loading="delayed" src="{{ 'lazy.min.js' | file_url }}"></script>
+
+<script type="quickscript" loading="delayed" src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+<script type="quickscript" loading="delayed" src="{{ 'main-navigation.js' | asset_url }}"></script>
+<script type="quickscript" loading="delayed" src="{{ 'site-nav.js' | asset_url }}"></script>
+<script type="quickscript" loading="delayed" src="{{ 'site-subnav.js' | asset_url }}"></script>
+<script type="quickscript" loading="delayed" src="{{ 'custom-tabs.js' | asset_url }}"></script>
+<script type="quickscript" loading="delayed" src="{{ 'cart-surface.js' | asset_url }}"></script>
+<script type="quickscript" loading="delayed" src="{{ 'store-localization-surface.js' | asset_url }}"></script>
+<script type="quickscript" loading="delayed" src="{{ 'cookie-consent-bar.js' | asset_url }}"></script>
+
+<script type="quickscript" src="{{ 'lang-switcher.js' | asset_url }}"></script>
+<script>
+
+    const ENV = {
+        logo: "{{ 'emma-logo.svg' | asset_url }}",
+        checkGreenIcon: "{{ 'icon-check-green.svg' | asset_url }}",
+        checkGrayIcon: "{{ 'icon-check-gray.svg' | asset_url }}",
+        cancelIcon: "{{ 'icon-cancel.svg' | asset_url }}",
+    };
+
+    hiddenProductGuard();
+
+    function hiddenProductGuard() {
+        const extend = /\/products\/extend-/;
+        const freePillow = /\/products\/2-pack-pillow/;
+        const url = new URL(window.location.href);
+        if (!extend.test(url.pathname) && !freePillow.test(url.pathname)) return;
+
+        // redirect user
+        window.location.replace('/');
+    }
+
+</script>

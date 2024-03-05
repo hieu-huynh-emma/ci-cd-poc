@@ -1,0 +1,20 @@
+{% liquid
+    case template
+        when 'page.compare-emma'
+            assign pageStyleFile = 'comparison-page.css'
+        when 'page.competitor-comparison'
+            assign pageStyleFile = 'competitor-comparison.css'
+        when 'page.financing'
+            assign pageStyleFile = 'financing.css'
+        when 'page.landing-page'
+            assign pageStyleFile = 'landing-page.css'
+        when 'page' or 'page.365-night-trial' or 'page.100-day-moneyback' or 'page.legal-notice'
+            assign pageStyleFile = 'static-page.css'
+        else
+            assign pageStyleFile = 'revamp-product.css'
+    endcase
+%}
+
+{% if pageStyleFile %}
+    <link is="delay-stylesheet" href="{{ pageStyleFile | asset_url }}">
+{% endif %}
