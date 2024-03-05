@@ -251,14 +251,14 @@
           "type": "campaign_teaser",
           "settings": {
             "title": "Family Day Sale",
-            "content": "<p>40% off<\/p>"
+            "content": "<p>45% off<\/p>"
           }
         },
         "40770334-266c-4992-86e4-9709af68cc26": {
           "type": "upsell_widget",
           "settings": {
             "title": "Upgrade to Hybrid Premium Mattress:",
-            "content": "<p><strong>40% off<\/strong><\/p><ul><li>Improved Cooling & Motion Isolation<\/li><li>Advanced Thermosync Technology<\/li><\/ul>",
+            "content": "<p><strong>45% off<\/strong><\/p><ul><li>Improved Cooling & Motion Isolation<\/li><li>Advanced Thermosync Technology<\/li><\/ul>",
             "image": "shopify:\/\/shop_images\/Hybrid_Premium_front_view_room_render.jpg",
             "product": "emma-hybrid-premium"
           }
@@ -861,21 +861,14 @@
       "type": "apps",
       "blocks": {
         "yotpo_product_photo_reviews_reviews_NLwt4i": {
-          "type": "shopify:\/\/apps\/yotpo-product-photo-reviews\/blocks\/reviews\/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
-          "settings": {
-            "product": "{{product}}"
-          }
-        },
-        "yotpo_product_photo_reviews_questions_and_answers_EFmnYK": {
-          "type": "shopify:\/\/apps\/yotpo-product-photo-reviews\/blocks\/questions_and_answers\/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
+          "type": "shopify:\/\/apps\/yotpo-product-reviews-ugc\/blocks\/reviews\/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
           "settings": {
             "product": "{{product}}"
           }
         }
       },
       "block_order": [
-        "yotpo_product_photo_reviews_reviews_NLwt4i",
-        "yotpo_product_photo_reviews_questions_and_answers_EFmnYK"
+        "yotpo_product_photo_reviews_reviews_NLwt4i"
       ],
       "settings": {
         "include_margins": true
