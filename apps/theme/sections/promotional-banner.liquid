@@ -2,8 +2,7 @@
     #promotional-banner-section .promotional-banner{min-height:68px}@media screen and (min-width:769px){#promotional-banner-section .promotional-banner{min-height:48px}}#promotional-banner-section .section-content,#promotional-banner-section .top-brands{display:none}
 </style>
 
-<link is="delay-stylesheet" href="{{ 'promotional-banner.css' | asset_url }}">
-
+<link rel="stylesheet" href="{{ 'promotional-banner.css' | asset_url }}">
 
 {% assign items = section.blocks | where: "type", "item" %}
 

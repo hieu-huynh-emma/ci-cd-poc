@@ -8,7 +8,7 @@
   <div class="section-chassis page-boundary">
     <h2 class="heading-2 font-inter">{{ section.settings.title | remove: "<p>" | remove: "</p>" }}</h2>
 
-    <lazy-component size="lg">
+    {% comment %}<lazy-component size="lg">{% endcomment %}
       <div>
         <div class="splide">
           {% include 'splide-arrows' %}
@@ -63,8 +63,8 @@
         </div>
       </div>
 
-      <lazy-script manual src="{{ 'customer-sentiment.js' | asset_url }}"></lazy-script>
-    </lazy-component>
+      <script type="quickscript" loading="visibility" src="{{ 'customer-sentiment.js' | asset_url }}"></script>
+    {% comment %}</lazy-component>{% endcomment %}
 
     {% if ctaBtn %}
       <a class="btn mx-auto md:w-[458px]" href="{{ ctaBtn.settings.url }}">

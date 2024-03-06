@@ -11,8 +11,11 @@
         when 'page' or 'page.365-night-trial' or 'page.100-day-moneyback' or 'page.legal-notice'
             assign pageStyleFile = 'static-page.css'
         else
-            assign pageStyleFile = 'revamp-product.css'
     endcase
+
+    if template contains 'product'
+        assign pageStyleFile = 'revamp-product.css'
+    endif
 %}
 
 {% if pageStyleFile %}

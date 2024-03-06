@@ -13,7 +13,7 @@
         <div class="slide_card_dis hidden md:inline-block">
           <a href="#">{{ block.settings.content-banner }} </a>
         </div>
-                  
+
         <a class="btn btn--lg" href="{{ block.settings.banner-url }}">
             Shop Now
           </a>
@@ -27,11 +27,11 @@
 		  {%- endfor -%}
 		</ul>
   </div>
- 
+
 </div>
-   <div class="countdown-timer-block" countdown-timer-id="cljxyk1363486461m21q2d61tc8"></div>  
+   <div class="countdown-timer-block" countdown-timer-id="cljxyk1363486461m21q2d61tc8"></div>
   </section>
-<lazy-script  src="{{ 'main-carousel-banner.js' | asset_url }}"></lazy-script>
+<script type="quickscript" loading="visibility"  src="{{ 'main-carousel-banner.js' | asset_url }}"></script>
 {% schema %}
     {
     "name": "Main Banner Carousel",
@@ -81,15 +81,15 @@
                     "label": " link",
                     "info": "Optional"
                 }
-             
-                
+
+
             ]
         }
     ],
     "presets": [
         {
            "name": "Main Banner Carousel"
-           
+
         }
     ]
 }
