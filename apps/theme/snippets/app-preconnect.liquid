@@ -1,3 +1,4 @@
-<template id="content_for_preconnect"><head></head>{{ content_for_header }}<body></body></template>
-
+{% if request.design_mode == false %}
+   <template id="content_for_preconnect"><head></head>{{ content_for_header }}<body></body></template>
+{% endif %}
 <script src="{{ 'quickscript-beta.min.js' | asset_url }}"></script>
