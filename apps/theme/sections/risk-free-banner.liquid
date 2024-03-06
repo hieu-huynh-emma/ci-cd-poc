@@ -4,7 +4,7 @@
         background-color: var(--color-chambray);
     }
 </style>
-<link is="delay-stylesheet" href="{{ 'risk-free-banner.css' | asset_url }}">
+<link rel="stylesheeet" href="{{ 'risk-free-banner.css' | asset_url }}">
 
 {% assign bannerItems = section.blocks | where: "type", "banner-item" %}
 
@@ -27,7 +27,7 @@
     </div>
   </div>
 
-  <lazy-script src="{{ 'risk-free-banner.js' | asset_url }}"></lazy-script>
+  <script type="quickscript" loading="visibility" src="{{ 'risk-free-banner.js' | asset_url }}"></script>
 </section>
 
 {% schema %}

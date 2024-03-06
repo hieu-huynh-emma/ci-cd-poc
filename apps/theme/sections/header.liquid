@@ -1,203 +1,216 @@
 <style>
-    .site-header-wrapper{
-    background-color:#fff
-}
-.site-header  > .header_container{
-    display:grid;
-    align-items:center;
-    height:58px;
-    max-height:58px
-}
-  .small_nav {
-         
-         align-items: center;
-         gap: 10px;
-         justify-content: flex-end;
+    .site-header-wrapper {
+        background-color: #fff
     }
-  .header-utilities{
-    display:none
-}
-.custom_dropdown  ul.minimal-site-subnav{
-  opacity:0;
-  visibility:hidden;
-  position:absolute;
-  top:24px;
-  right:0;
-    width: initial;
-    height: initial;
-    padding: 9px 15px;
-    pointer-events: all;
-    box-shadow: none;
-    will-change: opacity,transform;
-    transform-origin: top;
-    border-top: 1px solid rgba(0,0,0,.08);
-    filter: drop-shadow(0 20px 13px rgb(0 0 0/.03)) drop-shadow(0 8px 5px rgb(0 0 0/.08));
-  background:#fff;
-  border-radius:10px;
-  width:400px;
-}
-  .custom_dropdown {
-    position:relative;
-  }
-  .custom_dropdown:hover ul.minimal-site-subnav{
-    opacity:1 !important;
-    visibility:visible !important;
-  }
- html[lang="fr"] .lang_btn .second-btn[data-wg-splitted], html[lang="fr"] .lang_btn .second-btn{
-   display:block !important; 
-  }
-  html[lang="fr"] .lang_btn .first-btn[data-wg-splitted] {
-    display:block !important; 
-  }
-  html[lang="en"] .lang_btn .first-btn{
-   display:block; 
-  }
-  .lang_btn a{
-    display:none;
-  }
-@media screen and (min-width:1024px) {
-    .site-header{
-        height:60px;
-        max-height:60px;
-          background: #f7f7f9;
-    }
-}
 
-@media screen and (max-width:1023px){
-    .site-header{
-        position:relative;
-        justify-items:center
+    .site-header > .header_container {
+        display: grid;
+        align-items: center;
+        height: 58px;
+        max-height: 58px
     }
-     
-     .site-logo{
-        position:absolute;
-         left:45px
+
+    .small_nav {
+
+        align-items: center;
+        gap: 10px;
+        justify-content: flex-end;
     }
-}
-nav-toggler{
-    display:none
-}
+
+    .header-utilities {
+        display: none
+    }
+
+    .custom_dropdown ul.minimal-site-subnav {
+        opacity: 0;
+        visibility: hidden;
+        position: absolute;
+        top: 24px;
+        right: 0;
+        width: initial;
+        height: initial;
+        padding: 9px 15px;
+        pointer-events: all;
+        box-shadow: none;
+        will-change: opacity, transform;
+        transform-origin: top;
+        border-top: 1px solid rgba(0, 0, 0, .08);
+        filter: drop-shadow(0 20px 13px rgb(0 0 0/.03)) drop-shadow(0 8px 5px rgb(0 0 0/.08));
+        background: #fff;
+        border-radius: 10px;
+        width: 400px;
+    }
+
+    .custom_dropdown {
+        position: relative;
+    }
+
+    .custom_dropdown:hover ul.minimal-site-subnav {
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+
+    html[lang="fr"] .lang_btn .second-btn[data-wg-splitted], html[lang="fr"] .lang_btn .second-btn {
+        display: block !important;
+    }
+
+    html[lang="fr"] .lang_btn .first-btn[data-wg-splitted] {
+        display: block !important;
+    }
+
+    html[lang="en"] .lang_btn .first-btn {
+        display: block;
+    }
+
+    .lang_btn a {
+        display: none;
+    }
+
+    @media screen and (min-width: 1024px) {
+        .site-header {
+            height: 60px;
+            max-height: 60px;
+            background: #f7f7f9;
+        }
+    }
+
+    @media screen and (max-width: 1023px) {
+        .site-header {
+            position: relative;
+            justify-items: center
+        }
+
+        .site-logo {
+            position: absolute;
+            left: 45px
+        }
+    }
+
+    nav-toggler {
+        display: none
+    }
 
 </style>
 
-<link is="delay-stylesheet" href="{{ 'header.css' | asset_url }}">
+<link rel="stylesheet" href="{{ 'header.css' | asset_url }}">
 
 <header
-  class="site-header "
-  role="banner"
-  data-section-id="{{ section.id }}"
-  data-section-type="header-section"
-  data-template="{{ request.page_type }}"
+        class="site-header "
+        role="banner"
+        data-section-id="{{ section.id }}"
+        data-section-type="header-section"
+        data-template="{{ request.page_type }}"
 >
-  <div class="page-boundary header_container">
-  <nav-toggler>
-    <svg
-      class="hamburger-icon"
-      width="20"
-      height="13"
-      viewBox="0 0 20 13"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-              d="M11 10.9883H1C0.734784 10.9883 0.48043 11.0936 0.292893 11.2812C0.105357 11.4687 0 11.7231 0 11.9883C0 12.2535 0.105357 12.5079 0.292893 12.6954C0.48043 12.8829 0.734784 12.9883 1 12.9883H11C11.2652 12.9883 11.5196 12.8829 11.7071 12.6954C11.8946 12.5079 12 12.2535 12 11.9883C12 11.7231 11.8946 11.4687 11.7071 11.2812C11.5196 11.0936 11.2652 10.9883 11 10.9883ZM1 2.98828H19C19.2652 2.98828 19.5196 2.88292 19.7071 2.69539C19.8946 2.50785 20 2.2535 20 1.98828C20 1.72306 19.8946 1.46871 19.7071 1.28117C19.5196 1.09364 19.2652 0.988281 19 0.988281H1C0.734784 0.988281 0.48043 1.09364 0.292893 1.28117C0.105357 1.46871 0 1.72306 0 1.98828C0 2.2535 0.105357 2.50785 0.292893 2.69539C0.48043 2.88292 0.734784 2.98828 1 2.98828ZM19 5.98828H1C0.734784 5.98828 0.48043 6.09364 0.292893 6.28117C0.105357 6.46871 0 6.72306 0 6.98828C0 7.2535 0.105357 7.50785 0.292893 7.69539C0.48043 7.88292 0.734784 7.98828 1 7.98828H19C19.2652 7.98828 19.5196 7.88292 19.7071 7.69539C19.8946 7.50785 20 7.2535 20 6.98828C20 6.72306 19.8946 6.46871 19.7071 6.28117C19.5196 6.09364 19.2652 5.98828 19 5.98828Z"
-              fill="#2E2F3C"
-      />
-    </svg>
+    <div class="page-boundary header_container">
+        <nav-toggler>
+            <svg
+                    class="hamburger-icon"
+                    width="20"
+                    height="13"
+                    viewBox="0 0 20 13"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+            >
+                <path
+                        d="M11 10.9883H1C0.734784 10.9883 0.48043 11.0936 0.292893 11.2812C0.105357 11.4687 0 11.7231 0 11.9883C0 12.2535 0.105357 12.5079 0.292893 12.6954C0.48043 12.8829 0.734784 12.9883 1 12.9883H11C11.2652 12.9883 11.5196 12.8829 11.7071 12.6954C11.8946 12.5079 12 12.2535 12 11.9883C12 11.7231 11.8946 11.4687 11.7071 11.2812C11.5196 11.0936 11.2652 10.9883 11 10.9883ZM1 2.98828H19C19.2652 2.98828 19.5196 2.88292 19.7071 2.69539C19.8946 2.50785 20 2.2535 20 1.98828C20 1.72306 19.8946 1.46871 19.7071 1.28117C19.5196 1.09364 19.2652 0.988281 19 0.988281H1C0.734784 0.988281 0.48043 1.09364 0.292893 1.28117C0.105357 1.46871 0 1.72306 0 1.98828C0 2.2535 0.105357 2.50785 0.292893 2.69539C0.48043 2.88292 0.734784 2.98828 1 2.98828ZM19 5.98828H1C0.734784 5.98828 0.48043 6.09364 0.292893 6.28117C0.105357 6.46871 0 6.72306 0 6.98828C0 7.2535 0.105357 7.50785 0.292893 7.69539C0.48043 7.88292 0.734784 7.98828 1 7.98828H19C19.2652 7.98828 19.5196 7.88292 19.7071 7.69539C19.8946 7.50785 20 7.2535 20 6.98828C20 6.72306 19.8946 6.46871 19.7071 6.28117C19.5196 6.09364 19.2652 5.98828 19 5.98828Z"
+                        fill="#2E2F3C"
+                />
+            </svg>
 
-    <svg
-      class="close-icon hidden"
-      width="18"
-      height="17"
-      viewBox="0 0 18 17"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-              d="M10.4099 8.98847L16.7099 2.69847C16.8982 2.51016 17.004 2.25477 17.004 1.98847C17.004 1.72217 16.8982 1.46677 16.7099 1.27847C16.5216 1.09016 16.2662 0.984375 15.9999 0.984375C15.7336 0.984375 15.4782 1.09016 15.2899 1.27847L8.99994 7.57847L2.70994 1.27847C2.52164 1.09016 2.26624 0.984375 1.99994 0.984375C1.73364 0.984375 1.47824 1.09016 1.28994 1.27847C1.10164 1.46677 0.995847 1.72217 0.995847 1.98847C0.995847 2.25477 1.10164 2.51016 1.28994 2.69847L7.58994 8.98847L1.28994 15.2785C1.19621 15.3714 1.12182 15.482 1.07105 15.6039C1.02028 15.7257 0.994141 15.8565 0.994141 15.9885C0.994141 16.1205 1.02028 16.2512 1.07105 16.373C1.12182 16.4949 1.19621 16.6055 1.28994 16.6985C1.3829 16.7922 1.4935 16.8666 1.61536 16.9174C1.73722 16.9681 1.86793 16.9943 1.99994 16.9943C2.13195 16.9943 2.26266 16.9681 2.38452 16.9174C2.50638 16.8666 2.61698 16.7922 2.70994 16.6985L8.99994 10.3985L15.2899 16.6985C15.3829 16.7922 15.4935 16.8666 15.6154 16.9174C15.7372 16.9681 15.8679 16.9943 15.9999 16.9943C16.132 16.9943 16.2627 16.9681 16.3845 16.9174C16.5064 16.8666 16.617 16.7922 16.7099 16.6985C16.8037 16.6055 16.8781 16.4949 16.9288 16.373C16.9796 16.2512 17.0057 16.1205 17.0057 15.9885C17.0057 15.8565 16.9796 15.7257 16.9288 15.6039C16.8781 15.482 16.8037 15.3714 16.7099 15.2785L10.4099 8.98847Z"
-              fill="black"
-      />
-    </svg>
-  </nav-toggler>
+            <svg
+                    class="close-icon hidden"
+                    width="18"
+                    height="17"
+                    viewBox="0 0 18 17"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+            >
+                <path
+                        d="M10.4099 8.98847L16.7099 2.69847C16.8982 2.51016 17.004 2.25477 17.004 1.98847C17.004 1.72217 16.8982 1.46677 16.7099 1.27847C16.5216 1.09016 16.2662 0.984375 15.9999 0.984375C15.7336 0.984375 15.4782 1.09016 15.2899 1.27847L8.99994 7.57847L2.70994 1.27847C2.52164 1.09016 2.26624 0.984375 1.99994 0.984375C1.73364 0.984375 1.47824 1.09016 1.28994 1.27847C1.10164 1.46677 0.995847 1.72217 0.995847 1.98847C0.995847 2.25477 1.10164 2.51016 1.28994 2.69847L7.58994 8.98847L1.28994 15.2785C1.19621 15.3714 1.12182 15.482 1.07105 15.6039C1.02028 15.7257 0.994141 15.8565 0.994141 15.9885C0.994141 16.1205 1.02028 16.2512 1.07105 16.373C1.12182 16.4949 1.19621 16.6055 1.28994 16.6985C1.3829 16.7922 1.4935 16.8666 1.61536 16.9174C1.73722 16.9681 1.86793 16.9943 1.99994 16.9943C2.13195 16.9943 2.26266 16.9681 2.38452 16.9174C2.50638 16.8666 2.61698 16.7922 2.70994 16.6985L8.99994 10.3985L15.2899 16.6985C15.3829 16.7922 15.4935 16.8666 15.6154 16.9174C15.7372 16.9681 15.8679 16.9943 15.9999 16.9943C16.132 16.9943 16.2627 16.9681 16.3845 16.9174C16.5064 16.8666 16.617 16.7922 16.7099 16.6985C16.8037 16.6055 16.8781 16.4949 16.9288 16.373C16.9796 16.2512 17.0057 16.1205 17.0057 15.9885C17.0057 15.8565 16.9796 15.7257 16.9288 15.6039C16.8781 15.482 16.8037 15.3714 16.7099 15.2785L10.4099 8.98847Z"
+                        fill="black"
+                />
+            </svg>
+        </nav-toggler>
 
-  <a href="{{ routes.root_url }}" class="site-logo">
-    {{ section.settings.logo | image_url: height: 100 | image_tag: style: 'height: 24px; width: 135px'  }}
-  </a>
+        <a href="{{ routes.root_url }}" class="site-logo">
+            {{ section.settings.logo | image_url: height: 100 | image_tag: style: 'height: 24px; width: 135px' }}
+        </a>
 
-  
-<div class="small_nav hidden lg:flex">
-<button tabindex="-1" class="language-redirection"></button>
 
-  <a href="https://emma-sleep.ca/pages/faq">FAQ</a>
-  <div class="custom_dropdown">
-    <a href="https://emma-sleep.ca/pages/comparison" class="dropdown_btn">Compare</a>
-    <ul class="minimal-site-subnav">
-    
-      <li class="site-subnav__item site-nav--active">
-        <a href="/pages/emma-vs-endy" class="site-subnav__link" aria-current="page" tabindex="-1">
-          Emma vs Endy
-        </a>
-      </li>
-    
-      <li class="site-subnav__item">
-        <a href="/pages/emma-vs-apollo" class="site-subnav__link" tabindex="-1">
-          Emma vs Apollo
-        </a>
-      </li>
-    
-      <li class="site-subnav__item">
-        <a href="/pages/emma-vs-douglas" class="site-subnav__link" tabindex="-1">
-          Emma vs Douglas
-        </a>
-      </li>
-    
-      <li class="site-subnav__item">
-        <a href="/pages/emma-vs-casper" class="site-subnav__link" tabindex="-1">
-          Emma vs Casper
-        </a>
-      </li>
-    
-      <li class="site-subnav__item">
-        <a href="/pages/emma-vs-brunswick" class="site-subnav__link" tabindex="-1">
-          Emma vs Brunswick
-        </a>
-      </li>
-    
-      <li class="site-subnav__item">
-        <a href="/pages/emma-vs-silk-and-snow" class="site-subnav__link" tabindex="-1">
-          Emma vs Silk and Snow
-        </a>
-      </li>
-    
-      <li class="site-subnav__item">
-        <a href="/pages/emma-vs-simba" class="site-subnav__link" tabindex="-1">
-          Emma vs Simba
-        </a>
-      </li>
-    
-      <li class="site-subnav__item">
-        <a href="/pages/emma-vs-logan-and-cove" class="site-subnav__link" tabindex="-1">
-          Emma vs Logan and Cove
-        </a>
-      </li>
-    
-      <li class="site-subnav__item">
-        <a href="/pages/emma-vs-noa" class="site-subnav__link" tabindex="-1">
-          Emma vs Noa
-        </a>
-      </li>
-    
-  </ul>
-  </div>
-  
-</div>
-  {% render 'header-utilities' %}
-      </div>
-</header>
-        <div class="main_nav_wrapper">
-          {% render 'main-navigation' %}
+        <div class="small_nav hidden lg:flex">
+            <button tabindex="-1" class="language-redirection"></button>
+
+            <a href="https://emma-sleep.ca/pages/faq">FAQ</a>
+            <div class="custom_dropdown">
+                <a href="https://emma-sleep.ca/pages/comparison" class="dropdown_btn">Compare</a>
+                <ul class="minimal-site-subnav">
+
+                    <li class="site-subnav__item site-nav--active">
+                        <a href="/pages/emma-vs-endy" class="site-subnav__link" aria-current="page" tabindex="-1">
+                            Emma vs Endy
+                        </a>
+                    </li>
+
+                    <li class="site-subnav__item">
+                        <a href="/pages/emma-vs-apollo" class="site-subnav__link" tabindex="-1">
+                            Emma vs Apollo
+                        </a>
+                    </li>
+
+                    <li class="site-subnav__item">
+                        <a href="/pages/emma-vs-douglas" class="site-subnav__link" tabindex="-1">
+                            Emma vs Douglas
+                        </a>
+                    </li>
+
+                    <li class="site-subnav__item">
+                        <a href="/pages/emma-vs-casper" class="site-subnav__link" tabindex="-1">
+                            Emma vs Casper
+                        </a>
+                    </li>
+
+                    <li class="site-subnav__item">
+                        <a href="/pages/emma-vs-brunswick" class="site-subnav__link" tabindex="-1">
+                            Emma vs Brunswick
+                        </a>
+                    </li>
+
+                    <li class="site-subnav__item">
+                        <a href="/pages/emma-vs-silk-and-snow" class="site-subnav__link" tabindex="-1">
+                            Emma vs Silk and Snow
+                        </a>
+                    </li>
+
+                    <li class="site-subnav__item">
+                        <a href="/pages/emma-vs-simba" class="site-subnav__link" tabindex="-1">
+                            Emma vs Simba
+                        </a>
+                    </li>
+
+                    <li class="site-subnav__item">
+                        <a href="/pages/emma-vs-logan-and-cove" class="site-subnav__link" tabindex="-1">
+                            Emma vs Logan and Cove
+                        </a>
+                    </li>
+
+                    <li class="site-subnav__item">
+                        <a href="/pages/emma-vs-noa" class="site-subnav__link" tabindex="-1">
+                            Emma vs Noa
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+
         </div>
-        
+        {% render 'header-utilities' %}
+    </div>
+</header>
+
+<div class="main_nav_wrapper">
+    {% render 'main-navigation' %}
+</div>
+
 
 {% schema %}
 {
@@ -238,7 +251,6 @@ nav-toggler{
       "type": "url",
       "label": "Sale Page URL"
     },
-
     {
       "type": "header",
       "content": "Main Navigation Menu",

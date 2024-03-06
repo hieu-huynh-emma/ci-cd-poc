@@ -2,8 +2,8 @@
     #navbar{display:none}@media screen and (max-width:769px){nav-overlay{position:absolute;inset:0;z-index:-1;background-color:rgba(0,0,0,.8)}}
 </style>
 
-<link is="delay-stylesheet" href="{{ 'main-navigation.css' | asset_url }}">
-<link is="delay-stylesheet" href="{{ 'cart-icon-bubble.css' | asset_url }}">
+<link rel="stylesheeet" href="{{ 'main-navigation.css' | asset_url }}">
+<link rel="stylesheeet" href="{{ 'cart-icon-bubble.css' | asset_url }}">
 
 <script id="main-navigation-menu" type="application/json">
 [
@@ -31,7 +31,7 @@
               "promotionCapsule": "{{ childlink.object.metafields.accentuate.promotion_capsule }}",
               "subnavHtmlContent": "{{ childlink.object.metafields.accentuate.subnav_html_content | replace: '"', "'" }}",
               "submenuThumbImage": "{{ childlink.object.metafields.accentuate.subnav_thumb_image }}"
-           
+
             }
             {%- if forloop.length > 0 -%}
                 {% unless forloop.last %},{% endunless -%}
@@ -48,7 +48,6 @@
     {%- endif -%}
   {% endfor %}
 ]
-
 </script>
 
 <nav id="navbar" role="navigation">
@@ -58,4 +57,8 @@
 
     {% render 'site-subnav' %}
 </nav>
+
+<script type="quickscript" loading="delayed" src="{{ 'main-navigation.js' | asset_url }}"></script>
+<script type="quickscript" loading="delayed" src="{{ 'site-nav.js' | asset_url }}"></script>
+<script type="quickscript" loading="delayed" src="{{ 'site-subnav.js' | asset_url }}"></script>
 

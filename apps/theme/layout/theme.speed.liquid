@@ -12,27 +12,27 @@
     </head>
 
     <body class="gradient">
-    {% section 'splash-screen' %}
+        {% section 'splash-screen' %}
 
-    <a class="skip-to-content-link button visually-hidden" href="#MainContent">
-        {{ "accessibility.skip_to_text" | t }}
-    </a>
+        <a class="skip-to-content-link button visually-hidden" href="#MainContent">
+            {{ "accessibility.skip_to_text" | t }}
+        </a>
 
-    {% sections 'header-group' %}
-    {% sections 'affiliate-group' %}
+        {% sections 'header-group' %}
+        {% sections 'affiliate-group' %}
 
-    <main id="MainContent" class="content-for-layout focus-none" role="main" tabindex="-1">
-        {{ content_for_layout }}
-    </main>
+        <main id="MainContent" class="content-for-layout focus-none" role="main" tabindex="-1">
+            {{ content_for_layout }}
+        </main>
 
-    {% sections 'footer-group' %}
+        {% sections 'footer-group' %}
 
-    <ul hidden>
-        <li id="a11y-refresh-page-message">{{ 'accessibility.refresh_page' | t }}</li>
-    </ul>
+        <ul hidden>
+            <li id="a11y-refresh-page-message">{{ 'accessibility.refresh_page' | t }}</li>
+        </ul>
 
-    {% render 'app-vendors' %}
-    {% render 'app-scripts' %}
-    {% render 'app-widgets' %}
+        {% render 'app-vendors' %}
+        {% render 'app-scripts' %}
+        {% render 'app-widgets' %}
     </body>
 </html>
