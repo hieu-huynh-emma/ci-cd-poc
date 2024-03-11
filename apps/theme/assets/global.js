@@ -704,7 +704,9 @@ class VariantSelects extends HTMLElement {
     }
 
     updateURL() {
-        if (!this.currentVariant || this.dataset.updateUrl === 'false') return;
+        const hasJointProduct = document.querySelector('joint-product-engine')
+
+        if (!this.currentVariant || this.dataset.updateUrl === 'false' || hasJointProduct) return;
         window.history.replaceState({}, '', `${this.dataset.url}?variant=${this.currentVariant.id}`);
     }
 

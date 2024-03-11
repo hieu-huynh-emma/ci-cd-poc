@@ -84,7 +84,8 @@
         "yotpo_star_rating": {
           "type": "yotpo_star_rating",
           "settings": {
-            "product": "emma-original-mattress"
+            "product": "{{product}}",
+            "new_layout": true
           }
         },
         "f5f456c7-b29a-4f74-826f-648e09f5b1cd": {
@@ -226,7 +227,7 @@
         "8c61e5e7-7152-452e-88a6-8f61c8afbbfc": {
           "type": "mini-comparison-table",
           "settings": {
-            "badge": "$325",
+            "badge": "$275",
             "note": "*For queen sizes only. All prices and information from public sources listed as of May 8, 2023. Information may not reflect updated prices and promotions."
           }
         },
@@ -246,11 +247,17 @@
           "type": "upsell_widget",
           "settings": {
             "title": "Upgrade to Hybrid Comfort:",
-            "content": "<ul><li>7 ergonomic zones<\/li><li>Enhanced support<\/li><\/ul>",
+            "content": "<p><strong>40% off<\/strong><\/p><ul><li>7 ergonomic zones<\/li><li>Enhanced support<\/li><\/ul>",
             "image": "shopify:\/\/shop_images\/Emma_hybrid-comfort_exploded_2.png",
             "product": "emma-hybrid-comfort"
           }
+        },
+        "cross_sell_widget_tXLCDN": {
+          "type": "cross_sell_widget",
+          "settings": {
+          }
         }
+
       },
       "block_order": [
         "yotpo_star_rating",
@@ -274,13 +281,15 @@
         "8c61e5e7-7152-452e-88a6-8f61c8afbbfc",
         "78340a5f-79af-436d-b68c-7aa1da0df629",
         "cfce0226-3426-4dc5-beec-1c0f5dc15658",
-        "3d66a516-6f44-40e9-b6c1-53de5855535f"
+        "3d66a516-6f44-40e9-b6c1-53de5855535f",
+        "cross_sell_widget_tXLCDN"
       ],
       "custom_css": [
         "h2 > div {display: none;}"
+
       ],
       "settings": {
-        "title": "Emma Original Mattress",
+        "title": "Original Hybrid",
         "desc": "<p><strong>Unbeatable value<\/strong><\/p><p>Affordable luxury, transformative sleep. Ingenious point-elastic design supports your body's every curve and spine with unmatched precision.<\/p><ul><li>Pressure relief<\/li><li>Long lasting and durable<\/li><li>Our best-selling mattress<\/li><\/ul>",
         "caption_headline": "The mattress that put Emma on the map",
         "caption_content": "The Emma Original changed the game when it comes to improving sleep",
@@ -333,42 +342,63 @@
       "settings": {
       }
     },
-    "mattress-layers-static": {
-      "type": "mattress-layers-static",
+    "mattress-layers": {
+      "type": "mattress-layers",
       "blocks": {
         "4441c420-9648-469d-9fb2-bf8dbb9cf6ba": {
-          "type": "layer_item",
+          "type": "cover_layer",
           "settings": {
+            "image": "shopify:\/\/shop_images\/9RP2YPY2_Original_layer_5.png",
             "title": "The covers that are super easy to wash",
-            "content": "The Emma cover is soft-to-touch, making it very comfortable to lie on. It is also completely removable, making it extremely easy to wash."
+            "content": "The Emma cover is soft-to-touch, making it very comfortable to lie on. It is also completely removable, making it extremely easy to wash.",
+            "gutter": 4,
+            "bullet_gutter": 70
           }
         },
         "3b4dd04a-036c-426d-8c1f-9729dd673c3e": {
-          "type": "layer_item",
+          "type": "internal_layer",
           "settings": {
+            "image": "shopify:\/\/shop_images\/9RP2YPY2_Original_layer_4.png",
             "title": "The foam that regulates temperature",
-            "content": "Our groundbreaking Point Elastic Airgocell® technology enhances breathability and regulates temperature by absorbing and then evaporating sweat so that rising temperatures won’t disturb your sleep."
+            "content": "Our groundbreaking Point Elastic Airgocell® technology enhances breathability and regulates temperature by absorbing and then evaporating sweat so that rising temperatures won’t disturb your sleep.",
+            "gutter": 4,
+            "bullet_gutter": 25
           }
         },
         "bdebe803-1755-4362-ae36-1355b97d0e9d": {
-          "type": "layer_item",
+          "type": "internal_layer",
           "settings": {
+            "image": "shopify:\/\/shop_images\/9RP2YPY2_Original_layer_3.png",
             "title": "The memory foam that hugs your body",
-            "content": "Our innovative Halo Memory Foam™ adapts to your body shape for targeted spinal alignment, enhanced pressure relief and body-hugging comfort."
+            "content": "Our innovative Halo Memory Foam™ adapts to your body shape for targeted spinal alignment, enhanced pressure relief and body-hugging comfort.",
+            "gutter": 3,
+            "bullet_gutter": 28
           }
         },
         "c9c66cb6-dfe8-4bc3-aef4-5f3af408a185": {
-          "type": "layer_item",
+          "type": "internal_layer",
           "settings": {
+            "image": "shopify:\/\/shop_images\/9RP2YPY2_Original_layer_2.png",
             "title": "The base layer that keeps your spine aligned",
-            "content": "HRX stands for High Resiliency Extra. With 3 adaptive cut-out zones providing sufficient counter pressure, this layer is designed to keep your spine evenly aligned for maximum relief, rest and recovery – in any sleeping position."
+            "content": "HRX stands for High Resiliency Extra. With 3 adaptive cut-out zones providing sufficient counter pressure, this layer is designed to keep your spine evenly aligned for maximum relief, rest and recovery – in any sleeping position.",
+            "gutter": 2,
+            "bullet_gutter": 50
           }
         },
         "72c945db-310d-4f05-905a-b523e378d2f4": {
-          "type": "layer_item",
+          "type": "base_layer",
           "settings": {
+            "image": "shopify:\/\/shop_images\/9RP2YPY2_Original_layer_1.png",
             "title": "The Resistant, anti-slip, lower cover with handles",
-            "content": "Innovative mattress lower cover, designed with exceptional durability and a convenient handle for effortless maneuverability."
+            "content": "Innovative mattress lower cover, designed with exceptional durability and a convenient handle for effortless maneuverability.",
+            "gutter": 1,
+            "bullet_gutter": 35
+          }
+        },
+        "shadow_TWYLez": {
+          "type": "shadow",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/9RP2YPY2_Original_layer_1_sh_bcf1009a-0849-474c-bb42-481c81e43054.png"
           }
         }
       },
@@ -377,13 +407,14 @@
         "3b4dd04a-036c-426d-8c1f-9729dd673c3e",
         "bdebe803-1755-4362-ae36-1355b97d0e9d",
         "c9c66cb6-dfe8-4bc3-aef4-5f3af408a185",
-        "72c945db-310d-4f05-905a-b523e378d2f4"
+        "72c945db-310d-4f05-905a-b523e378d2f4",
+        "shadow_TWYLez"
       ],
       "settings": {
-        "heading": "Emma Original - Layer by Layer",
+        "wallpaper": "shopify:\/\/shop_images\/orange_1.png",
+        "heading": "Let's take a look under the covers",
         "heading_alignment": "start",
         "container_spacing": "sm",
-        "image": "shopify:\/\/shop_images\/Emma-Original-exploded-viewnumbers.jpg",
         "carousel_mode": false
       }
     },
@@ -443,13 +474,13 @@
           "type": "product-block",
           "settings": {
             "product": "emma-hybrid-premium",
-            "show_star_rating": true,
+            "show_star_rating": false,
             "color": "#3c4196",
             "primary_badge": "",
             "secondary_badge": "PREMIUM CHOICE",
             "image": "shopify:\/\/shop_images\/hybrid-premium-exploded_1.png",
             "product_title": "Emma Hybrid Premium",
-            "desc": "<p><strong>Our new best-in-class option for perfect cooling & absolute comfort<\/strong><\/p>",
+            "desc": "<h1>★ 4.8<\/h1><p><strong>Our new best-in-class mattress for perfect cooling & absolute comfort<\/strong><\/p>",
             "discount_title": "",
             "comfort_meter": 8,
             "cooling_meter": 8,
@@ -738,10 +769,17 @@
           "settings": {
             "product": "{{product}}"
           }
+        },
+        "yotpo_product_photo_reviews_questions_and_answers_ekY3cT": {
+          "type": "shopify:\/\/apps\/yotpo-product-photo-reviews\/blocks\/questions_and_answers\/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
+          "settings": {
+            "product": "{{product}}"
+          }
         }
       },
       "block_order": [
-        "ec48ba11-8792-437a-81c3-42e63b297715"
+        "ec48ba11-8792-437a-81c3-42e63b297715",
+        "yotpo_product_photo_reviews_questions_and_answers_ekY3cT"
       ],
       "custom_css": [
         ".yotpo.yotpo-main-widget,.yotpo .yotpo-modal-dialog {width: 100% important;}"
@@ -856,6 +894,51 @@
         "solid_typo": false
       }
     },
+    "featured-faqs": {
+      "type": "featured-faqs",
+      "blocks": {
+        "78ca144d-5919-4a1b-9e22-082ef5384310": {
+          "type": "faq",
+          "settings": {
+            "title": "Is it free to return your products?",
+            "content": "<p>It's 100% free to return your Emma! If your Emma turns out not to suit you for any reason, feel free to return it. Just simply get in contact with us via our chat support, phone or email and we will refund and collect it at no cost to you.<\/p><p><br\/>Live support is also available from 08:00 to 18:00 GMT-6, Monday-Friday!<\/p>"
+          }
+        },
+        "c68412f4-0251-42dc-9113-a0eecd22c518": {
+          "type": "faq",
+          "settings": {
+            "title": "How does your 365-Night-Trial work?",
+            "content": "<p>Our risk-free 365-night trial means that you get a full year to decide if your Emma mattress is a good fit for you. This gives you more time to try the mattress for yourself and experience the benefits that our 4Million+ customers have come to enjoy each night!<br\/><br\/>Helpful Tip: We recommend you sleep on your Emma for at least 21 nights so that you and your body can get suited to your new Emma mattress.<br\/><br\/>You can begin your 365-night trial today. Our 0% APR financing with Affirm also gives you the option to make 12 equal payments over the next 12 months.<\/p>"
+          }
+        },
+        "a72149c3-5420-4a8c-80fe-7370288da216": {
+          "type": "faq",
+          "settings": {
+            "title": "Do you ship nationwide?",
+            "content": "<p>We do offer free shipping in all the province in Canada.<\/p>"
+          }
+        },
+        "d9373dca-57f2-4b56-8838-1a8fc22e21ca": {
+          "type": "faq",
+          "settings": {
+            "title": "How long does shipping take?",
+            "content": "<p>Our free shipping takes approximately 3-5 business days nationwide.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "78ca144d-5919-4a1b-9e22-082ef5384310",
+        "c68412f4-0251-42dc-9113-a0eecd22c518",
+        "a72149c3-5420-4a8c-80fe-7370288da216",
+        "d9373dca-57f2-4b56-8838-1a8fc22e21ca"
+      ],
+      "settings": {
+        "heading": "FAQs",
+        "header_font": "inter",
+        "heading_alignment": "center",
+        "container_spacing": "sm"
+      }
+    },
     "contact-us": {
       "type": "contact-us",
       "settings": {
@@ -867,7 +950,7 @@
     "affiliate-banners",
     "product-info",
     "multimedia-showcase",
-    "mattress-layers-static",
+    "mattress-layers",
     "mattress-firmness",
     "featured-products",
     "social-proof",
@@ -875,6 +958,7 @@
     "168540174983dd55c2",
     "product-catalog",
     "special-services",
+    "featured-faqs",
     "contact-us"
   ]
 }

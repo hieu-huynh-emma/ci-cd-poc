@@ -1,82 +1,12 @@
 {
   "sections": {
-    "affiliate-banners": {
-      "type": "affiliate-banners",
-      "blocks": {
-        "f5f456c7-b29a-4f74-826f-648e09f5b1cd": {
-          "type": "affiliate",
-          "settings": {
-            "heading": "sleepopolis",
-            "logo": "shopify:\/\/shop_images\/Sleepopolis_Logo_Horizontal.png",
-            "badge": "shopify:\/\/shop_images\/Sleepopolis_Logo.png",
-            "message": "<p>Get extra 5% Off with code: <strong>SLEEPOPOLIS<\/strong> 🔥<\/p>",
-            "background_color": "#ffdeb7",
-            "text_color": "#2e2f3c",
-            "url": ""
-          }
-        },
-        "ff4c88cb-2bb7-4c5f-a1ce-17e0a4b07120": {
-          "type": "affiliate",
-          "settings": {
-            "heading": "sleep_foundation",
-            "badge": "shopify:\/\/shop_images\/Sleep-Foundation-2023_Logo.png",
-            "message": "<p>Get extra 5% Off with code: <strong>SF5<\/strong> 🔥<\/p>",
-            "background_color": "#ffdeb7",
-            "text_color": "#2e2f3c",
-            "url": ""
-          }
-        },
-        "0e5ad842-30da-4046-bab8-46b406facf93": {
-          "type": "affiliate",
-          "settings": {
-            "heading": "top_10",
-            "logo": "shopify:\/\/shop_images\/Top_10_Affiliate_Logo.png",
-            "message": "<p>Get extra 5% off with code <strong>TOP10<\/strong> 🔥<\/p>",
-            "background_color": "#ffdeb7",
-            "text_color": "#2e2f3c",
-            "url": ""
-          }
-        },
-        "03cf72cc-8432-4c17-bdf5-43986614117e": {
-          "type": "affiliate",
-          "settings": {
-            "heading": "mattress_clarity",
-            "message": "<p>Get extra 5% off with discount code: <strong>CLARITY<\/strong> 🔥<\/p>",
-            "background_color": "#ffdeb7",
-            "text_color": "#2e2f3c",
-            "url": ""
-          }
-        },
-        "2f43c3cf-01d0-45a5-a738-f8720f5369fb": {
-          "type": "affiliate",
-          "settings": {
-            "heading": "mattress_nerd",
-            "message": "<p>Get extra 5% off with discount code: <strong>NERD <\/strong>🔥<\/p>",
-            "background_color": "#ffdeb7",
-            "text_color": "#2e2f3c",
-            "url": ""
-          }
-        },
-        "11941b5d-edfe-4da5-943d-e59f206a3092": {
-          "type": "affiliate",
-          "settings": {
-            "heading": "naplab",
-            "message": "<p>Get extra 5% off with discount code: <strong>NAPLAB <\/strong>🔥<\/p>",
-            "background_color": "#ffdeb7",
-            "text_color": "#2e2f3c",
-            "url": ""
-          }
-        }
-      },
-      "block_order": [
-        "f5f456c7-b29a-4f74-826f-648e09f5b1cd",
-        "ff4c88cb-2bb7-4c5f-a1ce-17e0a4b07120",
-        "0e5ad842-30da-4046-bab8-46b406facf93",
-        "03cf72cc-8432-4c17-bdf5-43986614117e",
-        "2f43c3cf-01d0-45a5-a738-f8720f5369fb",
-        "11941b5d-edfe-4da5-943d-e59f206a3092"
-      ],
+    "joint-product": {
+      "type": "joint-product",
       "settings": {
+        "products": [
+          "emma-hybrid-comfort-1",
+          "emma-hybrid-comfort"
+        ]
       }
     },
     "product-info": {
@@ -365,88 +295,56 @@
       "settings": {
       }
     },
-    "mattress-layers": {
-      "type": "mattress-layers",
+    "mattress-layers-static": {
+      "type": "mattress-layers-static",
       "blocks": {
         "4441c420-9648-469d-9fb2-bf8dbb9cf6ba": {
-          "type": "cover_layer",
+          "type": "layer_item",
           "settings": {
-            "image": "shopify:\/\/shop_images\/9RP2YPY2_Hybrid_25_layer_7.png",
             "title": "Breathable and moisture-wicking Top cover",
-            "content": "The Emma cover is soft-to-touch, making it very comfortable to lie on. Built with light fibers, our cover wicks away moisture away and prevents heat from getting trapped on the surface.",
-            "gutter": 3,
-            "bullet_gutter": 50
+            "content": "The Emma cover is soft-to-touch, making it very comfortable to lie on. Built with light fibers, our cover wicks away moisture away and prevents heat from getting trapped on the surface."
           }
         },
         "3b4dd04a-036c-426d-8c1f-9729dd673c3e": {
-          "type": "internal_layer",
+          "type": "layer_item",
           "settings": {
-            "image": "shopify:\/\/shop_images\/9RP2YPY2_Hybrid_25_layer_6.png",
             "title": "The Breezy Airgocell® foam",
-            "content": "Our signature Point Elastic Airgocell technology absorbs and releases excess body heat and moisture, creating an ideal sleeping environment for peaceful sleep.",
-            "is_thin": true,
-            "gutter": 2,
-            "bullet_gutter": 28
+            "content": "Our signature Point Elastic Airgocell technology absorbs and releases excess body heat and moisture, creating an ideal sleeping environment for peaceful sleep."
           }
         },
         "bdebe803-1755-4362-ae36-1355b97d0e9d": {
-          "type": "internal_layer",
+          "type": "layer_item",
           "settings": {
-            "image": "shopify:\/\/shop_images\/9RP2YPY2_Hybrid_25_layer_5.png",
             "title": "The Cool foam layer that isolates motion",
-            "content": "Find comfort in any sleeping position. Memory foam molds to the unique shape of your body for even pressure distribution and provides great motion isolation so you can sleep undisturbed, even with a fussy partner",
-            "is_thin": true,
-            "gutter": 3,
-            "bullet_gutter": 36
+            "content": "Find comfort in any sleeping position. Memory foam molds to the unique shape of your body for even pressure distribution and provides great motion isolation so you can sleep undisturbed, even with a fussy partner"
           }
         },
         "c9c66cb6-dfe8-4bc3-aef4-5f3af408a185": {
-          "type": "internal_layer",
+          "type": "layer_item",
           "settings": {
-            "image": "shopify:\/\/shop_images\/9RP2YPY2_Hybrid_25_layer_4.png",
             "title": "The Supportive HRX foam",
-            "content": "Durable HRX foam supports you with just the right level of firmness, without hollows or bumps. Lie back and move freely until you've found your position for a deep sleep.",
-            "is_thin": true,
-            "gutter": 4,
-            "bullet_gutter": 42
+            "content": "Durable HRX foam supports you with just the right level of firmness, without hollows or bumps. Lie back and move freely until you've found your position for a deep sleep."
           }
         },
         "0e7b3bb3-6109-4e78-851e-e5684c7b4d67": {
-          "type": "internal_layer",
+          "type": "layer_item",
           "settings": {
-            "image": "shopify:\/\/shop_images\/9RP2YPY2_Hybrid_25_layer_3.png",
             "title": "The Ergonomic, 7-Zone edge-to-edge pocket springs",
-            "content": "Say goodbye to restless nights! Our individually-wrapped coils are designed to enhance airflow and provide the optimum level of tension and bounce all over the mattress — strong enough to support sleepers of all shape and size. Rest comfortably as our pocket springs adapt to your spine for longer and deeper restorative sleep.",
-            "is_thin": false,
-            "gutter": 5,
-            "bullet_gutter": 32
+            "content": "Say goodbye to restless nights! Our individually-wrapped coils are designed to enhance airflow and provide the optimum level of tension and bounce all over the mattress — strong enough to support sleepers of all shape and size. Rest comfortably as our pocket springs adapt to your spine for longer and deeper restorative sleep."
           }
         },
         "9088b2b9-37a7-498a-ab7b-1ce50ec43e1a": {
-          "type": "internal_layer",
+          "type": "layer_item",
           "settings": {
-            "image": "shopify:\/\/shop_images\/9RP2YPY2_Hybrid_25_layer_2.png",
             "title": "The Stabilizing layer",
-            "content": "Long-lasting mattresses need a good foundation. Our base is built to last, providing added stability for decades of quality sleep.",
-            "is_thin": false,
-            "gutter": 3,
-            "bullet_gutter": 50
+            "content": "Long-lasting mattresses need a good foundation. Our base is built to last, providing added stability for decades of quality sleep."
           }
         },
         "b2f4cd49-b521-43ab-a48e-92c7a027621c": {
-          "type": "base_layer",
+          "type": "layer_item",
           "settings": {
-            "image": "shopify:\/\/shop_images\/9RP2YPY2_Hybrid_25_layer_1.png",
             "title": "The Resistant, anti-slip, lower cover with handles",
-            "content": "Innovative mattress lower cover, designed with exceptional durability and a convenient handle for effortless maneuverability.",
-            "gutter": 1,
-            "bullet_gutter": 35
-          }
-        },
-        "shadow_TWYLez": {
-          "type": "shadow",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/9RP2YPY2_Original_layer_1_sh_bcf1009a-0849-474c-bb42-481c81e43054.png"
+            "content": "Innovative mattress lower cover, designed with exceptional durability and a convenient handle for effortless maneuverability."
           }
         }
       },
@@ -457,14 +355,13 @@
         "c9c66cb6-dfe8-4bc3-aef4-5f3af408a185",
         "0e7b3bb3-6109-4e78-851e-e5684c7b4d67",
         "9088b2b9-37a7-498a-ab7b-1ce50ec43e1a",
-        "b2f4cd49-b521-43ab-a48e-92c7a027621c",
-        "shadow_TWYLez"
+        "b2f4cd49-b521-43ab-a48e-92c7a027621c"
       ],
       "settings": {
-        "wallpaper": "shopify:\/\/shop_images\/orange_1_fbe2a1ac-9453-4dd5-a57a-098062d6a1bc.png",
-        "heading": "Let's take a look under the covers",
-        "heading_alignment": "center",
+        "heading": "Emma Hybrid Comfort - Layer by Layer",
+        "heading_alignment": "start",
         "container_spacing": "sm",
+        "image": "shopify:\/\/shop_images\/Hybrid_Comfort_Layer_numbered.png",
         "carousel_mode": false
       }
     },
@@ -978,10 +875,10 @@
     }
   },
   "order": [
-    "affiliate-banners",
+    "joint-product",
     "product-info",
     "multimedia-showcase",
-    "mattress-layers",
+    "mattress-layers-static",
     "mattress-firmness",
     "featured-products",
     "product-catalog",
