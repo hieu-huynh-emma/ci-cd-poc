@@ -1,6 +1,6 @@
-const MiniComparisonTable = {
+let MiniComparisonTable = {
   $table: $(".mini-comparison-table"),
-  config: MiniComparisonTableConfig,
+  config: JSON.parse(document.querySelector("#MiniComparisonTable-JSON").textContent),
   renderAllColHeaders: function () {
     const { product: { title }, competitors = [] } = this.config;
 
@@ -134,9 +134,9 @@ const MiniComparisonTable = {
     this.renderAllColHeaders();
     this.renderAllRowHeaders();
     this.renderAllCells()
-  },
+  }
 };
 
-$(document).ready(function () {
-  MiniComparisonTable.init();
+$(window).on('load', () => {
+   MiniComparisonTable.init()
 });

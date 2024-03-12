@@ -231,6 +231,7 @@ class JointProductSelector extends HTMLElement {
 				sectionId: 'product-info',
 				selector: '#attribute-configurator'
 			},
+           
 			{
 				sectionId: 'product-info',
 				selector: '#additional'
@@ -306,8 +307,8 @@ class JointProductOption extends HTMLElement {
 		const $productPrice = $(this).find('.product-price');
 
 		const price = variant.price,
-			originalPrice = variant.compare_at_price,
-			totalSaved = originalPrice - price,
+			originalPrice = variant.compare_at_price || 0,
+			totalSaved = Math.max(0, originalPrice - price),
 
 			priceInCurrency = Currency.format(parseFloat(price) / 100),
 			originalPriceInCurrency = Currency.format(parseFloat(originalPrice) / 100);

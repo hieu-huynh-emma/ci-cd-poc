@@ -19,18 +19,18 @@
 
 
   <p class="footer-note">{{ settings.note }}</p>
-</div>
 
-<script>
-  const MiniComparisonTableConfig = {
-    specs: {
-      ...{{ product.metafields.accentuate.mini_comparison_specifications | json }},
-    },
-    competitors: {{ product.metafields.accentuate.mini_comparison_competitors | json }},
-    product: {{ product | json }},
-    pillow: {{ all_products['emma-foam-pillow'] | json }},
-    protector: {{ all_products['emma-mattress-protector'] | json }}
-  }
-</script>
+  <script id="MiniComparisonTable-JSON" type="application/json">
+    {
+      "specs": {{ product.metafields.accentuate.mini_comparison_specifications | json }},
+      "competitors": {{ product.metafields.accentuate.mini_comparison_competitors | json }},
+      "product": {{ product | json }},
+      "pillow": {{ all_products['emma-foam-pillow'] | json }},
+      "protector": {{ all_products['emma-mattress-protector'] | json }}
+    }
+  </script>
 
 {{ 'mini-comparison-table.js' | asset_url | script_tag }}
+</div>
+
+

@@ -4,8 +4,8 @@
       "type": "joint-product",
       "settings": {
         "products": [
-          "emma-hybrid-comfort-1",
-          "emma-hybrid-comfort"
+          "emma-hybrid-comfort",
+          "emma-hybrid-comfort-mattress"
         ]
       }
     },
@@ -181,7 +181,7 @@
           "type": "campaign_teaser",
           "settings": {
             "title": "World Sleep Day Sale",
-            "content": "<p>45% off<\/p>"
+            "content": "<p>50% off<\/p>"
           }
         },
         "40770334-266c-4992-86e4-9709af68cc26": {
@@ -230,7 +230,7 @@
         "hr.product-bundle-hr {display: none;}"
       ],
       "settings": {
-        "title": "Emma Hybrid Comfort II",
+        "title": "Emma Hybrid Comfort",
         "desc": "<h6>Perfect comfort for everyone<\/h6><p>Our newest Hybrid mattress that can support added weight and movement without getting hot or stuffy<\/p><ul><li>Ultra-breathable and refreshing, no more overheating<\/li><li>7 ergonomic zones for better spinal alignment<\/li><li>Enhanced support for every size and weight<\/li><li>Ideal pressure distribution<\/li><li>Zero motion transfer<\/li><\/ul>",
         "caption_headline": "The mattress that can hold its own",
         "caption_content": "Designed to provide perfect support, maximal comfort, and stay cool while you sleep",
@@ -301,8 +301,8 @@
         "4441c420-9648-469d-9fb2-bf8dbb9cf6ba": {
           "type": "layer_item",
           "settings": {
-            "title": "Breathable and moisture-wicking Top cover",
-            "content": "The Emma cover is soft-to-touch, making it very comfortable to lie on. Built with light fibers, our cover wicks away moisture away and prevents heat from getting trapped on the surface."
+            "title": "Breathable, adaptive cover",
+            "content": "Our top cover is breathable and soft to the touch - so your body stays cool and comfortable."
           }
         },
         "3b4dd04a-036c-426d-8c1f-9729dd673c3e": {
@@ -335,6 +335,7 @@
         },
         "9088b2b9-37a7-498a-ab7b-1ce50ec43e1a": {
           "type": "layer_item",
+          "disabled": true,
           "settings": {
             "title": "The Stabilizing layer",
             "content": "Long-lasting mattresses need a good foundation. Our base is built to last, providing added stability for decades of quality sleep."
@@ -361,7 +362,7 @@
         "heading": "Emma Hybrid Comfort - Layer by Layer",
         "heading_alignment": "start",
         "container_spacing": "sm",
-        "image": "shopify:\/\/shop_images\/Hybrid_Comfort_Layer_numbered.png",
+        "image": "shopify:\/\/shop_images\/image_4.png",
         "carousel_mode": false
       }
     },
@@ -400,7 +401,7 @@
         "old-featured-products-2": {
           "type": "product-block",
           "settings": {
-            "product": "emma-hybrid-comfort-1",
+            "product": "emma-hybrid-comfort",
             "show_star_rating": false,
             "color": "#3c4196",
             "primary_badge": "SUPPORT",
@@ -499,7 +500,7 @@
         "d8319461-aedd-4805-884a-95b7ed1a5893": {
           "type": "catalog_item",
           "settings": {
-            "product": "emma-hybrid-comfort"
+            "product": "emma-hybrid-comfort-mattress"
           }
         }
       },
@@ -634,7 +635,7 @@
           "settings": {
             "title": "High-quality support for heavier sleepers!",
             "date": "12 Mar 2023",
-            "product": "emma-hybrid-comfort",
+            "product": "emma-hybrid-comfort-mattress",
             "content": "<p>As a heavier sleeper, the Emma Climax provides excellent support for me, and i've been feeling sooo rejuvanated in the AMs. I love that I don't have to sleep on a rock (this one is both soft and supportive at the same time!) to feel like my mattress can keep me feeling solid.<\/p>",
             "author": "Katherine M."
           }
@@ -644,7 +645,7 @@
           "settings": {
             "title": "Staying cool and comfortable",
             "date": "20 Apr 2023",
-            "product": "emma-hybrid-comfort",
+            "product": "emma-hybrid-comfort-mattress",
             "content": "<p>This purchase has helped a lot with my night sweats - said goodbye to my decades-old mattress and really happy with this one. 10\/10<\/p>",
             "author": "Matthew R."
           }
@@ -654,7 +655,7 @@
           "settings": {
             "title": "The ultimate mattress for couples with different preferences!",
             "date": "07 May 2023",
-            "product": "emma-hybrid-comfort",
+            "product": "emma-hybrid-comfort-mattress",
             "content": "<p>The hubby is a restless sleeper and tosses and turns a lot at night. I'm glad to report that I've been feeling less disruption through the night. The climax feels balanced and comfortable for us both. <\/p>",
             "author": "Sophia L."
           }
@@ -664,7 +665,7 @@
           "settings": {
             "title": "Great for couples",
             "date": "11 May 2023",
-            "product": "emma-hybrid-comfort",
+            "product": "emma-hybrid-comfort-mattress",
             "content": "<p>We've tried orthopedic mattresses in the past, but returned it because they're TOO firm. I prefer soft ones, while my husband prefers firm. For some strange reason, this mattress just works for the both of us. His back pain's gone and I've been sleeping like a log every night!<\/p>",
             "author": "Donna C."
           }
@@ -674,7 +675,7 @@
           "settings": {
             "title": "Uninterrupted sleep all night",
             "date": "28 May 2023",
-            "product": "emma-hybrid-comfort",
+            "product": "emma-hybrid-comfort-mattress",
             "content": "<p>This was recommended to me by my friend since I've been waking up in the middle of the night with my old mattress. So glad I listened cuz now I've been sleeping straight and waking up without a sweat<\/p>",
             "author": "Nicole W"
           }

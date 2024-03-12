@@ -328,7 +328,7 @@
         "45135bc9-b9df-4a06-9cc5-cd1d467f439f": {
           "type": "product-block",
           "settings": {
-            "product": "emma-hybrid-comfort",
+            "product": "emma-hybrid-comfort-mattress",
             "show_star_rating": false,
             "color": "#3c4196",
             "primary_badge": "",
@@ -724,7 +724,7 @@
       "type": "apps",
       "blocks": {
         "8f3a524e-adab-4417-95d7-877c465ce0b5": {
-          "type": "shopify:\/\/apps\/yotpo-product-photo-reviews\/blocks\/reviews\/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
+          "type": "shopify:\/\/apps\/yotpo-product-reviews-ugc\/blocks\/reviews\/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
           "settings": {
             "product": "{{product}}"
           }
