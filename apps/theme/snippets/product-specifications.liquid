@@ -1,0 +1,66 @@
+{% assign productSpecifications = section.blocks | where: 'type', 'product_specification' %}
+
+<div id="product-specifications">
+    <ul class="product-specifications">
+        {% for block in productSpecifications %}
+            <li class="product-specification">
+                <div class="product-specification__header">
+                    <div class="title">
+                        {{ block.settings.title }}
+                    </div>
+                    <svg
+                            class="product-specification__icon"
+                            width="24"
+                            height="25"
+                            viewBox="0 0 24 25"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <path
+                                d="M21.5303 8.44739C21.2373 8.15442 20.7627 8.15442 20.4697 8.44739L12 16.9171L3.53028 8.44739C3.23731 8.15442 2.7627 8.15442 2.46973 8.44739C2.17676 8.74036 2.17676 9.21497 2.46973 9.50794L11.4697 18.5079C11.6162 18.6544 11.8081 18.7277 12 18.7277C12.1924 18.7277 12.3838 18.6544 12.5303 18.5079L21.5303 9.50793C21.8232 9.21496 21.8232 8.74036 21.5303 8.44739Z"
+                                fill="#2E2F3C"
+                        />
+                    </svg>
+                </div>
+                <div class="product-specification__content">
+                    {% if block.settings.product_dimension %}
+                        <ul class="product-dimensions">
+                            {% for variant in product.variants %}
+                                <li class="variant-dimension">
+                                    <h6 class="heading-6 font-semibold">
+                                        {% if variant.metafields.accentuate.dimension %}
+                                            {{ variant.title | split: ' | ' | first }} | {{ variant.metafields.accentuate.dimension }}
+                                        {% else %}
+                                            {{ variant.title }}
+                                        {% endif %}
+                                    </h6>
+                                </li>
+                            {% endfor %}
+                        </ul>
+
+                    {% else %}
+                        {{ block.settings.content }}
+                    {% endif %}
+                </div>
+            </li>
+            {% unless forloop.last %}<span class="separator"></span>{% endunless -%}
+        {% endfor %}
+    </ul>
+
+    <script defer>
+			if (document.readyState === 'complete') {
+				initProductSpecifications();
+			} else {
+				$(window).on('load', initProductSpecifications);
+			}
+
+			function initProductSpecifications() {
+				$('#product-specifications .product-specification').beefup({
+					trigger: '.product-specification__header',
+					content: '.product-specification__content',
+					openSpeed: 500,
+					closeSpeed: 250
+				});
+			}
+    </script>
+</div>

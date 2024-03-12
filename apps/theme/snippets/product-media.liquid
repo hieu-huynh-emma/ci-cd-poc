@@ -129,7 +129,13 @@
 </div>
 
 <script>
-    document.addEventListener("DOMContentLoaded", function () {
+    if (document.readyState === 'complete') {
+        initProductMedia();
+    } else {
+        $(window).on('load', initProductMedia);
+    }
+
+    function initProductMedia() {
         const main = new Splide("#main-carousel", {
             type: "fade",
             rewind: true,
@@ -147,5 +153,6 @@
         main.sync(thumbnails);
         main.mount();
         thumbnails.mount();
-    });
+    }
+
 </script>

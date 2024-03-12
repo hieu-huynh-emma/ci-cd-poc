@@ -1,0 +1,76 @@
+main#MainContent {
+    position: relative;
+    min-height: 100vh;
+}
+
+.joint-product-page {
+    position: fixed;
+    bottom: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 2;
+    background-color: white
+}
+
+joint-product-engine {
+
+}
+
+joint-product-selector {
+    position: relative;
+    display: grid;
+    gap: .75rem;
+    margin: 0 0 1rem;
+}
+
+joint-product-selector joint-product-option {
+    position: relative;
+
+    display: grid;
+    gap: 4px;
+    grid-template-columns: minmax(0, 1fr) minmax(0, auto);
+    justify-content: space-between;
+
+    background-color: #fff;
+    border: 0.0625rem solid #2e2f3c;
+    border-radius: 0.5rem;
+    cursor: pointer;
+
+    outline: 0;
+    padding: 1rem;
+    transition: background-color .25s ease, border-color .25s ease;
+    width: 100%;
+}
+
+joint-product-selector joint-product-option.selected {
+    border-color: var(--color-pizazz);
+    border-width: .125rem;
+    background-color: #fff6ec;
+}
+
+joint-product-selector joint-product-option:not(joint-product-option.selected):hover {
+    background-color: #efeff3;
+    border-color: #b0b1c2;
+}
+
+joint-product-star-rating {
+    display: grid;
+    gap: 4px;
+    grid-template-columns: repeat(2, minmax(0, auto));
+    align-items: center;
+    justify-content: flex-start;
+}
+joint-product-star-rating .yotpo-stars {
+    display: grid;
+    gap: 4px;
+    grid-auto-flow: column;
+}
+
+
+joint-product-star-rating .yotpo-rating-score {
+
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 150%;
+}

@@ -247,9 +247,9 @@
           "type": "upsell_widget",
           "settings": {
             "title": "Upgrade to Hybrid Comfort:",
-            "content": "<p><strong>45% off<\/strong><\/p><ul><li>7 ergonomic zones<\/li><li>Enhanced support<\/li><\/ul>",
+            "content": "<p><strong>50% off<\/strong><\/p><ul><li>7 ergonomic zones<\/li><li>Enhanced support<\/li><\/ul>",
             "image": "shopify:\/\/shop_images\/Emma_hybrid-comfort_exploded_2.png",
-            "product": "emma-hybrid-comfort"
+            "product": "emma-hybrid-comfort-mattress"
           }
         },
         "cross_sell_widget_tXLCDN": {
@@ -340,6 +340,60 @@
       "settings": {
       }
     },
+    "mattress-layers-static": {
+      "type": "mattress-layers-static",
+      "blocks": {
+        "4441c420-9648-469d-9fb2-bf8dbb9cf6ba": {
+          "type": "layer_item",
+          "settings": {
+            "title": "The covers that are super easy to wash",
+            "content": "The Emma cover is soft-to-touch, making it very comfortable to lie on. It is also completely removable, making it extremely easy to wash."
+          }
+        },
+        "3b4dd04a-036c-426d-8c1f-9729dd673c3e": {
+          "type": "layer_item",
+          "settings": {
+            "title": "The foam that regulates temperature",
+            "content": "Our groundbreaking Point Elastic Airgocell® technology enhances breathability and regulates temperature by absorbing and then evaporating sweat so that rising temperatures won’t disturb your sleep."
+          }
+        },
+        "bdebe803-1755-4362-ae36-1355b97d0e9d": {
+          "type": "layer_item",
+          "settings": {
+            "title": "The memory foam that hugs your body",
+            "content": "Our innovative Halo Memory Foam™ adapts to your body shape for targeted spinal alignment, enhanced pressure relief and body-hugging comfort."
+          }
+        },
+        "c9c66cb6-dfe8-4bc3-aef4-5f3af408a185": {
+          "type": "layer_item",
+          "settings": {
+            "title": "The base layer that keeps your spine aligned",
+            "content": "HRX stands for High Resiliency Extra. With 3 adaptive cut-out zones providing sufficient counter pressure, this layer is designed to keep your spine evenly aligned for maximum relief, rest and recovery – in any sleeping position."
+          }
+        },
+        "72c945db-310d-4f05-905a-b523e378d2f4": {
+          "type": "layer_item",
+          "settings": {
+            "title": "The Resistant, anti-slip, lower cover with handles",
+            "content": "Innovative mattress lower cover, designed with exceptional durability and a convenient handle for effortless maneuverability."
+          }
+        }
+      },
+      "block_order": [
+        "4441c420-9648-469d-9fb2-bf8dbb9cf6ba",
+        "3b4dd04a-036c-426d-8c1f-9729dd673c3e",
+        "bdebe803-1755-4362-ae36-1355b97d0e9d",
+        "c9c66cb6-dfe8-4bc3-aef4-5f3af408a185",
+        "72c945db-310d-4f05-905a-b523e378d2f4"
+      ],
+      "settings": {
+        "heading": "Emma Original - Layer by Layer",
+        "heading_alignment": "start",
+        "container_spacing": "sm",
+        "image": "shopify:\/\/shop_images\/Emma-Original-exploded-viewnumbers.jpg",
+        "carousel_mode": false
+      }
+    },
     "mattress-layers": {
       "type": "mattress-layers",
       "blocks": {
@@ -411,6 +465,7 @@
         "72c945db-310d-4f05-905a-b523e378d2f4",
         "shadow_TWYLez"
       ],
+      "disabled": true,
       "settings": {
         "wallpaper": "shopify:\/\/shop_images\/orange_1.png",
         "heading": "Let's take a look under the covers",
@@ -462,9 +517,9 @@
             "color": "#3c4196",
             "primary_badge": "",
             "secondary_badge": "BEST DEAL",
-            "image": "shopify:\/\/shop_images\/Emma_hybrid-comfort_exploded_2.png",
-            "product_title": "Emma Hybrid Comfort",
-            "desc": "<h1>★4.8<\/h1><p><strong>Our 13-inch Hybrid mattress that can support added weight and movement without getting hot or stuffy<\/strong><\/p>",
+            "image": "shopify:\/\/shop_images\/Untitled_design_8_26a090c2-2a1f-4f97-8580-f7262ced984f.png",
+            "product_title": "Emma Hybrid Comfort II",
+            "desc": "<h1>★4.8<\/h1><p><strong>Our Hybrid mattress that can support added weight and movement without getting hot or stuffy<\/strong><\/p>",
             "discount_title": "",
             "comfort_meter": 8,
             "cooling_meter": 6,
@@ -806,7 +861,7 @@
         "5e77d40f-79e8-4050-a013-d2325a25b443": {
           "type": "catalog_item",
           "settings": {
-            "product": "emma-hybrid-comfort"
+            "product": "emma-hybrid-comfort-mattress"
           }
         },
         "d8319461-aedd-4805-884a-95b7ed1a5893": {
@@ -944,6 +999,7 @@
     "affiliate-banners",
     "product-info",
     "multimedia-showcase",
+    "mattress-layers-static",
     "mattress-layers",
     "mattress-firmness",
     "featured-products",

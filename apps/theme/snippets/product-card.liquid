@@ -38,12 +38,13 @@
       <p class="product__short-desc">{{ product.metafields.accentuate.short_description }}</p>
 
       <p class="product__price">
-        <span class="font-bold">{{ product.price | money }}</span>
+        <span class="font-bold">{{ product.first_available_variant.price | money }}</span>
 
-        {% if product.compare_at_price > product.price %}
-          <del class="product__original-price">{{ product.compare_at_price | money }}</del>
+        {% if product.first_available_variant.compare_at_price > product.first_available_variant.price %}
+          <del class="product__original-price">{{ product.first_available_variant.compare_at_price | money }}</del>
         {% endif %}
       </p>
     </div>
+    
   </div>
 </product-card>

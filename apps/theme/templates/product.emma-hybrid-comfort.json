@@ -92,7 +92,7 @@
         "f5f456c7-b29a-4f74-826f-648e09f5b1cd": {
           "type": "product_media",
           "settings": {
-            "image": "shopify:\/\/shop_images\/img_1_1.png",
+            "image": "shopify:\/\/shop_images\/Untitled_design_12.png",
             "full_width": true,
             "is_video": false
           }
@@ -132,7 +132,7 @@
         "12e2c164-6e6a-42a2-a76a-b4363d4c2c09": {
           "type": "product_media",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Emma_1_ae0eb3a6-8989-45ca-9fe7-3d0e5ef89d7f.jpg",
+            "image": "shopify:\/\/shop_images\/Sleep_Bundle_-_CA_v_copy_3_1.jpg",
             "full_width": true,
             "is_video": false
           }
@@ -157,7 +157,7 @@
           "settings": {
             "icon": "shopify:\/\/shop_images\/shipping_truck_db437bec-0f66-475d-9a43-c2bdab9dc26d.png",
             "text": "Free & fast delivery",
-            "content": "<p>Free no contact delivery for all orders <\/p><p>Dispatched in: <strong>1 business day <\/strong><br\/><\/p>",
+            "content": "<p>Free no contact delivery for all orders <\/p><p>Dispatched in: <strong>1-3 Business day <\/strong><br\/><\/p>",
             "url": ""
           }
         },
@@ -249,16 +249,17 @@
         },
         "4ed1b304-2430-4843-a7d4-875e743c3c27": {
           "type": "campaign_teaser",
+          "disabled": true,
           "settings": {
-            "title": "Family Day Sale",
-            "content": "<p>45% off<\/p>"
+            "title": "World Sleep Day Sale",
+            "content": "<p>50% off<\/p>"
           }
         },
         "40770334-266c-4992-86e4-9709af68cc26": {
           "type": "upsell_widget",
           "settings": {
             "title": "Upgrade to Hybrid Premium Mattress:",
-            "content": "<p><strong>45% off<\/strong><\/p><ul><li>Improved Cooling & Motion Isolation<\/li><li>Advanced Thermosync Technology<\/li><\/ul>",
+            "content": "<p><strong>55% off<\/strong><\/p><ul><li>Improved Cooling & Motion Isolation<\/li><li>Advanced Thermosync Technology<\/li><\/ul>",
             "image": "shopify:\/\/shop_images\/Hybrid_Premium_front_view_room_render.jpg",
             "product": "emma-hybrid-premium"
           }
@@ -301,10 +302,10 @@
       ],
       "settings": {
         "title": "Emma Hybrid Comfort",
-        "desc": "<h6>Perfect comfort for everyone: Product of the Year 2024 <\/h6><p>Our newest 13-inch Hybrid mattress that can support added weight and movement without getting hot or stuffy<\/p><ul><li>Ultra-breathable and refreshing, no more overheating<\/li><li>7 ergonomic zones for better spinal alignment<\/li><li>Enhanced support for every size and weight<\/li><li>Ideal pressure distribution<\/li><li>Zero motion transfer<\/li><\/ul>",
+        "desc": "<h6>Perfect comfort for everyone:<\/h6><p>Our newest Hybrid mattress that can support added weight and movement without getting hot or stuffy<\/p><ul><li>Ultra-breathable and refreshing, no more overheating<\/li><li>7 ergonomic zones for better spinal alignment<\/li><li>Enhanced support for every size and weight<\/li><li>Ideal pressure distribution<\/li><li>Zero motion transfer<\/li><\/ul>",
         "caption_headline": "The mattress that can hold its own",
         "caption_content": "Designed to provide perfect support, maximal comfort, and stay cool while you sleep",
-        "badge": "Sale",
+        "badge": "",
         "disclaimer": ""
       }
     },
@@ -363,6 +364,76 @@
         "258722e6-18c8-4c8d-bee9-c411c5312e58"
       ],
       "settings": {
+      }
+    },
+    "mattress-layers-static": {
+      "type": "mattress-layers-static",
+      "blocks": {
+        "4441c420-9648-469d-9fb2-bf8dbb9cf6ba": {
+          "type": "layer_item",
+          "settings": {
+            "title": "Breathable and moisture-wicking Top cover",
+            "content": "The Emma cover is soft-to-touch, making it very comfortable to lie on. Built with light fibers, our cover wicks away moisture away and prevents heat from getting trapped on the surface."
+          }
+        },
+        "3b4dd04a-036c-426d-8c1f-9729dd673c3e": {
+          "type": "layer_item",
+          "settings": {
+            "title": "The Breezy Airgocell® foam",
+            "content": "Our signature Point Elastic Airgocell technology absorbs and releases excess body heat and moisture, creating an ideal sleeping environment for peaceful sleep."
+          }
+        },
+        "bdebe803-1755-4362-ae36-1355b97d0e9d": {
+          "type": "layer_item",
+          "settings": {
+            "title": "The Cool foam layer that isolates motion",
+            "content": "Find comfort in any sleeping position. Memory foam molds to the unique shape of your body for even pressure distribution and provides great motion isolation so you can sleep undisturbed, even with a fussy partner"
+          }
+        },
+        "c9c66cb6-dfe8-4bc3-aef4-5f3af408a185": {
+          "type": "layer_item",
+          "settings": {
+            "title": "The Supportive HRX foam",
+            "content": "Durable HRX foam supports you with just the right level of firmness, without hollows or bumps. Lie back and move freely until you've found your position for a deep sleep."
+          }
+        },
+        "0e7b3bb3-6109-4e78-851e-e5684c7b4d67": {
+          "type": "layer_item",
+          "settings": {
+            "title": "The Ergonomic, 7-Zone edge-to-edge pocket springs",
+            "content": "Say goodbye to restless nights! Our individually-wrapped coils are designed to enhance airflow and provide the optimum level of tension and bounce all over the mattress — strong enough to support sleepers of all shape and size. Rest comfortably as our pocket springs adapt to your spine for longer and deeper restorative sleep."
+          }
+        },
+        "9088b2b9-37a7-498a-ab7b-1ce50ec43e1a": {
+          "type": "layer_item",
+          "settings": {
+            "title": "The Stabilizing layer",
+            "content": "Long-lasting mattresses need a good foundation. Our base is built to last, providing added stability for decades of quality sleep."
+          }
+        },
+        "b2f4cd49-b521-43ab-a48e-92c7a027621c": {
+          "type": "layer_item",
+          "settings": {
+            "title": "The Resistant, anti-slip, lower cover with handles",
+            "content": "Innovative mattress lower cover, designed with exceptional durability and a convenient handle for effortless maneuverability."
+          }
+        }
+      },
+      "block_order": [
+        "4441c420-9648-469d-9fb2-bf8dbb9cf6ba",
+        "3b4dd04a-036c-426d-8c1f-9729dd673c3e",
+        "bdebe803-1755-4362-ae36-1355b97d0e9d",
+        "c9c66cb6-dfe8-4bc3-aef4-5f3af408a185",
+        "0e7b3bb3-6109-4e78-851e-e5684c7b4d67",
+        "9088b2b9-37a7-498a-ab7b-1ce50ec43e1a",
+        "b2f4cd49-b521-43ab-a48e-92c7a027621c"
+      ],
+      "settings": {
+        "heading": "Emma Hybrid Comfort - Layer by Layer",
+        "heading_alignment": "start",
+        "container_spacing": "sm",
+        "image": "shopify:\/\/shop_images\/Emma-Hybrid-comfort-compressednumbers.jpg",
+        "carousel_mode": false
       }
     },
     "mattress-layers": {
@@ -460,6 +531,7 @@
         "b2f4cd49-b521-43ab-a48e-92c7a027621c",
         "shadow_TWYLez"
       ],
+      "disabled": true,
       "settings": {
         "wallpaper": "shopify:\/\/shop_images\/orange_1_fbe2a1ac-9453-4dd5-a57a-098062d6a1bc.png",
         "heading": "Let's take a look under the covers",
@@ -509,9 +581,9 @@
             "primary_badge": "SUPPORT",
             "secondary_badge": "BEST DEAL",
             "mattress_height": "shopify:\/\/shop_images\/MicrosoftTeams-image_99.png",
-            "image": "shopify:\/\/shop_images\/Emma_hybrid-comfort_exploded_2.png",
-            "product_title": "Emma Hybrid Comfort",
-            "desc": "<h1>★ 4.8<\/h1><h1><\/h1><p><strong>Our 13-inch Hybrid mattress with enhanced support and ideal pressure distribution<\/strong><\/p><ul><li>Top-rated plus hybrid for maximum comfort<\/li><li>6 unique layers with zero motion transfer<\/li><li>Cooling for hot sleepers<\/li><\/ul>",
+            "image": "shopify:\/\/shop_images\/Untitled_design_8_26a090c2-2a1f-4f97-8580-f7262ced984f.png",
+            "product_title": "Emma Hybrid Comfort II",
+            "desc": "<h1>★ 4.8<\/h1><h1><\/h1><p><strong>Our Hybrid mattress with enhanced support and ideal pressure distribution<\/strong><\/p><ul><li>Top-rated plus hybrid for maximum comfort<\/li><li>6 unique layers with zero motion transfer<\/li><li>Cooling for hot sleepers<\/li><\/ul>",
             "discount_title": "Father's Day Sale",
             "comfort_meter": 8,
             "cooling_meter": 6,
@@ -602,7 +674,7 @@
         "d8319461-aedd-4805-884a-95b7ed1a5893": {
           "type": "catalog_item",
           "settings": {
-            "product": "emma-hybrid-comfort"
+            "product": "emma-hybrid-comfort-mattress"
           }
         }
       },
@@ -737,7 +809,7 @@
           "settings": {
             "title": "High-quality support for heavier sleepers!",
             "date": "12 Mar 2023",
-            "product": "emma-hybrid-comfort",
+            "product": "emma-hybrid-comfort-mattress",
             "content": "<p>As a heavier sleeper, the Emma Climax provides excellent support for me, and i've been feeling sooo rejuvanated in the AMs. I love that I don't have to sleep on a rock (this one is both soft and supportive at the same time!) to feel like my mattress can keep me feeling solid.<\/p>",
             "author": "Katherine M."
           }
@@ -747,7 +819,7 @@
           "settings": {
             "title": "Staying cool and comfortable",
             "date": "20 Apr 2023",
-            "product": "emma-hybrid-comfort",
+            "product": "emma-hybrid-comfort-mattress",
             "content": "<p>This purchase has helped a lot with my night sweats - said goodbye to my decades-old mattress and really happy with this one. 10\/10<\/p>",
             "author": "Matthew R."
           }
@@ -757,7 +829,7 @@
           "settings": {
             "title": "The ultimate mattress for couples with different preferences!",
             "date": "07 May 2023",
-            "product": "emma-hybrid-comfort",
+            "product": "emma-hybrid-comfort-mattress",
             "content": "<p>The hubby is a restless sleeper and tosses and turns a lot at night. I'm glad to report that I've been feeling less disruption through the night. The climax feels balanced and comfortable for us both. <\/p>",
             "author": "Sophia L."
           }
@@ -767,7 +839,7 @@
           "settings": {
             "title": "Great for couples",
             "date": "11 May 2023",
-            "product": "emma-hybrid-comfort",
+            "product": "emma-hybrid-comfort-mattress",
             "content": "<p>We've tried orthopedic mattresses in the past, but returned it because they're TOO firm. I prefer soft ones, while my husband prefers firm. For some strange reason, this mattress just works for the both of us. His back pain's gone and I've been sleeping like a log every night!<\/p>",
             "author": "Donna C."
           }
@@ -777,7 +849,7 @@
           "settings": {
             "title": "Uninterrupted sleep all night",
             "date": "28 May 2023",
-            "product": "emma-hybrid-comfort",
+            "product": "emma-hybrid-comfort-mattress",
             "content": "<p>This was recommended to me by my friend since I've been waking up in the middle of the night with my old mattress. So glad I listened cuz now I've been sleeping straight and waking up without a sweat<\/p>",
             "author": "Nicole W"
           }
@@ -981,6 +1053,7 @@
     "affiliate-banners",
     "product-info",
     "multimedia-showcase",
+    "mattress-layers-static",
     "mattress-layers",
     "mattress-firmness",
     "featured-products",

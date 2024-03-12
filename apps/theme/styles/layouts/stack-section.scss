@@ -1,7 +1,7 @@
 .stack-layout-section {
   position: relative;
 
-  padding: 2.5rem 0;
+  padding: 1.5rem 0;
 
 
   &.flex-container {
@@ -9,9 +9,8 @@
     gap: 0.5rem;
     flex-direction: column;
 
-    @media screen and (min-width: 768px) {
-      gap: 1rem;
-
+    &.sm {
+      gap: 0.5rem
     }
   }
 

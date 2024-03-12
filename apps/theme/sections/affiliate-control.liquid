@@ -10,12 +10,12 @@
 
 <script type="quickscript" loading="delayed" src="{{ 'affiliate-control.js' | asset_url}}"></script>
 
+{% if section.settings.auto_coupon_enabled %}
+  <affiliate-auto-coupon :success="{{ section.settings.success_msg | escape  }}" :error="{{ section.settings.error_msg | escape  }}"></affiliate-auto-coupon>
+{% endif %}
 
-<affiliate-control></affiliate-control>
 
-<script>
-
-</script>
+<affiliate-layout></affiliate-layout>
 
 {% schema %}
 {
@@ -56,6 +56,11 @@
           "label": "Affiliate Message"
         },
         {
+          "type": "text",
+          "id": "discount_code",
+          "label": "Discount Code"
+        },
+        {
           "type": "color",
           "id": "background_color",
           "label": "Background Color"
@@ -64,13 +69,34 @@
           "type": "color",
           "id": "text_color",
           "label": "Text Color"
-        },
-        {
-          "type": "url",
-          "id": "url",
-          "label": "URL"
         }
       ]
+    }
+  ],
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "auto_coupon_enabled",
+      "label": {
+        "en": "Enable auto discount"
+      },
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "success_msg",
+      "label": {
+        "en": "Auto discount Success Text"
+      },
+      "default": "{discount_code} discount code applied. Add an item to your cart to unlock your discount."
+    },
+    {
+      "type": "text",
+      "id": "error_msg",
+      "label": {
+        "en": "Auto discount failed text"
+      },
+      "default": "\"{discount_code}\" discount code is invalid."
     }
   ]
 }
