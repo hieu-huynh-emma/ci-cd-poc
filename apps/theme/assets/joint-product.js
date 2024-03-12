@@ -231,7 +231,10 @@ class JointProductSelector extends HTMLElement {
 				sectionId: 'product-info',
 				selector: '#attribute-configurator'
 			},
-           
+			{
+				sectionId: 'product-info',
+				selector: '#quick-compare'
+			},
 			{
 				sectionId: 'product-info',
 				selector: '#additional'

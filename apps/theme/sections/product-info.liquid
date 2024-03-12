@@ -318,9 +318,9 @@
             {% endif %}
 
             {% if mini_comparison_table %}
-                <div class="overflow-auto mb-8">
-                    {% render 'mini-comparison-table', settings: mini_comparison_table.settings %}
-                </div>
+                {% comment %}<div class="overflow-auto mb-8">{% endcomment %}
+                    {% render 'quick-compare', settings: mini_comparison_table.settings %}
+                {% comment %}</div>{% endcomment %}
             {% endif %}
 
             <div id="additional">
