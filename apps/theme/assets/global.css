@@ -979,7 +979,6 @@ addon-service .add-on-label__text {
     }
 
     .addon-service-details {
-        gap: 1rem;
         grid-template-columns: repeat(2, minmax(0, auto));
         align-content: center;
     }

@@ -557,35 +557,49 @@
   }
 }
 
-.affiliate-badge {
+.product-badges {
   position: absolute;
-  bottom: 0;
-  right: 0;
-  z-index: 5;
+  top: 0;
+  left: 0;
 
+  display: grid;
+  gap: .5rem;
+  grid-template-columns: repeat(3, minmax(0, auto));
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.product-badge {
   display: flex;
-  align-items: flex-end;
-
-  width: 60px;
-  height: 60px;
-  margin: 12px;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
   border-radius: 100%
+}
+
+.product-badge img {
+  object-fit: scale-down;
+  width: 100%;
+  height: 100%;
 }
 
 
 
 @media screen and (min-width: 769px) {
-  .affiliate-badge {
-    width: 108px;
-    height: 108px;
+  .product-badges {
+    gap: 1rem;
+  }
+  .product-badge {
+    width: 90px;
+    height: 90px;
   }
 }
 
 .campaign-teaser {
   position: absolute;
-  top: 10px;
-  right: 10px;
-  z-index: 5;
+  top: 0;
+  right: 0;
 
   display: grid;
   gap: 4px;
@@ -602,6 +616,14 @@
   border: #c5c8d1 solid 0px;
   text-align: center;
   color: white;
+}
+
+.promotion-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+
+  margin: 10px;
 }
 
 @media screen and (min-width: 769px) {

@@ -86,10 +86,13 @@ class AffiliateLayout extends AffiliateControl {
 	renderBadge(affiliate) {
 		const { badge } = affiliate;
 
-		const $container = $('.affiliate-badge');
+		const $container = $('.promotion-overlay .product-badges');
 
-		if (badge) $container.append(`<img src="${badge}" />`);
+		console.log(badge)
 
+		if (badge) $container.append(`<div class="product-badge">
+                        <img src="${badge}&crop=center&height=108" alt="affiliate-badge">
+                    </div>`);
 	}
 }
 
