@@ -901,6 +901,15 @@
         color: #D85454 !important;
     }
 
+    cart-footer {
+        margin-top: 20px;
+    }
+
+    #toc-agreement a {
+        color: cornflowerblue;
+        text-decoration: underline;
+    }
+
     .cart_summary button.btn {
         background-color: var(--primary-blue-color);
         width: 100%;
@@ -910,7 +919,7 @@
         color: #fff;
         font-weight: normal;
         gap: 10px;
-        margin-top: 20px;
+
         min-height: inherit;
         padding: 10px 0 !important;
     }
@@ -1404,13 +1413,24 @@
                         </div>
                     </div>
 
-                    <div class="buy-buttons-container">
+                    <cart-footer class="buy-buttons-container">
+                        <div id="toc-agreement">
+                            <input type="checkbox" class="agreement-checkbox" required="required">
+                            <label for="agreement-checkbox">
+                                I agree with the <a href="/pages/terms-and-conditions" target="_blank">Terms and
+                                    Conditions</a>.
+                            </label>
+                        </div>
+
                         <button class="btn" type="submit" name="checkout">
                             <img width="14" height="18" src="{{ 'cart-white.svg' | asset_url }}"> Checkout
                         </button>
 
                         <express-checkout-button :provider="paypal"></express-checkout-button>
-                    </div>
+                    </cart-footer>
+
+                    <script src="{{ 'cart-footer.js' | asset_url }}" defer="defer"></script>
+
                 </div>
             </form>
         </div>
