@@ -1,15 +1,51 @@
-<section id="{{ section.id }}" data-section-type="product-collage-section" class="section-container">
+{% assign collageItems = section.blocks | where: 'type', 'collage-item' %}
+
+{{ 'product-collage.css' | asset_url | stylesheet_tag }}
+
+
+<section id="product-collage-section" data-section-id="{{ section.id }}" class="section-container">
     <div class="section-chassis page-boundary">
         {% render 'section-header' %}
 
-        <div class="grid md:grid-cols-2 md:grid-rows-[repeat(2,_minmax(0,_240px))] gap-5">
-            {% assign collection_index = 0 %}
-            {% for collection in section.settings.collection_list %}
-                {% assign collection_index = collection_index | plus: 1 %}
-                {% assign collection_handle = collection.handle %}
+        <div class="collage-gallery">
+            {% for item in collageItems %}
+                {% assign collection = item.settings.collection %}
+                <div
+                        class="collage-card">
 
-                {% include 'collage-grid-item' %}
+                    <a
+                            href="{{ collection.url }}"
 
+                            class=""
+                    >
+                        {%- assign collection_image = blank -%}
+
+                        {% if item.settings.photo %}
+                            {% assign collection_image = item.settings.photo | image_url: width: 1440 %}
+                        {% elsif collection.metafields.accentuate.featured_image[0] %}
+                            {%- assign collection_image = collection.metafields.accentuate.featured_image[0].src -%}
+                        {% elsif collection.image %}
+                            {%- assign collection_image = collection.image | image_url: width: 1440 -%}
+                        {% elsif collection.products.first and collection.products.first.featured_media != empty %}
+                            {%- assign collection_image = collection.products.first.featured_media.preview_image | image_url: width: 1440 -%}
+                        {% endif %}
+
+                        {% if collection == blank %}
+                            <div class="collection-grid__item-overlay grid__image">{{ 'collection-1' | placeholder_svg_tag: 'placeholder-svg' }}</div>
+                        {% else %}
+                            <img class="lazyload card-photo"
+                                 data-src="{{ collection_image }}"
+                                 data-sizes="auto"
+                                 data-parent-fit="cover"
+                            />
+                        {% endif %}
+
+                        <div class="card-content">
+                            <p class="text-md md:text-xl font-semibold">{{ item.settings.heading }}</p>
+                            <p class="uppercase font-semibold text-xs md:text-sm">{{ item.settings.subheading }}</p>
+                        </div>
+                    </a>
+                </div>
             {% endfor %}
         </div>
     </div>
@@ -19,28 +55,40 @@
 {% schema %}
 {
   "name": "Product Collage",
+  "blocks": [
+    {
+      "type": "collage-item",
+      "name": "Collage Item",
+      "settings": [
+        {
+          "id": "heading",
+          "type": "text",
+          "label": "Heading"
+        },
+        {
+          "id": "subheading",
+          "type": "text",
+          "label": "Subheading"
+        },
+        {
+          "id": "photo",
+          "type": "image_picker",
+          "label": "Item Image"
+        },
+        {
+          "id": "collection",
+          "type": "collection",
+          "label": "Linked Product Collection"
+        }
+      ]
+    }
+  ],
   "settings": [
     {
       "id": "heading",
       "type": "text",
       "label": "Heading",
       "default": "Emma's Advanced Sleep Range"
-    },
-    {
-      "id": "header_font",
-      "type": "select",
-      "label": "Header Font",
-      "options": [
-        {
-          "value": "inter",
-          "label": "Inter"
-        },
-        {
-          "value": "tiempos",
-          "label": "Tiempos"
-        }
-      ],
-      "default": "tiempos"
     },
     {
       "id": "heading_alignment",
@@ -81,12 +129,6 @@
       ],
       "default": "md",
       "label": "Container Spacing"
-    },
-    {
-      "type": "collection_list",
-      "id": "collection_list",
-      "label": "Collections",
-      "limit": 9
     }
   ]
 }
