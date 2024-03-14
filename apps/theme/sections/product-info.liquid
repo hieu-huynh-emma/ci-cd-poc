@@ -5,7 +5,6 @@
 {% assign stock = section.blocks | where: 'type', 'stock' | first %}
 {% assign affirm_widget = section.blocks | where: 'type', 'affirm_widget' | first %}
 {% assign upsell_mattress = section.blocks | where: 'type', 'upsell_mattress' | first %}
-{% assign badge = section.blocks | where: 'type', 'badge' | first %}
 {% assign loadUpService = section.blocks | where: 'type', 'load_up_service' | first %}
 
 {% assign mini_comparison_table = section.blocks | where: 'type', 'mini-comparison-table' | first %}
@@ -577,13 +576,13 @@
       "settings": [
         {
           "type": "text",
-          "id": "badge_text",
-          "label": "Text"
+          "id": "heading",
+          "label": "Name"
         },
         {
-          "type": "text",
-          "id": "desc",
-          "label": "Description"
+          "type": "image_picker",
+          "id": "photo",
+          "label": "Photo"
         }
       ]
     },
@@ -658,17 +657,6 @@
           "id": "url",
           "type": "url",
           "label": "Banner Url"
-        }
-      ]
-    },
-    {
-      "type": "load_up_service",
-      "name": "LoadUp Service",
-      "settings": [
-        {
-          "id": "product",
-          "type": "product",
-          "label": "Product"
         }
       ]
     },
@@ -894,11 +882,6 @@
       "type": "textarea",
       "id": "caption_content",
       "label": "Content"
-    },
-    {
-      "type": "text",
-      "id": "badge",
-      "label": "Badge"
     },
     {
       "type": "text",

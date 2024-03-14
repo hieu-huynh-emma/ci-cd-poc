@@ -1,16 +1,30 @@
 {% assign campaignTeaser = section.blocks | where: 'type', 'campaign_teaser' | first %}
+{% assign badges = section.blocks | where: 'type', 'badge' %}
 
 
 <div id="product-viewer">
-
-    {% if campaignTeaser %}
-        <div class="campaign-teaser">
-            <h2 class="text-sm font-bold">{{ campaignTeaser.settings.title }}</h2>
-            <div class="text-xs md:text-sm">
-                {% render 'rtf-viewer', content: campaignTeaser.settings.content %}
+    <div class="promotion-overlay">
+        {% if badges.size %}
+            <div class="product-badges">
+                {% for badge in badges %}
+                    <div class="product-badge">
+                        <img src="{{ badge.settings.photo | image_url: height: 108 }}" alt="">
+                    </div>
+                {% endfor %}
             </div>
-        </div>
-    {% endif %}
+        {% endif %}
+
+        {% if campaignTeaser %}
+            <div class="campaign-teaser">
+                <h2 class="text-sm font-bold">{{ campaignTeaser.settings.title }}</h2>
+                <div class="text-xs md:text-sm">
+                    {% render 'rtf-viewer', content: campaignTeaser.settings.content %}
+                </div>
+            </div>
+        {% endif %}
+    </div>
+
 
     {% render 'product-media' %}
 </div>
+
