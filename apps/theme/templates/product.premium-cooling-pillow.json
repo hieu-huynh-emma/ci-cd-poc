@@ -1,83 +1,5 @@
 {
   "sections": {
-    "affiliate-banners": {
-      "type": "affiliate-banners",
-      "blocks": {
-        "f5f456c7-b29a-4f74-826f-648e09f5b1cd": {
-          "type": "affiliate",
-          "settings": {
-            "heading": "sleepopolis",
-            "logo": "shopify:\/\/shop_images\/Sleepopolis_Logo_Horizontal.png",
-            "badge": "shopify:\/\/shop_images\/Sleepopolis_Logo.png",
-            "message": "<p>Get extra 5% Off with code: <strong>SLEEPOPOLIS<\/strong> 🔥<\/p>",
-            "background_color": "#ffdeb7",
-            "text_color": "#2e2f3c",
-            "url": ""
-          }
-        },
-        "ff4c88cb-2bb7-4c5f-a1ce-17e0a4b07120": {
-          "type": "affiliate",
-          "settings": {
-            "heading": "sleep_foundation",
-            "message": "<p>Get extra 5% Off with code: <strong>SF5<\/strong> 🔥<\/p>",
-            "background_color": "#ffdeb7",
-            "text_color": "#2e2f3c",
-            "url": ""
-          }
-        },
-        "0e5ad842-30da-4046-bab8-46b406facf93": {
-          "type": "affiliate",
-          "settings": {
-            "heading": "top_10",
-            "logo": "shopify:\/\/shop_images\/Top_10_Affiliate_Logo.png",
-            "message": "<p>Get extra 5% off with code <strong>TOP10<\/strong> 🔥<\/p>",
-            "background_color": "#ffdeb7",
-            "text_color": "#2e2f3c",
-            "url": ""
-          }
-        },
-        "897cf01f-830c-4b3b-af59-919c6709b1c2": {
-          "type": "affiliate",
-          "settings": {
-            "heading": "mattress_clarity",
-            "message": "<p>Get extra 5% off with discount code: <strong>CLARITY <\/strong>🔥<\/p>",
-            "background_color": "#ffdeb7",
-            "text_color": "#2e2f3c",
-            "url": ""
-          }
-        },
-        "b9f8c510-6b61-4237-a924-eb36e660adf2": {
-          "type": "affiliate",
-          "settings": {
-            "heading": "mattress_nerd",
-            "message": "<p>Get extra 5% off with discount code: <strong>NERD <\/strong>🔥<\/p>",
-            "background_color": "#ffdeb7",
-            "text_color": "#2e2f3c",
-            "url": ""
-          }
-        },
-        "9f4c3789-5cec-4f6b-abb6-ab8a7f54484b": {
-          "type": "affiliate",
-          "settings": {
-            "heading": "naplab",
-            "message": "<p>Get extra 5% off with discount code: <strong>NAPLAB <\/strong>🔥<\/p>",
-            "background_color": "#ffdeb7",
-            "text_color": "#2e2f3c",
-            "url": ""
-          }
-        }
-      },
-      "block_order": [
-        "f5f456c7-b29a-4f74-826f-648e09f5b1cd",
-        "ff4c88cb-2bb7-4c5f-a1ce-17e0a4b07120",
-        "0e5ad842-30da-4046-bab8-46b406facf93",
-        "897cf01f-830c-4b3b-af59-919c6709b1c2",
-        "b9f8c510-6b61-4237-a924-eb36e660adf2",
-        "9f4c3789-5cec-4f6b-abb6-ab8a7f54484b"
-      ],
-      "settings": {
-      }
-    },
     "product-info": {
       "type": "product-info",
       "blocks": {
@@ -148,8 +70,7 @@
           "type": "badge",
           "disabled": true,
           "settings": {
-            "badge_text": "",
-            "desc": "95% of BSB One buyers agree their back pain was improved"
+            "heading": ""
           }
         },
         "05167373-6c53-4bf6-b18f-7cae5ab215d7": {
@@ -233,13 +154,6 @@
             "upsell_mattress_product": "emma-hybrid-comfort-mattress"
           }
         },
-        "78340a5f-79af-436d-b68c-7aa1da0df629": {
-          "type": "load_up_service",
-          "disabled": true,
-          "settings": {
-            "product": "load-up-mattress-removal"
-          }
-        },
         "5aab3a60-15f8-4421-8778-090ecd80ad2b": {
           "type": "upsell_widget",
           "settings": {
@@ -269,7 +183,6 @@
         "c356b1b7-ae94-4361-890b-5b83d4d27efc",
         "809302fb-d0b7-4e84-854b-40031868c836",
         "fa0772fb-68e1-4ba1-9806-8c454882a5d8",
-        "78340a5f-79af-436d-b68c-7aa1da0df629",
         "5aab3a60-15f8-4421-8778-090ecd80ad2b"
       ],
       "custom_css": [
@@ -280,7 +193,6 @@
         "desc": "<h6>The perfect blend of firmness, support and freshness<\/h6><p>Discover our thermoregulating pillow fitting any type of sleeper thanks to its adjustable layers<\/p><ul><li>Thermosync technology capturing excess heat for optimum sleep temperature<\/li><li>Easy-to-clean & machine-washable for a clean, refreshing sleep<\/li><li>OEKO-Tex Standard-100 certified against allergies and skin irritation<\/li><li>Try it for 60 days with the Emma promise<\/li><\/ul>",
         "caption_headline": "Loved by back, side, and stomach sleepers",
         "caption_content": "Breathable and cooling for the absolute best quality of sleep",
-        "badge": "New",
         "disclaimer": ""
       }
     },
@@ -341,49 +253,82 @@
       "settings": {
       }
     },
-    "mattress-layers-static": {
-      "type": "mattress-layers-static",
+    "mattress-layers": {
+      "type": "mattress-layers",
       "blocks": {
-        "4441c420-9648-469d-9fb2-bf8dbb9cf6ba": {
-          "type": "layer_item",
+        "cover_layer_zPQz7H": {
+          "type": "cover_layer",
           "settings": {
+            "image": "shopify:\/\/shop_images\/Diamond_pillow_1.png",
             "title": "Ultradry cover",
-            "content": "The cover's UltraDry technology rapidly wicks away moisture, ensuring the perfect cool, dry sleep."
+            "content": "The cover's UltraDry technology rapidly wicks away moisture, ensuring the perfect cool, dry sleep.",
+            "gutter": 4,
+            "bullet_gutter": 1
           }
         },
-        "2cc9584c-f3f8-43e9-86ed-b5a596a81d76": {
-          "type": "layer_item",
+        "internal_layer_gpgALY": {
+          "type": "internal_layer",
           "settings": {
+            "image": "shopify:\/\/shop_images\/Diamond_pillow_2.png",
             "title": "ThermoSync cooling foam",
-            "content": "The graphite Thermosync coating guarantees extended deep sleep phases thanks to temperature regulation. Body temperature quickly drops to a level that promotes restful sleep."
+            "content": "The graphite Thermosync coating guarantees extended deep sleep phases thanks to temperature regulation. Body temperature quickly drops to a level that promotes restful sleep.",
+            "is_thin": true,
+            "gutter": 5,
+            "bullet_gutter": 1
           }
         },
-        "bb72a122-fccb-462e-be99-a81a27e0a880": {
-          "type": "layer_item",
+        "internal_layer_r6cwd8": {
+          "type": "internal_layer",
           "settings": {
+            "image": "shopify:\/\/shop_images\/Diamond_pillow_3.png",
             "title": "The soft foam that feels like a cloud",
-            "content": "Heavenly sleeping climate thanks to breathable Airgocell® foam. The softest layer of the three."
+            "content": "Heavenly sleeping climate thanks to breathable Airgocell® foam. The softest layer of the three.",
+            "is_thin": false,
+            "gutter": 6,
+            "bullet_gutter": 46
           }
         },
-        "386237a7-edca-4896-aa80-682520b6b17d": {
-          "type": "layer_item",
+        "internal_layer_kPJhEn": {
+          "type": "internal_layer",
           "settings": {
+            "image": "shopify:\/\/shop_images\/Diamond_pillow_4.png",
             "title": "Visco-adaptive foam",
-            "content": "The visco-adaptive foam supports the head and neck with extreme precision for you to sleep in a state of total relaxation."
+            "content": "The visco-adaptive foam supports the head and neck with extreme precision for you to sleep in a state of total relaxation.",
+            "is_thin": false,
+            "gutter": 3,
+            "bullet_gutter": 41
+          }
+        },
+        "72c945db-310d-4f05-905a-b523e378d2f4": {
+          "type": "base_layer",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Diamond_pillow_5.png",
+            "title": "Ultradry cover",
+            "content": "The cover's UltraDry technology rapidly wicks away moisture, ensuring the perfect cool, dry sleep.",
+            "gutter": 1,
+            "bullet_gutter": 51
+          }
+        },
+        "shadow_TWYLez": {
+          "type": "shadow",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Foam_pillow_sh.png"
           }
         }
       },
       "block_order": [
-        "4441c420-9648-469d-9fb2-bf8dbb9cf6ba",
-        "2cc9584c-f3f8-43e9-86ed-b5a596a81d76",
-        "bb72a122-fccb-462e-be99-a81a27e0a880",
-        "386237a7-edca-4896-aa80-682520b6b17d"
+        "cover_layer_zPQz7H",
+        "internal_layer_gpgALY",
+        "internal_layer_r6cwd8",
+        "internal_layer_kPJhEn",
+        "72c945db-310d-4f05-905a-b523e378d2f4",
+        "shadow_TWYLez"
       ],
       "settings": {
-        "heading": "Premium Cooling Pillow - Layer by Layer",
-        "heading_alignment": "start",
+        "wallpaper": "shopify:\/\/shop_images\/orange_1.png",
+        "heading": "Let's take a look under the covers",
+        "heading_alignment": "center",
         "container_spacing": "sm",
-        "image": "shopify:\/\/shop_images\/MicrosoftTeams-image_14_414ad169-c2bf-4609-8312-3ed821c08ec5.png",
         "carousel_mode": false
       }
     },
@@ -894,10 +839,9 @@
     }
   },
   "order": [
-    "affiliate-banners",
     "product-info",
     "multimedia-showcase",
-    "mattress-layers-static",
+    "mattress-layers",
     "mattress-firmness",
     "featured-products",
     "social-proof",
