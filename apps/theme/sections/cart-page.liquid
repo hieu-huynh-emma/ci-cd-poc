@@ -1146,11 +1146,35 @@
 <link is="delay-stylesheet" href="{{ 'cart-surface.css' | asset_url }}">
 
 {%- if additional_checkout_buttons -%}
-    <div id="content_for_additional_checkout_buttons">
+    <template id="content_for_additional_checkout_buttons">
         {{ content_for_additional_checkout_buttons }}
-    </div>
+    </template>
+
+    <script>
+        const requestHost = "{{ request.host }}"
+        const tplEl = document.querySelector(`#content_for_additional_checkout_buttons`)
+
+        if (requestHost !== 'qc.emma-sleep.ca') {
+            showExpressCheckout()
+        } else {
+            tplEl.remove()
+        }
+
+        function showExpressCheckout() {
+            const div = document.createElement('div')
+
+            div.innerHTML = tplEl.innerHTML
+            div.id = "content_for_additional_checkout_buttons"
+
+            tplEl.replaceWith(div)
+        }
+    </script>
+
+    <express-checkout-extractor></express-checkout-extractor>
 {%- endif -%}
-<express-checkout-extractor></express-checkout-extractor>
+
+
+
 
 {% if cart.item_count > 0 %}
     <div class="page-boundary">
