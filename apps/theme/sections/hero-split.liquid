@@ -70,10 +70,12 @@
                 <a href="{{ block.settings.cta_url }}" class="section-flooring">
                     {% if wallpaper != blank %}
                         <img class="lazyload mx-auto wallpaper"
-                             src="{{ wallpaper | image_url: width: 700 }}"
+                             src="{{ wallpaper | image_url: width: 200 }}"
                              data-src="{{ wallpaper | image_url: width: 2680 }}"
-                             width="2680" height="640" alt=""
-                        >
+                             data-sizes="auto"
+                             width="2680"
+                             height="640" alt=""
+                        />
                     {% endif %}
                 </a>
             {% endfor %}
@@ -138,11 +140,12 @@
                 <div class="frame-foundation">
                     {% if wallpaper != blank %}
                         <a href="{{ block.settings.cta_url }}" class="section-flooring">
-                            {{
-                            wallpaper
-                            | image_url: width: 2680
-                            | image_tag: width: 2680, height: 640, class: 'mx-auto wallpaper', loading: 'eager'
-                            }}
+                            <img class="lazyload mx-auto wallpaper"
+                                 src="{{ wallpaper | image_url: width: 100 }}"
+                                 data-src="{{ wallpaper | image_url: width: 1040 }}"
+                                 data-sizes="auto"
+                                 width="2680" height="640" alt=""
+                            />
                         </a>
                     {% endif %}
                 </div>

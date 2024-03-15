@@ -1,9 +1,3 @@
-<script src="//unpkg.com/@ungap/custom-elements"></script>
-
-
-<script defer src="{{ 'delay-resource.js' | asset_url }}"></script>
-<script is="delay-script" url="{{ 'first-interactive.min.js' | file_url }}"></script>
-
 <script defer src="{{ 'jquery-3.6.0.min.js' | file_url }}"></script>
 
 <script defer>
@@ -18,5 +12,9 @@
         addonServiceIds: "{{ shop.metafields.globals.addon_services }}"
     }
 </script>
+
+<script type="quickscript" src="{{ 'custom-elements.js' | asset_url }}"></script>
+<script type="quickscript" src="{{ 'resource-coordinator.js' | asset_url }}"></script>
+
 
 {% render 'critical-stylesheet' %}

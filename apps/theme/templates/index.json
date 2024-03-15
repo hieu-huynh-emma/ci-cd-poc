@@ -575,39 +575,46 @@
         "inverted": false
       }
     },
-    "64c9aa4c-2333-4f7e-8957-a2073cfdde85": {
-      "type": "home-collage-collection",
+    "product-collage": {
+      "type": "product-collage",
       "blocks": {
-        "88438521-687a-4cd5-ae90-481df474718b": {
-          "type": "right_section",
+        "collage_item_fPf3LT": {
+          "type": "collage-item",
           "settings": {
-            "image-col-right": "shopify:\/\/shop_images\/jpeg-optimizer_pillow-copress.jpg",
-            "col-title-right": "Pillows and Beddings",
-            "col-text-right": "<p> EXTRA COMFORT<\/p>",
-            "col-link-right": "shopify:\/\/products\/emma-foam-pillow"
+            "heading": "Mattresses",
+            "subheading": "Most Awarded",
+            "photo": "shopify:\/\/shop_images\/emma-original-cataloge_1_1.jpg",
+            "collection": "mattresses"
           }
         },
-        "8561b72d-fb3b-4bc7-8ef4-af5e386af03b": {
-          "type": "right_section",
+        "collage_item_FbfaGf": {
+          "type": "collage-item",
           "settings": {
-            "image-col-right": "shopify:\/\/shop_images\/emma-catalog-2_1_1.jpg",
-            "col-title-right": "Beds",
-            "col-text-right": "<p>LONG LASTING<\/p>",
-            "col-link-right": "shopify:\/\/products\/emma-bed-frame"
+            "heading": "Pillows and Beddings",
+            "subheading": "Extra comfort",
+            "photo": "shopify:\/\/shop_images\/jpeg-optimizer_pillow-copress.jpg",
+            "collection": "beddings"
+          }
+        },
+        "collage_item_e6jR8U": {
+          "type": "collage-item",
+          "settings": {
+            "heading": "Beds",
+            "subheading": "Long Lasting",
+            "photo": "shopify:\/\/shop_images\/emma-catalog-2_1_1.jpg",
+            "collection": "beds"
           }
         }
       },
       "block_order": [
-        "88438521-687a-4cd5-ae90-481df474718b",
-        "8561b72d-fb3b-4bc7-8ef4-af5e386af03b"
+        "collage_item_fPf3LT",
+        "collage_item_FbfaGf",
+        "collage_item_e6jR8U"
       ],
       "settings": {
-        "title": "Emma's Advanced Sleep Range",
-        "mobile_title": "Emma's Advanced Sleep Range",
-        "image-col-left": "shopify:\/\/shop_images\/emma-original-cataloge_1_1.jpg",
-        "col-title-left": "Mattresses",
-        "col-text-left": "<p>MOST AWARDED<\/p>",
-        "col-link-left": "shopify:\/\/collections\/mattresses"
+        "heading": "Emma's Advanced Sleep Range",
+        "heading_alignment": "start",
+        "container_spacing": "md"
       }
     },
     "multimedia-showcase": {
@@ -1103,7 +1110,7 @@
     "special-services",
     "why-choose-us",
     "emma-science",
-    "64c9aa4c-2333-4f7e-8957-a2073cfdde85",
+    "product-collage",
     "multimedia-showcase",
     "product-catalog",
     "media-publication",

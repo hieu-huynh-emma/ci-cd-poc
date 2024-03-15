@@ -18,7 +18,7 @@
   }
 </style>
 
-<link is="delay-stylesheet" href="{{ 'announcement-bar.css' | asset_url }}"/>
+<link rel="stylesheet" href="{{ 'announcement-bar.css' | asset_url }}"/>
 
 
 <a id="announcement-bar" href="{{ section.settings.link }}" data-tooltip="{{ annoContent.settings.tooltip }}">
@@ -32,7 +32,7 @@
        <li class="splide__slide">
         <div class="anno-content ">
           <p class="anno-text">
-            
+
             {{ block.settings.text | remove: "<p>" | remove: "</p>" }}
           </p>
 
@@ -44,11 +44,11 @@
                 </path>
               </svg>
             </div>
-<lazy-script src="{{ 'announcement-bar.js' | asset_url }}"></lazy-script>
+              <script type="quickscript" loading="delayed" src="{{ 'announcement-bar.js' | asset_url }}"></script>
           {% endif %}
         </div>
        </li>
-            
+
       {% endfor %}
          </ul>
          </div>
@@ -67,7 +67,8 @@
   </div>
 
 </a>
-<lazy-script src="{{ 'announcement-bar.js' | asset_url }}"></lazy-script>
+<script type="quickscript" loading="delayed" src="{{ 'announcement-bar.js' | asset_url }}"></script>
+
 {% schema %}
 {
   "name": "Quick Announcement Bar",

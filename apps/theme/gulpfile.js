@@ -15,7 +15,7 @@ const sources = [
   // 'styles/migrate/**/*.scss',
   // 'styles/pages/*.scss',
   'styles/sections/**/*.scss',
-  // 'styles/vendors/*.scss'
+  'styles/vendors/tailwind.scss'
 ];
 
 
