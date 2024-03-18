@@ -236,7 +236,7 @@ class CartDrawerSummary extends CustomElement {
       window.dispatchEvent(new CustomEvent('refreshAjaxSideCart'))
     }, 1000)
     // Extend - End code
-    
+
     const $originalPriceEl = this.$el.find('#CartOriginalPrice')
     const $totalPriceEl = this.$el.find("#CartTotalPrice")
     const $totalSavedEl = this.$el.find("#CartTotalSaved")
@@ -255,7 +255,7 @@ class CartDrawerSummary extends CustomElement {
     // Extend - Dispatch refreshAjaxSideCart on cart load
     window.dispatchEvent(new CustomEvent('refreshAjaxSideCart'))
     // Extend - End code
-    
+
     const hasCartTotalsChanged = mutationRecords.some(r => r.target.id === "CartTotals")
 
     const hasTotalPriceChanged = mutationRecords.some(r => r.target.id === "CartTotalPrice" && !!r.addedNodes.length)
@@ -285,7 +285,7 @@ class CartDrawerSummary extends CustomElement {
     }
 
 
-    this.refreshKlarnaWidget(discountedTotal || totalPrice)
+    // this.refreshKlarnaWidget(discountedTotal || totalPrice)
   }
 
   clearTotalPrice() {

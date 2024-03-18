@@ -1,37 +1,33 @@
 {% assign selected_variant = product.selected_or_first_available_variant %}
-<link is="delay-stylesheet"  href="{{ 'custom.css' | asset_url }}" />
-<link is="delay-stylesheet"   href="{{ 'jquery.fancybox.css' | asset_url }}" />
-<script is="delay-script" defer  src="{{ 'jquery.fancybox.js' | asset_url }}"></script>
-<script>
-      // Enable Fancybox for any element with the `data-fancybox` attribute
-      Fancybox.bind('[data-fancybox]', {
-        // Your custom options
-      });   
 
-
-    </script>
 {% if selected_variant.price > 30000 %}
+    <link rel="quickscript" loading="delayed" href="{{ 'custom.css' | asset_url }}"/>
+    <link rel="quickscript" loading="delayed" href="{{ 'jquery.fancybox.css' | asset_url }}"/>
+    <script type="quickscript" loading="delayed" src="{{ 'jquery.fancybox.js' | asset_url }}"></script>
 
- <div id="pro_step"  style="display:none;">
-      {% render 'product_step' %}
-</div>
-  
-  <div id="affirm-widget">
-    <div class="pro_info cart-drawer-affirm-en">
-      or
-      <strong><span class="pro_val">{{ selected_variant.price | divided_by: 12 | money }}</span></strong>
-      monthly with
-      <span class="pay_img" style="display: inline-flex">
+    <script type="quickscript" loading="visibility" src="{{ 'affirm-widget.js' | asset_url }}"></script>
+
+    <div id="pro_step" style="display:none;">
+        {% render 'product_step' %}
+    </div>
+
+    <div id="affirm-widget">
+        <div class="pro_info cart-drawer-affirm-en">
+            or
+            <strong><span class="pro_val">{{ selected_variant.price | divided_by: 12 | money }}</span></strong>
+            monthly with
+            <span class="pay_img" style="display: inline-flex">
         <img src="https://cdn.shopify.com/s/files/1/0562/9873/3706/files/Logo_affirm.png?v=1659502934">
       </span>
-      financing <a data-fancybox data-src="#pro_step" href="javascript:" class="que">?</a>
-      
+            financing <a data-fancybox data-src="#pro_step" href="javascript:" class="que">?</a>
+
+        </div>
+
+        <div data-fancybox data-src="#fr_pop" href="javascript:" class="fr_pop cart-drawer-affirm-fr"
+             style="display: none;">
+            <a class="fr_txt">Option de crédit</a>
+            <a class="que">?</a>
+        </div>
     </div>
-   
-    <div data-fancybox data-src="#fr_pop" href="javascript:" class="fr_pop cart-drawer-affirm-fr" style="display: none;">
-      <a class="fr_txt">Option de crédit</a>
-      <a class="que">?</a>
-    </div>
-  </div>
 {% endif %}
 

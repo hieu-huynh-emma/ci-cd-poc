@@ -128,10 +128,12 @@
     if (document.readyState === 'complete') {
         initProductMedia();
     } else {
-        $(window).on('load', initProductMedia);
+        window.addEventListener('load', initProductMedia);
     }
 
-    function initProductMedia() {
+    async function initProductMedia() {
+        await ResourceCoordinator.requestVendor('Splide');
+
         const main = new Splide("#main-carousel", {
             type: "fade",
             rewind: true,

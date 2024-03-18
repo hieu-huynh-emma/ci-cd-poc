@@ -1,17 +1,2 @@
-{% if template == 'index' %}
-    <!-- Start Weglot Script -->
-    <script type="quickscript"
-            src="https://cdn.weglot.com/weglot.min.js?api_key=wg_e352fa8c030a877a802a404aac1074d00"></script>
-
-    <!-- End Weglot Script -->
-{% else %}
-    <!-- Start Weglot Script -->
-    <script is="delay-script" url="https://cdn.weglot.com/weglot.min.js"></script>
-    <script id="has-script-tags" is="delay-script" phase="interactive">
-        Weglot.initialize({api_key: 'wg_e352fa8c030a877a802a404aac1074d00'});
-    </script>
-    <!-- End Weglot Script -->
-{% endif %}
-
-
-
+<script type="quickscript"
+        src="https://cdn.weglot.com/weglot.min.js?api_key=wg_e352fa8c030a877a802a404aac1074d00"></script>
