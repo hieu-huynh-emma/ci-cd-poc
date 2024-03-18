@@ -13,8 +13,8 @@
     }
 </script>
 
-<script type="quickscript" src="{{ 'custom-elements.js' | asset_url }}"></script>
-<script type="quickscript" src="{{ 'resource-coordinator.js' | asset_url }}"></script>
-
+<script defer src="{{ 'helpers.js' | asset_url }}"></script>
+<script defer src="{{ 'custom-elements.js' | asset_url }}"></script>
+<script defer src="{{ 'resource-coordinator.js' | asset_url }}"></script>
 
 {% render 'critical-stylesheet' %}

@@ -69,7 +69,7 @@ settings.colors_accent_2 }}{% endif %};
 <link rel="stylesheet" href="{{ 'base.css' | asset_url }}">
 <link rel="stylesheet" href="{{ 'global.css' | asset_url }}">
 <link rel="stylesheet" href="{{ 'typography.css' | asset_url }}">
-<link rel="stylesheet" href="{{ 'fonts.css' | asset_url }}">
+{% comment %}<link rel="stylesheet" href="{{ 'fonts.css' | asset_url }}">{% endcomment %}
 
 {%- comment -%}
    ================= Vendor Styles =================
@@ -77,7 +77,6 @@ settings.colors_accent_2 }}{% endif %};
 
 <link rel="stylesheet" href="{{ 'tailwind.css' | asset_url }}">
 <link rel="stylesheet" id="vendor-custom-styles" href="{{ "vendors.css" | asset_url }}">
-<link rel="stylesheet" href="{{ 'jquery.fancybox.css' | asset_url }}">
 
 <style>
     .unintrusive-bg {
