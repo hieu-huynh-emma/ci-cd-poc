@@ -1,17 +1,21 @@
 <script id="All-Affiliates-JSON" type="application/json">
     [
-        {% for block in section.blocks %}
-          {{ block.settings |  json }}
-            {% unless forloop.last %},{% endunless -%}
-        {% endfor %}
+    {% for block in section.blocks %}
+        {{ block.settings | json }}
+        {% unless forloop.last %},{% endunless -%}
+    {% endfor %}
     ]
 </script>
-{{ 'affiliate-banners.css' | asset_url | stylesheet_tag }}
 
-<script type="quickscript" loading="delayed" src="{{ 'affiliate-control.js' | asset_url}}"></script>
+<link rel="quickscript" loading="delayed" href="{{ 'affiliate-banners.css' | asset_url }}">
+
+<script type="quickscript" loading="delayed" src="{{ 'affiliate-control.js' | asset_url }}"></script>
 
 {% if section.settings.auto_coupon_enabled %}
-  <affiliate-auto-coupon :success="{{ section.settings.success_msg | escape  }}" :error="{{ section.settings.error_msg | escape  }}"></affiliate-auto-coupon>
+    <affiliate-auto-coupon
+            :success="{{ section.settings.success_msg | escape }}"
+            :error="{{ section.settings.error_msg | escape }}"
+    ></affiliate-auto-coupon>
 {% endif %}
 
 
