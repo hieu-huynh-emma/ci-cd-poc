@@ -1,6 +1,7 @@
 {% assign parentProduct = product %}
 {% assign cross_selling_products_metaobjects = product.metafields.accentuate.proxy_cross_selling_products.value %}
 
+
 {% if cross_selling_products_metaobjects %}
     <section id="cross-selling-section" class="cross-selling-container">
         {% for metaobject in cross_selling_products_metaobjects %}

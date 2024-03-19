@@ -49,18 +49,20 @@
 </div>
 
 <script defer>
-	if (document.readyState === 'complete') {
-		initProductSpecifications();
-	} else {
-		$(window).on('load', initProductSpecifications);
-	}
+    if (document.readyState === 'complete') {
+        initProductSpecifications();
+    } else {
+        window.addEventListener('load', initProductSpecifications);
+    }
 
-	function initProductSpecifications() {
-		$('#product-specifications .product-specification').beefup({
-			trigger: '.product-specification__header',
-			content: '.product-specification__content',
-			openSpeed: 500,
-			closeSpeed: 250
-		});
-	}
+    async function initProductSpecifications() {
+        await ResourceCoordinator.requestVendor('Beefup');
+
+        $('#product-specifications .product-specification').beefup({
+            trigger: '.product-specification__header',
+            content: '.product-specification__content',
+            openSpeed: 500,
+            closeSpeed: 250
+        });
+    }
 </script>
