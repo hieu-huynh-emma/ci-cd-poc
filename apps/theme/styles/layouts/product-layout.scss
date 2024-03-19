@@ -618,6 +618,12 @@ body {
       display: none;
     }
   }
+
+  variant-selects {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
 }
 
 
