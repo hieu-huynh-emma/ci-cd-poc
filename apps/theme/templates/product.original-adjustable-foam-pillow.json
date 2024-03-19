@@ -2,45 +2,7 @@
   "sections": {
     "product-layout": {
       "type": "product-layout",
-      "blocks": {
-        "0a7cd906-1a13-44a7-bfe8-34d0b6373b48": {
-          "type": "tagline",
-          "disabled": true,
-          "settings": {
-            "text": "Our Best of the Best"
-          }
-        },
-        "00f4e92b-5e6c-4ec3-a58d-8079fafaa409": {
-          "type": "badge",
-          "disabled": true,
-          "settings": {
-            "heading": ""
-          }
-        },
-        "e6120535-6438-459e-a4f8-50816d7ab9dc": {
-          "type": "tax",
-          "disabled": true,
-          "settings": {
-            "text": "Incl. 20% Tax"
-          }
-        },
-        "c356b1b7-ae94-4361-890b-5b83d4d27efc": {
-          "type": "stock",
-          "disabled": true,
-          "settings": {
-            "text": "Only few left in stock"
-          }
-        }
-      },
-      "block_order": [
-        "0a7cd906-1a13-44a7-bfe8-34d0b6373b48",
-        "00f4e92b-5e6c-4ec3-a58d-8079fafaa409",
-        "e6120535-6438-459e-a4f8-50816d7ab9dc",
-        "c356b1b7-ae94-4361-890b-5b83d4d27efc"
-      ],
-      "settings": {
-
-      }
+      "settings": {}
     },
     "product-media": {
       "type": "product-media",
@@ -220,7 +182,6 @@
       "settings": {
       }
     },
-
     "multimedia-showcase": {
       "type": "multimedia-showcase",
       "blocks": {
@@ -914,7 +875,6 @@
     "product-specifications",
     "product-unique-selling-points",
     "product-auxiliary",
-
     "multimedia-showcase",
     "mattress-layers",
     "mattress-firmness",
