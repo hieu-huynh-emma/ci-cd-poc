@@ -1,84 +1,5 @@
 {
   "sections": {
-    "affiliate-banners": {
-      "type": "affiliate-banners",
-      "blocks": {
-        "f5f456c7-b29a-4f74-826f-648e09f5b1cd": {
-          "type": "affiliate",
-          "settings": {
-            "heading": "sleepopolis",
-            "logo": "shopify:\/\/shop_images\/Sleepopolis_Logo_Horizontal.png",
-            "badge": "shopify:\/\/shop_images\/Sleepopolis_Logo.png",
-            "message": "<p>Get extra 5% Off with code: <strong>SLEEPOPOLIS<\/strong> 🔥<\/p>",
-            "background_color": "#ffdeb7",
-            "text_color": "#2e2f3c",
-            "url": ""
-          }
-        },
-        "ff4c88cb-2bb7-4c5f-a1ce-17e0a4b07120": {
-          "type": "affiliate",
-          "settings": {
-            "heading": "sleep_foundation",
-            "badge": "shopify:\/\/shop_images\/Sleep-Foundation-2023_Logo.png",
-            "message": "<p>Get extra 5% Off with code: <strong>SF5<\/strong> 🔥<\/p>",
-            "background_color": "#ffdeb7",
-            "text_color": "#2e2f3c",
-            "url": ""
-          }
-        },
-        "0e5ad842-30da-4046-bab8-46b406facf93": {
-          "type": "affiliate",
-          "settings": {
-            "heading": "top_10",
-            "logo": "shopify:\/\/shop_images\/Top_10_Affiliate_Logo.png",
-            "message": "<p>Get extra 5% off with code <strong>TOP10<\/strong> 🔥<\/p>",
-            "background_color": "#ffdeb7",
-            "text_color": "#2e2f3c",
-            "url": ""
-          }
-        },
-        "03cf72cc-8432-4c17-bdf5-43986614117e": {
-          "type": "affiliate",
-          "settings": {
-            "heading": "mattress_clarity",
-            "message": "<p>Get extra 5% off with discount code: <strong>CLARITY<\/strong> 🔥<\/p>",
-            "background_color": "#ffdeb7",
-            "text_color": "#2e2f3c",
-            "url": ""
-          }
-        },
-        "2f43c3cf-01d0-45a5-a738-f8720f5369fb": {
-          "type": "affiliate",
-          "settings": {
-            "heading": "mattress_nerd",
-            "message": "<p>Get extra 5% off with discount code: <strong>NERD <\/strong>🔥<\/p>",
-            "background_color": "#ffdeb7",
-            "text_color": "#2e2f3c",
-            "url": ""
-          }
-        },
-        "11941b5d-edfe-4da5-943d-e59f206a3092": {
-          "type": "affiliate",
-          "settings": {
-            "heading": "naplab",
-            "message": "<p>Get extra 5% off with discount code: <strong>NAPLAB <\/strong>🔥<\/p>",
-            "background_color": "#ffdeb7",
-            "text_color": "#2e2f3c",
-            "url": ""
-          }
-        }
-      },
-      "block_order": [
-        "f5f456c7-b29a-4f74-826f-648e09f5b1cd",
-        "ff4c88cb-2bb7-4c5f-a1ce-17e0a4b07120",
-        "0e5ad842-30da-4046-bab8-46b406facf93",
-        "03cf72cc-8432-4c17-bdf5-43986614117e",
-        "2f43c3cf-01d0-45a5-a738-f8720f5369fb",
-        "11941b5d-edfe-4da5-943d-e59f206a3092"
-      ],
-      "settings": {
-      }
-    },
     "product-info": {
       "type": "product-info",
       "blocks": {
@@ -896,7 +817,6 @@
     }
   },
   "order": [
-    "affiliate-banners",
     "product-info",
     "multimedia-showcase",
     "mattress-layers",
