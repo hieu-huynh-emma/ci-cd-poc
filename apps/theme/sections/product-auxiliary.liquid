@@ -14,40 +14,12 @@
 {% endif %}
 
 {% if upsell_widget_old %}
-    {% render 'product-upsell-widget-old', settings: upsell_widget.settings %}
+    {% render 'product-upsell-widget-old', settings: upsell_widget_old.settings %}
 {% endif %}
 
 {% if quick_compare %}
     {% render 'quick-compare', settings: quick_compare.settings %}
 {% endif %}
-
-<script>
-	if (document.readyState === 'complete') {
-		initProductMedia();
-	} else {
-		$(window).on('load', initProductMedia);
-	}
-
-	function initProductMedia() {
-		const main = new Splide('#main-carousel', {
-			type: 'fade',
-			rewind: true,
-			pagination: true,
-			arrows: true
-		});
-		const thumbnails = new Splide('#thumbnail-carousel', {
-			fixedWidth: 100,
-			gap: 10,
-			rewind: true,
-			pagination: false,
-			isNavigation: true
-		});
-
-		main.sync(thumbnails);
-		main.mount();
-		thumbnails.mount();
-	}
-</script>
 
 {% schema %}
 {
@@ -88,7 +60,7 @@
     },
     {
       "type": "upsell_widget_old",
-      "name": "Upsell Widget",
+      "name": "Upsell Widget Old",
       "settings": [
         {
           "id": "title",
