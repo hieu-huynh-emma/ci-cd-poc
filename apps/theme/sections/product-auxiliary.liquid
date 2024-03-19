@@ -1,0 +1,110 @@
+{% assign quick_compare = section.blocks | where: 'type', 'quick_compare' | first %}
+{% assign upsell_widget_old = section.blocks | where: 'type', 'upsell_widget_old' | first %}
+{% assign upsell_widget = section.blocks | where: 'type', 'upsell_widget' | first %}
+{% assign cross_sell_widget = section.blocks | where: 'type', 'cross_sell_widget' | first %}
+
+<link rel="stylesheet" href="{{ 'product-auxiliary.css' | asset_url }}">
+
+{% if upsell_widget %}
+    {% render 'product-upsell-widget', settings: upsell_widget.settings %}
+{% endif %}
+
+{% if cross_sell_widget %}
+    {% render 'cross-selling-addon' %}
+{% endif %}
+
+{% if upsell_widget_old %}
+    {% render 'product-upsell-widget-old', settings: upsell_widget_old.settings %}
+{% endif %}
+
+{% if quick_compare %}
+    {% render 'quick-compare', settings: quick_compare.settings %}
+{% endif %}
+
+{% schema %}
+{
+  "name": "Product Auxiliary",
+  "class": "hidden",
+  "blocks": [
+    {
+      "type": "cross_sell_widget",
+      "name": "Cross-sell Widget",
+      "settings": [
+      ]
+    },
+    {
+      "type": "upsell_widget",
+      "name": "Upsell Widget",
+      "settings": [
+        {
+          "id": "title",
+          "type": "text",
+          "label": "Title"
+        },
+        {
+          "id": "content",
+          "type": "richtext",
+          "label": "Content"
+        },
+        {
+          "id": "image",
+          "type": "image_picker",
+          "label": "Featured Image"
+        },
+        {
+          "id": "product",
+          "type": "product",
+          "label": "Upsell  Product"
+        }
+      ]
+    },
+    {
+      "type": "upsell_widget_old",
+      "name": "Upsell Widget Old",
+      "settings": [
+        {
+          "id": "title",
+          "type": "text",
+          "label": "Title"
+        },
+        {
+          "id": "content",
+          "type": "richtext",
+          "label": "Content"
+        },
+        {
+          "id": "image",
+          "type": "image_picker",
+          "label": "Featured Image"
+        },
+        {
+          "id": "product",
+          "type": "product",
+          "label": "Upsell  Product"
+        }
+      ]
+    },
+    {
+      "type": "quick_compare",
+      "name": "Quick Compare",
+      "settings": [
+        {
+          "id": "badge",
+          "type": "text",
+          "label": "Badge",
+          "default": "$1239"
+        },
+        {
+          "id": "note",
+          "type": "text",
+          "label": "Note",
+          "default": "*For queen sizes only. All prices and information from public sources listed as of October 10, 2022. Information may not reflect updated prices and promotions."
+        }
+      ]
+    }
+  ],
+  "settings": [
+
+  ]
+}
+{% endschema %}

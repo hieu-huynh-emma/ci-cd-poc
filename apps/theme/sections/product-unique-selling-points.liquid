@@ -1,0 +1,173 @@
+{% assign uniqueSellingPoints = section.blocks | where: 'type', 'selling_point' %}
+
+<link rel="stylesheet" href="{{ 'product-unique-selling-points.css' | asset_url }}">
+
+<div id="product-unique-selling-points">
+    <ul class="benefits">
+        {% for block in uniqueSellingPoints %}
+            {% assign benefitUrl = block.settings.url %}
+            <li>
+                <a
+                        class="unique-selling-point"{% if benefitUrl != blank %} href="{{ benefitUrl }}"{% endif %}
+                        target="_blank"
+                >
+                    <img
+                            class="unique-selling-point__icon"
+                            src="{{ block.settings.icon | image_url: width: "25", height: "25" }}"
+                            loading="lazy"
+                    >
+                    <p class="title">
+                        {{ block.settings.text }}
+                    </p>
+                    <div class="desc">
+                        {{ block.settings.content }}
+                    </div>
+                </a>
+            </li>
+        {% endfor %}
+
+        {% if paymentProvidersBlock %}
+            <li class="payment-providers unique-selling-point">
+                <img
+                        class="unique-selling-point__icon"
+                        src="{{ paymentProvidersBlock.settings.icon | image_url: width: "25", height: "25" }}"
+                        loading="lazy"
+                >
+                <p class="title">
+                    {{ paymentProvidersBlock.settings.text }}
+                </p>
+                <div class="payment-providers__listing_new">
+
+
+                    <div class="payment-provider">
+                        <img
+                                src="//cdn.shopify.com/s/files/1/0562/9873/3706/files/paypal_payment_provider.svg?v=1698141213&amp;width=1440"
+                        >
+                    </div>
+
+
+                    <div class="payment-provider">
+                        <img
+                                src="//cdn.shopify.com/s/files/1/0562/9873/3706/files/visa_payment_provider.svg?v=1698141376&amp;width=1440"
+                        >
+                    </div>
+
+
+                    <div class="payment-provider">
+                        <img
+                                src="//cdn.shopify.com/s/files/1/0562/9873/3706/files/master-cart_payment_provider.svg?v=1698141377&amp;width=1440"
+                        >
+                    </div>
+
+
+                    <div class="payment-provider">
+                        <img
+                                src="//cdn.shopify.com/s/files/1/0562/9873/3706/files/american_express.svg?v=1698141377&amp;width=1440"
+                        >
+                    </div>
+
+
+                    <div class="payment-provider">
+                        <img
+                                src="//cdn.shopify.com/s/files/1/0562/9873/3706/files/discover-payment-method.svg?v=1698141377&amp;width=1440"
+                        >
+                    </div>
+
+
+                    <div class="payment-provider">
+                        <img src="//cdn.shopify.com/s/files/1/0562/9873/3706/files/apple_pay.svg?v=1698141377&amp;width=1440">
+                    </div>
+
+
+                    <div class="payment-provider">
+                        <img src="//cdn.shopify.com/s/files/1/0562/9873/3706/files/pay_google.svg?v=1698141377&amp;width=1440">
+                    </div>
+
+
+                    <div class="payment-provider">
+                        <img src="//cdn.shopify.com/s/files/1/0562/9873/3706/files/shop-pay.svg?v=1698141377&amp;width=1440">
+                    </div>
+
+
+                </div>
+
+                {% comment %}
+          <div class="payment-providers__listing"></div>
+          <script>
+              fetch(`?sections={{ paymentProvidersBlock.settings.payment_providers_section }}`)
+                  .then((response) => response.json())
+                  .then((res) => {
+                      const html = new DOMParser().parseFromString(
+                          res['{{ paymentProvidersBlock.settings.payment_providers_section }}'],
+                          'text/html'
+                      );
+                      $('.payment-providers.unique-selling-point .payment-providers__listing').html(
+                          html.querySelector('.payment-providers__listing').innerHTML
+                      );
+                  });
+          </script>
+        {% endcomment %}
+            </li>
+        {% endif %}
+    </ul>
+</div>
+
+{% schema %}
+{
+  "name": "Unique Selling Points",
+  "class": "hidden",
+  "blocks": [
+    {
+      "type": "selling_point",
+      "name": "Unique selling point",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content"
+        },
+        {
+          "id": "url",
+          "type": "url",
+          "label": "Banner Url"
+        }
+      ]
+    },
+    {
+      "type": "payment_providers",
+      "name": "Payment Providers",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text"
+        },
+        {
+          "id": "payment_providers_section",
+          "type": "text",
+          "label": "Payment Providers Section ID"
+        }
+      ]
+    }
+  ],
+  "settings": [
+
+  ]
+}
+{% endschema %}
