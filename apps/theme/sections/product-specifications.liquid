@@ -54,7 +54,7 @@
 	if (document.readyState === 'complete') {
 		initProductSpecifications();
 	} else {
-		$(window).on('load', initProductSpecifications);
+        window.addEventListener('load', initProductSpecifications);
 	}
 
 	function initProductSpecifications() {

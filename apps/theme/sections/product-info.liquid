@@ -16,27 +16,12 @@
 {% assign cross_sell_widget = section.blocks | where: 'type', 'cross_sell_widget' | first %}
 {% assign yotpo_star_rating = section.blocks | where: 'type', 'yotpo_star_rating' | first %}
 
-{{ 'product-auxiliary.css' | asset_url | stylesheet_tag }}
+
+<link rel="quickscript" loading="delayed" href="{{ 'product-auxiliary.css' | asset_url }}">
 
 <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
-<script>
-	function switchAffirmMessage() {
-		const lang = $('html').attr('lang');
-		if (lang === 'en') {
-			$('.fr_pop').hide();
-			$('.pro_info').css('display', 'block');
-			$('.img_bann.first_bann').addClass('eng');
-			$('.img_bann.sec_bann').addClass('eng');
-		} else {
-			$('.pro_info').hide();
-			$('.fr_pop').css('display', 'block');
-			$('.img_bann').addClass('updfr');
-			$('.img_bann>.tImHU').css('background', 'rgba(255,137,0,1)');
-			$('.img_bann').css('display', 'flex');
-			$('.img_bann.first_bann').css('background-image', '');
-		}
-	}
-</script>
+
+<script type="quickscript" loading="delayed" src="{{ 'product-info.js' | asset_url }}"></script>
 <style>
     .addon_two_card {
         border-color: #2e2f3c !important;
@@ -183,6 +168,8 @@
             {{ product.variants | json }}
 
 
+
+
                             </script>
                         </variant-selects>
 
@@ -317,7 +304,7 @@
 
             {% if mini_comparison_table %}
                 {% comment %}<div class="overflow-auto mb-8">{% endcomment %}
-                    {% render 'quick-compare', settings: mini_comparison_table.settings %}
+                {% render 'quick-compare', settings: mini_comparison_table.settings %}
                 {% comment %}</div>{% endcomment %}
             {% endif %}
 
@@ -500,25 +487,19 @@
 
 
 
+
+
     </script>
     <script type="application/json" id="ModelJson-{{ section.id }}">
     {{ product.media | where: 'media_type', 'model' | json }}
 
 
 
+
+
     </script>
 {% endunless %}
 
-<script>
-	const input = document.getElementById('Quantity-{{ section.id }}');
-
-	$('.quantity-input__button[name="minus"]').click(function() {
-		if (input.value <= 1) {
-			return;
-		}
-		input.value--;
-	});
-</script>
 
 {% schema %}
 {

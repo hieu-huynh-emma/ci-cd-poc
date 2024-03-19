@@ -1,60 +1,59 @@
 {% assign allFaqs = section.blocks %}
 
-<lazy-stylesheet href="{{ 'featured-faqs.css' | asset_url }}"></lazy-stylesheet>
-
+<link rel="quickscript" loading="visibility" href="{{ 'featured-faqs.css' | asset_url }}"/>
 
 <section id="featured-faqs-section" class="section-container spacing-{{ section.settings.container_spacing }}">
-  <div class="section-chassis page-boundary">
-    {% render 'section-header' %}
+    <div class="section-chassis page-boundary">
+        {% render 'section-header' %}
 
-    <lazy-component size="md">
-      <div>
-        <ul class="faqs">
-          {% for block in allFaqs %}
-            <li class="faq">
-              <div class="faq__header">
-                <h3 class="faq__question">{{ block.settings.title }}</h3>
-                <svg class="faq__icon" width="24" height="14" viewBox="0 0 24 14" fill="none"
-                     xmlns="http://www.w3.org/2000/svg">
-                  <path
-                      d="M11.9451 13.8281C11.3326 13.8288 10.7495 13.5671 10.3452 13.1103L1.26707 2.85032C0.670403 2.14307 0.75036 1.09157 1.44735 0.481822C2.14433 -0.127928 3.20339 -0.0724277 3.83249 0.606322L11.7709 9.57782C11.8146 9.62732 11.878 9.65657 11.9451 9.65657C12.0123 9.65657 12.0749 9.62807 12.1194 9.57782L20.0578 0.606322C20.4561 0.133822 21.0806 -0.0866778 21.6901 0.0295722C22.2996 0.145822 22.7967 0.581573 22.9906 1.16657C23.1844 1.75232 23.0441 2.39657 22.624 2.84957L13.5488 13.1058C13.1437 13.5641 12.5599 13.8266 11.9459 13.8273L11.9451 13.8281Z"
-                      fill="#2E2F3C"
-                  />
-                </svg>
-              </div>
+        {% comment %}<lazy-component size="md">{% endcomment %}
+        <div>
+            <ul class="faqs">
+                {% for block in allFaqs %}
+                    <li class="faq">
+                        <div class="faq__header">
+                            <h3 class="faq__question">{{ block.settings.title }}</h3>
+                            <svg class="faq__icon" width="24" height="14" viewBox="0 0 24 14" fill="none"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                        d="M11.9451 13.8281C11.3326 13.8288 10.7495 13.5671 10.3452 13.1103L1.26707 2.85032C0.670403 2.14307 0.75036 1.09157 1.44735 0.481822C2.14433 -0.127928 3.20339 -0.0724277 3.83249 0.606322L11.7709 9.57782C11.8146 9.62732 11.878 9.65657 11.9451 9.65657C12.0123 9.65657 12.0749 9.62807 12.1194 9.57782L20.0578 0.606322C20.4561 0.133822 21.0806 -0.0866778 21.6901 0.0295722C22.2996 0.145822 22.7967 0.581573 22.9906 1.16657C23.1844 1.75232 23.0441 2.39657 22.624 2.84957L13.5488 13.1058C13.1437 13.5641 12.5599 13.8266 11.9459 13.8273L11.9451 13.8281Z"
+                                        fill="#2E2F3C"
+                                />
+                            </svg>
+                        </div>
 
-              {% case block.type %}
-                {% when 'pdf' %}
-                 <div class="faq__answer iframe-container">
-                   <iframe
-                       id="pdf-iframe"
-                       src="{{ block.settings.source }}"
-                       frameborder="0"
-                       width="100%"
-                       height="100%"
-                       allow="fullscreen"
-                   >
-                   </iframe>
-                 </div>
-                {% else %}
-                  <div class="faq__answer shopify-richtext">
-                    {{ block.settings.content }}
-                  </div>
-              {% endcase %}
+                        {% case block.type %}
+                            {% when 'pdf' %}
+                                <div class="faq__answer iframe-container">
+                                    <iframe
+                                            id="pdf-iframe"
+                                            src="{{ block.settings.source }}"
+                                            frameborder="0"
+                                            width="100%"
+                                            height="100%"
+                                            allow="fullscreen"
+                                    >
+                                    </iframe>
+                                </div>
+                            {% else %}
+                                <div class="faq__answer shopify-richtext">
+                                    {{ block.settings.content }}
+                                </div>
+                        {% endcase %}
 
-            </li>
-
-
+                    </li>
 
 
-            {% unless forloop.last %}<span class="separator"></span>{% endunless -%}
-          {% endfor %}
-        </ul>
-      </div>
 
-      <script type="quickscript" loading="visibility" src="{{ 'featured-faqs.js' | asset_url }}"></script>
-    </lazy-component>
-  </div>
+
+                    {% unless forloop.last %}<span class="separator"></span>{% endunless -%}
+                {% endfor %}
+            </ul>
+        </div>
+
+        <script type="quickscript" loading="visibility" src="{{ 'featured-faqs.js' | asset_url }}"></script>
+        {% comment %}</lazy-component>{% endcomment %}
+    </div>
 
 </section>
 
