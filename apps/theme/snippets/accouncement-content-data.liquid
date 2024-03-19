@@ -23,7 +23,7 @@
        <li class="splide__slide">
         <div class="anno-content ">
           <p class="anno-text">
-            
+
             {{ block.settings.text | remove: "<p>" | remove: "</p>" }}
           </p>
 
@@ -35,11 +35,11 @@
                 </path>
               </svg>
             </div>
-            <lazy-script src="{{ 'announcement-bar.js' | asset_url }}"></lazy-script>
+            <script type="quickscript" loading="visibility" src="{{ 'announcement-bar.js' | asset_url }}"></script>
           {% endif %}
         </div>
        </li>
-              
+
       {% endfor %}
          </ul>
          </div>

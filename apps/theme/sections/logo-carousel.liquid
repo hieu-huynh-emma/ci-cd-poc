@@ -4,6 +4,7 @@
     section.logo-carousel {
         min-height: 250px;
     }
+
     @media screen and (min-width: 769px) {
         section.logo-carousel {
             min-height: 350px;
@@ -11,46 +12,51 @@
     }
 </style>
 
-<link is="delay-stylesheet" href="{{ 'logo-carousel.css' | asset_url }}">
+<link rel="stylesheet" href="{{ 'logo-carousel.css' | asset_url }}">
 
 <section id="{{ section.id }}" class="logo-carousel section-container sm md:lg">
-  <div class="section-chassis page-boundary">
-    <div class="section-header">
-      <h3 class="heading-3 text-center text-primary font-inter font-semibold">{{ section.settings.heading }}</h3>
-      <p class="award-name"></p>
-    </div>
-
-    <lazy-component>
-      <template>
-        <div class="awards splide">
-          {% render 'splide-arrows' %}
-          <div class="splide__track">
-            <ul class="splide__list">
-              {%- for block in awards -%}
-                <li
-                    class="splide__slide" data-quote="{{ block.settings.quote | escape }}"
-                    data-heading="{{ block.settings.heading | escape }}"
-                >
-                  {% capture icon %}
-                    {{ block.settings.icon | image_url: width: 1080 | image_tag }}
-                  {% endcapture %}
-
-                  {% if block.settings.link %}
-                    <a href="{{ block.settings.link }}" target="_blank" class="awards__item">
-                      {{ icon }}
-                    </a>
-                  {% else %}
-                    <div class="awards__item">{{ icon }}</div>
-                  {% endif %}
-                </li>
-              {%- endfor -%}
-            </ul>
-          </div>
+    <div class="section-chassis page-boundary">
+        <div class="section-header">
+            <h3 class="heading-3 text-center text-primary font-inter font-semibold">{{ section.settings.heading }}</h3>
+            <p class="award-name"></p>
         </div>
-      </template>
-      <lazy-script manual src="{{ 'logo-carousel.js' | asset_url }}"></lazy-script>
-    </lazy-component>
-  </div>
+
+        <div class="awards splide">
+            {% render 'splide-arrows' %}
+            <div class="splide__track">
+                <ul class="splide__list">
+                    {%- for block in awards -%}
+                        <li
+                                class="splide__slide" data-quote="{{ block.settings.quote | escape }}"
+                                data-heading="{{ block.settings.heading | escape }}"
+                        >
+                            {% capture icon %}
+                                <img
+                                        src="{{ block.settings.icon | image_url: width: 100 }}"
+                                        data-src="{{ block.settings.icon | image_url: width: 1080 }}"
+                                        data-sizes="auto"
+                                        alt="{{ block.settings.icon.alt }}"
+                                        width="200"
+                                        height="200"
+                                        class="lazyload"
+                                />
+                            {% endcapture %}
+
+                            {% if block.settings.link %}
+                                <a href="{{ block.settings.link }}" target="_blank" class="awards__item">
+                                    {{ icon }}
+                                </a>
+                            {% else %}
+                                <div class="awards__item">{{ icon }}</div>
+                            {% endif %}
+                        </li>
+                    {%- endfor -%}
+                </ul>
+            </div>
+        </div>
+
+        <script type="quickscript" loading="visibility" src="{{ 'logo-carousel.js' | asset_url }}"></script>
+    </div>
 </section>
 
 {% schema %}

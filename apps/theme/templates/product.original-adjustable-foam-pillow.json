@@ -1,83 +1,5 @@
 {
   "sections": {
-    "affiliate-banners": {
-      "type": "affiliate-banners",
-      "blocks": {
-        "f5f456c7-b29a-4f74-826f-648e09f5b1cd": {
-          "type": "affiliate",
-          "settings": {
-            "heading": "sleepopolis",
-            "logo": "shopify:\/\/shop_images\/Sleepopolis_Logo_Horizontal.png",
-            "badge": "shopify:\/\/shop_images\/Sleepopolis_Logo.png",
-            "message": "<p>Get extra 5% Off with code: <strong>SLEEPOPOLIS<\/strong> 🔥<\/p>",
-            "background_color": "#ffdeb7",
-            "text_color": "#2e2f3c",
-            "url": ""
-          }
-        },
-        "ff4c88cb-2bb7-4c5f-a1ce-17e0a4b07120": {
-          "type": "affiliate",
-          "settings": {
-            "heading": "sleep_foundation",
-            "message": "<p>Get extra 5% Off with code: <strong>SF5<\/strong> 🔥<\/p>",
-            "background_color": "#ffdeb7",
-            "text_color": "#2e2f3c",
-            "url": ""
-          }
-        },
-        "0e5ad842-30da-4046-bab8-46b406facf93": {
-          "type": "affiliate",
-          "settings": {
-            "heading": "top_10",
-            "logo": "shopify:\/\/shop_images\/Top_10_Affiliate_Logo.png",
-            "message": "<p>Get extra 5% off with code <strong>TOP10<\/strong> 🔥<\/p>",
-            "background_color": "#ffdeb7",
-            "text_color": "#2e2f3c",
-            "url": ""
-          }
-        },
-        "897cf01f-830c-4b3b-af59-919c6709b1c2": {
-          "type": "affiliate",
-          "settings": {
-            "heading": "mattress_clarity",
-            "message": "<p>Get extra 5% off with discount code: <strong>CLARITY <\/strong>🔥<\/p>",
-            "background_color": "#ffdeb7",
-            "text_color": "#2e2f3c",
-            "url": ""
-          }
-        },
-        "b9f8c510-6b61-4237-a924-eb36e660adf2": {
-          "type": "affiliate",
-          "settings": {
-            "heading": "mattress_nerd",
-            "message": "<p>Get extra 5% off with discount code: <strong>NERD <\/strong>🔥<\/p>",
-            "background_color": "#ffdeb7",
-            "text_color": "#2e2f3c",
-            "url": ""
-          }
-        },
-        "9f4c3789-5cec-4f6b-abb6-ab8a7f54484b": {
-          "type": "affiliate",
-          "settings": {
-            "heading": "naplab",
-            "message": "<p>Get extra 5% off with discount code: <strong>NAPLAB <\/strong>🔥<\/p>",
-            "background_color": "#ffdeb7",
-            "text_color": "#2e2f3c",
-            "url": ""
-          }
-        }
-      },
-      "block_order": [
-        "f5f456c7-b29a-4f74-826f-648e09f5b1cd",
-        "ff4c88cb-2bb7-4c5f-a1ce-17e0a4b07120",
-        "0e5ad842-30da-4046-bab8-46b406facf93",
-        "897cf01f-830c-4b3b-af59-919c6709b1c2",
-        "b9f8c510-6b61-4237-a924-eb36e660adf2",
-        "9f4c3789-5cec-4f6b-abb6-ab8a7f54484b"
-      ],
-      "settings": {
-      }
-    },
     "product-info": {
       "type": "product-info",
       "blocks": {
@@ -312,49 +234,82 @@
       "settings": {
       }
     },
-    "mattress-layers-static": {
-      "type": "mattress-layers-static",
+    "mattress-layers": {
+      "type": "mattress-layers",
       "blocks": {
-        "4441c420-9648-469d-9fb2-bf8dbb9cf6ba": {
-          "type": "layer_item",
+        "cover_layer_YyDLNp": {
+          "type": "cover_layer",
           "settings": {
+            "image": "shopify:\/\/shop_images\/Foam_pillow_1.png",
             "title": "Ultradry cover",
-            "content": "The cover's UltraDry technology rapidly wicks away moisture, ensuring the perfect cool, dry sleep."
+            "content": "The cover's UltraDry technology rapidly wicks away moisture, ensuring the perfect cool, dry sleep.",
+            "gutter": 5,
+            "bullet_gutter": 1
           }
         },
-        "59e413e9-711c-44be-93cc-ae3ef732f1aa": {
-          "type": "layer_item",
+        "internal_layer_MGmjBC": {
+          "type": "internal_layer",
           "settings": {
+            "image": "shopify:\/\/shop_images\/Foam_pillow_2.png",
             "title": "Hypergel Memory Foam",
-            "content": "Hypergel memory foam is an innovation that gives you all the head support you need without compromising on comfort."
+            "content": "Hypergel memory foam is an innovation that gives you all the head support you need without compromising on comfort.",
+            "is_thin": true,
+            "gutter": 5,
+            "bullet_gutter": 1
           }
         },
-        "1f8f3f58-56d9-466a-ad90-5693c0106536": {
-          "type": "layer_item",
+        "internal_layer_mA8t6j": {
+          "type": "internal_layer",
           "settings": {
+            "image": "shopify:\/\/shop_images\/Foam_pillow_3.png",
             "title": "The soft foam that feels like a cloud",
-            "content": "Heavenly sleeping climate thanks to breathable Airgocell® foam. The softest layer of the three."
+            "content": "Heavenly sleeping climate thanks to breathable Airgocell® foam. The softest layer of the three.",
+            "is_thin": false,
+            "gutter": 5,
+            "bullet_gutter": 27
           }
         },
-        "83e232b6-cdd2-42ff-a087-f04a0c0b6749": {
-          "type": "layer_item",
+        "internal_layer_dXtXJJ": {
+          "type": "internal_layer",
           "settings": {
+            "image": "shopify:\/\/shop_images\/Foam_pillow_4.png",
             "title": "Visco-adaptive foam",
-            "content": "The visco-elastic memory foam distributes pressure optimally. It's the Original Pillow's secret weapon for keeping you comfortable, whatever your position."
+            "content": "The visco-elastic memory foam distributes pressure optimally. It's the Original Pillow's secret weapon for keeping you comfortable, whatever your position.",
+            "is_thin": false,
+            "gutter": 2,
+            "bullet_gutter": 35
+          }
+        },
+        "base_layer_g678Uw": {
+          "type": "base_layer",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Foam_pillow_5.png",
+            "title": "Ultradry cover",
+            "content": "The cover's UltraDry technology rapidly wicks away moisture, ensuring the perfect cool, dry sleep.",
+            "gutter": 2,
+            "bullet_gutter": 50
+          }
+        },
+        "shadow_TWYLez": {
+          "type": "shadow",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Foam_pillow_sh.png"
           }
         }
       },
       "block_order": [
-        "4441c420-9648-469d-9fb2-bf8dbb9cf6ba",
-        "59e413e9-711c-44be-93cc-ae3ef732f1aa",
-        "1f8f3f58-56d9-466a-ad90-5693c0106536",
-        "83e232b6-cdd2-42ff-a087-f04a0c0b6749"
+        "cover_layer_YyDLNp",
+        "internal_layer_MGmjBC",
+        "internal_layer_mA8t6j",
+        "internal_layer_dXtXJJ",
+        "base_layer_g678Uw",
+        "shadow_TWYLez"
       ],
       "settings": {
-        "heading": "Original Adjustable Foam Pillow - Layer by Layer",
-        "heading_alignment": "start",
+        "wallpaper": "shopify:\/\/shop_images\/orange_1.png",
+        "heading": "Let's take a look under the covers",
+        "heading_alignment": "center",
         "container_spacing": "sm",
-        "image": "shopify:\/\/shop_images\/Foam_Pillow_CA_-_Images-01_1_60ec4d42-4bfa-4c4b-9c70-f1a49f61af93.png",
         "carousel_mode": false
       }
     },
@@ -910,10 +865,9 @@
     }
   },
   "order": [
-    "affiliate-banners",
     "product-info",
     "multimedia-showcase",
-    "mattress-layers-static",
+    "mattress-layers",
     "mattress-firmness",
     "featured-products",
     "social-proof",
