@@ -379,6 +379,8 @@
   z-index: 5;
 
   margin: 10px;
+
+  pointer-events: none;
 }
 
 @media screen and (min-width: 769px) {
@@ -610,6 +612,7 @@ body {
   transition: 500ms;
 
   &--single {
+    gap: 0;
     grid-template-columns: minmax(0, 1fr) minmax(0, 0);
     variant-selects {
       display: none;
