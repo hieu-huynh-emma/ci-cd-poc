@@ -1,95 +1,14 @@
 {
   "sections": {
-    "affiliate-banners": {
-      "type": "affiliate-banners",
-      "blocks": {
-        "f5f456c7-b29a-4f74-826f-648e09f5b1cd": {
-          "type": "affiliate",
-          "settings": {
-            "heading": "sleepopolis",
-            "logo": "shopify:\/\/shop_images\/Sleepopolis_Logo_Horizontal.png",
-            "badge": "shopify:\/\/shop_images\/Sleepopolis_Logo.png",
-            "message": "<p>Get extra 5% Off with code: <strong>SLEEPOPOLIS<\/strong> 🔥<\/p>",
-            "background_color": "#ffdeb7",
-            "text_color": "#2e2f3c",
-            "url": ""
-          }
-        },
-        "ff4c88cb-2bb7-4c5f-a1ce-17e0a4b07120": {
-          "type": "affiliate",
-          "settings": {
-            "heading": "sleep_foundation",
-            "message": "<p>Get extra 5% Off with code: <strong>SF5<\/strong> 🔥<\/p>",
-            "background_color": "#ffdeb7",
-            "text_color": "#2e2f3c",
-            "url": ""
-          }
-        },
-        "0e5ad842-30da-4046-bab8-46b406facf93": {
-          "type": "affiliate",
-          "settings": {
-            "heading": "top_10",
-            "logo": "shopify:\/\/shop_images\/Top_10_Affiliate_Logo.png",
-            "message": "<p>Get extra 5% off with code <strong>TOP10<\/strong> 🔥<\/p>",
-            "background_color": "#ffdeb7",
-            "text_color": "#2e2f3c",
-            "url": ""
-          }
-        },
-        "897cf01f-830c-4b3b-af59-919c6709b1c2": {
-          "type": "affiliate",
-          "settings": {
-            "heading": "mattress_clarity",
-            "message": "<p>Get extra 5% off with discount code: <strong>CLARITY <\/strong>🔥<\/p>",
-            "background_color": "#ffdeb7",
-            "text_color": "#2e2f3c",
-            "url": ""
-          }
-        },
-        "b9f8c510-6b61-4237-a924-eb36e660adf2": {
-          "type": "affiliate",
-          "settings": {
-            "heading": "mattress_nerd",
-            "message": "<p>Get extra 5% off with discount code: <strong>NERD <\/strong>🔥<\/p>",
-            "background_color": "#ffdeb7",
-            "text_color": "#2e2f3c",
-            "url": ""
-          }
-        },
-        "9f4c3789-5cec-4f6b-abb6-ab8a7f54484b": {
-          "type": "affiliate",
-          "settings": {
-            "heading": "naplab",
-            "message": "<p>Get extra 5% off with discount code: <strong>NAPLAB <\/strong>🔥<\/p>",
-            "background_color": "#ffdeb7",
-            "text_color": "#2e2f3c",
-            "url": ""
-          }
-        }
-      },
-      "block_order": [
-        "f5f456c7-b29a-4f74-826f-648e09f5b1cd",
-        "ff4c88cb-2bb7-4c5f-a1ce-17e0a4b07120",
-        "0e5ad842-30da-4046-bab8-46b406facf93",
-        "897cf01f-830c-4b3b-af59-919c6709b1c2",
-        "b9f8c510-6b61-4237-a924-eb36e660adf2",
-        "9f4c3789-5cec-4f6b-abb6-ab8a7f54484b"
-      ],
-      "settings": {
-      }
+    "product-layout": {
+      "type": "product-layout",
+      "settings": {}
     },
-    "product-info": {
-      "type": "product-info",
+    "product-media": {
+      "type": "product-media",
       "blocks": {
-        "yotpo_star_rating": {
-          "type": "yotpo_star_rating",
-          "settings": {
-            "product": "{{product}}",
-            "new_layout": false
-          }
-        },
         "f5f456c7-b29a-4f74-826f-648e09f5b1cd": {
-          "type": "product_media",
+          "type": "item",
           "settings": {
             "image": "shopify:\/\/shop_images\/Untitled_design_5.jpg",
             "full_width": true,
@@ -97,7 +16,7 @@
           }
         },
         "72b3b893-b0bb-44ad-978c-733ee54620a1": {
-          "type": "product_media",
+          "type": "item",
           "settings": {
             "image": "shopify:\/\/shop_images\/AccesoriesUS-MATTRESSPROTECTORImages_vcopy2_1.jpg",
             "full_width": false,
@@ -105,7 +24,7 @@
           }
         },
         "e4cd7962-4d57-4250-8e6e-4c76dd76d6d6": {
-          "type": "product_media",
+          "type": "item",
           "settings": {
             "image": "shopify:\/\/shop_images\/AccesoriesUS-MATTRESSPROTECTORImages_v_1.jpg",
             "full_width": false,
@@ -113,7 +32,7 @@
           }
         },
         "038c8f16-3a84-418c-9ee2-38f53be4a385": {
-          "type": "product_media",
+          "type": "item",
           "settings": {
             "image": "shopify:\/\/shop_images\/Emma-protector-closeup-1_1.jpg",
             "full_width": false,
@@ -121,28 +40,87 @@
           }
         },
         "ae4539f2-6ea2-42a3-a132-a31010570bf1": {
-          "type": "product_media",
+          "type": "item",
           "settings": {
             "image": "shopify:\/\/shop_images\/protector_transparent.png",
             "full_width": false,
             "is_video": false
           }
-        },
-        "0a7cd906-1a13-44a7-bfe8-34d0b6373b48": {
-          "type": "tagline",
-          "disabled": true,
+        }
+      },
+      "block_order": [
+        "f5f456c7-b29a-4f74-826f-648e09f5b1cd",
+        "72b3b893-b0bb-44ad-978c-733ee54620a1",
+        "e4cd7962-4d57-4250-8e6e-4c76dd76d6d6",
+        "038c8f16-3a84-418c-9ee2-38f53be4a385",
+        "ae4539f2-6ea2-42a3-a132-a31010570bf1"
+      ],
+      "settings": {
+        "caption_headline": "Keep your mattress clean and brand new",
+        "caption_content": "Our washable high-quality mattress protector for sensitive sleepers, or simply to take the best care of your mattress!"
+      }
+    },
+    "product-summary": {
+      "type": "product-summary",
+      "blocks": {
+        "yotpo_star_rating": {
+          "type": "yotpo_star_rating",
           "settings": {
-            "text": "Our Best of the Best"
+            "product": "{{product}}",
+            "new_layout": false
+          }
+        }
+      },
+      "block_order": [
+        "yotpo_star_rating"
+      ],
+      "settings": {
+        "title": "Breathable Mattress Protector",
+        "desc": "<p><strong>Say goodbye to spills and stains!<\/strong><\/p><ul><li>AllergyShield® mattress protector for comfortable, dust & allergen-free sleep<\/li><li>Breathable, 100% waterproof guard for your mattress against spills, dirt, and moisture<\/li><li>Stretchable to 13\", perfectly fits our Emma Original Mattress and our Hybrid Comfort Mattress<\/li><li>Easily machine washable<\/li><\/ul>",
+        "disclaimer": ""
+      }
+    },
+    "product-specifications": {
+      "type": "product-specifications",
+      "blocks": {
+        "c388cf85-1af2-4d6a-a985-19da8f6beb0b": {
+          "type": "item",
+          "settings": {
+            "title": "Materials",
+            "content": "<p>- Sneeze- and itch-free AllergyShield® technology<\/p><p>- Breathable, waterproof polyester<\/p>",
+            "product_dimension": false
           }
         },
-        "00f4e92b-5e6c-4ec3-a58d-8079fafaa409": {
-          "type": "badge",
-          "disabled": true,
+        "b10d93d5-1a38-4340-b997-737c94850770": {
+          "type": "item",
           "settings": {
+            "title": "Dimensions",
+            "content": "",
+            "product_dimension": true
           }
         },
+        "361b0dc3-3896-4fb3-9116-255bf53f8858": {
+          "type": "item",
+          "settings": {
+            "title": "Certifications",
+            "content": "<p>OEKO-Tex® 100 Certified<br\/>Class 1 (ZHNO 042008) of OEKO-Tex Standard 100.<\/p><p>This means that the Emma Mattress Protector meets the highest standard and is suitable for babies.<\/p>",
+            "product_dimension": false
+          }
+        }
+      },
+      "block_order": [
+        "c388cf85-1af2-4d6a-a985-19da8f6beb0b",
+        "b10d93d5-1a38-4340-b997-737c94850770",
+        "361b0dc3-3896-4fb3-9116-255bf53f8858"
+      ],
+      "settings": {
+      }
+    },
+    "product-unique-selling-points": {
+      "type": "product-unique-selling-points",
+      "blocks": {
         "05167373-6c53-4bf6-b18f-7cae5ab215d7": {
-          "type": "unique_selling_point",
+          "type": "selling_point",
           "settings": {
             "icon": "shopify:\/\/shop_images\/shipping_truck_db437bec-0f66-475d-9a43-c2bdab9dc26d.png",
             "text": "Free & fast delivery",
@@ -151,7 +129,7 @@
           }
         },
         "e82e034a-8517-497e-b8ef-f81bff8064d2": {
-          "type": "unique_selling_point",
+          "type": "selling_point",
           "settings": {
             "icon": "shopify:\/\/shop_images\/moon.png",
             "text": "60 Night trial",
@@ -160,50 +138,12 @@
           }
         },
         "167def1b-b3fa-4ffb-a44d-34d5942a0c56": {
-          "type": "unique_selling_point",
+          "type": "selling_point",
           "settings": {
             "icon": "shopify:\/\/shop_images\/badge.png",
             "text": "2 Years warranty",
             "content": "<p>Every Emma product is top-notch quality<\/p>",
             "url": "https:\/\/www.emma-sleep.com\/pages\/frequently-asked-questions#warranty"
-          }
-        },
-        "c388cf85-1af2-4d6a-a985-19da8f6beb0b": {
-          "type": "product_specification",
-          "settings": {
-            "title": "Materials",
-            "content": "<p>- Sneeze- and itch-free AllergyShield® technology<\/p><p>- Breathable, waterproof polyester<\/p>",
-            "product_dimension": false
-          }
-        },
-        "b10d93d5-1a38-4340-b997-737c94850770": {
-          "type": "product_specification",
-          "settings": {
-            "title": "Dimensions",
-            "content": "",
-            "product_dimension": true
-          }
-        },
-        "361b0dc3-3896-4fb3-9116-255bf53f8858": {
-          "type": "product_specification",
-          "settings": {
-            "title": "Certifications",
-            "content": "<p>OEKO-Tex® 100 Certified<br\/>Class 1 (ZHNO 042008) of OEKO-Tex Standard 100.<\/p><p>This means that the Emma Mattress Protector meets the highest standard and is suitable for babies.<\/p>",
-            "product_dimension": false
-          }
-        },
-        "e6120535-6438-459e-a4f8-50816d7ab9dc": {
-          "type": "tax",
-          "disabled": true,
-          "settings": {
-            "text": "Incl. 20% Tax"
-          }
-        },
-        "c356b1b7-ae94-4361-890b-5b83d4d27efc": {
-          "type": "stock",
-          "disabled": true,
-          "settings": {
-            "text": "Only few left in stock"
           }
         },
         "809302fb-d0b7-4e84-854b-40031868c836": {
@@ -213,23 +153,22 @@
             "text": "Payment Methods",
             "payment_providers_section": "payment-providers"
           }
-        },
-        "8c61e5e7-7152-452e-88a6-8f61c8afbbfc": {
-          "type": "mini-comparison-table",
-          "disabled": true,
-          "settings": {
-            "badge": "$365",
-            "note": "*For queen sizes only. All prices and information from public sources listed as of May 8, 2023. Information may not reflect updated prices and promotions."
-          }
-        },
-        "cfce0226-3426-4dc5-beec-1c0f5dc15658": {
-          "type": "affirm_widget",
-          "disabled": true,
-          "settings": {
-          }
-        },
+        }
+      },
+      "block_order": [
+        "05167373-6c53-4bf6-b18f-7cae5ab215d7",
+        "e82e034a-8517-497e-b8ef-f81bff8064d2",
+        "167def1b-b3fa-4ffb-a44d-34d5942a0c56",
+        "809302fb-d0b7-4e84-854b-40031868c836"
+      ],
+      "settings": {
+      }
+    },
+    "product-auxiliary": {
+      "type": "product-auxiliary",
+      "blocks": {
         "3d66a516-6f44-40e9-b6c1-53de5855535f": {
-          "type": "upsell_widget",
+          "type": "upsell_widget_old",
           "settings": {
             "title": "Perfect sleep bundle",
             "content": "",
@@ -239,36 +178,9 @@
         }
       },
       "block_order": [
-        "yotpo_star_rating",
-        "f5f456c7-b29a-4f74-826f-648e09f5b1cd",
-        "72b3b893-b0bb-44ad-978c-733ee54620a1",
-        "e4cd7962-4d57-4250-8e6e-4c76dd76d6d6",
-        "038c8f16-3a84-418c-9ee2-38f53be4a385",
-        "ae4539f2-6ea2-42a3-a132-a31010570bf1",
-        "0a7cd906-1a13-44a7-bfe8-34d0b6373b48",
-        "00f4e92b-5e6c-4ec3-a58d-8079fafaa409",
-        "05167373-6c53-4bf6-b18f-7cae5ab215d7",
-        "e82e034a-8517-497e-b8ef-f81bff8064d2",
-        "167def1b-b3fa-4ffb-a44d-34d5942a0c56",
-        "c388cf85-1af2-4d6a-a985-19da8f6beb0b",
-        "b10d93d5-1a38-4340-b997-737c94850770",
-        "361b0dc3-3896-4fb3-9116-255bf53f8858",
-        "e6120535-6438-459e-a4f8-50816d7ab9dc",
-        "c356b1b7-ae94-4361-890b-5b83d4d27efc",
-        "809302fb-d0b7-4e84-854b-40031868c836",
-        "8c61e5e7-7152-452e-88a6-8f61c8afbbfc",
-        "cfce0226-3426-4dc5-beec-1c0f5dc15658",
         "3d66a516-6f44-40e9-b6c1-53de5855535f"
       ],
-      "custom_css": [
-        "h2 > div {display: none;}"
-      ],
       "settings": {
-        "title": "Breathable Mattress Protector",
-        "desc": "<p><strong>Say goodbye to spills and stains!<\/strong><\/p><ul><li>AllergyShield® mattress protector for comfortable, dust & allergen-free sleep<\/li><li>Breathable, 100% waterproof guard for your mattress against spills, dirt, and moisture<\/li><li>Stretchable to 13\", perfectly fits our Emma Original Mattress and our Hybrid Comfort Mattress<\/li><li>Easily machine washable<\/li><\/ul>",
-        "caption_headline": "Keep your mattress clean and brand new",
-        "caption_content": "Our washable high-quality mattress protector for sensitive sleepers, or simply to take the best care of your mattress!",
-        "disclaimer": ""
       }
     },
     "multimedia-showcase": {
@@ -886,8 +798,13 @@
     }
   },
   "order": [
-    "affiliate-banners",
-    "product-info",
+    "product-layout",
+    "product-summary",
+    "product-media",
+    "product-specifications",
+    "product-unique-selling-points",
+    "product-auxiliary",
+
     "multimedia-showcase",
     "mattress-layers-static",
     "mattress-firmness",
