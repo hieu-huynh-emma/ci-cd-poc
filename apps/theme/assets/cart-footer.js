@@ -3,6 +3,7 @@ class CartFooter extends CustomElement {
 	get refs() {
 		return {
 			$checkoutBtn: this.$el.find(`button[name="checkout"]`),
+			$wrapper: this.$el.find('#toc-agreement'),
 			$agreementCheckbox: this.$el.find('#toc-agreement .agreement-checkbox')
 		}
 	}
@@ -10,14 +11,16 @@ class CartFooter extends CustomElement {
 	mounted() {
 		super.mounted();
 
-		const { $agreementCheckbox, $checkoutBtn } = this.refs
+		const { $wrapper, $agreementCheckbox, $checkoutBtn } = this.refs
 
 		$agreementCheckbox.prop('checked', this.agreementChecked)
 		$checkoutBtn.prop('disabled', !this.agreementChecked)
 
-		$agreementCheckbox.click(e => {
-			$checkoutBtn.prop('disabled', !e.target.checked)
-			this.agreementChecked = e.target.checked
+		$wrapper.click(() => {
+			this.agreementChecked = !this.agreementChecked
+
+			$checkoutBtn.prop('disabled', !this.agreementChecked)
+			$agreementCheckbox.prop('checked', this.agreementChecked);
 		})
 	}
 
