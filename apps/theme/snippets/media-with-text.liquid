@@ -1,31 +1,35 @@
 <div class="two-columns-layout{% if settings.inverted %} is-inverted{% endif %}">
-  <div class="media-column">
-    {% case mediaType %}
-      {% when 'image' %}
+    <div class="media-column">
+        {% case mediaType %}
+        {% when 'image' %}
         <img class="lazyload" data-src="{{ mediaSource | image_url: width: 1280 }}" width="1280" alt="">
 
-      {% when 'video' %}
-        {{ mediaSource | video_tag: image_size: '720x', autoplay: true, loop: true, muted: true }}
+        {% when 'video' %}
+            <video class="lazy" playsinline="playsinline" autoplay loop muted preload="metadata"
+                   poster="{{ mediaSource.preview_image | image_url: width: 720 }}">
+                {% for source in mediaSource.sources %}
+                    <source data-src="{{ source.url }}" type="{{ source.mime_type }}" />
+                {% endfor %}
+            </video>
+        {% when 'youtube' %}
+            <iframe
+                    src="https://www.youtube.com/embed/{{ mediaSource.id }}"
+                    allow="autoplay; encrypted-media"
+                    allowfullscreen
+            ></iframe>
+        {% endcase %}
+    </div>
 
-      {% when 'youtube' %}
-        <iframe
-            src="https://www.youtube.com/embed/{{ mediaSource.id }}"
-            allow="autoplay; encrypted-media"
-            allowfullscreen
-        ></iframe>
-    {% endcase %}
-  </div>
+    <div class="content-column">
+        <h2 class="heading-2">{{ settings.heading }}</h2>
+        <p class="lead-statement">
+            {{ settings.content | remove: "<p>" | remove: "</p>" }}
+        </p>
 
-  <div class="content-column">
-    <h2 class="heading-2">{{ settings.heading }}</h2>
-    <p class="lead-statement">
-      {{ settings.content | remove: "<p>" | remove: "</p>" }}
-    </p>
-
-    {% if settings.cta_url != blank %}
-      <a class="btn" href="{{ settings.cta_url }}">
-        {{ settings.cta_text }}
-      </a>
-    {% endif %}
-  </div>
+        {% if settings.cta_url != blank %}
+            <a class="btn" href="{{ settings.cta_url }}">
+                {{ settings.cta_text }}
+            </a>
+        {% endif %}
+    </div>
 </div>
