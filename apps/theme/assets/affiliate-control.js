@@ -119,6 +119,8 @@ class AffiliateAutoCoupon extends AffiliateControl {
 	async applyDiscountCode(code) {
 		await fetch(`/discount/${code}`);
 
+		await ResourceCoordinator.requestVendor('Toastr')
+
 		// Trigger GA event
 		window.dataLayer = window.dataLayer || [];
 		window.dataLayer.push({
