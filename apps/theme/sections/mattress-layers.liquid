@@ -6,7 +6,7 @@
 {% assign shadowLayer = section.blocks | where: 'type', 'shadow' | first %}
 
 
-<link rel="quickscript" loading="visibility" href="{{ 'mattress-layers.css' | asset_url }}">
+{{ 'mattress-layers.css' | asset_url | stylesheet_tag }}
 
 <section id="mattress-layers-section" class="section-container spacing-{{ section.settings.container_spacing }}">
     <div class="section-chassis page-boundary">
@@ -22,27 +22,27 @@
                                     "
                         >
                             <div class="layer-bullet">
-                                <button aria-label="Cover Layer" aria-expanded="true" role="button"
-                                        class="layer-number">1
+                                <button aria-label="Cover Layer" aria-expanded="true" role="button" class="layer-number">1
                                 </button>
                             </div>
                             <div class="layer-photo flex items-center">
-                                {{ coverLayer.settings.image | image_url: width: 1440 | image_tag }}
+                                <img src="{{ coverLayer.settings.image | image_url: width: 1440 }}"
+                                     width="1440" height="320">
                             </div>
                         </li>
                     {% endif %}
 
                     {% for layer in internalLayers %}
-                        <li class="layer-item {% if layer.settings.is_thin %}layer-item--thin{% endif %} internal-layer-item"
-                            style="
-                                    --gutter: {{ layer.settings.gutter }};
-                                    --bullet_gutter: {{ layer.settings.bullet_gutter }}%">
+                        <li class="layer-item {% if layer.settings.is_thin %}layer-item--thin{% endif %} internal-layer-item" style="
+                                --gutter: {{ layer.settings.gutter }};
+                                --bullet_gutter: {{ layer.settings.bullet_gutter }}%">
                             <div class="layer-bullet">
                                 <button aria-label="Layer {{ forloop.index | plus: 1 }}" aria-expanded="true"
                                         role="button" class="layer-number">{{ forloop.index | plus: 1 }}</button>
                             </div>
                             <div class="layer-photo flex items-center">
-                                {{ layer.settings.image | image_url: width: 1440 | image_tag }}
+                                <img src="{{ layer.settings.image | image_url: width: 1440 }}" width="1440"
+                                     height="320">
                             </div>
                         </li>
                     {% endfor %}
@@ -57,14 +57,16 @@
                                     class="layer-number">{{ internalLayers.size | plus: 2 }}</button>
                         </div>
                         <div class="layer-photo flex items-center">
-                            {{ baseLayer.settings.image | image_url: width: 1440 | image_tag }}
+                            <img src="{{ baseLayer.settings.image | image_url: width: 1440 }}" width="1440"
+                                 height="320">
                         </div>
                     </li>
                 {% endif %}
                 {% if shadowLayer %}
                     <li class="layer-item shadow-layer-item">
                         <div class="layer-photo flex items-center">
-                            {{ shadowLayer.settings.image | image_url: width: 1440 | image_tag }}
+                            <img src="{{ shadowLayer.settings.image | image_url: width: 1440 }}" width="1440"
+                                 height="320">
                         </div>
                     </li>
                 {% endif %}

@@ -17,8 +17,12 @@
           }
         }
       },
-      "block_order": ["70d9c3e6-227c-45f4-ad8f-46d64fa8c84a","1a0fef92-d415-41a2-b765-395025fcb612"],
-      "settings": {}
+      "block_order": [
+        "70d9c3e6-227c-45f4-ad8f-46d64fa8c84a",
+        "1a0fef92-d415-41a2-b765-395025fcb612"
+      ],
+      "settings": {
+      }
     },
     "product-media": {
       "type": "product-media",
@@ -96,7 +100,9 @@
           }
         }
       },
-      "block_order": ["yotpo_star_rating"],
+      "block_order": [
+        "yotpo_star_rating"
+      ],
       "settings": {
         "title": "",
         "desc": "<p><strong>Enjoy the best value for our essentials<\/strong><\/p><ul><li>40% discount on our 10-inch Emma Original<\/li><li>40% discount on 2 Original Adjustable Foam Pillows<\/li><li>40% discount on our Emma Breathable Mattress Protector<\/li><\/ul>",
@@ -111,8 +117,7 @@
           "settings": {
             "title": "Materials",
             "content": "<p>Emma smoothly combines high-quality materials to create a dream-like mattress that conforms to every body type. Through the combination of our extensive research and advanced foam technology, Emma offers the comfiest sleep possible. Emma mattresses offer comfort point-elastic caving that enables an ideal and unique fit for your body. As a result, your spine stays straight while at the same time offering you the necessary amount of support and comfort.<\/p><ol><li><\/li><\/ol>",
-            "product_dimension": false,
-            "product_dimension_height": ""
+            "product_dimension": false
           }
         },
         "b10d93d5-1a38-4340-b997-737c94850770": {
@@ -120,8 +125,7 @@
           "settings": {
             "title": "Dimensions",
             "content": "",
-            "product_dimension": true,
-            "product_dimension_height": ""
+            "product_dimension": true
           }
         },
         "361b0dc3-3896-4fb3-9116-255bf53f8858": {
@@ -129,8 +133,7 @@
           "settings": {
             "title": "Certifications",
             "content": "<p>Our top-of-the-line foams are all CertiPUR-US® certified, meaning, they are made without any ozone-depleting chemicals and safe from VOCs, formaldehyde, and phthalates.<\/p>",
-            "product_dimension": false,
-            "product_dimension_height": ""
+            "product_dimension": false
           }
         }
       },
@@ -139,7 +142,8 @@
         "b10d93d5-1a38-4340-b997-737c94850770",
         "361b0dc3-3896-4fb3-9116-255bf53f8858"
       ],
-      "settings": {}
+      "settings": {
+      }
     },
     "product-unique-selling-points": {
       "type": "product-unique-selling-points",
@@ -171,7 +175,7 @@
         "809302fb-d0b7-4e84-854b-40031868c836": {
           "type": "payment_providers",
           "settings": {
-            "icon": "shopify://shop_images/MicrosoftTeams-image_12.png",
+            "icon": "shopify:\/\/shop_images\/MicrosoftTeams-image_12.png",
             "text": "Payment Methods",
             "payment_providers_section": "payment-providers"
           }
@@ -183,7 +187,8 @@
         "167def1b-b3fa-4ffb-a44d-34d5942a0c56",
         "809302fb-d0b7-4e84-854b-40031868c836"
       ],
-      "settings": {}
+      "settings": {
+      }
     },
     "product-auxiliary": {
       "type": "product-auxiliary",
@@ -197,11 +202,12 @@
           }
         }
       },
-      "block_order": ["805e46e0-28b9-48bd-9c5f-07434863e3ea"],
-      "settings": {}
+      "block_order": [
+        "805e46e0-28b9-48bd-9c5f-07434863e3ea"
+      ],
+      "settings": {
+      }
     },
-
-
     "multimedia-showcase": {
       "type": "multimedia-showcase",
       "blocks": {
@@ -869,7 +875,6 @@
     "product-specifications",
     "product-unique-selling-points",
     "product-auxiliary",
-
     "multimedia-showcase",
     "mattress-layers",
     "mattress-firmness",

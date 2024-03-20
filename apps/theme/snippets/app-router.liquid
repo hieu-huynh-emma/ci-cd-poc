@@ -12,6 +12,10 @@
             assign pageStyleFile = 'static-page.css'
         else
     endcase
+
+    if template contains 'product'
+        assign pageStyleFile = 'revamp-product.css'
+    endif
 %}
 
 {% if pageStyleFile %}

@@ -15,7 +15,18 @@
                     | video_tag: class: 'hosted-video', width: '100%', controls: false, autoplay: true, loop: true
                     }}
                 {% else %}
-                    {{ leadItem.settings.image | image_url: width: 808, height: 486 | image_tag: class: "image-item", loading: "eager" }}
+                    <img
+                            class="image-item"
+                            src="{{ leadItem.settings.image | image_url: width: 808, height: 486 }}"
+                            loading="lazy"
+                    >
+                    {% if leadItem.settings.award %}
+                        <img
+                                class="image-award"
+                                src="{{ leadItem.settings.award | image_url: width: 200, height: 200 }}"
+                                loading="lazy"
+                        >
+                    {% endif %}
                 {% endif %}
             </div>
         </div>
@@ -36,7 +47,18 @@
                         | video_tag: class: 'hosted-video', width: '100%', controls: false, autoplay: true, loop: true
                         }}
                     {% else %}
-                        {{ block.settings.image | image_url: width: 808, height: 486 | image_tag: class: "image-item" }}
+                        <img
+                                class="image-item"
+                                src="{{ block.settings.image | image_url: width: 808, height: 486 }}"
+                                loading="lazy"
+                        >
+                        {% if block.settings.award %}
+                            <img
+                                    class="image-award"
+                                    src="{{ block.settings.award | image_url: width: 200, height: 200 }}"
+                                    loading="lazy"
+                            >
+                        {% endif %}
                     {% endif %}
                 </div>
             </div>
@@ -54,7 +76,17 @@
                             {% if item.settings.is_video and item.settings.hosted_video != blank %}
                                 {{ item.settings.hosted_video | video_tag: class: 'hosted-video', width: '100%', controls: false, autoplay: true, loop: true }}
                             {% else %}
-                                {{ item.settings.image | image_url: width: 808, height: 486 | image_tag }}
+                                <img
+                                        src="{{ item.settings.image | image_url: width: 808, height: 486 }}"
+                                        loading="lazy"
+                                >
+                                {% if item.settings.award %}
+                                    <img
+                                            class="image-award"
+                                            src="{{ item.settings.award | image_url: width: 80, height: 80 }}"
+                                            loading="lazy"
+                                    >
+                                {% endif %}
                             {% endif %}
                         </div>
                     {% endfor %}
@@ -94,33 +126,33 @@
 </div>
 
 <script>
-  if (document.readyState === "complete") {
-    initProductMedia();
-  } else {
-    window.addEventListener("load", initProductMedia);
-  }
+	if (document.readyState === "complete") {
+		initProductMedia();
+	} else {
+		window.addEventListener("load", initProductMedia);
+	}
 
-  async function initProductMedia() {
-    await ResourceCoordinator.requestVendor("Splide");
+	async function initProductMedia() {
+		await ResourceCoordinator.requestVendor('Splide')
 
-    const main = new Splide("#product-media #main-carousel", {
-      type: "fade",
-      rewind: true,
-      pagination: true,
-      arrows: true,
-    });
-    // const thumbnails = new Splide("#product-media #thumbnail-carousel", {
-    //     fixedWidth: 100,
-    //     gap: 10,
-    //     rewind: true,
-    //     pagination: false,
-    //     isNavigation: true,
-    // });
+		const main = new Splide("#product-media #main-carousel", {
+			type: "fade",
+			rewind: true,
+			pagination: true,
+			arrows: true
+		});
+		// const thumbnails = new Splide("#product-media #thumbnail-carousel", {
+		//     fixedWidth: 100,
+		//     gap: 10,
+		//     rewind: true,
+		//     pagination: false,
+		//     isNavigation: true,
+		// });
 
-    // main.sync(thumbnails);
-    main.mount();
-    // thumbnails.mount();
-  }
+		// main.sync(thumbnails);
+		main.mount();
+		// thumbnails.mount();
+	}
 </script>
 
 {% schema %}
