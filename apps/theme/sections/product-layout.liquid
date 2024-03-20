@@ -43,15 +43,7 @@
     <div class="product-info-wrapper page-boundary">
         <div id="product-viewer">
             <div class="promotion-overlay">
-                {% if badges.size %}
-                    <div class="product-badges">
-                        {% for badge in badges %}
-                            <div class="product-badge">
-                                <img src="{{ badge.settings.photo | image_url: height: 108 }}" alt="">
-                            </div>
-                        {% endfor %}
-                    </div>
-                {% endif %}
+                <template id="product-badges-placeholder"></template>
 
                 {% if campaignTeaser %}
                     <div class="campaign-teaser">
@@ -246,6 +238,9 @@
         [
             {
                 "sectionId": "product-summary"
+            },
+            {
+                "sectionId": "product-badges"
             },
             {
                 "sectionId": "product-media"

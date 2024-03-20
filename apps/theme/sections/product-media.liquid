@@ -126,33 +126,33 @@
 </div>
 
 <script>
-  if (document.readyState === "complete") {
-    initProductMedia();
-  } else {
-    window.addEventListener("load", initProductMedia);
-  }
+	if (document.readyState === "complete") {
+		initProductMedia();
+	} else {
+		window.addEventListener("load", initProductMedia);
+	}
 
-  async function initProductMedia() {
-    await ResourceCoordinator.requestVendor("Splide");
+	async function initProductMedia() {
+		await ResourceCoordinator.requestVendor('Splide')
 
-    const main = new Splide("#product-media #main-carousel", {
-      type: "fade",
-      rewind: true,
-      pagination: true,
-      arrows: true,
-    });
-    // const thumbnails = new Splide("#product-media #thumbnail-carousel", {
-    //     fixedWidth: 100,
-    //     gap: 10,
-    //     rewind: true,
-    //     pagination: false,
-    //     isNavigation: true,
-    // });
+		const main = new Splide("#product-media #main-carousel", {
+			type: "fade",
+			rewind: true,
+			pagination: true,
+			arrows: true
+		});
+		// const thumbnails = new Splide("#product-media #thumbnail-carousel", {
+		//     fixedWidth: 100,
+		//     gap: 10,
+		//     rewind: true,
+		//     pagination: false,
+		//     isNavigation: true,
+		// });
 
-    // main.sync(thumbnails);
-    main.mount();
-    // thumbnails.mount();
-  }
+		// main.sync(thumbnails);
+		main.mount();
+		// thumbnails.mount();
+	}
 </script>
 
 {% schema %}
