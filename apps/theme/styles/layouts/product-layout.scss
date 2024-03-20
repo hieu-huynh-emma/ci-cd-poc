@@ -611,18 +611,18 @@ body {
   align-items: flex-end;
   transition: 500ms;
 
+  variant-selects {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
   &--single {
     gap: 0;
     grid-template-columns: minmax(0, 1fr) minmax(0, 0);
     variant-selects {
       display: none;
     }
-  }
-
-  variant-selects {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
   }
 }
 

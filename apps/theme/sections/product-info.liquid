@@ -21,7 +21,6 @@
 
 <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
 
-<script type="quickscript" loading="delayed" src="{{ 'product-info.js' | asset_url }}"></script>
 <style>
     .addon_two_card {
         border-color: #2e2f3c !important;
@@ -166,6 +165,7 @@
 
                             <script type="application/json">
             {{ product.variants | json }}
+
 
 
 
@@ -489,9 +489,11 @@
 
 
 
+
     </script>
     <script type="application/json" id="ModelJson-{{ section.id }}">
     {{ product.media | where: 'media_type', 'model' | json }}
+
 
 
 

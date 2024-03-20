@@ -8,18 +8,18 @@
 <link rel="stylesheet" href="{{ 'product-layout.css' | asset_url }}" />
 
 <script>
-	document.addEventListener('DOMContentLoaded', () => {
-		const schema = JSON.parse($('#ProductLayoutSchema--JSON').text());
-		const templateId = "{{ section.id }}".split('__')[0];
+  document.addEventListener("DOMContentLoaded", () => {
+    const schema = JSON.parse($("#ProductLayoutSchema--JSON").text());
+    const templateId = "{{ section.id }}".split("__")[0];
 
-		schema.forEach(({ sectionId, blockId }) => {
-			const $section = $(`#shopify-section-${templateId}__${sectionId}${blockId ? ` #${blockId}` : ''}`);
+    schema.forEach(({ sectionId, blockId }) => {
+      const $section = $(`#shopify-section-${templateId}__${sectionId}${blockId ? ` #${blockId}` : ""}`);
 
-			const $placeholder = $(`#product-layout #${sectionId}${blockId ? `-block-${blockId}` : ''}-placeholder`);
+      const $placeholder = $(`#product-layout #${sectionId}${blockId ? `-block-${blockId}` : ""}-placeholder`);
 
-			$placeholder.replaceWith($section.removeClass('hidden').detach());
-		});
-	});
+      $placeholder.replaceWith($section.removeClass("hidden").detach());
+    });
+  });
 </script>
 
 <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
@@ -113,6 +113,7 @@
 
                             <script type="application/json">
                                 {{ product.variants | json }}
+
 
 
 
@@ -228,9 +229,11 @@
 {% unless product == empty %}
     <script type="application/json" id="ProductJson-{{ section.id }}">
       {{ product | json }}
+
     </script>
     <script type="application/json" id="ModelJson-{{ section.id }}">
       {{ product.media | where: 'media_type', 'model' | json }}
+
     </script>
     <script type="application/json" id="ProductLayoutSchema--JSON">
         [
@@ -253,17 +256,6 @@
         ]
     </script>
 {% endunless %}
-
-<script>
-	const input = document.getElementById('Quantity-{{ section.id }}');
-
-	$('.quantity-input__button[name="minus"]').click(function() {
-		if (input.value <= 1) {
-			return;
-		}
-		input.value--;
-	});
-</script>
 
 {% schema %}
 {
