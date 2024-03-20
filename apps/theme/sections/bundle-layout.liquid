@@ -1,0 +1,296 @@
+{%- assign current_variant = product.selected_or_first_available_variant -%}
+{%- assign compare_at_price = current_variant.compare_at_price -%}
+{%- assign price = current_variant.price -%}
+{% assign affirm_widget = section.blocks | where: 'type', 'affirm_widget' | first %}
+{% assign mini_comparison_table = section.blocks | where: 'type', 'mini-comparison-table' | first %}
+{% assign appBlock = section.blocks | where: 'type', '@app' | first %}
+
+<link rel="stylesheet" href="{{ 'product-layout.css' | asset_url }}" />
+<link rel="stylesheet" href="{{ 'bundle-layout.css' | asset_url }}" />
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const schema = JSON.parse($("#ProductLayoutSchema--JSON").text());
+    const templateId = "{{ section.id }}".split("__")[0];
+
+    schema.forEach(({ sectionId, blocks = [] }) => {
+      const $section = $(`#shopify-section-${templateId}__${sectionId}`);
+
+      const $sectionPlaceholder = $(`#product-layout #${sectionId}-placeholder`);
+
+      $sectionPlaceholder.replaceWith($section.removeClass("hidden").detach());
+
+      if (blocks.length > 0) {
+        blocks.forEach(({ blockId, commands }) => {
+          const [insertCommand, targetEl] = commands;
+
+          $(`#${blockId}`).detach()[insertCommand]($(`${targetEl}`));
+        });
+      }
+    });
+  });
+</script>
+
+<script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
+
+<div
+        id="product-layout"
+        class="product-layout product-info"
+        data-section-id="{{ section.id }}"
+        data-section-type="bundle"
+        data-enable-history-state="true"
+        data-ajax-enabled="{{ settings.enable_ajax }}"
+>
+    <div class="product-info-wrapper page-boundary">
+        <div id="product-viewer">
+            <div class="promotion-overlay">
+                {% if badges.size %}
+                    <div class="product-badges">
+                        {% for badge in badges %}
+                            <div class="product-badge">
+                                <img src="{{ badge.settings.photo | image_url: height: 108 }}" alt="">
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+
+                {% if campaignTeaser %}
+                    <div class="campaign-teaser">
+                        <h2 class="text-sm font-bold">{{ campaignTeaser.settings.title }}</h2>
+                        <div class="text-xs md:text-sm">
+                            {% render 'rtf-viewer', content: campaignTeaser.settings.content %}
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+
+            <template id="product-media-placeholder"></template>
+        </div>
+
+        <product-form class="right-section text">
+            <template id="product-summary-placeholder"></template>
+
+            <div id="product-form">
+                {% capture form_classes -%}
+                    product-form product-form-{{ section.id }}
+                    {%- if section.settings.enable_payment_button and product.has_only_default_variant %} product-form--payment-button-no-variants {%- endif -%}
+                    {%- if current_variant.available == false %} product-form--variant-sold-out {%- endif -%}
+                {%- endcapture %}
+
+                {% form 'product', product, class: form_classes, novalidate: 'novalidate', data-product-form: '' %}
+                    {% render 'bundle-buy-box', product: product %}
+
+                    {% render 'product-quantity-selector' %}
+
+                    <div
+                            class="product-form__error-message-wrapper product-form__error-message-wrapper--hidden{% if section.settings.enable_payment_button %} product-form__error-message-wrapper--has-payment-button{% endif %}"
+                            data-error-message-wrapper
+                            role="alert"
+                    >
+                        <span class="visually-hidden">{{ 'general.accessibility.error' | t }} </span>
+                        {% include 'icon-error' %}
+                        <span class="product-form__error-message" data-error-message>
+              {{- 'products.product.quantity_minimum_message' | t -}}
+            </span>
+                    </div>
+
+                    <div id="price-{{ section.id }}" class="product__price -mb-1" {{ block.shopify_attributes }}>
+                        {% render 'product-price', variant: current_variant, product: product %}
+                    </div>
+
+                    <div class="installment-widgets mb-4">
+                        {%- if appBlock -%}
+                            {% render appBlock %}
+                        {% endif %}
+
+                        {%- if affirm_widget -%}
+                            <div {{ block.shopify_attributes }}>
+                                {% render 'affirm-widget' %}
+                            </div>
+                        {% endif %}
+                    </div>
+
+                    <div class="product-form__controls-group product-form__controls-group--submit">
+                        <div
+                                class="
+                product-form__item product-form__item--submit
+                {%- if section.settings.enable_payment_button %} product-form__item--payment-button {%- endif -%}
+                {%- if product.has_only_default_variant %} product-form__item--no-variants {%- endif -%}
+              "
+                        >
+                            {% render 'add-to-cart-btn' %}
+
+                            {% if section.settings.enable_payment_button %}
+                                {{ form | payment_button }}
+                            {% endif %}
+                        </div>
+
+                        {% if sold_out_upsell %}
+                            <div
+                                    id="sold-out-upsell"
+                                    class="{% if product.selected_or_first_available_variant.available == true %}hidden{% endif %}"
+                                    data-default="{{ sold_out_upsell.settings.sold_out_upsell_text }}"
+                            >
+                                {% assign variantOutOfStockNotice = product.selected_or_first_available_variant.metafields.accentuate.out_of_stock_notice[shop.locale] %}
+
+                                {% capture outOfStockMsg %}
+                                    <p class="mt-2 mx-1 text-[#F03306] text-[14px] font-semibold">
+                                        {% if variantOutOfStockNotice %}
+                                            {{ variantOutOfStockNotice }}
+                                        {% else %}
+                                            {{ sold_out_upsell.settings.sold_out_upsell_text }}
+                                        {% endif %}
+                                    </p>
+                                {% endcapture %}
+
+                                {% if sold_out_upsell.settings.sold_out_upsell_product != blank %}
+                                    <a class="underline" href="{{ sold_out_upsell.settings.sold_out_upsell_product }}">
+                                        {{ outOfStockMsg }}
+                                    </a>
+                                {% else %}
+                                    {{ outOfStockMsg }}
+                                {% endif %}
+                            </div>
+                        {% endif %}
+
+                        {% if disclaimer %}
+                            <div
+                                    id="product-disclaimer"
+                                    data-default="{{ disclaimer.settings.default_message | remove: "<p>" | remove: "</p>" }}"
+                            >
+                                <p class="mt-2 mx-1 text-center text-[#F03306] text-[14px] font-semibold">
+                                    {% assign variantDisclaimer = product.selected_or_first_available_variant.metafields.accentuate.disclaimer[shop.locale] %}
+                                    {% if variantDisclaimer %}
+                                        {{ variantDisclaimer }}
+                                    {% else %}
+                                        {{ disclaimer.settings.default_message | remove: "<p>" | remove: "</p>" }}
+                                    {% endif %}
+                                </p>
+
+
+                            </div>
+
+                        {% endif %}
+
+                        {% if cta_message %}
+                            <p style="color: {{ cta_message.settings.cta_message_color }}" class="mt-2 mx-1 text-[14px] font-semibold">
+                                {{ cta_message.settings.cta_message }}
+                            </p>
+                        {% endif %}
+                    </div>
+
+                    {% if section.settings.disclaimer != blank %}
+                        <p class="text-center text-scarlet font-semibold text-[14px] italic">
+                            {{ section.settings.disclaimer }}
+                        </p>
+                    {% endif %}
+                {% endform %}
+            </div>
+
+            <template id="product-auxiliary-placeholder"></template>
+
+            <template id="product-unique-selling-points-placeholder"></template>
+
+            <template id="product-specifications-placeholder"></template>
+
+            <p
+                    class="visually-hidden"
+                    data-loader-status
+                    aria-live="assertive"
+                    role="alert"
+                    aria-hidden="true"
+            >
+                {{ 'products.product.loader_label' | t }}
+            </p>
+
+            <button class="visually-hidden" data-add-to-cart></button>
+        </product-form>
+    </div>
+
+
+    {% unless product == empty %}
+        <script type="application/json" id="ProductJson-{{ section.id }}">
+    {{ product | json }}
+		</script>
+        <script type="application/json" id="ModelJson-{{ section.id }}">
+    {{ product.media | where: 'media_type', 'model' | json }}
+		</script>
+        <script type="application/json" id="AccentuateJson-{{ section.id }}">
+            [
+            {% for variant in product.variants %}
+				{
+	          "productId" : "{{ variant.product.id }}",
+	          "variantId": "{{ variant.id }}",
+	          "accentuate": {{ variant.metafields.accentuate | json }}
+				}
+				{% unless forloop.last %},{% endunless -%}
+            {% endfor %}
+            ]
+        </script>
+        <script type="application/json" id="ProductLayoutSchema--JSON">
+            [
+                {
+                    "sectionId": "product-summary"
+                },
+                {
+                    "sectionId": "product-media"
+                },
+                {
+                    "sectionId": "product-unique-selling-points"
+                },
+                {
+                    "sectionId": "product-specifications"
+                },
+                {
+                    "sectionId": "product-auxiliary",
+                    "blocks": [
+                        {
+                            "blockId": "cross-selling-section",
+                            "commands": [
+                                "insertAfter",
+                                "#attribute-configurator"
+                            ]
+                        }
+                    ]
+                }
+            ]
+        </script>
+    {% endunless %}
+
+</div>
+
+{% schema %}
+{
+  "name": "Bundle Layout",
+  "blocks": [
+    {
+      "type": "@app"
+    },
+    {
+      "type": "affirm_widget",
+      "name": "Affirm Widget",
+      "limit": 1
+    },
+    {
+      "type": "campaign_teaser",
+      "limit": 1,
+      "name": "Campaign Teaser",
+      "settings": [
+        {
+          "id": "title",
+          "type": "text",
+          "label": "Title"
+        },
+        {
+          "id": "content",
+          "type": "richtext",
+          "label": "Content"
+        }
+      ]
+    }
+  ],
+  "settings": [
+
+  ]
+}
+{% endschema %}
