@@ -12,12 +12,20 @@
     const schema = JSON.parse($("#ProductLayoutSchema--JSON").text());
     const templateId = "{{ section.id }}".split("__")[0];
 
-    schema.forEach(({ sectionId, blockId }) => {
-      const $section = $(`#shopify-section-${templateId}__${sectionId}${blockId ? ` #${blockId}` : ""}`);
+    schema.forEach(({ sectionId, blocks = [] }) => {
+      const $section = $(`#shopify-section-${templateId}__${sectionId}`);
 
-      const $placeholder = $(`#product-layout #${sectionId}${blockId ? `-block-${blockId}` : ""}-placeholder`);
+      const $sectionPlaceholder = $(`#product-layout #${sectionId}-placeholder`);
 
-      $placeholder.replaceWith($section.removeClass("hidden").detach());
+      $sectionPlaceholder.replaceWith($section.removeClass("hidden").detach());
+
+      if (blocks.length > 0) {
+        blocks.forEach(({ blockId, commands }) => {
+          const [insertCommand, targetEl] = commands;
+
+          $(`#${blockId}`).detach()[insertCommand]($(`${targetEl}`));
+        });
+      }
     });
   });
 </script>
@@ -118,6 +126,9 @@
 
 
 
+
+
+
                             </script>
                         </variant-selects>
 
@@ -202,9 +213,7 @@
                 {% endform %}
             </div>
 
-            <template id="product-auxiliary-block-product-upsell-widget-old-placeholder"></template>
-
-            <template id="product-auxiliary-block-quick-compare-placeholder"></template>
+            <template id="product-auxiliary-placeholder"></template>
 
             <template id="product-unique-selling-points-placeholder"></template>
 
@@ -230,9 +239,15 @@
     <script type="application/json" id="ProductJson-{{ section.id }}">
       {{ product | json }}
 
+
+
+
     </script>
     <script type="application/json" id="ModelJson-{{ section.id }}">
       {{ product.media | where: 'media_type', 'model' | json }}
+
+
+
 
     </script>
     <script type="application/json" id="ProductLayoutSchema--JSON">
@@ -251,7 +266,15 @@
             },
             {
                 "sectionId": "product-auxiliary",
-                "blockId": "product-upsell-widget-old"
+                "blocks": [
+                    {
+                        "blockId": "cross-selling-section",
+                        "commands": [
+                            "insertAfter",
+                            "#attribute-configurator"
+                        ]
+                    }
+                ]
             }
         ]
     </script>
