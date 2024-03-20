@@ -1,4 +1,5 @@
 {% assign uniqueSellingPoints = section.blocks | where: 'type', 'selling_point' %}
+{% assign paymentProvidersBlock = section.blocks | where: 'type', 'payment_providers' | first %}
 
 <link rel="quickscript" loading="delayed" href="{{ 'product-unique-selling-points.css' | asset_url }}">
 
