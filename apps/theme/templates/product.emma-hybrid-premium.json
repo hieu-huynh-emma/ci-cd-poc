@@ -1,157 +1,9 @@
 {
+  "layout": "theme.speed",
   "sections": {
-    "product-info": {
-      "type": "product-info",
-      "blocks": {
-        "yotpo_star_rating": {
-          "type": "yotpo_star_rating",
-          "settings": {
-            "product": "{{product}}",
-            "new_layout": true
-          }
-        },
-        "f5f456c7-b29a-4f74-826f-648e09f5b1cd": {
-          "type": "product_media",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/Hybrid_Premium_front_view_room_render_69c1faf9-3d41-4cd5-a725-7644786c0a18.jpg",
-            "full_width": true,
-            "is_video": false
-          }
-        },
-        "ae4539f2-6ea2-42a3-a132-a31010570bf1": {
-          "type": "product_media",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/IMG_3906_3.jpg",
-            "full_width": false,
-            "is_video": false
-          }
-        },
-        "72b3b893-b0bb-44ad-978c-733ee54620a1": {
-          "type": "product_media",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/IMG_4625.jpg",
-            "full_width": false,
-            "is_video": false
-          }
-        },
-        "038c8f16-3a84-418c-9ee2-38f53be4a385": {
-          "type": "product_media",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/Untitled_design_6.jpg",
-            "full_width": false,
-            "is_video": false
-          }
-        },
-        "e4cd7962-4d57-4250-8e6e-4c76dd76d6d6": {
-          "type": "product_media",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/Untitled_design_7.jpg",
-            "full_width": false,
-            "is_video": false
-          }
-        },
-        "12e2c164-6e6a-42a2-a76a-b4363d4c2c09": {
-          "type": "product_media",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/HybridPremiumlayering_4e8097ba-1c5e-44a4-964f-fa67ee8ae9f5.jpg",
-            "full_width": true,
-            "is_video": false
-          }
-        },
-        "0a7cd906-1a13-44a7-bfe8-34d0b6373b48": {
-          "type": "tagline",
-          "disabled": true,
-          "settings": {
-            "text": "Our Best of the Best"
-          }
-        },
-        "00f4e92b-5e6c-4ec3-a58d-8079fafaa409": {
-          "type": "badge",
-          "disabled": true,
-          "settings": {
-            "heading": ""
-          }
-        },
-        "05167373-6c53-4bf6-b18f-7cae5ab215d7": {
-          "type": "unique_selling_point",
-          "settings": {
-            "icon": "shopify:\/\/shop_images\/shipping_truck_db437bec-0f66-475d-9a43-c2bdab9dc26d.png",
-            "text": "Free delivery",
-            "content": "<p>Free no contact delivery for all orders <\/p><p>Dispatched in : <strong>1-3 Business days<\/strong><br\/><\/p>",
-            "url": ""
-          }
-        },
-        "e82e034a-8517-497e-b8ef-f81bff8064d2": {
-          "type": "unique_selling_point",
-          "settings": {
-            "icon": "shopify:\/\/shop_images\/moon.png",
-            "text": "365 night trial",
-            "content": "<p>Take your time to decide whether or not Emma is for you<\/p>",
-            "url": ""
-          }
-        },
-        "167def1b-b3fa-4ffb-a44d-34d5942a0c56": {
-          "type": "unique_selling_point",
-          "settings": {
-            "icon": "shopify:\/\/shop_images\/badge.png",
-            "text": "10 years warranty",
-            "content": "<p>Every Emma product is top-notch quality<\/p>",
-            "url": ""
-          }
-        },
-        "c388cf85-1af2-4d6a-a985-19da8f6beb0b": {
-          "type": "product_specification",
-          "settings": {
-            "title": "Materials",
-            "content": "<p>Emma smoothly combines high-quality materials to create a dream-like mattress that conforms to every body type. Through the combination of our extensive research and advanced foam technology, Emma offers the comfiest sleep possible. Emma mattresses offer comfort point-elastic caving that enables an ideal and unique fit for your body. As a result, your spine stays straight while at the same time offering you the necessary amount of support and comfort.<\/p><ol><li><\/li><\/ol>",
-            "product_dimension": false
-          }
-        },
-        "b10d93d5-1a38-4340-b997-737c94850770": {
-          "type": "product_specification",
-          "settings": {
-            "title": "Dimensions",
-            "content": "",
-            "product_dimension": true
-          }
-        },
-        "361b0dc3-3896-4fb3-9116-255bf53f8858": {
-          "type": "product_specification",
-          "settings": {
-            "title": "Certifications",
-            "content": "<p>Our top-of-the-line foams are all CertiPUR-US® certified, meaning, they are made without any ozone-depleting chemicals and safe from VOCs, formaldehyde, and phthalates.<\/p>",
-            "product_dimension": false
-          }
-        },
-        "e6120535-6438-459e-a4f8-50816d7ab9dc": {
-          "type": "tax",
-          "disabled": true,
-          "settings": {
-            "text": "Incl. 20% Tax"
-          }
-        },
-        "c356b1b7-ae94-4361-890b-5b83d4d27efc": {
-          "type": "stock",
-          "disabled": true,
-          "settings": {
-            "text": "Only few left in stock"
-          }
-        },
-        "809302fb-d0b7-4e84-854b-40031868c836": {
-          "type": "payment_providers",
-          "settings": {
-            "icon": "shopify:\/\/shop_images\/Icon.png",
-            "text": "Payment Methods",
-            "payment_providers_section": "payment-providers"
-          }
-        },
-        "805e46e0-28b9-48bd-9c5f-07434863e3ea": {
-          "type": "mini-comparison-table",
-          "settings": {
-            "badge": "$798",
-            "note": "*For queen sizes only. All prices and information from public sources listed as of Sept 1, 2023. Information may not reflect updated prices and promotions."
-          }
-        },
+    "product-layout": {
+      "type": "product-layout",
+      "blocks" : {
         "db69a5f3-3790-40d9-a6d7-600831be8f49": {
           "type": "campaign_teaser",
           "settings": {
@@ -163,7 +15,194 @@
           "type": "affirm_widget",
           "settings": {
           }
+        }
+      },
+      "block_order" : [
+        "db69a5f3-3790-40d9-a6d7-600831be8f49",
+        "96da8b87-0101-4f64-84c1-527c401bd11a"
+      ],
+      "settings": {}
+    },
+    "product-media": {
+      "type": "product-media",
+      "blocks": {
+        "f5f456c7-b29a-4f74-826f-648e09f5b1cd": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Hybrid_Premium_front_view_room_render_69c1faf9-3d41-4cd5-a725-7644786c0a18.jpg",
+            "full_width": true,
+            "is_video": false
+          }
         },
+        "ae4539f2-6ea2-42a3-a132-a31010570bf1": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/IMG_3906_3.jpg",
+            "full_width": false,
+            "is_video": false
+          }
+        },
+        "72b3b893-b0bb-44ad-978c-733ee54620a1": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/IMG_4625.jpg",
+            "full_width": false,
+            "is_video": false
+          }
+        },
+        "038c8f16-3a84-418c-9ee2-38f53be4a385": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Untitled_design_6.jpg",
+            "full_width": false,
+            "is_video": false
+          }
+        },
+        "e4cd7962-4d57-4250-8e6e-4c76dd76d6d6": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Untitled_design_7.jpg",
+            "full_width": false,
+            "is_video": false
+          }
+        },
+        "12e2c164-6e6a-42a2-a76a-b4363d4c2c09": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/HybridPremiumlayering_4e8097ba-1c5e-44a4-964f-fa67ee8ae9f5.jpg",
+            "full_width": true,
+            "is_video": false
+          }
+        }
+      },
+      "block_order": [
+        "f5f456c7-b29a-4f74-826f-648e09f5b1cd",
+        "ae4539f2-6ea2-42a3-a132-a31010570bf1",
+        "72b3b893-b0bb-44ad-978c-733ee54620a1",
+        "038c8f16-3a84-418c-9ee2-38f53be4a385",
+        "e4cd7962-4d57-4250-8e6e-4c76dd76d6d6",
+        "12e2c164-6e6a-42a2-a76a-b4363d4c2c09"
+      ],
+      "settings": {
+        "caption_headline": "The perfect comfort & cooling mattress",
+        "caption_content": "The ultimate option for those looking for a perfect night's sleep"
+      }
+    },
+    "product-summary": {
+      "type": "product-summary",
+      "blocks": {
+        "yotpo_star_rating": {
+          "type": "yotpo_star_rating",
+          "settings": {
+            "product": "{{product}}",
+            "new_layout": true
+          }
+        }
+      },
+      "block_order": [
+        "yotpo_star_rating"
+      ],
+      "settings": {
+        "title": "Emma Hybrid Premium",
+        "desc": "<p><strong>Our new best-in-class option for absolute comfort<\/strong><\/p><p>Our newest 14-inch Hybrid Premium mattress provides cooling effect, extra pressure relief and a unique floating sensation for the best deep, restoring sleep you can imagine. <\/p><ul><li>Perfect temperature: heat dissipation & temperature control ensured by our special Thermosync foam<\/li><li>Total motion isolation & extra pressure relief<\/li><li>Highest breathability<\/li><li>7 ergonomic zones for a better support and spinal alignment<\/li><\/ul>",
+        "disclaimer": ""
+      }
+    },
+    "product-specifications": {
+      "type": "product-specifications",
+      "blocks": {
+        "c388cf85-1af2-4d6a-a985-19da8f6beb0b": {
+          "type": "item",
+          "settings": {
+            "title": "Materials",
+            "content": "<p>Emma smoothly combines high-quality materials to create a dream-like mattress that conforms to every body type. Through the combination of our extensive research and advanced foam technology, Emma offers the comfiest sleep possible. Emma mattresses offer comfort point-elastic caving that enables an ideal and unique fit for your body. As a result, your spine stays straight while at the same time offering you the necessary amount of support and comfort.<\/p><ol><li><\/li><\/ol>",
+            "product_dimension": false
+          }
+        },
+        "b10d93d5-1a38-4340-b997-737c94850770": {
+          "type": "item",
+          "settings": {
+            "title": "Dimensions",
+            "content": "",
+            "product_dimension": true
+          }
+        },
+        "361b0dc3-3896-4fb3-9116-255bf53f8858": {
+          "type": "item",
+          "settings": {
+            "title": "Certifications",
+            "content": "<p>Our top-of-the-line foams are all CertiPUR-US® certified, meaning, they are made without any ozone-depleting chemicals and safe from VOCs, formaldehyde, and phthalates.<\/p>",
+            "product_dimension": false
+          }
+        }
+      },
+      "block_order": [
+        "c388cf85-1af2-4d6a-a985-19da8f6beb0b",
+        "b10d93d5-1a38-4340-b997-737c94850770",
+        "361b0dc3-3896-4fb3-9116-255bf53f8858"
+      ],
+      "settings": {
+      }
+    },
+    "product-unique-selling-points": {
+      "type": "product-unique-selling-points",
+      "blocks": {
+        "05167373-6c53-4bf6-b18f-7cae5ab215d7": {
+          "type": "selling_point",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/shipping_truck_db437bec-0f66-475d-9a43-c2bdab9dc26d.png",
+            "text": "Free delivery",
+            "content": "<p>Free no contact delivery for all orders <\/p><p>Dispatched in : <strong>1-3 Business days<\/strong><br\/><\/p>",
+            "url": ""
+          }
+        },
+        "e82e034a-8517-497e-b8ef-f81bff8064d2": {
+          "type": "selling_point",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/moon.png",
+            "text": "365 night trial",
+            "content": "<p>Take your time to decide whether or not Emma is for you<\/p>",
+            "url": ""
+          }
+        },
+        "167def1b-b3fa-4ffb-a44d-34d5942a0c56": {
+          "type": "selling_point",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/badge.png",
+            "text": "10 years warranty",
+            "content": "<p>Every Emma product is top-notch quality<\/p>",
+            "url": ""
+          }
+        },
+        "809302fb-d0b7-4e84-854b-40031868c836": {
+          "type": "payment_providers",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/MicrosoftTeams-image_12.png",
+            "text": "Payment Methods",
+            "payment_providers_section": "payment-providers"
+          }
+        }
+      },
+      "block_order": [
+        "05167373-6c53-4bf6-b18f-7cae5ab215d7",
+        "e82e034a-8517-497e-b8ef-f81bff8064d2",
+        "167def1b-b3fa-4ffb-a44d-34d5942a0c56",
+        "809302fb-d0b7-4e84-854b-40031868c836"
+      ],
+      "settings": {
+      }
+    },
+    "product-auxiliary": {
+      "type": "product-auxiliary",
+      "blocks": {
+        "805e46e0-28b9-48bd-9c5f-07434863e3ea": {
+          "type": "quick_compare",
+          "settings": {
+            "badge": "$798",
+            "note": "*For queen sizes only. All prices and information from public sources listed as of Sept 1, 2023. Information may not reflect updated prices and promotions."
+          }
+        },
+
         "cross_sell_widget_tXLCDN": {
           "type": "cross_sell_widget",
           "settings": {
@@ -171,37 +210,14 @@
         }
       },
       "block_order": [
-        "yotpo_star_rating",
-        "f5f456c7-b29a-4f74-826f-648e09f5b1cd",
-        "ae4539f2-6ea2-42a3-a132-a31010570bf1",
-        "72b3b893-b0bb-44ad-978c-733ee54620a1",
-        "038c8f16-3a84-418c-9ee2-38f53be4a385",
-        "e4cd7962-4d57-4250-8e6e-4c76dd76d6d6",
-        "12e2c164-6e6a-42a2-a76a-b4363d4c2c09",
-        "0a7cd906-1a13-44a7-bfe8-34d0b6373b48",
-        "00f4e92b-5e6c-4ec3-a58d-8079fafaa409",
-        "05167373-6c53-4bf6-b18f-7cae5ab215d7",
-        "e82e034a-8517-497e-b8ef-f81bff8064d2",
-        "167def1b-b3fa-4ffb-a44d-34d5942a0c56",
-        "c388cf85-1af2-4d6a-a985-19da8f6beb0b",
-        "b10d93d5-1a38-4340-b997-737c94850770",
-        "361b0dc3-3896-4fb3-9116-255bf53f8858",
-        "e6120535-6438-459e-a4f8-50816d7ab9dc",
-        "c356b1b7-ae94-4361-890b-5b83d4d27efc",
-        "809302fb-d0b7-4e84-854b-40031868c836",
         "805e46e0-28b9-48bd-9c5f-07434863e3ea",
-        "db69a5f3-3790-40d9-a6d7-600831be8f49",
-        "96da8b87-0101-4f64-84c1-527c401bd11a",
         "cross_sell_widget_tXLCDN"
       ],
       "settings": {
-        "title": "Emma Hybrid Premium",
-        "desc": "<p><strong>Our new best-in-class option for absolute comfort<\/strong><\/p><p>Our newest 14-inch Hybrid Premium mattress provides cooling effect, extra pressure relief and a unique floating sensation for the best deep, restoring sleep you can imagine. <\/p><ul><li>Perfect temperature: heat dissipation & temperature control ensured by our special Thermosync foam<\/li><li>Total motion isolation & extra pressure relief<\/li><li>Highest breathability<\/li><li>7 ergonomic zones for a better support and spinal alignment<\/li><\/ul>",
-        "caption_headline": "The perfect comfort & cooling mattress",
-        "caption_content": "The ultimate option for those looking for a perfect night's sleep",
-        "disclaimer": ""
       }
     },
+
+
     "multimedia-showcase": {
       "type": "multimedia-showcase",
       "blocks": {
@@ -817,7 +833,13 @@
     }
   },
   "order": [
-    "product-info",
+    "product-layout",
+    "product-summary",
+    "product-media",
+    "product-specifications",
+    "product-unique-selling-points",
+    "product-auxiliary",
+
     "multimedia-showcase",
     "mattress-layers",
     "mattress-firmness",
