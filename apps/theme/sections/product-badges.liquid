@@ -3,7 +3,7 @@
     <div class="product-badges">
         {% for badge in badges %}
             <div class="product-badge">
-                {{ badge.settings.photo | image_url: height: 108 | image_tag }}
+                <img src="{{ badge.settings.photo | image_url: height: 108 }}" alt="">
             </div>
         {% endfor %}
     </div>

@@ -158,35 +158,56 @@
             "type": "provider",
             "settings": {
               "icon": "shopify:\/\/shop_images\/american_express.svg",
-              "borderless": true
+              "borderless": false
             }
           },
           "208a3390-fe5c-4b25-bd49-43033b0255bc": {
             "type": "provider",
             "settings": {
-              "icon": "shopify:\/\/shop_images\/discover-payment-method.svg",
-              "borderless": true
+              "icon": "shopify:\/\/shop_images\/koalafi_payment_provider.svg",
+              "borderless": false
             }
           },
           "8b290717-ffcc-44d2-b3b7-8d9aa9fd218c": {
             "type": "provider",
             "settings": {
-              "icon": "shopify:\/\/shop_images\/apple_pay.svg",
-              "borderless": true
+              "icon": "shopify:\/\/shop_images\/klarna_payment_provider.svg",
+              "borderless": false
             }
           },
           "67fd2118-07c0-4e9f-9add-ac3345f71ab7": {
             "type": "provider",
             "settings": {
-              "icon": "shopify:\/\/shop_images\/pay_google.svg",
+              "icon": "shopify:\/\/shop_images\/discover-payment-method.svg",
               "borderless": false
             }
           },
           "886ff182-7e7c-4c45-838d-95b282141dda": {
             "type": "provider",
             "settings": {
+              "icon": "shopify:\/\/shop_images\/apple_pay.svg",
+              "borderless": false
+            }
+          },
+          "7c4a3ccb-c7d3-4f9e-943c-6a77627db676": {
+            "type": "provider",
+            "settings": {
+              "icon": "shopify:\/\/shop_images\/pay_google.svg",
+              "borderless": false
+            }
+          },
+          "5cc0f65d-194c-4342-a2a8-9df48e1f28e8": {
+            "type": "provider",
+            "settings": {
               "icon": "shopify:\/\/shop_images\/shop-pay.svg",
-              "borderless": true
+              "borderless": false
+            }
+          },
+          "c9ee7328-d1dc-4fc1-af3b-3e59fa60b918": {
+            "type": "provider",
+            "settings": {
+              "icon": "shopify:\/\/shop_images\/meta-pay.svg",
+              "borderless": false
             }
           }
         },
@@ -198,7 +219,10 @@
           "208a3390-fe5c-4b25-bd49-43033b0255bc",
           "8b290717-ffcc-44d2-b3b7-8d9aa9fd218c",
           "67fd2118-07c0-4e9f-9add-ac3345f71ab7",
-          "886ff182-7e7c-4c45-838d-95b282141dda"
+          "886ff182-7e7c-4c45-838d-95b282141dda",
+          "7c4a3ccb-c7d3-4f9e-943c-6a77627db676",
+          "5cc0f65d-194c-4342-a2a8-9df48e1f28e8",
+          "c9ee7328-d1dc-4fc1-af3b-3e59fa60b918"
         ],
         "custom_css": [
 
