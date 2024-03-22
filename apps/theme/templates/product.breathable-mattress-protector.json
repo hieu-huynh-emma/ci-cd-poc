@@ -3,7 +3,13 @@
   "sections": {
     "product-layout": {
       "type": "product-layout",
-      "settings": {}
+      "settings": {
+      }
+    },
+    "product-badges": {
+      "type": "product-badges",
+      "settings": {
+      }
     },
     "product-media": {
       "type": "product-media",
@@ -800,12 +806,12 @@
   },
   "order": [
     "product-layout",
+    "product-badges",
     "product-summary",
     "product-media",
     "product-specifications",
     "product-unique-selling-points",
     "product-auxiliary",
-
     "multimedia-showcase",
     "mattress-layers-static",
     "mattress-firmness",

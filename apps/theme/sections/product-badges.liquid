@@ -1,14 +1,12 @@
 {% assign badges = section.blocks | where: 'type', 'badge' %}
-{% if badges.size %}
-    <div class="product-badges">
-        {% for badge in badges %}
-            <div class="product-badge">
-                <img src="{{ badge.settings.photo | image_url: height: 108 }}" alt="">
-            </div>
-        {% endfor %}
-    </div>
-{% endif %}
 
+<div class="product-badges">
+  {% for badge in badges %}
+    <div class="product-badge">
+      <img src="{{ badge.settings.photo | image_url: height: 108 }}" alt="">
+    </div>
+  {% endfor %}
+</div>
 
 {% schema %}
 {

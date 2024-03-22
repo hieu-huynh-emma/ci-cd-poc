@@ -10,7 +10,35 @@
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
-    const schema = JSON.parse($("#ProductLayoutSchema--JSON").text());
+    const schema = [
+            {
+                "sectionId": "product-summary"
+            },
+            {
+                "sectionId": "product-badges"
+            },
+            {
+                "sectionId": "product-media"
+            },
+            {
+                "sectionId": "product-unique-selling-points"
+            },
+            {
+                "sectionId": "product-specifications"
+            },
+            {
+                "sectionId": "product-auxiliary",
+                "blocks": [
+                    {
+                        "blockId": "cross-selling-section",
+                        "commands": [
+                            "insertAfter",
+                            "#attribute-configurator"
+                        ]
+                    }
+                ]
+            }
+        ];
     const templateId = "{{ section.id }}".split("__")[0];
 
     schema.forEach(({ sectionId, blocks = [] }) => {
@@ -44,15 +72,7 @@
     <div class="product-info-wrapper page-boundary">
         <div id="product-viewer">
             <div class="promotion-overlay">
-                {% if badges.size %}
-                    <div class="product-badges">
-                        {% for badge in badges %}
-                            <div class="product-badge">
-                                <img src="{{ badge.settings.photo | image_url: height: 108 }}" alt="">
-                            </div>
-                        {% endfor %}
-                    </div>
-                {% endif %}
+              <div id="product-badges-placeholder"></div>
 
                 {% if campaignTeaser %}
                     <div class="campaign-teaser">
@@ -225,34 +245,6 @@
 				}
 				{% unless forloop.last %},{% endunless -%}
             {% endfor %}
-            ]
-        </script>
-        <script type="application/json" id="ProductLayoutSchema--JSON">
-            [
-                {
-                    "sectionId": "product-summary"
-                },
-                {
-                    "sectionId": "product-media"
-                },
-                {
-                    "sectionId": "product-unique-selling-points"
-                },
-                {
-                    "sectionId": "product-specifications"
-                },
-                {
-                    "sectionId": "product-auxiliary",
-                    "blocks": [
-                        {
-                            "blockId": "cross-selling-section",
-                            "commands": [
-                                "insertAfter",
-                                "#attribute-configurator"
-                            ]
-                        }
-                    ]
-                }
             ]
         </script>
     {% endunless %}

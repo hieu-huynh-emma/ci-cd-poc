@@ -24,6 +24,11 @@
       "settings": {
       }
     },
+    "product-badges": {
+      "type": "product-badges",
+      "settings": {
+      }
+    },
     "product-media": {
       "type": "product-media",
       "blocks": {
@@ -962,6 +967,7 @@
   },
   "order": [
     "bundle-layout",
+    "product-badges",
     "product-summary",
     "product-media",
     "product-specifications",

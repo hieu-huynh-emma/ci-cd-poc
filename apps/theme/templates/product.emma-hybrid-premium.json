@@ -3,7 +3,7 @@
   "sections": {
     "product-layout": {
       "type": "product-layout",
-      "blocks" : {
+      "blocks": {
         "db69a5f3-3790-40d9-a6d7-600831be8f49": {
           "type": "campaign_teaser",
           "settings": {
@@ -17,11 +17,17 @@
           }
         }
       },
-      "block_order" : [
+      "block_order": [
         "db69a5f3-3790-40d9-a6d7-600831be8f49",
         "96da8b87-0101-4f64-84c1-527c401bd11a"
       ],
-      "settings": {}
+      "settings": {
+      }
+    },
+    "product-badges": {
+      "type": "product-badges",
+      "settings": {
+      }
     },
     "product-media": {
       "type": "product-media",
@@ -202,7 +208,6 @@
             "note": "*For queen sizes only. All prices and information from public sources listed as of Sept 1, 2023. Information may not reflect updated prices and promotions."
           }
         },
-
         "cross_sell_widget_tXLCDN": {
           "type": "cross_sell_widget",
           "settings": {
@@ -216,8 +221,6 @@
       "settings": {
       }
     },
-
-
     "multimedia-showcase": {
       "type": "multimedia-showcase",
       "blocks": {
@@ -835,11 +838,11 @@
   "order": [
     "product-layout",
     "product-summary",
+    "product-badges",
     "product-media",
     "product-specifications",
     "product-unique-selling-points",
     "product-auxiliary",
-
     "multimedia-showcase",
     "mattress-layers",
     "mattress-firmness",

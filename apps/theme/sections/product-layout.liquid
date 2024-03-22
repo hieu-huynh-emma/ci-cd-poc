@@ -9,7 +9,35 @@
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
-    const schema = JSON.parse($("#ProductLayoutSchema--JSON").text());
+    const schema = [
+            {
+                "sectionId": "product-summary"
+            },
+            {
+                "sectionId": "product-badges"
+            },
+            {
+                "sectionId": "product-media"
+            },
+            {
+                "sectionId": "product-unique-selling-points"
+            },
+            {
+                "sectionId": "product-specifications"
+            },
+            {
+                "sectionId": "product-auxiliary",
+                "blocks": [
+                    {
+                        "blockId": "cross-selling-section",
+                        "commands": [
+                            "insertAfter",
+                            "#attribute-configurator"
+                        ]
+                    }
+                ]
+            }
+        ];
     const templateId = "{{ section.id }}".split("__")[0];
 
     schema.forEach(({ sectionId, blocks = [] }) => {
@@ -43,7 +71,7 @@
     <div class="product-info-wrapper page-boundary">
         <div id="product-viewer">
             <div class="promotion-overlay">
-                <template id="product-badges-placeholder"></template>
+                <div id="product-badges-placeholder"></div>
 
                 {% if campaignTeaser %}
                     <div class="campaign-teaser">
@@ -233,37 +261,6 @@
     </script>
     <script type="application/json" id="ModelJson-{{ section.id }}">
       {{ product.media | where: 'media_type', 'model' | json }}
-    </script>
-    <script type="application/json" id="ProductLayoutSchema--JSON">
-        [
-            {
-                "sectionId": "product-summary"
-            },
-            {
-                "sectionId": "product-badges"
-            },
-            {
-                "sectionId": "product-media"
-            },
-            {
-                "sectionId": "product-unique-selling-points"
-            },
-            {
-                "sectionId": "product-specifications"
-            },
-            {
-                "sectionId": "product-auxiliary",
-                "blocks": [
-                    {
-                        "blockId": "cross-selling-section",
-                        "commands": [
-                            "insertAfter",
-                            "#attribute-configurator"
-                        ]
-                    }
-                ]
-            }
-        ]
     </script>
 {% endunless %}
 

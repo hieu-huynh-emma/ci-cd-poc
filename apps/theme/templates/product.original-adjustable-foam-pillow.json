@@ -3,7 +3,13 @@
   "sections": {
     "product-layout": {
       "type": "product-layout",
-      "settings": {}
+      "settings": {
+      }
+    },
+    "product-badges": {
+      "type": "product-badges",
+      "settings": {
+      }
     },
     "product-media": {
       "type": "product-media",
@@ -323,6 +329,7 @@
       "type": "mattress-firmness",
       "disabled": true,
       "custom_css": [
+
       ],
       "settings": {
         "title": "How does the Emma Original feel?",
@@ -871,6 +878,7 @@
   },
   "order": [
     "product-layout",
+    "product-badges",
     "product-summary",
     "product-media",
     "product-specifications",

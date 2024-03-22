@@ -90,7 +90,7 @@ class AffiliateLayout extends AffiliateControl {
         $banner.html(`
           <a href="${url || '#'}" class="affiliate-container">
             ${logo ? `<img class="affiliate-logo" src="${logo}"/>` : ''}
-            <p>${message}</p>
+            ${message}
           </a>
         `);
         $(this).append($banner);
