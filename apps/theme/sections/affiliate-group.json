@@ -6,13 +6,12 @@
       "type": "affiliate-control",
       "blocks": {
         "f5f456c7-b29a-4f74-826f-648e09f5b1cd": {
-          "type": "affiliate",
+          "type": "shareasale",
           "settings": {
             "id": "1578665",
             "heading": "Sleepopolis",
-            "platform": "Shareasale",
             "logo": "shopify:\/\/shop_images\/Sleepopolis_Logo_Horizontal.png",
-            "badge": "shopify:\/\/shop_images\/Sleepopolis_Logo.png",
+            "badge": "",
             "message": "<p>⭐ Recommended by Sleepopolis | Save EXTRA 5% & Up to 55%<\/p>",
             "discount_code": "SLEEP5",
             "background_color": "#f7f7f9",
@@ -20,11 +19,10 @@
           }
         },
         "0e5ad842-30da-4046-bab8-46b406facf93": {
-          "type": "affiliate",
+          "type": "shareasale",
           "settings": {
             "id": "1299156",
             "heading": "Human Analytic",
-            "platform": "Shareasale",
             "badge": "shopify:\/\/shop_images\/Top_10_Affiliate_Logo.png",
             "message": "<p>⭐ Recommended by Top 10 Mattresses | Save EXTRA 5% & Up to 55%<\/p>",
             "discount_code": "TOP10",
@@ -33,11 +31,10 @@
           }
         },
         "897cf01f-830c-4b3b-af59-919c6709b1c2": {
-          "type": "affiliate",
+          "type": "shareasale",
           "settings": {
             "id": "949654",
             "heading": "Perkopolis",
-            "platform": "Shareasale",
             "logo": "shopify:\/\/shop_images\/logo-perkopolis_1.png",
             "badge": "shopify:\/\/shop_images\/logo-perkopolis_1.png",
             "message": "<p>⭐ Recommended by Perkopolis | Save EXTRA 10% & Up to 55%<\/p>",
@@ -47,15 +44,26 @@
           }
         },
         "b9f8c510-6b61-4237-a924-eb36e660adf2": {
-          "type": "affiliate",
+          "type": "shareasale",
           "settings": {
             "id": "3108668",
             "heading": "Venngo",
-            "platform": "Shareasale",
             "logo": "shopify:\/\/shop_images\/hr-canada-venngo.png",
             "badge": "shopify:\/\/shop_images\/Venngo_CorporateAsset_3_2x_f643d158-dbeb-4828-90cd-a102ba190091.png",
             "message": "<p>⭐ Recommended by Venngo | Save EXTRA 10% & Up to 55%<\/p>",
             "discount_code": "VENNGO10",
+            "background_color": "#f7f7f9",
+            "text_color": "#2e2f3c"
+          }
+        },
+        "affiliate-control_n78dYq": {
+          "type": "utm_tracking",
+          "settings": {
+            "source": "t5_new_bestmattress-guide",
+            "heading": "TOP5",
+            "logo": "",
+            "badge": "",
+            "message": "<p>⭐ Recommended by Venngo | Save EXTRA 10% & Up to 55%<\/p>",
             "background_color": "#f7f7f9",
             "text_color": "#2e2f3c"
           }
@@ -65,7 +73,8 @@
         "f5f456c7-b29a-4f74-826f-648e09f5b1cd",
         "0e5ad842-30da-4046-bab8-46b406facf93",
         "897cf01f-830c-4b3b-af59-919c6709b1c2",
-        "b9f8c510-6b61-4237-a924-eb36e660adf2"
+        "b9f8c510-6b61-4237-a924-eb36e660adf2",
+        "affiliate-control_n78dYq"
       ],
       "settings": {
         "auto_coupon_enabled": true,

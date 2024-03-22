@@ -1,143 +1,161 @@
 class AffiliateControl extends CustomElement {
-	get refs() {
-		return {
-			allAffiliates: JSON.parse(document.querySelector('#All-Affiliates-JSON').textContent)
-		};
-	}
 
-	constructor() {
-		super();
-	}
-	beforeMount() {
-		super.beforeMount();
+    urlParams
 
-		const affiliate = this.guardAffiliate()
+    get refs() {
+        return {
+            allAffiliates: JSON.parse(document.querySelector('#All-Affiliates-JSON').textContent)
+        };
+    }
 
-		if(affiliate) this.activate(affiliate)
-	}
+    constructor() {
+        super();
 
-	activate() {
-	}
+        this.urlParams = new URLSearchParams(window.location.search);
+    }
 
-	guardAffiliate() {
-		const { allAffiliates } = this.refs;
+    beforeMount() {
+        super.beforeMount();
 
-		const urlParams = new URLSearchParams(window.location.search);
+        const affiliate = this.guardAffiliate()
 
-		const utmSource = urlParams.get('utm_source');
+        if (affiliate) this.activate(affiliate)
+    }
 
-		if (!utmSource) return;
+    activate() {
+    }
 
-		const affiliate = allAffiliates.find(({ platform, id }) => `${platform}-${id}` === utmSource);
+    guardAffiliate() {
+        const {allAffiliates} = this.refs;
 
-		if (!affiliate) return;
+        const utmSource = this.urlParams.get('utm_source');
 
-		return affiliate
-	}
+        if (!utmSource) return;
+
+        const affiliate = allAffiliates.find(affiliate => this.validateAffiliateSource(affiliate, utmSource))
+
+        if (!affiliate) return;
+
+        return affiliate
+    }
+
+    validateAffiliateSource(affiliate, utmSource) {
+        const {type, settings: {id, source}} = affiliate
+
+        if (type === 'shareasale') {
+            return `Shareasale-${id}` === utmSource
+        }
+
+        return source === utmSource
+    }
 
 }
 
 class AffiliateLayout extends AffiliateControl {
 
-	constructor() {
-		super();
-	}
+    constructor() {
+        super();
+    }
 
-	activate(affiliate) {
-		super.init();
+    activate(affiliate) {
+        super.init();
 
-		this.blockSearchIndexing();
+        this.blockSearchIndexing();
 
-		this.renderBanner(affiliate);
+        this.renderBanner(affiliate);
 
-		this.renderBadge(affiliate);
-	}
+        this.renderBadge(affiliate);
+    }
 
-	blockSearchIndexing() {
-		const meta = document.createElement('meta');
-		meta.setAttribute('name', 'robots');
-		meta.setAttribute('content', 'noindex');
+    blockSearchIndexing() {
+        const meta = document.createElement('meta');
+        meta.setAttribute('name', 'robots');
+        meta.setAttribute('content', 'noindex');
 
-		document.getElementsByTagName('head')[0].appendChild(meta);
-	}
+        document.getElementsByTagName('head')[0].appendChild(meta);
+    }
 
-	renderBanner(affiliate) {
-		const { url, logo, message, background_color, text_color } = affiliate;
+    renderBanner(affiliate) {
+        const {settings: {url, logo, message, background_color, text_color}} = affiliate;
 
-		const $banner = $('<div>', {
-			id: 'affiliate-announcement-bar-section',
-			css: {
-				'--bg-color': background_color,
-				'--text-color': text_color,
-				'display': 'flex'
-			}
-		});
+        const $banner = $('<div>', {
+            id: 'affiliate-announcement-bar-section',
+            css: {
+                '--bg-color': background_color,
+                '--text-color': text_color,
+                'display': 'flex'
+            }
+        });
 
-		$banner.html(`
+        $banner.html(`
           <a href="${url || '#'}" class="affiliate-container">
             ${logo ? `<img class="affiliate-logo" src="${logo}"/>` : ''}
             <p>${message}</p>
           </a>
         `);
-		$(this).append($banner);
+        $(this).append($banner);
 
-	}
+    }
 
-	renderBadge(affiliate) {
-		const { badge } = affiliate;
+    renderBadge(affiliate) {
+        const {settings: {badge}} = affiliate;
 
-		const $container = $('.promotion-overlay .product-badges');
+        const $container = $('.promotion-overlay .product-badges');
 
-		console.log(badge)
+        console.log(badge)
 
-		if (badge) $container.append(`<div class="product-badge">
+        if (badge) $container.append(`<div class="product-badge">
                         <img src="${badge}&crop=center&height=108" alt="affiliate-badge">
                     </div>`);
-	}
+    }
 }
 
 
 customElements.define('affiliate-layout', AffiliateLayout);
 
 class AffiliateAutoCoupon extends AffiliateControl {
-	props = {
-		success: '',
-		error: ''
-	};
+    props = {
+        success: '',
+        error: ''
+    };
 
-	constructor() {
-		super();
-	}
+    constructor() {
+        super();
+    }
 
-	activate(affiliate) {
-		const { discount_code } = affiliate;
-		if (!discount_code) return;
+    activate(affiliate) {
+        const utmCode = this.urlParams.get('utm_code');
+        const {type, settings: {discount_code}} = affiliate
 
-		this.applyDiscountCode(discount_code);
-	}
+        const coupon = type === 'shareasale' ? discount_code : utmCode
 
-	async applyDiscountCode(code) {
-		await fetch(`/discount/${code}`);
+        if (!coupon) return;
 
-		await ResourceCoordinator.requestVendor('Toastr')
+        this.applyDiscountCode(coupon);
+    }
 
-		// Trigger GA event
-		window.dataLayer = window.dataLayer || [];
-		window.dataLayer.push({
-			'event': 'coupon_code_added',
-			'coupon_code': code,
-			'coupon_code_method': 'auto_applied',
-			'coupon_code_applied': true,
-			'gtm.uniqueEventId': 1
-		});
+    async applyDiscountCode(code) {
+        await fetch(`/discount/${code}`);
 
-		const { success } = this.props;
+        await ResourceCoordinator.requestVendor('Toastr')
+
+        // Trigger GA event
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+            'event': 'coupon_code_added',
+            'coupon_code': code,
+            'coupon_code_method': 'auto_applied',
+            'coupon_code_applied': true,
+            'gtm.uniqueEventId': 1
+        });
+
+        const {success} = this.props;
 
 
-		toastr.success(success.replace('{discount_code}', code.toUpperCase()), '', {
-			iconClass: ''
-		});
-	}
+        toastr.success(success.replace('{discount_code}', code.toUpperCase()), '', {
+            iconClass: ''
+        });
+    }
 }
 
 customElements.define('affiliate-auto-coupon', AffiliateAutoCoupon);
