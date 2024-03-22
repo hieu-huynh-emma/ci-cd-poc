@@ -586,7 +586,7 @@ class VariantSelects extends HTMLElement {
             this.renderProductInfo();
             this.updateVariantInput();
             this.updateCrosssell();
-            this.updateSingleCrosssell();
+            // this.updateSingleCrosssell();
         }
     }
 

@@ -17,11 +17,13 @@
 
                            :product="{{ product | json | escape }}"
                            {% if product.id == 7907000287370 %}:checkCompatible="true"{% endif %}
-                           {% if product.id == 7906997862538 or product.id == 7906999402634 %}
-                               :checkSingle="true"
+                           {% comment %}
+                           {% if product.id == 7906997862538 or product.id == 7906999402634 %}{% endcomment %}
+                               {% comment %}:checkSingle="true"{% endcomment %}
                                data-variant-id="{{ variant.id }}"
                                :variantId="{{ variant.id }}"
-                           {% endif %}
+                           {% comment %}{% endif %}
+                           {% endcomment %}
                            :eventName="cross_selling">
                 <div class="addon-checkbox">
                     <input type="checkbox" class="addon-checkbox__input"/>
@@ -75,10 +77,10 @@
                                 </p>
                             </div>
                             <p class="flex gap-[4px] items-center flex-wrap justify-end">
-                                <span class="text-scarlet font-bold">{{ product.price | money }}</span>
+                                <span class="text-scarlet font-bold">{{ variant.price | money }}</span>
 
-                                {% if product.compare_at_price > product.price %}
-                                    <del class="line-through text-xs">{{ product.compare_at_price | money }}</del>
+                                {% if variant.compare_at_price > variant.price %}
+                                    <del class="line-through text-xs">{{ variant.compare_at_price | money }}</del>
                                 {% endif %}
                             </p>
                         </div>
