@@ -1,53 +1,18 @@
-#product-media {
-  position: relative;
+product-media {
+  $this: ".product-media";
+  flex: 1;
 
-  @media screen and (min-width: 769px) {
-    position: sticky;
-    top: 159px;
-    height: max-content
-  }
-
-  .desktop-mansory {
-    display: none;
-
-    @media screen and (min-width: 769px) {
-
-      display: grid;
-      gap: 10px;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      align-content: flex-start;
-    }
-
+  .media-item {
+    display: flex;
     .image-wrapper {
       position: relative;
-
-      img {
-        @media screen and (max-width: 769px) {
-          aspect-ratio: 351/268;
-          -o-object-fit: cover;
-          object-fit: cover;
-        }
-      }
+      flex: 1;
 
       .image-item {
-        border-radius: 4px;
-        -o-object-fit: contain;
-        object-fit: contain;
-        z-index: 1;
         width: 100%;
-        aspect-ratio: 1.6;
-
-        @media screen and (min-width: 769px) {
-          width: 100%;
-          -o-object-fit: cover;
-          object-fit: cover;
-        }
-      }
-
-      #product-title {
-        @media screen and (max-width: 769px) {
-          margin-top: 12px;
-        }
+        height: 100%;
+        aspect-ratio: 16/9;
+        object-fit: cover;
       }
 
       .image-award {
@@ -69,17 +34,28 @@
       padding: 1.75rem;
     }
 
-    &__item.full-width {
-      grid-column: 1/span 2;
+    &.full-width {
+      grid-column: 1 / span 2;
     }
 
-    &__item.lead-item {
+    &.lead-item {
       position: relative;
+      flex: 1;
     }
   }
 
+  &.desktop {
+    display: none;
 
-  .media-carousel {
+    @media screen and (min-width: 769px) {
+      display: grid;
+      gap: 10px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      align-content: flex-start;
+    }
+  }
+
+  &.mobile {
     display: grid;
     gap: 8px;
 
@@ -91,7 +67,8 @@
       padding: 0;
     }
 
-    #main-carousel, #thumbnail-carousel {
+    #main-carousel,
+    #thumbnail-carousel {
       padding: 0;
     }
 
@@ -103,7 +80,6 @@
           width: 150px;
           height: 150px;
         }
-
       }
     }
 
@@ -111,7 +87,7 @@
       height: 6px;
       width: 6px;
       background: #d2d3dd;
-      opacity: .65;
+      opacity: 0.65;
     }
 
     #thumbnail-carousel .splide__pagination__page.is-active {
@@ -124,7 +100,15 @@
     .splide__pagination {
       bottom: 0.5em !important;
     }
+  }
+}
 
+.ss {
+  position: relative;
 
+  @media screen and (min-width: 769px) {
+    position: sticky;
+    top: 159px;
+    height: max-content;
   }
 }

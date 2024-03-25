@@ -61,12 +61,11 @@
                             {% assign accentuateImg = product.metafields.accentuate.featured_image[0].src %}
 
                             <img
-                                    src="{{ accentuateImg | default: featuredImg }}"
+                                    data-src="{{ accentuateImg | default: featuredImg }}"
                                     width="48"
                                     height="48"
                                     alt=""
-                                    class="product-bundle-item__image"
-                                    loading="lazy"
+                                    class="product-bundle-item__image lazyload"
                             >
                         </div>
                         <div class="addon-service-details">

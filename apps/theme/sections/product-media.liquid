@@ -3,35 +3,35 @@
 {% assign leadItem = allItems | first %}
 {% assign otherItems = allItems | slice: 1, allItems.size %}
 
+
 <link rel="stylesheet" href="{{ 'product-media.css' | asset_url }}">
 
-<div id="product-media">
-    <div class="desktop-mansory">
-        <div class="lead-item desktop-mansory__item full-width">
-            <div class="image-wrapper">
-                {% if leadItem.settings.is_video and leadItem.settings.hosted_video != blank %}
-                    {{
-                    leadItem.settings.hosted_video
-                    | video_tag: class: 'hosted-video', width: '100%', controls: false, autoplay: true, loop: true
-                    }}
-                {% else %}
-                    <img
-                            class="image-item"
-                            src="{{ leadItem.settings.image | image_url: width: 808, height: 486 }}"
-                            loading="lazy"
-                    >
-                    {% if leadItem.settings.award %}
-                        <img
-                                class="image-award"
-                                src="{{ leadItem.settings.award | image_url: width: 200, height: 200 }}"
-                                loading="lazy"
-                        >
-                    {% endif %}
-                {% endif %}
-            </div>
-        </div>
+<product-media>
+    <div class="lead-item media-item full-width">
+        <div class="image-wrapper">
+            {% if leadItem.settings.is_video and leadItem.settings.hosted_video != blank %}
+                {{
+                leadItem.settings.hosted_video
+                | video_tag: class: 'hosted-video', width: '100%', controls: false, autoplay: true, loop: true
+                }}
+            {% else %}
+                <img
+                        src="{{ leadItem.settings.image | image_url: width: 100 }}"
+                        data-src="{{ leadItem.settings.image | image_url: width: 808 }}"
+                        data-sizes="auto"
+                        alt=""
+                        width="808"
+                        height="486"
+                        class="image-item lazyload"
+                />
 
-        <div class="desktop-mansory__item full-width">
+
+            {% endif %}
+        </div>
+    </div>
+
+    <template name="desktop">
+        <div class="media-item full-width">
             <div class="caption-container">
                 <h3 class="heading-3 font-inter font-semibold">{{ section.settings.caption_headline }}</h3>
                 <p>{{ section.settings.caption_content }}</p>
@@ -39,7 +39,7 @@
         </div>
 
         {% for block in otherItems %}
-            <div class="desktop-mansory__item{% if block.settings.full_width %} full-width{% endif %}">
+            <div class="media-item{% if block.settings.full_width %} full-width{% endif %}">
                 <div class="image-wrapper">
                     {% if block.settings.is_video and block.settings.hosted_video != blank %}
                         {{
@@ -47,26 +47,14 @@
                         | video_tag: class: 'hosted-video', width: '100%', controls: false, autoplay: true, loop: true
                         }}
                     {% else %}
-                        <img
-                                class="image-item"
-                                src="{{ block.settings.image | image_url: width: 808, height: 486 }}"
-                                loading="lazy"
-                        >
-                        {% if block.settings.award %}
-                            <img
-                                    class="image-award"
-                                    src="{{ block.settings.award | image_url: width: 200, height: 200 }}"
-                                    loading="lazy"
-                            >
-                        {% endif %}
+                      {{ block.settings.image | image_url: width: 808, height: 486 | image_tag: class: "image-item" }}
                     {% endif %}
                 </div>
             </div>
         {% endfor %}
-    </div>
-
-    <div class="media-carousel">
-        <div id="main-carousel" class="splide">
+    </template>
+    <template name="mobile">
+        <div class="main-carousel splide">
             <ul class="splide__track">
                 <li class="splide__list">
                     {% for item in allItems %}
@@ -76,17 +64,7 @@
                             {% if item.settings.is_video and item.settings.hosted_video != blank %}
                                 {{ item.settings.hosted_video | video_tag: class: 'hosted-video', width: '100%', controls: false, autoplay: true, loop: true }}
                             {% else %}
-                                <img
-                                        src="{{ item.settings.image | image_url: width: 808, height: 486 }}"
-                                        loading="lazy"
-                                >
-                                {% if item.settings.award %}
-                                    <img
-                                            class="image-award"
-                                            src="{{ item.settings.award | image_url: width: 80, height: 80 }}"
-                                            loading="lazy"
-                                    >
-                                {% endif %}
+                              {{ item.settings.image | image_url: width: 808, height: 486 | image_tag }}
                             {% endif %}
                         </div>
                     {% endfor %}
@@ -94,71 +72,34 @@
             </ul>
         </div>
 
-        {% comment %}<div id="thumbnail-carousel" class="splide hidden">{% endcomment %}
-        {% comment %}<ul class="splide__track">{% endcomment %}
-        {% comment %}<li class="splide__list">{% endcomment %}
-        {% comment %}{% for item in allItems %}{% endcomment %}
-        {% comment %}<div{% endcomment %}
-        {% comment %}class="image-wrapper splide__slide"{% endcomment %}
-        {% comment %}>{% endcomment %}
-        {% comment %}{% assign thumbnail = item.settings.image %}{% endcomment %}
-        {% comment %}{% if item.settings.is_video and item.settings.hosted_video != blank %}{% endcomment %}
-        {% comment %}{% assign thumbnail = item.settings.hosted_video.preview_image %}{% endcomment %}
-        {% comment %}{% endif %}{% endcomment %}
-        {% comment %}<img{% endcomment %}
-        {% comment %}src="{{ thumbnail | image_url: width: 808, height: 486 }}"{% endcomment %}
-        {% comment %}loading="lazy"{% endcomment %}
-        {% comment %}>{% endcomment %}
-        {% comment %}{% if item.settings.award %}{% endcomment %}
-        {% comment %}<img{% endcomment %}
-        {% comment %}class="image-award"{% endcomment %}
-        {% comment %}src="{{ item.settings.award | image_url: width: 80, height: 80 }}"{% endcomment %}
-        {% comment %}loading="lazy"{% endcomment %}
-        {% comment %}>{% endcomment %}
-        {% comment %}{% endif %}{% endcomment %}
-        {% comment %}{% endcomment %}
+        {% comment %}<div class="thumbnail-carousel splide">{% endcomment %}
+            {% comment %}<ul class="splide__track">{% endcomment %}
+                {% comment %}<li class="splide__list">{% endcomment %}
+                    {% comment %}{% for item in allItems %}{% endcomment %}
+                        {% comment %}<div{% endcomment %}
+                                {% comment %}class="image-wrapper splide__slide"{% endcomment %}
+                        {% comment %}>{% endcomment %}
+                            {% comment %}{% assign thumbnail = item.settings.image %}{% endcomment %}
+                            {% comment %}{% if item.settings.is_video and item.settings.hosted_video != blank %}{% endcomment %}
+                                {% comment %}{% assign thumbnail = item.settings.hosted_video.preview_image %}{% endcomment %}
+                            {% comment %}{% endif %}{% endcomment %}
+                            {% comment %}{{ thumbnail | image_url: width: 808, height: 486 | image_tag }}{% endcomment %}
+                          {% comment %}{% endcomment %}
+                        {% comment %}</div>{% endcomment %}
+                    {% comment %}{% endfor %}{% endcomment %}
+                {% comment %}</li>{% endcomment %}
+            {% comment %}</ul>{% endcomment %}
         {% comment %}</div>{% endcomment %}
-        {% comment %}{% endfor %}{% endcomment %}
-        {% comment %}</li>{% endcomment %}
-        {% comment %}</ul>{% endcomment %}
-        {% comment %}</div>{% endcomment %}
-    </div>
-</div>
+    </template>
+</product-media>
 
-<script>
-	if (document.readyState === "complete") {
-		initProductMedia();
-	} else {
-		window.addEventListener("load", initProductMedia);
-	}
+<script type="quickscript" loading="delayed" src="{{ 'product-media.js' | asset_url }}"></script>
 
-	async function initProductMedia() {
-		await ResourceCoordinator.requestVendor('Splide')
-
-		const main = new Splide("#product-media #main-carousel", {
-			type: "fade",
-			rewind: true,
-			pagination: true,
-			arrows: true
-		});
-		// const thumbnails = new Splide("#product-media #thumbnail-carousel", {
-		//     fixedWidth: 100,
-		//     gap: 10,
-		//     rewind: true,
-		//     pagination: false,
-		//     isNavigation: true,
-		// });
-
-		// main.sync(thumbnails);
-		main.mount();
-		// thumbnails.mount();
-	}
-</script>
 
 {% schema %}
 {
   "name": "Product Media",
-  "class": "hidden",
+  "class": "hidden flex w-full",
   "blocks": [
     {
       "type": "item",

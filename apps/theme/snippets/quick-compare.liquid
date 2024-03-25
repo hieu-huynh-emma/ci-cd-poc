@@ -1,35 +1,35 @@
-{{ 'quick-compare.css' | asset_url | stylesheet_tag }}
+<link rel="quickscript" loading="delayed" href="{{ 'quick-compare.css' | asset_url }}">
 
 <div id="quick-compare">
-    <quick-compare class="md:min-w-[450px]">
-        <div class="quick-compare-table">
-            <div class="emma-highlighted">
-                <div class="badge flex flex-wrap">
-                    <span class="hidden text-center lg:inline-block normal-case mr-1">Save up to</span>
-                    <span class="lg:hidden">-</span>
-                    <span>{{ settings.badge }}</span>
-                </div>
-            </div>
-
-
-            <div class="star-rating grid-row-12">
-                {% render 'star-ratings' %}
-                <p>4.8 out of 5</p>
-            </div>
+  <quick-compare class="md:min-w-[450px]">
+    <div class="quick-compare-table">
+      <div class="emma-highlighted">
+        <div class="badge flex flex-wrap">
+          <span class="hidden text-center lg:inline-block normal-case mr-1">Save up to</span>
+          <span class="lg:hidden">-</span>
+          <span>{{ settings.badge }}</span>
         </div>
-
-        <p class="footer-note">{{ settings.note }}</p>
-
-        <script name="data" type="application/json">
-            {
-              "specs": {{ product.metafields.accentuate.mini_comparison_specifications | json }},
+      </div>
+      
+      
+      <div class="star-rating grid-row-12">
+        {% render 'star-ratings' %}
+        <p>4.8 out of 5</p>
+      </div>
+    </div>
+    
+    <p class="footer-note">{{ settings.note }}</p>
+    
+    <script name="data" type="application/json">
+      {
+        "specs": {{ product.metafields.accentuate.mini_comparison_specifications | json }},
           "competitors": {{ product.metafields.accentuate.mini_comparison_competitors | json }},
           "product": {{ product | json }},
           "pillow": {{ all_products['emma-foam-pillow'] | json }},
           "protector": {{ all_products['emma-mattress-protector'] | json }}
-            }
-        </script>
-
-    </quick-compare>
+      }
+    </script>
+  
+  </quick-compare>
 </div>
 <script type="quickscript" loading="delayed" src="{{ 'quick-compare.js' | asset_url }}"></script>

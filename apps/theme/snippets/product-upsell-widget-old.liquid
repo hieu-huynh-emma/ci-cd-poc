@@ -6,7 +6,8 @@
         <div style="grid-row: 1 / 3;" class="self-center">
             <img
                     class="mx-auto h-auto"
-                    src="{{ blockImg | default: settings.product.metafields.accentuate.featured_image[0].src | default: coverImg }}"
+                    data-src="{{ blockImg | default: settings.product.metafields.accentuate.featured_image[0].src | default: coverImg }}"
+                    data-sizes="auto"
                     alt=""
                     width="100"
                     height="57"

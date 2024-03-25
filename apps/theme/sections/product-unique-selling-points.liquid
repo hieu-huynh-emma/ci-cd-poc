@@ -37,77 +37,20 @@
                 <p class="title">
                     {{ paymentProvidersBlock.settings.text }}
                 </p>
-                <div class="payment-providers__listing_new">
-
-
-                    <div class="payment-provider">
-                        <img
-                                src="//cdn.shopify.com/s/files/1/0562/9873/3706/files/paypal_payment_provider.svg?v=1698141213&amp;width=1440"
-                        >
-                    </div>
-
-
-                    <div class="payment-provider">
-                        <img
-                                src="//cdn.shopify.com/s/files/1/0562/9873/3706/files/visa_payment_provider.svg?v=1698141376&amp;width=1440"
-                        >
-                    </div>
-
-
-                    <div class="payment-provider">
-                        <img
-                                src="//cdn.shopify.com/s/files/1/0562/9873/3706/files/master-cart_payment_provider.svg?v=1698141377&amp;width=1440"
-                        >
-                    </div>
-
-
-                    <div class="payment-provider">
-                        <img
-                                src="//cdn.shopify.com/s/files/1/0562/9873/3706/files/american_express.svg?v=1698141377&amp;width=1440"
-                        >
-                    </div>
-
-
-                    <div class="payment-provider">
-                        <img
-                                src="//cdn.shopify.com/s/files/1/0562/9873/3706/files/discover-payment-method.svg?v=1698141377&amp;width=1440"
-                        >
-                    </div>
-
-
-                    <div class="payment-provider">
-                        <img src="//cdn.shopify.com/s/files/1/0562/9873/3706/files/apple_pay.svg?v=1698141377&amp;width=1440">
-                    </div>
-
-
-                    <div class="payment-provider">
-                        <img src="//cdn.shopify.com/s/files/1/0562/9873/3706/files/pay_google.svg?v=1698141377&amp;width=1440">
-                    </div>
-
-
-                    <div class="payment-provider">
-                        <img src="//cdn.shopify.com/s/files/1/0562/9873/3706/files/shop-pay.svg?v=1698141377&amp;width=1440">
-                    </div>
-
-
-                </div>
-
-                {% comment %}
-          <div class="payment-providers__listing"></div>
-          <script>
-              fetch(`?sections={{ paymentProvidersBlock.settings.payment_providers_section }}`)
-                  .then((response) => response.json())
-                  .then((res) => {
+                <div class="payment-providers__listing_new"></div>
+                <script type="quickscript" loading="visibility">
+                  fetch(`?sections={{ paymentProvidersBlock.settings.payment_providers_section }}`)
+                    .then((response) => response.json())
+                    .then((res) => {
                       const html = new DOMParser().parseFromString(
                           res['{{ paymentProvidersBlock.settings.payment_providers_section }}'],
                           'text/html'
                       );
-                      $('.payment-providers.unique-selling-point .payment-providers__listing').html(
+                      $('.payment-providers.unique-selling-point .payment-providers__listing_new').html(
                           html.querySelector('.payment-providers__listing').innerHTML
                       );
                   });
-          </script>
-        {% endcomment %}
+                </script>
             </li>
         {% endif %}
     </ul>

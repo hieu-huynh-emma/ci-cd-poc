@@ -1,28 +1,28 @@
 {% assign providers = section.blocks | where: "type", "provider" %}
 
 <div class="payment-providers">
-    <p class="font-bold">{{ 'general.labels.payment_providers' | t }}</p>
-
-    <div class="payment-providers__listing">
-        {% if section.settings.show_shopify_payment_methods %}
-            {% for type in shop.enabled_payment_types %}
-                <img class="payment-provider{% if block.settings.borderless %} payment-provider--borderless{% endif %}"
-                     src="{{ type | payment_type_img_url }}"
-                     width="32"/>
-            {% endfor %}
+  <p class="font-bold">{{ 'general.labels.payment_providers' | t }}</p>
+  
+  <div class="payment-providers__listing">
+    {% if section.settings.show_shopify_payment_methods %}
+      {% for type in shop.enabled_payment_types %}
+        <img class="payment-provider{% if block.settings.borderless %} payment-provider--borderless{% endif %}"
+             src="{{ type | payment_type_img_url }}"
+             width="32"
+             loading="lazy"
+        />
+      {% endfor %}
+    {% endif %}
+    {% if section.settings.show_custom_payment_methods %}
+      {% for block in providers %}
+        {% if block.settings.icon %}
+          <div class="payment-provider{% if block.settings.borderless %} payment-provider--borderless{% endif %}">
+            {{ block.settings.icon | image_url: width: 1440 | image_tag }}
+          </div>
         {% endif %}
-        {% if section.settings.show_custom_payment_methods %}
-            {% for block in providers %}
-               {% if block.settings.icon %}
-                <div class="payment-provider{% if block.settings.borderless %} payment-provider--borderless{% endif %}">
-                    <img src="{{ block.settings.icon | image_url: width: 1440 }}"/>
-                </div>
-                 {% endif %}
-            {% endfor %}
-        {% endif %}
-
-    
-    </div>
+      {% endfor %}
+    {% endif %}
+  </div>
 </div>
 
 {% schema %}

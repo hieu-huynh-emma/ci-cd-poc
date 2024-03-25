@@ -185,3 +185,76 @@ class CustomButton extends CustomElement {
 
   }
 }
+
+class ResponsiveComponent extends CustomElement {
+  props = {}
+
+  _isMobile = null;
+  get isMobile() {
+    return this._isMobile
+  }
+
+  set isMobile(isMobile) {
+    if (isMobile === this._isMobile) return
+    this._isMobile = isMobile
+
+    this.onLayoutModeChange(isMobile)
+  }
+
+  constructor() {
+    super()
+  }
+
+  disconnectedCallback() {
+    super.disconnectedCallback();
+
+    this.resizeObserver?.disconnect()
+  }
+
+
+  setup() {
+    super.setup();
+
+    this.resizeObserver = new ResizeObserver(debounce(this.onScreenResize.bind(this), 500));
+
+    this.templates = [...this.querySelectorAll("template")].reduce((r, node) => {
+      r[node.getAttribute('name')] = node.content
+      return r
+    }, {})
+  }
+
+  beforeMount() {
+    super.beforeMount();
+
+    this.resizeObserver.observe(document.body);
+  }
+
+
+  render() {
+    if (this.isMobile === null) return
+
+    const tpl = this.templates[this.isMobile ? 'mobile' : 'desktop']
+
+    this.$el.html(tpl.cloneNode(true))
+  }
+
+  onScreenResize(entries) {
+    const [entry] = entries
+
+    const screenWidth = entry.contentRect.width
+
+    this.isMobile = screenWidth <= 769
+  }
+
+  onLayoutModeChange(isMobile) {
+    if (isMobile) {
+      this.$el.addClass('mobile').removeClass('desktop')
+    } else {
+      this.$el.removeClass('mobile').addClass('desktop')
+    }
+
+    this.render();
+  }
+}
+
+customElements.define('responsive-component', ResponsiveComponent);
