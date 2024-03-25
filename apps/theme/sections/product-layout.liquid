@@ -1,6 +1,4 @@
 {% assign current_variant = product.selected_or_first_available_variant %}
-{% assign compare_at_price = current_variant.compare_at_price %}
-{% assign price = current_variant.price %}
 {% assign affirm_widget = section.blocks | where: 'type', 'affirm_widget' | first %}
 {% assign campaignTeaser = section.blocks | where: 'type', 'campaign_teaser' | first %}
 {% assign appBlock = section.blocks | where: 'type', '@app' | first %}
@@ -157,7 +155,7 @@
             role="alert"
           >
             <span class="visually-hidden">{{ 'general.accessibility.error' | t }} </span>
-            {% include 'icon-error' %}
+            {% render 'icon-error' %}
             <span class="product-form__error-message" data-error-message>
                             {{- 'products.product.quantity_minimum_message' | t -}}
                           </span>
@@ -169,9 +167,9 @@
             {% endif %}
 
             {%- if affirm_widget -%}
-              <div {{ block.shopify_attributes }}>
+            
                 {% render 'affirm-widget' %}
-              </div>
+          
             {% endif %}
           </div>
 
@@ -184,11 +182,10 @@
 
             <div class="product-form__controls-group product-form__controls-group--submit">
               <div
-                class="
-                                          product-form__item product-form__item--submit
-                                          {%- if section.settings.enable_payment_button %} product-form__item--payment-button {%- endif -%}
-                                          {%- if product.has_only_default_variant %} product-form__item--no-variants {%- endif -%}
-                                    "
+                class="product-form__item product-form__item--submit
+                      {%- if section.settings.enable_payment_button %} product-form__item--payment-button {%- endif -%}
+                      {%- if product.has_only_default_variant %} product-form__item--no-variants {%- endif -%}
+                "
               >
                 {% render 'add-to-cart-btn' %}
 
@@ -198,12 +195,6 @@
               </div>
             </div>
           </div>
-
-          {% if section.settings.disclaimer != blank %}
-            <p class="text-center py-4 text-scarlet font-semibold">
-              {{ section.settings.disclaimer }}
-            </p>
-          {% endif %}
         {% endform %}
       </div>
 
@@ -232,7 +223,6 @@
 {% unless product == empty %}
   <script type="application/json" id="ProductJson-{{ section.id }}">
       {{ product | json }}
-
   </script>
   <script type="application/json" id="ModelJson-{{ section.id }}">
       {{ product.media | where: 'media_type', 'model' | json }}
@@ -268,8 +258,6 @@
         }
       ]
     }
-  ],
-  "settings": []
+  ]
 }
 {% endschema %}
-

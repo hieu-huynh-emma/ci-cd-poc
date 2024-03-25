@@ -1,6 +1,4 @@
 {%- assign current_variant = product.selected_or_first_available_variant -%}
-{%- assign compare_at_price = current_variant.compare_at_price -%}
-{%- assign price = current_variant.price -%}
 {% assign affirm_widget = section.blocks | where: 'type', 'affirm_widget' | first %}
 {% assign mini_comparison_table = section.blocks | where: 'type', 'mini-comparison-table' | first %}
 {% assign appBlock = section.blocks | where: 'type', '@app' | first %}
@@ -8,57 +6,7 @@
 <link rel="stylesheet" href="{{ 'product-layout.css' | asset_url }}" />
 <link rel="stylesheet" href="{{ 'bundle-layout.css' | asset_url }}" />
 
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const schema = [
-            {
-                "sectionId": "product-summary"
-            },
-            {
-                "sectionId": "product-badges"
-            },
-            {
-                "sectionId": "product-media"
-            },
-            {
-                "sectionId": "product-unique-selling-points"
-            },
-            {
-                "sectionId": "product-specifications"
-            },
-            {
-                "sectionId": "product-auxiliary",
-                "blocks": [
-                    {
-                        "blockId": "cross-selling-section",
-                        "commands": [
-                            "insertAfter",
-                            "#attribute-configurator"
-                        ]
-                    }
-                ]
-            }
-        ];
-    const templateId = "{{ section.id }}".split("__")[0];
-
-    schema.forEach(({ sectionId, blocks = [] }) => {
-      const $section = $(`#shopify-section-${templateId}__${sectionId}`);
-
-      const $sectionPlaceholder = $(`#product-layout #${sectionId}-placeholder`);
-
-      $sectionPlaceholder.replaceWith($section.removeClass("hidden").detach());
-
-      if (blocks.length > 0) {
-        blocks.forEach(({ blockId, commands }) => {
-          const [insertCommand, targetEl] = commands;
-
-          $(`#${blockId}`).detach()[insertCommand]($(`${targetEl}`));
-        });
-      }
-    });
-  });
-</script>
-
+<script src="{{ 'product-layout.js' | asset_url }}" defer data-section-id="{{ section.id }}"></script>
 <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
 
 <div
@@ -87,7 +35,7 @@
             <template id="product-media-placeholder"></template>
         </div>
 
-        <product-form class="right-section text">
+        <product-form id="product-configurator">
             <template id="product-summary-placeholder"></template>
 
             <div id="product-form">
