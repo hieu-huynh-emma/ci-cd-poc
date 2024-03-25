@@ -57,10 +57,6 @@
     <product-form id="product-configurator">
       <div id="product-summary-placeholder"></div>
 
-      {% if product.has_only_default_variant == true or product.selected_or_first_available_variant.available == false %}
-        {% assign isSingleCol = true %}
-      {% endif %}
-
       <div id="product-form">
         {% capture form_classes -%}
           product-form product-form-{{ section.id }}
@@ -71,7 +67,11 @@
         {% form 'product', product, class: form_classes, novalidate: 'novalidate', data-product-form: '' %}
           <div
             id="attribute-configurator"
-            class="attribute-configurator{% if isSingleCol == true %} attribute-configurator--single{% endif %}"
+            class="
+                attribute-configurator
+                {% if product.has_only_default_variant == true %} attribute-configurator--single{% endif %}
+                {% if product.selected_or_first_available_variant.available == false %} attribute-configurator--unavailable{% endif %}
+            "
           >
             <variant-selects
               class="no-js-hidden emma-product__variant"

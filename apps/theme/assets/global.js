@@ -758,7 +758,9 @@ class VariantSelects extends HTMLElement {
 
         const attrConfiguratorEl = $("#attribute-configurator");
 
-        attrConfiguratorEl[isAvail ? "removeClass" : "addClass"]("attribute-configurator--single");
+        attrConfiguratorEl[isAvail ? "removeClass" : "addClass"]("attribute-configurator--unavailable");
+
+        console.log(this.currentVariant)
 
         const $qtySelector = $("[data-quantity-selector]");
 
