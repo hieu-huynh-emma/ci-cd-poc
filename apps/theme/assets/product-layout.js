@@ -31,6 +31,12 @@ const templateId = sectionId.split("__")[0];
 
 schema.forEach(processSectionSchema);
 
+setTimeout(() => {
+  const productLayoutEl = document.querySelector('#product-layout')
+
+  productLayoutEl.classList.add("is-initialized")
+}, 500)
+
 function processSectionSchema({ eager = false, ...data }) {
   if (eager) {
     loadSection(data);
@@ -46,7 +52,7 @@ function loadSection({ sectionId, blocks = [] }) {
 
   const detachedSectionEl = sectionEl.parentElement.removeChild(sectionEl);
 
-  sectionPlaceholderEl.appendChild(detachedSectionEl);
+  sectionPlaceholderEl.replaceWith(detachedSectionEl);
 
   if (blocks.length > 0) {
     blocks.forEach(({ blockId, insertPosition, outlet }) => {
@@ -59,4 +65,9 @@ function loadSection({ sectionId, blocks = [] }) {
   }
 
   sectionEl.classList.remove("hidden");
+
+  setTimeout(() => {
+    sectionEl.classList.add("is-initialized")
+  }, 500)
+
 }

@@ -5,12 +5,12 @@
                 {{ section.settings.title }}
             </h2>
             <p class="font-['Inter'] text-neutral-800 text-center lg:text-xl mt-3 lg:mt-6">Shop with our sleep experts
-                                                                                           today!
+                today!
             </p>
             <div class="flex flex-col mt-2 lg:flex-row">
                 <div class="flex mt-5 w-full lg:flex-wrap justify-center">
                     <div class="mr-4 lg:mr-0 w-1/4 lg:w-fit">
-                        {{ 'chat-with-us.svg' | image_url: width: 60, height: 60 | image_tag }}
+                        <img src="{{ 'chat-with-us.svg' | asset_url }}" height="60" width="60" loading="lazy" />
                     </div>
                     <div class="w-3/4 lg:w-full lg:text-center lg:mt-5">
                         <h3 class="text-xl lg:text-2xl">Chat With Us</h3>
@@ -21,7 +21,7 @@
                 </div>
                 <div class="flex mt-5 w-full lg:flex-wrap justify-center">
                     <div class="mr-4 lg:mr-0 w-1/4 lg:w-fit">
-                        {{ 'call-us.svg' | image_url: width: 60, height: 60 | image_tag }}
+                        <img src="{{ 'call-us.svg' | asset_url }}" height="60" width="60" loading="lazy" />
                     </div>
                     <div class="w-3/4 lg:w-full lg:text-center lg:mt-5">
                         <h3 class="text-xl lg:text-2xl">Call us</h3>
@@ -33,7 +33,7 @@
                 </div>
                 <div class="flex mt-5 w-full lg:flex-wrap justify-center">
                     <div class="mr-4 lg:mr-0 w-1/4 lg:w-fit">
-                        {{ 'email-us.svg' | image_url: width: 60, height: 60 | image_tag }}
+                        <img src="{{ 'email-us.svg' | asset_url }}" height="60" width="60" loading="lazy" />
                     </div>
                     <div class="w-3/4 lg:w-full lg:text-center lg:mt-5">
                         <h3 class="text-xl lg:text-2xl">Email us</h3>
@@ -46,7 +46,7 @@
             </div>
         </div>
     </div>
-    
+
     <script type="quickscript" loading="visibility" src="{{ 'contact-us.js' | asset_url }}"></script>
 
 </section>
@@ -54,14 +54,14 @@
 
 {% schema %}
 {
-    "name": "Contact Us",
-    "settings": [
-        {
-            "id": "title",
-            "type": "text",
-            "label": "Title",
-            "default": "Need help deciding?"
-        }
-    ]
+  "name": "Contact Us",
+  "settings": [
+    {
+      "id": "title",
+      "type": "text",
+      "label": "Title",
+      "default": "Need help deciding?"
+    }
+  ]
 }
 {% endschema %}

@@ -11,7 +11,7 @@
 <script src="{{ 'product-form.js' | asset_url }}" defer></script>
 
 <style>
-    #product-layout {
+    #product-layout:not(.is-initialized) {
         min-height: 1700px;
     }
     #product-viewer {
@@ -25,7 +25,7 @@
         }
     }
 
-    #product-summary-placeholder {
+    #product-summary-placeholder:not(.is-initialized) {
         min-height: 300px;
     }
 </style>
