@@ -249,12 +249,22 @@
           "type": "cross_sell_widget",
           "settings": {
           }
+        },
+        "upsell_widget_tXLCDN": {
+          "type": "upsell_widget",
+          "settings": {
+            "title": "Upgrade to Hybrid Premium Mattress:",
+            "content": "<p><strong>55% off<\/strong><\/p><ul><li>Improved Cooling & Motion Isolation<\/li><li>Advanced Thermosync Technology<\/li><\/ul>",
+            "image": "shopify:\/\/shop_images\/Hybrid_Premium_front_view_room_render.jpg",
+            "product": "emma-hybrid-premium"
+          }
         }
       },
       "block_order": [
         "805e46e0-28b9-48bd-9c5f-07434863e3ea",
         "40770334-266c-4992-86e4-9709af68cc26",
-        "cross_sell_widget_tXLCDN"
+        "cross_sell_widget_tXLCDN",
+        "upsell_widget_tXLCDN"
       ],
       "settings": {
       }
