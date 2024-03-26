@@ -13,15 +13,17 @@ class CartFooter extends CustomElement {
 
 		const { $wrapper, $agreementCheckbox, $checkoutBtn } = this.refs
 
-		$agreementCheckbox.prop('checked', this.agreementChecked)
-		$checkoutBtn.prop('disabled', !this.agreementChecked)
-
-		$wrapper.click(() => {
-			this.agreementChecked = !this.agreementChecked
-
+		if($agreementCheckbox.length) {
+			$agreementCheckbox.prop('checked', this.agreementChecked)
 			$checkoutBtn.prop('disabled', !this.agreementChecked)
-			$agreementCheckbox.prop('checked', this.agreementChecked);
-		})
+
+			$wrapper.click(() => {
+				this.agreementChecked = !this.agreementChecked
+
+				$checkoutBtn.prop('disabled', !this.agreementChecked)
+				$agreementCheckbox.prop('checked', this.agreementChecked);
+			})
+		}
 	}
 
 	onDisabledChange(isDisabled) {

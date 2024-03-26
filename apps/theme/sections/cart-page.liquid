@@ -1310,11 +1310,11 @@
                                             or item.properties.size != 0
                                             or item.selling_plan_allocation != null
                                             -%}
-                                                {%- if item.product.has_only_default_variant == false -%}     
+                                                {%- if item.product.has_only_default_variant == false -%}
                                                     {% assign displayName = item.variant.metafields.accentuate.display_name %}
-                                                    
+
                                                             <span class="product_info">{{ displayName | default: item.variant.title }}</span>
-                                                        
+
                                                 {%- endif -%}
                                             {%- endif -%}
                                             {% if item.product.metafields.accentuate.is_bundle %}
@@ -1363,7 +1363,7 @@
                             <span>
                               {{ item.product.title }}
                                 {% if item.variant.title != 'Default Title' %}
-                              
+
                                     ({{ item.variant.title }})
                                 {% endif %}
                             </span>
@@ -1469,6 +1469,7 @@
                     </div>
 
                     <cart-footer class="buy-buttons-container">
+                        {% if section.settings.tocAgreement %}
                         <div id="toc-agreement">
                             <input type="checkbox" class="agreement-checkbox checkbox-input-overlay"
                                    required="required">
@@ -1515,6 +1516,7 @@
                                     Conditions</a>.
                             </label>
                         </div>
+                        {% endif %}
 
                         <button class="btn" type="submit" name="checkout">
                             <img width="14" height="18" src="{{ 'cart-white.svg' | asset_url }}"> Checkout
@@ -1577,6 +1579,12 @@
   "name": "Cart Page",
   "class": "cart-page",
   "settings": [
+    {
+      "id": "tocAgreement",
+      "type": "checkbox",
+      "label": "Enable Toc Agreement?",
+      "default": false
+    }
   ]
 }
 {% endschema %}
