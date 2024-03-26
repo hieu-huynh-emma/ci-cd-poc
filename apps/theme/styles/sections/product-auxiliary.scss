@@ -1,0 +1,68 @@
+product-auxiliary {
+  position: relative;
+
+  width: 100%;
+
+  .auxiliary-container {
+    display: grid;
+    gap: 8px;
+    grid-template-columns: minmax(0, 100px) minmax(0, 1fr);
+    align-items: center;
+    justify-content: center;
+
+    padding: 1rem;
+    border: 2px solid #2e2f3c;
+    border-radius: 8px;
+    cursor: pointer;
+
+    .product-details {
+      display: grid;
+      /*gap: .5rem;*/
+      grid-template-columns: repeat(auto-fit, minmax(10px, auto));
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .product-details .product-content {
+      grid-column: span 20;
+    }
+
+
+  }
+
+  .product-price-container {
+    grid-column: span 18;
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    align-items: center;
+
+    @media screen and (min-width: 480px) and (max-width: 768px) {
+      grid-column: span 7;
+      justify-content: flex-end;
+    }
+
+    @media screen and (min-width: 768px) and (max-width: 1200px) {
+      grid-column: span 18;
+      justify-content: flex-start;
+    }
+
+    @media screen and (min-width: 768px) and (max-width: 1200px) {
+      grid-column: span 18;
+      justify-content: flex-start;
+    }
+
+    @media screen and (min-width: 1200px) {
+      grid-column: span 7;
+      justify-content: flex-end;
+    }
+  }
+
+  &[name="upsell-widget"] {
+    display: none;
+  }
+}
+
+
+
+

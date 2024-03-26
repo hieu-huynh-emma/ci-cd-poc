@@ -3,7 +3,7 @@
 {% assign upsell_widget = section.blocks | where: 'type', 'upsell_widget' | first %}
 {% assign cross_sell_widget = section.blocks | where: 'type', 'cross_sell_widget' | first %}
 
-<link rel="quickscript" loading="delayed" href="{{ 'product-auxiliary.css' | asset_url }}">
+<link rel="quickscript" href="{{ 'product-auxiliary.css' | asset_url }}">
 
 {% if upsell_widget %}
     {% render 'product-upsell-widget', settings: upsell_widget.settings %}

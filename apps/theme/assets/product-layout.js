@@ -19,10 +19,15 @@ const schema = [
     sectionId: "product-auxiliary",
     blocks: [
       {
-        blockId: "cross-selling-section",
-        outlet: "#attribute-configurator",
+        query: "#cross-selling-section",
+        outletQuery: "#attribute-configurator",
         insertPosition: "afterend",
       },
+      {
+        query: `product-auxiliary[name="upsell-widget"]`,
+        outletQuery: "#attribute-configurator",
+        insertPosition: "afterend",
+      }
     ],
   },
 ];
@@ -55,10 +60,10 @@ function loadSection({ sectionId, blocks = [] }) {
   sectionPlaceholderEl.replaceWith(detachedSectionEl);
 
   if (blocks.length > 0) {
-    blocks.forEach(({ blockId, insertPosition, outlet }) => {
-      const blockEl = document.querySelector(`#${blockId}`);
+    blocks.forEach(({ query, insertPosition, outletQuery }) => {
+      const blockEl = document.querySelector(query);
       const detachedBlockEl = blockEl.parentElement.removeChild(blockEl);
-      const outletEl = document.querySelector(`${outlet}`);
+      const outletEl = document.querySelector(outletQuery);
 
       outletEl.insertAdjacentElement(insertPosition, detachedBlockEl);
     });
