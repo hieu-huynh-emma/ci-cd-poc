@@ -3,9 +3,9 @@
 
 
 <product-auxiliary
+        name="upsell-widget"
         type="widget"
-        id="up-selling-addon-{{ product.handle }}"
-        name="up-sell-widget"
+        id="up-selling-addon-{{ product.handle }}"=
         :product="{{ product | json | escape }}"
         :eventName="up_selling"
 >

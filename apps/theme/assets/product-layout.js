@@ -61,11 +61,15 @@ function loadSection({ sectionId, blocks = [] }) {
 
   if (blocks.length > 0) {
     blocks.forEach(({ query, insertPosition, outletQuery }) => {
-      const blockEl = document.querySelector(query);
-      const detachedBlockEl = blockEl.parentElement.removeChild(blockEl);
-      const outletEl = document.querySelector(outletQuery);
+      try {
+        const blockEl = document.querySelector(query);
+        const detachedBlockEl = blockEl.parentElement.removeChild(blockEl);
+        const outletEl = document.querySelector(outletQuery);
 
-      outletEl.insertAdjacentElement(insertPosition, detachedBlockEl);
+        outletEl.insertAdjacentElement(insertPosition, detachedBlockEl);
+      } catch (e) {
+        console.error(e)
+      }
     });
   }
 
