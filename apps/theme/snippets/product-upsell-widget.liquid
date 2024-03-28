@@ -3,9 +3,10 @@
 
 
 <product-auxiliary
+        class="hidden"
         name="upsell-widget"
         type="widget"
-        id="up-selling-addon-{{ product.handle }}"=
+        id="up-selling-addon-{{ product.handle }}"
         :product="{{ product | json | escape }}"
         :eventName="up_selling"
 >

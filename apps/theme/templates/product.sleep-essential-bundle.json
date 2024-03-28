@@ -4,16 +4,16 @@
     "bundle-layout": {
       "type": "bundle-layout",
       "blocks": {
-        "1a0fef92-d415-41a2-b765-395025fcb612": {
-          "type": "affirm_widget",
-          "settings": {
-          }
-        },
         "70d9c3e6-227c-45f4-ad8f-46d64fa8c84a": {
           "type": "campaign_teaser",
           "settings": {
             "title": "World Sleep Day Sale",
             "content": "<p>40% off<\/p>"
+          }
+        },
+        "1a0fef92-d415-41a2-b765-395025fcb612": {
+          "type": "affirm_widget",
+          "settings": {
           }
         }
       },
@@ -24,9 +24,31 @@
       "settings": {
       }
     },
+    "product-summary": {
+      "type": "product-summary",
+      "blocks": {
+        "yotpo_star_rating": {
+          "type": "yotpo_star_rating",
+          "settings": {
+            "product": "{{ product }}",
+            "new_layout": false
+          }
+        }
+      },
+      "block_order": [
+        "yotpo_star_rating"
+      ],
+      "settings": {
+        "title": "",
+        "desc": "<p><strong>Enjoy the best value for our essentials<\/strong><\/p><ul><li>10-inch Emma Original Mattress<\/li><li>2 Original Adjustable Foam Pillows<\/li><li>Emma Breathable Mattress Protector<\/li><\/ul>",
+        "disclaimer": ""
+      }
+    },
     "product-badges": {
       "type": "product-badges",
       "settings": {
+        "caption_headline": "",
+        "caption_content": ""
       }
     },
     "product-media": {
@@ -94,26 +116,6 @@
         "caption_content": "Enjoy our essentials and create a perfect night's sleep"
       }
     },
-    "product-summary": {
-      "type": "product-summary",
-      "blocks": {
-        "yotpo_star_rating": {
-          "type": "yotpo_star_rating",
-          "settings": {
-            "product": "{{ product }}",
-            "new_layout": false
-          }
-        }
-      },
-      "block_order": [
-        "yotpo_star_rating"
-      ],
-      "settings": {
-        "title": "",
-        "desc": "<p><strong>Enjoy the best value for our essentials<\/strong><\/p><ul><li>40% discount on our 10-inch Emma Original<\/li><li>40% discount on 2 Original Adjustable Foam Pillows<\/li><li>40% discount on our Emma Breathable Mattress Protector<\/li><\/ul>",
-        "disclaimer": ""
-      }
-    },
     "product-specifications": {
       "type": "product-specifications",
       "blocks": {
@@ -158,7 +160,8 @@
           "settings": {
             "icon": "shopify:\/\/shop_images\/shipping_truck_db437bec-0f66-475d-9a43-c2bdab9dc26d.png",
             "text": "Free & fast delivery",
-            "content": "<p>Free no contact delivery for all orders <\/p><p>Dispatched in: <strong>1 business day <\/strong><br\/><\/p>"
+            "content": "<p>Free no contact delivery for all orders <\/p><p>Dispatched in: <strong>1 business day <\/strong><br\/><\/p>",
+            "url": ""
           }
         },
         "e82e034a-8517-497e-b8ef-f81bff8064d2": {
@@ -166,7 +169,8 @@
           "settings": {
             "icon": "shopify:\/\/shop_images\/moon.png",
             "text": "365 night trial",
-            "content": "<p>Take your time to decide whether or not Emma is for you<\/p>"
+            "content": "<p>Take your time to decide whether or not Emma is for you<\/p>",
+            "url": ""
           }
         },
         "167def1b-b3fa-4ffb-a44d-34d5942a0c56": {
@@ -174,7 +178,8 @@
           "settings": {
             "icon": "shopify:\/\/shop_images\/badge.png",
             "text": "10 years warranty",
-            "content": "<p>Every Emma product is top-notch quality<\/p>"
+            "content": "<p>Every Emma product is top-notch quality<\/p>",
+            "url": ""
           }
         },
         "809302fb-d0b7-4e84-854b-40031868c836": {

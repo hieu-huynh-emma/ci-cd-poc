@@ -9,6 +9,28 @@
     "product-badges": {
       "type": "product-badges",
       "settings": {
+        "caption_headline": "",
+        "caption_content": ""
+      }
+    },
+    "product-summary": {
+      "type": "product-summary",
+      "blocks": {
+        "yotpo_star_rating": {
+          "type": "yotpo_star_rating",
+          "settings": {
+            "product": "{{product}}",
+            "new_layout": false
+          }
+        }
+      },
+      "block_order": [
+        "yotpo_star_rating"
+      ],
+      "settings": {
+        "title": "Breathable Mattress Protector",
+        "desc": "<p><strong>Say goodbye to spills and stains!<\/strong><\/p><ul><li>AllergyShield® mattress protector for comfortable, dust & allergen-free sleep<\/li><li>Breathable, 100% waterproof guard for your mattress against spills, dirt, and moisture<\/li><li>Stretchable to 13\", perfectly fits our Emma Original Mattress and our Hybrid Comfort Mattress<\/li><li>Easily machine washable<\/li><\/ul>",
+        "disclaimer": ""
       }
     },
     "product-media": {
@@ -65,26 +87,6 @@
       "settings": {
         "caption_headline": "Keep your mattress clean and brand new",
         "caption_content": "Our washable high-quality mattress protector for sensitive sleepers, or simply to take the best care of your mattress!"
-      }
-    },
-    "product-summary": {
-      "type": "product-summary",
-      "blocks": {
-        "yotpo_star_rating": {
-          "type": "yotpo_star_rating",
-          "settings": {
-            "product": "{{product}}",
-            "new_layout": false
-          }
-        }
-      },
-      "block_order": [
-        "yotpo_star_rating"
-      ],
-      "settings": {
-        "title": "Breathable Mattress Protector",
-        "desc": "<p><strong>Say goodbye to spills and stains!<\/strong><\/p><ul><li>AllergyShield® mattress protector for comfortable, dust & allergen-free sleep<\/li><li>Breathable, 100% waterproof guard for your mattress against spills, dirt, and moisture<\/li><li>Stretchable to 13\", perfectly fits our Emma Original Mattress and our Hybrid Comfort Mattress<\/li><li>Easily machine washable<\/li><\/ul>",
-        "disclaimer": ""
       }
     },
     "product-specifications": {
@@ -208,8 +210,8 @@
           "type": "image",
           "settings": {
             "source": "shopify:\/\/shop_images\/Untitled_design_3_371f3127-fbec-400b-a279-a34eac41bbef.png",
-            "heading": "Snooze without sneeze",
-            "content": "Get a peaceful, good night's rest free from allergens and dust mites with our protector's revolutionary AllergyShield technology!",
+            "heading": "No spills, no sweat",
+            "content": "Prevent unwanted spills and moisture through our 100% waterproof and breathable protector, so your sleep is as clean and cool as it gets.",
             "inverted": true,
             "cta_url": "",
             "cta_text": ""
@@ -219,8 +221,8 @@
           "type": "image",
           "settings": {
             "source": "shopify:\/\/shop_images\/Untitled_design_4_953cd82d-6030-4c2f-b95a-18321fa9b977.png",
-            "heading": "No spills, no sweat",
-            "content": "Prevent unwanted spills and moisture through our 100% waterproof and breathable protector, so your sleep is as clean and cool as it gets.",
+            "heading": "Snooze without sneeze",
+            "content": "Get a peaceful, good night's rest free from allergens and dust mites with our protector's revolutionary Allergy Shield technology!",
             "inverted": false,
             "cta_url": "",
             "cta_text": ""
