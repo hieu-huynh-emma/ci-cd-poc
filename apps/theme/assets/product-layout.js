@@ -36,6 +36,10 @@ const templateId = sectionId.split("__")[0];
 
 schema.forEach(processSectionSchema);
 
+window.addEventListener("load", () => {
+  $("#product-layout .skeleton").hide()
+})
+
 setTimeout(() => {
   const productLayoutEl = document.querySelector('#product-layout')
 

@@ -1,6 +1,15 @@
 {
   "layout": "theme.speed",
   "sections": {
+    "joint-product": {
+      "type": "joint-product",
+      "settings": {
+        "products": [
+          "emma-hybrid-premium-plus",
+          "emma-hybrid-premium"
+        ]
+      }
+    },
     "product-layout": {
       "type": "product-layout",
       "blocks": {

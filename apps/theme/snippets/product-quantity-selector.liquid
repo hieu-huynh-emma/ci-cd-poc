@@ -1,7 +1,8 @@
 {% assign orientation = orientation | default: "horizontal" %}
 
 <div
-        class="{% unless product.selected_or_first_available_variant.available %} opacity-0{% endunless %}
+        id="quantity-selector"
+        class="
     {% if orientation == "vertical" %}
       flex flex-col gap-[9px] items-start justify-start
     {% else %}

@@ -113,18 +113,7 @@
               {%- endfor -%}
 
               <script type="application/json">
-                                {{ product.variants | json }}
-
-
-
-
-
-
-
-
-
-
-
+                  {{ product.variants | json }}
               </script>
             </variant-selects>
 
@@ -178,7 +167,8 @@
           </div>
 
           <div class="relative">
-            <loading-overlay id="cta-loader" class="hidden bg-white pointer-events-none"></loading-overlay>
+              <div class="skeleton"></div>
+            {% comment %}<loading-overlay id="cta-loader" class="hidden bg-white pointer-events-none"></loading-overlay>{% endcomment %}
 
             <div id="price-{{ section.id }}" class="product__price" {{ block.shopify_attributes }}>
               {% render 'product-price', variant: current_variant, product: product %}

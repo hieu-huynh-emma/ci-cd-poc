@@ -8,97 +8,100 @@
 
 <link rel="quickscript" loading="visibility" href="{{ 'mattress-layers.css' | asset_url }}">
 
-<section id="mattress-layers-section" class="section-container spacing-{{ section.settings.container_spacing }}">
-    <div class="section-chassis page-boundary">
-        {% render 'section-header' %}
+<mattress-layers>
+    <section id="mattress-layers-section" class="section-container spacing-{{ section.settings.container_spacing }}">
+        <div class="section-chassis page-boundary">
+            {% render 'section-header' %}
 
-        <div class="section-body">
-            <ul class="layer-gallery">
-                <div class="outer-container">
-                    {% if coverLayer %}
-                        <li class="layer-item cover-layer-item"
-                            style="--gutter: {{ coverLayer.settings.gutter }};
-                                    --bullet_gutter: {{ coverLayer.settings.bullet_gutter }}%
-                                    "
-                        >
-                            <div class="layer-bullet">
-                                <button aria-label="Cover Layer" aria-expanded="true" role="button"
-                                        class="layer-number">1
-                                </button>
-                            </div>
-                            <div class="layer-photo flex items-center">
-                                {{ coverLayer.settings.image | image_url: width: 1440 | image_tag }}
-                            </div>
-                        </li>
-                    {% endif %}
+            <div class="section-body">
+                <ul class="layer-gallery">
+                    <div class="outer-container">
+                        {% if coverLayer %}
+                            <li class="layer-item cover-layer-item"
+                                style="--gutter: {{ coverLayer.settings.gutter }};
+                                        --bullet_gutter: {{ coverLayer.settings.bullet_gutter }}%
+                                        "
+                            >
+                                <div class="layer-bullet">
+                                    <button aria-label="Cover Layer" aria-expanded="true" role="button"
+                                            class="layer-number">1
+                                    </button>
+                                </div>
+                                <div class="layer-photo flex items-center">
+                                    {{ coverLayer.settings.image | image_url: width: 1440 | image_tag }}
+                                </div>
+                            </li>
+                        {% endif %}
 
-                    {% for layer in internalLayers %}
-                        <li class="layer-item {% if layer.settings.is_thin %}layer-item--thin{% endif %} internal-layer-item"
-                            style="
-                                    --gutter: {{ layer.settings.gutter }};
-                                    --bullet_gutter: {{ layer.settings.bullet_gutter }}%">
-                            <div class="layer-bullet">
-                                <button aria-label="Layer {{ forloop.index | plus: 1 }}" aria-expanded="true"
-                                        role="button" class="layer-number">{{ forloop.index | plus: 1 }}</button>
-                            </div>
-                            <div class="layer-photo flex items-center">
-                                {{ layer.settings.image | image_url: width: 1440 | image_tag }}
-                            </div>
-                        </li>
-                    {% endfor %}
-                </div>
+                        {% for layer in internalLayers %}
+                            <li class="layer-item {% if layer.settings.is_thin %}layer-item--thin{% endif %} internal-layer-item"
+                                style="
+                                        --gutter: {{ layer.settings.gutter }};
+                                        --bullet_gutter: {{ layer.settings.bullet_gutter }}%">
+                                <div class="layer-bullet">
+                                    <button aria-label="Layer {{ forloop.index | plus: 1 }}" aria-expanded="true"
+                                            role="button" class="layer-number">{{ forloop.index | plus: 1 }}</button>
+                                </div>
+                                <div class="layer-photo flex items-center">
+                                    {{ layer.settings.image | image_url: width: 1440 | image_tag }}
+                                </div>
+                            </li>
+                        {% endfor %}
+                    </div>
 
-                {% if baseLayer %}
-                    <li class="layer-item base-layer-item" style="
-                            --gutter: {{ baseLayer.settings.gutter }};
-                            --bullet_gutter: {{ baseLayer.settings.bullet_gutter }}%">
-                        <div class="layer-bullet">
-                            <button aria-label="Base Layer" aria-expanded="true" role="button"
-                                    class="layer-number">{{ internalLayers.size | plus: 2 }}</button>
-                        </div>
-                        <div class="layer-photo flex items-center">
-                            {{ baseLayer.settings.image | image_url: width: 1440 | image_tag }}
-                        </div>
-                    </li>
-                {% endif %}
-                {% if shadowLayer %}
-                    <li class="layer-item shadow-layer-item">
-                        <div class="layer-photo flex items-center">
-                            {{ shadowLayer.settings.image | image_url: width: 1440 | image_tag }}
-                        </div>
-                    </li>
-                {% endif %}
-            </ul>
-
-            <div class="info-wrapper">
-                <ul class="layer-specifications">
-                    {% if coverLayer %}
-                        <li class="layer-info-item cover-layer hidden">
-                            <h4 class="heading-5">{{ coverLayer.settings.title }}</h4>
-                            <p class="solid">{{ coverLayer.settings.content }}</p>
-                        </li>
-                    {% endif %}
-                    {% for layer in internalLayers %}
-                        <li class="layer-info-item hidden">
-                            <h4 class="heading-5">{{ layer.settings.title }}</h4>
-                            <p class="solid">{{ layer.settings.content }}</p>
-                        </li>
-                    {% endfor %}
                     {% if baseLayer %}
-                        <li class="layer-info-item base-layer hidden">
-                            <h4 class="heading-5">{{ baseLayer.settings.title }}</h4>
-                            <p class="solid">{{ baseLayer.settings.content }}</p>
+                        <li class="layer-item base-layer-item" style="
+                                --gutter: {{ baseLayer.settings.gutter }};
+                                --bullet_gutter: {{ baseLayer.settings.bullet_gutter }}%">
+                            <div class="layer-bullet">
+                                <button aria-label="Base Layer" aria-expanded="true" role="button"
+                                        class="layer-number">{{ internalLayers.size | plus: 2 }}</button>
+                            </div>
+                            <div class="layer-photo flex items-center">
+                                {{ baseLayer.settings.image | image_url: width: 1440 | image_tag }}
+                            </div>
+                        </li>
+                    {% endif %}
+                    {% if shadowLayer %}
+                        <li class="layer-item shadow-layer-item">
+                            <div class="layer-photo flex items-center">
+                                {{ shadowLayer.settings.image | image_url: width: 1440 | image_tag }}
+                            </div>
                         </li>
                     {% endif %}
                 </ul>
+
+                <div class="info-wrapper">
+                    <ul class="layer-specifications">
+                        {% if coverLayer %}
+                            <li class="layer-info-item cover-layer hidden">
+                                <h4 class="heading-5">{{ coverLayer.settings.title }}</h4>
+                                <p class="solid">{{ coverLayer.settings.content }}</p>
+                            </li>
+                        {% endif %}
+                        {% for layer in internalLayers %}
+                            <li class="layer-info-item hidden">
+                                <h4 class="heading-5">{{ layer.settings.title }}</h4>
+                                <p class="solid">{{ layer.settings.content }}</p>
+                            </li>
+                        {% endfor %}
+                        {% if baseLayer %}
+                            <li class="layer-info-item base-layer hidden">
+                                <h4 class="heading-5">{{ baseLayer.settings.title }}</h4>
+                                <p class="solid">{{ baseLayer.settings.content }}</p>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="section-wallpaper">
-        {{ section.settings.wallpaper | image_url: width: 1920 | image_tag }}
-    </div>
-    <script type="quickscript" loading="visibility" src="{{ 'mattress-layers.js' | asset_url }}"></script>
-</section>
+        <div class="section-wallpaper">
+            {{ section.settings.wallpaper | image_url: width: 1920 | image_tag }}
+        </div>
+    </section>
+</mattress-layers>
+
+<script type="quickscript" loading="visibility" src="{{ 'mattress-layers.js' | asset_url }}"></script>
 
 
 {% schema %}

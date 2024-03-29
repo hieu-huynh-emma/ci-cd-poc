@@ -40,6 +40,7 @@ class CrossSellEngine extends CustomElement {
 
     if (!crossSellMetafield) {
       this.innerHTML = ``;
+      this.$el.hide()
       this.$el.removeClass("is-loading");
       return;
     }

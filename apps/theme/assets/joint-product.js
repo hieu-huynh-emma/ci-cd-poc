@@ -1,363 +1,344 @@
 class JointProductEngine extends HTMLElement {
-	currProduct = {};
+  currProduct = {};
 
-	coreProduct = {};
+  coreProduct = {};
 
+  constructor() {
+    super();
 
-	constructor() {
-		super();
+    this.data = JSON.parse(document.querySelector("#joint-product-data").textContent);
+    this.currProduct = this.data[0];
+    this.coreProduct = this.data[0];
+  }
 
-		this.data = JSON.parse(document.querySelector('#joint-product-data').textContent);
-		this.currProduct = this.data[0];
-		this.coreProduct = this.data[0];
+  connectedCallback() {
+    this.selectorWidgetToggle();
+    this.refreshSelector();
+    setTimeout(() => {
+      this.removeYotpoStarRatingBlock();
+      $("#product-layout .skeleton").hide();
+    }, 100);
+  }
 
-	}
+  fetchPDP(targetProduct) {
+    const url = this.composeURL(targetProduct);
 
-	connectedCallback() {
-		this.selectorWidgetToggle();
-		this.refreshSelector();
-		setTimeout(() => {
-			this.removeYotpoStarRatingBlock();
-		}, 100);
-	}
+    return fetch(url)
+      .then((response) => response.text())
+      .then((text) => new DOMParser().parseFromString(text, "text/html").querySelector("#MainContent"));
+  }
 
-	fetchPDP(targetProduct) {
-		const url = this.composeURL(targetProduct);
+  composeURL(targetProduct) {
+    const url = new URL(`${window.location.origin}/products/${targetProduct.handle}${window.location.search}`);
 
-		return fetch(url)
-			.then(response => response.text())
-			.then(text =>
-				new DOMParser()
-					.parseFromString(text, 'text/html')
-					.querySelector('#MainContent')
-			);
-	}
+    if (targetProduct.id !== this.coreProduct.id) {
+      const variantId = url.searchParams.get("variant");
 
-	composeURL(targetProduct) {
-		const url = new URL(`${window.location.origin}/products/${targetProduct.handle}${window.location.search}`);
+      if (variantId) {
+        const matchedVariant = this.findMatchingVariant(variantId, targetProduct);
+        url.searchParams.set("variant", matchedVariant.id);
+      }
+    }
 
-		if (targetProduct.id !== this.coreProduct.id) {
-			const variantId = url.searchParams.get('variant');
+    return url.toString();
+  }
 
-			if (variantId) {
-				const matchedVariant = this.findMatchingVariant(variantId, targetProduct);
-				url.searchParams.set('variant', matchedVariant.id);
-			}
+  findMatchingVariant(currVariantId, targetProduct) {
+    const currVariantIndex = this.currProduct.variants.findIndex(({ id: targetId }) => +currVariantId === targetId);
 
-		}
+    return targetProduct.variants[currVariantIndex];
+  }
 
-		return url.toString();
-	}
+  selectorWidgetToggle(show = true) {
+    const $jointProductSelector = $("joint-product-selector");
+    const $jointProductEngine = $("joint-product-engine");
+    const $productConfiguration = $("#product-form");
 
-	findMatchingVariant(currVariantId, targetProduct) {
-		const currVariantIndex = this.currProduct.variants.findIndex(({ id: targetId }) => +currVariantId === targetId);
+    $jointProductSelector.detach();
 
-		return targetProduct.variants[currVariantIndex];
-	}
+    if (show) {
+      $jointProductSelector.insertBefore($productConfiguration);
+      $jointProductSelector.removeClass("hidden");
+    } else {
+      $jointProductEngine.append($jointProductSelector);
+      $jointProductSelector.addClass("hidden");
+    }
+  }
 
-	selectorWidgetToggle(show = true) {
-		const $jointProductSelector = $('joint-product-selector');
-		const $jointProductEngine = $('joint-product-engine');
-		const $productConfiguration = $('#product-form');
+  refreshSelector() {
+    const $joinProductOptions = $("joint-product-option");
 
-		$jointProductSelector.detach();
+    $joinProductOptions.removeClass("selected");
 
-		if (show) {
-			$jointProductSelector.insertBefore($productConfiguration);
-			$jointProductSelector.removeClass('hidden');
-		} else {
-			$jointProductEngine.append($jointProductSelector);
-			$jointProductSelector.addClass('hidden');
-		}
-	}
+    const $selectedOption = $joinProductOptions.filter(`[data-product-id='${this.currProduct.id}']`);
 
-	refreshSelector() {
-		const $joinProductOptions = $('joint-product-option');
+    $selectedOption.addClass("selected");
+  }
 
-		$joinProductOptions.removeClass('selected');
+  removeYotpoStarRatingBlock() {
+    setTimeout(() => {
+      const $yotpoStarRating = $(".yotpo-reviews-star-ratings-widget");
 
-		const $selectedOption = $joinProductOptions.filter(`[data-product-id='${this.currProduct.id}']`);
-
-		$selectedOption.addClass('selected');
-	}
-
-
-	removeYotpoStarRatingBlock() {
-		setTimeout(() => {
-			const $yotpoStarRating = $('.yotpo-reviews-star-ratings-widget');
-
-			$yotpoStarRating.hide();
-		}, 500);
-	}
+      $yotpoStarRating.hide();
+    }, 500);
+  }
 }
 
 class JointProductSelector extends HTMLElement {
-	get refs() {
-		return {
-			$variantSelects: $('variant-selects'),
-			engine: document.querySelector('joint-product-engine'),
-			$options: $('joint-product-option')
-		};
-	}
+  get refs() {
+    return {
+      $variantSelects: $("variant-selects"),
+      engine: document.querySelector("joint-product-engine"),
+      $options: $("joint-product-option"),
+    };
+  }
 
-	constructor() {
-		super();
-		this.data = JSON.parse(document.querySelector('#joint-product-data').textContent);
+  constructor() {
+    super();
+    this.data = JSON.parse(document.querySelector("#joint-product-data").textContent);
+  }
 
+  connectedCallback() {
+    const $options = $("joint-product-option");
 
-	}
+    $options.click(debounce(this.handleOnClick, 100));
 
-	connectedCallback() {
-		const $options = $('joint-product-option');
+    this.refreshListeners();
+  }
 
-		$options.click($.debounce(100, this.handleOnClick));
+  updateURL() {
+    const { $variantSelects, engine } = this.refs;
+    const product = engine.coreProduct;
+    const url = new URL(`${window.location.origin}/products/${product.handle}${window.location.search}`);
 
-		this.refreshListeners();
-	}
+    const $variantSelector = $variantSelects.find(".select__select");
 
-	updateURL() {
-		const { $variantSelects, engine } = this.refs;
-		const product = engine.coreProduct;
-		const url = new URL(`${window.location.origin}/products/${product.handle}${window.location.search}`);
+    const size = $variantSelector.val().split("|")[0].trim();
+    const selectedVariant = product.variants.find((v) => {
+      const variantSize = v.title.split("|")[0].trim();
+      return variantSize === size;
+    });
 
-		const $variantSelector = $variantSelects.find('.select__select');
+    url.searchParams.set("variant", selectedVariant.id);
 
-		const size = $variantSelector.val().split('|')[0].trim();
-		const selectedVariant = product.variants.find(v => {
-			const variantSize = v.title.split('|')[0].trim();
-			return variantSize === size;
-		});
+    window.history.replaceState({}, "", url.toString());
+  }
 
-		url.searchParams.set('variant', selectedVariant.id);
+  handleOnClick = async (e) => {
+    const $option = $(e.currentTarget);
 
-		window.history.replaceState({}, '', url.toString());
+    const productId = $option.data("productId");
 
-	}
+    await this.updatePage(productId);
+  };
 
-	handleOnClick = async (e) => {
-		const $option = $(e.currentTarget);
+  async updatePage(productId) {
+    const { engine } = this.refs;
 
-		const productId = $option.data('productId');
+    if (productId === engine.currProduct.id) return;
 
-		await this.updatePage(productId);
-	};
+    $("#product-layout .skeleton").show();
 
-	async updatePage(productId) {
-		const { engine } = this.refs;
+    const selectedProduct = this.data.find(({ id: targetId }) => targetId === productId);
 
-		if (productId === engine.currProduct.id) return;
+    const pageHtml = await engine.fetchPDP(selectedProduct);
+    await this.refreshSections(pageHtml);
 
-		$('#cta-loader').show();
-		$("#joint-product-selector-loader").show()
+    setTimeout(() => {
+      engine.removeYotpoStarRatingBlock();
+    }, 100);
 
-		const selectedProduct = this.data.find(({ id: targetId }) => targetId === productId);
+    setTimeout(() => {
+      engine.currProduct = selectedProduct;
+      engine.refreshSelector();
 
-		const pageHtml = await engine.fetchPDP(selectedProduct);
-		await this.refreshSections(pageHtml);
+      this.refreshVariantListeners();
+      this.refreshListeners();
+      this.refreshForm(pageHtml);
 
-		setTimeout(() => {
-			engine.removeYotpoStarRatingBlock();
-		}, 100);
+      $("#product-layout .skeleton").hide();
+    }, 200);
+  }
 
-		setTimeout(() => {
-			engine.currProduct = selectedProduct;
-			engine.refreshSelector();
+  refreshForm(html) {
+    const $form = $("#product-form form");
 
-			this.refreshVariantListeners();
-			this.refreshListeners();
-			this.refreshForm(pageHtml)
+    const replacementForm = html.querySelector("#product-form form");
 
+    $form.attr({
+      id: replacementForm.getAttribute("id"),
+      class: replacementForm.getAttribute("class"),
+    });
 
-			$('#cta-loader').hide();
-			$("#joint-product-selector-loader").hide()
+    $(`input[name="product-id"]`).val(html.querySelector(`input[name="product-id"]`).value);
+    $(`input[name="section-id"]`).val(html.querySelector(`input[name="section-id"]`).value);
+  }
 
-		}, 200);
+  refreshSections(html) {
+    return Promise.all(
+      this.getSectionsToRender().map(({ sectionId, replaceId, selector }) => {
+        console.log("=>(joint-product.js:180) sectionId", sectionId);
+        return new Promise((resolve) => {
+          const elementQuery = `[id$='__${sectionId}']${selector ? ` ${selector}` : ""}`,
+            newElementQuery = `[id$='__${replaceId}']${selector ? ` ${selector}` : ""}`;
 
-	}
+          const $elementToReplace = $(elementQuery);
 
-	refreshForm(html) {
-		const $form = $("#product-form form")
+          if (!$elementToReplace.length) resolve();
 
-		const replacementForm = html.querySelector("#product-form form")
+          $elementToReplace.empty();
 
-		$form.attr({
-			id: replacementForm.getAttribute('id'),
-			class: replacementForm.getAttribute('class')
-		})
+          const newElement = html.querySelector(newElementQuery) || html.querySelector(elementQuery);
 
-		$(`input[name="product-id"]`).val(html.querySelector(`input[name="product-id"]`).value)
-		$(`input[name="section-id"]`).val(html.querySelector(`input[name="section-id"]`).value)
-	}
-	refreshSections(html) {
-		return Promise.all(this.getSectionsToRender().map((({ sectionId, replaceId, selector }) => {
-			return new Promise(resolve => {
-				const elementId = `[id$='__${sectionId}']${selector ? ` ${selector}` : ''}`,
-					newElementId = `[id$='__${replaceId}']${selector ? ` ${selector}` : ''}`;
+          if (!newElement) resolve();
 
-				const $elementToReplace = $(elementId);
+          if(selector) {
+            $elementToReplace.replaceWith(this.prepareHtml(newElement.outerHTML)).ready(resolve);
+          } else {
+            const doc = this.prepareHtml(newElement.innerHTML)
+            $elementToReplace.html(doc).ready(resolve);
+          }
+        });
+      }),
+    );
+  }
 
-				if (!$elementToReplace.length) resolve();
+  prepareHtml(html) {
+    return html.replace(`rel="quickscript"`, `rel="stylesheet"`).replace(`type="quickscript"`, ``).replace(`loading="visibility"`, "")
+  }
 
-				$elementToReplace.empty();
+  getSectionsToRender() {
+    return [
+      {
+        sectionId: "product-summary",
+      },
+      {
+        sectionId: "product-layout",
+        selector: "#product-viewer .promotion-overlay",
+      },
+      {
+        sectionId: "product-media",
+        selector: "product-media"
+      },
+      {
+        sectionId: "product-layout",
+        selector: ".product__price",
+      },
+      {
+        sectionId: "product-layout",
+        selector: ".product-form__controls-group"
+      },
+      {
+        sectionId: "product-layout",
+        selector: "#attribute-configurator",
+      },
+      {
+        sectionId: "product-auxiliary",
+        selector: "#quick-compare",
+      },
 
-				const newElement = html.querySelector(newElementId) || html.querySelector(elementId);
+      {
+        sectionId: "product-specifications",
+      },
+      {
+        sectionId: "mattress-layers",
+        selector: "mattress-layers",
+      },
+      {
+        sectionId: "mattress-firmness",
+      },
+    ];
+  }
 
-				if (!newElement) resolve();
+  refreshListeners() {
+    const { $variantSelects } = this.refs;
 
-				$elementToReplace.html(newElement.innerHTML).ready(resolve);
-			});
-		})));
-	}
+    $variantSelects.on("change", this.updateURL.bind(this));
+  }
 
-	getSectionsToRender() {
-		return [
-			{
-				sectionId: 'product-info',
-				selector: '#product-viewer'
-			},
-			{
-				sectionId: 'product-info',
-				selector: '#product-title'
-			},
-			{
-				sectionId: 'product-info',
-				selector: '.product-description'
-			},
-			{
-				sectionId: 'product-info',
-				selector: '.product__price'
-			},
-			{
-				sectionId: 'product-info',
-				selector: '#attribute-configurator'
-			},
-			{
-				sectionId: 'product-info',
-				selector: '#quick-compare'
-			},
-			{
-				sectionId: 'product-info',
-				selector: '#additional'
-			},
-			{
-				sectionId: 'product-info',
-				selector: '#product-specifications'
-			},
-			{
-				sectionId: 'mattress-layers',
-				replaceId: 'mattress-layers-static'
-			},
-			{
-				sectionId: 'mattress-layers-static',
-				replaceId: 'mattress-layers'
-			},
-			{
-				sectionId: 'mattress-firmness'
-			}
-		];
-	}
+  refreshVariantListeners() {
+    const { $options } = this.refs;
 
-	refreshListeners() {
-		const { $variantSelects } = this.refs;
-
-		$variantSelects.on('change', this.updateURL.bind(this));
-	}
-
-	refreshVariantListeners() {
-		const { $options } = this.refs;
-
-		$options.each(function() {
-			this.attachVariantListener();
-		});
-	}
-
+    $options.each(function () {
+      this.attachVariantListener();
+    });
+  }
 }
 
 class JointProductOption extends HTMLElement {
+  data = {
+    product: {},
+    variant: {},
+  };
 
-	data = {
-		product: {},
-		variant: {}
-	};
+  get refs() {
+    return {
+      variantSelector: document.querySelector("variant-selects .select__select"),
+      engine: document.querySelector("joint-product-engine"),
+      selector: document.querySelector("joint-product-selector"),
+    };
+  }
 
-	get refs() {
-		return {
-			variantSelector: document.querySelector('variant-selects .select__select'),
-			engine: document.querySelector('joint-product-engine'),
-			selector: document.querySelector('joint-product-selector')
-		};
-	}
+  constructor() {
+    super();
 
-	constructor() {
-		super();
+    this.$el = $(this);
 
-		this.$el = $(this);
+    const allProducts = JSON.parse(document.querySelector("#joint-product-data").textContent);
 
-		const allProducts = JSON.parse(document.querySelector('#joint-product-data').textContent);
+    this.data.product = allProducts.find(({ id: targetId }) => targetId === this.$el.data("productId"));
+  }
 
-		this.data.product = allProducts.find(({ id: targetId }) => targetId === this.$el.data('productId'));
+  connectedCallback() {
+    this.attachVariantListener();
+    this.onVariantChange();
+  }
 
-	}
+  renderPrice() {
+    const { variant } = this.data;
 
-	connectedCallback() {
-		this.attachVariantListener();
-		this.onVariantChange();
-	}
+    const $productPrice = $(this).find(".product-price");
 
-	renderPrice() {
-		const { variant } = this.data;
+    const price = variant.price,
+      originalPrice = variant.compare_at_price || 0,
+      totalSaved = Math.max(0, originalPrice - price),
+      priceInCurrency = Currency.format(parseFloat(price) / 100),
+      originalPriceInCurrency = Currency.format(parseFloat(originalPrice) / 100);
 
-		const $productPrice = $(this).find('.product-price');
-
-		const price = variant.price,
-			originalPrice = variant.compare_at_price || 0,
-			totalSaved = Math.max(0, originalPrice - price),
-
-			priceInCurrency = Currency.format(parseFloat(price) / 100),
-			originalPriceInCurrency = Currency.format(parseFloat(originalPrice) / 100);
-
-
-		$productPrice.html(`
+    $productPrice.html(`
 				<p>
 					<span class="font-semibold text-scarlet">${priceInCurrency}</span>
-					${(totalSaved) ? `<span class="line-through">${originalPriceInCurrency}</span>` : ''}       
+					${totalSaved ? `<span class="line-through">${originalPriceInCurrency}</span>` : ""}       
 				</p>
 		`);
-	}
+  }
 
-	attachVariantListener() {
-		const { variantSelector } = this.refs;
+  attachVariantListener() {
+    const { variantSelector } = this.refs;
 
-		variantSelector.addEventListener('change', this.onVariantChange.bind(this));
-	}
+    variantSelector.addEventListener("change", this.onVariantChange.bind(this));
+  }
 
-	onVariantChange() {
-		const { variantSelector } = this.refs;
-		const { product } = this.data;
+  onVariantChange() {
+    const { variantSelector } = this.refs;
+    const { product } = this.data;
 
-		const size = variantSelector.value.split('|')[0].trim();
+    const size = variantSelector.value.split("|")[0].trim();
 
-		this.data.variant = product.variants.find(v => {
-			const variantSize = v.title.split('|')[0].trim();
-			return variantSize === size;
-		});
+    this.data.variant = product.variants.find((v) => {
+      const variantSize = v.title.split("|")[0].trim();
+      return variantSize === size;
+    });
 
-		this.renderPrice();
-	}
-
+    this.renderPrice();
+  }
 }
 
+class JointProductStarRating extends HTMLElement {
+  constructor() {
+    super();
 
-class JointProductStarRating extends CustomElement {
-	props = {
-		productId: '',
-		placeholder: 0
-	};
-
-	constructor() {
-		super();
-
-		this.innerHTML = `
+    this.innerHTML = `
                 <div class="yotpo-stars">
                 <svg width="14" height="13" viewBox="0 0 14 13" fill="none" xmlns="http://www.w3.org/2000/svg">
                                   <path d="M12.103 4.36677C12.6146 4.36677 13.0492 4.6798 13.2104 5.1643C13.3711 5.64738 13.211 6.15694 12.8026 6.46198L10.4151 8.24502L11.2058 11.1976C11.3391 11.6966 11.1437 12.199 10.7085 12.4776C10.271 12.7579 9.73151 12.7231 9.33217 12.3927L7.18683 10.612C7.07859 10.522 6.92108 10.522 6.81228 10.612L4.66779 12.3927C4.44875 12.5744 4.18757 12.6662 3.9241 12.6662C3.70677 12.6662 3.48831 12.6041 3.29063 12.477C2.85569 12.1985 2.66087 11.696 2.79445 11.1976L3.58457 8.24502L1.19769 6.46227C0.789246 6.15636 0.629168 5.64708 0.790098 5.16373C0.951028 4.67951 1.38568 4.36677 1.89695 4.36677H4.66323C4.78656 4.36677 4.89707 4.2893 4.93837 4.17423L5.90139 1.47973C6.06887 1.01033 6.5001 0.706985 6.99998 0.706985C7.49957 0.706985 7.9308 1.01033 8.09828 1.48001L9.06215 4.17451C9.10316 4.28959 9.21368 4.36677 9.33672 4.36677H12.103Z" fill="#FFBA00"/>
@@ -377,41 +358,40 @@ class JointProductStarRating extends CustomElement {
                 </div>
              <div class="yotpo-rating-score"></div>
         `;
-	}
+  }
 
-	mounted() {
-		super.mounted();
+  connectedCallback() {
+    this.getReview();
+  }
 
-		this.getReview();
-	}
+  getReview() {
+    const productId = this.getAttribute(`:${"productId".toLowerCase()}`);
+    const placeholder = this.getAttribute(`:${"placeholder".toLowerCase()}`);
 
-	getReview() {
-		const { productId, placeholder } = this.props;
-		const url = `https://api.yotpo.com/products/hEc3IC0lCXuQ15phwUS54IFWUkW2L7LAcNLTHkt6/${productId}/bottomline`;
+    const url = `https://api.yotpo.com/products/hEc3IC0lCXuQ15phwUS54IFWUkW2L7LAcNLTHkt6/${productId}/bottomline`;
 
-		const options = {
-			method: 'GET',
-			headers: { Accept: 'application/json', 'Content-Type': 'application/json' }
-		};
+    const options = {
+      method: "GET",
+      headers: { Accept: "application/json", "Content-Type": "application/json" },
+    };
 
-		const ratingScore = this.querySelector('.yotpo-rating-score');
+    const ratingScore = this.querySelector(".yotpo-rating-score");
 
-
-		fetch(url, options)
-			.then(res => res.json())
-			.then(json => json.response.bottomline)
-			.then(res => {
-				ratingScore.innerHTML = res.average_score || placeholder;
-			})
-			.catch(err => {
-				ratingScore.innerHTML = placeholder;
-				console.error('error:' + err);
-			});
-	}
+    fetch(url, options)
+      .then((res) => res.json())
+      .then((json) => json.response.bottomline)
+      .then((res) => {
+        ratingScore.innerHTML = res.average_score || placeholder;
+      })
+      .catch((err) => {
+        ratingScore.innerHTML = placeholder;
+        console.error("error:" + err);
+      });
+  }
 }
 
-customElements.define('joint-product-star-rating', JointProductStarRating);
+customElements.define("joint-product-star-rating", JointProductStarRating);
 
-customElements.define('joint-product-engine', JointProductEngine);
-customElements.define('joint-product-selector', JointProductSelector);
-customElements.define('joint-product-option', JointProductOption);
+customElements.define("joint-product-engine", JointProductEngine);
+customElements.define("joint-product-selector", JointProductSelector);
+customElements.define("joint-product-option", JointProductOption);
