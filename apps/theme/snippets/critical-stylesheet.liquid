@@ -10,7 +10,7 @@
         visibility: hidden;
     }
 
-    .splide:not(.is-initialized)  {
+    .splide:not(.is-initialized) {
         display: none !important;
     }
 
@@ -44,16 +44,33 @@
         height: auto
     }
 
-  .shopify-challenge__container {
-    display: grid;
-    gap: 16px;
-    align-items: center;
-    align-content: center;
-    min-height: 50vh;
-  }
+    .shopify-challenge__container {
+        display: grid;
+        gap: 16px;
+        align-items: center;
+        align-content: center;
+        min-height: 50vh;
+    }
 
-  .shopify-challenge__container form {
-       display: grid;
-       gap: 16px;
-   }
+    .shopify-challenge__container form {
+        display: grid;
+        gap: 16px;
+    }
+
+    .skeleton {
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+
+        animation: skeleton-loading 1s linear infinite alternate;
+    }
+
+    @keyframes skeleton-loading {
+        0% {
+            background-color: hsl(200, 20%, 80%);
+        }
+        100% {
+            background-color: hsl(200, 20%, 95%);
+        }
+    }
 </style>

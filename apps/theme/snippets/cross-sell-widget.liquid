@@ -1,0 +1,4 @@
+{% assign parentProduct = product %}
+{% assign parentVariant = product.selected_or_first_available_variant %}
+
+<cross-sell-engine :variantId="{{ parentVariant.id }}"><div class="skeleton"></div></cross-sell-engine>

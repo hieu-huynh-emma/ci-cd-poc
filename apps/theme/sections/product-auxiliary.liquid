@@ -6,20 +6,24 @@
 <link rel="quickscript" href="{{ 'product-auxiliary.css' | asset_url }}">
 
 {% if upsell_widget %}
-    {% render 'product-upsell-widget', settings: upsell_widget.settings %}
+  {% render 'product-upsell-widget', settings: upsell_widget.settings %}
 {% endif %}
 
 {% if cross_sell_widget %}
-    {% render 'cross-selling-addon' %}
+  {% render 'cross-sell-widget' %}
 {% endif %}
 
 {% if upsell_widget_old %}
-    {% render 'product-upsell-widget-old', settings: upsell_widget_old.settings %}
+  {% render 'product-upsell-widget-old', settings: upsell_widget_old.settings %}
 {% endif %}
 
 {% if quick_compare %}
-    {% render 'quick-compare', settings: quick_compare.settings %}
+  {% render 'quick-compare', settings: quick_compare.settings %}
 {% endif %}
+
+<script type="quickscript" src="{{ 'product-auxiliary.js' | asset_url }}"></script>
+<script type="quickscript" loading="delayed" src="{{ 'cross-sell-widget.js' | asset_url }}"></script>
+
 
 {% schema %}
 {
@@ -104,7 +108,6 @@
     }
   ],
   "settings": [
-
   ]
 }
 {% endschema %}

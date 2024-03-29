@@ -36,26 +36,25 @@ if (!customElements.get("product-form")) {
         _reset: true,
       };
 
-      const $addonServices = $("addon-service.cross-selling-addon").filter(function() {
-        return $(this).find('.addon-checkbox__input').is(':checked');
+      const $crossSells = $("cross-sell-widget").filter(function() {
+        return $(this).find('.widget-checkbox__input').is(':checked');
       });
 
-      if ($addonServices.length > 0) {
+      if ($crossSells.length > 0) {
         const qty = formData.quantity;
         const productId = formData.id
 
         const productSize = $(`select[name="options[Size]"]`).val().split("|")[0].trim()
 
-        const allAddonProducts = $addonServices.toArray().map( (el) => {
-          const $addonEl = $(el);
+        const allAddonProducts = $crossSells.toArray().map( (el) => {
+          const $el = $(el);
 
-          const addonProd = JSON.parse($addonEl.find("[data-product-json]").text());
+          const addonProd = JSON.parse($el.find(`script[type="application/json"]`).text());
 
           const allVariants = addonProd.variants
 
-
           const defaultVariant = allVariants[0];
-          const selectedVariantId = $addonEl.data("variantId")
+          const selectedVariantId = $el.data("variantId")
 
           const isConfigurable = allVariants.length > 1 && !selectedVariantId
 

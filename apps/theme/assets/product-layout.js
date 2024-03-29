@@ -19,7 +19,7 @@ const schema = [
     sectionId: "product-auxiliary",
     blocks: [
       {
-        query: "#cross-selling-section",
+        query: "cross-sell-engine",
         outletQuery: "#attribute-configurator",
         insertPosition: "afterend",
       },
@@ -62,7 +62,7 @@ function loadSection({ sectionId, blocks = [] }) {
   if (blocks.length > 0) {
     blocks.forEach(({ query, insertPosition, outletQuery }) => {
       try {
-        const blockEl = document.querySelector(query);
+        const blockEl = sectionEl.querySelector(query);
         const detachedBlockEl = blockEl.parentElement.removeChild(blockEl);
         const outletEl = document.querySelector(outletQuery);
 

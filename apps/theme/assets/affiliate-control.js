@@ -102,8 +102,6 @@ class AffiliateLayout extends AffiliateControl {
 
         const $container = $('.promotion-overlay .product-badges');
 
-        console.log(badge)
-
         if (badge) $container.append(`<div class="product-badge">
                         <img src="${badge}&crop=center&height=108" alt="affiliate-badge">
                     </div>`);

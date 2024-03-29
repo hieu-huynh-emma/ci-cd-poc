@@ -1,6 +1,5 @@
 product-auxiliary {
   position: relative;
-
   width: 100%;
 
   .auxiliary-container {
@@ -26,8 +25,69 @@ product-auxiliary {
     .product-details .product-content {
       grid-column: span 20;
     }
+  }
 
+  .product-price-container {
+    grid-column: span 18;
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    align-items: center;
 
+    @media screen and (min-width: 480px) and (max-width: 768px) {
+      grid-column: span 7;
+      justify-content: flex-end;
+    }
+
+    @media screen and (min-width: 768px) and (max-width: 1200px) {
+      grid-column: span 18;
+      justify-content: flex-start;
+    }
+
+    @media screen and (min-width: 768px) and (max-width: 1200px) {
+      grid-column: span 18;
+      justify-content: flex-start;
+    }
+
+    @media screen and (min-width: 1200px) {
+      grid-column: span 7;
+      justify-content: flex-end;
+    }
+  }
+}
+
+cross-sell-widget {
+  display: flex;
+  flex: 1;
+  min-height: 68px;
+
+  .auxiliary-container {
+    position: relative;
+    display: grid;
+    gap: 8px;
+    align-items: center;
+    grid-template-columns: minmax(0, auto) minmax(0, 1fr);
+    width: 100%;
+    padding: 8px 16px;
+    border: 2px solid #2e2f3c;
+    border-radius: 8px;
+    cursor: pointer;
+    @media screen and (min-width: 750px) {
+      padding: 8px 16px;
+
+    }
+
+    .product-details {
+      display: grid;
+      /*gap: .5rem;*/
+      grid-template-columns: repeat(auto-fit, minmax(10px, auto));
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .product-details .product-content {
+      grid-column: span 20;
+    }
   }
 
   .product-price-container {
@@ -58,11 +118,39 @@ product-auxiliary {
     }
   }
 
-  &[name="upsell-widget"] {
-    display: none;
+  .widget-checkbox {
+    $this: &;
+    position: relative;
+    height: min-content;
+
+    &__icon--checked {
+      display: none;
+    }
+
+    &__input {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .widget-checkbox__input:checked ~ .widget-checkbox__icon--checked {
+      display: block;
+    }
+
+    .widget-checkbox__input:checked ~ .widget-checkbox__icon--unchecked {
+      display: none;
+    }
   }
 }
 
+cross-sell-engine {
+  position: relative;
+  display: grid;
+  gap: 1rem;
+  margin-bottom: 1rem;
 
-
-
+  &.is-loading {
+    height: 60px;
+  }
+}
