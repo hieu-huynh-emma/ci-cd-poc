@@ -28,7 +28,7 @@ gulp.task('sass', function () {
       tailwindcss('./tailwind.config.js'),
       autoprefixer()
     ]))
-    .pipe(cleanCSS({ level: 2 }))
+    // .pipe(cleanCSS({ level: 2 }))
     .pipe(gulp.dest('./assets'))
 });
 
