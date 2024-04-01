@@ -38,6 +38,7 @@
       "blocks": {
         "yotpo_star_rating": {
           "type": "yotpo_star_rating",
+          "disabled": true,
           "settings": {
             "product": "{{product}}",
             "new_layout": true
@@ -49,7 +50,7 @@
       ],
       "settings": {
         "title": "Emma Hybrid Premium",
-        "desc": "<p><strong>Our new best-in-class option for absolute comfort<\/strong><\/p><p>Our newest 14-inch Hybrid Premium mattress provides cooling effect, extra pressure relief and a unique floating sensation for the best deep, restoring sleep you can imagine. <\/p><ul><li>Perfect temperature: heat dissipation & temperature control ensured by our special Thermosync foam<\/li><li>Total motion isolation & extra pressure relief<\/li><li>Highest breathability<\/li><li>7 ergonomic zones for a better support and spinal alignment<\/li><\/ul>",
+        "desc": "<p><strong>Our new best-in-class option for absolute comfort<\/strong><\/p><p>Our newest 14-inch Hybrid Premium mattress provides cooling effect, extra pressure relief and a unique floating sensation for the best deep, restoring sleep you can imagine. <\/p><ul><li>Perfect temperature: heat dissipation & temperature control ensured by our special Thermosync foam<\/li><li>Total motion isolation & extra pressure relief<\/li><li>Highest breathability and cool to touch<\/li><li>7 ergonomic zones for a better support and spinal alignment<\/li><\/ul>",
         "disclaimer": ""
       }
     },
@@ -296,8 +297,8 @@
           "type": "cover_layer",
           "settings": {
             "image": "shopify:\/\/shop_images\/9RP2YPY2_Hybrid_27_layer_8.png",
-            "title": "The UltraDry™ cover that’s super easy to clean",
-            "content": "The Emma cover is soft-to-touch, making it very comfortableto lie on. It is breathable and also completely removable, making it easy to wash.",
+            "title": "The UltraDry™ cover that’s cool to touch",
+            "content": "The Emma cover is soft-to-touch, making it very comfortable to lie on. It is breathable, cool to touch and also completely removable, making it easy to wash.",
             "gutter": 8,
             "bullet_gutter": 60
           }
@@ -457,7 +458,7 @@
         "8e09714b-b400-4d50-8d13-487c31f7eaba": {
           "type": "product-block",
           "settings": {
-            "product": "emma-hybrid-premium",
+            "product": "emma-hybrid-premium-plus",
             "show_star_rating": false,
             "color": "#3c4196",
             "primary_badge": "",

@@ -12,7 +12,9 @@
     {% endif %}
 </h2>
 
-{% render 'yotpo_star_rating', settings: yotpo_star_rating.settings %}
+{% if yotpo_star_rating %}
+    {% render 'yotpo_star_rating', settings: yotpo_star_rating.settings %}
+{% endif %}
 
 <div class="product-description">
     {{ section.settings.desc | default: product.description }}
