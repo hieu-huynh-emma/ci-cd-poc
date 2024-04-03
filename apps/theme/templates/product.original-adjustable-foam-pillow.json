@@ -9,6 +9,28 @@
     "product-badges": {
       "type": "product-badges",
       "settings": {
+        "caption_headline": "",
+        "caption_content": ""
+      }
+    },
+    "product-summary": {
+      "type": "product-summary",
+      "blocks": {
+        "yotpo_star_rating": {
+          "type": "yotpo_star_rating",
+          "settings": {
+            "product": "{{product}}",
+            "new_layout": false
+          }
+        }
+      },
+      "block_order": [
+        "yotpo_star_rating"
+      ],
+      "settings": {
+        "title": "Original Adjustable Foam Pillow",
+        "desc": "<h6>Firm for extra support<\/h6><p>Our memory foam pillow with adjustable layers for the perfect height<\/p><ul><li>Pressure-relieving foam<\/li><li>Individually removable layers<\/li><li>For all sleeping positions and body types<\/li><li>Try it for 60 days with the Emma promise<\/li><\/ul>",
+        "disclaimer": ""
       }
     },
     "product-media": {
@@ -65,26 +87,6 @@
       "settings": {
         "caption_headline": "Loved by back, side, and stomach sleepers",
         "caption_content": "Breathable and hypoallergenic for sensitive and hot sleepers"
-      }
-    },
-    "product-summary": {
-      "type": "product-summary",
-      "blocks": {
-        "yotpo_star_rating": {
-          "type": "yotpo_star_rating",
-          "settings": {
-            "product": "{{product}}",
-            "new_layout": false
-          }
-        }
-      },
-      "block_order": [
-        "yotpo_star_rating"
-      ],
-      "settings": {
-        "title": "Original Adjustable Foam Pillow",
-        "desc": "<h6>Firm for extra support<\/h6><p>Our memory foam pillow with adjustable layers for the perfect height<\/p><ul><li>Pressure-relieving foam<\/li><li>Individually removable layers<\/li><li>For all sleeping positions and body types<\/li><li>Try it for 60 days with the Emma promise<\/li><\/ul>",
-        "disclaimer": ""
       }
     },
     "product-specifications": {
@@ -387,7 +389,7 @@
             "primary_badge": "",
             "secondary_badge": "PREMIUM CHOICE",
             "image": "shopify:\/\/shop_images\/hybrid-premium-exploded_1.png",
-            "product_title": "Emma Hybrid Premium",
+            "product_title": "Emma Hybrid Premium Plus",
             "desc": "<h1>★ 4.8<\/h1><p><strong>Our new best-in-class mattress for perfect cooling & absolute comfort<\/strong><\/p>",
             "discount_title": "",
             "comfort_meter": 8,
