@@ -731,6 +731,9 @@ class VariantSelects extends HTMLElement {
       originalPriceInCurrency = Currency.format(originalPrice, { maximumFractionDigits: originalPrice % 1 === 0 ? 0 : 2 });
 
     $("[data-sale-price]").text(priceInCurrency);
+    $("#price").val(price)
+    $("#originalPrice").val(originalPrice)
+
     if (totalSaved) $("[data-regular-price]").text(originalPriceInCurrency);
 
     const isAvail = !!this.currentVariant.available;
