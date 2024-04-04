@@ -16,6 +16,7 @@
     #product-layout:not(.is-initialized) {
         min-height: 1700px;
     }
+
     #product-viewer {
         display: flex;
         width: 100%;
@@ -33,12 +34,12 @@
 </style>
 
 <div
-  id="product-layout"
-  class="page-boundary"
-  data-section-id="{{ section.id }}"
-  data-section-type="product"
-  data-enable-history-state="true"
-  data-ajax-enabled="{{ settings.enable_ajax }}"
+    id="product-layout"
+    class="page-boundary"
+    data-section-id="{{ section.id }}"
+    data-section-type="product"
+    data-enable-history-state="true"
+    data-ajax-enabled="{{ settings.enable_ajax }}"
 >
   <div class="product-info product-info-wrapper ">
     <div id="product-viewer">
@@ -70,18 +71,18 @@
 
         {% form 'product', product, class: form_classes, novalidate: 'novalidate', data-product-form: '' %}
           <div
-            id="attribute-configurator"
-            class="
+              id="attribute-configurator"
+              class="
                 attribute-configurator
                 {% if product.has_only_default_variant == true %} attribute-configurator--single{% endif %}
                 {% if product.selected_or_first_available_variant.available == false %} attribute-configurator--unavailable{% endif %}
             "
           >
             <variant-selects
-              class="no-js-hidden emma-product__variant"
-              data-section="{{ section.id }}"
-              data-url="{{ product.url }}"
-              {{ block.shopify_attributes }}
+                class="no-js-hidden emma-product__variant"
+                data-section="{{ section.id }}"
+                data-url="{{ product.url }}"
+                {{ block.shopify_attributes }}
             >
 
               {%- for option in product.options_with_values -%}
@@ -91,17 +92,17 @@
                   </label>
                   <div class="select">
                     <select
-                      id="Option-{{ section.id }}-{{ forloop.index0 }}"
-                      class="select__select"
-                      name="options[{{ option.name | escape }}]"
-                      form="product-form-{{ section.id }}"
+                        id="Option-{{ section.id }}-{{ forloop.index0 }}"
+                        class="select__select"
+                        name="options[{{ option.name | escape }}]"
+                        form="product-form-{{ section.id }}"
                     >
                       {%- for value in option.values -%}
                         <option
-                          value="{{ value | escape }}"
-                          {% if option.selected_value == value %}
-                            selected="selected"
-                          {% endif %}
+                            value="{{ value | escape }}"
+                            {% if option.selected_value == value %}
+                              selected="selected"
+                            {% endif %}
                         >
                           {{ value }}
                         </option>
@@ -114,16 +115,17 @@
 
               <script type="application/json">
                   {{ product.variants | json }}
+
               </script>
             </variant-selects>
 
             <select name="id" id="ProductSelect-{{ section.id }}" class="product-form__variants no-js">
               {% for variant in product.variants %}
                 <option
-                  value="{{ variant.id }}"
-                  {%- if variant == current_variant %}
-                    selected="selected"
-                  {%- endif -%}
+                    value="{{ variant.id }}"
+                    {%- if variant == current_variant %}
+                      selected="selected"
+                    {%- endif -%}
                 >
                   {{ variant.title }}
                   {%- if variant.available == false %} - {{ 'products.product.sold_out' | t }}{% endif %}
@@ -143,9 +145,9 @@
           </div>
 
           <div
-            class="product-form__error-message-wrapper product-form__error-message-wrapper--hidden{% if section.settings.enable_payment_button %} product-form__error-message-wrapper--has-payment-button{% endif %}"
-            data-error-message-wrapper
-            role="alert"
+              class="product-form__error-message-wrapper product-form__error-message-wrapper--hidden{% if section.settings.enable_payment_button %} product-form__error-message-wrapper--has-payment-button{% endif %}"
+              data-error-message-wrapper
+              role="alert"
           >
             <span class="visually-hidden">{{ 'general.accessibility.error' | t }} </span>
             {% render 'icon-error' %}
@@ -161,22 +163,19 @@
 
             {%- if affirm_widget -%}
 
-                {% render 'affirm-widget' %}
+              {% render 'affirm-widget' %}
 
             {% endif %}
           </div>
 
           <div class="relative">
-              <div class="skeleton"></div>
-            {% comment %}<loading-overlay id="cta-loader" class="hidden bg-white pointer-events-none"></loading-overlay>{% endcomment %}
+            <div class="skeleton"></div>
 
-            <div id="price-{{ section.id }}" class="product__price" {{ block.shopify_attributes }}>
-              {% render 'product-price', variant: current_variant, product: product %}
-            </div>
+            {% render 'product-price', variant: current_variant, product: product %}
 
             <div class="product-form__controls-group product-form__controls-group--submit">
               <div
-                class="product-form__item product-form__item--submit
+                  class="product-form__item product-form__item--submit
                       {%- if section.settings.enable_payment_button %} product-form__item--payment-button {%- endif -%}
                       {%- if product.has_only_default_variant %} product-form__item--no-variants {%- endif -%}
                 "
@@ -199,11 +198,11 @@
       <div id="product-specifications-placeholder"></div>
 
       <p
-        class="visually-hidden"
-        data-loader-status
-        aria-live="assertive"
-        role="alert"
-        aria-hidden="true"
+          class="visually-hidden"
+          data-loader-status
+          aria-live="assertive"
+          role="alert"
+          aria-hidden="true"
       >
         {{ 'products.product.loader_label' | t }}
       </p>
@@ -217,10 +216,12 @@
 {% unless product == empty %}
   <script type="application/json" id="ProductJson-{{ section.id }}">
       {{ product | json }}
+
   </script>
   <script type="application/json" id="ModelJson-{{ section.id }}">
       {{ product.media | where: 'media_type', 'model' | json }}
-    </script>
+
+  </script>
 {% endunless %}
 
 {% schema %}
