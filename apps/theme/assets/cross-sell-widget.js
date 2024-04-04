@@ -199,8 +199,6 @@ class CrossSellEngine extends CustomElement {
   :eventName="cross_selling"
   data-product-id="${product.id}"
   data-variant-id="${id}"
-  data-price="${price}"
-  data-original-price="${originalPrice}"
   :variantId="${id}"
 > 
     <script type="application/json">${JSON.stringify(product)}</script>
@@ -331,8 +329,6 @@ class CrossSellWidget extends ProductAuxiliary {
     } else {
       $checkboxInput.prop("checked", false);
     }
-
-    window.dispatchEvent(new Event("productPriceChange"))
   }
 }
 
