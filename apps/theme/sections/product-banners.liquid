@@ -17,7 +17,7 @@
                     rel="noreferrer"
             >
                 <div class="card__header">
-                    {% if discountedAmount != blank %}
+                    {% if discountedAmount != blank and block.settings.show_badge == true %}
                         <p class="mb-[10px] p-2 rounded-[4px] bg-green-pea text-[white] text-[11px] md:text-[13px] leading-none font-semibold uppercase">
                             SAVE UP TO {{ discountedAmount | money }}
                         </p>
@@ -82,6 +82,12 @@
           "id": "desc",
           "type": "textarea",
           "label": "Block Description"
+        },
+        {
+          "id": "show_badge",
+          "type": "checkbox",
+          "label": "Show Badge?",
+          "default": true
         }
       ]
     }
