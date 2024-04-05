@@ -47,8 +47,15 @@
 
                 {% form 'product', product, class: form_classes, novalidate: 'novalidate', data-product-form: '' %}
                     {% render 'bundle-buy-box', product: product %}
+                  {% liquid
+                            assign qtySelectorOrientation = "horizontal"
 
-                    {% render 'product-quantity-selector' %}
+                            if product.has_only_default_variant == false
+                                assign qtySelectorOrientation = "vertical"
+                            endif
+                        %}
+
+                   {% render 'product-quantity-selector', orientation: qtySelectorOrientation %}
 
                     <div
                             class="product-form__error-message-wrapper product-form__error-message-wrapper--hidden{% if section.settings.enable_payment_button %} product-form__error-message-wrapper--has-payment-button{% endif %}"
