@@ -260,83 +260,42 @@
       "settings": {
       }
     },
-    "mattress-layers": {
-      "type": "mattress-layers",
+    "mattress-layers-static": {
+      "type": "mattress-layers-static",
       "blocks": {
-        "cover_layer_zPQz7H": {
-          "type": "cover_layer",
+        "layer_item_BayxGx": {
+          "type": "layer_item",
           "settings": {
-            "image": "shopify://shop_images/Diamond_pillow_1.png",
-            "title": "Ultradry cover",
-            "content": "The cover's UltraDry technology rapidly wicks away moisture, ensuring the perfect cool, dry sleep.",
-            "gutter": 4,
-            "bullet_gutter": 1
+            "title": "The cover that’s airy and breathable",
+            "content": "This padded cover is made of 100% luxurious micro-elastic materials, offering superior breathability and a dream-like silky soft touch."
           }
         },
-        "internal_layer_gpgALY": {
-          "type": "internal_layer",
+        "layer_item_ReXMkn": {
+          "type": "layer_item",
           "settings": {
-            "image": "shopify://shop_images/Diamond_pillow_2.png",
-            "title": "ThermoSync cooling foam",
-            "content": "The graphite Thermosync coating guarantees extended deep sleep phases thanks to temperature regulation. Body temperature quickly drops to a level that promotes restful sleep.",
-            "is_thin": true,
-            "gutter": 5,
-            "bullet_gutter": 1
+            "title": "The microfibre filling that’s soft and supportive",
+            "content": "The thicker layer is stuffed with high-quality Aerosoft microfibre filling, offering strong support to the neck and shoulders, whilst keeping its softness and fluffiness."
           }
         },
-        "internal_layer_r6cwd8": {
-          "type": "internal_layer",
+        "layer_item_KzCDVp": {
+          "type": "layer_item",
           "settings": {
-            "image": "shopify://shop_images/Diamond_pillow_3.png",
-            "title": "The soft foam that feels like a cloud",
-            "content": "Heavenly sleeping climate thanks to breathable Airgocell® foam. The softest layer of the three.",
-            "is_thin": false,
-            "gutter": 6,
-            "bullet_gutter": 46
-          }
-        },
-        "internal_layer_kPJhEn": {
-          "type": "internal_layer",
-          "settings": {
-            "image": "shopify://shop_images/Diamond_pillow_4.png",
-            "title": "Visco-adaptive foam",
-            "content": "The visco-adaptive foam supports the head and neck with extreme precision for you to sleep in a state of total relaxation.",
-            "is_thin": false,
-            "gutter": 3,
-            "bullet_gutter": 41
-          }
-        },
-        "72c945db-310d-4f05-905a-b523e378d2f4": {
-          "type": "base_layer",
-          "settings": {
-            "image": "shopify://shop_images/Diamond_pillow_5.png",
-            "title": "Ultradry cover",
-            "content": "The cover's UltraDry technology rapidly wicks away moisture, ensuring the perfect cool, dry sleep.",
-            "gutter": 1,
-            "bullet_gutter": 51
-          }
-        },
-        "shadow_TWYLez": {
-          "type": "shadow",
-          "settings": {
-            "image": "shopify://shop_images/Foam_pillow_sh.png"
+            "title": "The individually removable layers",
+            "content": "The inner layers are also made of the same Aerosoft microfibre but they’re thinner and removable so that you can adjust the height and firmness of the pillow to your exact liking."
           }
         }
       },
       "block_order": [
-        "cover_layer_zPQz7H",
-        "internal_layer_gpgALY",
-        "internal_layer_r6cwd8",
-        "internal_layer_kPJhEn",
-        "72c945db-310d-4f05-905a-b523e378d2f4",
-        "shadow_TWYLez"
+        "layer_item_BayxGx",
+        "layer_item_ReXMkn",
+        "layer_item_KzCDVp"
       ],
       "settings": {
-        "wallpaper": "shopify://shop_images/orange_1.png",
-        "heading": "Let's take a look under the covers",
-        "heading_alignment": "center",
-        "container_spacing": "sm",
-        "carousel_mode": false
+        "heading": "Emma Original - Layer by Layer",
+        "heading_alignment": "start",
+        "container_spacing": "md",
+        "image": "shopify://shop_images/1_1.png",
+        "carousel_mode": true
       }
     },
     "mattress-firmness": {
@@ -853,7 +812,7 @@
     "product-unique-selling-points",
     "product-auxiliary",
     "multimedia-showcase",
-    "mattress-layers",
+    "mattress-layers-static",
     "mattress-firmness",
     "featured-products",
     "social-proof",
