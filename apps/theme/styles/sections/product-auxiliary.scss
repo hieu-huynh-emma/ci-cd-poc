@@ -76,6 +76,7 @@ cross-sell-widget {
       padding: 8px 16px;
 
     }
+
     .product-details {
       container: product-details / inline-size;
 
@@ -103,27 +104,21 @@ cross-sell-widget {
   }
 
   .widget-checkbox {
-    $this: &;
-    position: relative;
-    height: min-content;
-
-    &__icon--checked {
-      display: none;
-    }
+    display: flex;
 
     &__input {
-      position: absolute;
-      inset: 0;
-      opacity: 0;
+      height: 15px;
+      width: 15px;
+      padding: 0px;
+      margin: 0px;
+
+      cursor: pointer;
       pointer-events: none;
-    }
 
-    .widget-checkbox__input:checked ~ .widget-checkbox__icon--checked {
-      display: block;
-    }
-
-    .widget-checkbox__input:checked ~ .widget-checkbox__icon--unchecked {
-      display: none;
+      @media screen and (min-width: 769px) {
+        height: 20px;
+        width: 20px;
+      }
     }
   }
 }

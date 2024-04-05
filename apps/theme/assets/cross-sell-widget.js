@@ -205,28 +205,6 @@ class CrossSellEngine extends CustomElement {
     <div class="auxiliary-container">
       <div class="widget-checkbox">
           <input type="checkbox" class="widget-checkbox__input"/>
-           <i class="widget-checkbox__icon widget-checkbox__icon--checked">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
-                      <path
-                              data-name="Icon ionic-md-checkmark-circle-outline"
-                              d="m9.275 11.475-1.4 1.4 4.5 4.5 10-10-1.4-1.4-8.6 8.55zm12.1 1.9a7.966 7.966 0 1 1-5.8-7.7l1.55-1.55a9.3 9.3 0 0 0-3.75-.75 10 10 0 1 0 10 10z"
-                              transform="translate(-3.375 -3.375)" style="fill:#14aa60"
-                      ></path>
-                  </svg>
-              </i>
-
-          <i class="widget-checkbox__icon widget-checkbox__icon--unchecked">
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
-                   xmlns="http://www.w3.org/2000/svg">
-                  <path
-                          d="M19.25 10C19.25 15.1086 15.1086 19.25 10 19.25C4.89137 19.25 0.75 15.1086 0.75 10C0.75 4.89137 4.89137 0.75 10 0.75C15.1086 0.75 19.25 4.89137 19.25 10Z"
-                          stroke="black" stroke-width="1.5"
-                  />
-                  <path d="M6 9.90637H13.689" stroke="black" stroke-width="1.6" stroke-linecap="round"/>
-                  <path d="M10 6V13.689" stroke="black" stroke-width="1.6" stroke-linecap="round"/>
-              </svg>
-          </i>
-
       </div>
       
       <div class="product-details">
