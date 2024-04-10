@@ -669,3 +669,14 @@ body {
   border: 0;
   font-size: 19px
 }
+
+
+#product-layout {
+  &:not(.is-initialized)  {
+    .hide-until-initialized {
+      display: none;
+    }
+  }
+}
+
+
