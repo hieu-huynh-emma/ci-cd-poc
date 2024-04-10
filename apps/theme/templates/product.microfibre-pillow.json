@@ -260,6 +260,73 @@
       "settings": {
       }
     },
+    "mattress-layers": {
+      "type": "mattress-layers",
+      "blocks": {
+        "cover_layer_zPQz7H": {
+          "type": "cover_layer",
+          "settings": {
+            "image": "shopify://shop_images/Microfiber_layer_1.png",
+            "title": "The cover that’s airy and breathable",
+            "content": "This padded cover is made of 100% luxurious micro-elastic materials, offering superior breathability and a dream-like silky soft touch.",
+            "gutter": 4,
+            "bullet_gutter": 1
+          }
+        },
+        "internal_layer_gpgALY": {
+          "type": "internal_layer",
+          "settings": {
+            "image": "shopify://shop_images/Microfiber_layer_2.png",
+            "title": "The microfibre filling that’s soft and supportive",
+            "content": "The thicker layer is stuffed with high-quality Aerosoft microfibre filling, offering strong support to the neck and shoulders, whilst keeping its softness and fluffiness.",
+            "is_thin": true,
+            "gutter": 5,
+            "bullet_gutter": 8
+          }
+        },
+        "internal_layer_r6cwd8": {
+          "type": "internal_layer",
+          "settings": {
+            "image": "shopify://shop_images/Microfiber_Layer_3.png",
+            "title": "The individually removable layers",
+            "content": "The inner layers are also made of the same Aerosoft microfibre but they’re thinner and removable so that you can adjust the height and firmness of the pillow to your exact liking.",
+            "is_thin": false,
+            "gutter": 2,
+            "bullet_gutter": 46
+          }
+        },
+        "72c945db-310d-4f05-905a-b523e378d2f4": {
+          "type": "base_layer",
+          "settings": {
+            "image": "shopify://shop_images/Microfiber_layer_4.png",
+            "title": "The cover that’s airy and breathable",
+            "content": "This padded cover is made of 100% luxurious micro-elastic materials, offering superior breathability and a dream-like silky soft touch.",
+            "gutter": 1,
+            "bullet_gutter": 51
+          }
+        },
+        "shadow_TWYLez": {
+          "type": "shadow",
+          "settings": {
+            "image": "shopify://shop_images/Foam_pillow_sh.png"
+          }
+        }
+      },
+      "block_order": [
+        "cover_layer_zPQz7H",
+        "internal_layer_gpgALY",
+        "internal_layer_r6cwd8",
+        "72c945db-310d-4f05-905a-b523e378d2f4",
+        "shadow_TWYLez"
+      ],
+      "settings": {
+        "wallpaper": "shopify://shop_images/orange_1.png",
+        "heading": "Let's take a look under the covers",
+        "heading_alignment": "center",
+        "container_spacing": "sm",
+        "carousel_mode": false
+      }
+    },
     "mattress-layers-static": {
       "type": "mattress-layers-static",
       "blocks": {
@@ -290,6 +357,7 @@
         "layer_item_ReXMkn",
         "layer_item_KzCDVp"
       ],
+      "disabled": true,
       "settings": {
         "heading": "Emma Original - Layer by Layer",
         "heading_alignment": "start",
@@ -812,6 +880,7 @@
     "product-unique-selling-points",
     "product-auxiliary",
     "multimedia-showcase",
+    "mattress-layers",
     "mattress-layers-static",
     "mattress-firmness",
     "featured-products",
