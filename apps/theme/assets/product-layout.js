@@ -1,7 +1,6 @@
 const schema = [
   {
     sectionId: "product-summary",
-    eager: true,
   },
   {
     sectionId: "product-badges",
@@ -27,7 +26,7 @@ const schema = [
         query: `product-auxiliary[name="upsell-widget"]`,
         outletQuery: "#attribute-configurator",
         insertPosition: "afterend",
-      }
+      },
     ],
   },
 ];
@@ -37,21 +36,19 @@ const templateId = sectionId.split("__")[0];
 schema.forEach(processSectionSchema);
 
 window.addEventListener("load", () => {
-  $("#product-layout .skeleton").hide()
-})
+  $("#product-layout .skeleton").hide();
+});
 
-setTimeout(() => {
-  const productLayoutEl = document.querySelector('#product-layout')
+window.addEventListener("load", () => {
+  setTimeout(() => {
+    const productLayoutEl = document.querySelector("#product-layout");
 
-  productLayoutEl.classList.add("is-initialized")
-}, 500)
+    productLayoutEl.classList.add("is-initialized");
+  }, 100);
+});
 
-function processSectionSchema({ eager = false, ...data }) {
-  if (eager) {
-    loadSection(data);
-  } else {
-    window.addEventListener("load", () => loadSection(data));
-  }
+function processSectionSchema(data) {
+  window.addEventListener("load", () => loadSection(data));
 }
 
 function loadSection({ sectionId, blocks = [] }) {
@@ -72,7 +69,7 @@ function loadSection({ sectionId, blocks = [] }) {
 
         outletEl.insertAdjacentElement(insertPosition, detachedBlockEl);
       } catch (e) {
-        console.error(e)
+        console.error(e);
       }
     });
   }
@@ -80,7 +77,6 @@ function loadSection({ sectionId, blocks = [] }) {
   sectionEl.classList.remove("hidden");
 
   setTimeout(() => {
-    sectionEl.classList.add("is-initialized")
-  }, 500)
-
+    sectionEl.classList.add("is-initialized");
+  }, 500);
 }
