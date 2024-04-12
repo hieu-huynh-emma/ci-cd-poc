@@ -20,9 +20,7 @@
             <ul class="splide__list">
               {% for block in catalogItems %}
                 <li class="splide__slide">
-                  <a href="{{ block.settings.product.url }}">
                     {% render 'product-card', product: block.settings.product %}
-                  </a>
                 </li>
               {% endfor %}
             </ul>

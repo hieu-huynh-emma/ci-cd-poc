@@ -1637,8 +1637,6 @@ video {
   font-weight: 600;
 }.font-thin {
   font-weight: 100;
-}.font-extralight {
-  font-weight: 200;
 }.uppercase {
   text-transform: uppercase;
 }.capitalize {
@@ -2220,10 +2218,6 @@ video {
 
   .md\:text-\[60px\] {
     font-size: 60px;
-  }
-
-  .md\:text-md {
-    font-size: 20px;
   }
 
   .md\:text-sm {
