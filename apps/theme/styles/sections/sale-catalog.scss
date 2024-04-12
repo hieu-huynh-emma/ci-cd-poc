@@ -1,0 +1,109 @@
+.smart-tabs {
+  $tabs: ".smart-tabs";
+  $tab: ".smart-tab";
+  $container: ".smart-container";
+  $labelText: ".smart-tab-label-text";
+
+
+  &.smart-element {
+    width: 100%;
+    height: auto;
+    min-height: initial;
+    padding: 0;
+  }
+
+  #{$tabs}-header-section {
+    border: none;
+    background: none;
+  }
+
+  #{$tabs}-content-section {
+    overflow: unset;
+    border: none;
+
+    padding: 0;
+  }
+
+  #{$tab}-strip {
+    border-bottom: 1px solid var(--color-athens-gray);
+
+    > .smart-tab-label-container {
+      background: none;
+      color: inherit;
+
+      :first-child {
+        margin-left: 0;
+      }
+    }
+  }
+
+  #{$container} {
+    padding: 0;
+    gap: 1rem;
+    @media screen and (min-width: 769px) {
+      gap: 80px;
+    }
+  }
+
+  #{$tabs}-selection-bar {
+    height: 3px;
+    background-color: var(--color-charade);
+  }
+
+  #{$tab} {
+    &-item {
+      overflow: unset;
+
+      &:not(.smart-visibility-hidden) {
+        position: relative;
+      }
+    }
+
+    &-label-container {
+      &.smart-tab-selected {
+        #{$labelText}-container {
+          color: var(--color-charade);
+          font-weight: 600;
+        }
+      }
+    }
+  }
+
+  #{$labelText} {
+    &-wrapper {
+      padding: 10px;
+    }
+
+    &-container {
+      color: var(--color-comet);
+      font-family: 'Inter';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+      text-transform: none;
+
+      @media screen and (min-width: 769px) {
+        font-size: 20px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 769px) {
+  #sale-catalog-section product-card {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .anno-cta.btn.btn--plain.btn--sm:hover {
+    background-color: #ff8900 !important;
+    color: #fff;
+  }
+
+
+  .multicolumn-card.horizontal-layout-on-mobile {
+    grid-template-columns: minmax(0, auto) minmax(0, 1fr);
+    grid-template-rows: initial;
+  }
+}

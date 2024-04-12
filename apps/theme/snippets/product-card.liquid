@@ -1,50 +1,53 @@
 {% comment %} <product-card class="{% if landscape %} landscape{% endif %}" :productId="{{ product.id }}"> {% endcomment %}
 <product-card class="{% if landscape %} landscape{% endif %}" :productId="{{ product.id }}">
-  <div class="product-card-media">
-    {% assign blockImg = blockImg | image_url: width: 450 %}
-    {% assign coverImg = product.featured_image | image_url: width: 450 %}
+  <a href="{{ product.url }}" class="wrapper">
+    <div class="product-card-media">
+      {% assign blockImg = blockImg | image_url: width: 450 %}
+      {% assign coverImg = product.featured_image | image_url: width: 450 %}
 
-    <img
-      src="{{ blockImg | default: product.metafields.accentuate.featured_image[0].src | default: coverImg }}"
-      alt=""
-      class="product__image"
-      loading="lazy"
-    >
-  </div>
-
-  <div class="product-card-detail">
-    <div class="product-card-badge-container">
-      {% assign uptoDiscount =  product.metafields.accentuate.upto_discount | times: 1 %}
-      {% if uptoDiscount > 0 %}
-        <div
-          class="product-card-badge bg-scarlet"
-        >
-          {{ uptoDiscount | prepend: '- ' | append: ' %' }}
-        </div>
-      {% endif %}
-
-      {% if product.metafields.accentuate.promotion_capsule %}
-        <div class="product-card-badge bg-calm-600">{{ product.metafields.accentuate.promotion_capsule }}</div>
-      {% endif %}
+      <img
+          src="{{ blockImg | default: product.metafields.accentuate.featured_image[0].src | default: coverImg }}"
+          alt=""
+          class="product__image"
+          loading="lazy"
+      >
     </div>
 
-    <div class="product-card-metadata">
-      {% if show_star_rating == blank or show_star_rating == true %}
-        <product-star-rating :productId="{{ product.id }}"></product-star-rating>
-      {% endif %}
-
-      <h3 class="product__name font-inter">{{ product.title }}</h3>
-
-      <p class="product__short-desc">{{ product.metafields.accentuate.short_description }}</p>
-
-      <p class="product__price">
-        <span class="font-bold">{{ product.first_available_variant.price | money }}</span>
-
-        {% if product.first_available_variant.compare_at_price > product.first_available_variant.price %}
-          <del class="product__original-price">{{ product.first_available_variant.compare_at_price | money }}</del>
+    <div class="product-card-detail">
+      <div class="product-card-badge-container">
+        {% assign uptoDiscount = product.metafields.accentuate.upto_discount | times: 1 %}
+        {% if uptoDiscount > 0 %}
+          <div
+              class="product-card-badge bg-scarlet"
+          >
+            {{ uptoDiscount | prepend: '- ' | append: ' %' }}
+          </div>
         {% endif %}
-      </p>
+
+        {% if product.metafields.accentuate.promotion_capsule %}
+          <div class="product-card-badge bg-calm-600">{{ product.metafields.accentuate.promotion_capsule }}</div>
+        {% endif %}
+      </div>
+
+      <div class="product-card-metadata">
+        {% if show_star_rating == blank or show_star_rating == true %}
+          <product-star-rating :productId="{{ product.id }}"></product-star-rating>
+        {% endif %}
+
+        <h3 class="product__name font-inter">{{ product.title }}</h3>
+
+        <p class="product__short-desc">{{ product.metafields.accentuate.short_description }}</p>
+
+        <p class="product__price">
+          <span class="font-bold">{{ product.first_available_variant.price | money }}</span>
+
+          {% if product.first_available_variant.compare_at_price > product.first_available_variant.price %}
+            <del class="product__original-price">{{ product.first_available_variant.compare_at_price | money }}</del>
+          {% endif %}
+        </p>
+      </div>
+
     </div>
 
-  </div>
+  </a>
 </product-card>

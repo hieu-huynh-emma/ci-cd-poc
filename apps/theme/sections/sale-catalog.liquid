@@ -1,19 +1,22 @@
 {% assign catalogItems = section.blocks | where: 'type', 'catalog_item' %}
 <style>
-  .star-rating{
-    display:none
-  }
-  product-card .product-card-metadata{
-    align-content: start;
-  }
+    .star-rating {
+        display: none
+    }
 
-  .smart-tabs .smart-container {
-    gap: 80px;
-  }
-  .smart-tabs .smart-tabs-content-section {
-    padding: 0 !important;
-  }
+    product-card .product-card-metadata {
+        align-content: start;
+    }
 </style>
+<link rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@smarthtmlelements/smart-elements@6.2.0/source/styles/smart.default.css">
+<script
+    src="https://cdn.jsdelivr.net/npm/@smarthtmlelements/smart-elements@6.2.0/source/smart.element.js"></script>
+<script
+    src="https://cdn.jsdelivr.net/npm/@smarthtmlelements/smart-elements@6.2.0/source/smart.tabs.min.js"></script>
+
+<link rel="stylesheet" href="{{ 'sale-catalog.css' | asset_url }}">
+
 <section id="sale-catalog-section" class="section-container spacing-{{ section.settings.container_spacing }}">
   <div class="section-chassis page-boundary">
     <smart-tabs class="material">
@@ -21,9 +24,7 @@
         <smart-tab-item label="{{ collection.title }}">
           <div class="catalog-grid">
             {% for product in collection.products %}
-              <a href="{{ product.url }}">
                 {% render 'product-card', product: product, landscape: true %}
-              </a>
             {% endfor %}
           </div>
         </smart-tab-item>
@@ -83,8 +84,6 @@
       "type": "collection_list",
       "label": "Sale Collection List"
     },
-
-
     {
       "type": "header",
       "content": "Product Assets",

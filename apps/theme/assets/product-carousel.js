@@ -1,7 +1,7 @@
-$("#product-catalog-section").ready(async function () {
+$("#product-carousel-section").ready(async function () {
     await ResourceCoordinator.requestVendor('Splide');
 
-    new Splide('#product-catalog-section .splide', {
+    new Splide('#product-carousel-section .splide', {
         gap: '8px',
         padding: {right: '50'},
         autoWidth: true,
