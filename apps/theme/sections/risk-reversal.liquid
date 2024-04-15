@@ -1,0 +1,45 @@
+{% assign items = section.blocks | where: "type", "item" %}
+
+
+<section id="risk-reversal-section">
+  <ul class="risk-reversal">
+    {%- for item in items -%}
+      <li>
+        <a href="{{ item.settings.url }}" class="risk-reversal__item">
+          <img src="{{ item.settings.icon | image_url: width: 100 }}" width="60" height="auto" loading="lazy">
+          <p class="text-sm">{{ item.settings.heading }}</p>
+        </a>
+      </li>
+    {%- endfor -%}
+  </ul>
+</section>
+
+{% schema %}
+{
+  "name": "Risk Reversal",
+  "class": "hide-until-initialized",
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Item",
+      "settings": [
+        {
+          "id": "heading",
+          "type": "text",
+          "label": "Heading"
+        },
+        {
+          "id": "icon",
+          "type": "image_picker",
+          "label": "Item Icon"
+        },
+        {
+          "id": "url",
+          "type": "url",
+          "label": "Item Url"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

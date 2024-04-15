@@ -1,0 +1,50 @@
+<link rel="quickscript" href="{{ 'campaign-teaser.css' | asset_url }}" />
+<style>
+  .campaign-teaser {
+      --bgcolor: {{ section.settings.bgcolor }};
+      --text-color: {{section.settings.color}};
+  }
+</style>
+<section class="campaign-teaser">
+  <h2 class="text-md font-bold font-inter">{{ section.settings.title }}</h2>
+  <div class="md:text-md">
+    {% render 'rtf-viewer', content: section.settings.content %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Campaign Teaser",
+  "class": "hide-until-initialized",
+  "settings": [
+    {
+      "id": "title",
+      "type": "text",
+      "label": "Title"
+    },
+    {
+      "id": "content",
+      "type": "richtext",
+      "label": "Content"
+    },
+    {
+      "type": "color",
+      "id": "bgcolor",
+      "label": "Background Color",
+      "default": "#1c1d1d"
+    },
+    {
+      "type": "color",
+      "id": "color",
+      "label": "Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_countdown_timer",
+      "label": "Show Countdown Timer",
+      "default": false
+    }
+  ]
+}
+{% endschema %}

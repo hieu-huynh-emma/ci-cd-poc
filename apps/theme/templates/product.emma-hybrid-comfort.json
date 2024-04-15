@@ -1,5 +1,5 @@
 {
-  "layout": "theme.speed",
+  "layout": "theme.product",
   "sections": {
     "product-layout": {
       "type": "product-layout",
@@ -8,18 +8,10 @@
           "type": "affirm_widget",
           "settings": {
           }
-        },
-        "4ed1b304-2430-4843-a7d4-875e743c3c27": {
-          "type": "campaign_teaser",
-          "settings": {
-            "title": "Easter Sale",
-            "content": "<p>50% off<\/p>"
-          }
         }
       },
       "block_order": [
-        "1a0fef92-d415-41a2-b765-395025fcb612",
-        "4ed1b304-2430-4843-a7d4-875e743c3c27"
+        "1a0fef92-d415-41a2-b765-395025fcb612"
       ],
       "settings": {
       }
@@ -142,6 +134,60 @@
       "settings": {
         "caption_headline": "The mattress that can hold its own",
         "caption_content": "Designed to provide perfect support, maximal comfort, and stay cool while you sleep"
+      }
+    },
+    "risk-reversal": {
+      "type": "risk-reversal",
+      "blocks": {
+        "8b906a77-60bb-46b8-b714-8fe010db07ca": {
+          "type": "item",
+          "settings": {
+            "icon": "shopify://shop_images/365_nights.png",
+            "heading": "Free 365-Night Trial",
+            "url": "shopify://pages/trial"
+          }
+        },
+        "605013b2-263f-4c29-b4c0-136f75610eda": {
+          "type": "item",
+          "settings": {
+            "icon": "shopify://shop_images/Delivery.png",
+            "heading": "Free Shipping & Returns",
+            "url": "https://emma-sleep.ca/pages/faq#trial-and-guarantee"
+          }
+        },
+        "49138228-00c2-461a-bbdd-650d93f8503b": {
+          "type": "item",
+          "settings": {
+            "icon": "shopify://shop_images/Warranty.png",
+            "heading": "10-Year Warranty",
+            "url": "https://emma-sleep.ca/pages/faq#trial-and-guarantee"
+          }
+        },
+        "7bc03542-75ef-4463-b480-ec46f36ac421": {
+          "type": "item",
+          "settings": {
+            "icon": "shopify://shop_images/0_APR..png",
+            "heading": "0% APR Financing",
+            "url": "https://emma-sleep.ca/pages/faq#purchasing-your-emma"
+          }
+        }
+      },
+      "block_order": [
+        "8b906a77-60bb-46b8-b714-8fe010db07ca",
+        "605013b2-263f-4c29-b4c0-136f75610eda",
+        "49138228-00c2-461a-bbdd-650d93f8503b",
+        "7bc03542-75ef-4463-b480-ec46f36ac421"
+      ],
+      "settings": {
+      }
+    },
+    "campaign-teaser": {
+      "type": "campaign-teaser",
+      "settings": {
+        "title": "Easter Sale",
+        "content": "<p>50% off<\/p>",
+        "color": "#2e2f3c",
+        "bgcolor": "#fef3ea"
       }
     },
     "product-unique-selling-points": {
@@ -1015,6 +1061,8 @@
     "product-layout",
     "product-badges",
     "product-summary",
+    "risk-reversal",
+    "campaign-teaser",
     "product-media",
     "product-unique-selling-points",
     "product-specifications",

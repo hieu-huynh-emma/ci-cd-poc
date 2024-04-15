@@ -1,46 +1,44 @@
-class ProductMedia extends ResponsiveComponent {
+class ProductMedia extends CustomElement {
   constructor() {
     super();
   }
 
   render() {
-    if (this.isMobile === null) return
+    const tpl = this.querySelector("template");
 
-    const tpl = this.templates[this.isMobile ? 'mobile' : 'desktop']
-
-    if(this.isMobile) {
-      this.$el.html(tpl.cloneNode(true))
-    } else {
-      this.$el.append(tpl.cloneNode(true))
-    }
+    this.$el.html(tpl.content);
   }
 
-  onLayoutModeChange(isMobile) {
-    super.onLayoutModeChange(isMobile);
+  mounted() {
+    super.mounted();
 
-    if (isMobile) {
-      $("product-media").ready(async () => {
-        await ResourceCoordinator.requestVendor("Splide");
+    $("product-media").ready(async () => {
+      await ResourceCoordinator.requestVendor("Splide");
 
-        const main = new Splide("product-media .main-carousel", {
-          type: "fade",
-          rewind: true,
-          pagination: true,
-          arrows: true,
-        });
-        // const thumbnails = new Splide("product-media .thumbnail-carousel", {
-        //   fixedWidth: 100,
-        //   gap: 10,
-        //   rewind: true,
-        //   pagination: false,
-        //   isNavigation: true,
-        // });
-
-        // main.sync(thumbnails);
-        main.mount();
-        // thumbnails.mount();
+      const main = new Splide("product-media .main-carousel", {
+        type: "fade",
+        rewind: true,
+        pagination: false,
+        arrows: true,
       });
-    }
+      const thumbnails = new Splide("product-media .thumbnail-carousel", {
+        fixedWidth: 80,
+        gap: 10,
+        rewind: true,
+        pagination: false,
+        arrows: false,
+        isNavigation: true,
+        breakpoints: {
+          769: {
+            gap: 8,
+          }
+        }
+      });
+
+      main.sync(thumbnails);
+      main.mount();
+      thumbnails.mount();
+    });
   }
 }
 

@@ -9,6 +9,12 @@ const schema = [
     sectionId: "product-media",
   },
   {
+    sectionId: "risk-reversal",
+  },
+  {
+    sectionId: "campaign-teaser",
+  },
+  {
     sectionId: "product-unique-selling-points",
   },
   {

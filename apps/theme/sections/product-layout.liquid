@@ -1,6 +1,5 @@
 {% assign current_variant = product.selected_or_first_available_variant %}
 {% assign affirm_widget = section.blocks | where: 'type', 'affirm_widget' | first %}
-{% assign campaignTeaser = section.blocks | where: 'type', 'campaign_teaser' | first %}
 {% assign appBlock = section.blocks | where: 'type', '@app' | first %}
 
 <link rel="stylesheet" href="{{ 'product-layout.css' | asset_url }}" />
@@ -15,17 +14,6 @@
 <style>
     #product-layout:not(.is-initialized) {
         min-height: 1700px;
-    }
-
-    #product-viewer {
-        display: flex;
-        width: 100%;
-    }
-
-    @media screen and (max-width: 769px) {
-        #product-viewer {
-            aspect-ratio: 16/9;
-        }
     }
 
     #product-summary-placeholder:not(.is-initialized) {
@@ -43,20 +31,17 @@
 >
   <div class="product-info product-info-wrapper ">
     <div id="product-viewer">
-      <div class="promotion-overlay">
-        <div id="product-badges-placeholder"></div>
+      <div id="campaign-teaser-placeholder"></div>
 
-        {% if campaignTeaser %}
-          <div class="campaign-teaser">
-            <h2 class="text-sm font-bold">{{ campaignTeaser.settings.title }}</h2>
-            <div class="text-xs md:text-sm">
-              {% render 'rtf-viewer', content: campaignTeaser.settings.content %}
-            </div>
-          </div>
-        {% endif %}
+      <div class="main-frame">
+        <div class="promotion-overlay">
+          <div id="product-badges-placeholder"></div>
+        </div>
+
+        <div id="product-media-placeholder" class="flex w-full"></div>
       </div>
 
-      <div id="product-media-placeholder" class="flex w-full"></div>
+      <div id="risk-reversal-placeholder"></div>
     </div>
 
     <product-form id="product-configurator">
@@ -235,23 +220,6 @@
       "type": "affirm_widget",
       "name": "Affirm Widget",
       "limit": 1
-    },
-    {
-      "type": "campaign_teaser",
-      "limit": 1,
-      "name": "Campaign Teaser",
-      "settings": [
-        {
-          "id": "title",
-          "type": "text",
-          "label": "Title"
-        },
-        {
-          "id": "content",
-          "type": "richtext",
-          "label": "Content"
-        }
-      ]
     }
   ]
 }
