@@ -308,12 +308,10 @@
           $(this).remove();
         }
       });
-      $('body').on('click', '#continue_button', async function(e){
-        e.preventDefault();
-        if (checkPOBoxAddress() || (await googleAddressValidate())) {
+      $('body').on('click', '#continue_button', function(e){
+        if (checkPOBoxAddress()) {
+          e.preventDefault();
           alert('We do not support shipping to PO BOX addresses.\nPlease enter a residential or commercial address to proceed.');
-        } else {
-          $('form.edit_checkout').submit();
         }
       });
     });
@@ -353,32 +351,6 @@
     const poRegex4 = /box [0-9]/i;
     const address = Shopify.Checkout.step === 'contact_information' ? $('#checkout_shipping_address_address1').val() : {{ checkout.shipping_address.address1 | json }};
     return poRegex.test(address) || poRegex2.test(address) || poRegex3.test(address) || poRegex4.test(address);
-  }
-
-  async function googleAddressValidate() {
-    const url = 'https://addressvalidation.googleapis.com/v1:validateAddress?key={{ shop.metafields.accentuate.google_address_validator_api_key }}';
-    const data = {
-      address: {
-        regionCode: $('#checkout_shipping_address_country option:selected').attr('data-code'),
-        postalCode: $('#checkout_shipping_address_zip').val(),
-        languageCode: Shopify.locale,
-        administrativeArea: $('#checkout_shipping_address_province').val(),
-        locality: $('#checkout_shipping_address_city').val(),
-        addressLines: [$('#checkout_shipping_address_address1').val()]
-      }
-    };
-
-    const response = await fetch(url, {
-      method: 'POST', 
-      body: JSON.stringify(data), 
-      headers:{
-        'Content-Type': 'application/json'
-      }
-    });
-
-    const result = await response.json();
-
-    return (result.result.address.addressComponents[0].componentType == 'post_box');
   }
 
   function renderRecyclingFees() {

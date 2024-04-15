@@ -22,7 +22,7 @@
   {% render 'checkout-vendors' %}
   {% render 'checkout-scripts' %}
   {% render 'custom-checkout' %}
-</head>
+{% include 'kart_discount' %}</head>
 <body data-format="{{ shop.money_format }}">
 {{ skip_to_content_link }}
 
