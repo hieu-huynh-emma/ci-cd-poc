@@ -19,20 +19,17 @@
 >
     <div class="product-info-wrapper page-boundary">
         <div id="product-viewer">
+          <div id="campaign-teaser-placeholder"></div>
+
+          <div class="main-frame">
             <div class="promotion-overlay">
               <div id="product-badges-placeholder"></div>
-
-                {% if campaignTeaser %}
-                    <div class="campaign-teaser">
-                        <h2 class="text-sm font-bold">{{ campaignTeaser.settings.title }}</h2>
-                        <div class="text-xs md:text-sm">
-                            {% render 'rtf-viewer', content: campaignTeaser.settings.content %}
-                        </div>
-                    </div>
-                {% endif %}
             </div>
 
-            <template id="product-media-placeholder"></template>
+            <div id="product-media-placeholder" class="flex w-full"></div>
+          </div>
+
+          <div id="risk-reversal-placeholder"></div>
         </div>
 
         <product-form id="product-configurator">
@@ -217,23 +214,6 @@
       "type": "affirm_widget",
       "name": "Affirm Widget",
       "limit": 1
-    },
-    {
-      "type": "campaign_teaser",
-      "limit": 1,
-      "name": "Campaign Teaser",
-      "settings": [
-        {
-          "id": "title",
-          "type": "text",
-          "label": "Title"
-        },
-        {
-          "id": "content",
-          "type": "richtext",
-          "label": "Content"
-        }
-      ]
     }
   ],
   "settings": [

@@ -1,5 +1,5 @@
 {
-  "layout": "theme.speed",
+  "layout": "theme.product",
   "sections": {
     "product-layout": {
       "type": "product-layout",
@@ -89,6 +89,61 @@
       "settings": {
         "caption_headline": "Snuggle up and wrap yourself in warmth",
         "caption_content": "Have a refreshed sleep while feeling cozy no matter the season"
+      }
+    },
+    "risk-reversal": {
+      "type": "risk-reversal",
+      "blocks": {
+        "8b906a77-60bb-46b8-b714-8fe010db07ca": {
+          "type": "item",
+          "settings": {
+            "heading": "Free 365-Night Trial",
+            "icon": "shopify://shop_images/365_nights.png",
+            "url": "shopify://pages/trial"
+          }
+        },
+        "605013b2-263f-4c29-b4c0-136f75610eda": {
+          "type": "item",
+          "settings": {
+            "heading": "Free Shipping & Returns",
+            "icon": "shopify://shop_images/Delivery.png",
+            "url": "https://emma-sleep.ca/pages/faq#trial-and-guarantee"
+          }
+        },
+        "49138228-00c2-461a-bbdd-650d93f8503b": {
+          "type": "item",
+          "settings": {
+            "heading": "10-Year Warranty",
+            "icon": "shopify://shop_images/Warranty.png",
+            "url": "https://emma-sleep.ca/pages/faq#trial-and-guarantee"
+          }
+        },
+        "7bc03542-75ef-4463-b480-ec46f36ac421": {
+          "type": "item",
+          "settings": {
+            "heading": "0% APR Financing",
+            "icon": "shopify://shop_images/0_APR..png",
+            "url": "https://emma-sleep.ca/pages/faq#purchasing-your-emma"
+          }
+        }
+      },
+      "block_order": [
+        "8b906a77-60bb-46b8-b714-8fe010db07ca",
+        "605013b2-263f-4c29-b4c0-136f75610eda",
+        "49138228-00c2-461a-bbdd-650d93f8503b",
+        "7bc03542-75ef-4463-b480-ec46f36ac421"
+      ],
+      "settings": {
+      }
+    },
+    "campaign-teaser": {
+      "disabled": true,
+      "type": "campaign-teaser",
+      "settings": {
+        "title": "Easter Sale",
+        "content": "<p>50% off</p>",
+        "bgcolor": "#fef3ea",
+        "color": "#2e2f3c"
       }
     },
     "product-specifications": {
@@ -828,6 +883,8 @@
     "product-layout",
     "product-summary",
     "product-media",
+    "risk-reversal",
+    "campaign-teaser",
     "product-specifications",
     "product-unique-selling-points",
     "product-auxiliary",

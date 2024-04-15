@@ -1,16 +1,9 @@
 {
-  "layout": "theme.speed",
+  "layout": "theme.product",
   "sections": {
     "bundle-layout": {
       "type": "bundle-layout",
       "blocks": {
-        "70d9c3e6-227c-45f4-ad8f-46d64fa8c84a": {
-          "type": "campaign_teaser",
-          "settings": {
-            "title": "World Sleep Day Sale",
-            "content": "<p>40% off<\/p>"
-          }
-        },
         "1a0fef92-d415-41a2-b765-395025fcb612": {
           "type": "affirm_widget",
           "settings": {
@@ -18,7 +11,6 @@
         }
       },
       "block_order": [
-        "70d9c3e6-227c-45f4-ad8f-46d64fa8c84a",
         "1a0fef92-d415-41a2-b765-395025fcb612"
       ],
       "settings": {
@@ -114,6 +106,61 @@
       "settings": {
         "caption_headline": "Best value for Emma Original",
         "caption_content": "Enjoy our essentials and create a perfect night's sleep"
+      }
+    },
+    "risk-reversal": {
+      "type": "risk-reversal",
+      "blocks": {
+        "8b906a77-60bb-46b8-b714-8fe010db07ca": {
+          "type": "item",
+          "settings": {
+            "heading": "Free 365-Night Trial",
+            "icon": "shopify://shop_images/365_nights.png",
+            "url": "shopify://pages/trial"
+          }
+        },
+        "605013b2-263f-4c29-b4c0-136f75610eda": {
+          "type": "item",
+          "settings": {
+            "heading": "Free Shipping & Returns",
+            "icon": "shopify://shop_images/Delivery.png",
+            "url": "https://emma-sleep.ca/pages/faq#trial-and-guarantee"
+          }
+        },
+        "49138228-00c2-461a-bbdd-650d93f8503b": {
+          "type": "item",
+          "settings": {
+            "heading": "10-Year Warranty",
+            "icon": "shopify://shop_images/Warranty.png",
+            "url": "https://emma-sleep.ca/pages/faq#trial-and-guarantee"
+          }
+        },
+        "7bc03542-75ef-4463-b480-ec46f36ac421": {
+          "type": "item",
+          "settings": {
+            "heading": "0% APR Financing",
+            "icon": "shopify://shop_images/0_APR..png",
+            "url": "https://emma-sleep.ca/pages/faq#purchasing-your-emma"
+          }
+        }
+      },
+      "block_order": [
+        "8b906a77-60bb-46b8-b714-8fe010db07ca",
+        "605013b2-263f-4c29-b4c0-136f75610eda",
+        "49138228-00c2-461a-bbdd-650d93f8503b",
+        "7bc03542-75ef-4463-b480-ec46f36ac421"
+      ],
+      "settings": {
+      }
+    },
+    "campaign-teaser": {
+      "disabled": true,
+      "type": "campaign-teaser",
+      "settings": {
+        "title": "Easter Sale",
+        "content": "<p>55% off</p>",
+        "bgcolor": "#fef3ea",
+        "color": "#2e2f3c"
       }
     },
     "product-specifications": {
@@ -883,6 +930,8 @@
     "product-summary",
     "product-badges",
     "product-media",
+    "risk-reversal",
+    "campaign-teaser",
     "product-specifications",
     "product-unique-selling-points",
     "product-auxiliary",
