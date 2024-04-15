@@ -8,6 +8,8 @@ product-media {
   grid-template-columns: minmax(0, 1fr);
 
   .media-item {
+    position: relative;
+
     height: fit-content;
     aspect-ratio: 16/10;
     overflow: hidden;
@@ -23,6 +25,22 @@ product-media {
     &.lead-item {
       position: relative;
       flex: 1;
+    }
+
+    .overlay-text {
+      z-index: 1;
+      position: absolute;
+      bottom: var(--y);
+      right: var(--x);
+
+      width: 100%;
+
+      color: var(--text_color);
+
+      font-size: var(--font_size);
+      font-weight: 500;
+      line-height: 125%;
+      text-align: right;
     }
   }
 
@@ -50,6 +68,7 @@ product-media {
     }
 
     &__arrow {
+      pointer-events: all;
       width: 30px;
       height: 30px;
 
@@ -70,4 +89,6 @@ product-media {
     }
   }
 }
+
+
 

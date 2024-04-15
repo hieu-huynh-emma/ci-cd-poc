@@ -6,6 +6,12 @@
 
 <link rel="stylesheet" href="{{ 'product-media.css' | asset_url }}">
 
+<style>
+  product-media {
+      min-height: 500px;
+  }
+</style>
+
 <product-media>
   <div class="lead-item media-item full-width">
     <div class="image-wrapper">
@@ -24,8 +30,6 @@
             height="486"
             class="image-item lazyload"
         />
-
-
       {% endif %}
     </div>
   </div>
@@ -42,10 +46,23 @@
               {% else %}
                 {{ item.settings.image | image_url: width: 808, height: 486 | image_tag }}
               {% endif %}
+
+              {% if item.settings.overlay_text %}
+                <div class="overlay-text" style="
+                    --font_size: {{item.settings.font_size }}px;
+                    --text_alignment: {{item.settings.text_alignment }};
+                    --text_color: {{item.settings.text_color }};
+                    --y: {{item.settings.y }}%;
+                    --x: {{item.settings.x }}%;
+                    ">
+                  {% render 'rtf-viewer', content: item.settings.overlay_text %}
+                </div>
+              {% endif %}
             </div>
           {% endfor %}
         </li>
       </ul>
+
     </div>
 
     <div class="thumbnail-carousel splide">
@@ -87,9 +104,45 @@
           "label": "Image"
         },
         {
-          "type": "image_picker",
-          "id": "award",
-          "label": "Image"
+          "id": "overlay_text",
+          "type": "richtext",
+          "label": "Overlay Text"
+        },
+        {
+          "type": "range",
+          "id": "font_size",
+          "min": 14,
+          "max": 80,
+          "step": 1,
+          "unit": "px",
+          "label": "Font size",
+          "default": 16
+        },
+        {
+          "type": "range",
+          "id": "y",
+          "min": 1,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "label": "Bottom Position",
+          "default": 1
+        },
+        {
+          "type": "range",
+          "id": "x",
+          "min": 1,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "label": "Right Position",
+          "default": 1
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text Color",
+          "default": "#ffffff"
         },
         {
           "id": "hosted_video",

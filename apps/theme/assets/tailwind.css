@@ -2222,10 +2222,6 @@ video {
     font-size: 60px;
   }
 
-  .md\:text-md {
-    font-size: 20px;
-  }
-
   .md\:text-sm {
     font-size: 14px;
   }
@@ -2236,6 +2232,10 @@ video {
 
   .md\:text-xxl {
     font-size: 40px;
+  }
+
+  .md\:text-md {
+    font-size: 20px;
   }
 
   .md\:font-medium {
