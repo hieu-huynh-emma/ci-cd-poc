@@ -1,6 +1,6 @@
 <link rel="quickscript" href="{{ 'catalog-layout.css' | asset_url }}">
 
-<div class="catalog-grid">
+<div class="catalog-grid catalog-grid--{{ alignment }}">
   {% for product in catalog %}
     {% render 'product-card', product: product, landscape: true %}
   {% endfor %}

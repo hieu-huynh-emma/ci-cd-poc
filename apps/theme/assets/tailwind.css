@@ -1627,6 +1627,8 @@ video {
   font-size: 12px;
 }.font-bold {
   font-weight: 700;
+}.font-extralight {
+  font-weight: 200;
 }.font-light {
   font-weight: 300;
 }.font-medium {
@@ -1637,8 +1639,6 @@ video {
   font-weight: 600;
 }.font-thin {
   font-weight: 100;
-}.font-extralight {
-  font-weight: 200;
 }.uppercase {
   text-transform: uppercase;
 }.capitalize {
@@ -2222,6 +2222,10 @@ video {
     font-size: 60px;
   }
 
+  .md\:text-md {
+    font-size: 20px;
+  }
+
   .md\:text-sm {
     font-size: 14px;
   }
@@ -2232,10 +2236,6 @@ video {
 
   .md\:text-xxl {
     font-size: 40px;
-  }
-
-  .md\:text-md {
-    font-size: 20px;
   }
 
   .md\:font-medium {
