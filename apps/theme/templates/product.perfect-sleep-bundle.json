@@ -50,6 +50,11 @@
           "type": "item",
           "settings": {
             "image": "shopify://shop_images/Hero_Banner_-_Bundle_CA.jpg",
+            "overlay_text": "",
+            "font_size": 16,
+            "y": 1,
+            "x": 1,
+            "text_color": "#ffffff",
             "full_width": true,
             "is_video": false
           }
@@ -58,6 +63,11 @@
           "type": "item",
           "settings": {
             "image": "shopify://shop_images/HYBRID_25_BALLOONS-S19.png",
+            "overlay_text": "",
+            "font_size": 16,
+            "y": 1,
+            "x": 1,
+            "text_color": "#ffffff",
             "full_width": false,
             "is_video": false
           }
@@ -66,6 +76,11 @@
           "type": "item",
           "settings": {
             "image": "shopify://shop_images/Sleep_Bundle_-_CA_v_1.jpg",
+            "overlay_text": "",
+            "font_size": 16,
+            "y": 1,
+            "x": 1,
+            "text_color": "#ffffff",
             "full_width": false,
             "is_video": false
           }
@@ -74,6 +89,11 @@
           "type": "item",
           "settings": {
             "image": "shopify://shop_images/Emma-protector-closeup-1_1_43cd6675-948d-4871-82e7-85da5033045d.jpg",
+            "overlay_text": "",
+            "font_size": 16,
+            "y": 1,
+            "x": 1,
+            "text_color": "#ffffff",
             "full_width": false,
             "is_video": false
           }
@@ -82,6 +102,11 @@
           "type": "item",
           "settings": {
             "image": "shopify://shop_images/sleepbundle.jpg",
+            "overlay_text": "",
+            "font_size": 16,
+            "y": 1,
+            "x": 1,
+            "text_color": "#ffffff",
             "full_width": false,
             "is_video": false
           }
@@ -90,6 +115,11 @@
           "type": "item",
           "settings": {
             "image": "shopify://shop_images/Emma_1_ae0eb3a6-8989-45ca-9fe7-3d0e5ef89d7f.jpg",
+            "overlay_text": "",
+            "font_size": 16,
+            "y": 1,
+            "x": 1,
+            "text_color": "#ffffff",
             "full_width": true,
             "is_video": false
           }
@@ -160,7 +190,8 @@
         "title": "Easter Sale",
         "content": "<p>55% off</p>",
         "bgcolor": "#fef3ea",
-        "color": "#2e2f3c"
+        "color": "#2e2f3c",
+        "show_countdown_timer": false
       }
     },
     "product-specifications": {
@@ -532,8 +563,8 @@
             "primary_badge": "COMFORT",
             "secondary_badge": "BEST VALUE",
             "mattress_height": "shopify://shop_images/MicrosoftTeams-image_98.png",
-            "image": "shopify://shop_images/EMMAOG_exploded.png",
-            "product_title": "Emma Original",
+            "image": "shopify://shop_images/Untitled_design_25.png",
+            "product_title": "Emma Original II",
             "desc": "<h1>★4.7</h1><p><strong>Our Most Awarded Memory Foam  Mattress for Budget-Conscious Sleepers</strong></p><ul><li>Most awarded mattress and budget-friendly</li><li>5 unique layers with minimal motion transfer</li><li>Breathable and moisture-wicking</li></ul>",
             "discount_title": "Father's Day Sale",
             "comfort_meter": 6,
