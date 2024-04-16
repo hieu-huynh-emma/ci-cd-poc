@@ -1,56 +1,16 @@
 {
-  "layout": "theme.revamp",
+  "layout": "theme.speed",
   "sections": {
-    "products-layout": {
-      "type": "products-layout",
-      "blocks": {
-        "667f0883-bf12-4f11-850c-507c28a48047": {
-          "type": "product_card",
-          "settings": {
-            "badge_text": "",
-            "product": "perfect-sleep-bundle",
-            "product_desc": "",
-            "background_color": "#f1f0f5",
-            "mobile_image": "shopify:\/\/shop_images\/Bundle_1.png",
-            "desktop_image": "shopify:\/\/shop_images\/Bundle_CA_Hero.png",
-            "card_width": "half"
-          }
-        },
-        "product_card_ADgrmX": {
-          "type": "product_card",
-          "disabled": true,
-          "settings": {
-            "badge_text": "",
-            "product": "",
-            "product_desc": "",
-            "background_color": "",
-            "card_width": "full"
-          }
-        },
-        "38407203-f7ef-40ee-8ac1-f93ad1130052": {
-          "type": "product_card",
-          "settings": {
-            "badge_text": "",
-            "product": "sleep-essential-bundle",
-            "product_desc": "",
-            "background_color": "#f1f0f5",
-            "mobile_image": "shopify:\/\/shop_images\/4970e8e9-254d-4da6-8e45-a7e78e955c78.png",
-            "desktop_image": "shopify:\/\/shop_images\/4970e8e9-254d-4da6-8e45-a7e78e955c78.png",
-            "card_width": "half"
-          }
-        }
-      },
-      "block_order": [
-        "667f0883-bf12-4f11-850c-507c28a48047",
-        "product_card_ADgrmX",
-        "38407203-f7ef-40ee-8ac1-f93ad1130052"
-      ],
+    "collection-catalog": {
+      "type": "collection-catalog",
       "settings": {
-        "title": "Bundles"
+        "heading": "Our Bundles",
+        "heading_alignment": "center",
+        "container_spacing": "md"
       }
     }
   },
   "order": [
-    "products-layout"
+    "collection-catalog"
   ]
 }
