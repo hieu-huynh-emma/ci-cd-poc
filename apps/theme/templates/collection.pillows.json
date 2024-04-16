@@ -6,56 +6,11 @@
       "settings": {
         "heading": "Our Pillows",
         "heading_alignment": "start",
-        "container_spacing": "md"
-      }
-    },
-    "featured-content": {
-      "type": "featured-content",
-      "blocks": {
-        "block_rBwz6H": {
-          "type": "block",
-          "settings": {
-            "title": "Thermoregulation Technology",
-            "desc": "<p>Our premium range featuring cutting-edge Premium ThermoSync technology. Infused with graphite particles, it absorbs excess heat, ensuring you enjoy the highest quality sleep possible.</p>",
-            "product": "emma-hybrid-premium",
-            "photo": "shopify://shop_images/Thermoregulation_1.webp"
-          }
-        },
-        "block_93HdLd": {
-          "type": "block",
-          "settings": {
-            "title": "Hybrid Mattresses",
-            "desc": "<p>Improve your sleep experience with our Hybrid mattress – a perfect blend of foam and spring technology. Designed for sleepers who tend to sweat, it offers unmatched breathability and weightless comfort.</p>",
-            "product": "emma-hybrid-comfort",
-            "photo": "shopify://shop_images/Emma_Matras_Pocketspring_Boxspring.webp"
-          }
-        },
-        "block_L8xV8b": {
-          "type": "block",
-          "settings": {
-            "title": "Foam Mattresses",
-            "desc": "<p>Experience great support and comfort with our foam mattress, crafted primarily from memory foam. Designed to cater to all sleepers, it ensures a night of restful sleep for everyone.</p>",
-            "product": "emma-hybrid-22",
-            "photo": "shopify://shop_images/Foam_Material.webp"
-          }
-        }
-      },
-      "block_order": [
-        "block_rBwz6H",
-        "block_93HdLd",
-        "block_L8xV8b"
-      ],
-      "disabled": true,
-      "settings": {
-        "heading": "Our Mattress Types & Materials",
-        "header_font": "tiempos",
-        "heading_alignment": "start",
-        "container_spacing": "md"
+        "container_spacing": "none"
       }
     }
   },
   "order": [
-    "collection-catalog",
-    "featured-content"
+    "collection-catalog"
   ]
 }

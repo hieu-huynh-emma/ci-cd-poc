@@ -1,0 +1,102 @@
+<link rel="quickscript" href="{{ 'breadcrumbs.css' | asset_url }}">
+
+<style>
+    .breadcrumbs {
+        display: flex;
+    }
+    .breadcrumbs__item {
+        display: inline-flex;
+    }
+</style>
+
+{%- unless template == 'index' or template == 'page.sale' or template == 'cart' or template == 'list-collections' or template == '404' -%}
+  {%- assign t = template | split: '.' | first -%}
+
+  <nav class="breadcrumbs-container" role="navigation" aria-label="breadcrumbs">
+    <div class="page-boundary">
+      <ol class="breadcrumbs">
+        <li class="breadcrumbs__item">
+          <a class="breadcrumbs__link" href="/">Home</a>
+          <div class="breadcrumbs__icon">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6 12L10 8L6 4" stroke="#2E2F3C" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </div>
+        </li>
+        <li class="breadcrumbs__item">
+          <a class="breadcrumbs__link" href="/pages/sale">All Products</a>
+          <div class="breadcrumbs__icon">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6 12L10 8L6 4" stroke="#2E2F3C" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </div>
+        </li>
+        {%- case t -%}
+          {%- when 'page' -%}
+            <li class="breadcrumbs__item">
+              {{ page.title }}
+            </li>
+          {%- when 'product' -%}
+            {% assign collection = collections[product.metafields.accentuate.main_collection] | default: product.collections[0] %}
+            <li class="breadcrumbs__item">
+              <a class="breadcrumbs__link" href="{{ collection.url }}" aria-current="page">{{ collection.title }}</a>
+
+              <div class="breadcrumbs__icon">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M6 12L10 8L6 4" stroke="#2E2F3C" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </div>
+            </li>
+
+            <li class="breadcrumbs__item">
+              {{ product.title }}
+            </li>
+
+          {%- when 'blog' -%}
+            {%- if current_tags -%}
+              <li class="breadcrumbs__item">
+                <a class="breadcrumbs__link" href="{{ blog.url }}" aria-current="page">{{ blog.title }}</a>
+                <div class="breadcrumbs__icon">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6 12L10 8L6 4" stroke="#2E2F3C" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </div>
+              </li>
+              <li class="breadcrumbs__item">
+                {%- capture tag_url -%}{{ blog.url }}/tagged/{{ current_tags | join: "+" }}{%- endcapture -%}
+                <a class="breadcrumbs__link" href="{{ tag_url }}"
+                   aria-current="page">{{ current_tags | join: " + " }}</a>
+              </li>
+            {%- else -%}
+              <li class="breadcrumbs__item">
+                {{ blog.title }}
+              </li>
+            {%- endif -%}
+          {%- when 'article' -%}
+            <li class="breadcrumbs__item">
+              <a class="breadcrumbs__link" href="{{ blog.url }}" aria-current="page">{{ blog.title }}</a>
+              <div class="breadcrumbs__icon">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M6 12L10 8L6 4" stroke="#2E2F3C" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </div>
+            </li>
+            <li class="breadcrumbs__item">
+              {{ article.title }}
+            </li>
+          {%- else -%}
+            <li class="breadcrumbs__item">
+              {{ page_title }}
+            </li>
+        {%- endcase -%}
+      </ol>
+    </div>
+  </nav>
+{%- endunless -%}
+
+
+{% schema %}
+{
+  "name": "Breadcrumbs"
+}
+{% endschema %}

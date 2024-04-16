@@ -7,9 +7,15 @@
 <link rel="stylesheet" href="{{ 'product-media.css' | asset_url }}">
 
 <style>
-  product-media {
-      min-height: 500px;
-  }
+    product-media {
+        min-height: 280px;
+    }
+
+    @media screen and (min-width: 769px) {
+        product-media {
+            min-height: 500px;
+        }
+    }
 </style>
 
 <product-media>
@@ -49,11 +55,11 @@
 
               {% if item.settings.overlay_text %}
                 <div class="overlay-text" style="
-                    --font_size: {{item.settings.font_size }}px;
-                    --text_alignment: {{item.settings.text_alignment }};
-                    --text_color: {{item.settings.text_color }};
-                    --y: {{item.settings.y }}%;
-                    --x: {{item.settings.x }}%;
+                    --font_size: {{ item.settings.font_size }}px;
+                    --text_alignment: {{ item.settings.text_alignment }};
+                    --text_color: {{ item.settings.text_color }};
+                    --y: {{ item.settings.y }}%;
+                    --x: {{ item.settings.x }}%;
                     ">
                   {% render 'rtf-viewer', content: item.settings.overlay_text %}
                 </div>
@@ -92,7 +98,7 @@
 {% schema %}
 {
   "name": "Product Media",
-  "class": "hide-until-initialized flex w-full",
+  "class": "hide-until-initialized",
   "blocks": [
     {
       "type": "item",

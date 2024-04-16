@@ -93,11 +93,17 @@
       ],
       "settings": {
       }
+    },
+    "breadcrumbs": {
+      "type": "breadcrumbs",
+      "settings": {
+      }
     }
   },
   "order": [
     "announcement-bar",
     "header",
-    "risk-free-banner"
+    "risk-free-banner",
+    "breadcrumbs"
   ]
 }
