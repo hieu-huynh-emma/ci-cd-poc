@@ -1,13 +1,8 @@
 #product-comparison {
   display: flex;
   justify-content: center;
-  padding: 30px 0 0;
 }
-@media screen and (min-width: 768px) {
-  #product-comparison {
-    padding: 100px 0 0;
-  }
-}
+
 #product-comparison .wrapper {
   width: 100%;
   padding: 0 16px;

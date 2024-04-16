@@ -24,23 +24,15 @@
 
     color: var(--color-charade);
 
-    &:first-child {
-      #{$this}__link {
-        font-weight: 700;
-        @media screen and (max-width: 480px) {
-          display: none;
-        }
-      }
+    &.hide-on-mobile {
       @media screen and (max-width: 480px) {
         display: none;
       }
     }
 
-    &:nth-child(2) {
+    &:first-child {
       #{$this}__link {
-        @media screen and (max-width: 480px) {
-          display: none;
-        }
+        font-weight: 700;
       }
     }
   }

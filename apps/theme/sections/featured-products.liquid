@@ -183,375 +183,383 @@
 {% assign exploreBtns = section.blocks | where: "type", "explore-button" %}
 
 <section id="featured-products-section" class="section-container">
-    <div class="section-chassis page-boundary">
-        <div class="section-header flex justify-between items-center">
-            <div class="flex flex-1 flex-col items-{{ section.settings.heading_alignment }}">
-                <div class="text-comet text-left solid text-[16px] text-[#2E2F3C]">
-                    {% render 'rtf-viewer', content: section.settings.subtitle %}
-                </div>
-                <h2 class="text-xl md:text-xxl text-left text-charade font-semibold">
-                    <span class="hidden md:inline">{{ section.settings.title }}</span>
-                    <span class="md:hidden">{{ section.settings.mobile_title }}</span>
-                </h2>
-            </div>
-
-            {% if exploreBtns.size > 0 %}
-                <div class="flex flex-col gap-2">
-                    {% for block in exploreBtns %}
-                        <a href="{{ block.settings.url }}"
-                           class="font-inter text-[16px] font-bold rounded-full border border-{#2E2F3C} text-center hidden md:block sec_btn">{{ block.settings.text }}</a>
-                    {% endfor %}
-                </div>
-            {% endif %}
+  <div class="section-chassis page-boundary">
+    <div class="flex justify-between items-center">
+      <div class="flex flex-1 flex-col items-{{ section.settings.heading_alignment }}">
+        <div class="text-comet text-left solid text-[16px] text-[#2E2F3C]">
+          {% render 'rtf-viewer', content: section.settings.subtitle %}
         </div>
+        <h2 class="text-xl md:text-xxl text-left text-charade font-semibold">
+          <span class="hidden md:inline">{{ section.settings.title }}</span>
+          <span class="md:hidden">{{ section.settings.mobile_title }}</span>
+        </h2>
+      </div>
 
-        <div class="hidden md:flex md:justify-center md:gap-5 desktop_view">
-            {%- for block in productBlocks -%}
-                {% assign product = block.settings.product %}
-                <a href="{{ product.url }}">
-                    <div class="w-full flex flex-col md:max-w-[422px] text-center featured_card"
-                         style="background-color:  var(--product-card-bg)">
-                        {% if section.settings.show_secondary_badge %}
-                            <p
-                                    style="background-color: {{ block.settings.color }};"
-                                    class="mx-auto mb-8 w-max rounded-full px-7 py-3 text-[13px] font-semibold uppercase leading-none text-white">{{ block.settings.primary_badge }}</p>
-                        {% endif %}
-                        <div
-                                style="border-color:  var(--product-card-bg)"
-                                class="rounded-[6px] border flex flex-col h-full">
-                            <div class="flex justify-between p-4 gap-5 hidden">
-                                <div>
-
-                                    {% if template.name == 'product' and request.path contains product.handle %}
-                                        <p class="text-[13px] text-[#FF8900]">👁 Currently Viewing</p>
-                                    {% endif %}
-                                </div>
-                                <img class="lazyload -mt-[7px] h-max hidden" width="55px"
-                                     data-src="{{ block.settings.mattress_height | img_url: 'master' }}" alt=""/>
-                            </div>
-                            <div class="product_badge">
-                                <p
-                                        style="background-color: {{ block.settings.color }};"
-                                        class="h-max rounded px-2 py-1 text-[12px] font-semibold uppercase leading-none text-white">{{ block.settings.secondary_badge }}</p>
-                            </div>
-                            <div class="mb-6 h-[185px] ">
-
-                                <img
-                                        style="aspect-ratio: 800 / 450;"
-                                        class="mx-auto h-full object-contain lazyload"
-                                        data-src="{{ block.settings.image | image_url: width: 800 }}" width="350"
-                                        height="179"
-                                />
-                            </div>
-
-                            <h3 class="px-4 text-[20px] font-semibold font-inter mt-2 mb-3">{{ block.settings.product_title }}</h3>
-                            {% if block.settings.show_star_rating == true %}
-                                <div class="mb-3 px-4 h-[17px]">
-                                    {% liquid
-                                        if product.id == 7829461794954
-                                            assign productId = 7741865164938
-                                        else
-                                            assign productId = block.settings.product.id
-                                        endif
-                                    %}
-                                    <product-star-rating :productId="{{ productId }}"></product-star-rating>
-                                </div>
-                            {% endif %}
-                            <div class="px-4 shopify-richtext mb-3">{{ block.settings.desc }}</div>
-
-                            {% if section.settings.show_first_meter or section.settings.show_second_meter or section.settings.show_third_meter %}
-                                <div class="mb-0 px-4">
-                                    <div class="text-left comfort_block py-2">
-                                        <div>
-                                            {% if section.settings.show_first_meter %}
-                                                <p class="mb-1 text-[14px] font-semibold">{{ section.settings.first_meter_title }}</p>
-                                                <div style="grid-template-columns: repeat(8, 1fr);"
-                                                     class="mb-2 grid gap-[6px]">
-                                                    {% for i in (1..8) %}
-                                                        {% if i <= block.settings.comfort_meter %}
-                                                            <div class="h-3 rounded-xl bg-[#3C4196]">&nbsp;</div>
-                                                        {% else %}
-                                                            <div class="h-3 rounded-xl bg-[#D2D3DD]">&nbsp;</div>
-                                                        {% endif %}
-                                                    {% endfor %}
-                                                </div>
-                                            {% endif %}
-
-                                            {% if section.settings.show_second_meter %}
-                                                <p class="mb-1 text-[14px] font-semibold">{{ section.settings.second_meter_title }}</p>
-                                                <div style="grid-template-columns: repeat(8, 1fr);"
-                                                     class="mb-2 grid gap-[6px]">
-                                                    {% for i in (1..8) %}
-                                                        {% if i <= block.settings.cooling_meter %}
-                                                            <div class="h-3 rounded-xl bg-[#3C4196]">&nbsp;</div>
-                                                        {% else %}
-                                                            <div class="h-3 rounded-xl bg-[#D2D3DD]">&nbsp;</div>
-                                                        {% endif %}
-                                                    {% endfor %}
-                                                </div>
-                                            {% endif %}
-
-                                            {% if section.settings.show_third_meter %}
-                                                <p class="mb-1 text-[14px] font-semibold">{{ section.settings.third_meter_title }}</p>
-                                                <div style="grid-template-columns: repeat(8, 1fr);"
-                                                     class="grid gap-[6px]">
-                                                    {% for i in (1..8) %}
-                                                        {% if i <= block.settings.motion_isolation_meter %}
-                                                            <div class="h-3 rounded-xl bg-[#3C4196]">&nbsp;</div>
-                                                        {% else %}
-                                                            <div class="h-3 rounded-xl bg-[#D2D3DD]">&nbsp;</div>
-                                                        {% endif %}
-                                                    {% endfor %}
-                                                </div>
-                                            {% endif %}
-                                        </div>
-                                    </div>
-                                </div>
-                            {% endif %}
-
-                            <div class="product_card_foot">
-                                <div class="p-4">
-                                    <p
-                                            class="mb-4 inline-block rounded-full border border-[#3c4196d1] bg-[#b1b8fd66]  px-2 py-1 text-[13px] leading-none hidden">
-                                        <span>{{ block.settings.discount_title }} -</span>
-                                        <span class="font-semibold"> {{ block.settings.discount_amount }}%</span>
-                                    </p>
-
-                                    <div class="flex items-center justify-between gap-2 flex-col">
-                                        <div>
-                                            <div class=" text-[#55576F]" style="font-size:12px">From <span
-                                                        class="line-through">{{ product.compare_at_price | money_without_trailing_zeros }}</span>
-                                            </div>
-                                            <div class="flex items-center flex-wrap gap-2 mb-2">
-                                                {% if product.compare_at_price > product.price %}
-                                                    <p class="font-semibold mr-1">{{ product.price | money_without_trailing_zeros }}</p>
-                                                    <p class="line-through  hidden">{{ product.compare_at_price | money_without_trailing_zeros }}</p>
-                                                {% else %}
-                                                    <p class="font-semibold"> {{ product.price | money_without_trailing_zeros }}</p>
-                                                {% endif %}
-                                                {% if product.compare_at_price > product.price %}
-                                                    <span class="font-semibold"
-                                                          style="color:#F03306">{{ product.compare_at_price | minus: product.price | times: 100.0 | divided_by: product.compare_at_price | money_without_currency | times: 100 | remove: '.0' }}% off </span>
-
-                                                {% endif %}
-
-                                            </div>
-                                        </div>
-
-                                        <a class="btn testing w-{100%}" href="{{ product.url }}" rel="noreferrer">Shop
-                                            Now</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            {%- endfor -%}
-
-            {%- for block in imageBlocks -%}
-                <div class="w-full flex flex-col md:max-w-[422px]">
-                    <a href="{{ block.settings.f-url }}" class="image_block">
-                        <img src="{{ block.settings.f-image | image_url: width: 800 }}"/>
-                        <div class="block_content">
-                            <strong class="text-md font-inter font-semibold">{{ block.settings.f-title }}</strong>
-                            <p class="font-sm font-inter font-semibold"> {{ block.settings.f-para }}</p>
-                            <img src="{{ 'round-arrow.svg' | asset_url }}" class="arrow-ico"/>
-                        </div>
-                    </a>
-                </div>
-            {%- endfor -%}
+      {% if exploreBtns.size > 0 %}
+        <div class="flex flex-col gap-2">
+          {% for block in exploreBtns %}
+            <a href="{{ block.settings.url }}"
+               class="font-inter text-[16px] font-bold rounded-full border border-{#2E2F3C} text-center hidden md:block sec_btn">{{ block.settings.text }}</a>
+          {% endfor %}
         </div>
-
-        <div class="splide md:hidden mobile_view">
-            {% include 'splide-arrows' %}
-
-            <div class="splide__track">
-                <ul class="splide__list">
-                    {%- for block in productBlocks -%}
-                        {% assign product = block.settings.product %}
-                        <a href="{{ product.url }}">
-                            <li class="splide__slide">
-
-                                <div class="w-full flex flex-col max-w-[320px] text-center featured_card"
-                                     style="background-color:  var(--product-card-bg)">
-                                    {% if section.settings.show_secondary_badge %}
-                                        <p
-                                                style="background-color: {{ block.settings.color }};"
-                                                class="mx-auto mb-8 w-max rounded-full px-7 py-3 text-[13px] font-semibold uppercase leading-none text-white">{{ block.settings.primary_badge }}</p>
-                                    {% endif %}
-                                    <div
-                                            style="border-color:  var(--product-card-bg)"
-                                            class="rounded-[6px] border flex flex-col h-full">
-                                        <div class="flex justify-between p-4 gap-5 hidden">
-                                            <div>
-
-                                                {% if template.name == 'product' and request.path contains product.handle %}
-                                                    <p class="text-[13px] text-[#FF8900]">👁 Currently Viewing</p>
-                                                {% endif %}
-                                            </div>
-                                            <img class="lazyload -mt-[7px] h-max hidden" width="55px"
-                                                 data-src="{{ block.settings.mattress_height | img_url: 'master' }}"
-                                                 alt=""/>
-                                        </div>
-                                        <div class="product_badge">
-                                            <p
-                                                    style="background-color: {{ block.settings.color }};"
-                                                    class="h-max rounded px-2 py-1 text-[12px] font-semibold uppercase leading-none text-white">{{ block.settings.secondary_badge }}</p>
-                                        </div>
-                                        <div class="mb-6 h-[185px] ">
-
-                                            <img
-                                                    style="aspect-ratio: 800 / 450;"
-                                                    class="mx-auto h-full object-contain lazyload"
-                                                    data-src="{{ block.settings.image | image_url: width: 800 }}"
-                                                    width="350"
-                                                    height="179"
-                                            />
-                                        </div>
-
-                                        <h3 class="px-4 text-[20px] font-semibold font-inter mt-2 mb-3">{{ block.settings.product_title }}</h3>
-                                        {% if block.settings.show_star_rating == true %}
-                                            <div class="mb-3 px-4 h-[17px]">
-                                                <product-star-rating
-                                                        :productId="{{ block.settings.product.id }}"></product-star-rating>
-                                            </div>
-                                        {% endif %}
-                                        <div class="px-4 shopify-richtext mb-3">{{ block.settings.desc }}</div>
-
-                                        {% if section.settings.show_first_meter or section.settings.show_second_meter or section.settings.show_third_meter %}
-                                            <div class="mb-0 px-4">
-                                                <div class="text-left comfort_block py-2">
-                                                    <div>
-                                                        {% if section.settings.show_first_meter %}
-                                                            <p class="mb-1 text-[14px] font-semibold">{{ section.settings.first_meter_title }}</p>
-                                                            <div style="grid-template-columns: repeat(8, 1fr);"
-                                                                 class="mb-2 grid gap-[6px]">
-                                                                {% for i in (1..8) %}
-                                                                    {% if i <= block.settings.comfort_meter %}
-                                                                        <div class="h-3 rounded-xl bg-[#3C4196]">
-                                                                            &nbsp;
-                                                                        </div>
-                                                                    {% else %}
-                                                                        <div class="h-3 rounded-xl bg-[#D2D3DD]">
-                                                                            &nbsp;
-                                                                        </div>
-                                                                    {% endif %}
-                                                                {% endfor %}
-                                                            </div>
-                                                        {% endif %}
-
-                                                        {% if section.settings.show_second_meter %}
-                                                            <p class="mb-1 text-[14px] font-semibold">{{ section.settings.second_meter_title }}</p>
-                                                            <div style="grid-template-columns: repeat(8, 1fr);"
-                                                                 class="mb-2 grid gap-[6px]">
-                                                                {% for i in (1..8) %}
-                                                                    {% if i <= block.settings.cooling_meter %}
-                                                                        <div class="h-3 rounded-xl bg-[#3C4196]">
-                                                                            &nbsp;
-                                                                        </div>
-                                                                    {% else %}
-                                                                        <div class="h-3 rounded-xl bg-[#D2D3DD]">
-                                                                            &nbsp;
-                                                                        </div>
-                                                                    {% endif %}
-                                                                {% endfor %}
-                                                            </div>
-                                                        {% endif %}
-
-                                                        {% if section.settings.show_third_meter %}
-                                                            <p class="mb-1 text-[14px] font-semibold">{{ section.settings.third_meter_title }}</p>
-                                                            <div style="grid-template-columns: repeat(8, 1fr);"
-                                                                 class="grid gap-[6px]">
-                                                                {% for i in (1..8) %}
-                                                                    {% if i <= block.settings.motion_isolation_meter %}
-                                                                        <div class="h-3 rounded-xl bg-[#3C4196]">
-                                                                            &nbsp;
-                                                                        </div>
-                                                                    {% else %}
-                                                                        <div class="h-3 rounded-xl bg-[#D2D3DD]">
-                                                                            &nbsp;
-                                                                        </div>
-                                                                    {% endif %}
-                                                                {% endfor %}
-                                                            </div>
-                                                        {% endif %}
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        {% endif %}
-
-                                        <div class="product_card_foot">
-                                            <div class="p-4">
-                                                <p
-                                                        class="mb-4 inline-block rounded-full border border-[#F4711E66] bg-[#FDB14766] px-2 py-1 text-[13px] leading-none hidden">
-                                                    <span>{{ block.settings.discount_title }} -</span>
-                                                    <span class="font-semibold"> {{ block.settings.discount_amount }}%</span>
-                                                </p>
-
-                                                <div class="flex items-center justify-between gap-2 flex-col">
-                                                    <div>
-                                                        <div class=" text-[#55576F]" style="font-size:12px">From <span
-                                                                    class="line-through">{{ product.compare_at_price | money_without_trailing_zeros }}</span>
-                                                        </div>
-                                                        <div class="flex items-center flex-wrap gap-2 mb-2">
-                                                            {% if product.compare_at_price > product.price %}
-                                                                <p class="font-semibold mr-1">{{ product.price | money_without_trailing_zeros }}</p>
-                                                                <p class="line-through  hidden">{{ product.compare_at_price | money_without_trailing_zeros }}</p>
-                                                            {% else %}
-                                                                <p class="font-semibold"> {{ product.price | money_without_trailing_zeros }}</p>
-                                                            {% endif %}
-
-                                                            {% if product.compare_at_price > product.price %}
-                                                                <span class="font-semibold"
-                                                                      style="color:#F03306">{{ product.compare_at_price | minus: product.price | times: 100.0 | divided_by: product.compare_at_price | money_without_currency | times: 100 | remove: '.0' }}% off </span>
-                                                            {% endif %}
-
-                                                        </div>
-                                                    </div>
-
-                                                    <a class="btn testing w-{100%}" href="{{ product.url }}"
-                                                       rel="noreferrer">Shop Now</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </li>
-                        </a>
-                    {%- endfor -%}
-
-                    {%- for block in imageBlocks -%}
-                        <li class="splide__slide">
-                            <div class="w-full flex flex-col max-w-[320px]">
-                                <a href="{{ block.settings.f-url }}" class="image_block">
-                                    <img src="{{ block.settings.f-image | image_url: width: 800 }}">
-                                    <div class="block_content">
-                                        <strong>{{ block.settings.f-title }}</strong>
-                                        <p class="font-sm font-inter font-semibold"> {{ block.settings.f-para }}</p>
-                                        <img src="{{ 'round-arrow.svg' | asset_url }}" class="arrow-ico"/>
-                                    </div>
-                                </a>
-
-                            </div>
-                        </li>
-                    {%- endfor -%}
-
-                </ul>
-            </div>
-        </div>
-
-        {% if exploreBtns.size > 0 %}
-            <div class="flex flex-col gap-2 items-center md:hidden">
-                {% for block in exploreBtns %}
-                    <a href="{{ block.settings.url }}"
-                       class="font-inter text-[16px] font-bold rounded-full border border-{#2E2F3C} sec_btn">{{ block.settings.text }}</a>
-                {% endfor %}
-            </div>
-        {% endif %}
+      {% endif %}
     </div>
 
-    <script type="quickscript" loading="visibility" src="{{ 'featured-products.js' | asset_url }}"></script>
+    <div class="hidden md:flex md:justify-center md:gap-5 desktop_view">
+      {%- for block in productBlocks -%}
+        {% assign product = block.settings.product %}
+        <a href="{{ product.url }}">
+          <div class="w-full flex flex-col md:max-w-[422px] text-center featured_card"
+               style="background-color:  var(--product-card-bg)">
+            {% if section.settings.show_secondary_badge %}
+              <p
+                  style="background-color: {{ block.settings.color }};"
+                  class="mx-auto mb-8 w-max rounded-full px-7 py-3 text-[13px] font-semibold uppercase leading-none text-white">{{ block.settings.primary_badge }}</p>
+            {% endif %}
+            <div
+                style="border-color:  var(--product-card-bg)"
+                class="rounded-[6px] border flex flex-col h-full">
+              <div class="flex justify-between p-4 gap-5 hidden">
+                <div>
+
+                  {% if template.name == 'product' and request.path contains product.handle %}
+                    <p class="text-[13px] text-[#FF8900]">👁 Currently Viewing</p>
+                  {% endif %}
+                </div>
+                <img class="lazyload -mt-[7px] h-max hidden" width="55px"
+                     data-src="{{ block.settings.mattress_height | img_url: 'master' }}" alt="" />
+              </div>
+              <div class="product_badge">
+                <p
+                    style="background-color: {{ block.settings.color }};"
+                    class="h-max rounded px-2 py-1 text-[12px] font-semibold uppercase leading-none text-white">{{ block.settings.secondary_badge }}</p>
+              </div>
+              <div class="mb-6 h-[185px] ">
+
+                <img
+                    style="aspect-ratio: 800 / 450;"
+                    class="mx-auto h-full object-contain lazyload"
+                    data-src="{{ block.settings.image | image_url: width: 800 }}" width="350"
+                    height="179"
+                />
+              </div>
+
+              <h3 class="px-4 text-[20px] font-semibold font-inter mt-2 mb-3">{{ block.settings.product_title }}</h3>
+              {% if block.settings.show_star_rating == true %}
+                <div class="mb-3 px-4 h-[17px]">
+                  {% liquid
+                    if product.id == 7829461794954
+                      assign productId = 7741865164938
+                    else
+                      assign productId = block.settings.product.id
+                    endif
+                  %}
+                  <product-star-rating :productId="{{ productId }}"></product-star-rating>
+                </div>
+              {% endif %}
+              <div class="px-4 shopify-richtext mb-3">{{ block.settings.desc }}</div>
+
+              {% if section.settings.show_first_meter or section.settings.show_second_meter or section.settings.show_third_meter %}
+                <div class="mb-0 px-4">
+                  <div class="text-left comfort_block py-2">
+                    <div>
+                      {% if section.settings.show_first_meter %}
+                        <p class="mb-1 text-[14px] font-semibold">{{ section.settings.first_meter_title }}</p>
+                        <div style="grid-template-columns: repeat(8, 1fr);"
+                             class="mb-2 grid gap-[6px]">
+                          {% for i in (1..8) %}
+                            {% if i <= block.settings.comfort_meter %}
+                              <div class="h-3 rounded-xl bg-[#3C4196]">&nbsp;</div>
+                            {% else %}
+                              <div class="h-3 rounded-xl bg-[#D2D3DD]">&nbsp;</div>
+                            {% endif %}
+                          {% endfor %}
+                        </div>
+                      {% endif %}
+
+                      {% if section.settings.show_second_meter %}
+                        <p class="mb-1 text-[14px] font-semibold">{{ section.settings.second_meter_title }}</p>
+                        <div style="grid-template-columns: repeat(8, 1fr);"
+                             class="mb-2 grid gap-[6px]">
+                          {% for i in (1..8) %}
+                            {% if i <= block.settings.cooling_meter %}
+                              <div class="h-3 rounded-xl bg-[#3C4196]">&nbsp;</div>
+                            {% else %}
+                              <div class="h-3 rounded-xl bg-[#D2D3DD]">&nbsp;</div>
+                            {% endif %}
+                          {% endfor %}
+                        </div>
+                      {% endif %}
+
+                      {% if section.settings.show_third_meter %}
+                        <p class="mb-1 text-[14px] font-semibold">{{ section.settings.third_meter_title }}</p>
+                        <div style="grid-template-columns: repeat(8, 1fr);"
+                             class="grid gap-[6px]">
+                          {% for i in (1..8) %}
+                            {% if i <= block.settings.motion_isolation_meter %}
+                              <div class="h-3 rounded-xl bg-[#3C4196]">&nbsp;</div>
+                            {% else %}
+                              <div class="h-3 rounded-xl bg-[#D2D3DD]">&nbsp;</div>
+                            {% endif %}
+                          {% endfor %}
+                        </div>
+                      {% endif %}
+                    </div>
+                  </div>
+                </div>
+              {% endif %}
+
+              <div class="product_card_foot flex flex-1 items-end">
+                <div class="p-4 flex-1	">
+                  <p
+                      class="mb-4 inline-block rounded-full border border-[#3c4196d1] bg-[#b1b8fd66]  px-2 py-1 text-[13px] leading-none hidden">
+                    <span>{{ block.settings.discount_title }} -</span>
+                    <span class="font-semibold"> {{ block.settings.discount_amount }}%</span>
+                  </p>
+
+                  <div class="flex items-center justify-between gap-2 flex-col">
+                    <div>
+                      <div class=" text-[#55576F]" style="font-size:12px">
+                        {% if product.compare_at_price > product.price %}
+                          From
+                        {% endif %}
+                        <span class="line-through">{{ product.compare_at_price | money_without_trailing_zeros }}</span>
+                      </div>
+                      <div class="flex items-center flex-wrap gap-2 mb-2">
+                        {% if product.compare_at_price > product.price %}
+                          <p class="font-semibold mr-1">{{ product.price | money_without_trailing_zeros }}</p>
+                          <p class="line-through  hidden">{{ product.compare_at_price | money_without_trailing_zeros }}</p>
+                        {% else %}
+                          <p class="font-semibold"> {{ product.price | money_without_trailing_zeros }}</p>
+                        {% endif %}
+                        {% if product.compare_at_price > product.price %}
+                          <span class="font-semibold"
+                                style="color:#F03306">{{ product.compare_at_price | minus: product.price | times: 100.0 | divided_by: product.compare_at_price | money_without_currency | times: 100 | remove: '.0' }}% off </span>
+
+                        {% endif %}
+
+                      </div>
+                    </div>
+
+                    <a class="btn testing w-{100%}" href="{{ product.url }}" rel="noreferrer">Shop
+                      Now</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </a>
+      {%- endfor -%}
+
+      {%- for block in imageBlocks -%}
+        <div class="w-full flex flex-col md:max-w-[422px]">
+          <a href="{{ block.settings.f-url }}" class="image_block">
+            <img src="{{ block.settings.f-image | image_url: width: 800 }}" />
+            <div class="block_content">
+              <strong class="text-md font-inter font-semibold">{{ block.settings.f-title }}</strong>
+              <p class="font-sm font-inter font-semibold"> {{ block.settings.f-para }}</p>
+              <img src="{{ 'round-arrow.svg' | asset_url }}" class="arrow-ico" />
+            </div>
+          </a>
+        </div>
+      {%- endfor -%}
+    </div>
+
+    <div class="splide md:hidden mobile_view">
+      {% include 'splide-arrows' %}
+
+      <div class="splide__track">
+        <ul class="splide__list">
+          {%- for block in productBlocks -%}
+            {% assign product = block.settings.product %}
+            <a href="{{ product.url }}">
+              <li class="splide__slide">
+
+                <div class="w-full flex flex-col max-w-[320px] text-center featured_card"
+                     style="background-color:  var(--product-card-bg)">
+                  {% if section.settings.show_secondary_badge %}
+                    <p
+                        style="background-color: {{ block.settings.color }};"
+                        class="mx-auto mb-8 w-max rounded-full px-7 py-3 text-[13px] font-semibold uppercase leading-none text-white">{{ block.settings.primary_badge }}</p>
+                  {% endif %}
+                  <div
+                      style="border-color:  var(--product-card-bg)"
+                      class="rounded-[6px] border flex flex-col h-full">
+                    <div class="flex justify-between p-4 gap-5 hidden">
+                      <div>
+
+                        {% if template.name == 'product' and request.path contains product.handle %}
+                          <p class="text-[13px] text-[#FF8900]">👁 Currently Viewing</p>
+                        {% endif %}
+                      </div>
+                      <img class="lazyload -mt-[7px] h-max hidden" width="55px"
+                           data-src="{{ block.settings.mattress_height | img_url: 'master' }}"
+                           alt="" />
+                    </div>
+                    <div class="product_badge">
+                      <p
+                          style="background-color: {{ block.settings.color }};"
+                          class="h-max rounded px-2 py-1 text-[12px] font-semibold uppercase leading-none text-white">{{ block.settings.secondary_badge }}</p>
+                    </div>
+                    <div class="mb-6 h-[185px] ">
+
+                      <img
+                          style="aspect-ratio: 800 / 450;"
+                          class="mx-auto h-full object-contain lazyload"
+                          data-src="{{ block.settings.image | image_url: width: 800 }}"
+                          width="350"
+                          height="179"
+                      />
+                    </div>
+
+                    <h3 class="px-4 text-[20px] font-semibold font-inter mt-2 mb-3">{{ block.settings.product_title }}</h3>
+                    {% if block.settings.show_star_rating == true %}
+                      <div class="mb-3 px-4 h-[17px]">
+                        <product-star-rating
+                            :productId="{{ block.settings.product.id }}"></product-star-rating>
+                      </div>
+                    {% endif %}
+                    <div class="px-4 shopify-richtext mb-3">{{ block.settings.desc }}</div>
+
+                    {% if section.settings.show_first_meter or section.settings.show_second_meter or section.settings.show_third_meter %}
+                      <div class="mb-0 px-4">
+                        <div class="text-left comfort_block py-2">
+                          <div>
+                            {% if section.settings.show_first_meter %}
+                              <p class="mb-1 text-[14px] font-semibold">{{ section.settings.first_meter_title }}</p>
+                              <div style="grid-template-columns: repeat(8, 1fr);"
+                                   class="mb-2 grid gap-[6px]">
+                                {% for i in (1..8) %}
+                                  {% if i <= block.settings.comfort_meter %}
+                                    <div class="h-3 rounded-xl bg-[#3C4196]">
+                                      &nbsp;
+                                    </div>
+                                  {% else %}
+                                    <div class="h-3 rounded-xl bg-[#D2D3DD]">
+                                      &nbsp;
+                                    </div>
+                                  {% endif %}
+                                {% endfor %}
+                              </div>
+                            {% endif %}
+
+                            {% if section.settings.show_second_meter %}
+                              <p class="mb-1 text-[14px] font-semibold">{{ section.settings.second_meter_title }}</p>
+                              <div style="grid-template-columns: repeat(8, 1fr);"
+                                   class="mb-2 grid gap-[6px]">
+                                {% for i in (1..8) %}
+                                  {% if i <= block.settings.cooling_meter %}
+                                    <div class="h-3 rounded-xl bg-[#3C4196]">
+                                      &nbsp;
+                                    </div>
+                                  {% else %}
+                                    <div class="h-3 rounded-xl bg-[#D2D3DD]">
+                                      &nbsp;
+                                    </div>
+                                  {% endif %}
+                                {% endfor %}
+                              </div>
+                            {% endif %}
+
+                            {% if section.settings.show_third_meter %}
+                              <p class="mb-1 text-[14px] font-semibold">{{ section.settings.third_meter_title }}</p>
+                              <div style="grid-template-columns: repeat(8, 1fr);"
+                                   class="grid gap-[6px]">
+                                {% for i in (1..8) %}
+                                  {% if i <= block.settings.motion_isolation_meter %}
+                                    <div class="h-3 rounded-xl bg-[#3C4196]">
+                                      &nbsp;
+                                    </div>
+                                  {% else %}
+                                    <div class="h-3 rounded-xl bg-[#D2D3DD]">
+                                      &nbsp;
+                                    </div>
+                                  {% endif %}
+                                {% endfor %}
+                              </div>
+                            {% endif %}
+                          </div>
+                        </div>
+                      </div>
+                    {% endif %}
+
+                    <div class="product_card_foot">
+                      <div class="p-4">
+                        <p
+                            class="mb-4 inline-block rounded-full border border-[#F4711E66] bg-[#FDB14766] px-2 py-1 text-[13px] leading-none hidden">
+                          <span>{{ block.settings.discount_title }} -</span>
+                          <span class="font-semibold"> {{ block.settings.discount_amount }}%</span>
+                        </p>
+
+                        <div class="flex items-center justify-between gap-2 flex-col">
+                          <div>
+                            <div class=" text-[#55576F]" style="font-size:12px">
+                              {% if product.compare_at_price > product.price %}
+                                From
+                              {% endif %}
+
+                              <span
+                                  class="line-through">{{ product.compare_at_price | money_without_trailing_zeros }}</span>
+                            </div>
+                            <div class="flex items-center flex-wrap gap-2 mb-2">
+                              {% if product.compare_at_price > product.price %}
+                                <p class="font-semibold mr-1">{{ product.price | money_without_trailing_zeros }}</p>
+                                <p class="line-through  hidden">{{ product.compare_at_price | money_without_trailing_zeros }}</p>
+                              {% else %}
+                                <p class="font-semibold"> {{ product.price | money_without_trailing_zeros }}</p>
+                              {% endif %}
+
+                              {% if product.compare_at_price > product.price %}
+                                <span class="font-semibold"
+                                      style="color:#F03306">{{ product.compare_at_price | minus: product.price | times: 100.0 | divided_by: product.compare_at_price | money_without_currency | times: 100 | remove: '.0' }}% off </span>
+                              {% endif %}
+
+                            </div>
+                          </div>
+
+                          <a class="btn testing w-{100%}" href="{{ product.url }}"
+                             rel="noreferrer">Shop Now</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </li>
+            </a>
+          {%- endfor -%}
+
+          {%- for block in imageBlocks -%}
+            <li class="splide__slide">
+              <div class="w-full flex flex-col max-w-[320px]">
+                <a href="{{ block.settings.f-url }}" class="image_block">
+                  <img src="{{ block.settings.f-image | image_url: width: 800 }}">
+                  <div class="block_content">
+                    <strong>{{ block.settings.f-title }}</strong>
+                    <p class="font-sm font-inter font-semibold"> {{ block.settings.f-para }}</p>
+                    <img src="{{ 'round-arrow.svg' | asset_url }}" class="arrow-ico" />
+                  </div>
+                </a>
+
+              </div>
+            </li>
+          {%- endfor -%}
+
+        </ul>
+      </div>
+    </div>
+
+    {% if exploreBtns.size > 0 %}
+      <div class="flex flex-col gap-2 items-center md:hidden">
+        {% for block in exploreBtns %}
+          <a href="{{ block.settings.url }}"
+             class="font-inter text-[16px] font-bold rounded-full border border-{#2E2F3C} sec_btn">{{ block.settings.text }}</a>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+
+  <script type="quickscript" loading="visibility" src="{{ 'featured-products.js' | asset_url }}"></script>
 </section>
 
 {% schema %}

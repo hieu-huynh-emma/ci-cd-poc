@@ -46,4 +46,10 @@
       gap: 40px;
     }
   }
+
+  &-header {
+    display: grid;
+    gap: 1rem;
+    align-items: center;
+  }
 }
