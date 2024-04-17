@@ -14,7 +14,7 @@ query RunInput {
   deliveryCustomization {
     metafield(
       namespace: "$app:delivery-customization"
-      key: "scheduled-delivery-with-in-home-setup-excluded-zipcodes"
+      key: "scheduled-delivery-with-in-home-setup-included-zipcodes"
     ) {
       value
     }

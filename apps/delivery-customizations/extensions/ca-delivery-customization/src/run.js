@@ -32,10 +32,10 @@ export function run(input) {
     return NO_CHANGES;
   }
 
-  const excludedZipCodes = configuration.zipCodes.split(",").map(zip => zip.trim().toLowerCase()).filter(zip => zip != "");
+  const includedZipCodes = configuration.zipCodes.split(",").map(zip => zip.trim().toLowerCase()).filter(zip => zip != "");
 
   let toRemove = input.cart.deliveryGroups
-    .filter(group => excludedZipCodes.find(zip => group.deliveryAddress?.zip?.toLowerCase().includes(zip)))
+    .filter(group => !includedZipCodes.find(zip => group.deliveryAddress?.zip?.toLowerCase().includes(zip)))
     .flatMap(group => group.deliveryOptions)
     .filter(option => option.title == configuration.deliveryTitle.trim())
     .map(option => /** @type {Operation} */({

@@ -31,7 +31,7 @@ export const loader = async ({ params, request }) => {
             id
             title
             enabled
-            metafield(namespace: "$app:delivery-customization", key: "scheduled-delivery-with-in-home-setup-excluded-zipcodes") {
+            metafield(namespace: "$app:delivery-customization", key: "scheduled-delivery-with-in-home-setup-included-zipcodes") {
               id
               value
             }
@@ -75,12 +75,12 @@ export const action = async ({ params, request }) => {
 
   const deliveryCustomizationInput = {
     functionId,
-    title: `Scheduled Delivery with In-Home Setup Excluded Zipcodes`,
+    title: `Scheduled Delivery with In-Home Setup included Zipcodes`,
     enabled: true,
     metafields: [
       {
         namespace: "$app:delivery-customization",
-        key: "scheduled-delivery-with-in-home-setup-excluded-zipcodes",
+        key: "scheduled-delivery-with-in-home-setup-included-zipcodes",
         type: "json",
         value: JSON.stringify({
           deliveryTitle,
@@ -187,7 +187,7 @@ const handleSubmit = () => {
 
 return (
   <Page
-    title="Scheduled Delivery with In-Home Setup Excluded Zipcodes"
+    title="Scheduled Delivery with In-Home Setup included Zipcodes"
     backAction={{
       content: "Delivery customizations",
       onAction: () => open('shopify:admin/settings/shipping/customizations', '_top')
@@ -218,7 +218,7 @@ return (
                 <TextField
                   name="zipcodes"
                   type="text"
-                  label="Excluded Zip codes (comma separated)"
+                  label="Zip codes (comma separated)"
                   value={zipCodes}
                   onChange={setZipCodes}
                   disabled={isLoading}
