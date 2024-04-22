@@ -5,7 +5,7 @@
       "type": "joint-product",
       "settings": {
         "products": [
-          "emma-hybrid-conform-II",
+          "emma-hybrid-25",
           "emma-hybrid-comfort"
         ]
       }
@@ -87,6 +87,11 @@
           "type": "item",
           "settings": {
             "image": "shopify://shop_images/Untitled_design_12.png",
+            "overlay_text": "",
+            "font_size": 16,
+            "y": 1,
+            "x": 1,
+            "text_color": "#ffffff",
             "full_width": true,
             "is_video": false
           }
@@ -95,6 +100,11 @@
           "type": "item",
           "settings": {
             "image": "shopify://shop_images/HybridComfortSleepingCouple.png",
+            "overlay_text": "",
+            "font_size": 16,
+            "y": 1,
+            "x": 1,
+            "text_color": "#ffffff",
             "full_width": false,
             "is_video": false
           }
@@ -103,6 +113,11 @@
           "type": "item",
           "settings": {
             "image": "shopify://shop_images/Original_3.png",
+            "overlay_text": "",
+            "font_size": 16,
+            "y": 1,
+            "x": 1,
+            "text_color": "#ffffff",
             "full_width": false,
             "is_video": false
           }
@@ -111,6 +126,11 @@
           "type": "item",
           "settings": {
             "image": "shopify://shop_images/Untitled_design_8.jpg",
+            "overlay_text": "",
+            "font_size": 16,
+            "y": 1,
+            "x": 1,
+            "text_color": "#ffffff",
             "full_width": false,
             "is_video": false
           }
@@ -119,6 +139,11 @@
           "type": "item",
           "settings": {
             "image": "shopify://shop_images/Accesories_US_-_VIOO_photos-04_652366c2-4d1c-4a23-b1de-d08cb5ff5c91.jpg",
+            "overlay_text": "",
+            "font_size": 16,
+            "y": 1,
+            "x": 1,
+            "text_color": "#ffffff",
             "full_width": false,
             "is_video": false
           }
@@ -127,6 +152,11 @@
           "type": "item",
           "settings": {
             "image": "shopify://shop_images/Emma_1_ae0eb3a6-8989-45ca-9fe7-3d0e5ef89d7f.jpg",
+            "overlay_text": "",
+            "font_size": 16,
+            "y": 1,
+            "x": 1,
+            "text_color": "#ffffff",
             "full_width": true,
             "is_video": false
           }
@@ -196,7 +226,8 @@
         "title": "Easter Sale",
         "content": "<p>50% off</p>",
         "bgcolor": "#fef3ea",
-        "color": "#2e2f3c"
+        "color": "#2e2f3c",
+        "show_countdown_timer": false
       }
     },
     "product-unique-selling-points": {
