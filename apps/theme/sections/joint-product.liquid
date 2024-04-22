@@ -34,8 +34,8 @@
       {% endif %}
 
 
-      {% if block.settings.show_desc %}
-        <p class="joint-product-option__desc text-comet text-xs md:text-sm">{{ product.metafields.accentuate.short_description }}</p>
+      {% if block.settings.short_desc %}
+        <p class="joint-product-option__desc text-comet text-xs md:text-sm">{{ block.settings.short_desc }}</p>
       {% endif %}
     </joint-product-option>
   {% endfor %}
@@ -59,10 +59,9 @@
           "label": "Product"
         },
         {
-          "id": "show_desc",
-          "type": "checkbox",
-          "label": "Show Short Description",
-          "default": true
+          "id": "short_desc",
+          "type": "text",
+          "label": "Short Description"
         },
         {
           "id": "show_star_rating",
