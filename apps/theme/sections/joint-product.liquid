@@ -2,7 +2,8 @@
 
 <script id="joint-product-data" type="application/json">
   [
-  {% for product in section.settings.products %}
+  {% for block in section.blocks %}
+    {% assign product = all_products[block.settings.product] %}
     {{ product | json }}
     {% unless forloop.last %},{% endunless %}
   {% endfor %}
@@ -13,23 +14,29 @@
 
 <joint-product-selector class="hidden">
   <div class="skeleton"></div>
-  {% comment %}<loading-overlay id="joint-product-selector-loader" class="hidden bg-white pointer-events-none"></loading-overlay>{% endcomment %}
 
-  {% for product in section.settings.products %}
+  {% for block in section.blocks %}
+    {% assign product = block.settings.product %}
     {% assign selected_variant = product.selected_variant %}
 
-    <joint-product-option data-product-id="{{ product.id }}">
+    <joint-product-option data-product-id="{{ product.id }}" class="joint-product-option">
       <div class="flex gap-2 justify-start">
         <p class="font-semibold">{{ product.title }}</p>
       </div>
 
       <div class="product-price"></div>
-      <!-- <joint-product-star-rating
-                    :placeholder="{{ product.metafields.accentuate.placeholder_star_rating }}"
-                    :productId="{{ product.id }}"
-            ></joint-product-star-rating>
-            <p class="joint-product-option__desc text-comet text-sm">{{ product.metafields.accentuate.short_description }}</p> -->
 
+      {% if block.settings.show_star_rating %}
+        <joint-product-star-rating
+            :placeholder="{{ product.metafields.accentuate.placeholder_star_rating }}"
+            :productId="{{ product.id }}"
+        ></joint-product-star-rating>
+      {% endif %}
+
+
+      {% if block.settings.show_desc %}
+        <p class="joint-product-option__desc text-comet text-xs md:text-sm">{{ product.metafields.accentuate.short_description }}</p>
+      {% endif %}
     </joint-product-option>
   {% endfor %}
 </joint-product-selector>
@@ -41,12 +48,32 @@
 {
   "name": "Joint Product",
   "class": "joint-product",
-  "settings": [
+  "blocks": [
     {
-      "id": "products",
-      "type": "product_list",
-      "label": "Products"
+      "type": "item",
+      "name": "Item",
+      "settings": [
+        {
+          "id": "product",
+          "type": "product",
+          "label": "Product"
+        },
+        {
+          "id": "show_desc",
+          "type": "checkbox",
+          "label": "Show Short Description",
+          "default": true
+        },
+        {
+          "id": "show_star_rating",
+          "type": "checkbox",
+          "label": "Show Star Rating",
+          "default": false
+        }
+      ]
     }
+  ],
+  "settings": [
   ]
 }
 {% endschema %}

@@ -3,23 +3,34 @@
   "sections": {
     "joint-product": {
       "type": "joint-product",
+      "blocks": {
+        "item_ha7iFa": {
+          "type": "item",
+          "settings": {
+            "product": "emma-hybrid-premium-plus",
+            "show_desc": true,
+            "show_star_rating": false
+          }
+        },
+        "item_zLVk8t": {
+          "type": "item",
+          "settings": {
+            "product": "emma-hybrid-premium",
+            "show_desc": true,
+            "show_star_rating": false
+          }
+        }
+      },
+      "block_order": [
+        "item_ha7iFa",
+        "item_zLVk8t"
+      ],
       "settings": {
-        "products": [
-          "emma-hybrid-premium",
-          "emma-hybrid-premium"
-        ]
       }
     },
     "product-layout": {
       "type": "product-layout",
       "blocks": {
-        "db69a5f3-3790-40d9-a6d7-600831be8f49": {
-          "type": "campaign_teaser",
-          "settings": {
-            "title": "Easter Sale",
-            "content": "<p>55% off</p>"
-          }
-        },
         "96da8b87-0101-4f64-84c1-527c401bd11a": {
           "type": "affirm_widget",
           "settings": {
@@ -27,7 +38,6 @@
         }
       },
       "block_order": [
-        "db69a5f3-3790-40d9-a6d7-600831be8f49",
         "96da8b87-0101-4f64-84c1-527c401bd11a"
       ],
       "settings": {
@@ -68,6 +78,11 @@
           "type": "item",
           "settings": {
             "image": "shopify://shop_images/Hybrid_Premium_front_view_room_render_69c1faf9-3d41-4cd5-a725-7644786c0a18.jpg",
+            "overlay_text": "",
+            "font_size": 16,
+            "y": 1,
+            "x": 1,
+            "text_color": "#ffffff",
             "full_width": true,
             "is_video": false
           }
@@ -76,6 +91,11 @@
           "type": "item",
           "settings": {
             "image": "shopify://shop_images/IMG_3906_3.jpg",
+            "overlay_text": "",
+            "font_size": 16,
+            "y": 1,
+            "x": 1,
+            "text_color": "#ffffff",
             "full_width": false,
             "is_video": false
           }
@@ -84,6 +104,11 @@
           "type": "item",
           "settings": {
             "image": "shopify://shop_images/IMG_4625.jpg",
+            "overlay_text": "",
+            "font_size": 16,
+            "y": 1,
+            "x": 1,
+            "text_color": "#ffffff",
             "full_width": false,
             "is_video": false
           }
@@ -92,6 +117,11 @@
           "type": "item",
           "settings": {
             "image": "shopify://shop_images/Untitled_design_6.jpg",
+            "overlay_text": "",
+            "font_size": 16,
+            "y": 1,
+            "x": 1,
+            "text_color": "#ffffff",
             "full_width": false,
             "is_video": false
           }
@@ -100,6 +130,11 @@
           "type": "item",
           "settings": {
             "image": "shopify://shop_images/Untitled_design_7.jpg",
+            "overlay_text": "",
+            "font_size": 16,
+            "y": 1,
+            "x": 1,
+            "text_color": "#ffffff",
             "full_width": false,
             "is_video": false
           }
@@ -108,6 +143,11 @@
           "type": "item",
           "settings": {
             "image": "shopify://shop_images/HybridPremiumlayering_4e8097ba-1c5e-44a4-964f-fa67ee8ae9f5.jpg",
+            "overlay_text": "",
+            "font_size": 16,
+            "y": 1,
+            "x": 1,
+            "text_color": "#ffffff",
             "full_width": true,
             "is_video": false
           }

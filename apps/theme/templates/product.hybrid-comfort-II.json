@@ -3,11 +3,29 @@
   "sections": {
     "joint-product": {
       "type": "joint-product",
+      "blocks": {
+        "item_czHCtP": {
+          "type": "item",
+          "settings": {
+            "product": "emma-hybrid-25",
+            "show_desc": true,
+            "show_star_rating": false
+          }
+        },
+        "item_HaBtFY": {
+          "type": "item",
+          "settings": {
+            "product": "emma-hybrid-comfort",
+            "show_desc": true,
+            "show_star_rating": false
+          }
+        }
+      },
+      "block_order": [
+        "item_czHCtP",
+        "item_HaBtFY"
+      ],
       "settings": {
-        "products": [
-          "emma-hybrid-25",
-          "emma-hybrid-comfort"
-        ]
       }
     },
     "product-layout": {
