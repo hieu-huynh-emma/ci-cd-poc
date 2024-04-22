@@ -1,0 +1,22 @@
+query RunInput {
+  cart {
+    deliveryGroups {
+      deliveryAddress {
+        address1
+        address2
+        city
+        countryCode
+        provinceCode
+        zip
+      }
+    }
+  }
+  fetchResult {
+    status
+    headers {
+      name
+      value
+    }
+    body
+  }
+}

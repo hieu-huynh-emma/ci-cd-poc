@@ -1,0 +1,25 @@
+api_version = "2024-04"
+
+[[extensions]]
+handle = "po-blocker"
+name = "t:name"
+description = "t:description"
+type = "function"
+
+  [[extensions.targeting]]
+  target = "purchase.validation.fetch"
+  input_query = "src/fetch.graphql"
+  export = "fetch"
+
+  [[extensions.targeting]]
+  target = "purchase.validation.run"
+  input_query = "src/run.graphql"
+  export = "run"
+
+  [extensions.build]
+  command = ""
+  path = "dist/function.wasm"
+
+  [extensions.ui.paths]
+  create = "/"
+  details = "/"
