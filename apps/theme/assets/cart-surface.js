@@ -135,7 +135,7 @@ class CartSurface extends CustomElement {
         this.getSectionsToRender().forEach(section => {
             const sectionElement = document.getElementById(section + "-placeholder");
 
-            sectionElement.outerHTML = parsedState[section]
+            $(sectionElement).replaceWith(parsedState[section])
         })
     }
 

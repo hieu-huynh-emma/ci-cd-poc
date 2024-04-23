@@ -1,8 +1,6 @@
 function parsePhoneNumbers(phone) {
-  const parts = phone.split("-");
-
-  const tel = `+1${parts[0]}${parts[1]}${parts[2]}`;
-  const vanityPhone = `1 (${parts[0]}) ${parts[1]} EMMA`;
+  const tel = `+1 ${phone}`;
+  const vanityPhone = `1 ${phone}`;
 
   return { tel, vanityPhone };
 }
@@ -16,7 +14,7 @@ function getComparisonCompetitor(competitors) {
 
 function openChatSupport() {
   if (!window.fcWidget.isOpen()) {
-    window.fcWidget.open();
+    window.fcWidget.open({ name: "How we can help?" });
   }
 }
 
