@@ -1,6 +1,6 @@
 {% assign isUnavailable = false %}
 
-{% if product.selected_or_first_available_variant.available == false or product.id == 7781585420426%}
+{% if product.selected_or_first_available_variant.available == false %}
   {% assign isUnavailable = true %}
 {% endif %}
 

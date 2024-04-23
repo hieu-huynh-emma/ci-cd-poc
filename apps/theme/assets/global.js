@@ -736,7 +736,7 @@ class VariantSelects extends HTMLElement {
 
     if (totalSaved) $("[data-regular-price]").text(originalPriceInCurrency);
 
-    const isAvail = !!this.currentVariant.available && +$(this).data('productId') !== 7781585420426;
+    const isAvail = !!this.currentVariant.available;
 
     const attrConfiguratorEl = $("#attribute-configurator");
 
