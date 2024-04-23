@@ -121,7 +121,7 @@
 
             <div class="product-bundle-item__description">
               <span class="product-bundle-item__quantity">
-                {{ 'products.bundle.qty' | t }}: {{ bundle_item_metaobject.quantity }}
+                {{ 'products.bundle.qty' | t }}: {{ bundle_item_metaobject.qty | default: 1 }}
               </span>
             </div>
           </div>
