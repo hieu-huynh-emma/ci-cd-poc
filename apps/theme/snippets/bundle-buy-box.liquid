@@ -6,21 +6,7 @@
 
 <p class="buy-box-products-section__header">{{ 'products.bundle.what_inside' | t }}</p>
 
-<div id="product-configuration-{{ configurable_product }}" class="product-configuration">
-  <div class="product-bundle-item">
-    <div class="product-bundle-item__media">
-      {{
-        configurable_product.featured_image
-        | image_url: width: 120, height: 80
-        | image_tag: loading: 'lazy', class: 'product-bundle-item__image'
-      }}
-    </div>
-    <div class="product-bundle-item__details">
-      <div class="product__name paragraph-14 font-semibold">
-        <span>{{ configurable_product.title }}</span>
-      </div>
-    </div>
-  </div>
+{% capture variantSelector %}
   <div class="flex flex-col gap-[20px]">
     <bundle-variant-selects
       class="no-js-hidden emma-product__variant"
@@ -90,12 +76,11 @@
         {% endif %}
       {% endfor %}
     </select>
-    
-    
   </div>
-</div>
+{% endcapture %}
 
-<section id="buy-box-products">
+{% capture otherProducts %}
+  <section id="buy-box-products">
   {% for bundle_item_metaobject in bundle_item_metaobjects %}
     {% assign bundle_item_variant = bundle_item_metaobject.product.value %}
     {% if bundle_item_variant.product.handle != configurable_product_handle %}
@@ -132,6 +117,34 @@
     {% endif %}
   {% endfor %}
 </section>
+{% endcapture %}
+
+{% if configurable_product_handle %}
+  <div id="product-configuration-{{ configurable_product }}" class="product-configuration">
+    <div class="product-bundle-item">
+      <div class="product-bundle-item__media">
+        {{
+          configurable_product.featured_image
+          | image_url: width: 120, height: 80
+          | image_tag: loading: 'lazy', class: 'product-bundle-item__image'
+        }}
+      </div>
+      <div class="product-bundle-item__details">
+        <div class="product__name paragraph-14 font-semibold">
+          <span>{{ configurable_product.title }}</span>
+        </div>
+      </div>
+    </div>
+    {{ variantSelector }}
+  </div>
+
+  {{ otherProducts }}
+
+{% else %}
+  {{ otherProducts }}
+
+  {{ variantSelector }}
+{% endif %}
 
 <script id="ProductBundle" type="application/json">
   [
