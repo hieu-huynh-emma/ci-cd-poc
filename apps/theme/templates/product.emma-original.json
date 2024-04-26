@@ -62,6 +62,11 @@
           "type": "item",
           "settings": {
             "image": "shopify://shop_images/OGawardleft-Photoroom.webp",
+            "overlay_text": "",
+            "font_size": 16,
+            "y": 1,
+            "x": 1,
+            "text_color": "#ffffff",
             "full_width": true,
             "is_video": false
           }
@@ -70,6 +75,11 @@
           "type": "item",
           "settings": {
             "image": "shopify://shop_images/OGcouple.png",
+            "overlay_text": "",
+            "font_size": 16,
+            "y": 1,
+            "x": 1,
+            "text_color": "#ffffff",
             "full_width": false,
             "is_video": false
           }
@@ -78,6 +88,11 @@
           "type": "item",
           "settings": {
             "image": "shopify://shop_images/Gallery_3_desktop-100_cea4770d-7c48-4cf9-a81b-5dd0eb14f5a5.jpg",
+            "overlay_text": "",
+            "font_size": 16,
+            "y": 1,
+            "x": 1,
+            "text_color": "#ffffff",
             "full_width": false,
             "is_video": false
           }
@@ -86,6 +101,11 @@
           "type": "item",
           "settings": {
             "image": "shopify://shop_images/Untitled_design_9.jpg",
+            "overlay_text": "",
+            "font_size": 16,
+            "y": 1,
+            "x": 1,
+            "text_color": "#ffffff",
             "full_width": false,
             "is_video": false
           }
@@ -94,6 +114,11 @@
           "type": "item",
           "settings": {
             "image": "shopify://shop_images/Untitled_design_11.jpg",
+            "overlay_text": "",
+            "font_size": 16,
+            "y": 1,
+            "x": 1,
+            "text_color": "#ffffff",
             "full_width": false,
             "is_video": false
           }
@@ -102,6 +127,11 @@
           "type": "item",
           "settings": {
             "image": "shopify://shop_images/Emma_2_d1f604b5-ea9f-4715-a951-bb02e34c6c99.jpg",
+            "overlay_text": "",
+            "font_size": 16,
+            "y": 1,
+            "x": 1,
+            "text_color": "#ffffff",
             "full_width": true,
             "is_video": false
           }
@@ -172,7 +202,8 @@
         "title": "Easter Sale",
         "content": "<p>55% off</p>",
         "bgcolor": "#fef3ea",
-        "color": "#2e2f3c"
+        "color": "#2e2f3c",
+        "show_countdown_timer": false
       }
     },
     "product-specifications": {
@@ -525,7 +556,7 @@
             "primary_badge": "",
             "secondary_badge": "BEST DEAL",
             "image": "shopify://shop_images/Emma_hybrid-comfort_exploded_2.png",
-            "product_title": "Emma Hybrid Comfort",
+            "product_title": "Emma Hybrid Comfort Plus",
             "desc": "<h1>★4.8</h1><p><strong>Our13-inch Hybrid Mattress that can support added weight and movement without getting hot or stuffy</strong></p>",
             "discount_title": "",
             "comfort_meter": 8,
@@ -542,7 +573,7 @@
             "primary_badge": "",
             "secondary_badge": "PREMIUM CHOICE",
             "image": "shopify://shop_images/hybrid-premium-exploded_1.png",
-            "product_title": "Emma Hybrid Premium",
+            "product_title": "Emma Hybrid Premium Plus",
             "desc": "<h1>★ 4.8</h1><p><strong>Our new best-in-class mattress for perfect cooling & absolute comfort</strong></p>",
             "discount_title": "",
             "comfort_meter": 8,
