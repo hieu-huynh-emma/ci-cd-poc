@@ -1,12 +1,6 @@
-<link rel="quickscript" href="{{ 'campaign-teaser.css' | asset_url }}" />
-<style>
-  .campaign-teaser {
-      --bgcolor: {{ section.settings.bgcolor }};
-      --text-color: {{section.settings.color}};
-  }
-</style>
-<section class="campaign-teaser">
-  <h2 class="text-md font-bold font-inter">{{ section.settings.title }}</h2>
+<link rel="stylesheet" href="{{ 'campaign-teaser.css' | asset_url }}" />
+
+<section class="campaign-teaser" style="--bgcolor: {{ section.settings.bgcolor }}; --text-color: {{section.settings.color}};">
   <div class="md:text-md">
     {% render 'rtf-viewer', content: section.settings.content %}
   </div>
@@ -17,11 +11,6 @@
   "name": "Campaign Teaser",
   "class": "hide-until-initialized",
   "settings": [
-    {
-      "id": "title",
-      "type": "text",
-      "label": "Title"
-    },
     {
       "id": "content",
       "type": "richtext",
