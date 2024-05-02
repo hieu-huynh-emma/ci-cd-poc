@@ -75,7 +75,7 @@
                   <source media="(min-width: 992px)" srcset="{{ item.settings.en_desktop_image | image_url: width: 1040 }}">
                   <source media="(min-width: 768px)" srcset="{{ item.settings.en_desktop_image | image_url: width: 800 }}">
 
-                  <img src="{{ item.settings.en_mobile_image | image_url: width: 600 }}"
+                  <img src="{{ item.settings.en_mobile_image | default: item.settings.en_desktop_image | image_url: width: 600 }}"
                        width="808"
                        height="486"
                   >
@@ -87,7 +87,7 @@
                   <source media="(min-width: 992px)" srcset="{{ item.settings.fr_desktop_image | image_url: width: 1040 }}">
                   <source media="(min-width: 768px)" srcset="{{ item.settings.fr_desktop_image | image_url: width: 800 }}">
 
-                  <img src="{{ item.settings.fr_mobile_image | image_url: width: 600 }}"
+                  <img src="{{ item.settings.fr_mobile_image | default: item.settings.fr_desktop_image | image_url: width: 600 }}"
                        width="808"
                        height="486"
                   >
@@ -115,7 +115,7 @@
                   <source media="(min-width: 992px)" srcset="{{ thumbnail.en_desktop_image | image_url: width: 1040 }}">
                   <source media="(min-width: 768px)" srcset="{{ thumbnail.en_desktop_image | image_url: width: 800 }}">
 
-                  <img src="{{ thumbnail.en_mobile_image | image_url: width: 600 }}"
+                  <img src="{{ thumbnail.en_mobile_image | default: thumbnail.en_desktop_image | image_url: width: 600 }}"
                        width="808"
                        height="486"
                   >
@@ -127,7 +127,7 @@
                   <source media="(min-width: 992px)" srcset="{{ thumbnail.fr_desktop_image | image_url: width: 1040 }}">
                   <source media="(min-width: 768px)" srcset="{{ thumbnail.fr_desktop_image | image_url: width: 800 }}">
 
-                  <img src="{{ thumbnail.fr_mobile_image | image_url: width: 600 }}"
+                  <img src="{{ thumbnail.fr_mobile_image | default: thumbnail.fr_desktop_image | image_url: width: 600 }}"
                        width="808"
                        height="486"
                   >
