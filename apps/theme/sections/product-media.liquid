@@ -12,7 +12,6 @@
     }
 
 
-
     @media screen and (min-width: 769px) {
         product-media {
             min-height: 500px;
@@ -26,6 +25,7 @@
     html[lang='en'] product-media .media-item[lang='en'] {
         display: block;
     }
+
     html[lang='fr'] product-media .media-item[lang='fr'] {
         display: block;
     }
@@ -34,16 +34,17 @@
 <product-media>
 
   <div class="lead-item media-item" lang="en">
-      <picture class="media-item__image">
-        <source media="(min-width: 1200px)" srcset="{{ leadItem.settings.en_desktop_image | image_url: width: 1440 }}">
-        <source media="(min-width: 992px)" srcset="{{ leadItem.settings.en_desktop_image | image_url: width: 1040 }}">
-        <source media="(min-width: 768px)" srcset="{{ leadItem.settings.en_desktop_image | image_url: width: 800 }}">
+    <picture class="media-item__image">
+      <source media="(min-width: 1200px)" srcset="{{ leadItem.settings.en_desktop_image | image_url: width: 1440 }}">
+      <source media="(min-width: 992px)" srcset="{{ leadItem.settings.en_desktop_image | image_url: width: 1040 }}">
+      <source media="(min-width: 768px)" srcset="{{ leadItem.settings.en_desktop_image | image_url: width: 800 }}">
 
-        <img src="{{ leadItem.settings.en_mobile_image | image_url: width: 600 }}"
-             width="808"
-             height="486"
-        >
-      </picture>
+      <img
+          src="{{ leadItem.settings.en_mobile_image | default: leadItem.settings.en_desktop_image | image_url: width: 600 }}"
+          width="808"
+          height="486"
+      >
+    </picture>
   </div>
   <div class="lead-item media-item" lang="fr">
     <div class="image-wrapper">
@@ -52,7 +53,7 @@
         <source media="(min-width: 992px)" srcset="{{ leadItem.settings.fr_desktop_image | image_url: width: 1040 }}">
         <source media="(min-width: 768px)" srcset="{{ leadItem.settings.fr_desktop_image | image_url: width: 800 }}">
 
-        <img src="{{ leadItem.settings.fr_mobile_image | image_url: width: 600 }}"
+        <img src="{{ leadItem.settings.fr_mobile_image | default: leadItem.settings.fr_desktop_image | image_url: width: 600 }}"
              width="808"
              height="486"
         >
@@ -71,25 +72,33 @@
             >
               <div class="media-item" lang="en">
                 <picture class="media-item__image">
-                  <source media="(min-width: 1200px)" srcset="{{ item.settings.en_desktop_image | image_url: width: 1440 }}">
-                  <source media="(min-width: 992px)" srcset="{{ item.settings.en_desktop_image | image_url: width: 1040 }}">
-                  <source media="(min-width: 768px)" srcset="{{ item.settings.en_desktop_image | image_url: width: 800 }}">
+                  <source media="(min-width: 1200px)"
+                          srcset="{{ item.settings.en_desktop_image | image_url: width: 1440 }}">
+                  <source media="(min-width: 992px)"
+                          srcset="{{ item.settings.en_desktop_image | image_url: width: 1040 }}">
+                  <source media="(min-width: 768px)"
+                          srcset="{{ item.settings.en_desktop_image | image_url: width: 800 }}">
 
-                  <img src="{{ item.settings.en_mobile_image | default: item.settings.en_desktop_image | image_url: width: 600 }}"
-                       width="808"
-                       height="486"
+                  <img
+                      src="{{ item.settings.en_mobile_image | default: item.settings.en_desktop_image | image_url: width: 600 }}"
+                      width="808"
+                      height="486"
                   >
                 </picture>
               </div>
               <div class="media-item" lang="fr">
                 <picture class="media-item__image">
-                  <source media="(min-width: 1200px)" srcset="{{ item.settings.fr_desktop_image | image_url: width: 1440 }}">
-                  <source media="(min-width: 992px)" srcset="{{ item.settings.fr_desktop_image | image_url: width: 1040 }}">
-                  <source media="(min-width: 768px)" srcset="{{ item.settings.fr_desktop_image | image_url: width: 800 }}">
+                  <source media="(min-width: 1200px)"
+                          srcset="{{ item.settings.fr_desktop_image | image_url: width: 1440 }}">
+                  <source media="(min-width: 992px)"
+                          srcset="{{ item.settings.fr_desktop_image | image_url: width: 1040 }}">
+                  <source media="(min-width: 768px)"
+                          srcset="{{ item.settings.fr_desktop_image | image_url: width: 800 }}">
 
-                  <img src="{{ item.settings.fr_mobile_image | default: item.settings.fr_desktop_image | image_url: width: 600 }}"
-                       width="808"
-                       height="486"
+                  <img
+                      src="{{ item.settings.fr_mobile_image | default: item.settings.fr_desktop_image | image_url: width: 600 }}"
+                      width="808"
+                      height="486"
                   >
                 </picture>
               </div>
@@ -111,25 +120,29 @@
 
               <div class="media-item" lang="en">
                 <picture class="media-item__image">
-                  <source media="(min-width: 1200px)" srcset="{{ thumbnail.en_desktop_image | image_url: width: 1440 }}">
+                  <source media="(min-width: 1200px)"
+                          srcset="{{ thumbnail.en_desktop_image | image_url: width: 1440 }}">
                   <source media="(min-width: 992px)" srcset="{{ thumbnail.en_desktop_image | image_url: width: 1040 }}">
                   <source media="(min-width: 768px)" srcset="{{ thumbnail.en_desktop_image | image_url: width: 800 }}">
 
-                  <img src="{{ thumbnail.en_mobile_image | default: thumbnail.en_desktop_image | image_url: width: 600 }}"
-                       width="808"
-                       height="486"
+                  <img
+                      src="{{ thumbnail.en_mobile_image | default: thumbnail.en_desktop_image | image_url: width: 600 }}"
+                      width="808"
+                      height="486"
                   >
                 </picture>
               </div>
               <div class="media-item" lang="fr">
                 <picture class="media-item__image">
-                  <source media="(min-width: 1200px)" srcset="{{ thumbnail.fr_desktop_image | image_url: width: 1440 }}">
+                  <source media="(min-width: 1200px)"
+                          srcset="{{ thumbnail.fr_desktop_image | image_url: width: 1440 }}">
                   <source media="(min-width: 992px)" srcset="{{ thumbnail.fr_desktop_image | image_url: width: 1040 }}">
                   <source media="(min-width: 768px)" srcset="{{ thumbnail.fr_desktop_image | image_url: width: 800 }}">
 
-                  <img src="{{ thumbnail.fr_mobile_image | default: thumbnail.fr_desktop_image | image_url: width: 600 }}"
-                       width="808"
-                       height="486"
+                  <img
+                      src="{{ thumbnail.fr_mobile_image | default: thumbnail.fr_desktop_image | image_url: width: 600 }}"
+                      width="808"
+                      height="486"
                   >
                 </picture>
               </div>
