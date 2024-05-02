@@ -9,14 +9,14 @@ product-media {
 
   .media-item {
     position: relative;
+    overflow: hidden;
 
     height: fit-content;
     aspect-ratio: 16/10;
-    overflow: hidden;
 
     border-radius: 8px;
 
-    img {
+    picture img {
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -63,6 +63,10 @@ product-media {
   }
 
   .splide {
+    &__slide {
+      border-radius: 8px;
+      overflow: hidden;
+    }
     &__track {
       padding: 0;
     }

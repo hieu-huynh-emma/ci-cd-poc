@@ -11,59 +11,88 @@
         min-height: 280px;
     }
 
+
+
     @media screen and (min-width: 769px) {
         product-media {
             min-height: 500px;
         }
     }
+
+    product-media .media-item {
+        display: none;
+    }
+
+    html[lang='en'] product-media .media-item[lang='en'] {
+        display: block;
+    }
+    html[lang='fr'] product-media .media-item[lang='fr'] {
+        display: block;
+    }
 </style>
 
 <product-media>
-  <div class="lead-item media-item full-width">
+
+  <div class="lead-item media-item" lang="en">
+      <picture class="media-item__image">
+        <source media="(min-width: 1200px)" srcset="{{ leadItem.settings.en_desktop_image | image_url: width: 1440 }}">
+        <source media="(min-width: 992px)" srcset="{{ leadItem.settings.en_desktop_image | image_url: width: 1040 }}">
+        <source media="(min-width: 768px)" srcset="{{ leadItem.settings.en_desktop_image | image_url: width: 800 }}">
+
+        <img src="{{ leadItem.settings.en_mobile_image | image_url: width: 600 }}"
+             width="808"
+             height="486"
+        >
+      </picture>
+  </div>
+  <div class="lead-item media-item" lang="fr">
     <div class="image-wrapper">
-      {% if leadItem.settings.is_video and leadItem.settings.hosted_video != blank %}
-        {{
-        leadItem.settings.hosted_video
-        | video_tag: class: 'hosted-video', width: '100%', controls: false, autoplay: true, loop: true
-        }}
-      {% else %}
-        <img
-            src="{{ leadItem.settings.image | image_url: width: 100 }}"
-            data-src="{{ leadItem.settings.image | image_url: width: 808 }}"
-            data-sizes="auto"
-            alt=""
-            width="808"
-            height="486"
-            class="image-item lazyload"
-        />
-      {% endif %}
+      <picture class="media-item__image">
+        <source media="(min-width: 1200px)" srcset="{{ leadItem.settings.fr_desktop_image | image_url: width: 1440 }}">
+        <source media="(min-width: 992px)" srcset="{{ leadItem.settings.fr_desktop_image | image_url: width: 1040 }}">
+        <source media="(min-width: 768px)" srcset="{{ leadItem.settings.fr_desktop_image | image_url: width: 800 }}">
+
+        <img src="{{ leadItem.settings.fr_mobile_image | image_url: width: 600 }}"
+             width="808"
+             height="486"
+        >
+      </picture>
+
     </div>
   </div>
+
   <template>
     <div class="main-carousel splide">
       <ul class="splide__track">
         <li class="splide__list">
           {% for item in allItems %}
             <div
-                class="media-item splide__slide"
+                class="splide__slide"
             >
-              {% if item.settings.is_video and item.settings.hosted_video != blank %}
-                {{ item.settings.hosted_video | video_tag: class: 'hosted-video', width: '100%', controls: false, autoplay: true, loop: true }}
-              {% else %}
-                {{ item.settings.image | image_url: width: 808, height: 486 | image_tag }}
-              {% endif %}
+              <div class="media-item" lang="en">
+                <picture class="media-item__image">
+                  <source media="(min-width: 1200px)" srcset="{{ item.settings.en_desktop_image | image_url: width: 1440 }}">
+                  <source media="(min-width: 992px)" srcset="{{ item.settings.en_desktop_image | image_url: width: 1040 }}">
+                  <source media="(min-width: 768px)" srcset="{{ item.settings.en_desktop_image | image_url: width: 800 }}">
 
-              {% if item.settings.overlay_text %}
-                <div class="overlay-text" style="
-                    --font_size: {{ item.settings.font_size }}px;
-                    --text_alignment: {{ item.settings.text_alignment }};
-                    --text_color: {{ item.settings.text_color }};
-                    --y: {{ item.settings.y }}%;
-                    --x: {{ item.settings.x }}%;
-                    ">
-                  {% render 'rtf-viewer', content: item.settings.overlay_text %}
-                </div>
-              {% endif %}
+                  <img src="{{ item.settings.en_mobile_image | image_url: width: 600 }}"
+                       width="808"
+                       height="486"
+                  >
+                </picture>
+              </div>
+              <div class="media-item" lang="fr">
+                <picture class="media-item__image">
+                  <source media="(min-width: 1200px)" srcset="{{ item.settings.fr_desktop_image | image_url: width: 1440 }}">
+                  <source media="(min-width: 992px)" srcset="{{ item.settings.fr_desktop_image | image_url: width: 1040 }}">
+                  <source media="(min-width: 768px)" srcset="{{ item.settings.fr_desktop_image | image_url: width: 800 }}">
+
+                  <img src="{{ item.settings.fr_mobile_image | image_url: width: 600 }}"
+                       width="808"
+                       height="486"
+                  >
+                </picture>
+              </div>
             </div>
           {% endfor %}
         </li>
@@ -76,14 +105,34 @@
         <li class="splide__list">
           {% for item in allItems %}
             <div
-                class="media-item splide__slide"
+                class="splide__slide"
             >
-              {% assign thumbnail = item.settings.image %}
-              {% if item.settings.is_video and item.settings.hosted_video != blank %}
-                {% assign thumbnail = item.settings.hosted_video.preview_image %}
-              {% endif %}
-              {{ thumbnail | image_url: width: 808, height: 486 | image_tag }}
+              {% assign thumbnail = item.settings %}
 
+              <div class="media-item" lang="en">
+                <picture class="media-item__image">
+                  <source media="(min-width: 1200px)" srcset="{{ thumbnail.en_desktop_image | image_url: width: 1440 }}">
+                  <source media="(min-width: 992px)" srcset="{{ thumbnail.en_desktop_image | image_url: width: 1040 }}">
+                  <source media="(min-width: 768px)" srcset="{{ thumbnail.en_desktop_image | image_url: width: 800 }}">
+
+                  <img src="{{ thumbnail.en_mobile_image | image_url: width: 600 }}"
+                       width="808"
+                       height="486"
+                  >
+                </picture>
+              </div>
+              <div class="media-item" lang="fr">
+                <picture class="media-item__image">
+                  <source media="(min-width: 1200px)" srcset="{{ thumbnail.fr_desktop_image | image_url: width: 1440 }}">
+                  <source media="(min-width: 992px)" srcset="{{ thumbnail.fr_desktop_image | image_url: width: 1040 }}">
+                  <source media="(min-width: 768px)" srcset="{{ thumbnail.fr_desktop_image | image_url: width: 800 }}">
+
+                  <img src="{{ thumbnail.fr_mobile_image | image_url: width: 600 }}"
+                       width="808"
+                       height="486"
+                  >
+                </picture>
+              </div>
             </div>
           {% endfor %}
         </li>
@@ -105,80 +154,29 @@
       "name": "Media Item",
       "settings": [
         {
+          "id": "en_desktop_image",
           "type": "image_picker",
-          "id": "image",
-          "label": "Image"
+          "label": "English Desktop Image"
         },
         {
-          "id": "overlay_text",
-          "type": "richtext",
-          "label": "Overlay Text"
+          "id": "en_mobile_image",
+          "type": "image_picker",
+          "label": "English Mobile Image"
         },
         {
-          "type": "range",
-          "id": "font_size",
-          "min": 14,
-          "max": 80,
-          "step": 1,
-          "unit": "px",
-          "label": "Font size",
-          "default": 16
+          "id": "fr_desktop_image",
+          "type": "image_picker",
+          "label": "French Desktop Image"
         },
         {
-          "type": "range",
-          "id": "y",
-          "min": 1,
-          "max": 100,
-          "step": 1,
-          "unit": "%",
-          "label": "Bottom Position",
-          "default": 1
-        },
-        {
-          "type": "range",
-          "id": "x",
-          "min": 1,
-          "max": 100,
-          "step": 1,
-          "unit": "%",
-          "label": "Right Position",
-          "default": 1
-        },
-        {
-          "type": "color",
-          "id": "text_color",
-          "label": "Text Color",
-          "default": "#ffffff"
-        },
-        {
-          "id": "hosted_video",
-          "type": "video",
-          "label": "Shopify-hosted video"
-        },
-        {
-          "type": "checkbox",
-          "id": "full_width",
-          "label": "Full Width?"
-        },
-        {
-          "type": "checkbox",
-          "id": "is_video",
-          "label": "Video?"
+          "id": "fr_mobile_image",
+          "type": "image_picker",
+          "label": "French Mobile Image"
         }
       ]
     }
   ],
   "settings": [
-    {
-      "id": "caption_headline",
-      "type": "text",
-      "label": "Headline"
-    },
-    {
-      "type": "textarea",
-      "id": "caption_content",
-      "label": "Content"
-    }
   ]
 }
 {% endschema %}
