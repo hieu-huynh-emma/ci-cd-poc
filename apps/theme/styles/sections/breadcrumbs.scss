@@ -1,14 +1,11 @@
-.breadcrumbs-container {
-  margin: 1rem 0;
-}
+
 .breadcrumbs {
   $this: &;
-
+  display: flex;
   gap: .5rem;
   list-style-type: none;
   margin: 0;
   padding: 0;
-
 
 
   &__item {

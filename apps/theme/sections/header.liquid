@@ -6,15 +6,21 @@
     .site-header > .header_container {
         display: grid;
         align-items: center;
+        gap: 1.75rem;
+        grid-template-columns: minmax(0, auto) minmax(0, auto);
+        justify-content: space-between;
         height: 58px;
         max-height: 58px
+
     }
 
+    @media screen and (min-width: 1024px) {
+        .site-header > .header_container {
+            grid-template-columns: minmax(0, auto) minmax(0, 1fr) minmax(0, auto);
+        }
+    }
     .small_nav {
-
-        align-items: center;
-        gap: 10px;
-        justify-content: flex-end;
+        display: none;
     }
 
     .header-utilities {
@@ -66,11 +72,20 @@
         display: none;
     }
 
+    @media screen and (max-width: 767px) {
+        #navbar .page-boundary {
+            padding: 0;
+        }
+    }
+
     @media screen and (min-width: 1024px) {
         .site-header {
             height: 60px;
             max-height: 60px;
             background: #f7f7f9;
+        }
+        nav-toggler {
+            display: none;
         }
     }
 
@@ -82,17 +97,14 @@
 
         .site-logo {
             position: absolute;
-            left: 45px
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
         }
     }
-
-    nav-toggler {
-        display: none
-    }
-
 </style>
 
-<link rel="stylesheet" href="{{ 'header.css' | asset_url }}">
+<link rel="quickscript" loading="delayed" href="{{ 'header.css' | asset_url }}">
 
 <header
         class="site-header "
@@ -137,7 +149,7 @@
         </a>
 
 
-        <div class="small_nav hidden lg:flex">
+        <div class="small_nav">
             <button tabindex="-1" class="language-redirection"></button>
 
             <a href="https://emma-sleep.ca/pages/faq">FAQ</a>

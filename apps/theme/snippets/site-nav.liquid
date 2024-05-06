@@ -1,4 +1,69 @@
 {% assign saleLink = sections.blocks | where: "type", "sale-link" %}
+
+<style>
+    site-nav {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        background-color: #fff;
+    }
+
+    @media screen and (min-width: 1024px) {
+        site-nav {
+            position: static;
+            flex-direction: row;
+            justify-content: center;
+            height: 100%;
+            width: fit-content;
+            margin: 0;
+        }
+
+        site-nav site-nav-item:nth-child(7), site-nav site-nav-item:nth-child(8), site-nav site-nav-item:nth-child(9) {
+            display: none !important;
+        }
+
+        .nav-link {
+            width: initial;
+            height: auto;
+            padding: 0 12px;
+        }
+    }
+
+    site-nav-item {
+        display: flex !important;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        padding: 0 12px;
+    }
+    .nav-link {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        width: 100%;
+        height: 4rem;
+        padding: 9px 0;
+        cursor: pointer;
+        text-transform: capitalize;
+        word-break: keep-all;
+        white-space: nowrap;
+    }
+    .minimal-nav-dropdown {
+        position: static;
+        opacity: 1;
+        z-index: 110;
+        display: none;
+        width: 100%;
+        padding: 9px 0;
+        background: #fff;
+        text-transform: none;
+        box-shadow: none;
+        pointer-events: auto;
+    }
+</style>
+
 <div class="page-boundary ">
     <site-nav>
         {% for link in linklists[section.settings.menu].links %}
@@ -42,10 +107,6 @@
                         >
                         </a>
                     </div>
-
-                    {% if hasDropdown == true %}
-                        <img src="{{ 'arrow-down.svg' | asset_url }}" loading="lazy" class="nav-link__arrow">
-                    {% endif %}
                 </div>
 
                 {% if hasDropdown and isMinimal %}

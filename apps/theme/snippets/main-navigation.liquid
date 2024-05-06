@@ -1,9 +1,13 @@
 <style>
-    #navbar{display:none}@media screen and (max-width:769px){nav-overlay{position:absolute;inset:0;z-index:-1;background-color:rgba(0,0,0,.8)}}
+  .main_nav_wrapper {
+      box-shadow: 0 0.25rem 0.5rem 0 rgba(46, 47, 60, .1);
+  }
+    @media screen and (max-width:769px){ #navbar{display:none} nav-overlay{position:absolute;inset:0;z-index:-1;background-color:rgba(0,0,0,.8)}}
+
 </style>
 
-<link rel="stylesheet" href="{{ 'main-navigation.css' | asset_url }}">
-<link rel="stylesheet" href="{{ 'cart-icon-bubble.css' | asset_url }}">
+<link rel="quickscript" loading="delayed" href="{{ 'main-navigation.css' | asset_url }}">
+<link rel="quickscript" loading="delayed" href="{{ 'cart-icon-bubble.css' | asset_url }}">
 
 
 <script id="main-navigation-menu" type="application/json">

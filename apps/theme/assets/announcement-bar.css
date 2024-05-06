@@ -24,12 +24,9 @@
 #announcement-bar .anno-wrapper {
     display: flex;
     align-items: center;
-    background-color:var(--section-bgc) !important;
     border-bottom: 0.1rem solid rgba(0, 0, 0, 0.08);
 }
-#announcement-bar .anno-text {
-    color: var(--section-text-color);
-}
+
 @media screen and (max-width: 769px) {
     #announcement-bar .anno-cta,
     #announcement-bar .countdown-container:empty {

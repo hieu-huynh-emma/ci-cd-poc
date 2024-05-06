@@ -1,20 +1,25 @@
-.small_nav {
-         
-         align-items: center;
-         gap: 20px;
-         justify-content: flex-end;
+@media screen and (min-width: 1024px) {
+    .small_nav {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        justify-content: flex-end;
     }
-  .main_nav_wrapper{
-    box-shadow: 0 0.25rem 0.5rem 0 rgba(46,47,60,.1);
+}
+
+
+.main_nav_wrapper {
     position: relative;
     z-index: 2;
- 
-  }
-  .site-nav .site-nav__item:first-child .nav-link .nav-link__title p{
-    color:#f03306
-  }
-  .site-nav .site-nav__item:first-child .nav-link .nav-link__title p:before{
-       content: '';
+
+}
+
+.site-nav .site-nav__item:first-child .nav-link .nav-link__title p {
+    color: #f03306
+}
+
+.site-nav .site-nav__item:first-child .nav-link .nav-link__title p:before {
+    content: '';
     background: url(https://www.emma-sleep.com/cdn/shop/t/385/assets/sale.svg) no-repeat;
     display: inline-block;
     height: 22px;
@@ -24,39 +29,35 @@
     margin-left: -10px;
     margin-right: 2px;
     margin-top: -4px;
-  }
+}
+
 .site-header-wrapper {
     position: sticky;
     top: calc(41px - 1px);
     z-index: 999;
     /*--box-shadow: 0 6px 25px 2px rgba(0, 0, 0, .08);--*/
-  border-bottom:1px solid #f7f7f9;
-}
-.site-header {
-  position:relative;
-  z-index:9;
+    border-bottom: 1px solid #f7f7f9;
 }
 
-.site-header > .header_container {
-    gap: 1.75rem;
-    grid-template-columns: minmax(0, auto) minmax(0, auto);
-    justify-content: space-between;
+.site-header {
+    position: relative;
+    z-index: 9;
 }
-@media screen and (min-width:1024px) {
-    .site-header > .header_container {
-    grid-template-columns: minmax(0, auto) minmax(0, 1fr) minmax(0, auto);
-}
-}.header-utilities {
+
+
+.header-utilities {
     display: flex;
     gap: 10px;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-  justify-content:flex-end;
+    justify-content: flex-end;
 }
+
 .site-logo {
     display: flex;
     align-items: center;
     justify-content: center;
 }
+
 .header-utilities a svg path {
     fill: #2E2F3C;
 }
@@ -64,41 +65,43 @@
 .cart-icon-bubble svg path {
     fill: #2E2F3C;
 }
+
 svg.hamburger-icon path {
     fill: #2E2F3C;
 }
-@media screen and (min-width:1024px) {
+
+@media screen and (min-width: 1024px) {
     .site-logo {
-    justify-content: flex-start;
+        justify-content: flex-start;
+    }
 }
-}nav-toggler {
+
+nav-toggler {
     display: block;
     justify-content: flex-start;
 }
-@media screen and (min-width:1024px) {
-    nav-toggler {
-    display: none;
-}
-}
-@media screen and (max-width:1023px) {
-  .header-utilities > .header-icon {
-    display: none;
-}
-    .site-logo {
-    left:50%;
-      top:50%;
-      -webkit-transform:translate(-50%, -50%);
-      transform:translate(-50%, -50%);
-}
-}
-@media screen and (max-width:767px){
-  .site-nav .site-nav__item:first-child .nav-link .nav-link__title p:before{
-    margin-left:0;
-  }
-  #navbar .page-boundary{
-      padding:0;
-  }
-  
 
-.header-utilities {display: flex;justify-content: flex-end;}
+@media screen and (min-width: 1024px) {
+    nav-toggler {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 1023px) {
+    .header-utilities > .header-icon {
+        display: none;
+    }
+
+
+}
+
+@media screen and (max-width: 767px) {
+    .site-nav .site-nav__item:first-child .nav-link .nav-link__title p:before {
+        margin-left: 0;
+    }
+
+    .header-utilities {
+        display: flex;
+        justify-content: flex-end;
+    }
 }

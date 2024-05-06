@@ -1,23 +1,4 @@
-#hero-split-section .section-container--mobile {
-    position: relative;
-    display: grid;
-    gap: .75rem;
-    grid-template-rows:minmax(0, auto) minmax(0, auto);
-}
 
-@media screen and (min-width: 769px) {
-    #hero-split-section .section-container--mobile {
-        display: none;
-    }
-}
-
-
-#hero-split-section .section-container {
-    position: relative;
-    display: none;
-    border-radius: .5rem;
-    overflow: hidden;
-}
 
 #hero-split-section .section-container:not(.single-mode) .hero-split:last-child .sub-heading {
     display: none
@@ -28,10 +9,7 @@
 }
 
 @media screen and (min-width: 769px) {
-    #hero-split-section .section-container {
-        display: block;
-        padding: 0;
-    }
+
 
     #hero-split-section .section-container .hero-split:last-child .sub-heading {
         display: block
