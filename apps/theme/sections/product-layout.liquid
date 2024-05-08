@@ -2,6 +2,11 @@
 {% assign affirm_widget = section.blocks | where: 'type', 'affirm_widget' | first %}
 {% assign appBlock = section.blocks | where: 'type', '@app' | first %}
 
+<style>
+  .attribute-configurator {
+      display: none;
+  }
+</style>
 <link rel="stylesheet" href="{{ 'product-layout.css' | asset_url }}" />
 
 <script src="{{ 'product-layout.js' | asset_url }}" defer data-section-id="{{ section.id }}"></script>
