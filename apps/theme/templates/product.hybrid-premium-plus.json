@@ -576,23 +576,6 @@
         "show_secondary_badge": false
       }
     },
-    "1706756294a806f92d": {
-      "type": "apps",
-      "blocks": {
-        "yotpo_product_photo_reviews_reviews_rYq3JP": {
-          "type": "shopify:\/\/apps\/yotpo-product-reviews-ugc\/blocks\/reviews\/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
-          "settings": {
-            "product": "{{product}}"
-          }
-        }
-      },
-      "block_order": [
-        "yotpo_product_photo_reviews_reviews_rYq3JP"
-      ],
-      "settings": {
-        "include_margins": true
-      }
-    },
     "customer-sentiment": {
       "type": "customer-sentiment",
       "blocks": {
@@ -710,6 +693,70 @@
         "title": "<p>Why our customers love Emma<\/p>"
       }
     },
+    "product-carousel": {
+      "type": "product-carousel",
+      "blocks": {
+        "5e77d40f-79e8-4050-a013-d2325a25b443": {
+          "type": "catalog_item",
+          "settings": {
+            "product": "perfect-sleep-bundle-ii"
+          }
+        },
+        "72c7f33b-7788-4524-bf53-816aecb093b6": {
+          "type": "catalog_item",
+          "settings": {
+            "product": "emma-foam-pillow"
+          }
+        },
+        "f0f0b732-6803-4158-8c54-5c08c4bdbfa3": {
+          "type": "catalog_item",
+          "settings": {
+            "product": "premium-cooling-pillow"
+          }
+        },
+        "07d5912c-d4c3-4ebb-97a6-f723fc8a4f3f": {
+          "type": "catalog_item",
+          "settings": {
+            "product": "emma-mattress-protector"
+          }
+        },
+        "d8319461-aedd-4805-884a-95b7ed1a5893": {
+          "type": "catalog_item",
+          "settings": {
+            "product": "duvet"
+          }
+        }
+      },
+      "block_order": [
+        "5e77d40f-79e8-4050-a013-d2325a25b443",
+        "72c7f33b-7788-4524-bf53-816aecb093b6",
+        "f0f0b732-6803-4158-8c54-5c08c4bdbfa3",
+        "07d5912c-d4c3-4ebb-97a6-f723fc8a4f3f",
+        "d8319461-aedd-4805-884a-95b7ed1a5893"
+      ],
+      "settings": {
+        "heading": "Some things are better together",
+        "heading_alignment": "start",
+        "container_spacing": "md"
+      }
+    },
+    "1706756294a806f92d": {
+      "type": "apps",
+      "blocks": {
+        "yotpo_product_photo_reviews_reviews_rYq3JP": {
+          "type": "shopify:\/\/apps\/yotpo-product-reviews-ugc\/blocks\/reviews\/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
+          "settings": {
+            "product": "{{product}}"
+          }
+        }
+      },
+      "block_order": [
+        "yotpo_product_photo_reviews_reviews_rYq3JP"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    },
     "social-proof": {
       "type": "social-proof",
       "blocks": {
@@ -809,60 +856,6 @@
         "heading_alignment": "start"
       }
     },
-    "product-carousel": {
-      "type": "product-carousel",
-      "blocks": {
-        "f0f0b732-6803-4158-8c54-5c08c4bdbfa3": {
-          "type": "catalog_item",
-          "settings": {
-            "product": "premium-cooling-pillow"
-          }
-        },
-        "07d5912c-d4c3-4ebb-97a6-f723fc8a4f3f": {
-          "type": "catalog_item",
-          "settings": {
-            "product": "emma-mattress-protector"
-          }
-        },
-        "d8319461-aedd-4805-884a-95b7ed1a5893": {
-          "type": "catalog_item",
-          "settings": {
-            "product": "emma-hybrid-comfort"
-          }
-        },
-        "72c7f33b-7788-4524-bf53-816aecb093b6": {
-          "type": "catalog_item",
-          "settings": {
-            "product": "emma-foam-pillow"
-          }
-        },
-        "c4650795-b884-4ddd-904e-babd57faad7b": {
-          "type": "catalog_item",
-          "settings": {
-            "product": "emma-bed-frame"
-          }
-        },
-        "5e77d40f-79e8-4050-a013-d2325a25b443": {
-          "type": "catalog_item",
-          "settings": {
-            "product": "perfect-sleep-bundle"
-          }
-        }
-      },
-      "block_order": [
-        "f0f0b732-6803-4158-8c54-5c08c4bdbfa3",
-        "07d5912c-d4c3-4ebb-97a6-f723fc8a4f3f",
-        "d8319461-aedd-4805-884a-95b7ed1a5893",
-        "72c7f33b-7788-4524-bf53-816aecb093b6",
-        "c4650795-b884-4ddd-904e-babd57faad7b",
-        "5e77d40f-79e8-4050-a013-d2325a25b443"
-      ],
-      "settings": {
-        "heading": "Some things are better together",
-        "heading_alignment": "start",
-        "container_spacing": "md"
-      }
-    },
     "featured-faqs": {
       "type": "featured-faqs",
       "blocks": {
@@ -930,10 +923,10 @@
     "mattress-layers",
     "mattress-firmness",
     "featured-products",
-    "1706756294a806f92d",
     "customer-sentiment",
-    "social-proof",
     "product-carousel",
+    "1706756294a806f92d",
+    "social-proof",
     "featured-faqs",
     "contact-us"
   ]
