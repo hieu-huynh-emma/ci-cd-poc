@@ -1,29 +1,26 @@
 {% assign orientation = orientation | default: "horizontal" %}
+<style>
+    #quantity-selector {
+        opacity: 0;
+        visibility: hidden;
+    }
+</style>
+
+<link rel="quickscript" loading="delayed" href="{{ 'product-quantity-selector.css' | asset_url }}">
 
 <div
-        id="quantity-selector"
-        class="
-    {% if orientation == "vertical" %}
-      flex flex-col gap-[9px] items-start justify-start
-    {% else %}
-      grid gap-2xl grid-cols-[minmax(0,_1fr)_minmax(0,_auto)] items-center mt-[8px]
-      min-h-[48px]
-      px-[10px]
-      border border-solid border-nobel
-      rounded-[8px]
-    {% endif %}
-    transition duration-300 ease-in-out
-  "
-        data-quantity-selector
-        {{ block.shopify_attributes }}
+    id="quantity-selector"
+    class="{% if orientation == "vertical" %}vertical{% else %}horizontal{% endif %}"
+    data-quantity-selector
+    {{ block.shopify_attributes }}
 >
-    <label class="font-semibold text-sm leading-xl" for="Quantity-{{ section.id }}">
-        {{ 'products.product.quantity' | t }}
-    </label>
+  <label class="font-semibold text-sm leading-xl" for="Quantity-{{ section.id }}">
+    {{ 'products.product.quantity' | t }}
+  </label>
 
-    <quantity-input
-            name="quantity" form="product-form-{{ section.id }}"
-            class="
+  <quantity-input
+      name="quantity" form="product-form-{{ section.id }}"
+      class="
       grid gap-[4px] grid-cols-[minmax(0,_auto)_minmax(0,_1fr)_minmax(0,_auto)]
       justify-between justify-items-center items-center
 
@@ -36,48 +33,48 @@
       {% endif %}
       rounded-lg
     "
-    >
+  >
 
-        <button
-                class="
+    <button
+        class="
         no-js-hidden
         flex flex-row items-center justify-center w-[25px] h-[25px]
         bg-seashell opacity-100 rounded-full
         text-[19px] text-center font-normal
         "
-                name="minus" type="button"
-        >
-            -
-        </button>
-        <input
-                class="
+        name="minus" type="button"
+    >
+      -
+    </button>
+    <input
+        class="
         max-w-[5rem] font-semibold text-center text-base bg-[#fff] border-[none] h-[36px] min-h-[auto]
         [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none
       "
-                type="number"
-                name="quantity"
-                id="Quantity-{{ section.id }}"
-                value="1"
-                min="1"
-                pattern="[0-9]*"
-                readonly
-                data-quantity-selector-input
-        >
-        <button
-                class="no-js-hidden
+        type="number"
+        name="quantity"
+        id="Quantity-{{ section.id }}"
+        value="1"
+        min="1"
+        pattern="[0-9]*"
+        readonly
+        data-quantity-selector-input
+    >
+    <button
+        class="no-js-hidden
         flex flex-row items-center justify-center w-[25px] h-[25px]
         bg-seashell opacity-100 rounded-full
         text-[19px] text-center font-normal
       "
-                name="plus" type="button"
-        >
-            +
-        </button>
-    </quantity-input>
+        name="plus" type="button"
+    >
+      +
+    </button>
+  </quantity-input>
 </div>
 
 <script type="quickscript" loading="delayed">
-    const input = document.getElementById('Quantity-{{ section.id }}');
+  const input = document.getElementById('Quantity-{{ section.id }}');
 
 		$(`.quantity-input__button[name="minus"]`).click(function() {
 			if (input.value <= 1) {
