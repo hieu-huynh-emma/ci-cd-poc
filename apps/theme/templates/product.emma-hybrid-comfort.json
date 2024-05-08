@@ -288,15 +288,6 @@
             "note": "*For queen sizes only. All prices and information from public sources listed as of Sept 1, 2023. Information may not reflect updated prices and promotions."
           }
         },
-        "40770334-266c-4992-86e4-9709af68cc26": {
-          "type": "upsell_widget_old",
-          "settings": {
-            "title": "Upgrade to Hybrid Premium Mattress:",
-            "content": "<p><strong>55% off<\/strong><\/p><ul><li>Improved Cooling & Motion Isolation<\/li><li>Advanced Thermosync Technology<\/li><\/ul>",
-            "image": "shopify:\/\/shop_images\/Hybrid_Premium_front_view_room_render.jpg",
-            "product": "emma-hybrid-premium-plus"
-          }
-        },
         "cross_sell_widget_tXLCDN": {
           "type": "cross_sell_widget",
           "settings": {
@@ -307,14 +298,14 @@
           "settings": {
             "title": "Upgrade to Hybrid Premium Mattress:",
             "content": "<p><strong>55% off<\/strong><\/p><ul><li>Improved Cooling & Motion Isolation<\/li><li>Advanced Thermosync Technology<\/li><\/ul>",
-            "image": "shopify:\/\/shop_images\/Hybrid_Premium_front_view_room_render.jpg",
-            "product": "emma-hybrid-premium-plus"
+            "image": "shopify://shop_images/Emma_Hybrid_Comfort_Transparent.png",
+            "product": "emma-hybrid-premium-plus",
+            "badge": "New"
           }
         }
       },
       "block_order": [
         "805e46e0-28b9-48bd-9c5f-07434863e3ea",
-        "40770334-266c-4992-86e4-9709af68cc26",
         "cross_sell_widget_tXLCDN",
         "upsell_widget_tXLCDN"
       ],

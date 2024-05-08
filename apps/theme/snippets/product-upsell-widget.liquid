@@ -1,47 +1,65 @@
 {% assign blockImg = settings.image | image_url: width: 500 %}
 {% assign coverImg = settings.product.featured_image | image_url: width: 450 %}
 
+{% assign parentProduct = product %}
 
-<product-auxiliary
-  class="hidden"
-  name="upsell-widget"
-  type="widget"
-  id="up-selling-addon-{{ product.handle }}"
-  :eventName="up_selling"
+<style>
+    upsell-widget {
+        opacity: 0;
+    }
+</style>
+<link rel="quickscript" loading="delayed" href="{{ 'upsell-widget.css' | asset_url }}">
+
+<upsell-widget
+        name="upsell-widget"
+        type="widget"
+        id="up-selling-addon-{{ product.handle }}"
+        :eventName="up_selling"
 
 >
-  <script type="application/json">{{ product | json }}</script>
-  <a href="{{ settings.product }}">
     {% assign product = settings.product %}
-    <div class="auxiliary-container">
-      
-      <div class="self-center">
-        <img
-          class="mx-auto h-auto"
-          src="{{ blockImg | default: settings.product.metafields.accentuate.featured_image[0].src | default: coverImg }}"
-          alt=""
-          width="100"
-          height="57"
-        >
-      </div>
-      <div class="product-details">
-        <div class="product-content">
-          <p class="text-sm font-semibold">{{ settings.title }}</p>
-          <div class="text-sm">
-            {% render 'rtf-viewer', content: settings.content %}
-          </div>
+
+    <script type="application/json">{{ all_products[product] | json }}</script>
+
+    <div class="widget-container">
+        {% if settings.badge != blank %}
+            <div class="widget-badge">
+                {{ settings.badge }}
+            </div>
+        {% endif %}
+        <div class="product-details">
+            <div class="product-title">
+                <p class="font-semibold">{{ settings.title }}</p>
+            </div>
+            <p class="product-price-container font-bold">
+                <span id="upsell-price-disparity" class="text-scarlet"></span>
+                <span> </span>
+                <span id="upsell-original-price-disparity" class="text-sm line-through text-nobel"></span>
+                <span id="upsell-product-size" class="text-scarlet"></span>
+            </p>
+
+            <div class="product-content">
+                <div class="text-sm">
+                    {% render 'rtf-viewer', content: settings.content %}
+                </div>
+            </div>
+
+            <a class="product-button">
+                View Product
+            </a>
         </div>
-        <p class="product-price-container ">
-          {% if settings.product.compare_at_price > settings.product.price %}
-            From
-          {% endif %}
-          <span class="text-scarlet font-bold">{{ settings.product.price | money }}</span>
-          
-          {% if settings.product.compare_at_price > settings.product.price %}
-            <del class="line-through text-xs">{{ settings.product.compare_at_price | money }}</del>
-          {% endif %}
-        </p>
-      </div>
+
+        <div class="product-media">
+            <img
+                    class="lazyload"
+                    data-src="{{ blockImg | default: settings.product.metafields.accentuate.featured_image[0].src |
+                    default: coverImg }}"
+                    alt=""
+                    data-sizes="auto"
+                    width="100"
+                    height="57"
+            >
+        </div>
     </div>
-  </a>
-</product-auxiliary>
+
+</upsell-widget>
