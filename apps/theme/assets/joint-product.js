@@ -3,6 +3,8 @@ class JointProductEngine extends HTMLElement {
 
   coreProduct = {};
 
+  activeIndex = 0
+
   constructor() {
     super();
 
@@ -140,8 +142,13 @@ class JointProductSelector extends HTMLElement {
     $("#product-layout .skeleton").show();
 
     const selectedProduct = this.data.find(({ id: targetId }) => targetId === productId);
+    const selectedIndex = this.data.findIndex(({ id: targetId }) => targetId === productId);
 
     const pageHtml = await engine.fetchPDP(selectedProduct);
+
+    engine.currProduct = selectedProduct;
+    engine.activeIndex = selectedIndex;
+
     await this.refreshSections(pageHtml);
 
     setTimeout(() => {
@@ -149,7 +156,6 @@ class JointProductSelector extends HTMLElement {
     }, 100);
 
     setTimeout(() => {
-      engine.currProduct = selectedProduct;
       engine.refreshSelector();
 
       this.refreshVariantListeners();
@@ -236,7 +242,10 @@ class JointProductSelector extends HTMLElement {
         sectionId: "product-auxiliary",
         selector: "#quick-compare",
       },
-
+      {
+        sectionId: "product-auxiliary",
+        selector: "#upsell-widget",
+      },
       {
         sectionId: "product-specifications",
       },

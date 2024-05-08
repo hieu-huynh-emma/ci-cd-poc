@@ -13,8 +13,20 @@ class UpsellWidget extends ProductAuxiliary {
 
     window.addEventListener("productVariantChange", debounce(this.onVariantChange.bind(this), 100));
 
-    this.products.target = JSON.parse(this.querySelector(`script[type="application/json"]`).textContent);
-    this.products.current = JSON.parse(document.querySelector(`[id^="ProductJson-"]`).textContent);
+    const isJointProduct = $("joint-product-engine").length;
+
+    if (isJointProduct) {
+      const jointProductData = JSON.parse(document.querySelector(`#joint-product-data`).textContent);
+      const jointProductUpsellData = JSON.parse(document.querySelector(`#joint-product-upsell-data`).textContent);
+
+      const activeIndex = $("joint-product-engine").get(0).activeIndex;
+
+      this.products.target = jointProductUpsellData[activeIndex];
+      this.products.current = jointProductData[activeIndex];
+    } else {
+      this.products.target = JSON.parse(this.querySelector(`script[type="application/json"]`).textContent);
+      this.products.current = JSON.parse(document.querySelector(`[id^="ProductJson-"]`).textContent);
+    }
   }
 
   mounted() {
@@ -35,8 +47,10 @@ class UpsellWidget extends ProductAuxiliary {
 
   composeUpsellData() {
     const currentVariantId = +$(".product-form__variants option:selected").val();
+    console.log("=>(upsell-widget.js:50) this.products", this.products);
 
     const variant = this.products.current.variants.find(({ id }) => id === currentVariantId);
+    console.log("=>(upsell-widget.js:40) variant", variant);
 
     if (!variant) return;
 
@@ -46,10 +60,12 @@ class UpsellWidget extends ProductAuxiliary {
       const targetSize = title.split("|")[0].trim();
       return targetSize === currentSize;
     });
+    console.log("=>(upsell-widget.js:50) targetVariant", targetVariant);
 
     if (!targetVariant) return;
 
     const priceDisparity = targetVariant.price - variant.price;
+
     const originalPriceDisparity = targetVariant.compare_at_price - variant.compare_at_price;
 
     return {
@@ -66,15 +82,16 @@ class UpsellWidget extends ProductAuxiliary {
     if (!priceDisparity) return;
 
     const priceDisparityInCurrency = Currency.format(parseFloat(priceDisparity / 100));
-    const originalPriceDisparityInCurrency = Currency.format(parseFloat(originalPriceDisparity / 100));
 
     const $priceDisparityEl = $("#upsell-price-disparity");
 
     $priceDisparityEl.text(`+${priceDisparityInCurrency}`);
 
-    const $originalDisparityEl = $("#upsell-original-price-disparity")
+    const $originalDisparityEl = $("#upsell-original-price-disparity");
 
-    $originalDisparityEl.text(`+${originalPriceDisparityInCurrency}`)
+    const originalPriceDisparityInCurrency = Currency.format(parseFloat(originalPriceDisparity / 100));
+
+    $originalDisparityEl.text(originalPriceDisparity > 0 ? `+${originalPriceDisparityInCurrency}` : "");
   }
 
   renderSize(data) {

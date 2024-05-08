@@ -10,56 +10,58 @@
 </style>
 <link rel="quickscript" loading="delayed" href="{{ 'upsell-widget.css' | asset_url }}">
 
-<upsell-widget
-        name="upsell-widget"
-        type="widget"
-        id="up-selling-addon-{{ product.handle }}"
-        :eventName="up_selling"
+<div id="upsell-widget">
+  <upsell-widget
+      name="upsell-widget"
+      type="widget"
+      id="up-selling-addon-{{ product.handle }}"
+      :eventName="up_selling"
 
->
+  >
     {% assign product = settings.product %}
 
     <script type="application/json">{{ all_products[product] | json }}</script>
 
     <div class="widget-container">
-        {% if settings.badge != blank %}
-            <div class="widget-badge">
-                {{ settings.badge }}
-            </div>
-        {% endif %}
-        <div class="product-details">
-            <div class="product-title">
-                <p class="font-semibold">{{ settings.title }}</p>
-            </div>
-            <p class="product-price-container font-bold">
-                <span id="upsell-price-disparity" class="text-scarlet"></span>
-                <span> </span>
-                <span id="upsell-original-price-disparity" class="text-sm line-through text-nobel"></span>
-                <span id="upsell-product-size" class="text-scarlet"></span>
-            </p>
+      {% if settings.badge != blank %}
+        <div class="widget-badge">
+          {{ settings.badge }}
+        </div>
+      {% endif %}
+      <div class="product-details">
+        <div class="product-title">
+          <p class="font-semibold">{{ settings.title }}</p>
+        </div>
+        <p class="product-price-container font-bold">
+          <span id="upsell-price-disparity" class="text-scarlet"></span>
+          <span> </span>
+          <span id="upsell-original-price-disparity" class="text-sm line-through text-nobel"></span>
+          <span id="upsell-product-size" class="text-scarlet"></span>
+        </p>
 
-            <div class="product-content">
-                <div class="text-sm">
-                    {% render 'rtf-viewer', content: settings.content %}
-                </div>
-            </div>
-
-            <a class="product-button">
-                View Product
-            </a>
+        <div class="product-content">
+          <div class="text-sm">
+            {% render 'rtf-viewer', content: settings.content %}
+          </div>
         </div>
 
-        <div class="product-media">
-            <img
-                    class="lazyload"
-                    data-src="{{ blockImg | default: settings.product.metafields.accentuate.featured_image[0].src |
-                    default: coverImg }}"
-                    alt=""
-                    data-sizes="auto"
-                    width="100"
-                    height="57"
-            >
-        </div>
+        <a class="product-button">
+          View Product
+        </a>
+      </div>
+
+      <div class="product-media">
+        <img
+            class="lazyload"
+            data-src="{{ blockImg | default: settings.product.metafields.accentuate.featured_image[0].src |
+            default: coverImg }}"
+            alt=""
+            data-sizes="auto"
+            width="100"
+            height="57"
+        >
+      </div>
     </div>
 
-</upsell-widget>
+  </upsell-widget>
+</div>

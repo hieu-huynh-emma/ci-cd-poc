@@ -10,6 +10,16 @@
   ]
 </script>
 
+<script id="joint-product-upsell-data" type="application/json">
+  [
+  {% for block in section.blocks %}
+    {% assign product = all_products[block.settings.upsell] %}
+    {{ product | json }}
+    {% unless forloop.last %},{% endunless %}
+  {% endfor %}
+  ]
+</script>
+
 <joint-product-engine></joint-product-engine>
 
 <joint-product-selector class="hidden">
@@ -57,6 +67,11 @@
           "id": "product",
           "type": "product",
           "label": "Product"
+        },
+        {
+          "id": "upsell",
+          "type": "product",
+          "label": "Upsell"
         },
         {
           "id": "short_desc",
