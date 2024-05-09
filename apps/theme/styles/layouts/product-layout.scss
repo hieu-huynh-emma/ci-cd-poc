@@ -638,15 +638,6 @@ body {
 }
 
 
-#product-layout {
-  &:not(.is-initialized) {
-    .hide-until-initialized {
-      display: none;
-    }
-  }
-}
-
-
 .risk-reversal {
   display: grid;
   gap: 1.5rem;

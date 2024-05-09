@@ -1719,9 +1719,6 @@ video {
 }.text-neutral-800 {
   --tw-text-opacity: 1;
   color: rgb(85 87 111 / var(--tw-text-opacity));
-}.text-nobel {
-  --tw-text-opacity: 1;
-  color: rgb(179 179 179 / var(--tw-text-opacity));
 }.text-pizazz {
   --tw-text-opacity: 1;
   color: rgb(255 137 0 / var(--tw-text-opacity));
@@ -1737,6 +1734,9 @@ video {
 }.text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
+}.text-nobel {
+  --tw-text-opacity: 1;
+  color: rgb(179 179 179 / var(--tw-text-opacity));
 }.underline {
   text-decoration-line: underline;
 }.line-through {

@@ -4,6 +4,9 @@
 {% assign configurable_product_handle = product.metafields.accentuate.configurable_product %}
 {% assign configurable_product = all_products[configurable_product_handle] %}
 
+<link rel="stylesheet" href="{{ 'bundle-buy-box.css' | asset_url }}" />
+
+
 <p class="buy-box-products-section__header">{{ 'products.bundle.what_inside' | t }}</p>
 
 {% capture variantSelector %}
@@ -31,7 +34,7 @@
               form="product-form-{{ section.id }}"
             >
               {%- for value in option.values -%}
-                
+
                 {% if
                   value == 'Queen | 60" x 80  | Single' or
                   value == 'Full | 54" x 75" | Single' or
@@ -135,16 +138,12 @@
         </div>
       </div>
     </div>
-    {{ variantSelector }}
   </div>
-
-  {{ otherProducts }}
-
-{% else %}
-  {{ otherProducts }}
-
-  {{ variantSelector }}
 {% endif %}
+
+{{ variantSelector }}
+
+{{ otherProducts }}
 
 <script id="ProductBundle" type="application/json">
   [

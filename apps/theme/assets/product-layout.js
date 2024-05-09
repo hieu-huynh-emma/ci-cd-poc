@@ -21,6 +21,11 @@ const schema = [
     sectionId: "product-specifications",
   },
   {
+    sectionId: "bundle-box",
+    outletQuery: "#attribute-configurator",
+    insertPosition: "afterend",
+  },
+  {
     sectionId: "product-auxiliary",
     blocks: [
       {
@@ -57,19 +62,23 @@ function processSectionSchema(data) {
   window.addEventListener("load", () => loadSection(data));
 }
 
-function loadSection({ sectionId, blocks = [] }) {
+function loadSection({ sectionId, outletQuery, insertPosition, blocks = [] }) {
   const sectionEl = document.querySelector(`#shopify-section-${templateId}__${sectionId}`);
-
-  const sectionPlaceholderEl = document.querySelector(`#product-layout #${sectionId}-placeholder`);
-
   const detachedSectionEl = sectionEl.parentElement.removeChild(sectionEl);
 
-  sectionPlaceholderEl.replaceWith(detachedSectionEl);
+  if(outletQuery) {
+    const outletEl =  document.querySelector(outletQuery)
+    outletEl.insertAdjacentElement(insertPosition, detachedSectionEl);
+  } else {
+    const sectionPlaceholderEl = document.querySelector(`#product-layout #${sectionId}-placeholder`);
+    sectionPlaceholderEl.replaceWith(detachedSectionEl);
+  }
 
   if (blocks.length > 0) {
     blocks.forEach(({ query, insertPosition, outletQuery }) => {
       try {
         const blockEl = sectionEl.querySelector(query);
+        if (!blockEl) return;
         const detachedBlockEl = blockEl.parentElement.removeChild(blockEl);
         const outletEl = document.querySelector(outletQuery);
 
