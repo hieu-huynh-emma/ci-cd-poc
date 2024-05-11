@@ -93,3 +93,12 @@ settings.colors_accent_2 }}{% endif %};
         pointer-events: auto;
     }
 </style>
+
+{% case template %}
+    {% when 'index' %}
+
+        <link rel="stylesheet" href="{{ 'hero-banner.css' | asset_url }}">
+
+    {% else %}
+
+{% endcase %}

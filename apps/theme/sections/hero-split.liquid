@@ -2,136 +2,44 @@
 {% assign heroSaleBadge = section.blocks | where: 'type', 'hero-sale-badge' %}
 
 <style>
-    #hero-split-section .section-container {
+    #hero-split-section .split-container {
         position: relative;
-        display: none;
         border-radius: .5rem;
         overflow: hidden;
-    }
-
-
-    #hero-split-section .section-container--mobile {
-        position: relative;
-        display: grid;
-        gap: .75rem;
-        grid-template-rows:minmax(0, auto) minmax(0, auto);
-    }
-
-    @media screen and (min-width: 769px) {
-        #hero-split-section .section-container {
-            display: block;
-            padding: 0;
-        }
-
-        #hero-split-section .section-container--mobile {
-            display: none;
-        }
+        color: {{ section.settings.text_color }};
     }
 </style>
-<link rel="stylesheet" href="{{ 'hero-split.css' | asset_url  }}">
+<link rel="stylesheet" href="{{ 'hero-split.css' | asset_url }}">
 
-<section id="hero-split-section" class="page-boundary">
-    <div class="section-container {% if heroSplits.size == 1 %}single-mode{% endif %}">
-        <div class="section-interior unintrusive-bg">
+<section id="hero-split-section" class="page-boundary" data-component="hero-banner">
+    <div class="split-container">
+        <div class="split-interior">
             <div class="section-frame">
-                {% for block in heroSplits %}
-                    <div class="section-panel overlay-bg">
-                        <section class="hero-split" style="color: {{ block.settings.text_color }}">
-                            <div class="section-content">
-                                <div class="section-title relative">
-                                    <h2 class="heading-2">{{ block.settings.title | remove: '<p>' | remove: '</p>' }}</h2>
-                                    <span class="sale-badge">
-                                    {% if block.settings.discount_badge %}
-                                        {% render 'hero-sale-badge', settings: section.settings %}
-                                    {% endif %}
-                                </span>
-                                </div>
-                                <p class="sub-heading">{{ block.settings.subtitle | remove: '<p>' | remove: '</p>' }}</p>
-                                <div class="section-content__tagline">{{ block.settings.tagline }}</div>
-                            </div>
-                        </section>
-                    </div>
-                {% endfor %}
-            </div>
-            <div class="section-frame hero-split-features">
-                {% for block in heroSplits %}
-                    <div class="section-panel">
-                        {% if block.settings.timer %}
-                            <hero-banner-countdown-timer class="hidden" end-time="{{ block.settings.timer }}">
-                                <div class="countdown-timer" style="color: black;">
-                                    <div class="time-part">
-                                        <p class="digit"></p>
-                                        <p class="label">Days</p>
-                                    </div>
-                                    <div class="time-part">
-                                        <p class="digit"></p>
-                                        <p class="label">Hours</p>
-                                    </div>
-                                    <div class="time-part">
-                                        <p class="digit"></p>
-                                        <p class="label">Minutes</p>
-                                    </div>
-                                    <div class="time-part">
-                                        <p class="digit"></p>
-                                        <p class="label">Seconds</p>
-                                    </div>
-                                </div>
-                            </hero-banner-countdown-timer>
-                        {% endif %}
+                <div class="overlay-bg"></div>
 
-                        {% if block.settings.cta_url != blank %}
-                            <div class="section-cta">
-                                <a class="btn btn--lg" href="{{ block.settings.cta_url }}">
-                                    {{ block.settings.cta_text }}
-                                </a>
-                                <p class="cta-subtext hero-split-subtext">{{ block.settings.cta_subtext }}</p>
-                            </div>
-                        {% endif %}
-                    </div>
-                {% endfor %}
-            </div>
-        </div>
-        <div class="frame-foundation section-frame">
-            {% for block in heroSplits %}
-                {% assign wallpaper = block.settings.wallpaper %}
-                <a href="{{ block.settings.cta_url }}" class="section-flooring">
-                    {% if wallpaper != blank %}
-                        <img class="lazyload mx-auto wallpaper"
-                             src="{{ wallpaper | image_url: width: 520 }}"
-                             data-src="{{ wallpaper | image_url: width: 2680 }}"
-                             data-sizes="auto"
-                             width="2680"
-                             height="640" alt=""
-                             fetchpriority="high"
-                        />
-                    {% endif %}
-                </a>
-            {% endfor %}
-        </div>
-    </div>
-
-    <div class="section-container--mobile {% if heroSplits.size == 1 %}single-mode{% endif %}">
-        {% for block in heroSplits %}
-            {% assign wallpaper = block.settings.wallpaper %}
-            <div class="hero-split section-frame" style="color: {{ block.settings.text_color }}">
-                <div class="section-interior unintrusive-bg">
-                    <div class="section-panel">
-                        <div class="section-content">
-                            <div class="section-title relative">
-                                <h2 class="heading-2">{{ block.settings.title | remove: '<p>' | remove: '</p>' }}</h2>
-                                <span class="sale-badge">
-                                {% if block.settings.discount_badge %}
-                                    {% render 'hero-sale-badge', settings: section.settings %}
-                                {% endif %}
-                              </span>
-                            </div>
-                            <p class="sub-heading">{{ block.settings.subtitle | remove: '<p>' | remove: '</p>' }}</p>
-                            <div class="section-content__tagline">{{ block.settings.tagline }}</div>
+                {% for block in heroSplits %}
+                    {% assign settings = block.settings %}
+                    {% case settings.heading_size %}
+                        {% when 'large' %}
+                            {% assign headingClass = 'heading-1' %}
+                        {% else %}
+                            {% assign headingClass = 'heading-2' %}
+                    {% endcase %}
+                    <div class="banner-panel" style="color: {{ settings.text_color }}">
+                        <div class="banner-content">
+                            <h2 class="banner-title relative {{ headingClass }}">
+                                {% render 'rtf-viewer', content: settings.title %}
+                            </h2>
+                            {% if settings.subtitle %}
+                                <div class="sub-heading">
+                                    {% render 'rtf-viewer', content: settings.subtitle %}
+                                </div>
+                            {% endif %}
                         </div>
 
-                        <div class="hero-split-features">
-                            {% if block.settings.timer %}
-                                <hero-banner-countdown-timer class="hidden" end-time="{{ block.settings.timer }}">
+                        <div class="banner-features">
+                            {% if settings.timer %}
+                                <hero-banner-countdown-timer class="hidden" end-time="{{ settings.timer }}">
                                     <div class="countdown-timer" style="color: black;">
                                         <div class="time-part">
                                             <p class="digit"></p>
@@ -153,34 +61,30 @@
                                 </hero-banner-countdown-timer>
                             {% endif %}
 
-                            {% if block.settings.cta_url != blank %}
-                                <div class="section-cta">
-                                    <a class="btn btn--lg" href="{{ block.settings.cta_url }}">
-                                        {{ block.settings.cta_text }}
+                            {% if settings.cta_url %}
+                                <div class="banner-cta">
+                                    <a class="btn btn--lg" href="{{ settings.cta_url }}">
+                                        {{ settings.cta_text }}
                                     </a>
-                                    <p class="cta-subtext hero-split-subtext">{{ block.settings.cta_subtext }}</p>
+                                    {% if settings.cta_subtext %}
+                                        <p class="cta-subtext hero-split-subtext">{{ settings.cta_subtext }}</p>
+                                    {% endif %}
                                 </div>
                             {% endif %}
                         </div>
                     </div>
-                </div>
-
-                <div class="frame-foundation">
-                    {% if wallpaper != blank %}
-                        <a href="{{ block.settings.cta_url }}" class="section-flooring">
-                            <img class="lazyload mx-auto wallpaper"
-                                 src="{{ wallpaper | image_url: width: 352 }}"
-                                 data-src="{{ wallpaper | image_url: width: 720 }}"
-                                 data-sizes="auto"
-                                 width="2680" height="640" alt=""
-                                 fetchpriority="high"
-                            />
-                        </a>
-                    {% endif %}
-                </div>
+                {% endfor %}
             </div>
-        {% endfor %}
+        </div>
+        <div class="">
+            <div class="section-frame">
+                {% for block in heroSplits %}
+                    {% render 'hero-banner', settings: block.settings %}
+                {% endfor %}
+            </div>
+        </div>
     </div>
+
 </section>
 
 
@@ -194,15 +98,36 @@
       "limit": 2,
       "settings": [
         {
-          "id": "wallpaper",
+          "id": "wallpaper_desktop_img",
           "type": "image_picker",
-          "label": "Wallpaper"
+          "label": "Wallpaper Desktop Image"
+        },
+        {
+          "id": "wallpaper_mobile_img",
+          "type": "image_picker",
+          "label": "Wallpaper Mobile Image"
         },
         {
           "id": "title",
           "type": "richtext",
           "label": "Title",
           "default": "<p>Hit snooze! Sleep is about to get <i>wayyy better.</i></p>"
+        },
+        {
+          "type": "select",
+          "id": "heading_size",
+          "options": [
+            {
+              "value": "medium",
+              "label": "t:sections.image-banner.blocks.heading.settings.heading_size.options__1.label"
+            },
+            {
+              "value": "large",
+              "label": "t:sections.image-banner.blocks.heading.settings.heading_size.options__2.label"
+            }
+          ],
+          "default": "medium",
+          "label": "t:sections.image-banner.blocks.heading.settings.heading_size.label"
         },
         {
           "id": "subtitle",
@@ -247,32 +172,6 @@
           "label": "Display Discount Badge"
         }
       ]
-    }
-  ],
-  "settings": [
-    {
-      "id": "discount-percentage",
-      "type": "text",
-      "label": "Discount Percentage",
-      "default": "<p>-50%</p>"
-    },
-    {
-      "id": "product_includes",
-      "type": "textarea",
-      "label": "Product Includes",
-      "default": "2 pillows +</\br>1 mattress"
-    },
-    {
-      "type": "color",
-      "id": "badge_color",
-      "label": "Badge Color",
-      "default": "#ff8900"
-    },
-    {
-      "type": "checkbox",
-      "id": "match_cta_offset_top",
-      "label": "Match CTA Buttons Offset Top",
-      "default": true
     }
   ],
   "presets": [
