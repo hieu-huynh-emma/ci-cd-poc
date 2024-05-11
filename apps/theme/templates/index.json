@@ -5,7 +5,7 @@
       "type": "hero-split",
       "blocks": {
         "c9b229ea-7258-4341-93c2-95b7ad5d7c77": {
-          "type": "hero-split",
+          "type": "banner",
           "settings": {
             "wallpaper_desktop_img": "shopify:\/\/shop_images\/896x640_2x_-_Hero_A.jpg",
             "title": "<p>Spring Sale: Up to 55% off*<\/p>",
@@ -19,7 +19,7 @@
           }
         },
         "7bd45a45-1205-4518-9b02-60a5bc9a95ac": {
-          "type": "hero-split",
+          "type": "banner",
           "settings": {
             "wallpaper_desktop_img": "shopify:\/\/shop_images\/Emma_Hybrid_comfort_closeup_modif_3.png",
             "title": "<p>Meet our Hybrid Mattress<\/p>",
@@ -37,14 +37,7 @@
         "c9b229ea-7258-4341-93c2-95b7ad5d7c77",
         "7bd45a45-1205-4518-9b02-60a5bc9a95ac"
       ],
-      "custom_css": [
-        ".countdown-timer.hidden {display: none !important;}"
-      ],
       "settings": {
-        "discount-percentage": "<p>-53%<\/p>",
-        "product_includes": "2 pillows, protector & mattress",
-        "badge_color": "#ff8900",
-        "match_cta_offset_top": true
       }
     },
     "hero-banner": {
@@ -53,13 +46,12 @@
         "title": "<p>Spring Sale: Up to 55% off*<\/p>",
         "subtitle": "<p>Limited Time Offer<\/p><p><a href=\"\/pages\/emma-first-time-customer-offer-promo-details\" target=\"_blank\" title=\"Emma “First Time Customer Offer” Promo Details\">New Customers Only - Terms apply*<\/a><\/p>",
         "text_color": "#ffffff",
-        "wallpaper_desktop_img": "shopify://shop_images/896x640_2x_-_Hero_A.jpg",
-        "wallpaper_mobile_img": "shopify://shop_images/Emma_Hybrid_comfort_closeup_modif_3.png",
+        "wallpaper_desktop_img": "shopify:\/\/shop_images\/896x640_2x_-_Hero_A.jpg",
+        "wallpaper_mobile_img": "shopify:\/\/shop_images\/Emma_Hybrid_comfort_closeup_modif_3.png",
         "cta_url": "shopify:\/\/products\/emma-hybrid-comfort-bundle",
         "cta_text": "Shop Now",
         "cta_subtext": "",
-        "timer": "2024-05-16 06:00",
-        "show_star_rating": false
+        "timer": "2024-05-16 06:00"
       }
     },
     "06c76c39-8b9d-42b2-b20c-9dab3dc4287f": {

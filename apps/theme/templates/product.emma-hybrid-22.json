@@ -63,80 +63,32 @@
         "f5f456c7-b29a-4f74-826f-648e09f5b1cd": {
           "type": "item",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Untitled_design_24.png",
-            "overlay_text": "",
-            "font_size": 16,
-            "y": 1,
-            "x": 1,
-            "text_color": "#ffffff",
-            "full_width": true,
-            "is_video": false
           }
         },
         "72b3b893-b0bb-44ad-978c-733ee54620a1": {
           "type": "item",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Small-6_1.png",
-            "overlay_text": "",
-            "font_size": 16,
-            "y": 1,
-            "x": 1,
-            "text_color": "#ffffff",
-            "full_width": false,
-            "is_video": false
           }
         },
         "ae4539f2-6ea2-42a3-a132-a31010570bf1": {
           "type": "item",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Small-B7_-_ORIGINAL_PILLOW_-_EDIT-S23_cc263358-01fc-45f6-bf96-06dd767eec6c.png",
-            "overlay_text": "",
-            "font_size": 16,
-            "y": 1,
-            "x": 1,
-            "text_color": "#ffffff",
-            "full_width": false,
-            "is_video": false
           }
         },
         "038c8f16-3a84-418c-9ee2-38f53be4a385": {
           "type": "item",
           "settings": {
-            "image": "shopify:\/\/shop_images\/22_Hybrid_Gallery_3.jpg",
-            "overlay_text": "",
-            "font_size": 16,
-            "y": 1,
-            "x": 1,
-            "text_color": "#ffffff",
-            "full_width": false,
-            "is_video": false
           }
         },
         "e4cd7962-4d57-4250-8e6e-4c76dd76d6d6": {
           "type": "item",
           "settings": {
-            "image": "shopify:\/\/shop_images\/22_Hybrid_Gallery_2.jpg",
-            "overlay_text": "",
-            "font_size": 16,
-            "y": 1,
-            "x": 1,
-            "text_color": "#ffffff",
-            "full_width": false,
-            "is_video": false
           }
         },
         "12e2c164-6e6a-42a2-a76a-b4363d4c2c09": {
           "type": "item",
           "disabled": true,
           "settings": {
-            "image": "shopify:\/\/shop_images\/22_Hybrid_Gallery_2.jpg",
-            "overlay_text": "",
-            "font_size": 16,
-            "y": 1,
-            "x": 1,
-            "text_color": "#ffffff",
-            "full_width": true,
-            "is_video": false
           }
         }
       },
@@ -149,8 +101,6 @@
         "12e2c164-6e6a-42a2-a76a-b4363d4c2c09"
       ],
       "settings": {
-        "caption_headline": "The mattress that put Emma on the map",
-        "caption_content": "The Emma Original II is the new version of our worldwide best selling mattress"
       }
     },
     "product-specifications": {
@@ -238,7 +188,6 @@
       "type": "campaign-teaser",
       "disabled": true,
       "settings": {
-        "title": "Easter Sale",
         "content": "<p>50% off<\/p>",
         "bgcolor": "#fef3ea",
         "color": "#2e2f3c",
@@ -303,15 +252,6 @@
             "note": "*For queen sizes only. All prices and information from public sources listed as of May 8, 2023. Information may not reflect updated prices and promotions."
           }
         },
-        "3d66a516-6f44-40e9-b6c1-53de5855535f": {
-          "type": "upsell_widget_old",
-          "settings": {
-            "title": "Upgrade to Hybrid Comfort:",
-            "content": "<p><strong>50% off<\/strong><\/p><ul><li>7 ergonomic zones<\/li><li>Enhanced support<\/li><\/ul>",
-            "image": "shopify:\/\/shop_images\/Emma_hybrid-comfort_exploded_2.png",
-            "product": "emma-hybrid-comfort"
-          }
-        },
         "cross_sell_widget_tXLCDN": {
           "type": "cross_sell_widget",
           "settings": {
@@ -329,7 +269,6 @@
       },
       "block_order": [
         "8c61e5e7-7152-452e-88a6-8f61c8afbbfc",
-        "3d66a516-6f44-40e9-b6c1-53de5855535f",
         "cross_sell_widget_tXLCDN",
         "upsell_widget_tXLCDN"
       ],
