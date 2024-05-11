@@ -104,8 +104,9 @@
     }
 
     .banner-title {
-      @media screen and (max-width: 769px) {
-        font-size: 32px;
+      font-size: 32px;
+      @media screen and (min-width: 769px) {
+        font-size: 60px;
       }
     }
 
@@ -166,6 +167,7 @@
     height: 100%;
     width: 100%
   }
+
   .banner-container {
     padding: 0;
   }

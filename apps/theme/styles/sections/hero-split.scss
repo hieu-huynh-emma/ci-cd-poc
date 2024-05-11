@@ -30,6 +30,12 @@
     @media screen and (max-width: 769px) {
       display: none;
     }
+    
+    .banner-title {
+      @media screen and (min-width: 769px) {
+        font-size: 40px;
+      }
+    }
   }
 
   .banner-container {
