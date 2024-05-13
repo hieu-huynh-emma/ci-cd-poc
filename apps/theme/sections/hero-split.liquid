@@ -11,7 +11,7 @@
 </style>
 <link rel="stylesheet" href="{{ 'hero-split.css' | asset_url }}">
 
-<section id="hero-split-section" class="page-boundary" data-component="hero-banner">
+<div id="hero-split-section" class="page-boundary" data-component="hero-banner">
     <div class="split-container">
         <div class="split-interior">
             <div class="section-frame">
@@ -63,12 +63,9 @@
 
                             {% if settings.cta_url %}
                                 <div class="banner-cta">
-                                    <a class="btn btn--lg" href="{{ settings.cta_url }}">
+                                    <a {% if settings.cta_id %} id="{{ settings.cta_id }}" {% endif %} class="btn btn--lg" href="{{ settings.cta_url }}">
                                         {{ settings.cta_text }}
                                     </a>
-                                    {% if settings.cta_subtext %}
-                                        <p class="cta-subtext hero-split-subtext">{{ settings.cta_subtext }}</p>
-                                    {% endif %}
                                 </div>
                             {% endif %}
                         </div>
@@ -85,12 +82,14 @@
         </div>
     </div>
 
-</section>
+</div>
 
 
 {% schema %}
 {
   "name": "Hero Split",
+  "class": "hero-split",
+  "tag": "section",
   "blocks": [
     {
       "type": "banner",
@@ -144,6 +143,11 @@
           "id": "text_color",
           "label": "Text Color",
           "default": "#000000"
+        },
+        {
+          "id": "cta_id",
+          "type": "text",
+          "label": "CTA ID"
         },
         {
           "id": "cta_url",

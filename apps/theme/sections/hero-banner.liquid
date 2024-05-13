@@ -6,15 +6,17 @@
     }
 </style>
 
-<section id="hero-banner-section" class="page-boundary hidden" data-component="hero-banner">
+<div id="hero-banner-section" class="page-boundary" data-component="hero-banner">
     <div class="section-container">
         {% render 'hero-banner', settings: section.settings %}
     </div>
-</section>
+</div>
 
 {% schema %}
 {
   "name": "Hero Banner",
+  "class": "hero-banner hidden",
+  "tag": "section",
   "blocks": [
     {
       "type": "wallpaper",
@@ -77,6 +79,11 @@
       "id": "wallpaper_mobile_img",
       "type": "image_picker",
       "label": "Wallpaper Mobile Image"
+    },
+    {
+      "id": "cta_id",
+      "type": "text",
+      "label": "CTA ID"
     },
     {
       "id": "cta_url",
