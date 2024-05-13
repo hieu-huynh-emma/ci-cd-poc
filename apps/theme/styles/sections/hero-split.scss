@@ -30,7 +30,7 @@
     @media screen and (max-width: 769px) {
       display: none;
     }
-    
+
     .banner-title {
       @media screen and (min-width: 769px) {
         font-size: 40px;
@@ -51,7 +51,9 @@
     }
 
     &:first-child {
-      aspect-ratio: 3.5/3;
+      @media screen and (max-width: 769px) {
+        height: 580px;
+      }
       @media screen and (min-width: 769px) {
         aspect-ratio: 4/3;
       }

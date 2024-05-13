@@ -4,6 +4,13 @@
         overflow: hidden;
         padding: 0;
     }
+
+    @media screen and (max-width: 769px) {
+        #hero-banner-section .section-container {
+            height: 580px;
+        }
+    }
+
 </style>
 
 <div id="hero-banner-section" class="page-boundary" data-component="hero-banner">
@@ -15,7 +22,7 @@
 {% schema %}
 {
   "name": "Hero Banner",
-  "class": "hero-banner hidden",
+  "class": "hero-banner",
   "tag": "section",
   "blocks": [
     {
