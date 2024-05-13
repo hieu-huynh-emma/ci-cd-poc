@@ -51,6 +51,11 @@
     }
 
     &:first-child {
+      .wallpaper {
+        @media screen and (max-width: 769px) {
+          object-position: right;
+        }
+      }
       @media screen and (max-width: 769px) {
         height: 580px;
       }
