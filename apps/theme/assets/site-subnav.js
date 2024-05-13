@@ -1,209 +1,207 @@
 class SiteSubnav extends CustomElement {
-    parentIndex = null
+  parentIndex = null;
 
-    data = {
-        title: "",
-        url: ""
-    }
+  data = {
+    title: "",
+    url: "",
+  };
 
-    get refs() {
-        const siteNav = document.querySelector('site-nav')
+  get refs() {
+    const siteNav = document.querySelector("site-nav");
 
-        return {
-            $subNavItems: this.$el.find("site-subnav-item"),
-            siteNav,
-            mainNavigationMenu: JSON.parse(document.getElementById("main-navigation-menu").textContent)
-        }
-    }
+    return {
+      $subNavItems: this.$el.find("site-subnav-item"),
+      siteNav,
+      mainNavigationMenu: JSON.parse(document.getElementById("main-navigation-menu").textContent),
+    };
+  }
 
-    beforeMount() {
-        super.beforeMount();
+  beforeMount() {
+    super.beforeMount();
 
-        this.getActiveNavLink()
-    }
+    this.getActiveNavLink();
+  }
 
-    mounted() {
-        super.mounted();
-    }
+  mounted() {
+    super.mounted();
+  }
 
-    refresh() {
-        const {siteNav} = this.refs;
+  refresh() {
+    const { siteNav } = this.refs;
 
-        if (siteNav.activeIndex === this.parentIndex) return
+    if (siteNav.activeIndex === this.parentIndex) return;
 
-        this.getActiveNavLink()
+    this.getActiveNavLink();
 
-        this.render();
-    }
+    this.render();
+  }
 
-    render() {
-        this.innerHTML = this.template();
-    }
+  render() {
+    this.innerHTML = this.template();
+  }
 
-    template() {
-        if (!this.data) return null
+  template() {
+    if (!this.data) return null;
 
-        const {title} = this.data;
+    const { title } = this.data;
 
-        return `
+    return `
         <div class="subnav-container ${title}" data-name="${title}">
             <nav-sidebar :parentIndex="${this.parentIndex}"></nav-sidebar>
         </div>
 
         <nav-spotlight class="spotlight" :parentIndex="${this.parentIndex}"></nav-spotlight>
-    `
-    }
+    `;
+  }
 
-    getActiveNavLink() {
-        const {siteNav, mainNavigationMenu} = this.refs;
+  getActiveNavLink() {
+    const { siteNav, mainNavigationMenu } = this.refs;
 
-        this.parentIndex = siteNav.activeIndex
+    this.parentIndex = siteNav.activeIndex;
 
-        this.data = mainNavigationMenu[this.parentIndex]
-    }
+    this.data = mainNavigationMenu[this.parentIndex];
+  }
 }
 
-customElements.define('site-subnav', SiteSubnav);
+customElements.define("site-subnav", SiteSubnav);
 
 class SiteSubavItem extends CustomElement {
-    props = {
-        path: "",
-        index: 0
-    }
+  props = {
+    path: "",
+    index: 0,
+  };
 
-    data = {}
+  data = {};
 
-    get refs() {
-        const $navSpotlight = this.$el.closest("site-subnav").find('nav-spotlight'),
-            navSpotlight = $navSpotlight.get(0)
-        return {
-            navSpotlight,
-            mainNavigationMenu: JSON.parse(document.getElementById("main-navigation-menu").textContent)
-        }
-    }
+  get refs() {
+    const $navSpotlight = this.$el.closest("site-subnav").find("nav-spotlight"),
+      navSpotlight = $navSpotlight.get(0);
+    return {
+      navSpotlight,
+      mainNavigationMenu: JSON.parse(document.getElementById("main-navigation-menu").textContent),
+    };
+  }
 
-    constructor() {
-        super();
-    }
+  constructor() {
+    super();
+  }
 
-    setup() {
-    }
+  setup() {}
 
-    mounted() {
-        super.mounted();
-        this.$el.on('mouseover', this.renderSpotLight)
-    }
+  mounted() {
+    super.mounted();
+    this.$el.on("mouseover", this.renderSpotLight);
+  }
 
-    beforeMount() {
-        super.beforeMount();
-        const {mainNavigationMenu} = this.refs
-        const {path} = this.props
+  beforeMount() {
+    super.beforeMount();
+    const { mainNavigationMenu } = this.refs;
+    const { path } = this.props;
 
-        this.data = _.get(mainNavigationMenu, path)
-    }
+    this.data = _.get(mainNavigationMenu, path);
+  }
 
-    renderSpotLight = debounce(() => {
-        const {index} = this.props
-        const {object, featuredImage, url, accentuate} = this.data
-        const {navSpotlight} = this.refs;
+  renderSpotLight = debounce(() => {
+    const { index } = this.props;
+    const { object, featuredImage, url, accentuate } = this.data;
+    const { navSpotlight } = this.refs;
 
-        if (index === navSpotlight.activeIndex) return
+    if (index === navSpotlight.activeIndex) return;
 
-        navSpotlight.activeIndex = index;
+    navSpotlight.activeIndex = index;
 
-        navSpotlight?.refresh({
-            name: object.title,
-            price: object.price,
-            originalPrice: object.compare_at_price,
-            url: url,
-            featuredImage,
-            accentuate
-        })
-
-    }, 200)
+    navSpotlight?.refresh({
+      name: object.title,
+      price: object.price,
+      originalPrice: object.compare_at_price,
+      url: url,
+      featuredImage,
+      accentuate,
+    });
+  }, 200);
 }
 
-customElements.define('site-subnav-item', SiteSubavItem);
+customElements.define("site-subnav-item", SiteSubavItem);
 
 class NavSidebar extends CustomElement {
-    props = {
-        parentIndex: 0
+  props = {
+    parentIndex: 0,
+  };
+
+  get refs() {
+    const siteNav = document.querySelector("site-nav");
+
+    return {
+      $subNavItems: this.$el.find("site-subnav-item"),
+      siteNav,
+      $navSpotlight: this.$el.find("nav-spotlight"),
+      mainNavigationMenu: JSON.parse(document.getElementById("main-navigation-menu").textContent),
+    };
+  }
+
+  async render() {
+    if (!isMobileViewport()) {
+      this.innerHTML = `<loading-overlay></loading-overlay>`;
     }
 
-    get refs() {
-        const siteNav = document.querySelector('site-nav')
+    this.innerHTML = await this.template();
 
-        return {
-            $subNavItems: this.$el.find("site-subnav-item"),
-            siteNav,
-            $navSpotlight: this.$el.find('nav-spotlight'),
-            mainNavigationMenu: JSON.parse(document.getElementById("main-navigation-menu").textContent)
-        }
+    this.populateSpotlight();
+  }
+
+  populateSpotlight() {
+    const { $subNavItems, $navSpotlight } = this.refs;
+
+    const firstSubNavItem = $subNavItems.first().get(0);
+
+    if ($navSpotlight.get(0)?.mounted) {
+      firstSubNavItem?.renderSpotLight();
+    } else {
+      $navSpotlight.on("mounted", () => {
+        firstSubNavItem?.renderSpotLight();
+      });
     }
+  }
 
-    async render() {
-        if (!isMobileViewport()) {
-            this.innerHTML = `<loading-overlay></loading-overlay>`
-        }
+  async template() {
+    const { mainNavigationMenu } = this.refs;
+    const { parentIndex } = this.props;
 
-        this.innerHTML = await this.template();
+    this.data = mainNavigationMenu[parentIndex];
 
-        this.populateSpotlight()
-    }
+    if (!this.data) return null;
 
-    populateSpotlight() {
-        const {$subNavItems, $navSpotlight} = this.refs;
+    const { title, url } = this.data;
+    const btnText = title === "Mattresses" ? "Compare " : "Shop " + title;
 
-        const firstSubNavItem = $subNavItems.first().get(0)
+    const [i18nTitle, i18nBtnText] = await translateWeglot([title, btnText]);
 
-        if ($navSpotlight.get(0)?.mounted) {
-            firstSubNavItem?.renderSpotLight()
-        } else {
-            $navSpotlight.on('mounted', () => {
-                firstSubNavItem?.renderSpotLight()
+    const navItems = await this.renderSubnavItems();
 
-            })
-        }
-    }
-
-    async template() {
-        const {mainNavigationMenu} = this.refs;
-        const {parentIndex} = this.props
-
-        this.data = mainNavigationMenu[parentIndex]
-
-        if (!this.data) return null
-
-        const {title, url} = this.data
-        const btnText = title === "Mattresses" ? "Compare " : "Shop " + title
-
-        const [i18nTitle, i18nBtnText] = await translateWeglot([title, btnText]);
-
-        const navItems = await this.renderSubnavItems();
-
-        return `
+    return `
           <p class="subnav-container__title paragraph-20 font-semibold">${i18nTitle}</p>
 
           <ul
             class="subnav-container__links"
           >
-            ${navItems.join('')}
+            ${navItems.join("")}
           </ul>
 
           <a href="${url}" class="compare-btn btn btn--secondary btn--compact">
             ${i18nBtnText}
           </a>
-    `
-    }
+    `;
+  }
 
-    async renderSubnavItems() {
-        const {children} = this.data
-        const {parentIndex} = this.props
+  async renderSubnavItems() {
+    const { children } = this.data;
+    const { parentIndex } = this.props;
 
-        return Promise.all(children.map(async (childlink, i) => {
-            const [i18nTitle] = await translateWeglot([childlink.title])
+    return Promise.all(
+      children.map(async (childlink, i) => {
+        const [i18nTitle] = await translateWeglot([childlink.title]);
 
-            return `<site-subnav-item
+        return `<site-subnav-item
                 :path="[${parentIndex}].children[${i}]"
                 :index="${i}"
                 class="site-subnav__item"
@@ -225,95 +223,95 @@ class NavSidebar extends CustomElement {
               <img src="${childlink.submenuThumbImage}&transform=resize=600" class="spotlight__image w-full h-full object-contain" loading="lazy" />
                   </div>
                 </a>
-              </site-subnav-item>`
-        }))
-    }
-
+              </site-subnav-item>`;
+      }),
+    );
+  }
 }
 
-customElements.define('nav-sidebar', NavSidebar);
+customElements.define("nav-sidebar", NavSidebar);
 
 class NavSpotlight extends CustomElement {
-    props = {
-        parentIndex: 0
-    }
+  props = {
+    parentIndex: 0,
+  };
 
-    activeIndex = 0
+  activeIndex = 0;
 
-    data = {
-        name: "",
-        price: "",
-        originalPrice: "",
-        imageUrl: null,
-        url: "#",
-        badgeText: ""
-    }
+  data = {
+    name: "",
+    price: "",
+    originalPrice: "",
+    imageUrl: null,
+    url: "#",
+    badgeText: "",
+  };
 
-    get refs() {
-        return {
-            mainNavigationMenu: JSON.parse(document.getElementById("main-navigation-menu").textContent)
-        }
-    }
+  get refs() {
+    return {
+      mainNavigationMenu: JSON.parse(document.getElementById("main-navigation-menu").textContent)
+    };
+  }
 
-    constructor() {
-        super();
-    }
+  constructor() {
+    super();
+  }
 
-    async connectedCallback() {
-        this.extractProps();
-        this.init();
+  async connectedCallback() {
+    this.extractProps();
+    this.init();
 
-        this.beforeMount()
-        await this.render();
+    this.beforeMount();
+    await this.render();
 
-        setTimeout(() => {
-            $(this).ready(this.mounted.bind(this))
-        }, 0)
-    }
+    setTimeout(() => {
+      $(this).ready(this.mounted.bind(this));
+    }, 0);
+  }
 
-    init() {
-        super.init();
-    }
+  init() {
+    super.init();
+  }
 
-    async render() {
-        this.$el.css("opacity", 0)
-        await wait(250)
-        this.innerHTML = await this.template();
-        this.$el.css("opacity", 1)
-    }
+  async render() {
+    this.$el.css("opacity", 0);
+    await wait(250);
+    this.innerHTML = await this.template();
+    this.$el.css("opacity", 1);
+  }
 
-    async mounted() {
-        super.mounted();
-        const {parentIndex} = this.props
+  async mounted() {
+    super.mounted();
+    const { parentIndex } = this.props;
 
-        const path = `[${parentIndex}].children[0]`;
-        const {mainNavigationMenu} = this.refs
+    const path = `[${parentIndex}].children[0]`;
+    const { mainNavigationMenu } = this.refs;
 
-        const data = _.get(mainNavigationMenu, path)
+    const data = _.get(mainNavigationMenu, path);
 
-        const {object, featuredImage, url, accentuate} = data
+    const { object, featuredImage, url, accentuate } = data;
 
-        await this.refresh({
-            name: object.title,
-            price: object.price,
-            originalPrice: object.compare_at_price,
-            url: url,
-            featuredImage,
-            accentuate
-        })
-    }
+    await this.refresh({
+      name: object.title,
+      price: object.price,
+      originalPrice: object.compare_at_price,
+      url: url,
+      featuredImage,
+      accentuate,
+    });
+  }
 
-    async template() {
-        if(!this.data.name) return
-        const {name, price, originalPrice, url, imageUrl, badgeText} = this.data;
+  async template() {
+    if (!this.data.name) return;
+    const { name, price, originalPrice, url, imageUrl, badgeText } = this.data;
 
-        const [i18nBadge = badgeText, i18nName = name, i18nFromText = 'From'] = await translateWeglot([badgeText, name, 'From'])
+    const [i18nBadge = badgeText, i18nName = name, i18nFromText = "From"] = await translateWeglot([badgeText, name, "From"]);
 
-        return `
+    return `
       <div class="spotlight-media bg-wild-sand">
         ${badgeText ? `<p class="spotlight__badge absolute top-5 left-4 text-[13px]">${i18nBadge}</p>` : ""}
         <a href="${url}" class="spotlight__link">
-          <img src="${imageUrl}" class="spotlight__image w-full h-full object-contain" loading="lazy" />
+          <img src="${imageUrl}" class="spotlight__image w-full h-full rounded-lg object-cover" loading="lazy" />
         </a>
       </div>
 
@@ -326,25 +324,33 @@ class NavSpotlight extends CustomElement {
           ${originalPrice ? `<span class="spotlight__original-price line-through text-xs">${originalPrice}</span>` : ""}
         </div>
       </div>
-    `
-    }
+    `;
+  }
 
-    async refresh({name, price, url, originalPrice, featuredImage, accentuate}) {
+  async refresh({ name, price, url, originalPrice, featuredImage, accentuate }) {
+    const isShowFreeBundle = $("#nav-show-free-bundle").val()
+    const useABTestImg = url === "/products/emma-hybrid-comfort" && !!isShowFreeBundle;
 
-        this.data.name = name;
-        this.data.price = currencyFormatter.format(price / 100);
-        this.data.originalPrice = originalPrice ? currencyFormatter.format(originalPrice / 100) : null
-        this.data.imageUrl = accentuate.navigation_spotlight_image ? `${accentuate.navigation_spotlight_image[0].src}&transform=resize=600` : featuredImage;
-        this.data.url = url;
+    this.data.name = name;
+    this.data.price = currencyFormatter.format(price / 100);
+    this.data.originalPrice = originalPrice ? currencyFormatter.format(originalPrice / 100) : null;
 
-        const discountedAmount = originalPrice - price;
+    this.data.imageUrl = useABTestImg
+      ? "https://assets-manager.abtasty.com/b98579b87d8565047076037f703e1727/2.png"
+      : accentuate.navigation_spotlight_image
+        ? `${accentuate.navigation_spotlight_image[0].src}&transform=resize=600`
+        : featuredImage;
 
-        const discountedPrice = accentuate.upto_discount || (100 * discountedAmount / originalPrice).toFixed(0);
+    this.data.url = url;
 
-        this.data.badgeText = discountedPrice > 0 ? `Up to ${discountedPrice}% off` : "";
+    const discountedAmount = originalPrice - price;
 
-        await this.render()
-    }
+    const discountedPrice = accentuate.upto_discount || ((100 * discountedAmount) / originalPrice).toFixed(0);
+
+    this.data.badgeText = discountedPrice > 0 ? `Up to ${discountedPrice}% off` : "";
+
+    await this.render();
+  }
 }
 
-customElements.define('nav-spotlight', NavSpotlight);
+customElements.define("nav-spotlight", NavSpotlight);
