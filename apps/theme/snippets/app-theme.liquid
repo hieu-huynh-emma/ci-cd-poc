@@ -79,7 +79,6 @@ settings.colors_accent_2 }}{% endif %};
 <link id="vendor-custom-styles" rel="quickscript" loading="delayed" href="{{ 'vendors.css' | asset_url }}">
 <link rel="quickscript" loading="delayed" href="{{ 'section-layout.css' | asset_url }}">
 
-<link rel="quickscript" loading="delayed" href="{{ 'product-card.css' | asset_url }}">
 
 {% comment %}<link rel="stylesheet" href="{{ 'tailwind.css' | asset_url }}">{% endcomment %}
 {% comment %}<link rel="stylesheet" id="vendor-custom-styles" href="{{ "vendors.css" | asset_url }}">{% endcomment %}
@@ -96,9 +95,8 @@ settings.colors_accent_2 }}{% endif %};
 
 {% case template %}
     {% when 'index' %}
-
         <link rel="stylesheet" href="{{ 'hero-banner.css' | asset_url }}">
-
+        <link rel="quickscript" loading="delayed" href="{{ 'product-card.css' | asset_url }}">
     {% else %}
-
+        <link rel="stylesheet" href="{{ 'product-card.css' | asset_url }}">
 {% endcase %}

@@ -1,12 +1,12 @@
-<link rel="quickscript" href="{{ 'catalog-layout.css' | asset_url }}">
+<link rel="stylesheet" href="{{ 'catalog-layout.css' | asset_url }}">
 
 <style>
-  .product-card-media img {
-      width: 100%;
-  }
+    .product-card-media img {
+        width: 100%;
+    }
 </style>
 <div class="catalog-grid catalog-grid--{{ alignment }}">
-  {% for product in catalog %}
-    {% render 'product-card', product: product, landscape: true %}
-  {% endfor %}
+    {% for product in catalog %}
+        {% render 'product-card', product: product, landscape: true %}
+    {% endfor %}
 </div>

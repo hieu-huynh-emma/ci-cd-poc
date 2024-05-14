@@ -109,9 +109,9 @@
   overflow: hidden;
 }
 #sale-hero-banner-section .wallpaper img {
-  -o-object-fit: cover;
   object-fit: cover;
   height: 100%;
+  width: 100%;
 }
 #sale-hero-banner-section .countdown {
   display: grid;

@@ -44,7 +44,7 @@
         <div class="cart-item-details">
           <a href="{{ item.url }}" class="product__name paragraph-14 font-semibold">
             {% assign title = item.title | split: ' - ' %}
-            <span>{{ title[0] }}</span>
+            <span>{{ item.product.metafields.accentuate.display_name | default: title[0] }}</span>
 
             {% if item.selling_plan_allocation %}
               <span
@@ -75,20 +75,23 @@
           </div>
           {% if item.product.metafields.accentuate.is_bundle %}
                 {% assign current_variant = item.variant %}
-                
+
                 {% assign bundle_item_metaobjects = current_variant.metafields.custom.bundle_items.value %}
-                
+
                 <div class="cart-item-description">
+                     {% if item.product.metafields.accentuate.is_free_gift %}
+                       <span>You mattress purchase includes</span>
+                     {% endif %}
                   {% for bundle_item_metaobject in bundle_item_metaobjects %}
                     {% assign bundle_item_variant = bundle_item_metaobject.product.value %}
-                    
+
                     <span>
-											{% if bundle_item_metaobject.quantity > 1 %}{{ bundle_item_metaobject.quantity }}x {% endif %}{{ bundle_item_variant.product.title }}
+					{{ bundle_item_metaobject.qty | default: 1 }} {{ bundle_item_variant.product.title }}
                       {% if bundle_item_variant.title != "Default Title" %}
                         ({{ bundle_item_variant.title }})
                       {% endif %}
-										</span>
-                    
+					</span>
+
                     {% unless forloop.last %}<span>/</span>{% endunless %}
                   {% endfor %}
                 </div>
@@ -96,10 +99,10 @@
        {% if item.product.metafields.accentuate.has_pillow_addon %}
                 {% assign product_handle = item.product.metafields.accentuate.pillow_addon | split: ':' | first %}
                 {% assign variant_id = item.product.metafields.accentuate.pillow_addon | split: ':' | last | plus: 0 %}
-                
+
                 {% assign referenced_product = all_products[product_handle] %}
                 {% assign referenced_variant = referenced_product.variants | where: "id", variant_id | first %}
-                
+
                 <div class="cart-item-description">
                     <span>
 											{{ item.product.title }}
@@ -150,7 +153,7 @@
 
         <div class="cart-item-properties">
         </div>
-        
+
       </cart-item>
     {% endcapture %}
     {% if isAddonService %}

@@ -82,18 +82,6 @@ class SiteNavItem extends CustomElement {
     }
   }
 
-  mounted() {
-    super.mounted();
-
-    const { index } = this.props;
-
-    setTimeout(() => {
-      if (index === 1) {
-        this.onMouseOver();
-      }
-    }, 200);
-  }
-
   init() {
     super.init();
 
