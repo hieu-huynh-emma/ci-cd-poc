@@ -8,9 +8,8 @@
 {%- assign current_variant = product.selected_or_first_available_variant -%}
 
 {% assign bundle_item_metaobjects = current_variant.metafields.custom.bundle_items.value %}
-{% assign configurable_product_handle = product.metafields.accentuate.configurable_product %}
-{% assign configurable_product = all_products[configurable_product_handle] %}
-
+{% comment %}{% assign configurable_product_handle = product.metafields.accentuate.configurable_product %}{% endcomment %}
+{% comment %}{% assign configurable_product = all_products[configurable_product_handle] %}{% endcomment %}
 
 <section id="bundle-box" class="bundle-box">
   <div class="ornament">

@@ -1,8 +1,7 @@
 {% assign yotpo_star_rating = section.blocks | where: 'type', 'yotpo_star_rating' | first %}
 
 <h2 id="product-title" class="paragraph-24 font-inter font-semibold">
-    {{ product.title }}
-    {% comment %}{{ section.settings.title | default: product.title }}{% endcomment %}
+    {{ section.settings.title | default: product.title }}
     {% if section.settings.badge != blank %}
         <div
                 class="inline-flex bg-scarlet text-white py-[5px] px-[8px] uppercase rounded text-[13px] ml-[10px] leading-normal"

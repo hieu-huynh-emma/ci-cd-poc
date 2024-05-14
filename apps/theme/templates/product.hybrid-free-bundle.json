@@ -1,6 +1,35 @@
 {
   "layout": "theme.product",
   "sections": {
+    "joint-product": {
+      "type": "joint-product",
+      "blocks": {
+        "item_czHCtP": {
+          "type": "item",
+          "settings": {
+            "product": "emma-hybrid-comfort-bundle",
+            "upsell": "emma-hybrid-premium-plus",
+            "short_desc": "An ideal mattress providing support and coolness for all type of sleeper",
+            "show_star_rating": false
+          }
+        },
+        "item_HaBtFY": {
+          "type": "item",
+          "settings": {
+            "product": "emma-hybrid-comfort-mattress",
+            "upsell": "emma-hybrid-premium",
+            "short_desc": "An ideal mattress providing support and coolness for all type of sleeper",
+            "show_star_rating": false
+          }
+        }
+      },
+      "block_order": [
+        "item_czHCtP",
+        "item_HaBtFY"
+      ],
+      "settings": {
+      }
+    },
     "product-layout": {
       "type": "product-layout",
       "blocks": {
@@ -73,7 +102,7 @@
         "yotpo_star_rating"
       ],
       "settings": {
-        "title": "Emma Hybrid Comfort",
+        "title": "Emma Hybrid Comfort II",
         "desc": "<h6>Perfect comfort for everyone: <\/h6><p>Our 13-inch Hybrid mattress that can support added weight and movement without getting hot or stuffy<\/p><ul><li>Ultra-breathable and cool to touch, no more overheating<\/li><li>7 ergonomic zones for better spinal alignment<\/li><li>Enhanced support for every size and weight<\/li><li>Ideal pressure distribution<\/li><li>Zero motion transfer<\/li><li>Washable and cool to touch cover<\/li><\/ul>",
         "disclaimer": ""
       }
@@ -1041,6 +1070,7 @@
     }
   },
   "order": [
+    "joint-product",
     "product-layout",
     "bundle-box",
     "product-badges",
