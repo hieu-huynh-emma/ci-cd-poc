@@ -7,8 +7,8 @@
         "item_czHCtP": {
           "type": "item",
           "settings": {
-            "product": "emma-hybrid-25",
-            "upsell": "",
+            "product": "emma-hybrid-comfort",
+            "upsell": "emma-hybrid-premium-plus",
             "short_desc": "An ideal mattress providing support and coolness for all type of sleeper",
             "show_star_rating": false
           }
@@ -17,7 +17,7 @@
           "type": "item",
           "settings": {
             "product": "emma-hybrid-comfort-mattress",
-            "upsell": "",
+            "upsell": "emma-hybrid-premium",
             "short_desc": "An ideal mattress providing support and coolness for all type of sleeper",
             "show_star_rating": false
           }
@@ -326,9 +326,9 @@
           "type": "upsell_widget",
           "settings": {
             "title": "Upgrade to Hybrid Premium Mattress:",
-            "content": "<p><strong>55% off<\/strong><\/p><ul><li>Improved Cooling & Motion Isolation<\/li><li>Advanced Thermosync Technology<\/li><\/ul>",
-            "badge": "",
-            "image": "shopify:\/\/shop_images\/Hybrid_Premium_front_view_room_render.jpg",
+            "content": "<p><\/p><ul><li>Improved Cooling & Motion Isolation<\/li><li>Advanced Thermosync Technology<\/li><\/ul>",
+            "badge": "55% off",
+            "image": "shopify:\/\/shop_images\/Emma_Hybrid_Comfort_Transparent.png",
             "product": "emma-hybrid-premium-plus"
           }
         }
