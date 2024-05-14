@@ -57,7 +57,8 @@
             </div>
             <div class="product-bundle-item__details">
               <div class="product__name paragraph-14">
-                <span>{{ bundle_item_variant.product.title }}</span>
+                <span>{% if  bundle_item_metaobject.qty > 1 %}{{ bundle_item_metaobject.qty  }}x {% endif %}{{
+                  bundle_item_variant.product.title }}</span>
               </div>
             </div>
           </div>
