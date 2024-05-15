@@ -15,6 +15,9 @@ const schema = [
     sectionId: "campaign-teaser",
   },
   {
+    sectionId: "price-transparency",
+  },
+  {
     sectionId: "product-unique-selling-points",
   },
   {

@@ -90,6 +90,8 @@
                 {%- if product.has_only_default_variant %} product-form__item--no-variants {%- endif -%}
               "
                         >
+                            <template id="price-transparency-placeholder"></template>
+
                             {% render 'add-to-cart-btn' %}
 
                             {% if section.settings.enable_payment_button %}

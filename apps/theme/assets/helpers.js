@@ -112,3 +112,9 @@ function extractIdFromGid(gid) {
 function generateShopifyGid(entityType, id) {
   return `gid://shopify/${entityType}/${id}`;
 }
+
+function waitForAnimation(element) {
+  return new Promise((resolve) => {
+    element.addEventListener("animationend", resolve);
+  });
+}

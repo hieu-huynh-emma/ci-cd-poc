@@ -36,17 +36,17 @@
 
       <div class="main-frame">
         <div class="promotion-overlay">
-          <div id="product-badges-placeholder"></div>
+          <template id="product-badges-placeholder"></template>
         </div>
 
-        <div id="product-media-placeholder" class="flex w-full"></div>
+        <template id="product-media-placeholder" class="flex w-full"></template>
       </div>
 
-      <div id="risk-reversal-placeholder"></div>
+      <template id="risk-reversal-placeholder"></template>
     </div>
 
     <product-form id="product-configurator">
-      <div id="product-summary-placeholder"></div>
+      <template id="product-summary-placeholder"></template>
 
       <div id="product-form">
         {% capture form_classes -%}
@@ -167,7 +167,9 @@
                       {%- if product.has_only_default_variant %} product-form__item--no-variants {%- endif -%}
                 "
               >
-                {% render 'add-to-cart-btn' %}
+                  <template id="price-transparency-placeholder"></template>
+
+                  {% render 'add-to-cart-btn' %}
 
                 {% if section.settings.enable_payment_button %}
                   {{ form | payment_button }}
@@ -178,11 +180,11 @@
         {% endform %}
       </div>
 
-      <div id="product-auxiliary-placeholder"></div>
+      <template id="product-auxiliary-placeholder"></template>
 
-      <div id="product-unique-selling-points-placeholder"></div>
+      <template id="product-unique-selling-points-placeholder"></template>
 
-      <div id="product-specifications-placeholder"></div>
+      <template id="product-specifications-placeholder"></template>
 
       <p
           class="visually-hidden"
