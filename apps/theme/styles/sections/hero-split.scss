@@ -39,10 +39,12 @@
   }
 
   .banner-container {
+    min-height: initial;
     @media screen and (max-width: 769px) {
       border-radius: .5rem;
       overflow: hidden;
     }
+
 
     .banner-interior {
       @media screen and (min-width: 769px) {
@@ -52,10 +54,12 @@
 
     &:first-child {
       .wallpaper {
+        object-position: right;
         @media screen and (max-width: 769px) {
-          object-position: right;
+          object-position: center;
         }
       }
+
       @media screen and (max-width: 769px) {
         height: 580px;
       }
@@ -68,6 +72,10 @@
       aspect-ratio: 16/9;
       @media screen and (min-width: 769px) {
         aspect-ratio: initial;
+      }
+
+      .wallpaper {
+        object-position: center;
       }
     }
   }

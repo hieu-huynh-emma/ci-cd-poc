@@ -6,8 +6,8 @@
     width: 100%;
 
     @media screen and (min-width: 769px) {
-      min-height: 500px;
-      aspect-ratio: 14/6;
+      min-height: 533px;
+      aspect-ratio: 1377/640;
     }
   }
 
@@ -105,6 +105,9 @@
     .banner-title {
       font-size: 32px;
       @media screen and (min-width: 769px) {
+        font-size: 40px;
+      }
+      @media screen and (min-width: 992px) {
         font-size: 60px;
       }
     }
@@ -164,7 +167,10 @@
     object-fit: cover;
     object-position: center;
     height: 100%;
-    width: 100%
+    width: 100%;
+    @media screen and (min-width: 769px) {
+      object-position: right;
+    }
   }
 
   .banner-container {

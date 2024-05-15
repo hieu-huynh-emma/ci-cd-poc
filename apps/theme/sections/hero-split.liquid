@@ -63,7 +63,7 @@
 
                             {% if settings.cta_url %}
                                 <div class="banner-cta">
-                                    <a data-abtasty="hero-cta-button"
+                                    <a {% if forloop.last %}data-abtasty="hero-cta-button"{% endif %}
                                        class="btn btn--lg" href="{{ settings.cta_url }}">
                                       {{ settings.cta_text }}
                                     </a>
