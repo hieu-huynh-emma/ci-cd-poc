@@ -8,7 +8,7 @@
         "f20c1dc5-1445-4727-82f1-38fc8e740656": {
           "type": "announcement_content",
           "settings": {
-            "text": "<p>Spring Sale: <strong>up to 55% Off.</strong></p>",
+            "text": "<p>Victoria Day Sale: <strong>up to 55% Off.<\/strong><\/p>",
             "tooltip": "Save 53% on Emma Hybrid Premium & 50% on Emma Hybrid comfort"
           }
         },
@@ -33,7 +33,7 @@
       ],
       "settings": {
         "cta_btn_text": "Shop the sale",
-        "link": "shopify://pages/sale",
+        "link": "shopify:\/\/pages\/sale",
         "color_bg": "#2e2f3c",
         "color_text": "#ffffff",
         "show_countdown_timer": false
@@ -42,11 +42,11 @@
     "header": {
       "type": "header",
       "settings": {
-        "logo": "shopify://shop_images/MicrosoftTeams-Logo_Emma_new.png",
+        "logo": "shopify:\/\/shop_images\/MicrosoftTeams-Logo_Emma_new.png",
         "menu": "main-menu",
         "enable_sticky_header": false,
         "show_sale_link": false,
-        "sale_page_url": "shopify://collections/mattresses"
+        "sale_page_url": "shopify:\/\/collections\/mattresses"
       }
     },
     "risk-free-banner": {
@@ -55,33 +55,33 @@
         "8b906a77-60bb-46b8-b714-8fe010db07ca": {
           "type": "banner-item",
           "settings": {
-            "icon": "shopify://shop_images/365_nights.png",
+            "icon": "shopify:\/\/shop_images\/365_nights.png",
             "text": "Free 365-Night Trial",
-            "url": "shopify://pages/trial"
+            "url": "shopify:\/\/pages\/trial"
           }
         },
         "605013b2-263f-4c29-b4c0-136f75610eda": {
           "type": "banner-item",
           "settings": {
-            "icon": "shopify://shop_images/Delivery.png",
+            "icon": "shopify:\/\/shop_images\/Delivery.png",
             "text": "Free Shipping & Returns",
-            "url": "https://emma-sleep.ca/pages/faq#trial-and-guarantee"
+            "url": "https:\/\/emma-sleep.ca\/pages\/faq#trial-and-guarantee"
           }
         },
         "49138228-00c2-461a-bbdd-650d93f8503b": {
           "type": "banner-item",
           "settings": {
-            "icon": "shopify://shop_images/Warranty.png",
+            "icon": "shopify:\/\/shop_images\/Warranty.png",
             "text": "10-Year Warranty",
-            "url": "https://emma-sleep.ca/pages/faq#trial-and-guarantee"
+            "url": "https:\/\/emma-sleep.ca\/pages\/faq#trial-and-guarantee"
           }
         },
         "7bc03542-75ef-4463-b480-ec46f36ac421": {
           "type": "banner-item",
           "settings": {
-            "icon": "shopify://shop_images/0_APR..png",
+            "icon": "shopify:\/\/shop_images\/0_APR..png",
             "text": "0% APR Financing",
-            "url": "https://emma-sleep.ca/pages/faq#purchasing-your-emma"
+            "url": "https:\/\/emma-sleep.ca\/pages\/faq#purchasing-your-emma"
           }
         }
       },
