@@ -1350,6 +1350,18 @@ video {
 }.object-center {
   -o-object-position: center;
      object-position: center;
+}.object-bottom {
+  -o-object-position: bottom;
+     object-position: bottom;
+}.object-left {
+  -o-object-position: left;
+     object-position: left;
+}.object-right {
+  -o-object-position: right;
+     object-position: right;
+}.object-top {
+  -o-object-position: top;
+     object-position: top;
 }.p-2 {
   padding: 0.5rem;
 }.p-3 {
