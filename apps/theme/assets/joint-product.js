@@ -3,7 +3,7 @@ class JointProductEngine extends HTMLElement {
 
   coreProduct = {};
 
-  activeIndex = 0
+  activeIndex = 0;
 
   constructor() {
     super();
@@ -198,10 +198,10 @@ class JointProductSelector extends HTMLElement {
 
           if (!newElement) resolve();
 
-          if(selector) {
+          if (selector) {
             $elementToReplace.replaceWith(this.prepareHtml(newElement.outerHTML)).ready(resolve);
           } else {
-            const doc = this.prepareHtml(newElement.innerHTML)
+            const doc = this.prepareHtml(newElement.innerHTML);
             $elementToReplace.html(doc).ready(resolve);
           }
         });
@@ -210,7 +210,7 @@ class JointProductSelector extends HTMLElement {
   }
 
   prepareHtml(html) {
-    return html.replace(`rel="quickscript"`, `rel="stylesheet"`).replace(`type="quickscript"`, ``).replace(`loading="visibility"`, "")
+    return html.replace(`rel="quickscript"`, `rel="stylesheet"`).replace(`type="quickscript"`, ``).replace(`loading="visibility"`, "");
   }
 
   getSectionsToRender() {
@@ -224,7 +224,7 @@ class JointProductSelector extends HTMLElement {
       },
       {
         sectionId: "product-media",
-        selector: "product-media"
+        selector: "product-media",
       },
       {
         sectionId: "product-layout",
@@ -232,7 +232,7 @@ class JointProductSelector extends HTMLElement {
       },
       {
         sectionId: "product-layout",
-        selector: ".product-form__controls-group"
+        selector: ".product-form__controls-group",
       },
       {
         sectionId: "product-layout",
@@ -249,6 +249,7 @@ class JointProductSelector extends HTMLElement {
       {
         sectionId: "product-specifications",
       },
+      { sectionId: "bundle-box" },
       {
         sectionId: "mattress-layers",
         selector: "mattress-layers",
@@ -268,7 +269,7 @@ class JointProductSelector extends HTMLElement {
   refreshVariantListeners() {
     const { $options } = this.refs;
 
-    $options.each(function () {
+    $options.each(function() {
       this.attachVariantListener();
     });
   }
