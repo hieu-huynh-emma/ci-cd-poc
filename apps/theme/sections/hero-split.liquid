@@ -63,8 +63,9 @@
 
                             {% if settings.cta_url %}
                                 <div class="banner-cta">
-                                    <a {% if settings.cta_id %} id="{{ settings.cta_id }}" {% endif %} class="btn btn--lg" href="{{ settings.cta_url }}">
-                                        {{ settings.cta_text }}
+                                    <a data-abtasty="hero-cta-button"
+                                       class="btn btn--lg" href="{{ settings.cta_url }}">
+                                      {{ settings.cta_text }}
                                     </a>
                                 </div>
                             {% endif %}
@@ -143,11 +144,6 @@
           "id": "text_color",
           "label": "Text Color",
           "default": "#000000"
-        },
-        {
-          "id": "cta_id",
-          "type": "text",
-          "label": "CTA ID"
         },
         {
           "id": "cta_url",

@@ -45,7 +45,7 @@
 
         {% if settings.cta_url %}
           <div class="banner-cta">
-            <a {% if settings.cta_id %} id="{{ settings.cta_id }}" {% endif %}
+            <a data-abtasty="hero-cta-button"
                 class="btn btn--lg" href="{{ settings.cta_url }}">
               {{ settings.cta_text }}
             </a>
