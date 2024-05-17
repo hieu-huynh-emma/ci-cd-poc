@@ -1,12 +1,12 @@
 .catalog-grid {
   display: grid;
   gap: .5rem;
-
+  grid-template-columns: minmax(0, 1fr);
   @media screen and (min-width: 769px) {
     --item-width: 450px;
     gap: 1.25rem 1rem;
-    grid-template-columns: repeat(auto-fit,  minmax(304px, 400px));
-    justify-content: space-between;
+    grid-template-columns: repeat(auto-fit, minmax(304px, 400px));
+    justify-content: center;
 
     &--center {
       justify-content: center;
