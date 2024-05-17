@@ -20,7 +20,7 @@
   <nav class="breadcrumbs-container" role="navigation" aria-label="breadcrumbs">
     <div class="page-boundary">
       <ol class="breadcrumbs">
-        <li class="breadcrumbs__item hide-on-mobile">
+        <li class="breadcrumbs__item">
           <a class="breadcrumbs__link" href="/">Home</a>
           <div class="breadcrumbs__icon">
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -41,7 +41,7 @@
               </li>
             {% endif %}
           {%- when 'product' -%}
-            <li class="breadcrumbs__item hide-on-mobile">
+            <li class="breadcrumbs__item ">
               <a class="breadcrumbs__link" href="/pages/sale">All Products</a>
               <div class="breadcrumbs__icon">
                 <svg
@@ -80,7 +80,7 @@
               {{ product.title }}
             </li>
           {%- when 'collection' and collection.handle -%}
-            <li class="breadcrumbs__item hide-on-mobile">
+            <li class="breadcrumbs__item">
               <a class="breadcrumbs__link" href="/pages/sale">All Products</a>
               <div class="breadcrumbs__icon">
                 <svg

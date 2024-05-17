@@ -20,14 +20,10 @@
 
     color: var(--color-charade);
 
-    &.hide-on-mobile {
+    &:not(:last-child):not(:nth-last-child(2)) {
       @media screen and (max-width: 480px) {
         display: none;
       }
-    }
-
-    &:last-child {
-      font-weight: 700;
     }
   }
 
