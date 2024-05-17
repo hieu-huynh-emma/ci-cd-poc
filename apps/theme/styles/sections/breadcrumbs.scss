@@ -7,7 +7,6 @@
   margin: 0;
   padding: 0;
 
-
   &__item {
 
     gap: .5rem;
@@ -27,10 +26,8 @@
       }
     }
 
-    &:first-child {
-      #{$this}__link {
-        font-weight: 700;
-      }
+    &:last-child {
+      font-weight: 700;
     }
   }
 
