@@ -15,23 +15,18 @@
     <template id="why-low-prices">
         <ul class="usp-m-container">
             {% for block in section.blocks %}
-                {% case block.type %}
-                    {% when "item" %}
-                        <li class="usp-m">
-                            <div class="usp-m__icon">
-                                {{ block.settings.svg_icon }}
-                            </div>
+              <li class="usp-m">
+                <div class="usp-m__icon">
+                  {{ block.settings.svg_icon }}
+                </div>
 
-                            <p class="usp-m__title">
-                                {{ block.settings.text }}
-                            </p>
-                            <div class="usp-m__desc">
-                                {% render 'rtf-viewer', content: block.settings.content %}
-                            </div>
-                        </li>
-                    {% else %}
-                        <li class="usp-m-separator"></li>
-                {% endcase %}
+                <p class="usp-m__title">
+                  {{ block.settings.text }}
+                </p>
+                <div class="usp-m__desc">
+                  {% render 'rtf-viewer', content: block.settings.content %}
+                </div>
+              </li>
             {% endfor %}
         </ul>
     </template>
@@ -61,12 +56,6 @@
           "id": "content",
           "label": "Content"
         }
-      ]
-    },
-    {
-      "type": "separator",
-      "name": "Separator",
-      "settings": [
       ]
     }
   ],
@@ -118,11 +107,6 @@
             "svg_icon": "<svg   viewBox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\" class=\"usp-m__item-icon icon__xs--size_xxl icon__sm--size_xxl icon__md--size_xxl icon__lg--size_xxl icon__xl--size_xxl themed themed--default icon icon--monochrome themed themed--default\"><defs ></defs><path  d=\"M22.934 13.832c-.525-.794-1.61-1.26-2.67-.619l-2.688 1.58C17.14 13.221 15.841 12.25 14 12.25h-.25v-1.505c1.03-.022 2.826-.29 4.265-1.73 2.097-2.096 1.715-4.97 1.697-5.09a.75.75 0 00-.636-.637c-.124-.016-2.993-.402-5.09 1.697a5.59 5.59 0 00-.475.547 5.863 5.863 0 00-1.488-2.555C9.907.861 7.018 1.24 6.896 1.257a.75.75 0 00-.639.639c-.017.122-.395 3.012 1.72 5.127 1.441 1.441 3.233 1.721 4.273 1.75v3.477H12c-.207 0-.402-.089-.758-.26-.65-.312-1.54-.74-3.242-.74a.75.75 0 000 1.5c1.36 0 2.015.315 2.593.592.417.201.849.408 1.407.408h2c1.44 0 1.975.762 2.16 1.5H12a.75.75 0 000 1.5h5a.732.732 0 00.343-.093c.012-.006.026-.004.037-.01l3.657-2.148c.336-.205.548.012.645.16.068.103.26.46-.098.717l-5.807 3.871c-.884-.018-4.263-.142-7.595-.974a.75.75 0 10-.364 1.455c4.043 1.01 8.015 1.022 8.182 1.022a.75.75 0 00.416-.126l6.02-4.014c1.04-.743 1.038-1.96.498-2.778zm-7.888-7.787c1.055-1.054 2.424-1.265 3.203-1.29-.022.776-.231 2.137-1.295 3.2-1.055 1.054-2.424 1.265-3.203 1.29.022-.776.231-2.137 1.295-3.2zm-7.32-3.32c.788.028 2.17.246 3.236 1.313 1.068 1.067 1.285 2.45 1.312 3.236-.788-.027-2.169-.245-3.236-1.312-1.068-1.067-1.285-2.45-1.312-3.236zM5 10.25H2a.75.75 0 00-.75.75v10c0 .414.336.75.75.75h3a.75.75 0 00.75-.75V11a.75.75 0 00-.75-.75zm-.75 10h-1.5v-8.5h1.5v8.5z\"></path></svg>",
             "text": "We are eco-concious and reduce waste",
             "content": "<p>Through smart design and optimised production processes, we use less foam and create less waste. This is good for the environment and for you.</p>"
-          }
-        },
-        {
-          "type": "separator",
-          "settings": {
           }
         },
         {
