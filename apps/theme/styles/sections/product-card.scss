@@ -62,8 +62,8 @@ product-card {
 
   .product-card-media .product__image {
     aspect-ratio: 1.33;
-    -o-object-fit: cover;
     object-fit: cover;
+    width: 100%;
   }
 
   .product-card-detail {

@@ -12,21 +12,19 @@
   <div class="section-chassis page-boundary">
     {% render 'section-header' %}
 
-      <div>
-        <div class="grid-container splide">
-          {% include 'splide-arrows' %}
+    <div class="grid-container splide">
+      {% include 'splide-arrows' %}
 
-          <div class="splide__track">
-            <ul class="splide__list">
-              {% for block in catalogItems %}
-                <li class="splide__slide">
-                    {% render 'product-card', product: block.settings.product %}
-                </li>
-              {% endfor %}
-            </ul>
-          </div>
-        </div>
+      <div class="splide__track">
+        <ul class="splide__list">
+          {% for block in catalogItems %}
+            <li class="splide__slide">
+              {% render 'product-card', product: block.settings.product %}
+            </li>
+          {% endfor %}
+        </ul>
       </div>
+    </div>
       <script type="quickscript" loading="visibility" src="{{ 'product-carousel.js' | asset_url }}"></script>
   </div>
 
