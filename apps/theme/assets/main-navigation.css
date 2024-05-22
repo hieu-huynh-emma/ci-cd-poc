@@ -302,6 +302,9 @@ nav-spotlight .spotlight__badge {
   border-radius: 4px;
   overflow: hidden;
 }
+nav-spotlight .spotlight__image {
+  aspect-ratio: 16/9;
+}
 nav-spotlight .spotlight__badge p {
   color: #fff;
   font-size: 13px;
@@ -312,16 +315,17 @@ nav-spotlight .spotlight-body {
 }
 nav-spotlight .spotlight-media {
   position: relative;
-  height: 259px;
+
   border-radius: 8px;
 }
 
 @media screen and (min-width: 1024px) {
   site-subnav {
-    gap: 8.75rem;
+    gap: 2rem;
     grid-template-columns: minmax(0, 0.4fr) minmax(0, 0.6fr);
     width: 90%;
     min-height: 250px;
+    margin: 0 auto;
     padding: 20px 0 20px;
   }
   site-subnav .subnav-container .compare-btn {
