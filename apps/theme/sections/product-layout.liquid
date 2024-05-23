@@ -71,8 +71,9 @@
                 data-product-id="{{ product.id }}"
                 {{ block.shopify_attributes }}
             >
-
+  
               {%- for option in product.options_with_values -%}
+               
                 <div class="product-form__input product-form__input--dropdown">
                   <label class="form__label" for="Option-{{ section.id }}-{{ forloop.index0 }}">
                     {{ option.name }}
@@ -85,14 +86,17 @@
                         form="product-form-{{ section.id }}"
                     >
                       {%- for value in option.values -%}
-                        <option
-                            value="{{ value | escape }}"
-                            {% if option.selected_value == value %}
-                              selected="selected"
-                            {% endif %}
-                        >
-                          {{ value }}
-                        </option>
+                        {% unless  value == 'King | 76" x 80" | Old' %}
+                            <option
+                                value="{{ value | escape }}"
+                                {% if option.selected_value == value %}
+                                  selected="selected"
+                                {% endif %}
+                            >
+                              {{ value }}
+                            </option>
+                          {% endunless %}
+            
                       {%- endfor -%}
                     </select>
                     {% render 'icon-caret' %}
