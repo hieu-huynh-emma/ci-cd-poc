@@ -1,4 +1,4 @@
-{% assign allItems = section.blocks %}
+{% assign allItems = section.blocks | where: 'type', 'item' %}
 
 {% assign leadItem = allItems | first %}
 {% assign otherItems = allItems | slice: 1, allItems.size %}
@@ -32,136 +32,124 @@
 </style>
 
 <product-media>
-  {% case leadItem.type %}
-    {% when "image" %}
-      <div class="lead-item media-item" lang="en">
-        <picture class="media-item__image">
-          <source media="(min-width: 1200px)"
-                  srcset="{{ leadItem.settings.en_desktop_image | image_url: width: 1440 }}">
-          <source media="(min-width: 992px)" srcset="{{ leadItem.settings.en_desktop_image | image_url: width: 1040 }}">
-          <source media="(min-width: 768px)" srcset="{{ leadItem.settings.en_desktop_image | image_url: width: 800 }}">
 
-          <img
-              src="{{ leadItem.settings.en_mobile_image | default: leadItem.settings.en_desktop_image | image_url: width: 600 }}"
-              width="808"
-              height="486"
-          >
-        </picture>
-      </div>
-      <div class="lead-item media-item" lang="fr">
-        <div class="image-wrapper">
-          <picture class="media-item__image">
-            <source media="(min-width: 1200px)"
-                    srcset="{{ leadItem.settings.fr_desktop_image | image_url: width: 1440 }}">
-            <source media="(min-width: 992px)"
-                    srcset="{{ leadItem.settings.fr_desktop_image | image_url: width: 1040 }}">
-            <source media="(min-width: 768px)"
-                    srcset="{{ leadItem.settings.fr_desktop_image | image_url: width: 800 }}">
+  <div class="lead-item media-item" lang="en">
+    <picture class="media-item__image">
+      <source media="(min-width: 1200px)" srcset="{{ leadItem.settings.en_desktop_image | image_url: width: 1440 }}">
+      <source media="(min-width: 992px)" srcset="{{ leadItem.settings.en_desktop_image | image_url: width: 1040 }}">
+      <source media="(min-width: 768px)" srcset="{{ leadItem.settings.en_desktop_image | image_url: width: 800 }}">
 
-            <img
-                src="{{ leadItem.settings.fr_mobile_image | default: leadItem.settings.fr_desktop_image | image_url: width: 600 }}"
-                width="808"
-                height="486"
-            >
-          </picture>
+      <img
+          src="{{ leadItem.settings.en_mobile_image | default: leadItem.settings.en_desktop_image | image_url: width: 600 }}"
+          width="808"
+          height="486"
+      >
+    </picture>
+  </div>
+  <div class="lead-item media-item" lang="fr">
+    <div class="image-wrapper">
+      <picture class="media-item__image">
+        <source media="(min-width: 1200px)" srcset="{{ leadItem.settings.fr_desktop_image | image_url: width: 1440 }}">
+        <source media="(min-width: 992px)" srcset="{{ leadItem.settings.fr_desktop_image | image_url: width: 1040 }}">
+        <source media="(min-width: 768px)" srcset="{{ leadItem.settings.fr_desktop_image | image_url: width: 800 }}">
 
-        </div>
-      </div>
-  {% endcase %}
+        <img src="{{ leadItem.settings.fr_mobile_image | default: leadItem.settings.fr_desktop_image | image_url: width: 600 }}"
+             width="808"
+             height="486"
+        >
+      </picture>
+
+    </div>
+  </div>
 
   <template>
     <div class="main-carousel splide">
-      <div class="splide__track">
-        <ul class="splide__list">
-          {% for block in allItems %}
-            {% case block.type %}
-              {% when "image" %}
-                <li class="splide__slide">
-                  <div class="media-item" lang="en">
-                    <picture class="media-item__image">
-                      <source media="(min-width: 1200px)"
-                              srcset="{{ item.settings.en_desktop_image | image_url: width: 1440 }}">
-                      <source media="(min-width: 992px)"
-                              srcset="{{ item.settings.en_desktop_image | image_url: width: 1040 }}">
-                      <source media="(min-width: 768px)"
-                              srcset="{{ item.settings.en_desktop_image | image_url: width: 800 }}">
-                      <img
-                          src="{{ item.settings.en_mobile_image | default: item.settings.en_desktop_image | image_url: width: 600 }}"
-                          width="808"
-                          height="486"
-                      >
-                    </picture>
-                  </div>
-                  <div class="media-item" lang="fr">
-                    <picture class="media-item__image">
-                      <source media="(min-width: 1200px)"
-                              srcset="{{ item.settings.fr_desktop_image | image_url: width: 1440 }}">
-                      <source media="(min-width: 992px)"
-                              srcset="{{ item.settings.fr_desktop_image | image_url: width: 1040 }}">
-                      <source media="(min-width: 768px)"
-                              srcset="{{ item.settings.fr_desktop_image | image_url: width: 800 }}">
+      <ul class="splide__track">
+        <li class="splide__list">
+          {% for item in allItems %}
+            <div
+                class="splide__slide"
+            >
+              <div class="media-item" lang="en">
+                <picture class="media-item__image">
+                  <source media="(min-width: 1200px)"
+                          srcset="{{ item.settings.en_desktop_image | image_url: width: 1440 }}">
+                  <source media="(min-width: 992px)"
+                          srcset="{{ item.settings.en_desktop_image | image_url: width: 1040 }}">
+                  <source media="(min-width: 768px)"
+                          srcset="{{ item.settings.en_desktop_image | image_url: width: 800 }}">
 
-                      <img
-                          src="{{ item.settings.fr_mobile_image | default: item.settings.fr_desktop_image | image_url: width: 600 }}"
-                          width="808"
-                          height="486"
-                      >
-                    </picture>
-                  </div>
-                </li>
-            {% endcase %}
+                  <img
+                      src="{{ item.settings.en_mobile_image | default: item.settings.en_desktop_image | image_url: width: 600 }}"
+                      width="808"
+                      height="486"
+                  >
+                </picture>
+              </div>
+              <div class="media-item" lang="fr">
+                <picture class="media-item__image">
+                  <source media="(min-width: 1200px)"
+                          srcset="{{ item.settings.fr_desktop_image | image_url: width: 1440 }}">
+                  <source media="(min-width: 992px)"
+                          srcset="{{ item.settings.fr_desktop_image | image_url: width: 1040 }}">
+                  <source media="(min-width: 768px)"
+                          srcset="{{ item.settings.fr_desktop_image | image_url: width: 800 }}">
+
+                  <img
+                      src="{{ item.settings.fr_mobile_image | default: item.settings.fr_desktop_image | image_url: width: 600 }}"
+                      width="808"
+                      height="486"
+                  >
+                </picture>
+              </div>
+            </div>
           {% endfor %}
-        </ul>
-      </div>
+        </li>
+      </ul>
+
     </div>
 
     <div class="thumbnail-carousel splide">
-      <div class="splide__track">
-        <ul class="splide__list">
-          {% for block in allItems %}
-            {% case block.type %}
-              {% when "image" %}
-                <li class="splide__slide">
-                  {% assign thumbnail = item.settings %}
+      <ul class="splide__track">
+        <li class="splide__list">
+          {% for item in allItems %}
+            <div
+                class="splide__slide"
+            >
+              {% assign thumbnail = item.settings %}
 
-                  <div class="media-item" lang="en">
-                    <picture class="media-item__image">
-                      <source media="(min-width: 1200px)"
-                              srcset="{{ thumbnail.en_desktop_image | image_url: width: 1440 }}">
-                      <source media="(min-width: 992px)"
-                              srcset="{{ thumbnail.en_desktop_image | image_url: width: 1040 }}">
-                      <source media="(min-width: 768px)"
-                              srcset="{{ thumbnail.en_desktop_image | image_url: width: 800 }}">
+              <div class="media-item" lang="en">
+                <picture class="media-item__image">
+                  <source media="(min-width: 1200px)"
+                          srcset="{{ thumbnail.en_desktop_image | image_url: width: 1440 }}">
+                  <source media="(min-width: 992px)" srcset="{{ thumbnail.en_desktop_image | image_url: width: 1040 }}">
+                  <source media="(min-width: 768px)" srcset="{{ thumbnail.en_desktop_image | image_url: width: 800 }}">
 
-                      <img
-                          src="{{ thumbnail.en_mobile_image | default: thumbnail.en_desktop_image | image_url: width: 600 }}"
-                          width="808"
-                          height="486"
-                      >
-                    </picture>
-                  </div>
-                  <div class="media-item" lang="fr">
-                    <picture class="media-item__image">
-                      <source media="(min-width: 1200px)"
-                              srcset="{{ thumbnail.fr_desktop_image | image_url: width: 1440 }}">
-                      <source media="(min-width: 992px)"
-                              srcset="{{ thumbnail.fr_desktop_image | image_url: width: 1040 }}">
-                      <source media="(min-width: 768px)"
-                              srcset="{{ thumbnail.fr_desktop_image | image_url: width: 800 }}">
+                  <img
+                      src="{{ thumbnail.en_mobile_image | default: thumbnail.en_desktop_image | image_url: width: 600 }}"
+                      width="808"
+                      height="486"
+                  >
+                </picture>
+              </div>
+              <div class="media-item" lang="fr">
+                <picture class="media-item__image">
+                  <source media="(min-width: 1200px)"
+                          srcset="{{ thumbnail.fr_desktop_image | image_url: width: 1440 }}">
+                  <source media="(min-width: 992px)" srcset="{{ thumbnail.fr_desktop_image | image_url: width: 1040 }}">
+                  <source media="(min-width: 768px)" srcset="{{ thumbnail.fr_desktop_image | image_url: width: 800 }}">
 
-                      <img
-                          src="{{ thumbnail.fr_mobile_image | default: thumbnail.fr_desktop_image | image_url: width: 600 }}"
-                          width="808"
-                          height="486"
-                      >
-                    </picture>
-                  </div>
-                </li>
-            {% endcase %}
-
+                  <img
+                      src="{{ thumbnail.fr_mobile_image | default: thumbnail.fr_desktop_image | image_url: width: 600 }}"
+                      width="808"
+                      height="486"
+                  >
+                </picture>
+              </div>
+            </div>
           {% endfor %}
-        </ul>
-      </div>
+        </li>
+      </ul>
     </div>
   </template>
 </product-media>
@@ -175,8 +163,8 @@
   "class": "hide-until-initialized",
   "blocks": [
     {
-      "type": "image",
-      "name": "Image",
+      "type": "item",
+      "name": "Media Item",
       "settings": [
         {
           "id": "en_desktop_image",
