@@ -7,6 +7,18 @@
   justify-items: center;
 
   margin: 1rem 0px;
+
+  .saving-text {
+    position: absolute;
+    top: 58%;
+
+    z-index: 1;
+    padding: 2px 4px;
+
+    background-color: #FFDDB5;
+    font-weight: 600;
+    font-size: 14px;
+  }
 }
 
 .box-products {
