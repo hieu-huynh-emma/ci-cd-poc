@@ -5,7 +5,11 @@
 {% assign baseLayer = section.blocks | where: 'type', 'base_layer' | first %}
 {% assign shadowLayer = section.blocks | where: 'type', 'shadow' | first %}
 
-
+<style>
+    #mattress-layers-section {
+        opacity: 0;
+    }
+</style>
 <link rel="quickscript" loading="visibility" href="{{ 'mattress-layers.css' | asset_url }}">
 
 <mattress-layers>
@@ -95,9 +99,9 @@
                 </div>
             </div>
         </div>
-        <div class="section-wallpaper">
-            {{ section.settings.wallpaper | image_url: width: 1920 | image_tag }}
-        </div>
+        {% comment %}<div class="section-wallpaper">{% endcomment %}
+            {% comment %}{{ section.settings.wallpaper | image_url: width: 1920 | image_tag }}{% endcomment %}
+        {% comment %}</div>{% endcomment %}
     </section>
 </mattress-layers>
 

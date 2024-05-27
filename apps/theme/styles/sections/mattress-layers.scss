@@ -2,14 +2,11 @@
 #mattress-layers-section {
   --base-spacing: 3rem;
 
+  opacity: 1;
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);;
+
   .section-chassis {
     gap: 0;
-  }
-
-  .section-header {
-    > * {
-      color: white;
-    }
   }
 
   .section-body {
@@ -17,11 +14,11 @@
     gap: 0;
     align-content: center;
     align-items: center;
+    padding: 1rem 0 0 0;
 
     @media screen and (min-width: 1024px) {
       grid-template-columns:minmax(0, .7fr) minmax(0, .3fr);
     }
-
   }
 
   .section-wallpaper {
@@ -33,7 +30,7 @@
 
   .layer-gallery {
     position: relative;
-    overflow: hidden;
+
     padding: 0 2rem;
     transform: translateY(-2rem);
     @media screen and (max-width: 1024px) {
