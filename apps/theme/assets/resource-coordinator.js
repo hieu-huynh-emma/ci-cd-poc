@@ -127,3 +127,10 @@ ResourceCoordinator.registerVendor(
     "Tippy",
     ["https://unpkg.com/@popperjs/core@2", "https://unpkg.com/tippy.js@6"]
 )
+
+ResourceCoordinator.registerVendor(
+  'DriftZoom',
+  [
+    "https://cdnjs.cloudflare.com/ajax/libs/drift-zoom/1.5.1/Drift.min.js"
+  ]
+)
