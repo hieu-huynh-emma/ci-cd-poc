@@ -1,27 +1,38 @@
 .bundle-box {
   position: relative;
-
   display: grid;
   gap: 1rem;
   justify-content: center;
   justify-items: center;
 
+
   margin: 1rem 0px;
 
-  .saving-text {
+  .promotional-text {
     position: absolute;
-    top: 58%;
-
+    right: 0;
+    left: 0;
+    bottom: -1rem;
     z-index: 1;
-    padding: 2px 4px;
 
-    background-color: #FFDDB5;
-    font-weight: 600;
-    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .saving-text {
+      padding: 2px 4px;
+
+      background-color: #FFDDB5;
+      font-weight: 600;
+      font-size: 14px;
+    }
   }
+
 }
 
 .box-products {
+  position: relative;
+
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
   justify-content: space-between;

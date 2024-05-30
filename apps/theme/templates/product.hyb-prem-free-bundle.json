@@ -45,6 +45,12 @@
       "settings": {
       }
     },
+    "bundle-box": {
+      "type": "bundle-box",
+      "settings": {
+        "heading": "Comfort Sleep Set"
+      }
+    },
     "product-summary": {
       "type": "product-summary",
       "blocks": {
@@ -187,6 +193,7 @@
       "settings": {
       }
     },
+
     "campaign-teaser": {
       "type": "campaign-teaser",
       "settings": {
@@ -364,16 +371,10 @@
             "badge": "$798",
             "note": "*For queen sizes only. All prices and information from public sources listed as of Sept 1, 2023. Information may not reflect updated prices and promotions."
           }
-        },
-        "cross_sell_widget_tXLCDN": {
-          "type": "cross_sell_widget",
-          "settings": {
-          }
         }
       },
       "block_order": [
-        "805e46e0-28b9-48bd-9c5f-07434863e3ea",
-        "cross_sell_widget_tXLCDN"
+        "805e46e0-28b9-48bd-9c5f-07434863e3ea"
       ],
       "settings": {
       }
@@ -988,6 +989,7 @@
   "order": [
     "joint-product",
     "product-layout",
+    "bundle-box",
     "product-summary",
     "product-badges",
     "product-media",
