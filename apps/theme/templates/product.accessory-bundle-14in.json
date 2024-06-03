@@ -1,35 +1,6 @@
 {
   "layout": "theme.product",
   "sections": {
-    "joint-product": {
-      "type": "joint-product",
-      "blocks": {
-        "item_ha7iFa": {
-          "type": "item",
-          "settings": {
-            "product": "all-accessory-bundle",
-            "upsell": "",
-            "short_desc": "with Emma mattress protector - Original and Hybrid Comfort mattresses",
-            "show_star_rating": false
-          }
-        },
-        "item_zLVk8t": {
-          "type": "item",
-          "settings": {
-            "product": "all-accessory-bundle-14",
-            "upsell": "",
-            "short_desc": "new mattress protector - Hybrid premium mattress",
-            "show_star_rating": false
-          }
-        }
-      },
-      "block_order": [
-        "item_ha7iFa",
-        "item_zLVk8t"
-      ],
-      "settings": {
-      }
-    },
     "bundle-layout": {
       "type": "bundle-layout",
       "blocks": {
@@ -60,7 +31,7 @@
         "yotpo_star_rating"
       ],
       "settings": {
-        "title": "All Accessory Bundle",
+        "title": "",
         "desc": "<p><strong>Your perfect partners for ultimate comfort and the best sleep experience<\/strong><\/p><ul><li>2 Original Adjustable Foam Pillows<\/li><li>1 Emma Breathable Mattress Protector that fits our mattresses Hybrid Comfort and Original <\/li><li>1 Emma Cloud Duvet <\/li><\/ul>",
         "disclaimer": ""
       }
@@ -939,7 +910,6 @@
     }
   },
   "order": [
-    "joint-product",
     "bundle-layout",
     "product-summary",
     "product-badges",
