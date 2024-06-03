@@ -98,7 +98,7 @@
         {% for bundle_item_metaobject in bundle_item_metaobjects %}
           {% assign bundle_item_variant = bundle_item_metaobject.product.value %}
 
-          <span>{{ bundle_item_metaobject.qty | default: 1 }} {{ bundle_item_variant.product.title }}</span>
+          <span>{{ bundle_item_metaobject.qty | default: 1 }} {{ bundle_item_variant.product.metafields.accentuate.display_name | default: bundle_item_variant.product.title }}</span>
           {% unless forloop.last %}<span>, </span>{% endunless %}
         {% endfor %}
       </p>
