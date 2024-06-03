@@ -35,8 +35,8 @@
   </div>
 
   <div class="box-products">
-    {% if section.settings.promotional_text %}
-      <div class="promotional-text" >
+    {% if section.settings.promotional_text != blank %}
+      <div class="promotional-text">
         <p class="saving-text"> {{ section.settings.promotional_text }}</p>
       </div>
     {% endif %}
@@ -51,7 +51,7 @@
             </div>
             <div class="product-bundle-item__media">
               {% assign featuredImg = bundle_item_variant.product.featured_image | image_url: width: 120, height: 80 %}
-              {% assign accentuateImg = bundle_item_variant.product.metafields.accentuate.bundle_featured_image[0].src %}
+              {% assign accentuateImg = bundle_item_variant.product.metafields.accentuate.isolated_image[0].src %}
 
               <img
                   src="{{ accentuateImg | default: featuredImg }}"
@@ -64,8 +64,10 @@
             </div>
             <div class="product-bundle-item__details">
               <div class="product__name paragraph-14">
-                <span>{% if bundle_item_metaobject.qty > 1 %}{{ bundle_item_metaobject.qty }}x {% endif %}{{
-                  bundle_item_variant.product.title }}</span>
+                <span>
+                  {% if bundle_item_metaobject.qty > 1 %}{{ bundle_item_metaobject.qty }}x {% endif %}
+                  {{ bundle_item_variant.product.metafields.accentuate.display_name | default: bundle_item_variant.product.title }}
+                </span>
               </div>
             </div>
           </div>
@@ -133,8 +135,7 @@
     {
       "id": "promotional_text",
       "type": "text",
-      "label": "Promotional Text",
-      "default": "455$ in value (Queen Size)"
+      "label": "Promotional Text"
     },
     {
       "id": "note",

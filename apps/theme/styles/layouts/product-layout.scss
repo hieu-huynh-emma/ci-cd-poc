@@ -592,7 +592,7 @@ body {
     grid-template-columns: minmax(0, 1fr) minmax(0, 0);
 
     #quantity-selector {
-      display: none;
+      display: none !important;
     }
   }
 }
