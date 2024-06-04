@@ -176,6 +176,11 @@ class JointProductSelector extends HTMLElement {
       class: replacementForm.getAttribute("class"),
     });
 
+    // Re-updating the variant ID
+    $("product-buybox select.select__select")
+      .get(0)
+      .dispatchEvent(new Event("change", { bubbles: true }));
+
     $(`input[name="product-id"]`).val(html.querySelector(`input[name="product-id"]`).value);
     $(`input[name="section-id"]`).val(html.querySelector(`input[name="section-id"]`).value);
   }
