@@ -33,10 +33,19 @@
             "product": "emma-original-mattress-s",
             "new_layout": true
           }
+        },
+        "yotpo_star_rating_WEfNkC": {
+          "type": "yotpo_star_rating",
+          "disabled": true,
+          "settings": {
+            "product": "emma-original-mattress-s",
+            "new_layout": false
+          }
         }
       },
       "block_order": [
-        "yotpo_star_rating"
+        "yotpo_star_rating",
+        "yotpo_star_rating_WEfNkC"
       ],
       "settings": {
         "title": "Emma Original Mattress",
