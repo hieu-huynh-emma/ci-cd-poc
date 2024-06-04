@@ -54,12 +54,12 @@ class JointProductEngine extends HTMLElement {
   selectorWidgetToggle(show = true) {
     const $jointProductSelector = $("joint-product-selector");
     const $jointProductEngine = $("joint-product-engine");
-    const $productConfiguration = $("#product-form");
+    const $productFormContainer = $("form.product-form");
 
     $jointProductSelector.detach();
 
     if (show) {
-      $jointProductSelector.insertBefore($productConfiguration);
+      $jointProductSelector.insertBefore($productFormContainer);
       $jointProductSelector.removeClass("hidden");
     } else {
       $jointProductEngine.append($jointProductSelector);
@@ -167,9 +167,9 @@ class JointProductSelector extends HTMLElement {
   }
 
   refreshForm(html) {
-    const $form = $("#product-form form");
+    const $form = $("product-form form");
 
-    const replacementForm = html.querySelector("#product-form form");
+    const replacementForm = html.querySelector("product-form form");
 
     $form.attr({
       id: replacementForm.getAttribute("id"),
@@ -183,10 +183,9 @@ class JointProductSelector extends HTMLElement {
   refreshSections(html) {
     return Promise.all(
       this.getSectionsToRender().map(({ sectionId, replaceId, selector }) => {
-        console.log("=>(joint-product.js:180) sectionId", sectionId);
         return new Promise((resolve) => {
-          const elementQuery = `[id$='__${sectionId}']${selector ? ` ${selector}` : ""}`,
-            newElementQuery = `[id$='__${replaceId}']${selector ? ` ${selector}` : ""}`;
+          const elementQuery = `${sectionId ? `[id$='__${sectionId}']` : ""}${selector ? ` ${selector}` : ""}`,
+            newElementQuery = `${sectionId ? `[id$='__${replaceId}']` : ""}${selector ? ` ${selector}` : ""}`;
 
           const $elementToReplace = $(elementQuery);
 
@@ -223,20 +222,14 @@ class JointProductSelector extends HTMLElement {
         selector: "#product-viewer .promotion-overlay",
       },
       {
+        selector: "product-buybox",
+      },
+      {
+        selector: "sticky-buybox",
+      },
+      {
         sectionId: "product-media",
         selector: "product-media",
-      },
-      {
-        sectionId: "product-layout",
-        selector: ".product__price",
-      },
-      {
-        sectionId: "product-layout",
-        selector: ".product-form__controls-group",
-      },
-      {
-        sectionId: "product-layout",
-        selector: "#attribute-configurator",
       },
       {
         sectionId: "product-auxiliary",
@@ -269,7 +262,7 @@ class JointProductSelector extends HTMLElement {
   refreshVariantListeners() {
     const { $options } = this.refs;
 
-    $options.each(function() {
+    $options.each(function () {
       this.attachVariantListener();
     });
   }

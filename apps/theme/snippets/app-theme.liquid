@@ -2,17 +2,17 @@
    ================= Theme Settings =================
 {%- endcomment -%}
 {%- liquid
-    assign body_font_bold = settings.type_body_font | font_modify: 'weight', 'bold'
-    assign body_font_italic = settings.type_body_font | font_modify: 'style', 'italic'
-    assign body_font_bold_italic = body_font_bold | font_modify: 'style', 'italic'
+  assign body_font_bold = settings.type_body_font | font_modify: 'weight', 'bold'
+  assign body_font_italic = settings.type_body_font | font_modify: 'style', 'italic'
+  assign body_font_bold_italic = body_font_bold | font_modify: 'style', 'italic'
 %}
 {%- if settings.favicon != blank -%}
-    <link rel="icon" type="image/png" href="{{ settings.favicon | img_url: '32x32' }}">
+  <link rel="icon" type="image/png" href="{{ settings.favicon | img_url: '32x32' }}">
 {%- endif -%}
 <style>
-    {{ body_font_bold | font_face: font_display: 'swap' }}
-    {{ body_font_italic | font_face: font_display: 'swap' }}
-    {{ body_font_bold_italic | font_face: font_display: 'swap' }}
+  {{ body_font_bold | font_face: font_display: 'swap' }}
+  {{ body_font_italic | font_face: font_display: 'swap' }}
+  {{ body_font_bold_italic | font_face: font_display: 'swap' }}
 </style>
 <style>
     :root {
@@ -91,14 +91,18 @@ settings.colors_accent_2 }}{% endif %};
     .unintrusive-bg *:not(div):not(section) {
         pointer-events: auto;
     }
+
+    .wg-default .country-selector, .weglot-container {
+        z-index: 9999 !important;
+    }
 </style>
 
 {% case template %}
-    {% when 'index' %}
-        <link rel="stylesheet" href="{{ 'hero-banner.css' | asset_url }}">
-        <link rel="quickscript" loading="delayed" href="{{ 'product-card.css' | asset_url }}">
-    {% else %}
-        <link rel="stylesheet" href="{{ 'product-card.css' | asset_url }}">
+  {% when 'index' %}
+    <link rel="stylesheet" href="{{ 'hero-banner.css' | asset_url }}">
+    <link rel="quickscript" loading="delayed" href="{{ 'product-card.css' | asset_url }}">
+  {% else %}
+    <link rel="stylesheet" href="{{ 'product-card.css' | asset_url }}">
 {% endcase %}
 
 

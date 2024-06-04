@@ -12,18 +12,18 @@ if (!customElements.get("product-form")) {
     async onSubmitHandler(evt) {
       evt.preventDefault();
 
-      this.submitButton = this.querySelector("[type=\"submit\"]");
-      if (document.querySelector("cart-drawer")) this.submitButton.setAttribute("aria-haspopup", "dialog");
+      this.$submitBtn = $(".add-to-cart-btn");
+      if (document.querySelector("cart-drawer")) this.$submitBtn.attr("aria-haspopup", "dialog");
 
       // const pillowCheckbox$ = $('#add-on-pillows .add-on-checkbox-input')
 
-      if (this.submitButton.classList.contains("loading")) return;
+      if (this.$submitBtn.hasClass("loading")) return;
 
       this.handleErrorMessage();
 
-      this.submitButton.setAttribute("aria-disabled", true);
-      this.submitButton.classList.add("loading");
-      this.querySelector(".loading-overlay__spinner").classList.remove("hidden");
+      this.$submitBtn.attr("aria-disabled", true);
+      this.$submitBtn.addClass("loading");
+      this.$submitBtn.find(".loading-overlay__spinner").removeClass("hidden");
 
       await waitUntil(_ => !!this.cartSurface.loading === false);
 
@@ -129,10 +129,10 @@ if (!customElements.get("product-form")) {
         .then(async (response) => {
           if (response.status) {
             this.handleErrorMessage(response.description);
-            const soldOutMessage = this.submitButton.querySelector(".sold-out-message");
+            const soldOutMessage = this.$submitBtn.find(".sold-out-message").get(0);
             if (!soldOutMessage) return;
-            this.submitButton.setAttribute("aria-disabled", true);
-            this.submitButton.querySelector("span").classList.add("hidden");
+            this.$submitBtn.attr("aria-disabled", true);
+            this.$submitBtn.find("span").addClass("hidden");
             soldOutMessage.classList.remove("hidden");
             this.error = true;
 
@@ -174,14 +174,14 @@ if (!customElements.get("product-form")) {
           console.error(e);
         })
         .finally(() => {
-          this.submitButton.classList.remove("loading");
-          this.submitButton.removeAttribute("aria-disabled");
-          this.querySelector(".loading-overlay__spinner").classList.add("hidden");
+          this.$submitBtn.removeClass("loading");
+          this.$submitBtn.removeAttr("aria-disabled");
+          this.$submitBtn.find(".loading-overlay__spinner").addClass("hidden");
         });
     }
 
     handleErrorMessage(errorMessage = false) {
-      this.errorMessageWrapper = this.errorMessageWrapper || this.querySelector(".product-form__error-message-wrapper");
+      this.errorMessageWrapper = this.errorMessageWrapper || document.querySelector(".product-form__error-message-wrapper");
       this.errorMessage = this.errorMessage || this.errorMessageWrapper.querySelector(".product-form__error-message");
 
       this.errorMessageWrapper.toggleAttribute("hidden", !errorMessage);

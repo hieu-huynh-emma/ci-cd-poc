@@ -641,7 +641,7 @@ class VariantSelects extends HTMLElement {
 
   updateCrossSell() {
     const crossSellEngine = document.querySelector("cross-sell-engine");
-
+    if(!crossSellEngine) return
     crossSellEngine.onVariantChange(this.currentVariant.id);
   }
 

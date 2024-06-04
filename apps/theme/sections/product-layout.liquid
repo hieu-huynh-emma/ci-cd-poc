@@ -3,16 +3,6 @@
 {% assign appBlock = section.blocks | where: 'type', '@app' | first %}
 
 <style>
-  .attribute-configurator {
-      display: none;
-  }
-</style>
-<link rel="stylesheet" href="{{ 'product-layout.css' | asset_url }}" />
-
-<script src="{{ 'product-layout.js' | asset_url }}" defer data-section-id="{{ section.id }}"></script>
-<script src="{{ 'product-form.js' | asset_url }}" defer></script>
-
-<style>
     #product-layout:not(.is-initialized) {
         min-height: 1700px;
     }
@@ -20,7 +10,16 @@
     #product-summary-placeholder:not(.is-initialized) {
         min-height: 300px;
     }
+    .attribute-configurator {
+        display: none;
+    }
 </style>
+<link rel="stylesheet" href="{{ 'product-layout.css' | asset_url }}" />
+<link rel="stylesheet" href="{{ 'product-price.css' | asset_url }}" />
+<link rel="stylesheet" href="{{ 'product-buybox.css' | asset_url }}" />
+<link rel="stylesheet" href="{{ 'sticky-buybox.css' | asset_url }}" />
+<script src="{{ 'product-layout.js' | asset_url }}" defer data-section-id="{{ section.id }}"></script>
+<script src="{{ 'product-form.js' | asset_url }}" defer></script>
 
 <div
     id="product-layout"
@@ -48,160 +47,57 @@
     <product-form id="product-configurator">
       <template id="product-summary-placeholder"></template>
 
-      <div id="product-form">
-        {% capture form_classes -%}
-          product-form product-form-{{ section.id }}
-          {%- if section.settings.enable_payment_button and product.has_only_default_variant %} product-form--payment-button-no-variants {%- endif -%}
-          {%- if current_variant.available == false %} product-form--variant-sold-out {%- endif -%}
-        {%- endcapture %}
+      {% capture form_classes -%}
+        product-form product-form-{{ section.id }}
+        {%- if section.settings.enable_payment_button and product.has_only_default_variant %} product-form--payment-button-no-variants {%- endif -%}
+        {%- if current_variant.available == false %} product-form--variant-sold-out {%- endif -%}
+      {%- endcapture %}
 
-        {% form 'product', product, class: form_classes, novalidate: 'novalidate', data-product-form: '' %}
-          <div
-              id="attribute-configurator"
-              class="
-                attribute-configurator
-                {% if product.has_only_default_variant == true %} attribute-configurator--single{% endif %}
-                {% if product.selected_or_first_available_variant.available == false %} attribute-configurator--unavailable{% endif %}
-            "
-          >
-            <variant-selects
-                class="no-js-hidden emma-product__variant"
-                data-section="{{ section.id }}"
-                data-url="{{ product.url }}"
-                data-product-id="{{ product.id }}"
-                {{ block.shopify_attributes }}
-            >
-  
-              {%- for option in product.options_with_values -%}
-               
-                <div class="product-form__input product-form__input--dropdown">
-                  <label class="form__label" for="Option-{{ section.id }}-{{ forloop.index0 }}">
-                    {{ option.name }}
-                  </label>
-                  <div class="select">
-                    <select
-                        id="Option-{{ section.id }}-{{ forloop.index0 }}"
-                        class="select__select"
-                        name="options[{{ option.name | escape }}]"
-                        form="product-form-{{ section.id }}"
-                    >
-                      {%- for value in option.values -%}
-                        {% unless  value == 'King | 76" x 80" | Old' %}
-                            <option
-                                value="{{ value | escape }}"
-                                {% if option.selected_value == value %}
-                                  selected="selected"
-                                {% endif %}
-                            >
-                              {{ value }}
-                            </option>
-                          {% endunless %}
-            
-                      {%- endfor -%}
-                    </select>
-                    {% render 'icon-caret' %}
-                  </div>
-                </div>
-              {%- endfor -%}
+      {% form 'product', product, class: form_classes, novalidate: 'novalidate', data-product-form: '' %}
+        {% render 'product-buybox' %}
 
-              <script  type="application/json">
-                  {{ product.variants | json }}
-
-              </script>
-            </variant-selects>
-
-            <select name="id" id="ProductSelect-{{ section.id }}" class="product-form__variants no-js">
-              {% for variant in product.variants %}
-                <option
-                    value="{{ variant.id }}"
-                    {%- if variant == current_variant %}
-                      selected="selected"
-                    {%- endif -%}
-                >
-                  {{ variant.title }}
-                  {%- if variant.available == false %} - {{ 'products.product.sold_out' | t }}{% endif %}
-                </option>
-              {% endfor %}
-            </select>
-
-            {% liquid
-              assign qtySelectorOrientation = "horizontal"
-
-              if product.has_only_default_variant == false
-                assign qtySelectorOrientation = "vertical"
-              endif
-            %}
-
-            {% render 'product-quantity-selector', orientation: qtySelectorOrientation %}
-          </div>
-
-          <div
-              class="product-form__error-message-wrapper product-form__error-message-wrapper--hidden{% if section.settings.enable_payment_button %} product-form__error-message-wrapper--has-payment-button{% endif %}"
-              data-error-message-wrapper
-              role="alert"
-          >
-            <span class="visually-hidden">{{ 'general.accessibility.error' | t }} </span>
-            {% render 'icon-error' %}
-            <span class="product-form__error-message" data-error-message>
+        <div
+            class="product-form__error-message-wrapper product-form__error-message-wrapper--hidden{% if section.settings.enable_payment_button %} product-form__error-message-wrapper--has-payment-button{% endif %}"
+            data-error-message-wrapper
+            role="alert"
+        >
+          <span class="visually-hidden">{{ 'general.accessibility.error' | t }} </span>
+          {% render 'icon-error' %}
+          <span class="product-form__error-message" data-error-message>
                             {{- 'products.product.quantity_minimum_message' | t -}}
                           </span>
-          </div>
+        </div>
 
-          <div class="installment-widgets mb-4">
-            {%- if appBlock -%}
-              {% render appBlock %}
-            {% endif %}
+        <div class="installment-widgets mb-4">
+          {%- if appBlock -%}
+            {% render appBlock %}
+          {% endif %}
 
-            {%- if affirm_widget -%}
+          {%- if affirm_widget -%}
 
-              {% render 'affirm-widget' %}
+            {% render 'affirm-widget' %}
 
-            {% endif %}
-          </div>
+          {% endif %}
+        </div>
 
-          <div class="relative">
-            <div class="skeleton"></div>
+        <template id="product-auxiliary-placeholder"></template>
 
-            {% render 'product-price', variant: current_variant, product: product %}
+        <template id="product-unique-selling-points-placeholder"></template>
 
-            <div class="product-form__controls-group product-form__controls-group--submit">
-              <div
-                  class="product-form__item product-form__item--submit
-                      {%- if section.settings.enable_payment_button %} product-form__item--payment-button {%- endif -%}
-                      {%- if product.has_only_default_variant %} product-form__item--no-variants {%- endif -%}
-                "
-              >
-                  <template id="price-transparency-placeholder"></template>
+        <template id="product-specifications-placeholder"></template>
 
-                  {% render 'add-to-cart-btn' %}
+        <p
+            class="visually-hidden"
+            data-loader-status
+            aria-live="assertive"
+            role="alert"
+            aria-hidden="true"
+        >
+          {{ 'products.product.loader_label' | t }}
+        </p>
 
-                {% if section.settings.enable_payment_button %}
-                  {{ form | payment_button }}
-                {% endif %}
-              </div>
-            </div>
-          </div>
-        {% endform %}
-      </div>
-
-      <template id="product-auxiliary-placeholder"></template>
-
-      <template id="product-unique-selling-points-placeholder"></template>
-
-      <template id="product-specifications-placeholder"></template>
-
-      <p
-          class="visually-hidden"
-          data-loader-status
-          aria-live="assertive"
-          role="alert"
-          aria-hidden="true"
-      >
-        {{ 'products.product.loader_label' | t }}
-      </p>
-
-      <button class="visually-hidden" data-add-to-cart></button>
-
+        <button class="visually-hidden" id="fixture-add-to-cart"></button>
+      {% endform %}
     </product-form>
   </div>
 </div>
@@ -209,9 +105,15 @@
 {% unless product == empty %}
   <script type="application/json" id="ProductJson-{{ section.id }}">
       {{ product | json }}
+
+
+
   </script>
   <script type="application/json" id="ModelJson-{{ section.id }}">
       {{ product.media | where: 'media_type', 'model' | json }}
+
+
+
 
   </script>
 {% endunless %}

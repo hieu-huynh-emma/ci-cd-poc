@@ -184,6 +184,8 @@
         </div>
       </div>
     </div>
+
+    <input id="lead-item-url" type="hidden" value="{{ leadItem.settings.en_mobile_image | default: leadItem.settings.en_desktop_image | image_url: width: 600 }}">
   </template>
 </product-media>
 

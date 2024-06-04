@@ -65,24 +65,18 @@
       {%- endif %}
       <dl class="price__sale">
         <div>
-          <dt>
-            <span class="visually-hidden visually-hidden--inline">{{ 'products.product.sale_price' | t }}</span>
-          </dt>
-          <dd>
-            <p class="text-scarlet items-end font-semibold text-[32px] leading-[125%]" data-sale-price>
-              {{ money_price }}
-            </p>
-          </dd>
+          <span class="visually-hidden visually-hidden--inline">{{ 'products.product.sale_price' | t }}</span>
+
+          <p class="price--sale font-semibold text-[32px] leading-[125%]" data-sale-price>
+            {{ money_price }}
+          </p>
         </div>
         <div>
-          <dt>
-            <span class="visually-hidden visually-hidden--inline">{{ 'products.product.regular_price' | t }}</span>
-          </dt>
-          <dd>
-            <s class="items-end font-semibold text-md leading-[125%] line-though" data-regular-price>
-              {{ compare_at_price | money_without_trailing_zeros }}
-            </s>
-          </dd>
+          <span class="visually-hidden visually-hidden--inline">{{ 'products.product.regular_price' | t }}</span>
+
+          <s class="items-end font-semibold text-md leading-[125%] line-though" data-regular-price>
+            {{ compare_at_price | money_without_trailing_zeros }}
+          </s>
         </div>
       </dl>
     </div>
@@ -109,7 +103,7 @@
   </dl>
 
   <input id="price" type="hidden" value="{{ price | divided_by: 100 }}">
-  <input id="originalPrice" type="hidden" value="{{ compare_at_price | divided_by: 100}}">
+  <input id="originalPrice" type="hidden" value="{{ compare_at_price | divided_by: 100 }}">
 </product-price>
 
 <script type="quickscript" src="{{ 'product-price.js' | asset_url }}"></script>

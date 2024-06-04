@@ -5,10 +5,9 @@
 {% endif %}
 
 <button
-        id="add-to-cart"
-        type="submit"
-        name="add"
-        class="btn btn--block btn--rounded product-form__cart-submit add-to-cart-btn w-full
+    type="button"
+    name="add"
+    class="btn btn--block btn--rounded product-form__cart-submit add-to-cart-btn w-full
           {% if section.settings.enable_payment_button and product.selling_plan_groups == empty %} btn--secondary-accent{% endif %}
     "
         {% if isUnavailable %}disabled{% endif %}
@@ -29,3 +28,4 @@
         </svg>
     </div>
 </button>
+

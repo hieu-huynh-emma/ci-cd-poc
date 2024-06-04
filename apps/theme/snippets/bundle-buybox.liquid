@@ -1,0 +1,196 @@
+{%- assign current_variant = product.selected_or_first_available_variant -%}
+
+{% assign bundle_item_metaobjects = current_variant.metafields.custom.bundle_items.value %}
+{% assign configurable_product_handle = product.metafields.accentuate.configurable_product %}
+{% assign configurable_product = all_products[configurable_product_handle] %}
+
+<link rel="stylesheet" href="{{ 'bundle-buy-box.css' | asset_url }}" />
+
+<input id="show_sticky_buybox" type="hidden" value="0">
+
+<div id="buybox-container">
+  <product-buybox>
+    <div class="skeleton"></div>
+
+    <div id="product-form">
+      <p class="buy-box-products-section__header">{{ 'products.bundle.what_inside' | t }}</p>
+
+      {% capture variantSelector %}
+        <div
+            id="attribute-configurator"
+            class="
+                attribute-configurator
+                {% if product.has_only_default_variant == true %} attribute-configurator--single{% endif %}
+                {% if product.selected_or_first_available_variant.available == false %} attribute-configurator--unavailable{% endif %}
+            "
+        >
+          <variant-selects
+              class="no-js-hidden emma-product__variant"
+              data-section="{{ section.id }}"
+              data-url="{{ product.url }}"
+              data-product-id="{{ product.id }}"
+              {{ block.shopify_attributes }}
+          >
+
+            {%- for option in product.options_with_values -%}
+              <div class="product-option product-form__input product-form__input--dropdown">
+                <label class="form__label" for="Option-{{ section.id }}-{{ forloop.index0 }}">
+                  {{ option.name }}
+                </label>
+                <div class="select">
+                  <select
+                      id="Option-{{ section.id }}-{{ forloop.index0 }}"
+                      class="select__select"
+                      name="options[{{ option.name | escape }}]"
+                      form="product-form-{{ section.id }}"
+                  >
+                    {%- for value in option.values -%}
+                      {% unless  value == 'King | 76" x 80" | Old' %}
+                        <option
+                            value="{{ value | escape }}"
+                            {% if option.selected_value == value %}
+                              selected="selected"
+                            {% endif %}
+                        >
+                          {{ value }}
+                        </option>
+                      {% endunless %}
+                    {%- endfor -%}
+                  </select>
+                  {% render 'icon-caret' %}
+                </div>
+              </div>
+            {%- endfor -%}
+
+            <script type="application/json">
+       {{ product.variants | json }}
+    </script>
+          </variant-selects>
+
+          <select name="id" id="ProductSelect-{{ section.id }}" class="product-form__variants no-js">
+            {% for variant in product.variants %}
+              <option
+                  value="{{ variant.id }}"
+                  {%- if variant == current_variant %}
+                    selected="selected"
+                  {%- endif -%}
+              >
+                {{ variant.title }}
+                {%- if variant.available == false %} - {{ 'products.product.sold_out' | t }}{% endif %}
+              </option>
+            {% endfor %}
+          </select>
+        </div>
+
+      {% endcapture %}
+
+      {% capture otherProducts %}
+        <section id="buy-box-products">
+          {% for bundle_item_metaobject in bundle_item_metaobjects %}
+            {% assign bundle_item_variant = bundle_item_metaobject.product.value %}
+            {% if bundle_item_variant.product.handle != configurable_product_handle %}
+              <div id="product-configuration-{{ bundle_item_variant.product.handle }}" class="product-configuration">
+                <div class="product-bundle-item">
+                  <div class="product-bundle-item__media">
+                    {% assign featuredImg = bundle_item_variant.product.featured_image | image_url: width: 120, height: 80 %}
+                    {% assign accentuateImg = bundle_item_variant.product.metafields.accentuate.bundle_featured_image[0].src %}
+
+                    <img
+                        src="{{ accentuateImg | default: featuredImg }}"
+                        width="120"
+                        height="80"
+                        alt=""
+                        class="product-bundle-item__image"
+                        loading="lazy"
+                    >
+                  </div>
+                  <div class="product-bundle-item__details">
+                    <div class="product__name paragraph-14 font-semibold">
+                      <span>{{ bundle_item_variant.product.title }}</span>
+                    </div>
+
+                    <div class="product-bundle-item__description">
+              <span class="product-bundle-item__quantity">
+                {{ 'products.bundle.qty' | t }}: {{ bundle_item_metaobject.qty | default: 1 }}
+              </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <hr class="product-bundle-hr">
+            {% endif %}
+          {% endfor %}
+        </section>
+      {% endcapture %}
+
+      {% if configurable_product_handle %}
+        <div id="product-configuration-{{ configurable_product }}" class="product-configuration">
+          <div class="product-bundle-item">
+            <div class="product-bundle-item__media">
+              {{
+              configurable_product.featured_image
+              | image_url: width: 120, height: 80
+              | image_tag: loading: 'lazy', class: 'product-bundle-item__image'
+              }}
+            </div>
+            <div class="product-bundle-item__details">
+              <div class="product__name paragraph-14 font-semibold">
+                <span>{{ configurable_product.title }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endif %}
+
+      {{ variantSelector }}
+
+      {{ otherProducts }}
+
+      {% liquid
+        assign qtySelectorOrientation = "horizontal"
+
+        if product.has_only_default_variant == false
+          assign qtySelectorOrientation = "vertical"
+        endif
+      %}
+
+      {% render 'product-quantity-selector', orientation: qtySelectorOrientation %}
+
+      {% render 'product-price', variant: current_variant, product: product %}
+
+      {% render 'purchase-buttons' %}
+    </div>
+  </product-buybox>
+
+  <sticky-buybox>
+    <div class="page-boundary">
+      <div class="sticky-container">
+        <div class="product-info-container">
+          <img class="product-image rounded-lg" />
+          <h2 class="product-title"></h2>
+        </div>
+        <div class="buybox-outlet">
+          {% render 'proxy-product-options' %}
+
+          {% render 'product-price', variant: current_variant, product: product %}
+
+          {% render 'purchase-buttons' %}
+        </div>
+      </div>
+    </div>
+  </sticky-buybox>
+</div>
+
+<script type="quickscript" loading="delayed" src="{{ 'product-buybox.js' | asset_url }}"></script>
+
+<script id="ProductBundle" type="application/json">
+  [
+  {% for bundle_item_metaobject in bundle_item_metaobjects %}
+  	{% assign bundle_item_variant = bundle_item_metaobject.product.value %}
+
+  	{{ bundle_item_variant.product | json }}
+  	{% unless forloop.last %},{% endunless %}
+  {% endfor %}
+  ]
+</script>

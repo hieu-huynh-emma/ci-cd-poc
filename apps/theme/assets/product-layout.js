@@ -74,7 +74,7 @@ function loadSection({ sectionId, outletQuery, insertPosition, blocks = [] }) {
     outletEl.insertAdjacentElement(insertPosition, detachedSectionEl);
   } else {
     const sectionPlaceholderEl = document.querySelector(`#product-layout #${sectionId}-placeholder`);
-    sectionPlaceholderEl.replaceWith(detachedSectionEl);
+    sectionPlaceholderEl?.replaceWith(detachedSectionEl);
   }
 
   if (blocks.length > 0) {

@@ -1,0 +1,113 @@
+sticky-buybox {
+  position: fixed;
+
+  z-index: 99999999;
+
+  display: none;
+
+  width: 100%;
+
+  background-color: white;
+  @media screen and (max-width: 769px) {
+    bottom: 0;
+    min-height: 120px;
+    padding: .5rem 0;
+
+  }
+  @media screen and (min-width: 769px) {
+    top: 0;
+    min-height: 100px;
+    padding: 1rem 0;
+  }
+
+  .sticky-container {
+    display: grid;
+    gap: 1rem;
+    grid-template-rows: minmax(0, 1fr);
+    grid-template-columns: minmax(0, 1fr);
+    width: 100%;
+    height: 100%;
+
+    @media screen and (min-width: 992px) {
+      grid-template-columns: minmax(0, auto) minmax(0, 1fr);
+      justify-content: space-between;
+    }
+  }
+
+  .product-info-container {
+    display: grid;
+    gap: 1rem;
+    grid-template-rows: minmax(0, 1fr);
+    grid-template-columns: minmax(0, 70px) minmax(0, auto);
+    align-items: center;
+
+    @media screen and (max-width: 992px) {
+      display: none;
+    }
+  }
+
+  .buybox-outlet {
+    display: grid;
+    gap: 1rem;
+
+    align-items: center;
+
+    @media screen and (max-width: 769px) {
+      gap: .5rem;
+      grid-template-rows: repeat(2, minmax(0, auto));
+      grid-template-columns:minmax(0, auto) minmax(0, 1fr);
+    }
+
+    @media screen and (min-width: 769px) {
+      grid-template-rows: minmax(0, 1fr);
+      grid-template-columns:minmax(0, 1fr) repeat(2, minmax(0, auto));
+    }
+  }
+
+  #attribute-configurator {
+    @media screen and (max-width: 769px) {
+      grid-column: 1 / span 2;
+    }
+  }
+
+  .price-badge-wrapper {
+    display: none;
+  }
+
+  .price__pricing-group .price__sale {
+    gap: 4px;
+    flex-direction: row;
+    align-items: center;
+  }
+
+
+  label {
+    display: none !important;
+  }
+
+  .add-to-cart-btn {
+    min-width: 180px;
+  }
+
+  #quantity-selector.horizontal {
+    margin: 0;
+  }
+
+  .attribute-configurator {
+    &--single {
+      grid-template-columns: minmax(0, 1fr);
+
+      .product-option {
+        display: none;
+      }
+    }
+
+    &--unavailable {
+      .product-option {
+        &:nth-child(2) {
+          display: none;
+        }
+      }
+    }
+  }
+}
