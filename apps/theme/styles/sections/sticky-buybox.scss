@@ -107,20 +107,32 @@ sticky-buybox {
     }
 
 
-   &--unavailable {
-     .product-option {
-       &:nth-child(2) {
-         display: none;
-       }
-     }
-   }
+    &--unavailable {
+      .product-option {
+        &:nth-child(2) {
+          display: none;
+        }
+      }
+    }
 
     &--multiple-options {
-      select, quantity-input {
+      .product-option .select__select, #quantity-selector quantity-input.vertical {
         min-height: 36px;
         max-height: 36px;
         line-height: initial;
       }
+
+      #quantity-selector quantity-input {
+        input {
+          height: auto;
+        }
+
+        button {
+          width: 20px;
+          height: 20px;
+        }
+      }
+
     }
   }
 

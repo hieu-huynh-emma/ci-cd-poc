@@ -48,7 +48,13 @@
       </div>
       {% if bundle_item_metaobjects %}
         <p class="bundle-box-container text-comet">
-          <span>The {{ product.title }} includes our</span>
+
+          <span>
+            {% if product.metafields.accentuate.is_free_gift %}
+              Your mattress purchase includes
+            {% else %}The {{ product.title }} includes our
+            {% endif %}
+          </span>
 
           {% for bundle_item_metaobject in bundle_item_metaobjects %}
             {% assign bundle_item_variant = bundle_item_metaobject.product.value %}
@@ -62,9 +68,9 @@
                 mattress
               {% endif %}
             </span>
-              {% unless forloop.last %} {% if forloop.rindex0 == 1 %}and {% else %}
-                <span>, </span>{% endif %}{% endunless %}
-            {% endfor %}
+            {% unless forloop.last %} {% if forloop.rindex0 == 1 %}and {% else %}
+              <span>, </span>{% endif %}{% endunless %}
+          {% endfor %}
         </p>
       {% endif %}
     </div>

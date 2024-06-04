@@ -102,9 +102,13 @@ class StickyBuybox extends CustomElement {
 
     this.renderProductInfo();
 
-    $proxySelect.on("change", () => {
-      $primarySelect
-        .val($proxySelect.val())
+    const $proxySelects = this.$el.find("select");
+
+    $proxySelects.on("change", function() {
+      const primaryId = $(this).data("id");
+      const primarySelect = $(`product-buybox select#${primaryId}`);
+      primarySelect
+        .val($(this).val())
         .get(0)
         .dispatchEvent(new Event("change", { bubbles: true }));
     });
