@@ -27,7 +27,7 @@
               form="product-form-{{ section.id }}"
           >
             {%- for value in option.values -%}
-              {% unless  value == 'King | 76" x 80" | Old' %}
+
                 <option
                     value="{{ value | escape }}"
                     {% if option.selected_value == value %}
@@ -36,7 +36,7 @@
                 >
                   {{ value }}
                 </option>
-              {% endunless %}
+
             {%- endfor -%}
           </select>
           {% render 'icon-caret' %}

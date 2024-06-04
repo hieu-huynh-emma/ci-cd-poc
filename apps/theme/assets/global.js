@@ -759,24 +759,33 @@ class VariantSelects extends HTMLElement {
 
     if (!productForm) return;
     const addButton = productForm.querySelector("button[name=\"add\"]");
+    const stickyAddToCart = document.querySelector('sticky-buybox .add-to-cart-btn')
 
     if (!addButton) return;
 
     const addButtonText = addButton.querySelector("[data-add-to-cart-text]");
-    const stickyAddToCart = document.querySelector('sticky-buybox .add-to-cart-btn')
+
 
     if (disable) {
       addButton.setAttribute("disabled", true);
-      stickyAddToCart.setAttribute("disabled", true);
       if (text) {
         addButtonText.textContent = text;
-        stickyAddToCart.querySelector("[data-add-to-cart-text]").textContent = text;
       }
     } else {
       addButton.removeAttribute("disabled");
       addButtonText.textContent = window.variantStrings.addToCart;
-      stickyAddToCart.removeAttribute("disabled");
-      stickyAddToCart.querySelector("[data-add-to-cart-text]").textContent = window.variantStrings.addToCart;
+    }
+
+    if(stickyAddToCart) {
+      if (disable) {
+        stickyAddToCart.setAttribute("disabled", true);
+        if (text) {
+          stickyAddToCart.querySelector("[data-add-to-cart-text]").textContent = text;
+        }
+      } else {
+        stickyAddToCart.removeAttribute("disabled");
+        stickyAddToCart.querySelector("[data-add-to-cart-text]").textContent = window.variantStrings.addToCart;
+      }
     }
 
     if (!modifyClass) return;
