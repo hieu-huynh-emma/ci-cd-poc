@@ -48,6 +48,9 @@ sticky-buybox {
 
   .bundle-box-container {
     grid-column: 1 / span 2;
+    @media screen and (max-width: 769px) {
+      display: none;
+    }
   }
 
   .buybox-outlet {
