@@ -168,8 +168,16 @@ class StickyBuybox extends CustomElement {
 
   // Sync the value between primary components and proxy components
   sync() {
-    const { $primarySelect, $proxySelect, $primaryQtySelect, $proxyQtySelect } = this.refs;
-    $proxySelect.val($primarySelect.val());
+    const { $primaryQtySelect, $proxyQtySelect } = this.refs;
+
+    const $proxySelects = this.$el.find("select");
+
+    $proxySelects.each(function () {
+      const primaryId = $(this).data("id");
+      const primarySelect = $(`product-buybox select#${primaryId}`);
+
+      $(this).val(primarySelect.val());
+    });
 
     $proxyQtySelect.find("input").val($primaryQtySelect.find("input").val());
   }

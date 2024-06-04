@@ -15,52 +15,7 @@
     </div>
   </product-buybox>
 
-  <sticky-buybox>
-    <div class="page-boundary">
-      <div class="sticky-container">
-        <div class="product-info-container">
-          <img class="product-image rounded-lg" />
-          <h2 class="product-title"></h2>
-        </div>
-        <div class="buybox-outlet">
-          {% render 'proxy-product-options' %}
-
-          {% render 'product-price', variant: current_variant, product: product %}
-
-          {% assign isUnavailable = false %}
-
-          {% if product.selected_or_first_available_variant.available == false %}
-            {% assign isUnavailable = true %}
-          {% endif %}
-
-          <button
-              type="button"
-              name="add"
-              class="btn btn--block btn--rounded add-to-cart-btn w-full"
-              {% if isUnavailable %}disabled{% endif %}
-          >
-            {% render 'icon-cart-empty' %}
-
-            <span data-add-to-cart-text>
-              {%- if isUnavailable -%}
-                {{ 'products.product.sold_out' | t }}
-              {%- else -%}
-                {{ 'products.product.add_to_cart' | t }}
-              {%- endif -%}
-            </span>
-            <div class="loading-overlay__spinner">
-              <svg aria-hidden="true" focusable="false" role="presentation" class="spinner" viewBox="0 0 66 66"
-                   xmlns="http://www.w3.org/2000/svg">
-                <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
-              </svg>
-            </div>
-          </button>
-
-
-        </div>
-      </div>
-    </div>
-  </sticky-buybox>
+  {% render 'sticky-buybox' %}
 </div>
 
 <script type="quickscript" loading="delayed" src="{{ 'product-buybox.js' | asset_url }}"></script>

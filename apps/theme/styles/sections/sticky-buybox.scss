@@ -46,6 +46,10 @@ sticky-buybox {
     }
   }
 
+  .bundle-box-container {
+    grid-column: 1 / span 2;
+  }
+
   .buybox-outlet {
     display: grid;
     gap: 1rem;
@@ -102,12 +106,28 @@ sticky-buybox {
       }
     }
 
-    &--unavailable {
-      .product-option {
-        &:nth-child(2) {
-          display: none;
-        }
+
+   &--unavailable {
+     .product-option {
+       &:nth-child(2) {
+         display: none;
+       }
+     }
+   }
+
+    &--multiple-options {
+      select, quantity-input {
+        min-height: 36px;
+        max-height: 36px;
+        line-height: initial;
       }
     }
+  }
+
+  .attribute-selects {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
   }
 }
