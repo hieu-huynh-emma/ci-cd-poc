@@ -167,6 +167,10 @@ class CustomElement extends HTMLElement {
 class CustomButton extends CustomElement {
   constructor() {
     super();
+  }
+
+  setup() {
+    super.setup();
 
     this.addEventListener('click', (event) => {
       event.preventDefault();
@@ -178,12 +182,9 @@ class CustomButton extends CustomElement {
 
       this.onClick(event);
     });
-
   }
 
-  onClick(e) {
-
-  }
+  onClick(e) {}
 }
 
 class ResponsiveComponent extends CustomElement {
