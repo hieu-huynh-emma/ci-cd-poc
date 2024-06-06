@@ -198,8 +198,8 @@
       {% if exploreBtns.size > 0 %}
         <div class="flex flex-col gap-2">
           {% for block in exploreBtns %}
-            <a href="{{ block.settings.url }}"
-               class="font-inter text-[16px] font-bold rounded-full border border-{#2E2F3C} text-center hidden md:block sec_btn">{{ block.settings.text }}</a>
+            <tracked-button :trackId="{{ block.settings.trackId }}" href="{{ block.settings.url }}"
+               class="font-inter text-[16px] font-bold rounded-full border border-{#2E2F3C} text-center hidden md:block sec_btn">{{ block.settings.text }}</tracked-button>
           {% endfor %}
         </div>
       {% endif %}
@@ -341,8 +341,8 @@
                       </div>
                     </div>
 
-                    <a class="btn testing w-{100%}" href="{{ product.url }}" rel="noreferrer">Shop
-                      Now</a>
+                    <tracked-button :trackId="{{ block.settings.trackId }}" class="btn testing w-{100%}" href="{{ product.url }}" rel="noreferrer">Shop
+                      Now</tracked-button>
                   </div>
                 </div>
               </div>
@@ -517,8 +517,8 @@
                             </div>
                           </div>
 
-                          <a class="btn testing w-{100%}" href="{{ product.url }}"
-                             rel="noreferrer">Shop Now</a>
+                          <tracked-button :trackId="{{ block.settings.trackId }}" class="btn testing w-{100%}" href="{{ product.url }}"
+                             rel="noreferrer">Shop Now</tracked-button>
                         </div>
                       </div>
                     </div>
@@ -647,6 +647,11 @@
           "step": 1,
           "label": "Motion Isolation Meter",
           "default": 8
+        },
+        {
+          "type": "text",
+          "id": "trackId",
+          "label": "CTA Button Tracking Id"
         }
       ]
     },
@@ -694,6 +699,11 @@
           "id": "text",
           "label": "Button Text",
           "info": "Link Text"
+        },
+        {
+          "type": "text",
+          "id": "trackId",
+          "label": "Button Tracking Id"
         }
       ]
     }

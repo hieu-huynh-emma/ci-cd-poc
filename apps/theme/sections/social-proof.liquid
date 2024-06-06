@@ -9,7 +9,7 @@
     {% comment %}<lazy-component size="md">{% endcomment %}
       <div>
         <div class="splide">
-          {% include 'splide-arrows' %}
+          {% include 'splide-arrows', trackId: section.settings.trackId  %}
 
           <div class="splide__track">
             <ul class="splide__list">
@@ -120,6 +120,11 @@
         }
       ],
       "default": "start"
+    },
+    {
+      "type": "text",
+      "id": "trackId",
+      "label": "Tracking ID"
     }
   ]
 }

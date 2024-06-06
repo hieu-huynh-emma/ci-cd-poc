@@ -13,7 +13,7 @@
     {% render 'section-header' %}
 
     <div class="grid-container splide">
-      {% include 'splide-arrows' %}
+      {% include 'splide-arrows', trackId: section.settings.trackId %}
 
       <div class="splide__track">
         <ul class="splide__list">
@@ -89,6 +89,11 @@
       ],
       "default": "md",
       "label": "Container Spacing"
+    },
+    {
+      "type": "text",
+      "id": "trackId",
+      "label": "Tracking ID"
     }
   ]
 }

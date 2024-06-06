@@ -150,11 +150,11 @@
 
 
         <div class="small_nav">
-            <button tabindex="-1" class="language-redirection"></button>
+            <tracked-button tabindex="-1" class="language-redirection"></tracked-button>
 
-            <a href="https://emma-sleep.ca/pages/faq">FAQ</a>
+            <tracked-button :trackId="FAQ_HP" href="https://emma-sleep.ca/pages/faq">FAQ</tracked-button>
             <div class="custom_dropdown">
-                <a href="https://emma-sleep.ca/pages/comparison" class="dropdown_btn">Compare</a>
+                <tracked-button :trackId="Compare_other_HP" href="https://emma-sleep.ca/pages/comparison" class="dropdown_btn">Compare</tracked-button>
                 <ul class="minimal-site-subnav">
 
                     <li class="site-subnav__item site-nav--active">

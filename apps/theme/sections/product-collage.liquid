@@ -12,7 +12,7 @@
                 <div
                         class="collage-card">
 
-                    <a
+                    <tracked-button
                             href="{{ collection.url }}"
 
                             class=""
@@ -43,7 +43,7 @@
                             <p class="text-md md:text-xl font-semibold">{{ item.settings.heading }}</p>
                             <p class="uppercase font-semibold text-xs md:text-sm">{{ item.settings.subheading }}</p>
                         </div>
-                    </a>
+                    </tracked-button>
                 </div>
             {% endfor %}
         </div>
@@ -78,6 +78,11 @@
           "id": "collection",
           "type": "collection",
           "label": "Linked Product Collection"
+        },
+        {
+          "id": "text",
+          "type": "trackId",
+          "label": "Tracking ID"
         }
       ]
     }

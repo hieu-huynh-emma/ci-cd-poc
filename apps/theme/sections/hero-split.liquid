@@ -63,10 +63,11 @@
 
                             {% if settings.cta_url %}
                                 <div class="banner-cta">
-                                    <a {% if forloop.last %}data-abtasty="hero-cta-button"{% endif %}
-                                       class="btn btn--lg" href="{{ settings.cta_url }}">
+                                    <tracked-button
+                                        :trackId="{{ settings.trackId }}"
+                                        class="btn btn--lg" href="{{ settings.cta_url }}">
                                       {{ settings.cta_text }}
-                                    </a>
+                                    </tracked-button>
                                 </div>
                             {% endif %}
                         </div>
@@ -170,6 +171,11 @@
           "type": "checkbox",
           "id": "discount_badge",
           "label": "Display Discount Badge"
+        },
+        {
+          "id": "trackId",
+          "type": "text",
+          "label": "Tracking ID"
         }
       ]
     }

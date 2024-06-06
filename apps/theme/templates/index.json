@@ -17,7 +17,8 @@
             "cta_text": "Shop the sale",
             "cta_subtext": "",
             "timer": "2024-06-03 06:00",
-            "discount_badge": false
+            "discount_badge": false,
+            "trackId": "Shop_left"
           }
         },
         "7bd45a45-1205-4518-9b02-60a5bc9a95ac": {
@@ -33,7 +34,8 @@
             "cta_text": "Shop the Mattress",
             "cta_subtext": "",
             "timer": "2023-12-23 05:00",
-            "discount_badge": true
+            "discount_badge": true,
+            "trackId": "Shop_right"
           }
         }
       },
@@ -56,7 +58,8 @@
         "cta_url": "shopify:\/\/pages\/sale",
         "cta_text": "Shop Now",
         "cta_subtext": "",
-        "timer": "2024-06-06 06:00"
+        "timer": "2024-06-06 06:00",
+        "trackId": "Shop"
       }
     },
     "06c76c39-8b9d-42b2-b20c-9dab3dc4287f": {
@@ -310,7 +313,8 @@
         ".logo-carousel {padding: 40px 0;}"
       ],
       "settings": {
-        "heading": "Award-winning Comfort"
+        "heading": "Award-winning Comfort",
+        "trackId": "Scroll_awards"
       }
     },
     "featured-products": {
@@ -330,7 +334,8 @@
             "discount_title": "4th of July Sale",
             "comfort_meter": 6,
             "cooling_meter": 4,
-            "motion_isolation_meter": 6
+            "motion_isolation_meter": 6,
+            "trackId": "OG_compare_HP"
           }
         },
         "2faeb4c9-fe7f-46bc-9cd1-3b2e38ad1752": {
@@ -347,26 +352,8 @@
             "discount_title": "",
             "comfort_meter": 8,
             "cooling_meter": 6,
-            "motion_isolation_meter": 8
-          }
-        },
-        "5669a974-c41c-4819-895a-3683043506f7": {
-          "type": "product-block",
-          "disabled": true,
-          "settings": {
-            "product": "emma-shift",
-            "show_star_rating": false,
-            "color": "#3c4196",
-            "primary_badge": "NEW",
-            "secondary_badge": "PREMIUM CHOICE",
-            "mattress_height": "shopify:\/\/shop_images\/MicrosoftTeams-image_100.png",
-            "image": "shopify:\/\/shop_images\/Shift_comparision_image_corrected.png",
-            "product_title": "Emma Shift Mattress",
-            "desc": "<h1>★ 4<\/h1><p><strong>Our newest mattress, offering personalized comfort for every type of sleeper<\/strong><\/p><ul><li>Our newest technology with adaptive support<\/li><li>6 unique layers with adjustable firmness on either side<\/li><li>Titanium-infused foam for extra cooling<\/li><\/ul>",
-            "discount_title": "4th of July Sale",
-            "comfort_meter": 8,
-            "cooling_meter": 8,
-            "motion_isolation_meter": 8
+            "motion_isolation_meter": 8,
+            "trackId": "Comfort_compare_HP"
           }
         },
         "5b5432f6-dba9-4790-a55c-48525184b6b4": {
@@ -383,28 +370,30 @@
             "discount_title": "",
             "comfort_meter": 8,
             "cooling_meter": 8,
-            "motion_isolation_meter": 8
+            "motion_isolation_meter": 8,
+            "trackId": "Premium_compare_HP"
           }
         },
         "95bee6a1-5a6f-4ba8-9fac-03c161a01953": {
           "type": "explore-button",
           "settings": {
             "url": "shopify:\/\/pages\/comparison",
-            "text": "<p>Compare all mattresses<\/p>"
+            "text": "<p>Compare all mattresses<\/p>",
+            "trackId": "Compare_HP"
           }
         },
         "95bee6a1-5a6f-4ba8-9fac-03c161a01954": {
           "type": "explore-button",
           "settings": {
             "url": "shopify:\/\/pages\/product-quizz",
-            "text": "<p>Find your perfect mattress<\/p>"
+            "text": "<p>Find your perfect mattress<\/p>",
+            "trackId": "Quiz_HP"
           }
         }
       },
       "block_order": [
         "old-featured-products-1",
         "2faeb4c9-fe7f-46bc-9cd1-3b2e38ad1752",
-        "5669a974-c41c-4819-895a-3683043506f7",
         "5b5432f6-dba9-4790-a55c-48525184b6b4",
         "95bee6a1-5a6f-4ba8-9fac-03c161a01953",
         "95bee6a1-5a6f-4ba8-9fac-03c161a01954"
@@ -557,7 +546,8 @@
             "heading": "Mattresses",
             "subheading": "Most Awarded",
             "photo": "shopify:\/\/shop_images\/emma-original-cataloge_1_1.jpg",
-            "collection": "mattresses"
+            "collection": "mattresses",
+            "trackId": "Mattresses_box_HP"
           }
         },
         "collage_item_FbfaGf": {
@@ -566,7 +556,8 @@
             "heading": "Pillows and Beddings",
             "subheading": "Extra comfort",
             "photo": "shopify:\/\/shop_images\/jpeg-optimizer_pillow-copress.jpg",
-            "collection": "beddings"
+            "collection": "beddings",
+            "trackId": "Pillows_box_HP"
           }
         },
         "collage_item_e6jR8U": {
@@ -575,7 +566,8 @@
             "heading": "Beds",
             "subheading": "Long Lasting",
             "photo": "shopify:\/\/shop_images\/emma-catalog-2_1_1.jpg",
-            "collection": "beds"
+            "collection": "beds",
+            "trackId": "Bed_box_HP"
           }
         }
       },
@@ -668,7 +660,8 @@
       "settings": {
         "heading": "Emma Favorites",
         "heading_alignment": "start",
-        "container_spacing": "md"
+        "container_spacing": "md",
+        "trackId": "Favorites_scroll_HP"
       }
     },
     "media-publication": {
@@ -761,7 +754,8 @@
         ".award-name {display: none;}"
       ],
       "settings": {
-        "heading": "As Seen On"
+        "heading": "As Seen On",
+        "trackId": "As_seen_scroll_HP"
       }
     },
     "customer-sentiment": {
@@ -947,7 +941,8 @@
         "c4884297-13b5-40c7-9075-bed6e1cf82d8"
       ],
       "settings": {
-        "title": "<p>The honest truth from our customers<\/p>"
+        "title": "<p>The honest truth from our customers<\/p>",
+        "trackId": "Truth_scroll_HP"
       }
     },
     "social-proof": {
@@ -1068,7 +1063,8 @@
       ],
       "settings": {
         "heading": "See our beds in action online",
-        "heading_alignment": "start"
+        "heading_alignment": "start",
+        "trackId": "Action_online_scroll_HP"
       }
     }
   },

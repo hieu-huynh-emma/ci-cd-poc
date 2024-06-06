@@ -11,7 +11,7 @@
     {% comment %}<lazy-component size="lg">{% endcomment %}
       <div>
         <div class="splide">
-          {% include 'splide-arrows' %}
+          {% include 'splide-arrows', trackId: section.settings.trackId  %}
 
           <div class="splide__track">
             <ul class="splide__list">
@@ -139,6 +139,11 @@
       "type": "richtext",
       "label": "Title",
       "default": "<p>Why sleepers <i>love</i> Emma</p>"
+    },
+    {
+      "type": "text",
+      "id": "trackId",
+      "label": "Tracking ID"
     }
   ]
 }

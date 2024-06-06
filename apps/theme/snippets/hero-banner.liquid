@@ -46,7 +46,7 @@
         {% if settings.cta_url %}
           <div class="banner-cta">
             <tracked-button
-                :trackId="hero-cta-button"
+                :trackId="{{ settings.trackId }}"
                 class="btn btn--lg"
                 href="{{ settings.cta_url }}">
               {{ settings.cta_text }}

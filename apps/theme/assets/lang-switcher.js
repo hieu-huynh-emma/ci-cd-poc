@@ -19,6 +19,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const $languageRedirection = $(".language-redirection");
         $languageRedirection.text(currentLanguage === 'en' ? "Français" : "English");
         // $languageRedirection.attr("href", currentLanguage === 'en' ? franceUrl : englishUrl);
+
+        $languageRedirection.get(0).props.trackId = currentLanguage === 'en' ? "French_website" : "English_website"
     }
 
     $('.language-redirection').click(function (e) {

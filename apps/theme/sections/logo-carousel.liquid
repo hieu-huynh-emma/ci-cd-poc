@@ -22,7 +22,7 @@
         </div>
 
         <div class="awards splide">
-            {% render 'splide-arrows' %}
+            {% render 'splide-arrows', trackId: section.settings.trackId %}
             <div class="splide__track">
                 <ul class="splide__list">
                     {%- for block in awards -%}
@@ -95,6 +95,11 @@
       "id": "heading",
       "type": "text",
       "label": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "trackId",
+      "label": "Tracking ID"
     }
   ]
 }
