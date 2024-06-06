@@ -18,20 +18,31 @@ class ProductMedia extends CustomElement {
 
       const main = new Splide("product-media .main-carousel", {
         type: "fade",
-        rewind: true,
-        pagination: false,
-        arrows: true,
-      });
-      const thumbnails = new Splide("product-media .thumbnail-carousel", {
-        fixedWidth: 80,
-        gap: 10,
-        rewind: true,
         pagination: false,
         arrows: false,
-        isNavigation: true,
         breakpoints: {
           769: {
-            gap: 8,
+            arrows: true,
+          },
+        },
+      });
+      const thumbnails = new Splide("product-media .thumbnail-carousel", {
+        mediaQuery: "min",
+        fixedWidth: 80,
+        gap: 8,
+        rewind: true,
+        pagination: false,
+        isNavigation: true,
+        arrows: false,
+        breakpoints: {
+          769: {
+            fixedWidth: "initial",
+            autoHeight: true,
+            direction: "ttb",
+            height: "100%",
+            padding: { top: 16, bottom: 16 },
+            focus: "center",
+            arrows: true,
           },
         },
       });
@@ -45,19 +56,36 @@ class ProductMedia extends CustomElement {
       let drift;
       let triggerEl;
 
+      const $mainCarousel = $("product-media .main-carousel");
+
       main.on("active", ({ slide }) => {
         if (drift) drift.destroy();
         const currentLanguage = $("html").attr("lang");
-        triggerEl = slide.querySelector(`.media-item[lang="${currentLanguage}"]`);
-        drift = new Drift(triggerEl, {
-          paneContainer: document.querySelector("product-media .main-carousel"),
-          zoomFactor: 2
-        });
 
-        drift.disable();
+        const mediaItemEl = slide.querySelector(`.media-item`);
+
+        const slideType = mediaItemEl.dataset.type;
+
+        $mainCarousel.attr("data-type", slideType);
+
+        if (slideType === "image") {
+          triggerEl = mediaItemEl.querySelector(`[lang="${currentLanguage}"]`);
+          drift = new Drift(triggerEl, {
+            paneContainer: $mainCarousel.get(0),
+            zoomFactor: 2,
+          });
+
+          drift.disable();
+        }
+
+        if (slideType === "video") {
+          const videoEl = slide.querySelector("video")
+
+          videoEl.play()
+        }
       });
 
-      $("product-media .main-carousel").click(function () {
+      $mainCarousel.click(function () {
         if (!drift) return;
 
         const $pane = $(this);

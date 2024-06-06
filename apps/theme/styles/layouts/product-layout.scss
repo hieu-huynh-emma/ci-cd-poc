@@ -219,9 +219,13 @@
   inset: 0;
   z-index: 5;
 
-  margin: 10px;
+  margin: 8px;
 
   pointer-events: none;
+
+  @media screen and (min-width: 769px) {
+    margin: 10px 10px 10px calc(100px + 8px + 10px);
+  }
 }
 
 

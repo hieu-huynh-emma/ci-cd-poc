@@ -95,7 +95,7 @@ class StickyBuybox extends CustomElement {
     console.log("=>(product-buybox.js:21) mounted");
     super.mounted();
 
-    const { $addToCart, $fixAddToCart, $proxySelect, $primarySelect, $proxyQtySelect, $primaryQtySelect } = this.refs;
+    const { $addToCart, $fixAddToCart, $proxyQtySelect, $primaryQtySelect } = this.refs;
     $addToCart.click(() => {
       $fixAddToCart.trigger("click");
     });
@@ -116,13 +116,6 @@ class StickyBuybox extends CustomElement {
     $proxyQtySelect.on("change", () => {
       $primaryQtySelect.find("input").val($proxyQtySelect.find("input").val());
     });
-
-    // return;
-    // const { $outlet, $productOptions, $productPrice, $productBuynow } = this.refs;
-
-    // this.renderProductInfo();
-
-    // $outlet.append($productOptions, $productPrice, $productBuynow);
   }
 
   onIntersect([entry]) {
@@ -192,7 +185,6 @@ class StickyBuybox extends CustomElement {
     const $leadItemURl = $productMedia.find("input#lead-item-url").val();
 
     this.$el.find(".product-image").attr("src", $leadItemURl);
-    this.$el.find(".product-title").text($productTitle.text());
   }
 }
 
