@@ -1,4 +1,5 @@
 #content_for_additional_checkout_buttons {
+  position: absolute;
   opacity: 0;
   visibility: hidden;
 }
@@ -9,10 +10,14 @@
 }
 
 express-checkout-button {
-  display: flex;
+  display: block;
   max-height: 44px;
   border-radius: 60px;
   overflow: hidden;
+  @media screen and (min-width: 769px) {
+    display: flex;
+  }
+
   iframe {
     width: 100%;
   }
