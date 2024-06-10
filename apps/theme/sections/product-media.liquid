@@ -66,80 +66,83 @@
   {% endcase %}
   <template>
     <div class="carousel-container">
-      <div class="main-carousel splide">
-        <div class="splide__track">
-          <ul class="splide__list">
-            {% for block in allItems %}
-              <li
-                  class="splide__slide"
-              >
-                {% case block.type %}
-                  {% when "image" %}
-                    <div class="media-item media-container" data-type="{{ block.type }}">
-                      <picture class="media-item__image" lang="en"
-                               data-zoom="{{ block.settings.en_mobile_image | default: block.settings.en_desktop_image | image_url: width: 2048 }}"
-                      >
-                        <source
-                            media="(min-width: 1200px)"
-                            srcset="{{ block.settings.en_desktop_image | image_url: width: 1440 }}"
+      <div class="main-carousel">
+        <div class="splide">
+          <div class="splide__track">
+            <ul class="splide__list">
+              {% for block in allItems %}
+                <li
+                    class="splide__slide"
+                >
+                  {% case block.type %}
+                    {% when "image" %}
+                      <div class="media-item media-container" data-type="{{ block.type }}">
+                        <picture class="media-item__image" lang="en"
+                                 data-zoom="{{ block.settings.en_mobile_image | default: block.settings.en_desktop_image | image_url: width: 2048 }}"
                         >
-                        <source
-                            media="(min-width: 992px)"
-                            srcset="{{ block.settings.en_desktop_image | image_url: width: 1040 }}"
-                        >
-                        <source
-                            media="(min-width: 768px)"
-                            srcset="{{ block.settings.en_desktop_image | image_url: width: 800 }}"
-                        >
-
-                        <img
-                            src="{{ block.settings.en_mobile_image | default: block.settings.en_desktop_image | image_url: width: 600 }}"
-                            width="808"
-                            height="486"
-                        >
-                      </picture>
-
-                      <picture class="media-item__image" lang="fr"
-                               data-zoom="{{ block.settings.fr_mobile_image | default: block.settings.fr_desktop_image | image_url: width: 2048 }}">
-                        <source
-                            media="(min-width: 1200px)"
-                            srcset="{{ block.settings.fr_desktop_image | image_url: width: 1440 }}"
-                        >
-                        <source
-                            media="(min-width: 992px)"
-                            srcset="{{ block.settings.fr_desktop_image | image_url: width: 1040 }}"
-                        >
-                        <source
-                            media="(min-width: 768px)"
-                            srcset="{{ block.settings.fr_desktop_image | image_url: width: 800 }}"
-                        >
-
-                        <img
-                            src="{{ block.settings.fr_mobile_image | default: block.settings.fr_desktop_image | image_url: width: 600 }}"
-                            width="808"
-                            height="486"
-                        >
-                      </picture>
-                    </div>
-                  {% when "video" %}
-                    {% assign media = block.settings.video %}
-                    {% assign poster = media | image_url: width: 550 | prepend: "https:" %}
-                    <div class="media-item media-container" data-type="{{ block.type }}">
-                      <video playsinline preload="none" loop controls poster="{{ poster }}">
-                        {% for source in media.sources %}
                           <source
-                              src="{{ source.url }}"
-                              type="{{ source.mime_type }}">
-                        {% endfor %}
-                      </video>
-                    </div>
-                {% endcase %}
-              </li>
-            {% endfor %}
-          </ul>
-        </div>
+                              media="(min-width: 1200px)"
+                              srcset="{{ block.settings.en_desktop_image | image_url: width: 1440 }}"
+                          >
+                          <source
+                              media="(min-width: 992px)"
+                              srcset="{{ block.settings.en_desktop_image | image_url: width: 1040 }}"
+                          >
+                          <source
+                              media="(min-width: 768px)"
+                              srcset="{{ block.settings.en_desktop_image | image_url: width: 800 }}"
+                          >
 
+                          <img
+                              src="{{ block.settings.en_mobile_image | default: block.settings.en_desktop_image | image_url: width: 600 }}"
+                              width="808"
+                              height="486"
+                          >
+                        </picture>
+
+                        <picture class="media-item__image" lang="fr"
+                                 data-zoom="{{ block.settings.fr_mobile_image | default: block.settings.fr_desktop_image | image_url: width: 2048 }}">
+                          <source
+                              media="(min-width: 1200px)"
+                              srcset="{{ block.settings.fr_desktop_image | image_url: width: 1440 }}"
+                          >
+                          <source
+                              media="(min-width: 992px)"
+                              srcset="{{ block.settings.fr_desktop_image | image_url: width: 1040 }}"
+                          >
+                          <source
+                              media="(min-width: 768px)"
+                              srcset="{{ block.settings.fr_desktop_image | image_url: width: 800 }}"
+                          >
+
+                          <img
+                              src="{{ block.settings.fr_mobile_image | default: block.settings.fr_desktop_image | image_url: width: 600 }}"
+                              width="808"
+                              height="486"
+                          >
+                        </picture>
+                      </div>
+                    {% when "video" %}
+                      {% assign media = block.settings.video %}
+                      {% assign poster = media | image_url: width: 550 | prepend: "https:" %}
+                      <div class="media-item media-container" data-type="{{ block.type }}">
+                        <video playsinline preload="none" loop controls poster="{{ poster }}">
+                          {% for source in media.sources %}
+                            <source
+                                src="{{ source.url }}"
+                                type="{{ source.mime_type }}">
+                          {% endfor %}
+                        </video>
+                      </div>
+                  {% endcase %}
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+        <div class="zoom-container"></div>
       </div>
+
 
       <div class="thumbnail-carousel splide">
         <div class="splide__track">
@@ -231,7 +234,8 @@
       </div>
     </div>
 
-    <input id="lead-item-url" type="hidden" value="{{ leadItem.settings.en_mobile_image | default: leadItem.settings.en_desktop_image | image_url: width: 600 }}">
+    <input id="lead-item-url" type="hidden"
+           value="{{ leadItem.settings.en_mobile_image | default: leadItem.settings.en_desktop_image | image_url: width: 600 }}">
   </template>
 </product-media>
 

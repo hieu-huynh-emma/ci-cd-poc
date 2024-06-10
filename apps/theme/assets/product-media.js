@@ -16,7 +16,7 @@ class ProductMedia extends CustomElement {
       await ResourceCoordinator.requestVendor("Splide");
       await ResourceCoordinator.requestVendor("DriftZoom");
 
-      const main = new Splide("product-media .main-carousel", {
+      const main = new Splide("product-media .main-carousel .splide", {
         type: "fade",
         pagination: false,
         arrows: false,
@@ -71,17 +71,15 @@ class ProductMedia extends CustomElement {
         if (slideType === "image") {
           triggerEl = mediaItemEl.querySelector(`[lang="${currentLanguage}"]`);
           drift = new Drift(triggerEl, {
-            paneContainer: $mainCarousel.get(0),
+            paneContainer: $mainCarousel.find(".zoom-container").get(0),
             zoomFactor: 2,
           });
-
-          drift.disable();
         }
 
         if (slideType === "video") {
-          const videoEl = slide.querySelector("video")
+          const videoEl = slide.querySelector("video");
 
-          videoEl.play()
+          videoEl.play();
         }
       });
 
@@ -93,13 +91,11 @@ class ProductMedia extends CustomElement {
         const isEnabled = $pane.hasClass("zoom-enabled");
 
         if (isEnabled) {
-          drift.disable();
+          // drift.disable();
           $pane.removeClass("zoom-enabled");
-          triggerEl.dispatchEvent(new Event("mouseleave"));
         } else {
-          drift.enable();
+          // drift.enable();
           $pane.addClass("zoom-enabled");
-          triggerEl.dispatchEvent(new Event("mouseenter"));
         }
       });
 
