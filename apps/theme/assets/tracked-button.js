@@ -3,6 +3,10 @@ class TrackedButton extends CustomButton {
     trackId: null,
   };
 
+  isHyperlink = false;
+
+  hyperlinkEl;
+
   constructor() {
     super();
   }
@@ -12,19 +16,21 @@ class TrackedButton extends CustomButton {
   }
 
   render() {
-    const isHyperlink = this.hasAttribute("href");
+    this.isHyperlink = this.hasAttribute("href");
 
-    if (isHyperlink) {
-      const hyperlinkEl = document.createElement("a");
+    if (this.isHyperlink) {
+      this.hyperlinkEl = document.createElement("a");
 
       [...this.attributes].forEach((attr) => {
         if (["download", "href", "hreflang", "media", "ping", "referrerpolicy", "rel", "target", "type"].includes(attr.name)) {
-          hyperlinkEl.setAttribute(attr.name, attr.value);
+          this.hyperlinkEl.setAttribute(attr.name, attr.value);
           this.removeAttribute(attr.name);
         }
       });
 
-      this.appendChild(hyperlinkEl)
+      this.appendChild(this.hyperlinkEl);
+
+      this.$el.addClass("tracked-button--link")
     }
   }
 
@@ -44,6 +50,8 @@ class TrackedButton extends CustomButton {
         click_type: trackId,
       });
     }
+
+    this.hyperlinkEl.trigger('click')
 
     this.onClick(event);
   }

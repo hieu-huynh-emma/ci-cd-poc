@@ -98,10 +98,15 @@ settings.colors_accent_2 }}{% endif %};
     tracked-button {
         position: relative;
     }
-    tracked-button a {
+    .tracked-button--link {
+        cursor: pointer;
+    }
+    .tracked-button--link a {
         position: absolute;
         inset: 0;
         opacity: 0;
+
+        pointer-events: none;
     }
 </style>
 
