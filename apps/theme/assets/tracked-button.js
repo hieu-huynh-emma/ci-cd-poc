@@ -51,8 +51,6 @@ class TrackedButton extends CustomButton {
       });
     }
 
-    this.hyperlinkEl.trigger('click')
-
     this.onClick(event);
   }
 

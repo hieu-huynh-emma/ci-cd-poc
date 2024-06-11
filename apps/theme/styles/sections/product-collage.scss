@@ -13,7 +13,11 @@
     position: relative;
     border-radius: 8px;
     overflow: hidden;
-
+    &:hover {
+      .card-photo {
+        transform: scale(1.2)
+      }
+    }
     &:first-child {
 
       @media screen and (min-width: 729px) {
@@ -43,11 +47,6 @@
       transition: all 0.5s ease;
       transform: scale(1);
       object-fit: cover;
-
-      &:hover {
-        transform: scale(1.2)
-      }
-
     }
 
     .card-content {
