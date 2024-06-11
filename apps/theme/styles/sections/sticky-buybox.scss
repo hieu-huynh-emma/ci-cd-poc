@@ -1,7 +1,7 @@
 sticky-buybox {
   position: fixed;
 
-  z-index: 99999999;
+  z-index: 9999999999;
 
   display: none;
 
@@ -29,7 +29,7 @@ sticky-buybox {
     height: 100%;
 
     @media screen and (min-width: 992px) {
-      grid-template-columns: minmax(0, auto) minmax(0, 1fr);
+      grid-template-columns: minmax(0, .3fr) minmax(0, .7fr);
       justify-content: space-between;
     }
   }

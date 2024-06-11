@@ -25,9 +25,9 @@ class ProductBuybox extends CustomElement {
     const $stickyBuybox = $("sticky-buybox");
 
     if (!!+showSticky) {
-      const $body = $("body");
+      const $cartSurface = $("cart-surface");
 
-      $body.append($stickyBuybox);
+      $cartSurface.before($stickyBuybox);
     } else {
       $stickyBuybox.remove();
     }
