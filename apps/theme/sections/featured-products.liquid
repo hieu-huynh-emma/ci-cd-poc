@@ -367,14 +367,13 @@
 
     <div class="splide md:hidden mobile_view">
       {% include 'splide-arrows' %}
-
+      
       <div class="splide__track">
         <ul class="splide__list">
           {%- for block in productBlocks -%}
             {% assign product = block.settings.product %}
-            <a href="{{ product.url }}">
               <li class="splide__slide">
-
+                <a href="{{ product.url }}">
                 <div class="w-full flex flex-col max-w-[320px] text-center featured_card"
                      style="background-color:  var(--product-card-bg)">
                   {% if section.settings.show_secondary_badge %}
@@ -524,9 +523,9 @@
                     </div>
                   </div>
                 </div>
-
+                </a>
               </li>
-            </a>
+
           {%- endfor -%}
 
           {%- for block in imageBlocks -%}
