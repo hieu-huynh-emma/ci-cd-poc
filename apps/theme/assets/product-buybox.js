@@ -17,6 +17,11 @@ class ProductBuybox extends CustomElement {
     $addToCart.click(() => {
       $fixAddToCart.trigger("click");
     });
+
+    // Re-updating the variant ID
+    $("product-buybox select.select__select")
+      .get(0)
+      .dispatchEvent(new Event("change", { bubbles: true }));
   }
 
   portal() {
