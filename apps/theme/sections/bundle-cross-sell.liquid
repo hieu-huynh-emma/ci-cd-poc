@@ -1,0 +1,71 @@
+<style>
+    .bundle-box {
+        display: none;
+    }
+
+    bundle-cross-sell {
+        display: none;
+    }
+</style>
+
+<link rel="quickscript" loading="delayed" href="{{ 'bundle-box.css' | asset_url }}" />
+<link rel="quickscript" loading="delayed" href="{{ 'bundle-cross-sell.css' | asset_url }}" />
+
+{%- assign current_variant = product.selected_or_first_available_variant -%}
+
+{% assign metaobjects = current_variant.metafields.accentuate.proxy_cross_selling_products.value %}
+
+{% assign offerProduct = all_products[section.settings.product] %}
+{% assign offerVariant = offerProduct.selected_or_first_available_variant %}
+
+{% if offerProduct != blank %}
+  <bundle-cross-sell
+    data-product-id="{{ offerProduct.id }}"
+    data-variant-id="{{ offerVariant.id }}"
+  >
+    <script id="BundleCrossSell-JSON" type="application/json">{{ offerProduct | json }}</script>
+
+    <div class="bundle-box bundle-offer">
+      <div class="offer-header">
+        <div id="BundleCrossSell-Switcher"></div>
+
+
+        <p>{{ section.settings.heading }}</p>
+
+
+        <p id="BundleCrossSell-PriceTag" class="flex items-center gap-2"></p>
+
+      </div>
+
+      <div class="bundle-items"></div>
+
+    </div>
+
+    <script type="quickscript" loading="delayed" src="{{ 'bundle-cross-sell.js' | asset_url }}"></script>
+  </bundle-cross-sell>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Bundle Cross Sell",
+  "class": "hide-until-initialized",
+  "settings": [
+    {
+      "id": "heading",
+      "type": "text",
+      "label": "Heading",
+      "default": "Add bundle offer!"
+    },
+    {
+      "id": "product",
+      "type": "product",
+      "label": "Product"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Bundle Cross Sell"
+    }
+  ]
+}
+{% endschema %}

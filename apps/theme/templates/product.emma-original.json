@@ -131,6 +131,12 @@
       "settings": {
       }
     },
+    "bundle-cross-sell": {
+      "type": "bundle-cross-sell",
+      "settings": {
+        "product": "original-accessory-bundle"
+      }
+    },
     "risk-reversal": {
       "type": "risk-reversal",
       "blocks": {
@@ -1085,6 +1091,7 @@
     "product-media",
     "risk-reversal",
     "campaign-teaser",
+    "bundle-cross-sell",
     "price-transparency",
     "product-specifications",
     "product-unique-selling-points",

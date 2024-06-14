@@ -79,6 +79,7 @@ variant-selects {
   position: relative;
   display: grid;
   gap: 16px;
+  grid-template-columns: minmax(0, 1fr);
   align-content: flex-start;
   margin-bottom: 24px;
 }

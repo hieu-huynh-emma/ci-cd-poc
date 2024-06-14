@@ -7,7 +7,7 @@
         "item_ha7iFa": {
           "type": "item",
           "settings": {
-            "product": "emma-hybrid-premium-plus",
+            "product": "emma-hybrid-premium-plus-s",
             "upsell": "",
             "short_desc": "Same structure, more breathable cover",
             "show_star_rating": false
@@ -140,6 +140,12 @@
         "12e2c164-6e6a-42a2-a76a-b4363d4c2c09"
       ],
       "settings": {
+      }
+    },
+    "bundle-cross-sell": {
+      "type": "bundle-cross-sell",
+      "settings": {
+        "product": "premium-accessory-bundle"
       }
     },
     "risk-reversal": {
@@ -366,6 +372,7 @@
           }
         },
         "cross_sell_widget_tXLCDN": {
+          "disabled": true,
           "type": "cross_sell_widget",
           "settings": {
           }
@@ -990,6 +997,7 @@
     "product-layout",
     "product-summary",
     "product-badges",
+    "bundle-cross-sell",
     "product-media",
     "risk-reversal",
     "campaign-teaser",

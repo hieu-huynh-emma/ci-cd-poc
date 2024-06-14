@@ -45,12 +45,10 @@
       "settings": {
       }
     },
-    "bundle-box": {
-      "type": "bundle-box",
+    "bundle-cross-sell": {
+      "type": "bundle-cross-sell",
       "settings": {
-        "heading": "Comfort Sleep Set",
-        "promotional_text": "",
-        "note": "*No mattress protector available for Twin XL and Cal King sizes"
+        "product": "duvet"
       }
     },
     "product-badges": {
@@ -1151,7 +1149,7 @@
   "order": [
     "joint-product",
     "product-layout",
-    "bundle-box",
+    "bundle-cross-sell",
     "product-badges",
     "product-summary",
     "risk-reversal",

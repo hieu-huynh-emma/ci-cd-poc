@@ -147,3 +147,5 @@ ResourceCoordinator.registerVendor("Splide", [
 ResourceCoordinator.registerVendor("Tippy", ["https://unpkg.com/@popperjs/core@2", "https://unpkg.com/tippy.js@6"]);
 
 ResourceCoordinator.registerVendor("DriftZoom", ["https://cdnjs.cloudflare.com/ajax/libs/drift-zoom/1.5.1/Drift.min.js"]);
+
+ResourceCoordinator.registerVendor("AsSwitch", ["https://cdn.jsdelivr.net/npm/jquery-asSwitch@0.2.3/dist/jquery-asSwitch.min.js", "https://cdn.jsdelivr.net/npm/jquery-asSwitch@0.2.3/dist/css/asSwitch.min.css"]);

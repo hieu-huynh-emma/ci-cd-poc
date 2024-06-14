@@ -225,6 +225,12 @@
         "show_countdown_timer": false
       }
     },
+    "bundle-cross-sell": {
+      "type": "bundle-cross-sell",
+      "settings": {
+        "product": "comfort-accessory-bundle"
+      }
+    },
     "price-transparency": {
       "type": "price-transparency",
       "blocks": {
@@ -395,6 +401,7 @@
           }
         },
         "cross_sell_widget_tXLCDN": {
+          "disabled": true,
           "type": "cross_sell_widget",
           "settings": {
           }
@@ -1160,6 +1167,7 @@
     "risk-reversal",
     "campaign-teaser",
     "price-transparency",
+    "bundle-cross-sell",
     "product-unique-selling-points",
     "product-specifications",
     "product-auxiliary",

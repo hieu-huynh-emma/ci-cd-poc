@@ -29,6 +29,11 @@ const schema = [
     insertPosition: "afterend",
   },
   {
+    sectionId: "bundle-cross-sell",
+    outletQuery: "#attribute-configurator",
+    insertPosition: "afterend",
+  },
+  {
     sectionId: "product-auxiliary",
     blocks: [
       {
