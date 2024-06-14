@@ -225,12 +225,6 @@
         "show_countdown_timer": false
       }
     },
-    "bundle-cross-sell": {
-      "type": "bundle-cross-sell",
-      "settings": {
-        "product": "comfort-accessory-bundle"
-      }
-    },
     "price-transparency": {
       "type": "price-transparency",
       "blocks": {
@@ -304,6 +298,13 @@
       "settings": {
         "title": "Delivering Premium Quality",
         "grabber_text": "Discover the value behind our prices"
+      }
+    },
+    "bundle-cross-sell": {
+      "type": "bundle-cross-sell",
+      "settings": {
+        "heading": "Add bundle offer!",
+        "product": "comfort-accessory-bundle"
       }
     },
     "product-unique-selling-points": {
@@ -411,7 +412,7 @@
           "settings": {
             "title": "Upgrade to Hybrid Premium Mattress:",
             "content": "<p><\/p><ul><li>Improved Cooling & Motion Isolation<\/li><li>Advanced Thermosync Technology<\/li><\/ul>",
-            "badge": "55% off",
+            "badge": "60% off",
             "image": "shopify:\/\/shop_images\/Emma_Hybrid_Comfort_Transparent.png",
             "product": "emma-hybrid-premium-plus"
           }
@@ -678,7 +679,8 @@
             "discount_title": "Father's Day Sale",
             "comfort_meter": 6,
             "cooling_meter": 4,
-            "motion_isolation_meter": 6
+            "motion_isolation_meter": 6,
+            "trackId": ""
           }
         },
         "old-featured-products-2": {
@@ -696,7 +698,8 @@
             "discount_title": "Father's Day Sale",
             "comfort_meter": 8,
             "cooling_meter": 6,
-            "motion_isolation_meter": 8
+            "motion_isolation_meter": 8,
+            "trackId": ""
           }
         },
         "5669a974-c41c-4819-895a-3683043506f7": {
@@ -714,21 +717,24 @@
             "discount_title": "Father's Day Sale",
             "comfort_meter": 8,
             "cooling_meter": 8,
-            "motion_isolation_meter": 8
+            "motion_isolation_meter": 8,
+            "trackId": ""
           }
         },
         "95bee6a1-5a6f-4ba8-9fac-03c161a01953": {
           "type": "explore-button",
           "settings": {
             "url": "shopify:\/\/pages\/comparison",
-            "text": "<p>Compare all mattresses<\/p>"
+            "text": "<p>Compare all mattresses<\/p>",
+            "trackId": ""
           }
         },
         "95bee6a1-5a6f-4ba8-9fac-03c161a01954": {
           "type": "explore-button",
           "settings": {
             "url": "shopify:\/\/pages\/product-quizz",
-            "text": "<p>Find your perfect match<\/p>"
+            "text": "<p>Find your perfect match<\/p>",
+            "trackId": ""
           }
         }
       },
@@ -878,7 +884,8 @@
         "review_LLa7mp"
       ],
       "settings": {
-        "title": "<p>Why our customers love Emma<\/p>"
+        "title": "<p>Why our customers love Emma<\/p>",
+        "trackId": ""
       }
     },
     "product-carousel": {
@@ -925,7 +932,8 @@
       "settings": {
         "heading": "Some things are better together",
         "heading_alignment": "start",
-        "container_spacing": "md"
+        "container_spacing": "md",
+        "trackId": ""
       }
     },
     "1685402594226951ca": {
@@ -1052,7 +1060,8 @@
       ],
       "settings": {
         "heading": "See our beds in action online",
-        "heading_alignment": "start"
+        "heading_alignment": "start",
+        "trackId": ""
       }
     },
     "special-services": {
