@@ -82,6 +82,11 @@ function isMobileViewport() {
   return screenWidth < 769;
 }
 
+function isTabletViewport() {
+  const screenWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+  return screenWidth < 1024;
+}
+
 function debounce(fn, wait) {
   let t;
   return (...args) => {

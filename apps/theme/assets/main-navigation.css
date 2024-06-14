@@ -207,10 +207,6 @@ nav-dropdown {
       drop-shadow(0 8px 5px rgb(0 0 0/0.08));
     max-width:1000px;
     width:100%;
-    left:50px;
-        /* left: 50%;
-    -webkit-transform: translateX(-50%);
-    transform: translateX(-50%); */
     border-radius:10px
   }
 }
@@ -274,7 +270,7 @@ site-subnav .subnav-container .compare-btn {
   width:100%;
   margin-top:0
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1024px) {
   nav-dropdown{
     left: 0;
     -webkit-transform: inherit;
@@ -412,7 +408,7 @@ header[data-template="customers/account"] .nav_btns a.btn.login_btn{
 nav-overlay:empty {
   display: block;
 }
-@media screen and (max-width: 769px) {
+@media screen and (max-width: 1024px) {
   .subnav-container[data-name=Mattresses] .subnav-container__links {
     margin-top: 20px;
 }

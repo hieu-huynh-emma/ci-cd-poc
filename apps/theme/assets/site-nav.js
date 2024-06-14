@@ -75,7 +75,7 @@ class SiteNavItem extends CustomElement {
   }
 
   setup() {
-    if (isMobileViewport()) {
+    if (isTabletViewport()) {
       this.addEventListener("click", this.prepareMobileDropdown);
     } else {
       this.addEventListener("mouseover", debounce(this.onMouseOver.bind(this), 100));

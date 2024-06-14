@@ -140,7 +140,7 @@ class NavSidebar extends CustomElement {
   }
 
   async render() {
-    if (!isMobileViewport()) {
+    if (!isTabletViewport()) {
       this.innerHTML = `<loading-overlay></loading-overlay>`;
     }
 
