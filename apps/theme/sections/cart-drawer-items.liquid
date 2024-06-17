@@ -28,35 +28,47 @@
 
     {% capture cartItem %}
       <cart-item
-          :key="{{ item.key }}"
-          :itemId="{{ item.id }}"
-          :index="{{ item.index }}"
-          :variantId="{{ item.id }}"
-          :productId="{{ item.product_id }}"
-          :originalPrice="{{ item.variant.compare_at_price }}"
-          :quantity="{{ item.quantity }}"
-          {% if hasAddonService %}:addonService="{{ addonServiceData }}"{% endif %}
+        :key="{{ item.key }}"
+        :itemId="{{ item.id }}"
+        :index="{{ item.index }}"
+        :variantId="{{ item.id }}"
+        :productId="{{ item.product_id }}"
+        :originalPrice="{{ item.variant.compare_at_price }}"
+        :quantity="{{ item.quantity }}"
+        {% if hasAddonService %}:addonService="{{ addonServiceData }}"{% endif %}
         {% if isAddonService %}:addonServiceFor="{{ addonServiceFor }}"{% endif %}
       >
+        {% assign primary_product_handle = item.product.metafields.accentuate.configurable_product %}
+        {% assign primary_product = all_products[primary_product_handle] %}
+
         <a class="cart-item-media" href="{{ item.url }}">
           {{ item.image | image_url: width: 120, height: 80 | image_tag }}
         </a>
         <div class="cart-item-details">
           <a href="{{ item.url }}" class="product__name paragraph-14 font-semibold">
             {% assign title = item.title | split: ' - ' %}
-            <span>{{ item.product.metafields.accentuate.display_name | default: title[0] }}</span>
+            <span>
+              {% if item.product.metafields.accentuate.is_bundle_cross_sell %}
+                {{ primary_product.title }} + Accessory Bundle
+              {% else %}
+                {{ item.product.metafields.accentuate.display_name | default: title[0] }}
+              {% endif %}
+            </span>
 
             {% if item.selling_plan_allocation %}
               <span
-                  class="ajaxcart__product-meta"
+                class="ajaxcart__product-meta"
               >{{ item.selling_plan_allocation.selling_plan.name }}</span>
             {% endif %}
           </a>
 
+
           <div class="cart-item-actions">
             {%  comment  %} Extend - Hide default metadata if item vendor is Extend {% endcomment %}
             {% if item.variant.title != "Default Title" and item.vendor != 'Extend' %}
-              <p class="text-sm">{{ item.variant.title }}</p>
+              <p class="text-sm">
+                {{ item.variant.title }}
+              </p>
               {% comment %}<cart-variant-selector{% endcomment %}
               {% comment %}class="variant-selector{% if isGWP %} hidden{% endif %}"{% endcomment %}
               {% comment %}:key="{{ item.key }}"{% endcomment %}
@@ -67,20 +79,19 @@
               {% comment %}</cart-variant-selector>{% endcomment %}
             {% endif %}
             <quantity-adjuster
-                :index="{{ item.index }}"
-                :value="{{ item.quantity }}"
-                :inventoryPolicy="{{ item.variant.inventory_policy }}"
-                {% unless isAddonService %}:max="{{ item.variant.inventory_quantity }}"{% endunless %}
+              :index="{{ item.index }}"
+              :value="{{ item.quantity }}"
+              :inventoryPolicy="{{ item.variant.inventory_policy }}"
+              {% unless isAddonService %}:max="{{ item.variant.inventory_quantity }}"{% endunless %}
             ></quantity-adjuster>
           </div>
 
           {% if item.product.metafields.accentuate.is_bundle %}
-                {% assign current_variant = item.variant %}
-                {% assign bundle_item_metaobjects = current_variant.metafields.custom.bundle_items.value %}
-                {% assign primary_product_handle = item.product.metafields.accentuate.configurable_product %}
-                {% assign primary_product = all_products[primary_product_handle] %}
+            {% assign current_variant = item.variant %}
+            {% assign bundle_item_metaobjects = current_variant.metafields.custom.bundle_items.value %}
 
-                <div class="cart-item-description">
+
+            <div class="cart-item-description">
                   <span>
                      {% if item.product.metafields.accentuate.is_free_gift %}
                        Your mattress purchase includes
@@ -89,27 +100,27 @@
                      {% endif %}
                   </span>
 
-                  {% unless item.product.metafields.accentuate.is_free_gift%}
-                    <span> {{ primary_product.title }} mattress ({{ current_variant.title }}),
+              {% unless item.product.metafields.accentuate.is_free_gift %}
+                <span> {{ primary_product.title }} mattress ({{ current_variant.title }}),
                     </span>
-                  {% endunless %}
+              {% endunless %}
 
-                  {% for bundle_item_metaobject in bundle_item_metaobjects %}
-                    {% assign bundle_item_variant = bundle_item_metaobject.product.value %}
-                    {% assign qty = bundle_item_metaobject.qty | default: 1 %}
+              {% for bundle_item_metaobject in bundle_item_metaobjects %}
+                {% assign bundle_item_variant = bundle_item_metaobject.product.value %}
+                {% assign qty = bundle_item_metaobject.qty | default: 1 %}
 
-                    <span>
+                <span>
 					{{ qty }} {{ bundle_item_variant.product.title }}{% if qty > 1 %}s{% endif %}
-                      {% if bundle_item_variant.title != "Default Title" %}
-                        ({{ bundle_item_variant.title }})
-                      {% endif %}
+                  {% if bundle_item_variant.title != "Default Title" %}
+                    ({{ bundle_item_variant.title }})
+                  {% endif %}
 					</span>
 
-                  {% unless forloop.last %}
+                {% unless forloop.last %}
                   <span> {% if forloop.rindex0 == 1 %}and {% else %}, {% endif %}</span>
-                  {% endunless %}
-                  {% endfor %}
-                </div>
+                {% endunless %}
+              {% endfor %}
+            </div>
           {% endif %}
 
         </div>
@@ -118,10 +129,10 @@
           <loading-overlay class="hidden"></loading-overlay>
 
           <cart-item-remove-button
-              id="CartDrawer-Remove-{{ item.index | plus: 1 }}"
-              :index="{{ item.index }}"
-              aria-label="{{ 'sections.cart.remove_title' | t: title: item.title }}"
-              class="{% if isAddonService %}hidden{% endif %}"
+            id="CartDrawer-Remove-{{ item.index | plus: 1 }}"
+            :index="{{ item.index }}"
+            aria-label="{{ 'sections.cart.remove_title' | t: title: item.title }}"
+            class="{% if isAddonService %}hidden{% endif %}"
           >
             {% render 'icon-remove' %}
           </cart-item-remove-button>
@@ -135,7 +146,7 @@
             {% endif %}
 
             <p
-                class="cart-pricing__price{% if item.variant.compare_at_price > item.variant.price %} text-red{% endif %}"
+              class="cart-pricing__price{% if item.variant.compare_at_price > item.variant.price %} text-red{% endif %}"
             >
               {% if item.final_line_price > 0 %}
                 {{ item.final_line_price | money_without_trailing_zeros }}
