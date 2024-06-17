@@ -39,6 +39,12 @@
 
       <div class="bundle-items"></div>
 
+      {% if section.settings.note %}
+        <p class="w-full text-center text-xs text-comet">
+          {{ section.settings.note }}
+        </p>
+      {% endif %}
+
     </div>
 
     <script type="quickscript" loading="delayed" src="{{ 'bundle-cross-sell.js' | asset_url }}"></script>
@@ -60,6 +66,12 @@
       "id": "product",
       "type": "product",
       "label": "Product"
+    },
+    {
+      "id": "note",
+      "type": "text",
+      "label": "Note",
+      "default": "*No mattress protector available for Twin XL and Cal King sizes"
     }
   ],
   "presets": [

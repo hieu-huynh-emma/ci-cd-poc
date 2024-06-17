@@ -1,3 +1,8 @@
+<style>
+  quick-compare {
+    display: none;
+  }
+</style>
 <link rel="quickscript" loading="delayed" href="{{ 'quick-compare.css' | asset_url }}">
 
 <div id="quick-compare">
@@ -10,16 +15,16 @@
           <span>{{ settings.badge }}</span>
         </div>
       </div>
-      
-      
+
+
       <div class="star-rating grid-row-12">
         {% render 'star-ratings' %}
         <p>4.8 out of 5</p>
       </div>
     </div>
-    
+
     <p class="footer-note">{{ settings.note }}</p>
-    
+
     <script name="data" type="application/json">
       {
         "specs": {{ product.metafields.accentuate.mini_comparison_specifications | json }},
@@ -29,7 +34,7 @@
           "protector": {{ all_products['emma-mattress-protector'] | json }}
       }
     </script>
-  
+
   </quick-compare>
 </div>
 <script type="quickscript" loading="delayed" src="{{ 'quick-compare.js' | asset_url }}"></script>

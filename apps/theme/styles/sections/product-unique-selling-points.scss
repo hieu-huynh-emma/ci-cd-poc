@@ -1,12 +1,14 @@
 
 #product-unique-selling-points {
-   .benefits {
+  display: block;
+
+  .benefits {
     display: grid;
     gap: 12px;
     margin-bottom: 24px;
   }
 
-   .benefits .unique-selling-point {
+  .benefits .unique-selling-point {
     display: grid;
     gap: 4px 8px;
     grid-template-columns: minmax(0, auto) minmax(0, 1fr);
@@ -19,11 +21,11 @@
     font-size: 14px;
   }
 
-   .benefits .unique-selling-point:first-child .desc strong {
+  .benefits .unique-selling-point:first-child .desc strong {
     color: #288e7c;
   }
 
-   .benefits .unique-selling-point__icon {
+  .benefits .unique-selling-point__icon {
     grid-row: 1/span 2;
     width: 20px;
     height: 20px;
@@ -31,7 +33,7 @@
     object-fit: cover;
   }
 
-   .benefits .unique-selling-point .title {
+  .benefits .unique-selling-point .title {
     flex-grow: 1;
     color: #2e2f3c;
     font-weight: 600;
@@ -40,7 +42,7 @@
     padding: 0;
   }
 
-   .benefits .unique-selling-point .desc p {
+  .benefits .unique-selling-point .desc p {
     font-weight: 400;
     font-size: 14px;
     line-height: 20px;

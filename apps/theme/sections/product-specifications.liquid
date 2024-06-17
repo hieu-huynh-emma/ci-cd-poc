@@ -1,5 +1,9 @@
 {% assign productSpecifications = section.blocks | where: 'type', 'item' %}
-
+<style>
+    #product-specifications {
+        display: none;
+    }
+</style>
 <link rel="quickscript" loading="delayed" href="{{ 'product-specifications.css' | asset_url }}">
 
 <div id="product-specifications">
