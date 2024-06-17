@@ -234,6 +234,7 @@
     },
     "campaign-teaser": {
       "type": "campaign-teaser",
+      "disabled": true,
       "settings": {
         "content": "<p><strong>Spring Sale<\/strong> 55% off<\/p>",
         "bgcolor": "#fef3ea",
@@ -549,7 +550,8 @@
             "discount_title": "Father's Day Sale",
             "comfort_meter": 6,
             "cooling_meter": 4,
-            "motion_isolation_meter": 6
+            "motion_isolation_meter": 6,
+            "trackId": ""
           }
         },
         "old-featured-products-2": {
@@ -567,7 +569,8 @@
             "discount_title": "Father's Day Sale",
             "comfort_meter": 8,
             "cooling_meter": 6,
-            "motion_isolation_meter": 8
+            "motion_isolation_meter": 8,
+            "trackId": ""
           }
         },
         "8e09714b-b400-4d50-8d13-487c31f7eaba": {
@@ -584,21 +587,24 @@
             "discount_title": "",
             "comfort_meter": 8,
             "cooling_meter": 8,
-            "motion_isolation_meter": 8
+            "motion_isolation_meter": 8,
+            "trackId": ""
           }
         },
         "95bee6a1-5a6f-4ba8-9fac-03c161a01953": {
           "type": "explore-button",
           "settings": {
             "url": "shopify:\/\/pages\/comparison",
-            "text": "<p>Compare all mattresses<\/p>"
+            "text": "<p>Compare all mattresses<\/p>",
+            "trackId": ""
           }
         },
         "95bee6a1-5a6f-4ba8-9fac-03c161a01954": {
           "type": "explore-button",
           "settings": {
             "url": "shopify:\/\/pages\/product-quizz",
-            "text": "<p>Find your perfect mattress<\/p>"
+            "text": "<p>Find your perfect mattress<\/p>",
+            "trackId": ""
           }
         }
       },
@@ -754,7 +760,8 @@
         "344eb1b3-400d-4a5f-89a3-3e86752850cf"
       ],
       "settings": {
-        "title": "<p>Why our customers love Emma<\/p>"
+        "title": "<p>Why our customers love Emma<\/p>",
+        "trackId": ""
       }
     },
     "social-proof": {
@@ -853,7 +860,8 @@
       ],
       "settings": {
         "heading": "See Emma in action online",
-        "heading_alignment": "start"
+        "heading_alignment": "start",
+        "trackId": ""
       }
     },
     "product-carousel": {
@@ -907,7 +915,8 @@
       "settings": {
         "heading": "Some things are better together",
         "heading_alignment": "start",
-        "container_spacing": "md"
+        "container_spacing": "md",
+        "trackId": ""
       }
     },
     "featured-faqs": {
