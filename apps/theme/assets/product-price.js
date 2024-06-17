@@ -83,9 +83,9 @@ class ProductPrice extends CustomElement {
       priceInCurrency = Currency.format(price, { maximumFractionDigits: price % 1 === 0 ? 0 : 2 }),
       originalPriceInCurrency = Currency.format(originalPrice, { maximumFractionDigits: originalPrice % 1 === 0 ? 0 : 2 });
 
-    $("[data-sale-price]").text(priceInCurrency);
+    this.$el.find("[data-sale-price]").text(priceInCurrency);
 
-    $("[data-regular-price]").text(totalSaved ? originalPriceInCurrency : "");
+    this.$el.find("[data-regular-price]").text(totalSaved ? originalPriceInCurrency : "");
   }
 }
 
