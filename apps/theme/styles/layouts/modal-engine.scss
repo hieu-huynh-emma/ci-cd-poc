@@ -2,6 +2,10 @@ modal-engine {
   z-index: 1000;
   position: fixed;
 
+  @media screen and (min-width: 1024px) {
+    z-index: 999999;
+  }
+
   &.active {
     visibility: visible;
   }
@@ -44,7 +48,7 @@ modal-engine {
 
   will-change: transform;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 1024px) {
     top: 0;
     width: 36rem;
 
@@ -59,7 +63,7 @@ modal-engine {
     animation-timing-function: cubic-bezier(0, 0, .2, 1);
 
     animation-name: slide-from-bottom;
-    @media screen and (min-width: 768px) {
+    @media screen and (min-width: 1024px) {
       animation-name: slide-from-right;
     }
 
@@ -116,7 +120,7 @@ modal-trigger {
     letter-spacing: 0;
     line-height: 125%;
 
-    @media screen and (min-width: 768px) {
+    @media screen and (min-width: 1024px) {
       font-size: 1.5rem;
     }
   }
