@@ -15,14 +15,30 @@
         min-height: 300px;
     }
 
+    .product-info-wrapper {
+      min-height: 90vh;
+    }
+
+    #product-layout:not(.is-initialized) product-form {
+      position: relative;
+      max-height: 50vh;
+      overflow: hidden;
+    }
+
+    #product-layout:not(.is-initialized) product-form .product-form {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+    }
 </style>
 <link rel="stylesheet" href="{{ 'product-layout.css' | asset_url }}" />
 <link rel="stylesheet" href="{{ 'bundle-layout.css' | asset_url }}" />
 <link rel="stylesheet" href="{{ 'product-price.css' | asset_url }}" />
 <link rel="stylesheet" href="{{ 'product-buybox.css' | asset_url }}" />
-<link rel="stylesheet" href="{{ 'sticky-buybox.css' | asset_url }}" />
-<script src="{{ 'product-layout.js' | asset_url }}" defer data-section-id="{{ section.id }}"></script>
-<script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
+<link rel="quickscript" loading="delayed" href="{{ 'sticky-buybox.css' | asset_url }}"/>
+
+<script defer src="{{ 'product-layout.js' | asset_url }}" data-section-id="{{ section.id }}"></script>
+<script defer src="{{ 'product-form.js' | asset_url }}"></script>
 
 <div
     id="product-layout"

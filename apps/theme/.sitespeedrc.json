@@ -1,0 +1,14 @@
+{
+  "browsertime": {
+    "iterations": 1,
+    "browser": "chrome"
+  },
+
+  "plugins": {
+    "add": [
+      "@sitespeed.io/plugin-lighthouse"
+    ]
+  },
+  "utc": true,
+  "open": true
+}

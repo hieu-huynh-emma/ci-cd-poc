@@ -9,6 +9,10 @@
   flex-wrap: wrap;
 }
 
+.product-layout {
+  position: relative;
+}
+
 #product-configurator {
   width: 100%
 }
@@ -23,27 +27,6 @@
   font-size: 14px;
   line-height: 20px;
   color: #000;
-}
-
-#product-configurator .trustpilot-wrapper {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  margin: 1.8rem 0 1rem;
-}
-
-#product-configurator .trustpilot-wrapper img {
-  height: 17px;
-}
-
-#product-configurator .trustpilot-wrapper .rating-stars-container {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-}
-
-#product-configurator .trustpilot-wrapper .rating-stars-container img {
-  margin-right: 4px;
 }
 
 #product-configurator .badge-wrapper {

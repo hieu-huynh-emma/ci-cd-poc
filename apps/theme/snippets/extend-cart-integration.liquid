@@ -112,53 +112,53 @@
             // Finds all cartRowItems and styles only Extend warranties
             function handleStyling() {
               let index = 0;
-          
+
               findAll(cartRowItem).forEach(function (el) {
-          
+
                // Grab the title of the current item
                let title = el.querySelector(cartRowItemTitle);
-          
+
                // Title fail safe
                if (!title) return;
-          
+
                // If it's a warranty set isExtend to true and remove links
                if (title.innerText.toLowerCase().indexOf('extend protection') > -1) {
-          
+
                 // Grab the image of the current item and fail safe
                 let image = el.querySelector(cartRowItemImage);
                 if (!image) return;
-          
+
                 // Select and remove pointerEvents from warranty image
                 image.style.pointerEvents = 'none';
-          
+
                 // Select and remove pointerEvents from warranty title
                 title.style.pointerEvents = 'none';
-          
+
                 if (titleReformat === true) {
                  title.innerText = 'Extend Protection Plan';
                 };
-          
+
                 /**************************************/
                 /* THEME SPECIFIC STYLING START */
                 /**************************************/
-          
+
                 // Selects where to append warranty metadata
                 let contentContainer = el.querySelector(metadataContainer)
                 let warrantyProductData;
                 let warrantyTermData;
-          
+
                 /**************************************/
                 /* THEME SPECIFIC STYLING END */
                 /**************************************/
-          
+
                } else {
                 // Create an offer element for each product
                 createElement(el, index);
                }
-          
+
                 index += 1;
               });
-        
+
             }
 
             /************************/
@@ -270,10 +270,10 @@
 
 <style>
     #extend-offers-modal-iframe {
-        z-index: 99999999999 !important;
+        z-index: 9999 !important;
     }
 
     #extend-learn-more-modal-iframe {
-        z-index: 99999999999 !important;
+        z-index: 9999 !important;
     }
 </style>

@@ -1,4 +1,9 @@
-{{ 'joint-product.css' | asset_url | stylesheet_tag }}
+<style>
+    #product-layout:not(.is-initialized) joint-product-selector {
+        display: none;
+    }
+</style>
+<link rel="quickscript" loading="delayed" href="{{ 'joint-product.css' | asset_url }}">
 
 <script id="joint-product-data" type="application/json">
     [
@@ -23,8 +28,6 @@
 <joint-product-engine></joint-product-engine>
 
 <joint-product-selector class="hidden">
-    <div class="skeleton"></div>
-
     {% for block in section.blocks %}
         {% assign product = block.settings.product %}
         {% assign selected_variant = product.selected_variant %}
@@ -51,7 +54,7 @@
     {% endfor %}
 </joint-product-selector>
 
-<script defer src="{{ 'joint-product.js' | asset_url }}"></script>
+<script type="quickscript" loading="delayed" src="{{ 'joint-product.js' | asset_url }}"></script>
 
 
 {% schema %}

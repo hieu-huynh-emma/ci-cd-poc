@@ -10,112 +10,129 @@
     #product-summary-placeholder:not(.is-initialized) {
         min-height: 300px;
     }
+
     .attribute-configurator {
         display: none;
     }
+
+    .product-info-wrapper {
+        min-height: 90vh;
+    }
+
+    #product-layout:not(.is-initialized) product-form {
+        position: relative;
+        max-height: 50vh;
+        overflow: hidden;
+    }
+
+    #product-layout:not(.is-initialized) product-form .product-form {
+        position: absolute;
+        inset: 0;
+        opacity: 0;
+    }
 </style>
-<link rel="stylesheet" href="{{ 'product-layout.css' | asset_url }}" />
-<link rel="stylesheet" href="{{ 'product-price.css' | asset_url }}" />
-<link rel="stylesheet" href="{{ 'product-buybox.css' | asset_url }}" />
-<link rel="stylesheet" href="{{ 'sticky-buybox.css' | asset_url }}" />
-<script src="{{ 'product-layout.js' | asset_url }}" defer data-section-id="{{ section.id }}"></script>
-<script src="{{ 'product-form.js' | asset_url }}" defer></script>
+<link rel="stylesheet" href="{{ 'product-layout.css' | asset_url }}"/>
+<link rel="stylesheet" href="{{ 'product-price.css' | asset_url }}"/>
+<link rel="stylesheet" href="{{ 'product-buybox.css' | asset_url }}"/>
+<link rel="quickscript" loading="delayed" href="{{ 'sticky-buybox.css' | asset_url }}"/>
+<script defer src="{{ 'product-layout.js' | asset_url }}" data-section-id="{{ section.id }}"></script>
+<script defer src="{{ 'product-form.js' | asset_url }}"></script>
 
 <div
-    id="product-layout"
-    class="page-boundary"
-    data-section-id="{{ section.id }}"
-    data-section-type="product"
-    data-enable-history-state="true"
-    data-ajax-enabled="{{ settings.enable_ajax }}"
+        id="product-layout"
+        class="page-boundary"
+        data-section-id="{{ section.id }}"
+        data-section-type="product"
+        data-enable-history-state="true"
+        data-ajax-enabled="{{ settings.enable_ajax }}"
 >
-  <div class="product-info product-info-wrapper ">
-    <div id="product-viewer">
-      <template id="campaign-teaser-placeholder"></template>
+    <div class="product-info product-info-wrapper">
+        <div id="product-viewer">
+            <template id="campaign-teaser-placeholder"></template>
 
-      <div class="main-frame">
-        <div class="promotion-overlay">
-          <template id="product-badges-placeholder"></template>
+            <div class="main-frame">
+                <div class="promotion-overlay">
+                    <template id="product-badges-placeholder"></template>
+                </div>
+
+                <template id="product-media-placeholder" class="flex w-full"></template>
+            </div>
+
+            <template id="risk-reversal-placeholder"></template>
         </div>
 
-        <template id="product-media-placeholder" class="flex w-full"></template>
-      </div>
+        <product-form id="product-configurator">
+            <template id="product-summary-placeholder"></template>
 
-      <template id="risk-reversal-placeholder"></template>
-    </div>
+            {% capture form_classes -%}
+                product-form product-form-{{ section.id }}
+                {%- if section.settings.enable_payment_button and product.has_only_default_variant %} product-form--payment-button-no-variants {%- endif -%}
+                {%- if current_variant.available == false %} product-form--variant-sold-out {%- endif -%}
+            {%- endcapture %}
 
-    <product-form id="product-configurator">
-      <template id="product-summary-placeholder"></template>
+            {% form 'product', product, class: form_classes, novalidate: 'novalidate', data-product-form: '' %}
+                {% render 'product-buybox' %}
 
-      {% capture form_classes -%}
-        product-form product-form-{{ section.id }}
-        {%- if section.settings.enable_payment_button and product.has_only_default_variant %} product-form--payment-button-no-variants {%- endif -%}
-        {%- if current_variant.available == false %} product-form--variant-sold-out {%- endif -%}
-      {%- endcapture %}
-
-      {% form 'product', product, class: form_classes, novalidate: 'novalidate', data-product-form: '' %}
-        {% render 'product-buybox' %}
-
-        <div
-            class="product-form__error-message-wrapper product-form__error-message-wrapper--hidden{% if section.settings.enable_payment_button %} product-form__error-message-wrapper--has-payment-button{% endif %}"
-            data-error-message-wrapper
-            role="alert"
-        >
-          <span class="visually-hidden">{{ 'general.accessibility.error' | t }} </span>
-          {% render 'icon-error' %}
-          <span class="product-form__error-message" data-error-message>
+                <div
+                        class="product-form__error-message-wrapper product-form__error-message-wrapper--hidden{% if section.settings.enable_payment_button %} product-form__error-message-wrapper--has-payment-button{% endif %}"
+                        data-error-message-wrapper
+                        role="alert"
+                >
+                    <span class="visually-hidden">{{ 'general.accessibility.error' | t }} </span>
+                    {% render 'icon-error' %}
+                    <span class="product-form__error-message" data-error-message>
                             {{- 'products.product.quantity_minimum_message' | t -}}
                           </span>
-        </div>
+                </div>
 
-        <div class="installment-widgets mb-4">
-          {%- if appBlock -%}
-            {% render appBlock %}
-          {% endif %}
+                <div class="installment-widgets mb-4">
+                    {%- if appBlock -%}
+                        {% render appBlock %}
+                    {% endif %}
 
-          {%- if affirm_widget -%}
+                    {%- if affirm_widget -%}
 
-            {% render 'affirm-widget' %}
+                        {% render 'affirm-widget' %}
 
-          {% endif %}
-        </div>
+                    {% endif %}
+                </div>
 
-        <template id="product-auxiliary-placeholder"></template>
+                <template id="product-auxiliary-placeholder"></template>
 
-        <template id="product-unique-selling-points-placeholder"></template>
+                <template id="product-unique-selling-points-placeholder"></template>
 
-        <template id="product-specifications-placeholder"></template>
+                <template id="product-specifications-placeholder"></template>
 
-        <p
-            class="visually-hidden"
-            data-loader-status
-            aria-live="assertive"
-            role="alert"
-            aria-hidden="true"
-        >
-          {{ 'products.product.loader_label' | t }}
-        </p>
+                <p
+                        class="visually-hidden"
+                        data-loader-status
+                        aria-live="assertive"
+                        role="alert"
+                        aria-hidden="true"
+                >
+                    {{ 'products.product.loader_label' | t }}
+                </p>
 
-        <button class="visually-hidden" id="fixture-add-to-cart"></button>
-      {% endform %}
-    </product-form>
-  </div>
+                <button class="visually-hidden" id="fixture-add-to-cart"></button>
+            {% endform %}
+        </product-form>
+    </div>
+
 </div>
 
 {% unless product == empty %}
-  <script type="application/json" id="ProductJson-{{ section.id }}">
+    <script type="application/json" id="ProductJson-{{ section.id }}">
       {{ product | json }}
 
 
 
-  </script>
-  <script type="application/json" id="ModelJson-{{ section.id }}">
+    </script>
+    <script type="application/json" id="ModelJson-{{ section.id }}">
       {{ product.media | where: 'media_type', 'model' | json }}
 
 
 
-
-  </script>
+    </script>
 {% endunless %}
 
 {% schema %}

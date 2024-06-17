@@ -53,7 +53,9 @@
         z-index: 1;
     }
 
-    #product-layout:not(.is-initialized) .hide-until-initialized{display:none}
+    .hide-until-initialized{display:none}
+
+    #product-layout.is-initialized .hide-until-initialized{display:block}
 
     img {
         max-width: 100%;
@@ -76,7 +78,7 @@
     .skeleton {
         position: absolute;
         inset: 0;
-        z-index: 999999;
+        z-index: 99;
         pointer-events: none;
         animation: skeleton-loading 1s linear infinite alternate;
     }

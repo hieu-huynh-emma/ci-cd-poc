@@ -93,7 +93,7 @@ settings.colors_accent_2 }}{% endif %};
     }
 
     .wg-default .country-selector, .weglot-container {
-        z-index: 9999 !important;
+        z-index: 99 !important;
     }
     tracked-button {
         position: relative;
@@ -103,6 +103,11 @@ settings.colors_accent_2 }}{% endif %};
         inset: 0;
         opacity: 0;
     }
+
+    #fc_frame, #fc_frame.fc-widget-normal {
+        z-index: 101!important;
+    }
+
 </style>
 
 {% case template %}

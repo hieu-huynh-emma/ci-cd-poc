@@ -12,7 +12,10 @@
     "pull:local": "shopify theme pull -s emma-sleep-ca -d",
     "push": "shopify theme push -s emma-sleep-ca",
     "push:dev": "shopify theme push -s emma-sleep-ca -t CA-DEV",
-    "push:staging": "shopify theme push -s emma-sleep-ca -t CA-STAGING"
+    "push:staging": "shopify theme push -s emma-sleep-ca -t CA-STAGING",
+    "analyze:desktop": "sitespeed.io --config .sitespeedrc.json https://qm1z5i43o21u3gjm-56298733706.shopifypreview.com/products/emma-hybrid-comfort",
+    "analyze:mobile": "sitespeed.io --config .sitespeedrc.json https://qm1z5i43o21u3gjm-56298733706.shopifypreview.com/products/emma-hybrid-comfort --mobile"
+
   },
   "keywords": [],
   "author": "",
