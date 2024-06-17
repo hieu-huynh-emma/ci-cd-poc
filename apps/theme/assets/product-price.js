@@ -1,7 +1,4 @@
 class ProductPrice extends CustomElement {
-  price = 0;
-  originalPrice = 0;
-
   constructor() {
     super();
 
@@ -30,13 +27,13 @@ class ProductPrice extends CustomElement {
   }
 
   computePrice() {
-    this.price = +this.$el.find("#price").val();
+    const price = +this.$el.find("#price").val();
 
-    this.originalPrice = +this.$el.find("#originalPrice").val() || price;
+    const originalPrice = +this.$el.find("#originalPrice").val() || price;
 
     return {
-      price: this.price,
-      originalPrice: this.originalPrice,
+      price,
+      originalPrice,
     };
   }
 
