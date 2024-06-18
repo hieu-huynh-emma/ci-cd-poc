@@ -105,7 +105,7 @@ class CrossSellEngine extends CustomElement {
                         }
                     }
                 }
-                metafields(identifiers: [{ namespace: "accentuate", key: "featured_image" }]) {
+                metafields(identifiers: [{ namespace: "accentuate", key: "featured_image" },{ namespace: "accentuate", key: "display_name" }]) {
                     value
                     id
                     key
@@ -186,7 +186,7 @@ class CrossSellEngine extends CustomElement {
       },
     } = metaobject;
 
-    const { title, handle, featuredImage } = product;
+    const { title, displayName, handle, featuredImage } = product;
 
     const totalSaved = Math.max(0, originalPrice - price),
       priceInCurrency = Currency.format(parseFloat(price)),
@@ -202,10 +202,11 @@ class CrossSellEngine extends CustomElement {
   data-price="${price}"
   data-original-price="${originalPrice}"
   :variantId="${id}"
+  data-abtasty-cross-sell
 > 
     <script type="application/json">${JSON.stringify(product)}</script>
     <div class="auxiliary-container">
-      <div class="widget-checkbox" data-abtasty-cross-sell>
+      <div class="widget-checkbox">
           <input type="checkbox" class="widget-checkbox__input"/>
       </div>
       
@@ -221,7 +222,7 @@ class CrossSellEngine extends CustomElement {
         </div>
           <div class="product-content">
             <p class="text-sm font-semibold">
-            ${qty > 1 ? `${qty}x ` : ""} ${title}
+            ${qty > 1 ? `${qty}x ` : ""} ${displayName || title}
             </p>
           </div>
           <p class="product-price-container">
@@ -274,9 +275,14 @@ class CrossSellEngine extends CustomElement {
                                                             } = {}) => namespace === "accentuate" && key === "featured_image");
     const featuredImage = accentuateImg ? `${JSON.parse(accentuateImg.value)[0].src}&transform=resize=720` : imgSource.src + `&width=720`;
 
+    const displayName = metafields.filter((m) => !!m).find(({
+                                                              namespace,
+                                                              key,
+                                                            } = {}) => namespace === "accentuate" && key === "display_name")?.value;
     return {
       featuredImage,
       variants: variants.edges.map(({ node }) => node),
+      displayName,
       ...rest,
     };
   }
