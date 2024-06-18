@@ -205,7 +205,7 @@ class CrossSellEngine extends CustomElement {
 > 
     <script type="application/json">${JSON.stringify(product)}</script>
     <div class="auxiliary-container">
-      <div class="widget-checkbox">
+      <div class="widget-checkbox" data-abtasty-cross-sell>
           <input type="checkbox" class="widget-checkbox__input"/>
       </div>
       
