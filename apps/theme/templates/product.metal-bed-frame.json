@@ -6,60 +6,12 @@
       "settings": {
       }
     },
-    "product-media": {
-      "type": "product-media",
-      "blocks": {
-        "f5f456c7-b29a-4f74-826f-648e09f5b1cd": {
-          "type": "image",
-          "settings": {
-            "en_desktop_image": "shopify:\/\/shop_images\/LandingPage_Assets_Mattress_Categorycopy_1.jpg",
-            "en_mobile_image": "shopify:\/\/shop_images\/LandingPage_Assets_Mattress_Categorycopy_1.jpg",
-            "fr_desktop_image": "shopify:\/\/shop_images\/LandingPage_Assets_Mattress_Categorycopy_1.jpg",
-            "fr_mobile_image": "shopify:\/\/shop_images\/LandingPage_Assets_Mattress_Categorycopy_1.jpg"
-          }
-        },
-        "72b3b893-b0bb-44ad-978c-733ee54620a1": {
-          "type": "image",
-          "settings": {
-            "en_desktop_image": "shopify:\/\/shop_images\/emma-upholstered-bed.png",
-            "en_mobile_image": "shopify:\/\/shop_images\/emma-upholstered-bed.png",
-            "fr_desktop_image": "shopify:\/\/shop_images\/emma-upholstered-bed.png",
-            "fr_mobile_image": "shopify:\/\/shop_images\/emma-upholstered-bed.png"
-          }
-        },
-        "e4cd7962-4d57-4250-8e6e-4c76dd76d6d6": {
-          "type": "image",
-          "settings": {
-            "en_desktop_image": "shopify:\/\/shop_images\/emma-upholstered-bed-mattress.png",
-            "en_mobile_image": "shopify:\/\/shop_images\/emma-upholstered-bed-mattress.png",
-            "fr_desktop_image": "shopify:\/\/shop_images\/emma-upholstered-bed-mattress.png",
-            "fr_mobile_image": "shopify:\/\/shop_images\/emma-upholstered-bed-mattress.png"
-          }
-        },
-        "038c8f16-3a84-418c-9ee2-38f53be4a385": {
-          "type": "image",
-          "settings": {
-            "en_desktop_image": "shopify:\/\/shop_images\/LandingPage_sAssets_1.jpg",
-            "en_mobile_image": "shopify:\/\/shop_images\/LandingPage_sAssets_1.jpg",
-            "fr_desktop_image": "shopify:\/\/shop_images\/LandingPage_sAssets_1.jpg",
-            "fr_mobile_image": "shopify:\/\/shop_images\/LandingPage_sAssets_1.jpg"
-          }
-        }
-      },
-      "block_order": [
-        "f5f456c7-b29a-4f74-826f-648e09f5b1cd",
-        "72b3b893-b0bb-44ad-978c-733ee54620a1",
-        "e4cd7962-4d57-4250-8e6e-4c76dd76d6d6",
-        "038c8f16-3a84-418c-9ee2-38f53be4a385"
-      ],
-      "settings": {
-      }
-    },
     "product-summary": {
       "type": "product-summary",
       "blocks": {
         "yotpo_star_rating": {
           "type": "yotpo_star_rating",
+          "disabled": true,
           "settings": {
             "product": "{{product}}",
             "new_layout": false
@@ -70,9 +22,68 @@
         "yotpo_star_rating"
       ],
       "settings": {
-        "title": "Upholstered bed frame",
+        "title": "Emma Original Bed",
         "desc": "<p><strong>Upgrade your sleep experience with the Emma Bedframe, designed for complete comfort.<\/strong><\/p><ul><li>Elegant-yet-sturdy, minimalist Scandinavian design bed base that adds a touch of class to your bedroom<\/li><li>Easily-assembled, no additional tools required!<\/li><li>Uniquely-designed with <strong>FlexiSlats®<\/strong>that help provide additional pressure-relief for your back and joints<\/li><li>Compatible with all Emma mattresses<\/li><\/ul>",
         "disclaimer": ""
+      }
+    },
+    "product-media": {
+      "type": "product-media",
+      "blocks": {
+        "f5f456c7-b29a-4f74-826f-648e09f5b1cd": {
+          "type": "image",
+          "settings": {
+            "en_desktop_image": "shopify:\/\/shop_images\/BNJ5Y5BI_Canada_Bed_1_-_Copy.png",
+            "en_mobile_image": "shopify:\/\/shop_images\/BNJ5Y5BI_Canada_Bed_1_-_Copy.png",
+            "fr_desktop_image": "shopify:\/\/shop_images\/BNJ5Y5BI_Canada_Bed_1_-_Copy.png",
+            "fr_mobile_image": "shopify:\/\/shop_images\/BNJ5Y5BI_Canada_Bed_1_-_Copy.png"
+          }
+        },
+        "72b3b893-b0bb-44ad-978c-733ee54620a1": {
+          "type": "image",
+          "settings": {
+            "en_desktop_image": "shopify:\/\/shop_images\/E-03_12521a61-bb47-4853-b71d-368baa820947.jpg",
+            "en_mobile_image": "shopify:\/\/shop_images\/E-03_12521a61-bb47-4853-b71d-368baa820947.jpg",
+            "fr_desktop_image": "shopify:\/\/shop_images\/E-03_12521a61-bb47-4853-b71d-368baa820947.jpg",
+            "fr_mobile_image": "shopify:\/\/shop_images\/E-03_12521a61-bb47-4853-b71d-368baa820947.jpg"
+          }
+        },
+        "e4cd7962-4d57-4250-8e6e-4c76dd76d6d6": {
+          "type": "image",
+          "settings": {
+            "en_desktop_image": "shopify:\/\/shop_images\/QbedFr_Cover_001_65a20d68-ebe8-4505-81ae-85b8f6f70b58.jpg",
+            "en_mobile_image": "shopify:\/\/shop_images\/QbedFr_Cover_001_65a20d68-ebe8-4505-81ae-85b8f6f70b58.jpg",
+            "fr_desktop_image": "shopify:\/\/shop_images\/QbedFr_Cover_001_65a20d68-ebe8-4505-81ae-85b8f6f70b58.jpg",
+            "fr_mobile_image": "shopify:\/\/shop_images\/QbedFr_Cover_001_65a20d68-ebe8-4505-81ae-85b8f6f70b58.jpg"
+          }
+        },
+        "038c8f16-3a84-418c-9ee2-38f53be4a385": {
+          "type": "image",
+          "settings": {
+            "en_desktop_image": "shopify:\/\/shop_images\/Metal_bed.png",
+            "en_mobile_image": "shopify:\/\/shop_images\/Metal_bed.png",
+            "fr_desktop_image": "shopify:\/\/shop_images\/Metal_bed.png",
+            "fr_mobile_image": "shopify:\/\/shop_images\/Metal_bed.png"
+          }
+        },
+        "image_PgfbyT": {
+          "type": "image",
+          "settings": {
+            "en_desktop_image": "shopify:\/\/shop_images\/Your_paragraph_text_5.png",
+            "en_mobile_image": "shopify:\/\/shop_images\/Your_paragraph_text_5.png",
+            "fr_desktop_image": "shopify:\/\/shop_images\/Your_paragraph_text_5.png",
+            "fr_mobile_image": "shopify:\/\/shop_images\/Your_paragraph_text_5.png"
+          }
+        }
+      },
+      "block_order": [
+        "f5f456c7-b29a-4f74-826f-648e09f5b1cd",
+        "72b3b893-b0bb-44ad-978c-733ee54620a1",
+        "e4cd7962-4d57-4250-8e6e-4c76dd76d6d6",
+        "038c8f16-3a84-418c-9ee2-38f53be4a385",
+        "image_PgfbyT"
+      ],
+      "settings": {
       }
     },
     "product-specifications": {
@@ -210,7 +221,8 @@
       "settings": {
         "content": "<p>55% off<\/p>",
         "bgcolor": "#fef3ea",
-        "color": "#2e2f3c"
+        "color": "#2e2f3c",
+        "show_countdown_timer": false
       }
     },
     "multimedia-showcase": {
@@ -219,9 +231,9 @@
         "7eddc7a1-60de-430c-ad1d-0fa4619d108d": {
           "type": "image",
           "settings": {
-            "source": "shopify:\/\/shop_images\/new-bed-frame-2.png",
-            "heading": "Superior comfort",
-            "content": "The luscious upholstering of the bed and the thick padding of the headboard make this bed frame ridiculously comfy. We also added a hotel-level height to make it extra-easy for you to get in and out of bed.",
+            "source": "shopify:\/\/shop_images\/QbedFr_Cover_001_65a20d68-ebe8-4505-81ae-85b8f6f70b58.jpg",
+            "heading": "The right support in the right places",
+            "content": "The Emma Original Bed uses premium materials for maximum comfort. Its sleek metal frame combines style and elegance, fitting seamlessly into any bedroom decor without overshadowing the room's aesthetic.",
             "inverted": false,
             "cta_url": "",
             "cta_text": ""
@@ -230,9 +242,9 @@
         "57e597f8-8943-4def-820a-a0e469678641": {
           "type": "image",
           "settings": {
-            "source": "shopify:\/\/shop_images\/new-bed-frame-3.png",
-            "heading": "Extra-strong and ultra-robust",
-            "content": "This bed will accompany you through everything: slumber parties, moves, and pillow fights! It has our extra-strong EmmaFlex bed frame with an ultra-robust metal construction and we give you a guarantee of 5 years on it!",
+            "source": "shopify:\/\/shop_images\/BNJ5Y5BI_Canada_Bed_1_-_Copy.png",
+            "heading": "Made to withstand wear and tear",
+            "content": "Built for durability and resilience, the sturdy metal base of this bed offers long-lasting quality, capable of withstanding regular use. Its solid foundation ensures your body is supported while you sleep and keeps the mattress properly aligned, preventing sagging.",
             "inverted": true,
             "cta_url": "",
             "cta_text": ""
@@ -241,9 +253,9 @@
         "95f7a903-df98-4d58-9b15-0db125d9190c": {
           "type": "image",
           "settings": {
-            "source": "shopify:\/\/shop_images\/new-bed-frame-4.png",
-            "heading": "Perfect for your Emma mattress",
-            "content": "We have engineered and patented the perfect bed frame for your Emma mattress with specially-designed FlexiSlats for ultimate pressure relief and an AirFlow bed base for maximum breathability.",
+            "source": "shopify:\/\/shop_images\/E-03_12521a61-bb47-4853-b71d-368baa820947.jpg",
+            "heading": "Up and ready to go in 20 minutes",
+            "content": "Assembly is a breeze, taking just 20 minutes. There's no need for tools or complicated instructions—your mattress sits directly on top of the frame, and you're good to go. During your daily routines, it's easy to clean and maintain, being less prone to stains and odors. Plus, each bed comes with a 100-night sleep trial to ensure it's the perfect fit for you.",
             "inverted": false,
             "cta_url": "",
             "cta_text": ""
@@ -346,7 +358,8 @@
             "discount_title": "Father's Day Sale",
             "comfort_meter": 6,
             "cooling_meter": 4,
-            "motion_isolation_meter": 6
+            "motion_isolation_meter": 6,
+            "trackId": ""
           }
         },
         "47af3dd7-2038-4dbc-b55e-4f7b7d0c3d23": {
@@ -363,7 +376,8 @@
             "discount_title": "",
             "comfort_meter": 8,
             "cooling_meter": 6,
-            "motion_isolation_meter": 7
+            "motion_isolation_meter": 7,
+            "trackId": ""
           }
         },
         "5669a974-c41c-4819-895a-3683043506f7": {
@@ -380,7 +394,8 @@
             "discount_title": "",
             "comfort_meter": 8,
             "cooling_meter": 8,
-            "motion_isolation_meter": 8
+            "motion_isolation_meter": 8,
+            "trackId": ""
           }
         },
         "11a7fc0f-e834-4a08-9d80-bc3e71861437": {
@@ -398,21 +413,24 @@
             "discount_title": "",
             "comfort_meter": 8,
             "cooling_meter": 8,
-            "motion_isolation_meter": 8
+            "motion_isolation_meter": 8,
+            "trackId": ""
           }
         },
         "95bee6a1-5a6f-4ba8-9fac-03c161a01953": {
           "type": "explore-button",
           "settings": {
             "url": "shopify:\/\/pages\/comparison",
-            "text": "<p>Compare all mattresses<\/p>"
+            "text": "<p>Compare all mattresses<\/p>",
+            "trackId": ""
           }
         },
         "95bee6a1-5a6f-4ba8-9fac-03c161a01954": {
           "type": "explore-button",
           "settings": {
             "url": "shopify:\/\/pages\/product-quizz",
-            "text": "<p>Find your perfect mattress<\/p>"
+            "text": "<p>Find your perfect mattress<\/p>",
+            "trackId": ""
           }
         }
       },
@@ -537,7 +555,8 @@
       ],
       "settings": {
         "heading": "See Emma in action online",
-        "heading_alignment": "start"
+        "heading_alignment": "start",
+        "trackId": ""
       }
     },
     "customer-sentiment": {
@@ -654,7 +673,8 @@
         "09885043-86bc-4a59-a8db-0a8c8ae800b3"
       ],
       "settings": {
-        "title": "<p>Why our customers love Emma<\/p>"
+        "title": "<p>Why our customers love Emma<\/p>",
+        "trackId": ""
       }
     },
     "168540174983dd55c2": {
@@ -721,7 +741,8 @@
       "settings": {
         "heading": "Some things are better together",
         "heading_alignment": "start",
-        "container_spacing": "md"
+        "container_spacing": "md",
+        "trackId": ""
       }
     },
     "special-services": {
