@@ -1,4 +1,4 @@
-{% assign catalogItems = section.blocks | where: 'type', 'catalog_item' %}
+{% assign collectionCatalog = section.blocks | where: 'type', 'catalog_item' %}
 <style>
     .star-rating {
         display: none
@@ -20,7 +20,8 @@
 <section id="sale-catalog-section" class="section-container spacing-{{ section.settings.container_spacing }}">
   <div class="section-chassis page-boundary">
     <smart-tabs class="material">
-      {% for collection in section.settings.sale_collection_list %}
+      {% for block in collectionCatalog %}
+        {% assign collection = block.settings.collection %}
         <smart-tab-item label="{{ collection.title }}">
           <div class="catalog-grid">
             {% for product in collection.products %}
@@ -36,6 +37,24 @@
 {% schema %}
 {
   "name": "Sale Catalog",
+  "blocks": [
+    {
+      "type": "catalog_item",
+      "name": "Catalog Item",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        },
+        {
+          "type": "text",
+          "id": "trackId",
+          "label": "Tracking ID"
+        }
+      ]
+    }
+  ],
   "settings": [
     {
       "id": "heading",
@@ -80,14 +99,19 @@
       "label": "Container Spacing"
     },
     {
-      "id": "sale_collection_list",
-      "type": "collection_list",
-      "label": "Sale Collection List"
-    },
-    {
       "type": "header",
       "content": "Product Assets",
       "info": "Please visit the respective Accentuate Url of each product below to update its assets"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Sale Catalog",
+      "settings": {
+        "heading": "Sale Catalog",
+        "heading_alignment": "start",
+        "container_spacing": "md"
+      }
     }
   ]
 }
