@@ -25,7 +25,7 @@
 
           </div>
 
-          <a href="{{ product.url }}" class="col__link underline">
+          <tracked-button :trackId="{{ block.settings.trackId }}" href="{{ product.url }}" class="col__link underline">
             <span>Discover our {{ product.title }}</span>
             <svg data-v-9cbc2b4c="" data-v-6f864b1d="" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"
                  class="icon__xs--size_xl icon__sm--size_xl icon__md--size_xl icon__lg--size_xl icon__xl--size_xl icon--is-non-responsive themed themed--default icon icon--monochrome themed themed--default button-icon m-l-space-8">
@@ -33,7 +33,7 @@
               <path data-v-9cbc2b4c=""
                     d="M21.53 11.47l-8-8a.75.75 0 10-1.06 1.06l6.72 6.72H3a.75.75 0 000 1.5h16.19l-6.72 6.72a.75.75 0 101.06 1.06l8-8a.748.748 0 000-1.06z"></path>
             </svg>
-          </a>
+          </tracked-button>
 
         </li>
       {% endfor %}
@@ -70,6 +70,11 @@
           "id": "photo",
           "type": "image_picker",
           "label": "Block Photo"
+        },
+        {
+          "type": "text",
+          "id": "trackId",
+          "label": "Button Tracking Id"
         }
       ]
     }

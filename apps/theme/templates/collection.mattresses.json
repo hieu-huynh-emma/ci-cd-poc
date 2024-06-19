@@ -26,7 +26,8 @@
             "discount_title": "",
             "comfort_meter": 6,
             "cooling_meter": 4,
-            "motion_isolation_meter": 6
+            "motion_isolation_meter": 6,
+            "trackId": "OG_Compare_MP"
           }
         },
         "de83e3a7-7ae2-4d8f-9917-fd290fbf9e2e": {
@@ -43,25 +44,8 @@
             "discount_title": "",
             "comfort_meter": 8,
             "cooling_meter": 6,
-            "motion_isolation_meter": 8
-          }
-        },
-        "c331d24a-badc-4376-ad8f-078a999be775": {
-          "type": "product-block",
-          "disabled": true,
-          "settings": {
-            "product": "emma-shift",
-            "show_star_rating": true,
-            "color": "#3c4196",
-            "primary_badge": "",
-            "secondary_badge": "PREMIUM CHOICE",
-            "image": "shopify:\/\/shop_images\/Shift_13-inch_Orange_Titanium.png",
-            "product_title": "Emma Shift Mattress",
-            "desc": "<p>Our Newest Mattress, Offering Personalized Comfort for Every Type of Sleeper<\/p><p><strong>12-inch<\/strong><\/p><p><strong>6 Layers<\/strong><\/p><p><strong>Adjustable Comfort<\/strong><\/p><p><strong>Large pore foam that can be adjusted<\/strong><\/p><p><strong>Breathable <br\/>& strong cooling<\/strong><\/p><p><strong>Zero Motion Transfer<br\/><br\/>Free Shipping & Returns<br\/>365-Night Trial<br\/>10-Year Warranty<\/strong><\/p>",
-            "discount_title": "",
-            "comfort_meter": 8,
-            "cooling_meter": 8,
-            "motion_isolation_meter": 8
+            "motion_isolation_meter": 8,
+            "trackId": "Comfort_Compare_MP"
           }
         },
         "f634c250-61e1-4006-8387-c5a5ea529c2f": {
@@ -78,21 +62,23 @@
             "discount_title": "",
             "comfort_meter": 8,
             "cooling_meter": 8,
-            "motion_isolation_meter": 8
+            "motion_isolation_meter": 8,
+            "trackId": "Premium_Compare_MP"
           }
         },
         "95bee6a1-5a6f-4ba8-9fac-03c161a01954": {
           "type": "explore-button",
           "settings": {
             "url": "shopify:\/\/pages\/product-quizz",
-            "text": "<p>Find your perfect match<\/p>"
+            "text": "<p>Find your perfect match<\/p>",
+            "trackId": "Quiz_MP"
           }
         }
       },
       "block_order": [
         "dc648e6a-73d1-4d9c-aa18-80fedeab1b00",
         "de83e3a7-7ae2-4d8f-9917-fd290fbf9e2e",
-        "c331d24a-badc-4376-ad8f-078a999be775",
+
         "f634c250-61e1-4006-8387-c5a5ea529c2f",
         "95bee6a1-5a6f-4ba8-9fac-03c161a01954"
       ],
@@ -127,7 +113,8 @@
             "title": "Thermoregulation Technology",
             "desc": "<p>Our premium range featuring cutting-edge Premium ThermoSync technology. Infused with graphite particles, it absorbs excess heat, ensuring you enjoy the highest quality sleep possible.<\/p>",
             "product": "emma-hybrid-premium-plus",
-            "photo": "shopify:\/\/shop_images\/Thermoregulation_1.webp"
+            "photo": "shopify:\/\/shop_images\/Thermoregulation_1.webp",
+            "trackId": "Materials_1"
           }
         },
         "block_93HdLd": {
@@ -136,7 +123,8 @@
             "title": "Hybrid Mattresses",
             "desc": "<p>Improve your sleep experience with our Hybrid mattress – a perfect blend of foam and spring technology. Designed for sleepers who tend to sweat, it offers unmatched breathability and weightless comfort.<\/p>",
             "product": "emma-hybrid-comfort",
-            "photo": "shopify:\/\/shop_images\/Emma_Matras_Pocketspring_Boxspring.webp"
+            "photo": "shopify:\/\/shop_images\/Emma_Matras_Pocketspring_Boxspring.webp",
+            "trackId": "Materials_2"
           }
         },
         "block_L8xV8b": {
@@ -145,7 +133,8 @@
             "title": "Foam Mattresses",
             "desc": "<p>Experience great support and comfort with our foam mattress, crafted primarily from memory foam. Designed to cater to all sleepers, it ensures a night of restful sleep for everyone.<\/p>",
             "product": "emma-original-mattress",
-            "photo": "shopify:\/\/shop_images\/Foam_Material.webp"
+            "photo": "shopify:\/\/shop_images\/Foam_Material.webp",
+            "trackId": "Materials_3"
           }
         }
       },
@@ -155,7 +144,7 @@
         "block_L8xV8b"
       ],
       "settings": {
-        "heading": "Our Mattress Types & Materials",
+        "heading": "Our Mattress Types & Materials ",
         "header_font": "tiempos",
         "heading_alignment": "start",
         "container_spacing": "md"
