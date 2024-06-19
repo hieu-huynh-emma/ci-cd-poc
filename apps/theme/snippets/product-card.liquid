@@ -1,6 +1,6 @@
 {% comment %} <product-card class="{% if landscape %} landscape{% endif %}" :productId="{{ product.id }}"> {% endcomment %}
 <product-card class="{% if landscape %} landscape{% endif %}" :productId="{{ product.id }}">
-  <a href="{{ product.url }}" class="wrapper">
+  <tracked-button :trackId="{{ product.metafields.accentuate.track_id }}" href="{{ product.url }}" class="wrapper">
     <div class="product-card-media">
       {% assign blockImg = blockImg | image_url: width: 450 %}
       {% assign coverImg = product.featured_image | image_url: width: 450 %}
@@ -49,5 +49,5 @@
 
     </div>
 
-  </a>
+  </tracked-button>
 </product-card>
