@@ -22,7 +22,7 @@
     <smart-tabs class="material">
       {% for block in collectionCatalog %}
         {% assign collection = block.settings.collection %}
-        <smart-tab-item label="{{ collection.title }}">
+        <smart-tab-item label="{{ collection.title }}" data-track-id="{{ block.settings.trackId }}">
           <div class="catalog-grid">
             {% for product in collection.products %}
                 {% render 'product-card', product: product, landscape: true %}
@@ -33,6 +33,8 @@
     </smart-tabs>
   </div>
 </section>
+
+<script type="quickscript" loading="delayed" src="{{ 'sale-catalog.js' | asset_url }}"></script>
 
 {% schema %}
 {
