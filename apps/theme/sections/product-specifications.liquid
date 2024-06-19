@@ -6,11 +6,28 @@
 </style>
 <link rel="quickscript" loading="delayed" href="{{ 'product-specifications.css' | asset_url }}">
 
+
 <div id="product-specifications">
     <ul class="product-specifications">
         {% for block in productSpecifications %}
+            {% liquid
+                assign trackId = "Materials"
+
+                case forloop.index0
+                    when 1
+                        assign trackId = "Dimensions"
+                    when 2
+                        assign trackId = "Certifications"
+                endcase
+
+                assign postfix = product.metafields.accentuate.track_postfix
+
+                if postfix != blank
+                    assign trackId = trackId | append: "_" | append: postfix
+                endif
+            %}
             <li class="product-specification">
-                <div class="product-specification__header">
+                <tracked-button :trackId="{{ trackId }}" class="product-specification__header">
                     <div class="title">
                         {{ block.settings.title }}
                     </div>
@@ -27,7 +44,7 @@
                                 fill="#2E2F3C"
                         />
                     </svg>
-                </div>
+                </tracked-button>
                 <div class="product-specification__content">
                     {% if block.settings.product_dimension %}
                         <ul class="product-dimensions">
@@ -55,22 +72,22 @@
 </div>
 
 <script defer>
-  if (document.readyState === "complete") {
-    initProductSpecifications();
-  } else {
-    window.addEventListener("load", initProductSpecifications);
-  }
+    if (document.readyState === "complete") {
+        initProductSpecifications();
+    } else {
+        window.addEventListener("load", initProductSpecifications);
+    }
 
-  async function initProductSpecifications() {
-    await ResourceCoordinator.requestVendor("Beefup");
+    async function initProductSpecifications() {
+        await ResourceCoordinator.requestVendor("Beefup");
 
-    $("#product-specifications .product-specification").beefup({
-      trigger: ".product-specification__header",
-      content: ".product-specification__content",
-      openSpeed: 500,
-      closeSpeed: 250,
-    });
-  }
+        $("#product-specifications .product-specification").beefup({
+            trigger: ".product-specification__header",
+            content: ".product-specification__content",
+            openSpeed: 500,
+            closeSpeed: 250,
+        });
+    }
 </script>
 
 {% schema %}

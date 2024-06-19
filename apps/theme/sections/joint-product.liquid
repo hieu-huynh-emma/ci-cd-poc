@@ -5,6 +5,16 @@
 </style>
 <link rel="quickscript" loading="delayed" href="{{ 'joint-product.css' | asset_url }}">
 
+{% liquid
+
+    assign trackId = "Cover_Rotation"
+    assign postfix = product.metafields.accentuate.track_postfix
+
+    if postfix != blank
+        assign trackId = trackId | append: "_" | append: postfix
+    endif
+%}
+
 <script id="joint-product-data" type="application/json">
     [
     {% for block in section.blocks %}
@@ -33,23 +43,25 @@
         {% assign selected_variant = product.selected_variant %}
 
         <joint-product-option data-product-id="{{ product.id }}" class="joint-product-option">
-            <div class="flex gap-2 justify-start">
-                <p class="font-semibold">{{ product.metafields.accentuate.display_name | default: product.title }}</p>
-            </div>
+            <tracked-button :trackId="{{ trackId }}">
+                <div class="flex gap-2 justify-start">
+                    <p class="font-semibold">{{ product.metafields.accentuate.display_name | default: product.title }}</p>
+                </div>
 
-            <div class="product-price"></div>
+                <div class="product-price"></div>
 
-            {% if block.settings.show_star_rating %}
-                <joint-product-star-rating
-                        :placeholder="{{ product.metafields.accentuate.placeholder_star_rating }}"
-                        :productId="{{ product.id }}"
-                ></joint-product-star-rating>
-            {% endif %}
+                {% if block.settings.show_star_rating %}
+                    <joint-product-star-rating
+                            :placeholder="{{ product.metafields.accentuate.placeholder_star_rating }}"
+                            :productId="{{ product.id }}"
+                    ></joint-product-star-rating>
+                {% endif %}
 
 
-            {% if block.settings.short_desc %}
-                <p class="joint-product-option__desc text-comet text-xs md:text-sm">{{ block.settings.short_desc }}</p>
-            {% endif %}
+                {% if block.settings.short_desc %}
+                    <p class="joint-product-option__desc text-comet text-xs md:text-sm">{{ block.settings.short_desc }}</p>
+                {% endif %}
+            </tracked-button>
         </joint-product-option>
     {% endfor %}
 </joint-product-selector>

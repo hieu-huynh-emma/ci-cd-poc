@@ -1,4 +1,14 @@
 {% assign parentProduct = product %}
 {% assign parentVariant = product.selected_or_first_available_variant %}
+{% liquid
 
-<cross-sell-engine :variantId="{{ parentVariant.id }}"><div class="skeleton"></div></cross-sell-engine>
+    assign trackId = "Cross_sell"
+    assign postfix = product.metafields.accentuate.track_postfix
+
+    if postfix != blank
+        assign trackId = trackId | append: "_" | append: postfix
+    endif
+%}
+<cross-sell-engine :variantId="{{ parentVariant.id }}" :trackId="{{ trackId }}">
+    <div class="skeleton"></div>
+</cross-sell-engine>

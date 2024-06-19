@@ -31,212 +31,231 @@
 
 <link rel="stylesheet" href="{{ 'product-media.css' | asset_url }}">
 
+{% liquid
+
+    assign trackId = "Carousel_Slide"
+    assign postfix = product.metafields.accentuate.track_postfix
+
+    if postfix != blank
+        assign trackId = trackId | append: "_" | append: postfix
+    endif
+%}
 
 <product-media>
-  {% case leadItem.type %}
-    {% when "image" %}
-      <div class="lead-item media-item media-container">
-        <picture class="media-item__image" lang="en">
-          <source media="(min-width: 1200px)"
-                  srcset="{{ leadItem.settings.en_desktop_image | image_url: width: 1440 }}">
-          <source media="(min-width: 992px)" srcset="{{ leadItem.settings.en_desktop_image | image_url: width: 1040 }}">
-          <source media="(min-width: 768px)" srcset="{{ leadItem.settings.en_desktop_image | image_url: width: 800 }}">
+    {% case leadItem.type %}
+        {% when "image" %}
+            <div class="lead-item media-item media-container">
+                <picture class="media-item__image" lang="en">
+                    <source media="(min-width: 1200px)"
+                            srcset="{{ leadItem.settings.en_desktop_image | image_url: width: 1440 }}">
+                    <source media="(min-width: 992px)"
+                            srcset="{{ leadItem.settings.en_desktop_image | image_url: width: 1040 }}">
+                    <source media="(min-width: 768px)"
+                            srcset="{{ leadItem.settings.en_desktop_image | image_url: width: 800 }}">
 
-          <img
-              src="{{ leadItem.settings.en_mobile_image | default: leadItem.settings.en_desktop_image | image_url: width: 600 }}"
-              width="808"
-              height="486"
-          >
-        </picture>
-        <picture class="media-item__image" lang="fr">
-          <source media="(min-width: 1200px)"
-                  srcset="{{ leadItem.settings.fr_desktop_image | image_url: width: 1440 }}">
-          <source media="(min-width: 992px)"
-                  srcset="{{ leadItem.settings.fr_desktop_image | image_url: width: 1040 }}">
-          <source media="(min-width: 768px)"
-                  srcset="{{ leadItem.settings.fr_desktop_image | image_url: width: 800 }}">
-
-          <img
-              src="{{ leadItem.settings.fr_mobile_image | default: leadItem.settings.fr_desktop_image | image_url: width: 600 }}"
-              width="808"
-              height="486"
-          >
-        </picture>
-      </div>
-  {% endcase %}
-  <template>
-    <div class="carousel-container">
-      <div class="main-carousel">
-        <div class="splide">
-          <div class="splide__track">
-            <ul class="splide__list">
-              {% for block in allItems %}
-                <li
-                    class="splide__slide"
-                >
-                  {% case block.type %}
-                    {% when "image" %}
-                      <div class="media-item media-container" data-type="{{ block.type }}">
-                        <picture class="media-item__image" lang="en"
-                                 data-zoom="{{ block.settings.en_mobile_image | default: block.settings.en_desktop_image | image_url: width: 2048 }}"
-                        >
-                          <source
-                              media="(min-width: 1200px)"
-                              srcset="{{ block.settings.en_desktop_image | image_url: width: 1440 }}"
-                          >
-                          <source
-                              media="(min-width: 992px)"
-                              srcset="{{ block.settings.en_desktop_image | image_url: width: 1040 }}"
-                          >
-                          <source
-                              media="(min-width: 768px)"
-                              srcset="{{ block.settings.en_desktop_image | image_url: width: 800 }}"
-                          >
-
-                          <img
-                              src="{{ block.settings.en_mobile_image | default: block.settings.en_desktop_image | image_url: width: 600 }}"
-                              width="808"
-                              height="486"
-                          >
-                        </picture>
-
-                        <picture class="media-item__image" lang="fr"
-                                 data-zoom="{{ block.settings.fr_mobile_image | default: block.settings.fr_desktop_image | image_url: width: 2048 }}">
-                          <source
-                              media="(min-width: 1200px)"
-                              srcset="{{ block.settings.fr_desktop_image | image_url: width: 1440 }}"
-                          >
-                          <source
-                              media="(min-width: 992px)"
-                              srcset="{{ block.settings.fr_desktop_image | image_url: width: 1040 }}"
-                          >
-                          <source
-                              media="(min-width: 768px)"
-                              srcset="{{ block.settings.fr_desktop_image | image_url: width: 800 }}"
-                          >
-
-                          <img
-                              src="{{ block.settings.fr_mobile_image | default: block.settings.fr_desktop_image | image_url: width: 600 }}"
-                              width="808"
-                              height="486"
-                          >
-                        </picture>
-                      </div>
-                    {% when "video" %}
-                      {% assign media = block.settings.video %}
-                      {% assign poster = media | image_url: width: 550 | prepend: "https:" %}
-                      <div class="media-item media-container" data-type="{{ block.type }}">
-                        <video playsinline preload="none" loop controls poster="{{ poster }}">
-                          {% for source in media.sources %}
-                            <source
-                                src="{{ source.url }}"
-                                type="{{ source.mime_type }}">
-                          {% endfor %}
-                        </video>
-                      </div>
-                  {% endcase %}
-                </li>
-              {% endfor %}
-            </ul>
-          </div>
-        </div>
-        <div class="zoom-container"></div>
-      </div>
-
-
-      <div class="thumbnail-carousel splide">
-        <div class="splide__track">
-          <ul class="splide__list">
-            {% for block in allItems %}
-              <li
-                  class="splide__slide"
-              >
-                {% case block.type %}
-                  {% when "image" %}
-                    {% assign thumbnail = block.settings %}
-
-                    <div class="media-item media-container">
-                      <picture class="media-item__image" lang="en">
-                        <source
-                            media="(min-width: 1200px)"
-                            srcset="{{ thumbnail.en_desktop_image | image_url: width: 1440 }}"
-                        >
-                        <source
-                            media="(min-width: 992px)"
-                            srcset="{{ thumbnail.en_desktop_image | image_url: width: 1040 }}"
-                        >
-                        <source
-                            media="(min-width: 768px)" srcset="{{ thumbnail.en_desktop_image | image_url: width: 800 }}"
-                        >
-
-                        <img
-                            src="{{ thumbnail.en_mobile_image | default: thumbnail.en_desktop_image | image_url: width: 600 }}"
+                    <img
+                            src="{{ leadItem.settings.en_mobile_image | default: leadItem.settings.en_desktop_image | image_url: width: 600 }}"
                             width="808"
                             height="486"
-                        >
-                      </picture>
-                      <picture class="media-item__image" lang="fr">
-                        <source
-                            media="(min-width: 1200px)"
-                            srcset="{{ thumbnail.fr_desktop_image | image_url: width: 1440 }}"
-                        >
-                        <source
-                            media="(min-width: 992px)"
-                            srcset="{{ thumbnail.fr_desktop_image | image_url: width: 1040 }}"
-                        >
-                        <source
-                            media="(min-width: 768px)" srcset="{{ thumbnail.fr_desktop_image | image_url: width: 800 }}"
-                        >
+                    >
+                </picture>
+                <picture class="media-item__image" lang="fr">
+                    <source media="(min-width: 1200px)"
+                            srcset="{{ leadItem.settings.fr_desktop_image | image_url: width: 1440 }}">
+                    <source media="(min-width: 992px)"
+                            srcset="{{ leadItem.settings.fr_desktop_image | image_url: width: 1040 }}">
+                    <source media="(min-width: 768px)"
+                            srcset="{{ leadItem.settings.fr_desktop_image | image_url: width: 800 }}">
 
-                        <img
-                            src="{{ thumbnail.fr_mobile_image | default: thumbnail.fr_desktop_image | image_url: width: 600 }}"
+                    <img
+                            src="{{ leadItem.settings.fr_mobile_image | default: leadItem.settings.fr_desktop_image | image_url: width: 600 }}"
                             width="808"
                             height="486"
-                        >
-                      </picture>
+                    >
+                </picture>
+            </div>
+    {% endcase %}
+    <template>
+        <div class="carousel-container">
+            <div class="main-carousel">
+                <div class="splide">
+                    {% render 'splide-arrows', trackId: trackId %}
+
+                    <div class="splide__track">
+                        <ul class="splide__list">
+                            {% for block in allItems %}
+                                <li
+                                        class="splide__slide"
+                                >
+                                    {% case block.type %}
+                                        {% when "image" %}
+                                            <div class="media-item media-container" data-type="{{ block.type }}">
+                                                <picture class="media-item__image" lang="en"
+                                                         data-zoom="{{ block.settings.en_mobile_image | default: block.settings.en_desktop_image | image_url: width: 2048 }}"
+                                                >
+                                                    <source
+                                                            media="(min-width: 1200px)"
+                                                            srcset="{{ block.settings.en_desktop_image | image_url: width: 1440 }}"
+                                                    >
+                                                    <source
+                                                            media="(min-width: 992px)"
+                                                            srcset="{{ block.settings.en_desktop_image | image_url: width: 1040 }}"
+                                                    >
+                                                    <source
+                                                            media="(min-width: 768px)"
+                                                            srcset="{{ block.settings.en_desktop_image | image_url: width: 800 }}"
+                                                    >
+
+                                                    <img
+                                                            src="{{ block.settings.en_mobile_image | default: block.settings.en_desktop_image | image_url: width: 600 }}"
+                                                            width="808"
+                                                            height="486"
+                                                    >
+                                                </picture>
+
+                                                <picture class="media-item__image" lang="fr"
+                                                         data-zoom="{{ block.settings.fr_mobile_image | default: block.settings.fr_desktop_image | image_url: width: 2048 }}">
+                                                    <source
+                                                            media="(min-width: 1200px)"
+                                                            srcset="{{ block.settings.fr_desktop_image | image_url: width: 1440 }}"
+                                                    >
+                                                    <source
+                                                            media="(min-width: 992px)"
+                                                            srcset="{{ block.settings.fr_desktop_image | image_url: width: 1040 }}"
+                                                    >
+                                                    <source
+                                                            media="(min-width: 768px)"
+                                                            srcset="{{ block.settings.fr_desktop_image | image_url: width: 800 }}"
+                                                    >
+
+                                                    <img
+                                                            src="{{ block.settings.fr_mobile_image | default: block.settings.fr_desktop_image | image_url: width: 600 }}"
+                                                            width="808"
+                                                            height="486"
+                                                    >
+                                                </picture>
+                                            </div>
+                                        {% when "video" %}
+                                            {% assign media = block.settings.video %}
+                                            {% assign poster = media | image_url: width: 550 | prepend: "https:" %}
+                                            <div class="media-item media-container" data-type="{{ block.type }}">
+                                                <video playsinline preload="none" loop controls poster="{{ poster }}">
+                                                    {% for source in media.sources %}
+                                                        <source
+                                                                src="{{ source.url }}"
+                                                                type="{{ source.mime_type }}">
+                                                    {% endfor %}
+                                                </video>
+                                            </div>
+                                    {% endcase %}
+                                </li>
+                            {% endfor %}
+                        </ul>
                     </div>
+                </div>
+                <div class="zoom-container"></div>
+            </div>
 
-                  {% when "video" or "external_video" %}
-                    {% assign media = block.settings.video %}
-                    <button id="Deferred-Poster-Modal-{{ media.id }}" class="media-poster media-container"
-                            type="button">
-                      <div class="poster-button motion-reduce">
-                        <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" role="presentation"
-                             class="icon icon-play" fill="none" width="20" viewBox="0 0 10 14">
-                          <path fill-rule="evenodd" clip-rule="evenodd"
-                                d="M1.48177 0.814643C0.81532 0.448245 0 0.930414 0 1.69094V12.2081C0 12.991 0.858787 13.4702 1.52503 13.0592L10.5398 7.49813C11.1918 7.09588 11.1679 6.13985 10.4965 5.77075L1.48177 0.814643Z"
-                                fill="currentColor" />
-                        </svg>
-                      </div>
 
-                      <picture class="media-item__image">
-                        <source media="(min-width: 1200px)"
-                                srcset="{{ media.preview_image | image_url: width: 1440 }}">
-                        <source media="(min-width: 992px)"
-                                srcset="{{ media.preview_image | image_url: width: 1040 }}">
-                        <source media="(min-width: 768px)"
-                                srcset="{{ media.preview_image | image_url: width: 800 }}">
-                        <img
-                            src="{{ media | image_url: width: 550 }}"
-                            loading="lazy"
-                            width="576"
-                            height="{{ 576 | divided_by: media.preview_image.aspect_ratio }}"
-                            alt="{{ media.preview_image.alt | escape }}"
-                        />
-                      </picture>
-                    </button>
+            <div class="thumbnail-carousel splide">
+                {% render 'splide-arrows', trackId: trackId %}
 
-                {% endcase %}
-              </li>
-            {% endfor %}
-          </ul>
+                <div class="splide__track">
+                    <ul class="splide__list">
+                        {% for block in allItems %}
+                            <li
+                                    class="splide__slide"
+                            >
+                                {% case block.type %}
+                                    {% when "image" %}
+                                        {% assign thumbnail = block.settings %}
+
+                                        <div class="media-item media-container">
+                                            <picture class="media-item__image" lang="en">
+                                                <source
+                                                        media="(min-width: 1200px)"
+                                                        srcset="{{ thumbnail.en_desktop_image | image_url: width: 1440 }}"
+                                                >
+                                                <source
+                                                        media="(min-width: 992px)"
+                                                        srcset="{{ thumbnail.en_desktop_image | image_url: width: 1040 }}"
+                                                >
+                                                <source
+                                                        media="(min-width: 768px)"
+                                                        srcset="{{ thumbnail.en_desktop_image | image_url: width: 800 }}"
+                                                >
+
+                                                <img
+                                                        src="{{ thumbnail.en_mobile_image | default: thumbnail.en_desktop_image | image_url: width: 600 }}"
+                                                        width="808"
+                                                        height="486"
+                                                >
+                                            </picture>
+                                            <picture class="media-item__image" lang="fr">
+                                                <source
+                                                        media="(min-width: 1200px)"
+                                                        srcset="{{ thumbnail.fr_desktop_image | image_url: width: 1440 }}"
+                                                >
+                                                <source
+                                                        media="(min-width: 992px)"
+                                                        srcset="{{ thumbnail.fr_desktop_image | image_url: width: 1040 }}"
+                                                >
+                                                <source
+                                                        media="(min-width: 768px)"
+                                                        srcset="{{ thumbnail.fr_desktop_image | image_url: width: 800 }}"
+                                                >
+
+                                                <img
+                                                        src="{{ thumbnail.fr_mobile_image | default: thumbnail.fr_desktop_image | image_url: width: 600 }}"
+                                                        width="808"
+                                                        height="486"
+                                                >
+                                            </picture>
+                                        </div>
+
+                                    {% when "video" or "external_video" %}
+                                        {% assign media = block.settings.video %}
+                                        <button id="Deferred-Poster-Modal-{{ media.id }}"
+                                                class="media-poster media-container"
+                                                type="button">
+                                            <div class="poster-button motion-reduce">
+                                                <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
+                                                     focusable="false" role="presentation"
+                                                     class="icon icon-play" fill="none" width="20" viewBox="0 0 10 14">
+                                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                                          d="M1.48177 0.814643C0.81532 0.448245 0 0.930414 0 1.69094V12.2081C0 12.991 0.858787 13.4702 1.52503 13.0592L10.5398 7.49813C11.1918 7.09588 11.1679 6.13985 10.4965 5.77075L1.48177 0.814643Z"
+                                                          fill="currentColor"/>
+                                                </svg>
+                                            </div>
+
+                                            <picture class="media-item__image">
+                                                <source media="(min-width: 1200px)"
+                                                        srcset="{{ media.preview_image | image_url: width: 1440 }}">
+                                                <source media="(min-width: 992px)"
+                                                        srcset="{{ media.preview_image | image_url: width: 1040 }}">
+                                                <source media="(min-width: 768px)"
+                                                        srcset="{{ media.preview_image | image_url: width: 800 }}">
+                                                <img
+                                                        src="{{ media | image_url: width: 550 }}"
+                                                        loading="lazy"
+                                                        width="576"
+                                                        height="{{ 576 | divided_by: media.preview_image.aspect_ratio }}"
+                                                        alt="{{ media.preview_image.alt | escape }}"
+                                                />
+                                            </picture>
+                                        </button>
+
+                                {% endcase %}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
 
-    <input id="lead-item-url" type="hidden"
-           value="{{ leadItem.settings.en_mobile_image | default: leadItem.settings.en_desktop_image | image_url: width: 600 }}">
-  </template>
+        <input id="lead-item-url" type="hidden"
+               value="{{ leadItem.settings.en_mobile_image | default: leadItem.settings.en_desktop_image | image_url: width: 600 }}">
+    </template>
 </product-media>
 
 <script type="quickscript" loading="delayed" src="{{ 'product-media.js' | asset_url }}"></script>

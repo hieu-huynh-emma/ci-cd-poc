@@ -2,7 +2,7 @@ class CrossSellEngine extends CustomElement {
   crossSellProducts = [];
   props = {
     variantId: 0,
-    product: {},
+    trackId: "",
   };
 
   constructor() {
@@ -105,7 +105,11 @@ class CrossSellEngine extends CustomElement {
                         }
                     }
                 }
-                metafields(identifiers: [{ namespace: "accentuate", key: "featured_image" },{ namespace: "accentuate", key: "display_name" }]) {
+                metafields(identifiers: [
+                { namespace: "accentuate", key: "featured_image" },
+                { namespace: "accentuate", key: "display_name" },
+                { namespace: "accentuate", key: "track_postfix" }
+                ]) {
                     value
                     id
                     key
@@ -176,6 +180,7 @@ class CrossSellEngine extends CustomElement {
   }
 
   renderCrossSellWidget(metaobject) {
+    const {trackId} = this.props
     const {
       qty,
       variant: {
@@ -186,7 +191,7 @@ class CrossSellEngine extends CustomElement {
       },
     } = metaobject;
 
-    const { title, displayName, handle, featuredImage } = product;
+    const { title, displayName,handle, featuredImage } = product;
 
     const totalSaved = Math.max(0, originalPrice - price),
       priceInCurrency = Currency.format(parseFloat(price)),
@@ -204,34 +209,34 @@ class CrossSellEngine extends CustomElement {
   :variantId="${id}"
   data-abtasty-cross-sell
 > 
-    <script type="application/json">${JSON.stringify(product)}</script>
-    <div class="auxiliary-container">
-      <div class="widget-checkbox">
-          <input type="checkbox" class="widget-checkbox__input"/>
-      </div>
-      
-      <div class="product-details">
-        <div class="self-center">
-          <img
-            class="mx-auto h-auto"
-            src="${featuredImage}"
-            alt=""
-            width="48"
-            height="48"
-          >
-        </div>
-          <div class="product-content">
-            <p class="text-sm font-semibold">
-            ${qty > 1 ? `${qty}x ` : ""} ${displayName || title}
-            </p>
+       <script type="application/json">${JSON.stringify(product)}</script>
+       <tracked-button :trackId="${trackId}" class="auxiliary-container">
+          <div class="widget-checkbox">
+              <input type="checkbox" class="widget-checkbox__input"/>
           </div>
-          <p class="product-price-container">
-            <span class="text-scarlet font-bold">${priceInCurrency}</span>
-            ${totalSaved ? `<del class="line-through text-xs">${originalPriceInCurrency}</del>` : ""}
-           
-          </p>
-        </div>
-      </div>
+          
+          <div class="product-details">
+            <div class="self-center">
+              <img
+                class="mx-auto h-auto"
+                src="${featuredImage}"
+                alt=""
+                width="48"
+                height="48"
+              >
+            </div>
+              <div class="product-content">
+                <p class="text-sm font-semibold">
+                ${qty > 1 ? `${qty}x ` : ""} ${displayName || title}
+                </p>
+              </div>
+              <p class="product-price-container">
+                <span class="text-scarlet font-bold">${priceInCurrency}</span>
+                ${totalSaved ? `<del class="line-through text-xs">${originalPriceInCurrency}</del>` : ""}
+               
+              </p>
+            </div>
+       </tracked-button>  
 </cross-sell-widget>
     `;
   }
@@ -279,10 +284,16 @@ class CrossSellEngine extends CustomElement {
                                                               namespace,
                                                               key,
                                                             } = {}) => namespace === "accentuate" && key === "display_name")?.value;
+
+    const trackPostfix = metafields.filter((m) => !!m).find(({
+                                                              namespace,
+                                                              key,
+                                                            } = {}) => namespace === "accentuate" && key === "track_postfix")?.value;
     return {
       featuredImage,
       variants: variants.edges.map(({ node }) => node),
       displayName,
+      trackPostfix,
       ...rest,
     };
   }

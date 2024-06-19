@@ -9,6 +9,15 @@
     }
 </style>
 <link rel="quickscript" loading="delayed" href="{{ 'upsell-widget.css' | asset_url }}">
+{% liquid
+
+  assign trackId = "Up_Sell"
+  assign postfix = product.metafields.accentuate.track_postfix
+
+  if postfix != blank
+    assign trackId = trackId | append: "_" | append: postfix
+  endif
+%}
 
 <div id="upsell-widget">
   <upsell-widget
@@ -47,9 +56,9 @@
           </div>
         </div>
 
-        <a class="product-button">
+        <tracked-button href="{{ product.url }}" :trackId="{{ trackId }}" class="product-button">
           View Product
-        </a>
+        </tracked-button>
       </div>
 
       <div class="product-media">

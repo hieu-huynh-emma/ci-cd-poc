@@ -4,6 +4,27 @@
 
 <lazy-stylesheet href="{{ 'customer-sentiment.css' | asset_url }}"></lazy-stylesheet>
 
+{% liquid
+
+  assign trackId = "Truth_scroll"
+  assign ctaTrackId = "See_reviews"
+
+  if template == 'index'
+    assign postfix = "HP"
+  elsif template == "page.sale"
+    assign postfix = "SP"
+  elsif template contains "collection"
+    assign postfix = "MP"
+  else
+    assign postfix = product.metafields.accentuate.track_postfix
+  endif
+
+  if postfix != blank
+    assign trackId = trackId | append: "_" | append: postfix
+    assign ctaTrackId = ctaTrackId | append: "_" | append: postfix
+  endif
+%}
+
 <section id="customer-sentiment-section" class="section-container spacing-sm">
   <div class="section-chassis page-boundary">
     <h2 class="heading-2 font-inter">{{ section.settings.title | remove: "<p>" | remove: "</p>" }}</h2>
@@ -11,7 +32,7 @@
     {% comment %}<lazy-component size="lg">{% endcomment %}
       <div>
         <div class="splide">
-          {% include 'splide-arrows', trackId: section.settings.trackId  %}
+          {% include 'splide-arrows', trackId: trackId  %}
 
           <div class="splide__track">
             <ul class="splide__list">
@@ -67,9 +88,9 @@
     {% comment %}</lazy-component>{% endcomment %}
 
     {% if ctaBtn %}
-      <a class="btn mx-auto md:w-[458px]" href="{{ ctaBtn.settings.url }}">
+      <tracked-button :trackId="{{ ctaTrackId }}" class="btn mx-auto md:w-[458px]" href="{{ ctaBtn.settings.url }}">
         {{ ctaBtn.settings.text }}
-      </a>
+      </tracked-button>
     {% endif %}
   </div>
 

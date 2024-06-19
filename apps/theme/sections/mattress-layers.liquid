@@ -11,6 +11,15 @@
     }
 </style>
 <link rel="quickscript" loading="visibility" href="{{ 'mattress-layers.css' | asset_url }}">
+{% liquid
+
+    assign trackId = "Layer_by_layer"
+    assign postfix = product.metafields.accentuate.track_postfix
+
+    if postfix != blank
+        assign trackId = trackId | append: "_" | append: postfix
+    endif
+%}
 
 <mattress-layers>
     <section id="mattress-layers-section" class="section-container spacing-{{ section.settings.container_spacing }}">
@@ -26,14 +35,16 @@
                                         --bullet_gutter: {{ coverLayer.settings.bullet_gutter }}%
                                         "
                             >
-                                <div class="layer-bullet">
-                                    <button aria-label="Cover Layer" aria-expanded="true" role="button"
-                                            class="layer-number">1
-                                    </button>
-                                </div>
-                                <div class="layer-photo flex items-center">
-                                    {{ coverLayer.settings.image | image_url: width: 1440 | image_tag }}
-                                </div>
+                                <tracked-button :trackId="{{ trackId }}">
+                                    <div  class="layer-bullet">
+                                        <button aria-label="Cover Layer" aria-expanded="true" role="button"
+                                                class="layer-number">1
+                                        </button>
+                                    </div>
+                                    <div class="layer-photo flex items-center">
+                                        {{ coverLayer.settings.image | image_url: width: 1440 | image_tag }}
+                                    </div>
+                                </tracked-button>
                             </li>
                         {% endif %}
 
@@ -42,13 +53,15 @@
                                 style="
                                         --gutter: {{ layer.settings.gutter }};
                                         --bullet_gutter: {{ layer.settings.bullet_gutter }}%">
-                                <div class="layer-bullet">
-                                    <button aria-label="Layer {{ forloop.index | plus: 1 }}" aria-expanded="true"
-                                            role="button" class="layer-number">{{ forloop.index | plus: 1 }}</button>
-                                </div>
-                                <div class="layer-photo flex items-center">
-                                    {{ layer.settings.image | image_url: width: 1440 | image_tag }}
-                                </div>
+                                <tracked-button :trackId="{{ trackId }}">
+                                    <div class="layer-bullet">
+                                        <button aria-label="Layer {{ forloop.index | plus: 1 }}" aria-expanded="true"
+                                                role="button" class="layer-number">{{ forloop.index | plus: 1 }}</button>
+                                    </div>
+                                    <div class="layer-photo flex items-center">
+                                        {{ layer.settings.image | image_url: width: 1440 | image_tag }}
+                                    </div>
+                                </tracked-button>
                             </li>
                         {% endfor %}
                     </div>
@@ -57,13 +70,15 @@
                         <li class="layer-item base-layer-item" style="
                                 --gutter: {{ baseLayer.settings.gutter }};
                                 --bullet_gutter: {{ baseLayer.settings.bullet_gutter }}%">
-                            <div class="layer-bullet">
-                                <button aria-label="Base Layer" aria-expanded="true" role="button"
-                                        class="layer-number">{{ internalLayers.size | plus: 2 }}</button>
-                            </div>
-                            <div class="layer-photo flex items-center">
-                                {{ baseLayer.settings.image | image_url: width: 1440 | image_tag }}
-                            </div>
+                            <tracked-button :trackId="{{ trackId }}">
+                                <div class="layer-bullet">
+                                    <button aria-label="Base Layer" aria-expanded="true" role="button"
+                                            class="layer-number">{{ internalLayers.size | plus: 2 }}</button>
+                                </div>
+                                <div class="layer-photo flex items-center">
+                                    {{ baseLayer.settings.image | image_url: width: 1440 | image_tag }}
+                                </div>
+                            </tracked-button>
                         </li>
                     {% endif %}
                     {% if shadowLayer %}
