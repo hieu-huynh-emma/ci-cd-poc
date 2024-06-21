@@ -418,11 +418,7 @@
                             <a href="{{ product.url }}">
                                 <div class="w-full flex flex-col max-w-[320px] text-center featured_card"
                                      style="background-color:  var(--product-card-bg)">
-                                    {% if section.settings.show_secondary_badge %}
-                                        <p
-                                                style="background-color: {{ block.settings.color }};"
-                                                class="mx-auto mb-8 w-max rounded-full px-7 py-3 text-[13px] font-semibold uppercase leading-none text-white">{{ block.settings.primary_badge }}</p>
-                                    {% endif %}
+
                                     <div
                                             style="border-color:  var(--product-card-bg)"
                                             class="rounded-[6px] border flex flex-col h-full">

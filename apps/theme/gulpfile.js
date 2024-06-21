@@ -1,5 +1,5 @@
 const gulp = require('gulp')
-const sass = require('gulp-sass')(require('node-sass'))
+const sass = require('gulp-sass')(require('sass'))
 const flatten = require('gulp-flatten');
 const purgecss = require('gulp-purgecss')
 const postcss = require('gulp-postcss')

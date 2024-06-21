@@ -15,7 +15,6 @@
     "push:staging": "shopify theme push -s emma-sleep-ca -t CA-STAGING",
     "analyze:desktop": "sitespeed.io --config .sitespeedrc.json https://qm1z5i43o21u3gjm-56298733706.shopifypreview.com/products/emma-hybrid-comfort",
     "analyze:mobile": "sitespeed.io --config .sitespeedrc.json https://qm1z5i43o21u3gjm-56298733706.shopifypreview.com/products/emma-hybrid-comfort --mobile"
-
   },
   "keywords": [],
   "author": "",
@@ -34,8 +33,8 @@
     "gulp-postcss": "^9.0.1",
     "gulp-purgecss": "^4.1.3",
     "gulp-sass": "^5.1.0",
-    "node-sass": "^7.0.1",
     "postcss": "^8.4.16",
+    "sass": "^1.77.6",
     "tailwindcss": "^3.3.1"
   }
 }

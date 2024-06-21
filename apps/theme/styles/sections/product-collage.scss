@@ -13,11 +13,9 @@
     position: relative;
     border-radius: 8px;
     overflow: hidden;
-    &:hover {
-      .card-photo {
-        transform: scale(1.2)
-      }
-    }
+
+
+
     &:first-child {
 
       @media screen and (min-width: 729px) {
@@ -69,6 +67,28 @@
 
       }
     }
+
+    &[data-type='image'] {
+      &:hover {
+        .card-photo {
+          transform: scale(1.2)
+        }
+      }
+    }
+
+    &[data-type='video'] {
+      .card-media {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+
+  .collage-container {
+    display: block;
+    width: 100%;
+    height: 100%;
   }
 }
 

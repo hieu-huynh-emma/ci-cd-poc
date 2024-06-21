@@ -1,53 +1,61 @@
-{% assign collageItems = section.blocks | where: 'type', 'collage-item' %}
-
 <link rel="quickscript" loading="delayed" href="{{ 'product-collage.css' | asset_url }}">
 
 <section id="product-collage-section" data-section-id="{{ section.id }}" class="section-container">
-    <div class="section-chassis page-boundary">
-        {% render 'section-header' %}
+  <div class="section-chassis page-boundary">
+    {% render 'section-header' %}
 
-        <div class="collage-gallery">
-            {% for item in collageItems %}
-                {% assign collection = item.settings.collection %}
-                <div
-                        class="collage-card">
+    <div class="collage-gallery">
+      {% for block in section.blocks %}
+        {% assign collection = block.settings.collection %}
+        <div class="collage-card" data-type="{{ block.type }}">
+          <div class="collage-container">
+            {%- assign collection_image = blank -%}
 
-                    <tracked-button
-                            href="{{ collection.url }}"
+            {% if block.settings.media %}
+              {% assign collection_image = block.settings.media | image_url: width: 1440 %}
+            {% elsif collection.metafields.accentuate.featured_image[0] %}
+              {%- assign collection_image = collection.metafields.accentuate.featured_image[0].src -%}
+            {% elsif collection.image %}
+              {%- assign collection_image = collection.image | image_url: width: 1440 -%}
+            {% elsif collection.products.first and collection.products.first.featured_media != empty %}
+              {%- assign collection_image = collection.products.first.featured_media.preview_image | image_url: width: 1440 -%}
+            {% endif %}
 
-                            class=""
-                    >
-                        {%- assign collection_image = blank -%}
+            {% if collection == blank %}
+              <div
+                class="collection-grid__item-overlay grid__image">{{ 'collection-1' | placeholder_svg_tag: 'placeholder-svg' }}</div>
+            {% else %}
+              {% case block.type %}
+                {% when "image" %}
+                  <img class="lazyload card-photo"
+                       data-src="{{ collection_image }}"
+                       data-sizes="auto"
+                       data-parent-fit="cover"
+                  />
+                {% when "video" %}
+                  {% assign media = block.settings.media %}
+                  {% assign poster = media | image_url: width: 550 | prepend: "https:" %}
+                  <video class="card-media lazy" controls playsinline autoplay muted poster="{{ poster }}">
+                    {% for source in media.sources %}
+                      <source
+                        data-src="{{ source.url }}"
+                        type="{{ source.mime_type }}">
+                    {% endfor %}
+                  </video>
+              {% endcase %}
 
-                        {% if item.settings.photo %}
-                            {% assign collection_image = item.settings.photo | image_url: width: 1440 %}
-                        {% elsif collection.metafields.accentuate.featured_image[0] %}
-                            {%- assign collection_image = collection.metafields.accentuate.featured_image[0].src -%}
-                        {% elsif collection.image %}
-                            {%- assign collection_image = collection.image | image_url: width: 1440 -%}
-                        {% elsif collection.products.first and collection.products.first.featured_media != empty %}
-                            {%- assign collection_image = collection.products.first.featured_media.preview_image | image_url: width: 1440 -%}
-                        {% endif %}
 
-                        {% if collection == blank %}
-                            <div class="collection-grid__item-overlay grid__image">{{ 'collection-1' | placeholder_svg_tag: 'placeholder-svg' }}</div>
-                        {% else %}
-                            <img class="lazyload card-photo"
-                                 data-src="{{ collection_image }}"
-                                 data-sizes="auto"
-                                 data-parent-fit="cover"
-                            />
-                        {% endif %}
+            {% endif %}
 
-                        <div class="card-content">
-                            <p class="text-md md:text-xl font-semibold">{{ item.settings.heading }}</p>
-                            <p class="uppercase font-semibold text-xs md:text-sm">{{ item.settings.subheading }}</p>
-                        </div>
-                    </tracked-button>
-                </div>
-            {% endfor %}
+            <tracked-button :trackId="{{ block.settings.trackId }}" href="{{ collection.url }}" class="card-content">
+              <p class="text-md md:text-xl font-semibold">{{ block.settings.heading }}</p>
+              <p class="uppercase font-semibold text-xs md:text-sm">{{ block.settings.subheading }}</p>
+            </tracked-button>
+          </div>
         </div>
+      {% endfor %}
     </div>
+  </div>
 </section>
 
 
@@ -56,8 +64,8 @@
   "name": "Product Collage",
   "blocks": [
     {
-      "type": "collage-item",
-      "name": "Collage Item",
+      "type": "image",
+      "name": "Collage Image",
       "settings": [
         {
           "id": "heading",
@@ -70,9 +78,40 @@
           "label": "Subheading"
         },
         {
-          "id": "photo",
+          "id": "media",
           "type": "image_picker",
           "label": "Item Image"
+        },
+        {
+          "id": "collection",
+          "type": "collection",
+          "label": "Linked Product Collection"
+        },
+        {
+          "id": "trackId",
+          "type": "text",
+          "label": "Tracking ID"
+        }
+      ]
+    },
+    {
+      "type": "video",
+      "name": "Collage Video",
+      "settings": [
+        {
+          "id": "heading",
+          "type": "text",
+          "label": "Heading"
+        },
+        {
+          "id": "subheading",
+          "type": "text",
+          "label": "Subheading"
+        },
+        {
+          "id": "media",
+          "type": "video",
+          "label": "Video"
         },
         {
           "id": "collection",
