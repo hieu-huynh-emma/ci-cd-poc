@@ -51,6 +51,14 @@
         "caption_content": ""
       }
     },
+    "bundle-cross-sell": {
+      "type": "bundle-cross-sell",
+      "settings": {
+        "heading": "Add bundle offer!",
+        "product": "comfort-accessory-bundle",
+        "note": "*No mattress protector available for Twin XL and Cal King sizes"
+      }
+    },
     "product-summary": {
       "type": "product-summary",
       "blocks": {
@@ -192,12 +200,6 @@
         "12e2c164-6e6a-42a2-a76a-b4363d4c2c09"
       ],
       "settings": {
-      }
-    },
-    "bundle-cross-sell": {
-      "type": "bundle-cross-sell",
-      "settings": {
-        "product": "comfort-accessory-bundle"
       }
     },
     "price-transparency": {
@@ -654,7 +656,8 @@
             "discount_title": "Father's Day Sale",
             "comfort_meter": 6,
             "cooling_meter": 4,
-            "motion_isolation_meter": 6
+            "motion_isolation_meter": 6,
+            "trackId": ""
           }
         },
         "old-featured-products-2": {
@@ -672,7 +675,8 @@
             "discount_title": "Father's Day Sale",
             "comfort_meter": 8,
             "cooling_meter": 6,
-            "motion_isolation_meter": 8
+            "motion_isolation_meter": 8,
+            "trackId": ""
           }
         },
         "5669a974-c41c-4819-895a-3683043506f7": {
@@ -690,21 +694,24 @@
             "discount_title": "Father's Day Sale",
             "comfort_meter": 8,
             "cooling_meter": 8,
-            "motion_isolation_meter": 8
+            "motion_isolation_meter": 8,
+            "trackId": ""
           }
         },
         "95bee6a1-5a6f-4ba8-9fac-03c161a01953": {
           "type": "explore-button",
           "settings": {
             "url": "shopify:\/\/pages\/comparison",
-            "text": "<p>Compare all mattresses<\/p>"
+            "text": "<p>Compare all mattresses<\/p>",
+            "trackId": ""
           }
         },
         "95bee6a1-5a6f-4ba8-9fac-03c161a01954": {
           "type": "explore-button",
           "settings": {
             "url": "shopify:\/\/pages\/product-quizz",
-            "text": "<p>Find your perfect match<\/p>"
+            "text": "<p>Find your perfect match<\/p>",
+            "trackId": ""
           }
         }
       },
@@ -727,6 +734,47 @@
         "third_meter_title": "Motion Isolation",
         "show_third_meter": true,
         "show_secondary_badge": false
+      }
+    },
+    "product-carousel": {
+      "type": "product-carousel",
+      "blocks": {
+        "72c7f33b-7788-4524-bf53-816aecb093b6": {
+          "type": "catalog_item",
+          "settings": {
+            "product": "perfect-sleep-bundle-hybrid-25"
+          }
+        },
+        "f0f0b732-6803-4158-8c54-5c08c4bdbfa3": {
+          "type": "catalog_item",
+          "settings": {
+            "product": "premium-cooling-pillow"
+          }
+        },
+        "07d5912c-d4c3-4ebb-97a6-f723fc8a4f3f": {
+          "type": "catalog_item",
+          "settings": {
+            "product": "emma-mattress-protector"
+          }
+        },
+        "c4650795-b884-4ddd-904e-babd57faad7b": {
+          "type": "catalog_item",
+          "settings": {
+            "product": "duvet"
+          }
+        }
+      },
+      "block_order": [
+        "72c7f33b-7788-4524-bf53-816aecb093b6",
+        "f0f0b732-6803-4158-8c54-5c08c4bdbfa3",
+        "07d5912c-d4c3-4ebb-97a6-f723fc8a4f3f",
+        "c4650795-b884-4ddd-904e-babd57faad7b"
+      ],
+      "settings": {
+        "heading": "Some things are better together",
+        "heading_alignment": "start",
+        "container_spacing": "md",
+        "trackId": ""
       }
     },
     "customer-sentiment": {
@@ -854,54 +902,121 @@
         "review_LLa7mp"
       ],
       "settings": {
-        "title": "<p>Why our customers love Emma<\/p>"
+        "title": "<p>Why our customers love Emma<\/p>",
+        "trackId": ""
       }
     },
-    "product-carousel": {
-      "type": "product-carousel",
+    "1685402594226951ca": {
+      "type": "apps",
       "blocks": {
-        "72c7f33b-7788-4524-bf53-816aecb093b6": {
-          "type": "catalog_item",
+        "yotpo_product_photo_reviews_reviews_NLwt4i": {
+          "type": "shopify:\/\/apps\/yotpo-product-reviews-ugc\/blocks\/reviews\/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
           "settings": {
-            "product": "emma-foam-pillow"
-          }
-        },
-        "f0f0b732-6803-4158-8c54-5c08c4bdbfa3": {
-          "type": "catalog_item",
-          "settings": {
-            "product": "premium-cooling-pillow"
-          }
-        },
-        "07d5912c-d4c3-4ebb-97a6-f723fc8a4f3f": {
-          "type": "catalog_item",
-          "settings": {
-            "product": "emma-mattress-protector"
-          }
-        },
-        "c4650795-b884-4ddd-904e-babd57faad7b": {
-          "type": "catalog_item",
-          "settings": {
-            "product": "emma-bed-frame"
-          }
-        },
-        "d8319461-aedd-4805-884a-95b7ed1a5893": {
-          "type": "catalog_item",
-          "settings": {
-            "product": "emma-hybrid-comfort"
+            "product": "{{product}}"
           }
         }
       },
       "block_order": [
-        "72c7f33b-7788-4524-bf53-816aecb093b6",
-        "f0f0b732-6803-4158-8c54-5c08c4bdbfa3",
-        "07d5912c-d4c3-4ebb-97a6-f723fc8a4f3f",
-        "c4650795-b884-4ddd-904e-babd57faad7b",
-        "d8319461-aedd-4805-884a-95b7ed1a5893"
+        "yotpo_product_photo_reviews_reviews_NLwt4i"
       ],
       "settings": {
-        "heading": "Some things are better together",
-        "heading_alignment": "start",
-        "container_spacing": "md"
+        "include_margins": true
+      }
+    },
+    "featured-faqs": {
+      "type": "featured-faqs",
+      "blocks": {
+        "78ca144d-5919-4a1b-9e22-082ef5384310": {
+          "type": "faq",
+          "settings": {
+            "title": "Is it free to return your products?",
+            "content": "<p>It's 100% free to return your Emma! If your Emma turns out not to suit you for any reason, feel free to return it. Just simply get in contact with us via our chat support, phone or email and we will refund and collect it at no cost to you.<\/p><p><br\/>Live support is also available from 08:00 to 18:00 GMT-6, Monday-Friday!<\/p>"
+          }
+        },
+        "c68412f4-0251-42dc-9113-a0eecd22c518": {
+          "type": "faq",
+          "settings": {
+            "title": "How does your 365-Night-Trial work?",
+            "content": "<p>Our risk-free 365-night trial means that you get a full year to decide if your Emma mattress is a good fit for you. This gives you more time to try the mattress for yourself and experience the benefits that our 4Million+ customers have come to enjoy each night!<br\/><br\/>Helpful Tip: We recommend you sleep on your Emma for at least 21 nights so that you and your body can get suited to your new Emma mattress.<br\/><br\/>You can begin your 365-night trial today. Our 0% APR financing with Affirm also gives you the option to make 12 equal payments over the next 12 months.<\/p>"
+          }
+        },
+        "a72149c3-5420-4a8c-80fe-7370288da216": {
+          "type": "faq",
+          "settings": {
+            "title": "Do you ship nationwide?",
+            "content": "<p>We do offer free shipping in all the province in Canada.<\/p>"
+          }
+        },
+        "d9373dca-57f2-4b56-8838-1a8fc22e21ca": {
+          "type": "faq",
+          "settings": {
+            "title": "How long does shipping take?",
+            "content": "<p>Our free shipping takes approximately 5-7 days nationwide.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "78ca144d-5919-4a1b-9e22-082ef5384310",
+        "c68412f4-0251-42dc-9113-a0eecd22c518",
+        "a72149c3-5420-4a8c-80fe-7370288da216",
+        "d9373dca-57f2-4b56-8838-1a8fc22e21ca"
+      ],
+      "settings": {
+        "heading": "FAQs",
+        "header_font": "inter",
+        "heading_alignment": "center",
+        "container_spacing": "sm"
+      }
+    },
+    "special-services": {
+      "type": "multicolumn-text",
+      "blocks": {
+        "48ca0997-ffa4-4408-8013-4796cb7f17c4": {
+          "type": "column",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/truck-free-black.png",
+            "title": "Free Delivery",
+            "content": "We’ll bring your Emma order straight to your door at no extra cost"
+          }
+        },
+        "f3255c5f-527e-4927-a670-554ff22e9ef7": {
+          "type": "column",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/100-night-black.png",
+            "title": "365-Night Trial",
+            "content": "Get properly acquainted with Emma so you can be sure we’re the one"
+          }
+        },
+        "c15d1ab6-4b9b-4e30-ace7-dbf193ff2d4f": {
+          "type": "column",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/award-black.png",
+            "title": "10 Year Guarantee",
+            "content": "Our products are built to last. You’re covered if something goes wrong"
+          }
+        },
+        "f9973382-ba4e-4931-817c-113225550dad": {
+          "type": "column",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/package-black.png",
+            "title": "Free Returns",
+            "content": "If Emma isn’t for you, our customer service team will take care of you"
+          }
+        }
+      },
+      "block_order": [
+        "48ca0997-ffa4-4408-8013-4796cb7f17c4",
+        "f3255c5f-527e-4927-a670-554ff22e9ef7",
+        "c15d1ab6-4b9b-4e30-ace7-dbf193ff2d4f",
+        "f9973382-ba4e-4931-817c-113225550dad"
+      ],
+      "disabled": true,
+      "settings": {
+        "column_alignment": "left",
+        "column_size": "medium",
+        "container_spacing": "md",
+        "horizontal_layout_on_mobile": true,
+        "solid_typo": false
       }
     },
     "social-proof": {
@@ -1011,120 +1126,8 @@
       ],
       "settings": {
         "heading": "See our beds in action online",
-        "heading_alignment": "start"
-      }
-    },
-    "1685402594226951ca": {
-      "type": "apps",
-      "blocks": {
-        "yotpo_product_photo_reviews_reviews_NLwt4i": {
-          "type": "shopify:\/\/apps\/yotpo-product-reviews-ugc\/blocks\/reviews\/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
-          "settings": {
-            "product": "{{product}}"
-          }
-        }
-      },
-      "block_order": [
-        "yotpo_product_photo_reviews_reviews_NLwt4i"
-      ],
-      "settings": {
-        "include_margins": true
-      }
-    },
-    "special-services": {
-      "type": "multicolumn-text",
-      "blocks": {
-        "48ca0997-ffa4-4408-8013-4796cb7f17c4": {
-          "type": "column",
-          "settings": {
-            "icon": "shopify:\/\/shop_images\/truck-free-black.png",
-            "title": "Free Delivery",
-            "content": "We’ll bring your Emma order straight to your door at no extra cost"
-          }
-        },
-        "f3255c5f-527e-4927-a670-554ff22e9ef7": {
-          "type": "column",
-          "settings": {
-            "icon": "shopify:\/\/shop_images\/100-night-black.png",
-            "title": "365-Night Trial",
-            "content": "Get properly acquainted with Emma so you can be sure we’re the one"
-          }
-        },
-        "c15d1ab6-4b9b-4e30-ace7-dbf193ff2d4f": {
-          "type": "column",
-          "settings": {
-            "icon": "shopify:\/\/shop_images\/award-black.png",
-            "title": "10 Year Guarantee",
-            "content": "Our products are built to last. You’re covered if something goes wrong"
-          }
-        },
-        "f9973382-ba4e-4931-817c-113225550dad": {
-          "type": "column",
-          "settings": {
-            "icon": "shopify:\/\/shop_images\/package-black.png",
-            "title": "Free Returns",
-            "content": "If Emma isn’t for you, our customer service team will take care of you"
-          }
-        }
-      },
-      "block_order": [
-        "48ca0997-ffa4-4408-8013-4796cb7f17c4",
-        "f3255c5f-527e-4927-a670-554ff22e9ef7",
-        "c15d1ab6-4b9b-4e30-ace7-dbf193ff2d4f",
-        "f9973382-ba4e-4931-817c-113225550dad"
-      ],
-      "disabled": true,
-      "settings": {
-        "column_alignment": "left",
-        "column_size": "medium",
-        "container_spacing": "md",
-        "horizontal_layout_on_mobile": true,
-        "solid_typo": false
-      }
-    },
-    "featured-faqs": {
-      "type": "featured-faqs",
-      "blocks": {
-        "78ca144d-5919-4a1b-9e22-082ef5384310": {
-          "type": "faq",
-          "settings": {
-            "title": "Is it free to return your products?",
-            "content": "<p>It's 100% free to return your Emma! If your Emma turns out not to suit you for any reason, feel free to return it. Just simply get in contact with us via our chat support, phone or email and we will refund and collect it at no cost to you.<\/p><p><br\/>Live support is also available from 08:00 to 18:00 GMT-6, Monday-Friday!<\/p>"
-          }
-        },
-        "c68412f4-0251-42dc-9113-a0eecd22c518": {
-          "type": "faq",
-          "settings": {
-            "title": "How does your 365-Night-Trial work?",
-            "content": "<p>Our risk-free 365-night trial means that you get a full year to decide if your Emma mattress is a good fit for you. This gives you more time to try the mattress for yourself and experience the benefits that our 4Million+ customers have come to enjoy each night!<br\/><br\/>Helpful Tip: We recommend you sleep on your Emma for at least 21 nights so that you and your body can get suited to your new Emma mattress.<br\/><br\/>You can begin your 365-night trial today. Our 0% APR financing with Affirm also gives you the option to make 12 equal payments over the next 12 months.<\/p>"
-          }
-        },
-        "a72149c3-5420-4a8c-80fe-7370288da216": {
-          "type": "faq",
-          "settings": {
-            "title": "Do you ship nationwide?",
-            "content": "<p>We do offer free shipping in all the province in Canada.<\/p>"
-          }
-        },
-        "d9373dca-57f2-4b56-8838-1a8fc22e21ca": {
-          "type": "faq",
-          "settings": {
-            "title": "How long does shipping take?",
-            "content": "<p>Our free shipping takes approximately 5-7 days nationwide.<\/p>"
-          }
-        }
-      },
-      "block_order": [
-        "78ca144d-5919-4a1b-9e22-082ef5384310",
-        "c68412f4-0251-42dc-9113-a0eecd22c518",
-        "a72149c3-5420-4a8c-80fe-7370288da216",
-        "d9373dca-57f2-4b56-8838-1a8fc22e21ca"
-      ],
-      "settings": {
-        "heading": "FAQs",
-        "header_font": "inter",
-        "heading_alignment": "center",
-        "container_spacing": "sm"
+        "heading_alignment": "start",
+        "trackId": ""
       }
     },
     "contact-us": {
@@ -1151,12 +1154,12 @@
     "mattress-layers",
     "mattress-firmness",
     "featured-products",
-    "customer-sentiment",
     "product-carousel",
-    "social-proof",
+    "customer-sentiment",
     "1685402594226951ca",
-    "special-services",
     "featured-faqs",
+    "special-services",
+    "social-proof",
     "contact-us"
   ]
 }

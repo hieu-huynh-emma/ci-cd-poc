@@ -141,15 +141,6 @@
             "fr_mobile_image": "shopify:\/\/shop_images\/Small-B7_-_ORIGINAL_PILLOW_-_EDIT-S23_b775407c-dcbc-4c6c-a0e9-3bb79c85b2be.png"
           }
         },
-        "72b3b893-b0bb-44ad-978c-733ee54620a1": {
-          "type": "image",
-          "settings": {
-            "en_desktop_image": "shopify:\/\/shop_images\/Untitled_design_8.jpg",
-            "en_mobile_image": "shopify:\/\/shop_images\/Untitled_design_8.jpg",
-            "fr_desktop_image": "shopify:\/\/shop_images\/Untitled_design_8.jpg",
-            "fr_mobile_image": "shopify:\/\/shop_images\/Untitled_design_8.jpg"
-          }
-        },
         "12e2c164-6e6a-42a2-a76a-b4363d4c2c09": {
           "type": "image",
           "settings": {
@@ -158,6 +149,15 @@
             "fr_desktop_image": "shopify:\/\/shop_images\/Medium-Hybrid_2.0_FR_LS_7_ea6e544d-b59a-4444-b69b-746390f48596.png",
             "fr_mobile_image": "shopify:\/\/shop_images\/Medium-Hybrid_2.0_FR_LS_7_ea6e544d-b59a-4444-b69b-746390f48596.png"
           }
+        },
+        "72b3b893-b0bb-44ad-978c-733ee54620a1": {
+          "type": "image",
+          "settings": {
+            "en_desktop_image": "shopify:\/\/shop_images\/Untitled_design_8.jpg",
+            "en_mobile_image": "shopify:\/\/shop_images\/Untitled_design_8.jpg",
+            "fr_desktop_image": "shopify:\/\/shop_images\/Untitled_design_8.jpg",
+            "fr_mobile_image": "shopify:\/\/shop_images\/Untitled_design_8.jpg"
+          }
         }
       },
       "block_order": [
@@ -165,8 +165,8 @@
         "ae4539f2-6ea2-42a3-a132-a31010570bf1",
         "e4cd7962-4d57-4250-8e6e-4c76dd76d6d6",
         "038c8f16-3a84-418c-9ee2-38f53be4a385",
-        "72b3b893-b0bb-44ad-978c-733ee54620a1",
-        "12e2c164-6e6a-42a2-a76a-b4363d4c2c09"
+        "12e2c164-6e6a-42a2-a76a-b4363d4c2c09",
+        "72b3b893-b0bb-44ad-978c-733ee54620a1"
       ],
       "settings": {
       }
@@ -304,7 +304,8 @@
       "type": "bundle-cross-sell",
       "settings": {
         "heading": "Add bundle offer!",
-        "product": "comfort-accessory-bundle"
+        "product": "comfort-accessory-bundle",
+        "note": "*No mattress protector available for Twin XL and Cal King sizes"
       }
     },
     "product-unique-selling-points": {
@@ -893,7 +894,7 @@
         "72c7f33b-7788-4524-bf53-816aecb093b6": {
           "type": "catalog_item",
           "settings": {
-            "product": "emma-foam-pillow"
+            "product": "perfect-sleep-bundle-hybrid-25"
           }
         },
         "f0f0b732-6803-4158-8c54-5c08c4bdbfa3": {
@@ -908,16 +909,10 @@
             "product": "emma-mattress-protector"
           }
         },
-        "c4650795-b884-4ddd-904e-babd57faad7b": {
-          "type": "catalog_item",
-          "settings": {
-            "product": "emma-bed-frame"
-          }
-        },
         "d8319461-aedd-4805-884a-95b7ed1a5893": {
           "type": "catalog_item",
           "settings": {
-            "product": "emma-hybrid-comfort"
+            "product": "duvet"
           }
         }
       },
@@ -925,7 +920,6 @@
         "72c7f33b-7788-4524-bf53-816aecb093b6",
         "f0f0b732-6803-4158-8c54-5c08c4bdbfa3",
         "07d5912c-d4c3-4ebb-97a6-f723fc8a4f3f",
-        "c4650795-b884-4ddd-904e-babd57faad7b",
         "d8319461-aedd-4805-884a-95b7ed1a5893"
       ],
       "settings": {

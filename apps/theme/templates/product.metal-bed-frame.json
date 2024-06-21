@@ -23,13 +23,22 @@
       ],
       "settings": {
         "title": "Emma Original Bed",
-        "desc": "<p><strong>Pure simplicity <\/strong><\/p><p>Timeless and industrial design for all interiors<\/p><ul><li>Clean and sturdy construction <\/li><li>Made with quality materials <\/li><li>Easily-assembled, no additional tools required!<\/li><li>Compatible with all Emma mattresses<\/li><\/ul>",
+        "desc": "<h5><strong>Transform your sleep with our newest bed<\/strong><\/h5><p>Crafted for unparalleled comfort and the deepest rest.<\/p><ul><li>Clean and sturdy construction <\/li><li>Made with quality materials <\/li><li>Easily-assembled, no additional tools required!<\/li><li>Compatible with all Emma mattresses<\/li><\/ul>",
         "disclaimer": ""
       }
     },
     "product-media": {
       "type": "product-media",
       "blocks": {
+        "image_3Gan6b": {
+          "type": "image",
+          "settings": {
+            "en_desktop_image": "shopify:\/\/shop_images\/A-01_1.jpg",
+            "en_mobile_image": "shopify:\/\/shop_images\/A-01_1.jpg",
+            "fr_desktop_image": "shopify:\/\/shop_images\/A-01_1.jpg",
+            "fr_mobile_image": "shopify:\/\/shop_images\/A-01_1.jpg"
+          }
+        },
         "f5f456c7-b29a-4f74-826f-648e09f5b1cd": {
           "type": "image",
           "settings": {
@@ -39,7 +48,7 @@
             "fr_mobile_image": "shopify:\/\/shop_images\/BNJ5Y5BI_Canada_Bed_1_-_Copy.png"
           }
         },
-        "72b3b893-b0bb-44ad-978c-733ee54620a1": {
+        "image_PgfbyT": {
           "type": "image",
           "settings": {
             "en_desktop_image": "shopify:\/\/shop_images\/E-03_12521a61-bb47-4853-b71d-368baa820947.jpg",
@@ -57,31 +66,23 @@
             "fr_mobile_image": "shopify:\/\/shop_images\/QbedFr_Cover_001_65a20d68-ebe8-4505-81ae-85b8f6f70b58.jpg"
           }
         },
-        "image_PgfbyT": {
+        "72b3b893-b0bb-44ad-978c-733ee54620a1": {
           "type": "image",
+          "disabled": true,
           "settings": {
-            "en_desktop_image": "shopify:\/\/shop_images\/Your_paragraph_text_5.png",
-            "en_mobile_image": "shopify:\/\/shop_images\/Your_paragraph_text_5.png",
-            "fr_desktop_image": "shopify:\/\/shop_images\/Your_paragraph_text_5.png",
-            "fr_mobile_image": "shopify:\/\/shop_images\/Your_paragraph_text_5.png"
-          }
-        },
-        "038c8f16-3a84-418c-9ee2-38f53be4a385": {
-          "type": "image",
-          "settings": {
-            "en_desktop_image": "shopify:\/\/shop_images\/Metal_bed.png",
-            "en_mobile_image": "shopify:\/\/shop_images\/Metal_bed.png",
-            "fr_desktop_image": "shopify:\/\/shop_images\/Metal_bed.png",
-            "fr_mobile_image": "shopify:\/\/shop_images\/Metal_bed.png"
+            "en_desktop_image": "shopify:\/\/shop_images\/E-03_12521a61-bb47-4853-b71d-368baa820947.jpg",
+            "en_mobile_image": "shopify:\/\/shop_images\/E-03_12521a61-bb47-4853-b71d-368baa820947.jpg",
+            "fr_desktop_image": "shopify:\/\/shop_images\/E-03_12521a61-bb47-4853-b71d-368baa820947.jpg",
+            "fr_mobile_image": "shopify:\/\/shop_images\/E-03_12521a61-bb47-4853-b71d-368baa820947.jpg"
           }
         }
       },
       "block_order": [
+        "image_3Gan6b",
         "f5f456c7-b29a-4f74-826f-648e09f5b1cd",
-        "72b3b893-b0bb-44ad-978c-733ee54620a1",
-        "e4cd7962-4d57-4250-8e6e-4c76dd76d6d6",
         "image_PgfbyT",
-        "038c8f16-3a84-418c-9ee2-38f53be4a385"
+        "e4cd7962-4d57-4250-8e6e-4c76dd76d6d6",
+        "72b3b893-b0bb-44ad-978c-733ee54620a1"
       ],
       "settings": {
       }
@@ -91,9 +92,10 @@
       "blocks": {
         "c388cf85-1af2-4d6a-a985-19da8f6beb0b": {
           "type": "item",
+          "disabled": true,
           "settings": {
             "title": "Materials",
-            "content": "<p>Frame and headboard<br\/><br\/>-Fabric OEKO-TEX class 1 certified: 100% Polyester<br\/><br\/>Upholstery: High-density foam<br\/><br\/>-Frame : Plywood Standard P2<br\/><br\/>Bed base<br\/><br\/>-Mono-bloc base (including double sizes)<br\/><br\/>-Frame: Black metal<br\/><br\/>-Slats: x18 wood plywood - 9 mm thick - 4.5 - 5 cm spacing<br\/><br\/><br\/>Feet<br\/><br\/>-Plastic in a protective plastic cover<\/p>",
+            "content": "",
             "product_dimension": false
           }
         },
@@ -101,7 +103,7 @@
           "type": "item",
           "settings": {
             "title": "Dimensions",
-            "content": "",
+            "content": "<p><strong>Twin<\/strong>: 38'' x 73''<\/p><p><strong>Full<\/strong>: 53'' x 73''<\/p><p><strong>Queen<\/strong>: 59'' x 79''<\/p><p><strong>King<\/strong>: 76'' x 79''<\/p>",
             "product_dimension": true
           }
         },
@@ -138,7 +140,7 @@
           "type": "selling_point",
           "settings": {
             "icon": "shopify:\/\/shop_images\/moon.png",
-            "text": "60 Night trial",
+            "text": "100 Night trial",
             "content": "<p>Take your time to decide whether or not Emma is for you<\/p>",
             "url": "https:\/\/www.emma-sleep.ca\/pages\/faq#trial-and-guarantee"
           }
@@ -231,7 +233,7 @@
         "7eddc7a1-60de-430c-ad1d-0fa4619d108d": {
           "type": "image",
           "settings": {
-            "source": "shopify:\/\/shop_images\/QbedFr_Cover_001_65a20d68-ebe8-4505-81ae-85b8f6f70b58.jpg",
+            "source": "shopify:\/\/shop_images\/E-03_12521a61-bb47-4853-b71d-368baa820947.jpg",
             "heading": "The right support in the right places",
             "content": "The Emma Original Bed uses premium materials for maximum comfort. Its sleek metal frame combines style and elegance, fitting seamlessly into any bedroom decor without overshadowing the room's aesthetic.",
             "inverted": false,
@@ -242,7 +244,7 @@
         "57e597f8-8943-4def-820a-a0e469678641": {
           "type": "image",
           "settings": {
-            "source": "shopify:\/\/shop_images\/BNJ5Y5BI_Canada_Bed_1_-_Copy.png",
+            "source": "shopify:\/\/shop_images\/QbedFr_Cover_001_6b2a76fe-34e2-4941-bf54-bd153a2b77f4.jpg",
             "heading": "Made to withstand wear and tear",
             "content": "Built for durability and resilience, the sturdy metal base of this bed offers long-lasting quality, capable of withstanding regular use. Its solid foundation ensures your body is supported while you sleep and keeps the mattress properly aligned, preventing sagging.",
             "inverted": true,
@@ -253,7 +255,7 @@
         "95f7a903-df98-4d58-9b15-0db125d9190c": {
           "type": "image",
           "settings": {
-            "source": "shopify:\/\/shop_images\/E-03_12521a61-bb47-4853-b71d-368baa820947.jpg",
+            "source": "shopify:\/\/shop_images\/BNJ5Y5BI_Canada_Bed_1_-_Copy.png",
             "heading": "Up and ready to go in 20 minutes",
             "content": "Assembly is a breeze, taking just 20 minutes. There's no need for tools or complicated instructions—your mattress sits directly on top of the frame, and you're good to go. During your daily routines, it's easy to clean and maintain, being less prone to stains and odors. Plus, each bed comes with a 100-night sleep trial to ensure it's the perfect fit for you.",
             "inverted": false,

@@ -398,7 +398,8 @@
             "discount_title": "Father's Day Sale",
             "comfort_meter": 6,
             "cooling_meter": 4,
-            "motion_isolation_meter": 6
+            "motion_isolation_meter": 6,
+            "trackId": ""
           }
         },
         "47af3dd7-2038-4dbc-b55e-4f7b7d0c3d23": {
@@ -415,7 +416,8 @@
             "discount_title": "",
             "comfort_meter": 8,
             "cooling_meter": 6,
-            "motion_isolation_meter": 7
+            "motion_isolation_meter": 7,
+            "trackId": ""
           }
         },
         "5669a974-c41c-4819-895a-3683043506f7": {
@@ -432,7 +434,8 @@
             "discount_title": "",
             "comfort_meter": 8,
             "cooling_meter": 8,
-            "motion_isolation_meter": 8
+            "motion_isolation_meter": 8,
+            "trackId": ""
           }
         },
         "b0b092e2-ca09-467f-8b33-89219f2d897d": {
@@ -450,21 +453,24 @@
             "discount_title": "",
             "comfort_meter": 8,
             "cooling_meter": 8,
-            "motion_isolation_meter": 8
+            "motion_isolation_meter": 8,
+            "trackId": ""
           }
         },
         "95bee6a1-5a6f-4ba8-9fac-03c161a01953": {
           "type": "explore-button",
           "settings": {
             "url": "shopify:\/\/pages\/comparison",
-            "text": "<p>Compare all mattresses<\/p>"
+            "text": "<p>Compare all mattresses<\/p>",
+            "trackId": ""
           }
         },
         "95bee6a1-5a6f-4ba8-9fac-03c161a01954": {
           "type": "explore-button",
           "settings": {
             "url": "shopify:\/\/pages\/product-quizz",
-            "text": "<p>Find your perfect mattress<\/p>"
+            "text": "<p>Find your perfect mattress<\/p>",
+            "trackId": ""
           }
         }
       },
@@ -494,102 +500,45 @@
         "show_secondary_badge": false
       }
     },
-    "social-proof": {
-      "type": "social-proof",
+    "product-carousel": {
+      "type": "product-carousel",
       "blocks": {
-        "84018aaf-35e7-4db6-a525-9300ab3cb09d": {
-          "type": "influencer",
+        "72c7f33b-7788-4524-bf53-816aecb093b6": {
+          "type": "catalog_item",
           "settings": {
-            "image": "shopify:\/\/shop_images\/m.for.mai.webp",
-            "heading": "Mai Le, Mom",
-            "tag": "@@m.for.mai",
-            "content": "<p>We've had our emma mattress for about 2 weeks and holy smokes I can attest to the zero partner disturbance... because I co-sleep and even with me moving around getting up it doesn't disturb my baby girl 🙌<\/p>",
-            "product": ""
+            "product": "perfect-sleep-bundle-hybrid-25"
           }
         },
-        "d1f52209-bde6-4ccd-87d0-49ea2becd11d": {
-          "type": "influencer",
+        "5e77d40f-79e8-4050-a013-d2325a25b443": {
+          "type": "catalog_item",
           "settings": {
-            "image": "shopify:\/\/shop_images\/alexanderkenton.webp",
-            "heading": "Alex Liang, Interior Designer",
-            "tag": "@alexanderkenton",
-            "content": "<p>No bedroom redesign would be complete without a new mattress! And we’ve been really enjoying my new Emma Original. It’s soft, yet supportive and keeps us comfortable and cool all night long. I also love that the entire cover of the mattress can be removed and machine washed, to keep the mattress fresh and new.<\/p>",
-            "product": ""
+            "product": "emma-hybrid-comfort"
           }
         },
-        "7709cf2c-1143-4824-81c1-62b710238f9b": {
-          "type": "influencer",
+        "07d5912c-d4c3-4ebb-97a6-f723fc8a4f3f": {
+          "type": "catalog_item",
           "settings": {
-            "image": "shopify:\/\/shop_images\/coco.crochet.lee.webp",
-            "heading": "Lee Sartori, Author",
-            "tag": "@coco.crochet.lee",
-            "content": "<p>I've fallen in love with my Emma Mattress 😍. The Mattress sort of expands when you open it which made me think it would be way too soft. Surprise, it is actually very firm while keeping your sleep comfy and soft 😴💕. Because it's a memory foam mattress, you can sleep (or crochet) comfortably next to someone without disturbing them at all which is fantastic. All in all, I highly recommend!<\/p>",
-            "product": ""
+            "product": "emma-mattress-protector"
           }
         },
-        "e58e98f1-698b-47ca-9f8f-f870d4912178": {
-          "type": "influencer",
+        "c4650795-b884-4ddd-904e-babd57faad7b": {
+          "type": "catalog_item",
           "settings": {
-            "image": "shopify:\/\/shop_images\/ayagonz.webp",
-            "heading": "Aya G,  Content Creator",
-            "tag": "@_ayagonz@_ayagonz",
-            "content": "<p>Emma has, no joke, given me the best sleep quality I've ever had (!!!) - I get to sleep straight through the night without being disturbed by any movements or noises, I no longer get any shoulder\/back aches and the temperature is always *just* right. I now wake up happier and more energized to take on my day. ⚡️<\/p>",
-            "product": ""
-          }
-        },
-        "484cd9ca-1dea-45d7-9ffd-0f116c02522c": {
-          "type": "influencer",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/pandi_po_family.jpg",
-            "heading": "Sylvana Carda, Mom",
-            "tag": "@pandi_po_family",
-            "content": "<p>Even superheroes sleep at night  🦸🏻‍♂️💫 Baby sleeps in his bed, but in the morning he joins us in our bed and I share my pillow with him. After using the pillow, I have much less neck pain unlike before when I wake up in the middle of the night and need to adjust my pillow several times.<\/p>",
-            "product": ""
-          }
-        },
-        "2b904078-1bfd-4d25-9240-dc4a59b21e90": {
-          "type": "influencer",
-          "settings": {
-            "heading": "Lena Almeida, Mom",
-            "tag": "@listen2lena",
-            "content": "<p>I couldn’t be happier! The mattress and pillows are cool, breathable and offer just the right support to help me drift off to dreamland. 💤 The best part? I barely feel my husband’s movement throughout the night, which has improved the quality of my sleep enormously.<\/p>",
-            "product": ""
-          }
-        },
-        "3dc30f3a-eac1-445a-9b01-47bbb9a968f3": {
-          "type": "influencer",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/orsida.luzati.webp",
-            "heading": "Orsida Luzati, Mom",
-            "tag": "@orsida.luzati",
-            "content": "<p>Who knew that a new mattress would have such a positive impact in our lives! The girls have found their favorite bed– soft and comfortable mattress (with motion isolating foam) and a 3-layer pillow with option to remove a layer for best comfort💗<\/p>",
-            "product": ""
-          }
-        },
-        "e75d739e-510e-4274-a7ef-017dae014f48": {
-          "type": "influencer",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/jessicatylerofficial.webp",
-            "heading": "Jessica Tyler, Content Creator",
-            "tag": "@jessicatylerofficial",
-            "content": "<p>I no longer wake up feeling like I’ve aged several years overnight with back pain! The support and comfort of this bed is seriously unmatched. Our bedroom has easily become my favorite room in the house - I already can’t wait to get back into bed tonight! 💤<\/p>",
-            "product": ""
+            "product": "duvet"
           }
         }
       },
       "block_order": [
-        "84018aaf-35e7-4db6-a525-9300ab3cb09d",
-        "d1f52209-bde6-4ccd-87d0-49ea2becd11d",
-        "7709cf2c-1143-4824-81c1-62b710238f9b",
-        "e58e98f1-698b-47ca-9f8f-f870d4912178",
-        "484cd9ca-1dea-45d7-9ffd-0f116c02522c",
-        "2b904078-1bfd-4d25-9240-dc4a59b21e90",
-        "3dc30f3a-eac1-445a-9b01-47bbb9a968f3",
-        "e75d739e-510e-4274-a7ef-017dae014f48"
+        "72c7f33b-7788-4524-bf53-816aecb093b6",
+        "5e77d40f-79e8-4050-a013-d2325a25b443",
+        "07d5912c-d4c3-4ebb-97a6-f723fc8a4f3f",
+        "c4650795-b884-4ddd-904e-babd57faad7b"
       ],
       "settings": {
-        "heading": "See Emma in action online",
-        "heading_alignment": "start"
+        "heading": "Some things are better together",
+        "heading_alignment": "start",
+        "container_spacing": "md",
+        "trackId": ""
       }
     },
     "customer-sentiment": {
@@ -706,7 +655,8 @@
         "09885043-86bc-4a59-a8db-0a8c8ae800b3"
       ],
       "settings": {
-        "title": "<p>Why our customers love Emma<\/p>"
+        "title": "<p>Why our customers love Emma<\/p>",
+        "trackId": ""
       }
     },
     "special-services": {
@@ -780,46 +730,6 @@
         "include_margins": true
       }
     },
-    "product-carousel": {
-      "type": "product-carousel",
-      "blocks": {
-        "72c7f33b-7788-4524-bf53-816aecb093b6": {
-          "type": "catalog_item",
-          "settings": {
-            "product": "emma-foam-pillow"
-          }
-        },
-        "07d5912c-d4c3-4ebb-97a6-f723fc8a4f3f": {
-          "type": "catalog_item",
-          "settings": {
-            "product": "emma-mattress-protector"
-          }
-        },
-        "c4650795-b884-4ddd-904e-babd57faad7b": {
-          "type": "catalog_item",
-          "settings": {
-            "product": "premium-cooling-pillow"
-          }
-        },
-        "5e77d40f-79e8-4050-a013-d2325a25b443": {
-          "type": "catalog_item",
-          "settings": {
-            "product": "emma-hybrid-comfort"
-          }
-        }
-      },
-      "block_order": [
-        "72c7f33b-7788-4524-bf53-816aecb093b6",
-        "07d5912c-d4c3-4ebb-97a6-f723fc8a4f3f",
-        "c4650795-b884-4ddd-904e-babd57faad7b",
-        "5e77d40f-79e8-4050-a013-d2325a25b443"
-      ],
-      "settings": {
-        "heading": "Some things are better together",
-        "heading_alignment": "start",
-        "container_spacing": "md"
-      }
-    },
     "featured-faqs": {
       "type": "featured-faqs",
       "blocks": {
@@ -865,6 +775,105 @@
         "container_spacing": "sm"
       }
     },
+    "social-proof": {
+      "type": "social-proof",
+      "blocks": {
+        "84018aaf-35e7-4db6-a525-9300ab3cb09d": {
+          "type": "influencer",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/m.for.mai.webp",
+            "heading": "Mai Le, Mom",
+            "tag": "@@m.for.mai",
+            "content": "<p>We've had our emma mattress for about 2 weeks and holy smokes I can attest to the zero partner disturbance... because I co-sleep and even with me moving around getting up it doesn't disturb my baby girl 🙌<\/p>",
+            "product": ""
+          }
+        },
+        "d1f52209-bde6-4ccd-87d0-49ea2becd11d": {
+          "type": "influencer",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/alexanderkenton.webp",
+            "heading": "Alex Liang, Interior Designer",
+            "tag": "@alexanderkenton",
+            "content": "<p>No bedroom redesign would be complete without a new mattress! And we’ve been really enjoying my new Emma Original. It’s soft, yet supportive and keeps us comfortable and cool all night long. I also love that the entire cover of the mattress can be removed and machine washed, to keep the mattress fresh and new.<\/p>",
+            "product": ""
+          }
+        },
+        "7709cf2c-1143-4824-81c1-62b710238f9b": {
+          "type": "influencer",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/coco.crochet.lee.webp",
+            "heading": "Lee Sartori, Author",
+            "tag": "@coco.crochet.lee",
+            "content": "<p>I've fallen in love with my Emma Mattress 😍. The Mattress sort of expands when you open it which made me think it would be way too soft. Surprise, it is actually very firm while keeping your sleep comfy and soft 😴💕. Because it's a memory foam mattress, you can sleep (or crochet) comfortably next to someone without disturbing them at all which is fantastic. All in all, I highly recommend!<\/p>",
+            "product": ""
+          }
+        },
+        "e58e98f1-698b-47ca-9f8f-f870d4912178": {
+          "type": "influencer",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/ayagonz.webp",
+            "heading": "Aya G,  Content Creator",
+            "tag": "@_ayagonz@_ayagonz",
+            "content": "<p>Emma has, no joke, given me the best sleep quality I've ever had (!!!) - I get to sleep straight through the night without being disturbed by any movements or noises, I no longer get any shoulder\/back aches and the temperature is always *just* right. I now wake up happier and more energized to take on my day. ⚡️<\/p>",
+            "product": ""
+          }
+        },
+        "484cd9ca-1dea-45d7-9ffd-0f116c02522c": {
+          "type": "influencer",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/pandi_po_family.jpg",
+            "heading": "Sylvana Carda, Mom",
+            "tag": "@pandi_po_family",
+            "content": "<p>Even superheroes sleep at night  🦸🏻‍♂️💫 Baby sleeps in his bed, but in the morning he joins us in our bed and I share my pillow with him. After using the pillow, I have much less neck pain unlike before when I wake up in the middle of the night and need to adjust my pillow several times.<\/p>",
+            "product": ""
+          }
+        },
+        "2b904078-1bfd-4d25-9240-dc4a59b21e90": {
+          "type": "influencer",
+          "settings": {
+            "heading": "Lena Almeida, Mom",
+            "tag": "@listen2lena",
+            "content": "<p>I couldn’t be happier! The mattress and pillows are cool, breathable and offer just the right support to help me drift off to dreamland. 💤 The best part? I barely feel my husband’s movement throughout the night, which has improved the quality of my sleep enormously.<\/p>",
+            "product": ""
+          }
+        },
+        "3dc30f3a-eac1-445a-9b01-47bbb9a968f3": {
+          "type": "influencer",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/orsida.luzati.webp",
+            "heading": "Orsida Luzati, Mom",
+            "tag": "@orsida.luzati",
+            "content": "<p>Who knew that a new mattress would have such a positive impact in our lives! The girls have found their favorite bed– soft and comfortable mattress (with motion isolating foam) and a 3-layer pillow with option to remove a layer for best comfort💗<\/p>",
+            "product": ""
+          }
+        },
+        "e75d739e-510e-4274-a7ef-017dae014f48": {
+          "type": "influencer",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/jessicatylerofficial.webp",
+            "heading": "Jessica Tyler, Content Creator",
+            "tag": "@jessicatylerofficial",
+            "content": "<p>I no longer wake up feeling like I’ve aged several years overnight with back pain! The support and comfort of this bed is seriously unmatched. Our bedroom has easily become my favorite room in the house - I already can’t wait to get back into bed tonight! 💤<\/p>",
+            "product": ""
+          }
+        }
+      },
+      "block_order": [
+        "84018aaf-35e7-4db6-a525-9300ab3cb09d",
+        "d1f52209-bde6-4ccd-87d0-49ea2becd11d",
+        "7709cf2c-1143-4824-81c1-62b710238f9b",
+        "e58e98f1-698b-47ca-9f8f-f870d4912178",
+        "484cd9ca-1dea-45d7-9ffd-0f116c02522c",
+        "2b904078-1bfd-4d25-9240-dc4a59b21e90",
+        "3dc30f3a-eac1-445a-9b01-47bbb9a968f3",
+        "e75d739e-510e-4274-a7ef-017dae014f48"
+      ],
+      "settings": {
+        "heading": "See Emma in action online",
+        "heading_alignment": "start",
+        "trackId": ""
+      }
+    },
     "contact-us": {
       "type": "contact-us",
       "settings": {
@@ -885,12 +894,12 @@
     "mattress-layers",
     "mattress-firmness",
     "featured-products",
-    "social-proof",
+    "product-carousel",
     "customer-sentiment",
     "special-services",
     "168540174983dd55c2",
-    "product-carousel",
     "featured-faqs",
+    "social-proof",
     "contact-us"
   ]
 }
