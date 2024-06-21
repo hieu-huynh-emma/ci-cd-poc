@@ -14,8 +14,7 @@ $("#featured-products-section").ready(async () => {
         autoWidth: true,
         perPage: 1,
         arrows: false,
-        pagination: true,
-        gap: "12px",
+        pagination: true
       },
     },
   }).mount();
