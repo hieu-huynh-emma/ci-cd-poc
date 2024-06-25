@@ -16,7 +16,7 @@
 
 {%- unless template == 'index' or template == 'cart' or template == 'list-collections' or template == '404' -%}
   {%- assign t = template | split: '.' | first -%}
-  
+
   <nav class="breadcrumbs-container" role="navigation" aria-label="breadcrumbs">
     <div class="page-boundary">
       <ol class="breadcrumbs">
@@ -28,7 +28,7 @@
             </svg>
           </div>
         </li>
-        
+
         {%- case t -%}
           {%- when 'page' -%}
             {% if 'page.sale' %}
@@ -55,14 +55,16 @@
                 </svg>
               </div>
             </li>
-            
+
             {% assign collection = collections[product.metafields.accentuate.main_collection] | default: product.collections[0] %}
-            <li class="breadcrumbs__item">
+
+            {% if collection %}
+              <li class="breadcrumbs__item">
               <a
                 class="breadcrumbs__link" href="{{ collection.url }}"
                 aria-current="page"
               >{{ collection.title }}</a>
-              
+
               <div class="breadcrumbs__icon">
                 <svg
                   width="16" height="16" viewBox="0 0 16 16" fill="none"
@@ -75,7 +77,8 @@
                 </svg>
               </div>
             </li>
-            
+            {% endif %}
+
             <li class="breadcrumbs__item">
               {{ product.title }}
             </li>
