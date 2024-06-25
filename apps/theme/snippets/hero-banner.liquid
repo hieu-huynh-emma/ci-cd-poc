@@ -81,9 +81,13 @@
                         srcset="{{ settings.wallpaper_desktop_img | image_url: width: 1040 }}">
                 <source media="(min-width: 768px)"
                         srcset="{{ settings.wallpaper_desktop_img | image_url: width: 800 }}">
-                <img class="wallpaper" src="{{ settings.wallpaper_mobile_img | default: settings.wallpaper_desktop_img |
-                image_url: width: 768 }}"
-                     alt="Hero Wallpaper">
+                <img class="wallpaper lazyload" src="{{ settings.wallpaper_mobile_img | default: settings.wallpaper_desktop_img |
+                image_url: width: 240 }}"
+                  data-src="{{ settings.wallpaper_mobile_img | default: settings.wallpaper_desktop_img |
+                image_url: width: 600 }}"
+                     alt="Hero Wallpaper"
+              
+                  >
             </picture>
             <picture lang="fr">
                 <source media="(min-width: 1200px)"
@@ -92,9 +96,11 @@
                         srcset="{{ settings.wallpaper_desktop_fr_img | image_url: width: 1040 }}">
                 <source media="(min-width: 768px)"
                         srcset="{{ settings.wallpaper_desktop_fr_img | image_url: width: 800 }}">
-                <img class="wallpaper"
+                <img class="wallpaper lazyload"
                      src="{{ settings.wallpaper_mobile_fr_img | default: settings.wallpaper_desktop_fr_img |
-                     image_url: width: 768 }}"
+                     image_url: width: 240 }}"
+                     data-src="{{ settings.wallpaper_mobile_fr_img | default: settings.wallpaper_desktop_fr_img |
+                  image_url: width: 600 }}"
                      alt="Hero Wallpaper">
             </picture>
         </a>
