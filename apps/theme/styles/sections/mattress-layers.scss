@@ -300,7 +300,34 @@
 
   .layer-specifications {
     display: grid;
-    gap: 16px;
+    gap: 1rem;
+
+    .spec-header {
+      display: grid;
+      gap: 8px;
+      grid-template-columns: minmax(0, auto) minmax(0, 1fr);
+      align-items: center;
+
+      padding: 0 0 1rem;
+      cursor: pointer;
+      //border-bottom: 1px solid rgb(30, 48, 110);
+    }
+
+    .spec-bullet {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 1.5rem;
+      height: 1.5rem;
+
+      border-radius: 50%;
+      border: 1px solid rgb(30, 48, 110);
+
+      font-style: normal;
+      font-weight: 500;
+      box-shadow: rgba(30, 48, 110, 0.4) 0px 0px 0px 0px;
+    }
   }
 
 
