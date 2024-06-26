@@ -139,7 +139,7 @@
           "type": "selling_point",
           "settings": {
             "icon": "shopify:\/\/shop_images\/moon.png",
-            "text": "100 Night trial",
+            "text": "60 Night trial",
             "content": "<p>Take your time to decide whether or not Emma is for you<\/p>",
             "url": "https:\/\/www.emma-sleep.ca\/pages\/faq#trial-and-guarantee"
           }
@@ -176,6 +176,7 @@
       "blocks": {
         "8b906a77-60bb-46b8-b714-8fe010db07ca": {
           "type": "item",
+          "disabled": true,
           "settings": {
             "heading": "Free 365-Night Trial",
             "icon": "shopify:\/\/shop_images\/365_nights.png",
@@ -232,7 +233,7 @@
         "7eddc7a1-60de-430c-ad1d-0fa4619d108d": {
           "type": "image",
           "settings": {
-            "source": "shopify:\/\/shop_images\/E-03_12521a61-bb47-4853-b71d-368baa820947.jpg",
+            "source": "shopify:\/\/shop_images\/E-03_1.jpg",
             "heading": "The right support in the right places",
             "content": "The Emma Original Bed uses premium materials for maximum comfort. Its sleek metal frame combines style and elegance, fitting seamlessly into any bedroom decor without overshadowing the room's aesthetic.",
             "inverted": false,
@@ -243,6 +244,7 @@
         "57e597f8-8943-4def-820a-a0e469678641": {
           "type": "image",
           "settings": {
+            "source": "shopify:\/\/shop_images\/A-01_2_81638794-0a6b-436f-9e39-98fc83d95bdd.jpg",
             "heading": "Made to withstand wear and tear",
             "content": "Built for durability and resilience, the sturdy metal base of this bed offers long-lasting quality, capable of withstanding regular use. Its solid foundation ensures your body is supported while you sleep and keeps the mattress properly aligned, preventing sagging.",
             "inverted": true,
