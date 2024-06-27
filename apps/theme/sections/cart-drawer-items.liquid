@@ -134,7 +134,7 @@
             aria-label="{{ 'sections.cart.remove_title' | t: title: item.title }}"
             class="{% if isAddonService %}hidden{% endif %}"
           >
-            {% render 'icon-remove' %}
+            <tracked-button :trackId="Delete_cart_ver">{% render 'icon-remove' %}</tracked-button>
           </cart-item-remove-button>
 
 

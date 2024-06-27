@@ -34,45 +34,56 @@
         "boundless": true
       }
     },
-    "47cdc402-f526-47ac-8d3e-c8942fbf3252": {
-      "type": "home-collage-collection",
+
+    "product-collage": {
+      "type": "product-collage",
       "blocks": {
-        "38985f04-9fc5-4a51-a444-e6d6baeea638": {
-          "type": "right_section",
+        "collage_item_fPf3LT": {
+          "type": "image",
           "settings": {
-            "image-col-right": "shopify:\/\/shop_images\/image_23.png",
-            "col-title-right": "Pillows",
-            "col-text-right": "<p>PERFECT COMPLEMENT<\/p>",
-            "col-link-right": "shopify:\/\/collections\/beds"
+            "heading": "Mattresses",
+            "subheading": "Most Awarded",
+            "media": "shopify://shop_images/new-mattresses.webp",
+            "collection": "mattresses",
+            "trackId": "Mattresses_box_quiz"
           }
         },
-        "9e674515-5e73-4aa8-b968-c8bb686b9766": {
-          "type": "right_section",
+        "collage_item_FbfaGf": {
+          "type": "image",
           "settings": {
-            "image-col-right": "shopify:\/\/shop_images\/Woman_wrapped_in_duvet_Gallery.jpg",
-            "col-title-right": "Accessories",
-            "col-text-right": "<p>FULL EXPERIENCE <\/p>",
-            "col-link-right": "shopify:\/\/collections\/bedding"
+            "heading": "Pillows",
+            "subheading": "Perfect Complement",
+            "media": "shopify:\/\/shop_images\/image_23.png",
+            "collection": "pillows",
+            "trackId": "Pillows_box_quiz"
+          }
+        },
+        "collage_item_e6jR8U": {
+          "type": "image",
+          "settings": {
+            "heading": "Accessories",
+            "subheading": "Full Experience",
+            "media": "shopify://shop_images/Woman_wrapped_in_duvet_Gallery.jpg",
+            "collection": "beddings",
+            "trackId": "Bed_box_quiz"
           }
         }
       },
       "block_order": [
-        "38985f04-9fc5-4a51-a444-e6d6baeea638",
-        "9e674515-5e73-4aa8-b968-c8bb686b9766"
+        "collage_item_fPf3LT",
+        "collage_item_FbfaGf",
+        "collage_item_e6jR8U"
       ],
       "settings": {
-        "title": "Emma's Advanced Sleep Range",
-        "mobile_title": "Emma's Advanced Sleep Range",
-        "image-col-left": "shopify:\/\/shop_images\/new-mattresses.webp",
-        "col-title-left": "Mattresses",
-        "col-text-left": "<p>Most Awarded<\/p>",
-        "col-link-left": "shopify:\/\/collections\/mattresses"
+        "heading": "Emma's Advanced Sleep Range",
+        "heading_alignment": "start",
+        "container_spacing": "md"
       }
     }
   },
   "order": [
     "stack-layout",
     "landbot-widget",
-    "47cdc402-f526-47ac-8d3e-c8942fbf3252"
+    "product-collage"
   ]
 }

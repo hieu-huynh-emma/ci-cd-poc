@@ -18,6 +18,23 @@
 
     <script>document.documentElement.className = document.documentElement.className.replace("no-js", "js");</script>
     {% render 'delivery_coder' %} {% include 'kart_discount' %}
+    <script type="quickscript" loading="delayed" src="{{ 'tracked-button.js' | asset_url }}"></script>
+    <style>
+        tracked-button {
+            position: relative;
+        }
+        .tracked-button--link a {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+        }
+
+        .tracked-button--overlay {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+        }
+    </style>
 
     <!-- Extend - Render extend-configuration -->
     {% render 'extend-configuration' %}
