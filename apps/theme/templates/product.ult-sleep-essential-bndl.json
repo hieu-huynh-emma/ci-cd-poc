@@ -39,8 +39,8 @@
         "yotpo_star_rating"
       ],
       "settings": {
-        "title": "",
-        "desc": "<p><strong>Experience the best sleep with premium and awarded comfort<\/strong><\/p><ul><li>52% discount on our newest Emma Hybrid Comfort II Mattress<\/li><li>52% discount on our newest Emma Original Bed <\/li><li>55% discount on 2 Premium Cooling Pillows<\/li><li>55% discount on our Emma Breathable Mattress Protector<\/li><li>55% discount on our Emma Cloud Duvet <\/li><\/ul>",
+        "title": "All-in-One Sleep Bundle",
+        "desc": "<p><strong>All-in-one comfort for the perfect night’s sleep, right at your door<\/strong><\/p><ul><li>48% discount on our newest Emma Hybrid Comfort II Mattress<\/li><li>48% discount on our newest Emma Original Bed <\/li><li>48% discount on 2 Premium Cooling Pillows<\/li><li>48% discount on our Emma Breathable Mattress Protector<\/li><li>48% discount on our Emma Cloud Duvet <\/li><\/ul>",
         "disclaimer": ""
       }
     },
@@ -382,12 +382,34 @@
             "cta_text": ""
           }
         },
+        "image_yiJXfH": {
+          "type": "image",
+          "settings": {
+            "source": "shopify:\/\/shop_images\/BNJ5Y5BI_Canada_Bed_1_-_Copy.png",
+            "heading": "Emma Original Bed",
+            "content": "This bed features a sleek metal structure, elegantly covered with a soft, modern fabric that complements the minimalist aesthetic of the room. Its sturdy frame ensures long-lasting durability and provides excellent support for the Hybrid Comfort (II) mattress. Ideal for contemporary spaces, it combines functionality with style, making it a perfect centerpiece for any bedroom.",
+            "inverted": true,
+            "cta_url": "",
+            "cta_text": ""
+          }
+        },
         "95f7a903-df98-4d58-9b15-0db125d9190c": {
           "type": "video",
           "settings": {
             "source": "shopify:\/\/files\/videos\/Brand_Block_1_desktop.mp4",
             "heading": "Emma Premium Cooling Pillow",
-            "content": "No more waking up in a sweat! The Cooling Pillow features our special Thermosync foam, capturing excess heat for optimum sleep temperature. A regulated temperature favorises deep sleep phases and promotes a restful sleep without micro-awakenings throughout the night.",
+            "content": "Say goodbye to night sweats with our Cooling Pillow! Its innovative Thermosync foam captures excess heat for optimal sleep temperature, enhancing deep sleep phases. Plus, adjustable layers cater to all sleep styles: one for stomach, two to three for back, and all three for side sleepers. Customize your comfort for restful nights.",
+            "inverted": false,
+            "cta_url": "",
+            "cta_text": ""
+          }
+        },
+        "video_R8nQTJ": {
+          "type": "video",
+          "settings": {
+            "source": "shopify:\/\/files\/videos\/Compressed Preview-28.mp4",
+            "heading": "Cloud Duvet",
+            "content": "Experience luxurious comfort with our heavenly duvet, enveloping you in supreme plushness. Designed for year-round use, it keeps you snug in winter and refreshed in summer. Say goodbye to bunching with its special stitch-design, ensuring uninterrupted coziness. With perfect weight distribution and cloud-like softness, our duvet promises a blissful night's sleep.",
             "inverted": true,
             "cta_url": "",
             "cta_text": ""
@@ -403,38 +425,16 @@
             "cta_url": "",
             "cta_text": ""
           }
-        },
-        "video_R8nQTJ": {
-          "type": "video",
-          "settings": {
-            "source": "shopify:\/\/files\/videos\/Compressed Preview-28.mp4",
-            "heading": "Cloud Duvet",
-            "content": "Cozy up in supreme plushiness with our dreamy duvet. Perfect for every season, stay warm during winters and refreshed during summers. Thanks to its special stitch-design, forget about bunching. Our duvet will keep you cozy all night with the perfect weight distribution and cloud-like softness.",
-            "inverted": true,
-            "cta_url": "",
-            "cta_text": ""
-          }
-        },
-        "image_yiJXfH": {
-          "type": "image",
-          "settings": {
-            "source": "shopify:\/\/shop_images\/BNJ5Y5BI_Canada_Bed_1_-_Copy.png",
-            "heading": "Emma Original Bed",
-            "content": "This bed features a sleek metal structure, elegantly covered with a soft, modern fabric that complements the minimalist aesthetic of the room. Its sturdy frame ensures long-lasting durability and provides excellent support for the Hybrid Comfort (II) mattress. Ideal for contemporary spaces, it combines functionality with style, making it a perfect centerpiece for any bedroom.",
-            "inverted": false,
-            "cta_url": "",
-            "cta_text": ""
-          }
         }
       },
       "block_order": [
         "7eddc7a1-60de-430c-ad1d-0fa4619d108d",
         "57e597f8-8943-4def-820a-a0e469678641",
         "258722e6-18c8-4c8d-bee9-c411c5312e58",
+        "image_yiJXfH",
         "95f7a903-df98-4d58-9b15-0db125d9190c",
-        "66511993-3f5d-49e1-a113-a15cae21edda",
         "video_R8nQTJ",
-        "image_yiJXfH"
+        "66511993-3f5d-49e1-a113-a15cae21edda"
       ],
       "settings": {
       }
@@ -619,7 +619,7 @@
       "settings": {
         "title": "How does the Hybrid Comfort feel?",
         "subtitle": "MATTRESS FIRMNESS SCALE",
-        "description": "<p>On a 1-10 scale (soft to firm), the Hybrid Comfort mattress strikes an ideal equilibrium 6 (medium firm). This translates to experiencing the plush, cloud-like comfort of contemporary memory foam, all the while receiving precisely the necessary support to safeguard your back and hips as you enjoy a restful night's sleep.<\/p>",
+        "description": "<p>On a 1-10 scale (soft to firm), the Hybrid Comfort mattress strikes an ideal equilibrium 7 (medium firm). This translates to experiencing the plush, cloud-like comfort of contemporary memory foam, all the while receiving precisely the necessary support to safeguard your back and hips as you enjoy a restful night's sleep.<\/p>",
         "firmness_point": 7,
         "container_spacing": "md",
         "is_animate_scaling": false
@@ -728,6 +728,7 @@
         "95bee6a1-5a6f-4ba8-9fac-03c161a01953",
         "95bee6a1-5a6f-4ba8-9fac-03c161a01954"
       ],
+      "disabled": true,
       "custom_css": [
         "h1 {font-size: 18px; margin: 0 0 10px;}"
       ],
@@ -786,6 +787,7 @@
         "c4650795-b884-4ddd-904e-babd57faad7b",
         "d8319461-aedd-4805-884a-95b7ed1a5893"
       ],
+      "disabled": true,
       "settings": {
         "heading": "Some things are better together",
         "heading_alignment": "start",

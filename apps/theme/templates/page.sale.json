@@ -161,6 +161,36 @@
     "customer-sentiment": {
       "type": "customer-sentiment",
       "blocks": {
+        "review_CEJiph": {
+          "type": "review",
+          "settings": {
+            "title": "Emma Hybrid Comfort Full Size - Five Stars",
+            "date": "05\/15\/24",
+            "product": "emma-hybrid-comfort-mattress",
+            "content": "<p>I've had the mattress for about one week. The firmness is just as described on the website and it's perfect for me (as someone who likes firm mattresses). Very easy to set up, ordering and shipping also went smoothly. So far I've noticed better temperature regulation than my old mattress; it is supportive with perfect amount of pillowy comfort. I'm very happy with my Hybrid Comfort purchase! <\/p>",
+            "author": "Ria S."
+          }
+        },
+        "review_FaaAyR": {
+          "type": "review",
+          "settings": {
+            "title": "Cloud soft mattress",
+            "date": "01\/18\/24",
+            "product": "emma-hybrid-comfort-mattress",
+            "content": "<p>Hands down the most comfortable mattress we’ve ever had- supportive but with a cloud soft topper you just sink right into, even as a lightweight person. So pleased we got it!<\/p>",
+            "author": "Jennifer S."
+          }
+        },
+        "review_33e8Ej": {
+          "type": "review",
+          "settings": {
+            "title": "Dream Bed",
+            "date": "02\/04\/2024",
+            "product": "emma-hybrid-premium",
+            "content": "<p>I am very pleased with this purchase. My first night was like sleeping on a cloud. I felt cocooned. I woke up feeling very rested. I love my Emma Hybrid Premium ! 😍😍<\/p>",
+            "author": "Celine E."
+          }
+        },
         "review-1": {
           "type": "review",
           "settings": {
@@ -253,6 +283,9 @@
         }
       },
       "block_order": [
+        "review_CEJiph",
+        "review_FaaAyR",
+        "review_33e8Ej",
         "review-1",
         "ff353d7c-1ace-4d04-8600-da1cf999aa8c",
         "68d0393a-14cd-4864-a37c-8bee16a86c66",

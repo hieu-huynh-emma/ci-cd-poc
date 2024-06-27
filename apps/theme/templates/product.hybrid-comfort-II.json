@@ -759,9 +759,70 @@
         "show_secondary_badge": false
       }
     },
+    "product-carousel": {
+      "type": "product-carousel",
+      "blocks": {
+        "72c7f33b-7788-4524-bf53-816aecb093b6": {
+          "type": "catalog_item",
+          "settings": {
+            "product": "perfect-sleep-bundle-hybrid-25"
+          }
+        },
+        "f0f0b732-6803-4158-8c54-5c08c4bdbfa3": {
+          "type": "catalog_item",
+          "settings": {
+            "product": "premium-cooling-pillow"
+          }
+        },
+        "07d5912c-d4c3-4ebb-97a6-f723fc8a4f3f": {
+          "type": "catalog_item",
+          "settings": {
+            "product": "emma-mattress-protector"
+          }
+        },
+        "d8319461-aedd-4805-884a-95b7ed1a5893": {
+          "type": "catalog_item",
+          "settings": {
+            "product": "duvet"
+          }
+        }
+      },
+      "block_order": [
+        "72c7f33b-7788-4524-bf53-816aecb093b6",
+        "f0f0b732-6803-4158-8c54-5c08c4bdbfa3",
+        "07d5912c-d4c3-4ebb-97a6-f723fc8a4f3f",
+        "d8319461-aedd-4805-884a-95b7ed1a5893"
+      ],
+      "settings": {
+        "heading": "Some things are better together",
+        "heading_alignment": "start",
+        "container_spacing": "md",
+        "trackId": ""
+      }
+    },
     "customer-sentiment": {
       "type": "customer-sentiment",
       "blocks": {
+        "review_LLa7mp": {
+          "type": "review",
+          "settings": {
+            "title": "Emma Hybrid Comfort Full Size - Five Stars",
+            "date": "05\/15\/24",
+            "product": "emma-hybrid-comfort-mattress",
+            "content": "<p>I've had the mattress for about one week. The firmness is just as described on the website and it's perfect for me (as someone who likes firm mattresses). Very easy to set up, ordering and shipping also went smoothly. So far I've noticed better temperature regulation than my old mattress; it is supportive with perfect amount of pillowy comfort. I'm very happy with my Hybrid Comfort purchase!<\/p>",
+            "author": "Ria S."
+          }
+        },
+        "review_BbkBfm": {
+          "type": "review",
+          "settings": {
+            "title": "Cloud soft mattress",
+            "date": "01\/18\/24",
+            "product": "emma-hybrid-comfort-mattress",
+            "content": "<p>Hands down the most comfortable mattress we’ve ever had- supportive but with a cloud soft topper you just sink right into, even as a lightweight person. So pleased we got it!<\/p>",
+            "author": "Jennifer S."
+          }
+        },
         "review-1": {
           "type": "review",
           "settings": {
@@ -858,19 +919,11 @@
             "url": "shopify:\/\/pages\/reviews",
             "text": "See All Reviews"
           }
-        },
-        "review_LLa7mp": {
-          "type": "review",
-          "settings": {
-            "title": "",
-            "date": "",
-            "product": "",
-            "content": "",
-            "author": ""
-          }
         }
       },
       "block_order": [
+        "review_LLa7mp",
+        "review_BbkBfm",
         "review-1",
         "ff353d7c-1ace-4d04-8600-da1cf999aa8c",
         "68d0393a-14cd-4864-a37c-8bee16a86c66",
@@ -880,52 +933,10 @@
         "b3b7f1ea-8fe5-41e7-9305-567392190a4e",
         "7370ca27-e47c-4832-b9fd-b8beb6dce18b",
         "c4884297-13b5-40c7-9075-bed6e1cf82d8",
-        "344eb1b3-400d-4a5f-89a3-3e86752850cf",
-        "review_LLa7mp"
+        "344eb1b3-400d-4a5f-89a3-3e86752850cf"
       ],
       "settings": {
         "title": "<p>Why our customers love Emma<\/p>",
-        "trackId": ""
-      }
-    },
-    "product-carousel": {
-      "type": "product-carousel",
-      "blocks": {
-        "72c7f33b-7788-4524-bf53-816aecb093b6": {
-          "type": "catalog_item",
-          "settings": {
-            "product": "perfect-sleep-bundle-hybrid-25"
-          }
-        },
-        "f0f0b732-6803-4158-8c54-5c08c4bdbfa3": {
-          "type": "catalog_item",
-          "settings": {
-            "product": "premium-cooling-pillow"
-          }
-        },
-        "07d5912c-d4c3-4ebb-97a6-f723fc8a4f3f": {
-          "type": "catalog_item",
-          "settings": {
-            "product": "emma-mattress-protector"
-          }
-        },
-        "d8319461-aedd-4805-884a-95b7ed1a5893": {
-          "type": "catalog_item",
-          "settings": {
-            "product": "duvet"
-          }
-        }
-      },
-      "block_order": [
-        "72c7f33b-7788-4524-bf53-816aecb093b6",
-        "f0f0b732-6803-4158-8c54-5c08c4bdbfa3",
-        "07d5912c-d4c3-4ebb-97a6-f723fc8a4f3f",
-        "d8319461-aedd-4805-884a-95b7ed1a5893"
-      ],
-      "settings": {
-        "heading": "Some things are better together",
-        "heading_alignment": "start",
-        "container_spacing": "md",
         "trackId": ""
       }
     },
@@ -1178,8 +1189,8 @@
     "mattress-layers",
     "mattress-firmness",
     "featured-products",
-    "customer-sentiment",
     "product-carousel",
+    "customer-sentiment",
     "1685402594226951ca",
     "social-proof",
     "special-services",

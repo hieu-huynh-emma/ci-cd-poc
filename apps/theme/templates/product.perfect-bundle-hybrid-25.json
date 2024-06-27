@@ -716,6 +716,7 @@
         "95bee6a1-5a6f-4ba8-9fac-03c161a01953",
         "95bee6a1-5a6f-4ba8-9fac-03c161a01954"
       ],
+      "disabled": true,
       "custom_css": [
         "h1 {font-size: 18px; margin: 0 0 10px;}"
       ],
@@ -739,7 +740,7 @@
         "72c7f33b-7788-4524-bf53-816aecb093b6": {
           "type": "catalog_item",
           "settings": {
-            "product": "emma-foam-pillow"
+            "product": "emma-original-bed"
           }
         },
         "f0f0b732-6803-4158-8c54-5c08c4bdbfa3": {
@@ -753,27 +754,14 @@
           "settings": {
             "product": "emma-mattress-protector"
           }
-        },
-        "c4650795-b884-4ddd-904e-babd57faad7b": {
-          "type": "catalog_item",
-          "settings": {
-            "product": "emma-bed-frame"
-          }
-        },
-        "d8319461-aedd-4805-884a-95b7ed1a5893": {
-          "type": "catalog_item",
-          "settings": {
-            "product": "emma-hybrid-comfort"
-          }
         }
       },
       "block_order": [
         "72c7f33b-7788-4524-bf53-816aecb093b6",
         "f0f0b732-6803-4158-8c54-5c08c4bdbfa3",
-        "07d5912c-d4c3-4ebb-97a6-f723fc8a4f3f",
-        "c4650795-b884-4ddd-904e-babd57faad7b",
-        "d8319461-aedd-4805-884a-95b7ed1a5893"
+        "07d5912c-d4c3-4ebb-97a6-f723fc8a4f3f"
       ],
+      "disabled": true,
       "settings": {
         "heading": "Some things are better together",
         "heading_alignment": "start",

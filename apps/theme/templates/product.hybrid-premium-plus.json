@@ -681,24 +681,24 @@
             "product": "premium-cooling-pillow"
           }
         },
-        "07d5912c-d4c3-4ebb-97a6-f723fc8a4f3f": {
-          "type": "catalog_item",
-          "settings": {
-            "product": "emma-mattress-protector"
-          }
-        },
         "d8319461-aedd-4805-884a-95b7ed1a5893": {
           "type": "catalog_item",
           "settings": {
             "product": "duvet"
+          }
+        },
+        "07d5912c-d4c3-4ebb-97a6-f723fc8a4f3f": {
+          "type": "catalog_item",
+          "settings": {
+            "product": "emma-original-bed"
           }
         }
       },
       "block_order": [
         "5e77d40f-79e8-4050-a013-d2325a25b443",
         "f0f0b732-6803-4158-8c54-5c08c4bdbfa3",
-        "07d5912c-d4c3-4ebb-97a6-f723fc8a4f3f",
-        "d8319461-aedd-4805-884a-95b7ed1a5893"
+        "d8319461-aedd-4805-884a-95b7ed1a5893",
+        "07d5912c-d4c3-4ebb-97a6-f723fc8a4f3f"
       ],
       "settings": {
         "heading": "Some things are better together",
@@ -710,6 +710,16 @@
     "customer-sentiment": {
       "type": "customer-sentiment",
       "blocks": {
+        "review_wUVMgR": {
+          "type": "review",
+          "settings": {
+            "title": "Dream Bed",
+            "date": "02\/04\/24",
+            "product": "emma-hybrid-premium",
+            "content": "<p>I am very pleased with this purchase. My first night was like sleeping on a cloud. I felt cocooned. I woke up feeling very rested. I love my Emma Hybrid Premium ! 😍😍<\/p>",
+            "author": "Celine E."
+          }
+        },
         "review-1": {
           "type": "review",
           "settings": {
@@ -809,6 +819,7 @@
         }
       },
       "block_order": [
+        "review_wUVMgR",
         "review-1",
         "ff353d7c-1ace-4d04-8600-da1cf999aa8c",
         "68d0393a-14cd-4864-a37c-8bee16a86c66",
