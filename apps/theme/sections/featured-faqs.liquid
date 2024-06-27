@@ -11,7 +11,7 @@
   elsif template == "page.sale"
     assign postfix = "SP"
   elsif template contains "collection"
-    assign postfix = "MP"
+    assign postfix = "CP"
   else
     assign postfix = product.metafields.accentuate.track_postfix
   endif

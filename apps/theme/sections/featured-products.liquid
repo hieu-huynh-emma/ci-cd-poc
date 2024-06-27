@@ -9,21 +9,21 @@
 {% assign exploreBtns = section.blocks | where: "type", "explore-button" %}
 
 {% liquid
-  
+
   assign compareTrackId = "Comapre_All"
   assign quizzTrackId = "Quizz"
   assign postfix = ""
-  
+
   if template == 'index'
     assign postfix = "HP"
   elsif template == "page.sale"
     assign postfix = "SP"
   elsif template contains "collection"
-    assign postfix = "MP"
+    assign postfix = "CP"
   else
     assign postfix = product.metafields.accentuate.track_postfix
   endif
-  
+
   if postfix != blank
     assign compareTrackId = compareTrackId | append: "_" | append: postfix
     assign quizzTrackId = quizzTrackId | append: "_" | append: postfix
@@ -42,8 +42,8 @@
           <span class="md:hidden">{{ section.settings.mobile_title }}</span>
         </h2>
       </div>
-      
-      
+
+
       <div class="flex flex-col gap-2">
         <tracked-button
           :trackId="{{ compareTrackId }}" href="/pages/comparison"
@@ -51,7 +51,7 @@
         >
           Compare all mattresses
         </tracked-button>
-        
+
         <tracked-button
           :trackId="{{ quizzTrackId }}" href="/pages/product-quizz"
           class="font-inter text-[16px] font-bold rounded-full border border-{#2E2F3C} text-center hidden md:block sec_btn"
@@ -59,9 +59,9 @@
           Find your perfect match
         </tracked-button>
       </div>
-    
+
     </div>
-    
+
     <div class="hidden md:flex md:justify-center md:gap-5 desktop_view">
       {%- for block in productBlocks -%}
         {% assign product = block.settings.product %}
@@ -70,14 +70,14 @@
             class="w-full h-full flex flex-col md:max-w-[422px] text-center featured_card"
             style="background-color:  var(--product-card-bg)"
           >
-            
+
             <div
               style="border-color:  var(--product-card-bg)"
               class="rounded-[6px] border flex flex-col h-full"
             >
               <div class="flex justify-between p-4 gap-5 hidden">
                 <div>
-                  
+
                   {% if template.name == 'product' and request.path contains product.handle %}
                     <p class="text-[13px] text-[#FF8900]">👁 Currently Viewing</p>
                   {% endif %}
@@ -94,7 +94,7 @@
                 >{{ block.settings.secondary_badge }}</p>
               </div>
               <div class="mb-6 h-[185px] ">
-                
+
                 <img
                   style="aspect-ratio: 800 / 450;"
                   class="mx-auto h-full object-contain lazyload"
@@ -102,11 +102,11 @@
                   height="179"
                 />
               </div>
-              
+
               <h3 class="px-4 text-[20px] font-semibold font-inter mt-2 mb-3">{{ block.settings.product_title }}</h3>
-              
+
               <div class="featured_card__attributes px-4 shopify-richtext mb-3">{{ block.settings.desc }}</div>
-              
+
               {% if section.settings.show_first_meter or section.settings.show_second_meter or section.settings.show_third_meter %}
                 <div class="mb-0 px-4">
                   <div class="text-left comfort_block py-2">
@@ -126,7 +126,7 @@
                           {% endfor %}
                         </div>
                       {% endif %}
-                      
+
                       {% if section.settings.show_second_meter %}
                         <p class="mb-1 text-[14px] font-semibold">{{ section.settings.second_meter_title }}</p>
                         <div
@@ -142,7 +142,7 @@
                           {% endfor %}
                         </div>
                       {% endif %}
-                      
+
                       {% if section.settings.show_third_meter %}
                         <p class="mb-1 text-[14px] font-semibold">{{ section.settings.third_meter_title }}</p>
                         <div
@@ -162,7 +162,7 @@
                   </div>
                 </div>
               {% endif %}
-              
+
               <div class="product_card_foot flex flex-1 items-end">
                 <div class="p-4 flex-1	">
                   <p
@@ -171,7 +171,7 @@
                     <span>{{ block.settings.discount_title }} -</span>
                     <span class="font-semibold"> {{ block.settings.discount_amount }}%</span>
                   </p>
-                  
+
                   <div class="flex items-center justify-between gap-2 flex-col">
                     <div>
                       <div class=" text-[#55576F]" style="font-size:12px">
@@ -194,26 +194,26 @@
                             class="font-semibold"
                             style="color:#F03306"
                           >{{ product.compare_at_price | minus: product.price | times: 100.0 | divided_by: product.compare_at_price | money_without_currency | times: 100 | remove: '.0' }}% off </span>
-                        
+
                         {% endif %}
-                      
+
                       </div>
                     </div>
-                    
+
                     {% liquid
                       assign codename = product.metafields.accentuate.codename
                       assign trackId = "Compare"
-                      
+
                       if codename != blank
                         assign trackId = trackId | prepend: "_" | prepend: codename
                       endif
-                      
+
                       if postfix != blank
                         assign trackId = trackId | append: "_" | append: postfix
                       endif
-                    
+
                     %}
-                    
+
                     <tracked-button
                       :trackId="{{ trackId }}"
                       class="btn testing w-{100%}" href="{{ product.url }}"
@@ -228,7 +228,7 @@
           </div>
         </a>
       {%- endfor -%}
-      
+
       {%- for block in imageBlocks -%}
         <div class="w-full flex flex-col md:max-w-[422px]">
           <a href="{{ block.settings.f-url }}" class="image_block">
@@ -242,10 +242,10 @@
         </div>
       {%- endfor -%}
     </div>
-    
+
     <div class="splide md:hidden mobile_view">
       {% include 'splide-arrows' %}
-      
+
       <div class="splide__track">
         <ul class="splide__list">
           {%- for block in productBlocks -%}
@@ -256,14 +256,14 @@
                   class="w-full h-full flex flex-col max-w-[320px] text-center featured_card"
                   style="background-color:  var(--product-card-bg)"
                 >
-                  
+
                   <div
                     style="border-color:  var(--product-card-bg)"
                     class="rounded-[6px] border flex flex-col h-full"
                   >
                     <div class="flex justify-between p-4 gap-5 hidden">
                       <div>
-                        
+
                         {% if template.name == 'product' and request.path contains product.handle %}
                           <p class="text-[13px] text-[#FF8900]">👁 Currently Viewing</p>
                         {% endif %}
@@ -288,13 +288,13 @@
                         height="179"
                       />
                     </div>
-                    
+
                     <h3
                       class="px-4 text-[20px] font-semibold font-inter mt-2 mb-3"
                     >{{ block.settings.product_title }}</h3>
-                    
+
                     <div class="featured_card__attributes px-4 shopify-richtext mb-3">{{ block.settings.desc }}</div>
-                    
+
                     {% if section.settings.show_first_meter or section.settings.show_second_meter or section.settings.show_third_meter %}
                       <div class="mb-0 px-4">
                         <div class="text-left comfort_block py-2">
@@ -318,7 +318,7 @@
                                 {% endfor %}
                               </div>
                             {% endif %}
-                            
+
                             {% if section.settings.show_second_meter %}
                               <p class="mb-1 text-[14px] font-semibold">{{ section.settings.second_meter_title }}</p>
                               <div
@@ -338,7 +338,7 @@
                                 {% endfor %}
                               </div>
                             {% endif %}
-                            
+
                             {% if section.settings.show_third_meter %}
                               <p class="mb-1 text-[14px] font-semibold">{{ section.settings.third_meter_title }}</p>
                               <div
@@ -362,7 +362,7 @@
                         </div>
                       </div>
                     {% endif %}
-                    
+
                     <div class="product_card_foot">
                       <div class="p-4">
                         <p
@@ -371,14 +371,14 @@
                           <span>{{ block.settings.discount_title }} -</span>
                           <span class="font-semibold"> {{ block.settings.discount_amount }}%</span>
                         </p>
-                        
+
                         <div class="flex items-center justify-between gap-2 flex-col">
                           <div>
                             <div class=" text-[#55576F]" style="font-size:12px">
                               {% if product.compare_at_price > product.price %}
                                 From
                               {% endif %}
-                              
+
                               <span
                                 class="line-through"
                               >{{ product.compare_at_price | money_without_trailing_zeros }}</span>
@@ -392,30 +392,30 @@
                               {% else %}
                                 <p class="font-semibold"> {{ product.price | money_without_trailing_zeros }}</p>
                               {% endif %}
-                              
+
                               {% if product.compare_at_price > product.price %}
                                 <span
                                   class="font-semibold"
                                   style="color:#F03306"
                                 >{{ product.compare_at_price | minus: product.price | times: 100.0 | divided_by: product.compare_at_price | money_without_currency | times: 100 | remove: '.0' }}% off </span>
                               {% endif %}
-                            
+
                             </div>
                           </div>
-                          
+
                           {% liquid
                             assign codename = product.metafields.accentuate.codename
                             assign trackId = "Compare"
-                            
+
                             if codename != blank
                               assign trackId = trackId | prepend: "_" | prepend: codename
                             endif
-                            
+
                             if postfix != blank
                               assign trackId = trackId | append: "_" | append: postfix
                             endif
                           %}
-                          
+
                           <tracked-button
                             :trackId="{{ trackId }}"
                             class="btn testing w-{100%}"
@@ -430,9 +430,9 @@
                 </div>
               </a>
             </li>
-          
+
           {%- endfor -%}
-          
+
           {%- for block in imageBlocks -%}
             <li class="splide__slide">
               <div class="w-full flex flex-col max-w-[320px]">
@@ -444,15 +444,15 @@
                     <img src="{{ 'round-arrow.svg' | asset_url }}" class="arrow-ico" />
                   </div>
                 </a>
-              
+
               </div>
             </li>
           {%- endfor -%}
-        
+
         </ul>
       </div>
     </div>
-    
+
     <div class="flex flex-col gap-2 items-center md:hidden">
       <tracked-button
         :trackId="{{ compareTrackId }}" href="/pages/comparison"
@@ -460,7 +460,7 @@
       >
         Compare all mattresses
       </tracked-button>
-      
+
       <tracked-button
         :trackId="{{ quizzTrackId }}" href="/pages/product-quizz"
         class="font-inter text-[16px] font-bold rounded-full border border-{#2E2F3C} text-center sec_btn"
@@ -469,7 +469,7 @@
       </tracked-button>
     </div>
   </div>
-  
+
   <script type="quickscript" loading="visibility" src="{{ 'featured-products.js' | asset_url }}"></script>
 </section>
 
