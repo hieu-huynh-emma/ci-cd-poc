@@ -100,10 +100,7 @@
                      {% endif %}
                   </span>
 
-              {% unless item.product.metafields.accentuate.is_free_gift %}
-                <span> {{ primary_product.title }} mattress ({{ current_variant.title }}),
-                    </span>
-              {% endunless %}
+          
 
               {% for bundle_item_metaobject in bundle_item_metaobjects %}
                 {% assign bundle_item_variant = bundle_item_metaobject.product.value %}
