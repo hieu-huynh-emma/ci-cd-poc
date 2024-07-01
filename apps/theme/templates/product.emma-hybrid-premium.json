@@ -1,6 +1,35 @@
 {
   "layout": "theme.product",
   "sections": {
+    "joint-product": {
+      "type": "joint-product",
+      "blocks": {
+        "item_zLVk8t": {
+          "type": "item",
+          "settings": {
+            "product": "emma-hybrid-premium",
+            "upsell": "",
+            "short_desc": "Our premium mattress for perfect comfort and cooling",
+            "show_star_rating": false
+          }
+        },
+        "item_ha7iFa": {
+          "type": "item",
+          "settings": {
+            "product": "emma-hybrid-premium-plus",
+            "upsell": "",
+            "short_desc": "Same structure, more breathable cover",
+            "show_star_rating": false
+          }
+        }
+      },
+      "block_order": [
+        "item_zLVk8t",
+        "item_ha7iFa"
+      ],
+      "settings": {
+      }
+    },
     "product-layout": {
       "type": "product-layout",
       "blocks": {
@@ -232,11 +261,18 @@
       "settings": {
       }
     },
+    "bundle-cross-sell": {
+      "type": "bundle-cross-sell",
+      "settings": {
+        "heading": "Add bundle offer!",
+        "product": "premium-accessory-bundle",
+        "note": "*No mattress protector available for Twin XL and Cal King sizes"
+      }
+    },
     "campaign-teaser": {
       "type": "campaign-teaser",
-      "disabled": true,
       "settings": {
-        "content": "<p><strong>Spring Sale<\/strong> 55% off<\/p>",
+        "content": "<p><strong>Canada Day Sale:<\/strong> 60% off<\/p>",
         "bgcolor": "#fef3ea",
         "color": "#2e2f3c",
         "show_countdown_timer": false
@@ -867,50 +903,36 @@
     "product-carousel": {
       "type": "product-carousel",
       "blocks": {
+        "5e77d40f-79e8-4050-a013-d2325a25b443": {
+          "type": "catalog_item",
+          "settings": {
+            "product": "perfect-sleep-bundle-hybrid-25"
+          }
+        },
         "f0f0b732-6803-4158-8c54-5c08c4bdbfa3": {
           "type": "catalog_item",
           "settings": {
             "product": "premium-cooling-pillow"
           }
         },
-        "07d5912c-d4c3-4ebb-97a6-f723fc8a4f3f": {
-          "type": "catalog_item",
-          "settings": {
-            "product": "emma-mattress-protector"
-          }
-        },
         "d8319461-aedd-4805-884a-95b7ed1a5893": {
           "type": "catalog_item",
           "settings": {
-            "product": "emma-hybrid-comfort"
+            "product": "duvet"
           }
         },
-        "72c7f33b-7788-4524-bf53-816aecb093b6": {
+        "07d5912c-d4c3-4ebb-97a6-f723fc8a4f3f": {
           "type": "catalog_item",
           "settings": {
-            "product": "emma-foam-pillow"
-          }
-        },
-        "c4650795-b884-4ddd-904e-babd57faad7b": {
-          "type": "catalog_item",
-          "settings": {
-            "product": "emma-bed-frame"
-          }
-        },
-        "5e77d40f-79e8-4050-a013-d2325a25b443": {
-          "type": "catalog_item",
-          "settings": {
-            "product": "perfect-sleep-bundle"
+            "product": "emma-original-bed"
           }
         }
       },
       "block_order": [
+        "5e77d40f-79e8-4050-a013-d2325a25b443",
         "f0f0b732-6803-4158-8c54-5c08c4bdbfa3",
-        "07d5912c-d4c3-4ebb-97a6-f723fc8a4f3f",
         "d8319461-aedd-4805-884a-95b7ed1a5893",
-        "72c7f33b-7788-4524-bf53-816aecb093b6",
-        "c4650795-b884-4ddd-904e-babd57faad7b",
-        "5e77d40f-79e8-4050-a013-d2325a25b443"
+        "07d5912c-d4c3-4ebb-97a6-f723fc8a4f3f"
       ],
       "settings": {
         "heading": "Some things are better together",
@@ -976,7 +998,9 @@
     "product-summary",
     "product-badges",
     "product-media",
+    "bundle-cross-sell",
     "price-transparency",
+    "joint-product",
     "risk-reversal",
     "campaign-teaser",
     "product-specifications",
