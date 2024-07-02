@@ -1,35 +1,6 @@
 {
   "layout": "theme.product",
   "sections": {
-    "joint-product": {
-      "type": "joint-product",
-      "blocks": {
-        "item_zLVk8t": {
-          "type": "item",
-          "settings": {
-            "product": "emma-hybrid-premium",
-            "upsell": "",
-            "short_desc": "Our premium mattress for perfect comfort and cooling",
-            "show_star_rating": false
-          }
-        },
-        "item_ha7iFa": {
-          "type": "item",
-          "settings": {
-            "product": "emma-hybrid-premium-plus",
-            "upsell": "",
-            "short_desc": "Same structure, more breathable cover",
-            "show_star_rating": false
-          }
-        }
-      },
-      "block_order": [
-        "item_zLVk8t",
-        "item_ha7iFa"
-      ],
-      "settings": {
-      }
-    },
     "product-layout": {
       "type": "product-layout",
       "blocks": {
@@ -141,6 +112,14 @@
       "settings": {
       }
     },
+    "bundle-cross-sell": {
+      "type": "bundle-cross-sell",
+      "settings": {
+        "heading": "Add bundle offer!",
+        "product": "premium-accessory-bundle",
+        "note": "*No mattress protector available for Twin XL and Cal King sizes"
+      }
+    },
     "price-transparency": {
       "type": "price-transparency",
       "blocks": {
@@ -216,6 +195,35 @@
         "grabber_text": "Discover the value behind our prices"
       }
     },
+    "joint-product": {
+      "type": "joint-product",
+      "blocks": {
+        "item_zLVk8t": {
+          "type": "item",
+          "settings": {
+            "product": "emma-hybrid-premium",
+            "upsell": "",
+            "short_desc": "Our premium mattress for perfect comfort and cooling",
+            "show_star_rating": false
+          }
+        },
+        "item_ha7iFa": {
+          "type": "item",
+          "settings": {
+            "product": "emma-hybrid-premium-plus",
+            "upsell": "",
+            "short_desc": "Same structure, different cover",
+            "show_star_rating": false
+          }
+        }
+      },
+      "block_order": [
+        "item_zLVk8t",
+        "item_ha7iFa"
+      ],
+      "settings": {
+      }
+    },
     "risk-reversal": {
       "type": "risk-reversal",
       "blocks": {
@@ -259,14 +267,6 @@
         "7bc03542-75ef-4463-b480-ec46f36ac421"
       ],
       "settings": {
-      }
-    },
-    "bundle-cross-sell": {
-      "type": "bundle-cross-sell",
-      "settings": {
-        "heading": "Add bundle offer!",
-        "product": "premium-accessory-bundle",
-        "note": "*No mattress protector available for Twin XL and Cal King sizes"
       }
     },
     "campaign-teaser": {
