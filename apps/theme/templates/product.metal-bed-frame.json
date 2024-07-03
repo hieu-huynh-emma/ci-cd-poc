@@ -465,6 +465,12 @@
     "product-carousel": {
       "type": "product-carousel",
       "blocks": {
+        "catalog_item_6rixNQ": {
+          "type": "catalog_item",
+          "settings": {
+            "product": "ultimate-sleep-essential-bundle"
+          }
+        },
         "d8319461-aedd-4805-884a-95b7ed1a5893": {
           "type": "catalog_item",
           "settings": {
@@ -491,6 +497,7 @@
         }
       },
       "block_order": [
+        "catalog_item_6rixNQ",
         "d8319461-aedd-4805-884a-95b7ed1a5893",
         "5e77d40f-79e8-4050-a013-d2325a25b443",
         "6157481e-9612-4a7c-a3bf-4006a99b7bd6",
