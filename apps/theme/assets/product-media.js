@@ -16,7 +16,7 @@ class ProductMedia extends CustomElement {
       await ResourceCoordinator.requestVendor("Splide");
       await ResourceCoordinator.requestVendor("DriftZoom");
 
-      const main = new Splide("product-media .main-carousel .splide", {
+      const main = new Splide(this.querySelector(".main-carousel .splide"), {
         type: "fade",
         pagination: false,
         arrows: false,
@@ -26,7 +26,7 @@ class ProductMedia extends CustomElement {
           },
         },
       });
-      const thumbnails = new Splide("product-media .thumbnail-carousel", {
+      const thumbnails = new Splide(this.querySelector(".thumbnail-carousel"), {
         mediaQuery: "min",
         fixedWidth: 80,
         gap: 8,
@@ -49,14 +49,14 @@ class ProductMedia extends CustomElement {
 
       main.sync(thumbnails);
 
-      main.on("mounted", function () {
-        $("product-media").addClass("is-initialized");
+      main.on("mounted",  () => {
+        this.$el.addClass("is-initialized");
       });
 
       let drift;
       let triggerEl;
 
-      const $mainCarousel = $("product-media .main-carousel");
+      const $mainCarousel = this.$el.find(".main-carousel");
 
       main.on("active", ({ slide }) => {
         if (drift) drift.destroy();

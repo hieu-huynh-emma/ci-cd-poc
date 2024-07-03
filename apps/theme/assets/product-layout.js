@@ -11,6 +11,9 @@ const schema = [
         sectionId: "product-media",
     },
     {
+        sectionId: "overlay-text-on-image",
+    },
+    {
         sectionId: "risk-reversal",
     },
     {

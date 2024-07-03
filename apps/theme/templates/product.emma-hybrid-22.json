@@ -103,6 +103,26 @@
       "settings": {
       }
     },
+    "overlay-text-on-image": {
+      "type": "product-media",
+      "blocks": {
+        "f5f456c7-b29a-4f74-826f-648e09f5b1cd": {
+          "type": "image",
+          "settings": {
+            "en_image": "shopify://shop_images/Untitled_design_5.jpg",
+            "en_mobile_image": "shopify://shop_images/Untitled_design_5.jpg",
+            "fr_image": "shopify://shop_images/Untitled_design_5.jpg",
+            "fr_mobile_image": "shopify://shop_images/Untitled_design_5.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "f5f456c7-b29a-4f74-826f-648e09f5b1cd"
+      ],
+      "settings": { "heading": "Overlay Text on Image",
+        "sectionId": "overlay-text-on-image"
+      }
+    },
     "product-specifications": {
       "type": "product-specifications",
       "blocks": {
@@ -1052,6 +1072,7 @@
     "product-summary",
     "product-badges",
     "product-media",
+    "overlay-text-on-image",
     "product-specifications",
     "price-transparency",
     "risk-reversal",

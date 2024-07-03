@@ -237,6 +237,10 @@ class JointProductSelector extends HTMLElement {
         selector: "product-media",
       },
       {
+        sectionId: "overlay-text-on-image",
+        selector: "product-media",
+      },
+      {
         sectionId: "product-auxiliary",
         selector: "#quick-compare",
       },

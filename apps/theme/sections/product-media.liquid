@@ -27,6 +27,10 @@
     html[lang='fr'] product-media [lang='fr'] {
         display: block;
     }
+
+    product-media#overlay-text-on-image {
+        display: none;
+    }
 </style>
 
 <link rel="stylesheet" href="{{ 'product-media.css' | asset_url }}">
@@ -41,38 +45,24 @@
     endif
 %}
 
-<product-media>
+<product-media {% if section.settings.sectionId %}id="{{ section.settings.sectionId }}"{% endif %}>
     {% case leadItem.type %}
         {% when "image" %}
             <div class="lead-item media-item media-container">
-                <picture class="media-item__image" lang="en">
-                    <source media="(min-width: 1200px)"
-                            srcset="{{ leadItem.settings.en_desktop_image | image_url: width: 1440 }}">
-                    <source media="(min-width: 992px)"
-                            srcset="{{ leadItem.settings.en_desktop_image | image_url: width: 1040 }}">
-                    <source media="(min-width: 768px)"
-                            srcset="{{ leadItem.settings.en_desktop_image | image_url: width: 800 }}">
-
-                    <img
-                            src="{{ leadItem.settings.en_mobile_image | default: leadItem.settings.en_desktop_image | image_url: width: 600 }}"
-                            width="808"
-                            height="486"
-                    >
-                </picture>
-                <picture class="media-item__image" lang="fr">
-                    <source media="(min-width: 1200px)"
-                            srcset="{{ leadItem.settings.fr_desktop_image | image_url: width: 1440 }}">
-                    <source media="(min-width: 992px)"
-                            srcset="{{ leadItem.settings.fr_desktop_image | image_url: width: 1040 }}">
-                    <source media="(min-width: 768px)"
-                            srcset="{{ leadItem.settings.fr_desktop_image | image_url: width: 800 }}">
-
-                    <img
-                            src="{{ leadItem.settings.fr_mobile_image | default: leadItem.settings.fr_desktop_image | image_url: width: 600 }}"
-                            width="808"
-                            height="486"
-                    >
-                </picture>
+                {% render 'picture-tag',
+                        src: leadItem.settings.en_image,
+                        picture_attributes: 'class="media-item__image" lang="en"',
+                        img_classes: "",
+                        width: 808,
+                        height: 486
+                %}
+                {% render 'picture-tag',
+                        src: leadItem.settings.fr_image,
+                        picture_attributes: 'class="media-item__image" lang="fr"',
+                        img_classes: "",
+                        width: 808,
+                        height: 486
+                %}
             </div>
     {% endcase %}
     <template>
@@ -90,50 +80,26 @@
                                     {% case block.type %}
                                         {% when "image" %}
                                             <div class="media-item media-container" data-type="{{ block.type }}">
-                                                <picture class="media-item__image" lang="en"
-                                                         data-zoom="{{ block.settings.en_mobile_image | default: block.settings.en_desktop_image | image_url: width: 2048 }}"
-                                                >
-                                                    <source
-                                                            media="(min-width: 1200px)"
-                                                            srcset="{{ block.settings.en_desktop_image | image_url: width: 1440 }}"
-                                                    >
-                                                    <source
-                                                            media="(min-width: 992px)"
-                                                            srcset="{{ block.settings.en_desktop_image | image_url: width: 1040 }}"
-                                                    >
-                                                    <source
-                                                            media="(min-width: 768px)"
-                                                            srcset="{{ block.settings.en_desktop_image | image_url: width: 800 }}"
-                                                    >
-
-                                                    <img
-                                                            src="{{ block.settings.en_mobile_image | default: block.settings.en_desktop_image | image_url: width: 600 }}"
-                                                            width="808"
-                                                            height="486"
-                                                    >
-                                                </picture>
-
-                                                <picture class="media-item__image" lang="fr"
-                                                         data-zoom="{{ block.settings.fr_mobile_image | default: block.settings.fr_desktop_image | image_url: width: 2048 }}">
-                                                    <source
-                                                            media="(min-width: 1200px)"
-                                                            srcset="{{ block.settings.fr_desktop_image | image_url: width: 1440 }}"
-                                                    >
-                                                    <source
-                                                            media="(min-width: 992px)"
-                                                            srcset="{{ block.settings.fr_desktop_image | image_url: width: 1040 }}"
-                                                    >
-                                                    <source
-                                                            media="(min-width: 768px)"
-                                                            srcset="{{ block.settings.fr_desktop_image | image_url: width: 800 }}"
-                                                    >
-
-                                                    <img
-                                                            src="{{ block.settings.fr_mobile_image | default: block.settings.fr_desktop_image | image_url: width: 600 }}"
-                                                            width="808"
-                                                            height="486"
-                                                    >
-                                                </picture>
+                                                {% capture mediaItemAttributes %}
+                                                    class="media-item__image" lang="en" data-zoom="{{ block.settings.en_image | image_url: width: 2048 }}"
+                                                {% endcapture %}
+                                                {% render 'picture-tag',
+                                                        src: block.settings.en_image,
+                                                        picture_attributes: mediaItemAttributes,
+                                                        img_classes: "",
+                                                        width: 808,
+                                                        height: 486
+                                                %}
+                                                {% capture mediaItemAttributes %}
+                                                    class="media-item__image" lang="fr" data-zoom="{{ block.settings.fr_image | image_url: width: 2048 }}"
+                                                {% endcapture %}
+                                                {% render 'picture-tag',
+                                                        src: block.settings.fr_image,
+                                                        picture_attributes: mediaItemAttributes,
+                                                        img_classes: "",
+                                                        width: 808,
+                                                        height: 486
+                                                %}
                                             </div>
                                         {% when "video" %}
                                             {% assign media = block.settings.video %}
@@ -171,46 +137,20 @@
                                         {% assign thumbnail = block.settings %}
 
                                         <div class="media-item media-container">
-                                            <picture class="media-item__image" lang="en">
-                                                <source
-                                                        media="(min-width: 1200px)"
-                                                        srcset="{{ thumbnail.en_desktop_image | image_url: width: 1440 }}"
-                                                >
-                                                <source
-                                                        media="(min-width: 992px)"
-                                                        srcset="{{ thumbnail.en_desktop_image | image_url: width: 1040 }}"
-                                                >
-                                                <source
-                                                        media="(min-width: 768px)"
-                                                        srcset="{{ thumbnail.en_desktop_image | image_url: width: 800 }}"
-                                                >
-
-                                                <img
-                                                        src="{{ thumbnail.en_mobile_image | default: thumbnail.en_desktop_image | image_url: width: 600 }}"
-                                                        width="808"
-                                                        height="486"
-                                                >
-                                            </picture>
-                                            <picture class="media-item__image" lang="fr">
-                                                <source
-                                                        media="(min-width: 1200px)"
-                                                        srcset="{{ thumbnail.fr_desktop_image | image_url: width: 1440 }}"
-                                                >
-                                                <source
-                                                        media="(min-width: 992px)"
-                                                        srcset="{{ thumbnail.fr_desktop_image | image_url: width: 1040 }}"
-                                                >
-                                                <source
-                                                        media="(min-width: 768px)"
-                                                        srcset="{{ thumbnail.fr_desktop_image | image_url: width: 800 }}"
-                                                >
-
-                                                <img
-                                                        src="{{ thumbnail.fr_mobile_image | default: thumbnail.fr_desktop_image | image_url: width: 600 }}"
-                                                        width="808"
-                                                        height="486"
-                                                >
-                                            </picture>
+                                            {% render 'picture-tag',
+                                                    src: thumbnail.en_image,
+                                                    picture_attributes: 'class="media-item__image" lang="en"',
+                                                    img_classes: "",
+                                                    width: 808,
+                                                    height: 486
+                                            %}
+                                            {% render 'picture-tag',
+                                                    src: thumbnail.fr_image,
+                                                    picture_attributes: 'class="media-item__image" lang="fr"',
+                                                    img_classes: "",
+                                                    width: 808,
+                                                    height: 486
+                                            %}
                                         </div>
 
                                     {% when "video" or "external_video" %}
@@ -227,22 +167,16 @@
                                                           fill="currentColor"/>
                                                 </svg>
                                             </div>
-
-                                            <picture class="media-item__image">
-                                                <source media="(min-width: 1200px)"
-                                                        srcset="{{ media.preview_image | image_url: width: 1440 }}">
-                                                <source media="(min-width: 992px)"
-                                                        srcset="{{ media.preview_image | image_url: width: 1040 }}">
-                                                <source media="(min-width: 768px)"
-                                                        srcset="{{ media.preview_image | image_url: width: 800 }}">
-                                                <img
-                                                        src="{{ media | image_url: width: 550 }}"
-                                                        loading="lazy"
-                                                        width="576"
-                                                        height="{{ 576 | divided_by: media.preview_image.aspect_ratio }}"
-                                                        alt="{{ media.preview_image.alt | escape }}"
-                                                />
-                                            </picture>
+                                            {% assign height = 576 | divided_by: media.preview_image.aspect_ratio %}
+                                            {% assign alt = media.preview_image.alt | escape %}
+                                            {% render 'picture-tag',
+                                                    src: media.preview_image,
+                                                    picture_attributes: 'class="media-item__image" lang="fr"',
+                                                    img_classes: "",
+                                                    width: 576,
+                                                    height: height,
+                                                    alt: alt
+                                            %}
                                         </button>
 
                                 {% endcase %}
@@ -254,7 +188,7 @@
         </div>
 
         <input id="lead-item-url" type="hidden"
-               value="{{ leadItem.settings.en_mobile_image | default: leadItem.settings.en_desktop_image | image_url: width: 600 }}">
+               value="{{ leadItem.settings.en_image | image_url: width: 600 }}">
     </template>
 </product-media>
 
@@ -271,24 +205,14 @@
       "name": "Media Image",
       "settings": [
         {
-          "id": "en_desktop_image",
+          "id": "en_image",
           "type": "image_picker",
-          "label": "English Desktop Source"
+          "label": "English Image Source"
         },
         {
-          "id": "en_mobile_image",
+          "id": "fr_image",
           "type": "image_picker",
-          "label": "English Mobile Source"
-        },
-        {
-          "id": "fr_desktop_image",
-          "type": "image_picker",
-          "label": "French Desktop Source"
-        },
-        {
-          "id": "fr_mobile_image",
-          "type": "image_picker",
-          "label": "French Mobile Source"
+          "label": "French Image Source"
         }
       ]
     },
@@ -321,6 +245,16 @@
     }
   ],
   "settings": [
+    {
+      "id": "heading",
+      "type": "text",
+      "label": "Section Heading"
+    },
+    {
+      "id": "sectionId",
+      "type": "text",
+      "label": "Section ID"
+    }
   ]
 }
 {% endschema %}

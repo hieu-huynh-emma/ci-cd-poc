@@ -1,0 +1,25 @@
+{% assign lqip = lqip | default: 240 %}
+
+{% assign url = src %}
+{% assign desktop_url = desktop_src | default: url %}
+{% assign mobile_url = mobile_src | default: desktop_url %}
+
+
+<picture {{ picture_attributes }}>
+    <source media="(min-width: 1440px)"
+            srcset="{{ desktop_url | image_url: width: 2048 }}">
+    <source media="(min-width: 1024px)"
+            srcset="{{ desktop_url | image_url: width: 1440 }}">
+    <source media="(min-width: 992px)"
+            srcset="{{ desktop_url | image_url: width: 1024 }}">
+    <source media="(min-width: 768px)"
+            srcset="{{ desktop_url | image_url: width: 800 }}">
+    <img class="lazyload {{ img_classes }}"
+         src="{{ mobile_url | image_url: width: 240 }}"
+         data-src="{{ mobile_url | image_url: width: 600 }}"
+         width="{{ width | default: "auto" }}"
+         height="{{ height | default: "auto" }}"
+         alt="{{ alt | default: "alt" }}"
+         loading="lazy"
+    />
+</picture>
