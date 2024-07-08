@@ -105,11 +105,13 @@
                                             {% assign media = block.settings.video %}
                                             {% assign poster = media | image_url: width: 550 | prepend: "https:" %}
                                             <div class="media-item media-container" data-type="{{ block.type }}">
-                                                <video playsinline preload="none" loop controls poster="{{ poster }}">
+                                                <video playsinline preload="none"  loop controls poster="{{ poster }}">
                                                     {% for source in media.sources %}
+                                                      {% if source.mime_type != "application/x-mpegURL" %}
                                                         <source
                                                                 src="{{ source.url }}"
                                                                 type="{{ source.mime_type }}">
+                                                        {% endif %}
                                                     {% endfor %}
                                                 </video>
                                             </div>

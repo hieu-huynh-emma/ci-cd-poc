@@ -249,13 +249,13 @@
           if (self.responseURL.includes('/checkouts/') && searchParams.has('step')) {
             const parser = new DOMParser();
             const doc = parser.parseFromString(self.responseText, 'text/html');
-            totalSavedText = doc.querySelector('#total-saved-amount').value;
-            const promoCodes = doc.querySelector('#promo-codes').value;
-            const allowPromoCode = doc.querySelector('#allow-more-promo-code').value;
-            const lineItemDiscounted = doc.querySelector('#line-item-discounted').value;
-            const lineItemDiscountCode = doc.querySelector('#line-item-discount-code').value;
+            totalSavedText = doc.querySelector('#total-saved-amount')?.value;
+            const promoCodes = doc.querySelector('#promo-codes')?.value;
+            const allowPromoCode = doc.querySelector('#allow-more-promo-code')?.value;
+            const lineItemDiscounted = doc.querySelector('#line-item-discounted')?.value;
+            const lineItemDiscountCode = doc.querySelector('#line-item-discount-code')?.value;
             $('.total-saved-text').text(totalSavedText);
-            promoDiscount = doc.querySelector('#promo-discount').value;
+            promoDiscount = doc.querySelector('#promo-discount')?.value;
             $('.promo-code .total-line__price').text(`- ${promoDiscount}`);
             $('#promo-codes').val(promoCodes);
             $('#allow-more-promo-code').val(allowPromoCode);
