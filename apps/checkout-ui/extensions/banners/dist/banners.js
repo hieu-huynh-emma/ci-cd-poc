@@ -18418,10 +18418,10 @@
             }
           }
           var jsx5 = jsxWithValidationDynamic;
-          var jsxs2 = jsxWithValidationStatic;
+          var jsxs = jsxWithValidationStatic;
           exports.Fragment = REACT_FRAGMENT_TYPE;
           exports.jsx = jsx5;
-          exports.jsxs = jsxs2;
+          exports.jsxs = jsxs;
         })();
       }
     }
@@ -19137,11 +19137,11 @@
   // node_modules/.pnpm/@shopify+ui-extensions@2024.4.2/node_modules/@shopify/ui-extensions/build/esm/surfaces/checkout/extension.mjs
   var extension = createExtensionRegistrationFunction();
 
+  // node_modules/.pnpm/@shopify+ui-extensions@2024.4.2/node_modules/@shopify/ui-extensions/build/esm/surfaces/checkout/components/BlockLayout/BlockLayout.mjs
+  var BlockLayout = createRemoteComponent("BlockLayout");
+
   // node_modules/.pnpm/@shopify+ui-extensions@2024.4.2/node_modules/@shopify/ui-extensions/build/esm/surfaces/checkout/components/Image/Image.mjs
   var Image = createRemoteComponent("Image");
-
-  // node_modules/.pnpm/@shopify+ui-extensions@2024.4.2/node_modules/@shopify/ui-extensions/build/esm/surfaces/checkout/components/InlineLayout/InlineLayout.mjs
-  var InlineLayout = createRemoteComponent("InlineLayout");
 
   // node_modules/.pnpm/@shopify+ui-extensions@2024.4.2/node_modules/@shopify/ui-extensions/build/esm/surfaces/checkout/components/View/View.mjs
   var View = createRemoteComponent("View");
@@ -19474,37 +19474,23 @@ ${errorInfo.componentStack}`);
     }
   };
 
+  // node_modules/.pnpm/@shopify+ui-extensions-react@2024.4.2_@shopify+ui-extensions@2024.4.2_react-reconciler@0.29.0_react@18.3.1/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/components/BlockLayout/BlockLayout.mjs
+  var BlockLayout2 = createRemoteReactComponent(BlockLayout);
+
   // node_modules/.pnpm/@shopify+ui-extensions-react@2024.4.2_@shopify+ui-extensions@2024.4.2_react-reconciler@0.29.0_react@18.3.1/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/components/Image/Image.mjs
   var Image2 = createRemoteReactComponent(Image);
-
-  // node_modules/.pnpm/@shopify+ui-extensions-react@2024.4.2_@shopify+ui-extensions@2024.4.2_react-reconciler@0.29.0_react@18.3.1/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/components/InlineLayout/InlineLayout.mjs
-  var InlineLayout2 = createRemoteReactComponent(InlineLayout);
 
   // node_modules/.pnpm/@shopify+ui-extensions-react@2024.4.2_@shopify+ui-extensions@2024.4.2_react-reconciler@0.29.0_react@18.3.1/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/components/View/View.mjs
   var View2 = createRemoteReactComponent(View);
 
-  // extensions/badges/src/Checkout.tsx
+  // extensions/banners/src/Checkout.tsx
   var import_jsx_runtime4 = __toESM(require_jsx_runtime());
   var Checkout_default = reactExtension(
-    "purchase.checkout.payment-method-list.render-before",
-    () => /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(DigicertBadge, {})
+    "purchase.checkout.block.render",
+    () => /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(ShippingNotice, {})
   );
-  function DigicertBadge() {
-    return /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(InlineLayout2, { spacing: "base", columns: ["40%", "10%", "fill"], children: [
-      /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(View2, { children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
-        Image2,
-        {
-          source: "https://cdn.shopify.com/s/files/1/0562/9873/3706/files/SSL_Secure_Message.png?v=1720507932"
-        }
-      ) }),
-      /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(View2, { children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
-        Image2,
-        {
-          source: "https://cdn.shopify.com/s/files/1/0562/9873/3706/files/Digicert_from_Emma_Sleep.avif?v=1720507147"
-        }
-      ) }),
-      /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(View2, {})
-    ] });
+  function ShippingNotice() {
+    return /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(BlockLayout2, { rows: [60, "fill", 60], children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(View2, { children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Image2, { source: "https://cdn.shopify.com/s/files/1/0562/9873/3706/files/Checkout_Shipping_Notice.png?v=1720509075" }) }) });
   }
 })();
-//# sourceMappingURL=badges.js.map
+//# sourceMappingURL=banners.js.map
