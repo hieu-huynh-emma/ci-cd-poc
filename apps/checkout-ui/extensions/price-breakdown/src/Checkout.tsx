@@ -123,7 +123,7 @@ function LineItemPriceBreakdown() {
                 <View padding="none" inlineAlignment="end">
                     <BlockLayout rows={['fill', 'fill']}>
                         <View>
-                            <Text appearance="info" accessibilityRole="deletion">{pricing?.originalPriceCurrency}</Text>
+                            <Text appearance="subdued" accessibilityRole="deletion">{pricing?.originalPriceCurrency}</Text>
                         </View>
                         <View></View>
                     </BlockLayout>
