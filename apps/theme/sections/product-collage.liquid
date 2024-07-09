@@ -9,24 +9,24 @@
         {% assign collection = block.settings.collection %}
         <div class="collage-card" data-type="{{ block.type }}">
           <div class="collage-container">
-            {%- assign collection_image = blank -%}
-
-            {% if block.settings.media %}
-              {% assign collection_image = block.settings.media | image_url: width: 1440 %}
-            {% elsif collection.metafields.accentuate.featured_image[0] %}
-              {%- assign collection_image = collection.metafields.accentuate.featured_image[0].src -%}
-            {% elsif collection.image %}
-              {%- assign collection_image = collection.image | image_url: width: 1440 -%}
-            {% elsif collection.products.first and collection.products.first.featured_media != empty %}
-              {%- assign collection_image = collection.products.first.featured_media.preview_image | image_url: width: 1440 -%}
-            {% endif %}
-
-            {% if collection == blank %}
+            {% if block.settings.media == blank %}
               <div
                 class="collection-grid__item-overlay grid__image">{{ 'collection-1' | placeholder_svg_tag: 'placeholder-svg' }}</div>
             {% else %}
               {% case block.type %}
                 {% when "image" %}
+                  {%- assign collection_image = blank -%}
+
+                  {% if block.settings.media %}
+                    {% assign collection_image = block.settings.media | image_url: width: 1440 %}
+                  {% elsif collection.metafields.accentuate.featured_image[0] %}
+                    {%- assign collection_image = collection.metafields.accentuate.featured_image[0].src -%}
+                  {% elsif collection.image %}
+                    {%- assign collection_image = collection.image | image_url: width: 1440 -%}
+                  {% elsif collection.products.first and collection.products.first.featured_media != empty %}
+                    {%- assign collection_image = collection.products.first.featured_media.preview_image | image_url: width: 1440 -%}
+                  {% endif %}
+
                   <img class="lazyload card-photo"
                        data-src="{{ collection_image }}"
                        data-sizes="auto"
@@ -35,16 +35,14 @@
                 {% when "video" %}
                   {% assign media = block.settings.media %}
                   {% assign poster = media | image_url: width: 550 | prepend: "https:" %}
-                  <video class="card-media lazy" controls playsinline autoplay muted poster="{{ poster }}">
+                  <video class="card-media lazy" playsinline autoplay loop muted poster="{{ poster }}">
                     {% for source in media.sources %}
                       <source
-                        data-src="{{ source.url }}"
-                        type="{{ source.mime_type }}">
+                              data-src="{{ source.url }}"
+                              type="{{ source.mime_type }}">
                     {% endfor %}
                   </video>
               {% endcase %}
-
-
             {% endif %}
 
             <tracked-button :trackId="{{ block.settings.trackId }}" href="{{ collection.url }}" class="card-content">
