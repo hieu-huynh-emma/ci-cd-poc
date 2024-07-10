@@ -1119,7 +1119,7 @@
             }
             return dispatcher;
           }
-          function useContext2(Context) {
+          function useContext3(Context) {
             var dispatcher = resolveDispatcher();
             {
               if (Context._context !== void 0) {
@@ -1133,7 +1133,7 @@
             }
             return dispatcher.useContext(Context);
           }
-          function useState(initialState) {
+          function useState2(initialState) {
             var dispatcher = resolveDispatcher();
             return dispatcher.useState(initialState);
           }
@@ -1145,7 +1145,7 @@
             var dispatcher = resolveDispatcher();
             return dispatcher.useRef(initialValue);
           }
-          function useEffect(create, deps) {
+          function useEffect2(create, deps) {
             var dispatcher = resolveDispatcher();
             return dispatcher.useEffect(create, deps);
           }
@@ -1925,10 +1925,10 @@
           exports.startTransition = startTransition;
           exports.unstable_act = act;
           exports.useCallback = useCallback;
-          exports.useContext = useContext2;
+          exports.useContext = useContext3;
           exports.useDebugValue = useDebugValue;
           exports.useDeferredValue = useDeferredValue;
-          exports.useEffect = useEffect;
+          exports.useEffect = useEffect2;
           exports.useId = useId;
           exports.useImperativeHandle = useImperativeHandle;
           exports.useInsertionEffect = useInsertionEffect;
@@ -1936,7 +1936,7 @@
           exports.useMemo = useMemo2;
           exports.useReducer = useReducer;
           exports.useRef = useRef2;
-          exports.useState = useState;
+          exports.useState = useState2;
           exports.useSyncExternalStore = useSyncExternalStore;
           exports.useTransition = useTransition;
           exports.version = ReactVersion;
@@ -18418,10 +18418,10 @@
             }
           }
           var jsx5 = jsxWithValidationDynamic;
-          var jsxs = jsxWithValidationStatic;
+          var jsxs2 = jsxWithValidationStatic;
           exports.Fragment = REACT_FRAGMENT_TYPE;
           exports.jsx = jsx5;
-          exports.jsxs = jsxs;
+          exports.jsxs = jsxs2;
         })();
       }
     }
@@ -19137,11 +19137,14 @@
   // node_modules/.pnpm/@shopify+ui-extensions@2024.4.2/node_modules/@shopify/ui-extensions/build/esm/surfaces/checkout/extension.mjs
   var extension = createExtensionRegistrationFunction();
 
-  // node_modules/.pnpm/@shopify+ui-extensions@2024.4.2/node_modules/@shopify/ui-extensions/build/esm/surfaces/checkout/components/Image/Image.mjs
-  var Image = createRemoteComponent("Image");
+  // node_modules/.pnpm/@shopify+ui-extensions@2024.4.2/node_modules/@shopify/ui-extensions/build/esm/surfaces/checkout/components/Banner/Banner.mjs
+  var Banner = createRemoteComponent("Banner");
 
-  // node_modules/.pnpm/@shopify+ui-extensions@2024.4.2/node_modules/@shopify/ui-extensions/build/esm/surfaces/checkout/components/View/View.mjs
-  var View = createRemoteComponent("View");
+  // node_modules/.pnpm/@shopify+ui-extensions@2024.4.2/node_modules/@shopify/ui-extensions/build/esm/surfaces/checkout/components/BlockLayout/BlockLayout.mjs
+  var BlockLayout = createRemoteComponent("BlockLayout");
+
+  // node_modules/.pnpm/@shopify+ui-extensions@2024.4.2/node_modules/@shopify/ui-extensions/build/esm/surfaces/checkout/components/Text/Text.mjs
+  var Text = createRemoteComponent("Text");
 
   // node_modules/.pnpm/@shopify+ui-extensions-react@2024.4.2_@shopify+ui-extensions@2024.4.2_react-reconciler@0.29.0_react@18.3.1/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/render.mjs
   var import_react6 = __toESM(require_react(), 1);
@@ -19471,25 +19474,99 @@ ${errorInfo.componentStack}`);
     }
   };
 
-  // node_modules/.pnpm/@shopify+ui-extensions-react@2024.4.2_@shopify+ui-extensions@2024.4.2_react-reconciler@0.29.0_react@18.3.1/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/components/Image/Image.mjs
-  var Image2 = createRemoteReactComponent(Image);
+  // node_modules/.pnpm/@shopify+ui-extensions-react@2024.4.2_@shopify+ui-extensions@2024.4.2_react-reconciler@0.29.0_react@18.3.1/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/components/Banner/Banner.mjs
+  var Banner2 = createRemoteReactComponent(Banner);
 
-  // node_modules/.pnpm/@shopify+ui-extensions-react@2024.4.2_@shopify+ui-extensions@2024.4.2_react-reconciler@0.29.0_react@18.3.1/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/components/View/View.mjs
-  var View2 = createRemoteReactComponent(View);
+  // node_modules/.pnpm/@shopify+ui-extensions-react@2024.4.2_@shopify+ui-extensions@2024.4.2_react-reconciler@0.29.0_react@18.3.1/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/components/BlockLayout/BlockLayout.mjs
+  var BlockLayout2 = createRemoteReactComponent(BlockLayout);
 
-  // extensions/banners/src/ShippingNotice.tsx
+  // node_modules/.pnpm/@shopify+ui-extensions-react@2024.4.2_@shopify+ui-extensions@2024.4.2_react-reconciler@0.29.0_react@18.3.1/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/components/Text/Text.mjs
+  var Text2 = createRemoteReactComponent(Text);
+
+  // node_modules/.pnpm/@shopify+ui-extensions-react@2024.4.2_@shopify+ui-extensions@2024.4.2_react-reconciler@0.29.0_react@18.3.1/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/hooks/api.mjs
+  var import_react11 = __toESM(require_react(), 1);
+
+  // node_modules/.pnpm/@shopify+ui-extensions-react@2024.4.2_@shopify+ui-extensions@2024.4.2_react-reconciler@0.29.0_react@18.3.1/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/errors.mjs
+  var CheckoutUIExtensionError = class extends Error {
+    constructor(...args) {
+      super(...args);
+      this.name = "CheckoutUIExtensionError";
+    }
+  };
+
+  // node_modules/.pnpm/@shopify+ui-extensions-react@2024.4.2_@shopify+ui-extensions@2024.4.2_react-reconciler@0.29.0_react@18.3.1/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/hooks/api.mjs
+  function useApi(_target) {
+    const api = (0, import_react11.useContext)(ExtensionApiContext);
+    if (api == null) {
+      throw new CheckoutUIExtensionError("You can only call this hook when running as a checkout UI extension.");
+    }
+    return api;
+  }
+
+  // node_modules/.pnpm/@shopify+ui-extensions-react@2024.4.2_@shopify+ui-extensions@2024.4.2_react-reconciler@0.29.0_react@18.3.1/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/hooks/storage.mjs
+  function useStorage() {
+    return useApi().storage;
+  }
+
+  // extensions/checkout-countdown/src/Checkout.tsx
+  var import_react12 = __toESM(require_react());
   var import_jsx_runtime4 = __toESM(require_jsx_runtime());
-  var ShippingNotice_default = reactExtension(
+  var Checkout_default = reactExtension(
     "purchase.checkout.block.render",
-    () => /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(ShippingNotice, {})
+    () => /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(CheckoutCountdown, {})
   );
-  function ShippingNotice() {
-    return /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(View2, { children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
-      Image2,
-      {
-        source: "https://cdn.shopify.com/s/files/1/0562/9873/3706/files/Checkout_Shipping_Notice.png?v=1720509075"
+  var TIME_LIMIT = 1e3 * 60 * 20;
+  var INTERVAL_TIME = 1e3;
+  function CheckoutCountdown() {
+    const storage = useStorage();
+    const [timeLeft, setTimeLeft] = (0, import_react12.useState)(0);
+    (0, import_react12.useEffect)(() => __async(this, null, function* () {
+      const remainingTime = yield getTimeLeft(storage);
+      setTimeLeft(remainingTime);
+    }), []);
+    (0, import_react12.useEffect)(() => {
+      if (!timeLeft)
+        return;
+      const intervalId = setInterval(() => __async(this, null, function* () {
+        const remainingTime = timeLeft - 1e3;
+        setTimeLeft(remainingTime);
+      }), INTERVAL_TIME);
+      return () => {
+        storage.delete("checkoutRemainingTime");
+        clearInterval(intervalId);
+      };
+    }, [timeLeft]);
+    return timeLeft ? /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Banner2, { status: "warning", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(BlockLayout2, { inlineAlignment: "center", rows: ["auto"], children: [
+      /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Text2, { children: "An item in your cart is in high demand." }),
+      /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(Text2, { children: [
+        "Your order is reserved for ",
+        epochToMinutes(timeLeft),
+        ". Check out soon!"
+      ] })
+    ] }) }) : null;
+  }
+  function getTimeLeft(storage) {
+    return __async(this, null, function* () {
+      const persistedRemainingTime = yield storage.read("checkoutRemainingTime");
+      let time = +persistedRemainingTime;
+      if (!persistedRemainingTime) {
+        time = generateDeadline();
+        yield storage.write("checkoutRemainingTime", time);
       }
-    ) });
+      return time;
+    });
+  }
+  function generateDeadline() {
+    const currentTime = (/* @__PURE__ */ new Date()).getTime();
+    const endTime = currentTime + TIME_LIMIT;
+    return endTime - currentTime;
+  }
+  function epochToMinutes(epoch) {
+    const minutes = Math.floor(epoch / 1e3 / 60);
+    const seconds = Math.floor(epoch / 1e3 % 60);
+    const formattedMinutes = minutes.toString().padStart(2, "0");
+    const formattedSeconds = seconds.toString().padStart(2, "0");
+    return minutes ? `${formattedMinutes}:${formattedSeconds} minutes` : `${formattedSeconds} seconds`;
   }
 })();
-//# sourceMappingURL=banners.js.map
+//# sourceMappingURL=checkout-countdown.js.map

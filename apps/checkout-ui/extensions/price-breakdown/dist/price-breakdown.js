@@ -19649,7 +19649,7 @@ ${errorInfo.componentStack}`);
     return /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(BlockStack2, { spacing: "none", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(InlineLayout2, { columns: ["fill", "auto"], children: [
       /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(View2, { padding: "none", visibility: "hidden" }),
       /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(View2, { padding: "none", inlineAlignment: "end", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(BlockLayout2, { rows: ["fill", "fill"], children: [
-        /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(View2, { children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Text2, { appearance: "info", accessibilityRole: "deletion", children: pricing == null ? void 0 : pricing.originalPriceCurrency }) }),
+        /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(View2, { children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Text2, { appearance: "subdued", accessibilityRole: "deletion", children: pricing == null ? void 0 : pricing.originalPriceCurrency }) }),
         /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(View2, {})
       ] }) })
     ] }) });

@@ -6,8 +6,8 @@
 api_version = "2024-04"
 
 [[extensions]]
-name = "banners"
-handle = "banners"
+name = "checkout-countdown"
+handle = "checkout-countdown"
 type = "ui_extension"
 
 
@@ -16,7 +16,7 @@ type = "ui_extension"
 # https://shopify.dev/docs/api/checkout-ui-extensions/unstable/extension-targets-overview
 
 [[extensions.targeting]]
-module = "./src/ShippingNotice.tsx"
+module = "./src/Checkout.tsx"
 target = "purchase.checkout.block.render"
 
 [extensions.capabilities]
