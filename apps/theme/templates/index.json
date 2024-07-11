@@ -33,7 +33,7 @@
             "cta_url": "shopify:\/\/products\/emma-hybrid-comfort",
             "cta_text": "Shop the Mattress",
             "cta_subtext": "",
-            "timer": "2023-12-23 05:00",
+            "timer": "2024-12-23 05:00",
             "discount_badge": true,
             "trackId": "Shop_right"
           }
@@ -60,7 +60,7 @@
         "cta_url": "shopify:\/\/pages\/sale",
         "cta_text": "Shop Now",
         "cta_subtext": "",
-        "timer": "2024-07-09 06:00",
+        "timer": "2024-07-11 06:00",
         "trackId": "Shop"
       }
     },
@@ -554,10 +554,21 @@
       "blocks": {
         "collage_item_fPf3LT": {
           "type": "image",
+          "disabled": true,
           "settings": {
             "heading": "Mattresses",
             "subheading": "Maximum Comfort",
             "media": "shopify:\/\/shop_images\/25_Hybrid_v2_14_gallery_fdc70d0e-985d-47c7-81e8-cce98984241c.jpg",
+            "collection": "mattresses",
+            "trackId": "Mattresses_box_HP"
+          }
+        },
+        "video_KNBgft": {
+          "type": "video",
+          "settings": {
+            "heading": "Mattresses",
+            "subheading": "Maximum Comfort",
+            "media": "shopify:\/\/files\/videos\/Emma_25_Comfort_Adjustable_Mattress_Webshop_7s-3_v1_(1).mp4",
             "collection": "mattresses",
             "trackId": "Mattresses_box_HP"
           }
@@ -585,6 +596,7 @@
       },
       "block_order": [
         "collage_item_fPf3LT",
+        "video_KNBgft",
         "collage_item_FbfaGf",
         "collage_item_e6jR8U"
       ],
