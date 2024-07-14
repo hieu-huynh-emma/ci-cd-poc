@@ -172,12 +172,23 @@
       object-position: center;
     }
     @media screen and (min-width: 769px) {
-      object-position: right;
+      object-position: left;
     }
   }
 
   .banner-container {
     padding: 0;
+  }
+
+  .banner-flooring {
+    display: flex;
+    width: 100%;
+    height: 100%;
+
+    > picture {
+      width: 100%;
+      height: 100%;
+    }
   }
 
 }

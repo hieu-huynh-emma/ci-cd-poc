@@ -19,7 +19,7 @@
     }
 </style>
 
-<div class="banner-container" style="color: {{ settings.text_color }}">
+<div class="banner-container" style="color: {{ settings.text_color }}" {% if index %}data-index="{{ index }}"{% endif %}>
     <div class="banner-interior unintrusive-bg">
         <div class="overlay-bg"></div>
 
