@@ -1,25 +1,24 @@
 # Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
 
-client_id = "750e75315bd4edec98df7195af3f6771"
+client_id = "4cb40b488e84de32b4b943b43b8340a7"
 name = "Checkout UI"
-handle = "checkout-ui-387"
+handle = "checkout-ui-272"
 application_url = "https://shopify.dev/apps/default-app-home"
 embedded = true
 
 [build]
-automatically_update_urls_on_dev = true
-dev_store_url = "ca-checkout-extensibility-dev.myshopify.com"
+dev_store_url = "emma-ca-dev.myshopify.com"
 include_config_on_deploy = true
 
 [access_scopes]
 # Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
-scopes = "write_products"
+scopes = ""
 
 [auth]
 redirect_urls = [ "https://shopify.dev/apps/default-app-home/api/auth" ]
 
 [webhooks]
-api_version = "2024-04"
+api_version = "2024-07"
 
 [pos]
 embedded = false
