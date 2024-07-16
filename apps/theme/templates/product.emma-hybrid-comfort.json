@@ -188,6 +188,8 @@
         "12e2c164-6e6a-42a2-a76a-b4363d4c2c09"
       ],
       "settings": {
+        "heading": "",
+        "sectionId": ""
       }
     },
     "overlay-text-on-image": {
@@ -746,16 +748,16 @@
     "product-carousel": {
       "type": "product-carousel",
       "blocks": {
-        "catalog_item_7dCgW6": {
-          "type": "catalog_item",
-          "settings": {
-            "product": "ultimate-sleep-essential-bundle"
-          }
-        },
         "72c7f33b-7788-4524-bf53-816aecb093b6": {
           "type": "catalog_item",
           "settings": {
             "product": "perfect-sleep-bundle-hybrid-25"
+          }
+        },
+        "catalog_item_7dCgW6": {
+          "type": "catalog_item",
+          "settings": {
+            "product": "emma-original-bed"
           }
         },
         "f0f0b732-6803-4158-8c54-5c08c4bdbfa3": {
@@ -778,8 +780,8 @@
         }
       },
       "block_order": [
-        "catalog_item_7dCgW6",
         "72c7f33b-7788-4524-bf53-816aecb093b6",
+        "catalog_item_7dCgW6",
         "f0f0b732-6803-4158-8c54-5c08c4bdbfa3",
         "07d5912c-d4c3-4ebb-97a6-f723fc8a4f3f",
         "c4650795-b884-4ddd-904e-babd57faad7b"

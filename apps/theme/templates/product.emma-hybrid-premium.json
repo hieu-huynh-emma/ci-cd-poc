@@ -739,6 +739,40 @@
         "include_margins": true
       }
     },
+    "product-carousel": {
+      "type": "product-carousel",
+      "blocks": {
+        "5e77d40f-79e8-4050-a013-d2325a25b443": {
+          "type": "catalog_item",
+          "settings": {
+            "product": "emma-original-bed"
+          }
+        },
+        "f0f0b732-6803-4158-8c54-5c08c4bdbfa3": {
+          "type": "catalog_item",
+          "settings": {
+            "product": "premium-cooling-pillow"
+          }
+        },
+        "d8319461-aedd-4805-884a-95b7ed1a5893": {
+          "type": "catalog_item",
+          "settings": {
+            "product": "duvet"
+          }
+        }
+      },
+      "block_order": [
+        "5e77d40f-79e8-4050-a013-d2325a25b443",
+        "f0f0b732-6803-4158-8c54-5c08c4bdbfa3",
+        "d8319461-aedd-4805-884a-95b7ed1a5893"
+      ],
+      "settings": {
+        "heading": "Some things are better together",
+        "heading_alignment": "start",
+        "container_spacing": "md",
+        "trackId": ""
+      }
+    },
     "customer-sentiment": {
       "type": "customer-sentiment",
       "blocks": {
@@ -957,47 +991,6 @@
         "trackId": ""
       }
     },
-    "product-carousel": {
-      "type": "product-carousel",
-      "blocks": {
-        "5e77d40f-79e8-4050-a013-d2325a25b443": {
-          "type": "catalog_item",
-          "settings": {
-            "product": "perfect-sleep-bundle-hybrid-25"
-          }
-        },
-        "f0f0b732-6803-4158-8c54-5c08c4bdbfa3": {
-          "type": "catalog_item",
-          "settings": {
-            "product": "premium-cooling-pillow"
-          }
-        },
-        "d8319461-aedd-4805-884a-95b7ed1a5893": {
-          "type": "catalog_item",
-          "settings": {
-            "product": "duvet"
-          }
-        },
-        "07d5912c-d4c3-4ebb-97a6-f723fc8a4f3f": {
-          "type": "catalog_item",
-          "settings": {
-            "product": "emma-original-bed"
-          }
-        }
-      },
-      "block_order": [
-        "5e77d40f-79e8-4050-a013-d2325a25b443",
-        "f0f0b732-6803-4158-8c54-5c08c4bdbfa3",
-        "d8319461-aedd-4805-884a-95b7ed1a5893",
-        "07d5912c-d4c3-4ebb-97a6-f723fc8a4f3f"
-      ],
-      "settings": {
-        "heading": "Some things are better together",
-        "heading_alignment": "start",
-        "container_spacing": "md",
-        "trackId": ""
-      }
-    },
     "featured-faqs": {
       "type": "featured-faqs",
       "blocks": {
@@ -1069,9 +1062,9 @@
     "mattress-firmness",
     "featured-products",
     "1706756294a806f92d",
+    "product-carousel",
     "customer-sentiment",
     "social-proof",
-    "product-carousel",
     "featured-faqs",
     "contact-us"
   ]
