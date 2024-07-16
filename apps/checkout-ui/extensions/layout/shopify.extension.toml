@@ -19,6 +19,10 @@ type = "ui_extension"
 module = "./src/Header"
 target = "purchase.checkout.header.render-after"
 
+[[extensions.targeting]]
+module = "./src/Footer"
+target = "purchase.checkout.footer.render-after"
+
 [extensions.capabilities]
 # Gives your extension access to directly query Shopify’s storefront API.
 # https://shopify.dev/docs/api/checkout-ui-extensions/unstable/configuration#api-access

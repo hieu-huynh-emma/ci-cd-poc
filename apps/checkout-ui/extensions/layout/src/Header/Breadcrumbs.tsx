@@ -27,8 +27,6 @@ export default function () {
     const activeStep = useBuyerJourneyActiveStep();
 
     const assembledSteps = steps.map(step => {
-        console.log("=>(Breadcrumbs.tsx:21) step", step);
-
         let label = step.label
 
         switch (step.handle) {
