@@ -36,12 +36,19 @@
       @media screen and (min-width: 769px) {
         font-size: 40px;
       }
+      @media screen and (min-width: 1280px) {
+        font-size: 60px;
+      }
     }
   }
 
   .section-frame .banner-container {
     min-height: initial;
+
     @media screen and (max-width: 769px) {
+      aspect-ratio: 16/9;
+
+      min-height: 300px;
       border-radius: .5rem;
       overflow: hidden;
     }
@@ -60,23 +67,11 @@
           object-position: center;
         }
       }
-
-      @media screen and (max-width: 769px) {
-        height: 580px;
-      }
-      @media screen and (min-width: 769px) {
-        aspect-ratio: 4/3;
-      }
     }
 
     &[data-index="1"] {
-      aspect-ratio: 16/9;
       @media screen and (min-width: 769px) {
-        aspect-ratio: initial;
-      }
-
-      @media screen and (max-width: 769px) {
-        min-height: 300px;
+        aspect-ratio: 4/3;
       }
 
       .wallpaper {
@@ -88,6 +83,10 @@
   .banner-panel {
     @media screen and (min-width: 769px) {
       gap: 2rem;
+    }
+
+    @media screen and (min-width: 1280px) {
+      gap: 2.5rem;
     }
   }
 
