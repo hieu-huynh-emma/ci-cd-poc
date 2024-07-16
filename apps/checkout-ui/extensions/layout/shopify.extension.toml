@@ -16,7 +16,7 @@ type = "ui_extension"
 # https://shopify.dev/docs/api/checkout-ui-extensions/unstable/extension-targets-overview
 
 [[extensions.targeting]]
-module = "./src/Checkout.tsx"
+module = "./src/Header"
 target = "purchase.checkout.header.render-after"
 
 [extensions.capabilities]

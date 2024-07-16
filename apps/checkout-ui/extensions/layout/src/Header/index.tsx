@@ -1,6 +1,6 @@
 import {
-    BlockLayout,
-    reactExtension, View,
+    BlockLayout, InlineLayout,
+    reactExtension, Image, View, Grid, GridItem
 } from "@shopify/ui-extensions-react/checkout";
 
 import Breadcrumbs from './Breadcrumbs'
@@ -12,8 +12,11 @@ export default reactExtension("purchase.checkout.header.render-after", () => (
 
 
 const Header = () => (
-    <BlockLayout rows="auto" spacing="base">
-        <Logo />
-        <Breadcrumbs />
-    </BlockLayout>
+    <Grid
+        rows="auto"
+        spacing="base"
+    >
+        <Logo/>
+        <Breadcrumbs/>
+    </Grid>
 )
