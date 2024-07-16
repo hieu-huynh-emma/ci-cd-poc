@@ -19,7 +19,8 @@
     }
 </style>
 
-<div class="banner-container" style="color: {{ settings.text_color }}" {% if index %}data-index="{{ index }}"{% endif %}>
+<div class="banner-container" style="color: {{ settings.text_color }}"
+     {% if index %}data-index="{{ index }}"{% endif %}>
     <div class="banner-interior unintrusive-bg">
         <div class="overlay-bg"></div>
 
@@ -59,49 +60,50 @@
                 {% endif %}
 
                 {% if settings.cta_url %}
-                        <tracked-button
-                                :trackId="{{ settings.trackId }}"
-                                class="banner-cta btn btn--lg"
-                                href="{{ settings.cta_url }}">
-                            {{ settings.cta_text }}
-                        </tracked-button>
+                    <tracked-button
+                            :trackId="{{ settings.trackId }}"
+                            class="banner-cta btn btn--lg"
+                            href="{{ settings.cta_url }}">
+                        {{ settings.cta_text }}
+                    </tracked-button>
                 {% endif %}
             </div>
         </div>
     </div>
 
-    {% if settings.wallpaper_desktop_img != blank or settings.wallpaper_mobile_img != blank %}
-        <a href="{{ settings.cta_url }}" class="banner-flooring">
-            <picture lang="en">
-                <source media="(min-width: 1200px)"
-                        srcset="{{ settings.wallpaper_desktop_img | image_url: width: 2048 }}">
-                <source media="(min-width: 992px)"
-                        srcset="{{ settings.wallpaper_desktop_img | image_url: width: 1040 }}">
-                <source media="(min-width: 768px)"
-                        srcset="{{ settings.wallpaper_desktop_img | image_url: width: 800 }}">
-                <img class="wallpaper lazyload"
-                     src="{{ settings.wallpaper_mobile_img | default: settings.wallpaper_desktop_img |
-                     image_url: width: 240 }}"
-                     data-src="{{ settings.wallpaper_mobile_img | default: settings.wallpaper_desktop_img |
-                     image_url: width: 600 }}"
-                     alt="Hero Wallpaper"
+    {% assign en_desktop_url = settings.wallpaper_desktop_img %}
+    {% assign en_mobile_url = settings.wallpaper_mobile_img | default: desktop_url %}
+    {% assign fr_desktop_url = settings.wallpaper_desktop_fr_img | default: en_desktop_url %}
+    {% assign fr_mobile_url = settings.wallpaper_mobile_fr_img | default: settings.wallpaper_mobile_img | default: desktop_url %}
 
-                >
-            </picture>
-            <picture lang="fr">
-                <source media="(min-width: 1200px)"
-                        srcset="{{ settings.wallpaper_desktop_fr_img | image_url: width: 2048 }}">
-                <source media="(min-width: 992px)"
-                        srcset="{{ settings.wallpaper_desktop_fr_img | image_url: width: 1040 }}">
-                <source media="(min-width: 768px)"
-                        srcset="{{ settings.wallpaper_desktop_fr_img | image_url: width: 800 }}">
-                <img class="wallpaper lazyload"
-                     src="{{ settings.wallpaper_mobile_fr_img | default: settings.wallpaper_desktop_fr_img |
-                     image_url: width: 240 }}"
-                     data-src="{{ settings.wallpaper_mobile_fr_img | default: settings.wallpaper_desktop_fr_img |
-                     image_url: width: 600 }}"
-                     alt="Hero Wallpaper">
-            </picture>
-        </a>
-    {% endif %}
+    <a href="{{ settings.cta_url }}" class="banner-flooring">
+        <picture lang="en">
+
+
+            <source media="(min-width: 1200px)"
+                    srcset="{{ en_desktop_url | image_url: width: 2048 }}">
+            <source media="(min-width: 992px)"
+                    srcset="{{ en_desktop_url | image_url: width: 1040 }}">
+            <source media="(min-width: 768px)"
+                    srcset="{{ en_desktop_url | image_url: width: 800 }}">
+            <img class="wallpaper lazyload"
+                 src="{{ eb_mobile_url | image_url: width: 240 }}"
+                 data-src="{{ eb_mobile_url | image_url: width: 600 }}"
+                 alt="Hero Wallpaper"
+            >
+        </picture>
+        <picture lang="fr">
+            <source media="(min-width: 1200px)"
+                    srcset="{{ fr_desktop_url | image_url: width: 2048 }}">
+            <source media="(min-width: 992px)"
+                    srcset="{{ fr_desktop_url | image_url: width: 1040 }}">
+            <source media="(min-width: 768px)"
+                    srcset="{{ fr_desktop_url | image_url: width: 800 }}">
+            <img class="wallpaper lazyload"
+                 src="{{ fr_mobile_url | image_url: width: 240 }}"
+                 data-src="{{ fr_mobile_url | image_url: width: 600 }}"
+                 alt="Hero Wallpaper">
+        </picture>
+    </a>
+
 </div>
