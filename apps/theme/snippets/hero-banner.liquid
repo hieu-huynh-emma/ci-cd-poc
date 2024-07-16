@@ -22,7 +22,7 @@
 <div class="banner-container" style="color: {{ settings.text_color }}"
      {% if index %}data-index="{{ index }}"{% endif %}>
     <div class="banner-interior unintrusive-bg">
-        <div class="overlay-bg"></div>
+        {% if settings.show_shadow %}<div class="overlay-bg"></div>{%endif%}
 
         <div class="banner-panel">
             <div class="banner-content">
@@ -59,7 +59,7 @@
                     </hero-banner-countdown-timer>
                 {% endif %}
 
-                {% if settings.cta_url %}
+                {% if settings.show_cta %}
                     <tracked-button
                             :trackId="{{ settings.trackId }}"
                             class="banner-cta btn btn--lg"

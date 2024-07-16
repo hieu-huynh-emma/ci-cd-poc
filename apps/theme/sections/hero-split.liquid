@@ -22,7 +22,7 @@
   <div class="split-container">
     <div class="split-interior">
       <div class="section-frame">
-        <div class="overlay-bg"></div>
+        {% if settings.show_shadow %}<div class="overlay-bg"></div>{%endif%}
 
         {% for block in heroSplits %}
           {% assign settings = block.settings %}
@@ -68,8 +68,7 @@
                 </hero-banner-countdown-timer>
               {% endif %}
 
-              {% if settings.cta_url %}
-
+              {% if settings.show_cta %}
                   <tracked-button
                     :trackId="{{ settings.trackId }}"
                     class="banner-cta btn btn--lg" href="{{ settings.cta_url }}">
@@ -152,9 +151,10 @@
           "label": "Subtitle"
         },
         {
-          "id": "tagline",
-          "type": "richtext",
-          "label": "Tagline"
+          "id": "show_shadow",
+          "type": "checkbox",
+          "label": "Show Shadow?",
+          "default": true
         },
         {
           "type": "color",
@@ -173,9 +173,10 @@
           "label": "CTA Text"
         },
         {
-          "id": "cta_subtext",
-          "type": "richtext",
-          "label": "CTA Subtext"
+          "id": "show_cta",
+          "type": "checkbox",
+          "label": "Show CTA?",
+          "default": true
         },
         {
           "type": "text",
