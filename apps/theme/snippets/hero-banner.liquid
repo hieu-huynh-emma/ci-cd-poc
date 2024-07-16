@@ -59,14 +59,12 @@
                 {% endif %}
 
                 {% if settings.cta_url %}
-                    <div class="banner-cta">
                         <tracked-button
                                 :trackId="{{ settings.trackId }}"
-                                class="btn btn--lg"
+                                class="banner-cta btn btn--lg"
                                 href="{{ settings.cta_url }}">
                             {{ settings.cta_text }}
                         </tracked-button>
-                    </div>
                 {% endif %}
             </div>
         </div>

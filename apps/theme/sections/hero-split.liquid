@@ -12,8 +12,7 @@
     @media screen and (min-width: 769px) {
         #hero-split-section .split-container {
             width: 100%;
-            height: 533px;
-            aspect-ratio: 1377/640;
+            aspect-ratio: 1.9;
         }
     }
 </style>
@@ -70,13 +69,13 @@
               {% endif %}
 
               {% if settings.cta_url %}
-                <div class="banner-cta">
+
                   <tracked-button
                     :trackId="{{ settings.trackId }}"
-                    class="btn btn--lg" href="{{ settings.cta_url }}">
+                    class="banner-cta btn btn--lg" href="{{ settings.cta_url }}">
                     {{ settings.cta_text }}
                   </tracked-button>
-                </div>
+
               {% endif %}
             </div>
           </div>

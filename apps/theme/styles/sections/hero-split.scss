@@ -34,9 +34,6 @@
 
     .banner-title {
       @media screen and (min-width: 769px) {
-        font-size: 32px;
-      }
-      @media screen and (min-width: 992px) {
         font-size: 40px;
       }
     }
@@ -86,6 +83,17 @@
         object-position: center;
       }
     }
+  }
+
+  .banner-panel {
+    @media screen and (min-width: 769px) {
+      gap: 2rem;
+    }
+  }
+
+  .banner-cta {
+    min-height: 48px !important;
+    max-height: 48px;
   }
 
 }

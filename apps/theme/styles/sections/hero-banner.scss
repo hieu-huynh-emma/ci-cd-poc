@@ -66,21 +66,10 @@
     }
 
     .banner-cta {
-      display: block;
-      @media screen and (max-width: 769px) {
-        //min-height: 36px;
-      }
-
       @media screen and (min-width: 769px) {
-        max-width: 352px
-      }
-
-      a.btn {
-        @media screen and (max-width: 769px) {
-          font-size: 14px;
-          min-height: 36px;
-          padding: 0;
-        }
+        max-width: 352px;
+        font-size: 14px;
+        padding: 0;
       }
     }
   }
