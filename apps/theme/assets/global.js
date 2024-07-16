@@ -998,6 +998,7 @@ class HeroBannerCountdownTimer extends HTMLElement {
         this.renderTimer(delta);
         this.classList.remove("hidden");
       } else {
+        this.classList.add("hidden");
         clearInterval(intervalId);
       }
     }, 1000);
