@@ -72,9 +72,9 @@
     </div>
 
     {% assign en_desktop_url = settings.wallpaper_desktop_img %}
-    {% assign en_mobile_url = settings.wallpaper_mobile_img | default: desktop_url %}
+    {% assign en_mobile_url = settings.wallpaper_mobile_img | default: en_desktop_url %}
     {% assign fr_desktop_url = settings.wallpaper_desktop_fr_img | default: en_desktop_url %}
-    {% assign fr_mobile_url = settings.wallpaper_mobile_fr_img | default: settings.wallpaper_mobile_img | default: desktop_url %}
+    {% assign fr_mobile_url = settings.wallpaper_mobile_fr_img | default: fr_desktop_url %}
 
     <a href="{{ settings.cta_url }}" class="banner-flooring">
         <picture lang="en">
@@ -87,8 +87,8 @@
             <source media="(min-width: 768px)"
                     srcset="{{ en_desktop_url | image_url: width: 800 }}">
             <img class="wallpaper lazyload"
-                 src="{{ eb_mobile_url | image_url: width: 240 }}"
-                 data-src="{{ eb_mobile_url | image_url: width: 600 }}"
+                 src="{{ en_mobile_url | image_url: width: 240 }}"
+                 data-src="{{ en_mobile_url | image_url: width: 600 }}"
                  alt="Hero Wallpaper"
             >
         </picture>
