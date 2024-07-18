@@ -3,25 +3,27 @@ import {
     Link,
     Text,
     useBuyerJourneySteps,
-    useBuyerJourneyActiveStep, Icon,
+    useBuyerJourneyActiveStep, Icon
 } from '@shopify/ui-extensions-react/checkout';
 
 const BreadcrumbItem = ({to, index, activeStepIndex, activeStep, handle, label}) => {
     const textColor = (index >= activeStepIndex && activeStep?.handle !== handle) ? 'subdued' : undefined;
     const emphasis = activeStep?.handle === handle ? 'bold' : undefined
 
-    return (
-        <Text
-            size="large"
-            emphasis={emphasis}
-            appearance={textColor}>
+    const textContent = `${index + 1}. ${label}`
 
-            {index + 1}.&nbsp;
-            {label}
-        </Text>
-    )
+    return <Text
+        size="large"
+        emphasis={emphasis}
+        appearance={textColor}>
+        {index < activeStepIndex
+            ? <Link to={to}>{textContent}</Link>
+            : textContent
+        }
+
+    </Text>
+
 }
-
 export default function () {
     const steps = useBuyerJourneySteps();
     const activeStep = useBuyerJourneyActiveStep();
@@ -75,9 +77,8 @@ export default function () {
                     spacing="base"
                     columns="auto"
                 >
-                    {index < activeStepIndex ?
-                        <Link to={to}><BreadcrumbItem {...props} /></Link> : <BreadcrumbItem {...props} />
-                    }
+
+                    <BreadcrumbItem {...props} />
 
                     {index < assembledSteps.length - 1 ? (
                         <Icon source="chevronRight"/>
