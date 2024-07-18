@@ -722,23 +722,6 @@
         "show_secondary_badge": false
       }
     },
-    "1706756294a806f92d": {
-      "type": "apps",
-      "blocks": {
-        "yotpo_product_photo_reviews_reviews_rYq3JP": {
-          "type": "shopify:\/\/apps\/yotpo-product-reviews-ugc\/blocks\/reviews\/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
-          "settings": {
-            "product": "{{product}}"
-          }
-        }
-      },
-      "block_order": [
-        "yotpo_product_photo_reviews_reviews_rYq3JP"
-      ],
-      "settings": {
-        "include_margins": true
-      }
-    },
     "product-carousel": {
       "type": "product-carousel",
       "blocks": {
@@ -759,18 +742,49 @@
           "settings": {
             "product": "duvet"
           }
+        },
+        "catalog_item_69Acgg": {
+          "type": "catalog_item",
+          "settings": {
+            "product": "microfibre-pillow"
+          }
+        },
+        "catalog_item_M6Fbbn": {
+          "type": "catalog_item",
+          "settings": {
+            "product": "emma-foam-pillow"
+          }
         }
       },
       "block_order": [
         "5e77d40f-79e8-4050-a013-d2325a25b443",
         "f0f0b732-6803-4158-8c54-5c08c4bdbfa3",
-        "d8319461-aedd-4805-884a-95b7ed1a5893"
+        "d8319461-aedd-4805-884a-95b7ed1a5893",
+        "catalog_item_69Acgg",
+        "catalog_item_M6Fbbn"
       ],
       "settings": {
         "heading": "Some things are better together",
         "heading_alignment": "start",
         "container_spacing": "md",
         "trackId": ""
+      }
+    },
+    "1706756294a806f92d": {
+      "type": "apps",
+      "blocks": {
+        "yotpo_product_photo_reviews_reviews_rYq3JP": {
+          "type": "shopify:\/\/apps\/yotpo-product-reviews-ugc\/blocks\/reviews\/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
+          "settings": {
+            "product": "{{product}}"
+          }
+        }
+      },
+      "block_order": [
+        "yotpo_product_photo_reviews_reviews_rYq3JP"
+      ],
+      "settings": {
+        "include_margins": true
       }
     },
     "customer-sentiment": {
@@ -1061,8 +1075,8 @@
     "mattress-layers",
     "mattress-firmness",
     "featured-products",
-    "1706756294a806f92d",
     "product-carousel",
+    "1706756294a806f92d",
     "customer-sentiment",
     "social-proof",
     "featured-faqs",
