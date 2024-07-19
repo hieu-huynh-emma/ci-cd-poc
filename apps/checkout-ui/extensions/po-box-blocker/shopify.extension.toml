@@ -3,19 +3,20 @@
 
 # The version of APIs your extension will receive. Learn more:
 # https://shopify.dev/docs/api/usage/versioning
-api_version = "2024-04"
+api_version = "2024-07"
 
 [[extensions]]
+name = "po-box-blocker"
+handle = "po-box-blocker"
 type = "ui_extension"
-name = "Checkout PO Blocker"
-handle = "checkout-ui-po-blocker"
+
 
 # Controls where in Shopify your extension will be injected,
 # and the file that contains your extension’s source code. Learn more:
 # https://shopify.dev/docs/api/checkout-ui-extensions/unstable/extension-targets-overview
 
 [[extensions.targeting]]
-module = "./src/Checkout.jsx"
+module = "./src/Checkout.tsx"
 target = "purchase.checkout.block.render"
 
 [extensions.capabilities]
@@ -33,8 +34,8 @@ block_progress = true
 # products, customers, and more. Learn more:
 # https://shopify.dev/docs/api/checkout-ui-extensions/unstable/configuration#metafields
 [[extensions.metafields]]
- namespace = "accentuate"
- key = "google_address_validator_api_key"
+namespace = "accentuate"
+key = "google_address_validator_api_key"
 # [[extensions.metafields]]
 # namespace = "my_namespace"
 # key = "my_other_key"

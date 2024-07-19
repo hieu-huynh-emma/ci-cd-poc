@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import { useEffect, useState } from "react";
 import {
-  useApi,
-  useTranslate,
   reactExtension,
+  useApi,
   useAppMetafields,
   useBuyerJourneyIntercept,
   useShippingAddress,
-} from '@shopify/ui-extensions-react/checkout';
+  useTranslate,
+} from "@shopify/ui-extensions-react/checkout";
 
 export default reactExtension(
-  'purchase.checkout.block.render',
+  "purchase.checkout.block.render",
   () => <Extension />,
 );
 
@@ -17,7 +17,11 @@ function Extension() {
   const translate = useTranslate();
   const { extension } = useApi();
   const address = useShippingAddress();
-  const metafield = useAppMetafields({type: 'shop', namespace: 'accentuate', key: 'google_address_validator_api_key'});
+  const metafield = useAppMetafields({
+    type: "shop",
+    namespace: "accentuate",
+    key: "google_address_validator_api_key",
+  });
   const googleApiKey = metafield[0]?.metafield?.value || "";
   const url = `https://addressvalidation.googleapis.com/v1:validateAddress?key=${googleApiKey}`;
   const [isAddressPoBox, setIsAddressPoBox] = useState(false);
@@ -33,56 +37,53 @@ function Extension() {
       regionCode: address?.countryCode,
       postalCode: address?.zip,
       locality: address?.city,
-      addressLines: [address?.address1]
-    }
+      addressLines: [address?.address1],
+    },
   };
 
   useEffect(() => {
     if (poRegex.test(address?.address1) || poRegex2.test(address?.address1) || poRegex3.test(address?.address1) || poRegex4.test(address?.address1)) {
       setIsAddressPoBox(true);
     } else {
-      googleApiKey && 
+      googleApiKey &&
       fetch(
         url,
         {
-          credentials: 'include',
-          method: 'POST',
+          credentials: "include",
+          method: "POST",
           headers: {
-            'Content-Type': 'application/json',
+            "Content-Type": "application/json",
           },
           body: JSON.stringify(data),
         },
-      ).
-        then((response) => response.json()).
-        then((data) => {
-          setIsAddressPoBox(data?.result?.address?.unconfirmedComponentTypes?.includes('post_box'));
-        }).
-        catch((e) => {
-          setIsAddressPoBox(false);
-        });
+      ).then((response) => response.json()).then((data) => {
+        setIsAddressPoBox(data?.result?.address?.unconfirmedComponentTypes?.includes("post_box"));
+      }).catch((e) => {
+        setIsAddressPoBox(false);
+      });
     }
-  }, [address, googleApiKey])
+  }, [address, googleApiKey]);
 
   useBuyerJourneyIntercept(
-    ({canBlockProgress}) => {
+    ({ canBlockProgress }) => {
       return canBlockProgress &&
-        address?.countryCode &&
-        address.countryCode == 'CA' && 
-        isAddressPoBox
+      address?.countryCode &&
+      address.countryCode == "CA" &&
+      isAddressPoBox
         ? {
-            behavior: 'block',
-            reason: 'Invalid shipping address',
-            errors: [
-              {
-                message: translate('error_massage'),
-                target:
-                  '$.cart.deliveryGroups[0].deliveryAddress.address1',
-              }
-            ],
-          }
+          behavior: "block",
+          reason: "Invalid shipping address",
+          errors: [
+            {
+              message: translate("error_massage"),
+              target:
+                "$.cart.deliveryGroups[0].deliveryAddress.address1",
+            },
+          ],
+        }
         : {
-            behavior: 'allow',
-          };
+          behavior: "allow",
+        };
     },
   );
 
