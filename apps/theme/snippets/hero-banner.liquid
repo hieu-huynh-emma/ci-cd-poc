@@ -77,33 +77,20 @@
     {% assign fr_mobile_url = settings.wallpaper_mobile_fr_img | default: fr_desktop_url %}
 
     <a href="{{ settings.cta_url }}" class="banner-flooring">
-        <picture lang="en">
-
-
-            <source media="(min-width: 1200px)"
-                    srcset="{{ en_desktop_url | image_url: width: 2048 }}">
-            <source media="(min-width: 992px)"
-                    srcset="{{ en_desktop_url | image_url: width: 1040 }}">
-            <source media="(min-width: 768px)"
-                    srcset="{{ en_desktop_url | image_url: width: 800 }}">
-            <img class="wallpaper lazyload"
-                 src="{{ en_mobile_url | image_url: width: 240 }}"
-                 data-src="{{ en_mobile_url | image_url: width: 600 }}"
-                 alt="Hero Wallpaper"
-            >
-        </picture>
-        <picture lang="fr">
-            <source media="(min-width: 1200px)"
-                    srcset="{{ fr_desktop_url | image_url: width: 2048 }}">
-            <source media="(min-width: 992px)"
-                    srcset="{{ fr_desktop_url | image_url: width: 1040 }}">
-            <source media="(min-width: 768px)"
-                    srcset="{{ fr_desktop_url | image_url: width: 800 }}">
-            <img class="wallpaper lazyload"
-                 src="{{ fr_mobile_url | image_url: width: 240 }}"
-                 data-src="{{ fr_mobile_url | image_url: width: 600 }}"
-                 alt="Hero Wallpaper">
-        </picture>
+        {% render 'picture-tag',
+          desktop_src: en_desktop_url,
+          mobile_src: en_mobile_url,
+          picture_attributes: 'lang="en"',
+          img_classes: "wallpaper",
+          alt: "Hero Wallpaper"
+        %}
+        {% render 'picture-tag',
+          desktop_src: fr_desktop_url,
+          mobile_src: fr_mobile_url,
+          picture_attributes: 'lang="fr"',
+          img_classes: "wallpaper",
+          alt: "Hero Wallpaper"
+        %}
     </a>
 
 </div>
