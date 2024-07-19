@@ -3,19 +3,20 @@
 
 # The version of APIs your extension will receive. Learn more:
 # https://shopify.dev/docs/api/usage/versioning
-api_version = "2024-04"
+api_version = "2024-07"
 
 [[extensions]]
+name = "customer-assurance"
+handle = "customer-assurance"
 type = "ui_extension"
-name = "Checkout Payment Icons"
-handle = "checkout-payment-icons"
+
 
 # Controls where in Shopify your extension will be injected,
 # and the file that contains your extension’s source code. Learn more:
 # https://shopify.dev/docs/api/checkout-ui-extensions/unstable/extension-targets-overview
 
 [[extensions.targeting]]
-module = "./src/Checkout.jsx"
+module = "./src/CustomerAssurance.tsx"
 target = "purchase.checkout.block.render"
 
 [extensions.capabilities]
@@ -31,9 +32,10 @@ api_access = true
 # Loads metafields on checkout resources, including the cart,
 # products, customers, and more. Learn more:
 # https://shopify.dev/docs/api/checkout-ui-extensions/unstable/configuration#metafields
-[[extensions.metafields]]
- namespace = "globals"
- key = "checkout_payment_icons"
+
+# [[extensions.metafields]]
+# namespace = "my_namespace"
+# key = "my_key"
 # [[extensions.metafields]]
 # namespace = "my_namespace"
 # key = "my_other_key"
@@ -44,6 +46,7 @@ api_access = true
 
 # [extensions.settings]
 # [[extensions.settings.fields]]
-# key = "icons"
+# key = "banner_title"
 # type = "single_line_text_field"
-# name = "Icons"
+# name = "Banner title"
+# description = "Enter a title for the banner"

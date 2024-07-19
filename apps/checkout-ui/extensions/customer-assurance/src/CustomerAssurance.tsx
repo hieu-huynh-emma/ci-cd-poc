@@ -10,8 +10,8 @@ export default reactExtension(
 
 function Extension() {
   return (
-      <View>
-        <Image source="https://cdn.shopify.com/s/files/1/0562/9873/3706/files/Checkout_Information_Panel.png?v=1720602901"></Image>
-      </View>
+    <View>
+      <Image source="https://cdn.shopify.com/s/files/1/0562/9873/3706/files/Checkout_Information_Panel.png?v=1720602901"></Image>
+    </View>
   );
 }
