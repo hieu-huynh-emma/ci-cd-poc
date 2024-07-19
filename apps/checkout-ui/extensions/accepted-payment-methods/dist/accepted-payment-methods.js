@@ -18418,10 +18418,10 @@
             }
           }
           var jsx5 = jsxWithValidationDynamic;
-          var jsxs = jsxWithValidationStatic;
+          var jsxs2 = jsxWithValidationStatic;
           exports.Fragment = REACT_FRAGMENT_TYPE;
           exports.jsx = jsx5;
-          exports.jsxs = jsxs;
+          exports.jsxs = jsxs2;
         })();
       }
     }
@@ -19103,7 +19103,7 @@
     return [hasChanged ? normalizedNewValue : IGNORE, hotSwaps];
   }
 
-  // node_modules/.pnpm/@shopify+ui-extensions@2024.4.2/node_modules/@shopify/ui-extensions/build/esm/utilities/registration.mjs
+  // node_modules/.pnpm/@shopify+ui-extensions@2024.7.0/node_modules/@shopify/ui-extensions/build/esm/utilities/registration.mjs
   function createExtensionRegistrationFunction() {
     const extensionWrapper = (target, implementation) => {
       var _shopify;
@@ -19134,16 +19134,19 @@
     return extensionWrapper;
   }
 
-  // node_modules/.pnpm/@shopify+ui-extensions@2024.4.2/node_modules/@shopify/ui-extensions/build/esm/surfaces/checkout/extension.mjs
+  // node_modules/.pnpm/@shopify+ui-extensions@2024.7.0/node_modules/@shopify/ui-extensions/build/esm/surfaces/checkout/extension.mjs
   var extension = createExtensionRegistrationFunction();
 
-  // node_modules/.pnpm/@shopify+ui-extensions@2024.4.2/node_modules/@shopify/ui-extensions/build/esm/surfaces/checkout/components/Image/Image.mjs
+  // node_modules/.pnpm/@shopify+ui-extensions@2024.7.0/node_modules/@shopify/ui-extensions/build/esm/surfaces/checkout/components/BlockLayout/BlockLayout.mjs
+  var BlockLayout = createRemoteComponent("BlockLayout");
+
+  // node_modules/.pnpm/@shopify+ui-extensions@2024.7.0/node_modules/@shopify/ui-extensions/build/esm/surfaces/checkout/components/Image/Image.mjs
   var Image = createRemoteComponent("Image");
 
-  // node_modules/.pnpm/@shopify+ui-extensions@2024.4.2/node_modules/@shopify/ui-extensions/build/esm/surfaces/checkout/components/View/View.mjs
-  var View = createRemoteComponent("View");
+  // node_modules/.pnpm/@shopify+ui-extensions@2024.7.0/node_modules/@shopify/ui-extensions/build/esm/surfaces/checkout/components/Text/Text.mjs
+  var Text = createRemoteComponent("Text");
 
-  // node_modules/.pnpm/@shopify+ui-extensions-react@2024.4.2_@shopify+ui-extensions@2024.4.2_react-reconciler@0.29.0_react@18.3.1/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/render.mjs
+  // node_modules/.pnpm/@shopify+ui-extensions-react@2024.7.0_@shopify+ui-extensions@2024.7.0_react-reconciler@0.29.0_react@18.3.1/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/render.mjs
   var import_react6 = __toESM(require_react(), 1);
 
   // node_modules/.pnpm/@remote-ui+react@5.0.4_react-reconciler@0.29.0_react@18.3.1/node_modules/@remote-ui/react/build/esm/render.mjs
@@ -19418,11 +19421,11 @@
     });
   }
 
-  // node_modules/.pnpm/@shopify+ui-extensions-react@2024.4.2_@shopify+ui-extensions@2024.4.2_react-reconciler@0.29.0_react@18.3.1/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/context.mjs
+  // node_modules/.pnpm/@shopify+ui-extensions-react@2024.7.0_@shopify+ui-extensions@2024.7.0_react-reconciler@0.29.0_react@18.3.1/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/context.mjs
   var import_react5 = __toESM(require_react(), 1);
   var ExtensionApiContext = /* @__PURE__ */ (0, import_react5.createContext)(null);
 
-  // node_modules/.pnpm/@shopify+ui-extensions-react@2024.4.2_@shopify+ui-extensions@2024.4.2_react-reconciler@0.29.0_react@18.3.1/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/render.mjs
+  // node_modules/.pnpm/@shopify+ui-extensions-react@2024.7.0_@shopify+ui-extensions@2024.7.0_react-reconciler@0.29.0_react@18.3.1/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/render.mjs
   var import_jsx_runtime3 = __toESM(require_jsx_runtime(), 1);
   function reactExtension(target, render3) {
     return extension(target, (root, api) => __async(this, null, function* () {
@@ -19471,20 +19474,28 @@ ${errorInfo.componentStack}`);
     }
   };
 
-  // node_modules/.pnpm/@shopify+ui-extensions-react@2024.4.2_@shopify+ui-extensions@2024.4.2_react-reconciler@0.29.0_react@18.3.1/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/components/Image/Image.mjs
+  // node_modules/.pnpm/@shopify+ui-extensions-react@2024.7.0_@shopify+ui-extensions@2024.7.0_react-reconciler@0.29.0_react@18.3.1/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/components/BlockLayout/BlockLayout.mjs
+  var BlockLayout2 = createRemoteReactComponent(BlockLayout);
+
+  // node_modules/.pnpm/@shopify+ui-extensions-react@2024.7.0_@shopify+ui-extensions@2024.7.0_react-reconciler@0.29.0_react@18.3.1/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/components/Image/Image.mjs
   var Image2 = createRemoteReactComponent(Image);
 
-  // node_modules/.pnpm/@shopify+ui-extensions-react@2024.4.2_@shopify+ui-extensions@2024.4.2_react-reconciler@0.29.0_react@18.3.1/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/components/View/View.mjs
-  var View2 = createRemoteReactComponent(View);
+  // node_modules/.pnpm/@shopify+ui-extensions-react@2024.7.0_@shopify+ui-extensions@2024.7.0_react-reconciler@0.29.0_react@18.3.1/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/components/Text/Text.mjs
+  var Text2 = createRemoteReactComponent(Text);
 
-  // extensions/information-panel/src/Checkout.tsx
+  // extensions/accepted-payment-methods/src/AcceptedPaymentMethods.tsx
   var import_jsx_runtime4 = __toESM(require_jsx_runtime());
-  var Checkout_default = reactExtension(
+  var AcceptedPaymentMethods_default = reactExtension(
     "purchase.checkout.block.render",
     () => /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Extension, {})
   );
   function Extension() {
-    return /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(View2, { children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Image2, { source: "https://cdn.shopify.com/s/files/1/0562/9873/3706/files/Checkout_Information_Panel.png?v=1720602901" }) });
+    const imageUrl = "https://emma-sleep.ca/cdn/shop/t/384/assets/checkout-payment-support_600x.png";
+    return /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(BlockLayout2, { rows: "auto", blockAlignment: "center", inlineAlignment: "center", spacing: "base", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Text2, { accessibilityRole: "strong", emphasis: "bold", size: "base", children: "We offer financing and accept credit and debit cards at payment:" }),
+      /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Image2, { source: imageUrl }),
+      /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Text2, { accessibilityRole: "strong", emphasis: "bold", size: "base", children: "Just fill in your details below." })
+    ] });
   }
 })();
-//# sourceMappingURL=information-panel.js.map
+//# sourceMappingURL=accepted-payment-methods.js.map

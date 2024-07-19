@@ -3,11 +3,11 @@
 
 # The version of APIs your extension will receive. Learn more:
 # https://shopify.dev/docs/api/usage/versioning
-api_version = "2024-04"
+api_version = "2024-07"
 
 [[extensions]]
-name = "information-panel"
-handle = "information-panel"
+name = "accepted-payment-methods"
+handle = "accepted-payment-methods"
 type = "ui_extension"
 
 
@@ -16,7 +16,7 @@ type = "ui_extension"
 # https://shopify.dev/docs/api/checkout-ui-extensions/unstable/extension-targets-overview
 
 [[extensions.targeting]]
-module = "./src/Checkout.tsx"
+module = "./src/AcceptedPaymentMethods.tsx"
 target = "purchase.checkout.block.render"
 
 [extensions.capabilities]
