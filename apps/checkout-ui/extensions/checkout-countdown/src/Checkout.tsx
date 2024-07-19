@@ -7,7 +7,7 @@ import {useEffect, useState} from "react";
 import {Storage} from "@shopify/ui-extensions/build/ts/surfaces/checkout/api/standard/standard";
 
 export default reactExtension(
-    'purchase.checkout.block.render',
+    "purchase.checkout.header.render-after",
     () => <CheckoutCountdown/>,
 );
 
