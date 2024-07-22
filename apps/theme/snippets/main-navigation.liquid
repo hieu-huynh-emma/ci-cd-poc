@@ -41,7 +41,7 @@
               "levels": {{ childlink.levels }},
               "object": {{ childlink.object | json }},
               "featuredImage": "{{ childlink.object.featured_image | image_url: width: 1040 }}",
-              "title": "{{ childlink.title }}",
+              "title": "{{ childlink.object.metafields.accentuate.display_name | default: childlink.title }}",
               "type": "{{ childlink.type }}",
               "url": "{{ childlink.url }}",
               "accentuate": {{ childlink.object.metafields.accentuate | json }},
