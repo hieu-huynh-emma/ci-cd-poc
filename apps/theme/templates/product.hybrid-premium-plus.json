@@ -50,7 +50,6 @@
       "blocks": {
         "yotpo_star_rating": {
           "type": "yotpo_star_rating",
-          "disabled": true,
           "settings": {
             "product": "{{product}}",
             "new_layout": true
@@ -68,6 +67,7 @@
     },
     "product-badges": {
       "type": "product-badges",
+      "disabled": true,
       "settings": {
         "caption_headline": "",
         "caption_content": ""
@@ -146,16 +146,70 @@
         "f5f456c7-b29a-4f74-826f-648e09f5b1cd": {
           "type": "image",
           "settings": {
-            "en_image": "shopify:\/\/shop_images\/Untitled_design_5.jpg",
-            "fr_image": "shopify:\/\/shop_images\/Untitled_design_5.jpg"
+            "en_image": "shopify:\/\/shop_images\/1_first_photo_2_fbe467ca-8ecc-4523-88c9-706a72c84761.png",
+            "fr_image": "shopify:\/\/shop_images\/1_first_photo_2_fbe467ca-8ecc-4523-88c9-706a72c84761.png"
+          }
+        },
+        "image_7z6D36": {
+          "type": "image",
+          "settings": {
+            "en_image": "shopify:\/\/shop_images\/2Eng_Reviews_2.png",
+            "fr_image": "shopify:\/\/shop_images\/FR_Reviews.png"
+          }
+        },
+        "image_YYPQrM": {
+          "type": "image",
+          "settings": {
+            "en_image": "shopify:\/\/shop_images\/Eng_Cooling_1.png",
+            "fr_image": "shopify:\/\/shop_images\/FR_Cooling.png"
+          }
+        },
+        "image_EebxLn": {
+          "type": "image",
+          "settings": {
+            "en_image": "shopify:\/\/shop_images\/Eng_Affiliate_quote_3.png",
+            "fr_image": "shopify:\/\/shop_images\/FR_Affiliate_quote_1.png"
+          }
+        },
+        "image_xVaMYQ": {
+          "type": "image",
+          "settings": {
+            "en_image": "shopify:\/\/shop_images\/Eng_Convenience_6.png",
+            "fr_image": "shopify:\/\/shop_images\/FR_Convenience2.png"
+          }
+        },
+        "image_Hman9E": {
+          "type": "image",
+          "settings": {
+            "en_image": "shopify:\/\/shop_images\/ENG_Back_Pressure_Relief.jpg",
+            "fr_image": "shopify:\/\/shop_images\/FR_Back_Pressure_Relief.jpg"
+          }
+        },
+        "video_bjiNVF": {
+          "type": "video",
+          "settings": {
+            "video": "shopify:\/\/files\/videos\/ENG_Cooling tech 1.mp4"
+          }
+        },
+        "video_DHLnaW": {
+          "type": "video",
+          "settings": {
+            "video": "shopify:\/\/files\/videos\/Eng_Video 5.mp4"
           }
         }
       },
       "block_order": [
-        "f5f456c7-b29a-4f74-826f-648e09f5b1cd"
+        "f5f456c7-b29a-4f74-826f-648e09f5b1cd",
+        "image_7z6D36",
+        "image_YYPQrM",
+        "image_EebxLn",
+        "image_xVaMYQ",
+        "image_Hman9E",
+        "video_bjiNVF",
+        "video_DHLnaW"
       ],
       "settings": {
-        "heading": "Overlay Text on Image",
+        "heading": "",
         "sectionId": "overlay-text-on-image"
       }
     },
@@ -206,7 +260,6 @@
     },
     "campaign-teaser": {
       "type": "campaign-teaser",
-      "disabled": true,
       "settings": {
         "content": "<p><strong>Summer Sale:<\/strong> 60% off<\/p>",
         "bgcolor": "#fef3ea",
@@ -385,6 +438,7 @@
         },
         "cross_sell_widget_tXLCDN": {
           "type": "cross_sell_widget",
+          "disabled": true,
           "settings": {
           }
         }
@@ -696,12 +750,26 @@
           "settings": {
             "product": "emma-original-bed"
           }
+        },
+        "catalog_item_dGRGfE": {
+          "type": "catalog_item",
+          "settings": {
+            "product": "microfibre-pillow"
+          }
+        },
+        "catalog_item_imfPzV": {
+          "type": "catalog_item",
+          "settings": {
+            "product": "emma-foam-pillow"
+          }
         }
       },
       "block_order": [
         "f0f0b732-6803-4158-8c54-5c08c4bdbfa3",
         "d8319461-aedd-4805-884a-95b7ed1a5893",
-        "07d5912c-d4c3-4ebb-97a6-f723fc8a4f3f"
+        "07d5912c-d4c3-4ebb-97a6-f723fc8a4f3f",
+        "catalog_item_dGRGfE",
+        "catalog_item_imfPzV"
       ],
       "settings": {
         "heading": "Some things are better together",

@@ -8,7 +8,7 @@
           "type": "item",
           "settings": {
             "product": "emma-hybrid-comfort",
-            "upsell": "emma-hybrid-premium-plus",
+            "upsell": "emma-hybrid-premium",
             "short_desc": "The ideal mattress providing support and spinal alignment for all type of sleeper",
             "show_star_rating": false
           }
@@ -17,7 +17,7 @@
           "type": "item",
           "settings": {
             "product": "emma-hybrid-comfort-ii",
-            "upsell": "emma-hybrid-premium",
+            "upsell": "emma-hybrid-premium-mattress",
             "short_desc": "The new version of our Hybrid Comfort Mattress",
             "show_star_rating": false
           }
@@ -156,7 +156,7 @@
     "campaign-teaser": {
       "type": "campaign-teaser",
       "settings": {
-        "content": "<p><strong>Spring Sale<\/strong> 50% off<\/p>",
+        "content": "<p><strong>Summer Sale<\/strong> 55% off<\/p>",
         "bgcolor": "#fff7ed",
         "color": "#2e2f3c",
         "show_countdown_timer": false
@@ -227,16 +227,55 @@
         "f5f456c7-b29a-4f74-826f-648e09f5b1cd": {
           "type": "image",
           "settings": {
-            "en_image": "shopify:\/\/shop_images\/Original_3.png",
-            "fr_image": "shopify:\/\/shop_images\/Untitled_design_5.jpg"
+            "en_image": "shopify:\/\/shop_images\/Untitleddesign_10.png",
+            "fr_image": "shopify:\/\/shop_images\/Untitleddesign_10.png"
+          }
+        },
+        "image_hCRVnp": {
+          "type": "image",
+          "settings": {
+            "en_image": "shopify:\/\/shop_images\/Eng_Reviews_3.png",
+            "fr_image": "shopify:\/\/shop_images\/FR_Reviews_2.png"
+          }
+        },
+        "image_nYLMak": {
+          "type": "image",
+          "settings": {
+            "en_image": "shopify:\/\/shop_images\/Eng_Pressure_relief_4.png",
+            "fr_image": "shopify:\/\/shop_images\/Fr_Pressure_relief.png"
+          }
+        },
+        "image_XnnqGC": {
+          "type": "image",
+          "settings": {
+            "en_image": "shopify:\/\/shop_images\/Eng_Affiliate_quote_4.png",
+            "fr_image": "shopify:\/\/shop_images\/FR_Affialite_quote.png"
+          }
+        },
+        "image_tgYJdq": {
+          "type": "image",
+          "settings": {
+            "en_image": "shopify:\/\/shop_images\/ENG_convenience_2.png",
+            "fr_image": "shopify:\/\/shop_images\/FR_convenience_2.png"
+          }
+        },
+        "video_QERLkb": {
+          "type": "video",
+          "settings": {
+            "video": "shopify:\/\/files\/videos\/Eng_Video 5.mp4"
           }
         }
       },
       "block_order": [
-        "f5f456c7-b29a-4f74-826f-648e09f5b1cd"
+        "f5f456c7-b29a-4f74-826f-648e09f5b1cd",
+        "image_hCRVnp",
+        "image_nYLMak",
+        "image_XnnqGC",
+        "image_tgYJdq",
+        "video_QERLkb"
       ],
       "settings": {
-        "heading": "Overlay Text on Image",
+        "heading": "",
         "sectionId": "overlay-text-on-image"
       }
     },
@@ -420,8 +459,8 @@
           "settings": {
             "title": "Upgrade to Hybrid Premium Mattress:",
             "content": "<ul><li>Improved Cooling & Motion Isolation<\/li><li>Advanced Thermosync Technology<\/li><\/ul>",
-            "badge": "55% off",
-            "image": "shopify:\/\/shop_images\/Emma_Hybrid_Comfort_Transparent.png",
+            "badge": "60% off",
+            "image": "shopify:\/\/shop_images\/Hybrid-Premium.png",
             "product": "emma-hybrid-premium"
           }
         }
