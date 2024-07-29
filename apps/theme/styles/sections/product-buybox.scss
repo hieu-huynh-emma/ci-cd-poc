@@ -231,10 +231,13 @@ variant-selects {
 }
 
 
-
 product-buybox {
   position: relative;
-  #attribute-configurator {
-    margin: 1rem 0;
-  }
+}
+
+
+#product-form {
+  display: grid;
+  gap: .75rem;
+  grid-template-columns: minmax(0, 1fr);
 }
