@@ -1,7 +1,7 @@
 import {
     InlineLayout, View, BlockStack,
     useApi,
-    useCartLineTarget,BlockLayout,
+    useCartLineTarget, BlockLayout,
     reactExtension, useCartLines, Text
 } from '@shopify/ui-extensions-react/checkout';
 import {useEffect, useState} from 'react';
@@ -35,7 +35,11 @@ async function getOrderPriceBreakdown({cartLines, query, i18n}) {
         let price = 0, originalPrice = 0;
 
         lineItems.forEach(({cost}) => {
-            const {totalAmount: {amount: priceAmount}, compareAtPrice: {amount: originalPriceAmount}} = cost;
+            console.log("=>(Checkout.tsx:43) cost", cost);
+
+            const {totalAmount: {amount: priceAmount}, compareAtPrice} = cost;
+
+            const {amount: originalPriceAmount = priceAmount} = compareAtPrice || {}
 
             price += +priceAmount
             originalPrice += +originalPriceAmount
@@ -123,7 +127,8 @@ function LineItemPriceBreakdown() {
                 <View padding="none" inlineAlignment="end">
                     <BlockLayout rows={['fill', 'fill']}>
                         <View>
-                            <Text appearance="subdued" accessibilityRole="deletion">{pricing?.originalPriceCurrency}</Text>
+                            <Text appearance="subdued"
+                                  accessibilityRole="deletion">{pricing?.originalPriceCurrency}</Text>
                         </View>
                         <View></View>
                     </BlockLayout>
@@ -137,16 +142,16 @@ function PriceBreakdownTop() {
     const {i18n, extension, query} = useApi();
     const cartLines = useCartLines()
 
-
     const [pricing, setPricing] = useState({price: 0, originalPrice: 0});
 
     useEffect(async () => {
         const priceBreakdown = await getOrderPriceBreakdown({cartLines, query, i18n});
+        console.log("=>(Checkout.tsx:144) priceBreakdown", priceBreakdown);
 
         setPricing(priceBreakdown)
     }, [query]);
 
-    return (
+    return pricing.totalDiscounts ? (
         <BlockStack spacing="none">
             <InlineLayout columns={['auto', 'fill', 'auto']}>
                 <View padding="none">
@@ -157,6 +162,7 @@ function PriceBreakdownTop() {
                     <Text>{pricing?.originalPriceCurrency}</Text>
                 </View>
             </InlineLayout>
+
             <InlineLayout columns={['auto', 'fill', 'auto']}>
                 <View padding={["none", "none", "none", "base"]} inlineAlignment="end">
                     <Text>Sale Discount</Text>
@@ -166,8 +172,10 @@ function PriceBreakdownTop() {
                     <Text appearance="critical" emphasis="bold">- {pricing?.totalDiscountsCurrency}</Text>
                 </View>
             </InlineLayout>
+
+
         </BlockStack>
-    );
+    ) : ""
 }
 
 function PriceBreakdownBottom() {
@@ -183,7 +191,7 @@ function PriceBreakdownBottom() {
         setPricing(priceBreakdown)
     }, [query]);
 
-    return (
+    return pricing.totalDiscounts ? (
         <InlineLayout columns={['fill', 'auto']}>
             <View padding="none"></View>
             <View padding="none" inlineAlignment="end">
@@ -191,5 +199,5 @@ function PriceBreakdownBottom() {
                     save {pricing?.totalDiscountsCurrency}!</Text>
             </View>
         </InlineLayout>
-    );
+    ) : ""
 }

@@ -19103,7 +19103,7 @@
     return [hasChanged ? normalizedNewValue : IGNORE, hotSwaps];
   }
 
-  // node_modules/.pnpm/@shopify+ui-extensions@2024.7.0/node_modules/@shopify/ui-extensions/build/esm/utilities/registration.mjs
+  // node_modules/.pnpm/@shopify+ui-extensions@2024.4.2/node_modules/@shopify/ui-extensions/build/esm/utilities/registration.mjs
   function createExtensionRegistrationFunction() {
     const extensionWrapper = (target, implementation) => {
       var _shopify;
@@ -19134,19 +19134,19 @@
     return extensionWrapper;
   }
 
-  // node_modules/.pnpm/@shopify+ui-extensions@2024.7.0/node_modules/@shopify/ui-extensions/build/esm/surfaces/checkout/extension.mjs
+  // node_modules/.pnpm/@shopify+ui-extensions@2024.4.2/node_modules/@shopify/ui-extensions/build/esm/surfaces/checkout/extension.mjs
   var extension = createExtensionRegistrationFunction();
 
-  // node_modules/.pnpm/@shopify+ui-extensions@2024.7.0/node_modules/@shopify/ui-extensions/build/esm/surfaces/checkout/components/BlockLayout/BlockLayout.mjs
+  // node_modules/.pnpm/@shopify+ui-extensions@2024.4.2/node_modules/@shopify/ui-extensions/build/esm/surfaces/checkout/components/BlockLayout/BlockLayout.mjs
   var BlockLayout = createRemoteComponent("BlockLayout");
 
-  // node_modules/.pnpm/@shopify+ui-extensions@2024.7.0/node_modules/@shopify/ui-extensions/build/esm/surfaces/checkout/components/Image/Image.mjs
+  // node_modules/.pnpm/@shopify+ui-extensions@2024.4.2/node_modules/@shopify/ui-extensions/build/esm/surfaces/checkout/components/Image/Image.mjs
   var Image = createRemoteComponent("Image");
 
-  // node_modules/.pnpm/@shopify+ui-extensions@2024.7.0/node_modules/@shopify/ui-extensions/build/esm/surfaces/checkout/components/Text/Text.mjs
+  // node_modules/.pnpm/@shopify+ui-extensions@2024.4.2/node_modules/@shopify/ui-extensions/build/esm/surfaces/checkout/components/Text/Text.mjs
   var Text = createRemoteComponent("Text");
 
-  // node_modules/.pnpm/@shopify+ui-extensions-react@2024.7.0_@shopify+ui-extensions@2024.7.0_react-reconciler@0.29.0_react@18.3.1/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/render.mjs
+  // node_modules/.pnpm/@shopify+ui-extensions-react@2024.4.2_@shopify+ui-extensions@2024.4.2_react-reconciler@0.29.0_react@18.3.1/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/render.mjs
   var import_react6 = __toESM(require_react(), 1);
 
   // node_modules/.pnpm/@remote-ui+react@5.0.4_react-reconciler@0.29.0_react@18.3.1/node_modules/@remote-ui/react/build/esm/render.mjs
@@ -19421,11 +19421,11 @@
     });
   }
 
-  // node_modules/.pnpm/@shopify+ui-extensions-react@2024.7.0_@shopify+ui-extensions@2024.7.0_react-reconciler@0.29.0_react@18.3.1/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/context.mjs
+  // node_modules/.pnpm/@shopify+ui-extensions-react@2024.4.2_@shopify+ui-extensions@2024.4.2_react-reconciler@0.29.0_react@18.3.1/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/context.mjs
   var import_react5 = __toESM(require_react(), 1);
   var ExtensionApiContext = /* @__PURE__ */ (0, import_react5.createContext)(null);
 
-  // node_modules/.pnpm/@shopify+ui-extensions-react@2024.7.0_@shopify+ui-extensions@2024.7.0_react-reconciler@0.29.0_react@18.3.1/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/render.mjs
+  // node_modules/.pnpm/@shopify+ui-extensions-react@2024.4.2_@shopify+ui-extensions@2024.4.2_react-reconciler@0.29.0_react@18.3.1/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/render.mjs
   var import_jsx_runtime3 = __toESM(require_jsx_runtime(), 1);
   function reactExtension(target, render3) {
     return extension(target, (root, api) => __async(this, null, function* () {
@@ -19474,13 +19474,13 @@ ${errorInfo.componentStack}`);
     }
   };
 
-  // node_modules/.pnpm/@shopify+ui-extensions-react@2024.7.0_@shopify+ui-extensions@2024.7.0_react-reconciler@0.29.0_react@18.3.1/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/components/BlockLayout/BlockLayout.mjs
+  // node_modules/.pnpm/@shopify+ui-extensions-react@2024.4.2_@shopify+ui-extensions@2024.4.2_react-reconciler@0.29.0_react@18.3.1/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/components/BlockLayout/BlockLayout.mjs
   var BlockLayout2 = createRemoteReactComponent(BlockLayout);
 
-  // node_modules/.pnpm/@shopify+ui-extensions-react@2024.7.0_@shopify+ui-extensions@2024.7.0_react-reconciler@0.29.0_react@18.3.1/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/components/Image/Image.mjs
+  // node_modules/.pnpm/@shopify+ui-extensions-react@2024.4.2_@shopify+ui-extensions@2024.4.2_react-reconciler@0.29.0_react@18.3.1/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/components/Image/Image.mjs
   var Image2 = createRemoteReactComponent(Image);
 
-  // node_modules/.pnpm/@shopify+ui-extensions-react@2024.7.0_@shopify+ui-extensions@2024.7.0_react-reconciler@0.29.0_react@18.3.1/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/components/Text/Text.mjs
+  // node_modules/.pnpm/@shopify+ui-extensions-react@2024.4.2_@shopify+ui-extensions@2024.4.2_react-reconciler@0.29.0_react@18.3.1/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/components/Text/Text.mjs
   var Text2 = createRemoteReactComponent(Text);
 
   // extensions/accepted-payment-methods/src/AcceptedPaymentMethods.tsx

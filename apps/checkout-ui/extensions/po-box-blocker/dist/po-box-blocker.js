@@ -1,9 +1,7 @@
 (() => {
   var __create = Object.create;
   var __defProp = Object.defineProperty;
-  var __defProps = Object.defineProperties;
   var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
-  var __getOwnPropDescs = Object.getOwnPropertyDescriptors;
   var __getOwnPropNames = Object.getOwnPropertyNames;
   var __getOwnPropSymbols = Object.getOwnPropertySymbols;
   var __getProtoOf = Object.getPrototypeOf;
@@ -21,7 +19,6 @@
       }
     return a;
   };
-  var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
   var __objRest = (source, exclude) => {
     var target = {};
     for (var prop in source)
@@ -627,7 +624,7 @@
             var newElement = ReactElement(oldElement.type, newKey, oldElement.ref, oldElement._self, oldElement._source, oldElement._owner, oldElement.props);
             return newElement;
           }
-          function cloneElement(element, config, children) {
+          function cloneElement2(element, config, children) {
             if (element === null || element === void 0) {
               throw new Error("React.cloneElement(...): The argument must be a React element, but you passed " + element + ".");
             }
@@ -1081,7 +1078,7 @@
             }
             return false;
           }
-          function memo2(type, compare) {
+          function memo(type, compare) {
             {
               if (!isValidElementType(type)) {
                 error("memo: The first argument must be a component. Instead received: %s", type === null ? "null" : typeof type);
@@ -1119,7 +1116,7 @@
             }
             return dispatcher;
           }
-          function useContext3(Context) {
+          function useContext2(Context) {
             var dispatcher = resolveDispatcher();
             {
               if (Context._context !== void 0) {
@@ -1145,7 +1142,7 @@
             var dispatcher = resolveDispatcher();
             return dispatcher.useRef(initialValue);
           }
-          function useEffect3(create, deps) {
+          function useEffect4(create, deps) {
             var dispatcher = resolveDispatcher();
             return dispatcher.useEffect(create, deps);
           }
@@ -1157,7 +1154,7 @@
             var dispatcher = resolveDispatcher();
             return dispatcher.useLayoutEffect(create, deps);
           }
-          function useCallback(callback, deps) {
+          function useCallback2(callback, deps) {
             var dispatcher = resolveDispatcher();
             return dispatcher.useCallback(callback, deps);
           }
@@ -1697,7 +1694,7 @@
             return validatedFactory;
           }
           function cloneElementWithValidation(element, props, children) {
-            var newElement = cloneElement.apply(this, arguments);
+            var newElement = cloneElement2.apply(this, arguments);
             for (var i = 2; i < arguments.length; i++) {
               validateChildKeys(arguments[i], newElement.type);
             }
@@ -1897,14 +1894,14 @@
           var createElement$1 = createElementWithValidation;
           var cloneElement$1 = cloneElementWithValidation;
           var createFactory = createFactoryWithValidation;
-          var Children2 = {
+          var Children = {
             map: mapChildren,
             forEach: forEachChildren,
             count: countChildren,
             toArray,
             only: onlyChild
           };
-          exports.Children = Children2;
+          exports.Children = Children;
           exports.Component = Component2;
           exports.Fragment = REACT_FRAGMENT_TYPE;
           exports.Profiler = REACT_PROFILER_TYPE;
@@ -1921,14 +1918,14 @@
           exports.forwardRef = forwardRef;
           exports.isValidElement = isValidElement2;
           exports.lazy = lazy;
-          exports.memo = memo2;
+          exports.memo = memo;
           exports.startTransition = startTransition;
           exports.unstable_act = act;
-          exports.useCallback = useCallback;
-          exports.useContext = useContext3;
+          exports.useCallback = useCallback2;
+          exports.useContext = useContext2;
           exports.useDebugValue = useDebugValue;
           exports.useDeferredValue = useDeferredValue;
-          exports.useEffect = useEffect3;
+          exports.useEffect = useEffect4;
           exports.useId = useId;
           exports.useImperativeHandle = useImperativeHandle;
           exports.useInsertionEffect = useInsertionEffect;
@@ -2496,7 +2493,7 @@
           var HostPortal = 4;
           var HostComponent = 5;
           var HostText = 6;
-          var Fragment = 7;
+          var Fragment2 = 7;
           var Mode = 8;
           var ContextConsumer = 9;
           var ContextProvider = 10;
@@ -2636,7 +2633,7 @@
                 return "DehydratedFragment";
               case ForwardRef:
                 return getWrappedName$1(type, type.render, "ForwardRef");
-              case Fragment:
+              case Fragment2:
                 return "Fragment";
               case HostComponent:
                 return type;
@@ -7054,7 +7051,7 @@
               }
             }
             function updateFragment2(returnFiber, current2, fragment, lanes, key) {
-              if (current2 === null || current2.tag !== Fragment) {
+              if (current2 === null || current2.tag !== Fragment2) {
                 var created = createFiberFromFragment(fragment, returnFiber.mode, lanes, key);
                 created.return = returnFiber;
                 return created;
@@ -7457,7 +7454,7 @@
                 if (child.key === key) {
                   var elementType = element.type;
                   if (elementType === REACT_FRAGMENT_TYPE) {
-                    if (child.tag === Fragment) {
+                    if (child.tag === Fragment2) {
                       deleteRemainingChildren(returnFiber, child.sibling);
                       var existing = useFiber(child, element.props.children);
                       existing.return = returnFiber;
@@ -11634,7 +11631,7 @@
                 var _resolvedProps2 = workInProgress2.elementType === type ? _unresolvedProps2 : resolveDefaultProps(type, _unresolvedProps2);
                 return updateForwardRef(current2, workInProgress2, type, _resolvedProps2, renderLanes2);
               }
-              case Fragment:
+              case Fragment2:
                 return updateFragment(current2, workInProgress2, renderLanes2);
               case Mode:
                 return updateMode(current2, workInProgress2, renderLanes2);
@@ -12075,7 +12072,7 @@
               case SimpleMemoComponent:
               case FunctionComponent:
               case ForwardRef:
-              case Fragment:
+              case Fragment2:
               case Mode:
               case Profiler:
               case ContextConsumer:
@@ -16841,7 +16838,7 @@
             return fiber;
           }
           function createFiberFromFragment(elements, mode, lanes, key) {
-            var fiber = createFiber(Fragment, elements, key, mode);
+            var fiber = createFiber(Fragment2, elements, key, mode);
             fiber.lanes = lanes;
             return fiber;
           }
@@ -18417,11 +18414,11 @@
               return jsxWithValidation(type, props, key, false);
             }
           }
-          var jsx5 = jsxWithValidationDynamic;
-          var jsxs2 = jsxWithValidationStatic;
+          var jsx4 = jsxWithValidationDynamic;
+          var jsxs = jsxWithValidationStatic;
           exports.Fragment = REACT_FRAGMENT_TYPE;
-          exports.jsx = jsx5;
-          exports.jsxs = jsxs2;
+          exports.jsx = jsx4;
+          exports.jsxs = jsxs;
         })();
       }
     }
@@ -18439,17 +18436,15 @@
     }
   });
 
+  // extensions/po-box-blocker/src/Checkout.tsx
+  var import_react11 = __toESM(require_react());
+
   // node_modules/.pnpm/@remote-ui+rpc@1.4.5/node_modules/@remote-ui/rpc/build/esm/memory.mjs
   function isBasicObject(value) {
     if (value == null || typeof value !== "object")
       return false;
     const prototype = Object.getPrototypeOf(value);
     return prototype == null || prototype === Object.prototype;
-  }
-
-  // node_modules/.pnpm/@remote-ui+core@2.2.4/node_modules/@remote-ui/core/build/esm/component.mjs
-  function createRemoteComponent(componentType) {
-    return componentType;
   }
 
   // node_modules/.pnpm/@remote-ui+core@2.2.4/node_modules/@remote-ui/core/build/esm/types.mjs
@@ -19137,23 +19132,8 @@
   // node_modules/.pnpm/@shopify+ui-extensions@2024.4.2/node_modules/@shopify/ui-extensions/build/esm/surfaces/checkout/extension.mjs
   var extension = createExtensionRegistrationFunction();
 
-  // node_modules/.pnpm/@shopify+ui-extensions@2024.4.2/node_modules/@shopify/ui-extensions/build/esm/surfaces/checkout/components/BlockLayout/BlockLayout.mjs
-  var BlockLayout = createRemoteComponent("BlockLayout");
-
-  // node_modules/.pnpm/@shopify+ui-extensions@2024.4.2/node_modules/@shopify/ui-extensions/build/esm/surfaces/checkout/components/BlockStack/BlockStack.mjs
-  var BlockStack = createRemoteComponent("BlockStack");
-
-  // node_modules/.pnpm/@shopify+ui-extensions@2024.4.2/node_modules/@shopify/ui-extensions/build/esm/surfaces/checkout/components/InlineLayout/InlineLayout.mjs
-  var InlineLayout = createRemoteComponent("InlineLayout");
-
-  // node_modules/.pnpm/@shopify+ui-extensions@2024.4.2/node_modules/@shopify/ui-extensions/build/esm/surfaces/checkout/components/Text/Text.mjs
-  var Text = createRemoteComponent("Text");
-
-  // node_modules/.pnpm/@shopify+ui-extensions@2024.4.2/node_modules/@shopify/ui-extensions/build/esm/surfaces/checkout/components/View/View.mjs
-  var View = createRemoteComponent("View");
-
   // node_modules/.pnpm/@shopify+ui-extensions-react@2024.4.2_@shopify+ui-extensions@2024.4.2_react-reconciler@0.29.0_react@18.3.1/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/render.mjs
-  var import_react6 = __toESM(require_react(), 1);
+  var import_react4 = __toESM(require_react(), 1);
 
   // node_modules/.pnpm/@remote-ui+react@5.0.4_react-reconciler@0.29.0_react@18.3.1/node_modules/@remote-ui/react/build/esm/render.mjs
   var import_react2 = __toESM(require_react(), 1);
@@ -19350,97 +19330,20 @@
     }), container, null, callback);
   }
 
-  // node_modules/.pnpm/@remote-ui+react@5.0.4_react-reconciler@0.29.0_react@18.3.1/node_modules/@remote-ui/react/build/esm/components.mjs
-  var import_react4 = __toESM(require_react(), 1);
-  var import_jsx_runtime2 = __toESM(require_jsx_runtime(), 1);
-
-  // node_modules/.pnpm/@remote-ui+react@5.0.4_react-reconciler@0.29.0_react@18.3.1/node_modules/@remote-ui/react/build/esm/hooks/render.mjs
-  var import_react3 = __toESM(require_react(), 1);
-  function useRender() {
-    const render3 = (0, import_react3.useContext)(RenderContext);
-    if (render3 == null) {
-      throw new Error("No remote-ui Render instance found in context");
-    }
-    return render3;
-  }
-
-  // node_modules/.pnpm/@remote-ui+react@5.0.4_react-reconciler@0.29.0_react@18.3.1/node_modules/@remote-ui/react/build/esm/components.mjs
-  function createRemoteReactComponent(componentType, {
-    fragmentProps
-  } = {}) {
-    if (!fragmentProps || !fragmentProps.length) {
-      return componentType;
-    }
-    const wrapper = createComponentWrapper(componentType, fragmentProps);
-    wrapper.displayName = componentType;
-    return wrapper;
-  }
-  function createComponentWrapper(componentType, fragmentProps) {
-    const Component2 = componentType;
-    return /* @__PURE__ */ (0, import_react4.memo)(function ComponentWrapper(_a) {
-      var _b = _a, {
-        children: externalChildren = []
-      } = _b, externalProps = __objRest(_b, [
-        "children"
-      ]);
-      const fragments = (0, import_react4.useRef)({});
-      const {
-        root,
-        reconciler
-      } = useRender();
-      const {
-        props,
-        children
-      } = (0, import_react4.useMemo)(() => {
-        const portals = [];
-        const props2 = {};
-        for (const key of Object.keys(externalProps)) {
-          const element = externalProps[key];
-          if (fragmentProps.includes(key) && /* @__PURE__ */ (0, import_react4.isValidElement)(element)) {
-            const currentFragment = fragments.current[key];
-            const fragment = isRemoteFragment(currentFragment) ? currentFragment : root.createFragment();
-            fragments.current[key] = fragment;
-            Object.assign(fragment, {
-              createText(...args) {
-                return root.createText(...args);
-              },
-              createComponent(type, ...args) {
-                return root.createComponent(type, ...args);
-              }
-            });
-            const portal = reconciler.createPortal(element, fragment, null, null);
-            portals.push(portal);
-            props2[key] = fragment;
-          } else {
-            props2[key] = element;
-            delete fragments.current[key];
-          }
-        }
-        return {
-          props: props2,
-          children: [...import_react4.Children.toArray(externalChildren), ...portals]
-        };
-      }, [externalChildren, externalProps, root, reconciler, fragments]);
-      return /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(Component2, __spreadProps(__spreadValues({}, props), {
-        children
-      }));
-    });
-  }
-
   // node_modules/.pnpm/@shopify+ui-extensions-react@2024.4.2_@shopify+ui-extensions@2024.4.2_react-reconciler@0.29.0_react@18.3.1/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/context.mjs
-  var import_react5 = __toESM(require_react(), 1);
-  var ExtensionApiContext = /* @__PURE__ */ (0, import_react5.createContext)(null);
+  var import_react3 = __toESM(require_react(), 1);
+  var ExtensionApiContext = /* @__PURE__ */ (0, import_react3.createContext)(null);
 
   // node_modules/.pnpm/@shopify+ui-extensions-react@2024.4.2_@shopify+ui-extensions@2024.4.2_react-reconciler@0.29.0_react@18.3.1/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/render.mjs
-  var import_jsx_runtime3 = __toESM(require_jsx_runtime(), 1);
+  var import_jsx_runtime2 = __toESM(require_jsx_runtime(), 1);
   function reactExtension(target, render3) {
     return extension(target, (root, api) => __async(this, null, function* () {
       const element = yield render3(api);
       yield new Promise((resolve, reject) => {
         try {
-          render(/* @__PURE__ */ (0, import_jsx_runtime3.jsx)(ExtensionApiContext.Provider, {
+          render(/* @__PURE__ */ (0, import_jsx_runtime2.jsx)(ExtensionApiContext.Provider, {
             value: api,
-            children: /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(ErrorBoundary, {
+            children: /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(ErrorBoundary, {
               children: element
             })
           }), root, () => {
@@ -19453,7 +19356,7 @@
       });
     }));
   }
-  var ErrorBoundary = class extends import_react6.Component {
+  var ErrorBoundary = class extends import_react4.Component {
     constructor(...args) {
       super(...args);
       this.state = {
@@ -19480,23 +19383,8 @@ ${errorInfo.componentStack}`);
     }
   };
 
-  // node_modules/.pnpm/@shopify+ui-extensions-react@2024.4.2_@shopify+ui-extensions@2024.4.2_react-reconciler@0.29.0_react@18.3.1/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/components/BlockLayout/BlockLayout.mjs
-  var BlockLayout2 = createRemoteReactComponent(BlockLayout);
-
-  // node_modules/.pnpm/@shopify+ui-extensions-react@2024.4.2_@shopify+ui-extensions@2024.4.2_react-reconciler@0.29.0_react@18.3.1/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/components/BlockStack/BlockStack.mjs
-  var BlockStack2 = createRemoteReactComponent(BlockStack);
-
-  // node_modules/.pnpm/@shopify+ui-extensions-react@2024.4.2_@shopify+ui-extensions@2024.4.2_react-reconciler@0.29.0_react@18.3.1/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/components/InlineLayout/InlineLayout.mjs
-  var InlineLayout2 = createRemoteReactComponent(InlineLayout);
-
-  // node_modules/.pnpm/@shopify+ui-extensions-react@2024.4.2_@shopify+ui-extensions@2024.4.2_react-reconciler@0.29.0_react@18.3.1/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/components/Text/Text.mjs
-  var Text2 = createRemoteReactComponent(Text);
-
-  // node_modules/.pnpm/@shopify+ui-extensions-react@2024.4.2_@shopify+ui-extensions@2024.4.2_react-reconciler@0.29.0_react@18.3.1/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/components/View/View.mjs
-  var View2 = createRemoteReactComponent(View);
-
   // node_modules/.pnpm/@shopify+ui-extensions-react@2024.4.2_@shopify+ui-extensions@2024.4.2_react-reconciler@0.29.0_react@18.3.1/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/hooks/api.mjs
-  var import_react13 = __toESM(require_react(), 1);
+  var import_react6 = __toESM(require_react(), 1);
 
   // node_modules/.pnpm/@shopify+ui-extensions-react@2024.4.2_@shopify+ui-extensions@2024.4.2_react-reconciler@0.29.0_react@18.3.1/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/errors.mjs
   var CheckoutUIExtensionError = class extends Error {
@@ -19505,16 +19393,22 @@ ${errorInfo.componentStack}`);
       this.name = "CheckoutUIExtensionError";
     }
   };
-  var ExtensionHasNoTargetError = class extends Error {
+  var ScopeNotGrantedError = class extends Error {
+    constructor(...args) {
+      super(...args);
+      this.name = "ScopeNotGrantedError";
+    }
+  };
+  var ExtensionHasNoMethodError = class extends Error {
     constructor(method, target) {
-      super(`Cannot call '${method}()' on target '${target}'. Property 'target' is not found on api.`);
-      this.name = "ExtensionHasNoTargetError";
+      super(`Cannot call '${method}()' on target '${target}'. The corresponding property was not found on the API.`);
+      this.name = "ExtensionHasNoMethodError";
     }
   };
 
   // node_modules/.pnpm/@shopify+ui-extensions-react@2024.4.2_@shopify+ui-extensions@2024.4.2_react-reconciler@0.29.0_react@18.3.1/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/hooks/api.mjs
   function useApi(_target) {
-    const api = (0, import_react13.useContext)(ExtensionApiContext);
+    const api = (0, import_react6.useContext)(ExtensionApiContext);
     if (api == null) {
       throw new CheckoutUIExtensionError("You can only call this hook when running as a checkout UI extension.");
     }
@@ -19522,10 +19416,10 @@ ${errorInfo.componentStack}`);
   }
 
   // node_modules/.pnpm/@shopify+ui-extensions-react@2024.4.2_@shopify+ui-extensions@2024.4.2_react-reconciler@0.29.0_react@18.3.1/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/hooks/subscription.mjs
-  var import_react14 = __toESM(require_react(), 1);
+  var import_react7 = __toESM(require_react(), 1);
   function useSubscription(subscription) {
-    const [, setValue] = (0, import_react14.useState)(subscription.current);
-    (0, import_react14.useEffect)(() => {
+    const [, setValue] = (0, import_react7.useState)(subscription.current);
+    (0, import_react7.useEffect)(() => {
       let didUnsubscribe = false;
       const checkForUpdates = (newValue) => {
         if (didUnsubscribe) {
@@ -19543,167 +19437,150 @@ ${errorInfo.componentStack}`);
     return subscription.current;
   }
 
-  // node_modules/.pnpm/@shopify+ui-extensions-react@2024.4.2_@shopify+ui-extensions@2024.4.2_react-reconciler@0.29.0_react@18.3.1/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/hooks/cart-lines.mjs
-  function useCartLines() {
-    const {
-      lines
-    } = useApi();
-    return useSubscription(lines);
-  }
-
-  // node_modules/.pnpm/@shopify+ui-extensions-react@2024.4.2_@shopify+ui-extensions@2024.4.2_react-reconciler@0.29.0_react@18.3.1/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/hooks/cart-line-target.mjs
-  function useCartLineTarget() {
+  // node_modules/.pnpm/@shopify+ui-extensions-react@2024.4.2_@shopify+ui-extensions@2024.4.2_react-reconciler@0.29.0_react@18.3.1/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/hooks/buyer-journey.mjs
+  var import_react8 = __toESM(require_react(), 1);
+  function useBuyerJourneyIntercept(interceptor) {
     const api = useApi();
-    if (!api.target) {
-      throw new ExtensionHasNoTargetError("useCartLineTarget", api.extension.target);
+    if (!("buyerJourney" in api)) {
+      throw new ExtensionHasNoMethodError("buyerJourney", api.extension.target);
     }
-    return useSubscription(api.target);
+    const interceptorRef = (0, import_react8.useRef)(interceptor);
+    interceptorRef.current = interceptor;
+    return (0, import_react8.useEffect)(() => {
+      const teardownPromise = api.buyerJourney.intercept((interceptorProps) => interceptorRef.current(interceptorProps));
+      return () => {
+        teardownPromise.then((teardown) => teardown()).catch(() => {
+        });
+      };
+    }, [api.buyerJourney]);
   }
 
-  // extensions/price-breakdown/src/Checkout.tsx
-  var import_react15 = __toESM(require_react());
-  var import_jsx_runtime4 = __toESM(require_jsx_runtime());
-  var cartLineItemBreakdown = reactExtension("purchase.checkout.cart-line-item.render-after", () => /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(LineItemPriceBreakdown, {}));
-  var priceBreakdownTop = reactExtension(
-    "purchase.checkout.reductions.render-after",
-    () => /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(PriceBreakdownTop, {})
-  );
-  var priceBreakdownBottom = reactExtension(
-    "purchase.checkout.block.render",
-    () => /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(PriceBreakdownBottom, {})
-  );
-  function getOrderPriceBreakdown(_0) {
-    return __async(this, arguments, function* ({ cartLines, query, i18n }) {
-      const lineItems = yield lineItemsMapper(cartLines);
-      return computePricing(lineItems);
-      function lineItemsMapper(cartLines2) {
-        return Promise.allSettled(cartLines2.map((cartLine) => getLineItem({ cartLine, query }))).then(
-          (r) => r.filter((x) => x.status === "fulfilled").map((x) => x.value)
-        );
+  // node_modules/.pnpm/@shopify+ui-extensions-react@2024.4.2_@shopify+ui-extensions@2024.4.2_react-reconciler@0.29.0_react@18.3.1/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/hooks/shipping-address.mjs
+  function useShippingAddress() {
+    const shippingAddress = useApi().shippingAddress;
+    if (!shippingAddress) {
+      throw new ScopeNotGrantedError("Using shipping address requires having shipping address permissions granted to your app.");
+    }
+    return useSubscription(shippingAddress);
+  }
+
+  // node_modules/.pnpm/@shopify+ui-extensions-react@2024.4.2_@shopify+ui-extensions@2024.4.2_react-reconciler@0.29.0_react@18.3.1/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/hooks/app-metafields.mjs
+  var import_react9 = __toESM(require_react(), 1);
+  function useAppMetafields(filters = {}) {
+    const appMetafields = useSubscription(useApi().appMetafields);
+    return (0, import_react9.useMemo)(() => {
+      if (filters.key && !filters.namespace) {
+        throw new CheckoutUIExtensionError("You must pass in a namespace with a key");
       }
-      function computePricing(lineItems2) {
-        let price = 0, originalPrice = 0;
-        lineItems2.forEach(({ cost }) => {
-          console.log("=>(Checkout.tsx:43) cost", cost);
-          const { totalAmount: { amount: priceAmount }, compareAtPrice } = cost;
-          const { amount: originalPriceAmount = priceAmount } = compareAtPrice || {};
-          price += +priceAmount;
-          originalPrice += +originalPriceAmount;
+      const filterKeys = Object.keys(filters);
+      if (filterKeys.length) {
+        return appMetafields.filter((app) => {
+          return filterKeys.every((key) => {
+            if (key === "id" || key === "type") {
+              return app.target[key] === filters[key];
+            }
+            return app.metafield[key] === filters[key];
+          });
         });
-        const totalDiscounts = originalPrice - price;
-        const priceCurrency = i18n.formatCurrency(price), originalPriceCurrency = i18n.formatCurrency(originalPrice), totalDiscountsCurrency = i18n.formatCurrency(totalDiscounts);
-        return {
-          price,
-          priceCurrency,
-          originalPrice,
-          originalPriceCurrency,
-          totalDiscounts,
-          totalDiscountsCurrency
+      }
+      return appMetafields;
+    }, [filters, appMetafields]);
+  }
+
+  // node_modules/.pnpm/@shopify+ui-extensions-react@2024.4.2_@shopify+ui-extensions@2024.4.2_react-reconciler@0.29.0_react@18.3.1/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/hooks/translate.mjs
+  var import_react10 = __toESM(require_react(), 1);
+  function useTranslate() {
+    const {
+      i18n
+    } = useApi();
+    const translate = (0, import_react10.useCallback)((...args) => {
+      const translation = i18n.translate(...args);
+      if (!Array.isArray(translation)) {
+        return translation;
+      }
+      return translation.map((part, index) => {
+        if (/* @__PURE__ */ (0, import_react10.isValidElement)(part)) {
+          return /* @__PURE__ */ (0, import_react10.cloneElement)(part, {
+            key: index
+          });
+        }
+        return part;
+      });
+    }, [i18n]);
+    return translate;
+  }
+
+  // extensions/po-box-blocker/src/Checkout.tsx
+  var import_jsx_runtime3 = __toESM(require_jsx_runtime());
+  var Checkout_default = reactExtension(
+    "purchase.checkout.block.render",
+    () => /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(Extension, {})
+  );
+  function Extension() {
+    var _a, _b;
+    const translate = useTranslate();
+    const { extension: extension2 } = useApi();
+    const address = useShippingAddress();
+    const metafield = useAppMetafields({
+      type: "shop",
+      namespace: "accentuate",
+      key: "google_address_validator_api_key"
+    });
+    const googleApiKey = ((_b = (_a = metafield[0]) == null ? void 0 : _a.metafield) == null ? void 0 : _b.value) || "";
+    const url = `https://addressvalidation.googleapis.com/v1:validateAddress?key=${googleApiKey}`;
+    const [isAddressPoBox, setIsAddressPoBox] = (0, import_react11.useState)(false);
+    const poRegex = /po box/i;
+    const poRegex2 = /p.o. box/i;
+    const poRegex3 = /po. box/i;
+    const poRegex4 = /box [0-9]/i;
+    const data = {
+      address: {
+        administrativeArea: address == null ? void 0 : address.provinceCode,
+        regionCode: address == null ? void 0 : address.countryCode,
+        postalCode: address == null ? void 0 : address.zip,
+        locality: address == null ? void 0 : address.city,
+        addressLines: [address == null ? void 0 : address.address1]
+      }
+    };
+    (0, import_react11.useEffect)(() => {
+      if (poRegex.test(address == null ? void 0 : address.address1) || poRegex2.test(address == null ? void 0 : address.address1) || poRegex3.test(address == null ? void 0 : address.address1) || poRegex4.test(address == null ? void 0 : address.address1)) {
+        setIsAddressPoBox(true);
+      } else {
+        googleApiKey && fetch(
+          url,
+          {
+            credentials: "include",
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
+          }
+        ).then((response) => response.json()).then((data2) => {
+          var _a2, _b2, _c;
+          setIsAddressPoBox((_c = (_b2 = (_a2 = data2 == null ? void 0 : data2.result) == null ? void 0 : _a2.address) == null ? void 0 : _b2.unconfirmedComponentTypes) == null ? void 0 : _c.includes("post_box"));
+        }).catch((e) => {
+          setIsAddressPoBox(false);
+        });
+      }
+    }, [address, googleApiKey]);
+    useBuyerJourneyIntercept(
+      ({ canBlockProgress }) => {
+        return canBlockProgress && (address == null ? void 0 : address.countryCode) && address.countryCode == "CA" && isAddressPoBox ? {
+          behavior: "block",
+          reason: "Invalid shipping address",
+          errors: [
+            {
+              message: translate("error_massage"),
+              target: "$.cart.deliveryGroups[0].deliveryAddress.address1"
+            }
+          ]
+        } : {
+          behavior: "allow"
         };
       }
-    });
-  }
-  function getLineItem(_0) {
-    return __async(this, arguments, function* ({ cartLine, query }) {
-      var _a;
-      const { merchandise: { id } } = cartLine;
-      const { data, errors } = yield query(
-        `query ($id: ID!) {
-         node(id: $id) {
-        ... on ProductVariant {
-            id
-            title
-            quantityAvailable
-            price {
-                amount
-            }
-            compareAtPrice {
-                amount
-            }
-        }
-    }
-      }`,
-        {
-          variables: { id }
-        }
-      );
-      cartLine.cost.compareAtPrice = (_a = data == null ? void 0 : data.node) == null ? void 0 : _a.compareAtPrice;
-      return cartLine;
-    });
-  }
-  function LineItemPriceBreakdown() {
-    const { i18n, extension: extension2, query } = useApi();
-    const cartLine = useCartLineTarget();
-    const [pricing, setPricing] = (0, import_react15.useState)({});
-    (0, import_react15.useEffect)(() => __async(this, null, function* () {
-      const lineItem = yield getLineItem({ cartLine, query });
-      const { totalAmount: { amount: price }, compareAtPrice: { amount: originalPrice } } = lineItem.cost;
-      const totalDiscounts = originalPrice - price, priceCurrency = i18n.formatCurrency(price), originalPriceCurrency = i18n.formatCurrency(originalPrice), totalDiscountsCurrency = i18n.formatCurrency(totalDiscounts);
-      setPricing({
-        price,
-        priceCurrency,
-        originalPrice,
-        originalPriceCurrency,
-        totalDiscounts,
-        totalDiscountsCurrency
-      });
-    }), [query]);
-    return /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(BlockStack2, { spacing: "none", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(InlineLayout2, { columns: ["fill", "auto"], children: [
-      /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(View2, { padding: "none", visibility: "hidden" }),
-      /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(View2, { padding: "none", inlineAlignment: "end", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(BlockLayout2, { rows: ["fill", "fill"], children: [
-        /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(View2, { children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
-          Text2,
-          {
-            appearance: "subdued",
-            accessibilityRole: "deletion",
-            children: pricing == null ? void 0 : pricing.originalPriceCurrency
-          }
-        ) }),
-        /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(View2, {})
-      ] }) })
-    ] }) });
-  }
-  function PriceBreakdownTop() {
-    const { i18n, extension: extension2, query } = useApi();
-    const cartLines = useCartLines();
-    const [pricing, setPricing] = (0, import_react15.useState)({ price: 0, originalPrice: 0 });
-    (0, import_react15.useEffect)(() => __async(this, null, function* () {
-      const priceBreakdown = yield getOrderPriceBreakdown({ cartLines, query, i18n });
-      console.log("=>(Checkout.tsx:144) priceBreakdown", priceBreakdown);
-      setPricing(priceBreakdown);
-    }), [query]);
-    return pricing.totalDiscounts ? /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(BlockStack2, { spacing: "none", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(InlineLayout2, { columns: ["auto", "fill", "auto"], children: [
-        /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(View2, { padding: "none", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Text2, { children: "Retail Price" }) }),
-        /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(View2, { padding: "none" }),
-        /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(View2, { padding: "none", inlineAlignment: "end", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Text2, { children: pricing == null ? void 0 : pricing.originalPriceCurrency }) })
-      ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(InlineLayout2, { columns: ["auto", "fill", "auto"], children: [
-        /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(View2, { padding: ["none", "none", "none", "base"], inlineAlignment: "end", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Text2, { children: "Sale Discount" }) }),
-        /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(View2, { padding: "none" }),
-        /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(View2, { padding: "none", inlineAlignment: "end", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(Text2, { appearance: "critical", emphasis: "bold", children: [
-          "- ",
-          pricing == null ? void 0 : pricing.totalDiscountsCurrency
-        ] }) })
-      ] })
-    ] }) : "";
-  }
-  function PriceBreakdownBottom() {
-    const { i18n, extension: extension2, query } = useApi();
-    const cartLines = useCartLines();
-    const [pricing, setPricing] = (0, import_react15.useState)({ price: 0, originalPrice: 0 });
-    (0, import_react15.useEffect)(() => __async(this, null, function* () {
-      const priceBreakdown = yield getOrderPriceBreakdown({ cartLines, query, i18n });
-      setPricing(priceBreakdown);
-    }), [query]);
-    return pricing.totalDiscounts ? /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(InlineLayout2, { columns: ["fill", "auto"], children: [
-      /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(View2, { padding: "none" }),
-      /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(View2, { padding: "none", inlineAlignment: "end", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(Text2, { size: "medium", appearance: "critical", emphasis: "bold", children: [
-        "You save ",
-        pricing == null ? void 0 : pricing.totalDiscountsCurrency,
-        "!"
-      ] }) })
-    ] }) : "";
+    );
+    return /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(import_jsx_runtime3.Fragment, {});
   }
 })();
-//# sourceMappingURL=price-breakdown.js.map
+//# sourceMappingURL=po-box-blocker.js.map
