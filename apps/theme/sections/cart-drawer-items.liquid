@@ -100,7 +100,9 @@
                      {% endif %}
                   </span>
 
-          
+              
+                <span> {{ primary_product.title }} mattress ({{ current_variant.title }}),</span>
+              
 
               {% for bundle_item_metaobject in bundle_item_metaobjects %}
                 {% assign bundle_item_variant = bundle_item_metaobject.product.value %}
