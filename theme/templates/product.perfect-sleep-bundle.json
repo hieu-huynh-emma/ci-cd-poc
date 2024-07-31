@@ -291,7 +291,7 @@
           "settings": {
             "icon": "shopify:\/\/shop_images\/shipping_truck_db437bec-0f66-475d-9a43-c2bdab9dc26d.png",
             "text": "Free & fast delivery",
-            "content": "<p>Free no contact delivery for all orders <\/p><p>Dispatched in: <strong>1 business day <\/strong><br\/><\/p>",
+            "content": "<p>Free no contact delivery for all orders <\/p><p>Dispatched in: <strong>1 business day <\/strong><\/p><p>(Additional fees or exclusions may apply to the Canadian Territories)<\/p>",
             "url": ""
           }
         },
@@ -736,103 +736,67 @@
         "show_secondary_badge": false
       }
     },
-    "social-proof": {
-      "type": "social-proof",
+    "product-carousel": {
+      "type": "product-carousel",
       "blocks": {
-        "f594e01e-3829-4917-abe9-57b236980d78": {
-          "type": "influencer",
+        "72c7f33b-7788-4524-bf53-816aecb093b6": {
+          "type": "catalog_item",
           "settings": {
-            "image": "shopify:\/\/shop_images\/m.for.mai.webp",
-            "heading": "Mai Le, Mom",
-            "tag": "@@m.for.mai",
-            "content": "<p>We've had our emma mattress for about 2 weeks and holy smokes I can attest to the zero partner disturbance... because I co-sleep and even with me moving around getting up it doesn't disturb my baby girl 🙌<\/p>",
-            "product": ""
+            "product": "emma-foam-pillow"
           }
         },
-        "ba07a33b-e99e-464e-83f4-a7b564b2a531": {
-          "type": "influencer",
+        "f0f0b732-6803-4158-8c54-5c08c4bdbfa3": {
+          "type": "catalog_item",
           "settings": {
-            "image": "shopify:\/\/shop_images\/alexanderkenton.webp",
-            "heading": "Alex Liang, Interior Designer",
-            "tag": "@alexanderkenton",
-            "content": "<p>No bedroom redesign would be complete without a new mattress! And we’ve been really enjoying my new Emma Original. It’s soft, yet supportive and keeps us comfortable and cool all night long. I also love that the entire cover of the mattress can be removed and machine washed, to keep the mattress fresh and new.<\/p>",
-            "product": ""
+            "product": "premium-cooling-pillow"
           }
         },
-        "41bfeda5-5c9d-4d23-9dbf-f980fcad14d4": {
-          "type": "influencer",
+        "07d5912c-d4c3-4ebb-97a6-f723fc8a4f3f": {
+          "type": "catalog_item",
           "settings": {
-            "image": "shopify:\/\/shop_images\/coco.crochet.lee.webp",
-            "heading": "Lee Sartori, Author",
-            "tag": "@coco.crochet.lee",
-            "content": "<p>I've fallen in love with my Emma Mattress 😍. The Mattress sort of expands when you open it which made me think it would be way too soft. Surprise, it is actually very firm while keeping your sleep comfy and soft 😴💕. Because it's a memory foam mattress, you can sleep (or crochet) comfortably next to someone without disturbing them at all which is fantastic. All in all, I highly recommend!<\/p>",
-            "product": ""
+            "product": "emma-mattress-protector"
           }
         },
-        "4443cd58-4e81-41fa-99c1-39282fe67f6a": {
-          "type": "influencer",
+        "catalog_item_8Tp68g": {
+          "type": "catalog_item",
           "settings": {
-            "image": "shopify:\/\/shop_images\/ayagonz.webp",
-            "heading": "Aya G,  Content Creator",
-            "tag": "@_ayagonz@_ayagonz",
-            "content": "<p>Emma has, no joke, given me the best sleep quality I've ever had (!!!) - I get to sleep straight through the night without being disturbed by any movements or noises, I no longer get any shoulder\/back aches and the temperature is always *just* right. I now wake up happier and more energized to take on my day. ⚡️<\/p>",
-            "product": ""
+            "product": "microfibre-pillow"
           }
         },
-        "51b85bff-72c4-43d0-b45c-734ff3528e44": {
-          "type": "influencer",
+        "catalog_item_GWkYJ3": {
+          "type": "catalog_item",
           "settings": {
-            "image": "shopify:\/\/shop_images\/pandi_po_family.jpg",
-            "heading": "Sylvana Carda, Mom",
-            "tag": "@pandi_po_family",
-            "content": "<p>Even superheroes sleep at night  🦸🏻‍♂️💫 Baby sleeps in his bed, but in the morning he joins us in our bed and I share my pillow with him. After using the pillow, I have much less neck pain unlike before when I wake up in the middle of the night and need to adjust my pillow several times.<\/p>",
-            "product": ""
+            "product": "duvet"
           }
         },
-        "6eef24bf-e546-4447-9171-a7cf3f2e8894": {
-          "type": "influencer",
+        "c4650795-b884-4ddd-904e-babd57faad7b": {
+          "type": "catalog_item",
+          "disabled": true,
           "settings": {
-            "image": "shopify:\/\/shop_images\/listen2lena.jpg",
-            "heading": "Lena Almeida, Mom",
-            "tag": "@listen2lena",
-            "content": "<p>I couldn’t be happier! The mattress and pillows are cool, breathable and offer just the right support to help me drift off to dreamland. 💤 The best part? I barely feel my husband’s movement throughout the night, which has improved the quality of my sleep enormously.<\/p>",
-            "product": ""
+            "product": "emma-bed-frame"
           }
         },
-        "ccacfc43-ab21-4710-82c1-43e04556764b": {
-          "type": "influencer",
+        "d8319461-aedd-4805-884a-95b7ed1a5893": {
+          "type": "catalog_item",
+          "disabled": true,
           "settings": {
-            "image": "shopify:\/\/shop_images\/orsida.luzati.webp",
-            "heading": "Orsida Luzati, Mom",
-            "tag": "@orsida.luzati",
-            "content": "<p>Who knew that a new mattress would have such a positive impact in our lives! The girls have found their favorite bed– soft and comfortable mattress (with motion isolating foam) and a 3-layer pillow with option to remove a layer for best comfort💗<\/p>",
-            "product": ""
-          }
-        },
-        "73eeec38-a76a-4a08-be55-ffd7b61189fa": {
-          "type": "influencer",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/jessicatylerofficial.webp",
-            "heading": "Jessica Tyler, Content Creator",
-            "tag": "@jessicatylerofficial",
-            "content": "<p>I no longer wake up feeling like I’ve aged several years overnight with back pain! The support and comfort of this bed is seriously unmatched. Our bedroom has easily become my favorite room in the house - I already can’t wait to get back into bed tonight! 💤<\/p>",
-            "product": ""
+            "product": "emma-hybrid-comfort"
           }
         }
       },
       "block_order": [
-        "f594e01e-3829-4917-abe9-57b236980d78",
-        "ba07a33b-e99e-464e-83f4-a7b564b2a531",
-        "41bfeda5-5c9d-4d23-9dbf-f980fcad14d4",
-        "4443cd58-4e81-41fa-99c1-39282fe67f6a",
-        "51b85bff-72c4-43d0-b45c-734ff3528e44",
-        "6eef24bf-e546-4447-9171-a7cf3f2e8894",
-        "ccacfc43-ab21-4710-82c1-43e04556764b",
-        "73eeec38-a76a-4a08-be55-ffd7b61189fa"
+        "72c7f33b-7788-4524-bf53-816aecb093b6",
+        "f0f0b732-6803-4158-8c54-5c08c4bdbfa3",
+        "07d5912c-d4c3-4ebb-97a6-f723fc8a4f3f",
+        "catalog_item_8Tp68g",
+        "catalog_item_GWkYJ3",
+        "c4650795-b884-4ddd-904e-babd57faad7b",
+        "d8319461-aedd-4805-884a-95b7ed1a5893"
       ],
       "settings": {
-        "heading": "See Emma in action online",
+        "heading": "Some things are better together",
         "heading_alignment": "start",
+        "container_spacing": "md",
         "trackId": ""
       }
     },
@@ -971,54 +935,6 @@
         "include_margins": true
       }
     },
-    "product-carousel": {
-      "type": "product-carousel",
-      "blocks": {
-        "72c7f33b-7788-4524-bf53-816aecb093b6": {
-          "type": "catalog_item",
-          "settings": {
-            "product": "emma-foam-pillow"
-          }
-        },
-        "f0f0b732-6803-4158-8c54-5c08c4bdbfa3": {
-          "type": "catalog_item",
-          "settings": {
-            "product": "premium-cooling-pillow"
-          }
-        },
-        "07d5912c-d4c3-4ebb-97a6-f723fc8a4f3f": {
-          "type": "catalog_item",
-          "settings": {
-            "product": "emma-mattress-protector"
-          }
-        },
-        "c4650795-b884-4ddd-904e-babd57faad7b": {
-          "type": "catalog_item",
-          "settings": {
-            "product": "emma-bed-frame"
-          }
-        },
-        "d8319461-aedd-4805-884a-95b7ed1a5893": {
-          "type": "catalog_item",
-          "settings": {
-            "product": "emma-hybrid-comfort"
-          }
-        }
-      },
-      "block_order": [
-        "72c7f33b-7788-4524-bf53-816aecb093b6",
-        "f0f0b732-6803-4158-8c54-5c08c4bdbfa3",
-        "07d5912c-d4c3-4ebb-97a6-f723fc8a4f3f",
-        "c4650795-b884-4ddd-904e-babd57faad7b",
-        "d8319461-aedd-4805-884a-95b7ed1a5893"
-      ],
-      "settings": {
-        "heading": "Some things are better together",
-        "heading_alignment": "start",
-        "container_spacing": "md",
-        "trackId": ""
-      }
-    },
     "special-services": {
       "type": "multicolumn-text",
       "blocks": {
@@ -1068,6 +984,106 @@
         "container_spacing": "md",
         "horizontal_layout_on_mobile": true,
         "solid_typo": false
+      }
+    },
+    "social-proof": {
+      "type": "social-proof",
+      "blocks": {
+        "f594e01e-3829-4917-abe9-57b236980d78": {
+          "type": "influencer",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/m.for.mai.webp",
+            "heading": "Mai Le, Mom",
+            "tag": "@@m.for.mai",
+            "content": "<p>We've had our emma mattress for about 2 weeks and holy smokes I can attest to the zero partner disturbance... because I co-sleep and even with me moving around getting up it doesn't disturb my baby girl 🙌<\/p>",
+            "product": ""
+          }
+        },
+        "ba07a33b-e99e-464e-83f4-a7b564b2a531": {
+          "type": "influencer",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/alexanderkenton.webp",
+            "heading": "Alex Liang, Interior Designer",
+            "tag": "@alexanderkenton",
+            "content": "<p>No bedroom redesign would be complete without a new mattress! And we’ve been really enjoying my new Emma Original. It’s soft, yet supportive and keeps us comfortable and cool all night long. I also love that the entire cover of the mattress can be removed and machine washed, to keep the mattress fresh and new.<\/p>",
+            "product": ""
+          }
+        },
+        "41bfeda5-5c9d-4d23-9dbf-f980fcad14d4": {
+          "type": "influencer",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/coco.crochet.lee.webp",
+            "heading": "Lee Sartori, Author",
+            "tag": "@coco.crochet.lee",
+            "content": "<p>I've fallen in love with my Emma Mattress 😍. The Mattress sort of expands when you open it which made me think it would be way too soft. Surprise, it is actually very firm while keeping your sleep comfy and soft 😴💕. Because it's a memory foam mattress, you can sleep (or crochet) comfortably next to someone without disturbing them at all which is fantastic. All in all, I highly recommend!<\/p>",
+            "product": ""
+          }
+        },
+        "4443cd58-4e81-41fa-99c1-39282fe67f6a": {
+          "type": "influencer",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/ayagonz.webp",
+            "heading": "Aya G,  Content Creator",
+            "tag": "@_ayagonz@_ayagonz",
+            "content": "<p>Emma has, no joke, given me the best sleep quality I've ever had (!!!) - I get to sleep straight through the night without being disturbed by any movements or noises, I no longer get any shoulder\/back aches and the temperature is always *just* right. I now wake up happier and more energized to take on my day. ⚡️<\/p>",
+            "product": ""
+          }
+        },
+        "51b85bff-72c4-43d0-b45c-734ff3528e44": {
+          "type": "influencer",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/pandi_po_family.jpg",
+            "heading": "Sylvana Carda, Mom",
+            "tag": "@pandi_po_family",
+            "content": "<p>Even superheroes sleep at night  🦸🏻‍♂️💫 Baby sleeps in his bed, but in the morning he joins us in our bed and I share my pillow with him. After using the pillow, I have much less neck pain unlike before when I wake up in the middle of the night and need to adjust my pillow several times.<\/p>",
+            "product": ""
+          }
+        },
+        "6eef24bf-e546-4447-9171-a7cf3f2e8894": {
+          "type": "influencer",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/listen2lena.jpg",
+            "heading": "Lena Almeida, Mom",
+            "tag": "@listen2lena",
+            "content": "<p>I couldn’t be happier! The mattress and pillows are cool, breathable and offer just the right support to help me drift off to dreamland. 💤 The best part? I barely feel my husband’s movement throughout the night, which has improved the quality of my sleep enormously.<\/p>",
+            "product": ""
+          }
+        },
+        "ccacfc43-ab21-4710-82c1-43e04556764b": {
+          "type": "influencer",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/orsida.luzati.webp",
+            "heading": "Orsida Luzati, Mom",
+            "tag": "@orsida.luzati",
+            "content": "<p>Who knew that a new mattress would have such a positive impact in our lives! The girls have found their favorite bed– soft and comfortable mattress (with motion isolating foam) and a 3-layer pillow with option to remove a layer for best comfort💗<\/p>",
+            "product": ""
+          }
+        },
+        "73eeec38-a76a-4a08-be55-ffd7b61189fa": {
+          "type": "influencer",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/jessicatylerofficial.webp",
+            "heading": "Jessica Tyler, Content Creator",
+            "tag": "@jessicatylerofficial",
+            "content": "<p>I no longer wake up feeling like I’ve aged several years overnight with back pain! The support and comfort of this bed is seriously unmatched. Our bedroom has easily become my favorite room in the house - I already can’t wait to get back into bed tonight! 💤<\/p>",
+            "product": ""
+          }
+        }
+      },
+      "block_order": [
+        "f594e01e-3829-4917-abe9-57b236980d78",
+        "ba07a33b-e99e-464e-83f4-a7b564b2a531",
+        "41bfeda5-5c9d-4d23-9dbf-f980fcad14d4",
+        "4443cd58-4e81-41fa-99c1-39282fe67f6a",
+        "51b85bff-72c4-43d0-b45c-734ff3528e44",
+        "6eef24bf-e546-4447-9171-a7cf3f2e8894",
+        "ccacfc43-ab21-4710-82c1-43e04556764b",
+        "73eeec38-a76a-4a08-be55-ffd7b61189fa"
+      ],
+      "settings": {
+        "heading": "See Emma in action online",
+        "heading_alignment": "start",
+        "trackId": ""
       }
     },
     "featured-faqs": {
@@ -1138,11 +1154,11 @@
     "mattress-layers",
     "mattress-firmness",
     "featured-products",
-    "social-proof",
+    "product-carousel",
     "customer-sentiment",
     "1685402594226951ca",
-    "product-carousel",
     "special-services",
+    "social-proof",
     "featured-faqs",
     "contact-us"
   ]
