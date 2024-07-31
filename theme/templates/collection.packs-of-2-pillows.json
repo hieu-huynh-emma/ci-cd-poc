@@ -1,150 +1,41 @@
 {
   "layout": "theme.speed",
   "sections": {
-    "collection-catalog": {
-      "type": "collection-catalog",
-      "settings": {
-        "heading": "Our Mattresses",
-        "heading_alignment": "start",
-        "container_spacing": "none"
-      }
-    },
-    "1ce286d2-ef8f-4a2f-8277-eb0e148aba2d": {
-      "type": "featured-products",
+    "sale-catalog": {
+      "type": "sale-catalog",
       "blocks": {
-        "dc648e6a-73d1-4d9c-aa18-80fedeab1b00": {
-          "type": "product-block",
+        "catalog_item_tDD6Aa": {
+          "type": "catalog_item",
           "settings": {
-            "product": "emma-original-mattress",
-            "show_star_rating": true,
-            "color": "#3c4196",
-            "primary_badge": "BEST VALUE",
-            "secondary_badge": "BEST VALUE",
-            "image": "shopify:\/\/shop_images\/EMMAOG_exploded.png",
-            "product_title": "Emma Original",
-            "desc": "<p>Our Most Awarded Mattress for Budget-Conscious Sleepers.<\/p><p><strong>5 Layers<\/strong><\/p><p><strong>10-Inch<\/strong><\/p><p><strong>Excellent Comfort<\/strong><\/p><p><strong>3 Zones<br\/><br\/>Breathable, moisture-wicking <br\/>& climate-regulating<\/strong><\/p><p><strong>Minimal Motion Transfer<br\/><br\/>Free Shipping & Returns<br\/>365-Night Trial<br\/>10-Year Warranty<\/strong><\/p>",
-            "discount_title": "",
-            "comfort_meter": 6,
-            "cooling_meter": 4,
-            "motion_isolation_meter": 6,
-            "trackId": "OG_Compare_MP"
+            "title": "Our Pillows",
+            "collection": "pillows",
+            "trackId": ""
           }
         },
-        "de83e3a7-7ae2-4d8f-9917-fd290fbf9e2e": {
-          "type": "product-block",
+        "catalog_item_Ay7H8k": {
+          "type": "catalog_item",
           "settings": {
-            "product": "emma-hybrid-comfort",
-            "show_star_rating": true,
-            "color": "#3c4196",
-            "primary_badge": "",
-            "secondary_badge": "BEST DEAL",
-            "image": "shopify:\/\/shop_images\/Emma_hybrid-comfort_exploded_2.png",
-            "product_title": "Emma Hybrid Comfort",
-            "desc": "<p>Our Hybrid Mattress with enhanced support and ideal pressure distribution<\/p><p><strong>6 Layers<\/strong><\/p><p><strong>13-Inch<\/strong><\/p><p><strong>Maximum Comfort<\/strong><\/p><p><strong>7 Zones<br\/><br\/>Breathable, moisture-wicking <br\/>& temperature regulation<\/strong><\/p><p><strong>Zero Motion Transfer<br\/><br\/>Free Shipping & Returns<br\/>365-Night Trial<br\/>10-Year Warranty<\/strong><\/p>",
-            "discount_title": "",
-            "comfort_meter": 8,
-            "cooling_meter": 6,
-            "motion_isolation_meter": 8,
-            "trackId": "Comfort_Compare_MP"
-          }
-        },
-        "f634c250-61e1-4006-8387-c5a5ea529c2f": {
-          "type": "product-block",
-          "settings": {
-            "product": "emma-hybrid-premium",
-            "show_star_rating": true,
-            "color": "#3c4196",
-            "primary_badge": "",
-            "secondary_badge": "PREMIUM CHOICE",
-            "image": "shopify:\/\/shop_images\/hybrid-premium-exploded_1.png",
-            "product_title": "Emma Hybrid Premium",
-            "desc": "<p>Our best-in-class mattress: perfect cooling & ultimate comfort<\/p><p><strong>8 Layers<\/strong><\/p><p><strong>Enhanced Comfort<\/strong><\/p><p><strong>7 Zones <\/strong><\/p><p><strong>New Cooling Technology<\/strong><\/p><p><strong>Extra Pressure Relief <br\/>& Zero Motion Transfer<\/strong><\/p><p><strong>Free Shipping & Returns<br\/>365-Night Trial<br\/>10-Year Warranty<\/strong><\/p>",
-            "discount_title": "",
-            "comfort_meter": 8,
-            "cooling_meter": 8,
-            "motion_isolation_meter": 8,
-            "trackId": "Premium_Compare_MP"
-          }
-        },
-        "95bee6a1-5a6f-4ba8-9fac-03c161a01954": {
-          "type": "explore-button",
-          "settings": {
-            "url": "shopify:\/\/pages\/product-quizz",
-            "text": "<p>Find your perfect match<\/p>",
-            "trackId": "Quiz_MP"
+            "collection": "packs-of-2",
+            "trackId": ""
           }
         }
       },
       "block_order": [
-        "dc648e6a-73d1-4d9c-aa18-80fedeab1b00",
-        "de83e3a7-7ae2-4d8f-9917-fd290fbf9e2e",
-        "f634c250-61e1-4006-8387-c5a5ea529c2f",
-        "95bee6a1-5a6f-4ba8-9fac-03c161a01954"
+        "catalog_item_tDD6Aa",
+        "catalog_item_Ay7H8k",
+        "catalog_item_L3UECP",
+        "catalog_item_ntctLj",
+        "catalog_item_WyBqe3",
+        "catalog_item_ep7yJy"
       ],
       "settings": {
-        "title": "Which mattress is right for you?",
-        "mobile_title": "Which mattress is right for you ?",
-        "subtitle": "",
-        "heading_alignment": "start",
-        "first_meter_title": "Comfort",
-        "show_first_meter": true,
-        "second_meter_title": "Cooling",
-        "show_second_meter": true,
-        "third_meter_title": "Motion Isolation",
-        "show_third_meter": true,
-        "show_secondary_badge": true
-      }
-    },
-    "featured-content": {
-      "type": "featured-content",
-      "blocks": {
-        "block_rBwz6H": {
-          "type": "block",
-          "settings": {
-            "title": "Thermoregulation Technology",
-            "desc": "<p>Our premium range featuring cutting-edge Premium ThermoSync technology. Infused with graphite particles, it absorbs excess heat, ensuring you enjoy the highest quality sleep possible.<\/p>",
-            "product": "emma-hybrid-premium",
-            "photo": "shopify:\/\/shop_images\/Thermoregulation_1.webp",
-            "trackId": "Materials_1"
-          }
-        },
-        "block_93HdLd": {
-          "type": "block",
-          "settings": {
-            "title": "Hybrid Mattresses",
-            "desc": "<p>Improve your sleep experience with our Hybrid mattress – a perfect blend of foam and spring technology. Designed for sleepers who tend to sweat, it offers unmatched breathability and weightless comfort.<\/p>",
-            "product": "emma-hybrid-comfort",
-            "photo": "shopify:\/\/shop_images\/Emma_Matras_Pocketspring_Boxspring.webp",
-            "trackId": "Materials_2"
-          }
-        },
-        "block_L8xV8b": {
-          "type": "block",
-          "settings": {
-            "title": "Foam Mattresses",
-            "desc": "<p>Experience great support and comfort with our foam mattress, crafted primarily from memory foam. Designed to cater to all sleepers, it ensures a night of restful sleep for everyone.<\/p>",
-            "product": "emma-original-mattress",
-            "photo": "shopify:\/\/shop_images\/Foam_Material.webp",
-            "trackId": "Materials_3"
-          }
-        }
-      },
-      "block_order": [
-        "block_rBwz6H",
-        "block_93HdLd",
-        "block_L8xV8b"
-      ],
-      "settings": {
-        "heading": "Our Mattress Types & Materials",
-        "header_font": "tiempos",
+        "heading": "Sale Catalog",
         "heading_alignment": "start",
         "container_spacing": "md"
       }
     }
   },
   "order": [
-    "collection-catalog",
-    "1ce286d2-ef8f-4a2f-8277-eb0e148aba2d",
-    "featured-content"
+   "sale-catalog"
   ]
 }
