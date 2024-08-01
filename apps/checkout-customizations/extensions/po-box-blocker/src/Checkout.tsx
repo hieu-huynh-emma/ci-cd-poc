@@ -75,7 +75,7 @@ function Extension() {
           reason: "Invalid shipping address",
           errors: [
             {
-              message: translate("error_massage"),
+              message: translate("po_box_error"),
               target:
                 "$.cart.deliveryGroups[0].deliveryAddress.address1",
             },
