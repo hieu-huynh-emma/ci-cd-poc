@@ -1,50 +1,36 @@
-// @ts-check
+import type { CartDeliveryGroup, CartDeliveryOption, FunctionRunResult, RunInput } from "../generated/api";
 
-/**
- * @typedef {import("../generated/api").RunInput} RunInput
- * @typedef {import("../generated/api").FunctionRunResult} FunctionRunResult
- * @typedef {import("../generated/api").Operation} Operation
- */
-
-/**
- * @type {FunctionRunResult}
- */
-const NO_CHANGES = {
+const NO_CHANGES: FunctionRunResult = {
   operations: [],
 };
 
-/**
- * @param {RunInput} input
- * @returns {FunctionRunResult}
- */
-export function run(input) {
-  /**
-   * @type {{
-  *   deliveryTitle: string
-  *   zipCodes: string
-  * }}
-  */
-  const configuration = JSON.parse(
-    input?.deliveryCustomization?.metafield?.value ?? "{}"
+type Configuration = {
+  deliveryTitle: string,
+  zipCodes: string[]
+};
+
+export function run(input: RunInput): FunctionRunResult {
+  const configuration: Configuration = JSON.parse(
+    input?.shop?.metafield?.value ?? "{}",
   );
 
   if (!configuration.zipCodes && !configuration.deliveryTitle) {
     return NO_CHANGES;
   }
 
-  const includedZipCodes = configuration.zipCodes.split(",").map(zip => zip.trim().toLowerCase()).filter(zip => zip != "");
+  const includedZipCodes = configuration.zipCodes.map(zip => zip.trim().toLowerCase()).filter(zip => zip != "");
 
   let toRemove = input.cart.deliveryGroups
-    .filter(group => !includedZipCodes.find(zip => group.deliveryAddress?.zip?.toLowerCase().includes(zip)))
-    .flatMap(group => group.deliveryOptions)
-    .filter(option => option.title == configuration.deliveryTitle.trim())
-    .map(option => /** @type {Operation} */({
+    .filter((group: CartDeliveryGroup) => !includedZipCodes.find(zip => group.deliveryAddress?.zip?.toLowerCase().includes(zip)))
+    .flatMap((group: CartDeliveryGroup) => group.deliveryOptions)
+    .filter((option: CartDeliveryOption) => option.title == configuration.deliveryTitle.trim())
+    .map((option: CartDeliveryOption) => /** @type {Operation} */({
       hide: {
-        deliveryOptionHandle: option.handle
-      }
+        deliveryOptionHandle: option.handle,
+      },
     }));
 
   return {
-    operations: toRemove
+    operations: toRemove,
   };
 };

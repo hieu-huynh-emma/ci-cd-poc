@@ -1,13 +1,13 @@
 # Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
 
-client_id = "8d3eacc8970b8e510ba94e496fa63dcd"
-name = "checkout-customizations"
-handle = "checkout-customizations-5"
+client_id = "8753c10c6e70259ab4a63c3e40b5ae3d"
+name = "Ca Checkout Customizations"
+handle = "ca-checkout-customizations"
 application_url = "https://shopify.dev/apps/default-app-home"
 embedded = true
 
 [build]
-dev_store_url = "emma-ca-dev.myshopify.com"
+dev_store_url = "emma-dev.myshopify.com"
 include_config_on_deploy = true
 
 [access_scopes]

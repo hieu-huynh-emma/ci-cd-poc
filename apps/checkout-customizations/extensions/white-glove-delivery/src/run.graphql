@@ -6,15 +6,16 @@ query RunInput {
         zip
       }
       deliveryOptions {
+        code
         handle
         title
       }
     }
   }
-  deliveryCustomization {
+  shop {
     metafield(
-      namespace: "$app:delivery-customization"
-      key: "scheduled-delivery-with-in-home-setup-included-zipcodes"
+      namespace: "accentuate"
+      key: "white_glove_delivery_settings"
     ) {
       value
     }
