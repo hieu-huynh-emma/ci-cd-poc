@@ -16,7 +16,6 @@ export default reactExtension(
 async function getOrderPriceBreakdown({cartLines, query, i18n}) {
 
     const lineItems = await lineItemsMapper(cartLines)
-    console.log("=>(Checkout.tsx:19) lineItems", lineItems);
 
     return computePricing(lineItems)
 
@@ -31,20 +30,23 @@ async function getOrderPriceBreakdown({cartLines, query, i18n}) {
 
         lineItems.forEach(({cost}) => {
             const {subtotalAmount: {amount: priceAmount}, compareAtPrice} = cost;
-            console.log("=>(Checkout.tsx:33) cost", cost);
 
             const {amount: originalPriceAmount = priceAmount} = compareAtPrice || {}
-            console.log("=>(Checkout.tsx:35) originalPriceAmount", originalPriceAmount);
 
             price += +priceAmount
             originalPrice += +originalPriceAmount
         });
 
         const totalDiscounts = Math.max(0, originalPrice - price);
+        const formatter = new Intl.NumberFormat('en-US', {
+            style: 'currency',
+            currency: 'USD',
+            currencyDisplay: 'narrowSymbol'
+        })
 
-        const priceCurrency = i18n.formatCurrency(price),
-            originalPriceCurrency = i18n.formatCurrency(originalPrice),
-            totalDiscountsCurrency = i18n.formatCurrency(totalDiscounts);
+        const priceCurrency = formatter.format(price),
+            originalPriceCurrency = formatter.format(originalPrice),
+            totalDiscountsCurrency = formatter.format(totalDiscounts)
 
         return {
             price,

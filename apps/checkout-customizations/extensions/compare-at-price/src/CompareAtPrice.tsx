@@ -95,10 +95,16 @@ function Extension() {
 
         const {totalAmount: {amount: price}, compareAtPrice: {amount: originalPrice}} = lineItem.cost;
 
+        const formatter = new Intl.NumberFormat('en-US', {
+            style: 'currency',
+            currency: 'USD',
+            currencyDisplay: 'narrowSymbol'
+        })
+
         const totalDiscounts = Math.max(0, originalPrice - price),
-            priceCurrency = i18n.formatCurrency(price),
-            originalPriceCurrency = i18n.formatCurrency(originalPrice),
-            totalDiscountsCurrency = i18n.formatCurrency(totalDiscounts);
+            priceCurrency = formatter.format(price),
+            originalPriceCurrency = formatter.format(originalPrice),
+            totalDiscountsCurrency = formatter.format(totalDiscounts);
 
         setPricing({
             price,

@@ -43,10 +43,14 @@ async function getOrderPriceBreakdown({cartLines, query, i18n, totalDiscountedAm
         const saleDiscounted = Math.max(0, originalPrice - price)
 
         const totalDiscounts = saleDiscounted + totalDiscountedAmount || 0;
-
-        const priceCurrency = i18n.formatCurrency(price),
-            originalPriceCurrency = i18n.formatCurrency(originalPrice),
-            totalDiscountsCurrency = i18n.formatCurrency(totalDiscounts);
+        const formatter = new Intl.NumberFormat('en-US', {
+            style: 'currency',
+            currency: 'USD',
+            currencyDisplay: 'narrowSymbol'
+        })
+        const priceCurrency = formatter.format(price),
+            originalPriceCurrency = formatter.format(originalPrice),
+            totalDiscountsCurrency = formatter.format(totalDiscounts)
 
         return {
             price,
