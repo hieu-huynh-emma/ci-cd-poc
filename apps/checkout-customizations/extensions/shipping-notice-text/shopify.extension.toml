@@ -3,11 +3,11 @@
 
 # The version of APIs your extension will receive. Learn more:
 # https://shopify.dev/docs/api/usage/versioning
-api_version = "2024-04"
+api_version = "2024-07"
 
 [[extensions]]
-name = "banners"
-handle = "banners"
+name = "shipping-notice-text"
+handle = "shipping-notice-text"
 type = "ui_extension"
 
 
@@ -16,8 +16,8 @@ type = "ui_extension"
 # https://shopify.dev/docs/api/checkout-ui-extensions/unstable/extension-targets-overview
 
 [[extensions.targeting]]
-module = "./src/ShippingNotice.tsx"
-target = "purchase.checkout.block.render"
+module = "./src/ShippingNoticeText.tsx"
+target = "purchase.checkout.shipping-option-item.render-after"
 
 [extensions.capabilities]
 # Gives your extension access to directly query Shopify’s storefront API.
