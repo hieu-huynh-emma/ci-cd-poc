@@ -2,6 +2,7 @@ import {
     reactExtension,
     View,
     Text,
+    useTranslate,
     useApi,
     InlineAlignment, useDiscountAllocations, useSettings, useCartLines, InlineLayout,
 } from "@shopify/ui-extensions-react/checkout";
@@ -121,6 +122,8 @@ function getTotalDiscountAllocations(cartDiscountAllocations: CartDiscountAlloca
 }
 
 function Extension() {
+    const translate = useTranslate();
+
     const settings = getSettings(useSettings())
     const cartDiscountAllocations = useDiscountAllocations()
     const {i18n, extension, query} = useApi();
@@ -142,7 +145,7 @@ function Extension() {
         <InlineLayout columns={'fill'}>
             <View padding="none" inlineAlignment={inlineAlignment}>
                 <Text size="medium" appearance="critical"
-                      emphasis="bold">{content} {pricing?.totalDiscountsCurrency}!</Text>
+                      emphasis="bold">{translate("youSave")} {pricing?.totalDiscountsCurrency}!</Text>
             </View>
         </InlineLayout>
     ) : ""

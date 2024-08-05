@@ -2,8 +2,8 @@ import {
     InlineLayout, View, BlockStack,
     useApi,
     useCartLineTarget, BlockLayout,
-    reactExtension, useCartLines, Text, InlineAlignment, useSettings, useDiscountAllocations
-} from '@shopify/ui-extensions-react/checkout';
+    reactExtension, useCartLines, Text, InlineAlignment, useSettings, useDiscountAllocations, useTranslate,
+} from "@shopify/ui-extensions-react/checkout";
 import {useEffect, useState} from 'react';
 import {ExtensionSettings} from "@shopify/ui-extensions/build/ts/surfaces/checkout/api/standard/standard";
 
@@ -100,6 +100,7 @@ async function getLineItem({cartLine, query}) {
 }
 
 function Extension() {
+    const translate = useTranslate();
     const {i18n, extension, query} = useApi();
     const cartLines = useCartLines()
     console.log("=>(Checkout.tsx:96) cartLines", cartLines);
@@ -116,7 +117,7 @@ function Extension() {
         <BlockStack spacing="none">
             <InlineLayout columns={['auto', 'fill', 'auto']}>
                 <View padding="none">
-                    <Text>Retail Price</Text>
+                    <Text>{translate("retailPrice")}</Text>
                 </View>
                 <View padding="none"></View>
                 <View padding="none" inlineAlignment="end">
@@ -126,7 +127,7 @@ function Extension() {
 
             <InlineLayout columns={['auto', 'fill', 'auto']}>
                 <View padding={["none", "none", "none", "base"]} inlineAlignment="end">
-                    <Text>Sale Discount</Text>
+                    <Text>{translate("saleDiscount")}</Text>
                 </View>
                 <View padding="none"></View>
                 <View padding="none" inlineAlignment="end">

@@ -1,4 +1,4 @@
-import { BlockLayout, Image, reactExtension, Text } from "@shopify/ui-extensions-react/checkout";
+import { BlockLayout, Image, reactExtension, Text, useTranslate } from "@shopify/ui-extensions-react/checkout";
 
 export default reactExtension(
   "purchase.checkout.block.render",
@@ -6,19 +6,19 @@ export default reactExtension(
 );
 
 function Extension() {
+  const translate = useTranslate()
   const imageUrl = "https://emma-sleep.ca/cdn/shop/t/384/assets/checkout-payment-support_600x.png";
 
   return (
     <BlockLayout rows="auto" blockAlignment="center" inlineAlignment="center" spacing="base">
       <Text accessibilityRole="strong" emphasis="bold" size="base">
-        We offer financing and accept credit and debit cards
-        at payment:
+        {translate("topText")}
       </Text>
 
       <Image source={imageUrl} />
 
       <Text accessibilityRole="strong" emphasis="bold" size="base">
-        Just fill in your details below.
+        {translate("bottomText")}
       </Text>
     </BlockLayout>
   );

@@ -627,7 +627,7 @@
             var newElement = ReactElement(oldElement.type, newKey, oldElement.ref, oldElement._self, oldElement._source, oldElement._owner, oldElement.props);
             return newElement;
           }
-          function cloneElement(element, config, children) {
+          function cloneElement2(element, config, children) {
             if (element === null || element === void 0) {
               throw new Error("React.cloneElement(...): The argument must be a React element, but you passed " + element + ".");
             }
@@ -675,7 +675,7 @@
             }
             return ReactElement(element.type, key, ref, self, source, owner, props);
           }
-          function isValidElement2(object) {
+          function isValidElement3(object) {
             return typeof object === "object" && object !== null && object.$$typeof === REACT_ELEMENT_TYPE;
           }
           var SEPARATOR = ".";
@@ -740,7 +740,7 @@
                   return c;
                 });
               } else if (mappedChild != null) {
-                if (isValidElement2(mappedChild)) {
+                if (isValidElement3(mappedChild)) {
                   {
                     if (mappedChild.key && (!_child || _child.key !== mappedChild.key)) {
                       checkKeyStringCoercion(mappedChild.key);
@@ -828,7 +828,7 @@
             }) || [];
           }
           function onlyChild(children) {
-            if (!isValidElement2(children)) {
+            if (!isValidElement3(children)) {
               throw new Error("React.Children.only expected to receive a single React element child.");
             }
             return children;
@@ -1157,7 +1157,7 @@
             var dispatcher = resolveDispatcher();
             return dispatcher.useLayoutEffect(create, deps);
           }
-          function useCallback(callback, deps) {
+          function useCallback2(callback, deps) {
             var dispatcher = resolveDispatcher();
             return dispatcher.useCallback(callback, deps);
           }
@@ -1559,11 +1559,11 @@
             if (isArray(node)) {
               for (var i = 0; i < node.length; i++) {
                 var child = node[i];
-                if (isValidElement2(child)) {
+                if (isValidElement3(child)) {
                   validateExplicitKey(child, parentType);
                 }
               }
-            } else if (isValidElement2(node)) {
+            } else if (isValidElement3(node)) {
               if (node._store) {
                 node._store.validated = true;
               }
@@ -1574,7 +1574,7 @@
                   var iterator = iteratorFn.call(node);
                   var step;
                   while (!(step = iterator.next()).done) {
-                    if (isValidElement2(step.value)) {
+                    if (isValidElement3(step.value)) {
                       validateExplicitKey(step.value, parentType);
                     }
                   }
@@ -1697,7 +1697,7 @@
             return validatedFactory;
           }
           function cloneElementWithValidation(element, props, children) {
-            var newElement = cloneElement.apply(this, arguments);
+            var newElement = cloneElement2.apply(this, arguments);
             for (var i = 2; i < arguments.length; i++) {
               validateChildKeys(arguments[i], newElement.type);
             }
@@ -1919,12 +1919,12 @@
           exports.createFactory = createFactory;
           exports.createRef = createRef;
           exports.forwardRef = forwardRef;
-          exports.isValidElement = isValidElement2;
+          exports.isValidElement = isValidElement3;
           exports.lazy = lazy;
           exports.memo = memo2;
           exports.startTransition = startTransition;
           exports.unstable_act = act;
-          exports.useCallback = useCallback;
+          exports.useCallback = useCallback2;
           exports.useContext = useContext3;
           exports.useDebugValue = useDebugValue;
           exports.useDeferredValue = useDeferredValue;
@@ -18195,7 +18195,7 @@
           {
             propTypesMisspellWarningShown = false;
           }
-          function isValidElement2(object) {
+          function isValidElement3(object) {
             {
               return typeof object === "object" && object !== null && object.$$typeof === REACT_ELEMENT_TYPE;
             }
@@ -18262,11 +18262,11 @@
               if (isArray(node)) {
                 for (var i = 0; i < node.length; i++) {
                   var child = node[i];
-                  if (isValidElement2(child)) {
+                  if (isValidElement3(child)) {
                     validateExplicitKey(child, parentType);
                   }
                 }
-              } else if (isValidElement2(node)) {
+              } else if (isValidElement3(node)) {
                 if (node._store) {
                   node._store.validated = true;
                 }
@@ -18277,7 +18277,7 @@
                     var iterator = iteratorFn.call(node);
                     var step;
                     while (!(step = iterator.next()).done) {
-                      if (isValidElement2(step.value)) {
+                      if (isValidElement3(step.value)) {
                         validateExplicitKey(step.value, parentType);
                       }
                     }
@@ -19540,6 +19540,29 @@ ${errorInfo.componentStack}`);
     return useSubscription(api.target);
   }
 
+  // node_modules/.pnpm/@shopify+ui-extensions-react@2024.7.0_@shopify+ui-extensions@2024.7.0_react-reconciler@0.29.0_react@18.3.1/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/hooks/translate.mjs
+  var import_react13 = __toESM(require_react(), 1);
+  function useTranslate() {
+    const {
+      i18n
+    } = useApi();
+    const translate = (0, import_react13.useCallback)((...args) => {
+      const translation = i18n.translate(...args);
+      if (!Array.isArray(translation)) {
+        return translation;
+      }
+      return translation.map((part, index) => {
+        if (/* @__PURE__ */ (0, import_react13.isValidElement)(part)) {
+          return /* @__PURE__ */ (0, import_react13.cloneElement)(part, {
+            key: index
+          });
+        }
+        return part;
+      });
+    }, [i18n]);
+    return translate;
+  }
+
   // node_modules/.pnpm/@shopify+ui-extensions-react@2024.7.0_@shopify+ui-extensions@2024.7.0_react-reconciler@0.29.0_react@18.3.1/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/hooks/settings.mjs
   function useSettings() {
     const settings = useSubscription(useApi().settings);
@@ -19547,7 +19570,7 @@ ${errorInfo.componentStack}`);
   }
 
   // extensions/compare-at-price/src/CompareAtPrice.tsx
-  var import_react13 = __toESM(require_react());
+  var import_react14 = __toESM(require_react());
   var import_jsx_runtime4 = __toESM(require_jsx_runtime());
   var CompareAtPrice_default = reactExtension("purchase.checkout.cart-line-item.render-after", () => /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Extension, {}));
   function getLineItem(_0) {
@@ -19611,11 +19634,12 @@ ${errorInfo.componentStack}`);
     return { appearance, inlineAlignment, fontSize, content, strikethrough, isShowPercentage };
   }
   function Extension() {
+    const translate = useTranslate();
     const settings = getSettings(useSettings());
     const { i18n, extension: extension2, query } = useApi();
     const cartLine = useCartLineTarget();
-    const [pricing, setPricing] = (0, import_react13.useState)({});
-    (0, import_react13.useEffect)(() => __async(this, null, function* () {
+    const [pricing, setPricing] = (0, import_react14.useState)({});
+    (0, import_react14.useEffect)(() => __async(this, null, function* () {
       const lineItem = yield getLineItem({ cartLine, query });
       const { totalAmount: { amount: price }, compareAtPrice: { amount: originalPrice } } = lineItem.cost;
       const formatter = new Intl.NumberFormat("en-US", {
@@ -19636,19 +19660,18 @@ ${errorInfo.componentStack}`);
     const { appearance, inlineAlignment, fontSize, content, strikethrough, isShowPercentage } = settings;
     if (!pricing.totalDiscounts)
       return "";
-    return /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(DiscountTag, __spreadValues(__spreadValues({}, pricing), settings));
     return isShowPercentage ? /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(DiscountTag, __spreadValues(__spreadValues({}, pricing), settings)) : /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(InlineLayout2, { columns: "auto", spacing: "none", inlineAlignment, blockAlignment: "center", children: [
-      content ? /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(
+      /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(
         Text2,
         {
           appearance,
           size: fontSize,
           children: [
-            content,
+            translate("fullPrice"),
             "\xA0"
           ]
         }
-      ) : "",
+      ),
       /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
         Text2,
         {

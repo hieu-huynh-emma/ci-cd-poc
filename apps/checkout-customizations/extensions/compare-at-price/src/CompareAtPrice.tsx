@@ -1,30 +1,32 @@
 import {
-    reactExtension,
-    BlockStack,
-    Text,
-    useApi,
-    useCartLineTarget,
-    InlineLayout,
-    BlockLayout,
-    View, useSettings, Appearance, InlineAlignment
+  Appearance,
+  InlineAlignment,
+  InlineLayout,
+  reactExtension,
+  Text,
+  useApi,
+  useCartLineTarget,
+  useSettings,
+  View,
+  useTranslate
 } from "@shopify/ui-extensions-react/checkout";
-import {useEffect, useState} from "react";
-import {TextSize} from "@shopify/ui-extensions/build/ts/surfaces/checkout/components/shared";
-import {ExtensionSettings} from "@shopify/ui-extensions/build/ts/surfaces/checkout/api/standard/standard";
-import {TextAccessibilityRole} from "@shopify/ui-extensions/build/ts/surfaces/admin/components/shared";
+import { useEffect, useState } from "react";
+import { TextSize } from "@shopify/ui-extensions/build/ts/surfaces/checkout/components/shared";
+import { ExtensionSettings } from "@shopify/ui-extensions/build/ts/surfaces/checkout/api/standard/standard";
+import { TextAccessibilityRole } from "@shopify/ui-extensions/build/ts/surfaces/admin/components/shared";
 
 // 1. Choose an extension target
 export default reactExtension("purchase.checkout.cart-line-item.render-after", () => (
-    <Extension/>
+  <Extension />
 ));
 
-type TextColor = Extract<Appearance, | 'accent' | 'subdued' | 'info' | 'success' | 'warning' | 'critical' | 'decorative'>
+type TextColor = Extract<Appearance, | "accent" | "subdued" | "info" | "success" | "warning" | "critical" | "decorative">
 
-async function getLineItem({cartLine, query}) {
-    const {merchandise: {id}, quantity} = cartLine
+async function getLineItem({ cartLine, query }) {
+  const { merchandise: { id }, quantity } = cartLine;
 
-    const {data, errors} = await query(
-        `query ($id: ID!) {
+  const { data, errors } = await query(
+    `query ($id: ID!) {
          node(id: $id) {
         ... on ProductVariant {
             id
@@ -39,111 +41,108 @@ async function getLineItem({cartLine, query}) {
         }
     }
       }`,
-        {
-            variables: {id},
-        },
-    )
+    {
+      variables: { id },
+    },
+  );
 
-    const originalPrice = data?.node?.compareAtPrice.amount ?? 0
+  const originalPrice = data?.node?.compareAtPrice.amount ?? 0;
 
-    cartLine.cost.compareAtPrice = {amount: originalPrice * quantity}
+  cartLine.cost.compareAtPrice = { amount: originalPrice * quantity };
 
-    return cartLine
+  return cartLine;
 }
 
 function DiscountTag(props) {
-    if (!props || !props?.originalPrice) return ""
+  if (!props || !props?.originalPrice) return "";
 
-    const {originalPrice, price, appearance, fontSize, inlineAlignment} = props
+  const { originalPrice, price, appearance, fontSize, inlineAlignment } = props;
 
-    const diff = originalPrice - price
-    const percent = (diff * 100) / originalPrice
-    const formattedPercent = Math.floor(percent)
+  const diff = originalPrice - price;
+  const percent = (diff * 100) / originalPrice;
+  const formattedPercent = Math.floor(percent);
 
-    return (
-        <InlineLayout inlineAlignment={inlineAlignment} blockAlignment={"center"}>
-            <View background={"subdued"} padding={"extraTight"}
-                  borderRadius={"base"}>
-                <Text
-                    appearance={appearance}
-                    size={fontSize}
-                >
-                    {formattedPercent}% OFF
-                </Text>
-            </View>
-        </InlineLayout>
+  return (
+    <InlineLayout inlineAlignment={inlineAlignment} blockAlignment={"center"}>
+      <View background={"subdued"} padding={"extraTight"}
+            borderRadius={"base"}>
+        <Text
+          appearance={appearance}
+          size={fontSize}
+        >
+          {formattedPercent}% OFF
+        </Text>
+      </View>
+    </InlineLayout>
 
-    )
+  );
 }
 
 function getSettings(extensionSettings: Partial<ExtensionSettings>) {
-    const appearance = (extensionSettings.apperance || "subdued") as TextColor,
-        inlineAlignment: InlineAlignment = extensionSettings.alignment === "right" ? "end" : "start",
-        fontSize = (extensionSettings.fontSize || "base") as TextSize,
-        content = extensionSettings.message || "On sale. Originally",
-        strikethrough: TextAccessibilityRole | undefined = extensionSettings.isShowStrikethrough ? "deletion" : undefined,
-        isShowPercentage = extensionSettings.isShowPercentage;
+  const appearance = (extensionSettings.apperance || "subdued") as TextColor,
+    inlineAlignment: InlineAlignment = extensionSettings.alignment === "right" ? "end" : "start",
+    fontSize = (extensionSettings.fontSize || "base") as TextSize,
+    content = extensionSettings.message || "On sale. Originally",
+    strikethrough: TextAccessibilityRole | undefined = extensionSettings.isShowStrikethrough ? "deletion" : undefined,
+    isShowPercentage = extensionSettings.isShowPercentage;
 
-    return {appearance, inlineAlignment, fontSize, content, strikethrough, isShowPercentage};
+  return { appearance, inlineAlignment, fontSize, content, strikethrough, isShowPercentage };
 }
 
 function Extension() {
-    const settings = getSettings(useSettings())
-    const {i18n, extension, query} = useApi();
-    const cartLine = useCartLineTarget();
+  const translate = useTranslate()
+  const settings = getSettings(useSettings());
+  const { i18n, extension, query } = useApi();
+  const cartLine = useCartLineTarget();
 
-    const [pricing, setPricing] = useState({});
+  const [pricing, setPricing] = useState({});
 
-    useEffect(async () => {
-        const lineItem = await getLineItem({cartLine, query});
+  useEffect(async () => {
+    const lineItem = await getLineItem({ cartLine, query });
 
-        const {totalAmount: {amount: price}, compareAtPrice: {amount: originalPrice}} = lineItem.cost;
+    const { totalAmount: { amount: price }, compareAtPrice: { amount: originalPrice } } = lineItem.cost;
 
-        const formatter = new Intl.NumberFormat('en-US', {
-            style: 'currency',
-            currency: 'USD',
-            currencyDisplay: 'narrowSymbol'
-        })
+    const formatter = new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: "USD",
+      currencyDisplay: "narrowSymbol",
+    });
 
-        const totalDiscounts = Math.max(0, originalPrice - price),
-            priceCurrency = formatter.format(price),
-            originalPriceCurrency = formatter.format(originalPrice),
-            totalDiscountsCurrency = formatter.format(totalDiscounts);
+    const totalDiscounts = Math.max(0, originalPrice - price),
+      priceCurrency = formatter.format(price),
+      originalPriceCurrency = formatter.format(originalPrice),
+      totalDiscountsCurrency = formatter.format(totalDiscounts);
 
-        setPricing({
-            price,
-            priceCurrency,
-            originalPrice,
-            originalPriceCurrency,
-            totalDiscounts,
-            totalDiscountsCurrency
-        })
-    }, [query]);
+    setPricing({
+      price,
+      priceCurrency,
+      originalPrice,
+      originalPriceCurrency,
+      totalDiscounts,
+      totalDiscountsCurrency,
+    });
+  }, [query]);
 
-    const {appearance, inlineAlignment, fontSize, content, strikethrough, isShowPercentage} = settings
+  const { appearance, inlineAlignment, fontSize, content, strikethrough, isShowPercentage } = settings;
 
-    if (!pricing.totalDiscounts) return ""
+  if (!pricing.totalDiscounts) return "";
 
-    return <DiscountTag {...pricing} {...settings} />
+  return isShowPercentage ? <DiscountTag {...pricing} {...settings} /> : (
+    <InlineLayout columns={"auto"} spacing="none" inlineAlignment={inlineAlignment} blockAlignment={"center"}>
+      <Text
+        appearance={appearance}
+        size={fontSize}
+      >
+        {translate("fullPrice")}
+        &nbsp;
+      </Text>
 
-    return isShowPercentage ? <DiscountTag {...pricing} {...settings} /> : (
-        <InlineLayout columns={"auto"} spacing="none" inlineAlignment={inlineAlignment} blockAlignment={"center"}>
-            {content ? (
-                <Text
-                    appearance={appearance}
-                    size={fontSize}
-                >
-                    {content}
-                    &nbsp;
-                </Text>
-            ) : ""}
-
-            <Text appearance={appearance}
-                  accessibilityRole={strikethrough}
-                  size={fontSize}
-            >
-                {pricing?.originalPriceCurrency}
-            </Text>
-        </InlineLayout>
-    );
+      <Text appearance={appearance}
+            accessibilityRole={strikethrough}
+            size={fontSize}
+      >
+        {pricing?.originalPriceCurrency}
+      </Text>
+    </InlineLayout>
+  );
 }
