@@ -32,18 +32,17 @@ async function getOrderPriceBreakdown({cartLines, query, i18n, totalDiscountedAm
         let price = 0, originalPrice = 0;
 
         lineItems.forEach(({cost}) => {
-            console.log("=>(Checkout.tsx:43) cost", cost);
-
-            const {totalAmount: {amount: priceAmount}, compareAtPrice} = cost;
+            const {subtotalAmount: {amount: priceAmount}, compareAtPrice} = cost;
 
             const {amount: originalPriceAmount = priceAmount} = compareAtPrice || {}
 
             price += +priceAmount
             originalPrice += +originalPriceAmount
         });
+
         const saleDiscounted = Math.max(0, originalPrice - price)
 
-        const totalDiscounts =  saleDiscounted + totalDiscountedAmount || 0;
+        const totalDiscounts = saleDiscounted + totalDiscountedAmount || 0;
 
         const priceCurrency = i18n.formatCurrency(price),
             originalPriceCurrency = i18n.formatCurrency(originalPrice),
@@ -85,9 +84,17 @@ async function getLineItem({cartLine, query}) {
         },
     )
 
-    const originalPrice = data?.node?.compareAtPrice.amount ?? 0
+    const pricePerUnit = data?.node?.price?.amount ?? 0,
+        price = pricePerUnit * quantity,
 
-    cartLine.cost.compareAtPrice = {amount: originalPrice * quantity}
+        originalPricePerUnit = data?.node?.compareAtPrice?.amount ?? 0,
+        originalPrice = originalPricePerUnit * quantity;
+
+
+    cartLine.cost.compareAtPrice = !!originalPrice ? {amount: originalPrice} : null
+
+    //The cost of the merchandise line before line-level discounts.
+    cartLine.cost.subtotalAmount = {amount: price}
 
     return cartLine
 }
@@ -103,10 +110,8 @@ const getDiscountedAmount = (discountAllocations: CartDiscountAllocation[] = [])
 
 function getTotalDiscountAllocations(cartDiscountAllocations: CartDiscountAllocation[], cartLines: CartLine[]) {
     const cartDiscounts = getDiscountedAmount(cartDiscountAllocations)
-    console.log("=>(Checkout.tsx:106) cartDiscounts", cartDiscounts);
 
     const lineItemDiscounts = cartLines.reduce((r, {discountAllocations}) => r += getDiscountedAmount(discountAllocations), 0)
-    console.log("=>(Checkout.tsx:109) lineItemDiscounts", lineItemDiscounts);
 
     return cartDiscounts + lineItemDiscounts;
 }

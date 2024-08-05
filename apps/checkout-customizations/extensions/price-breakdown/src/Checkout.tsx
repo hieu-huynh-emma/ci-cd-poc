@@ -9,13 +9,14 @@ import {ExtensionSettings} from "@shopify/ui-extensions/build/ts/surfaces/checko
 
 export default reactExtension(
     "purchase.checkout.reductions.render-after",
-    () => <PriceBreakdownTop/>,
+    () => <Extension/>,
 );
 
 
 async function getOrderPriceBreakdown({cartLines, query, i18n}) {
 
     const lineItems = await lineItemsMapper(cartLines)
+    console.log("=>(Checkout.tsx:19) lineItems", lineItems);
 
     return computePricing(lineItems)
 
@@ -29,11 +30,11 @@ async function getOrderPriceBreakdown({cartLines, query, i18n}) {
         let price = 0, originalPrice = 0;
 
         lineItems.forEach(({cost}) => {
-            console.log("=>(Checkout.tsx:43) cost", cost);
-
-            const {totalAmount: {amount: priceAmount}, compareAtPrice} = cost;
+            const {subtotalAmount: {amount: priceAmount}, compareAtPrice} = cost;
+            console.log("=>(Checkout.tsx:33) cost", cost);
 
             const {amount: originalPriceAmount = priceAmount} = compareAtPrice || {}
+            console.log("=>(Checkout.tsx:35) originalPriceAmount", originalPriceAmount);
 
             price += +priceAmount
             originalPrice += +originalPriceAmount
@@ -81,16 +82,25 @@ async function getLineItem({cartLine, query}) {
         },
     )
 
-    const originalPrice = data?.node?.compareAtPrice.amount ?? 0
+    const pricePerUnit = data?.node?.price?.amount ?? 0,
+        price = pricePerUnit * quantity,
 
-    cartLine.cost.compareAtPrice = {amount: originalPrice * quantity}
+        originalPricePerUnit = data?.node?.compareAtPrice?.amount ?? 0,
+        originalPrice = originalPricePerUnit * quantity;
+
+
+    cartLine.cost.compareAtPrice = !!originalPrice ? {amount: originalPrice} : null
+
+    //The cost of the merchandise line before line-level discounts.
+    cartLine.cost.subtotalAmount = {amount: price}
 
     return cartLine
 }
 
-function PriceBreakdownTop() {
+function Extension() {
     const {i18n, extension, query} = useApi();
     const cartLines = useCartLines()
+    console.log("=>(Checkout.tsx:96) cartLines", cartLines);
 
     const [pricing, setPricing] = useState({price: 0, originalPrice: 0});
 
@@ -126,5 +136,3 @@ function PriceBreakdownTop() {
         </BlockStack>
     ) : ""
 }
-
-
