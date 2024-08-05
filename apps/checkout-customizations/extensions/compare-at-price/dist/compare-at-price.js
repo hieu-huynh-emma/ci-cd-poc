@@ -19582,19 +19582,27 @@ ${errorInfo.componentStack}`);
   function DiscountTag(props) {
     if (!props || !(props == null ? void 0 : props.originalPrice))
       return "";
-    const { originalPrice, price, appearance, fontSize } = props;
+    const { originalPrice, price, appearance, fontSize, inlineAlignment } = props;
     const diff = originalPrice - price;
     const percent = diff * 100 / originalPrice;
     const formattedPercent = Math.floor(percent);
-    return /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(View2, { background: "subdued", padding: "extraTight", borderRadius: "base", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(
-      Text2,
+    return /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(InlineLayout2, { inlineAlignment, blockAlignment: "center", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
+      View2,
       {
-        appearance,
-        size: fontSize,
-        children: [
-          formattedPercent,
-          "% OFF"
-        ]
+        background: "subdued",
+        padding: "extraTight",
+        borderRadius: "base",
+        children: /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(
+          Text2,
+          {
+            appearance,
+            size: fontSize,
+            children: [
+              formattedPercent,
+              "% OFF"
+            ]
+          }
+        )
       }
     ) });
   }
@@ -19628,6 +19636,7 @@ ${errorInfo.componentStack}`);
     const { appearance, inlineAlignment, fontSize, content, strikethrough, isShowPercentage } = settings;
     if (!pricing.totalDiscounts)
       return "";
+    return /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(DiscountTag, __spreadValues(__spreadValues({}, pricing), settings));
     return isShowPercentage ? /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(DiscountTag, __spreadValues(__spreadValues({}, pricing), settings)) : /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(InlineLayout2, { columns: "auto", spacing: "none", inlineAlignment, blockAlignment: "center", children: [
       content ? /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(
         Text2,

@@ -54,21 +54,25 @@ async function getLineItem({cartLine, query}) {
 function DiscountTag(props) {
     if (!props || !props?.originalPrice) return ""
 
-    const {originalPrice, price, appearance, fontSize} = props
+    const {originalPrice, price, appearance, fontSize, inlineAlignment} = props
 
     const diff = originalPrice - price
     const percent = (diff * 100) / originalPrice
     const formattedPercent = Math.floor(percent)
 
     return (
-        <View background={"subdued"} padding={"extraTight"} borderRadius={"base"}>
-            <Text
-                appearance={appearance}
-                size={fontSize}
-            >
-                {formattedPercent}% OFF
-            </Text>
-        </View>
+        <InlineLayout inlineAlignment={inlineAlignment} blockAlignment={"center"}>
+            <View background={"subdued"} padding={"extraTight"}
+                  borderRadius={"base"}>
+                <Text
+                    appearance={appearance}
+                    size={fontSize}
+                >
+                    {formattedPercent}% OFF
+                </Text>
+            </View>
+        </InlineLayout>
+
     )
 }
 
@@ -119,6 +123,8 @@ function Extension() {
     const {appearance, inlineAlignment, fontSize, content, strikethrough, isShowPercentage} = settings
 
     if (!pricing.totalDiscounts) return ""
+
+    return <DiscountTag {...pricing} {...settings} />
 
     return isShowPercentage ? <DiscountTag {...pricing} {...settings} /> : (
         <InlineLayout columns={"auto"} spacing="none" inlineAlignment={inlineAlignment} blockAlignment={"center"}>
