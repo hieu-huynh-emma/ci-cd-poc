@@ -3,11 +3,11 @@
 
 # The version of APIs your extension will receive. Learn more:
 # https://shopify.dev/docs/api/usage/versioning
-api_version = "2024-04"
+api_version = "2024-07"
 
 [[extensions]]
-name = "price-breakdown"
-handle = "price-breakdown"
+name = "total savings"
+handle = "total-savings"
 type = "ui_extension"
 
 
@@ -15,14 +15,9 @@ type = "ui_extension"
 # and the file that contains your extension’s source code. Learn more:
 # https://shopify.dev/docs/api/checkout-ui-extensions/unstable/extension-targets-overview
 
-
 [[extensions.targeting]]
-module = "./src/Checkout.tsx"
-target = "purchase.checkout.reductions.render-after"
-
-
-
-
+module = "./src/TotalSavings.tsx"
+target = "purchase.checkout.block.render"
 
 [extensions.capabilities]
 # Gives your extension access to directly query Shopify’s storefront API.
@@ -48,3 +43,20 @@ api_access = true
 # Defines settings that will be collected from merchants installing
 # your extension. Learn more:
 # https://shopify.dev/docs/api/checkout-ui-extensions/unstable/configuration#settings-definition
+
+[extensions.settings]
+[[extensions.settings.fields]]
+key = "message"
+type = "single_line_text_field"
+name = "Message"
+description = "Eg: You save"
+
+[[extensions.settings.fields]]
+key = "alignment"
+type = "single_line_text_field"
+name = "Alignment"
+description = ""
+[[extensions.settings.fields.validations]]
+name = "choices"
+value = '["left", "right"]'
+

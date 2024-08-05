@@ -2,19 +2,16 @@ import {
     InlineLayout, View, BlockStack,
     useApi,
     useCartLineTarget, BlockLayout,
-    reactExtension, useCartLines, Text
+    reactExtension, useCartLines, Text, InlineAlignment, useSettings, useDiscountAllocations
 } from '@shopify/ui-extensions-react/checkout';
 import {useEffect, useState} from 'react';
+import {ExtensionSettings} from "@shopify/ui-extensions/build/ts/surfaces/checkout/api/standard/standard";
 
-export const priceBreakdownTop = reactExtension(
+export default reactExtension(
     "purchase.checkout.reductions.render-after",
     () => <PriceBreakdownTop/>,
 );
 
-export const priceBreakdownBottom = reactExtension(
-    'purchase.checkout.block.render',
-    () => <PriceBreakdownBottom/>,
-);
 
 async function getOrderPriceBreakdown({cartLines, query, i18n}) {
 
@@ -130,26 +127,4 @@ function PriceBreakdownTop() {
     ) : ""
 }
 
-function PriceBreakdownBottom() {
-    const {i18n, extension, query} = useApi();
-    const cartLines = useCartLines()
 
-
-    const [pricing, setPricing] = useState({price: 0, originalPrice: 0});
-
-    useEffect(async () => {
-        const priceBreakdown = await getOrderPriceBreakdown({cartLines, query, i18n});
-
-        setPricing(priceBreakdown)
-    }, [query]);
-
-    return pricing.totalDiscounts ? (
-        <InlineLayout columns={['fill', 'auto']}>
-            <View padding="none"></View>
-            <View padding="none" inlineAlignment="end">
-                <Text size="medium" appearance="critical" emphasis="bold">You
-                    save {pricing?.totalDiscountsCurrency}!</Text>
-            </View>
-        </InlineLayout>
-    ) : ""
-}
