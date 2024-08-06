@@ -41,13 +41,41 @@
     },
     "cart": {
       "view": "Afficher mon panier ({{ count }})",
-      "item_added": "Article ajouté au panier"
+      "item_added": "Article ajouté au panier",
+      "general": {
+        "checkout": "Vérifier",
+        "close_cart": "Fermer le panier",
+        "continue_browsing_html": "Continuez à naviguer <a href=\"&lt;span%20class='notranslate'&gt;{{%20link%20}}&lt;\/span&gt;\">ici<\/a> .",
+        "cookies_required": "Activer les cookies pour utiliser le panier",
+        "empty": "Votre carte est actuellement vide.",
+        "free_shipping_and_taxes_at_checkout": "Livraison GRATUITE. Appliquez le code promotionnel lors du paiement.",
+        "increase_quantity": "Augmenter la quantité d'articles d'un",
+        "note": "Instructions spéciales pour le vendeur",
+        "reduce_quantity": "Réduire la quantité d'articles d'un",
+        "remove": "Retirer",
+        "savings_html": "Vous économisez {{ savings }}",
+        "ship_next_business_day": "Les commandes sont généralement expédiées le jour ouvrable suivant.",
+        "ship_today": "Les commandes passées avant 14h HE seront expédiées aujourd'hui.",
+        "subtotal": "Total",
+        "taxes_and_shipping_at_checkout": "Taxes et frais de port calculés à la caisse",
+        "taxes_and_shipping_policy_at_checkout_html": "Taxes et <a href=\"&lt;span%20class='notranslate'&gt;{{%20link%20}}&lt;\/span&gt;\">frais de port<\/a> calculés à la caisse",
+        "taxes_included_and_shipping_policy_html": "Taxes incluses. <a href=\"&lt;span%20class='notranslate'&gt;{{%20link%20}}&lt;\/span&gt;\">Frais de port<\/a> calculés lors du paiement.",
+        "taxes_included_but_shipping_at_checkout": "Taxes incluses et frais de port calculés à la caisse",
+        "title": "Votre panier",
+        "update": "Mise à jour panier"
+      },
+      "label": {
+        "quantity": "Quantité"
+      }
     },
     "share": {
       "copy_to_clipboard": "Copier le lien",
       "share_url": "Lien",
       "success_message": "Lien copié dans le presse-papiers",
       "close": "Fermer le partage"
+    },
+    "labels": {
+      "payment_providers": "méthodes de payement"
     }
   },
   "newsletter": {
@@ -104,12 +132,7 @@
       "description": "Description",
       "on_sale": "Vente",
       "product_variants": "Variantes de produits",
-      "quantity": {
-        "label": "Quantité",
-        "input_label": "Quantité pour {{ product }}",
-        "increase": "Augmenter la quantité de {{ product }}",
-        "decrease": "Réduire la quantité de {{ product }}"
-      },
+      "quantity": "Quantité",
       "price": {
         "from_price_html": "Du {{ price }}",
         "regular_price": "Prix habituel",
@@ -140,7 +163,18 @@
       },
       "view_full_details": "Afficher tous les détails",
       "include_taxes": "Taxes incluses.",
-      "shipping_policy_html": "<a href=\"{{ link }}\">Frais d'expédition<\/a> calculés à l'étape de paiement."
+      "shipping_policy_html": "<a href=\"{{ link }}\">Frais d'expédition<\/a> calculés à l'étape de paiement.",
+      "availability": "Disponibilité",
+      "back_to_collection": "Retour à {{ title }}",
+      "from_lowest_price_html": "à partir de {{ lowest_price }}",
+      "loader_label": "Ajout du produit à votre panier",
+      "quantity_minimum_message": "La quantité doit être de 1 ou plus",
+      "regular_price": "Prix habituel",
+      "sale_price": "Prix de vente",
+      "unit_price_label": "Prix unitaire",
+      "view_cart": "Voir le panier",
+      "view_in_space": "Vue dans votre espace",
+      "view_in_space_label": "Visualisez dans votre espace, chargez l'article dans la fenêtre de réalité augmentée"
     },
     "modal": {
       "label": "Galerie de supports multimédias"
@@ -171,6 +205,16 @@
       "sort_by_label": "Trier par :",
       "to": "À",
       "clear_filter": "Effacer le filtre"
+    },
+    "bundle": {
+      "qty": "Quantité",
+      "what_inside": "Qu'y a-t-il dans le pack ?"
+    },
+    "quantity": {
+      "decrease": "Diminuer la quantité pour {{ product }}",
+      "increase": "Augmenter la quantité pour {{ product }}",
+      "input_label": "Quantité pour {{ product }}",
+      "label": "Quantité"
     }
   },
   "templates": {
@@ -242,7 +286,9 @@
       "login": {
         "title": "Vous possédez un compte ?",
         "paragraph_html": "<a href=\"{{ link }}\" class=\"link underlined-link\">Connectez-vous<\/a> pour payer plus vite."
-      }
+      },
+      "free_shipping": "GRATUIT (Expédié sous 3 à 7 jours)",
+      "secure_checkout": "Paiement sécurisé"
     },
     "footer": {
       "payment": "Moyens de paiement"
@@ -266,6 +312,13 @@
     },
     "video": {
       "load_video": "Charger la vidéo : {{ description }}"
+    },
+    "home": {
+      "award_ribbon": "PRIX REÇUS"
+    },
+    "product_comparison": {
+      "comparison_table": "Tableau de comparaison",
+      "name": "Comparaison de produits"
     }
   },
   "localization": {
@@ -440,6 +493,41 @@
       "signup_form_email_label": "Email",
       "signup_form_success": "We will send you an email right before we open!",
       "password_link": "Enter using password"
+    }
+  },
+  "cart": {
+    "checkout_btn_text": "Vérifier",
+    "free_shipping": "Livraison gratuite!",
+    "promo_applied": "Code promo",
+    "promo_placeholder": "Tapez le code promotionnel ici",
+    "shipping": "Expédition",
+    "subtotal": "Total",
+    "title": "Votre panier",
+    "total": "Total hors taxe)"
+  },
+  "shopify": {
+    "checkout": {
+      "general": {
+        "ssl": "Cryptage SSL sécurisé"
+      },
+      "order_summary": {
+        "discount_hint": "Un seul code promotionnel peut être utilisé par commande.",
+        "discount_sublabel": "Les offres ne sont pas cumulables.",
+        "no_promo_yet": "Vous avez un code promo ? Saisissez-le ci-dessous.",
+        "only_one_code_allowed": "Un seul code promotionnel peut être utilisé par commande.",
+        "promo_applied": "Code promo appliqué !",
+        "promo_code": "Code promo",
+        "sale_discount": "Remise sur les soldes",
+        "you_save": "Vous économisez {{ saved }} !"
+      },
+      "product_removal": "Retrait du produit",
+      "scheduled_delivery_with_in_home_setup_faq_1": "L'installation à domicile comprend uniquement l'installation des articles volumineux achetés (matelas ou cadre de lit). La livraison programmée avec installation à domicile ne peut être remboursée en cas de retour.",
+      "scheduled_delivery_with_in_home_setup_faq_2": "Si vous recevez un matelas ou un cadre de lit avec notre option de livraison programmée avec installation à domicile, notre partenaire de livraison retirera votre ancien matelas et votre ancien cadre de lit de la même pièce et au même moment de la livraison. Les retraits ne peuvent pas être remboursés\/retournés.",
+      "shipping_method": {
+        "schedule_delivery_incomplete": "La livraison programmée avec installation à domicile est incomplète.",
+        "standard_delivery_no_contact": "Les commandes sont expédiées en 1 à 3 jours ouvrables et arrivent généralement entre 5 et 7 jours.",
+        "subtitle": "Afin que vos articles vous soient livrés plus rapidement, votre commande peut être divisée en deux ou plusieurs envois."
+      }
     }
   }
 }
