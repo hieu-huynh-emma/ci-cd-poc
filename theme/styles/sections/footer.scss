@@ -384,9 +384,11 @@
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   justify-content: flex-start;
+  justify-items: flex-start;
   align-items: center;
 
   @media screen and (max-width: 768px) {
     justify-content: center;
+    justify-items: center;
   }
 }
