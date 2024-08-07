@@ -1,0 +1,15 @@
+.weglot-container {
+  .language-option {
+    display: none;
+    padding: 0 !important;
+  }
+
+  .language-option:not([aria-label]) {
+    display: block;
+
+    a {
+      opacity: 1 !important;
+      margin: 0 !important;
+    }
+  }
+}

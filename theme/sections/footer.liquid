@@ -31,9 +31,9 @@
     .footer-contact {
         display: flex;
         gap: 50px;
-/*         grid-template-columns:minmax(0, 1fr);
-        grid-auto-flow: row */
-      flex-direction:column;
+        /*         grid-template-columns:minmax(0, 1fr);
+                grid-auto-flow: row */
+        flex-direction: column;
     }
 
     .footer-contact__main {
@@ -47,15 +47,18 @@
         grid-template-columns:repeat(3, minmax(0, auto));
         grid-gap: 70px
     }
-.foot_info {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
+
+    .foot_info {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
     @media screen and (max-width: 1024px) {
-      .site-footer .footer-chassis{
-        gap:20px;
-      }
+        .site-footer .footer-chassis {
+            gap: 20px;
+        }
+
         .footer-contact {
             flex-wrap: wrap
         }
@@ -106,14 +109,14 @@
     }
 </style>
 
-<lazy-stylesheet href="{{ 'footer.css' | asset_url }}"></lazy-stylesheet>
+<link rel="quickscript" loading="visibility" href="{{ 'footer.css' | asset_url }}"/>
 
 <footer class="site-footer">
     <div class="footer-chassis page-boundary">
         <div class="footer-contact">
             <div class="footer-contact__main">
                 <div class='site-footer__logo'>
-                    <img src='{{ ' emma-logo.svg' | asset_url }}' alt='' width="120px" height='24px' loading="lazy" />
+                    <img src='{{ ' emma-logo.svg' | asset_url }}' alt='' width="120px" height='24px' loading="lazy"/>
                 </div>
 
                 <div class="footer-newsletter">
@@ -128,22 +131,27 @@
                                 <div class="field footer-newsletter__field">
                                     <input
                                             id="NewsletterForm--{{ section.id }}" type="email" name="contact[email]"
-                                            class="emma-field__input text-charade" value="{{ form.email }}" aria-required="true"
-                                            autocorrect="off" autocapitalize="off" autocomplete="email" {% if form.errors %}
+                                            class="emma-field__input text-charade" value="{{ form.email }}"
+                                            aria-required="true"
+                                            autocorrect="off" autocapitalize="off"
+                                            autocomplete="email" {% if form.errors %}
                                         autofocus aria-invalid="true" aria-describedby="ContactFooter-error" {% elsif
                                             form.posted_successfully? %} aria-describedby="ContactFooter-success" {% endif %}
                                             placeholder="Your email" required
                                     >
                                     <button
-                                            type="submit" class="field__button footer-newsletter__button px-5" name="commit"
+                                            type="submit" class="field__button footer-newsletter__button px-5"
+                                            name="commit"
                                             id="Subscribe" aria-label="{{ 'newsletter.button_label' | t }}"
                                     >
-                                        <img src='{{ 'subscribe-email.svg' | asset_url }}' alt='' width='16' height="16" loading="lazy" />
+                                        <img src='{{ 'subscribe-email.svg' | asset_url }}' alt='' width='16' height="16"
+                                             loading="lazy"/>
                                         Subscribe
                                     </button>
                                 </div>
                                 {%- if form.errors -%}
-                                    <small class="newsletter-form__message form__message" id="ContactFooter-error">{% render
+                                    <small class="newsletter-form__message form__message"
+                                           id="ContactFooter-error">{% render
                                                 'icon-error' %}{{ form.errors.translated_fields['email'] | capitalize }} {{
                                         form.errors.messages['email'] }}</small>
                                 {%- endif -%}
@@ -171,7 +179,8 @@
 
                         {% comment %} <div><a href="#" class="emma-text--white emma-link--small">How do I unsubscribe?</a></div>
                         {% endcomment %}
-                        <div class="site-footer__link">The email address will naturally be cared for according to our strict <a
+                        <div class="site-footer__link">The email address will naturally be cared for according to our
+                            strict <a
                                     href="/pages/privacy-policy"
                             >privacy policy.</a></div>
                     {%- endform %}
@@ -183,13 +192,14 @@
                     Customer Support
                 </h6>
                 <ul class="site-footer__links foot_info">
-                    <li class="site-footer__link"><p class="text-white italic">{{ settings.availability_schedule }}</p></li>
+                    <li class="site-footer__link"><p class="text-white italic">{{ settings.availability_schedule }}</p>
+                    </li>
                     <li class="site-footer__link">
-                        <img src="{{ 'phone.svg' | asset_url }}" width="20" height="20" loading="lazy" />
+                        <img src="{{ 'phone.svg' | asset_url }}" width="20" height="20" loading="lazy"/>
                         <a href="tel:+1 (844) 906 3662">1 (844) 906 3662</a>
                     </li>
                     <li class="site-footer__link">
-                        <img src="{{ 'support-email.svg' | asset_url }}" width="20" height="20" loading="lazy" />
+                        <img src="{{ 'support-email.svg' | asset_url }}" width="20" height="20" loading="lazy"/>
                         <a href="mailto:{{ shop.email }}">{{ shop.email }}</a>
                     </li>
                 </ul>
@@ -216,6 +226,12 @@
 
                 </ul>
             </div>
+            <tracked-button :trackId="Language_Picker" id="footer-language-picker">
+                <h6 class="site-footer__heading">
+                    Language:
+                </h6>
+
+            </tracked-button>
         </div>
 
         {% render 'sitemap', sitemap: section.settings.footer_main_menu %}
@@ -224,9 +240,9 @@
 </footer>
 
 <script>
-    (function() {
-        const checkbox = document.querySelector('#shopify-section-{{section.id}} input[name="customer[accepts_marketing]"]'),
-            submit = document.querySelector('#shopify-section-{{section.id}} [type="submit"]');
+    (function () {
+        const checkbox = document.querySelector('#shopify-section-{{ section.id }} input[name="customer[accepts_marketing]"]'),
+            submit = document.querySelector('#shopify-section-{{ section.id }} [type="submit"]');
 
         checkbox.addEventListener('change', (event) => {
             const checked = event.target.checked;
