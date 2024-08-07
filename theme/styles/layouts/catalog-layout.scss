@@ -3,15 +3,14 @@
   gap: .5rem;
   grid-template-columns: minmax(0, 1fr);
   @media screen and (min-width: 769px) {
-    --item-width: 450px;
+    --item-width: 375px;
     gap: 1.25rem 1rem;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    justify-content: center;
+    grid-template-columns: repeat(auto-fit, minmax(0, var(--item-width)));
+    justify-content: left;
 
     &--center {
       justify-content: center;
     }
-
   }
 
   product-card {

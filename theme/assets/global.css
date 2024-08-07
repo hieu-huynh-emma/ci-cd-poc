@@ -568,21 +568,13 @@ lazy-component[size="md"] {
 lazy-component[size="lg"] {
     min-height: 600px;
 }
-.catalog-grid {
-    --item-width: 224px;
-    display: grid;
-    gap: 20px 16px;
-}
+
 @media screen and (min-width: 769px) {
     .two-columns-layout .content-column {
         gap: 40px;
         justify-items: flex-start;
     }
-    .catalog-grid {
-        --item-width: 304px;
-        gap: 80px 32px;
-        grid-template-columns: repeat(auto-fit, minmax(var(--item-width), max-content));
-    }
+
 }
 .faqs {
     display: grid;

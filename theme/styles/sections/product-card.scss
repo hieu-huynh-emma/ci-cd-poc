@@ -6,7 +6,6 @@ product-card {
   background-color: #f7f7f9;
   border-radius: 8px;
   overflow: hidden;
-
   &.landscape {
     @media screen and (max-width: 769px) {
       .wrapper {
