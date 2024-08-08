@@ -1,9 +1,20 @@
 <!doctype html>
 <html lang="{{ request.locale.iso_code }}">
+    <script type="importmap">
+        {
+            "imports": {
+               "storefront-api": "{{ 'storefront-api.js' | asset_url }}",
+               "data-processor": "{{ 'data-processor.js' | asset_url }}",
+               "data-fetcher": "{{ 'data-fetcher.js' | asset_url }}"
+            }
+        }
+    </script>
     {% render 'app-preconnect' %}
     {% comment %}{{ content_for_header }}{% endcomment %}
 
     <head>
+
+
         {% render 'app-essentials' %}
         {% render 'page-metadata' %}
         {% render 'hreflang-tags' %}

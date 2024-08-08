@@ -236,6 +236,16 @@
     },
     "product-auxiliary": {
       "type": "product-auxiliary",
+      "blocks": {
+        "cross_sell_widget_eKYGzp": {
+          "type": "cross_sell_widget",
+          "settings": {
+          }
+        }
+      },
+      "block_order": [
+        "cross_sell_widget_eKYGzp"
+      ],
       "settings": {
       }
     },

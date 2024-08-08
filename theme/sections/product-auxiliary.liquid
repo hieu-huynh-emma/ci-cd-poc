@@ -1,15 +1,18 @@
 {% assign quick_compare = section.blocks | where: 'type', 'quick_compare' | first %}
-{% comment %}{% assign upsell_widget_old = section.blocks | where: 'type', 'upsell_widget_old' | first %}{% endcomment %}
 {% assign upsell_widget = section.blocks | where: 'type', 'upsell_widget' | first %}
 {% assign cross_sell_widget = section.blocks | where: 'type', 'cross_sell_widget' | first %}
 
 <link rel="quickscript" loading="delayed" href="{{ 'product-auxiliary.css' | asset_url }}">
+<script type="quickscript" src="{{ 'product-auxiliary.js' | asset_url }}"></script>
 
 {% if upsell_widget %}
+  <script type="quickscript" loading="delayed" src="{{ 'upsell-widget.js' | asset_url }}"></script>
   {% render 'product-upsell-widget', settings: upsell_widget.settings %}
 {% endif %}
 
 {% if cross_sell_widget %}
+  <script type="quickscript" loading="delayed" data-url="{{ 'cross-sell-widget.js' | asset_url }}" src="{{ 'cross-sell-importer.js' | asset_url }}"></script>
+
   {% render 'cross-sell-widget' %}
 {% endif %}
 
@@ -17,9 +20,7 @@
   {% render 'quick-compare', settings: quick_compare.settings %}
 {% endif %}
 
-<script type="quickscript" src="{{ 'product-auxiliary.js' | asset_url }}"></script>
-<script type="quickscript" loading="delayed" src="{{ 'cross-sell-widget.js' | asset_url }}"></script>
-<script type="quickscript" loading="delayed" src="{{ 'upsell-widget.js' | asset_url }}"></script>
+
 
 
 {% schema %}
@@ -64,7 +65,6 @@
         }
       ]
     },
-
     {
       "type": "quick_compare",
       "name": "Quick Compare",
@@ -85,6 +85,11 @@
     }
   ],
   "settings": [
+  ],
+  "presets": [
+    {
+      "name": "Product Auxiliary"
+    }
   ]
 }
 {% endschema %}

@@ -9,6 +9,12 @@
         assign trackId = trackId | append: "_" | append: postfix
     endif
 %}
-<cross-sell-engine :variantId="{{ parentVariant.id }}" :trackId="{{ trackId }}">
+
+<cross-sell-engine
+        :variantMode="{{ parentProduct.metafields.accentuate.is_cross_selling_by_variant | default: false }}"
+        :sizeCompatible="{{ parentProduct.metafields.accentuate.cross_selling_size_compatible }}"
+        :productId="{{ parentProduct.id }}"
+        :variantId="{{ parentVariant.id }}"
+        :trackId="{{ trackId }}">
     <div class="skeleton"></div>
 </cross-sell-engine>

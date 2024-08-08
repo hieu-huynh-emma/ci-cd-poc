@@ -45,7 +45,11 @@ if (!customElements.get("product-form")) {
           const qty = formData.quantity;
           const productId = formData.id;
 
-          const productSize = $(`select[name="options[Size]"]`).val().split("|")[0].trim();
+          const $crossSellEngine = $("cross-sell-engine")
+
+          const sizeCompatible = !!$crossSellEngine.attr(":sizeCompatible")
+
+          const productSize = $(`select[name="options[Size]"]`).val()?.split("|")[0].trim();
 
           const allAddonProducts = $crossSells.toArray().map((el) => {
             const $el = $(el);
@@ -59,7 +63,7 @@ if (!customElements.get("product-form")) {
 
             const isConfigurable = allVariants.length > 1 && !selectedVariantId;
 
-            if (isConfigurable) {
+            if (isConfigurable && sizeCompatible) {
               const selectedVariant = addonProd.variants.find((variant) => variant.title.includes(productSize));
 
               return {
