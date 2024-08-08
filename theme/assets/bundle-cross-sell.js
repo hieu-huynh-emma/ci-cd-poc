@@ -93,7 +93,7 @@ class BundleCrossSell extends CustomElement {
                 amount
             }
             metafields(
-                identifiers: [{ namespace: "accentuate", key: "proxy_cross_selling_products" }]
+                identifiers: [{ namespace: "accentuate", key: "optin_bundle_item" }]
             ) {
                 value
                 id
@@ -211,7 +211,7 @@ class BundleCrossSell extends CustomElement {
 
     const crossSellMetafield = metafields
       .filter((m) => !!m)
-      .find(({ namespace, key } = {}) => namespace === "accentuate" && key === "proxy_cross_selling_products");
+      .find(({ namespace, key } = {}) => namespace === "accentuate" && key === "optin_bundle_item");
 
     return {
       id: extractIdFromGid(gid),
@@ -264,7 +264,7 @@ class BundleCrossSell extends CustomElement {
   renderWidget(metaobject, { last }) {
     const {
       qty = 1,
-      variant: { product },
+      product: { product },
     } = metaobject;
 
     const { title, handle, displayName, featuredImage } = product;
