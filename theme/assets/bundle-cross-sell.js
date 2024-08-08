@@ -1,5 +1,7 @@
+import {allFulfilled, fetchMetaobjects, fetchVariant} from "data-fetcher";
+
 class BundleCrossSell extends CustomElement {
-  crossSellProducts = [];
+  bundleItems = [];
 
   bundleCrossSellData;
   primaryVariant;
@@ -30,7 +32,7 @@ class BundleCrossSell extends CustomElement {
   }
 
   render() {
-    if (!this.crossSellProducts.length) return;
+    if (!this.bundleItems.length) return;
     this.renderSwitcher();
     this.$el.find(".bundle-items").html(this.template());
     this.renderPriceTag();
@@ -39,8 +41,8 @@ class BundleCrossSell extends CustomElement {
   }
 
   template() {
-    return this.crossSellProducts.reduce((r, product, i) => {
-      const last = i + 1 === this.crossSellProducts.length;
+    return this.bundleItems.reduce((r, product, i) => {
+      const last = i + 1 === this.bundleItems.length;
 
       return r + this.renderWidget(product, { index: i, last });
     }, ``);
@@ -53,197 +55,36 @@ class BundleCrossSell extends CustomElement {
 
     const currentVariantId = +$(".product-form__variants option:selected").val();
 
-    this.primaryVariant = await this.fetchVariant(generateShopifyGid("ProductVariant", currentVariantId));
+    this.primaryVariant = await fetchVariant(generateShopifyGid("ProductVariant", currentVariantId));
 
-    const crossSellMetafield = this.primaryVariant.crossSellMetafield;
+    const metaobjectIds = this.primaryVariant.optinBundleMetafield;
 
-    if (!crossSellMetafield) {
+    if (!metaobjectIds.length) {
       this.innerHTML = ``;
       this.$el.hide();
       this.$el.removeClass("is-loading");
       return;
     }
-    const metaobjectIds = JSON.parse(crossSellMetafield.value);
 
-    this.crossSellProducts = await Promise.allSettled(metaobjectIds.map((id) => this.fetchMetaObject(id))).then((results) =>
-      results.filter((x) => x.status === "fulfilled").map((x) => x.value),
-    );
+    const metaobjects = await fetchMetaobjects(metaobjectIds)
+
+    this.bundleItems = await this.composeCrossSellData(metaobjects)
 
     this.render();
   }
 
+  composeCrossSellData(metaobjects) {
+    return allFulfilled(metaobjects.map(async (metaobject) => {
+      return {
+        title: metaobject.title,
+        product: await fetchVariant(metaobject.variantId),
+      }
+    }))
+  }
+
+
   onSwitch() {
     window.dispatchEvent(new Event("productPriceChange"));
-  }
-
-  fetchVariant(gid) {
-    return storefrontApi({
-      method: "POST",
-      data: JSON.stringify({
-        query: `query getVariantById($id: ID!) {
-    node(id: $id) {
-        ... on ProductVariant {
-            id
-            title
-            quantityAvailable
-            price {
-                amount
-            }
-            compareAtPrice {
-                amount
-            }
-            metafields(
-                identifiers: [{ namespace: "accentuate", key: "optin_bundle_item" }]
-            ) {
-                value
-                id
-                key
-                namespace
-            }
-            product {
-                id
-                handle
-                onlineStoreUrl
-                title
-                featuredImage {
-                    id
-                    src
-                    width
-                    height
-                }
-                availableForSale
-                variants(first: 10) {
-                    edges {
-                        cursor
-                        node {
-                            id
-                            title
-                            quantityAvailable
-                            price {
-                                amount
-                                currencyCode
-                            }
-                        }
-                    }
-                }
-                metafields(identifiers: [{ namespace: "accentuate", key: "isolated_image" },{ namespace: "accentuate", key: "display_name" }]) {
-                    value
-                    id
-                    key
-                    namespace
-                }
-            }
-        }
-    }
-}
-`,
-        variables: {
-          id: gid,
-        },
-      }),
-    }).then((res) => this.variantMapper(res.data.data.node));
-  }
-
-  fetchMetaObject(gid) {
-    return storefrontApi({
-      method: "POST",
-      data: JSON.stringify({
-        query: `query getMetaObject($id: ID!) {
-    metaobject(id: $id) {
-        id
-        type
-        updatedAt
-        handle
-        fields {
-            key
-            value
-            type
-        }
-        fields {
-            key
-            value
-            type
-        }
-    }
-}`,
-        variables: {
-          id: gid,
-        },
-      }),
-    }).then(async (res) => {
-      const data = res.data.data.metaobject;
-
-      const metaobject = await Promise.allSettled(
-        data.fields.map(async ({ key, value, type }) => {
-          let data = value;
-
-          if (type === "variant_reference") {
-            data = await this.fetchVariant(value);
-          }
-
-          return [key, data];
-        }),
-      ).then((results) =>
-        results
-          .filter((x) => x.status === "fulfilled")
-          .reduce((r, x) => {
-            r[x.value[0]] = x.value[1];
-            return r;
-          }, {}),
-      );
-
-      return metaobject;
-    });
-  }
-
-  variantMapper(variant) {
-    const {
-      id: gid,
-      price: { amount: price = 0 },
-      compareAtPrice,
-      metafields = [],
-      product,
-      ...rest
-    } = variant;
-
-    const originalPrice = compareAtPrice?.amount ?? price;
-    const totalSaved = Math.max(0, originalPrice - price);
-
-    const crossSellMetafield = metafields
-      .filter((m) => !!m)
-      .find(({ namespace, key } = {}) => namespace === "accentuate" && key === "optin_bundle_item");
-
-    return {
-      id: extractIdFromGid(gid),
-      price,
-      originalPrice,
-      totalSaved,
-      gid,
-      ...(crossSellMetafield ? { crossSellMetafield } : {}),
-      ...(product ? { product: this.productMapper(product) } : {}),
-      ...rest,
-    };
-  }
-
-  productMapper(product) {
-    const { featuredImage: imgSource, metafields = [], variants, ...rest } = product;
-
-    const accentuateImg = metafields.filter((m) => !!m).find(({
-                                                                namespace,
-                                                                key,
-                                                              } = {}) => namespace === "accentuate" && key === "isolated_image");
-    const featuredImage = accentuateImg ? `${JSON.parse(accentuateImg.value)[0].src}&transform=resize=720` : imgSource.src + `&width=720`;
-
-    const displayName = metafields.filter((m) => !!m).find(({
-                                                              namespace,
-                                                              key,
-                                                            } = {}) => namespace === "accentuate" && key === "display_name")?.value;
-    return {
-      featuredImage,
-      variants: variants.edges.map(({ node }) => node),
-      displayName,
-      ...rest,
-    };
   }
 
   async renderSwitcher() {

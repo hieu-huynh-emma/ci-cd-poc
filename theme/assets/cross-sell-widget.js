@@ -1,119 +1,120 @@
-import {allFulfilled, allSettled, fetchMetaobjects, fetchProduct, fetchVariant} from "data-fetcher";
+import { allFulfilled, fetchMetaobjects, fetchProduct, fetchVariant } from "data-fetcher";
 
 
 class CrossSellEngine extends CustomElement {
-    crossSellProducts = [];
-    props = {
-        productId: 0,
-        variantId: 0,
-        trackId: "",
-        sizeCompatible: false,
-        variantMode: false
-    };
+  crossSellProducts = [];
+  props = {
+    productId: 0,
+    variantId: 0,
+    trackId: "",
+    sizeCompatible: false,
+    variantMode: false,
+  };
 
-    constructor() {
-        super();
+  constructor() {
+    super();
+  }
+
+  render() {
+    if (!this.crossSellProducts.length) return;
+
+    this.$el.html(this.template());
+    this.$el.removeClass("is-loading");
+  }
+
+  template() {
+    return this.crossSellProducts.reduce((r, product) => r + this.renderCrossSellWidget(product), ``);
+  }
+
+  async mounted() {
+    super.mounted();
+    const { variantId, variantMode, productId } = this.props;
+
+    if (!!variantMode) {
+      this.onVariantChange(variantId);
+    } else {
+      this.onProductChange(productId);
     }
 
-    render() {
-        if (!this.crossSellProducts.length) return;
+    this.$el.addClass("is-mounted");
+  }
 
-        this.$el.html(this.template());
-        this.$el.removeClass("is-loading");
+  async onVariantChange(variantId) {
+    const { variantMode } = this.props;
+
+    if (!variantMode) return;
+    this.innerHTML = `<div class="skeleton"></div>`;
+    this.$el.addClass("is-loading");
+
+    const variant = await fetchVariant(generateShopifyGid("ProductVariant", variantId));
+
+    const metaobjectIds = variant.crossSellMetafield;
+
+    if (!metaobjectIds) {
+      this.innerHTML = ``;
+      this.$el.hide();
+      this.$el.removeClass("is-loading");
+      return;
     }
 
-    template() {
-        return this.crossSellProducts.reduce((r, product) => r + this.renderCrossSellWidget(product), ``);
+    const metaobjects = await fetchMetaobjects(metaobjectIds);
+
+    this.crossSellProducts = await this.composeCrossSellData(metaobjects);
+
+    this.render();
+  }
+
+  async onProductChange(productId) {
+    this.innerHTML = `<div class="skeleton"></div>`;
+    this.$el.addClass("is-loading");
+
+    const product = await fetchProduct(generateShopifyGid("Product", productId));
+
+    const metaobjectIds = product.crossSellMetafield;
+
+    if (!metaobjectIds.length) {
+      this.innerHTML = ``;
+      this.$el.hide();
+      this.$el.removeClass("is-loading");
+      return;
     }
 
-    async mounted() {
-        super.mounted();
-        const {variantId, variantMode, productId} = this.props;
+    const metaobjects = await fetchMetaobjects(metaobjectIds);
 
-        if (!!variantMode) {
-            this.onVariantChange(variantId);
-        } else {
-            this.onProductChange(productId)
-        }
+    this.crossSellProducts = await this.composeCrossSellData(metaobjects);
 
-        this.$el.addClass("is-mounted");
-    }
+    this.render();
+  }
 
-    async onVariantChange(variantId) {
-        this.innerHTML = `<div class="skeleton"></div>`;
-        this.$el.addClass("is-loading");
-
-        const variant = await fetchVariant(generateShopifyGid("ProductVariant", variantId));
-
-        const crossSellMetafield = variant.crossSellMetafield;
-
-        if (!crossSellMetafield) {
-            this.innerHTML = ``;
-            this.$el.hide()
-            this.$el.removeClass("is-loading");
-            return;
-        }
-
-        const metaobjectIds = JSON.parse(crossSellMetafield.value);
-
-        this.crossSellProducts = await fetchMetaobjects(metaobjectIds)
-
-        this.render();
-    }
-
-    async onProductChange(productId) {
-        this.innerHTML = `<div class="skeleton"></div>`;
-        this.$el.addClass("is-loading");
-
-        const product = await fetchProduct(generateShopifyGid("Product", productId));
-
-        const metaobjectIds = product.crossSellingProducts;
-
-        if (!metaobjectIds.length) {
-            this.innerHTML = ``;
-            this.$el.hide()
-            this.$el.removeClass("is-loading");
-            return;
-        }
-
-        const metaobjects = await fetchMetaobjects(metaobjectIds)
-        console.log("=>(cross-sell-widget.js:88) this.crossSellProducts", metaobjects);
-
-        this.crossSellProducts = await this.composeCrossSellData(metaobjects)
-        console.log("=>(cross-sell-widget.js:89) this.crossSellProducts", this.crossSellProducts);
-
-        this.render();
-    }
-
-    composeCrossSellData(metaobjects) {
-        return allFulfilled(metaobjects.map(async (metaobject) => {
-            return {
-                title: metaobject.title,
-                product: await fetchVariant(metaobject.variantId),
-            }
-        }))
-    }
+  composeCrossSellData(metaobjects) {
+    return allFulfilled(metaobjects.map(async (metaobject) => {
+      return {
+        title: metaobject.title,
+        product: await fetchVariant(metaobject.variantId),
+      };
+    }));
+  }
 
 
-    renderCrossSellWidget(metaobject) {
-        const {trackId, sizeCompatible} = this.props
-        const {
-            qty,
-            product: {
-                id,
-                price,
-                originalPrice,
-                product,
-            },
-        } = metaobject;
+  renderCrossSellWidget(metaobject) {
+    const { trackId, sizeCompatible } = this.props;
+    const {
+      qty,
+      product: {
+        id,
+        price,
+        originalPrice,
+        product,
+      },
+    } = metaobject;
 
-        const {title, displayName, handle, featuredImage} = product;
+    const { title, displayName, handle, featuredImage } = product;
 
-        const totalSaved = Math.max(0, originalPrice - price),
-            priceInCurrency = Currency.format(parseFloat(price)),
-            originalPriceInCurrency = Currency.format(parseFloat(originalPrice));
+    const totalSaved = Math.max(0, originalPrice - price),
+      priceInCurrency = Currency.format(parseFloat(price)),
+      originalPriceInCurrency = Currency.format(parseFloat(originalPrice));
 
-        return `<cross-sell-widget
+    return `<cross-sell-widget
   name="cross-sell"
   type="widget"
   id="cross-sell-${handle}"
@@ -155,39 +156,39 @@ class CrossSellEngine extends CustomElement {
        </tracked-button>  
 </cross-sell-widget>
     `;
-    }
+  }
 }
 
 customElements.define("cross-sell-engine", CrossSellEngine);
 
 class CrossSellWidget extends ProductAuxiliary {
-    get refs() {
-        return {
-            $checkboxInput: this.$el.find(".widget-checkbox__input"),
-        };
+  get refs() {
+    return {
+      $checkboxInput: this.$el.find(".widget-checkbox__input"),
+    };
+  }
+
+  constructor() {
+    super();
+  }
+
+  onClick(e) {
+    super.onClick();
+
+    e.preventDefault();
+
+    const { $checkboxInput } = this.refs;
+
+    const serviceIncluded = $checkboxInput.is(":checked");
+
+    if (!serviceIncluded) {
+      $checkboxInput.prop("checked", true);
+    } else {
+      $checkboxInput.prop("checked", false);
     }
 
-    constructor() {
-        super();
-    }
-
-    onClick(e) {
-        super.onClick();
-
-        e.preventDefault();
-
-        const {$checkboxInput} = this.refs;
-
-        const serviceIncluded = $checkboxInput.is(":checked");
-
-        if (!serviceIncluded) {
-            $checkboxInput.prop("checked", true);
-        } else {
-            $checkboxInput.prop("checked", false);
-        }
-
-        window.dispatchEvent(new Event("productPriceChange"))
-    }
+    window.dispatchEvent(new Event("productPriceChange"));
+  }
 }
 
 customElements.define("cross-sell-widget", CrossSellWidget);

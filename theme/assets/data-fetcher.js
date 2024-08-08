@@ -1,15 +1,15 @@
-import {metaobjectMapper, productMapper, variantMapper} from "data-processor";
-import API from "storefront-api"
+import { metaobjectMapper, productMapper, variantMapper } from "data-processor";
+import API from "storefront-api";
 
 export const fetchMetaobjects = (metaobjectIds) => {
-    return allFulfilled(metaobjectIds.map((id) => fetchMetaObject(id)))
-}
+  return allFulfilled(metaobjectIds.map((id) => fetchMetaObject(id)));
+};
 
 export const fetchMetaObject = (gid) => {
-    return API({
-        method: "POST",
-        data: JSON.stringify({
-            query: `query getMetaObject($id: ID!) {
+  return API({
+    method: "POST",
+    data: JSON.stringify({
+      query: `query getMetaObject($id: ID!) {
     metaobject(id: $id) {
         id
         type
@@ -27,18 +27,23 @@ export const fetchMetaObject = (gid) => {
         }
     }
 }`,
-            variables: {
-                id: gid,
-            },
-        }),
-    }).then((res) => metaobjectMapper(res.data.data.metaobject))
-}
+      variables: {
+        id: gid,
+      },
+    }),
+  }).then((res) => metaobjectMapper(res.data.data.metaobject));
+};
 
 export const fetchVariant = (gid) => {
-    return API({
-        method: "POST",
-        data: JSON.stringify({
-            query: `query getVariantById($id: ID!) {
+  const metafildsQuery = composeMetafieldsQuery([
+    "product_cross_selling",
+    "optin_bundle_item",
+  ]);
+
+  return API({
+    method: "POST",
+    data: JSON.stringify({
+      query: `query getVariantById($id: ID!) {
     node(id: $id) {
         ... on ProductVariant {
             id
@@ -50,14 +55,7 @@ export const fetchVariant = (gid) => {
             compareAtPrice {
                 amount
             }
-            metafields(
-                identifiers: [{ namespace: "accentuate", key: "product_cross_selling" }]
-            ) {
-                value
-                id
-                key
-                namespace
-            }
+            ${metafildsQuery}
             product {
                 id
                 handle
@@ -101,8 +99,9 @@ export const fetchVariant = (gid) => {
                 }
                 metafields(
                     identifiers: [
-                        { namespace: "accentuate", key: "featured_image" }
-                        { namespace: "accentuate", key: "display_name" }
+                        { namespace: "accentuate", key: "isolated_image" },
+                        { namespace: "accentuate", key: "featured_image" },
+                        { namespace: "accentuate", key: "display_name" },
                         { namespace: "accentuate", key: "track_postfix" }
                     ]
                 ) {
@@ -116,18 +115,25 @@ export const fetchVariant = (gid) => {
     }
 }
 `,
-            variables: {
-                id: gid,
-            },
-        }),
-    }).then((res) => variantMapper(res.data.data.node));
-}
+      variables: {
+        id: gid,
+      },
+    }),
+  }).then((res) => variantMapper(res.data.data.node));
+};
 
 export const fetchProduct = (gid) => {
-    return API({
-        method: "POST",
-        data: JSON.stringify({
-            query: `query getProductById($id: ID!) {
+  const metafildsQuery = composeMetafieldsQuery([
+    "product_cross_selling",
+    "isolated_image",
+    "featured_image",
+    "display_name",
+    "track_postfix",
+  ]);
+  return API({
+    method: "POST",
+    data: JSON.stringify({
+      query: `query getProductById($id: ID!) {
     node(id: $id) {
         ... on Product {
             id
@@ -166,33 +172,49 @@ export const fetchProduct = (gid) => {
                     }
                 }
             }
-            metafields(
-                identifiers: [
-                    { namespace: "accentuate", key: "product_cross_selling" }
-                    { namespace: "accentuate", key: "featured_image" }
-                    { namespace: "accentuate", key: "display_name" }
-                    { namespace: "accentuate", key: "track_postfix" }
-                ]
+            ${metafildsQuery}
+        }
+    }
+}
+`,
+      variables: {
+        id: gid,
+      },
+    }),
+  }).then((res) => productMapper(res.data.data.node));
+};
+
+
+export const allFulfilled = async (promisedArr) => {
+  const results = await Promise.allSettled(promisedArr);
+
+  return results.filter((x) => x.status === "fulfilled").map((x) => x.value);
+};
+
+export const composeMetafieldsQuery = (metafieldKeys = []) => {
+  const metafields = metafieldKeys.map(key => ({ namespace: "accentuate", key }));
+
+  const formatted = metafields.reduce((r, m, i) => {
+    const isFirst = i === 0,
+      isLast = i === metafields.length - 1;
+
+    r += `${isFirst ? "[" : ""}{
+    namespace: "${m.namespace}",
+    key: "${m.key}"
+    }${isLast ? "]" : ","}`;
+
+    return r;
+  }, "");
+
+
+  return metafields.length ? `
+        metafields(
+                identifiers: [${formatted.substring(1, formatted.length - 1)}]
             ) {
                 value
                 id
                 key
                 namespace
             }
-        }
-    }
-}
-`,
-            variables: {
-                id: gid,
-            },
-        }),
-    }).then((res) => productMapper(res.data.data.node));
-}
-
-
-export const allFulfilled = async (promisedArr) => {
-    const results = await Promise.allSettled(promisedArr)
-
-    return results.filter((x) => x.status === "fulfilled").map((x) => x.value)
-}
+    ` : "";
+};

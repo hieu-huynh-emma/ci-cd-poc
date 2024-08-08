@@ -10,7 +10,7 @@ export const productMapper = (product) => {
 
     const metafields = metafieldsMapper(baseMetafields)
 
-    const accentuateImg = metafields['featured_image'];
+    const accentuateImg = metafields['isolated_image'];
 
     const hasOnlyDefaultVariant = (variants?.nodes?.length ?? []) === 1;
 
@@ -18,7 +18,7 @@ export const productMapper = (product) => {
     const featuredImage = accentuateImg ? `${JSON.parse(accentuateImg.value)[0].src}&transform=resize=720` : imgSource.src + `&width=720`;
     const displayName = metafields['display_name']?.value
     const trackPostfix = metafields['track_postfix']?.value
-    const crossSellingProducts = JSON.parse(metafields['product_cross_selling']?.value ?? "[]")
+    const crossSellMetafield = JSON.parse(metafields['product_cross_selling']?.value ?? "[]")
 
     const priceRange = [+basePriceRange.minVariantPrice.amount, +basePriceRange.maxVariantPrice.amount]
     const originalPriceRange = [+baseOriginalPriceRange?.minVariantPrice.amount ?? 0, +baseOriginalPriceRange?.maxVariantPrice.amount ?? 0]
@@ -31,7 +31,7 @@ export const productMapper = (product) => {
         priceRange,
         originalPriceRange,
         hasOnlyDefaultVariant,
-        crossSellingProducts,
+        crossSellMetafield,
         ...rest,
     };
 
@@ -42,26 +42,28 @@ export const variantMapper = (variant) => {
         id: gid,
         price: {amount: price = 0},
         compareAtPrice,
-        metafields = [],
+        metafields: baseMetafields = [],
         product,
         ...rest
-    }
-        = variant;
+    } = variant;
 
-    const originalPrice = compareAtPrice?.amount ?? 0;
+    const metafields = metafieldsMapper(baseMetafields)
 
-    const crossSellMetafield = metafields.filter(m => !!m).find(({
-                                                                     namespace,
-                                                                     key,
-                                                                 } = {}) => namespace === "accentuate" && key === "product_cross_selling");
+    const originalPrice = compareAtPrice?.amount ?? price;
+    const totalSaved = Math.max(0, originalPrice - price);
+
+    const crossSellMetafield = JSON.parse(metafields['product_cross_selling']?.value ?? "[]")
+    const optinBundleMetafield = JSON.parse(metafields['optin_bundle_item']?.value ?? "[]")
 
 
     return {
         id: extractIdFromGid(gid),
         price,
         originalPrice,
+        totalSaved,
         gid,
-        ...(crossSellMetafield ? {crossSellMetafield} : {}),
+        crossSellMetafield,
+        optinBundleMetafield,
         ...(product ? {product: productMapper(product)} : {}),
         ...rest,
     };

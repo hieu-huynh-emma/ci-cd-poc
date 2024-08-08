@@ -257,6 +257,27 @@
     },
     "product-auxiliary": {
       "type": "product-auxiliary",
+      "blocks": {
+        "cross_sell_widget_eKYGzp": {
+          "type": "cross_sell_widget",
+          "settings": {
+          }
+        },
+        "upsell_widget_eKYGzp": {
+          "type": "upsell_widget",
+          "settings": {
+            "title": "Upgrade to Perfect sleep bundle:",
+            "content": "",
+            "badge": "",
+            "image": "shopify:\/\/shop_images\/Hero_Banner_-_Bundle_CA.jpg",
+            "product": "perfect-sleep-bundle"
+          }
+        }
+      },
+      "block_order": [
+        "cross_sell_widget_eKYGzp",
+        "upsell_widget_eKYGzp"
+      ],
       "settings": {
       }
     },

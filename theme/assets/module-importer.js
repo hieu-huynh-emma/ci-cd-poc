@@ -4,5 +4,5 @@
     script.src = document.currentScript.getAttribute('data-url');
     script.type = 'module'
 
-    document.body.appendChild(script);
+    document.currentScript.replaceWith(script);
 })()

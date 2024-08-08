@@ -246,6 +246,11 @@
     "product-auxiliary": {
       "type": "product-auxiliary",
       "blocks": {
+        "cross_sell_widget_eKYGzp": {
+          "type": "cross_sell_widget",
+          "settings": {
+          }
+        },
         "upsell_widget_tXLCDN": {
           "type": "upsell_widget",
           "settings": {
@@ -258,6 +263,7 @@
         }
       },
       "block_order": [
+        "cross_sell_widget_eKYGzp",
         "upsell_widget_tXLCDN"
       ],
       "settings": {

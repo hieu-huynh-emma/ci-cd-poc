@@ -6,18 +6,22 @@
 <script type="quickscript" src="{{ 'product-auxiliary.js' | asset_url }}"></script>
 
 {% if upsell_widget %}
-  <script type="quickscript" loading="delayed" src="{{ 'upsell-widget.js' | asset_url }}"></script>
-  {% render 'product-upsell-widget', settings: upsell_widget.settings %}
+    <script type="quickscript" loading="delayed" src="{{ 'upsell-widget.js' | asset_url }}"></script>
+    {% render 'product-upsell-widget', settings: upsell_widget.settings %}
 {% endif %}
 
 {% if cross_sell_widget %}
-  <script type="quickscript" loading="delayed" data-url="{{ 'cross-sell-widget.js' | asset_url }}" src="{{ 'cross-sell-importer.js' | asset_url }}"></script>
+    <script type="quickscript"
+            loading="delayed"
+            data-url="{{ 'cross-sell-widget.js' | asset_url }}"
+            src="{{ 'module-importer.js' | asset_url }}">
+    </script>
 
-  {% render 'cross-sell-widget' %}
+    {% render 'cross-sell-widget' %}
 {% endif %}
 
 {% if quick_compare %}
-  {% render 'quick-compare', settings: quick_compare.settings %}
+    {% render 'quick-compare', settings: quick_compare.settings %}
 {% endif %}
 
 

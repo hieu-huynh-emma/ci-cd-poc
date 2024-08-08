@@ -4,8 +4,8 @@
     }
 </style>
 
-<link rel="quickscript" loading="delayed" href="{{ 'bundle-box.css' | asset_url }}" />
-<link rel="quickscript" loading="delayed" href="{{ 'bundle-cross-sell.css' | asset_url }}" />
+<link rel="quickscript" loading="delayed" href="{{ 'bundle-box.css' | asset_url }}"/>
+<link rel="quickscript" loading="delayed" href="{{ 'bundle-cross-sell.css' | asset_url }}"/>
 
 {%- assign current_variant = product.selected_or_first_available_variant -%}
 
@@ -15,36 +15,37 @@
 {% assign offerVariant = offerProduct.selected_or_first_available_variant %}
 
 {% if offerProduct != blank %}
-  <bundle-cross-sell
-    data-product-id="{{ offerProduct.id }}"
-    data-variant-id="{{ offerVariant.id }}"
-  >
-    <script id="BundleCrossSell-JSON" type="application/json">{{ offerProduct | json }}</script>
+    <bundle-cross-sell
+            data-product-id="{{ offerProduct.id }}"
+            data-variant-id="{{ offerVariant.id }}"
+    >
+        <script id="BundleCrossSell-JSON" type="application/json">{{ offerProduct | json }}</script>
 
-    <div class="bundle-box bundle-offer">
-      <div class="offer-header">
-        <div id="BundleCrossSell-Switcher" data-abtasty-cross-sell></div>
-
-
-        <p>{{ section.settings.heading }}</p>
+        <div class="bundle-box bundle-offer">
+            <div class="offer-header">
+                <div id="BundleCrossSell-Switcher" data-abtasty-cross-sell></div>
 
 
-        <p id="BundleCrossSell-PriceTag" class="flex items-center gap-2"></p>
+                <p>{{ section.settings.heading }}</p>
 
-      </div>
 
-      <div class="bundle-items"></div>
+                <p id="BundleCrossSell-PriceTag" class="flex items-center gap-2"></p>
 
-      {% if section.settings.note %}
-        <p class="w-full text-center text-xs text-comet">
-          {{ section.settings.note }}
-        </p>
-      {% endif %}
+            </div>
 
-    </div>
+            <div class="bundle-items"></div>
 
-    <script type="quickscript" loading="delayed" src="{{ 'bundle-cross-sell.js' | asset_url }}"></script>
-  </bundle-cross-sell>
+            {% if section.settings.note %}
+                <p class="w-full text-center text-xs text-comet">
+                    {{ section.settings.note }}
+                </p>
+            {% endif %}
+
+        </div>
+
+        <script type="quickscript" loading="delayed" data-url="{{ 'bundle-cross-sell.js' | asset_url }}"
+                src="{{ 'module-importer.js' | asset_url }}"></script>
+    </bundle-cross-sell>
 {% endif %}
 
 {% schema %}
