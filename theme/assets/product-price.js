@@ -1,4 +1,6 @@
 class ProductPrice extends CustomElement {
+  defaultPrice = {};
+
   constructor() {
     super();
 
@@ -6,15 +8,18 @@ class ProductPrice extends CustomElement {
   }
 
   onPriceChange() {
-    let priceData = this.computePrice();
+    this.defaultPrice = this.computePrice();
+    let priceData = null;
 
-    // const $crossSells = $("cross-sell-widget").filter(function() {
-    //   return $(this).find(".widget-checkbox__input").is(":checked");
-    // });
-    //
-    // if ($crossSells.length) this.computeCrossSell($crossSells);
+    const $crossSells = $("cross-sell-widget").filter(function () {
+      return $(this).find(".widget-checkbox__input").is(":checked");
+    });
 
-    const $bundleCrossSell = $("bundle-cross-sell").filter(function() {
+    if ($crossSells.length) {
+      priceData = this.computeCrossSell($crossSells);
+    }
+
+    const $bundleCrossSell = $("bundle-cross-sell").filter(function () {
       return $(this).find("#offer-switch").is(":checked");
     });
 
@@ -23,7 +28,10 @@ class ProductPrice extends CustomElement {
       priceData = this.computeBundleCrossSell($bundleCrossSell);
     }
 
-    this.renderPriceTag(priceData);
+    const finalPrice = priceData || this.defaultPrice;
+
+    this.renderPriceTag(finalPrice);
+    this.updateMetadata(finalPrice);
   }
 
   computePrice() {
@@ -42,22 +50,20 @@ class ProductPrice extends CustomElement {
       totalCrossSellOriginalPrices = 0;
 
     if ($crossSells.length) {
-      $crossSells.each(function() {
+      $crossSells.each(function () {
         const $el = $(this);
         totalCrossSellPrices += +$el.data("price");
         totalCrossSellOriginalPrices += +$el.data("originalPrice") || +$el.data("price");
       });
     }
 
-    const finalPrice = price + totalCrossSellPrices,
-      finalOriginalPrice = originalPrice + totalCrossSellOriginalPrices,
-      totalSaved = Math.max(0, finalOriginalPrice - finalPrice),
-      priceInCurrency = Currency.format(finalPrice, { maximumFractionDigits: finalPrice % 1 === 0 ? 0 : 2 }),
-      originalPriceInCurrency = Currency.format(finalOriginalPrice, { maximumFractionDigits: finalOriginalPrice % 1 === 0 ? 0 : 2 });
+    const finalPrice = this.defaultPrice.price + totalCrossSellPrices,
+      finalOriginalPrice = this.defaultPrice.originalPrice + totalCrossSellOriginalPrices;
 
-    $("[data-sale-price]").text(priceInCurrency);
-
-    $("[data-regular-price]").text(totalSaved ? originalPriceInCurrency : "");
+    return {
+      price: finalPrice,
+      originalPrice: finalOriginalPrice
+    };
   }
 
   computeBundleCrossSell($bundleCrossSell) {
@@ -86,6 +92,10 @@ class ProductPrice extends CustomElement {
     this.$el.find("[data-sale-price]").text(priceInCurrency);
 
     this.$el.find("[data-regular-price]").text(totalSaved ? originalPriceInCurrency : "");
+  }
+
+  updateMetadata(pricing) {
+    this.$el.data(pricing);
   }
 }
 

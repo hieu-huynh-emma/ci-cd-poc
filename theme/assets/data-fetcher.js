@@ -48,6 +48,8 @@ export const fetchVariant = (gid) => {
         ... on ProductVariant {
             id
             title
+            availableForSale
+            sku
             quantityAvailable
             price {
                 amount
@@ -89,6 +91,7 @@ export const fetchVariant = (gid) => {
                         ... on ProductVariant {
                             id
                             title
+                            sku
                             quantityAvailable
                             price {
                                 amount
@@ -165,10 +168,14 @@ export const fetchProduct = (gid) => {
                 nodes {
                     id
                     title
+                    sku
+                    availableForSale
                     quantityAvailable
                     price {
-                        amount
-                        currencyCode
+                       amount
+                    }
+                    compareAtPrice {
+                       amount
                     }
                 }
             }

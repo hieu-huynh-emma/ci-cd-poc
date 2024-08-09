@@ -11,7 +11,9 @@
 {% endif %}
 
 {% if cross_sell_widget %}
-    <script type="quickscript"
+  <link rel="quickscript" loading="delayed" href="{{ 'cross-sell-widget.css' | asset_url }}">
+  
+  <script type="quickscript"
             loading="delayed"
             data-url="{{ 'cross-sell-widget.js' | asset_url }}"
             src="{{ 'module-importer.js' | asset_url }}">

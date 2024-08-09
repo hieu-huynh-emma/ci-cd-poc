@@ -45,35 +45,35 @@ if (!customElements.get("product-form")) {
           const qty = formData.quantity;
           const productId = formData.id;
 
-          const $crossSellEngine = $("cross-sell-engine")
+          // const $crossSellEngine = $("cross-sell-engine")
 
-          const sizeCompatible = !!$crossSellEngine.attr(":sizeCompatible")
+          // const sizeCompatible = !!$crossSellEngine.attr(":sizeCompatible")
 
-          const productSize = $(`select[name="options[Size]"]`).val()?.split("|")[0].trim();
+          // const productSize = $(`select[name="options[Size]"]`).val()?.split("|")[0].trim();
 
           const allAddonProducts = $crossSells.toArray().map((el) => {
             const $el = $(el);
+            const crossSellVariantId = $el.data("variantId");
 
-            const addonProd = JSON.parse($el.find(`script[type="application/json"]`).text());
-
-            const allVariants = addonProd.variants;
-
-            const defaultVariant = allVariants[0];
-            const selectedVariantId = $el.data("variantId");
-
-            const isConfigurable = allVariants.length > 1 && !selectedVariantId;
-
-            if (isConfigurable && sizeCompatible) {
-              const selectedVariant = addonProd.variants.find((variant) => variant.title.includes(productSize));
-
-              return {
-                id: selectedVariant.id,
-                quantity: qty ? parseInt(qty) : 1,
-              };
-            }
+            // if(sizeCompatible) {
+            //   const addonProd = JSON.parse($el.find(`script[type="application/json"]`).text());
+            //
+            //   const allVariants = addonProd.variants;
+            //
+            //   const isConfigurable = allVariants.length > 1 && !selectedVariantId;
+            //
+            //   if (isConfigurable && sizeCompatible) {
+            //     const selectedVariant = addonProd.variants.find((variant) => variant.title.includes(productSize));
+            //
+            //     return {
+            //       id: selectedVariant.id,
+            //       quantity: qty ? parseInt(qty) : 1,
+            //     };
+            //   }
+            // }
 
             return {
-              id: selectedVariantId || defaultVariant.id,
+              id: crossSellVariantId,
               quantity: qty ? parseInt(qty) : 1,
             };
           });
