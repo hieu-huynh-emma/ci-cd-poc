@@ -31,6 +31,7 @@ class CrossSellEngine extends CustomElement {
   async mounted() {
     super.mounted();
     const { variantId, mode, productId } = this.props;
+    console.log("=>(cross-sell-widget.js:34) mode", mode);
 
     if (mode === "Variant") {
       this.onVariantChange(variantId);
@@ -42,9 +43,6 @@ class CrossSellEngine extends CustomElement {
   }
 
   async onVariantChange(variantId) {
-    const { variantMode } = this.props;
-
-    if (!variantMode) return;
     this.innerHTML = `<div class="skeleton"></div>`;
     this.$el.addClass("is-loading");
 
@@ -91,10 +89,11 @@ class CrossSellEngine extends CustomElement {
   composeCrossSellData(metaobjects) {
     return allFulfilled(
       metaobjects.map(async (metaobject) => {
+        const variant = await fetchVariant(metaobject.variantId);
         return {
           title: metaobject.title,
-          variant: await fetchVariant(metaobject.variantId),
-          ...(metaobject.productId ? { parent: await fetchProduct(metaobject.productId) } : {}),
+          variant,
+          parent: await fetchProduct(metaobject.productId || variant.product.id)
         };
       }),
     );
@@ -145,7 +144,7 @@ class CrossSellEngine extends CustomElement {
                             ${qty > 1 ? `${qty}x ` : ""} ${displayName || title}
                             </p>
                             
-                            <cross-sell-variant-selector :variantId="${id}"></cross-sell-variant-selector>
+                            <cross-sell-variant-selector class="${switchable ? "" : "hidden"}" :variantId="${id}"></cross-sell-variant-selector>
                             
                           </div>
                             <cross-sell-price></cross-sell-price>

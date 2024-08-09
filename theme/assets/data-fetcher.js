@@ -1,5 +1,6 @@
 import { metaobjectMapper, productMapper, variantMapper } from "data-processor";
 import API from "storefront-api";
+import { CROSS_SELLING_PRODUCT_METAFIELD_KEY } from "data-constants";
 
 export const fetchMetaobjects = (metaobjectIds) => {
   return allFulfilled(metaobjectIds.map((id) => fetchMetaObject(id)));
@@ -36,7 +37,7 @@ export const fetchMetaObject = (gid) => {
 
 export const fetchVariant = (gid) => {
   const metafildsQuery = composeMetafieldsQuery([
-    "product_cross_selling",
+    CROSS_SELLING_PRODUCT_METAFIELD_KEY,
     "optin_bundle_item",
   ]);
 
@@ -127,7 +128,7 @@ export const fetchVariant = (gid) => {
 
 export const fetchProduct = (gid) => {
   const metafildsQuery = composeMetafieldsQuery([
-    "product_cross_selling",
+    CROSS_SELLING_PRODUCT_METAFIELD_KEY,
     "isolated_image",
     "featured_image",
     "display_name",

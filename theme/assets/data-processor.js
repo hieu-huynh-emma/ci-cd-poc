@@ -1,3 +1,5 @@
+import { CROSS_SELLING_PRODUCT_METAFIELD_KEY } from "data-constants";
+
 export const productMapper = (product) => {
   const {
     featuredImage: imgSource,
@@ -15,7 +17,7 @@ export const productMapper = (product) => {
   const featuredImage = accentuateImg ? `${JSON.parse(accentuateImg.value)[0].src}&transform=resize=720` : imgSource.src + `&width=720`;
   const displayName = metafields["display_name"]?.value;
   const trackPostfix = metafields["track_postfix"]?.value;
-  const crossSellMetafield = JSON.parse(metafields["product_cross_selling"]?.value ?? "[]");
+  const crossSellMetafield = JSON.parse(metafields[CROSS_SELLING_PRODUCT_METAFIELD_KEY]?.value ?? "[]");
 
   const priceRange = [+basePriceRange.minVariantPrice.amount, +basePriceRange.maxVariantPrice.amount];
   const originalPriceRange = [+baseOriginalPriceRange?.minVariantPrice.amount ?? 0, +baseOriginalPriceRange?.maxVariantPrice.amount ?? 0];
@@ -57,7 +59,7 @@ export const variantMapper = (variant) => {
   const originalPrice = compareAtPrice?.amount ?? price;
   const totalSaved = Math.max(0, originalPrice - price);
 
-  const crossSellMetafield = JSON.parse(metafields["product_cross_selling"]?.value ?? "[]");
+  const crossSellMetafield = JSON.parse(metafields[CROSS_SELLING_PRODUCT_METAFIELD_KEY]?.value ?? "[]");
   const optinBundleMetafield = JSON.parse(metafields["optin_bundle_item"]?.value ?? "[]");
 
   return {
