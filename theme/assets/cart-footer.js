@@ -1,38 +1,50 @@
 class CartFooter extends CustomElement {
-	agreementChecked = false
-	get refs() {
-		return {
-			$checkoutBtn: this.$el.find(`button[name="checkout"]`),
-			$wrapper: this.$el.find('#toc-agreement'),
-			$agreementCheckbox: this.$el.find('#toc-agreement .agreement-checkbox')
-		}
-	}
 
-	mounted() {
-		super.mounted();
+  agreementChecked = false;
 
-		const { $wrapper, $agreementCheckbox, $checkoutBtn } = this.refs
+  get refs() {
+    return {
+      $checkoutBtn: this.$el.find(`button[name="checkout"]`),
+      $wrapper: this.$el.find("#toc-agreement"),
+      $agreementCheckbox: this.$el.find("#toc-agreement .agreement-checkbox"),
+    };
+  }
 
-		if($agreementCheckbox.length) {
-			$agreementCheckbox.prop('checked', this.agreementChecked)
-			$checkoutBtn.prop('disabled', !this.agreementChecked)
+  mounted() {
+    super.mounted();
 
-			$wrapper.click(() => {
-				this.agreementChecked = !this.agreementChecked
+    const { $wrapper, $agreementCheckbox, $checkoutBtn } = this.refs;
 
-				$checkoutBtn.prop('disabled', !this.agreementChecked)
-				$agreementCheckbox.prop('checked', this.agreementChecked);
-			})
-		}
-	}
+    $checkoutBtn.click(this.onCheckoutClick.bind(this));
 
-	onDisabledChange(isDisabled) {
-		super.onDisabledChange(isDisabled);
+    $wrapper.click(() => {
+      this.agreementChecked = !this.agreementChecked;
 
-		const { $checkoutBtn } = this.refs
+      $checkoutBtn.prop("disabled", !this.agreementChecked);
+      $agreementCheckbox.prop("checked", this.agreementChecked);
+    });
+  }
 
-		$checkoutBtn[(!!isDisabled || !this.agreementChecked) ? 'attr' : 'removeAttr']('disabled', 'disabled')
-	}
+  onCheckoutClick(e) {
+    const { $agreementCheckbox, $checkoutBtn } = this.refs
+
+    if(!$agreementCheckbox.is(":checked")) {
+      e.preventDefault();
+
+      toastr.error("You must agree with the terms and conditions of sales to checkout.")
+    }
+
+    $agreementCheckbox.prop("checked", this.agreementChecked);
+    $checkoutBtn.prop("disabled", !this.agreementChecked);
+  }
+
+  onDisabledChange(isDisabled) {
+    super.onDisabledChange(isDisabled);
+
+    const { $checkoutBtn } = this.refs;
+
+    $checkoutBtn[(!!isDisabled || !this.agreementChecked) ? "attr" : "removeAttr"]("disabled", "disabled");
+  }
 }
 
 customElements.define("cart-footer", CartFooter);
