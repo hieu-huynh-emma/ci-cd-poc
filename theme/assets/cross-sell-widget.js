@@ -1,9 +1,8 @@
-import { allFulfilled, fetchMetaobjects, fetchProduct, fetchVariant } from "data-fetcher";
+import CrossSell from "cross-sell";
+import { CROSS_SELLING_CHANGE_EVENT } from "data-constants";
 
-const CROSS_SELLING_CHANGE_EVENT = `cross-selling:variant-change`;
 
-class CrossSellEngine extends CustomElement {
-  crossSellProducts = [];
+class CrossSellPanel extends CrossSell.Manager {
   props = {
     productId: 0,
     variantId: 0,
@@ -17,99 +16,19 @@ class CrossSellEngine extends CustomElement {
     super();
   }
 
-  render() {
-    if (!this.crossSellProducts.length) return;
-
-    this.$el.html(this.template());
-    this.$el.removeClass("is-loading");
-  }
-
   template() {
-    return this.crossSellProducts.reduce((r, o) => r + this.renderCrossSellWidget(o), ``);
-  }
-
-  async mounted() {
-    super.mounted();
-    const { variantId, mode, productId } = this.props;
-    console.log("=>(cross-sell-widget.js:34) mode", mode);
-
-    if (mode === "Variant") {
-      this.onVariantChange(variantId);
-    } else {
-      this.onProductChange(productId);
-    }
-
-    this.$el.addClass("is-mounted");
-  }
-
-  async onVariantChange(variantId) {
-    this.innerHTML = `<div class="skeleton"></div>`;
-    this.$el.addClass("is-loading");
-
-    const variant = await fetchVariant(generateShopifyGid("ProductVariant", variantId));
-
-    const metaobjectIds = variant.crossSellMetafield;
-
-    if (!metaobjectIds) {
-      this.innerHTML = ``;
-      this.$el.hide();
-      this.$el.removeClass("is-loading");
-      return;
-    }
-
-    const metaobjects = await fetchMetaobjects(metaobjectIds);
-
-    this.crossSellProducts = await this.composeCrossSellData(metaobjects);
-
-    this.render();
-  }
-
-  async onProductChange(productId) {
-    this.innerHTML = `<div class="skeleton"></div>`;
-    this.$el.addClass("is-loading");
-
-    const product = await fetchProduct(generateShopifyGid("Product", productId));
-
-    const metaobjectIds = product.crossSellMetafield;
-
-    if (!metaobjectIds.length) {
-      this.innerHTML = ``;
-      this.$el.hide();
-      this.$el.removeClass("is-loading");
-      return;
-    }
-
-    const metaobjects = await fetchMetaobjects(metaobjectIds);
-
-    this.crossSellProducts = await this.composeCrossSellData(metaobjects);
-
-    this.render();
-  }
-
-  composeCrossSellData(metaobjects) {
-    return allFulfilled(
-      metaobjects.map(async (metaobject) => {
-        const variant = await fetchVariant(metaobject.variantId);
-        return {
-          title: metaobject.title,
-          variant,
-          parent: await fetchProduct(metaobject.productId || variant.product.id)
-        };
-      }),
-    );
-  }
-
-  renderCrossSellWidget(metaobject) {
     const { trackId, switchable } = this.props;
-    const {
-      qty,
-      variant: { id, price, originalPrice, product },
-      parent,
-    } = metaobject;
 
-    const { title, displayName, handle, featuredImage } = product;
+    return this.crossSellProducts.reduce((r, metaobject) => {
+      const {
+        qty,
+        variant: { id, price, originalPrice, product },
+        parent,
+      } = metaobject;
 
-    return `<cross-sell-widget
+      const { title, displayName, handle, featuredImage } = product;
+
+      return r += `<cross-sell-widget
               name="cross-sell"
               type="widget"
               id="cross-sell-${handle}"
@@ -150,12 +69,35 @@ class CrossSellEngine extends CustomElement {
                             <cross-sell-price></cross-sell-price>
                         </div>
                    </tracked-button>  
-            </cross-sell-widget>
-                `;
+            </cross-sell-widget>`;
+    }, ``);
+  }
+
+  beforeMount() {
+    const { mode } = this.props;
+
+    (mode === "Variant") && this.listenToParent();
+  }
+
+  mounted() {
+    super.mounted();
+
+    const { variantId, mode, productId } = this.props;
+
+    const initialId = (mode === "Variant") ? variantId : productId;
+
+    this.onChange(initialId);
+  }
+
+  async update(entityId) {
+    const { mode } = this.props;
+    const { entries } = (await ((mode === "Variant") ? CrossSell.API.perVariant(entityId) : CrossSell.API.perProduct(entityId)));
+
+    this.crossSellProducts = entries;
   }
 }
 
-customElements.define("cross-sell-engine", CrossSellEngine);
+customElements.define("cross-sell-panel", CrossSellPanel);
 
 class CrossSellWidget extends ProductAuxiliary {
   get refs() {
@@ -170,9 +112,9 @@ class CrossSellWidget extends ProductAuxiliary {
 
     this.addEventListener("change", () => {
       this.dispatchEvent(new Event(CROSS_SELLING_CHANGE_EVENT));
-      this.updateMetadata()
+      this.updateMetadata();
 
-      if(this.isIncluded) {
+      if (this.isIncluded) {
         window.dispatchEvent(new Event("productPriceChange"));
       }
     });
@@ -188,7 +130,7 @@ class CrossSellWidget extends ProductAuxiliary {
 
     if ($variantSelector.get(0).contains(e.target)) return;
 
-    this.isIncluded =  !$checkboxInput.is(":checked");
+    this.isIncluded = !$checkboxInput.is(":checked");
 
     $checkboxInput.prop("checked", this.isIncluded);
 
@@ -199,11 +141,11 @@ class CrossSellWidget extends ProductAuxiliary {
     const { $variantSelector } = this.refs;
     const $selectedOption = $variantSelector.get(0).getSelected();
 
-    this.$el.data( {
+    this.$el.data({
       price: $selectedOption.data("price"),
       originalPrice: $selectedOption.data("originalPrice"),
-      variantId: $selectedOption.val()
-    })
+      variantId: $selectedOption.val(),
+    });
   }
 }
 

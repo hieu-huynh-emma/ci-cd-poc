@@ -45,7 +45,7 @@ if (!customElements.get("product-form")) {
           const qty = formData.quantity;
           const productId = formData.id;
 
-          // const $crossSellEngine = $("cross-sell-engine")
+          // const $crossSellEngine = $("cross-sell-panel")
 
           // const sizeCompatible = !!$crossSellEngine.attr(":sizeCompatible")
 

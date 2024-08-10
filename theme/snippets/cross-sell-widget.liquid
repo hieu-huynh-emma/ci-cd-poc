@@ -1,16 +1,16 @@
 {% assign parentProduct = product %}
 {% assign parentVariant = product.selected_or_first_available_variant %}
 {% liquid
-  
+
   assign trackId = "Cross_sell"
   assign postfix = product.metafields.accentuate.track_postfix
-  
+
   if postfix != blank
     assign trackId = trackId | append: "_" | append: postfix
   endif
 %}
 
-<cross-sell-engine
+<cross-sell-panel
   :mode="{{ parentProduct.metafields.accentuate.cross_selling_mode | default: "Product" }}"
   :sizeCompatible="{{ parentProduct.metafields.accentuate.cross_selling_is_size_compatible | default: false }}"
   :switchable="{{ parentProduct.metafields.accentuate.cross_selling_is_switchable | default: false }}"
@@ -19,6 +19,5 @@
   :trackId="{{ trackId }}"
   class="is-loading"
 >
-  
   <div class="skeleton"></div>
-</cross-sell-engine>
+</cross-sell-panel>

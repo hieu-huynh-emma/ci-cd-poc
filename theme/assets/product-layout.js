@@ -42,7 +42,7 @@ const schema = [
         sectionId: "product-auxiliary",
         blocks: [
             {
-                query: "cross-sell-engine",
+                query: "cross-sell-panel",
                 outletQuery: "#attribute-configurator",
                 insertPosition: "afterend",
             },

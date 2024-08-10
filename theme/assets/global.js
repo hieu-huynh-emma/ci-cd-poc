@@ -585,8 +585,6 @@ class VariantSelects extends HTMLElement {
       this.updateURL();
       this.renderProductInfo();
       this.updateVariantInput();
-      this.updateCrossSell();
-      // this.updateSingleCrosssell();
 
       window.dispatchEvent(new Event("productVariantChange"))
 
@@ -637,12 +635,6 @@ class VariantSelects extends HTMLElement {
         $singleProxyCoolingPillow.trigger("click");
       }
     }
-  }
-
-  updateCrossSell() {
-    const crossSellEngine = document.querySelector("cross-sell-engine");
-    if(!crossSellEngine) return
-    crossSellEngine.onVariantChange(this.currentVariant.id);
   }
 
   updateOptions() {
