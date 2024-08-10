@@ -126,7 +126,6 @@ class CrossSellWidget extends ProductAuxiliary {
     e.preventDefault();
 
     const { $variantSelector, $checkboxInput } = this.refs;
-    console.log("=>(cross-sell-widget.js:183) $variantSelector", $variantSelector);
 
     if ($variantSelector.get(0).contains(e.target)) return;
 

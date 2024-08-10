@@ -37,7 +37,6 @@ class UpsellWidget extends ProductAuxiliary {
 
   onVariantChange() {
     const data = this.composeUpsellData();
-    console.log("=>(upsell-widget.js:28) data", data);
 
     this.renderPriceDisparity(data);
     this.renderSize(data);
@@ -47,22 +46,20 @@ class UpsellWidget extends ProductAuxiliary {
 
   composeUpsellData() {
     const currentVariantId = +$(".product-form__variants option:selected").val();
-    console.log("=>(upsell-widget.js:50) this.products", this.products);
 
     const variant = this.products.current.variants.find(({ id }) => id === currentVariantId);
-    console.log("=>(upsell-widget.js:40) variant", variant);
 
     if (!variant) return;
 
-    const currentSize = variant.title.split("|")[0].trim();
+    const hasOnlyDefaultVariant = this.products.current.variants.length === 1;
 
-    const targetVariant = this.products.target.variants.find(({ title }) => {
-      const targetSize = title.split("|")[0].trim();
-      return targetSize === currentSize;
-    });
-    console.log("=>(upsell-widget.js:50) targetVariant", targetVariant);
+    const currentSize = variant.title.split("|")[0].trim().split("/")[0].trim();
+
+    const targetVariant = hasOnlyDefaultVariant ? this.products.target.variants[0] : this.products.target.variants.find(({ title }) => title.includes(currentSize));
 
     if (!targetVariant) return;
+
+    const targetSize = targetVariant.title.split("|")[0].trim();
 
     const priceDisparity = targetVariant.price - variant.price;
 
@@ -71,7 +68,7 @@ class UpsellWidget extends ProductAuxiliary {
     return {
       id: targetVariant.id,
       handle: this.products.target.handle,
-      size: currentSize,
+      size: targetSize,
       priceDisparity,
       originalPriceDisparity,
     };
