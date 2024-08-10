@@ -7,11 +7,17 @@ class ProductPrice extends CustomElement {
     window.addEventListener("productPriceChange", debounce(this.onPriceChange.bind(this), 100));
   }
 
-  onPriceChange() {
+  mounted() {
+    super.mounted();
+
     this.defaultPrice = this.computePrice();
+    this.updateMetadata(this.defaultPrice);
+  }
+
+  onPriceChange() {
     let priceData = null;
 
-    const $crossSells = $("cross-sell-widget").filter(function () {
+    const $crossSells = $("cross-sell-widget").filter(function() {
       return $(this).find(".widget-checkbox__input").is(":checked");
     });
 
@@ -19,7 +25,7 @@ class ProductPrice extends CustomElement {
       priceData = this.computeCrossSell($crossSells);
     }
 
-    const $bundleCrossSell = $("bundle-cross-sell").filter(function () {
+    const $bundleCrossSell = $("bundle-cross-sell").filter(function() {
       return $(this).find("#offer-switch").is(":checked");
     });
 
@@ -31,6 +37,7 @@ class ProductPrice extends CustomElement {
     const finalPrice = priceData || this.defaultPrice;
 
     this.renderPriceTag(finalPrice);
+    console.log("jskdlf");
     this.updateMetadata(finalPrice);
   }
 
@@ -50,7 +57,7 @@ class ProductPrice extends CustomElement {
       totalCrossSellOriginalPrices = 0;
 
     if ($crossSells.length) {
-      $crossSells.each(function () {
+      $crossSells.each(function() {
         const $el = $(this);
         totalCrossSellPrices += +$el.data("price");
         totalCrossSellOriginalPrices += +$el.data("originalPrice") || +$el.data("price");
@@ -62,7 +69,7 @@ class ProductPrice extends CustomElement {
 
     return {
       price: finalPrice,
-      originalPrice: finalOriginalPrice
+      originalPrice: finalOriginalPrice,
     };
   }
 
@@ -95,7 +102,11 @@ class ProductPrice extends CustomElement {
   }
 
   updateMetadata(pricing) {
-    this.$el.data(pricing);
+    console.log("=>(product-price.js:98) pricing", pricing);
+    this.$el.data({
+      price: pricing.price,
+      originalPrice: pricing.originalPrice,
+    });
   }
 }
 

@@ -24,6 +24,7 @@
       name="upsell-widget"
       type="widget"
       id="up-selling-addon-{{ product.handle }}"
+      :adjustablePriceGap="{{ product.metafields.accentuate.upselling_is_adjustable_price_gap | default: false }}"
       :eventName="up_selling"
 
   >
