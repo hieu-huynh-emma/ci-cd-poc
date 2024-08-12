@@ -246,6 +246,10 @@ class BundleCrossSell extends CrossSell.Manager {
   async renderSwitcher() {
     const $switcherContainer = this.$el.find("#BundleCrossSell-Switcher");
 
+    const alreadyInitialized = $switcherContainer.find(".asSwitch").length
+
+    if (alreadyInitialized) return
+
     $switcherContainer.html(`<input id="offer-switch" class="hidden" type="checkbox" />`);
 
     const switcher = $switcherContainer.find("#offer-switch");
