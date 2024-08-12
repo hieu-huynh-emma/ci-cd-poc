@@ -585,56 +585,10 @@ class VariantSelects extends HTMLElement {
       this.updateURL();
       this.renderProductInfo();
       this.updateVariantInput();
-
-      window.dispatchEvent(new Event("productVariantChange"))
-
     }
-  }
 
-  updateSingleCrosssell() {
-    const size = this.currentVariant.title.split("|")[0].trim();
+    window.dispatchEvent(new Event("productVariantChange"))
 
-    const isSingleSize = ["Twin", "Twin XL"].includes(size);
-
-    const $2xFoamPillow = $(`addon-service[data-variant-id="44308529086602"]`);
-    const $singleFoamPillow = $(`addon-service[data-variant-id="44308529053834"]`);
-
-    const $2xProxyCoolingPillow = $(`addon-service[data-variant-id="44308528496778"]`);
-    const $singleProxyCoolingPillow = $(`addon-service[data-variant-id="44308528464010"]`);
-
-    if (isSingleSize) {
-      $2xFoamPillow.hide();
-      $2xProxyCoolingPillow.hide();
-
-      $singleFoamPillow.show();
-      $singleProxyCoolingPillow.show();
-
-      const isFoamPillowChecked = $2xFoamPillow.find(".addon-checkbox__input").is(":checked");
-      if (isFoamPillowChecked) {
-        $2xFoamPillow.trigger("click");
-      }
-
-      const isCoolingPillowChecked = $2xProxyCoolingPillow.find(".addon-checkbox__input").is(":checked");
-      if (isCoolingPillowChecked) {
-        $2xProxyCoolingPillow.trigger("click");
-      }
-    } else {
-      $2xFoamPillow.show();
-      $2xProxyCoolingPillow.show();
-
-      $singleFoamPillow.hide();
-      $singleProxyCoolingPillow.hide();
-
-      const isFoamPillowChecked = $singleFoamPillow.find(".addon-checkbox__input").is(":checked");
-      if (isFoamPillowChecked) {
-        $singleFoamPillow.trigger("click");
-      }
-
-      const isCoolingPillowChecked = $singleProxyCoolingPillow.find(".addon-checkbox__input").is(":checked");
-      if (isCoolingPillowChecked) {
-        $singleProxyCoolingPillow.trigger("click");
-      }
-    }
   }
 
   updateOptions() {
@@ -719,17 +673,15 @@ class VariantSelects extends HTMLElement {
   }
 
   renderProductInfo() {
-    const originalPrice = this.currentVariant.compare_at_price / 100,
-      price = this.currentVariant.price / 100,
-      totalSaved = Math.max(0, originalPrice - price),
-      priceInCurrency = Currency.format(price, { maximumFractionDigits: price % 1 === 0 ? 0 : 2 }),
-      originalPriceInCurrency = Currency.format(originalPrice, { maximumFractionDigits: originalPrice % 1 === 0 ? 0 : 2 });
-
-    $("[data-sale-price]").text(priceInCurrency);
-    $("#price").val(price)
-    $("#originalPrice").val(originalPrice)
-
-    if (totalSaved) $("[data-regular-price]").text(originalPriceInCurrency);
+    // const originalPrice = this.currentVariant.compare_at_price / 100,
+    //   price = this.currentVariant.price / 100,
+    //   totalSaved = Math.max(0, originalPrice - price),
+    //   priceInCurrency = Currency.format(price, { maximumFractionDigits: price % 1 === 0 ? 0 : 2 }),
+    //   originalPriceInCurrency = Currency.format(originalPrice, { maximumFractionDigits: originalPrice % 1 === 0 ? 0 : 2 });
+    //
+    // $("[data-sale-price]").text(priceInCurrency);
+    //
+    // if (totalSaved) $("[data-regular-price]").text(originalPriceInCurrency);
 
     const isAvail = !!this.currentVariant.available;
 
