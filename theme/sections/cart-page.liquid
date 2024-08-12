@@ -952,6 +952,9 @@
         display: none;
     }
 
+    #toc-agreement .checkbox-icon--error svg {
+        stroke: var(--color-scarlet)
+    }
 
     .cart_summary button.btn {
         background-color: var(--primary-blue-color);
@@ -1198,412 +1201,418 @@
 <link is="delay-stylesheet" href="{{ 'cart-surface.css' | asset_url }}">
 
 {%- if additional_checkout_buttons -%}
-    <template id="content_for_additional_checkout_buttons">
-        {{ content_for_additional_checkout_buttons }}
-    </template>
+  <template id="content_for_additional_checkout_buttons">
+    {{ content_for_additional_checkout_buttons }}
+  </template>
 
-    <script>
-        const requestHost = "{{ request.host }}"
-        const tplEl = document.querySelector(`#content_for_additional_checkout_buttons`)
+  <script>
+    const requestHost = "{{ request.host }}";
+    const tplEl = document.querySelector(`#content_for_additional_checkout_buttons`);
 
-        if (requestHost !== 'qc.emma-sleep.ca') {
-            showExpressCheckout()
-        } else {
-            tplEl.remove()
-        }
+    if (requestHost !== "qc.emma-sleep.ca") {
+      showExpressCheckout();
+    } else {
+      tplEl.remove();
+    }
 
-        function showExpressCheckout() {
-            const div = document.createElement('div')
+    function showExpressCheckout() {
+      const div = document.createElement("div");
 
-            div.innerHTML = tplEl.innerHTML
-            div.id = "content_for_additional_checkout_buttons"
+      div.innerHTML = tplEl.innerHTML;
+      div.id = "content_for_additional_checkout_buttons";
 
-            tplEl.replaceWith(div)
-        }
-    </script>
+      tplEl.replaceWith(div);
+    }
+  </script>
 
-    <express-checkout-extractor></express-checkout-extractor>
+  <express-checkout-extractor></express-checkout-extractor>
 {%- endif -%}
 
 
 
 
 {% if cart.item_count > 0 %}
-    <div class="page-boundary">
-        <div class="cart_container">
-            <h1>cart</h1>
+  <div class="page-boundary">
+    <div class="cart_container">
+      <h1>cart</h1>
 
-            <form action="/cart" method="post" novalidate>
-                <div class="cart_list">
-                    <table>
-                        <thead>
-                        <th colspan="2">Prod</th>
-                        <th>Price</th>
-                        <th>Qty</th>
-                        <th>total</th>
-                        </thead>
-                        <tbody>
-                        {%- for item in cart.items -%}
-                            {% assign isAddonService = false %}
-                            {% assign hasAddonService = false %}
-                            {% assign addonServiceData = blank %}
-                            {% assign addonServiceFor = blank %}
+      <form action="/cart" method="post" novalidate>
+        <div class="cart_list">
+          <table>
+            <thead>
+            <th colspan="2">Prod</th>
+            <th>Price</th>
+            <th>Qty</th>
+            <th>total</th>
+            </thead>
+            <tbody>
+            {%- for item in cart.items -%}
+              {% assign isAddonService = false %}
+              {% assign hasAddonService = false %}
+              {% assign addonServiceData = blank %}
+              {% assign addonServiceFor = blank %}
 
-                            {% for property in item.properties %}
-                                {% if property.first == '_addonService' %}
-                                    {% assign hasAddonService = true %}
-                                    {% assign addonServiceData = property.last %}
+              {% for property in item.properties %}
+                {% if property.first == '_addonService' %}
+                  {% assign hasAddonService = true %}
+                  {% assign addonServiceData = property.last %}
 
-                                    {% assign maxAddonQty = maxAddonQty | plus: item.quantity %}
-                                {% endif %}
+                  {% assign maxAddonQty = maxAddonQty | plus: item.quantity %}
+                {% endif %}
 
-                                {% if property.first == '_addonServiceFor' %}
-                                    {% assign isAddonService = true %}
-                                    {% assign addonServiceFor = property.last %}
-                                {% endif %}
-                            {% endfor %}
-                            <tr
-                                    :key="{{ item.key }}"
-                                    :itemId="{{ item.id }}"
-                                    :index="{{ item.index }}"
-                                    :variantId="{{ item.id }}"
-                                    :productId="{{ item.product_id }}"
-                                    :originalPrice="{{ item.variant.compare_at_price }}"
-                                    :quantity="{{ item.quantity }}"
-                                    {% if hasAddonService %}
-                                        :addonService="{{ addonServiceData }}"
-                                    {% endif %}
-                                    {% if isAddonService %}
-                                        :addonServiceFor="{{ addonServiceFor }}"
-                                    {% endif %}
-                            >
-                                <td>
-                                    <div class="removerecord">
-                                        <tracked-button :trackId="Delete_cart"
-                                                        href="{{ item.url_to_remove }}"
-                                                        class="button button--tertiary dtlcart"
-                                        ><img
-                                                    class="mx-auto" width="14" height="18" loading="lazy"
-                                                    src="{{ 'delete.png' | asset_url }}"
-                                            ></tracked-button>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="product_table_card">
-                                        {% if item.image %}
-                                            <a href="{{ item.url | within: collections.all }}">
-                                                <img
-                                                        class="product_thumb"
-                                                        src="{{ item.image | img_url: '300x' }}"
-                                                        alt="{{ item.image.alt | escape }}"
-                                                        loading="lazy"
-                                                        width="150"
-                                                        height="{{ 150 | divided_by: item.image.aspect_ratio | ceil }}"
-                                                >
-                                            </a>
-                                        {% endif %}
-                                        <div class="pd_name">
-                                            <a href="{{ item.url }}" class="cart-item__name break product_title">
-                                                {{- item.product.title | escape -}}
-                                            </a>
+                {% if property.first == '_addonServiceFor' %}
+                  {% assign isAddonService = true %}
+                  {% assign addonServiceFor = property.last %}
+                {% endif %}
+              {% endfor %}
+              <tr
+                :key="{{ item.key }}"
+                :itemId="{{ item.id }}"
+                :index="{{ item.index }}"
+                :variantId="{{ item.id }}"
+                :productId="{{ item.product_id }}"
+                :originalPrice="{{ item.variant.compare_at_price }}"
+                :quantity="{{ item.quantity }}"
+                {% if hasAddonService %}
+                  :addonService="{{ addonServiceData }}"
+                {% endif %}
+                {% if isAddonService %}
+                  :addonServiceFor="{{ addonServiceFor }}"
+                {% endif %}
+              >
+                <td>
+                  <div class="removerecord">
+                    <tracked-button :trackId="Delete_cart"
+                                    href="{{ item.url_to_remove }}"
+                                    class="button button--tertiary dtlcart"
+                    ><img
+                        class="mx-auto" width="14" height="18" loading="lazy"
+                        src="{{ 'delete.png' | asset_url }}"
+                      ></tracked-button>
+                  </div>
+                </td>
+                <td>
+                  <div class="product_table_card">
+                    {% if item.image %}
+                      <a href="{{ item.url | within: collections.all }}">
+                        <img
+                          class="product_thumb"
+                          src="{{ item.image | img_url: '300x' }}"
+                          alt="{{ item.image.alt | escape }}"
+                          loading="lazy"
+                          width="150"
+                          height="{{ 150 | divided_by: item.image.aspect_ratio | ceil }}"
+                        >
+                      </a>
+                    {% endif %}
+                    <div class="pd_name">
+                      <a href="{{ item.url }}" class="cart-item__name break product_title">
+                        {{- item.product.title | escape -}}
+                      </a>
 
-                                            {%- if item.product.has_only_default_variant == false
-                                            or item.properties.size != 0
-                                            or item.selling_plan_allocation != null
-                                            -%}
-                                                {%- if item.product.has_only_default_variant == false -%}
-                                                    {% assign displayName = item.variant.metafields.accentuate.display_name %}
+                      {%- if item.product.has_only_default_variant == false
+                      or item.properties.size != 0
+                      or item.selling_plan_allocation != null
+                      -%}
+                        {%- if item.product.has_only_default_variant == false -%}
+                          {% assign displayName = item.variant.metafields.accentuate.display_name %}
 
-                                                    <span class="product_info">{{ displayName | default: item.variant.title }}</span>
+                          <span class="product_info">{{ displayName | default: item.variant.title }}</span>
 
-                                                {%- endif -%}
-                                            {%- endif -%}
-                                            {% if item.product.metafields.accentuate.is_bundle %}
-                                                {% assign current_variant = item.variant %}
+                        {%- endif -%}
+                      {%- endif -%}
+                      {% if item.product.metafields.accentuate.is_bundle %}
+                        {% assign current_variant = item.variant %}
 
-                                                {% assign bundle_item_metaobjects = current_variant.metafields.custom.bundle_items.value %}
+                        {% assign bundle_item_metaobjects = current_variant.metafields.custom.bundle_items.value %}
 
-                                                <div class="cart-item-description">
-                                                    {% for bundle_item_metaobject in bundle_item_metaobjects %}
-                                                        {% assign bundle_item_variant = bundle_item_metaobject.product.value %}
+                        <div class="cart-item-description">
+                          {% for bundle_item_metaobject in bundle_item_metaobjects %}
+                            {% assign bundle_item_variant = bundle_item_metaobject.product.value %}
 
-                                                        <span>
+                            <span>
                                 {% if bundle_item_metaobject.quantity > 1 -%}
-                                    {{- bundle_item_metaobject.quantity }}x
+                                  {{- bundle_item_metaobject.quantity }}x
                                 {% endif -%}
-                                                            {{- bundle_item_variant.product.title }}
-                                                            {% if bundle_item_variant.title != 'Default Title' %}
-                                                                ({{ bundle_item_variant.title }})
-                                                            {% endif %}
+                              {{- bundle_item_variant.product.title }}
+                              {% if bundle_item_variant.title != 'Default Title' %}
+                                ({{ bundle_item_variant.title }})
+                              {% endif %}
                               </span>
 
-                                                        {% unless forloop.last -%}
-                                                            <span>/</span>
-                                                        {%- endunless %}
-                                                    {% endfor %}
-                                                </div>
-                                            {% endif %}
-                                            {% if item.product.metafields.accentuate.has_pillow_addon %}
-                                                {% assign product_handle = item.product.metafields.accentuate.pillow_addon
-                                                        | split: ':'
-                                                        | first
-                                                %}
-                                                {% assign variant_id = item.product.metafields.accentuate.pillow_addon
-                                                        | split: ':'
-                                                        | last
-                                                        | plus: 0
-                                                %}
+                            {% unless forloop.last -%}
+                              <span>/</span>
+                            {%- endunless %}
+                          {% endfor %}
+                        </div>
+                      {% endif %}
+                      {% if item.product.metafields.accentuate.has_pillow_addon %}
+                        {% assign product_handle = item.product.metafields.accentuate.pillow_addon
+                          | split: ':'
+                          | first
+                        %}
+                        {% assign variant_id = item.product.metafields.accentuate.pillow_addon
+                          | split: ':'
+                          | last
+                          | plus: 0
+                        %}
 
-                                                {% assign referenced_product = all_products[product_handle] %}
-                                                {% assign referenced_variant = referenced_product.variants
-                                                        | where: 'id', variant_id
-                                                        | first
-                                                %}
+                        {% assign referenced_product = all_products[product_handle] %}
+                        {% assign referenced_variant = referenced_product.variants
+                          | where: 'id', variant_id
+                          | first
+                        %}
 
-                                                <div class="cart-item-description">
+                        <div class="cart-item-description">
                             <span>
                               {{ item.product.title }}
-                                {% if item.variant.title != 'Default Title' %}
+                              {% if item.variant.title != 'Default Title' %}
 
-                                    ({{ item.variant.title }})
-                                {% endif %}
+                                ({{ item.variant.title }})
+                              {% endif %}
                             </span>
-                                                    /
-                                                    <span>
+                          /
+                          <span>
                               {{ item.product.metafields.accentuate.pillow_addon_quantity }}x
                               {{ referenced_product.title }}
                               for free
                             </span>
-                                                </div>
-                                            {% endif %}
-                                        </div>
-                                    </div>
-                                </td>
+                        </div>
+                      {% endif %}
+                    </div>
+                  </div>
+                </td>
 
-                                <td>
-                                    <div class="quantity_number-box">
-                                        <div class="myqtyminus iconqty"><tracked-button :trackId="Quantity_cart"> - </tracked-button></div>
-                                        <input
-                                                readonly
-                                                class="qty_item qtychange"
-                                                type="number"
-                                                name="updates[]"
-                                                id="updates_{{ item.key }}"
-                                                value="{{ item.quantity }}"
-                                                min="1"
-                                        >
-                                        <div class="myqtyplus iconqty"><tracked-button :trackId="Quantity_cart">+</tracked-button></div>
-                                    </div>
-                                </td>
+                <td>
+                  <div class="quantity_number-box">
+                    <div class="myqtyminus iconqty">
+                      <tracked-button :trackId="Quantity_cart"> -</tracked-button>
+                    </div>
+                    <input
+                      readonly
+                      class="qty_item qtychange"
+                      type="number"
+                      name="updates[]"
+                      id="updates_{{ item.key }}"
+                      value="{{ item.quantity }}"
+                      min="1"
+                    >
+                    <div class="myqtyplus iconqty">
+                      <tracked-button :trackId="Quantity_cart">+</tracked-button>
+                    </div>
+                  </div>
+                </td>
 
-                                <td>
-                                    <div class="cart-pricing cart-pricing--row">
-                                        <p
-                                                class=" hidden cart-pricing__price{% if item.variant.compare_at_price > item.variant.price %} text-red{% endif %}"
-                                        >
-                                            {% if item.final_line_price > 0 %}
-                                                {{ item.final_line_price | money_without_trailing_zeros }}
-                                            {% else %}
-                                                FREE
-                                            {% endif %}
-                                        </p>
-                                        <div class="flex items-center gap-2">
-                                            {% if item.variant.compare_at_price > item.variant.price %}
-                                                <span class="cart-pricing__price cart-pricing__price--original t">
+                <td>
+                  <div class="cart-pricing cart-pricing--row">
+                    <p
+                      class=" hidden cart-pricing__price{% if item.variant.compare_at_price > item.variant.price %} text-red{% endif %}"
+                    >
+                      {% if item.final_line_price > 0 %}
+                        {{ item.final_line_price | money_without_trailing_zeros }}
+                      {% else %}
+                        FREE
+                      {% endif %}
+                    </p>
+                    <div class="flex items-center gap-2">
+                      {% if item.variant.compare_at_price > item.variant.price %}
+                        <span class="cart-pricing__price cart-pricing__price--original t">
                             {{ item.variant.compare_at_price | times: item.quantity | money_without_trailing_zeros }}
                           </span>
-                                            {% endif %}
-                                            <strong class="product_price">
-                                                {% if item.original_line_price != item.line_price -%}
-                                                    {{- item.original_line_price | money -}}
-                                                {%- endif %}
-                                                {{ item.line_price | money }}
-                                                {% for discount in item.discounts -%}
-                                                    {{- discount.title -}}
-                                                {%- endfor %}
-                                            </strong>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                        {%- endfor -%}
-                        </tbody>
-                    </table>
-                    <div class="delivery-widget__manual hidden md:block"></div>
-                    <button type="submit" class="update_btn btn" style="display:none" name="update">Update Cart</button>
+                      {% endif %}
+                      <strong class="product_price">
+                        {% if item.original_line_price != item.line_price -%}
+                          {{- item.original_line_price | money -}}
+                        {%- endif %}
+                        {{ item.line_price | money }}
+                        {% for discount in item.discounts -%}
+                          {{- discount.title -}}
+                        {%- endfor %}
+                      </strong>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            {%- endfor -%}
+            </tbody>
+          </table>
+          <div class="delivery-widget__manual hidden md:block"></div>
+          <button type="submit" class="update_btn btn" style="display:none" name="update">Update Cart</button>
+        </div>
+
+        {% for item in cart.items %}
+          {% assign compare_price = item.variant.compare_at_price
+            | default: item.variant.price
+            | times: item.quantity
+          %}
+          {% assign total_cart_compare_price = total_cart_compare_price | plus: compare_price %}
+        {% endfor %}
+        <div class="cart_summary">
+          <h4>Order Summary</h4>
+          <div class="sum_row">
+            <div class="sum_item">Subtotal</div>
+            <div class="sum_item">
+              {{ total_cart_compare_price | money_without_trailing_zeros }}
+              <strong style="display:none">{{ cart.total_price | money }}</strong>
+            </div>
+          </div>
+          <div class="sum_row save_row">
+            <div class="sum_item">Total Savings</div>
+            <div class="sum_item">
+              {{ total_cart_compare_price | minus: cart.total_price | money_without_trailing_zeros }}
+            </div>
+          </div>
+          <div class="sum_row ship_row">
+            <div class="sum_item">Shipping</div>
+            <div class="sum_item">FREE</div>
+          </div>
+
+
+          <div class="sum_row">
+            <div class="sum_item">Total <span>(before tax)</span></div>
+            <div class="sum_item">
+              <del style="display:none">{{ total_cart_compare_price | money_without_trailing_zeros }}</del>
+              <strong> {{ cart.total_price | money_without_trailing_zeros }}</strong>
+            </div>
+          </div>
+
+          <cart-footer class="buy-buttons-container">
+            {% if section.settings.tocAgreement %}
+              <div id="toc-agreement">
+                <input type="checkbox" class="agreement-checkbox checkbox-input-overlay"
+                       required="required">
+                <div class="checkbox-icons">
+                  <i class="checkbox-icon checkbox-icon--checked">
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                         xmlns:xlink="http://www.w3.org/1999/xlink"
+                         width="20px" height="20px" viewBox="0 0 24 24" version="1.1"
+                         fill="#000000">
+
+                      <g id="SVGRepo_bgCarrier" stroke-width="0" />
+
+                      <g id="SVGRepo_tracerCarrier" stroke-linecap="round"
+                         stroke-linejoin="round" />
+
+                      <g id="SVGRepo_iconCarrier">
+                        <g id="🔍-Product-Icons" stroke="none" stroke-width="1" fill="none"
+                           fill-rule="evenodd">
+                          <g id="ic_fluent_checkbox_checked_24_regular" fill="#212121"
+                             fill-rule="nonzero">
+                            <path
+                              d="M18.25,3 C19.7687831,3 21,4.23121694 21,5.75 L21,18.25 C21,19.7687831 19.7687831,21 18.25,21 L5.75,21 C4.23121694,21 3,19.7687831 3,18.25 L3,5.75 C3,4.23121694 4.23121694,3 5.75,3 L18.25,3 Z M18.25,4.5 L5.75,4.5 C5.05964406,4.5 4.5,5.05964406 4.5,5.75 L4.5,18.25 C4.5,18.9403559 5.05964406,19.5 5.75,19.5 L18.25,19.5 C18.9403559,19.5 19.5,18.9403559 19.5,18.25 L19.5,5.75 C19.5,5.05964406 18.9403559,4.5 18.25,4.5 Z M10,14.4393398 L16.4696699,7.96966991 C16.7625631,7.6767767 17.2374369,7.6767767 17.5303301,7.96966991 C17.7965966,8.23593648 17.8208027,8.65260016 17.6029482,8.94621165 L17.5303301,9.03033009 L10.5303301,16.0303301 C10.2640635,16.2965966 9.84739984,16.3208027 9.55378835,16.1029482 L9.46966991,16.0303301 L6.46966991,13.0303301 C6.1767767,12.7374369 6.1767767,12.2625631 6.46966991,11.9696699 C6.73593648,11.7034034 7.15260016,11.6791973 7.44621165,11.8970518 L7.53033009,11.9696699 L10,14.4393398 L16.4696699,7.96966991 L10,14.4393398 Z"
+                              id="🎨Color"></path>
+                          </g>
+                        </g>
+                      </g>
+
+                    </svg>
+                  </i>
+                  <i class="checkbox-icon checkbox-icon--unchecked">
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                         xmlns:xlink="http://www.w3.org/1999/xlink"
+                         width="20px" height="20px" viewBox="0 0 24 24" version="1.1">
+                      <g id="🔍-Product-Icons" stroke="inherit" stroke-width="1" fill="none"
+                         fill-rule="evenodd">
+                        <g id="ic_fluent_checkbox_unchecked_24_regular" fill="#212121"
+                           fill-rule="nonzero">
+                          <path
+                            d="M5.75,3 L18.25,3 C19.7687831,3 21,4.23121694 21,5.75 L21,18.25 C21,19.7687831 19.7687831,21 18.25,21 L5.75,21 C4.23121694,21 3,19.7687831 3,18.25 L3,5.75 C3,4.23121694 4.23121694,3 5.75,3 Z M5.75,4.5 C5.05964406,4.5 4.5,5.05964406 4.5,5.75 L4.5,18.25 C4.5,18.9403559 5.05964406,19.5 5.75,19.5 L18.25,19.5 C18.9403559,19.5 19.5,18.9403559 19.5,18.25 L19.5,5.75 C19.5,5.05964406 18.9403559,4.5 18.25,4.5 L5.75,4.5 Z"
+                            id="🎨Color">
+
+                          </path>
+                        </g>
+                      </g>
+                    </svg>
+                  </i>
                 </div>
+                <label class="checkbox-content cursor-pointer" for="agreement-checkbox">
+                  I agree with the <a href="/pages/terms-and-conditions" target="_blank">Terms and
+                    Conditions</a>.
+                </label>
+              </div>
+            {% endif %}
 
-                {% for item in cart.items %}
-                    {% assign compare_price = item.variant.compare_at_price
-                            | default: item.variant.price
-                            | times: item.quantity
-                    %}
-                    {% assign total_cart_compare_price = total_cart_compare_price | plus: compare_price %}
-                {% endfor %}
-                <div class="cart_summary">
-                    <h4>Order Summary</h4>
-                    <div class="sum_row">
-                        <div class="sum_item">Subtotal</div>
-                        <div class="sum_item">
-                            {{ total_cart_compare_price | money_without_trailing_zeros }}
-                            <strong style="display:none">{{ cart.total_price | money }}</strong>
-                        </div>
-                    </div>
-                    <div class="sum_row save_row">
-                        <div class="sum_item">Total Savings</div>
-                        <div class="sum_item">
-                            {{ total_cart_compare_price | minus: cart.total_price | money_without_trailing_zeros }}
-                        </div>
-                    </div>
-                    <div class="sum_row ship_row">
-                        <div class="sum_item">Shipping</div>
-                        <div class="sum_item">FREE</div>
-                    </div>
+            <tracked-button :trackId="Check_out">
+              <button class="btn" type="submit" name="checkout">
+                <img width="14" height="18" src="{{ 'cart-white.svg' | asset_url }}"> Checkout
+              </button>
+            </tracked-button>
+
+            <tracked-button :trackId="Paypal_cart">
+              <express-checkout-button :provider="paypal"></express-checkout-button>
+            </tracked-button>
+
+          </cart-footer>
 
 
-                    <div class="sum_row">
-                        <div class="sum_item">Total <span>(before tax)</span></div>
-                        <div class="sum_item">
-                            <del style="display:none">{{ total_cart_compare_price | money_without_trailing_zeros }}</del>
-                            <strong> {{ cart.total_price | money_without_trailing_zeros }}</strong>
-                        </div>
-                    </div>
+          <script src="{{ 'cart-footer.js' | asset_url }}" defer="defer"></script>
 
-                    <cart-footer class="buy-buttons-container">
-                        {% if section.settings.tocAgreement %}
-                            <div id="toc-agreement">
-                                <input type="checkbox" class="agreement-checkbox checkbox-input-overlay"
-                                       required="required">
-                                <div class="checkbox-icons">
-                                    <i class="checkbox-icon checkbox-icon--checked">
-                                        <svg xmlns="http://www.w3.org/2000/svg"
-                                             xmlns:xlink="http://www.w3.org/1999/xlink"
-                                             width="20px" height="20px" viewBox="0 0 24 24" version="1.1"
-                                             fill="#000000">
-
-                                            <g id="SVGRepo_bgCarrier" stroke-width="0"/>
-
-                                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round"
-                                               stroke-linejoin="round"/>
-
-                                            <g id="SVGRepo_iconCarrier">
-                                                <g id="🔍-Product-Icons" stroke="none" stroke-width="1" fill="none"
-                                                   fill-rule="evenodd">
-                                                    <g id="ic_fluent_checkbox_checked_24_regular" fill="#212121"
-                                                       fill-rule="nonzero">
-                                                        <path d="M18.25,3 C19.7687831,3 21,4.23121694 21,5.75 L21,18.25 C21,19.7687831 19.7687831,21 18.25,21 L5.75,21 C4.23121694,21 3,19.7687831 3,18.25 L3,5.75 C3,4.23121694 4.23121694,3 5.75,3 L18.25,3 Z M18.25,4.5 L5.75,4.5 C5.05964406,4.5 4.5,5.05964406 4.5,5.75 L4.5,18.25 C4.5,18.9403559 5.05964406,19.5 5.75,19.5 L18.25,19.5 C18.9403559,19.5 19.5,18.9403559 19.5,18.25 L19.5,5.75 C19.5,5.05964406 18.9403559,4.5 18.25,4.5 Z M10,14.4393398 L16.4696699,7.96966991 C16.7625631,7.6767767 17.2374369,7.6767767 17.5303301,7.96966991 C17.7965966,8.23593648 17.8208027,8.65260016 17.6029482,8.94621165 L17.5303301,9.03033009 L10.5303301,16.0303301 C10.2640635,16.2965966 9.84739984,16.3208027 9.55378835,16.1029482 L9.46966991,16.0303301 L6.46966991,13.0303301 C6.1767767,12.7374369 6.1767767,12.2625631 6.46966991,11.9696699 C6.73593648,11.7034034 7.15260016,11.6791973 7.44621165,11.8970518 L7.53033009,11.9696699 L10,14.4393398 L16.4696699,7.96966991 L10,14.4393398 Z"
-                                                              id="🎨Color"></path>
-                                                    </g>
-                                                </g>
-                                            </g>
-
-                                        </svg>
-                                    </i>
-                                    <i class="checkbox-icon checkbox-icon--unchecked">
-                                        <svg xmlns="http://www.w3.org/2000/svg"
-                                             xmlns:xlink="http://www.w3.org/1999/xlink"
-                                             width="20px" height="20px" viewBox="0 0 24 24" version="1.1">
-                                            <g id="🔍-Product-Icons" stroke="none" stroke-width="1" fill="none"
-                                               fill-rule="evenodd">
-                                                <g id="ic_fluent_checkbox_unchecked_24_regular" fill="#212121"
-                                                   fill-rule="nonzero">
-                                                    <path d="M5.75,3 L18.25,3 C19.7687831,3 21,4.23121694 21,5.75 L21,18.25 C21,19.7687831 19.7687831,21 18.25,21 L5.75,21 C4.23121694,21 3,19.7687831 3,18.25 L3,5.75 C3,4.23121694 4.23121694,3 5.75,3 Z M5.75,4.5 C5.05964406,4.5 4.5,5.05964406 4.5,5.75 L4.5,18.25 C4.5,18.9403559 5.05964406,19.5 5.75,19.5 L18.25,19.5 C18.9403559,19.5 19.5,18.9403559 19.5,18.25 L19.5,5.75 C19.5,5.05964406 18.9403559,4.5 18.25,4.5 L5.75,4.5 Z"
-                                                          id="🎨Color">
-
-                                                    </path>
-                                                </g>
-                                            </g>
-                                        </svg>
-                                    </i>
-                                </div>
-                                <label class="checkbox-content cursor-pointer" for="agreement-checkbox">
-                                    I agree with the <a href="/pages/terms-and-conditions" target="_blank">Terms and
-                                        Conditions</a>.
-                                </label>
-                            </div>
-                        {% endif %}
-
-                        <tracked-button :trackId="Check_out">
-                            <button class="btn" type="submit" name="checkout">
-                                <img width="14" height="18" src="{{ 'cart-white.svg' | asset_url }}"> Checkout
-                            </button>
-                        </tracked-button>
-
-                        <tracked-button :trackId="Paypal_cart">
-                            <express-checkout-button :provider="paypal"></express-checkout-button>
-                        </tracked-button>
-
-                    </cart-footer>
-
-
-                    <script src="{{ 'cart-footer.js' | asset_url }}" defer="defer"></script>
-
-                </div>
-            </form>
         </div>
+      </form>
     </div>
+  </div>
 
-    <div class="page-boundary">
-        <div class="delivery-widget__manual mb-3 md:mb-8 md:hidden block"></div>
+  <div class="page-boundary">
+    <div class="delivery-widget__manual mb-3 md:mb-8 md:hidden block"></div>
+  </div>
+
+  <div class="cart-risk-reversal hidden">
+    <div class="cart-risk-reversal__item">
+      <img
+        src="//cdn.shopify.com/s/files/1/0592/8570/0771/files/free_delivery_blue_1.png?v=1659266469&amp;width=60"
+        width="auto"
+        height="auto"
+        loading="lazy"
+      >
+      <p class="paragraph-10 font-semibold">Free &amp; fast shipping</p>
     </div>
-
-    <div class="cart-risk-reversal hidden">
-        <div class="cart-risk-reversal__item">
-            <img
-                    src="//cdn.shopify.com/s/files/1/0592/8570/0771/files/free_delivery_blue_1.png?v=1659266469&amp;width=60"
-                    width="auto"
-                    height="auto"
-                    loading="lazy"
-            >
-            <p class="paragraph-10 font-semibold">Free &amp; fast shipping</p>
-        </div>
-        <div class="cart-risk-reversal__item">
-            <img
-                    src="//cdn.shopify.com/s/files/1/0592/8570/0771/files/365_night_trial_blue_1.png?v=1659266469&amp;width=60"
-                    width="auto"
-                    height="auto"
-                    loading="lazy"
-            >
-            <p class="paragraph-10 font-semibold">365-night risk-free trial</p>
-        </div>
-        <div class="cart-risk-reversal__item">
-            <img
-                    src="//cdn.shopify.com/s/files/1/0592/8570/0771/files/warranty_blue_1_1.png?v=1659266469&amp;width=60"
-                    width="auto"
-                    height="auto"
-                    loading="lazy"
-            >
-            <p class="paragraph-10 font-semibold">10-year warranty</p>
-        </div>
+    <div class="cart-risk-reversal__item">
+      <img
+        src="//cdn.shopify.com/s/files/1/0592/8570/0771/files/365_night_trial_blue_1.png?v=1659266469&amp;width=60"
+        width="auto"
+        height="auto"
+        loading="lazy"
+      >
+      <p class="paragraph-10 font-semibold">365-night risk-free trial</p>
     </div>
+    <div class="cart-risk-reversal__item">
+      <img
+        src="//cdn.shopify.com/s/files/1/0592/8570/0771/files/warranty_blue_1_1.png?v=1659266469&amp;width=60"
+        width="auto"
+        height="auto"
+        loading="lazy"
+      >
+      <p class="paragraph-10 font-semibold">10-year warranty</p>
+    </div>
+  </div>
 
-    <script src="{{ 'onquantity-change-cart.js' | asset_url }}" defer="defer"></script>
+  <script src="{{ 'onquantity-change-cart.js' | asset_url }}" defer="defer"></script>
 
-    <script>
-        const kdDiscountMutationObserver = new MutationObserver(onKdDiscountReady);
+  <script>
+    const kdDiscountMutationObserver = new MutationObserver(onKdDiscountReady);
 
-        kdDiscountMutationObserver.observe(document.querySelector('.sum_row.ship_row'), {
-            childList: true
-        })
+    kdDiscountMutationObserver.observe(document.querySelector(".sum_row.ship_row"), {
+      childList: true,
+    });
 
-        function onKdDiscountReady() {
-            const kdDiscount = document.querySelector("#af_kd_discount_container0")
+    function onKdDiscountReady() {
+      const kdDiscount = document.querySelector("#af_kd_discount_container0");
 
-            if (!kdDiscount) return
+      if (!kdDiscount) return;
 
-            const $kdDiscount = $(kdDiscount)
+      const $kdDiscount = $(kdDiscount);
 
-            kdDiscountMutationObserver.disconnect()
+      kdDiscountMutationObserver.disconnect();
 
-            const $applyBtnEl = $kdDiscount.find(".af_kd_btn_holder")
+      const $applyBtnEl = $kdDiscount.find(".af_kd_btn_holder");
 
 
-            $applyBtnEl.html(`
+      $applyBtnEl.html(`
                 <tracked-button :trackId="Apply_coupon_cart">${$applyBtnEl.html()}</tracked-button>
-            `)
-        }
+            `);
+    }
 
-    </script>
+  </script>
 {% endif %}
 
 <!-- Extend -- Load cart integration script -->

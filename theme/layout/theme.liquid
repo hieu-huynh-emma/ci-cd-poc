@@ -15,6 +15,7 @@
 
     {% render 'page-styles' %}
     {% render 'layout-styles' %}
+    <link rel="stylesheet" href="{{ 'weglot_lang_switcher.css' | asset_url }}">
 
     <script>document.documentElement.className = document.documentElement.className.replace("no-js", "js");</script>
     {% render 'delivery_coder' %} {% include 'kart_discount' %}

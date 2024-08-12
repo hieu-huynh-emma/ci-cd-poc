@@ -22,20 +22,28 @@ class CartFooter extends CustomElement {
 
       $checkoutBtn.prop("disabled", !this.agreementChecked);
       $agreementCheckbox.prop("checked", this.agreementChecked);
+      $("#toc-agreement .checkbox-icon.checkbox-icon--unchecked")[!this.agreementChecked ? "addClass" : "removeClass"]("checkbox-icon--error");
+
     });
   }
 
   onCheckoutClick(e) {
-    const { $agreementCheckbox, $checkoutBtn } = this.refs
-
-    if(!$agreementCheckbox.is(":checked")) {
-      e.preventDefault();
-
-      toastr.error("You must agree with the terms and conditions of sales to checkout.")
-    }
+    const { $agreementCheckbox, $checkoutBtn } = this.refs;
 
     $agreementCheckbox.prop("checked", this.agreementChecked);
     $checkoutBtn.prop("disabled", !this.agreementChecked);
+    $("#toc-agreement .checkbox-icon.checkbox-icon--unchecked")[!this.agreementChecked ? "addClass" : "removeClass"]("checkbox-icon--error");
+
+    if (!$agreementCheckbox.is(":checked")) {
+      e.preventDefault();
+
+      this.showError();
+    }
+  }
+
+  async showError() {
+    const [errorMsg] = await translateWeglot(["You must agree with the terms and conditions of sales to checkout."]);
+    toastr.error(errorMsg);
   }
 
   onDisabledChange(isDisabled) {
