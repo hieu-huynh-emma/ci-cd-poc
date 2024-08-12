@@ -102,7 +102,7 @@
           "type": "image",
           "settings": {
             "en_image": "shopify:\/\/shop_images\/Eng_Cooling_1.png",
-            "fr_image": "shopify:\/\/shop_images\/FR_Cooling.png"
+            "fr_image": "shopify:\/\/shop_images\/Cooling_Technology_USP.jpg"
           }
         },
         "038c8f16-3a84-418c-9ee2-38f53be4a385": {
@@ -115,15 +115,8 @@
         "e4cd7962-4d57-4250-8e6e-4c76dd76d6d6": {
           "type": "image",
           "settings": {
-            "en_image": "shopify:\/\/shop_images\/Eng_Convenience_6.png",
+            "en_image": "shopify:\/\/shop_images\/ENG_Convenience2.png",
             "fr_image": "shopify:\/\/shop_images\/FR_Convenience2.png"
-          }
-        },
-        "12e2c164-6e6a-42a2-a76a-b4363d4c2c09": {
-          "type": "image",
-          "settings": {
-            "en_image": "shopify:\/\/shop_images\/ENG_Back_Pressure_Relief.jpg",
-            "fr_image": "shopify:\/\/shop_images\/FR_Back_Pressure_Relief.jpg"
           }
         },
         "video_KPBPqE": {
@@ -145,7 +138,6 @@
         "72b3b893-b0bb-44ad-978c-733ee54620a1",
         "038c8f16-3a84-418c-9ee2-38f53be4a385",
         "e4cd7962-4d57-4250-8e6e-4c76dd76d6d6",
-        "12e2c164-6e6a-42a2-a76a-b4363d4c2c09",
         "video_KPBPqE",
         "video_kzNCC3"
       ],
@@ -156,6 +148,72 @@
     },
     "overlay-text-on-image": {
       "type": "product-media",
+      "blocks": {
+        "image_qbMg8D": {
+          "type": "image",
+          "settings": {
+            "en_image": "shopify:\/\/shop_images\/1_first_photo_2_fbe467ca-8ecc-4523-88c9-706a72c84761.png",
+            "fr_image": "shopify:\/\/shop_images\/1_first_photo_2_fbe467ca-8ecc-4523-88c9-706a72c84761.png"
+          }
+        },
+        "image_tFxA6z": {
+          "type": "image",
+          "settings": {
+            "en_image": "shopify:\/\/shop_images\/2Eng_Reviews_2.png",
+            "fr_image": "shopify:\/\/shop_images\/FR_Reviews.png"
+          }
+        },
+        "image_G4rdM8": {
+          "type": "image",
+          "settings": {
+            "en_image": "shopify:\/\/shop_images\/Eng_Cooling_1.png",
+            "fr_image": "shopify:\/\/shop_images\/FR_Cooling.png"
+          }
+        },
+        "image_ynb7hQ": {
+          "type": "image",
+          "settings": {
+            "en_image": "shopify:\/\/shop_images\/Eng_Affiliate_quote_3.png",
+            "fr_image": "shopify:\/\/shop_images\/FR_Affiliate_quote_1.png"
+          }
+        },
+        "image_fgJWGJ": {
+          "type": "image",
+          "settings": {
+            "en_image": "shopify:\/\/shop_images\/ENG_Convenience2.png",
+            "fr_image": "shopify:\/\/shop_images\/FR_Convenience2.png"
+          }
+        },
+        "image_HbbNCE": {
+          "type": "image",
+          "settings": {
+            "en_image": "shopify:\/\/shop_images\/ENG_Back_Pressure_Relief.jpg",
+            "fr_image": "shopify:\/\/shop_images\/FR_Back_Pressure_Relief.jpg"
+          }
+        },
+        "video_XBh6HC": {
+          "type": "video",
+          "settings": {
+            "video": "shopify:\/\/files\/videos\/ENG_Cooling tech 1.mp4"
+          }
+        },
+        "video_w76wX4": {
+          "type": "video",
+          "settings": {
+            "video": "shopify:\/\/files\/videos\/Eng_Video 5.mp4"
+          }
+        }
+      },
+      "block_order": [
+        "image_qbMg8D",
+        "image_tFxA6z",
+        "image_G4rdM8",
+        "image_ynb7hQ",
+        "image_fgJWGJ",
+        "image_HbbNCE",
+        "video_XBh6HC",
+        "video_w76wX4"
+      ],
       "settings": {
         "heading": "",
         "sectionId": "overlay-text-on-image"
