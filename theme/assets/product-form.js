@@ -99,10 +99,8 @@ if (!customElements.get("product-form")) {
           const productSize = $(`product-buybox select[name="options[Size]"]`).val().split("|")[0].trim();
 
           const crossSellData = JSON.parse($bundleCrossSell.find(`script#BundleCrossSell-JSON`).text());
-          console.log("=>(product-form.js:98) crossSellData", crossSellData);
 
           const selectedVariant = crossSellData.variants.find((variant) => variant.title.includes(productSize));
-          console.log("=>(product-form.js:101) crossSellData", crossSellData);
 
           if (selectedVariant) {
             formData.id = selectedVariant.id;
