@@ -1,83 +1,85 @@
 {% assign picture = section.settings.picture %}
 
 <div class="empty-content">
-  <p class="text-comet font-light">{{ 'sections.cart.empty' | t }}</p>
+    <p class="text-comet font-light">{{ 'sections.cart.empty' | t }}</p>
 
-  <div class="cart-drawer-empty__picture">
-    {% if picture != blank %}{{ picture | image_url: width: 140 | image_tag }} {% endif %}
-  </div>
+    <div class="cart-drawer-empty__picture">
+        {% if picture != blank %}{{ picture | image_url: width: 140 | image_tag }} {% endif %}
+    </div>
 
-  <p class="paragraph-14 text-center text-comet">
-    Let’s change that. <br>
-    Start here:
-  </p>
+    <p class="paragraph-14 text-center text-comet">
+        Let’s change that. <br>
+        Start here:
+    </p>
 
-  <div class="empty-content__footer">
-    <p class="font-semibold">Shop our best sellers</p>
-  </div>
+    <div class="empty-content__footer">
+        <p class="font-semibold">Shop our best sellers</p>
+    </div>
 </div>
 {% assign coreProduct = section.settings['core-product'] %}
 <a href="/products/{{ coreProduct.handle }}" class="core-product">
-  <div class="core-product__inner">
-    <p class="paragraph-14 font-semibold">{{ coreProduct.title }}</p>
+    <div class="core-product__inner">
+        <p class="paragraph-14 font-semibold">{{ coreProduct.title }}</p>
 
-    <p class="paragraph-12 text-red">Starts at {{ coreProduct.price | money_without_trailing_zeros }}</p>
+        <p class="paragraph-12 text-red">Starts at {{ coreProduct.price | money_without_trailing_zeros }}</p>
 
-    <div class="btn btn--compact"><span>Shop Now</span></div>
-  </div>
+        <div class="btn btn--compact"><span>Shop Now</span></div>
+    </div>
 
-  <div class="discount-badge">SALE</div>
+    <div class="discount-badge">SALE</div>
 
-  <img src="{{ coreProduct.metafields.accentuate.cart_suggestion_image[0].src }}" alt="">
+    <img class="w-full h-full object-cover object-center rounded"
+         src="{{ coreProduct.metafields.accentuate.cart_suggestion_image[0].src }}" alt="">
 </a>
 
 <div class="suggestion-catalog">
-  {% for product in section.settings['suggestion-catalog'] %}
-    {% assign featuredImage = product.featured_image | image_url: width: 100 %}
+    {% for product in section.settings['suggestion-catalog'] %}
+        {% assign featuredImage = product.featured_image | image_url: width: 100 %}
 
-    <a href="/products/{{ product.handle }}" class="suggestion-catalog__item">
-      <div class="suggestion-catalog__content">
-        <p class="paragraph-14 font-semibold">{{ product.title }}</p>
-        <p class="paragraph-12">Starts at {{ product.price | money_without_trailing_zeros }}</p>
+        <a href="/products/{{ product.handle }}" class="suggestion-catalog__item">
+            <div class="suggestion-catalog__content">
+                <p class="paragraph-14 font-semibold">{{ product.title }}</p>
+                <p class="paragraph-12">Starts at {{ product.price | money_without_trailing_zeros }}</p>
 
-        <div class="btn btn--secondary btn--compact"><span>Shop Now</span></div>
-      </div>
+                <div class="btn btn--secondary btn--compact"><span>Shop Now</span></div>
+            </div>
 
-      <div class="suggestion-catalog__image">
-        <img src="{{ product.metafields.accentuate.cart_suggestion_image[0].src | default: featuredImage }}" alt="">
-      </div>
-    </a>
-  {% endfor %}
+            <div class="suggestion-catalog__image">
+                <img src="{{ product.metafields.accentuate.cart_suggestion_image[0].src | default: featuredImage }}"
+                     alt="">
+            </div>
+        </a>
+    {% endfor %}
 </div>
 
 <div class="cart-risk-reversal hidden">
-  <div class="cart-risk-reversal__item">
-    <img
-      src="//cdn.shopify.com/s/files/1/0592/8570/0771/files/free_delivery_blue_1.png?v=1659266469&amp;width=60"
-      width="auto"
-      height="auto"
-      loading="lazy"
-    >
-    <p class="paragraph-10 font-semibold">Free &amp; fast shipping</p>
-  </div>
-  <div class="cart-risk-reversal__item">
-    <img
-      src="//cdn.shopify.com/s/files/1/0592/8570/0771/files/365_night_trial_blue_1.png?v=1659266469&amp;width=60"
-      width="auto"
-      height="auto"
-      loading="lazy"
-    >
-    <p class="paragraph-10 font-semibold">365-night risk-free trial</p>
-  </div>
-  <div class="cart-risk-reversal__item">
-    <img
-      src="//cdn.shopify.com/s/files/1/0592/8570/0771/files/warranty_blue_1_1.png?v=1659266469&amp;width=60"
-      width="auto"
-      height="auto"
-      loading="lazy"
-    >
-    <p class="paragraph-10 font-semibold">10-year warranty</p>
-  </div>
+    <div class="cart-risk-reversal__item">
+        <img
+                src="//cdn.shopify.com/s/files/1/0592/8570/0771/files/free_delivery_blue_1.png?v=1659266469&amp;width=60"
+                width="auto"
+                height="auto"
+                loading="lazy"
+        >
+        <p class="paragraph-10 font-semibold">Free &amp; fast shipping</p>
+    </div>
+    <div class="cart-risk-reversal__item">
+        <img
+                src="//cdn.shopify.com/s/files/1/0592/8570/0771/files/365_night_trial_blue_1.png?v=1659266469&amp;width=60"
+                width="auto"
+                height="auto"
+                loading="lazy"
+        >
+        <p class="paragraph-10 font-semibold">365-night risk-free trial</p>
+    </div>
+    <div class="cart-risk-reversal__item">
+        <img
+                src="//cdn.shopify.com/s/files/1/0592/8570/0771/files/warranty_blue_1_1.png?v=1659266469&amp;width=60"
+                width="auto"
+                height="auto"
+                loading="lazy"
+        >
+        <p class="paragraph-10 font-semibold">10-year warranty</p>
+    </div>
 </div>
 
 {% schema %}

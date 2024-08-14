@@ -1,240 +1,246 @@
 {% assign picture = section.settings.picture %}
 
 {% if cart.item_count == 0 %}
-  <style>
-      .cart-drawer-empty {
-          overflow-y: auto;
-          display: grid;
-          gap: 0.625rem;
-          grid-template-columns: minmax(0, 1fr);
-          grid-auto-flow: row;
-          align-content: flex-start;
-          align-items: flex-end;
-          justify-content: center;
-          padding: 0.625rem 1.25rem;
-          max-width: 850px;
-          margin: auto;
-          overflow: auto;
-      }
+    <style>
+        .cart-drawer-empty {
+            overflow-y: auto;
+            display: grid;
+            gap: 0.625rem;
+            grid-template-columns: minmax(0, 1fr);
+            grid-auto-flow: row;
+            align-content: flex-start;
+            align-items: flex-end;
+            justify-content: center;
+            padding: 0.625rem 1.25rem;
+            max-width: 850px;
+            margin: auto;
+            overflow: auto;
+        }
 
-      .cart-drawer-empty .empty-content {
-          display: grid;
-          gap: 24px;
-          grid-template-columns: minmax(0, 1fr);
-          grid-auto-flow: row;
-          justify-content: center;
-          justify-items: center;
-          height: 100%;
-      }
+        .cart-drawer-empty .empty-content {
+            display: grid;
+            gap: 24px;
+            grid-template-columns: minmax(0, 1fr);
+            grid-auto-flow: row;
+            justify-content: center;
+            justify-items: center;
+            height: 100%;
+        }
 
-      .cart-drawer-empty .empty-content__footer {
-          display: grid;
-          gap: 6px;
-          grid-auto-flow: row;
-          justify-items: center;
-      }
+        .cart-drawer-empty .empty-content__footer {
+            display: grid;
+            gap: 6px;
+            grid-auto-flow: row;
+            justify-items: center;
+        }
 
-      .cart-drawer-empty__picture {
-          width: 140px;
-          height: 140px;
-          background: #fff6ec;
-          border-radius: 100%;
-      }
+        .cart-drawer-empty__picture {
+            width: 140px;
+            height: 140px;
+            background: #fff6ec;
+            border-radius: 100%;
+        }
 
-      .cart-drawer-empty .btn {
-          position: relative;
-          margin: 12px 0 0;
-          padding: 5px 0.625rem;
-          font-size: 14px;
-          white-space: nowrap;
-          min-width: auto;
-      }
+        .cart-drawer-empty .btn {
+            position: relative;
+            margin: 12px 0 0;
+            padding: 5px 0.625rem;
+            font-size: 14px;
+            white-space: nowrap;
+            min-width: auto;
+        }
 
-      .cart-drawer-empty .core-product {
-          position: relative;
-          display: grid;
-          gap: 8px;
-          grid-template-columns: minmax(0, 0.4fr) minmax(0, 0.6fr);
-          align-items: center;
-          padding: 0 0 0 1.25rem;
-          background: linear-gradient(272.28deg, #ffdeb7 0, #fff6ec 100%);
-          border-radius: 6px;
-      }
+        .cart-drawer-empty .core-product {
+            position: relative;
+            display: grid;
+            gap: 8px;
+            grid-template-columns: minmax(0, 0.4fr) minmax(0, 0.6fr);
+            align-items: center;
+            padding: 0 0 0 1.25rem;
+            background: linear-gradient(272.28deg, #ffdeb7 0, #fff6ec 100%);
+            border-radius: 6px;
+        }
 
-      .cart-drawer-empty .core-product .discount-badge {
-          position: absolute;
-          top: 0;
-          right: 0;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          padding: 8px 13px;
-          width: 78px;
-          height: 30px;
-          color: #fff;
-          background: rgba(255, 0, 0, 0.75);
-          -webkit-backdrop-filter: blur(0.625rem);
-          backdrop-filter: blur(0.625rem);
-          border-radius: 0 6px;
-          font-weight: 600;
-          font-size: 12px;
-          line-height: 120%;
-      }
-      .cart-drawer-empty .core-product img {
-          width: 100%;
-          height: 90%;
-          object-fit: contain;
-      }
-      .cart-drawer-empty .core-product__inner {
-          display: grid;
-          gap: 4px;
-          grid-auto-flow: row;
-          padding: 1.25rem 0;
-      }
+        .cart-drawer-empty .core-product .discount-badge {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px 13px;
+            width: 78px;
+            height: 30px;
+            color: #fff;
+            background: rgba(255, 0, 0, 0.75);
+            -webkit-backdrop-filter: blur(0.625rem);
+            backdrop-filter: blur(0.625rem);
+            border-radius: 0 6px;
+            font-weight: 600;
+            font-size: 12px;
+            line-height: 120%;
+        }
 
-      .cart-drawer-empty .suggestion-catalog {
-          display: grid;
-          gap: 0.625rem;
-      }
+        .cart-drawer-empty .core-product img {
+            width: 100%;
+            height: 90%;
+            object-fit: contain;
+        }
 
-      .cart-drawer-empty {
-          max-width: 850px;
-          margin: auto;
-          overflow: auto;
-      }
+        .cart-drawer-empty .core-product__inner {
+            display: grid;
+            gap: 4px;
+            grid-auto-flow: row;
+            padding: 1.25rem 0;
+        }
 
-      @media screen and (min-width: 591px) {
-          .cart-drawer-empty {
-              gap: 16px;
-              padding: 24px 2.5rem;
-          }
-          .cart-drawer-empty .cart-risk-reversal {
-              display: grid;
-          }
+        .cart-drawer-empty .suggestion-catalog {
+            display: grid;
+            gap: 0.625rem;
+        }
 
-          .cart-drawer-empty .suggestion-catalog {
-              gap: 16px;
-              grid-template-columns: repeat(2, minmax(0, 1fr));
-          }
-      }
+        .cart-drawer-empty {
+            max-width: 850px;
+            margin: auto;
+            overflow: auto;
+        }
 
-      .cart-drawer-empty .suggestion-catalog__item {
-          display: grid;
-          gap: 8px;
-          grid-template-columns: minmax(0, 0.4fr) minmax(0, 0.6fr);
-          align-items: center;
-          padding: 0 0 0 1.25rem;
-          background: linear-gradient(103.36deg, #f0f0f5 0, #e1e1f0 100%);
-          border-radius: 6px;
-      }
+        @media screen and (min-width: 591px) {
+            .cart-drawer-empty {
+                gap: 16px;
+                padding: 24px 2.5rem;
+            }
 
-      .cart-drawer-empty .suggestion-catalog__content {
-          display: grid;
-          gap: 4px;
-          grid-auto-flow: row;
-          padding: 1.25rem 0;
-      }
+            .cart-drawer-empty .cart-risk-reversal {
+                display: grid;
+            }
 
-      .cart-drawer-empty .suggestion-catalog__image {
-          display: flex;
-          align-items: center;
-          height: 100%;
-      }
+            .cart-drawer-empty .suggestion-catalog {
+                gap: 16px;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
 
-      .cart-drawer-empty .suggestion-catalog__image img {
-          width: 100%;
-      }
+        .cart-drawer-empty .suggestion-catalog__item {
+            display: grid;
+            gap: 8px;
+            grid-template-columns: minmax(0, 0.4fr) minmax(0, 0.6fr);
+            align-items: center;
+            padding: 0 0 0 1.25rem;
+            background: linear-gradient(103.36deg, #f0f0f5 0, #e1e1f0 100%);
+            border-radius: 6px;
+        }
 
-      .cart-drawer-empty .cart-risk-reversal {
-          display: none !important;
-          grid-template-columns: repeat(3, minmax(0, 1fr));
-          align-items: center;
-          justify-content: space-between;
-          justify-items: center;
-          width: 100%;
-      }
-  </style>
-  <div class="page-boundary cart-drawer-empty">
-    <div class="empty-content">
-      <p class="text-comet font-light">{{ 'sections.cart.empty' | t }}</p>
-      
-      <div class="cart-drawer-empty__picture">
-        {% if picture != blank %}{{ picture | image_url: width: 140 | image_tag }} {% endif %}
-      </div>
-      
-      <p class="paragraph-14 text-center text-comet">
-        Let’s change that. <br>
-        Start here:
-      </p>
-      
-      <div class="empty-content__footer">
-        <p class="font-semibold">Shop our best sellers</p>
-      </div>
-    </div>
-    {% assign coreProduct = section.settings['core-product'] %}
-    <a href="/products/{{ coreProduct.handle }}" class="core-product">
-      <div class="core-product__inner">
-        <p class="paragraph-14 font-semibold">{{ coreProduct.title }}</p>
-        
-        <p class="paragraph-12 text-red">Starts at {{ coreProduct.price | money_without_trailing_zeros }}</p>
-        
-        <div class="btn btn--compact"><span>Shop Now</span></div>
-      </div>
-      
-      <div class="discount-badge">SALE</div>
-      
-      <img src="{{ coreProduct.metafields.accentuate.cart_suggestion_image[0].src }}" alt="">
-    </a>
-    
-    <div class="suggestion-catalog">
-      {% for product in section.settings['suggestion-catalog'] %}
-        {% assign featuredImage = product.featured_image | image_url: width: 100 %}
-        
-        <a href="/products/{{ product.handle }}" class="suggestion-catalog__item">
-          <div class="suggestion-catalog__content">
-            <p class="paragraph-14 font-semibold">{{ product.title }}</p>
-            <p class="paragraph-12">Starts at {{ product.price | money_without_trailing_zeros }}</p>
-            
-            <div class="btn btn--secondary btn--compact"><span>Shop Now</span></div>
-          </div>
-          
-          <div class="suggestion-catalog__image">
-            <img src="{{ product.metafields.accentuate.cart_suggestion_image[0].src | default: featuredImage }}" alt="">
-          </div>
+        .cart-drawer-empty .suggestion-catalog__content {
+            display: grid;
+            gap: 4px;
+            grid-auto-flow: row;
+            padding: 1.25rem 0;
+        }
+
+        .cart-drawer-empty .suggestion-catalog__image {
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+
+        .cart-drawer-empty .suggestion-catalog__image img {
+            width: 100%;
+        }
+
+        .cart-drawer-empty .cart-risk-reversal {
+            display: none !important;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            align-items: center;
+            justify-content: space-between;
+            justify-items: center;
+            width: 100%;
+        }
+    </style>
+    <div class="page-boundary cart-drawer-empty">
+        <div class="empty-content">
+            <p class="text-comet font-light">{{ 'sections.cart.empty' | t }}</p>
+
+            <div class="cart-drawer-empty__picture">
+                {% if picture != blank %}{{ picture | image_url: width: 140 | image_tag }} {% endif %}
+            </div>
+
+            <p class="paragraph-14 text-center text-comet">
+                Let’s change that. <br>
+                Start here:
+            </p>
+
+            <div class="empty-content__footer">
+                <p class="font-semibold">Shop our best sellers</p>
+            </div>
+        </div>
+        {% assign coreProduct = section.settings['core-product'] %}
+        <a href="/products/{{ coreProduct.handle }}" class="core-product">
+            <div class="core-product__inner">
+                <p class="paragraph-14 font-semibold">{{ coreProduct.title }}</p>
+
+                <p class="paragraph-12 text-red">Starts at {{ coreProduct.price | money_without_trailing_zeros }}</p>
+
+                <div class="btn btn--compact"><span>Shop Now</span></div>
+            </div>
+
+            <div class="discount-badge">SALE</div>
+
+
+            <img class="h-full object-cover object-center"
+                 src="{{ coreProduct.metafields.accentuate.cart_suggestion_image[0].src }}" alt="">
         </a>
-      {% endfor %}
+
+        <div class="suggestion-catalog">
+            {% for product in section.settings['suggestion-catalog'] %}
+                {% assign featuredImage = product.featured_image | image_url: width: 100 %}
+
+                <a href="/products/{{ product.handle }}" class="suggestion-catalog__item">
+                    <div class="suggestion-catalog__content">
+                        <p class="paragraph-14 font-semibold">{{ product.title }}</p>
+                        <p class="paragraph-12">Starts at {{ product.price | money_without_trailing_zeros }}</p>
+
+                        <div class="btn btn--secondary btn--compact"><span>Shop Now</span></div>
+                    </div>
+
+                    <div class="suggestion-catalog__image">
+                        <img src="{{ product.metafields.accentuate.cart_suggestion_image[0].src | default: featuredImage }}"
+                             alt="">
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
+
+        <div class="cart-risk-reversal hidden">
+            <div class="cart-risk-reversal__item">
+                <img
+                        src="//cdn.shopify.com/s/files/1/0592/8570/0771/files/free_delivery_blue_1.png?v=1659266469&amp;width=60"
+                        width="auto"
+                        height="auto"
+                        loading="lazy"
+                >
+                <p class="paragraph-10 font-semibold">Free &amp; fast shipping</p>
+            </div>
+            <div class="cart-risk-reversal__item">
+                <img
+                        src="//cdn.shopify.com/s/files/1/0592/8570/0771/files/365_night_trial_blue_1.png?v=1659266469&amp;width=60"
+                        width="auto"
+                        height="auto"
+                        loading="lazy"
+                >
+                <p class="paragraph-10 font-semibold">365-night risk-free trial</p>
+            </div>
+            <div class="cart-risk-reversal__item">
+                <img
+                        src="//cdn.shopify.com/s/files/1/0592/8570/0771/files/warranty_blue_1_1.png?v=1659266469&amp;width=60"
+                        width="auto"
+                        height="auto"
+                        loading="lazy"
+                >
+                <p class="paragraph-10 font-semibold">10-year warranty</p>
+            </div>
+        </div>
     </div>
-    
-    <div class="cart-risk-reversal hidden">
-      <div class="cart-risk-reversal__item">
-        <img
-          src="//cdn.shopify.com/s/files/1/0592/8570/0771/files/free_delivery_blue_1.png?v=1659266469&amp;width=60"
-          width="auto"
-          height="auto"
-          loading="lazy"
-        >
-        <p class="paragraph-10 font-semibold">Free &amp; fast shipping</p>
-      </div>
-      <div class="cart-risk-reversal__item">
-        <img
-          src="//cdn.shopify.com/s/files/1/0592/8570/0771/files/365_night_trial_blue_1.png?v=1659266469&amp;width=60"
-          width="auto"
-          height="auto"
-          loading="lazy"
-        >
-        <p class="paragraph-10 font-semibold">365-night risk-free trial</p>
-      </div>
-      <div class="cart-risk-reversal__item">
-        <img
-          src="//cdn.shopify.com/s/files/1/0592/8570/0771/files/warranty_blue_1_1.png?v=1659266469&amp;width=60"
-          width="auto"
-          height="auto"
-          loading="lazy"
-        >
-        <p class="paragraph-10 font-semibold">10-year warranty</p>
-      </div>
-    </div>
-  </div>
 {% endif %}
 
 {% schema %}

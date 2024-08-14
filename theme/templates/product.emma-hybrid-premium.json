@@ -1,6 +1,35 @@
 {
   "layout": "theme.product",
   "sections": {
+    "joint-product": {
+      "type": "joint-product",
+      "blocks": {
+        "item_zLVk8t": {
+          "type": "item",
+          "settings": {
+            "product": "emma-hybrid-premium",
+            "upsell": "",
+            "short_desc": "Our premium mattress for perfect comfort and cooling",
+            "show_star_rating": false
+          }
+        },
+        "item_ha7iFa": {
+          "type": "item",
+          "settings": {
+            "product": "emma-hybrid-premium-plus",
+            "upsell": "",
+            "short_desc": "Same structure, different cover",
+            "show_star_rating": false
+          }
+        }
+      },
+      "block_order": [
+        "item_zLVk8t",
+        "item_ha7iFa"
+      ],
+      "settings": {
+      }
+    },
     "product-layout": {
       "type": "product-layout",
       "blocks": {
@@ -113,42 +142,42 @@
     "overlay-text-on-image": {
       "type": "product-media",
       "blocks": {
-        "f5f456c7-b29a-4f74-826f-648e09f5b1cd": {
+        "image_qbMg8D": {
           "type": "image",
           "settings": {
             "en_image": "shopify:\/\/shop_images\/1_first_photo_2_fbe467ca-8ecc-4523-88c9-706a72c84761.png",
             "fr_image": "shopify:\/\/shop_images\/1_first_photo_2_fbe467ca-8ecc-4523-88c9-706a72c84761.png"
           }
         },
-        "image_7z6D36": {
+        "image_tFxA6z": {
           "type": "image",
           "settings": {
             "en_image": "shopify:\/\/shop_images\/1S1HTEB2_Dark_render_Hybrid_Premium_1.png",
             "fr_image": "shopify:\/\/shop_images\/1S1HTEB2_Dark_render_Hybrid_Premium_1.png"
           }
         },
-        "image_YYPQrM": {
+        "image_G4rdM8": {
           "type": "image",
           "settings": {
             "en_image": "shopify:\/\/shop_images\/Cooling_Technology_USP.jpg",
             "fr_image": "shopify:\/\/shop_images\/Cooling_Technology_USP.jpg"
           }
         },
-        "image_EebxLn": {
+        "image_ynb7hQ": {
           "type": "image",
           "settings": {
             "en_image": "shopify:\/\/shop_images\/1S1HTEB2_Dark_render_Hybrid_Premium_3.png",
             "fr_image": "shopify:\/\/shop_images\/1S1HTEB2_Dark_render_Hybrid_Premium_3.png"
           }
         },
-        "image_xVaMYQ": {
+        "image_fgJWGJ": {
           "type": "image",
           "settings": {
             "en_image": "shopify:\/\/shop_images\/1S1HTEB2_Dark_render_Hybrid_Premium_4.png",
             "fr_image": "shopify:\/\/shop_images\/1S1HTEB2_Dark_render_Hybrid_Premium_4.png"
           }
         },
-        "video_DHLnaW": {
+        "video_w76wX4": {
           "type": "video",
           "settings": {
             "video": "shopify:\/\/files\/videos\/Unboxing (16x9).mp4"
@@ -156,12 +185,12 @@
         }
       },
       "block_order": [
-        "f5f456c7-b29a-4f74-826f-648e09f5b1cd",
-        "image_7z6D36",
-        "image_YYPQrM",
-        "image_EebxLn",
-        "image_xVaMYQ",
-        "video_DHLnaW"
+        "image_qbMg8D",
+        "image_tFxA6z",
+        "image_G4rdM8",
+        "image_ynb7hQ",
+        "image_fgJWGJ",
+        "video_w76wX4"
       ],
       "settings": {
         "heading": "",
@@ -170,7 +199,6 @@
     },
     "bundle-cross-sell": {
       "type": "bundle-cross-sell",
-      "disabled": true,
       "settings": {
         "heading": "Add bundle offer!",
         "product": "premium-accessory-bundle",
@@ -252,36 +280,7 @@
         "grabber_text": "Discover the value behind our prices"
       }
     },
-    "joint-product": {
-      "type": "joint-product",
-      "blocks": {
-        "item_zLVk8t": {
-          "type": "item",
-          "settings": {
-            "product": "emma-hybrid-premium",
-            "upsell": "",
-            "short_desc": "Our premium mattress for perfect comfort and cooling",
-            "show_star_rating": false
-          }
-        },
-        "item_ha7iFa": {
-          "type": "item",
-          "settings": {
-            "product": "emma-hybrid-premium-plus",
-            "upsell": "",
-            "short_desc": "Same structure, different cover",
-            "show_star_rating": false
-          }
-        }
-      },
-      "block_order": [
-        "item_zLVk8t",
-        "item_ha7iFa"
-      ],
-      "disabled": true,
-      "settings": {
-      }
-    },
+
     "risk-reversal": {
       "type": "risk-reversal",
       "blocks": {
@@ -428,13 +427,20 @@
         "805e46e0-28b9-48bd-9c5f-07434863e3ea": {
           "type": "quick_compare",
           "settings": {
-            "badge": "$1.317",
+            "badge": "$798",
             "note": "*For queen sizes only. All prices and information from public sources listed as of Sept 1, 2023. Information may not reflect updated prices and promotions."
+          }
+        },
+        "cross_sell_widget_tXLCDN": {
+          "type": "cross_sell_widget",
+          "disabled": true,
+          "settings": {
           }
         }
       },
       "block_order": [
-        "805e46e0-28b9-48bd-9c5f-07434863e3ea"
+        "805e46e0-28b9-48bd-9c5f-07434863e3ea",
+        "cross_sell_widget_tXLCDN"
       ],
       "settings": {
       }
