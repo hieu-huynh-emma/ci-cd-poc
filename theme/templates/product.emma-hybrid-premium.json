@@ -1,35 +1,6 @@
 {
   "layout": "theme.product",
   "sections": {
-    "joint-product": {
-      "type": "joint-product",
-      "blocks": {
-        "item_zLVk8t": {
-          "type": "item",
-          "settings": {
-            "product": "emma-hybrid-premium",
-            "upsell": "",
-            "short_desc": "Our premium mattress for perfect comfort and cooling",
-            "show_star_rating": false
-          }
-        },
-        "item_ha7iFa": {
-          "type": "item",
-          "settings": {
-            "product": "emma-hybrid-premium-plus",
-            "upsell": "",
-            "short_desc": "Same structure, different cover",
-            "show_star_rating": false
-          }
-        }
-      },
-      "block_order": [
-        "item_zLVk8t",
-        "item_ha7iFa"
-      ],
-      "settings": {
-      }
-    },
     "product-layout": {
       "type": "product-layout",
       "blocks": {
@@ -280,7 +251,35 @@
         "grabber_text": "Discover the value behind our prices"
       }
     },
-
+    "joint-product": {
+      "type": "joint-product",
+      "blocks": {
+        "item_zLVk8t": {
+          "type": "item",
+          "settings": {
+            "product": "emma-hybrid-premium",
+            "upsell": "",
+            "short_desc": "Our premium mattress for perfect comfort and cooling",
+            "show_star_rating": false
+          }
+        },
+        "item_ha7iFa": {
+          "type": "item",
+          "settings": {
+            "product": "emma-hybrid-premium-plus",
+            "upsell": "",
+            "short_desc": "Same structure, different cover",
+            "show_star_rating": false
+          }
+        }
+      },
+      "block_order": [
+        "item_zLVk8t",
+        "item_ha7iFa"
+      ],
+      "settings": {
+      }
+    },
     "risk-reversal": {
       "type": "risk-reversal",
       "blocks": {
@@ -678,7 +677,7 @@
             "primary_badge": "",
             "secondary_badge": "PREMIUM CHOICE",
             "image": "shopify:\/\/shop_images\/hybrid-premium-exploded_1.png",
-            "product_title": "Emma Hybrid Premium Plus",
+            "product_title": "Emma Hybrid Premium",
             "desc": "<h1>★ 4.8<\/h1><p><strong>Our new best-in-class mattress for perfect cooling & absolute comfort<\/strong><\/p>",
             "discount_title": "",
             "comfort_meter": 8,
