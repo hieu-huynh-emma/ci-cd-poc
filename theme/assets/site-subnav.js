@@ -335,11 +335,9 @@ class NavSpotlight extends CustomElement {
     this.data.price = currencyFormatter.format(price / 100);
     this.data.originalPrice = originalPrice ? currencyFormatter.format(originalPrice / 100) : null;
 
-    this.data.imageUrl = useABTestImg
-      ? "https://assets-manager.abtasty.com/b98579b87d8565047076037f703e1727/2.png"
-      : accentuate.navigation_spotlight_image
-        ? `${accentuate.navigation_spotlight_image[0].src}&transform=resize=600`
-        : featuredImage;
+    this.data.imageUrl = accentuate.navigation_spotlight_image
+      ? `${accentuate.navigation_spotlight_image[0].src}&transform=resize=600`
+      : featuredImage
 
     this.data.url = url;
 
