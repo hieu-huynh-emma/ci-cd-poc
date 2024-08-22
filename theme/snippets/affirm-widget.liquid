@@ -1,11 +1,7 @@
 {% assign selected_variant = product.selected_or_first_available_variant %}
 
 {% if selected_variant.price > 30000 %}
-    <link rel="quickscript" loading="delayed" href="{{ 'custom.css' | asset_url }}"/>
-    <link rel="quickscript" loading="delayed" href="{{ 'jquery.fancybox.css' | asset_url }}"/>
-    <script type="quickscript" loading="delayed" src="{{ 'jquery.fancybox.js' | asset_url }}"></script>
-
-    <script type="quickscript" loading="visibility" src="{{ 'affirm-widget.js' | asset_url }}"></script>
+    <link rel="quickscript" loading="visibility" href="{{ 'affirm-widget.css' | asset_url }}"/>
 
     <div id="pro_step" style="display:none;">
         {% render 'product_step' %}
@@ -17,7 +13,8 @@
             <strong><span class="pro_val">{{ selected_variant.price | divided_by: 12 | money }}</span></strong>
             monthly with
             <span class="pay_img" style="display: inline-flex">
-        <img class="lazyload" data-src="https://cdn.shopify.com/s/files/1/0562/9873/3706/files/Logo_affirm.png?v=1659502934">
+        <img class="lazyload"
+             data-src="https://cdn.shopify.com/s/files/1/0562/9873/3706/files/Logo_affirm.png?v=1659502934">
       </span>
             financing <a data-fancybox data-src="#pro_step" href="javascript:" class="que">?</a>
 
@@ -29,5 +26,8 @@
             <a class="que">?</a>
         </div>
     </div>
+
+    <script type="quickscript" loading="visibility" src="{{ 'affirm-widget.js' | asset_url }}"></script>
+
 {% endif %}
 

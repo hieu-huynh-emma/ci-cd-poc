@@ -1,8 +1,5 @@
 
 
-html {
-  padding-bottom: 0
-}
 
 .backimg {
   background-position: 50%;
@@ -347,4 +344,9 @@ a.btn--secondary.btn--full.marztop {
 
 .prod_item:last-child {
   border: none
+}
+
+
+.fancybox-container {
+  z-index: 999999;
 }
