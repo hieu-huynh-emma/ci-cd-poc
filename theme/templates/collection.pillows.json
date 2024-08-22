@@ -1,16 +1,36 @@
 {
   "layout": "theme.speed",
   "sections": {
-    "collection-catalog": {
-      "type": "collection-catalog",
+    "sale-catalog": {
+      "type": "sale-catalog",
+      "blocks": {
+        "catalog_item_tDD6Aa": {
+          "type": "catalog_item",
+          "settings": {
+            "collection": "pillows",
+            "trackId": ""
+          }
+        },
+        "catalog_item_Ay7H8k": {
+          "type": "catalog_item",
+          "settings": {
+            "collection": "packs-of-2",
+            "trackId": ""
+          }
+        }
+      },
+      "block_order": [
+        "catalog_item_tDD6Aa",
+        "catalog_item_Ay7H8k"
+      ],
       "settings": {
         "heading": "Our Pillows",
         "heading_alignment": "start",
-        "container_spacing": "lg"
+        "container_spacing": "md"
       }
     }
   },
   "order": [
-    "collection-catalog"
+    "sale-catalog"
   ]
 }
