@@ -1,8 +1,8 @@
 import {
     View, Image,
-    reactExtension, BlockLayout, Text, useApi, InlineLayout,
+    reactExtension, BlockLayout, Text, useApi, InlineLayout, useTranslate,
 } from '@shopify/ui-extensions-react/checkout';
-import { useState} from "react";
+import {useState} from "react";
 
 export default reactExtension(
     'purchase.checkout.block.render',
@@ -11,6 +11,7 @@ export default reactExtension(
 
 function Extension() {
     const {appMetafields} = useApi()
+    const translate = useTranslate();
 
     const [shopAwards, setShopAwards] = useState([]);
 
@@ -22,10 +23,11 @@ function Extension() {
     return (
         <BlockLayout rows="auto" spacing="extraLoose">
             <View inlineAlignment="center">
-                <Text size="extraLarge" emphasis="bold">Multi Award Winning Mattress</Text>
+                <Text size="extraLarge" emphasis="bold">{translate('heading')}</Text>
             </View>
             <InlineLayout columns="fill" spacing="loose" blockAlignment="center" inlineAlignment="center">
-                {shopAwards.map(i => <View overflow="hidden" cornerRadius="large"><Image source={i.src} ></Image></View>)}
+                {shopAwards.map(i => <View overflow="hidden" cornerRadius="large"><Image
+                    source={i.src}></Image></View>)}
             </InlineLayout>
         </BlockLayout>
     );
