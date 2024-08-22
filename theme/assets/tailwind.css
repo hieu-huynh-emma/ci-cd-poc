@@ -1189,6 +1189,8 @@ video {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }.cursor-pointer {
   cursor: pointer;
+}.cursor-grabbing {
+  cursor: grabbing;
 }.resize {
   resize: both;
 }.list-disc {
@@ -2486,6 +2488,10 @@ video {
 
   .lg\:text-xl {
     font-size: 32px;
+  }
+
+  .lg\:text-md {
+    font-size: 20px;
   }
 
   .lg\:uppercase {

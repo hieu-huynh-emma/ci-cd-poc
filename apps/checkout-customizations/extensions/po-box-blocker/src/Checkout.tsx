@@ -29,11 +29,6 @@ function Extension() {
     const poRegex3 = /po. box/i;
     const poRegex4 = /box [0-9]/i;
 
-
-    useEffect(() => {
-        console.log("=>(Checkout.tsx:26) googleApiKey", googleApiKey);
-    }, [isAddressPoBox]);
-
     const data = {
         address: {
             administrativeArea: address?.provinceCode,

@@ -103,7 +103,6 @@ function Extension() {
     const translate = useTranslate();
     const {i18n, extension, query} = useApi();
     const cartLines = useCartLines()
-    console.log("=>(Checkout.tsx:96) cartLines", cartLines);
 
     const [pricing, setPricing] = useState({price: 0, originalPrice: 0});
 
