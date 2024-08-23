@@ -2,6 +2,7 @@
   display: grid;
   gap: .5rem;
   grid-template-columns: minmax(0, 1fr);
+  opacity: 1;
   @media screen and (min-width: 769px) {
     gap: 1.25rem 1rem;
     grid-template-columns: repeat(2, minmax(0, 1fr));
