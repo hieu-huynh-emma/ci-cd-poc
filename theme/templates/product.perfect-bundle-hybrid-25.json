@@ -28,7 +28,6 @@
       "blocks": {
         "yotpo_star_rating": {
           "type": "yotpo_star_rating",
-          "disabled": true,
           "settings": {
             "product": "{{ product }}",
             "new_layout": false
@@ -40,63 +39,79 @@
       ],
       "settings": {
         "title": "",
-        "desc": "<p><strong>Experience the best sleep with premium and awarded comfort<\/strong><\/p><ul><li>55% discount on our newest Emma Hybrid Comfort II Mattress<\/li><li>55% discount on 2 Premium Cooling Pillows<\/li><li>55% discount on our Emma Breathable Mattress Protector<\/li><li>55% discount on our Emma Cloud Duvet <\/li><\/ul>",
+        "desc": "<p><strong>Experience the best sleep with premium and awarded comfort<\/strong><\/p><ul><li>55% discount on our 13-inch Emma Hybrid Comfort - Product of the Year <\/li><li>55% discount on 2 Premium Cooling Pillows<\/li><li>55% discount on our Emma Breathable Mattress Protector<\/li><li>55% discount on our Emma Cloud Duvet<\/li><\/ul>",
         "disclaimer": ""
       }
     },
     "product-media": {
       "type": "product-media",
       "blocks": {
-        "f5f456c7-b29a-4f74-826f-648e09f5b1cd": {
+        "image_NcRinM": {
           "type": "image",
           "settings": {
             "en_image": "shopify:\/\/shop_images\/Untitled_design_26.png",
             "fr_image": "shopify:\/\/shop_images\/Untitled_design_26.png"
           }
         },
+        "f5f456c7-b29a-4f74-826f-648e09f5b1cd": {
+          "type": "image",
+          "settings": {
+            "en_image": "shopify:\/\/shop_images\/EmmaCA_PrefectMattressBundleShot_0412241.jpg",
+            "fr_image": "shopify:\/\/shop_images\/EmmaCA_PrefectMattressBundleShot_0412241_bb11f893-d551-4a01-8c67-332e88fedb81.jpg"
+          }
+        },
         "72b3b893-b0bb-44ad-978c-733ee54620a1": {
           "type": "image",
           "settings": {
-            "en_image": "shopify:\/\/shop_images\/Emma_CA_Prefect_Mattress_Bundle_Shot_041224_1.jpg",
-            "fr_image": "shopify:\/\/shop_images\/Emma_CA_Prefect_Mattress_Bundle_Shot_041224_1.jpg"
-          }
-        },
-        "12e2c164-6e6a-42a2-a76a-b4363d4c2c09": {
-          "type": "image",
-          "settings": {
-            "en_image": "shopify:\/\/shop_images\/Medium-Hybrid_2.0_FR_LS_7_ea6e544d-b59a-4444-b69b-746390f48596.png",
-            "fr_image": "shopify:\/\/shop_images\/Medium-Hybrid_2.0_FR_LS_7_ea6e544d-b59a-4444-b69b-746390f48596.png"
+            "en_image": "shopify:\/\/shop_images\/Untitled_design_12.png",
+            "fr_image": "shopify:\/\/shop_images\/Untitled_design_12.png"
           }
         },
         "ae4539f2-6ea2-42a3-a132-a31010570bf1": {
-          "type": "image",
-          "settings": {
-            "en_image": "shopify:\/\/shop_images\/Medium-Duvetfoldedcloseup.jpg",
-            "fr_image": "shopify:\/\/shop_images\/Medium-Duvetfoldedcloseup.jpg"
-          }
-        },
-        "038c8f16-3a84-418c-9ee2-38f53be4a385": {
           "type": "image",
           "settings": {
             "en_image": "shopify:\/\/shop_images\/Small-CUSTOMIZABLE_COOLING_FOAM_PILLOW_30S_-_ENG_SUB_-_EDIT_1_CC_00_00_11_13.jpg",
             "fr_image": "shopify:\/\/shop_images\/Small-CUSTOMIZABLE_COOLING_FOAM_PILLOW_30S_-_ENG_SUB_-_EDIT_1_CC_00_00_11_13.jpg"
           }
         },
+        "038c8f16-3a84-418c-9ee2-38f53be4a385": {
+          "type": "image",
+          "settings": {
+            "en_image": "shopify:\/\/shop_images\/Emma-protector-closeup-1_1_43cd6675-948d-4871-82e7-85da5033045d.jpg",
+            "fr_image": "shopify:\/\/shop_images\/Emma-protector-closeup-1_1_43cd6675-948d-4871-82e7-85da5033045d.jpg"
+          }
+        },
+        "image_WCCDRY": {
+          "type": "image",
+          "settings": {
+            "en_image": "shopify:\/\/shop_images\/Medium-Duvetfoldedcloseup.jpg",
+            "fr_image": "shopify:\/\/shop_images\/Medium-Duvetfoldedcloseup.jpg"
+          }
+        },
         "e4cd7962-4d57-4250-8e6e-4c76dd76d6d6": {
           "type": "image",
           "settings": {
-            "en_image": "shopify:\/\/shop_images\/Emma-protector-closeup-1_1.jpg",
-            "fr_image": "shopify:\/\/shop_images\/Emma-protector-closeup-1_1.jpg"
+            "en_image": "shopify:\/\/shop_images\/Small-B7_-_ORIGINAL_PILLOW_-_EDIT-S23_b775407c-dcbc-4c6c-a0e9-3bb79c85b2be.png",
+            "fr_image": "shopify:\/\/shop_images\/Small-B7_-_ORIGINAL_PILLOW_-_EDIT-S23_b775407c-dcbc-4c6c-a0e9-3bb79c85b2be.png"
+          }
+        },
+        "12e2c164-6e6a-42a2-a76a-b4363d4c2c09": {
+          "type": "image",
+          "settings": {
+            "en_image": "shopify:\/\/shop_images\/Emma_1_ae0eb3a6-8989-45ca-9fe7-3d0e5ef89d7f.jpg",
+            "fr_image": "shopify:\/\/shop_images\/Emma_1_ae0eb3a6-8989-45ca-9fe7-3d0e5ef89d7f.jpg"
           }
         }
       },
       "block_order": [
+        "image_NcRinM",
         "f5f456c7-b29a-4f74-826f-648e09f5b1cd",
         "72b3b893-b0bb-44ad-978c-733ee54620a1",
-        "12e2c164-6e6a-42a2-a76a-b4363d4c2c09",
         "ae4539f2-6ea2-42a3-a132-a31010570bf1",
         "038c8f16-3a84-418c-9ee2-38f53be4a385",
-        "e4cd7962-4d57-4250-8e6e-4c76dd76d6d6"
+        "image_WCCDRY",
+        "e4cd7962-4d57-4250-8e6e-4c76dd76d6d6",
+        "12e2c164-6e6a-42a2-a76a-b4363d4c2c09"
       ],
       "settings": {
         "heading": "",
@@ -150,9 +165,8 @@
     },
     "campaign-teaser": {
       "type": "campaign-teaser",
-      "disabled": true,
       "settings": {
-        "content": "<p>55% off<\/p>",
+        "content": "<p><strong>Back to School Sale:<\/strong> 55% off<\/p>",
         "bgcolor": "#fef3ea",
         "color": "#2e2f3c",
         "show_countdown_timer": false
@@ -179,7 +193,6 @@
         },
         "item_zpAjhC": {
           "type": "item",
-          "disabled": true,
           "settings": {
             "svg_icon": "<svg viewbox=\"0 0 24 24\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\" class=\"usp-m__item-icon icon__xs--size_xxl icon__sm--size_xxl icon__md--size_xxl icon__lg--size_xxl icon__xl--size_xxl themed themed--default icon icon--monochrome themed themed--default\"><defs><\/defs><path d=\"M18 1.2H6C4.5 1.2 3.2 2.5 3.2 4v16c0 1.5 1.2 2.8 2.8 2.8h12c1.5 0 2.8-1.2 2.8-2.8V4c0-1.5-1.3-2.8-2.8-2.8zM4.8 4c0-.7.6-1.2 1.2-1.2h12c.7 0 1.2.6 1.2 1.2v13c0 .7-.6 1.2-1.2 1.2H6c-.7 0-1.2-.6-1.2-1.2V4zM18 21.2H6c-.7 0-1.2-.6-1.2-1.2v-.6c.4.2.8.3 1.2.3h12c.5 0 .9-.1 1.2-.3v.6c0 .7-.5 1.2-1.2 1.2z\"><\/path><path d=\"M7.5 6.5a1 1 0 100-2 1 1 0 000 2zM7.5 11.5a1 1 0 100-2 1 1 0 000 2zM7.5 16.5a1 1 0 100-2 1 1 0 000 2zM12 6.5a1 1 0 100-2 1 1 0 000 2zM12 11.5a1 1 0 100-2 1 1 0 000 2zM12 16.5a1 1 0 100-2 1 1 0 000 2zM16.5 6.5a1 1 0 100-2 1 1 0 000 2zM16.5 11.5a1 1 0 100-2 1 1 0 000 2zM16.5 16.5a1 1 0 100-2 1 1 0 000 2z\"><\/path><\/svg>",
             "text": "We are the leading brand",
@@ -278,7 +291,7 @@
           "settings": {
             "icon": "shopify:\/\/shop_images\/shipping_truck_db437bec-0f66-475d-9a43-c2bdab9dc26d.png",
             "text": "Free & fast delivery",
-            "content": "<p>Free no contact delivery for all orders <\/p><p>Dispatched in: <strong>1 business day <\/strong><br\/><\/p>",
+            "content": "<p>Free no contact delivery for all orders <\/p><p>Dispatched in: <strong>1 business day <\/strong><\/p><p>(Additional fees or exclusions may apply to the Canadian Territories)<\/p>",
             "url": ""
           }
         },
@@ -365,9 +378,9 @@
         "258722e6-18c8-4c8d-bee9-c411c5312e58": {
           "type": "video",
           "settings": {
-            "source": "shopify:\/\/files\/videos\/A6 - HYBRID 25V2 - EDIT 2.mp4",
-            "heading": "Hybrid Comfort II Mattress",
-            "content": "Meet our Hybrid Mattress with zero motion transfer and exceptional breathability enabled by its open-pored Airgocell foams, facilitating heat dissipation for an impeccable night's sleep at your ideal temperature.",
+            "source": "shopify:\/\/files\/videos\/Hybridcomfort.mp4",
+            "heading": "Hybrid Comfort Mattress",
+            "content": "Meet our Product of the Year Mattress with zero motion transfer and exceptional breathability enabled by its open-pored Airgocell foams, facilitating heat dissipation for an impeccable night's sleep at your ideal temperature.",
             "inverted": false,
             "cta_url": "",
             "cta_text": ""
@@ -395,7 +408,7 @@
             "cta_text": ""
           }
         },
-        "video_R8nQTJ": {
+        "video_cMqqWn": {
           "type": "video",
           "settings": {
             "source": "shopify:\/\/files\/videos\/Compressed Preview-28.mp4",
@@ -413,7 +426,7 @@
         "258722e6-18c8-4c8d-bee9-c411c5312e58",
         "95f7a903-df98-4d58-9b15-0db125d9190c",
         "66511993-3f5d-49e1-a113-a15cae21edda",
-        "video_R8nQTJ"
+        "video_cMqqWn"
       ],
       "settings": {
       }
@@ -496,31 +509,31 @@
           "type": "cover_layer",
           "settings": {
             "image": "shopify:\/\/shop_images\/9RP2YPY2_Hybrid_25_layer_7.png",
-            "title": "The cover that stays dry",
-            "content": "The Hybrid II Mattress Cover is a lightweight fiber that releases moisture during sleep. It is stretchy and adapts to your body in movement.",
-            "gutter": 1,
+            "title": "Breathable and moisture-wicking Top cover",
+            "content": "The Emma cover is soft-to-touch, making it very comfortable to lie on. Built with light fibers, our cover wicks away moisture away and prevents heat from getting trapped on the surface.",
+            "gutter": 3,
             "bullet_gutter": 50
           }
         },
         "3b4dd04a-036c-426d-8c1f-9729dd673c3e": {
           "type": "internal_layer",
           "settings": {
-            "image": "shopify:\/\/shop_images\/9RP2YPY2_Hybrid_25_layer_5_a11db15d-ef9e-4907-a5d7-ee17ee868c19.png",
-            "title": "The ultra breathable layer",
-            "content": "Our reduced-stretch Airgocell foam lets air flow through its open cells to wick away moisture, creating an ideal sleep environment.",
+            "image": "shopify:\/\/shop_images\/9RP2YPY2_Hybrid_25_layer_6.png",
+            "title": "The Breezy Airgocell® foam",
+            "content": "Our signature Point Elastic Airgocell technology absorbs and releases excess body heat and moisture, creating an ideal sleeping environment for peaceful sleep.",
             "is_thin": true,
-            "gutter": 1,
+            "gutter": 2,
             "bullet_gutter": 28
           }
         },
         "bdebe803-1755-4362-ae36-1355b97d0e9d": {
           "type": "internal_layer",
           "settings": {
-            "image": "shopify:\/\/shop_images\/9RP2YPY2_Hybrid_25_layer_6_84fa4b19-92d1-4145-8c80-ca1f978fb20c.png",
-            "title": "The layer that provides the necessary firmness",
-            "content": "Our innovative MemoryAdapt foam adapts to the unique shape of your body and evenly distributes your weight across the mattress for total relaxation.",
+            "image": "shopify:\/\/shop_images\/9RP2YPY2_Hybrid_25_layer_5.png",
+            "title": "The Cool foam layer that isolates motion",
+            "content": "Find comfort in any sleeping position. Memory foam molds to the unique shape of your body for even pressure distribution and provides great motion isolation so you can sleep undisturbed, even with a fussy partner",
             "is_thin": true,
-            "gutter": 1,
+            "gutter": 3,
             "bullet_gutter": 36
           }
         },
@@ -528,10 +541,10 @@
           "type": "internal_layer",
           "settings": {
             "image": "shopify:\/\/shop_images\/9RP2YPY2_Hybrid_25_layer_4.png",
-            "title": "The layer that helps the body move effortlessly",
-            "content": "Durable SupportBase foam gives you the right level of firmness. Lie down and move freely until you have found your best sleeping position.",
+            "title": "The Supportive HRX foam",
+            "content": "Durable HRX foam supports you with just the right level of firmness, without hollows or bumps. Lie back and move freely until you've found your position for a deep sleep.",
             "is_thin": true,
-            "gutter": 1,
+            "gutter": 4,
             "bullet_gutter": 42
           }
         },
@@ -542,13 +555,12 @@
             "title": "The Ergonomic, 7-Zone edge-to-edge pocket springs",
             "content": "Say goodbye to restless nights! Our individually-wrapped coils are designed to enhance airflow and provide the optimum level of tension and bounce all over the mattress — strong enough to support sleepers of all shape and size. Rest comfortably as our pocket springs adapt to your spine for longer and deeper restorative sleep.",
             "is_thin": false,
-            "gutter": 1,
+            "gutter": 5,
             "bullet_gutter": 32
           }
         },
         "9088b2b9-37a7-498a-ab7b-1ce50ec43e1a": {
           "type": "internal_layer",
-          "disabled": true,
           "settings": {
             "image": "shopify:\/\/shop_images\/9RP2YPY2_Hybrid_25_layer_2.png",
             "title": "The Stabilizing layer",
@@ -562,8 +574,8 @@
           "type": "base_layer",
           "settings": {
             "image": "shopify:\/\/shop_images\/9RP2YPY2_Hybrid_25_layer_1.png",
-            "title": "The layer that holds your mattress in place",
-            "content": "The bottom cover keeps your mattress perfectly positioned on the bed, all night, every night.",
+            "title": "The Resistant, anti-slip, lower cover with handles",
+            "content": "Innovative mattress lower cover, designed with exceptional durability and a convenient handle for effortless maneuverability.",
             "gutter": 1,
             "bullet_gutter": 35
           }
@@ -612,13 +624,13 @@
           "settings": {
             "product": "emma-original-mattress",
             "show_star_rating": false,
-            "color": "#3c4196",
+            "color": "#ff8900",
             "primary_badge": "COMFORT",
             "secondary_badge": "BEST VALUE",
             "mattress_height": "shopify:\/\/shop_images\/MicrosoftTeams-image_98.png",
             "image": "shopify:\/\/shop_images\/EMMAOG_exploded.png",
             "product_title": "Emma Original",
-            "desc": "<h1>★ 4.7<\/h1><p><strong>Our Most Awarded Mattress for Budget-Conscious Sleepers.<\/strong><\/p><ul><li>Most awarded mattress and budget-friendly<\/li><li>5 unique layers with minimal motion transfer<\/li><li>Breathable and moisture-wicking<\/li><\/ul>",
+            "desc": "<h1>★4.7<\/h1><p><strong>Our Most Awarded Mattress for Budget-Conscious Sleepers.<\/strong><\/p><ul><li>Most awarded mattress and budget-friendly<\/li><li>5 unique layers with minimal motion transfer<\/li><li>Breathable and moisture-wicking<\/li><\/ul>",
             "discount_title": "Father's Day Sale",
             "comfort_meter": 6,
             "cooling_meter": 4,
@@ -631,13 +643,13 @@
           "settings": {
             "product": "emma-hybrid-comfort",
             "show_star_rating": false,
-            "color": "#3c4196",
+            "color": "#f4711e",
             "primary_badge": "SUPPORT",
-            "secondary_badge": "BEST DEAL",
+            "secondary_badge": "NEW",
             "mattress_height": "shopify:\/\/shop_images\/MicrosoftTeams-image_99.png",
-            "image": "shopify:\/\/shop_images\/Untitled_design_8_26a090c2-2a1f-4f97-8580-f7262ced984f.png",
-            "product_title": "Emma Hybrid Comfort II",
-            "desc": "<h1>★4.8<\/h1><p><strong>Our newest Hybrid Mattress with enhanced support and ideal pressure distribution<\/strong><\/p><ul><li>Top-rated plus hybrid for maximum comfort<\/li><li>6 unique layers with zero motion transfer<\/li><li>Cooling for hot sleepers<\/li><\/ul>",
+            "image": "shopify:\/\/shop_images\/Emma_hybrid-comfort_exploded_2.png",
+            "product_title": "Emma Hybrid Comfort",
+            "desc": "<h1>★4.8<\/h1><p><strong>Our 13-inch Hybrid Mattress with enhanced support and ideal pressure distribution<\/strong><\/p><ul><li>Top-rated plus hybrid for maximum comfort<\/li><li>6 unique layers with zero motion transfer<\/li><li>Cooling for hot sleepers<\/li><\/ul>",
             "discount_title": "Father's Day Sale",
             "comfort_meter": 8,
             "cooling_meter": 6,
@@ -707,7 +719,6 @@
         "95bee6a1-5a6f-4ba8-9fac-03c161a01953",
         "95bee6a1-5a6f-4ba8-9fac-03c161a01954"
       ],
-      "disabled": true,
       "custom_css": [
         "h1 {font-size: 18px; margin: 0 0 10px;}"
       ],
@@ -731,7 +742,7 @@
         "72c7f33b-7788-4524-bf53-816aecb093b6": {
           "type": "catalog_item",
           "settings": {
-            "product": "emma-original-bed"
+            "product": "emma-foam-pillow"
           }
         },
         "f0f0b732-6803-4158-8c54-5c08c4bdbfa3": {
@@ -745,14 +756,43 @@
           "settings": {
             "product": "emma-mattress-protector"
           }
+        },
+        "catalog_item_8Tp68g": {
+          "type": "catalog_item",
+          "settings": {
+            "product": "microfibre-pillow"
+          }
+        },
+        "catalog_item_GWkYJ3": {
+          "type": "catalog_item",
+          "settings": {
+            "product": "duvet"
+          }
+        },
+        "c4650795-b884-4ddd-904e-babd57faad7b": {
+          "type": "catalog_item",
+          "disabled": true,
+          "settings": {
+            "product": "emma-bed-frame"
+          }
+        },
+        "d8319461-aedd-4805-884a-95b7ed1a5893": {
+          "type": "catalog_item",
+          "disabled": true,
+          "settings": {
+            "product": "emma-hybrid-comfort"
+          }
         }
       },
       "block_order": [
         "72c7f33b-7788-4524-bf53-816aecb093b6",
         "f0f0b732-6803-4158-8c54-5c08c4bdbfa3",
-        "07d5912c-d4c3-4ebb-97a6-f723fc8a4f3f"
+        "07d5912c-d4c3-4ebb-97a6-f723fc8a4f3f",
+        "catalog_item_8Tp68g",
+        "catalog_item_GWkYJ3",
+        "c4650795-b884-4ddd-904e-babd57faad7b",
+        "d8319461-aedd-4805-884a-95b7ed1a5893"
       ],
-      "disabled": true,
       "settings": {
         "heading": "Some things are better together",
         "heading_alignment": "start",
@@ -946,51 +986,6 @@
         "solid_typo": false
       }
     },
-    "featured-faqs": {
-      "type": "featured-faqs",
-      "blocks": {
-        "78ca144d-5919-4a1b-9e22-082ef5384310": {
-          "type": "faq",
-          "settings": {
-            "title": "Is it free to return your products?",
-            "content": "<p>It's 100% free to return your Emma! If your Emma turns out not to suit you for any reason, feel free to return it. Just simply get in contact with us via our chat support, phone or email and we will refund and collect it at no cost to you.<\/p><p><br\/>Live support is also available from 08:00 to 18:00 GMT-6, Monday-Friday!<\/p>"
-          }
-        },
-        "c68412f4-0251-42dc-9113-a0eecd22c518": {
-          "type": "faq",
-          "settings": {
-            "title": "How does your 365-Night-Trial work?",
-            "content": "<p>Our risk-free 365-night trial means that you get a full year to decide if your Emma mattress is a good fit for you. This gives you more time to try the mattress for yourself and experience the benefits that our 4Million+ customers have come to enjoy each night!<br\/><br\/>Helpful Tip: We recommend you sleep on your Emma for at least 21 nights so that you and your body can get suited to your new Emma mattress.<br\/><br\/>You can begin your 365-night trial today. Our 0% APR financing with Affirm also gives you the option to make 12 equal payments over the next 12 months.<\/p>"
-          }
-        },
-        "a72149c3-5420-4a8c-80fe-7370288da216": {
-          "type": "faq",
-          "settings": {
-            "title": "Do you ship nationwide?",
-            "content": "<p>We do offer free shipping in all the province in Canada.<\/p>"
-          }
-        },
-        "d9373dca-57f2-4b56-8838-1a8fc22e21ca": {
-          "type": "faq",
-          "settings": {
-            "title": "How long does shipping take?",
-            "content": "<p>Our free shipping takes approximately 5-7 days nationwide.<\/p>"
-          }
-        }
-      },
-      "block_order": [
-        "78ca144d-5919-4a1b-9e22-082ef5384310",
-        "c68412f4-0251-42dc-9113-a0eecd22c518",
-        "a72149c3-5420-4a8c-80fe-7370288da216",
-        "d9373dca-57f2-4b56-8838-1a8fc22e21ca"
-      ],
-      "settings": {
-        "heading": "FAQs",
-        "header_font": "inter",
-        "heading_alignment": "center",
-        "container_spacing": "sm"
-      }
-    },
     "social-proof": {
       "type": "social-proof",
       "blocks": {
@@ -1091,6 +1086,51 @@
         "trackId": ""
       }
     },
+    "featured-faqs": {
+      "type": "featured-faqs",
+      "blocks": {
+        "78ca144d-5919-4a1b-9e22-082ef5384310": {
+          "type": "faq",
+          "settings": {
+            "title": "Is it free to return your products?",
+            "content": "<p>It's 100% free to return your Emma! If your Emma turns out not to suit you for any reason, feel free to return it. Just simply get in contact with us via our chat support, phone or email and we will refund and collect it at no cost to you.<\/p><p><br\/>Live support is also available from 08:00 to 18:00 GMT-6, Monday-Friday!<\/p>"
+          }
+        },
+        "c68412f4-0251-42dc-9113-a0eecd22c518": {
+          "type": "faq",
+          "settings": {
+            "title": "How does your 365-Night-Trial work?",
+            "content": "<p>Our risk-free 365-night trial means that you get a full year to decide if your Emma mattress is a good fit for you. This gives you more time to try the mattress for yourself and experience the benefits that our 4Million+ customers have come to enjoy each night!<br\/><br\/>Helpful Tip: We recommend you sleep on your Emma for at least 21 nights so that you and your body can get suited to your new Emma mattress.<br\/><br\/>You can begin your 365-night trial today. Our 0% APR financing with Affirm also gives you the option to make 12 equal payments over the next 12 months.<\/p>"
+          }
+        },
+        "a72149c3-5420-4a8c-80fe-7370288da216": {
+          "type": "faq",
+          "settings": {
+            "title": "Do you ship nationwide?",
+            "content": "<p>We do offer free shipping in all the province in Canada.<\/p>"
+          }
+        },
+        "d9373dca-57f2-4b56-8838-1a8fc22e21ca": {
+          "type": "faq",
+          "settings": {
+            "title": "How long does shipping take?",
+            "content": "<p>Our free shipping takes approximately 5-7 days nationwide.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "78ca144d-5919-4a1b-9e22-082ef5384310",
+        "c68412f4-0251-42dc-9113-a0eecd22c518",
+        "a72149c3-5420-4a8c-80fe-7370288da216",
+        "d9373dca-57f2-4b56-8838-1a8fc22e21ca"
+      ],
+      "settings": {
+        "heading": "FAQs",
+        "header_font": "inter",
+        "heading_alignment": "center",
+        "container_spacing": "sm"
+      }
+    },
     "contact-us": {
       "type": "contact-us",
       "settings": {
@@ -1118,8 +1158,8 @@
     "customer-sentiment",
     "1685402594226951ca",
     "special-services",
-    "featured-faqs",
     "social-proof",
+    "featured-faqs",
     "contact-us"
   ]
 }
