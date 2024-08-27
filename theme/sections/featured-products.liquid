@@ -8,6 +8,9 @@
 {% assign imageBlocks = section.blocks | where: "type", "image-block" %}
 {% assign exploreBtns = section.blocks | where: "type", "explore-button" %}
 
+{% assign compareBtn = exploreBtns | first %}
+{% assign quizBtn = exploreBtns | last %}
+
 {% liquid
 
   assign compareTrackId = "Comapre_All"
@@ -46,14 +49,14 @@
 
       <div class="flex flex-col gap-2">
         <tracked-button
-          :trackId="{{ compareTrackId }}" href="/pages/comparison"
+          :trackId="{{ compareTrackId }}" href="{{ compareBtn.settings.url }}"
           class="font-inter text-[16px] font-bold rounded-full border border-{#2E2F3C} text-center hidden md:block sec_btn"
         >
           Compare all mattresses
         </tracked-button>
 
         <tracked-button
-          :trackId="{{ quizzTrackId }}" href="/pages/product-quizz"
+          :trackId="{{ quizzTrackId }}" href="{{ quizBtn.settings.url }}"
           class="font-inter text-[16px] font-bold rounded-full border border-{#2E2F3C} text-center hidden md:block sec_btn"
         >
           Find your perfect match
@@ -455,14 +458,14 @@
 
     <div class="flex flex-col gap-2 items-center md:hidden">
       <tracked-button
-        :trackId="{{ compareTrackId }}" href="/pages/comparison"
+        :trackId="{{ compareTrackId }}" href="{{ compareBtn.settings.url }}"
         class="font-inter text-[16px] font-bold rounded-full border border-{#2E2F3C} text-center sec_btn"
       >
         Compare all mattresses
       </tracked-button>
 
       <tracked-button
-        :trackId="{{ quizzTrackId }}" href="/pages/product-quizz"
+        :trackId="{{ quizzTrackId }}" href="{{ quizBtn.settings.url }}"
         class="font-inter text-[16px] font-bold rounded-full border border-{#2E2F3C} text-center sec_btn"
       >
         Find your perfect match
