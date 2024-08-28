@@ -39,7 +39,7 @@
       ],
       "settings": {
         "title": "",
-        "desc": "<p><strong>Experience the best sleep with premium and awarded comfort<\/strong><\/p><ul><li>55% discount on our 13-inch Emma Hybrid Comfort - Product of the Year <\/li><li>55% discount on 2 Premium Cooling Pillows<\/li><li>55% discount on our Emma Breathable Mattress Protector<\/li><li>55% discount on our Emma Cloud Duvet<\/li><\/ul>",
+        "desc": "<p><strong>Experience the best sleep with premium and awarded comfort<\/strong><\/p><ul><li>55% discount on our Emma Hybrid Comfort II<\/li><li>55% discount on 2 Premium Cooling Pillows<\/li><li>55% discount on our Emma Breathable Mattress Protector<\/li><li>55% discount on our Emma Cloud Duvet<\/li><\/ul>",
         "disclaimer": ""
       }
     },
@@ -63,8 +63,8 @@
         "72b3b893-b0bb-44ad-978c-733ee54620a1": {
           "type": "image",
           "settings": {
-            "en_image": "shopify:\/\/shop_images\/Untitled_design_12.png",
-            "fr_image": "shopify:\/\/shop_images\/Untitled_design_12.png"
+            "en_image": "shopify:\/\/shop_images\/hybrid22_closeup.jpg",
+            "fr_image": "shopify:\/\/shop_images\/hybrid22_closeup.jpg"
           }
         },
         "ae4539f2-6ea2-42a3-a132-a31010570bf1": {
@@ -95,11 +95,11 @@
             "fr_image": "shopify:\/\/shop_images\/Small-B7_-_ORIGINAL_PILLOW_-_EDIT-S23_b775407c-dcbc-4c6c-a0e9-3bb79c85b2be.png"
           }
         },
-        "12e2c164-6e6a-42a2-a76a-b4363d4c2c09": {
+        "image_bkJQ96": {
           "type": "image",
           "settings": {
-            "en_image": "shopify:\/\/shop_images\/Emma_1_ae0eb3a6-8989-45ca-9fe7-3d0e5ef89d7f.jpg",
-            "fr_image": "shopify:\/\/shop_images\/Emma_1_ae0eb3a6-8989-45ca-9fe7-3d0e5ef89d7f.jpg"
+            "en_image": "shopify:\/\/shop_images\/Woman_wrapped_in_duvet_Gallery.jpg",
+            "fr_image": "shopify:\/\/shop_images\/Woman_wrapped_in_duvet_Gallery.jpg"
           }
         }
       },
@@ -111,7 +111,7 @@
         "038c8f16-3a84-418c-9ee2-38f53be4a385",
         "image_WCCDRY",
         "e4cd7962-4d57-4250-8e6e-4c76dd76d6d6",
-        "12e2c164-6e6a-42a2-a76a-b4363d4c2c09"
+        "image_bkJQ96"
       ],
       "settings": {
         "heading": "",
@@ -166,7 +166,7 @@
     "campaign-teaser": {
       "type": "campaign-teaser",
       "settings": {
-        "content": "<p><strong>Back to School Sale:<\/strong> 55% off<\/p>",
+        "content": "<p><strong>Labour Day Sale:<\/strong> 55% off<\/p>",
         "bgcolor": "#fef3ea",
         "color": "#2e2f3c",
         "show_countdown_timer": false
@@ -378,9 +378,9 @@
         "258722e6-18c8-4c8d-bee9-c411c5312e58": {
           "type": "video",
           "settings": {
-            "source": "shopify:\/\/files\/videos\/Hybridcomfort.mp4",
-            "heading": "Hybrid Comfort Mattress",
-            "content": "Meet our Product of the Year Mattress with zero motion transfer and exceptional breathability enabled by its open-pored Airgocell foams, facilitating heat dissipation for an impeccable night's sleep at your ideal temperature.",
+            "source": "shopify:\/\/files\/videos\/Emma_25_Comfort_Adjustable_Mattress_Webshop_7s-3_v1_(1).mp4",
+            "heading": "Hybrid Comfort II Mattress",
+            "content": "Meet our Hybrid Mattress with zero motion transfer and exceptional breathability enabled by its open-pored Airgocell foams, facilitating heat dissipation for an impeccable night's sleep at your ideal temperature.",
             "inverted": false,
             "cta_url": "",
             "cta_text": ""
@@ -399,8 +399,20 @@
         },
         "66511993-3f5d-49e1-a113-a15cae21edda": {
           "type": "image",
+          "disabled": true,
           "settings": {
             "source": "shopify:\/\/shop_images\/Gallery_5_desktop_1.png",
+            "heading": "Breathable Mattress Cover",
+            "content": "Keep your mattress fresh & brand-new. Our Breathable Mattress Protector Tri-Protect™ Action will protect it from life's spills, allergens and dust mites while ensuring a good airflow.",
+            "inverted": false,
+            "cta_url": "",
+            "cta_text": ""
+          }
+        },
+        "video_4qTTxy": {
+          "type": "video",
+          "settings": {
+            "source": "shopify:\/\/files\/videos\/USP_Mattress Protector_00.mp4",
             "heading": "Breathable Mattress Cover",
             "content": "Keep your mattress fresh & brand-new. Our Breathable Mattress Protector Tri-Protect™ Action will protect it from life's spills, allergens and dust mites while ensuring a good airflow.",
             "inverted": false,
@@ -426,6 +438,7 @@
         "258722e6-18c8-4c8d-bee9-c411c5312e58",
         "95f7a903-df98-4d58-9b15-0db125d9190c",
         "66511993-3f5d-49e1-a113-a15cae21edda",
+        "video_4qTTxy",
         "video_cMqqWn"
       ],
       "settings": {
@@ -597,6 +610,7 @@
         "b2f4cd49-b521-43ab-a48e-92c7a027621c",
         "shadow_TWYLez"
       ],
+      "disabled": true,
       "settings": {
         "wallpaper": "shopify:\/\/shop_images\/orange_1_fbe2a1ac-9453-4dd5-a57a-098062d6a1bc.png",
         "heading": "Let's take a look under the covers",
@@ -608,7 +622,7 @@
     "mattress-firmness": {
       "type": "mattress-firmness",
       "settings": {
-        "title": "How does the Hybrid Comfort feel?",
+        "title": "How does the Hybrid Comfort II feel?",
         "subtitle": "MATTRESS FIRMNESS SCALE",
         "description": "<p>On a 1-10 scale (soft to firm), the Hybrid Comfort mattress strikes an ideal equilibrium 7 (medium firm). This translates to experiencing the plush, cloud-like comfort of contemporary memory foam, all the while receiving precisely the necessary support to safeguard your back and hips as you enjoy a restful night's sleep.<\/p>",
         "firmness_point": 7,
@@ -719,6 +733,7 @@
         "95bee6a1-5a6f-4ba8-9fac-03c161a01953",
         "95bee6a1-5a6f-4ba8-9fac-03c161a01954"
       ],
+      "disabled": true,
       "custom_css": [
         "h1 {font-size: 18px; margin: 0 0 10px;}"
       ],
