@@ -422,18 +422,17 @@
             "color": "#3c4196",
             "primary_badge": "COMFORT",
             "secondary_badge": "BEST VALUE",
-            "mattress_height": "shopify:\/\/shop_images\/MicrosoftTeams-image_98.png",
             "image": "shopify:\/\/shop_images\/EMMAOG_exploded.png",
             "product_title": "Emma Original",
-            "desc": "<h1>★4.7<\/h1><p><strong>Our Most Awarded Memory Foam  Mattress for Budget-Conscious Sleepers<\/strong><\/p><ul><li>Most awarded mattress and budget-friendly<\/li><li>5 unique layers with minimal motion transfer<\/li><li>Breathable and moisture-wicking<\/li><\/ul>",
-            "discount_title": "Father's Day Sale",
-            "comfort_meter": 6,
-            "cooling_meter": 4,
-            "motion_isolation_meter": 6,
-            "trackId": ""
+            "desc": "<h1>★ 4.7<\/h1><p><strong>Our Most Awarded Mattress for Budget-Conscious Sleepers.<\/strong><\/p><ul><li>Most awarded mattress and budget-friendly<\/li><li>5 unique layers with minimal motion transfer<\/li><li>Breathable and moisture-wicking<\/li><\/ul>",
+            "discount_title": "4th of July Sale",
+            "comfort_meter": 4,
+            "cooling_meter": 3,
+            "motion_isolation_meter": 4,
+            "trackId": "OG_compare_HP"
           }
         },
-        "47af3dd7-2038-4dbc-b55e-4f7b7d0c3d23": {
+        "2faeb4c9-fe7f-46bc-9cd1-3b2e38ad1752": {
           "type": "product-block",
           "settings": {
             "product": "emma-hybrid-comfort",
@@ -443,92 +442,41 @@
             "secondary_badge": "BEST DEAL",
             "image": "shopify:\/\/shop_images\/Emma_hybrid-comfort_exploded_2.png",
             "product_title": "Emma Hybrid Comfort",
-            "desc": "<h1>★4.8<\/h1><p><strong>Our newest 13-inch Hybrid Mattress that can support added weight and movement without getting hot or stuffy<\/strong><\/p>",
+            "desc": "<h1>★ 4.8<\/h1><p><strong>Our 13-Inch Hybrid mattress with enhanced support and ideal pressure distribution<\/strong><\/p>",
             "discount_title": "",
-            "comfort_meter": 8,
-            "cooling_meter": 6,
-            "motion_isolation_meter": 7,
-            "trackId": ""
+            "comfort_meter": 6,
+            "cooling_meter": 4,
+            "motion_isolation_meter": 6,
+            "trackId": "Comfort_compare_HP"
           }
         },
-        "5669a974-c41c-4819-895a-3683043506f7": {
+        "5b5432f6-dba9-4790-a55c-48525184b6b4": {
           "type": "product-block",
           "settings": {
             "product": "emma-hybrid-premium",
             "show_star_rating": false,
             "color": "#3c4196",
-            "primary_badge": "",
+            "primary_badge": "PREMIUM CHOICE",
             "secondary_badge": "PREMIUM CHOICE",
             "image": "shopify:\/\/shop_images\/hybrid-premium-exploded_1.png",
             "product_title": "Emma Hybrid Premium",
-            "desc": "<h1>★ 4.8<\/h1><p><strong>Our new best-in-class mattress for perfect cooling & absolute comfort<\/strong><\/p>",
+            "desc": "<h1>★ 4.6<\/h1><p><strong>Our new best-in-class mattress for perfect cooling & absolute comfort<\/strong><\/p>",
             "discount_title": "",
-            "comfort_meter": 8,
-            "cooling_meter": 8,
-            "motion_isolation_meter": 8,
-            "trackId": ""
-          }
-        },
-        "b0b092e2-ca09-467f-8b33-89219f2d897d": {
-          "type": "product-block",
-          "disabled": true,
-          "settings": {
-            "product": "",
-            "show_star_rating": true,
-            "color": "#3c4196",
-            "primary_badge": "",
-            "secondary_badge": "PREMIUM CHOICE",
-            "image": "shopify:\/\/shop_images\/doublecout2_081a123d-36cb-488a-8a8a-1559c95bc6bf.png",
-            "product_title": "Emma Hybrid Comfort",
-            "desc": "<p><strong>Our new best-in-class option for perfect cooling & absolute comfort<\/strong><\/p>",
-            "discount_title": "",
-            "comfort_meter": 8,
-            "cooling_meter": 8,
-            "motion_isolation_meter": 8,
-            "trackId": ""
-          }
-        },
-        "95bee6a1-5a6f-4ba8-9fac-03c161a01953": {
-          "type": "explore-button",
-          "settings": {
-            "url": "shopify:\/\/pages\/comparison",
-            "text": "<p>Compare all mattresses<\/p>",
-            "trackId": ""
-          }
-        },
-        "95bee6a1-5a6f-4ba8-9fac-03c161a01954": {
-          "type": "explore-button",
-          "settings": {
-            "url": "shopify:\/\/pages\/product-quizz",
-            "text": "<p>Find your perfect mattress<\/p>",
-            "trackId": ""
+            "comfort_meter": 6,
+            "cooling_meter": 6,
+            "motion_isolation_meter": 6,
+            "trackId": "Premium_compare_HP"
           }
         }
       },
       "block_order": [
         "old-featured-products-1",
-        "47af3dd7-2038-4dbc-b55e-4f7b7d0c3d23",
-        "5669a974-c41c-4819-895a-3683043506f7",
-        "b0b092e2-ca09-467f-8b33-89219f2d897d",
-        "95bee6a1-5a6f-4ba8-9fac-03c161a01953",
-        "95bee6a1-5a6f-4ba8-9fac-03c161a01954"
-      ],
-      "disabled": true,
-      "custom_css": [
-        "h1 {font-size: 18px; margin: 0 0 10px;}"
+        "2faeb4c9-fe7f-46bc-9cd1-3b2e38ad1752",
+        "5b5432f6-dba9-4790-a55c-48525184b6b4"
       ],
       "settings": {
         "title": "Sleeping will never be the same",
-        "mobile_title": "Comfort that adapts",
-        "subtitle": "<p>Experience rave-worthy comfort on a mattress that suits your every sleep need<\/p>",
-        "heading_alignment": "start",
-        "first_meter_title": "Comfort",
-        "show_first_meter": true,
-        "second_meter_title": "Cooling",
-        "show_second_meter": true,
-        "third_meter_title": "Motion Isolation",
-        "show_third_meter": true,
-        "show_secondary_badge": false
+        "heading_alignment": "start"
       }
     },
     "product-carousel": {

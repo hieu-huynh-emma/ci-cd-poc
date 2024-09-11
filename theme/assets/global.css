@@ -636,35 +636,7 @@ lazy-component[size="lg"] {
         height: 12px;
     }
 }
-star-rating {
-    display: grid;
-    gap: 4px;
-    align-items: center;
-    grid-template-columns: repeat(2, minmax(0, auto));
-    justify-content: flex-start;
-}
-star-rating .star-icons {
-    display: grid;
-    gap: 4px;
-    grid-auto-flow: column;
-    grid-auto-columns: minmax(0, min-content);
-    transform: translateY(-2px);
-}
-star-rating .star-icons:after {
-    content: none !important;
-}
-star-rating .star-icons .star-icon {
-    height: 13px;
-}
-star-rating .star-icons .star-icon path {
-    fill: #FFC107;
-}
-star-rating .average-score {
-    font-style: normal;
-    font-weight: 600;
-    font-size: 16px;
-    line-height: 150%;
-}
+
 countdown-timer {
     display: grid;
     gap: 4px;
@@ -838,52 +810,7 @@ countdown-timer.sm .timer-display .time-part .digit {
     text-decoration: none;
     color: #f03306;
 }
-.page-boundary {
-    height: 100%;
-    padding: 0 12px;
-}
-@media screen and (min-width: 769px) {
-    .page-boundary {
-        padding: 0 20px;
-    }
-}
-@media screen and (min-width: 1024px) {
-    .page-boundary {
-        padding: 0 40px;
-    }
-}
-@media screen and (min-width: 1200px) {
-    .page-boundary {
-        padding: 0 64px;
-    }
-}
-.page-boundary--full {
-    height: 100%;
-    padding: 0 12px;
-    width: 100%;
-}
-@media screen and (min-width: 769px) {
-    .page-boundary--full {
-        padding: 0 20px;
-    }
-}
-@media screen and (min-width: 1024px) {
-    .page-boundary--full {
-        padding: 0 40px;
-    }
-}
-@media screen and (min-width: 1200px) {
-    .page-boundary--full {
-        padding: 0 64px;
-    }
-}
-@media screen and (min-width: 1440px) {
-    .page-boundary,
-    .page-boundary--full {
-        max-width: 1440px;
-        margin: 0 auto;
-    }
-}
+
 .is-disabled,
 .is-disabled[role="button"],
 .is-disabledbutton {

@@ -1,27 +1,12 @@
 {% assign awards = section.blocks | where: "type", "item" %}
 
-<style>
-    section.logo-carousel {
-        min-height: 250px;
-    }
-
-    @media screen and (min-width: 769px) {
-        section.logo-carousel {
-            min-height: 350px;
-        }
-    }
-</style>
-
 <link rel="quickscript" loading="delayed" href="{{ 'logo-carousel.css' | asset_url }}">
 
-<section id="{{ section.id }}" class="logo-carousel section-container sm md:lg">
+<section abtasty-campaign-id="1296959" id="{{ section.id }}" class="logo-carousel">
     <div class="section-chassis page-boundary">
-        <div class="section-header">
-            <h3 class="heading-3 text-center text-primary font-inter font-semibold">{{ section.settings.heading }}</h3>
-            <p class="award-name"></p>
-        </div>
+        {% render 'section-header' %}
 
-        <div class="awards splide">
+        <div class="awards splide no-gutter">
             {% render 'splide-arrows', trackId: section.settings.trackId %}
             <div class="splide__track">
                 <ul class="splide__list">
@@ -32,11 +17,9 @@
                         >
                             {% capture icon %}
                                 <img
-
                                         data-src="{{ block.settings.icon | image_url: width: 1080 }}"
                                         data-sizes="auto"
                                         alt="{{ block.settings.icon.alt }}"
-                                        width="200"
                                         height="200"
                                         class="lazyload"
                                 />
@@ -54,9 +37,10 @@
                 </ul>
             </div>
         </div>
-
-        <script type="quickscript" loading="visibility" src="{{ 'logo-carousel.js' | asset_url }}"></script>
     </div>
+
+    <script type="quickscript" loading="visibility" src="{{ 'logo-carousel.js' | asset_url }}"></script>
+
 </section>
 
 {% schema %}
@@ -95,6 +79,26 @@
       "id": "heading",
       "type": "text",
       "label": "Heading"
+    },
+    {
+      "id": "heading_alignment",
+      "type": "select",
+      "label": "Heading Alignment",
+      "options": [
+        {
+          "value": "start",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "end",
+          "label": "Right"
+        }
+      ],
+      "default": "start"
     },
     {
       "type": "text",

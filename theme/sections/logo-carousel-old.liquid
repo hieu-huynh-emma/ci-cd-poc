@@ -1,0 +1,107 @@
+{% assign awards = section.blocks | where: "type", "item" %}
+
+<style>
+    section.logo-carousel-old {
+        min-height: 250px;
+    }
+
+    @media screen and (min-width: 769px) {
+        section.logo-carousel-old {
+            min-height: 350px;
+        }
+    }
+</style>
+
+<link rel="quickscript" loading="delayed" href="{{ 'logo-carousel-old.css' | asset_url }}">
+
+<section abtasty-campaign-id="1296959"
+         abtasty-campaign-variation="0" id="{{ section.id }}" class="logo-carousel-old section-container sm md:lg">
+    <div class="section-chassis page-boundary">
+        <div class="section-header">
+            <h3 class="heading-3 text-center text-primary font-inter font-semibold">{{ section.settings.heading }}</h3>
+            <p class="award-name"></p>
+        </div>
+
+        <div class="awards splide no-gutter">
+            {% render 'splide-arrows', old: true, trackId: section.settings.trackId %}
+            <div class="splide__track">
+                <ul class="splide__list">
+                    {%- for block in awards -%}
+                        <li
+                                class="splide__slide" data-quote="{{ block.settings.quote | escape }}"
+                                data-heading="{{ block.settings.heading | escape }}"
+                        >
+                            {% capture icon %}
+                                <img
+
+                                        data-src="{{ block.settings.icon | image_url: width: 1080 }}"
+                                        data-sizes="auto"
+                                        alt="{{ block.settings.icon.alt }}"
+                                        width="200"
+                                        height="200"
+                                        class="lazyload"
+                                />
+                            {% endcapture %}
+
+                            {% if block.settings.link %}
+                                <a href="{{ block.settings.link }}" target="_blank" class="awards__item">
+                                    {{ icon }}
+                                </a>
+                            {% else %}
+                                <div class="awards__item">{{ icon }}</div>
+                            {% endif %}
+                        </li>
+                    {%- endfor -%}
+                </ul>
+            </div>
+        </div>
+
+        <script type="quickscript" loading="visibility" src="{{ 'logo-carousel-old.js' | asset_url }}"></script>
+    </div>
+</section>
+
+{% schema %}
+{
+  "name": "Award Carousel (Old)",
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Item",
+      "settings": [
+        {
+          "id": "heading",
+          "type": "text",
+          "label": "Heading"
+        },
+        {
+          "id": "icon",
+          "type": "image_picker",
+          "label": "Icon"
+        },
+        {
+          "id": "quote",
+          "type": "richtext",
+          "label": "Quote"
+        },
+        {
+          "id": "link",
+          "type": "url",
+          "label": "Link"
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "id": "heading",
+      "type": "text",
+      "label": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "trackId",
+      "label": "Tracking ID"
+    }
+  ]
+}
+{% endschema %}

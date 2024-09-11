@@ -6,6 +6,7 @@ product-card {
   background-color: #f7f7f9;
   border-radius: 8px;
   overflow: hidden;
+
   &.landscape {
     @media screen and (max-width: 769px) {
       .wrapper {
@@ -124,3 +125,40 @@ product-card {
   }
 }
 
+
+product-card[type="advanced"] {
+  justify-content: center;
+  .wrapper {
+    gap: 0;
+  }
+  .product-card-detail {
+    gap: 12px;
+    justify-content: center;
+    padding: 1rem;
+  }
+
+  .product-card-metadata {
+    gap: 12px;
+
+    justify-content: center;
+
+    text-align: center;
+  }
+
+  .product {
+    &__name {
+      font-size: 20px;
+    }
+    &__price {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-rows: repeat(2, minmax(0, auto));
+      justify-content: center;
+      justify-items: center;
+    }
+  }
+
+  .product-card-badge-container {
+    left: initial;
+  }
+}

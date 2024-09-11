@@ -123,3 +123,11 @@ function waitForAnimation(element) {
     element.addEventListener("animationend", resolve);
   });
 }
+
+function generateUUID() {
+  const timestamp = Date.now()
+  // Multiply by 1e17 (10^17) to ensure large number that can mimic actual UUID randomness
+  const random = Math.floor(Math.random() * 1e17).toString(16);
+
+  return `${timestamp.toString(16)}${random.padStart(12, '0')}`;
+}

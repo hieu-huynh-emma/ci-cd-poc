@@ -1,0 +1,146 @@
+{% assign influencers = section.blocks | where: "type", "influencer" %}
+
+<link rel="quickscript" href="{{ 'social-proof-old.css' | asset_url }}"/>
+
+{% liquid
+
+    assign trackId = "Action_online_scroll"
+    if template == 'index'
+        assign postfix = "HP"
+    elsif template == "page.sale"
+        assign postfix = "SP"
+    elsif template contains "collection"
+        assign postfix = "CP"
+    else
+        assign postfix = product.metafields.accentuate.track_postfix
+    endif
+
+    if postfix != blank
+        assign trackId = trackId | append: "_" | append: postfix
+    endif
+%}
+
+<section abtasty-campaign-id="1296959"
+         abtasty-campaign-variation="0" id="social-proof-old-section" class="section-container">
+    <div class="section-chassis page-boundary">
+        {% render 'section-header' %}
+
+        <div class="splide splide--borderless">
+            {% render 'splide-arrows', trackId: trackId, old: true %}
+
+            <div class="splide__track">
+                <ul class="splide__list">
+                    {%- for block in influencers -%}
+                        <li class="splide__slide">
+                            <div class="influencer">
+                                <div class="influencer-media">
+                                    <img
+                                            class="influencer__image"
+                                            src="{{ block.settings.image | image_url: height: 300 }}" width="300"
+                                            height="300" loading="lazy"
+                                    />
+                                </div>
+
+                                <div class="influencer-details">
+                                    <div class="influencer__tag">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                  d="M7.86965 2.12268C6.24177 2.19613 4.8308 2.59415 3.69148 3.72866C2.54818 4.86913 2.15514 6.28553 2.08151 7.89648C2.03574 8.90196 1.76808 16.4981 2.54421 18.4903C3.0676 19.8342 4.09846 20.8675 5.4547 21.3926C6.08754 21.6387 6.80994 21.8055 7.86966 21.8541C16.7305 22.2551 20.0151 22.0367 21.4002 18.4903C21.6459 17.859 21.8151 17.1374 21.8619 16.0803C22.2668 7.19677 21.7962 5.27121 20.2519 3.72871C19.027 2.50685 17.5862 1.67508 7.86959 2.12273M7.95118 20.0674C6.98102 20.0237 6.45464 19.862 6.10339 19.726C5.21979 19.3825 4.55611 18.7215 4.21481 17.8431C3.62376 16.3294 3.81978 9.14018 3.87252 7.97688C3.92426 6.8374 4.15511 5.79619 4.9591 4.99221C5.95413 3.99963 7.23973 3.51327 15.9931 3.90832C17.1354 3.95993 18.1792 4.19021 18.9852 4.99221C19.9802 5.98478 20.4738 7.28009 20.0718 15.9999C20.028 16.9677 19.8658 17.4927 19.7295 17.8431C18.829 20.1508 16.7573 20.4714 7.95116 20.0675M16.0896 6.68958C16.0896 7.34667 16.6239 7.88067 17.2836 7.88067C17.9433 7.88067 18.4787 7.34667 18.4787 6.68958C18.4787 6.0325 17.9433 5.49849 17.2836 5.49849C16.6239 5.49849 16.0896 6.0325 16.0896 6.68958ZM6.86259 11.9879C6.86259 14.8029 9.15018 17.0848 11.9721 17.0848C14.794 17.0848 17.0816 14.8029 17.0816 11.9879C17.0816 9.173 14.794 6.89207 11.9721 6.89207C9.15018 6.89207 6.86259 9.173 6.86259 11.9879ZM8.65565 11.9879C8.65565 10.1616 10.1403 8.67969 11.9721 8.67969C13.804 8.67969 15.2886 10.1616 15.2886 11.9879C15.2886 13.8153 13.804 15.2972 11.9721 15.2972C10.1403 15.2972 8.65565 13.8153 8.65565 11.9879Z"
+                                                  fill="#55576F"/>
+                                        </svg>
+                                        <p class="text-comet solid">{{ block.settings.tag }}</p>
+                                    </div>
+
+                                    <p class="paragraph-14">
+                                        {{ block.settings.content | remove: "<p>" | remove: "</p>" }}
+                                    </p>
+
+                                    {% if block.settings.product.url %}
+                                        <a class="product-link" href="{{ block.settings.product.url }}">Shop Product</a>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </li>
+
+                    {%- endfor -%}
+                </ul>
+            </div>
+        </div>
+
+        <script type="quickscript" loading="visibility" src="{{ 'social-proof-old.js' | asset_url }}"></script>
+
+    </div>
+</section>
+
+{% schema %}
+{
+  "name": "Social Proof",
+  "blocks": [
+    {
+      "type": "influencer",
+      "name": "Influencer",
+      "settings": [
+        {
+          "id": "image",
+          "type": "image_picker",
+          "label": "Image"
+        },
+        {
+          "id": "heading",
+          "type": "text",
+          "label": "Name"
+        },
+        {
+          "id": "tag",
+          "type": "text",
+          "label": "Tag"
+        },
+        {
+          "id": "content",
+          "type": "richtext",
+          "label": "Content"
+        },
+        {
+          "id": "product",
+          "type": "product",
+          "label": "Product"
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "id": "heading",
+      "type": "text",
+      "label": "Heading",
+      "default": "See our beds in action online"
+    },
+    {
+      "id": "heading_alignment",
+      "type": "select",
+      "label": "Heading Alignment",
+      "options": [
+        {
+          "value": "start",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "end",
+          "label": "Right"
+        }
+      ],
+      "default": "start"
+    },
+    {
+      "type": "text",
+      "id": "trackId",
+      "label": "Tracking ID"
+    }
+  ]
+}
+{% endschema %}

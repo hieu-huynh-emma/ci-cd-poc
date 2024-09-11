@@ -1,0 +1,86 @@
+<product-card type="advanced" class="" :productId="{{ product.id }}">
+    {% liquid
+        assign postfix = "PDP"
+        if template == "page.sale"
+            assign postfix = "SP"
+        endif
+
+        if template contains "collection"
+            assign postfix = "CP"
+        endif
+
+        assign trackId = product.metafields.accentuate.track_id | append: "_" | append: postfix
+    %}
+
+
+    <tracked-button :trackId="{{ trackId }}" href="{{ product.url }}" class="wrapper">
+        <div class="product-card-media">
+            {% assign blockImg = blockImg | image_url: width: 450 %}
+            {% assign coverImg = product.featured_image | image_url: width: 450 %}
+            {% assign objectPosition = product.metafields.accentuate.featured_image_position %}
+            <img
+                    src="{{ blockImg | default: product.metafields.accentuate.featured_image[0].src | default: coverImg }}"
+                    alt=""
+                    class="product__image{% if objectPosition %} object-{{ objectPosition }}{% endif %}"
+                    loading="lazy"
+            />
+        </div>
+
+        <div class="product-card-detail">
+            <div class="product-card-metadata">
+                <h3 class="text-md font-semibold">{{ product.title }}</h3>
+
+                {% comment %}{% if show_star_rating == blank or show_star_rating == true %}{% endcomment %}
+                <product-star-rating :productId="{{ product.id }}"></product-star-rating>
+                {% comment %}{% endif %}{% endcomment %}
+
+                <p class="text-sm text-comet">{{ product.metafields.accentuate.short_description }}</p>
+            </div>
+
+            <div class="product__price">
+                <div class=" text-[#55576F]" style="font-size:12px">
+                    {% if product.compare_at_price > product.price %}
+                        From
+                    {% endif %}
+
+                    <span
+                            class="line-through"
+                    >{{ product.compare_at_price | money_without_trailing_zeros }}</span>
+                </div>
+                <div class="flex items-center justify-center flex-wrap gap-2">
+                    {% if product.compare_at_price > product.price %}
+                        <p class="font-semibold mr-1">{{ product.price | money_without_trailing_zeros }}</p>
+                        <p
+                                class="line-through  hidden"
+                        >{{ product.compare_at_price | money_without_trailing_zeros }}</p>
+                    {% else %}
+                        <p class="font-semibold"> {{ product.price | money_without_trailing_zeros }}</p>
+                    {% endif %}
+
+                    {% if product.compare_at_price > product.price %}
+                        <span
+                                class="font-semibold"
+                                style="color:#F03306"
+                        >{{ product.compare_at_price | minus: product.price | times: 100.0 | divided_by: product.compare_at_price | money_without_currency | times: 100 | remove: '.0' }}% off </span>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+    </tracked-button>
+
+    <div class="product-card-badge-container">
+        {% assign uptoDiscount = product.metafields.accentuate.upto_discount | times: 1 %}
+        {% if uptoDiscount > 0 %}
+            <div
+                    class="product-card-badge bg-scarlet"
+            >
+                {{ uptoDiscount | prepend: '- ' | append: ' %' }}
+            </div>
+        {% endif %}
+
+        {% if product.metafields.accentuate.promotion_capsule %}
+            <div class="product-card-badge bg-calm-600">{{ product.metafields.accentuate.promotion_capsule }}</div>
+        {% endif %}
+    </div>
+</product-card>

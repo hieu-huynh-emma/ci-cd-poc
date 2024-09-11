@@ -1,0 +1,105 @@
+<style>
+    section#usp {
+        display: none;
+    }
+</style>
+<link rel="quickscript" loading="delayed" href="{{ 'featured-usps.css' | asset_url }}">
+
+{% assign items = section.blocks | where: "type", "item" %}
+
+<div abtasty-campaign-id="1296959"
+     class="page-boundary">
+    <section id="usp" class="section-container">
+        <ul class="usp-list">
+            {% for block in items %}
+                <li>
+                    <modal-outlet>
+                        <div slot="trigger" class="usp-item cursor-pointer rounded-md">
+                            <div class="banner-media">
+                                <img class="lazyload" data-src="{{ block.settings.icon | image_url: width: 100 }}"
+                                     width="100"
+                                     height="100"
+                                     alt="">
+                            </div>
+
+                            <p class="text-base lg:text-md font-semibold text-center md:text-left">
+                                {{ block.settings.text }} →
+                            </p>
+                        </div>
+                        <span slot="title">
+                            {{ section.settings.modal_heading }}
+                        </span>
+                        <div slot="body" id="featured-usp-modal" class="usp-m">
+                            <div class="usp-m__media">
+                                {% render 'picture-tag',
+                                        src: block.settings.photo,
+                                        img_classes: "cover-surface",
+                                        alt: "Hero Wallpaper"
+                                %}
+                            </div>
+                            <div class="usp-m__content">
+                                {% render 'rtf-viewer', content: block.settings.content %}
+                            </div>
+                        </div>
+                        <div slot="footer">
+                            <p class="text-sm text-center">
+                                {{ block.settings.footer_content }}
+                            </p>
+                        </div>
+                    </modal-outlet>
+                </li>
+            {% endfor %}
+        </ul>
+    </section>
+</div>
+
+{% schema %}
+{
+  "name": "Featured USP",
+  "blocks": [
+    {
+      "type": "item",
+      "name": "USP Item",
+      "settings": [
+        {
+          "id": "icon",
+          "type": "image_picker",
+          "label": "Banner Icon"
+        },
+        {
+          "id": "text",
+          "type": "text",
+          "label": "Banner Text"
+        },
+        {
+          "id": "content",
+          "type": "richtext",
+          "label": "USP Content",
+          "info": "The content that show up in the modal"
+        },
+        {
+          "id": "photo",
+          "type": "image_picker",
+          "label": "USP Photo",
+          "info": "The featured that show up in the modal"
+        },
+        {
+          "id": "footer_content",
+          "type": "text",
+          "label": "USP Footer Content",
+          "default": "Terms and Conditions apply.",
+          "info": "The footer content that show up in the modal"
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "id": "modal_heading",
+      "type": "text",
+      "label": "Modal Heading",
+      "default": "Our service promise to you"
+    }
+  ]
+}
+{% endschema %}

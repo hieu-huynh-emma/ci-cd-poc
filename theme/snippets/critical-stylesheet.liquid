@@ -1,6 +1,7 @@
 <style>
     body {
-        margin: 0
+        margin: 0;
+        background-color: #FFFEFB;
     }
 
     script[type="quickscript"][loading="visibility"], link[rel="quickscript"][loading="visibility"] {
@@ -16,6 +17,12 @@
 
     .splide__slide {
         max-width: 100%;
+    }
+
+    .cover-surface {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
     }
 
     .visually-hidden {
@@ -39,10 +46,12 @@
         margin: 0;
         padding: 0;
     }
+
     a {
         color: inherit;
         text-decoration: inherit;
     }
+
     lazy-component {
         position: relative;
     }
@@ -53,9 +62,13 @@
         z-index: 1;
     }
 
-    .hide-until-initialized{display:none}
+    .hide-until-initialized {
+        display: none
+    }
 
-    #product-layout.is-initialized .hide-until-initialized{display:block}
+    #product-layout.is-initialized .hide-until-initialized {
+        display: block
+    }
 
     img {
         max-width: 100%;
@@ -81,6 +94,10 @@
         z-index: 99;
         pointer-events: none;
         animation: skeleton-loading 1s linear infinite alternate;
+    }
+
+    modal-outlet > *:not([slot="trigger"]) {
+        display: none !important;
     }
 
     @keyframes skeleton-loading {
@@ -316,6 +333,7 @@
     .hidden {
         display: none
     }
+
     a {
         text-decoration: inherit;
     }
@@ -594,5 +612,15 @@
 
     .line-through {
         text-decoration-line: line-through
+    }
+</style>
+
+
+{% comment %}
+ABTest
+{% endcomment %}
+<style>
+    [abtasty-campaign-id="1296959"]:not([abtasty-campaign-variation="0"]) {
+        display: none;
     }
 </style>

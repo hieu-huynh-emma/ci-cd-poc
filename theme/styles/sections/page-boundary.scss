@@ -1,0 +1,29 @@
+@import "../abstracts/index";
+
+
+.page-boundary {
+  @include page-boundary;
+  @include page-boundary-left;
+  @include page-boundary-right;
+
+  &--full {
+    width: 100%;
+    @include page-boundary;
+  }
+
+  &--left {
+    @include page-boundary;
+    @include page-boundary-left;
+  }
+
+  &--right {
+    @include page-boundary;
+    @include page-boundary-right;
+  }
+
+  &--no-gutter {
+    @include page-boundary;
+  }
+}
+
+

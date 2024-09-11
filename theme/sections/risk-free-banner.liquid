@@ -1,6 +1,8 @@
 <style>
     section#risk-free-banner {
-        {% if template.name == 'product' %}display: none !important;{% else %}min-height: 40px;{% endif %}
+        {% if template.name == 'product' %} display: none !important;
+        {% else %} min-height: 40px;
+    {% endif %}
     }
 
 </style>
@@ -8,27 +10,30 @@
 
 {% assign bannerItems = section.blocks | where: "type", "banner-item" %}
 
-<section id="risk-free-banner" class="">
-  <div class="splide">
-    <div class="splide__track">
-      <ul class="splide__list banner-list">
-        {% for block in bannerItems %}
-          {% assign url = block.settings.url %}
+<section abtasty-campaign-id="1296959"
+         abtasty-campaign-variation="0"
+         id="risk-free-banner" class="">
+    <div class="splide">
+        <div class="splide__track">
+            <ul class="splide__list banner-list">
+                {% for block in bannerItems %}
+                    {% assign url = block.settings.url %}
 
-          <li class="splide__slide">
-            <a class="banner-item"{% if url %} href="{{ url }}"{% endif %} target="_blank">
-              <img class="lazyload" data-src="{{ block.settings.icon | image_url: width: 25 }}" width="25" height="25"
-                   alt="">
+                    <li class="splide__slide">
+                        <a class="banner-item"{% if url %} href="{{ url }}"{% endif %} target="_blank">
+                            <img class="lazyload" data-src="{{ block.settings.icon | image_url: width: 25 }}" width="25"
+                                 height="25"
+                                 alt="">
 
-              <span class="text-charade font-extralight">{{ block.settings.text }}</span>
-            </a>
-          </li>
-        {% endfor %}
-      </ul>
+                            <span class="text-charade font-extralight">{{ block.settings.text }}</span>
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
     </div>
-  </div>
 
-  <script type="quickscript" loading="visibility" src="{{ 'risk-free-banner.js' | asset_url }}"></script>
+    <script type="quickscript" loading="visibility" src="{{ 'risk-free-banner.js' | asset_url }}"></script>
 </section>
 
 {% schema %}

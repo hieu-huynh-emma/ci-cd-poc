@@ -37,7 +37,7 @@ class ProductStarRating extends CustomElement {
             .then(res => res.json())
             .then(json => json.response.bottomline)
             .then(res => {
-                if (res.average_score > 0) this.innerHTML=`<star-rating :id="${productId}" :score="${res.average_score}">`
+                if (res.average_score > 0) this.innerHTML=`<star-rating :id="${productId}" :count="${res.total_reviews}" :score="${res.average_score}">`
             })
             .catch(err => console.error('error:' + err));
     }

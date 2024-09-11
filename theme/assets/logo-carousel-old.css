@@ -1,0 +1,44 @@
+section.logo-carousel-old .section-header .quote {
+    font-size: 2rem;
+    font-weight: 500
+}
+
+@media screen and (min-width: 769px) {
+    section.logo-carousel-old .section-header .quote {
+        font-size: 3.2rem
+    }
+}
+
+section.logo-carousel-old .awards {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%
+}
+
+section.logo-carousel-old .awards__item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    width: 100%;
+    height: 100%
+}
+
+section.logo-carousel-old .awards__item img {
+    width: 165px
+}
+
+section.logo-carousel-old .splide__slide:not(.is-active) {
+    opacity: .3
+}
+
+section.logo-carousel-old .splide__track {
+    width: 100%
+}
+
+@media (min-width: 769px) {
+    section.logo-carousel-old .splide__track {
+        padding: 0
+    }
+}

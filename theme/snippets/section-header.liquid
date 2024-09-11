@@ -1,7 +1,10 @@
+{% assign content = section.settings.heading | default: section.settings.title %}
 <div class="section-header justify-{{ section.settings.heading_alignment }}">
-  <h2 class="heading-2 font-{{ section.settings.header_font }}">{{ section.settings.heading | default: section.settings.title }}</h2>
+    <h2 class="heading-2 font-{{ section.settings.header_font }}">
+        {% render 'rtf-viewer', content: content %}
+    </h2>
 
-  {% if section.settings.subtitle %}
-    <h4 class="heading-4">{{ section.settings.subtitle }}</h4>
-  {% endif %}
+    {% if section.settings.subtitle %}
+        <h4 class="heading-4">{{ section.settings.subtitle }}</h4>
+    {% endif %}
 </div>

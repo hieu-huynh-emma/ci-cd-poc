@@ -1,6 +1,51 @@
 {
   "layout": "theme.speed",
   "sections": {
+    "risk-free-banner": {
+      "type": "risk-free-banner",
+      "blocks": {
+        "8b906a77-60bb-46b8-b714-8fe010db07ca": {
+          "type": "banner-item",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/365_nights.png",
+            "text": "Free 365-Night Trial",
+            "url": "shopify:\/\/pages\/trial"
+          }
+        },
+        "605013b2-263f-4c29-b4c0-136f75610eda": {
+          "type": "banner-item",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Delivery.png",
+            "text": "Free Shipping & Returns",
+            "url": "https:\/\/emma-sleep.ca\/pages\/faq#trial-and-guarantee"
+          }
+        },
+        "49138228-00c2-461a-bbdd-650d93f8503b": {
+          "type": "banner-item",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Warranty.png",
+            "text": "10-Year Warranty",
+            "url": "https:\/\/emma-sleep.ca\/pages\/faq#trial-and-guarantee"
+          }
+        },
+        "7bc03542-75ef-4463-b480-ec46f36ac421": {
+          "type": "banner-item",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/0_APR..png",
+            "text": "0% APR Financing",
+            "url": "https:\/\/emma-sleep.ca\/pages\/faq#purchasing-your-emma"
+          }
+        }
+      },
+      "block_order": [
+        "8b906a77-60bb-46b8-b714-8fe010db07ca",
+        "605013b2-263f-4c29-b4c0-136f75610eda",
+        "49138228-00c2-461a-bbdd-650d93f8503b",
+        "7bc03542-75ef-4463-b480-ec46f36ac421"
+      ],
+      "settings": {
+      }
+    },
     "217cc637-3faa-4f25-b127-7a38a42e6e2f": {
       "type": "hero-split",
       "blocks": {
@@ -69,6 +114,56 @@
         "show_cta": true,
         "timer": "2024-07-18 06:00",
         "trackId": "Shop"
+      }
+    },
+    "featured-usps": {
+      "type": "featured-usps",
+      "blocks": {
+        "8b906a77-60bb-46b8-b714-8fe010db07ca": {
+          "type": "item",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/365_nights.png",
+            "text": "Free 365-Night Trial",
+            "content": "<p>Take the stress out of it<\/p><h1>Up to 375-Night Trial<\/h1><p><br\/>We’re glad you asked! When choosing a mattress, it is important to give it a try and decide if everything is right for you. Our risk-free 365 night trial means that you get 365 nights to relax into your Emma mattress and experience the benefits of a good night’s sleep in order to make that decision. We encourage and require a trial period of 21 nights on your mattress so that you and your body can get suited to your Emma mattress.<br\/><br\/>If you choose to return your mattress within the trial period, please reach out to our Customer Care agents from 08:00 to 18:00 GMT-6, Monday-Friday through our available channels:<\/p><ul><li>Email: support@emma-sleep.ca <\/li><li>Landline: +1-844-906-3662<\/li><li>or speak directly with an agent using our live-chat feature on our website.<\/li><\/ul><p>Note that the 365-night trial is only applicable to purchases after July 7, 2022. All purchases before this date are subject to the previous 200-night trial.<\/p>",
+            "photo": "shopify:\/\/shop_images\/UK_Mattress_Our_Promise_Section.webp"
+          }
+        },
+        "605013b2-263f-4c29-b4c0-136f75610eda": {
+          "type": "item",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Delivery.png",
+            "text": "Free Shipping & Returns",
+            "content": "<h2>Free Delivery & Free Return<\/h2><p>Shipping and return costs are free for all our products. However, if you select the scheduled delivery with in-home setup, there is a small fee added to the order total.<\/p>",
+            "photo": "shopify:\/\/shop_images\/Premium_Delivery_Place_holder.webp"
+          }
+        },
+        "49138228-00c2-461a-bbdd-650d93f8503b": {
+          "type": "item",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Warranty.png",
+            "text": "10-Year Warranty",
+            "content": "<h1>Up to 10-Year Guarantee<\/h1><p><br\/>We got your back 100%. The 10-year warranty begins as soon as you receive your Emma Original mattress and covers damages made by factory defects and\/or faulty materials. For more information please check our <a href=\"https:\/\/emma-sleep.ca\/pages\/terms-and-conditions\" target=\"_self\">terms and conditions.<\/a><br\/><br\/>Suppose you have received a defective mattress upon delivery. In that case, you may reach out to our Customer Care agents from 6 AM - 9 PM EST through our available channels:<\/p><ul><li>Email: support@emma-sleep.ca <\/li><li>Landline: +1-844-906-3662<\/li><li>or speak directly with an agent using our live-chat feature on our website.<\/li><\/ul>",
+            "photo": "shopify:\/\/shop_images\/Sleep_Promise_Pink.webp"
+          }
+        },
+        "7bc03542-75ef-4463-b480-ec46f36ac421": {
+          "type": "item",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/0_APR..png",
+            "text": "0% APR Financing",
+            "content": "<h2>Spread the cover with up to 12 monthly payments<\/h2><p>If you choose to pay by installment (i.e. Buy Now, Pay Later), you may pay using Affirm. For more information, see our FAQs on<a href=\"https:\/\/emma-sleep.ca\/pages\/financing\">Affirm here. <\/a><\/p>",
+            "photo": "shopify:\/\/shop_images\/AIRGRID_TOPPER_120S_-_ENG_SUB_-_EDIT_3_CC_00_01_22_03.webp"
+          }
+        }
+      },
+      "block_order": [
+        "8b906a77-60bb-46b8-b714-8fe010db07ca",
+        "605013b2-263f-4c29-b4c0-136f75610eda",
+        "49138228-00c2-461a-bbdd-650d93f8503b",
+        "7bc03542-75ef-4463-b480-ec46f36ac421"
+      ],
+      "settings": {
+        "modal_heading": "Our service promise to you"
       }
     },
     "06c76c39-8b9d-42b2-b20c-9dab3dc4287f": {
@@ -183,7 +278,7 @@
       }
     },
     "winning-awards": {
-      "type": "logo-carousel",
+      "type": "featured-awards",
       "blocks": {
         "2f001268-c2a2-458a-9d8f-c90ca820b239": {
           "type": "item",
@@ -336,6 +431,229 @@
         "trackId": "Scroll_awards"
       }
     },
+    "winning-awards-old": {
+      "type": "logo-carousel-old",
+      "blocks": {
+        "2f001268-c2a2-458a-9d8f-c90ca820b239": {
+          "type": "item",
+          "settings": {
+            "heading": "",
+            "icon": "shopify:\/\/shop_images\/Sleepopolis-Badges-2024_Best_Mattress.png",
+            "quote": "",
+            "link": ""
+          }
+        },
+        "item_MPHdRb": {
+          "type": "item",
+          "settings": {
+            "heading": "",
+            "icon": "shopify:\/\/shop_images\/POY_2024_ENG.Sticker-Final_2.png",
+            "quote": "",
+            "link": ""
+          }
+        },
+        "item_jcEKz9": {
+          "type": "item",
+          "settings": {
+            "heading": "",
+            "icon": "shopify:\/\/shop_images\/MC_Badges_2024_Best_Mem_Foam_2024.png",
+            "quote": "",
+            "link": ""
+          }
+        },
+        "82bba997-40ba-439c-909f-62c6e739e43d": {
+          "type": "item",
+          "settings": {
+            "heading": "",
+            "icon": "shopify:\/\/shop_images\/2024_-_best_canada_mattress.png",
+            "quote": "",
+            "link": ""
+          }
+        },
+        "item_dBaLTj": {
+          "type": "item",
+          "settings": {
+            "heading": "",
+            "icon": "shopify:\/\/shop_images\/Human_Analytic.jpg",
+            "quote": "",
+            "link": ""
+          }
+        },
+        "88cc9342-d38c-4646-9f74-5f085daed0f8": {
+          "type": "item",
+          "settings": {
+            "heading": "",
+            "icon": "shopify:\/\/shop_images\/PTPA-Top-Product-Award-2023.png",
+            "quote": "",
+            "link": ""
+          }
+        },
+        "f75c2641-2a79-460d-a1e5-f38a105dc137": {
+          "type": "item",
+          "settings": {
+            "heading": "",
+            "icon": "shopify:\/\/shop_images\/The_Best_Toronto_Seal_Revised.png",
+            "quote": "",
+            "link": ""
+          }
+        },
+        "3c686a43-903a-48d4-baf1-252383fb63ff": {
+          "type": "item",
+          "settings": {
+            "heading": "",
+            "icon": "shopify:\/\/shop_images\/US_Affiliate_Awards_ea529d1e-3373-4de5-b2db-8e12acbf4874.png",
+            "quote": "",
+            "link": ""
+          }
+        },
+        "639f8732-c63f-4a95-8624-16e9a483e884": {
+          "type": "item",
+          "settings": {
+            "heading": "",
+            "icon": "shopify:\/\/shop_images\/Untitled_design_7.png",
+            "quote": "",
+            "link": ""
+          }
+        },
+        "e5cbf038-9d6e-4505-8e33-8c03ba6c31b8": {
+          "type": "item",
+          "settings": {
+            "heading": "",
+            "icon": "shopify:\/\/shop_images\/award-2.png",
+            "quote": "",
+            "link": ""
+          }
+        },
+        "3534d7d4-8219-4c6f-a5a3-84023b604817": {
+          "type": "item",
+          "settings": {
+            "heading": "",
+            "icon": "shopify:\/\/shop_images\/realgoldoh.jpg",
+            "quote": "",
+            "link": ""
+          }
+        },
+        "5d11e8f7-8789-4531-a649-61e01a6fd3b7": {
+          "type": "item",
+          "settings": {
+            "heading": "",
+            "icon": "shopify:\/\/shop_images\/Choice-Comfort2021.png",
+            "quote": "",
+            "link": ""
+          }
+        },
+        "06647c2d-8c4a-4458-88b8-c1a43932dbd9": {
+          "type": "item",
+          "settings": {
+            "heading": "",
+            "icon": "shopify:\/\/shop_images\/28kbq86_SF_Emma_Comfortable_Couples.png",
+            "quote": "",
+            "link": ""
+          }
+        },
+        "item_7CadpG": {
+          "type": "item",
+          "settings": {
+            "heading": "",
+            "icon": "shopify:\/\/shop_images\/SA_Badges_2024_SA_BestMattressYouCanBuyOnline.png",
+            "quote": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "2f001268-c2a2-458a-9d8f-c90ca820b239",
+        "item_MPHdRb",
+        "item_jcEKz9",
+        "82bba997-40ba-439c-909f-62c6e739e43d",
+        "item_dBaLTj",
+        "88cc9342-d38c-4646-9f74-5f085daed0f8",
+        "f75c2641-2a79-460d-a1e5-f38a105dc137",
+        "3c686a43-903a-48d4-baf1-252383fb63ff",
+        "639f8732-c63f-4a95-8624-16e9a483e884",
+        "e5cbf038-9d6e-4505-8e33-8c03ba6c31b8",
+        "3534d7d4-8219-4c6f-a5a3-84023b604817",
+        "5d11e8f7-8789-4531-a649-61e01a6fd3b7",
+        "06647c2d-8c4a-4458-88b8-c1a43932dbd9",
+        "item_7CadpG"
+      ],
+      "custom_css": [
+        ".logo-carousel {padding: 40px 0;}"
+      ],
+      "settings": {
+        "heading": "Award-winning Comfort",
+        "trackId": "Scroll_awards"
+      }
+    },
+    "trio-comparison": {
+      "type": "trio-comparison",
+      "blocks": {
+        "old-featured-products-1": {
+          "type": "product-block",
+          "settings": {
+            "product": "emma-original-mattress",
+            "show_star_rating": false,
+            "color": "#3c4196",
+            "primary_badge": "COMFORT",
+            "secondary_badge": "BEST VALUE",
+            "image": "shopify:\/\/shop_images\/EMMAOG_exploded.png",
+            "product_title": "Emma Original",
+            "desc": "<h1>★ 4.7<\/h1><p><strong>Our Most Awarded Mattress for Budget-Conscious Sleepers.<\/strong><\/p><ul><li>Most awarded mattress and budget-friendly<\/li><li>5 unique layers with minimal motion transfer<\/li><li>Breathable and moisture-wicking<\/li><\/ul>",
+            "discount_title": "4th of July Sale",
+            "comfort_meter": 4,
+            "cooling_meter": 3,
+            "motion_isolation_meter": 4,
+            "trackId": "OG_compare_HP"
+          }
+        },
+        "2faeb4c9-fe7f-46bc-9cd1-3b2e38ad1752": {
+          "type": "product-block",
+          "settings": {
+            "product": "emma-hybrid-comfort",
+            "show_star_rating": false,
+            "color": "#3c4196",
+            "primary_badge": "",
+            "secondary_badge": "BEST DEAL",
+            "image": "shopify:\/\/shop_images\/Untitled_design_8_26a090c2-2a1f-4f97-8580-f7262ced984f.png",
+            "product_title": "Emma Hybrid Comfort II",
+            "desc": "<h1>★ 4.7<\/h1><p><strong>Our newest Hybrid mattress with enhanced support and ideal pressure distribution<\/strong><\/p>",
+            "discount_title": "",
+            "comfort_meter": 6,
+            "cooling_meter": 4,
+            "motion_isolation_meter": 6,
+            "trackId": "Comfort_compare_HP"
+          }
+        },
+        "5b5432f6-dba9-4790-a55c-48525184b6b4": {
+          "type": "product-block",
+          "settings": {
+            "product": "emma-hybrid-premium",
+            "show_star_rating": false,
+            "color": "#3c4196",
+            "primary_badge": "PREMIUM CHOICE",
+            "secondary_badge": "PREMIUM CHOICE",
+            "image": "shopify:\/\/shop_images\/hybrid-premium-exploded_1.png",
+            "product_title": "Emma Hybrid Premium",
+            "desc": "<h1>★ 4.6<\/h1><p><strong>Our new best-in-class mattress for perfect cooling & absolute comfort<\/strong><\/p>",
+            "discount_title": "",
+            "comfort_meter": 6,
+            "cooling_meter": 6,
+            "motion_isolation_meter": 6,
+            "trackId": "Premium_compare_HP"
+          }
+        }
+      },
+      "block_order": [
+        "old-featured-products-1",
+        "2faeb4c9-fe7f-46bc-9cd1-3b2e38ad1752",
+        "5b5432f6-dba9-4790-a55c-48525184b6b4"
+      ],
+      "settings": {
+        "title": "Sleeping will never be the same",
+        "subtitle": "",
+        "heading_alignment": "start"
+      }
+    },
     "featured-products": {
       "type": "featured-products",
       "blocks": {
@@ -435,7 +753,7 @@
       }
     },
     "special-services": {
-      "type": "multicolumn-text",
+      "type": "special-services",
       "blocks": {
         "f3255c5f-527e-4927-a670-554ff22e9ef7": {
           "type": "column",
@@ -559,6 +877,89 @@
     "product-collage": {
       "type": "product-collage",
       "blocks": {
+        "video_KNBgft": {
+          "type": "video",
+          "settings": {
+            "heading": "Mattresses",
+            "subheading": "Maximum Comfort",
+            "media": "shopify:\/\/files\/videos\/Emma_25_Comfort_Adjustable_Mattress_Webshop_7s-3_v1_(1).mp4",
+            "collection": "mattresses",
+            "is_block": false,
+            "background_color": "",
+            "text_color": "#ffffff",
+            "trackId": "Mattresses_box_HP"
+          }
+        },
+        "collage_item_FbfaGf": {
+          "type": "image",
+          "settings": {
+            "heading": "Pillows",
+            "subheading": "Perfect Complement",
+            "media": "shopify:\/\/shop_images\/image_23.png",
+            "collection": "pillows",
+            "is_block": false,
+            "background_color": "",
+            "text_color": "#ffffff",
+            "trackId": "Pillows_box_HP"
+          }
+        },
+        "collage_item_e6jR8U": {
+          "type": "image",
+          "settings": {
+            "heading": "Accessories",
+            "subheading": "Full Experience",
+            "media": "shopify:\/\/shop_images\/Woman_wrapped_in_duvet_Gallery.jpg",
+            "collection": "beddings",
+            "is_block": false,
+            "background_color": "",
+            "text_color": "#ffffff",
+            "trackId": "Bed_box_HP"
+          }
+        },
+        "collage_item_fPf3LT": {
+          "type": "image",
+          "settings": {
+            "heading": "Bundles",
+            "subheading": "Maximum Comfort",
+            "media": "shopify:\/\/shop_images\/25_Hybrid_v2_14_gallery_fdc70d0e-985d-47c7-81e8-cce98984241c.jpg",
+            "collection": "bundles",
+            "is_block": true,
+            "background_color": "",
+            "text_color": "#ffffff",
+            "trackId": "Bundles_box_HP"
+          }
+        },
+        "collage_item_fPf3LR": {
+          "type": "image",
+          "disabled": true,
+          "settings": {
+            "heading": "Beds",
+            "subheading": "Maximum Comfort",
+            "media": "shopify:\/\/shop_images\/25_Hybrid_v2_14_gallery_fdc70d0e-985d-47c7-81e8-cce98984241c.jpg",
+            "collection": "beds",
+            "is_block": false,
+            "background_color": "",
+            "text_color": "#ffffff",
+            "trackId": "Beds_box_HP"
+          }
+        }
+      },
+      "block_order": [
+        "video_KNBgft",
+        "collage_item_FbfaGf",
+        "collage_item_e6jR8U",
+        "collage_item_fPf3LT",
+        "collage_item_fPf3LR"
+      ],
+      "settings": {
+        "heading": "Emma's Advanced Sleep Range",
+        "heading_alignment": "start",
+        "container_spacing": "md"
+      }
+    },
+    "product-collage-old": {
+      "type": "product-collage-old",
+      "blocks": {
         "collage_item_fPf3LT": {
           "type": "image",
           "disabled": true,
@@ -617,6 +1018,75 @@
       "type": "multimedia-showcase",
       "disabled": true,
       "settings": {
+      }
+    },
+    "featured-catalog": {
+      "type": "featured-catalog",
+      "blocks": {
+        "catalog_item_C8iaTJ": {
+          "type": "catalog_item",
+          "settings": {
+            "product": "emma-hybrid-comfort"
+          }
+        },
+        "1e675715-5ecb-41e6-a7ab-608b36025781": {
+          "type": "catalog_item",
+          "settings": {
+            "product": "perfect-sleep-bundle-ii"
+          }
+        },
+        "8fde16df-aace-45a2-bc5e-de66829da46e": {
+          "type": "catalog_item",
+          "settings": {
+            "product": "emma-hybrid-premium"
+          }
+        },
+        "1764b6ed-cfac-4dec-9487-f9122604ba72": {
+          "type": "catalog_item",
+          "settings": {
+            "product": "emma-original-mattress"
+          }
+        },
+        "d2925961-e05b-4a94-be70-a9d7f7911010": {
+          "type": "catalog_item",
+          "settings": {
+            "product": "premium-cooling-pillow"
+          }
+        },
+        "07d5912c-d4c3-4ebb-97a6-f723fc8a4f3f": {
+          "type": "catalog_item",
+          "settings": {
+            "product": "emma-mattress-protector"
+          }
+        },
+        "f0f0b732-6803-4158-8c54-5c08c4bdbfa3": {
+          "type": "catalog_item",
+          "settings": {
+            "product": "duvet"
+          }
+        },
+        "72c7f33b-7788-4524-bf53-816aecb093b6": {
+          "type": "catalog_item",
+          "settings": {
+            "product": "emma-foam-pillow"
+          }
+        }
+      },
+      "block_order": [
+        "catalog_item_C8iaTJ",
+        "1e675715-5ecb-41e6-a7ab-608b36025781",
+        "8fde16df-aace-45a2-bc5e-de66829da46e",
+        "1764b6ed-cfac-4dec-9487-f9122604ba72",
+        "d2925961-e05b-4a94-be70-a9d7f7911010",
+        "07d5912c-d4c3-4ebb-97a6-f723fc8a4f3f",
+        "f0f0b732-6803-4158-8c54-5c08c4bdbfa3",
+        "72c7f33b-7788-4524-bf53-816aecb093b6"
+      ],
+      "settings": {
+        "heading": "Emma Favorites",
+        "heading_alignment": "start",
+        "container_spacing": "md",
+        "trackId": "Favorites_scroll_HP"
       }
     },
     "product-carousel": {
@@ -779,6 +1249,102 @@
       ],
       "settings": {
         "heading": "As Seen On",
+        "heading_alignment": "start",
+        "trackId": "As_seen_scroll_HP"
+      }
+    },
+    "media-publication-old": {
+      "type": "logo-carousel-old",
+      "blocks": {
+        "9c5b5d9e-43b4-4420-af13-64065fc12ff1": {
+          "type": "item",
+          "settings": {
+            "heading": "Elle Canada",
+            "icon": "shopify:\/\/shop_images\/elle-canada-1649072031885.png",
+            "quote": "",
+            "link": "https:\/\/www.ellecanada.com\/decoration\/this-ultra-luxe-wellness-inspired-mattress-just-launched-in-canada"
+          }
+        },
+        "10765d21-eb36-4098-be94-48db56188c77": {
+          "type": "item",
+          "settings": {
+            "heading": "Apartment Therapy",
+            "icon": "shopify:\/\/shop_images\/apartmenttherapy_logo.png",
+            "quote": "",
+            "link": "https:\/\/www.apartmenttherapy.com\/emma-sleep-hybrid-climax-mattress-designed-plus-size-couples-review-37203053"
+          }
+        },
+        "b52743bb-e19d-4192-bd6f-d8690dfa99cf": {
+          "type": "item",
+          "settings": {
+            "heading": "Tom’s Guide",
+            "icon": "shopify:\/\/shop_images\/toms-guide-logo.png",
+            "quote": "",
+            "link": "https:\/\/www.tomsguide.com\/uk\/best-picks\/best-mattresses"
+          }
+        },
+        "c95ae070-caa6-4cf5-99b8-ae5f863e9435": {
+          "type": "item",
+          "settings": {
+            "heading": "Real Homes",
+            "icon": "shopify:\/\/shop_images\/real-homes-vector-logo.png",
+            "quote": "",
+            "link": "https:\/\/www.realhomes.com\/reviews\/emma-climax-hybrid-mattress-review"
+          }
+        },
+        "53f17fa1-01be-4482-aea6-cbfe99fe6e64": {
+          "type": "item",
+          "settings": {
+            "heading": "Tuck",
+            "icon": "shopify:\/\/shop_images\/Tuck-Sleep-Logo.jpg",
+            "quote": "",
+            "link": "https:\/\/www.tuck.com\/mattress-reviews\/emma-mattress-review\/"
+          }
+        },
+        "ee864d22-ad70-41cf-82b5-49cd2a0fc893": {
+          "type": "item",
+          "settings": {
+            "heading": "T3",
+            "icon": "shopify:\/\/shop_images\/T3.jpg",
+            "quote": "",
+            "link": "https:\/\/www.t3.com\/reviews\/emma-original-mattress"
+          }
+        },
+        "8fc7753b-bb59-4cd3-9ce4-42601753a1c1": {
+          "type": "item",
+          "settings": {
+            "heading": "National Post",
+            "icon": "shopify:\/\/shop_images\/national-post.webp",
+            "quote": "",
+            "link": "https:\/\/nationalpost.com\/shopping-essentials\/the-best-mattresses-to-order-in-2021"
+          }
+        },
+        "aa61786c-dcd8-4386-9add-d405eff162fa": {
+          "type": "item",
+          "settings": {
+            "heading": "Western Living",
+            "icon": "shopify:\/\/shop_images\/western-living.webp",
+            "quote": "",
+            "link": "https:\/\/www.westernliving.ca\/food-and-wine\/general\/Celebrate-World-Sleep-Day-Heres-How-To-Naturally-Boost-Your-Energy\/"
+          }
+        }
+      },
+      "block_order": [
+        "9c5b5d9e-43b4-4420-af13-64065fc12ff1",
+        "10765d21-eb36-4098-be94-48db56188c77",
+        "b52743bb-e19d-4192-bd6f-d8690dfa99cf",
+        "c95ae070-caa6-4cf5-99b8-ae5f863e9435",
+        "53f17fa1-01be-4482-aea6-cbfe99fe6e64",
+        "ee864d22-ad70-41cf-82b5-49cd2a0fc893",
+        "8fc7753b-bb59-4cd3-9ce4-42601753a1c1",
+        "aa61786c-dcd8-4386-9add-d405eff162fa"
+      ],
+      "custom_css": [
+        ".award-name {display: none;}"
+      ],
+      "settings": {
+        "heading": "As Seen On",
+        "heading_alignment": "start",
         "trackId": "As_seen_scroll_HP"
       }
     },
@@ -987,8 +1553,221 @@
         "7370ca27-e47c-4832-b9fd-b8beb6dce18b"
       ],
       "settings": {
-        "title": "<p>The honest truth from our customers<\/p>",
-        "trackId": "Truth_scroll_HP"
+        "title": "<p>75,000+ 5-star reviews<\/p>",
+        "heading_alignment": "start",
+        "trackId": "Truth_scroll_HP",
+        "enable_text_clamp": true
+      }
+    },
+    "customer-sentiment-old": {
+      "type": "customer-sentiment-old",
+      "blocks": {
+        "review_bJQqi9": {
+          "type": "review",
+          "settings": {
+            "title": "Emma Hybrid Comfort Full Size - Five Stars",
+            "date": "05\/15\/24",
+            "product": "emma-hybrid-comfort",
+            "content": "<p>I've had the mattress for about one week. The firmness is just as described on the website and it's perfect for me (as someone who likes firm mattresses). Very easy to set up, ordering and shipping also went smoothly. So far I've noticed better temperature regulation than my old mattress; it is supportive with perfect amount of pillowy comfort. I'm very happy with my Hybrid Comfort purchase!<\/p>",
+            "author": "Ria S"
+          }
+        },
+        "review_a76arn": {
+          "type": "review",
+          "settings": {
+            "title": "Cloud soft mattress",
+            "date": "01\/18\/24",
+            "product": "emma-hybrid-comfort",
+            "content": "<p>Hands down the most comfortable mattress we’ve ever had- supportive but with a cloud soft topper you just sink right into, even as a lightweight person. So pleased we got it!<\/p>",
+            "author": "Jennifer S."
+          }
+        },
+        "27256391-e60b-4f13-a87b-15c442f6e89e": {
+          "type": "review",
+          "settings": {
+            "title": "Great Mattress and great service!",
+            "date": "11 Oct 2023",
+            "product": "emma-hybrid-comfort",
+            "content": "<p>Mattress was recommended by a friend and he was right. I luv my Full size Hybrid mattress. Raul in the Customer Service was extremely helpful as well.<\/p>",
+            "author": "Chris A."
+          }
+        },
+        "9331eb77-fb15-4c62-9a28-ac3bdc3a5aca": {
+          "type": "review",
+          "settings": {
+            "title": "Dream Bed",
+            "date": "02\/04\/2024",
+            "product": "emma-hybrid-premium",
+            "content": "<p>I am very pleased with this purchase. My first night was like sleeping on a cloud. I felt cocooned. I woke up feeling very rested. I love my Emma Hybrid Premium ! 😍😍<\/p>",
+            "author": "Celine E."
+          }
+        },
+        "ff353d7c-1ace-4d04-8600-da1cf999aa8c": {
+          "type": "review",
+          "settings": {
+            "title": "Very good",
+            "date": "01\/30\/24",
+            "product": "emma-hybrid-comfort",
+            "content": "<p>This mattress is excellent – firm yet comfortable. It keeps your back straight and adjusts to your weight for a good posture. I highly recommend it.<\/p>",
+            "author": " Jonathan V."
+          }
+        },
+        "review_QiHjdi": {
+          "type": "review",
+          "settings": {
+            "title": "Very comfortable, not so soft",
+            "date": "02\/02\/24",
+            "product": "emma-hybrid-comfort",
+            "content": "<p>Very comfortable, not so soft that I have the impression that I've been swallowed by a giant marshmallow and not too firm either, just perfect. If you have pet that sleep with you, it's magic because I'm not disturbed by mine hoping in and out of bed anymore. Very satisfied.<\/p>",
+            "author": " Gabrielle M."
+          }
+        },
+        "c3423518-a50d-4834-bd12-4f03d8b34082": {
+          "type": "review",
+          "settings": {
+            "title": "Comfy first night and super easy delivery!",
+            "date": "11 Set 2023",
+            "product": "emma-hybrid-comfort",
+            "content": "<p>I was quite surprised by the cost-free delivery. It was very easy to unpack, and my kids loved watching it expand. My first night was very comfy, hopes it only gets better with time.<\/p>",
+            "author": "Noah B."
+          }
+        },
+        "296eeee5-4272-4b32-96f7-594c31dff0be": {
+          "type": "review",
+          "settings": {
+            "title": "Great product and great customer service",
+            "date": "01\/15\/24",
+            "product": "emma-original-mattress",
+            "content": "<p>I love my Emma mattress and pillows! I previously had a sleep country mattress and suffered from back pain for a long time. I was weary about buying a mattress without testing it out first. I do not regret my decision! I toss and turn less, and my partner says he does not notice when I move around. (...) Overall better sleep since the first night. Highly recommend.<\/p>",
+            "author": "Brigitte E."
+          }
+        },
+        "3ae50726-1485-4914-89b6-85cd7883ced8": {
+          "type": "review",
+          "settings": {
+            "title": "First night without a drop!",
+            "date": "7 Set 2023",
+            "product": "emma-hybrid-comfort",
+            "content": "<p>Finally I've been sleeping without waking up in the middle of the night cover in sweat.<br\/>I have never been more excited to be in bed earlier, thank you Emma!<\/p>",
+            "author": "Gerardo"
+          }
+        },
+        "review-1": {
+          "type": "review",
+          "settings": {
+            "title": "High quality mattress!",
+            "date": "12 May 2023",
+            "product": "emma-original-mattress",
+            "content": "<p>I have used Emma Mattress for more than a month now and I'm totally in love with it. The quality of the mattress and comfort is definitely noteworthy. I would highly recommend using Emma if you are looking for premium quality mattress<\/p>",
+            "author": "Javeria A."
+          }
+        },
+        "eed622ac-a32a-4209-9df0-ec26d8d88b68": {
+          "type": "review",
+          "settings": {
+            "title": "Loved how quickly it arrived…to",
+            "date": "02\/05\/24",
+            "product": "emma-hybrid-comfort",
+            "content": "<p>Loved how quickly it arrived…to WV from CA in less than a week. Have also had the best nights rest I might ever have had. After 3 nights my back and neck no longer hurt when I wake up. My wife no longer has back and hip pains. I’m a stick figure and she is a little thicker. We are both getting the best nights rest. Waking up feeling well rested puts you in a good mood and has made everyday so much better right from the start. And for the price?!? You would seriously be hard pressed to find a better deal. Can’t thank you enough!<\/p>",
+            "author": " Trinity"
+          }
+        },
+        "995c692d-e999-4b49-a753-2f9d37f16038": {
+          "type": "review",
+          "settings": {
+            "title": "Perfect Blend of Tall, Plush, and Supportive",
+            "date": "11 Set 2023",
+            "product": "emma-hybrid-comfort",
+            "content": "<p>Finally, a mattress that gets it right! It's noticeably taller than my previous one, feels and looks luxurious. The top is super plush but balanced with just the right firmness. Fell asleep in minutes and woke up refreshed. Highly recommend!<\/p>",
+            "author": "William S."
+          }
+        },
+        "77781754-0ea6-405a-a83b-f0065811a528": {
+          "type": "review",
+          "settings": {
+            "title": "Best quality sleep I've ever had!",
+            "date": "27 May 2023",
+            "product": "emma-original-mattress",
+            "content": "<p>I didn't realize how bad my previous mattress was until I received my Emma mattress. Not only do I sleep straight through the night (mind you, I sleep with my partner and dog and don't feel their movements at all!), I wake up energized and well rested. I no longer have any body aches and never feel too hot\/too cold. Highly recommend!<\/p>",
+            "author": "Jonathan W."
+          }
+        },
+        "b3b7f1ea-8fe5-41e7-9305-567392190a4e": {
+          "type": "review",
+          "settings": {
+            "title": "Exactly what I needed",
+            "date": "05\/16\/24",
+            "product": "emma-hybrid-premium",
+            "content": "<p>I'm extremely satisfied with the new mattress. It is way less heavy than my previous memory foam mattress. It has the perfect density for me and it is very cool and comfortable. Would totally recommend.<\/p>",
+            "author": " Beatriz B."
+          }
+        },
+        "c4884297-13b5-40c7-9075-bed6e1cf82d8": {
+          "type": "review",
+          "settings": {
+            "title": "Top rate mattress",
+            "date": "02\/15\/24",
+            "product": "emma-hybrid-premium",
+            "content": "<p>My wife and I love this mattress because we never wake up during sleeping time, and we don't get lower back pain after we wake up.<\/p>",
+            "author": "Garratt W."
+          }
+        },
+        "63b94a78-d7f8-4037-90c0-79ad3facfbfa": {
+          "type": "review",
+          "settings": {
+            "title": "Like sleeping on clouds",
+            "date": "19 Nov 2023",
+            "product": "emma-hybrid-comfort",
+            "content": "<p>This was the first time I treated myself to a decent mattress and my god it’s AMAZING. It’s like sleeping on clouds, perfectly soft but with the right firmness. <br\/>The only downside is now I struggle to get out of bed.<\/p>",
+            "author": "Amy D."
+          }
+        },
+        "861bb558-60e9-462a-8a57-e342d2ea8adc": {
+          "type": "review",
+          "settings": {
+            "title": "Best mattress ever",
+            "date": "29 Set 2023",
+            "product": "emma-hybrid-comfort",
+            "content": "<p>Hello <br\/>I’ve recently purchased the Emma Hybrid mattress and (OMG ) for 25 years I’ve been suffering with lower back pain the first night I slept on that mattress the next morning absolutely no pain I’m like (WHAT) what kind of mattress is this ? (...)<\/p>",
+            "author": "Gillian M."
+          }
+        },
+        "7370ca27-e47c-4832-b9fd-b8beb6dce18b": {
+          "type": "review",
+          "settings": {
+            "title": "I can't wait for bedtime now!",
+            "date": "8 Dec 2022",
+            "product": "emma-original-mattress",
+            "content": "<p>Sharing a conventional mattress that is sagging, with a long legged whippet was a disaster - most mornings I fell out of bed with him pushing me out. I now wake up every morning with much less pain and even the dog seems to love it!<\/p>",
+            "author": "Judy K."
+          }
+        }
+      },
+      "block_order": [
+        "review_bJQqi9",
+        "review_a76arn",
+        "27256391-e60b-4f13-a87b-15c442f6e89e",
+        "9331eb77-fb15-4c62-9a28-ac3bdc3a5aca",
+        "ff353d7c-1ace-4d04-8600-da1cf999aa8c",
+        "review_QiHjdi",
+        "c3423518-a50d-4834-bd12-4f03d8b34082",
+        "296eeee5-4272-4b32-96f7-594c31dff0be",
+        "3ae50726-1485-4914-89b6-85cd7883ced8",
+        "review-1",
+        "eed622ac-a32a-4209-9df0-ec26d8d88b68",
+        "995c692d-e999-4b49-a753-2f9d37f16038",
+        "77781754-0ea6-405a-a83b-f0065811a528",
+        "b3b7f1ea-8fe5-41e7-9305-567392190a4e",
+        "c4884297-13b5-40c7-9075-bed6e1cf82d8",
+        "63b94a78-d7f8-4037-90c0-79ad3facfbfa",
+        "861bb558-60e9-462a-8a57-e342d2ea8adc",
+        "7370ca27-e47c-4832-b9fd-b8beb6dce18b"
+      ],
+      "settings": {
+        "title": "<p>75,000+ 5-star reviews<\/p>",
+        "heading_alignment": "start",
+        "trackId": "Truth_scroll_HP",
+        "enable_text_clamp": true
       }
     },
     "social-proof": {
@@ -1112,24 +1891,155 @@
         "heading_alignment": "start",
         "trackId": "Action_online_scroll_HP"
       }
+    },
+    "social-proof-old": {
+      "type": "social-proof-old",
+      "blocks": {
+        "influencer_LAdKMx": {
+          "type": "influencer",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Screenshot_2024-01-17_133004.png",
+            "heading": "",
+            "tag": "@chelseadram",
+            "content": "<p>Quality time with my loved ones is my absolute favourite during the Holidays ❤️<br\/><br\/>My two little monkeys love jumping, playing and cuddling on our new Emma Hybrid Comfort Mattress 🙊🐒<a href=\"https:\/\/www.instagram.com\/explore\/tags\/ad\/\">#AD<\/a>Give yourself and\/or your loved ones the gift of a better sleep with the best mattress.<\/p>",
+            "product": "emma-hybrid-comfort"
+          }
+        },
+        "influencer_TB3f4J": {
+          "type": "influencer",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Cover_photo_2.jpg",
+            "heading": "",
+            "tag": "@xo_jennsjourney",
+            "content": "<p>Surprise from <a href=\"https:\/\/www.instagram.com\/emmasleep.canada\/\">@emmasleep.canada<\/a>!<br\/>Their Hybrid Comfort Mattress is on sale now - up to 60% off and you can use my code JENNSJOURNEY (link in bio) for an extra 5% 🙌🏼 PLUS Emma will gift you TWO of their original cloud pillows. Don't sleep on this deal!<\/p>",
+            "product": "emma-hybrid-comfort"
+          }
+        },
+        "98cef3fe-c125-480a-8246-2ad38059cab6": {
+          "type": "influencer",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/m.for.mai.webp",
+            "heading": "Mai Le, Mom",
+            "tag": "@m.for.mai",
+            "content": "<p>We've had our emma mattress for about 2 weeks and holy smokes I can attest to the zero partner disturbance... because I co-sleep and even with me moving around getting up it doesn't disturb my baby girl 🙌<\/p>",
+            "product": "emma-original-mattress"
+          }
+        },
+        "11dbf26d-2b52-4e72-85e6-13c984bf43e5": {
+          "type": "influencer",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/alexanderkenton.webp",
+            "heading": "Alex Liang, Interior Designer",
+            "tag": "@alexanderkenton",
+            "content": "<p>No bedroom redesign would be complete without a new mattress! And we’ve been really enjoying my new Emma Original. It’s soft, yet supportive and keeps us comfortable and cool all night long. I also love that the entire cover of the mattress can be removed and machine washed, to keep the mattress fresh and new.<\/p>",
+            "product": "emma-original-mattress"
+          }
+        },
+        "5bb7873f-6347-4c76-bc0e-f0b9fe398615": {
+          "type": "influencer",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/coco.crochet.lee.webp",
+            "heading": "Lee Sartori, Author",
+            "tag": "@coco.crochet.lee",
+            "content": "<p>I've fallen in love with my Emma Mattress 😍. The Mattress sort of expands when you open it which made me think it would be way too soft. Surprise, it is actually very firm while keeping your sleep comfy and soft 😴💕. Because it's a memory foam mattress, you can sleep (or crochet) comfortably next to someone without disturbing them at all which is fantastic. All in all, I highly recommend!<\/p>",
+            "product": ""
+          }
+        },
+        "e3e2cb9c-e035-4edc-8166-730a5628740a": {
+          "type": "influencer",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/ayagonz.webp",
+            "heading": "Aya G,  Content Creator",
+            "tag": "@_ayagonz@_ayagonz",
+            "content": "<p>Emma has, no joke, given me the best sleep quality I've ever had (!!!) - I get to sleep straight through the night without being disturbed by any movements or noises, I no longer get any shoulder\/back aches and the temperature is always *just* right. I now wake up happier and more energized to take on my day. ⚡️<\/p>",
+            "product": ""
+          }
+        },
+        "b2517fed-7f06-4438-b8fc-ed8cf69234c9": {
+          "type": "influencer",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/pandi_po_family.jpg",
+            "heading": "Sylvana Carda, Mom",
+            "tag": "@pandi_po_family",
+            "content": "<p>Even superheroes sleep at night  🦸🏻‍♂️💫 Baby sleeps in his bed, but in the morning he joins us in our bed and I share my pillow with him. After using the pillow, I have much less neck pain unlike before when I wake up in the middle of the night and need to adjust my pillow several times.<\/p>",
+            "product": ""
+          }
+        },
+        "a7f0d7cf-91ad-466d-924c-8a3bfc28c64d": {
+          "type": "influencer",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/listen2lena.jpg",
+            "heading": "Lena Almeida, Mom",
+            "tag": "@listen2lena",
+            "content": "<p>I couldn’t be happier! The mattress and pillows are cool, breathable and offer just the right support to help me drift off to dreamland. 💤 The best part? I barely feel my husband’s movement throughout the night, which has improved the quality of my sleep enormously.<\/p>",
+            "product": ""
+          }
+        },
+        "930d449d-f2d8-4a4a-a624-e7b2da78a350": {
+          "type": "influencer",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/orsida.luzati.webp",
+            "heading": "Orsida Luzati, Mom",
+            "tag": "@orsida.luzati",
+            "content": "<p>Who knew that a new mattress would have such a positive impact in our lives! The girls have found their favorite bed– soft and comfortable mattress (with motion isolating foam) and a 3-layer pillow with option to remove a layer for best comfort💗<\/p>",
+            "product": ""
+          }
+        },
+        "e18b08e9-afd2-4a32-8e7f-f6072003af70": {
+          "type": "influencer",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/jessicatylerofficial.webp",
+            "heading": "Jessica Tyler, Content Creator",
+            "tag": "@jessicatylerofficial",
+            "content": "<p>I no longer wake up feeling like I’ve aged several years overnight with back pain! The support and comfort of this bed is seriously unmatched. Our bedroom has easily become my favorite room in the house - I already can’t wait to get back into bed tonight! 💤<\/p>",
+            "product": ""
+          }
+        }
+      },
+      "block_order": [
+        "influencer_LAdKMx",
+        "influencer_TB3f4J",
+        "98cef3fe-c125-480a-8246-2ad38059cab6",
+        "11dbf26d-2b52-4e72-85e6-13c984bf43e5",
+        "5bb7873f-6347-4c76-bc0e-f0b9fe398615",
+        "e3e2cb9c-e035-4edc-8166-730a5628740a",
+        "b2517fed-7f06-4438-b8fc-ed8cf69234c9",
+        "a7f0d7cf-91ad-466d-924c-8a3bfc28c64d",
+        "930d449d-f2d8-4a4a-a624-e7b2da78a350",
+        "e18b08e9-afd2-4a32-8e7f-f6072003af70"
+      ],
+      "settings": {
+        "heading": "See our beds in action online",
+        "heading_alignment": "start",
+        "trackId": "Action_online_scroll_HP"
+      }
     }
   },
   "order": [
+    "risk-free-banner",
     "217cc637-3faa-4f25-b127-7a38a42e6e2f",
     "hero-banner",
+    "featured-usps",
     "06c76c39-8b9d-42b2-b20c-9dab3dc4287f",
     "cc490804-bd9c-4251-b97e-e0d2e226f4c8",
     "promotional-banner",
     "winning-awards",
+    "winning-awards-old",
     "featured-products",
+    "trio-comparison",
     "special-services",
     "why-choose-us",
     "emma-science",
     "product-collage",
+    "product-collage-old",
     "multimedia-showcase",
+    "featured-catalog",
     "product-carousel",
     "media-publication",
+    "media-publication-old",
     "customer-sentiment",
-    "social-proof"
+    "customer-sentiment-old",
+    "social-proof",
+    "social-proof-old"
   ]
 }

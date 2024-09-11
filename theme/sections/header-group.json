@@ -49,51 +49,7 @@
         "sale_page_url": "shopify:\/\/collections\/mattresses"
       }
     },
-    "risk-free-banner": {
-      "type": "risk-free-banner",
-      "blocks": {
-        "8b906a77-60bb-46b8-b714-8fe010db07ca": {
-          "type": "banner-item",
-          "settings": {
-            "icon": "shopify:\/\/shop_images\/365_nights.png",
-            "text": "Free 365-Night Trial",
-            "url": "shopify:\/\/pages\/trial"
-          }
-        },
-        "605013b2-263f-4c29-b4c0-136f75610eda": {
-          "type": "banner-item",
-          "settings": {
-            "icon": "shopify:\/\/shop_images\/Delivery.png",
-            "text": "Free Shipping & Returns",
-            "url": "https:\/\/emma-sleep.ca\/pages\/faq#trial-and-guarantee"
-          }
-        },
-        "49138228-00c2-461a-bbdd-650d93f8503b": {
-          "type": "banner-item",
-          "settings": {
-            "icon": "shopify:\/\/shop_images\/Warranty.png",
-            "text": "10-Year Warranty",
-            "url": "https:\/\/emma-sleep.ca\/pages\/faq#trial-and-guarantee"
-          }
-        },
-        "7bc03542-75ef-4463-b480-ec46f36ac421": {
-          "type": "banner-item",
-          "settings": {
-            "icon": "shopify:\/\/shop_images\/0_APR..png",
-            "text": "0% APR Financing",
-            "url": "https:\/\/emma-sleep.ca\/pages\/faq#purchasing-your-emma"
-          }
-        }
-      },
-      "block_order": [
-        "8b906a77-60bb-46b8-b714-8fe010db07ca",
-        "605013b2-263f-4c29-b4c0-136f75610eda",
-        "49138228-00c2-461a-bbdd-650d93f8503b",
-        "7bc03542-75ef-4463-b480-ec46f36ac421"
-      ],
-      "settings": {
-      }
-    },
+
     "breadcrumbs": {
       "type": "breadcrumbs",
       "settings": {
@@ -103,7 +59,6 @@
   "order": [
     "announcement-bar",
     "header",
-    "risk-free-banner",
     "breadcrumbs"
   ]
 }

@@ -1,58 +1,93 @@
 class ModalEngine extends CustomElement {
+  outlets = new Map();
+  modals = new Map();
 
+  constructor() {
+    super();
+  }
+
+  mounted() {
+    super.mounted();
+
+    const $sliderDrawer = $(`<slider-drawer></slider-drawer>`)
+
+    this.modals.set("slider-drawer", $sliderDrawer)
+
+    this.$el.append($sliderDrawer)
+  }
+
+  register({ outletId, type = "slider-drawer", slots }) {
+    this.outlets.set(outletId, {
+      type,
+      slots,
+    })
+  }
+
+  open(outletId) {
+    const outlet = this.outlets.get(outletId)
+
+    if (!outlet) return
+
+    const { type, slots } = outlet
+
+    const $modal = this.modals.get(type)
+
+    $modal.empty().append(slots)
+
+    $modal.get(0).open()
+  }
+}
+
+customElements.define("modal-engine", ModalEngine);
+
+class SliderDrawer extends HTMLElement {
   get refs() {
     return {
-      $frame: this.$el.find("#Modal-Frame"),
-      $backdrop: this.$el.find("#Modal-Backdrop"),
-      $title: this.$el.find("#Modal-Title"),
-      $body: this.$el.find("#Modal-Body"),
-      $closeIcon: this.$el.find("#Modal-CloseIcon"),
-      $dismissBtn: this.$el.find("#Modal-DismissButton"),
-    };
+      $modal: this.$shEl.find("aside#Modal"),
+      $frame: this.$shEl.find("#Modal-Frame"),
+      $backdrop: this.$shEl.find("#Modal-Backdrop"),
+      $title: this.$shEl.find("#Modal-Title"),
+      $body: this.$shEl.find("#Modal-Body"),
+      $closeIcon: this.$shEl.find("#Modal-CloseIcon"),
+      $dismissBtn: this.$shEl.find("#Modal-DismissButton"),
+    }
   }
 
   constructor() {
     super();
 
-    this.setAccessibility();
+    this.attachShadow({ mode: "open" });
+
+    const template = document.getElementById("modal-engine-tpl");
+
+    this.shadowRoot.appendChild(template.content.cloneNode(true));
+
+    this.$shEl = $(this.shadowRoot)
+
   }
 
-  async open(config) {
-    const { $frame, $backdrop } = this.refs;
+  connectedCallback() {
+    this.setAccessibility()
+  }
 
-    this.renderContent(config);
+  async open() {
+    const { $backdrop, $frame, $modal } = this.refs
 
     requestAnimationFrame(() => {
-      this.$el.addClass("active");
+      $modal.addClass("active");
+
       $backdrop.addClass("active");
 
       $frame.addClass("animate");
     });
 
-    await waitForAnimation(this);
+    await waitForAnimation($modal.get(0));
 
     requestAnimationFrame(() => {
       $frame.removeClass("animate");
 
       document.body.classList.add("no-scroll");
     });
-  }
-
-  async close() {
-    const { $frame, $backdrop } = this.refs;
-    requestAnimationFrame(() => {
-      $frame.addClass("animate animate--leave");
-      $backdrop.removeClass("active")
-    });
-
-    await waitForAnimation(this);
-
-    requestAnimationFrame(() => {
-      this.$el.removeClass("active");
-      $frame.removeClass("animate animate--leave");
-      document.body.classList.remove("no-scroll");
-    });
-
   }
 
   setAccessibility() {
@@ -64,16 +99,25 @@ class ModalEngine extends CustomElement {
     });
   }
 
-  renderContent({ title, template }) {
-    const { $title, $body } = this.refs;
+  async close() {
+    const { $frame, $backdrop, $modal } = this.refs;
+    requestAnimationFrame(() => {
+      $frame.addClass("animate animate--leave");
+      $backdrop.removeClass("active")
+    });
 
-    $title.text(title);
+    await waitForAnimation($modal.get(0));
 
-    $body.html(template);
+    requestAnimationFrame(() => {
+      $modal.removeClass("active");
+      $frame.removeClass("animate animate--leave");
+      document.body.classList.remove("no-scroll");
+    });
   }
 }
 
-customElements.define("modal-engine", ModalEngine);
+customElements.define("slider-drawer", SliderDrawer);
+
 
 class ModalTrigger extends CustomButton {
   props = {
@@ -93,29 +137,64 @@ class ModalTrigger extends CustomButton {
   }
 
   setAccessibility() {
-    const source = this.querySelector("template");
-
-    if (!source) return;
-
-    this.$el.click(this.prepareOpen.bind(this, source));
+    this.$el.click(this.prepareOpen.bind(this));
   }
 
-  prepareOpen(source) {
-    const { title } = this.props;
-    const { modalEngine } = this.refs;
-
-    const template = source.cloneNode(true);
-
-    modalEngine.open({
-      title,
-      template: template.content,
-    });
-
-    setTimeout(() => {
-      template.remove();
-    });
-  }
 
 }
 
 customElements.define("modal-trigger", ModalTrigger);
+
+class ModalOutlet extends CustomElement {
+  outletId;
+
+  get refs() {
+    return {
+      modalEngine: document.querySelector("modal-engine"),
+    };
+  }
+
+  constructor() {
+    super();
+
+    this.attachShadow({ mode: "open" });
+
+    this.shadowRoot.innerHTML = `<slot name="trigger"></slot>`
+
+    this.$shEl = $(this.shadowRoot);
+  }
+
+  mounted() {
+    super.mounted();
+
+    this.outletId = generateUUID();
+
+    this.prepare();
+
+    this.setAccessibility();
+  }
+
+  setAccessibility() {
+    this.$shEl.find(`slot[name="trigger"]`).click(this.trigger.bind(this));
+  }
+
+  prepare() {
+    const { modalEngine } = this.refs;
+
+    const slots = this.$el.find(`[slot]`).filter(`[slot!="trigger"]`);
+
+    modalEngine.register({
+      outletId: this.outletId,
+      slots
+    })
+  }
+
+
+  trigger() {
+    const { modalEngine } = this.refs;
+
+    modalEngine.open(this.outletId)
+  }
+}
+
+customElements.define("modal-outlet", ModalOutlet);

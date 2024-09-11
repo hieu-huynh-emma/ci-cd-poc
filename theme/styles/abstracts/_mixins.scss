@@ -1,24 +1,32 @@
-@mixin page-boundary {
-
-  height: 100%;
-
-  padding: 0 12px;
+:root {
+  --page-spacing: 12px;
 
   @media screen and (min-width: 769px) {
-
-    padding: 0 20px;
+    --page-spacing: 20px;
   }
 
   @media screen and (min-width: 1024px) {
-    padding: 0 40px;
+    --page-spacing: 40px;
   }
   @media screen and (min-width: 1200px) {
-    padding: 0 64px;
+    --page-spacing: 64px;
   }
+}
+
+@mixin page-boundary {
+  height: 100%;
 
   @media screen and (min-width: 1440px) {
     max-width: 1440px;
-
     margin: 0 auto;
   }
+
+}
+
+@mixin page-boundary-left {
+  padding-left: var(--page-spacing);
+}
+
+@mixin page-boundary-right {
+  padding-right: var(--page-spacing);
 }
