@@ -109,7 +109,7 @@
                 {% assign qty = bundle_item_metaobject.qty | default: 1 %}
 
                 <span>
-					{{ qty }} {{ bundle_item_variant.product.title }}{% if qty > 1 %}s{% endif %}
+				  {{ qty }} {{ bundle_item_variant.product.metafields.accentuate.display_name | default: bundle_item_variant.product.title }}{% if qty > 1 %}s{% endif %}
                   {% if bundle_item_variant.title != "Default Title" %}
                     ({{ bundle_item_variant.title }})
                   {% endif %}
