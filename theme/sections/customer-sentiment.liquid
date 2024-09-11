@@ -1,11 +1,9 @@
 {% assign allReviews = section.blocks | where: "type", "review" %}
 {% assign ctaBtn = section.blocks | where: "type", "cta-button" | first %}
 
-
 <link rel="quickscript" loading="visibility" href="{{ 'customer-sentiment.css' | asset_url }}"/>
 
 {% liquid
-
     assign trackId = "Truth_scroll"
     assign ctaTrackId = "See_reviews"
 
@@ -25,8 +23,11 @@
     endif
 %}
 
-<section abtasty-campaign-id="1296959"
-         id="customer-sentiment-section" class="section-container spacing-sm">
+<section
+    abtasty-campaign-id="1296959"
+    id="customer-sentiment-section"
+    class="section-container spacing-sm"
+>
     <div class="section-chassis page-boundary--left">
         {% render 'section-header' %}
 
@@ -85,7 +86,6 @@
 
         <script type="quickscript" loading="visibility" src="{{ 'customer-sentiment.js' | asset_url }}"></script>
 
-
         {% if ctaBtn %}
             <tracked-button :trackId="{{ ctaTrackId }}" class="btn mx-auto md:w-[458px]"
                             href="{{ ctaBtn.settings.url }}">
@@ -93,12 +93,11 @@
             </tracked-button>
         {% endif %}
     </div>
-
 </section>
 
 {% schema %}
 {
-  "name": "Customer Sentiment (Revamp)",
+  "name": "Customer Reviews (Revamp)",
   "blocks": [
     {
       "type": "review",

@@ -6,94 +6,101 @@
 
 {% liquid
 
-  assign trackId = "Truth_scroll"
-  assign ctaTrackId = "See_reviews"
+    assign trackId = "Truth_scroll"
+    assign ctaTrackId = "See_reviews"
 
-  if template == 'index'
-    assign postfix = "HP"
-  elsif template == "page.sale"
-    assign postfix = "SP"
-  elsif template contains "collection"
-    assign postfix = "CP"
-  else
-    assign postfix = product.metafields.accentuate.track_postfix
-  endif
+    if template == 'index'
+        assign postfix = "HP"
+    elsif template == "page.sale"
+        assign postfix = "SP"
+    elsif template contains "collection"
+        assign postfix = "CP"
+    else
+        assign postfix = product.metafields.accentuate.track_postfix
+    endif
 
-  if postfix != blank
-    assign trackId = trackId | append: "_" | append: postfix
-    assign ctaTrackId = ctaTrackId | append: "_" | append: postfix
-  endif
+    if postfix != blank
+        assign trackId = trackId | append: "_" | append: postfix
+        assign ctaTrackId = ctaTrackId | append: "_" | append: postfix
+    endif
 %}
 
-<section abtasty-campaign-id="1296959"
-         abtasty-campaign-variation="0" id="customer-sentiment-old-section" class="section-container spacing-sm">
-  <div class="section-chassis page-boundary">
-    <h2 class="heading-2 font-inter">{{ section.settings.title | remove: "<p>" | remove: "</p>" }}</h2>
+<section
+    abtasty-campaign-id="1296959"
+    abtasty-campaign-variation="0"
+    id="customer-sentiment-old-section"
+    class="section-container spacing-sm"
+>
+    <div class="section-chassis page-boundary">
+        <h2 class="heading-2 font-inter">{{ section.settings.title | remove: "<p>" | remove: "</p>" }}</h2>
 
-    {% comment %}<lazy-component size="lg">{% endcomment %}
-      <div>
-        <div class="splide">
-          {% include 'splide-arrows', trackId: trackId, old: true %}
+        <div>
+            <div class="splide">
+                {% include 'splide-arrows', trackId: trackId, old: true %}
 
-          <div class="splide__track">
-            <ul class="splide__list">
-              {% for block in allReviews %}
-                <li class="splide__slide">
-                  <div class="customer-review">
-                    <div class="customer-review__header">
-                      {% include 'star-ratings' %}
+                <div class="splide__track">
+                    <ul class="splide__list">
+                        {% for block in allReviews %}
+                            <li class="splide__slide">
+                                <div class="customer-review">
+                                    <div class="customer-review__header">
+                                        {% include 'star-ratings' %}
 
-                      <p class="customer-review__date">{{ block.settings.date }}</p>
-                    </div>
+                                        <p class="customer-review__date">{{ block.settings.date }}</p>
+                                    </div>
 
-                    <p class="customer-review__title">
-                      {{ block.settings.title }}
-                    </p>
-                    <div class="target-product">
-                      <a
-                          href="{{ block.settings.product.url }}" class="target-product__name"
-                      >{{ block.settings.product.title }}</a>
-                      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M9.47332 7.47332C9.53401 7.40991 9.58159 7.33515 9.61332 7.25332C9.68 7.09101 9.68 6.90896 9.61332 6.74665C9.58159 6.66482 9.53401 6.59005 9.47332 6.52665L7.47332 4.52665C7.34778 4.40111 7.17752 4.33059 6.99998 4.33059C6.82245 4.33059 6.65219 4.40111 6.52665 4.52665C6.40111 4.65218 6.33059 4.82245 6.33059 4.99998C6.33059 5.17752 6.40111 5.34778 6.52665 5.47332L7.39332 6.33332H4.99998C4.82317 6.33332 4.6536 6.40355 4.52858 6.52858C4.40355 6.6536 4.33332 6.82317 4.33332 6.99998C4.33332 7.17679 4.40355 7.34636 4.52858 7.47139C4.6536 7.59641 4.82317 7.66665 4.99998 7.66665H7.39332L6.52665 8.52665C6.46416 8.58862 6.41457 8.66236 6.38072 8.7436C6.34688 8.82484 6.32945 8.91197 6.32945 8.99998C6.32945 9.08799 6.34688 9.17513 6.38072 9.25637C6.41457 9.33761 6.46416 9.41134 6.52665 9.47332C6.58862 9.5358 6.66236 9.5854 6.7436 9.61924C6.82484 9.65309 6.91197 9.67052 6.99998 9.67052C7.08799 9.67052 7.17513 9.65309 7.25637 9.61924C7.33761 9.5854 7.41134 9.5358 7.47332 9.47332L9.47332 7.47332ZM13.6666 6.99998C13.6666 5.68144 13.2757 4.39251 12.5431 3.29618C11.8106 2.19985 10.7694 1.34537 9.55121 0.840786C8.33303 0.336202 6.99259 0.204179 5.69938 0.461414C4.40617 0.718649 3.21829 1.35359 2.28594 2.28594C1.35359 3.21829 0.718649 4.40617 0.461414 5.69938C0.204179 6.99259 0.336202 8.33303 0.840786 9.55121C1.34537 10.7694 2.19985 11.8106 3.29618 12.5431C4.39251 13.2757 5.68144 13.6666 6.99998 13.6666C8.76809 13.6666 10.4638 12.9643 11.714 11.714C12.9643 10.4638 13.6666 8.76809 13.6666 6.99998ZM1.66665 6.99998C1.66665 5.94515 1.97944 4.914 2.56548 4.03694C3.15151 3.15988 3.98447 2.47629 4.959 2.07263C5.93354 1.66896 7.0059 1.56334 8.04046 1.76913C9.07503 1.97492 10.0253 2.48287 10.7712 3.22875C11.5171 3.97463 12.0251 4.92494 12.2308 5.9595C12.4366 6.99407 12.331 8.06642 11.9273 9.04096C11.5237 10.0155 10.8401 10.8485 9.96302 11.4345C9.08596 12.0205 8.05482 12.3333 6.99998 12.3333C5.58549 12.3333 4.22894 11.7714 3.22875 10.7712C2.22855 9.77103 1.66665 8.41447 1.66665 6.99998Z"
-                            fill="#2E2F3C"
-                        />
-                      </svg>
+                                    <p class="customer-review__title">
+                                        {{ block.settings.title }}
+                                    </p>
+                                    <div class="target-product">
+                                        <a
+                                                href="{{ block.settings.product.url }}" class="target-product__name"
+                                        >{{ block.settings.product.title }}</a>
+                                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                    d="M9.47332 7.47332C9.53401 7.40991 9.58159 7.33515 9.61332 7.25332C9.68 7.09101 9.68 6.90896 9.61332 6.74665C9.58159 6.66482 9.53401 6.59005 9.47332 6.52665L7.47332 4.52665C7.34778 4.40111 7.17752 4.33059 6.99998 4.33059C6.82245 4.33059 6.65219 4.40111 6.52665 4.52665C6.40111 4.65218 6.33059 4.82245 6.33059 4.99998C6.33059 5.17752 6.40111 5.34778 6.52665 5.47332L7.39332 6.33332H4.99998C4.82317 6.33332 4.6536 6.40355 4.52858 6.52858C4.40355 6.6536 4.33332 6.82317 4.33332 6.99998C4.33332 7.17679 4.40355 7.34636 4.52858 7.47139C4.6536 7.59641 4.82317 7.66665 4.99998 7.66665H7.39332L6.52665 8.52665C6.46416 8.58862 6.41457 8.66236 6.38072 8.7436C6.34688 8.82484 6.32945 8.91197 6.32945 8.99998C6.32945 9.08799 6.34688 9.17513 6.38072 9.25637C6.41457 9.33761 6.46416 9.41134 6.52665 9.47332C6.58862 9.5358 6.66236 9.5854 6.7436 9.61924C6.82484 9.65309 6.91197 9.67052 6.99998 9.67052C7.08799 9.67052 7.17513 9.65309 7.25637 9.61924C7.33761 9.5854 7.41134 9.5358 7.47332 9.47332L9.47332 7.47332ZM13.6666 6.99998C13.6666 5.68144 13.2757 4.39251 12.5431 3.29618C11.8106 2.19985 10.7694 1.34537 9.55121 0.840786C8.33303 0.336202 6.99259 0.204179 5.69938 0.461414C4.40617 0.718649 3.21829 1.35359 2.28594 2.28594C1.35359 3.21829 0.718649 4.40617 0.461414 5.69938C0.204179 6.99259 0.336202 8.33303 0.840786 9.55121C1.34537 10.7694 2.19985 11.8106 3.29618 12.5431C4.39251 13.2757 5.68144 13.6666 6.99998 13.6666C8.76809 13.6666 10.4638 12.9643 11.714 11.714C12.9643 10.4638 13.6666 8.76809 13.6666 6.99998ZM1.66665 6.99998C1.66665 5.94515 1.97944 4.914 2.56548 4.03694C3.15151 3.15988 3.98447 2.47629 4.959 2.07263C5.93354 1.66896 7.0059 1.56334 8.04046 1.76913C9.07503 1.97492 10.0253 2.48287 10.7712 3.22875C11.5171 3.97463 12.0251 4.92494 12.2308 5.9595C12.4366 6.99407 12.331 8.06642 11.9273 9.04096C11.5237 10.0155 10.8401 10.8485 9.96302 11.4345C9.08596 12.0205 8.05482 12.3333 6.99998 12.3333C5.58549 12.3333 4.22894 11.7714 3.22875 10.7712C2.22855 9.77103 1.66665 8.41447 1.66665 6.99998Z"
+                                                    fill="#2E2F3C"
+                                            />
+                                        </svg>
 
-                    </div>
-                    <p class="solid">
-                      {{ block.settings.content | remove: "<p>" | remove: "</p>" }}
-                    </p>
+                                    </div>
+                                    <p class="solid">
+                                        {{ block.settings.content | remove: "<p>" | remove: "</p>" }}
+                                    </p>
 
-                    <div class="reviewer">
-                      <p class="reviewer__name">{{ block.settings.author }}</p>
-                      <div class="reviewer__verified">
-                        <svg width="12" height="13" viewBox="0 0 12 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path
-                              d="M7.986 11.2933C8.78212 11.5456 9.6525 11.333 10.2431 10.7424C10.8337 10.1517 11.046 9.28137 10.794 8.48525C11.535 8.1005 12 7.33512 12 6.5C12 5.66488 11.535 4.8995 10.794 4.51475C11.0464 3.71863 10.8337 2.84825 10.2431 2.25762C9.6525 1.667 8.78212 1.45475 7.986 1.70675C7.60125 0.965375 6.8355 0.5 6 0.5C5.1645 0.5 4.39875 0.965375 4.014 1.70675C3.21825 1.45512 2.34863 1.66737 1.758 2.25725C1.16738 2.84713 0.95475 3.71675 1.206 4.51288C0.465 4.89762 0 5.663 0 6.49813C0 7.33325 0.465 8.09862 1.206 8.48337C0.9525 9.27987 1.16438 10.1514 1.75538 10.7428C2.34637 11.3341 3.21788 11.5464 4.01437 11.2933C4.39913 12.0346 5.16488 12.5 6 12.5C6.83512 12.5 7.60087 12.0346 7.98563 11.2933H7.986ZM3.44513 7.26125C3.3075 7.12813 3.25238 6.93125 3.30113 6.74638C3.34988 6.5615 3.49425 6.41675 3.6795 6.36837C3.86475 6.32 4.06125 6.37512 4.19438 6.51312L5.41425 7.73225L8.04788 4.28825C8.22563 4.05575 8.55825 4.0115 8.79037 4.18925C9.0225 4.367 9.06713 4.69963 8.88937 4.93175L6.255 8.37238C6.06975 8.6165 5.78813 8.768 5.4825 8.78863C5.17688 8.80925 4.87725 8.696 4.66125 8.47888L3.44588 7.26125H3.44513Z"
-                              fill="#2E2F3C"
-                          />
-                        </svg>
-                        <span>verified customer</span>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-              {% endfor %}
-            </ul>
-          </div>
+                                    <div class="reviewer">
+                                        <p class="reviewer__name">{{ block.settings.author }}</p>
+                                        <div class="reviewer__verified">
+                                            <svg width="12" height="13" viewBox="0 0 12 13" fill="none"
+                                                 xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                        d="M7.986 11.2933C8.78212 11.5456 9.6525 11.333 10.2431 10.7424C10.8337 10.1517 11.046 9.28137 10.794 8.48525C11.535 8.1005 12 7.33512 12 6.5C12 5.66488 11.535 4.8995 10.794 4.51475C11.0464 3.71863 10.8337 2.84825 10.2431 2.25762C9.6525 1.667 8.78212 1.45475 7.986 1.70675C7.60125 0.965375 6.8355 0.5 6 0.5C5.1645 0.5 4.39875 0.965375 4.014 1.70675C3.21825 1.45512 2.34863 1.66737 1.758 2.25725C1.16738 2.84713 0.95475 3.71675 1.206 4.51288C0.465 4.89762 0 5.663 0 6.49813C0 7.33325 0.465 8.09862 1.206 8.48337C0.9525 9.27987 1.16438 10.1514 1.75538 10.7428C2.34637 11.3341 3.21788 11.5464 4.01437 11.2933C4.39913 12.0346 5.16488 12.5 6 12.5C6.83512 12.5 7.60087 12.0346 7.98563 11.2933H7.986ZM3.44513 7.26125C3.3075 7.12813 3.25238 6.93125 3.30113 6.74638C3.34988 6.5615 3.49425 6.41675 3.6795 6.36837C3.86475 6.32 4.06125 6.37512 4.19438 6.51312L5.41425 7.73225L8.04788 4.28825C8.22563 4.05575 8.55825 4.0115 8.79037 4.18925C9.0225 4.367 9.06713 4.69963 8.88937 4.93175L6.255 8.37238C6.06975 8.6165 5.78813 8.768 5.4825 8.78863C5.17688 8.80925 4.87725 8.696 4.66125 8.47888L3.44588 7.26125H3.44513Z"
+                                                        fill="#2E2F3C"
+                                                />
+                                            </svg>
+                                            <span>verified customer</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
         </div>
-      </div>
 
-      <script type="quickscript" loading="visibility" src="{{ 'customer-sentiment-old.js' | asset_url }}"></script>
-    {% comment %}</lazy-component>{% endcomment %}
+        <script type="quickscript" loading="visibility" src="{{ 'customer-sentiment-old.js' | asset_url }}"></script>
 
-    {% if ctaBtn %}
-      <tracked-button :trackId="{{ ctaTrackId }}" class="btn mx-auto md:w-[458px]" href="{{ ctaBtn.settings.url }}">
-        {{ ctaBtn.settings.text }}
-      </tracked-button>
-    {% endif %}
-  </div>
+        {% if ctaBtn %}
+            <tracked-button
+                    :trackId="{{ ctaTrackId }}" class="btn mx-auto md:w-[458px]"
+                    href="{{ ctaBtn.settings.url }}"
+            >
+                {{ ctaBtn.settings.text }}
+            </tracked-button>
+        {% endif %}
+    </div>
 
 </section>
 
