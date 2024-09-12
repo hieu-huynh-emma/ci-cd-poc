@@ -151,15 +151,5 @@
     </div>
 </section>
 
-<script type="module">
-    $(document).ready(function () {
-        new Splide('#competitor-reviews-section .splide', {
-            perPage: 3,
-            perMove: 1,
-            gap: '40px',
-            breakpoints: {
-                768: {perPage: 1, gap: '20px'},
-            },
-        }).mount()
-    })
-</script>
+<script type="quickscript" loading="delayed" src="{{ "competitor-reviews.js" | asset_url }}"></script>
+

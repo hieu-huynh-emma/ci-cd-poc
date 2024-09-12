@@ -2,22 +2,28 @@
 {{ 'global.css' | asset_url | stylesheet_tag }}
 {{ 'typography.css' | asset_url | stylesheet_tag }}
 {{ 'fonts.css' | asset_url | stylesheet_tag }}
-{{ 'bundle-detail.css' | asset_url | stylesheet_tag }}
+<link
+        rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.0.1/dist/css/splide.min.css"
+>
 
-{% case template %}
-    {% when 'page.compare-emma' %}
-        {{ 'comparison-page.css' | asset_url | stylesheet_tag }}
-    {% when 'page.competitor-comparison' %}
-        {{ 'competitor-comparison.css' | asset_url | stylesheet_tag }}
-
-    {% when 'page.financing' %}
-        {{ 'financing.css' | asset_url | stylesheet_tag }}
-    {% when 'page.landing-page' %}
-        {{ 'landing-page.css' | asset_url | stylesheet_tag }}
-    {% when 'page' or 'page.365-night-trial' or 'page.100-day-moneyback' or 'page.legal-notice' %}
-        {{ 'static-page.css' | asset_url | stylesheet_tag }}
-    {% else %}
-        {{ 'revamp-product.css' | asset_url | stylesheet_tag }}
-{% endcase %}
+<link
+        rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.0.1/dist/css/splide-core.min.css"
+>
+<link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.0.1/dist/css/themes/splide-default.min.css"
+>
 
 {{ 'tailwind.css' | asset_url | stylesheet_tag }}
+
+{% if isOptimized == blank %}
+    {% case template %}
+        {% when 'page.landing-page', 'product.new-original-mattress', 'product.climax-hybrid-mattress' %}
+            <link id="vendor-custom-styles" rel="stylesheet" href="{{ 'old-vendors.css' | asset_url }}">
+        {% else %}
+            <link id="vendor-custom-styles" rel="stylesheet" href="{{ 'vendors.css' | asset_url }}">
+    {% endcase %}
+{% endif %}
+
+
+<link rel="stylesheet" href="{{ 'splide.custom.css' | asset_url }}">

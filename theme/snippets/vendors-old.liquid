@@ -8,16 +8,7 @@
       onload="this.onload=null;this.rel='stylesheet'"
   >
 
-  <link
-      rel="preload" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.0.1/dist/css/splide-core.min.css"
-      as="style"
-      onload="this.onload=null;this.rel='stylesheet'"
-  >
-  <link
-      rel="preload"
-      href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.0.1/dist/css/themes/splide-default.min.css" as="style"
-      onload="this.onload=null;this.rel='stylesheet'"
-  >
+
   <script defer src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.0.1/dist/js/splide.min.js"></script>
 
   <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet"/>
@@ -63,14 +54,4 @@
   render 'freshchat'
   render 'ometria'
 %}
-
-
-{% if isOptimized == blank %}
-  {% case template %}
-    {% when 'page.landing-page', 'product.new-original-mattress', 'product.climax-hybrid-mattress' %}
-      <link id="vendor-custom-styles" rel="stylesheet" href="{{ 'old-vendors.css' | asset_url }}">
-    {% else %}
-      <link id="vendor-custom-styles" rel="stylesheet" href="{{ 'vendors.css' | asset_url }}">
-  {% endcase %}
-{% endif %}
 

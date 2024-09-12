@@ -72,6 +72,11 @@ settings.colors_accent_2 }}{% endif %};
 <link rel="quickscript" loading="delayed" href="{{ 'fonts.css' | asset_url }}">
 <link rel="stylesheet" href="{{ 'page-boundary.css' | asset_url }}">
 
+{%- comment -%}
+   ================= Layout Styles =================
+{%- endcomment -%}
+
+{% render 'layout-styles' %}
 
 {%- comment -%}
    ================= Vendor Styles =================
@@ -125,7 +130,6 @@ settings.colors_accent_2 }}{% endif %};
     #fc_frame, #fc_frame.fc-widget-normal {
         z-index: 101 !important;
     }
-
 
 
 </style>

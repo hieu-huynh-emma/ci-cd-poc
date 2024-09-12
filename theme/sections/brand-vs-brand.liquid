@@ -34,21 +34,7 @@
   </div>
 </section>
 
-<script>
-  $(document).ready(function () {
-    new Splide('#brand-vs-brand-section .splide', {
-      gap: '20px',
-      padding: '8.5rem',
-      autoWidth: true,
-      type: 'loop',
-      breakpoints: {
-        412: {
-          padding: '7rem',
-        }
-      }
-    }).mount();
-  })
-</script>
+<script type="quickscript" loading="delayed" src="{{ "brand-vs-brand.js" | asset_url }}"></script>
 
 {% schema %}
 {

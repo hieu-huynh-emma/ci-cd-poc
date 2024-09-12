@@ -251,6 +251,8 @@ function initializeEmma() {
 }
 
 $(document).ready(async function () {
+  await ResourceCoordinator.requestVendor("Select2");
+
   initialTable();
 
   await initializeEmma();
