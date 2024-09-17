@@ -8,7 +8,7 @@ import {useEffect, useState} from 'react';
 import {ExtensionSettings} from "@shopify/ui-extensions/build/ts/surfaces/checkout/api/standard/standard";
 
 export default reactExtension(
-    "purchase.checkout.reductions.render-after",
+    "purchase.checkout.block.render",
     () => <Extension/>,
 );
 
