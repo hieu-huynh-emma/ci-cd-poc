@@ -2,6 +2,7 @@
   "layout": "theme.product",
   "sections": {
     "joint-product": {
+      "disabled": true,
       "type": "joint-product",
       "blocks": {
         "item_czHCtP": {
@@ -359,6 +360,7 @@
       }
     },
     "bundle-cross-sell": {
+      "disabled": true,
       "type": "bundle-cross-sell",
       "settings": {
         "heading": "Add bundle offer!",
