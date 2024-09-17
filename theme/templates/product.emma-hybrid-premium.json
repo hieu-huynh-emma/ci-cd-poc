@@ -1,6 +1,37 @@
 {
   "layout": "theme.product",
   "sections": {
+    "joint-product": {
+      "type": "joint-product",
+      "blocks": {
+        "item_zLVk8t": {
+          "type": "item",
+          "settings": {
+            "product": "emma-hybrid-premium",
+            "upsell": "",
+            "short_desc": "Our premium mattress for perfect comfort and cooling",
+            "show_star_rating": false
+          }
+        },
+        "item_ha7iFa": {
+          "type": "item",
+          "settings": {
+            "product": "emma-hybrid-premium-plus",
+            "upsell": "",
+            "short_desc": "Same structure, different cover",
+            "show_star_rating": false
+          }
+        }
+      },
+      "block_order": [
+        "item_zLVk8t",
+        "item_ha7iFa"
+      ],
+      "disabled": true,
+      "settings": {
+      }
+    },
+
     "product-layout": {
       "type": "product-layout",
       "blocks": {
@@ -170,6 +201,7 @@
     },
     "bundle-cross-sell": {
       "type": "bundle-cross-sell",
+      "disabled": true,
       "settings": {
         "heading": "Add bundle offer!",
         "product": "premium-accessory-bundle",
@@ -249,35 +281,6 @@
       "settings": {
         "title": "Delivering Premium Quality",
         "grabber_text": "Discover the value behind our prices"
-      }
-    },
-    "joint-product": {
-      "type": "joint-product",
-      "blocks": {
-        "item_zLVk8t": {
-          "type": "item",
-          "settings": {
-            "product": "emma-hybrid-premium",
-            "upsell": "",
-            "short_desc": "Our premium mattress for perfect comfort and cooling",
-            "show_star_rating": false
-          }
-        },
-        "item_ha7iFa": {
-          "type": "item",
-          "settings": {
-            "product": "emma-hybrid-premium-plus",
-            "upsell": "",
-            "short_desc": "Same structure, different cover",
-            "show_star_rating": false
-          }
-        }
-      },
-      "block_order": [
-        "item_zLVk8t",
-        "item_ha7iFa"
-      ],
-      "settings": {
       }
     },
     "risk-reversal": {
@@ -626,7 +629,8 @@
         "is_animate_scaling": false
       }
     },
-    "featured-products": {
+    "featured-products":
+    {
       "type": "featured-products",
       "blocks": {
         "old-featured-products-1": {
@@ -1042,6 +1046,7 @@
     }
   },
   "order": [
+    "joint-product",
     "product-layout",
     "product-summary",
     "product-badges",
@@ -1049,7 +1054,6 @@
     "overlay-text-on-image",
     "bundle-cross-sell",
     "price-transparency",
-    "joint-product",
     "risk-reversal",
     "campaign-teaser",
     "product-specifications",
