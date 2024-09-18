@@ -50,9 +50,6 @@
     &__content {
       display: inline-block;
       line-height: 1.5rem;
-      @media screen and (min-width: 769px) {
-        font-size: 20px;
-      }
 
       &.line-clamp {
         overflow: hidden;

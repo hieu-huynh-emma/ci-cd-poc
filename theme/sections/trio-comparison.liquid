@@ -28,7 +28,7 @@
 {% assign productBlocks = section.blocks | where: "type", "product-block" %}
 
 {% assign compareBtn = exploreBtns | first %}
-{% assign quizBtn = exploreBtns | last %}
+{% assign quizBlock = section.blocks | where: "type", "quiz-block" | first %}
 
 {% liquid
 
@@ -234,28 +234,30 @@
                 </div>
             </div>
 
-            <a href="/pages/product-quizz" target="_blank" class="quiz-card card-container">
-                <div class="quiz-card__content">
-                    <h4 class="text-white text-md font-semibold">Quel matelas choisir?</h4>
-                    <p class="text-white text-sm font-semibold">Trouvez en moins de 60 secondes grâce au quiz.</p>
-                    <div class="quiz-card__nav-icon">
-                        <svg width="42" height="42" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <rect x="1" y="1" width="40" height="40" rx="20" stroke="white" stroke-width="2"/>
-                            <path
-                                    d="M24.3977 20.6023L18.3977 14.6023C18.178 14.3826 17.822 14.3826 17.6023 14.6023C17.3826 14.822 17.3826 15.178 17.6023 15.3977L23.2046 21L17.6023 26.6023C17.3826 26.822 17.3826 27.178 17.6023 27.3977C17.7122 27.5076 17.8561 27.5625 18 27.5625C18.1439 27.5625 18.2878 27.5076 18.3977 27.3977L24.3977 21.3977C24.6174 21.178 24.6174 20.822 24.3977 20.6023Z"
-                                    fill="white"
-                            />
-                        </svg>
-                    </div>
+          {% if quizBlock %}
+            <a href="{{ quizBlock.settings.url }}" target="_blank" class="quiz-card card-container">
+              <div class="quiz-card__content">
+                <h4 class="text-white text-md font-semibold">{{ quizBlock.settings.title }}</h4>
+                <p class="text-white text-sm font-semibold">{{ quizBlock.settings.content }}</p>
+                <div class="quiz-card__nav-icon">
+                  <svg width="42" height="42" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="1" y="1" width="40" height="40" rx="20" stroke="white" stroke-width="2"/>
+                    <path
+                      d="M24.3977 20.6023L18.3977 14.6023C18.178 14.3826 17.822 14.3826 17.6023 14.6023C17.3826 14.822 17.3826 15.178 17.6023 15.3977L23.2046 21L17.6023 26.6023C17.3826 26.822 17.3826 27.178 17.6023 27.3977C17.7122 27.5076 17.8561 27.5625 18 27.5625C18.1439 27.5625 18.2878 27.5076 18.3977 27.3977L24.3977 21.3977C24.6174 21.178 24.6174 20.822 24.3977 20.6023Z"
+                      fill="white"
+                    />
+                  </svg>
                 </div>
-                <div class="quiz-card__wallpaper">
-                    <img
-                            class="cover-surface"
-                            src="https://cdn.shopify.com/s/files/1/0562/9873/3706/files/34rightbottom-min_cde0bcf4-5036-4803-9300-0e5d611cbf88.png?v=1717042529"
-                            alt=""
-                    >
-                </div>
+              </div>
+                {% render 'picture-tag',
+                  src: quizBlock.settings.wallpaper,
+                  picture_attributes: "class='quiz-card__wallpaper'",
+                  img_classes: "cover-surface"
+                %}
+
             </a>
+
+          {% endif %}
         </div>
     </div>
 
@@ -352,6 +354,32 @@
           "type": "text",
           "id": "trackId",
           "label": "CTA Button Tracking Id"
+        }
+      ]
+    },
+    {
+      "type": "quiz-block",
+      "name": "Quiz Block",
+      "settings": [
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Quizz Page URL"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "text",
+          "id": "content",
+          "label": "Content"
+        },
+        {
+          "type": "image_picker",
+          "id": "wallpaper",
+          "label": "Wallpaper"
         }
       ]
     }

@@ -2,7 +2,7 @@
 {% assign desktop_url = desktop_src | default: url %}
 {% assign mobile_url = mobile_src | default: desktop_url %}
 
-<picture {{ picture_attributes }}>
+<picture {{ picture_attributes }} >
   <source media="(min-width: 1440px)"
           data-srcset="{{ desktop_url | image_url: width: 2048 }}">
   <source media="(min-width: 1024px)"
@@ -13,7 +13,7 @@
           data-srcset="{{ desktop_url | image_url: width: 900 }}">
   <source media="(max-width: 768px)"
           data-srcset="{{ mobile_url | image_url: width: 700 }}">
-  
+
   <source media="(min-width: 768px)"
           srcset="{{ desktop_url | image_url: width: 400 }}">
   <source media="(max-width: 768px)"

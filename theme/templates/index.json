@@ -743,12 +743,22 @@
             "motion_isolation_meter": 6,
             "trackId": "Premium_compare_HP"
           }
+        },
+        "quiz_block_rmkYWt": {
+          "type": "quiz-block",
+          "settings": {
+            "url": "shopify:\/\/pages\/product-quizz",
+            "title": "Quel matelas choisir?",
+            "content": "Trouvez en moins de 60 secondes grâce au quiz.",
+            "wallpaper": "shopify:\/\/shop_images\/34rightbottom-min_cde0bcf4-5036-4803-9300-0e5d611cbf88.png"
+          }
         }
       },
       "block_order": [
         "old-featured-products-1",
         "2faeb4c9-fe7f-46bc-9cd1-3b2e38ad1752",
-        "5b5432f6-dba9-4790-a55c-48525184b6b4"
+        "5b5432f6-dba9-4790-a55c-48525184b6b4",
+        "quiz_block_rmkYWt"
       ],
       "settings": {
         "title": "Sleeping will never be the same",
