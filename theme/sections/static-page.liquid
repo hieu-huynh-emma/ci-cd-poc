@@ -1,0 +1,26 @@
+<div class="page-boundary">
+  {% if section.settings.showTitle %}
+    <h1 class="main-page-title page-title h0">
+      {{ page.title | escape }}
+    </h1>
+  {% endif %}
+  <div class="rte">
+    {{ page.content }}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Static Page",
+  "tag": "section",
+  "class": "spaced-section",
+  "settings": [
+    {
+      "id": "showTitle",
+      "type": "checkbox",
+      "label": "Show Title",
+      "default": true
+    }
+  ]
+}
+{% endschema %}
