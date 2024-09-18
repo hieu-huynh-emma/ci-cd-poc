@@ -1,11 +1,5 @@
 #featured-catalog-section {
-  margin-top: 100px;
-  @media screen and (min-width: 769px) {
-    margin-top: 150px;
-  }
-  @media screen and (min-width: 1200px) {
-    margin-top: 200px;
-  }
+
   .section-header {
     @media screen and (max-width: 769px) {
       color: white;
@@ -20,7 +14,7 @@
     transform: rotate(-12.66deg) translate(-15%, -56%) scale(.8);
 
     @media screen and (min-width: 769px) {
-      transform: translate(30%, -40%);
+      transform: translate(30%, -17%);
     }
   }
 }
