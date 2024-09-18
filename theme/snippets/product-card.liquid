@@ -44,10 +44,10 @@
             </div>
 
             <div class="product-card-metadata">
-                {% if show_star_rating == blank or show_star_rating == true %}
+               {% comment %} {% if show_star_rating == blank or show_star_rating == true %}
                     <product-star-rating :productId="{{ product.id }}"></product-star-rating>
                 {% endif %}
-
+                {% endcomment %}
                 <h3 class="product__name font-inter">{{ product.title }}</h3>
 
                 <p class="product__short-desc">{{ product.metafields.accentuate.short_description }}</p>
