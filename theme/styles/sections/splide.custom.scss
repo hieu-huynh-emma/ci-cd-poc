@@ -26,7 +26,6 @@
 
       #{$this}__arrow {
         --color: var(--color-cultured);
-
         position: static;
 
         svg {
@@ -98,6 +97,8 @@
       grid-template-rows: minmax(0, 1fr);
 
       > li {
+        --color: var(--color-cultured);
+
         height: 4px;
         background-color: var(--color);
         overflow: hidden;
@@ -112,6 +113,7 @@
       }
 
       &__page {
+
         display: block;
         height: 4px;
         margin: 0;
