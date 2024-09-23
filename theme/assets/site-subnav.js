@@ -211,6 +211,7 @@ class NavSidebar extends CustomElement {
                   class="site-subnav__link"
                   ${childlink.active ? `aria-current="page"` : ""}
                   tabindex="-1"
+                  abtasty-tracker="PDP_CTR"
                 >
                  <p class="subnav-container__badge">${childlink.promotionCapsule}</p>
                   <div class="sub-item-content">
@@ -310,7 +311,7 @@ class NavSpotlight extends CustomElement {
     return `
       <div class="spotlight-media bg-wild-sand">
         ${badgeText ? `<p class="spotlight__badge absolute top-5 left-4 text-[13px]">${i18nBadge}</p>` : ""}
-        <a href="${url}" class="spotlight__link">
+        <a href="${url}" class="spotlight__link" abtasty-tracker="PDP_CTR">
           <img src="${imageUrl}" class="spotlight__image w-full h-full rounded-lg object-cover" loading="lazy" />
         </a>
       </div>
