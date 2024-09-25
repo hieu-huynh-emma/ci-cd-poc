@@ -11,6 +11,7 @@
       "blocks": {
         "yotpo_star_rating": {
           "type": "yotpo_star_rating",
+          "disabled": true,
           "settings": {
             "product": "{{product}}",
             "new_layout": false
@@ -21,7 +22,7 @@
         "yotpo_star_rating"
       ],
       "settings": {
-        "title": "Emma Premium Cooling Pillow",
+        "title": "2 Emma Premium Cooling Pillow",
         "desc": "<h6>The perfect blend of firmness, support and freshness<\/h6><p>Discover our thermoregulating pillow fitting any type of sleeper thanks to its adjustable layers<\/p><ul><li>Thermosync technology capturing excess heat for optimum sleep temperature<\/li><li>Easy-to-clean & machine-washable for a clean, refreshing sleep<\/li><li>Try it for 60 days with the Emma promise<\/li><\/ul>",
         "disclaimer": ""
       }
@@ -457,7 +458,16 @@
       ],
       "settings": {
         "title": "Sleeping will never be the same",
-        "heading_alignment": "start"
+        "mobile_title": "",
+        "subtitle": "<p>Our sleep experts have mastered designing award-winning mattresses crafted to keep you relaxed and recharged, no matter what kind of sleeper you are. Climb on your best sleep yet!<\/p>",
+        "heading_alignment": "start",
+        "first_meter_title": "Comfort",
+        "show_first_meter": true,
+        "second_meter_title": "Cooling",
+        "show_second_meter": true,
+        "third_meter_title": "Motion Isolation",
+        "show_third_meter": true,
+        "show_secondary_badge": true
       }
     },
     "product-carousel": {
@@ -616,7 +626,9 @@
       ],
       "settings": {
         "title": "<p>Why our customers love Emma<\/p>",
-        "trackId": ""
+        "heading_alignment": "start",
+        "trackId": "",
+        "enable_text_clamp": true
       }
     },
     "special-services": {
