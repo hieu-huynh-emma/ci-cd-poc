@@ -1,30 +1,17 @@
-
+{% assign container = section.settings.collection | default: collection %}
 
 <section id="product-catalog-section" class="section-container spacing-{{ section.settings.container_spacing }}">
-  <div class="section-chassis page-boundary">
-    {% render 'section-header' %}
+    <div class="section-chassis page-boundary">
+        {% render 'section-header' %}
 
-    {% render 'product-catalog', catalog: collection.products, alignment: section.settings.heading_alignment %}
-  </div>
+        {% render 'product-catalog', catalog: container.products, alignment: section.settings.heading_alignment %}
+    </div>
 </section>
 
 
 {% schema %}
 {
   "name": "Collection Catalog",
-  "blocks": [
-    {
-      "type": "catalog_item",
-      "name": "Catalog Item",
-      "settings": [
-        {
-          "type": "product",
-          "id": "product",
-          "label": "Product"
-        }
-      ]
-    }
-  ],
   "settings": [
     {
       "id": "heading",
@@ -60,7 +47,6 @@
           "value": "none",
           "label": "No Spacing"
         },
-
         {
           "value": "lg",
           "label": "Large (60px)"
@@ -72,6 +58,11 @@
       ],
       "default": "none",
       "label": "Container Spacing"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
     }
   ]
 }
