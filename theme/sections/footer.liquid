@@ -42,11 +42,7 @@
         grid-template-columns:minmax(0, 1fr)
     }
 
-    .sitemap {
-        display: grid;
-        grid-template-columns:repeat(3, minmax(0, auto));
-        grid-gap: 70px
-    }
+
 
     .foot_info {
         display: flex;
@@ -62,12 +58,6 @@
         .footer-contact {
             flex-wrap: wrap
         }
-
-        .sitemap {
-            grid-template-columns:1fr 1fr;
-            grid-auto-flow: unset;
-            grid-gap: inherit
-        }
     }
 
     @media screen and (max-width: 768px) {
@@ -81,15 +71,6 @@
             grid-auto-flow: row
         }
 
-        .sitemap {
-            display: none;
-            gap: 38px;
-            grid-template-columns:repeat(2, minmax(0, auto))
-        }
-    }
-
-    .sitemap.is-mobile {
-        display: none
     }
 
     .footer-follow-us__socials {
