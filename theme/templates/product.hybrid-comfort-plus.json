@@ -7,7 +7,7 @@
         "item_paCRq9": {
           "type": "item",
           "settings": {
-            "product": "emma-hybrid-comfort-plus",
+            "product": "emma-hybrid-comfort",
             "upsell": "emma-hybrid-premium",
             "short_desc": "Exact same structure, more breathable cover",
             "show_star_rating": false
@@ -16,8 +16,8 @@
         "item_e3j7Jc": {
           "type": "item",
           "settings": {
-            "product": "emma-hybrid-comfort",
-            "upsell": "emma-hybrid-premium",
+            "product": "emma-hybrid-comfort-mattress",
+            "upsell": "emma-hybrid-premium-mattress",
             "short_desc": "Best selling mattress, product of the year 2024",
             "show_star_rating": false
           }
@@ -156,7 +156,7 @@
         "show_countdown_timer": false
       }
     },
-    "bundle_cross_sell_EDJncN": {
+    "bundle-cross-sell": {
       "type": "bundle-cross-sell",
       "settings": {
         "heading": "Add bundle offer!",
@@ -411,6 +411,7 @@
         },
         "cross_sell_widget_tXLCDN": {
           "type": "cross_sell_widget",
+          "disabled": true,
           "settings": {
           }
         },
@@ -1169,7 +1170,7 @@
     "product-summary",
     "risk-reversal",
     "campaign-teaser",
-    "bundle_cross_sell_EDJncN",
+    "bundle-cross-sell",
     "product-media",
     "overlay-text-on-image",
     "price-transparency",
