@@ -654,7 +654,7 @@
             "primary_badge": "",
             "secondary_badge": "BEST DEAL",
             "image": "shopify:\/\/shop_images\/Emma_hybrid-comfort_exploded_2.png",
-            "product_title": "Emma Hybrid Comfort",
+            "product_title": "Emma Hybrid Comfort Plus",
             "desc": "<h1>★4.7<\/h1><p><strong>Our newest 13-inch Hybrid Mattress that can support added weight and movement without getting hot or stuffy<\/strong><\/p>",
             "discount_title": "",
             "comfort_meter": 6,
@@ -704,10 +704,16 @@
     "product-carousel": {
       "type": "product-carousel",
       "blocks": {
+        "catalog_item_ngAYPD": {
+          "type": "catalog_item",
+          "settings": {
+            "product": "emma-hybrid-comfort"
+          }
+        },
         "catalog_item_UtmGqr": {
           "type": "catalog_item",
           "settings": {
-            "product": "perfect-sleep-bundle-ii"
+            "product": "perfect-sleep-bundle-plus"
           }
         },
         "72c7f33b-7788-4524-bf53-816aecb093b6": {
@@ -736,6 +742,7 @@
         }
       },
       "block_order": [
+        "catalog_item_ngAYPD",
         "catalog_item_UtmGqr",
         "72c7f33b-7788-4524-bf53-816aecb093b6",
         "07d5912c-d4c3-4ebb-97a6-f723fc8a4f3f",

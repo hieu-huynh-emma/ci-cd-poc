@@ -78,13 +78,13 @@
             "wallpaper_mobile_fr_img": "shopify:\/\/shop_images\/new_split_banner_-_mobile_3.png",
             "title": "<h1>Special offer<\/h1>",
             "heading_size": "medium",
-            "subtitle": "<p>Limited time offer on our Cloud Duvet!<\/p>",
+            "subtitle": "<p>Limited time offer on our Pack of 2 Premium Pillows!<\/p>",
             "show_shadow": true,
             "text_color": "#ffffff",
             "cta_url": "shopify:\/\/pages\/sale",
             "cta_text": "Shop the offer",
             "show_cta": false,
-            "timer": "2024-09-30 06:00",
+            "timer": "2024-10-04 06:00",
             "discount_badge": true,
             "trackId": "Shop_right"
           }
@@ -94,12 +94,12 @@
         "c9b229ea-7258-4341-93c2-95b7ad5d7c77",
         "7bd45a45-1205-4518-9b02-60a5bc9a95ac"
       ],
-      "disabled": true,
       "settings": {
       }
     },
     "hero-banner": {
       "type": "hero-banner",
+      "disabled": true,
       "settings": {
         "title": "<h2>Fall Sale<\/h2>",
         "subtitle": "<h3><\/h3><p><a href=\"\/pages\/emma-first-time-customer-offer-promo-details\" target=\"_blank\" title=\"Emma “First Time Customer Offer” Promo Details\">New Customers Only - Terms apply*<\/a><\/p>",
@@ -619,7 +619,7 @@
             "primary_badge": "",
             "secondary_badge": "BEST DEAL",
             "image": "shopify:\/\/shop_images\/Emma_hybrid-comfort_exploded_2.png",
-            "product_title": "Emma Hybrid Comfort",
+            "product_title": "Emma Hybrid Comfort Plus",
             "desc": "<h1>★ 4.7<\/h1><p><strong>Our newest 13-inch Hybrid mattress with enhanced support and ideal pressure distribution<\/strong><\/p>",
             "discount_title": "",
             "comfort_meter": 8,
@@ -716,8 +716,8 @@
             "color": "#3c4196",
             "primary_badge": "",
             "secondary_badge": "BEST DEAL",
-            "image": "shopify:\/\/shop_images\/Untitled_design_8_26a090c2-2a1f-4f97-8580-f7262ced984f.png",
-            "product_title": "Emma Hybrid Comfort II",
+            "image": "shopify:\/\/shop_images\/Emma_hybrid-comfort_exploded_2.png",
+            "product_title": "Emma Hybrid Comfort Plus",
             "desc": "<h1>★ 4.7<\/h1><p><strong>Our newest Hybrid mattress with enhanced support and ideal pressure distribution<\/strong><\/p>",
             "discount_title": "",
             "comfort_meter": 6,
@@ -1043,16 +1043,16 @@
             "product": "emma-hybrid-comfort"
           }
         },
-        "1e675715-5ecb-41e6-a7ab-608b36025781": {
-          "type": "catalog_item",
-          "settings": {
-            "product": "perfect-sleep-bundle-ii"
-          }
-        },
         "8fde16df-aace-45a2-bc5e-de66829da46e": {
           "type": "catalog_item",
           "settings": {
             "product": "emma-hybrid-premium"
+          }
+        },
+        "catalog_item_LmTm9U": {
+          "type": "catalog_item",
+          "settings": {
+            "product": "perfect-sleep-bundle-plus"
           }
         },
         "1764b6ed-cfac-4dec-9487-f9122604ba72": {
@@ -1088,8 +1088,8 @@
       },
       "block_order": [
         "catalog_item_C8iaTJ",
-        "1e675715-5ecb-41e6-a7ab-608b36025781",
         "8fde16df-aace-45a2-bc5e-de66829da46e",
+        "catalog_item_LmTm9U",
         "1764b6ed-cfac-4dec-9487-f9122604ba72",
         "d2925961-e05b-4a94-be70-a9d7f7911010",
         "07d5912c-d4c3-4ebb-97a6-f723fc8a4f3f",
@@ -1112,16 +1112,16 @@
             "product": "emma-hybrid-comfort"
           }
         },
-        "1e675715-5ecb-41e6-a7ab-608b36025781": {
-          "type": "catalog_item",
-          "settings": {
-            "product": "perfect-sleep-bundle-ii"
-          }
-        },
         "8fde16df-aace-45a2-bc5e-de66829da46e": {
           "type": "catalog_item",
           "settings": {
             "product": "emma-hybrid-premium"
+          }
+        },
+        "1e675715-5ecb-41e6-a7ab-608b36025781": {
+          "type": "catalog_item",
+          "settings": {
+            "product": "perfect-sleep-bundle-plus"
           }
         },
         "1764b6ed-cfac-4dec-9487-f9122604ba72": {
@@ -1157,8 +1157,8 @@
       },
       "block_order": [
         "catalog_item_C8iaTJ",
-        "1e675715-5ecb-41e6-a7ab-608b36025781",
         "8fde16df-aace-45a2-bc5e-de66829da46e",
+        "1e675715-5ecb-41e6-a7ab-608b36025781",
         "1764b6ed-cfac-4dec-9487-f9122604ba72",
         "d2925961-e05b-4a94-be70-a9d7f7911010",
         "07d5912c-d4c3-4ebb-97a6-f723fc8a4f3f",
