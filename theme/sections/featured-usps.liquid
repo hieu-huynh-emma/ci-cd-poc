@@ -7,7 +7,7 @@
 
 {% assign items = section.blocks | where: "type", "item" %}
 
-<div abtasty-campaign-id="1296959"
+<div {% if section.settings.isABTest == true %}abtasty-campaign-id="1296959"{% endif %}
      class="page-boundary">
     <section id="usp" class="section-container">
         <ul class="usp-list">
@@ -99,6 +99,12 @@
       "type": "text",
       "label": "Modal Heading",
       "default": "Our service promise to you"
+    },
+    {
+      "id": "isABTest",
+      "type": "checkbox",
+      "label": "ABTest",
+      "default": true
     }
   ]
 }
