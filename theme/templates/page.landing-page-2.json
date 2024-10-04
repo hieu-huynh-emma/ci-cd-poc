@@ -10,45 +10,6 @@
         "collection": "recommended-mattresses"
       }
     },
-    "features-showcase": {
-      "type": "features-showcase",
-      "blocks": {
-        "catalog_item_C8iaTJ": {
-          "type": "item",
-          "settings": {
-            "heading": "It's really just a 10-year warranty.",
-            "content": "<p>Don't be swayed by Silk and Snow's 15-year warranty. Plot twist: they only provide 10 years warranty, anything beyond the 10 years would require you to pay an additional 75% of the mattress' original cost. Not only that, you'll also have to shoulder any shipping costs for the damaged mattress they gave you. Might as well just a get a new one, right?<\/p>",
-            "engagement_content": "<p>Emma knows you deserve honesty. We promise 10 years full warranty, no hidden rules from our terms and conditions! <\/p>"
-          }
-        },
-        "8fde16df-aace-45a2-bc5e-de66829da46e": {
-          "type": "item",
-          "settings": {
-            "heading": "It's really just a 10-year warranty.",
-            "content": "<p>Don't be swayed by Silk and Snow's 15-year warranty. Plot twist: they only provide 10 years warranty, anything beyond the 10 years would require you to pay an additional 75% of the mattress' original cost. Not only that, you'll also have to shoulder any shipping costs for the damaged mattress they gave you. Might as well just a get a new one, right?<\/p>",
-            "engagement_content": "<p>Emma knows you deserve honesty. We promise 10 years full warranty, no hidden rules from our terms and conditions! <\/p>"
-          }
-        },
-        "catalog_item_LmTm9U": {
-          "type": "item",
-          "settings": {
-            "heading": "It's really just a 10-year warranty.",
-            "content": "<p>Don't be swayed by Silk and Snow's 15-year warranty. Plot twist: they only provide 10 years warranty, anything beyond the 10 years would require you to pay an additional 75% of the mattress' original cost. Not only that, you'll also have to shoulder any shipping costs for the damaged mattress they gave you. Might as well just a get a new one, right?<\/p>",
-            "engagement_content": "<p>Emma knows you deserve honesty. We promise 10 years full warranty, no hidden rules from our terms and conditions! <\/p>"
-          }
-        }
-      },
-      "block_order": [
-        "catalog_item_C8iaTJ",
-        "8fde16df-aace-45a2-bc5e-de66829da46e",
-        "catalog_item_LmTm9U"
-      ],
-      "settings": {
-        "heading": "Silk and Snow: Too good to be true?",
-        "subheading": "Check out some surprising myths we've discovered about the brand",
-        "heading_alignment": "center"
-      }
-    },
     "featured-usps": {
       "type": "featured-usps",
       "blocks": {
@@ -102,6 +63,47 @@
       "settings": {
         "modal_heading": "Our service prsomise to you",
         "isABTest": false
+      }
+    },
+    "features-showcase": {
+      "type": "features-showcase",
+      "blocks": {
+        "catalog_item_C8iaTJ": {
+          "type": "item",
+          "settings": {
+            "heading": "100 Nights vs 1 Year Trial ",
+            "content": "<p>Casper offers a 100-night trial on The Casper and all their mattress portfolio, which provides a limited time for you to adjust to your new mattress. Depending on your personal needs, your body may require more time to fully settle.<\/p>",
+            "engagement_content": "<p>Emma offers a 365-night trial on all our mattresses in Canada, giving you the opportunity to try out and relax in your Emma mattress for a full year, risk-free.<\/p>"
+          }
+        },
+        "8fde16df-aace-45a2-bc5e-de66829da46e": {
+          "type": "item",
+          "settings": {
+            "heading": "Mattress Comfort and Support ",
+            "content": "<p>Edge support around the mattress perimeter can help reduce sagging. Based on our analysis, the Casper Original Hybrid and the Casper Atlas Hybrid mattresses do not feature this element.<\/p>",
+            "engagement_content": "<p>The Emma’s Hybrid Comfort features a reinforced perimeter designed to provide edge support, which may assist in preventing sagging and could make it easier for you to get in and out of bed.<\/p>"
+          }
+        },
+        "catalog_item_LmTm9U": {
+          "type": "item",
+          "settings": {
+            "heading": "Perfect for all types of sleepers? ",
+            "content": "<p>Casper Original Hybrid mattress features a zoned support system providing pressure relief and spinal alignment; however, Casper’s Original Hybrid design can lead to more motion transfer between partners during sleep​.<\/p>",
+            "engagement_content": "<p>Emma’s Hybrid Comfortis made with an open-celled foam that isolates motion. Light sleepers can continue to snooze even as their partner tosses and turns in bed.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "catalog_item_C8iaTJ",
+        "8fde16df-aace-45a2-bc5e-de66829da46e",
+        "catalog_item_LmTm9U"
+      ],
+      "settings": {
+        "heading": "Emma vs Casper ",
+        "subheading": "Check out some information about Casper you might have missed ",
+        "heading_alignment": "center",
+        "container_spacing": "md",
+        "trackId": ""
       }
     },
     "1ce286d2-ef8f-4a2f-8277-eb0e148aba2d": {
@@ -239,8 +241,8 @@
   },
   "order": [
     "recommended-mattress-catalog",
-    "features-showcase",
     "featured-usps",
+    "features-showcase",
     "1ce286d2-ef8f-4a2f-8277-eb0e148aba2d",
     "featured-content"
   ]

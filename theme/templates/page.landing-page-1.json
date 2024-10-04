@@ -10,45 +10,6 @@
         "collection": "recommended-mattresses"
       }
     },
-    "features-showcase": {
-      "type": "features-showcase",
-      "blocks": {
-        "catalog_item_C8iaTJ": {
-          "type": "item",
-          "settings": {
-            "heading": "It's really just a 10-year warranty.",
-            "content": "<p>Don't be swayed by Silk and Snow's 15-year warranty. Plot twist: they only provide 10 years warranty, anything beyond the 10 years would require you to pay an additional 75% of the mattress' original cost. Not only that, you'll also have to shoulder any shipping costs for the damaged mattress they gave you. Might as well just a get a new one, right?<\/p>",
-            "engagement_content": "<p>Emma knows you deserve honesty. We promise 10 years full warranty, no hidden rules from our terms and conditions! <\/p>"
-          }
-        },
-        "8fde16df-aace-45a2-bc5e-de66829da46e": {
-          "type": "item",
-          "settings": {
-            "heading": "It's really just a 10-year warranty.",
-            "content": "<p>Don't be swayed by Silk and Snow's 15-year warranty. Plot twist: they only provide 10 years warranty, anything beyond the 10 years would require you to pay an additional 75% of the mattress' original cost. Not only that, you'll also have to shoulder any shipping costs for the damaged mattress they gave you. Might as well just a get a new one, right?<\/p>",
-            "engagement_content": "<p>Emma knows you deserve honesty. We promise 10 years full warranty, no hidden rules from our terms and conditions! <\/p>"
-          }
-        },
-        "catalog_item_LmTm9U": {
-          "type": "item",
-          "settings": {
-            "heading": "It's really just a 10-year warranty.",
-            "content": "<p>Don't be swayed by Silk and Snow's 15-year warranty. Plot twist: they only provide 10 years warranty, anything beyond the 10 years would require you to pay an additional 75% of the mattress' original cost. Not only that, you'll also have to shoulder any shipping costs for the damaged mattress they gave you. Might as well just a get a new one, right?<\/p>",
-            "engagement_content": "<p>Emma knows you deserve honesty. We promise 10 years full warranty, no hidden rules from our terms and conditions! <\/p>"
-          }
-        }
-      },
-      "block_order": [
-        "catalog_item_C8iaTJ",
-        "8fde16df-aace-45a2-bc5e-de66829da46e",
-        "catalog_item_LmTm9U"
-      ],
-      "settings": {
-        "heading": "Silk and Snow: Too good to be true?",
-        "subheading": "Check out some surprising myths we've discovered about the brand",
-        "heading_alignment": "center"
-      }
-    },
     "featured-usps": {
       "type": "featured-usps",
       "blocks": {
@@ -102,6 +63,47 @@
       "settings": {
         "modal_heading": "Our service prsomise to you",
         "isABTest": false
+      }
+    },
+    "features-showcase": {
+      "type": "features-showcase",
+      "blocks": {
+        "catalog_item_C8iaTJ": {
+          "type": "item",
+          "settings": {
+            "heading": "100 Nights vs 1 Year Trial ",
+            "content": "<p>Endy offers a 100-night trial on The Endy and The Endy Hybrid mattresses, which provides a limited time for you to adjust to your new mattress. Depending on your personal needs, your body may require more time to fully settle.<\/p>",
+            "engagement_content": "<p>Emma offers a 365-night trial on all our mattresses in Canada, giving you the opportunity to try out and relax in your Emma mattress for a full year, risk-free.<\/p>"
+          }
+        },
+        "8fde16df-aace-45a2-bc5e-de66829da46e": {
+          "type": "item",
+          "settings": {
+            "heading": "Thermoregulation ",
+            "content": "<p>The Endy Hybrid mattressfeatures an open-cell foam promotingbreathability; however, Endy does not incorporate advanced technologies to enhance temperature regulation.<\/p>",
+            "engagement_content": "<p>Our Emma Hybrid Premium mattress enhances breathability and actively refreshes, helping to reduce your body temperature.<\/p>"
+          }
+        },
+        "catalog_item_LmTm9U": {
+          "type": "item",
+          "settings": {
+            "heading": "Payment Method Variety ",
+            "content": "<p>Endy offers a limited range of payment methods, limiting convenience and making it more time-consuming for you to buyan Endy mattress.<\/p>",
+            "engagement_content": "<p>We got your back! Emma provides a broader variety of payment methods. This makes it easier for you to choose and buy with a click!<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "catalog_item_C8iaTJ",
+        "8fde16df-aace-45a2-bc5e-de66829da46e",
+        "catalog_item_LmTm9U"
+      ],
+      "settings": {
+        "heading": "Emma vs Endy",
+        "subheading": "Check out some information about Endy you might have missed ",
+        "heading_alignment": "center",
+        "container_spacing": "md",
+        "trackId": ""
       }
     },
     "1ce286d2-ef8f-4a2f-8277-eb0e148aba2d": {
@@ -239,8 +241,8 @@
   },
   "order": [
     "recommended-mattress-catalog",
-    "features-showcase",
     "featured-usps",
+    "features-showcase",
     "1ce286d2-ef8f-4a2f-8277-eb0e148aba2d",
     "featured-content"
   ]

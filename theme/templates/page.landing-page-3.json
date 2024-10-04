@@ -10,45 +10,6 @@
         "collection": "recommended-mattresses"
       }
     },
-    "features-showcase": {
-      "type": "features-showcase",
-      "blocks": {
-        "catalog_item_C8iaTJ": {
-          "type": "item",
-          "settings": {
-            "heading": "It's really just a 10-year warranty.",
-            "content": "<p>Don't be swayed by Silk and Snow's 15-year warranty. Plot twist: they only provide 10 years warranty, anything beyond the 10 years would require you to pay an additional 75% of the mattress' original cost. Not only that, you'll also have to shoulder any shipping costs for the damaged mattress they gave you. Might as well just a get a new one, right?<\/p>",
-            "engagement_content": "<p>Emma knows you deserve honesty. We promise 10 years full warranty, no hidden rules from our terms and conditions! <\/p>"
-          }
-        },
-        "8fde16df-aace-45a2-bc5e-de66829da46e": {
-          "type": "item",
-          "settings": {
-            "heading": "It's really just a 10-year warranty.",
-            "content": "<p>Don't be swayed by Silk and Snow's 15-year warranty. Plot twist: they only provide 10 years warranty, anything beyond the 10 years would require you to pay an additional 75% of the mattress' original cost. Not only that, you'll also have to shoulder any shipping costs for the damaged mattress they gave you. Might as well just a get a new one, right?<\/p>",
-            "engagement_content": "<p>Emma knows you deserve honesty. We promise 10 years full warranty, no hidden rules from our terms and conditions! <\/p>"
-          }
-        },
-        "catalog_item_LmTm9U": {
-          "type": "item",
-          "settings": {
-            "heading": "It's really just a 10-year warranty.",
-            "content": "<p>Don't be swayed by Silk and Snow's 15-year warranty. Plot twist: they only provide 10 years warranty, anything beyond the 10 years would require you to pay an additional 75% of the mattress' original cost. Not only that, you'll also have to shoulder any shipping costs for the damaged mattress they gave you. Might as well just a get a new one, right?<\/p>",
-            "engagement_content": "<p>Emma knows you deserve honesty. We promise 10 years full warranty, no hidden rules from our terms and conditions! <\/p>"
-          }
-        }
-      },
-      "block_order": [
-        "catalog_item_C8iaTJ",
-        "8fde16df-aace-45a2-bc5e-de66829da46e",
-        "catalog_item_LmTm9U"
-      ],
-      "settings": {
-        "heading": "Silk and Snow: Too good to be true?",
-        "subheading": "Check out some surprising myths we've discovered about the brand",
-        "heading_alignment": "center"
-      }
-    },
     "featured-usps": {
       "type": "featured-usps",
       "blocks": {
@@ -102,6 +63,47 @@
       "settings": {
         "modal_heading": "Our service prsomise to you",
         "isABTest": false
+      }
+    },
+    "features-showcase": {
+      "type": "features-showcase",
+      "blocks": {
+        "catalog_item_C8iaTJ": {
+          "type": "item",
+          "settings": {
+            "heading": "Mattress Comfort and Support ",
+            "content": "<p>Edge support around the mattress perimeter can help reduce sagging. Based on our analysis, the whole Douglas mattress portfolio, including the Douglas Alpine, Douglas Original, and Douglas Summit mattresses, do not feature this particular element.<\/p>",
+            "engagement_content": "<p>Emma’s Hybrid Comfort features a reinforced perimeter designed to provide edge support, which may assist in preventing sagging and could make it easier for you to get in and out of bed.<\/p>"
+          }
+        },
+        "8fde16df-aace-45a2-bc5e-de66829da46e": {
+          "type": "item",
+          "settings": {
+            "heading": "Return Policy ",
+            "content": "<p>According to our analysis, Douglas’ return policy requires a 21-day waiting period before initiating a mattress return. Depending on individual preferences, this could extend the time it takes to return a Douglas mattress.<\/p>",
+            "engagement_content": "<p>Emma offers a 365-night trial on all its mattresses. If you're not satisfied, you can initiate a return at any point during the trial period, starting from day 1.<\/p>"
+          }
+        },
+        "catalog_item_LmTm9U": {
+          "type": "item",
+          "settings": {
+            "heading": "Perfect for all types of sleepers? ",
+            "content": "<p>All Douglas mattresses -including the Douglas Alpine, Douglas Original, and Douglas Summit mattresses- are produced using foam, whose firmness may not be ideal for various sleeping positions, especially for side sleepers​.<\/p>",
+            "engagement_content": "<p>Emma’s Hybrid Comfort and Hybrid Premium mattresses can easily support all body types while maintaining their resilience so that you don’t sink too deep into the mattress.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "catalog_item_C8iaTJ",
+        "8fde16df-aace-45a2-bc5e-de66829da46e",
+        "catalog_item_LmTm9U"
+      ],
+      "settings": {
+        "heading": "Emma vs Douglas ",
+        "subheading": "Check out some information you might have missed ",
+        "heading_alignment": "center",
+        "container_spacing": "md",
+        "trackId": ""
       }
     },
     "1ce286d2-ef8f-4a2f-8277-eb0e148aba2d": {
@@ -239,8 +241,8 @@
   },
   "order": [
     "recommended-mattress-catalog",
-    "features-showcase",
     "featured-usps",
+    "features-showcase",
     "1ce286d2-ef8f-4a2f-8277-eb0e148aba2d",
     "featured-content"
   ]
