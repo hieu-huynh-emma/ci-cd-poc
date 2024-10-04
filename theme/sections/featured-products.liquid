@@ -69,7 +69,7 @@
         <div class="hidden md:grid grid-cols-3 justify-center gap-5 desktop_view">
             {%- for block in productBlocks -%}
                 {% assign product = block.settings.product %}
-                <a href="{{ product.url }}">
+                <a href="{{ product.url }}" abtasty-tracker="PDP_CTR">
                     <div
                             class="w-full h-full flex flex-col md:max-w-[422px] text-center featured_card"
                             style="background-color:  var(--product-card-bg)"
@@ -222,6 +222,7 @@
                                                 :trackId="{{ trackId }}"
                                                 class="btn testing w-{100%}" href="{{ product.url }}"
                                                 rel="noreferrer"
+                                                abtasty-tracker="PDP_CTR"
                                         >Shop
                                             Now
                                         </tracked-button>
@@ -255,7 +256,7 @@
                     {%- for block in productBlocks -%}
                         {% assign product = block.settings.product %}
                         <li class="splide__slide">
-                            <a href="{{ product.url }}">
+                            <a href="{{ product.url }}" abtasty-tracker="PDP_CTR">
                                 <div
                                         class="w-full h-full flex flex-col max-w-[320px] text-center featured_card"
                                         style="background-color:  var(--product-card-bg)"
@@ -425,6 +426,7 @@
                                                             class="btn testing w-{100%}"
                                                             href="{{ product.url }}"
                                                             rel="noreferrer"
+                                                      abtasty-tracker="PDP_CTR"
                                                     >Shop Now
                                                     </tracked-button>
                                                 </div>

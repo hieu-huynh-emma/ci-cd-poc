@@ -1,5 +1,5 @@
 {% comment %} <product-card class="{% if landscape %} landscape{% endif %}" :productId="{{ product.id }}"> {% endcomment %}
-<product-card class="{% if landscape %} landscape{% endif %}" :productId="{{ product.id }}">
+<product-card class="{% if landscape %} landscape{% endif %}" :productId="{{ product.id }}" abtasty-tracker="PDP_CTR">
     {% liquid
         assign postfix = "PDP"
         if template == "page.sale"
