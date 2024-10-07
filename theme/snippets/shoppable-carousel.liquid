@@ -1,0 +1,23 @@
+<shoppable-carousel class="splide">
+    {% render 'splide-arrows', trackId: trackId %}
+
+    <div class="splide__track">
+        <ul class="splide__list">
+            {% for block in section.blocks %}
+                <li class="splide__slide">
+                    {% case block.type %}
+                        {% when "video" %}
+                            {% assign media = block.settings.video %}
+                            {% assign poster = media | image_url: width: 550 | prepend: "https:" %}
+
+                            <div class="shoppable-frame">
+                                {% render 'shoppable-card', media: media, index: forloop.index0 %}
+                            </div>
+
+                    {% endcase %}
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</shoppable-carousel>
+

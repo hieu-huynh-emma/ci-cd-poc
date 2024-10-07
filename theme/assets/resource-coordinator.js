@@ -1,4 +1,4 @@
-$.getStylesheet = function (href) {
+$.getStylesheet = function(href) {
   const $d = $.Deferred();
 
   const url = new URL(href, "https://cdn.shopify.com/");
@@ -14,7 +14,7 @@ $.getStylesheet = function (href) {
   return $d.promise();
 };
 
-$.getVendorStylesheet = function (href) {
+$.getVendorStylesheet = function(href) {
   const $d = $.Deferred();
   const $link = $("<link/>", {
     rel: "stylesheet",
@@ -151,3 +151,15 @@ ResourceCoordinator.registerVendor("DriftZoom", ["https://cdnjs.cloudflare.com/a
 ResourceCoordinator.registerVendor("MultiClamp", [Shop.assetUrl + 'MultiClamp.min.js']);
 
 ResourceCoordinator.registerVendor("AsSwitch", ["https://cdn.jsdelivr.net/npm/jquery-asSwitch@0.2.3/dist/jquery-asSwitch.min.js", "https://cdn.jsdelivr.net/npm/jquery-asSwitch@0.2.3/dist/css/asSwitch.min.css"]);
+
+ResourceCoordinator.registerVendor("Fancybox", [
+  Shop.assetUrl + "fancybox.js",
+  Shop.assetUrl + "fancybox.css",
+  // Shop.assetUrl + "fancybox.carousel.js",
+  // Shop.assetUrl + "fancybox.carousel.css",
+  // Shop.assetUrl + "fancybox.carousel.autoplay.js",
+  // Shop.assetUrl + "fancybox.carousel.autoplay.css",
+  // Shop.assetUrl + "fancybox.carousel.thumbs.js",
+  // Shop.assetUrl + "fancybox.carousel.thumbs.css"
+]);
+ResourceCoordinator.registerVendor("FsLightbox", [Shop.assetUrl + "fslightbox.js"]);

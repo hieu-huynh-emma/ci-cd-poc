@@ -542,77 +542,6 @@
       "settings": {
       }
     },
-    "mattress-layers-static": {
-      "type": "mattress-layers-static",
-      "blocks": {
-        "4441c420-9648-469d-9fb2-bf8dbb9cf6ba": {
-          "type": "layer_item",
-          "settings": {
-            "title": "Breathable and moisture-wicking Top cover",
-            "content": "The Emma cover is soft-to-touch, making it very comfortable to lie on. Built with light fibers, our cover wicks away moisture away and prevents heat from getting trapped on the surface."
-          }
-        },
-        "3b4dd04a-036c-426d-8c1f-9729dd673c3e": {
-          "type": "layer_item",
-          "settings": {
-            "title": "The Breezy Airgocell® foam",
-            "content": "Our signature Point Elastic Airgocell technology absorbs and releases excess body heat and moisture, creating an ideal sleeping environment for peaceful sleep."
-          }
-        },
-        "bdebe803-1755-4362-ae36-1355b97d0e9d": {
-          "type": "layer_item",
-          "settings": {
-            "title": "The Cool foam layer that isolates motion",
-            "content": "Find comfort in any sleeping position. Memory foam molds to the unique shape of your body for even pressure distribution and provides great motion isolation so you can sleep undisturbed, even with a fussy partner"
-          }
-        },
-        "c9c66cb6-dfe8-4bc3-aef4-5f3af408a185": {
-          "type": "layer_item",
-          "settings": {
-            "title": "The Supportive HRX foam",
-            "content": "Durable HRX foam supports you with just the right level of firmness, without hollows or bumps. Lie back and move freely until you've found your position for a deep sleep."
-          }
-        },
-        "0e7b3bb3-6109-4e78-851e-e5684c7b4d67": {
-          "type": "layer_item",
-          "settings": {
-            "title": "The Ergonomic, 7-Zone edge-to-edge pocket springs",
-            "content": "Say goodbye to restless nights! Our individually-wrapped coils are designed to enhance airflow and provide the optimum level of tension and bounce all over the mattress — strong enough to support sleepers of all shape and size. Rest comfortably as our pocket springs adapt to your spine for longer and deeper restorative sleep."
-          }
-        },
-        "9088b2b9-37a7-498a-ab7b-1ce50ec43e1a": {
-          "type": "layer_item",
-          "settings": {
-            "title": "The Stabilizing layer",
-            "content": "Long-lasting mattresses need a good foundation. Our base is built to last, providing added stability for decades of quality sleep."
-          }
-        },
-        "b2f4cd49-b521-43ab-a48e-92c7a027621c": {
-          "type": "layer_item",
-          "settings": {
-            "title": "The Resistant, anti-slip, lower cover with handles",
-            "content": "Innovative mattress lower cover, designed with exceptional durability and a convenient handle for effortless maneuverability."
-          }
-        }
-      },
-      "block_order": [
-        "4441c420-9648-469d-9fb2-bf8dbb9cf6ba",
-        "3b4dd04a-036c-426d-8c1f-9729dd673c3e",
-        "bdebe803-1755-4362-ae36-1355b97d0e9d",
-        "c9c66cb6-dfe8-4bc3-aef4-5f3af408a185",
-        "0e7b3bb3-6109-4e78-851e-e5684c7b4d67",
-        "9088b2b9-37a7-498a-ab7b-1ce50ec43e1a",
-        "b2f4cd49-b521-43ab-a48e-92c7a027621c"
-      ],
-      "disabled": true,
-      "settings": {
-        "heading": "Emma Hybrid Comfort - Layer by Layer",
-        "heading_alignment": "start",
-        "container_spacing": "sm",
-        "image": "shopify:\/\/shop_images\/Emma-Hybrid-comfort-compressednumbers.jpg",
-        "carousel_mode": false
-      }
-    },
     "mattress-layers": {
       "type": "mattress-layers",
       "blocks": {
@@ -860,6 +789,84 @@
         "trackId": ""
       }
     },
+    "shoppable-media": {
+      "type": "shoppable-media",
+      "blocks": {
+        "72c7f33b-7788-4524-bf53-816aecb093b6": {
+          "type": "video",
+          "settings": {
+            "video": "shopify:\/\/files\/videos\/Stephanie.UGC.mp4",
+            "content": "The ultimate ergonomic support.",
+            "product": "emma-hybrid-comfort"
+          }
+        },
+        "07d5912c-d4c3-4ebb-97a6-f723fc8a4f3f": {
+          "type": "video",
+          "settings": {
+            "video": "shopify:\/\/files\/videos\/Buy_SeanMari.mp4",
+            "product": ""
+          }
+        },
+        "video_P4jDEg": {
+          "type": "video",
+          "settings": {
+            "video": "shopify:\/\/files\/videos\/Amber.story.mp4",
+            "product": ""
+          }
+        },
+        "1764b6ed-cfac-4dec-9487-f9122604ba72": {
+          "type": "video",
+          "settings": {
+            "video": "shopify:\/\/files\/videos\/dying.MOV",
+            "product": ""
+          }
+        },
+        "1e675715-5ecb-41e6-a7ab-608b36025781": {
+          "type": "video",
+          "settings": {
+            "video": "shopify:\/\/files\/videos\/copy_095C1154-5368-40AF-8656-F51DD0CB3BE3_063d0e6f-2a0f-4988-8ae4-2c2bf3857ec8.mov",
+            "product": ""
+          }
+        },
+        "8fde16df-aace-45a2-bc5e-de66829da46e": {
+          "type": "video",
+          "settings": {
+            "video": "shopify:\/\/files\/videos\/3 reasons_c1e64666-1e6b-46d4-983e-4e7b10b857f8.mov",
+            "product": ""
+          }
+        },
+        "d2925961-e05b-4a94-be70-a9d7f7911010": {
+          "type": "video",
+          "settings": {
+            "video": "shopify:\/\/files\/videos\/Really worth the hype.mov",
+            "product": ""
+          }
+        },
+        "video_CTJ7wq": {
+          "type": "video",
+          "settings": {
+            "video": "shopify:\/\/files\/videos\/Pillows + Mattres_7d2c14ad-531d-4c45-8ed6-8fadf4320af2.mp4",
+            "product": ""
+          }
+        }
+      },
+      "block_order": [
+        "72c7f33b-7788-4524-bf53-816aecb093b6",
+        "07d5912c-d4c3-4ebb-97a6-f723fc8a4f3f",
+        "video_P4jDEg",
+        "1764b6ed-cfac-4dec-9487-f9122604ba72",
+        "1e675715-5ecb-41e6-a7ab-608b36025781",
+        "8fde16df-aace-45a2-bc5e-de66829da46e",
+        "d2925961-e05b-4a94-be70-a9d7f7911010",
+        "video_CTJ7wq"
+      ],
+      "settings": {
+        "heading": "Our Story",
+        "heading_alignment": "center",
+        "container_spacing": "md",
+        "trackId": ""
+      }
+    },
     "customer-sentiment": {
       "type": "customer-sentiment",
       "blocks": {
@@ -1053,57 +1060,6 @@
         "container_spacing": "sm"
       }
     },
-    "special-services": {
-      "type": "multicolumn-text",
-      "blocks": {
-        "48ca0997-ffa4-4408-8013-4796cb7f17c4": {
-          "type": "column",
-          "settings": {
-            "icon": "shopify:\/\/shop_images\/truck-free-black.png",
-            "title": "Free Delivery",
-            "content": "We’ll bring your Emma order straight to your door at no extra cost"
-          }
-        },
-        "f3255c5f-527e-4927-a670-554ff22e9ef7": {
-          "type": "column",
-          "settings": {
-            "icon": "shopify:\/\/shop_images\/100-night-black.png",
-            "title": "365-Night Trial",
-            "content": "Get properly acquainted with Emma so you can be sure we’re the one"
-          }
-        },
-        "c15d1ab6-4b9b-4e30-ace7-dbf193ff2d4f": {
-          "type": "column",
-          "settings": {
-            "icon": "shopify:\/\/shop_images\/award-black.png",
-            "title": "10 Year Guarantee",
-            "content": "Our products are built to last. You’re covered if something goes wrong"
-          }
-        },
-        "f9973382-ba4e-4931-817c-113225550dad": {
-          "type": "column",
-          "settings": {
-            "icon": "shopify:\/\/shop_images\/package-black.png",
-            "title": "Free Returns",
-            "content": "If Emma isn’t for you, our customer service team will take care of you"
-          }
-        }
-      },
-      "block_order": [
-        "48ca0997-ffa4-4408-8013-4796cb7f17c4",
-        "f3255c5f-527e-4927-a670-554ff22e9ef7",
-        "c15d1ab6-4b9b-4e30-ace7-dbf193ff2d4f",
-        "f9973382-ba4e-4931-817c-113225550dad"
-      ],
-      "disabled": true,
-      "settings": {
-        "column_alignment": "left",
-        "column_size": "medium",
-        "container_spacing": "md",
-        "horizontal_layout_on_mobile": true,
-        "solid_typo": false
-      }
-    },
     "social-proof": {
       "type": "social-proof",
       "blocks": {
@@ -1237,15 +1193,14 @@
     "product-specifications",
     "product-auxiliary",
     "multimedia-showcase",
-    "mattress-layers-static",
     "mattress-layers",
     "mattress-firmness",
     "featured-products",
     "product-carousel",
+    "shoppable-media",
     "customer-sentiment",
     "1685402594226951ca",
     "featured-faqs",
-    "special-services",
     "social-proof",
     "contact-us"
   ]

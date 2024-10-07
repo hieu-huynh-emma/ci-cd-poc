@@ -1,0 +1,103 @@
+<link rel="quickscript" loading="delayed" href="{{ 'shoppable.css' | asset_url }}" />
+
+<script type="quickscript" loading="delayed" src="{{ 'shoppable-player.js' | asset_url }}"></script>
+<script type="quickscript" loading="delayed" src="{{ 'shoppable.js' | asset_url }}"></script>
+
+<div class="section-container spacing-{{ section.settings.container_spacing }}">
+  <div class="section-chassis page-boundary">
+    {% render 'section-header' %}
+
+    <shoppable-manager>
+      {% render 'shoppable-player' %}
+
+      {% render 'shoppable-carousel' %}
+    </shoppable-manager>
+  </div>
+
+</div>
+
+{% schema %}
+{
+  "name": "Shoppable Media",
+  "blocks": [
+    {
+      "type": "video",
+      "name": "Shoppable Video",
+      "settings": [
+        {
+          "id": "video",
+          "type": "video",
+          "label": "Video"
+        },
+        {
+          "id": "content",
+          "type": "text",
+          "label": "Content"
+        },
+        {
+          "id": "product",
+          "type": "product",
+          "label": "Product"
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "id": "heading",
+      "type": "text",
+      "label": "Heading",
+      "default": "Our Story"
+    },
+    {
+      "id": "heading_alignment",
+      "type": "select",
+      "label": "Heading Alignment",
+      "options": [
+        {
+          "value": "start",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "end",
+          "label": "Right"
+        }
+      ],
+      "default": "start"
+    },
+    {
+      "type": "select",
+      "id": "container_spacing",
+      "options": [
+        {
+          "value": "lg",
+          "label": "Large (60px)"
+        },
+        {
+          "value": "md",
+          "label": "Medium (40px)"
+        }
+      ],
+      "default": "md",
+      "label": "Container Spacing"
+    },
+    {
+      "type": "text",
+      "id": "trackId",
+      "label": "Tracking ID"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Shoppable Media",
+      "settings": {
+        "heading": "Our Story"
+      }
+    }
+  ]
+}
+{% endschema %}

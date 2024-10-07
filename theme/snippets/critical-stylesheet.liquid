@@ -620,7 +620,9 @@
 ABTest
 {% endcomment %}
 <style>
-    [abtasty-campaign-id="1296959"]:not([abtasty-campaign-variation="0"]) {
-        display: none;
-    }
+  {% if template == 'index' %}
+      [abtasty-campaign-id="1296959"]:not([abtasty-campaign-variation="0"]) {
+          display: none;
+      }
+  {% endif %}
 </style>

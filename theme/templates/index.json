@@ -46,6 +46,7 @@
       "settings": {
       }
     },
+
     "217cc637-3faa-4f25-b127-7a38a42e6e2f": {
       "type": "hero-split",
       "blocks": {
@@ -823,70 +824,6 @@
         "container_spacing": "lg",
         "horizontal_layout_on_mobile": true,
         "solid_typo": false
-      }
-    },
-    "why-choose-us": {
-      "type": "multicolumn-text",
-      "blocks": {
-        "48ca0997-ffa4-4408-8013-4796cb7f17c4": {
-          "type": "column",
-          "settings": {
-            "icon": "shopify:\/\/shop_images\/Awarded_2.png",
-            "title": "Designed by sleep scientists",
-            "content": "Along with 75,000 customer reviews, our sleep experts develop solutions for your your every sleep need"
-          }
-        },
-        "f3255c5f-527e-4927-a670-554ff22e9ef7": {
-          "type": "column",
-          "settings": {
-            "icon": "shopify:\/\/shop_images\/Awarded.png",
-            "title": "Trusted by critics",
-            "content": "Over 70 product & consumer awards from all over the world make Emma the most-awarded online sleep brand"
-          }
-        },
-        "c15d1ab6-4b9b-4e30-ace7-dbf193ff2d4f": {
-          "type": "column",
-          "settings": {
-            "icon": "shopify:\/\/shop_images\/Group_33800.png",
-            "title": "Made in the Americas",
-            "content": "Emma products are homegrown and designed to seamlessly adapt to your unique shape and sleep habits"
-          }
-        }
-      },
-      "block_order": [
-        "48ca0997-ffa4-4408-8013-4796cb7f17c4",
-        "f3255c5f-527e-4927-a670-554ff22e9ef7",
-        "c15d1ab6-4b9b-4e30-ace7-dbf193ff2d4f"
-      ],
-      "disabled": true,
-      "settings": {
-        "column_alignment": "center",
-        "column_size": "large",
-        "container_spacing": "md",
-        "horizontal_layout_on_mobile": false,
-        "solid_typo": true
-      }
-    },
-    "emma-science": {
-      "type": "media-content",
-      "blocks": {
-        "48ca0997-ffa4-4408-8013-4796cb7f17c4": {
-          "type": "image",
-          "settings": {
-            "source": "shopify:\/\/shop_images\/Sleep_Experts_Leaders_800x600_26601b6b-f717-4e78-ab43-adda68423758.jpg"
-          }
-        }
-      },
-      "block_order": [
-        "48ca0997-ffa4-4408-8013-4796cb7f17c4"
-      ],
-      "disabled": true,
-      "settings": {
-        "heading": "Feel the Emma difference",
-        "content": "<p>When you bring sleep science, expert craftsmanship, and customer feedback together, you get a product that does exactly what you need it to. That’s the Emma difference.<\/p>",
-        "cta_url": "shopify:\/\/collections\/mattresses",
-        "cta_text": "Browse Emma products",
-        "inverted": false
       }
     },
     "product-collage": {
@@ -1782,6 +1719,84 @@
         "trackId": "Truth_scroll_HP"
       }
     },
+    "shoppable-media": {
+      "type": "shoppable-media",
+      "blocks": {
+        "72c7f33b-7788-4524-bf53-816aecb093b6": {
+          "type": "video",
+          "settings": {
+            "video": "shopify:\/\/files\/videos\/Stephanie.UGC.mp4",
+            "content": "The ultimate ergonomic support.",
+            "product": "emma-hybrid-comfort"
+          }
+        },
+        "07d5912c-d4c3-4ebb-97a6-f723fc8a4f3f": {
+          "type": "video",
+          "settings": {
+            "video": "shopify:\/\/files\/videos\/Buy_SeanMari.mp4",
+            "product": ""
+          }
+        },
+        "video_P4jDEg": {
+          "type": "video",
+          "settings": {
+            "video": "shopify:\/\/files\/videos\/Amber.story.mp4",
+            "product": ""
+          }
+        },
+        "1764b6ed-cfac-4dec-9487-f9122604ba72": {
+          "type": "video",
+          "settings": {
+            "video": "shopify:\/\/files\/videos\/dying.MOV",
+            "product": ""
+          }
+        },
+        "1e675715-5ecb-41e6-a7ab-608b36025781": {
+          "type": "video",
+          "settings": {
+            "video": "shopify:\/\/files\/videos\/copy_095C1154-5368-40AF-8656-F51DD0CB3BE3_063d0e6f-2a0f-4988-8ae4-2c2bf3857ec8.mov",
+            "product": ""
+          }
+        },
+        "8fde16df-aace-45a2-bc5e-de66829da46e": {
+          "type": "video",
+          "settings": {
+            "video": "shopify:\/\/files\/videos\/3 reasons_c1e64666-1e6b-46d4-983e-4e7b10b857f8.mov",
+            "product": ""
+          }
+        },
+        "d2925961-e05b-4a94-be70-a9d7f7911010": {
+          "type": "video",
+          "settings": {
+            "video": "shopify:\/\/files\/videos\/Really worth the hype.mov",
+            "product": ""
+          }
+        },
+        "video_CTJ7wq": {
+          "type": "video",
+          "settings": {
+            "video": "shopify:\/\/files\/videos\/Pillows + Mattres_7d2c14ad-531d-4c45-8ed6-8fadf4320af2.mp4",
+            "product": ""
+          }
+        }
+      },
+      "block_order": [
+        "72c7f33b-7788-4524-bf53-816aecb093b6",
+        "07d5912c-d4c3-4ebb-97a6-f723fc8a4f3f",
+        "video_P4jDEg",
+        "1764b6ed-cfac-4dec-9487-f9122604ba72",
+        "1e675715-5ecb-41e6-a7ab-608b36025781",
+        "8fde16df-aace-45a2-bc5e-de66829da46e",
+        "d2925961-e05b-4a94-be70-a9d7f7911010",
+        "video_CTJ7wq"
+      ],
+      "settings": {
+        "heading": "Our Story",
+        "heading_alignment": "center",
+        "container_spacing": "md",
+        "trackId": ""
+      }
+    },
     "social-proof": {
       "type": "social-proof",
       "blocks": {
@@ -2040,8 +2055,6 @@
     "featured-products",
     "trio-comparison",
     "special-services",
-    "why-choose-us",
-    "emma-science",
     "product-collage",
     "product-collage-old",
     "multimedia-showcase",
@@ -2052,6 +2065,7 @@
     "media-publication",
     "customer-sentiment-old",
     "social-proof",
-    "social-proof-old"
+    "social-proof-old",
+    "shoppable-media"
   ]
 }

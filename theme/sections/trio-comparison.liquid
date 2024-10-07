@@ -32,237 +32,237 @@
 
 {% liquid
 
-    assign compareTrackId = "Comapre_All"
-    assign quizzTrackId = "Quizz"
-    assign postfix = ""
+  assign compareTrackId = "Comapre_All"
+  assign quizzTrackId = "Quizz"
+  assign postfix = ""
 
-    if template == 'index'
-        assign postfix = "HP"
-    elsif template == "page.sale"
-        assign postfix = "SP"
-    elsif template contains "collection"
-        assign postfix = "CP"
-    else
-        assign postfix = product.metafields.accentuate.track_postfix
-    endif
+  if template == 'index'
+    assign postfix = "HP"
+  elsif template == "page.sale"
+    assign postfix = "SP"
+  elsif template contains "collection"
+    assign postfix = "CP"
+  else
+    assign postfix = product.metafields.accentuate.track_postfix
+  endif
 
-    if postfix != blank
-        assign compareTrackId = compareTrackId | append: "_" | append: postfix
-        assign quizzTrackId = quizzTrackId | append: "_" | append: postfix
-    endif
+  if postfix != blank
+    assign compareTrackId = compareTrackId | append: "_" | append: postfix
+    assign quizzTrackId = quizzTrackId | append: "_" | append: postfix
+  endif
 %}
 
 <section abtasty-campaign-id="1296959" id="trio-comparison-section" class="section-container">
-    <div class="section-chassis page-boundary relative">
+  <div class="section-chassis page-boundary relative">
 
-        <div class="section-ornament"></div>
+    <div class="section-ornament"></div>
 
-        <div class="section-header relative justify-items-{{ section.settings.heading_alignment }}">
-            <h2
-                    class="heading-2 font-{{ section.settings.header_font }}"
-            >{{ section.settings.heading | default: section.settings.title }}</h2>
+    <div class="section-header relative justify-items-{{ section.settings.heading_alignment }}">
+      <h2
+        class="heading-2 font-{{ section.settings.header_font }}"
+      >{{ section.settings.heading | default: section.settings.title }}</h2>
 
-            <div class="flex flex-col gap-2">
-                <tracked-button
-                        :trackId="{{ compareTrackId }}" href="/collections/mattresses"
-                        class="font-inter text-[16px] font-bold rounded-full border border-{#2E2F3C} text-center sec_btn bg-white"
-                >
-                    Compare all mattresses
-                </tracked-button>
-            </div>
-        </div>
-
-
-        <div class="section-body">
-            <div class="product-carousel splide pagination-bar">
-                {% include 'splide-arrows' %}
-
-                <div class="splide__track">
-                    <ul class="splide__list">
-                        {%- for block in productBlocks -%}
-                            {% assign product = block.settings.product %}
-                            <li class="splide__slide">
-                                <a href="{{ product.url }}" class="card-container product-card  featured_card">
-                                    <div class="product_badge">
-                                        <p
-                                                style="background-color: {{ block.settings.color }};"
-                                                class="h-max rounded px-2 py-1 text-[12px] font-semibold uppercase leading-none text-white"
-                                        >{{ block.settings.secondary_badge }}</p>
-                                    </div>
-                                    <div class="product-image">
-                                        <img
-                                                class="mx-auto h-full object-contain lazyload"
-                                                data-src="{{ block.settings.image | image_url: width: 800 }}"
-                                                width="350"
-                                                height="179"
-                                        />
-                                    </div>
-
-                                    <h3
-                                            class="px-4 text-[20px] font-semibold font-inter mt-2 mb-3"
-                                    >{{ block.settings.product_title }}</h3>
-
-                                    <div class="featured_card__attributes px-4 shopify-richtext mb-3">{{ block.settings.desc }}</div>
-
-                                    <div class="mb-0 px-4">
-                                        <div class="text-left comfort_block py-2">
-                                            <div>
-                                                <p class="mb-1 text-[14px] font-semibold">Comfort</p>
-                                                <div
-                                                        style="grid-template-columns: repeat(6, 1fr);"
-                                                        class="mb-2 grid gap-[6px]"
-                                                >
-                                                    {% for i in (1..6) %}
-                                                        {% if i <= block.settings.comfort_meter %}
-                                                            <div class="h-3 rounded-xl bg-[#3C4196]">
-                                                                &nbsp;
-                                                            </div>
-                                                        {% else %}
-                                                            <div class="h-3 rounded-xl bg-[#D2D3DD]">
-                                                                &nbsp;
-                                                            </div>
-                                                        {% endif %}
-                                                    {% endfor %}
-                                                </div>
-
-                                                <p class="mb-1 text-[14px] font-semibold">Cooling</p>
-                                                <div
-                                                        style="grid-template-columns: repeat(6, 1fr);"
-                                                        class="mb-2 grid gap-[6px]"
-                                                >
-                                                    {% for i in (1..6) %}
-                                                        {% if i <= block.settings.cooling_meter %}
-                                                            <div class="h-3 rounded-xl bg-[#3C4196]">
-                                                                &nbsp;
-                                                            </div>
-                                                        {% else %}
-                                                            <div class="h-3 rounded-xl bg-[#D2D3DD]">
-                                                                &nbsp;
-                                                            </div>
-                                                        {% endif %}
-                                                    {% endfor %}
-                                                </div>
-
-                                                <p class="mb-1 text-[14px] font-semibold">Motion Isolation</p>
-                                                <div
-                                                        style="grid-template-columns: repeat(6, 1fr);"
-                                                        class="grid gap-[6px]"
-                                                >
-                                                    {% for i in (1..6) %}
-                                                        {% if i <= block.settings.motion_isolation_meter %}
-                                                            <div class="h-3 rounded-xl bg-[#3C4196]">
-                                                                &nbsp;
-                                                            </div>
-                                                        {% else %}
-                                                            <div class="h-3 rounded-xl bg-[#D2D3DD]">
-                                                                &nbsp;
-                                                            </div>
-                                                        {% endif %}
-                                                    {% endfor %}
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="product_card_foot">
-                                        <div class="p-4">
-                                            <p
-                                                    class="mb-4 inline-block rounded-full border border-[#F4711E66] bg-[#FDB14766] px-2 py-1 text-[13px] leading-none hidden"
-                                            >
-                                                <span>{{ block.settings.discount_title }} -</span>
-                                                <span class="font-semibold"> {{ block.settings.discount_amount }}%</span>
-                                            </p>
-
-                                            <div class="flex items-center justify-between gap-2 flex-col">
-                                                <div>
-                                                    <div class=" text-[#55576F]" style="font-size:12px">
-                                                        {% if product.compare_at_price > product.price %}
-                                                            From
-                                                        {% endif %}
-
-                                                        <span
-                                                                class="line-through"
-                                                        >{{ product.compare_at_price | money_without_trailing_zeros }}</span>
-                                                    </div>
-                                                    <div class="flex items-center flex-wrap gap-2 mb-2">
-                                                        {% if product.compare_at_price > product.price %}
-                                                            <p class="font-semibold mr-1">{{ product.price | money_without_trailing_zeros }}</p>
-                                                            <p
-                                                                    class="line-through  hidden"
-                                                            >{{ product.compare_at_price | money_without_trailing_zeros }}</p>
-                                                        {% else %}
-                                                            <p class="font-semibold"> {{ product.price | money_without_trailing_zeros }}</p>
-                                                        {% endif %}
-
-                                                        {% if product.compare_at_price > product.price %}
-                                                            <span
-                                                                    class="font-semibold"
-                                                                    style="color:#F03306"
-                                                            >{{ product.compare_at_price | minus: product.price | times: 100.0 | divided_by: product.compare_at_price | money_without_currency | times: 100 | remove: '.0' }}% off </span>
-                                                        {% endif %}
-
-                                                    </div>
-                                                </div>
-
-                                                {% liquid
-                                                    assign codename = product.metafields.accentuate.codename
-                                                    assign trackId = "Compare"
-
-                                                    if codename != blank
-                                                        assign trackId = trackId | prepend: "_" | prepend: codename
-                                                    endif
-
-                                                    if postfix != blank
-                                                        assign trackId = trackId | append: "_" | append: postfix
-                                                    endif
-                                                %}
-
-                                                <tracked-button
-                                                        :trackId="{{ trackId }}"
-                                                        class="btn testing w-{100%}"
-                                                        abtasty-tracker="PDP_CTR"
-                                                        href="{{ product.url }}"
-                                                        rel="noreferrer"
-                                                >Shop Now
-                                                </tracked-button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                        {%- endfor -%}
-                    </ul>
-                </div>
-            </div>
-
-          {% if quizBlock %}
-            <a href="{{ quizBlock.settings.url }}" target="_blank" class="quiz-card card-container">
-              <div class="quiz-card__content">
-                <h4 class="text-white text-md font-semibold">{{ quizBlock.settings.title }}</h4>
-                <p class="text-white text-sm font-semibold">{{ quizBlock.settings.content }}</p>
-                <div class="quiz-card__nav-icon">
-                  <svg width="42" height="42" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect x="1" y="1" width="40" height="40" rx="20" stroke="white" stroke-width="2"/>
-                    <path
-                      d="M24.3977 20.6023L18.3977 14.6023C18.178 14.3826 17.822 14.3826 17.6023 14.6023C17.3826 14.822 17.3826 15.178 17.6023 15.3977L23.2046 21L17.6023 26.6023C17.3826 26.822 17.3826 27.178 17.6023 27.3977C17.7122 27.5076 17.8561 27.5625 18 27.5625C18.1439 27.5625 18.2878 27.5076 18.3977 27.3977L24.3977 21.3977C24.6174 21.178 24.6174 20.822 24.3977 20.6023Z"
-                      fill="white"
-                    />
-                  </svg>
-                </div>
-              </div>
-                {% render 'picture-tag',
-                  src: quizBlock.settings.wallpaper,
-                  picture_attributes: "class='quiz-card__wallpaper'",
-                  img_classes: "cover-surface"
-                %}
-
-            </a>
-
-          {% endif %}
-        </div>
+      <div class="flex flex-col gap-2">
+        <tracked-button
+          :trackId="{{ compareTrackId }}" href="/collections/mattresses"
+          class="font-inter text-[16px] font-bold rounded-full border border-{#2E2F3C} text-center sec_btn bg-white"
+        >
+          Compare all mattresses
+        </tracked-button>
+      </div>
     </div>
 
-    <script type="quickscript" loading="visibility" src="{{ 'trio-comparison.js' | asset_url }}"></script>
+
+    <div class="section-body">
+      <div class="product-carousel splide pagination-bar">
+        {% include 'splide-arrows' %}
+
+        <div class="splide__track">
+          <ul class="splide__list">
+            {%- for block in productBlocks -%}
+              {% assign product = block.settings.product %}
+              <li class="splide__slide">
+                <a href="{{ product.url }}" class="card-container product-card  featured_card">
+                  <div class="product_badge">
+                    <p
+                      style="background-color: {{ block.settings.color }};"
+                      class="h-max rounded px-2 py-1 text-[12px] font-semibold uppercase leading-none text-white"
+                    >{{ block.settings.secondary_badge }}</p>
+                  </div>
+                  <div class="product-image">
+                    <img
+                      class="mx-auto h-full object-contain lazyload"
+                      data-src="{{ block.settings.image | image_url: width: 800 }}"
+                      width="350"
+                      height="179"
+                    />
+                  </div>
+
+                  <h3
+                    class="px-4 text-[20px] font-semibold font-inter mt-2 mb-3"
+                  >{{ block.settings.product_title }}</h3>
+
+                  <div class="featured_card__attributes px-4 shopify-richtext mb-3">{{ block.settings.desc }}</div>
+
+                  <div class="mb-0 px-4">
+                    <div class="text-left comfort_block py-2">
+                      <div>
+                        <p class="mb-1 text-[14px] font-semibold">Comfort</p>
+                        <div
+                          style="grid-template-columns: repeat(6, 1fr);"
+                          class="mb-2 grid gap-[6px]"
+                        >
+                          {% for i in (1..6) %}
+                            {% if i <= block.settings.comfort_meter %}
+                              <div class="h-3 rounded-xl bg-[#3C4196]">
+                                &nbsp;
+                              </div>
+                            {% else %}
+                              <div class="h-3 rounded-xl bg-[#D2D3DD]">
+                                &nbsp;
+                              </div>
+                            {% endif %}
+                          {% endfor %}
+                        </div>
+
+                        <p class="mb-1 text-[14px] font-semibold">Cooling</p>
+                        <div
+                          style="grid-template-columns: repeat(6, 1fr);"
+                          class="mb-2 grid gap-[6px]"
+                        >
+                          {% for i in (1..6) %}
+                            {% if i <= block.settings.cooling_meter %}
+                              <div class="h-3 rounded-xl bg-[#3C4196]">
+                                &nbsp;
+                              </div>
+                            {% else %}
+                              <div class="h-3 rounded-xl bg-[#D2D3DD]">
+                                &nbsp;
+                              </div>
+                            {% endif %}
+                          {% endfor %}
+                        </div>
+
+                        <p class="mb-1 text-[14px] font-semibold">Motion Isolation</p>
+                        <div
+                          style="grid-template-columns: repeat(6, 1fr);"
+                          class="grid gap-[6px]"
+                        >
+                          {% for i in (1..6) %}
+                            {% if i <= block.settings.motion_isolation_meter %}
+                              <div class="h-3 rounded-xl bg-[#3C4196]">
+                                &nbsp;
+                              </div>
+                            {% else %}
+                              <div class="h-3 rounded-xl bg-[#D2D3DD]">
+                                &nbsp;
+                              </div>
+                            {% endif %}
+                          {% endfor %}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="product_card_foot">
+                    <div class="p-4">
+                      <p
+                        class="mb-4 inline-block rounded-full border border-[#F4711E66] bg-[#FDB14766] px-2 py-1 text-[13px] leading-none hidden"
+                      >
+                        <span>{{ block.settings.discount_title }} -</span>
+                        <span class="font-semibold"> {{ block.settings.discount_amount }}%</span>
+                      </p>
+
+                      <div class="flex items-center justify-between gap-2 flex-col">
+                        <div>
+                          <div class=" text-[#55576F]" style="font-size:12px">
+                            {% if product.compare_at_price > product.price %}
+                              From
+                            {% endif %}
+
+                            <span
+                              class="line-through"
+                            >{{ product.compare_at_price | money_without_trailing_zeros }}</span>
+                          </div>
+                          <div class="flex items-center flex-wrap gap-2 mb-2">
+                            {% if product.compare_at_price > product.price %}
+                              <p class="font-semibold mr-1">{{ product.price | money_without_trailing_zeros }}</p>
+                              <p
+                                class="line-through  hidden"
+                              >{{ product.compare_at_price | money_without_trailing_zeros }}</p>
+                            {% else %}
+                              <p class="font-semibold"> {{ product.price | money_without_trailing_zeros }}</p>
+                            {% endif %}
+
+                            {% if product.compare_at_price > product.price %}
+                              <span
+                                class="font-semibold"
+                                style="color:#F03306"
+                              >{{ product.compare_at_price | minus: product.price | times: 100.0 | divided_by: product.compare_at_price | money_without_currency | times: 100 | remove: '.0' }}% off </span>
+                            {% endif %}
+
+                          </div>
+                        </div>
+
+                        {% liquid
+                          assign codename = product.metafields.accentuate.codename
+                          assign trackId = "Compare"
+
+                          if codename != blank
+                            assign trackId = trackId | prepend: "_" | prepend: codename
+                          endif
+
+                          if postfix != blank
+                            assign trackId = trackId | append: "_" | append: postfix
+                          endif
+                        %}
+
+                        <tracked-button
+                          :trackId="{{ trackId }}"
+                          class="btn testing w-{100%}"
+                          abtasty-tracker="PDP_CTR"
+                          href="{{ product.url }}"
+                          rel="noreferrer"
+                        >Shop Now
+                        </tracked-button>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </li>
+            {%- endfor -%}
+          </ul>
+        </div>
+      </div>
+
+      {% if quizBlock %}
+        <a href="{{ quizBlock.settings.url }}" target="_blank" class="quiz-card card-container">
+          <div class="quiz-card__content">
+            <h4 class="text-white text-md font-semibold">{{ quizBlock.settings.title }}</h4>
+            <p class="text-white text-sm font-semibold">{{ quizBlock.settings.content }}</p>
+            <div class="quiz-card__nav-icon">
+              <svg width="42" height="42" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="1" y="1" width="40" height="40" rx="20" stroke="white" stroke-width="2"/>
+                <path
+                  d="M24.3977 20.6023L18.3977 14.6023C18.178 14.3826 17.822 14.3826 17.6023 14.6023C17.3826 14.822 17.3826 15.178 17.6023 15.3977L23.2046 21L17.6023 26.6023C17.3826 26.822 17.3826 27.178 17.6023 27.3977C17.7122 27.5076 17.8561 27.5625 18 27.5625C18.1439 27.5625 18.2878 27.5076 18.3977 27.3977L24.3977 21.3977C24.6174 21.178 24.6174 20.822 24.3977 20.6023Z"
+                  fill="white"
+                />
+              </svg>
+            </div>
+          </div>
+          {% render 'picture-tag',
+            src: quizBlock.settings.wallpaper,
+            picture_attributes: "class='quiz-card__wallpaper'",
+            img_classes: "cover-surface"
+          %}
+
+        </a>
+
+      {% endif %}
+    </div>
+  </div>
+
+  <script type="quickscript" loading="visibility" src="{{ 'trio-comparison.js' | asset_url }}"></script>
 </section>
 
 {% schema %}

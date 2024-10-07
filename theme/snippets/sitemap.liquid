@@ -7,44 +7,6 @@
 
 {% capture sitemapHTML %}
   {% for link in linklists[sitemap].links %}
-    <script>
-      console.log({
-        "active": {{ link.active }},
-        "child_active": {{ link.child_active }},
-        "current": {{ link.current }},
-        "handle": "{{ link.handle }}",
-        "levels": {{ link.levels }},
-        "children": [
-          {% for childlink in link.links %}
-          {
-            "active": {{ childlink.active }},
-            "child_active": {{ childlink.child_active }},
-            "current": {{ childlink.current }},
-            "handle": "{{ childlink.handle }}",
-            "levels": {{ childlink.levels }},
-            "object": {{ childlink.object | json }},
-            "featuredImage": "{{ childlink.object.featured_image | image_url: width: 1040 }}",
-            "title": "{{ childlink.object.metafields.accentuate.display_name | default: childlink.title }}",
-            "type": "{{ childlink.type }}",
-            "url": "{{ childlink.url }}",
-            "accentuate": {{ childlink.object.metafields.accentuate | json }},
-            "promotionCapsule": "{{ childlink.object.metafields.accentuate.promotion_capsule }}",
-            "subnavHtmlContent": "{{ childlink.object.metafields.accentuate.subnav_html_content | replace: '"', "'" }}",
-            "submenuThumbImage": "{{ childlink.object.metafields.accentuate.subnav_thumb_image }}",
-
-          }
-          {%- if forloop.length > 0 -%}
-          {% unless forloop.last %},{% endunless -%}
-          {%- endif -%}
-          {% endfor %}
-        ],
-        "object": {{ link.object | json }},
-        "title": "{{ link.title }}",
-        "type": "{{ link.type }}",
-        "url": "{{ link.url }}",
-      });
-    </script>
-
     {% if link.handle != blank %}
       <div class="sitemap-item">
         <div class="sitemap-item-header">
