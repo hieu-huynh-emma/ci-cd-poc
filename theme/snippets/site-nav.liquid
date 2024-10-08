@@ -79,10 +79,6 @@
         if link.type == "page_link"
           assign isMinimal = true
         endif
-        assign isSaleLink = false
-        if link.url == section.settings.sale_page_url
-          assign isSaleLink = true
-        endif
       %}
 
       <site-nav-item
@@ -93,7 +89,6 @@
           class="site-nav__item
           {% if link.active %} site-nav--active{% endif %}
           {% if isMinimal %} is-minimal{% endif %}
-          {% if isSaleLink == true and setion.settings.show_sale_link == false %} hidden{% elsif isSaleLink %} highlighted{% endif %}
         "
       >
         <div class="nav-link{% if hasDropdown == true %} nav-link--has-dropdown{% endif %}">

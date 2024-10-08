@@ -19,6 +19,7 @@
             grid-template-columns: minmax(0, auto) minmax(0, 1fr) minmax(0, auto);
         }
     }
+
     .small_nav {
         display: none;
     }
@@ -44,7 +45,6 @@
         filter: drop-shadow(0 20px 13px rgb(0 0 0/.03)) drop-shadow(0 8px 5px rgb(0 0 0/.08));
         background: #fff;
         border-radius: 10px;
-        width: 400px;
     }
 
     .custom_dropdown {
@@ -84,6 +84,7 @@
             max-height: 60px;
             background: #f7f7f9;
         }
+
         nav-toggler {
             display: none;
         }
@@ -154,24 +155,14 @@
 
             <tracked-button :trackId="FAQ_HP" href="https://emma-sleep.ca/pages/faq">FAQ</tracked-button>
             <div class="custom_dropdown">
-                <tracked-button :trackId="Compare_other_HP" href="https://emma-sleep.ca/pages/comparison" class="dropdown_btn">Compare</tracked-button>
+                <tracked-button :trackId="Compare_other_HP" href="/collections/mattresses" class="dropdown_btn">
+                    Compare
+                </tracked-button>
                 <ul class="minimal-site-subnav">
 
                     <li class="site-subnav__item site-nav--active">
                         <a href="/pages/emma-vs-endy" class="site-subnav__link" aria-current="page" tabindex="-1">
                             Emma vs Endy
-                        </a>
-                    </li>
-
-                    <li class="site-subnav__item">
-                        <a href="/pages/emma-vs-apollo" class="site-subnav__link" tabindex="-1">
-                            Emma vs Apollo
-                        </a>
-                    </li>
-
-                    <li class="site-subnav__item">
-                        <a href="/pages/emma-vs-douglas" class="site-subnav__link" tabindex="-1">
-                            Emma vs Douglas
                         </a>
                     </li>
 
@@ -182,35 +173,10 @@
                     </li>
 
                     <li class="site-subnav__item">
-                        <a href="/pages/emma-vs-brunswick" class="site-subnav__link" tabindex="-1">
-                            Emma vs Brunswick
+                        <a href="/pages/emma-vs-douglas" class="site-subnav__link" tabindex="-1">
+                            Emma vs Douglas
                         </a>
                     </li>
-
-                    <li class="site-subnav__item">
-                        <a href="/pages/emma-vs-silk-and-snow" class="site-subnav__link" tabindex="-1">
-                            Emma vs Silk and Snow
-                        </a>
-                    </li>
-
-                    <li class="site-subnav__item">
-                        <a href="/pages/emma-vs-simba" class="site-subnav__link" tabindex="-1">
-                            Emma vs Simba
-                        </a>
-                    </li>
-
-                    <li class="site-subnav__item">
-                        <a href="/pages/emma-vs-logan-and-cove" class="site-subnav__link" tabindex="-1">
-                            Emma vs Logan and Cove
-                        </a>
-                    </li>
-
-                    <li class="site-subnav__item">
-                        <a href="/pages/emma-vs-noa" class="site-subnav__link" tabindex="-1">
-                            Emma vs Noa
-                        </a>
-                    </li>
-
                 </ul>
             </div>
 
