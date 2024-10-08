@@ -158,7 +158,7 @@
     "campaign-teaser": {
       "type": "campaign-teaser",
       "settings": {
-        "content": "<p><strong>Labour Day Sale:<\/strong> 55% off<\/p>",
+        "content": "<p><strong>Thanksgiving Sale:<\/strong> 55% off<\/p>",
         "bgcolor": "#fef3ea",
         "color": "#2e2f3c",
         "show_countdown_timer": false
@@ -687,7 +687,16 @@
       ],
       "settings": {
         "title": "Sleeping will never be the same",
-        "heading_alignment": "start"
+        "mobile_title": "",
+        "subtitle": "<p>Our sleep experts have mastered designing award-winning mattresses crafted to keep you relaxed and recharged, no matter what kind of sleeper you are. Climb on your best sleep yet!<\/p>",
+        "heading_alignment": "start",
+        "first_meter_title": "Comfort",
+        "show_first_meter": true,
+        "second_meter_title": "Cooling",
+        "show_second_meter": true,
+        "third_meter_title": "Motion Isolation",
+        "show_third_meter": true,
+        "show_secondary_badge": true
       }
     },
     "product-carousel": {
@@ -769,6 +778,7 @@
           "type": "video",
           "settings": {
             "video": "shopify:\/\/files\/videos\/Buy_SeanMari.mp4",
+            "content": "",
             "product": ""
           }
         },
@@ -776,6 +786,7 @@
           "type": "video",
           "settings": {
             "video": "shopify:\/\/files\/videos\/Amber.story.mp4",
+            "content": "",
             "product": ""
           }
         },
@@ -783,6 +794,7 @@
           "type": "video",
           "settings": {
             "video": "shopify:\/\/files\/videos\/dying.MOV",
+            "content": "",
             "product": ""
           }
         },
@@ -790,6 +802,7 @@
           "type": "video",
           "settings": {
             "video": "shopify:\/\/files\/videos\/copy_095C1154-5368-40AF-8656-F51DD0CB3BE3_063d0e6f-2a0f-4988-8ae4-2c2bf3857ec8.mov",
+            "content": "",
             "product": ""
           }
         },
@@ -797,6 +810,7 @@
           "type": "video",
           "settings": {
             "video": "shopify:\/\/files\/videos\/3 reasons_c1e64666-1e6b-46d4-983e-4e7b10b857f8.mov",
+            "content": "",
             "product": ""
           }
         },
@@ -804,6 +818,7 @@
           "type": "video",
           "settings": {
             "video": "shopify:\/\/files\/videos\/Really worth the hype.mov",
+            "content": "",
             "product": ""
           }
         },
@@ -811,6 +826,7 @@
           "type": "video",
           "settings": {
             "video": "shopify:\/\/files\/videos\/Pillows + Mattres_7d2c14ad-531d-4c45-8ed6-8fadf4320af2.mp4",
+            "content": "",
             "product": ""
           }
         }
@@ -947,7 +963,9 @@
       ],
       "settings": {
         "title": "<p>Why our customers love Emma<\/p>",
-        "trackId": ""
+        "heading_alignment": "start",
+        "trackId": "",
+        "enable_text_clamp": true
       }
     },
     "1685402594226951ca": {
