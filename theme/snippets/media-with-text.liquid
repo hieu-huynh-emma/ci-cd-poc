@@ -10,14 +10,16 @@
         <video class="lazy" playsinline="playsinline" autoplay loop muted preload="metadata" poster="{{ poster }}">
 
           {% for source in mediaSource.sources %}
-            <source data-src="{{ source.url }}" type="{{ source.mime_type }}" />
+            {% if source.mime_type != "application/x-mpegURL" %}
+              <source data-src="{{ source.url }}" type="{{ source.mime_type }}" />
+            {% endif %}
           {% endfor %}
         </video>
       {% when 'youtube' %}
         <iframe
-            src="https://www.youtube.com/embed/{{ mediaSource.id }}"
-            allow="autoplay; encrypted-media"
-            allowfullscreen
+          src="https://www.youtube.com/embed/{{ mediaSource.id }}"
+          allow="autoplay; encrypted-media"
+          allowfullscreen
         ></iframe>
     {% endcase %}
   </div>

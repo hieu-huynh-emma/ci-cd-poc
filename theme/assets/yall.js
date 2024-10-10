@@ -3,15 +3,14 @@
   const CRAWLER = /baidu|(?:google|bing|yandex|duckduck)bot/i.test(navigator.userAgent);
   const DATA_ATTRS = ["src", "poster"];
 
-  function yallBindEvents(element, events) {
+  function yallBindEvents (element, events) {
     for (const eventIndex in events) {
       const eventObject = events[eventIndex];
 
       element.addEventListener(eventIndex, eventObject.listener || eventObject, eventObject.options || undefined);
     }
   }
-
-  function yallFlipDataAttrs(element, lazyClass) {
+  function yallFlipDataAttrs (element, lazyClass) {
     for (const dataAttr of DATA_ATTRS) {
       if (dataAttr in element.dataset) {
         element.setAttribute(dataAttr, element.dataset[dataAttr]);
@@ -22,8 +21,7 @@
       }
     }
   }
-
-  function yallLoad(element, lazyClass, lazyBackgroundClass, lazyBackgroundLoaded) {
+  function yallLoad (element, lazyClass, lazyBackgroundClass, lazyBackgroundLoaded) {
     if (element.nodeName == "VIDEO") {
       const sourceElements = Array.from(element.querySelectorAll("source"));
 
@@ -44,8 +42,7 @@
       classList.add(lazyBackgroundLoaded);
     }
   }
-
-  function yall(options) {
+  function yall (options) {
     const lazyClass = options?.lazyClass || "lazy";
     const lazyBackgroundClass = options?.lazyBackgroundClass || "lazy-bg";
     const lazyBackgroundLoaded = options?.lazyBackgroundLoaded || "lazy-bg-loaded";
@@ -55,7 +52,7 @@
     const observeRootSelector = options?.observeRootSelector || "body";
     const mutationObserverOptions = options?.mutationObserverOptions || {
       childList: true,
-      subtree: true,
+      subtree: true
     };
     const lazySelector = `video.${lazyClass},.${lazyBackgroundClass}`;
     let lazyElements = Array.from(document.querySelectorAll(lazySelector));
@@ -85,7 +82,7 @@
           }
         }
       }, {
-        rootMargin: `${threshold}px 0%`,
+        rootMargin: `${threshold}px 0%`
       });
 
       for (const lazyElement of lazyElements) {
@@ -116,5 +113,5 @@
   }
 
 
-  document.addEventListener("DOMContentLoaded", yall);
-})();
+  document.addEventListener('DOMContentLoaded', yall)
+})()
