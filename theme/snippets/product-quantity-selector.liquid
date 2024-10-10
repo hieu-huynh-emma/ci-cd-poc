@@ -47,14 +47,3 @@
     </button>
   </quantity-input>
 </div>
-
-<script type="quickscript" loading="delayed">
-  const input = document.getElementById('Quantity-{{ section.id }}');
-
-		$(`.quantity-input__button[name="minus"]`).click(function() {
-			if (input.value <= 1) {
-				return;
-			}
-			input.value--;
-		});
-</script>
