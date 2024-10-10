@@ -57,6 +57,6 @@ function yall(n) {
   } else if (t) for (const e of v) s(e, r, i, c);
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
   yall()
 })

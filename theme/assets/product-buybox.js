@@ -93,7 +93,6 @@ class StickyBuybox extends CustomElement {
   }
 
   mounted() {
-    console.log("=>(product-buybox.js:21) mounted");
     super.mounted();
 
     const { $addToCart, $fixAddToCart, $proxyQtySelect, $primaryQtySelect } = this.refs;
@@ -126,30 +125,16 @@ class StickyBuybox extends CustomElement {
     } = entry;
 
     let isVisible = false;
-    console.log("=>(product-buybox.js:119) y", y);
-    console.log("=>(product-buybox.js:120) this.previousY", this.previousY);
 
     if (y < this.previousY) {
       // Scrolling Down
-      console.log("scrolling down");
       if (isIntersecting) {
-        console.log("add-to-cart button in view");
       } else {
-        console.log("add-to-cart button out of view");
         isVisible = true;
       }
     } else {
       // Scrolling Up
-      console.log("scrolling up");
     }
-
-    // console.log("=>(product-buybox.js:119) rootY", rootBounds.y);
-
-    // const rootBoundY = rootBounds?.y ?? this.threshold;
-    // console.log("=>(product-buybox.js:120) this.threshold", this.threshold);
-    //
-    // const isVisible = bottom <= 0 || bottom <= rootBoundY;
-    // console.log("=>(product-buybox.js:120) isVisible", isVisible);
 
     this.toggle(isVisible);
 
