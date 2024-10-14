@@ -288,6 +288,9 @@ class JointProductSelector extends HTMLElement {
                 selector: "sticky-buybox",
             },
             {
+                sectionId: "campaign-teaser"
+            },
+            {
                 sectionId: "product-media",
                 selector: "product-media",
             },
