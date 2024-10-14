@@ -101,7 +101,10 @@
                   </span>
 
               
-                <span> {{ primary_product.title }} mattress ({{ current_variant.title }}),</span>
+                <span>
+                  {{ primary_product.title }} mattress ({{ current_variant.title }})
+                  {% if bundle_item_metaobjects.count  == 1 %}and {% else %}, {% endif %}
+                </span>
               
 
               {% for bundle_item_metaobject in bundle_item_metaobjects %}

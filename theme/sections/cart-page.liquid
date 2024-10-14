@@ -1280,6 +1280,8 @@
                   :addonServiceFor="{{ addonServiceFor }}"
                 {% endif %}
               >
+                {% assign primary_product_handle = item.product.metafields.accentuate.configurable_product %}
+                {% assign primary_product = all_products[primary_product_handle] %}
                 <td>
                   <div class="removerecord">
                     <tracked-button :trackId="Delete_cart"
@@ -1306,8 +1308,17 @@
                       </a>
                     {% endif %}
                     <div class="pd_name">
+                     
+                      
                       <a href="{{ item.url }}" class="cart-item__name break product_title">
-                        {{- item.product.title | escape -}}
+                        {% assign title = item.title | split: ' - ' %}
+                        <span>
+                          {% if item.product.metafields.accentuate.is_bundle_cross_sell %}
+                            {{ primary_product.title }} + Accessory Bundle
+                          {% else %}
+                            {{ item.product.metafields.accentuate.display_name | default: title[0] }}
+                          {% endif %}
+                        </span>
                       </a>
 
                       {%- if item.product.has_only_default_variant == false
@@ -1327,24 +1338,31 @@
                         {% assign bundle_item_metaobjects = current_variant.metafields.custom.bundle_items.value %}
 
                         <div class="cart-item-description">
-                          {% for bundle_item_metaobject in bundle_item_metaobjects %}
-                            {% assign bundle_item_variant = bundle_item_metaobject.product.value %}
-
-                            <span>
-                                {% if bundle_item_metaobject.quantity > 1 -%}
-                                  {{- bundle_item_metaobject.quantity }}x
-                                {% endif -%}
-                              {{- bundle_item_variant.product.title }}
-                              {% if bundle_item_variant.title != 'Default Title' %}
-                                ({{ bundle_item_variant.title }})
-                              {% endif %}
-                              </span>
-
-                            {% unless forloop.last -%}
-                              <span>/</span>
-                            {%- endunless %}
-                          {% endfor %}
-                        </div>
+                          <span>Your purchase includes our</span>
+          
+                        
+                          <span>
+                            {{ primary_product.title }} mattress ({{ current_variant.title }})
+                            {% if bundle_item_metaobjects.count == 1 %}and {% else %}, {% endif %}
+                          </span>
+                        
+          
+                        {% for bundle_item_metaobject in bundle_item_metaobjects %}
+                          {% assign bundle_item_variant = bundle_item_metaobject.product.value %}
+                          {% assign qty = bundle_item_metaobject.qty | default: 1 %}
+          
+                          <span>
+          				  {{ qty }} {{ bundle_item_variant.product.metafields.accentuate.display_name | default: bundle_item_variant.product.title }}{% if qty > 1 %}s{% endif %}
+                            {% if bundle_item_variant.title != "Default Title" %}
+                              ({{ bundle_item_variant.title }})
+                            {% endif %}
+          					</span>
+          
+                          {% unless forloop.last %}
+                            <span> {% if forloop.rindex0 == 1 %}and {% else %}, {% endif %}</span>
+                          {% endunless %}
+                        {% endfor %}
+                      </div>
                       {% endif %}
                       {% if item.product.metafields.accentuate.has_pillow_addon %}
                         {% assign product_handle = item.product.metafields.accentuate.pillow_addon
