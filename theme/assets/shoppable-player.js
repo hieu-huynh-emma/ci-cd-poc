@@ -1,188 +1,188 @@
 class ShoppablePlayer extends CustomElement {
-  initialized = false;
-  muted = false;
+	initialized = false;
+	muted = false;
 
-  activeVideo;
+	activeVideo;
 
-  carousel;
-  thumbnails;
+	carousel;
+	thumbnails;
 
-  constructor() {
-    super();
-  }
+	constructor() {
+		super();
+	}
 
-  initPlayer() {
-    return new Promise(async (rs) => {
-      await ResourceCoordinator.requestVendor("Splide");
+	initPlayer() {
+		return new Promise(async (rs) => {
+			await ResourceCoordinator.requestVendor("Splide");
 
-      this.carousel = new Splide(this.querySelector(".video-container"), {
-        pagination: false,
-        arrows: false,
-        rewind: true,
-        rewindByDrag: true,
-        waitForTransition: true,
-        speed: 250,
-        height: "100%",
-        direction: "ttb",
-      });
+			this.carousel = new Splide(this.querySelector(".video-container"), {
+				pagination: false,
+				arrows: false,
+				rewind: true,
+				rewindByDrag: true,
+				waitForTransition: true,
+				speed: 250,
+				height: "100%",
+				direction: "ttb",
+			});
 
-      this.thumbnails = new Splide(this.querySelector(".thumbnail-carousel"), {
-        gap: 8,
-        pagination: false,
-        direction: "ttb",
-        height: "100%",
-        isNavigation: true,
-        focus: "center",
-        fixedHeight: 80,
-        fixedWidth: 80,
-        rewind: true,
-        waitForTransition: true,
-        speed: 250,
-        breakpoints: {
-          769: {
-            destroy: true,
-          },
-        },
-      });
+			this.thumbnails = new Splide(this.querySelector(".thumbnail-carousel"), {
+				gap: 8,
+				pagination: false,
+				direction: "ttb",
+				height: "100%",
+				isNavigation: true,
+				focus: "center",
+				fixedHeight: 80,
+				fixedWidth: 80,
+				rewind: true,
+				waitForTransition: true,
+				speed: 250,
+				breakpoints: {
+					769: {
+						destroy: true,
+					},
+				},
+			});
 
 
-      this.carousel.on("inactive", ({ slide }) => {
-        const shoppableVideo = slide.querySelector("shoppable-video");
-        shoppableVideo.pause();
-        const $playerInteraction = $(shoppableVideo).find(".player-interaction");
+			this.carousel.on("inactive", ({slide}) => {
+				const shoppableVideo = slide.querySelector("shoppable-video");
+				shoppableVideo.pause();
+				const $playerInteraction = $(shoppableVideo).find(".player-interaction");
 
-        if ($playerInteraction.length) {
-          $playerInteraction.removeClass("player-interaction--transition");
-        }
-      });
+				if ($playerInteraction.length) {
+					$playerInteraction.removeClass("player-interaction--transition");
+				}
+			});
 
-      this.carousel.on("active", ({ slide }) => {
-        if (!this.initialized) {
-          this.initialized = true;
-          rs();
-          return;
-        }
+			this.carousel.on("active", ({slide}) => {
+				const shoppableVideo = slide.querySelector("shoppable-video");
 
-        const shoppableVideo = slide.querySelector("shoppable-video");
+				this.activeVideo = shoppableVideo;
 
-        this.activeVideo = shoppableVideo;
-        shoppableVideo.play();
-        shoppableVideo.mute(this.muted);
+				shoppableVideo.play();
+				shoppableVideo.mute(this.muted);
 
-        const $playerInteraction = $(shoppableVideo).find(".player-interaction");
+				const $playerInteraction = $(shoppableVideo).find(".player-interaction");
 
-        if ($playerInteraction.length) {
-          $playerInteraction.addClass("player-interaction--transition");
-        }
-      });
+				if ($playerInteraction.length) {
+					$playerInteraction.addClass("player-interaction--transition");
+				}
+			});
 
-      this.carousel.sync(this.thumbnails);
+			this.carousel.on("ready", () => {
+				this.initialized = true;
+				rs();
+			})
 
-      this.carousel.mount();
-      this.thumbnails.mount();
-    });
-  }
+			this.carousel.sync(this.thumbnails);
 
-  go(index = 0) {
-    this.carousel.go(index);
-  }
+			this.carousel.mount();
+			this.thumbnails.mount();
+		});
+	}
 
-  toggleMute = debounce(() => {
-    this.mute(!this.muted);
-  }, 10);
+	go(index = 0) {
+		this.carousel.go(index);
+	}
 
-  mute(muted = false) {
-    const $soundBtn = $("#sound-button"),
-      $muteIcon = $soundBtn.find(".mute-icon"),
-      $unmuteIcon = $soundBtn.find(".unmute-icon");
+	toggleMute = debounce(() => {
+		this.mute(!this.muted);
+	}, 10);
 
-    this.muted = muted;
+	mute(muted = false) {
+		const $soundBtn = $("#sound-button"),
+			$muteIcon = $soundBtn.find(".mute-icon"),
+			$unmuteIcon = $soundBtn.find(".unmute-icon");
 
-    if (muted) {
-      $muteIcon.addClass("hidden");
-      $unmuteIcon.removeClass("hidden");
-    } else {
-      $unmuteIcon.addClass("hidden");
-      $muteIcon.removeClass("hidden");
-    }
+		this.muted = muted;
 
-    this.activeVideo.mute(muted);
-  }
+		if (muted) {
+			$muteIcon.addClass("hidden");
+			$unmuteIcon.removeClass("hidden");
+		} else {
+			$unmuteIcon.addClass("hidden");
+			$muteIcon.removeClass("hidden");
+		}
 
-  close() {
-    this.activeVideo.pause();
-  }
+		this.activeVideo.mute(muted);
+	}
+
+	close() {
+		this.activeVideo.pause();
+	}
 }
 
 customElements.define("shoppable-player", ShoppablePlayer);
 
 
 class ShoppableVideo extends CustomElement {
-  video;
+	video;
 
-  get refs() {
-    return {
-      $shoppable: $("shoppable-manager"),
-      $playIcon: this.$el.find(".play-icon"),
-      $soundButton: this.$el.find(".sound-button"),
-      $playerButtons: this.$el.find(".player-buttons"),
-    };
-  }
+	get refs() {
+		return {
+			$shoppable: $("shoppable-manager"),
+			$playIcon: this.$el.find(".play-icon"),
+			$soundButton: this.$el.find(".sound-button"),
+			$playerButtons: this.$el.find(".player-buttons"),
+		};
+	}
 
-  constructor() {
-    super();
+	constructor() {
+		super();
 
-    this.addEventListener("click", this.onClick.bind(this));
+		this.addEventListener("click", this.onClick.bind(this));
 
-  }
+	}
 
-  onClick(e) {
-    e.preventDefault();
+	onClick(e) {
+		e.preventDefault();
 
-    if (!this.video) return;
+		if (!this.video) return;
 
-    this.togglePlay();
+		this.togglePlay();
 
-  }
+	}
 
-  beforeMount() {
-    this.refs.$soundButton.click(this.onSoundButtonClicked);
-  }
+	beforeMount() {
+		this.refs.$soundButton.click(this.onSoundButtonClicked);
+	}
 
-  toggle(playing = false) {
-    playing ? this.play() : this.pause();
-  }
+	toggle(playing = false) {
+		playing ? this.play() : this.pause();
+	}
 
-  play() {
-    this.video.play();
-  }
+	play() {
+		this.video.play();
+	}
 
-  pause() {
-    this.video.pause();
-  }
+	pause() {
+		this.video.pause();
+	}
 
-  mute(muted = false) {
-    this.video.muted = muted;
-  }
+	mute(muted = false) {
+		this.video.muted = muted;
+	}
 
-  togglePlay = debounce((e) => {
-    const { $playIcon } = this.refs;
+	togglePlay = debounce((e) => {
+		const {$playIcon} = this.refs;
 
-    if (this.video.paused || this.video.ended) {
-      this.video.play();
-      $playIcon.addClass("hidden");
+		if (this.video.paused || this.video.ended) {
+			this.video.play();
+			$playIcon.addClass("hidden");
 
-    } else {
-      this.video.pause();
-      $playIcon.removeClass("hidden");
-    }
-  }, 10);
+		} else {
+			this.video.pause();
+			$playIcon.removeClass("hidden");
+		}
+	}, 10);
 
-  async mounted() {
-    super.mounted();
+	async mounted() {
+		super.mounted();
 
-    this.video = this.querySelector("video");
-  }
+		this.video = this.querySelector("video");
+	}
 }
 
 customElements.define("shoppable-video", ShoppableVideo);

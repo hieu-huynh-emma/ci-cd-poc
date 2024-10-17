@@ -1,20 +1,20 @@
-{% comment %} <link rel="quickscript" loading="delayed" href="{{ 'shoppable.css' | asset_url }}" />
+<link rel="quickscript" loading="delayed" href="{{ 'shoppable.css' | asset_url }}"/>
 
 <script type="quickscript" loading="delayed" src="{{ 'shoppable-player.js' | asset_url }}"></script>
 <script type="quickscript" loading="delayed" src="{{ 'shoppable.js' | asset_url }}"></script>
 
 <div class="section-container spacing-{{ section.settings.container_spacing }}">
-  <div class="section-chassis page-boundary">
-    {% render 'section-header' %}
+	<div class="section-chassis page-boundary">
+		{% render 'section-header' %}
 
-    <shoppable-manager>
-      {% render 'shoppable-player' %}
+		<shoppable-manager>
+			{% render 'shoppable-player' %}
 
-      {% render 'shoppable-carousel' %}
-    </shoppable-manager>
-  </div>
+			{% render 'shoppable-carousel' %}
+		</shoppable-manager>
+	</div>
 
-</div> {% endcomment %}
+</div>
 
 {% schema %}
 {

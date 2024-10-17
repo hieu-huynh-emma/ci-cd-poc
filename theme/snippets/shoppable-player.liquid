@@ -1,72 +1,72 @@
 <shoppable-player class="player-container">
-  <div class="video-container splide">
-    {% render 'splide-arrows', trackId: trackId %}
+	<div class="video-container splide">
+		{% render 'splide-arrows', trackId: trackId %}
 
-    <div class="splide__track">
-      <ul class="splide__list">
-        {% for block in section.blocks %}
-          <li
-            class="splide__slide"
-          >
-            {% case block.type %}
-              {% when "video" %}
+		<div class="splide__track">
+			<ul class="splide__list">
+				{% for block in section.blocks %}
+					<li
+							class="splide__slide"
+					>
+						{% case block.type %}
+							{% when "video" %}
 
-                {% render 'shoppable-video', block: block.settings %}
-            {% endcase %}
-          </li>
-        {% endfor %}
-      </ul>
-    </div>
-  </div>
+								{% render 'shoppable-video', block: block.settings %}
+						{% endcase %}
+					</li>
+				{% endfor %}
+			</ul>
+		</div>
+	</div>
 
-  <div class="shoppable-player-thumbnails">
-    <div class="thumbnail-carousel splide">
-      {% render 'splide-arrows', trackId: trackId %}
+	<div class="shoppable-player-thumbnails">
+		<div class="thumbnail-carousel splide">
+			{% render 'splide-arrows', trackId: trackId %}
 
-      <div class="splide__track">
-        <ul class="splide__list">
-          {% for block in section.blocks %}
-            <li
-              class="splide__slide"
-            >
-              {% case block.type %}
-                {% when "image" %}
-                  {% assign thumbnail = block.settings %}
+			<div class="splide__track">
+				<ul class="splide__list">
+					{% for block in section.blocks %}
+						<li
+								class="splide__slide"
+						>
+							{% case block.type %}
+								{% when "image" %}
+									{% assign thumbnail = block.settings %}
 
-                  <div class="media-item media-container">
-                    {% render 'picture-tag',
-                      src: thumbnail.en_image,
-                      picture_attributes: 'class="media-item__image" lang="en"',
-                      img_classes: "",
-                      width: 808,
-                      height: 486
-                    %}
+									<div class="media-item media-container">
+										{% render 'picture-tag',
+												src: thumbnail.en_image,
+												picture_attributes: 'class="media-item__image" lang="en"',
+												img_classes: "",
+												width: 808,
+												height: 486
+										%}
 
-                  </div>
+									</div>
 
-                {% when "video" or "external_video" %}
-                  {% assign media = block.settings.video %}
-                  <button id="Deferred-Poster-Modal-{{ media.id }}"
-                          class="media-poster media-container cover-surface"
-                          type="button">
+								{% when "video" or "external_video" %}
+									{% assign media = block.settings.video %}
+									<button id="Deferred-Poster-Modal-{{ media.id }}"
+									        class="media-poster media-container cover-surface"
+									        type="button">
 
-                    {% assign height = 576 | divided_by: media.preview_image.aspect_ratio %}
-                    {% assign alt = media.preview_image.alt | escape %}
-                    {% render 'picture-tag',
-                      src: media.preview_image,
-                      picture_attributes: 'class="media-item__image cover-surface"',
-                      img_classes: "cover-surface",
-                      width: 576,
-                      height: height,
-                      alt: alt
-                    %}
-                  </button>
+										{% assign height = 576 | divided_by: media.preview_image.aspect_ratio %}
+										{% assign alt = media.preview_image.alt | escape %}
+										{% render 'picture-tag',
+												src: media.preview_image,
+												picture_attributes: 'class="media-item__image cover-surface"',
+												img_classes: "cover-surface",
+												width: 576,
+												height: height,
+												alt: alt
+										%}
+									</button>
 
-              {% endcase %}
-            </li>
-          {% endfor %}
-        </ul>
-      </div>
-    </div>
-  </div>
+							{% endcase %}
+						</li>
+					{% endfor %}
+				</ul>
+			</div>
+		</div>
+	</div>
 </shoppable-player>
