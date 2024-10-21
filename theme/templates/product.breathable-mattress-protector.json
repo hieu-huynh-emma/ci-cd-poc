@@ -3,7 +3,8 @@
   "sections": {
     "product-layout": {
       "type": "product-layout",
-      "settings": {}
+      "settings": {
+      }
     },
     "product-badges": {
       "type": "product-badges",
@@ -28,7 +29,7 @@
       ],
       "settings": {
         "title": "Breathable Mattress Protector",
-        "desc": "<p><strong>Say goodbye to spills and stains!<\/strong><\/p><ul><li>AllergyShield® mattress protector for comfortable, dust & allergen-free sleep<\/li><li>Breathable, 100% waterproof guard for your mattress against spills, dirt, and moisture<\/li><li>Stretchable to 13\", perfectly fits our Emma Original Mattress and our Hybrid Comfort Mattress<\/li><li>Easily machine washable<\/li><\/ul>",
+        "desc": "<p><strong>Say goodbye to spills and stains!<\/strong><\/p><ul><li>AllergyShield mattress protector for comfortable, dust & allergen-free sleep<\/li><li>Breathable, 100% waterproof guard for your mattress against spills, dirt, and moisture<\/li><li>Stretchable to 13\", perfectly fits our Emma Original Mattress and our Hybrid Comfort Mattress<\/li><li>Easily machine washable<\/li><\/ul>",
         "disclaimer": ""
       }
     },
@@ -144,7 +145,8 @@
         "49138228-00c2-461a-bbdd-650d93f8503b",
         "7bc03542-75ef-4463-b480-ec46f36ac421"
       ],
-      "settings": {}
+      "settings": {
+      }
     },
     "campaign-teaser": {
       "type": "campaign-teaser",
@@ -163,7 +165,7 @@
           "type": "item",
           "settings": {
             "title": "Materials",
-            "content": "<p>- Sneeze- and itch-free AllergyShield® technology<\/p><p>- Breathable, waterproof polyester<\/p>",
+            "content": "<p>- Sneeze- and itch-free AllergyShield technology<\/p><p>- Breathable, waterproof polyester<\/p>",
             "product_dimension": false
           }
         },
@@ -190,7 +192,8 @@
         "b10d93d5-1a38-4340-b997-737c94850770",
         "361b0dc3-3896-4fb3-9116-255bf53f8858"
       ],
-      "settings": {}
+      "settings": {
+      }
     },
     "product-unique-selling-points": {
       "type": "product-unique-selling-points",
@@ -237,14 +240,16 @@
         "167def1b-b3fa-4ffb-a44d-34d5942a0c56",
         "809302fb-d0b7-4e84-854b-40031868c836"
       ],
-      "settings": {}
+      "settings": {
+      }
     },
     "product-auxiliary": {
       "type": "product-auxiliary",
       "blocks": {
         "cross_sell_widget_eKYGzp": {
           "type": "cross_sell_widget",
-          "settings": {}
+          "settings": {
+          }
         },
         "upsell_widget_tXLCDN": {
           "type": "upsell_widget",
@@ -261,7 +266,8 @@
         "cross_sell_widget_eKYGzp",
         "upsell_widget_tXLCDN"
       ],
-      "settings": {}
+      "settings": {
+      }
     },
     "multimedia-showcase": {
       "type": "multimedia-showcase",
@@ -305,7 +311,8 @@
         "57e597f8-8943-4def-820a-a0e469678641",
         "95f7a903-df98-4d58-9b15-0db125d9190c"
       ],
-      "settings": {}
+      "settings": {
+      }
     },
     "mattress-layers-static": {
       "type": "mattress-layers-static",
@@ -365,7 +372,9 @@
     "mattress-firmness": {
       "type": "mattress-firmness",
       "disabled": true,
-      "custom_css": [],
+      "custom_css": [
+
+      ],
       "settings": {
         "title": "How does the Emma Original feel?",
         "subtitle": "MATTRESS FIRMNESS SCALE",
@@ -440,7 +449,16 @@
       ],
       "settings": {
         "title": "Sleeping will never be the same",
-        "heading_alignment": "start"
+        "mobile_title": "",
+        "subtitle": "<p>Our sleep experts have mastered designing award-winning mattresses crafted to keep you relaxed and recharged, no matter what kind of sleeper you are. Climb on your best sleep yet!<\/p>",
+        "heading_alignment": "start",
+        "first_meter_title": "Comfort",
+        "show_first_meter": true,
+        "second_meter_title": "Cooling",
+        "show_second_meter": true,
+        "third_meter_title": "Motion Isolation",
+        "show_third_meter": true,
+        "show_secondary_badge": true
       }
     },
     "product-carousel": {
@@ -448,6 +466,13 @@
       "blocks": {
         "d8319461-aedd-4805-884a-95b7ed1a5893": {
           "type": "catalog_item",
+          "settings": {
+            "product": "perfect-sleep-bundle-ii"
+          }
+        },
+        "catalog_item_VFQpNV": {
+          "type": "catalog_item",
+          "disabled": true,
           "settings": {
             "product": "perfect-sleep-bundle"
           }
@@ -473,6 +498,7 @@
       },
       "block_order": [
         "d8319461-aedd-4805-884a-95b7ed1a5893",
+        "catalog_item_VFQpNV",
         "5e77d40f-79e8-4050-a013-d2325a25b443",
         "6157481e-9612-4a7c-a3bf-4006a99b7bd6",
         "07d5912c-d4c3-4ebb-97a6-f723fc8a4f3f"
@@ -499,6 +525,7 @@
           "type": "video",
           "settings": {
             "video": "shopify:\/\/files\/videos\/Buy_SeanMari.mp4",
+            "content": "",
             "product": ""
           }
         },
@@ -506,6 +533,7 @@
           "type": "video",
           "settings": {
             "video": "shopify:\/\/files\/videos\/Amber.story.mp4",
+            "content": "",
             "product": ""
           }
         },
@@ -513,6 +541,7 @@
           "type": "video",
           "settings": {
             "video": "shopify:\/\/files\/videos\/dying.MOV",
+            "content": "",
             "product": ""
           }
         },
@@ -520,6 +549,7 @@
           "type": "video",
           "settings": {
             "video": "shopify:\/\/files\/videos\/copy_095C1154-5368-40AF-8656-F51DD0CB3BE3_063d0e6f-2a0f-4988-8ae4-2c2bf3857ec8.mov",
+            "content": "",
             "product": ""
           }
         },
@@ -527,6 +557,7 @@
           "type": "video",
           "settings": {
             "video": "shopify:\/\/files\/videos\/3 reasons_c1e64666-1e6b-46d4-983e-4e7b10b857f8.mov",
+            "content": "",
             "product": ""
           }
         },
@@ -534,6 +565,7 @@
           "type": "video",
           "settings": {
             "video": "shopify:\/\/files\/videos\/Really worth the hype.mov",
+            "content": "",
             "product": ""
           }
         },
@@ -541,6 +573,7 @@
           "type": "video",
           "settings": {
             "video": "shopify:\/\/files\/videos\/Pillows + Mattres_7d2c14ad-531d-4c45-8ed6-8fadf4320af2.mp4",
+            "content": "",
             "product": ""
           }
         }
@@ -677,7 +710,9 @@
       ],
       "settings": {
         "title": "<p>Why our customers love Emma<\/p>",
-        "trackId": ""
+        "heading_alignment": "start",
+        "trackId": "",
+        "enable_text_clamp": true
       }
     },
     "168540174983dd55c2": {
