@@ -19,10 +19,11 @@
             {% assign blockImg = blockImg | image_url: width: 450 %}
             {% assign coverImg = product.featured_image | image_url: width: 450 %}
             {% assign objectPosition = product.metafields.accentuate.featured_image_position %}
+          {% assign imgUrl = blockImg | default: product.metafields.accentuate.featured_image[0].src | default: coverImg %}
             <img
-                    data-src="{{ blockImg | default: product.metafields.accentuate.featured_image[0].src | default: coverImg }}"
+                    src="{{ imgUrl }}"
                     alt=""
-                    class="lazyload product__image{% if objectPosition %} object-{{ objectPosition }}{% endif %}"
+                    class="product__image{% if objectPosition %} object-{{ objectPosition }}{% endif %}"
             />
         </div>
 
