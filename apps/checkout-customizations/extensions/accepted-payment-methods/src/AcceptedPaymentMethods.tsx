@@ -1,25 +1,44 @@
-import { BlockLayout, Image, reactExtension, Text, useTranslate } from "@shopify/ui-extensions-react/checkout";
+import {
+    InlineLayout,
+    useApi,
+    View,
+    BlockLayout,
+    Image,
+    reactExtension,
+    Text,
+    useTranslate
+} from "@shopify/ui-extensions-react/checkout";
+import {useState} from "react";
 
 export default reactExtension(
-  "purchase.checkout.block.render",
-  () => <Extension />,
+    "purchase.checkout.block.render",
+    () => <Extension/>,
 );
 
 function Extension() {
-  const translate = useTranslate()
-  const imageUrl = "https://emma-sleep.ca/cdn/shop/t/384/assets/checkout-payment-support_600x.png";
+    const translate = useTranslate()
+    const {appMetafields} = useApi()
 
-  return (
-    <BlockLayout rows="auto" blockAlignment="center" inlineAlignment="center" spacing="base">
-      <Text accessibilityRole="strong" emphasis="bold" size="base">
-        {translate("topText")}
-      </Text>
 
-      <Image source={imageUrl} />
+    const [images, setImages] = useState([]);
 
-      <Text accessibilityRole="strong" emphasis="bold" size="base">
-        {translate("bottomText")}
-      </Text>
-    </BlockLayout>
-  );
+    appMetafields.subscribe((metafields) => {
+        setImages(JSON.parse(metafields[0].metafield.value as string))
+    });
+
+    return (
+        <BlockLayout rows="auto" blockAlignment="center" inlineAlignment="center" spacing="tight">
+            <Text accessibilityRole="strong" emphasis="bold" size="base">
+                {translate("topText")}
+            </Text>
+
+            <InlineLayout columns={75} spacing="tight" blockAlignment="center" inlineAlignment="center">
+                {images.map(i => <Image source={i.src}></Image>)}
+            </InlineLayout>
+
+            <Text accessibilityRole="strong" emphasis="bold" size="base">
+                {translate("bottomText")}
+            </Text>
+        </BlockLayout>
+    );
 }

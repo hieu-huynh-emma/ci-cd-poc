@@ -33,9 +33,9 @@ api_access = true
 # products, customers, and more. Learn more:
 # https://shopify.dev/docs/api/checkout-ui-extensions/unstable/configuration#metafields
 
-# [[extensions.metafields]]
-# namespace = "my_namespace"
-# key = "my_key"
+ [[extensions.metafields]]
+ namespace = "accentuate"
+ key = "checkout_accepted_payment_methods"
 # [[extensions.metafields]]
 # namespace = "my_namespace"
 # key = "my_other_key"
