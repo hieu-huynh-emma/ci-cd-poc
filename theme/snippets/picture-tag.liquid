@@ -19,7 +19,7 @@
   <source media="(max-width: 768px)"
           srcset="{{ mobile_url | image_url: width: 400 }}">
 
-  <img class="lazyload {{ img_classes }}"
+  <img class="lazyload cover-surface {{ img_classes }}"
        width="{{ width | default: "auto" }}"
        height="{{ height | default: "auto" }}"
        alt="{{ alt | default: "alt" }}"
