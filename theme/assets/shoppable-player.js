@@ -16,14 +16,19 @@ class ShoppablePlayer extends CustomElement {
 			await ResourceCoordinator.requestVendor("Splide");
 
 			this.carousel = new Splide(this.querySelector(".video-container"), {
+				mediaQuery: "min",
 				pagination: false,
 				arrows: false,
 				rewind: true,
 				rewindByDrag: true,
 				waitForTransition: true,
-				speed: 250,
-				height: "100%",
-				direction: "ttb",
+				speed: 200,
+				breakpoints: {
+					769: {
+						direction: "ttb",
+						height: "100%",
+					},
+				},
 			});
 
 			this.thumbnails = new Splide(this.querySelector(".thumbnail-carousel"), {
@@ -37,7 +42,7 @@ class ShoppablePlayer extends CustomElement {
 				fixedWidth: 80,
 				rewind: true,
 				waitForTransition: true,
-				speed: 250,
+				speed: 200,
 				breakpoints: {
 					769: {
 						destroy: true,
@@ -123,6 +128,7 @@ class ShoppableVideo extends CustomElement {
 	get refs() {
 		return {
 			$shoppable: $("shoppable-manager"),
+			container: this.querySelector('.player-container'),
 			$playIcon: this.$el.find(".play-icon"),
 			$soundButton: this.$el.find(".sound-button"),
 			$playerButtons: this.$el.find(".player-buttons"),
@@ -139,9 +145,13 @@ class ShoppableVideo extends CustomElement {
 	onClick(e) {
 		e.preventDefault();
 
+		const {$shoppable, container} = this.refs
+
 		if (!this.video) return;
 
-		this.togglePlay();
+		const isBackdropClick = !container.contains(e.target)
+
+		isBackdropClick ? $shoppable.get(0).fancybox.close() : this.togglePlay()
 
 	}
 

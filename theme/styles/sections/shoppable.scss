@@ -38,6 +38,7 @@ shoppable-card {
 
 shoppable-player {
   display: none;
+
   &.player-container {
     align-items: center;
     flex-direction: row;
@@ -167,10 +168,18 @@ shoppable-video {
   position: relative;
   display: flex;
   justify-content: center;
+
   height: 100%;
 
   .player-container {
+    position: relative;
     aspect-ratio: 9/16;
+    @media screen and (max-width: 769px) {
+      width: 100%;
+    }
+    @media screen and (min-width: 769px) {
+      height: 100%;
+    }
 
     video {
       height: 100%;

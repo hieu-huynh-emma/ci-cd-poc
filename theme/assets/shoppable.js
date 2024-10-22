@@ -1,52 +1,53 @@
 class Shoppable extends CustomElement {
-  fancybox;
+	fancybox;
 
-  get refs() {
-    return {
-      player: document.querySelector("shoppable-player"),
-    };
-  }
+	get refs() {
+		return {
+			player: document.querySelector("shoppable-player"),
+		};
+	}
 
-  constructor() {
-    super();
-    ResourceCoordinator.requestVendor("Fancybox");
+	constructor() {
+		super();
+		ResourceCoordinator.requestVendor("Fancybox");
 
-  }
+	}
 
-  async open(index = 0) {
+	async open(index = 0) {
 
-    const { player } = this.refs;
+		const {player} = this.refs;
 
-    if (!player.initialized) {
-      await player.initPlayer();
-    }
-    setTimeout(() => {
-      player.go(index);
-      // Do not change this number otherwise, the splide transition will buggy
-    }, 500);
+		if (!player.initialized) {
+			await player.initPlayer();
+		}
 
-    await this.openFancybox();
-  }
+		await this.openFancybox();
 
-  async openFancybox() {
-    await ResourceCoordinator.requestVendor("Fancybox");
+		setTimeout(() => {
+			player.go(index);
+			// Do not change this number otherwise, the splide transition will buggy
+		}, 350);
+	}
 
-    return new Promise((rs, rj) => {
-      const { player } = this.refs;
+	async openFancybox() {
+		await ResourceCoordinator.requestVendor("Fancybox");
 
-      const sources = [{ src: player, type: "inline" }];
-      const options = {
-        mainClass: "shoppable-fancybox",
-        Toolbar: {
-          enabled: true,
-          display: {
-            left: ["close"],
-            middle: [],
-            right: ["sound"],
-          },
-          items: {
-            sound: {
-              tpl: `<button id="sound-button" class="f-button">
+		return new Promise((rs, rj) => {
+			const {player} = this.refs;
+
+			const sources = [{src: player, type: "inline"}];
+			const options = {
+				mainClass: "shoppable-fancybox",
+				Toolbar: {
+					enabled: true,
+					display: {
+						left: ["close"],
+						middle: [],
+						right: ["sound"],
+					},
+					items: {
+						sound: {
+							tpl: `<button id="sound-button" class="f-button">
                 <svg class="mute-icon ${!!player.muted ? "hidden" : ""}" width="24" height="24" viewBox="0 0 32 32" fill="none">
                     <path d="M7.81818 10H2V22H7.81818L17 29V3L7.81818 10Z" fill="white"></path>
                     <path d="M21.8642 15.3638C21.8642 13.7454 21.0183 12.3245 19.7446 11.5191C19.1424 11.1383 18.7963 10.3527 19.1446 9.73111C19.4028 9.27025 19.9605 9.05403 20.4304 9.29546C22.6312 10.4263 24.1369 12.7192 24.1369 15.3638C24.1369 18.0084 22.6312 20.3014 20.4304 21.4322C19.9605 21.6736 19.4028 21.4574 19.1446 20.9965C18.7963 20.375 19.1424 19.5893 19.7446 19.2085C21.0183 18.4031 21.8642 16.9822 21.8642 15.3638Z"
@@ -62,26 +63,27 @@ class Shoppable extends CustomElement {
                           fill="white"></path>
                 </svg>
 </button>`,
-              click: () => {
-                player.toggleMute();
-              },
-            },
-          },
-        },
+							click: () => {
+								player.toggleMute();
+							},
+						},
+					},
+				},
 
-        on: {
-          ready: rs,
-          error: rj,
-          close: () => {
-            player.close();
-          },
-        },
-        dragToClose: false,
-      };
+				on: {
+					ready: rs,
+					error: rj,
+					close: () => {
+						player.close();
+					},
+				},
+				dragToClose: false,
+				backdropClick: "close"
+			};
 
-      this.fancybox = new Fancybox(sources, options);
-    });
-  }
+			this.fancybox = new Fancybox(sources, options);
+		});
+	}
 
 }
 
@@ -89,62 +91,62 @@ customElements.define("shoppable-manager", Shoppable);
 
 
 class ShoppableCarousel extends CustomElement {
-  constructor() {
-    super();
-  }
+	constructor() {
+		super();
+	}
 
 
-  async mounted() {
-    super.mounted();
-    await ResourceCoordinator.requestVendor("Splide");
+	async mounted() {
+		super.mounted();
+		await ResourceCoordinator.requestVendor("Splide");
 
-    new Splide(this, {
-      gap: ".5rem",
-      padding: { right: 50 },
-      perMove: 1,
-      mediaQuery: "min",
-      arrows: false,
-      pagination: false,
-      fixedWidth: 269,
-      breakpoints: {
-        640: {
-          padding: false,
-        },
-        768: {
-          gap: "1rem",
-        },
-      },
-    }).mount();
-  }
+		new Splide(this, {
+			gap: ".5rem",
+			padding: {right: 50},
+			perMove: 1,
+			mediaQuery: "min",
+			arrows: false,
+			pagination: false,
+			fixedWidth: 269,
+			breakpoints: {
+				640: {
+					padding: false,
+				},
+				768: {
+					gap: "1rem",
+				},
+			},
+		}).mount();
+	}
 }
 
 customElements.define("shoppable-carousel", ShoppableCarousel);
 
 class ShoppableCard extends CustomElement {
-  props = {
-    index: 0,
-  };
+	props = {
+		index: 0,
+	};
 
-  get refs() {
-    return {
-      $shoppable: $("shoppable-manager"),
-    };
-  }
+	get refs() {
+		return {
+			$shoppable: $("shoppable-manager"),
+		};
+	}
 
-  constructor() {
-    super();
+	constructor() {
+		super();
 
-    this.addEventListener("click", this.onClick.bind(this));
+		this.addEventListener("click", this.onClick.bind(this));
 
 
-  }
+	}
 
-  onClick() {
-    const { $shoppable } = this.refs;
-    const { index } = this.props;
+	onClick() {
+		const {$shoppable} = this.refs;
+		const {index} = this.props;
 
-    $shoppable.get(0).open(index);
-  }
+		$shoppable.get(0).open(index);
+	}
 }
 
 customElements.define("shoppable-card", ShoppableCard);
