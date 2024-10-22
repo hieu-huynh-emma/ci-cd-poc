@@ -35,7 +35,7 @@
 <!-- End Affirm -->;
 function initializePromos() { 
 
-let promosJSON = '[{"promoStatus":true,"pageType":"product","selector":"","onChange":"[data-sale-price]","fontSize":"16","logoType":"logo","logoColor":"blue","position":"beforebegin","addCents":true,"saleSelector":"","comparePrices":false,"dataElement":null,"alaElement":"#affirm-promotional-messaging-outlet","shopifyPageType":"product"}]';
+let promosJSON = '[{"promoStatus":true,"pageType":"payment","selector":"","onChange":"[data-sale-price]","fontSize":"18","logoType":"logo","logoColor":"blue","position":"beforebegin","addCents":true,"saleSelector":"","comparePrices":false,"dataElement":null,"alaElement":"#affirm-promotional-messaging-outlet","shopifyPageType":"product"}]';
 
 let promos = JSON.parse(promosJSON);
 
