@@ -128,9 +128,11 @@ product-card {
 
 product-card[type="advanced"] {
   justify-content: center;
+
   .wrapper {
     gap: 0;
   }
+
   .product-card-detail {
     gap: 12px;
     justify-content: center;
@@ -149,6 +151,7 @@ product-card[type="advanced"] {
     &__name {
       font-size: 20px;
     }
+
     &__price {
       display: grid;
       grid-template-columns: minmax(0, 1fr);

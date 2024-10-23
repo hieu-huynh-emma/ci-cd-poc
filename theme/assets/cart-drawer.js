@@ -13,7 +13,7 @@ class CartDrawer extends CustomElement {
       cartSummary: document.getElementById('CartDrawerSummary'),
       cartRedeem: document.getElementById('CartRedeemCode'),
       cartItems: this.querySelector('cart-drawer-items'),
-      cartUpsell: this.querySelector('cart-upsell'),
+      cartRecommendation: this.querySelector("cart-recommendation"),
       cartIconBubble: document.getElementById('cart-icon-bubble')
     }
   }
@@ -43,13 +43,13 @@ class CartDrawer extends CustomElement {
   }
 
   async loadCheckout() {
-    const { cartItems, cartUpsell, cartRedeem, cartIconBubble } = this.refs
+    const { cartItems, cartRecommendation, cartRedeem, cartIconBubble } = this.refs
 
     this.loading = true
     cartItems.disabled = true
     cartRedeem.loading = true
     cartIconBubble.loading = true
-    cartUpsell.disabled = true
+    cartRecommendation.disabled = true
 
     try {
       await this.parseCheckoutPage();
@@ -63,7 +63,7 @@ class CartDrawer extends CustomElement {
       cartItems.disabled = false
       cartRedeem.loading = false
       cartIconBubble.loading = false
-      cartUpsell.disabled = false
+      cartRecommendation.disabled = false
     }
   }
 
@@ -374,7 +374,7 @@ class CartRedeemCode extends CustomElement {
       cartSummary: this.closest('cart-drawer-summary'),
       scrollableContent: this.$el.find('cart-scrollable-content').get(0),
       cartItems: document.getElementById('CartDrawerItems'),
-      cartUpsell: document.getElementById('CartDrawerUpsell'),
+      cartRecommendation: document.getElementById('CartDrawerUpsell'),
       cartIconBubble: document.getElementById('cart-icon-bubble')
     }
   }
@@ -406,7 +406,7 @@ class CartRedeemCode extends CustomElement {
   }
 
   async applyDiscount() {
-    const { cartItems, cartIconBubble, cartUpsell } = this.refs
+    const { cartItems, cartIconBubble, cartRecommendation } = this.refs
     const code = this.$input.val();
 
     if (!code) {
@@ -416,7 +416,7 @@ class CartRedeemCode extends CustomElement {
     this.loading = true
     cartItems.disabled = true
     cartIconBubble.loading = true
-    cartUpsell.disabled = true
+    cartRecommendation.disabled = true
 
     try {
       await this.$cart.parseCheckoutPage();
@@ -444,7 +444,7 @@ class CartRedeemCode extends CustomElement {
       this.loading = false
       cartItems.disabled = false
       cartIconBubble.loading = false
-      cartUpsell.disabled = false
+      cartRecommendation.disabled = false
     }
   }
 

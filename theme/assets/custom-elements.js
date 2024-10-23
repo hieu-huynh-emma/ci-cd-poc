@@ -1,8 +1,17 @@
 class CustomElement extends HTMLElement {
   props = null
 
+  _data = null
+  get data() {
+    return this._data
+  }
+
+  set data(newVal) {
+    this._data = newVal
+  }
+
   static get observedAttributes() {
-    return ['disabled'];
+    return ['disabled', "data"];
   }
 
   _value = null
@@ -75,6 +84,11 @@ class CustomElement extends HTMLElement {
     this.onDestroy()
   }
 
+  attributeChangedCallback(name, oldValue, newValue) {
+    this[name] = this.parseProp(newValue)
+
+    this.render()
+  }
 
   setup() {
     this.mutationObserver = new MutationObserver(this.onMutation.bind(this));
@@ -90,16 +104,10 @@ class CustomElement extends HTMLElement {
     if (!isObject) return
 
     this.props = Object.entries(this.props).reduce((r, [propName, defaultValue]) => {
-      let propVal
-
 
       const rawVal = this.getAttribute(`:${propName.toLowerCase()}`)
 
-      try {
-        propVal = JSON.parse(rawVal);
-      } catch {
-        propVal = rawVal
-      }
+      const propVal = this.parseProp(rawVal)
 
       r[propName] = propVal || defaultValue
 
@@ -111,11 +119,17 @@ class CustomElement extends HTMLElement {
     this.readOnly = this.hasAttribute('readOnly') || this.getAttribute('readOnly') === 'readOnly'
   }
 
-  attributeChangedCallback(name, oldValue, newValue) {
-    if (name === "disabled") {
-      this.disabled = newValue === 'disabled'
+  parseProp(rawVal) {
+    let val
+
+    try {
+      val = JSON.parse(rawVal);
+    } catch {
+      val = rawVal
     }
+    return val
   }
+
 
   beforeMount() {
   }
@@ -126,11 +140,16 @@ class CustomElement extends HTMLElement {
 
   render() {
     if (this.template()) {
-      this.innerHTML = this.template()
+      this.innerHTML = this.template();
+
+      this.onUpdated();
     }
   }
+
   mounted() {
   }
+
+  onUpdated() {}
 
   onMutation() {
   }
@@ -146,7 +165,7 @@ class CustomElement extends HTMLElement {
 
     const firstLoadingOverlays = this.$el.find('loading-overlay').first().get(0)
 
-    if(!!firstLoadingOverlays) {
+    if (!!firstLoadingOverlays) {
       firstLoadingOverlays[isLoading ? 'show' : 'hide']()
     }
   }
@@ -184,7 +203,8 @@ class CustomButton extends CustomElement {
     });
   }
 
-  onClick(e) {}
+  onClick(e) {
+  }
 }
 
 class ResponsiveComponent extends CustomElement {
@@ -259,3 +279,39 @@ class ResponsiveComponent extends CustomElement {
 }
 
 customElements.define('responsive-component', ResponsiveComponent);
+
+
+class ShadowElement extends CustomElement {
+  template
+
+  constructor() {
+    super();
+
+    this.attachShadow({ mode: 'open' });
+    this.$shEl = $(this.shadowRoot)
+
+  }
+
+  connectedCallback() {
+    this.extractProps();
+    this.init();
+
+    this.beforeMount()
+    this.render();
+
+    setTimeout(() => {
+      $(this).ready(this.mounted.bind(this))
+    }, 0)
+  }
+
+  render() {
+    if (!this.template) return
+
+    this.shadowRoot.appendChild(this.template.content.cloneNode(true));
+
+  }
+
+  beforeMount() {
+    super.beforeMount();
+  }
+}

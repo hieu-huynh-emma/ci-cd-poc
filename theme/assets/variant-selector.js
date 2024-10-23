@@ -1,85 +1,107 @@
-class VariantSelector extends CustomElement {
-  props = {
-    value: null,
-    options: []
-  };
+if (!customElements.get("variant-selector")) {
+  class VariantSelector extends CustomElement {
+    props = {
+      value: null,
+      options: []
+    };
 
-  constructor() {
-    super();
+    constructor() {
+      super();
 
-    this.changeEvent = new Event('change')
-  }
+      this.changeEvent = new Event('change')
+    }
 
-  get refs() {
-    return {
-      $select: this.$el.find('select')
+    get refs() {
+      return {
+        $select: this.$el.find('select')
+      }
+    }
+
+    beforeMount() {
+      // Hide if product has only default variant
+      if (this.props.options.length === 1) this.remove()
+    }
+
+    template() {
+      const { value, options } = this.props
+
+      return `<select>
+      ${options.map(this.renderOption.bind(this, value)).join("")}
+    </select>`
+    }
+
+    renderOption(value, o) {
+      const price = o.price / 100,
+        originalPrice = o.compare_at_price / 100;
+
+      return `<option
+                ${value === o.id ? 'selected' : ""}
+                ${o.available ? "" : "disabled"}
+                data-price="${price}"
+                data-original-price="${originalPrice}"
+                data-sku="${o.sku}"
+                value="${o.id}"
+            >
+              ${o.title}${o.available ? "" : `- ${window.variantStrings.soldOut}`}
+            </option>
+    `
+    }
+
+    async mounted() {
+      const { $select } = this.refs
+
+      $select.change(this.handleSelectVariant.bind(this));
+
+      $select.trigger('change');
+
+      // await ResourceCoordinator.requestVendor('Select2');
+
+      // $select.select2({
+      //   minimumResultsForSearch: -1,
+      //   dropdownAutoWidth: true,
+      //   width: 'auto'
+      // });
+
+    }
+
+    onDisabledChange(isDisabled) {
+      super.onDisabledChange(isDisabled);
+
+      const { $select } = this.refs
+
+      $select.attr('disabled', !!isDisabled)
+    }
+
+    handleSelectVariant(e) {
+      this.dispatchEvent(this.changeEvent);
     }
   }
 
-  render() {
-    const { value, options } = this.props
+  customElements.define("variant-selector", VariantSelector);
 
-    const availOptions = options.filter(({ available }) => !!available);
+  class CartVariantSelector extends VariantSelector {
+    props = {
+      value: null,
+      options: [],
+      quantity: 0,
+      key: 0
+    };
 
-    const template = `
-    <select>
-      ${availOptions.map(o => `<option ${value === o.id ? 'selected' : ""} data-price="${o.price / 100}" data-original-price="${o.compare_at_price / 100}" data-sku="${o.sku}" value="${o.id}">${o.title}</option>`).join("")}
-    </select>`
+    async handleSelectVariant(e) {
+      super.handleSelectVariant(e);
 
-    this.innerHTML = template
-  }
+      const { key, quantity } = this.props
 
- async mounted() {
-    const { $select } = this.refs
+      const $selectedOption = $(this).find(':selected')
+      const variantId = $selectedOption.val()
 
-    $select.change(this.handleSelectVariant.bind(this));
 
-   await ResourceCoordinator.requestVendor('Select2');
-
-   $select.select2({
-      minimumResultsForSearch: -1,
-      dropdownAutoWidth: true,
-      width: 'auto'
-    });
+      await this.closest('cart-drawer-items').switchVariant(variantId, quantity, key);
+    }
 
   }
 
-  onDisabledChange(isDisabled) {
-    super.onDisabledChange(isDisabled);
-
-    const { $select } = this.refs
-
-    $select.attr('disabled', !!isDisabled)
-  }
-
-  handleSelectVariant(e) {
-    this.dispatchEvent(this.changeEvent);
-  }
+  customElements.define("cart-variant-selector", CartVariantSelector);
 }
 
-customElements.define('variant-selector', VariantSelector);
 
-
-class CartVariantSelector extends VariantSelector {
-  props = {
-    value: null,
-    options: [],
-    quantity: 0,
-    key: 0
-  };
-
-  async handleSelectVariant(e) {
-    super.handleSelectVariant(e);
-
-    const { key, quantity } = this.props
-
-    const $selectedOption = $(this).find(':selected')
-    const variantId = $selectedOption.val()
-
-
-    await this.closest('cart-drawer-items').switchVariant(variantId, quantity, key);
-  }
-
-}
-
-customElements.define('cart-variant-selector', CartVariantSelector);

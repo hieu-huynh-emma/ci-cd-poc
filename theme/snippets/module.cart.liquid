@@ -1,0 +1,28 @@
+<template id="cart-recommendation-item-tpl">
+    <div class="card-container">
+        <slot name="media" class="card-media"></slot>
+
+        <div class="card-metadata">
+            <div class="card-header">
+                <slot name="title"></slot>
+            </div>
+
+            <div class="card-body">
+                <slot name="variant-selector"></slot>
+
+                <slot name="product-pricing"></slot>
+            </div>
+
+            <div class="card-footer">
+                <button type="button" class="btn btn--compact">
+                    Add Product
+                </button>
+            </div>
+        </div>
+
+
+    </div>
+</template>
+
+<script type="quickscript" loading="delayed" data-url="{{ 'cart-recommendation.js' | asset_url }}"
+        src="{{ 'module-importer.js' | asset_url }}"></script>

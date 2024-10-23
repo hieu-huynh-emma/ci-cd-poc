@@ -110,3 +110,48 @@ export const metaobjectMapper = (metaobject) => {
     ...rest,
   };
 };
+
+
+export const productLiquidMapper = (product) => {
+  const {
+    variants: variantsEntry,
+
+    ...rest
+  } = product;
+
+
+  const variants = variantsEntry.map(variant => variantLiquidMapper(_.mapKeys(variant, (val, k) => _.camelCase(k))));
+
+  const availableVariants = variants.filter((node) => node.available);
+  const firstAvailableVariant = availableVariants[0];
+  const hasOnlyDefaultVariant = variants.length === 1;
+
+  return {
+    variants,
+    availableVariants,
+    firstAvailableVariant,
+    hasOnlyDefaultVariant,
+    ...rest,
+  };
+};
+
+export const variantLiquidMapper = (variant) => {
+  const {
+    price: wholePrice,
+    compareAtPrice: wholeCompareAtPrice,
+    ...rest
+  } = variant;
+
+  const price = wholePrice / 100,
+    compareAtPrice = wholeCompareAtPrice / 100,
+    originalPrice = compareAtPrice || price,
+    totalSaved = Math.max(0, originalPrice - price);
+
+  return {
+    price,
+    compareAtPrice,
+    originalPrice,
+    totalSaved,
+    ...rest,
+  };
+};

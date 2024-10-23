@@ -46,7 +46,7 @@
       "settings": {
       }
     },
-    "217cc637-3faa-4f25-b127-7a38a42e6e2f": {
+    "hero-split": {
       "type": "hero-split",
       "blocks": {
         "c9b229ea-7258-4341-93c2-95b7ad5d7c77": {
@@ -95,6 +95,7 @@
         "7bd45a45-1205-4518-9b02-60a5bc9a95ac"
       ],
       "settings": {
+
       }
     },
     "hero-banner": {
@@ -169,37 +170,6 @@
       "settings": {
         "modal_heading": "Our service promise to you",
         "isABTest": true
-      }
-    },
-    "06c76c39-8b9d-42b2-b20c-9dab3dc4287f": {
-      "type": "main-carousel-banner",
-      "blocks": {
-        "2f2cdfaa-e42e-452f-be52-e49c5626fd86": {
-          "type": "banner_carousel_section",
-          "settings": {
-            "carousel-title": "<p>New Hybrid Comfort <\/p><p>50% OFF!<\/p>",
-            "carousel-subtitle": "Starting From $369",
-            "content-banner": "<p><a href=\"\/pages\/emma-first-time-customer-offer-promo-details\" title=\"Emma “First Time Customer Offer” Promo Details\">*New Customers Only - Terms Apply <\/a><\/p>",
-            "banner-url": "shopify:\/\/products\/emma-hybrid-comfort-bundle"
-          }
-        },
-        "95901cad-27eb-4e34-a6ce-1394bbe96afb": {
-          "type": "banner_carousel_section",
-          "settings": {
-            "carousel-title": "<ul><li><strong>Flash Sale!<\/strong><\/li><li>Pillows 40% OFF!<\/li><\/ul>",
-            "carousel-subtitle": "Ends Sunday!",
-            "content-banner": "<p>*New Customers Only - Terms Apply<\/p>",
-            "banner-url": "shopify:\/\/products\/emma-foam-pillow"
-          }
-        }
-      },
-      "block_order": [
-        "2f2cdfaa-e42e-452f-be52-e49c5626fd86",
-        "95901cad-27eb-4e34-a6ce-1394bbe96afb"
-      ],
-      "disabled": true,
-      "settings": {
-        "heading": ""
       }
     },
     "cc490804-bd9c-4251-b97e-e0d2e226f4c8": {
@@ -1816,10 +1786,9 @@
   },
   "order": [
     "risk-free-banner",
-    "217cc637-3faa-4f25-b127-7a38a42e6e2f",
+    "hero-split",
     "hero-banner",
     "featured-usps",
-    "06c76c39-8b9d-42b2-b20c-9dab3dc4287f",
     "cc490804-bd9c-4251-b97e-e0d2e226f4c8",
     "promotional-banner",
     "winning-awards",

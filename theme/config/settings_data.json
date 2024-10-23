@@ -109,10 +109,10 @@
         "settings": {
         }
       },
-      "cart-drawer-upsell": {
-        "type": "cart-drawer-upsell",
+      "cart-recommendation": {
+        "type": "cart-recommendation",
         "settings": {
-          "title": ""
+          "collection": "upsell-collection"
         }
       },
       "checkout-countdown": {
