@@ -84,7 +84,7 @@
             "cta_url": "shopify:\/\/pages\/sale",
             "cta_text": "Shop the offer",
             "show_cta": false,
-            "timer": "2024-10-21 06:00",
+            "timer": "2024-10-25 06:00",
             "discount_badge": true,
             "trackId": "Shop_right"
           }
@@ -94,12 +94,12 @@
         "c9b229ea-7258-4341-93c2-95b7ad5d7c77",
         "7bd45a45-1205-4518-9b02-60a5bc9a95ac"
       ],
-      "disabled": true,
       "settings": {
       }
     },
     "hero-banner": {
       "type": "hero-banner",
+      "disabled": true,
       "settings": {
         "title": "<h2>Extended Thanksgiving Sale<\/h2>",
         "subtitle": "<h3><\/h3><p><a href=\"\/pages\/emma-first-time-customer-offer-promo-details\" target=\"_blank\" title=\"Emma “First Time Customer Offer” Promo Details\">New Customers Only - Terms apply*<\/a><\/p>",
@@ -621,9 +621,9 @@
             "color": "#3c4196",
             "primary_badge": "",
             "secondary_badge": "BEST DEAL",
-            "image": "shopify:\/\/shop_images\/1440X810_4.png",
-            "product_title": "Emma Hybrid Comfort II",
-            "desc": "<h1>★ 4.7<\/h1><p><strong>Our newest Hybrid mattress with enhanced support and ideal pressure distribution<\/strong><\/p>",
+            "image": "shopify:\/\/shop_images\/Emma_hybrid-comfort_exploded_2.png",
+            "product_title": "Emma Hybrid Comfort",
+            "desc": "<h1>★ 4.7<\/h1><p><strong>Our newest 13-Inch Hybrid mattress with enhanced support and ideal pressure distribution<\/strong><\/p>",
             "discount_title": "",
             "comfort_meter": 8,
             "cooling_meter": 6,
@@ -640,7 +640,7 @@
             "primary_badge": "PREMIUM CHOICE",
             "secondary_badge": "PREMIUM CHOICE",
             "image": "shopify:\/\/shop_images\/hybrid-premium-exploded_1.png",
-            "product_title": "Emma Hybrid Premium",
+            "product_title": "Emma Hybrid Premium Plus",
             "desc": "<h1>★ 4.6<\/h1><p><strong>Our new best-in-class mattress for perfect cooling & absolute comfort<\/strong><\/p>",
             "discount_title": "",
             "comfort_meter": 8,
@@ -1057,8 +1057,15 @@
             "product": "emma-hybrid-premium"
           }
         },
+        "catalog_item_CriMBB": {
+          "type": "catalog_item",
+          "settings": {
+            "product": "perfect-sleep-bundle"
+          }
+        },
         "1e675715-5ecb-41e6-a7ab-608b36025781": {
           "type": "catalog_item",
+          "disabled": true,
           "settings": {
             "product": "perfect-sleep-bundle-ii"
           }
@@ -1097,6 +1104,7 @@
       "block_order": [
         "catalog_item_C8iaTJ",
         "8fde16df-aace-45a2-bc5e-de66829da46e",
+        "catalog_item_CriMBB",
         "1e675715-5ecb-41e6-a7ab-608b36025781",
         "1764b6ed-cfac-4dec-9487-f9122604ba72",
         "d2925961-e05b-4a94-be70-a9d7f7911010",

@@ -653,9 +653,9 @@
             "color": "#3c4196",
             "primary_badge": "",
             "secondary_badge": "BEST DEAL",
-            "image": "shopify:\/\/shop_images\/1440X810_4.png",
-            "product_title": "Emma Hybrid Comfort II",
-            "desc": "<h1>★4.7<\/h1><p><strong>Our newest Hybrid Mattress that can support added weight and movement without getting hot or stuffy<\/strong><\/p>",
+            "image": "shopify:\/\/shop_images\/Emma_hybrid-comfort_exploded_2.png",
+            "product_title": "Emma Hybrid Comfort",
+            "desc": "<h1>★4.7<\/h1><p><strong>Our newest 13-Inch Hybrid Mattress that can support added weight and movement without getting hot or stuffy<\/strong><\/p>",
             "discount_title": "",
             "comfort_meter": 6,
             "cooling_meter": 4,
@@ -672,7 +672,7 @@
             "primary_badge": "PREMIUM CHOICE",
             "secondary_badge": "PREMIUM CHOICE",
             "image": "shopify:\/\/shop_images\/hybrid-premium-exploded_1.png",
-            "product_title": "Emma Hybrid Premium",
+            "product_title": "Emma Hybrid Premium Plus",
             "desc": "<h1>★ 4.6<\/h1><p><strong>Our new best-in-class mattress for perfect cooling & absolute comfort<\/strong><\/p>",
             "discount_title": "",
             "comfort_meter": 6,
@@ -710,8 +710,15 @@
             "product": "emma-hybrid-comfort"
           }
         },
+        "catalog_item_dKEbBF": {
+          "type": "catalog_item",
+          "settings": {
+            "product": "perfect-sleep-bundle"
+          }
+        },
         "catalog_item_UtmGqr": {
           "type": "catalog_item",
+          "disabled": true,
           "settings": {
             "product": "perfect-sleep-bundle-ii"
           }
@@ -743,6 +750,7 @@
       },
       "block_order": [
         "catalog_item_ngAYPD",
+        "catalog_item_dKEbBF",
         "catalog_item_UtmGqr",
         "72c7f33b-7788-4524-bf53-816aecb093b6",
         "07d5912c-d4c3-4ebb-97a6-f723fc8a4f3f",
