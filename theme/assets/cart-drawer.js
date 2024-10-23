@@ -13,7 +13,7 @@ class CartDrawer extends CustomElement {
       cartSummary: document.getElementById('CartDrawerSummary'),
       cartRedeem: document.getElementById('CartRedeemCode'),
       cartItems: this.querySelector('cart-drawer-items'),
-      cartRecommendation: this.querySelector("cart-recommendation"),
+      cartRecommendation: this.querySelector("cart-recommendation") || {},
       cartIconBubble: document.getElementById('cart-icon-bubble')
     }
   }

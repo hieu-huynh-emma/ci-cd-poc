@@ -5,7 +5,7 @@ class CartItems extends CustomElement {
       allItems: this.querySelectorAll('cart-item'),
       cartSummary: document.getElementById('CartDrawerSummary'),
       cartRedeem: document.getElementById('CartRedeemCode'),
-      cartRecommendation: document.querySelector("cart-recommendation"),
+      cartRecommendation: document.querySelector("cart-recommendation") || {},
       cartFooter: document.getElementById('CartDrawerFooter'),
       scrollableContent: this.closest('cart-scrollable-content')
     }
