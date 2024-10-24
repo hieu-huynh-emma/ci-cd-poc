@@ -337,6 +337,7 @@
         },
         "cross_sell_widget_tXLCDN": {
           "type": "cross_sell_widget",
+          "disabled": true,
           "settings": {
           }
         },
@@ -346,7 +347,7 @@
             "title": "Upgrade to Hybrid Comfort:",
             "content": "<p><strong>50% off<\/strong><\/p><ul><li>7 ergonomic zones<\/li><li>Enhanced support<\/li><\/ul>",
             "image": "shopify:\/\/shop_images\/Emma_hybrid-comfort_exploded_2.png",
-            "product": "emma-hybrid-comfort"
+            "product": "emma-hybrid-comfort-ii"
           }
         }
       },
@@ -401,60 +402,6 @@
         "95f7a903-df98-4d58-9b15-0db125d9190c"
       ],
       "settings": {
-      }
-    },
-    "mattress-layers-static": {
-      "type": "mattress-layers-static",
-      "blocks": {
-        "layer_item_CRYqiJ": {
-          "type": "layer_item",
-          "settings": {
-            "title": "Breathable top cover",
-            "content": "Our top cover is both breathable and soft to the touch, helping to keep your body warm and dry."
-          }
-        },
-        "layer_item_yfHGpR": {
-          "type": "layer_item",
-          "settings": {
-            "title": "The foam layer that keeps you cool",
-            "content": "The AeroFoam™ layer absorbs and dissipates excess body heat, creating an ideal sleeping environment for an uninterrupted night. By allowing air to circulate, it nevertheless retains the classic comfort of memory foam."
-          }
-        },
-        "layer_item_9nAtdn": {
-          "type": "layer_item",
-          "settings": {
-            "title": "Firm foam for stress-free sleep",
-            "content": "Durable SupportBase™ foam gives you the right firmness, without bumps or sagging. Lie down and find your ideal sleeping position with ease."
-          }
-        },
-        "layer_item_aY7cQW": {
-          "type": "layer_item",
-          "settings": {
-            "title": "Edge-to-Edge pocket springs",
-            "content": "Say goodbye to restless nights! Our pocket springs maximize air circulation to cool your body and allow you to sleep peacefully. Rest comfortably with our springs that conform to your spine for longer, deeper restorative sleep."
-          }
-        },
-        "layer_item_3aQYNr": {
-          "type": "layer_item",
-          "settings": {
-            "title": "Non-slip bottom layer",
-            "content": "The non-slip bottom layer of our cover provides enhanced stability for a decade of quality sleep."
-          }
-        }
-      },
-      "block_order": [
-        "layer_item_CRYqiJ",
-        "layer_item_yfHGpR",
-        "layer_item_9nAtdn",
-        "layer_item_aY7cQW",
-        "layer_item_3aQYNr"
-      ],
-      "settings": {
-        "heading": "Emma Original II - Layer by Layer",
-        "heading_alignment": "start",
-        "container_spacing": "sm",
-        "image": "shopify:\/\/shop_images\/Emma_Hybrid_22.png",
-        "carousel_mode": false
       }
     },
     "mattress-layers": {
@@ -889,57 +836,6 @@
         "trackId": ""
       }
     },
-    "special-services": {
-      "type": "multicolumn-text",
-      "blocks": {
-        "48ca0997-ffa4-4408-8013-4796cb7f17c4": {
-          "type": "column",
-          "settings": {
-            "icon": "shopify:\/\/shop_images\/truck-free-black.png",
-            "title": "Free Delivery",
-            "content": "We’ll bring your Emma order straight to your door at no extra cost"
-          }
-        },
-        "f3255c5f-527e-4927-a670-554ff22e9ef7": {
-          "type": "column",
-          "settings": {
-            "icon": "shopify:\/\/shop_images\/100-night-black.png",
-            "title": "365-Night Trial",
-            "content": "Get properly acquainted with Emma so you can be sure we’re the one"
-          }
-        },
-        "c15d1ab6-4b9b-4e30-ace7-dbf193ff2d4f": {
-          "type": "column",
-          "settings": {
-            "icon": "shopify:\/\/shop_images\/award-black.png",
-            "title": "10 Year Guarantee",
-            "content": "Our products are built to last. You’re covered if something goes wrong"
-          }
-        },
-        "f9973382-ba4e-4931-817c-113225550dad": {
-          "type": "column",
-          "settings": {
-            "icon": "shopify:\/\/shop_images\/package-black.png",
-            "title": "Free Returns",
-            "content": "If Emma isn’t for you, our customer service team will take care of you"
-          }
-        }
-      },
-      "block_order": [
-        "48ca0997-ffa4-4408-8013-4796cb7f17c4",
-        "f3255c5f-527e-4927-a670-554ff22e9ef7",
-        "c15d1ab6-4b9b-4e30-ace7-dbf193ff2d4f",
-        "f9973382-ba4e-4931-817c-113225550dad"
-      ],
-      "disabled": true,
-      "settings": {
-        "column_alignment": "left",
-        "column_size": "medium",
-        "container_spacing": "md",
-        "horizontal_layout_on_mobile": true,
-        "solid_typo": false
-      }
-    },
     "featured-faqs": {
       "type": "featured-faqs",
       "blocks": {
@@ -1004,7 +900,6 @@
     "product-unique-selling-points",
     "product-auxiliary",
     "multimedia-showcase",
-    "mattress-layers-static",
     "mattress-layers",
     "mattress-firmness",
     "featured-products",
@@ -1012,7 +907,6 @@
     "168540174983dd55c2",
     "product-carousel",
     "shoppable-media",
-    "special-services",
     "featured-faqs",
     "contact-us"
   ]
