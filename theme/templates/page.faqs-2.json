@@ -191,13 +191,28 @@
           "settings": {
             "subtopic_id": "365-Night Trial",
             "question_1": "How does the 365-night trial phase work?",
-            "answer_1": "<p>We’re glad you asked! When choosing a mattress, it is important to give it a try and decide if everything is right for you. Our risk-free 365 night trial means that you get 365 nights to relax into your Emma mattress and experience the benefits of a good night’s sleep in order to make that decision. We encourage and require a trial period of 21 nights on your mattress so that you and your body can get suited to your Emma mattress.<br\/><br\/>If you choose to return your mattress within the trial period, please reach out to our Customer Care agents from 08:00 to 18:00 GMT-6, Monday-Friday through our available channels:<\/p><ul><li>Email: support@emma-sleep.ca <\/li><li>Landline: +1-844-906-3662<\/li><li>or speak directly with an agent using our live-chat feature on our website.<\/li><\/ul><p>Note that the 365-night trial is only applicable to purchases after July 7, 2022. All purchases before this date are subject to the previous 200-night trial.<\/p>",
+            "answer_1": "<p>We’re glad you asked! When choosing a mattress, it is important to give it a try and decide if everything is right for you. Our risk-free 365 night trial means that you get 365 nights to relax into your Emma mattress and experience the benefits of a good night’s sleep in order to make that decision. The 365-night trial starts on the day that you receive your product. From then, you have 365 nights to try out your mattress. <\/p><p>We encourage and require a trial period of 21 nights on your mattress so that you and your body can get suited to your Emma mattress.<br\/><br\/>If you choose to return your mattress within the trial period, please reach out to our Customer Care agents from 08:00 to 18:00 GMT-6, Monday-Friday through our available channels:<\/p><ul><li>Email: support@emma-sleep.ca <\/li><li>Landline: +1-844-906-3662<\/li><li>or speak directly with an agent using our live-chat feature on our website.<\/li><\/ul><p>Note that the 365-night trial is only applicable to purchases after July 7, 2022. All purchases before this date are subject to the previous 200-night trial.<\/p>",
             "html_1": "",
-            "question_2": "When does the 365-night trial start?",
-            "answer_2": "<p>The 365-night trial starts on the day that you receive your product. From then, you have 365 nights to try out your mattress<\/p>",
+            "question_2": "",
+            "answer_2": "",
             "html_2": "",
-            "question_3": "Should I test a mattress first in person before purchasing?",
-            "answer_3": "<p>You don’t need to. We believe that our mattresses provide an exceptional and comfortable sleep experience without pushy sales tactics and high prices. We offer a 365-night trial so that you can experience Emma in the comfort of your own home without the need to go in-store.<\/p>",
+            "question_3": "Is the 365-Night trial applicable for all products?",
+            "answer_3": "<p>All Emma Mattresses have a 365-night trial while other Emma products (accessories and pillows) have a 60-Night trial.<\/p>",
+            "html_3": ""
+          }
+        },
+        "f7b65838-c9d3-4286-ae1d-48ed125514a7": {
+          "type": "question_and_answer",
+          "settings": {
+            "subtopic_id": "",
+            "question_1": "Should I test a mattress first in person before purchasing?",
+            "answer_1": "<p>You don’t need to. We believe that our mattresses provide an exceptional and comfortable sleep experience without pushy sales tactics and high prices. We offer a 365-night trial so that you can experience Emma in the comfort of your own home without the need to go in-store.<\/p>",
+            "html_1": "",
+            "question_2": "",
+            "answer_2": "",
+            "html_2": "",
+            "question_3": "",
+            "answer_3": "",
             "html_3": ""
           }
         },
@@ -213,21 +228,6 @@
             "html_2": "",
             "question_3": "Does the mattress need to stay in its plastic during the trial?",
             "answer_3": "<p>No, it doesn’t. You can enjoy your mattress as you normally would any mattress.<\/p>",
-            "html_3": ""
-          }
-        },
-        "f7b65838-c9d3-4286-ae1d-48ed125514a7": {
-          "type": "question_and_answer",
-          "settings": {
-            "subtopic_id": "365-Night Trial",
-            "question_1": "Is the 365-Night trial applicable for all products?",
-            "answer_1": "<p>All Emma Mattresses have a 365-night trial while other Emma products have a 60-Night trial.<\/p>",
-            "html_1": "",
-            "question_2": "",
-            "answer_2": "",
-            "html_2": "",
-            "question_3": "",
-            "answer_3": "",
             "html_3": ""
           }
         },
@@ -262,8 +262,8 @@
           "type": "question_and_answer",
           "settings": {
             "subtopic_id": "Other Products",
-            "question_1": "Do you have a trial period for other Emma products?",
-            "answer_1": "<p>All our products besides mattresses have a 60-night trial period. This means you can have 60 nights to relax and sleep on your new Emma products.<\/p>",
+            "question_1": "",
+            "answer_1": "",
             "html_1": "",
             "question_2": "Do the other products have a warranty period?",
             "answer_2": "<p>We offer various warranty periods in case that you receive a defective product. Our warranty periods are as follows:<\/p><ul><li>The Pillows have a warranty period of 2 years. <\/li><li>The Accessories have a warranty period of 2 years.<\/li><\/ul>",
@@ -277,8 +277,8 @@
       "block_order": [
         "c90bf885-336b-4494-b80e-cc0a6cbfba54",
         "19bb8802-2739-4b1b-b745-f286245ff1a2",
-        "1cc8a69c-0ebd-48a0-b47a-2970cad32dbe",
         "f7b65838-c9d3-4286-ae1d-48ed125514a7",
+        "1cc8a69c-0ebd-48a0-b47a-2970cad32dbe",
         "501373b7-aaff-4dc6-9a17-490580b3964c",
         "5c55cea2-67ad-459c-836d-75ef7adae172",
         "76af16a8-f7b0-4bb1-93b7-7457e2f70716",
@@ -401,65 +401,6 @@
         "slug": "purchasing-your-emma"
       }
     },
-    "faq-4": {
-      "type": "faq-search",
-      "blocks": {
-        "3da394ce-07a0-4ccd-99bf-27a636ca51eb": {
-          "type": "subtopic",
-          "disabled": true,
-          "settings": {
-            "id": "Oeko-Tex"
-          }
-        },
-        "b66b3378-0e66-4d30-9ce3-e3f2da1cf00d": {
-          "type": "question_and_answer",
-          "disabled": true,
-          "settings": {
-            "subtopic_id": "Oeko-Tex",
-            "question_1": "What does it mean when products are OEKO-Tex® 100 Certified?",
-            "answer_1": "<p>If a product is OEKO-Tex® 100 Certified, you can be assured that every component of this product (i.e. every thread, foam, etc) has been tested for harmful substances and is therefore harmless for human health. You can be assured that Emma products are of top-quality for your safety. For more information, visit the link <a href=\"https:\/\/www.oeko-tex.com\/en\/our-standards\/standard-100-by-oeko-tex\" target=\"_blank\">here.<\/a><\/p>",
-            "html_1": "",
-            "question_2": "What does it mean to be certified for Class 1?",
-            "answer_2": "<p>Emma Products are OEKO-Tex® 100 Certified Class 1 (16.0.93305) of OEKO-Tex Standard 100. This means that our products are safe for even babies and toddlers (i.e. protection against allergens, etc.). To check for certification, view the <a href=\"https:\/\/www.oeko-tex.com\/en\/label-check\" target=\"_blank\">label check <\/a>and enter our label number: 16.0.93305.<\/p>",
-            "html_2": "",
-            "question_3": "How are products tested to be OEKO-Tex® 100 Certified?",
-            "answer_3": "<p>OEKO-Tex® 100 has their own independent testing institutes where they conduct their own extensive testing methodologies. For more information, view the link <a href=\"https:\/\/www.oeko-tex.com\/en\/our-standards\/standard-100-by-oeko-tex\" target=\"_blank\">here.<\/a><\/p>",
-            "html_3": ""
-          }
-        },
-        "6875f14d-9029-4c2b-bdc3-1ee38d6a556a": {
-          "type": "subtopic",
-          "settings": {
-            "id": "Certi-PUR-US"
-          }
-        },
-        "708f12d6-865e-4604-940f-8bad171be1a2": {
-          "type": "question_and_answer",
-          "settings": {
-            "subtopic_id": "Certi-PUR-US",
-            "question_1": "What does it mean when a product is CertiPUR-US® certified?",
-            "answer_1": "<p>It means that our mattress foams are made without toxic materials (e.g. formaldehyde, phthalates, flame retardants, and heavy metals). All Certipur-US certified products are rigorously tested and meet strict safety standards. For more information, see <a href=\"https:\/\/certipur.us\/about-the-seal\/about-certipur-us\/\" target=\"_blank\">here<\/a><\/p>",
-            "html_1": "",
-            "question_2": "Why is the CertiPUR-US® certification important?",
-            "answer_2": "<p>The CertiPUR-US® certification is important to give you the assurance that our mattress foams are made without toxic materials (e.g. formaldehyde, phthalates, flame retardants, and heavy metals). This means that our Emma Original is safer for you and your family. For more information, see <a href=\"https:\/\/certipur.us\/about-the-seal\/about-certipur-us\/\" target=\"_blank\">here<\/a><\/p>",
-            "html_2": "",
-            "question_3": "If the foam is certified, does that mean it was made without flame retardants?",
-            "answer_3": "<p>Because some our products foams have the CertiPUR-US® certification, you can be sure that there are no harmful flame retardants found in our Emma products that have been identified by the <a href=\"https:\/\/www.ccohs.ca\/oshanswers\/chemicals\/ghs.html#:~:text=What%20is%20the%20Globally%20Harmonized%20System%20%28GHS%29%3F%20GHS,Nations%20%28UN%29%20international%20team%20of%20hazard%20communication%20experts.\" target=\"_blank\">Globally Harmonized System (GHS)<\/a>, a global standard by the United Nations for harmful chemicals.<\/p>",
-            "html_3": ""
-          }
-        }
-      },
-      "block_order": [
-        "3da394ce-07a0-4ccd-99bf-27a636ca51eb",
-        "b66b3378-0e66-4d30-9ce3-e3f2da1cf00d",
-        "6875f14d-9029-4c2b-bdc3-1ee38d6a556a",
-        "708f12d6-865e-4604-940f-8bad171be1a2"
-      ],
-      "settings": {
-        "topic_title": "Awards & Certifications",
-        "slug": "awards-and-certifications"
-      }
-    },
     "faq-5": {
       "type": "faq-search",
       "blocks": {
@@ -545,8 +486,8 @@
           "type": "question_and_answer",
           "settings": {
             "subtopic_id": "Scheduled Delivery",
-            "question_1": "In which areas is the scheduled delivery with in-home setup option available?",
-            "answer_1": "<p>The scheduled delivery with in-home setup option is currently only available in selected areas of Ontario. Rest assured that we are working hard to expand our serviceable areas. We will make sure to update our customers and website when it's available to other areas.<\/p>",
+            "question_1": "",
+            "answer_1": "",
             "html_1": "",
             "question_2": "How can I book my preferred delivery date and time?",
             "answer_2": "<p>Our logistics partner will send you an email after your purchase. Simply reply with your preferred date and time of delivery within 24-48 hours upon receipt of the email so we can book and prepare your orders for shipping.<\/p>",
@@ -698,6 +639,65 @@
       "settings": {
         "topic_title": "Returning Your Emma Products",
         "slug": "returning-your-emma"
+      }
+    },
+    "faq-4": {
+      "type": "faq-search",
+      "blocks": {
+        "3da394ce-07a0-4ccd-99bf-27a636ca51eb": {
+          "type": "subtopic",
+          "disabled": true,
+          "settings": {
+            "id": "Oeko-Tex"
+          }
+        },
+        "b66b3378-0e66-4d30-9ce3-e3f2da1cf00d": {
+          "type": "question_and_answer",
+          "disabled": true,
+          "settings": {
+            "subtopic_id": "Oeko-Tex",
+            "question_1": "What does it mean when products are OEKO-Tex® 100 Certified?",
+            "answer_1": "<p>If a product is OEKO-Tex® 100 Certified, you can be assured that every component of this product (i.e. every thread, foam, etc) has been tested for harmful substances and is therefore harmless for human health. You can be assured that Emma products are of top-quality for your safety. For more information, visit the link <a href=\"https:\/\/www.oeko-tex.com\/en\/our-standards\/standard-100-by-oeko-tex\" target=\"_blank\">here.<\/a><\/p>",
+            "html_1": "",
+            "question_2": "What does it mean to be certified for Class 1?",
+            "answer_2": "<p>Emma Products are OEKO-Tex® 100 Certified Class 1 (16.0.93305) of OEKO-Tex Standard 100. This means that our products are safe for even babies and toddlers (i.e. protection against allergens, etc.). To check for certification, view the <a href=\"https:\/\/www.oeko-tex.com\/en\/label-check\" target=\"_blank\">label check <\/a>and enter our label number: 16.0.93305.<\/p>",
+            "html_2": "",
+            "question_3": "How are products tested to be OEKO-Tex® 100 Certified?",
+            "answer_3": "<p>OEKO-Tex® 100 has their own independent testing institutes where they conduct their own extensive testing methodologies. For more information, view the link <a href=\"https:\/\/www.oeko-tex.com\/en\/our-standards\/standard-100-by-oeko-tex\" target=\"_blank\">here.<\/a><\/p>",
+            "html_3": ""
+          }
+        },
+        "6875f14d-9029-4c2b-bdc3-1ee38d6a556a": {
+          "type": "subtopic",
+          "settings": {
+            "id": "Certi-PUR-US"
+          }
+        },
+        "708f12d6-865e-4604-940f-8bad171be1a2": {
+          "type": "question_and_answer",
+          "settings": {
+            "subtopic_id": "Certi-PUR-US",
+            "question_1": "What does it mean when a product is CertiPUR-US® certified?",
+            "answer_1": "<p>It means that our mattress foams are made without toxic materials (e.g. formaldehyde, phthalates, flame retardants, and heavy metals). All Certipur-US certified products are rigorously tested and meet strict safety standards. For more information, see <a href=\"https:\/\/certipur.us\/about-the-seal\/about-certipur-us\/\" target=\"_blank\">here<\/a><\/p>",
+            "html_1": "",
+            "question_2": "Why is the CertiPUR-US® certification important?",
+            "answer_2": "<p>The CertiPUR-US® certification is important to give you the assurance that our mattress foams are made without toxic materials (e.g. formaldehyde, phthalates, flame retardants, and heavy metals). This means that our Emma Original is safer for you and your family. For more information, see <a href=\"https:\/\/certipur.us\/about-the-seal\/about-certipur-us\/\" target=\"_blank\">here<\/a><\/p>",
+            "html_2": "",
+            "question_3": "If the foam is certified, does that mean it was made without flame retardants?",
+            "answer_3": "<p>Because some our products foams have the CertiPUR-US® certification, you can be sure that there are no harmful flame retardants found in our Emma products that have been identified by the <a href=\"https:\/\/www.ccohs.ca\/oshanswers\/chemicals\/ghs.html#:~:text=What%20is%20the%20Globally%20Harmonized%20System%20%28GHS%29%3F%20GHS,Nations%20%28UN%29%20international%20team%20of%20hazard%20communication%20experts.\" target=\"_blank\">Globally Harmonized System (GHS)<\/a>, a global standard by the United Nations for harmful chemicals.<\/p>",
+            "html_3": ""
+          }
+        }
+      },
+      "block_order": [
+        "3da394ce-07a0-4ccd-99bf-27a636ca51eb",
+        "b66b3378-0e66-4d30-9ce3-e3f2da1cf00d",
+        "6875f14d-9029-4c2b-bdc3-1ee38d6a556a",
+        "708f12d6-865e-4604-940f-8bad171be1a2"
+      ],
+      "settings": {
+        "topic_title": "Awards & Certifications",
+        "slug": "awards-and-certifications"
       }
     },
     "faq-13": {
@@ -1362,6 +1362,7 @@
         "25f8a0c4-2f07-40a5-afd6-2611fdb23569",
         "0efc9406-53a2-4011-8ba7-d6541694e26b"
       ],
+      "disabled": true,
       "settings": {
         "topic_title": "Emma Original Adjustable Foam Pillow",
         "slug": "original-adjustable-foam-pillow"
@@ -1523,9 +1524,9 @@
     "faq-1",
     "faq-2",
     "faq-3",
-    "faq-4",
     "faq-5",
     "faq-6",
+    "faq-4",
     "faq-13",
     "faq-7",
     "faq-8",

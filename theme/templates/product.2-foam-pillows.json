@@ -56,6 +56,13 @@
     "product-media": {
       "type": "product-media",
       "blocks": {
+        "image_t8T4EK": {
+          "type": "image",
+          "settings": {
+            "en_image": "shopify:\/\/shop_images\/foam_pillow_2.webp",
+            "fr_image": "shopify:\/\/shop_images\/foam_pillow_2.webp"
+          }
+        },
         "f5f456c7-b29a-4f74-826f-648e09f5b1cd": {
           "type": "image",
           "settings": {
@@ -86,6 +93,7 @@
         }
       },
       "block_order": [
+        "image_t8T4EK",
         "f5f456c7-b29a-4f74-826f-648e09f5b1cd",
         "ae4539f2-6ea2-42a3-a132-a31010570bf1",
         "038c8f16-3a84-418c-9ee2-38f53be4a385",
@@ -391,125 +399,6 @@
         "is_animate_scaling": false
       }
     },
-    "product-carousel": {
-      "type": "product-carousel",
-      "blocks": {
-        "5e77d40f-79e8-4050-a013-d2325a25b443": {
-          "type": "catalog_item",
-          "settings": {
-            "product": "perfect-sleep-bundle"
-          }
-        },
-        "72c7f33b-7788-4524-bf53-816aecb093b6": {
-          "type": "catalog_item",
-          "settings": {
-            "product": "emma-hybrid-comfort"
-          }
-        },
-        "07d5912c-d4c3-4ebb-97a6-f723fc8a4f3f": {
-          "type": "catalog_item",
-          "settings": {
-            "product": "emma-mattress-protector"
-          }
-        },
-        "c4650795-b884-4ddd-904e-babd57faad7b": {
-          "type": "catalog_item",
-          "settings": {
-            "product": "duvet"
-          }
-        }
-      },
-      "block_order": [
-        "5e77d40f-79e8-4050-a013-d2325a25b443",
-        "72c7f33b-7788-4524-bf53-816aecb093b6",
-        "07d5912c-d4c3-4ebb-97a6-f723fc8a4f3f",
-        "c4650795-b884-4ddd-904e-babd57faad7b"
-      ],
-      "settings": {
-        "heading": "Some things are better together",
-        "heading_alignment": "start",
-        "container_spacing": "md",
-        "trackId": ""
-      }
-    },
-    "shoppable-media": {
-      "type": "shoppable-media",
-      "blocks": {
-        "72c7f33b-7788-4524-bf53-816aecb093b6": {
-          "type": "video",
-          "settings": {
-            "video": "shopify:\/\/files\/videos\/Stephanie.UGC.mp4",
-            "content": "The ultimate ergonomic support.",
-            "product": "emma-hybrid-comfort"
-          }
-        },
-        "07d5912c-d4c3-4ebb-97a6-f723fc8a4f3f": {
-          "type": "video",
-          "settings": {
-            "video": "shopify:\/\/files\/videos\/Buy_SeanMari.mp4",
-            "product": ""
-          }
-        },
-        "video_P4jDEg": {
-          "type": "video",
-          "settings": {
-            "video": "shopify:\/\/files\/videos\/Amber.story.mp4",
-            "product": ""
-          }
-        },
-        "1764b6ed-cfac-4dec-9487-f9122604ba72": {
-          "type": "video",
-          "settings": {
-            "video": "shopify:\/\/files\/videos\/dying.MOV",
-            "product": ""
-          }
-        },
-        "1e675715-5ecb-41e6-a7ab-608b36025781": {
-          "type": "video",
-          "settings": {
-            "video": "shopify:\/\/files\/videos\/copy_095C1154-5368-40AF-8656-F51DD0CB3BE3_063d0e6f-2a0f-4988-8ae4-2c2bf3857ec8.mov",
-            "product": ""
-          }
-        },
-        "8fde16df-aace-45a2-bc5e-de66829da46e": {
-          "type": "video",
-          "settings": {
-            "video": "shopify:\/\/files\/videos\/3 reasons_c1e64666-1e6b-46d4-983e-4e7b10b857f8.mov",
-            "product": ""
-          }
-        },
-        "d2925961-e05b-4a94-be70-a9d7f7911010": {
-          "type": "video",
-          "settings": {
-            "video": "shopify:\/\/files\/videos\/Really worth the hype.mov",
-            "product": ""
-          }
-        },
-        "video_CTJ7wq": {
-          "type": "video",
-          "settings": {
-            "video": "shopify:\/\/files\/videos\/Pillows + Mattres_7d2c14ad-531d-4c45-8ed6-8fadf4320af2.mp4",
-            "product": ""
-          }
-        }
-      },
-      "block_order": [
-        "72c7f33b-7788-4524-bf53-816aecb093b6",
-        "07d5912c-d4c3-4ebb-97a6-f723fc8a4f3f",
-        "video_P4jDEg",
-        "1764b6ed-cfac-4dec-9487-f9122604ba72",
-        "1e675715-5ecb-41e6-a7ab-608b36025781",
-        "8fde16df-aace-45a2-bc5e-de66829da46e",
-        "d2925961-e05b-4a94-be70-a9d7f7911010",
-        "video_CTJ7wq"
-      ],
-      "settings": {
-        "heading": "Our Story",
-        "heading_alignment": "center",
-        "container_spacing": "md",
-        "trackId": ""
-      }
-    },
     "featured-products": {
       "type": "featured-products",
       "blocks": {
@@ -585,6 +474,132 @@
         "third_meter_title": "Motion Isolation",
         "show_third_meter": true,
         "show_secondary_badge": true
+      }
+    },
+    "product-carousel": {
+      "type": "product-carousel",
+      "blocks": {
+        "5e77d40f-79e8-4050-a013-d2325a25b443": {
+          "type": "catalog_item",
+          "settings": {
+            "product": "perfect-sleep-bundle"
+          }
+        },
+        "72c7f33b-7788-4524-bf53-816aecb093b6": {
+          "type": "catalog_item",
+          "settings": {
+            "product": "emma-hybrid-comfort"
+          }
+        },
+        "07d5912c-d4c3-4ebb-97a6-f723fc8a4f3f": {
+          "type": "catalog_item",
+          "settings": {
+            "product": "emma-mattress-protector"
+          }
+        },
+        "c4650795-b884-4ddd-904e-babd57faad7b": {
+          "type": "catalog_item",
+          "settings": {
+            "product": "duvet"
+          }
+        }
+      },
+      "block_order": [
+        "5e77d40f-79e8-4050-a013-d2325a25b443",
+        "72c7f33b-7788-4524-bf53-816aecb093b6",
+        "07d5912c-d4c3-4ebb-97a6-f723fc8a4f3f",
+        "c4650795-b884-4ddd-904e-babd57faad7b"
+      ],
+      "settings": {
+        "heading": "Some things are better together",
+        "heading_alignment": "start",
+        "container_spacing": "md",
+        "trackId": ""
+      }
+    },
+    "shoppable-media": {
+      "type": "shoppable-media",
+      "blocks": {
+        "72c7f33b-7788-4524-bf53-816aecb093b6": {
+          "type": "video",
+          "settings": {
+            "video": "shopify:\/\/files\/videos\/Stephanie.UGC.mp4",
+            "content": "The ultimate ergonomic support.",
+            "product": "emma-hybrid-comfort"
+          }
+        },
+        "07d5912c-d4c3-4ebb-97a6-f723fc8a4f3f": {
+          "type": "video",
+          "settings": {
+            "video": "shopify:\/\/files\/videos\/Buy_SeanMari.mp4",
+            "content": "",
+            "product": ""
+          }
+        },
+        "video_P4jDEg": {
+          "type": "video",
+          "settings": {
+            "video": "shopify:\/\/files\/videos\/Amber.story.mp4",
+            "content": "",
+            "product": ""
+          }
+        },
+        "1764b6ed-cfac-4dec-9487-f9122604ba72": {
+          "type": "video",
+          "settings": {
+            "video": "shopify:\/\/files\/videos\/dying.MOV",
+            "content": "",
+            "product": ""
+          }
+        },
+        "1e675715-5ecb-41e6-a7ab-608b36025781": {
+          "type": "video",
+          "settings": {
+            "video": "shopify:\/\/files\/videos\/copy_095C1154-5368-40AF-8656-F51DD0CB3BE3_063d0e6f-2a0f-4988-8ae4-2c2bf3857ec8.mov",
+            "content": "",
+            "product": ""
+          }
+        },
+        "8fde16df-aace-45a2-bc5e-de66829da46e": {
+          "type": "video",
+          "settings": {
+            "video": "shopify:\/\/files\/videos\/3 reasons_c1e64666-1e6b-46d4-983e-4e7b10b857f8.mov",
+            "content": "",
+            "product": ""
+          }
+        },
+        "d2925961-e05b-4a94-be70-a9d7f7911010": {
+          "type": "video",
+          "settings": {
+            "video": "shopify:\/\/files\/videos\/Really worth the hype.mov",
+            "content": "",
+            "product": ""
+          }
+        },
+        "video_CTJ7wq": {
+          "type": "video",
+          "settings": {
+            "video": "shopify:\/\/files\/videos\/Pillows + Mattres_7d2c14ad-531d-4c45-8ed6-8fadf4320af2.mp4",
+            "content": "",
+            "product": ""
+          }
+        }
+      },
+      "block_order": [
+        "72c7f33b-7788-4524-bf53-816aecb093b6",
+        "07d5912c-d4c3-4ebb-97a6-f723fc8a4f3f",
+        "video_P4jDEg",
+        "1764b6ed-cfac-4dec-9487-f9122604ba72",
+        "1e675715-5ecb-41e6-a7ab-608b36025781",
+        "8fde16df-aace-45a2-bc5e-de66829da46e",
+        "d2925961-e05b-4a94-be70-a9d7f7911010",
+        "video_CTJ7wq"
+      ],
+      "settings": {
+        "heading": "Our Story",
+        "heading_alignment": "center",
+        "container_spacing": "md",
+        "trackId": ""
       }
     },
     "customer-sentiment": {

@@ -1,6 +1,36 @@
 {
   "layout": "theme.product",
   "sections": {
+    "joint-product": {
+      "type": "joint-product",
+      "blocks": {
+        "item_czHCtP": {
+          "type": "item",
+          "settings": {
+            "product": "emma-original-mattress",
+            "upsell": "emma-hybrid-comfort",
+            "short_desc": "The ideal mattress providing support and spinal alignment for all type of sleeper",
+            "show_star_rating": false
+          }
+        },
+        "item_HaBtFY": {
+          "type": "item",
+          "settings": {
+            "product": "emma-hybrid-22",
+            "upsell": "emma-hybrid-comfort-ii",
+            "short_desc": "The new version of our Hybrid Comfort Mattress",
+            "show_star_rating": false
+          }
+        }
+      },
+      "block_order": [
+        "item_czHCtP",
+        "item_HaBtFY"
+      ],
+      "disabled": true,
+      "settings": {
+      }
+    },
     "product-layout": {
       "type": "product-layout",
       "blocks": {
@@ -325,7 +355,7 @@
           "type": "item",
           "settings": {
             "title": "Materials",
-            "content": "<p>Emma smoothly combines high-quality materials to create a dream-like mattress that conforms to every body type. Through the combination of our extensive research and advanced foam technology, Emma offers the comfiest sleep possible. Emma mattresses offer comfort point-elastic caving that enables an ideal and unique fit for your body. As a result, your spine stays straight while at the same time offering you the necessary amount of support and comfort.<\/p><ol><li><\/li><\/ol>",
+            "content": "<p><strong>Top Cover<\/strong>:<\/p><ul><li>100% Polyester<\/li><\/ul><p><strong>Border Fabric<\/strong>:<\/p><ul><li>100% Polyester<\/li><\/ul><p><strong>Comfort Layers<\/strong>:<\/p><ul><li>Hyper Soft Foam: 1.6\"<\/li><li>Visco Memory Foam: 1.6\"<\/li><\/ul><p><strong>Support System<\/strong>:<\/p><ul><li>Standard Foam with Cutouts: 6.7\"<\/li><\/ul><p><strong>Bottom Cover<\/strong>:<\/p><ul><li>85% Polyester<\/li><li>15% Polypropylene<\/li><\/ul>",
             "product_dimension": false
           }
         },
@@ -1093,6 +1123,7 @@
     }
   },
   "order": [
+    "joint-product",
     "product-layout",
     "product-summary",
     "product-badges",

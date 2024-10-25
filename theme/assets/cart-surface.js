@@ -37,7 +37,7 @@ class CartSurface extends CustomElement {
 
   resources = {
     stylesheets: ['cart-drawer.css', "cart-recommendation.css"],
-    scripts: ['cart.js', 'cart-drawer.js', 'cart-item.js', 'cart-upsell.js', 'quantity-adjuster.js']
+    scripts: ['cart.js', 'cart-drawer.js', 'cart-item.js', 'quantity-adjuster.js']
   }
 
   constructor() {
@@ -171,10 +171,6 @@ class CartSurface extends CustomElement {
         id: "shopify-section-cart-drawer-header",
         section: "cart-drawer-header",
         selector: ".drawer-title-container",
-      },
-      {
-        id: "shopify-section-cart-recommendation",
-        section: "cart-recommendation"
       }
     ];
   }

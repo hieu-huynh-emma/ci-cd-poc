@@ -49,6 +49,13 @@
     "product-media": {
       "type": "product-media",
       "blocks": {
+        "image_JxnxFQ": {
+          "type": "image",
+          "settings": {
+            "en_image": "shopify:\/\/shop_images\/emma_microfibra_2.jpg",
+            "fr_image": "shopify:\/\/shop_images\/emma_microfibra_2.jpg"
+          }
+        },
         "f5f456c7-b29a-4f74-826f-648e09f5b1cd": {
           "type": "image",
           "settings": {
@@ -93,6 +100,7 @@
         }
       },
       "block_order": [
+        "image_JxnxFQ",
         "f5f456c7-b29a-4f74-826f-648e09f5b1cd",
         "e4cd7962-4d57-4250-8e6e-4c76dd76d6d6",
         "038c8f16-3a84-418c-9ee2-38f53be4a385",
@@ -518,8 +526,15 @@
     "product-carousel": {
       "type": "product-carousel",
       "blocks": {
+        "catalog_item_fX7iTT": {
+          "type": "catalog_item",
+          "settings": {
+            "product": "perfect-sleep-bundle"
+          }
+        },
         "72c7f33b-7788-4524-bf53-816aecb093b6": {
           "type": "catalog_item",
+          "disabled": true,
           "settings": {
             "product": "perfect-sleep-bundle-ii"
           }
@@ -544,6 +559,7 @@
         }
       },
       "block_order": [
+        "catalog_item_fX7iTT",
         "72c7f33b-7788-4524-bf53-816aecb093b6",
         "5e77d40f-79e8-4050-a013-d2325a25b443",
         "07d5912c-d4c3-4ebb-97a6-f723fc8a4f3f",
@@ -571,6 +587,7 @@
           "type": "video",
           "settings": {
             "video": "shopify:\/\/files\/videos\/Buy_SeanMari.mp4",
+            "content": "",
             "product": ""
           }
         },
@@ -578,6 +595,7 @@
           "type": "video",
           "settings": {
             "video": "shopify:\/\/files\/videos\/Amber.story.mp4",
+            "content": "",
             "product": ""
           }
         },
@@ -585,6 +603,7 @@
           "type": "video",
           "settings": {
             "video": "shopify:\/\/files\/videos\/dying.MOV",
+            "content": "",
             "product": ""
           }
         },
@@ -592,6 +611,7 @@
           "type": "video",
           "settings": {
             "video": "shopify:\/\/files\/videos\/copy_095C1154-5368-40AF-8656-F51DD0CB3BE3_063d0e6f-2a0f-4988-8ae4-2c2bf3857ec8.mov",
+            "content": "",
             "product": ""
           }
         },
@@ -599,6 +619,7 @@
           "type": "video",
           "settings": {
             "video": "shopify:\/\/files\/videos\/3 reasons_c1e64666-1e6b-46d4-983e-4e7b10b857f8.mov",
+            "content": "",
             "product": ""
           }
         },
@@ -606,6 +627,7 @@
           "type": "video",
           "settings": {
             "video": "shopify:\/\/files\/videos\/Really worth the hype.mov",
+            "content": "",
             "product": ""
           }
         },
@@ -613,6 +635,7 @@
           "type": "video",
           "settings": {
             "video": "shopify:\/\/files\/videos\/Pillows + Mattres_7d2c14ad-531d-4c45-8ed6-8fadf4320af2.mp4",
+            "content": "",
             "product": ""
           }
         }

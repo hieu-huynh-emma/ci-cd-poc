@@ -196,10 +196,6 @@ class CartDrawer extends CustomElement {
         id: "shopify-section-cart-drawer-header",
         section: "cart-drawer-header",
         selector: ".drawer-title-container",
-      },
-      {
-        id: "shopify-section-cart-drawer-upsell",
-        section: "cart-drawer-upsell"
       }
     ];
   }
@@ -374,7 +370,7 @@ class CartRedeemCode extends CustomElement {
       cartSummary: this.closest('cart-drawer-summary'),
       scrollableContent: this.$el.find('cart-scrollable-content').get(0),
       cartItems: document.getElementById('CartDrawerItems'),
-      cartRecommendation: document.getElementById('CartDrawerUpsell'),
+      cartRecommendation: this.querySelector("cart-recommendation") || {},
       cartIconBubble: document.getElementById('cart-icon-bubble')
     }
   }
