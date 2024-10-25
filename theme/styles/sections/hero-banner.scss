@@ -66,10 +66,12 @@
     }
 
     .banner-cta {
+      @media screen and (max-width: 769px) {
+        width: 100%;
+      }
       @media screen and (min-width: 769px) {
         max-width: 352px;
         font-size: 14px;
-        padding: 0;
       }
     }
   }
