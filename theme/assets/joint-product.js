@@ -231,7 +231,6 @@ class JointProductSelector extends HTMLElement {
     loadBlock({sectionQuery,replacementPage}, {query, outletQuery,blockId, insertPosition}) {
         return new Promise((resolve) => {
             const blockEl = replacementPage.querySelector(query);
-            console.log("=>(joint-product.js:234) blockEl", blockEl);
             if (!blockEl) {
                 resolve()
                 return

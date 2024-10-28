@@ -35,8 +35,6 @@ if (!customElements.get("affirm-widget")) {
     mounted() {
       const { placement, amount, page } = this.props;
 
-      console.log(232);
-
       switch (placement) {
         case "promotion-badge":
           switch (page) {
