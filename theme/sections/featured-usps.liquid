@@ -13,7 +13,7 @@
         <ul class="usp-list">
             {% for block in items %}
                 <li>
-                    <modal-outlet>
+                    <drawer-outlet>
                         <div slot="trigger" class="usp-item cursor-pointer rounded-md">
                             <div class="banner-media">
                                 <img class="lazyload" data-src="{{ block.settings.icon | image_url: width: 100 }}"
@@ -46,7 +46,7 @@
                                 {{ block.settings.footer_content }}
                             </p>
                         </div>
-                    </modal-outlet>
+                    </drawer-outlet>
                 </li>
             {% endfor %}
         </ul>

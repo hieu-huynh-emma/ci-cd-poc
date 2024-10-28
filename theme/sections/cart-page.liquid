@@ -1308,8 +1308,8 @@
                       </a>
                     {% endif %}
                     <div class="pd_name">
-                     
-                      
+
+
                       <a href="{{ item.url }}" class="cart-item__name break product_title">
                         {% assign title = item.title | split: ' - ' %}
                         <span>
@@ -1339,30 +1339,30 @@
 
                         <div class="cart-item-description">
                           <span>Your purchase includes our</span>
-          
-                        
+
+
                           <span>
                             {{ primary_product.title }} mattress ({{ current_variant.title }})
                             {% if bundle_item_metaobjects.count == 1 %}and {% else %}, {% endif %}
                           </span>
-                        
-          
-                        {% for bundle_item_metaobject in bundle_item_metaobjects %}
-                          {% assign bundle_item_variant = bundle_item_metaobject.product.value %}
-                          {% assign qty = bundle_item_metaobject.qty | default: 1 %}
-          
-                          <span>
+
+
+                          {% for bundle_item_metaobject in bundle_item_metaobjects %}
+                            {% assign bundle_item_variant = bundle_item_metaobject.product.value %}
+                            {% assign qty = bundle_item_metaobject.qty | default: 1 %}
+
+                            <span>
           				  {{ qty }} {{ bundle_item_variant.product.metafields.accentuate.display_name | default: bundle_item_variant.product.title }}{% if qty > 1 %}s{% endif %}
-                            {% if bundle_item_variant.title != "Default Title" %}
-                              ({{ bundle_item_variant.title }})
-                            {% endif %}
+                              {% if bundle_item_variant.title != "Default Title" %}
+                                ({{ bundle_item_variant.title }})
+                              {% endif %}
           					</span>
-          
-                          {% unless forloop.last %}
-                            <span> {% if forloop.rindex0 == 1 %}and {% else %}, {% endif %}</span>
-                          {% endunless %}
-                        {% endfor %}
-                      </div>
+
+                            {% unless forloop.last %}
+                              <span> {% if forloop.rindex0 == 1 %}and {% else %}, {% endif %}</span>
+                            {% endunless %}
+                          {% endfor %}
+                        </div>
                       {% endif %}
                       {% if item.product.metafields.accentuate.has_pillow_addon %}
                         {% assign product_handle = item.product.metafields.accentuate.pillow_addon
@@ -1439,7 +1439,7 @@
                           </span>
                       {% endif %}
                       <strong class="product_price">
-                       {{ item.original_line_price | money }}
+                        {{ item.original_line_price | money }}
                       </strong>
                     </div>
                   </div>
@@ -1482,9 +1482,9 @@
 
           <div class="sum_row">
             <div class="sum_item">Total <span>(before tax)</span></div>
-            <div class="sum_item">
+            <div  class="sum_item">
               <del style="display:none">{{ total_cart_compare_price | money_without_trailing_zeros }}</del>
-              <strong> {{ cart.total_price | money_without_trailing_zeros }}</strong>
+              <strong id="cart-total"> {{ cart.total_price | money_without_trailing_zeros }}</strong>
             </div>
           </div>
 
@@ -1554,40 +1554,44 @@
               <express-checkout-button :provider="paypal"></express-checkout-button>
             </tracked-button>
 
-              <div id="mmWrappercart"></div>
+            <affirm-widget
+              :placement="promotion-badge"
+              :page="cart"
+            ></affirm-widget>
 
-                <script>
-              
-             
-                // Enter your Mention Me partner code here:
-                var partnerCode = "mm2c885498";
-                  
-                var situation = "cart";
-            
-                var urlComponents = [
-                	"https://tag.mention-me.com/api/v2/refereefind/",
-            	partnerCode
-                ];
-                const locale = window.location.host.startsWith("qc") ? "fr" : "en";
+            <div id="mmWrappercart"></div>
 
-                var queryComponents = [
-            	["situation", situation],
-            	// Locale
-            	["locale", locale + "_CA"],
-                ];
-            
-                queryComponents = queryComponents.map((qc) => qc[0] + "=" + encodeURIComponent(qc[1]));
-            
-                var url = urlComponents.join("") + "?" + queryComponents.join("&");
-            
-                var script = document.createElement("script");
-                script.src = url;
-            
-                document.getElementsByTagName("head")[0].appendChild(script);
-              
-         
-              
-              </script>
+            <script>
+
+
+              // Enter your Mention Me partner code here:
+              var partnerCode = "mm2c885498";
+
+              var situation = "cart";
+
+              var urlComponents = [
+                "https://tag.mention-me.com/api/v2/refereefind/",
+                partnerCode,
+              ];
+              const locale = window.location.host.startsWith("qc") ? "fr" : "en";
+
+              var queryComponents = [
+                ["situation", situation],
+                // Locale
+                ["locale", locale + "_CA"],
+              ];
+
+              queryComponents = queryComponents.map((qc) => qc[0] + "=" + encodeURIComponent(qc[1]));
+
+              var url = urlComponents.join("") + "?" + queryComponents.join("&");
+
+              var script = document.createElement("script");
+              script.src = url;
+
+              document.getElementsByTagName("head")[0].appendChild(script);
+
+
+            </script>
 
           </cart-footer>
 

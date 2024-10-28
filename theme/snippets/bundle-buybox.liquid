@@ -159,6 +159,7 @@
 
       {% render 'product-price', variant: current_variant, product: product %}
         <template id="price-transparency-placeholder"></template>
+        <affirm-widget :placement="promotion-badge" :page="product"></affirm-widget>
 
       {% render 'purchase-buttons' %}
     </div>
