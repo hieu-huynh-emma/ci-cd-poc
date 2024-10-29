@@ -64,6 +64,7 @@
             "cta_url": "shopify:\/\/pages\/sale",
             "cta_text": "Shop the sale",
             "show_cta": true,
+            "cta_size": "lg",
             "timer": "2024-06-03 06:00",
             "discount_badge": false,
             "trackId": "Shop_left"
@@ -78,13 +79,14 @@
             "wallpaper_mobile_fr_img": "shopify:\/\/shop_images\/new_split_banner_-_mobile_1.png",
             "title": "<h1>Special offer<\/h1>",
             "heading_size": "medium",
-            "subtitle": "<p>Limited time offer on our Mattress Protector!<\/p>",
+            "subtitle": "<p>Limited time offer on our Pack of 2 Foam Pillows!<\/p>",
             "show_shadow": true,
             "text_color": "#ffffff",
             "cta_url": "shopify:\/\/pages\/sale",
             "cta_text": "Shop the offer",
             "show_cta": false,
-            "timer": "2024-10-28 06:00",
+            "cta_size": "lg",
+            "timer": "2024-11-01 06:00",
             "discount_badge": true,
             "trackId": "Shop_right"
           }
@@ -94,12 +96,12 @@
         "c9b229ea-7258-4341-93c2-95b7ad5d7c77",
         "7bd45a45-1205-4518-9b02-60a5bc9a95ac"
       ],
-      "disabled": true,
       "settings": {
       }
     },
     "hero-banner": {
       "type": "hero-banner",
+      "disabled": true,
       "settings": {
         "title": "<h2>Extended Thanksgiving Sale<\/h2>",
         "subtitle": "<h3><\/h3><p><a href=\"\/pages\/emma-first-time-customer-offer-promo-details\" target=\"_blank\" title=\"Emma “First Time Customer Offer” Promo Details\">New Customers Only - Terms apply*<\/a><\/p>",
@@ -112,6 +114,7 @@
         "cta_url": "shopify:\/\/pages\/sale",
         "cta_text": "Shop Now",
         "show_cta": true,
+        "cta_size": "lg",
         "timer": "2024-07-18 06:00",
         "trackId": "Shop"
       }
