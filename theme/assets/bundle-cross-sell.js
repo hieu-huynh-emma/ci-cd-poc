@@ -234,7 +234,6 @@ class BundleCrossSell extends CrossSell.Manager {
     const { entries, main } = (await CrossSell.API.perVariant(variantId, METAFIELD.OPTIN_BUNDLE_ITEM));
 
     this.bundleItems = entries;
-    console.log("=>(bundle-cross-sell.js:232) this.bundleItems", this.bundleItems);
 
     this.primaryVariant = main;
   }
