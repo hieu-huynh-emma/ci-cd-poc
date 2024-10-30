@@ -19,6 +19,10 @@
     text-align: center;
     @media screen and (min-width: 769px) {
       gap: 1rem;
+      padding: 0 2.5rem;
+      justify-items: flex-start;
+      text-align: left;
+
     }
 
     h1 {
