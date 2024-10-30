@@ -197,10 +197,10 @@ class CartDrawer extends CustomElement {
 				section: "cart-drawer-header",
 				selector: ".drawer-title-container",
 			},
-			{
-				id: "shopify-section-cart-drawer-upsell",
-				section: "cart-drawer-upsell"
-			}
+			// {
+			// 	id: "shopify-section-cart-drawer-upsell",
+			// 	section: "cart-drawer-upsell"
+			// }
 		];
 	}
 

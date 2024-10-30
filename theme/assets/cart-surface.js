@@ -171,11 +171,11 @@ class CartSurface extends CustomElement {
 				id: "shopify-section-cart-drawer-header",
 				section: "cart-drawer-header",
 				selector: ".drawer-title-container",
-			},
-			{
-				id: "shopify-section-cart-recommendation",
-				section: "cart-recommendation"
 			}
+			// {
+			// 	id: "shopify-section-cart-recommendation",
+			// 	section: "cart-recommendation"
+			// }
 		];
 	}
 
