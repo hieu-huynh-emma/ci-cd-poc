@@ -308,6 +308,9 @@ class JointProductSelector extends HTMLElement {
             {
                 sectionId: "product-specifications",
             },
+            {
+                sectionId: "product-unique-selling-points"
+            },
             {sectionId: "bundle-box"},
             {
                 sectionId: "mattress-layers",
