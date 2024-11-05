@@ -173,24 +173,24 @@ if (!customElements.get("product-form")) {
 
             this.cart.renderContents(response);
 
-            const cartRedeem = document.getElementById("CartRedeemCode");
-            const cartSummary = document.getElementById("CartDrawerSummary");
-            const codeRedeemed = cartRedeem.codeRedeemed;
+            // const cartRedeem = document.getElementById("CartRedeemCode");
+            // const cartSummary = document.getElementById("CartDrawerSummary");
+            // const codeRedeemed = cartRedeem.codeRedeemed;
 
             if (previousEmpty) {
               this.cartSurface.$el.removeClass("is-empty");
             }
 
-            if (!!codeRedeemed) {
-              await this.cart.loadCheckout();
-
-              const isApplicable = cartRedeem.checkCodeApplicable();
-
-              if (!isApplicable) return;
-
-              cartSummary.computeDiscountedTotal();
-              cartRedeem.refreshDiscountTag();
-            }
+            // if (!!codeRedeemed) {
+            //   await this.cart.loadCheckout();
+            //
+            //   const isApplicable = cartRedeem.checkCodeApplicable();
+            //
+            //   if (!isApplicable) return;
+            //
+            //   cartSummary.computeDiscountedTotal();
+            //   cartRedeem.refreshDiscountTag();
+            // }
           })
           .catch((e) => {
             console.error(e);

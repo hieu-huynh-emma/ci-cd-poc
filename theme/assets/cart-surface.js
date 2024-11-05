@@ -140,7 +140,7 @@ class CartSurface extends CustomElement {
 	}
 
 	getSectionsToRender() {
-		return ["cart-drawer-empty", "cart-drawer-items", "cart-recommendation", "cart-drawer-summary", "cart-customer-support"];
+		return ["cart-drawer-header", "cart-drawer-empty", "cart-drawer-items", "cart-recommendation"];
 	}
 
 	getCartPartsToRender() {
@@ -150,18 +150,6 @@ class CartSurface extends CustomElement {
 				section: "cart-drawer-items",
 				selector: "cart-drawer-items"
 			},
-			{
-				id: "shopify-section-cart-drawer-summary",
-				section: "cart-drawer-summary",
-				selector: ".summary-list",
-			},
-
-			{
-				id: "shopify-section-cart-drawer-summary",
-				section: "cart-drawer-summary",
-				selector: "#CartTotals",
-			},
-
 			{
 				id: "cart-icon-bubble",
 				section: "cart-icon-bubble",

@@ -2,14 +2,14 @@
     {% section 'cart-drawer-header' %}
 
     <div
-            class="cart-drawer-inner overflow-full" role="dialog" aria-modal="true"
-            aria-label="{{ 'sections.cart.title' | t }}"
-            tabindex="-1"
+        class="cart-drawer-inner overflow-full" role="dialog" aria-modal="true"
+        aria-label="{{ 'sections.cart.title' | t }}"
+        tabindex="-1"
     >
         <div class="cart-drawer-skeleton">
             <svg
-                    aria-hidden="true" focusable="false" role="presentation" class="spinner" viewBox="0 0 66 66"
-                    xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true" focusable="false" role="presentation" class="spinner" viewBox="0 0 66 66"
+                xmlns="http://www.w3.org/2000/svg"
             >
                 <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
             </svg>
@@ -22,12 +22,9 @@
 
             {% comment %}<div id="cart-recommendation-placeholder"></div>{% endcomment %}
 
-            <div id="cart-drawer-summary-placeholder"></div>
-
             {% render 'loading-spinner', center: true %}
         </cart-scrollable-content>
     </div>
 
     {% render 'cart-drawer-footer' %}
-    <div id="cart-customer-support-placeholder"></div>
 </cart-drawer>
