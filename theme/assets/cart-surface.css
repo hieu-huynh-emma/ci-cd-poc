@@ -105,7 +105,9 @@ cart-drawer-footer .cart-cta-btn[type=submit].btn--compact {
 cart-surface {
     z-index: 999999;
     position: fixed;
-    transition: visibility .2s
+    transition: visibility .2s;
+
+    color: #2e2f3c;
 }
 
 cart-surface.active {

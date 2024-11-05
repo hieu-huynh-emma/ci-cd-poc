@@ -1,14 +1,24 @@
 #sale-hero-banner-section {
   position: relative;
   z-index: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
+
+  @media screen and (max-width: 769px) {
+    padding: 0;
+  }
 
   .section-container {
     overflow: hidden;
-    border-radius: 8px;
+
+    width: 100%;
+    height: 100%;
+    @media screen and (max-width: 769px) {
+      position: static;
+    }
+
+    @media screen and (min-width: 769px) {
+      border-radius: 8px;
+    }
+
   }
 
   .section-body {
@@ -16,7 +26,11 @@
     gap: .25rem;
     grid-template-columns: minmax(0, 1fr);
     justify-items: center;
+    padding: 0 1rem;
+    height: 100%;
     text-align: center;
+
+
     @media screen and (min-width: 769px) {
       gap: 1rem;
       padding: 0 2.5rem;

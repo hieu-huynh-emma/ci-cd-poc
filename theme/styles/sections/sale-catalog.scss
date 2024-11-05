@@ -1,4 +1,7 @@
 .smart-tabs {
+  --smart-tab-item-initial-offset: 0;
+  --smart-background-color: var(--base-text-color);
+
   $tabs: ".smart-tabs";
   $tab: ".smart-tab";
   $container: ".smart-container";
@@ -22,6 +25,7 @@
     border: none;
 
     padding: 0;
+    background: none;
   }
 
   #{$tab}-strip {
@@ -30,6 +34,7 @@
     > .smart-tab-label-container {
       background: none;
       color: inherit;
+      margin: 0;
 
       :first-child {
         margin-left: 0;
@@ -41,13 +46,17 @@
     padding: 0;
     gap: 1rem;
     @media screen and (min-width: 769px) {
-      gap: 80px;
+      gap: 4rem;
     }
   }
 
   #{$tabs}-selection-bar {
     height: 3px;
     background-color: var(--color-charade);
+
+    body[data-mode='dark'] & {
+      background-color: var(--color-pizazz);
+    }
   }
 
   #{$tab} {
@@ -61,9 +70,14 @@
 
     &-label-container {
       &.smart-tab-selected {
+
         #{$labelText}-container {
           color: var(--color-charade);
           font-weight: 600;
+        }
+
+        body[data-mode='dark'] & #{$labelText}-container {
+          color: white;
         }
       }
     }

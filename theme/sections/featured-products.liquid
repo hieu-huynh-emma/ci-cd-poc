@@ -38,10 +38,10 @@
 	<div class="section-chassis page-boundary">
 		<div class="flex justify-between items-center">
 			<div class="flex flex-1 flex-col items-{{ section.settings.heading_alignment }}">
-				<div class="text-comet text-left solid text-[16px] text-[#2E2F3C]">
+				<div class="text-left solid">
 					{% render 'rtf-viewer', content: section.settings.subtitle %}
 				</div>
-				<h2 class="text-xl md:text-xxl text-left text-charade font-semibold">
+				<h2 class="text-xl md:text-xxl text-left font-semibold">
 					<span class="hidden md:inline">{{ section.settings.title }}</span>
 					<span class="md:hidden">{{ section.settings.mobile_title }}</span>
 				</h2>
@@ -51,14 +51,14 @@
 			<div class="flex flex-col gap-2">
 				<tracked-button
 						:trackId="{{ compareTrackId }}" href="{{ compareBtn.settings.url }}"
-						class="font-inter text-[16px] font-bold rounded-full border border-{#2E2F3C} text-center hidden md:block sec_btn"
+						class="btn hidden md:block sec_btn"
 				>
 					Compare all mattresses
 				</tracked-button>
 
 				<tracked-button
 						:trackId="{{ quizzTrackId }}" href="{{ quizBtn.settings.url }}"
-						class="font-inter text-[16px] font-bold rounded-full border border-{#2E2F3C} text-center hidden md:block sec_btn"
+						class="btn hidden md:block sec_btn"
 				>
 					Find your perfect match
 				</tracked-button>
@@ -69,16 +69,9 @@
 		<div class="hidden md:grid grid-cols-3 justify-center gap-5 desktop_view">
 			{%- for block in productBlocks -%}
 				{% assign product = block.settings.product %}
-				<a href="{{ product.url }}" abtasty-tracker="PDP_CTR">
-					<div
-							class="w-full h-full flex flex-col md:max-w-[422px] text-center featured_card"
-							style="background-color:  var(--product-card-bg)"
-					>
-
-						<div
-								style="border-color:  var(--product-card-bg)"
-								class="rounded-[6px] border flex flex-col h-full"
-						>
+				<a class="comparison-card" href="{{ product.url }}" abtasty-tracker="PDP_CTR">
+					<div class="w-full h-full flex flex-col md:max-w-[422px] text-center featured_card">
+						<div class="rounded-[6px] flex flex-col h-full">
 							<div class="flex justify-between p-4 gap-5 hidden">
 								<div>
 
@@ -123,7 +116,7 @@
 												>
 													{% for i in (1..8) %}
 														{% if i <= block.settings.comfort_meter %}
-															<div class="h-3 rounded-xl bg-[#3C4196]">&nbsp;</div>
+															<div class="h-3 rounded-xl bg-[#1E90FF]">&nbsp;</div>
 														{% else %}
 															<div class="h-3 rounded-xl bg-[#D2D3DD]">&nbsp;</div>
 														{% endif %}
@@ -139,7 +132,7 @@
 												>
 													{% for i in (1..8) %}
 														{% if i <= block.settings.cooling_meter %}
-															<div class="h-3 rounded-xl bg-[#3C4196]">&nbsp;</div>
+															<div class="h-3 rounded-xl bg-[#1E90FF]">&nbsp;</div>
 														{% else %}
 															<div class="h-3 rounded-xl bg-[#D2D3DD]">&nbsp;</div>
 														{% endif %}
@@ -155,7 +148,7 @@
 												>
 													{% for i in (1..8) %}
 														{% if i <= block.settings.motion_isolation_meter %}
-															<div class="h-3 rounded-xl bg-[#3C4196]">&nbsp;</div>
+															<div class="h-3 rounded-xl bg-[#1E90FF]">&nbsp;</div>
 														{% else %}
 															<div class="h-3 rounded-xl bg-[#D2D3DD]">&nbsp;</div>
 														{% endif %}
@@ -178,7 +171,7 @@
 
 									<div class="flex items-center justify-between gap-2 flex-col">
 										<div>
-											<div class=" text-[#55576F]" style="font-size:12px">
+											<div class="text-xxs">
 												{% if product.compare_at_price > product.price %}
 													From
 												{% endif %}
@@ -318,7 +311,7 @@
 															>
 																{% for i in (1..8) %}
 																	{% if i <= block.settings.comfort_meter %}
-																		<div class="h-3 rounded-xl bg-[#3C4196]">
+																		<div class="h-3 rounded-xl bg-[#1E90FF]">
 																			&nbsp;
 																		</div>
 																	{% else %}
@@ -338,7 +331,7 @@
 															>
 																{% for i in (1..8) %}
 																	{% if i <= block.settings.cooling_meter %}
-																		<div class="h-3 rounded-xl bg-[#3C4196]">
+																		<div class="h-3 rounded-xl bg-[#1E90FF]">
 																			&nbsp;
 																		</div>
 																	{% else %}
@@ -358,7 +351,7 @@
 															>
 																{% for i in (1..8) %}
 																	{% if i <= block.settings.motion_isolation_meter %}
-																		<div class="h-3 rounded-xl bg-[#3C4196]">
+																		<div class="h-3 rounded-xl bg-[#1E90FF]">
 																			&nbsp;
 																		</div>
 																	{% else %}
@@ -385,7 +378,7 @@
 
 												<div class="flex items-center justify-between gap-2 flex-col">
 													<div class="flex flex-col items-center flex-wrap">
-														<div class=" text-[#55576F]" style="font-size:12px">
+														<div class="text-xxs">
 															{% if product.compare_at_price > product.price %}
 																From
 															{% endif %}
@@ -474,14 +467,14 @@
 		<div class="flex flex-col gap-2 items-center md:hidden">
 			<tracked-button
 					:trackId="{{ compareTrackId }}" href="{{ compareBtn.settings.url }}"
-					class="font-inter text-[16px] font-bold rounded-full border border-{#2E2F3C} text-center sec_btn"
+					class="btn sec_btn"
 			>
 				Compare all mattresses
 			</tracked-button>
 
 			<tracked-button
 					:trackId="{{ quizzTrackId }}" href="{{ quizBtn.settings.url }}"
-					class="font-inter text-[16px] font-bold rounded-full border border-{#2E2F3C} text-center sec_btn"
+					class="btn sec_btn"
 			>
 				Find your perfect match
 			</tracked-button>

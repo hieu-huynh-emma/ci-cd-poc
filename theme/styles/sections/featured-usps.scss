@@ -45,6 +45,7 @@ section#usp {
   display: grid;
   gap: 1rem;
   grid-template-rows: minmax(0, auto) minmax(0, 1fr);
+  padding: 1rem;
 
   .usp-m {
     &__media {

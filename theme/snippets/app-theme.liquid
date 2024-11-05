@@ -2,17 +2,17 @@
    ================= Theme Settings =================
 {%- endcomment -%}
 {%- liquid
-    assign body_font_bold = settings.type_body_font | font_modify: 'weight', 'bold'
-    assign body_font_italic = settings.type_body_font | font_modify: 'style', 'italic'
-    assign body_font_bold_italic = body_font_bold | font_modify: 'style', 'italic'
+	assign body_font_bold = settings.type_body_font | font_modify: 'weight', 'bold'
+	assign body_font_italic = settings.type_body_font | font_modify: 'style', 'italic'
+	assign body_font_bold_italic = body_font_bold | font_modify: 'style', 'italic'
 %}
 {%- if settings.favicon != blank -%}
-    <link rel="icon" type="image/png" href="{{ settings.favicon | img_url: '32x32' }}">
+	<link rel="icon" type="image/png" href="{{ settings.favicon | img_url: '32x32' }}">
 {%- endif -%}
 <style>
-    {{ body_font_bold | font_face: font_display: 'swap' }}
-    {{ body_font_italic | font_face: font_display: 'swap' }}
-    {{ body_font_bold_italic | font_face: font_display: 'swap' }}
+	{{ body_font_bold | font_face: font_display: 'swap' }}
+	{{ body_font_italic | font_face: font_display: 'swap' }}
+	{{ body_font_bold_italic | font_face: font_display: 'swap' }}
 </style>
 <style>
     :root {
@@ -57,7 +57,7 @@ settings.colors_accent_2 }}{% endif %};
         --color_drawer_background: {{ settings.color_drawer_background }};
         --color_drawer_border: {{ settings.color_drawer_border }};
         --color_drawer_button: {{ settings.color_drawer_button }};
-        --color_drawer_button_text: {{ settings.color_drawer_button_text }}
+        --color_drawer_button_text: {{ settings.color_drawer_button_text }};
     }
 </style>
 
@@ -65,6 +65,10 @@ settings.colors_accent_2 }}{% endif %};
 {%- comment -%}
    ================= Global Styles =================
 {%- endcomment -%}
+
+
+{% render 'theme-mode' %}
+
 
 <link rel="stylesheet" href="{{ 'base.css' | asset_url }}">
 <link rel="stylesheet" href="{{ 'global.css' | asset_url }}">
@@ -89,6 +93,7 @@ settings.colors_accent_2 }}{% endif %};
 </style>
 <link id="vendor-custom-styles" rel="quickscript" loading="delayed" href="{{ 'vendors.css' | asset_url }}">
 <link rel="stylesheet" href="{{ 'section-layout.css' | asset_url }}">
+<link rel="quickscript" loading="delayed" href="{{ 'content-layout.css' | asset_url }}">
 <link rel="stylesheet" href="{{ 'catalog-layout.css' | asset_url }}">
 <link rel="quickscript" loading="delayed" href="{{ 'weglot_lang_switcher.css' | asset_url }}">
 <link rel="quickscript" loading="delayed" href="{{ 'splide.custom.css' | asset_url }}">
@@ -136,11 +141,11 @@ settings.colors_accent_2 }}{% endif %};
 </style>
 
 {% case template %}
-    {% when 'index' %}
-        <link rel="stylesheet" href="{{ 'hero-banner.css' | asset_url }}">
-        <link rel="quickscript" loading="delayed" href="{{ 'product-card.css' | asset_url }}">
-    {% else %}
-        <link rel="stylesheet" href="{{ 'product-card.css' | asset_url }}">
+	{% when 'index' %}
+		<link rel="stylesheet" href="{{ 'hero-banner.css' | asset_url }}">
+		<link rel="quickscript" loading="delayed" href="{{ 'product-card.css' | asset_url }}">
+	{% else %}
+		<link rel="stylesheet" href="{{ 'product-card.css' | asset_url }}">
 {% endcase %}
 
 

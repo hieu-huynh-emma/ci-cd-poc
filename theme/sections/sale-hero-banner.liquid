@@ -5,7 +5,7 @@
 
 <style>
     #sale-hero-banner-section {
-        min-height: 180px;
+        min-height: 262px;
         color: {{section.settings.text_color}};
     }
 
@@ -23,24 +23,22 @@
 
 {{ 'sale-hero-banner.css' | asset_url | stylesheet_tag }}
 
-<section id="sale-hero-banner-section">
-	<div class=" page-boundary">
-		<div class="relative section-container">
-			<div class="section-body">
-				<h1 class="heading-2">{{ section.settings.title | remove: "<p>" | remove: "</p>" }}</h1>
-				<h2 class="heading-3">{{ section.settings.subtitle }}</h2>
-			</div>
+<section id="sale-hero-banner-section" class="page-boundary">
+  <div class="section-container">
+    <div class="section-body">
+      <h1 class="heading-2">{{ section.settings.title | remove: "<p>" | remove: "</p>" }}</h1>
+      <h2 class="heading-3">{{ section.settings.subtitle }}</h2>
+    </div>
 
-			{% if wallpaper != blank %}
-				{% render 'picture-tag',
-						src: wallpaper.settings.src,
-						mobile_src: wallpaper.settings.mobile_src,
-						picture_attributes: "class='section-wallpaper'",
-						width: 768
-				%}
-			{% endif %}
-		</div>
-	</div>
+    {% if wallpaper != blank %}
+      {% render 'picture-tag',
+        src: wallpaper.settings.src,
+        mobile_src: wallpaper.settings.mobile_src,
+        picture_attributes: "class='section-wallpaper'",
+        width: 768
+      %}
+    {% endif %}
+  </div>
 </section>
 
 {% schema %}

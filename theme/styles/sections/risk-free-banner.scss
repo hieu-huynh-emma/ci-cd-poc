@@ -1,7 +1,6 @@
 section#risk-free-banner {
   display: block;
   padding: 8px 0;
-  background-color: #fff;
 
   .splide__track {
     padding: 0;
@@ -32,6 +31,10 @@ section#risk-free-banner {
     font-family: "Acumin Pro";
     font-weight: 700;
     font-size: 15px;
+
+    &__icon svg {
+      height: 25px;
+    }
   }
 
 }

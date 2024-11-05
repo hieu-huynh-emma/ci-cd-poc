@@ -7,28 +7,28 @@
 <link rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/@smarthtmlelements/smart-elements@6.2.0/source/styles/smart.default.css">
 <script
-        src="https://cdn.jsdelivr.net/npm/@smarthtmlelements/smart-elements@6.2.0/source/smart.element.js"></script>
+		src="https://cdn.jsdelivr.net/npm/@smarthtmlelements/smart-elements@6.2.0/source/smart.element.js"></script>
 <script
-        src="https://cdn.jsdelivr.net/npm/@smarthtmlelements/smart-elements@6.2.0/source/smart.tabs.min.js"></script>
+		src="https://cdn.jsdelivr.net/npm/@smarthtmlelements/smart-elements@6.2.0/source/smart.tabs.min.js"></script>
 
 <link rel="stylesheet" href="{{ 'sale-catalog.css' | asset_url }}">
 
 <section id="sale-catalog-section" class="section-container spacing-{{ section.settings.container_spacing }}">
-    <div class="section-chassis page-boundary">
-        <smart-tabs class="material">
-            {% for block in collectionCatalog %}
-                {% assign collection = block.settings.collection %}
-                {% assign title = block.settings.title | default: collection.title %}
-                <smart-tab-item label="{{ title }}" data-track-id="{{ block.settings.trackId }}">
-                    <div class="catalog-grid">
-                        {% for product in collection.products %}
-                            {% render 'product-card', product: product, landscape: true %}
-                        {% endfor %}
-                    </div>
-                </smart-tab-item>
-            {% endfor %}
-        </smart-tabs>
-    </div>
+	<div class="page-boundary">
+		<smart-tabs class="material">
+			{% for block in collectionCatalog %}
+				{% assign collection = block.settings.collection %}
+				{% assign title = block.settings.title | default: collection.title %}
+				<smart-tab-item label="{{ title }}" data-track-id="{{ block.settings.trackId }}">
+					<div class="catalog-grid">
+						{% for product in collection.products %}
+							{% render 'product-card', product: product, landscape: true %}
+						{% endfor %}
+					</div>
+				</smart-tab-item>
+			{% endfor %}
+		</smart-tabs>
+	</div>
 </section>
 
 <script type="quickscript" loading="delayed" src="{{ 'sale-catalog.js' | asset_url }}"></script>
