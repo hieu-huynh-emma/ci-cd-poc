@@ -1,4 +1,3 @@
-{% comment %}<form action="{{ routes.cart_url }}" id="CartDrawer-Form" method="post">{% endcomment %}
 <cart-drawer-footer id="CartDrawerFooter">
 	<tracked-button
 			:trackId="View_cart"
@@ -14,7 +13,6 @@
 					stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
 			/>
 		</svg>
-		<span>{{ 'cart.checkout_btn_text' | t }}</span>
+		<span>View Cart</span>
 	</tracked-button>
 </cart-drawer-footer>
-{% comment %}</form>{% endcomment %}
