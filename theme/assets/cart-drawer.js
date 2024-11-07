@@ -185,9 +185,9 @@ class CartDrawer extends CustomElement {
                 section: "cart-drawer-header",
                 selector: ".drawer-title-container",
             }
-            // ,{
-            // 	id: "shopify-section-cart-recommendation", section: "cart-recommendation"
-            // }
+            ,{
+            	id: "shopify-section-cart-recommendation", section: "cart-recommendation"
+            }
         ];
     }
 
