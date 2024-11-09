@@ -2,7 +2,6 @@
 {% assign cta = section.blocks | where: "type", "cta" | first %}
 {% assign countdownTimer = section.blocks | where: "type", "countdown_timer" | first %}
 
-
 <style>
     #sale-hero-banner-section {
         min-height: 262px;
@@ -11,7 +10,6 @@
 
     @media screen and (min-width: 769px) {
         #sale-hero-banner-section {
-            aspect-ratio: 1440/172;
             min-height: 172px;
         }
     }
@@ -26,9 +24,35 @@
 <section id="sale-hero-banner-section" class="page-boundary">
   <div class="section-container">
     <div class="section-body">
-      <h1 class="heading-2">{{ section.settings.title | remove: "<p>" | remove: "</p>" }}</h1>
-      <h2 class="heading-3">{{ section.settings.subtitle }}</h2>
+      <div class="section-content">
+        <h1 class="heading-2">{{ section.settings.title | remove: "<p>" | remove: "</p>" }}</h1>
+        <h2 class="heading-3">{{ section.settings.subtitle }}</h2>
+      </div>
+
+      <div class="section-features">
+        <hero-banner-countdown-timer class="hidden" end-time="{{ settings.sale_timer }}">
+          <div class="countdown-timer" style="color: black;">
+            <div class="time-part">
+              <p class="digit"></p>
+              <p class="label">Days</p>
+            </div>
+            <div class="time-part">
+              <p class="digit"></p>
+              <p class="label">Hours</p>
+            </div>
+            <div class="time-part">
+              <p class="digit"></p>
+              <p class="label">Minutes</p>
+            </div>
+            <div class="time-part">
+              <p class="digit"></p>
+              <p class="label">Seconds</p>
+            </div>
+          </div>
+        </hero-banner-countdown-timer>
+      </div>
     </div>
+
 
     {% if wallpaper != blank %}
       {% render 'picture-tag',

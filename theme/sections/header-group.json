@@ -11,32 +11,17 @@
             "text": "<p>Early Black Friday is here! <strong>Up to 60% off<\/strong><\/p>",
             "tooltip": ""
           }
-        },
-        "announcement_content_7yRzRg": {
-          "type": "announcement_content",
-          "disabled": true,
-          "settings": {
-            "text": "",
-            "tooltip": ""
-          }
         }
       },
       "block_order": [
-        "f20c1dc5-1445-4727-82f1-38fc8e740656",
-        "announcement_content_7yRzRg"
-      ],
-      "custom_css": [
-        ".anno-wrapper {border: 1, 1, transparent; border-bottom: 0rem;}",
-        ".anno-chassis {display: flex; align-items: center;}",
-        "h2 {text-align: center;}",
-        ".btn--plain {background-color: #2e2f3c; color: #white;}"
+        "f20c1dc5-1445-4727-82f1-38fc8e740656"
       ],
       "settings": {
         "cta_btn_text": "Shop the sale",
         "link": "shopify:\/\/pages\/sale",
         "color_bg": "#2e2f3c",
         "color_text": "#ffffff",
-        "show_countdown_timer": false
+        "show_countdown_timer": true
       }
     },
     "header": {

@@ -11,49 +11,6 @@
     }
   }
 
-  .countdown-timer {
-    display: grid;
-    gap: 4px;
-    grid-auto-flow: column;
-    grid-auto-columns: minmax(0, 1fr);
-    align-items: center;
-    justify-content: flex-start;
-    width: 100%;
-
-    .time-part {
-      display: grid;
-      justify-content: center;
-      padding: 2px 4px;
-      background-color: #fff;
-      border-radius: 4px;
-      text-align: center;
-      @media screen and (min-width: 768px) {
-        width: 69px;
-        padding: 4px
-      }
-
-      .digit {
-        font-size: 16px;
-        font-weight: 600;
-        letter-spacing: 0;
-        line-height: 125%;
-        @media screen and (min-width: 768px) {
-          font-size: 32px
-        }
-      }
-
-      .label {
-        font-weight: 400;
-        font-size: .75rem;
-        letter-spacing: 0;
-        line-height: 1rem;
-        @media screen and (min-width: 768px) {
-          font-size: 12px
-        }
-      }
-    }
-  }
-
   .banner-features {
     display: grid;
     gap: 1rem;

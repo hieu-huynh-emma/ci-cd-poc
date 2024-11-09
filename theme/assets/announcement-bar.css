@@ -16,11 +16,13 @@
     --color-calm-600: #693f73;
     --color-scarlet: #f03306;
 }
+
 .announcement-bar-wrapper {
     position: sticky;
     top: -1px;
     z-index: 999;
 }
+
 #announcement-bar .anno-wrapper {
     display: flex;
     align-items: center;
@@ -33,15 +35,19 @@
         display: none;
     }
 }
+
 #announcement-bar .anno-tooltip {
     display: block;
 }
+
 #announcement-bar countdown-timer .timer-display {
     color: var(--section-text-color);
 }
+
 #announcement-bar .countdown-container {
     display: block;
 }
-#announcement-bar .page-boundary{
-  justify-content:center !important;
+
+#announcement-bar .page-boundary {
+    justify-content: center !important;
 }
