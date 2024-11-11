@@ -100,7 +100,7 @@
 								/>
 							</div>
 
-							<h3 class="px-4 text-[20px] font-semibold font-inter mt-2 mb-3">{{ block.settings.product_title }}</h3>
+							<h3 class="px-4 text-[20px] font-semibold font-inter mt-2 mb-3">{{ product.title | default: block.settings.product_title }}</h3>
 
 							<div class="featured_card__attributes px-4 shopify-richtext mb-3">{{ block.settings.desc }}</div>
 
@@ -295,7 +295,7 @@
 
 										<h3
 												class="px-4 text-[20px] font-semibold font-inter mt-2 mb-3"
-										>{{ block.settings.product_title }}</h3>
+										>{{ product.title | default: block.settings.product_title }}</h3>
 
 										<div class="featured_card__attributes px-4 shopify-richtext mb-3">{{ block.settings.desc }}</div>
 

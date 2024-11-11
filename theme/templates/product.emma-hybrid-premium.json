@@ -27,8 +27,14 @@
         "item_zLVk8t",
         "item_ha7iFa"
       ],
-      "disabled": true,
+      "settings": {}
+    },
+    "bundle-cross-sell": {
+      "type": "bundle-cross-sell",
       "settings": {
+        "heading": "Add bundle offer!",
+        "product": "premium-accessory-bundle",
+        "note": "*No mattress protector available for Twin XL and Cal King sizes"
       }
     },
     "product-layout": {
@@ -36,15 +42,13 @@
       "blocks": {
         "96da8b87-0101-4f64-84c1-527c401bd11a": {
           "type": "affirm_widget",
-          "settings": {
-          }
+          "settings": {}
         }
       },
       "block_order": [
         "96da8b87-0101-4f64-84c1-527c401bd11a"
       ],
-      "settings": {
-      }
+      "settings": {}
     },
     "product-summary": {
       "type": "product-summary",
@@ -199,15 +203,6 @@
         "sectionId": "overlay-text-on-image"
       }
     },
-    "bundle-cross-sell": {
-      "type": "bundle-cross-sell",
-      "disabled": true,
-      "settings": {
-        "heading": "Add bundle offer!",
-        "product": "premium-accessory-bundle",
-        "note": "*No mattress protector available for Twin XL and Cal King sizes"
-      }
-    },
     "price-transparency": {
       "type": "price-transparency",
       "blocks": {
@@ -325,16 +320,14 @@
         "49138228-00c2-461a-bbdd-650d93f8503b",
         "7bc03542-75ef-4463-b480-ec46f36ac421"
       ],
-      "settings": {
-      }
+      "settings": {}
     },
     "campaign-teaser": {
       "type": "campaign-teaser",
-      "disabled": true,
       "settings": {
-        "content": "<p><strong>Thanksgiving Sale:<\/strong> 60% off<\/p>",
-        "bgcolor": "#fef3ea",
-        "color": "#2e2f3c",
+        "content": "<p><strong>Black Friday Sale:<\/strong> 60% off<\/p>",
+        "bgcolor": "#2e2f3c",
+        "color": "#ffffff",
         "show_countdown_timer": false
       }
     },
@@ -372,8 +365,7 @@
         "b10d93d5-1a38-4340-b997-737c94850770",
         "361b0dc3-3896-4fb3-9116-255bf53f8858"
       ],
-      "settings": {
-      }
+      "settings": {}
     },
     "product-unique-selling-points": {
       "type": "product-unique-selling-points",
@@ -420,8 +412,7 @@
         "167def1b-b3fa-4ffb-a44d-34d5942a0c56",
         "809302fb-d0b7-4e84-854b-40031868c836"
       ],
-      "settings": {
-      }
+      "settings": {}
     },
     "product-auxiliary": {
       "type": "product-auxiliary",
@@ -436,16 +427,14 @@
         "cross_sell_widget_tXLCDN": {
           "type": "cross_sell_widget",
           "disabled": true,
-          "settings": {
-          }
+          "settings": {}
         }
       },
       "block_order": [
         "805e46e0-28b9-48bd-9c5f-07434863e3ea",
         "cross_sell_widget_tXLCDN"
       ],
-      "settings": {
-      }
+      "settings": {}
     },
     "multimedia-showcase": {
       "type": "multimedia-showcase",
@@ -501,8 +490,7 @@
         "95f7a903-df98-4d58-9b15-0db125d9190c",
         "258722e6-18c8-4c8d-bee9-c411c5312e58"
       ],
-      "settings": {
-      }
+      "settings": {}
     },
     "mattress-layers": {
       "type": "mattress-layers",
@@ -659,9 +647,9 @@
             "color": "#3c4196",
             "primary_badge": "",
             "secondary_badge": "BEST DEAL",
-            "image": "shopify:\/\/shop_images\/Emma_hybrid-comfort_exploded_2.png",
-            "product_title": "Emma Hybrid Comfort",
-            "desc": "<h1><\/h1><p><strong>Our newest 13-Inch Hybrid Mattress with enhanced support and ideal pressure distribution<\/strong><\/p><ul><li>Top-rated plus hybrid for maximum comfort<\/li><li>6 unique layers with zero motion transfer<\/li><li>Cooling for hot sleepers<\/li><\/ul>",
+            "image": "shopify:\/\/shop_images\/1440X810_4.png",
+            "product_title": "Emma Hybrid Comfort II",
+            "desc": "<h1><\/h1><p><strong>Our newest Hybrid Mattress with enhanced support and ideal pressure distribution<\/strong><\/p><ul><li>Top-rated plus hybrid for maximum comfort<\/li><li>6 unique layers with zero motion transfer<\/li><li>Cooling for hot sleepers<\/li><\/ul>",
             "discount_title": "Father's Day Sale",
             "comfort_meter": 8,
             "cooling_meter": 6,
@@ -678,7 +666,7 @@
             "primary_badge": "PREMIUM CHOICE",
             "secondary_badge": "PREMIUM CHOICE",
             "image": "shopify:\/\/shop_images\/hybrid-premium-exploded_1.png",
-            "product_title": "Emma Hybrid Premium Plus",
+            "product_title": "Emma Hybrid Premium",
             "desc": "<h1><\/h1><p><strong>Our new best-in-class mattress for perfect cooling & absolute comfort<\/strong><\/p>",
             "discount_title": "",
             "comfort_meter": 8,
@@ -1032,12 +1020,12 @@
   },
   "order": [
     "joint-product",
+    "bundle-cross-sell",
     "product-layout",
     "product-summary",
     "product-badges",
     "product-media",
     "overlay-text-on-image",
-    "bundle-cross-sell",
     "price-transparency",
     "risk-reversal",
     "campaign-teaser",
