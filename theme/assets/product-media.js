@@ -1,111 +1,125 @@
-if(!customElements.get("product-media")) {
-  class ProductMedia extends CustomElement {
-    constructor() {
-      super();
-    }
+if (!customElements.get("product-media")) {
+    class ProductMedia extends CustomElement {
+        get refs() {
+            return {
+                $placeholder: this.$el.find("slot[name='placeholder']")
+            }
+        }
 
-    render() {
-      const tpl = this.querySelector("template");
+        constructor() {
+            super();
+        }
 
-      this.$el.html(tpl.content);
-    }
+        render() {
+            const tpl = document.querySelector("#ProductMedia-Template");
 
-    mounted() {
-      super.mounted();
+            this.$el.append(tpl.content);
+        }
 
-      $("product-media").ready(async () => {
-        await ResourceCoordinator.requestVendor("Splide");
-        await ResourceCoordinator.requestVendor("DriftZoom");
+        mounted() {
+            super.mounted();
 
-        const main = new Splide(this.querySelector(".main-carousel .splide"), {
-          type: "fade",
-          pagination: false,
-          arrows: false,
-          breakpoints: {
-            769: {
-              arrows: true,
-            },
-          },
-        });
-        const thumbnails = new Splide(this.querySelector(".thumbnail-carousel"), {
-          mediaQuery: "min",
-          fixedWidth: 80,
-          gap: 8,
-          rewind: true,
-          pagination: false,
-          isNavigation: true,
-          arrows: false,
-          breakpoints: {
-            769: {
-              fixedWidth: "initial",
-              autoHeight: true,
-              direction: "ttb",
-              height: "100%",
-              padding: { top: 16, bottom: 16 },
-              focus: "center",
-              arrows: true,
-            },
-          },
-        });
+            $("product-media").ready(async () => {
+                await ResourceCoordinator.requestVendor("Splide");
+                await ResourceCoordinator.requestVendor("DriftZoom");
 
-        main.sync(thumbnails);
+                const main = new Splide(this.querySelector(".main-carousel .splide"), {
+                    type: "fade",
+                    pagination: false,
+                    arrows: false,
+                    height: "100%",
+                    breakpoints: {
+                        769: {
+                            arrows: true,
+                        },
+                    },
+                });
+                const thumbnails = new Splide(this.querySelector(".thumbnail-carousel"), {
+                    mediaQuery: "min",
+                    fixedWidth: 80,
+                    gap: 8,
+                    rewind: true,
+                    pagination: false,
+                    isNavigation: true,
+                    arrows: false,
+                    breakpoints: {
+                        769: {
+                            fixedWidth: "initial",
+                            autoHeight: true,
+                            direction: "ttb",
+                            height: "100%",
+                            padding: {top: 16, bottom: 16},
+                            focus: "center",
+                            arrows: true,
+                        },
+                    },
+                });
 
-        main.on("mounted",  () => {
-          this.$el.addClass("is-initialized");
-        });
+                main.sync(thumbnails);
 
-        let drift;
-        let triggerEl;
+                main.on("mounted", this.onActive.bind(this));
 
-        const $mainCarousel = this.$el.find(".main-carousel");
+                let drift;
+                let triggerEl;
 
-        main.on("active", ({ slide }) => {
-          if (drift) drift.destroy();
-          const currentLanguage = $("html").attr("lang");
+                const $mainCarousel = this.$el.find(".main-carousel");
 
-          const mediaItemEl = slide.querySelector(`.media-item`);
+                main.on("active", ({slide}) => {
+                    if (drift) drift.destroy();
+                    const currentLanguage = $("html").attr("lang");
 
-          const slideType = mediaItemEl.dataset.type;
+                    const mediaItemEl = slide.querySelector(`.media-item`);
 
-          $mainCarousel.attr("data-type", slideType);
+                    const slideType = mediaItemEl.dataset.type;
 
-          if (slideType === "image") {
-            triggerEl = mediaItemEl.querySelector(`[lang="${currentLanguage}"]`);
-            drift = new Drift(triggerEl, {
-              paneContainer: $mainCarousel.find(".zoom-container").get(0),
-              zoomFactor: 2,
+                    $mainCarousel.attr("data-type", slideType);
+
+                    if (slideType === "image") {
+                        triggerEl = mediaItemEl.querySelector(`[lang="${currentLanguage}"]`);
+                        drift = new Drift(triggerEl, {
+                            paneContainer: $mainCarousel.find(".zoom-container").get(0),
+                            zoomFactor: 2,
+                        });
+                    }
+
+                    if (slideType === "video") {
+                        const videoEl = slide.querySelector("video");
+
+                        videoEl.play();
+                    }
+                });
+
+                $mainCarousel.click(function () {
+                    if (!drift) return;
+
+                    const $pane = $(this);
+
+                    const isEnabled = $pane.hasClass("zoom-enabled");
+
+                    if (isEnabled) {
+                        // drift.disable();
+                        $pane.removeClass("zoom-enabled");
+                    } else {
+                        // drift.enable();
+                        $pane.addClass("zoom-enabled");
+                    }
+                });
+
+                main.mount();
+                thumbnails.mount();
             });
-          }
+        }
 
-          if (slideType === "video") {
-            const videoEl = slide.querySelector("video");
+        onActive() {
+            const {$placeholder} = this.refs;
+            console.log("=>(product-media.js:114) this.refs", this.refs);
+            this.$el.addClass("is-initialized");
 
-            videoEl.play();
-          }
-        });
-
-        $mainCarousel.click(function () {
-          if (!drift) return;
-
-          const $pane = $(this);
-
-          const isEnabled = $pane.hasClass("zoom-enabled");
-
-          if (isEnabled) {
-            // drift.disable();
-            $pane.removeClass("zoom-enabled");
-          } else {
-            // drift.enable();
-            $pane.addClass("zoom-enabled");
-          }
-        });
-
-        main.mount();
-        thumbnails.mount();
-      });
+            $placeholder.remove()
+            console.log("=>(product-media.js:117) $placeholder", $placeholder);
+        }
     }
-  }
 
-  customElements.define("product-media", ProductMedia);
+    customElements.define("product-media", ProductMedia);
 
 }

@@ -1,6 +1,14 @@
 product-media {
   $this: ".product-media";
-  display: flex;
+
+  slot[name='placeholder'] {
+    position: absolute;
+    inset: 0;
+
+    display: inline;
+    transition: opacity 250ms ease-in-out;
+
+  }
 
   .carousel-container {
     display: grid;
@@ -14,6 +22,15 @@ product-media {
       align-items: center;
       height: 100%;
       overflow: hidden;
+    }
+
+    transition: opacity 250ms ease-in-out;
+
+  }
+
+  &.is-initialized {
+    .carousel-container {
+      opacity: 1;
     }
   }
 
@@ -61,7 +78,7 @@ product-media {
     overflow: hidden;
     display: block;
 
-    height: fit-content;
+    height: 100%;
     aspect-ratio: 16/10;
 
     border-radius: 8px;
@@ -79,6 +96,8 @@ product-media {
 
   .main-carousel:not([data-type="video"]) {
     position: relative;
+    display: block;
+    height: 100%;
 
     &:hover {
       cursor: zoom-in;
@@ -91,6 +110,15 @@ product-media {
 
       .zoom-container {
         opacity: 1;
+      }
+    }
+
+    .splide {
+      height: 100%;
+
+      &__track, &__list {
+        height: 100%;
+        padding: 0;
       }
     }
   }

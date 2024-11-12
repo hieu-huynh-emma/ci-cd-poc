@@ -46,8 +46,8 @@ cart-recommendation-item {
   .card-container {
     display: grid;
     align-items: flex-start;
-    grid-template-columns: minmax(0, .35fr) minmax(0, .65fr);
     width: 100%;
+    grid-template-columns: minmax(0, .35fr) minmax(0, .65fr);
   }
 
   .card-media {
@@ -90,17 +90,24 @@ cart-recommendation-item {
 
   .card-metadata {
     display: grid;
-    gap: 1rem;
+    gap: 0.5rem;
+
     grid-template-columns: minmax(0, 1fr);
     align-items: flex-start;
     align-content: flex-start;
     height: 100%;
 
-    padding: 1rem;
+    padding: 0.5rem;
+    @media screen and (min-width: 769px) {
+      gap: 1rem;
+      padding: 1rem;
+    }
 
     .product-title {
       font-weight: 600;
-      font-size: 18px;
+      @media screen and (min-width: 769px) {
+        font-size: 18px;
+      }
     }
 
     .product-desc {
@@ -119,9 +126,13 @@ cart-recommendation-item {
 
   .card-body {
     display: grid;
-    gap: 1rem;
-    grid-template-columns: minmax(0, auto) minmax(0, 1fr);
+    gap: 0.5rem;
     align-items: center;
     justify-content: space-between;
+    grid-template-columns: minmax(0, 1fr);
+    @media screen and (min-width: 769px) {
+      gap: 1rem;
+      grid-template-columns: minmax(0, auto) minmax(0, 1fr);
+    }
   }
 }

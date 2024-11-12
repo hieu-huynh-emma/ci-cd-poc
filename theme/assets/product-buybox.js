@@ -56,6 +56,7 @@ class StickyBuybox extends CustomElement {
 
     const $proxyQtySelect = this.$el.find("quantity-input");
     const $primaryQtySelect = $("product-buybox quantity-input");
+    const productMediaData = JSON.parse(document.querySelector("#ProductMedia-JSON").textContent)
 
     return {
       $doc: $(document),
@@ -74,6 +75,7 @@ class StickyBuybox extends CustomElement {
       $primarySelect,
       $proxyQtySelect,
       $primaryQtySelect,
+      productMediaData
     };
   }
 
@@ -166,9 +168,11 @@ class StickyBuybox extends CustomElement {
   }
 
   renderProductInfo() {
-    const { $productMedia, $productTitle } = this.refs;
+    const { productMediaData } = this.refs;
 
-    const $leadItemURl = $productMedia.find("input#lead-item-url").val();
+    const currentLanguage = $("html").attr("lang");
+
+    const $leadItemURl = productMediaData[0][`${currentLanguage}_src`]
 
     this.$el.find(".product-image").attr("src", $leadItemURl);
   }
