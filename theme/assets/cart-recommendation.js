@@ -178,18 +178,14 @@ if (!customElements.get("cart-recommendation")) {
       if (!this.currentVariant) return
 
       const cartItems = document.getElementById('CartDrawerItems')
-      const cartSummaryNode = document.getElementById('CartDrawerSummary');
 
       const scrollableContentEl = document.querySelector("cart-scrollable-content")
 
       scrollableContentEl.loading = true
-      cartSummaryNode.loading = true
 
       await cartItems.addToCart(this.currentVariant.id, 1);
 
       scrollableContentEl.loading = false
-      cartSummaryNode.loading = false
-
     }
 
   }
