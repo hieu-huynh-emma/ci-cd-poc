@@ -1,60 +1,68 @@
 class TrackedButton extends CustomButton {
-  props = {
-    trackId: null,
-  };
+    props = {
+        trackId: null,
+    };
 
-  isHyperlink = false;
+    isHyperlink = false;
 
-  hyperlinkEl;
+    $hyperlink;
 
-  constructor() {
-    super();
-  }
+    constructor() {
+        super();
+    }
 
-  setup() {
-    this.addEventListener("click", this.handleClick.bind(this));
-  }
+    setup() {
+        this.addEventListener("click", this.handleClick.bind(this));
+    }
 
-  render() {
-    this.isHyperlink = this.hasAttribute("href");
+    render() {
+        this.isHyperlink = this.hasAttribute("href");
 
-    if (this.isHyperlink) {
-      this.hyperlinkEl = document.createElement("a");
+        if (this.isHyperlink) {
 
-      [...this.attributes].forEach((attr) => {
-        if (["download", "href", "hreflang", "media", "ping", "referrerpolicy", "rel", "target", "type"].includes(attr.name)) {
-          this.hyperlinkEl.setAttribute(attr.name, attr.value);
-          this.removeAttribute(attr.name);
+            this.$el.addClass('cursor-pointer')
+
+            this.renderHyperlink()
         }
-      });
-
-      this.appendChild(this.hyperlinkEl);
-
-      this.$el.addClass("tracked-button--link")
-    }
-  }
-
-  handleClick(event) {
-    // event.preventDefault();
-
-    if (this.disabled || this.readOnly) {
-      event.stopImmediatePropagation();
-      return;
     }
 
-    const { trackId } = this.props;
+    renderHyperlink() {
+        this.$hyperlink = $("<a></a>");
 
-    if (trackId) {
-      window.dataLayer.push({
-        event: "click",
-        click_type: trackId,
-      });
+        [...this.attributes].forEach((attr) => {
+            if (["download", "href", "hreflang", "media", "ping", "referrerpolicy", "rel", "target", "type"].includes(attr.name)) {
+                this.$hyperlink.attr(attr.name, attr.value);
+                this.removeAttribute(attr.name);
+            }
+        });
+
+        this.$el.append(this.$hyperlink);
+
+        this.$el.addClass("tracked-button--link")
     }
 
-    this.onClick(event);
-  }
+    handleClick(event) {
+        // event.preventDefault();
 
-  onClick(e) {}
+        if (this.disabled || this.readOnly) {
+            event.stopImmediatePropagation();
+            return;
+        }
+
+        const {trackId} = this.props;
+
+        if (trackId) {
+            window.dataLayer.push({
+                event: "click",
+                click_type: trackId,
+            });
+        }
+
+        this.onClick(event);
+    }
+
+    onClick(e) {
+    }
 }
 
 customElements.define("tracked-button", TrackedButton);
