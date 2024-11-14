@@ -115,9 +115,21 @@ product-card {
   }
 
   .product__short-desc {
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 20px;
+    .metafield-rich_text_field {
+      ul {
+        list-style-type: "\2713 ";
+        padding: 0 14px;
+
+        li {
+          padding-left: 14px;
+
+          font-weight: 400;
+          font-size: 14px;
+          line-height: 20px;
+
+        }
+      }
+    }
   }
 
   .product__price {
@@ -136,8 +148,16 @@ product-card {
       align-items: flex-start;
       justify-content: flex-start;
       grid-template-columns: minmax(0, auto) minmax(0, 1fr);
+
+      &__content {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 20px;
+      }
     }
   }
+
+
 }
 
 
