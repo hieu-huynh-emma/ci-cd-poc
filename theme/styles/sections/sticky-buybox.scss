@@ -13,7 +13,7 @@ sticky-buybox {
   }
   @media screen and (min-width: 1024px) {
     top: 0;
-    min-height: 100px;
+    min-height: calc(51px - 1px + 60px );
     padding: 1rem 0;
   }
   @media screen and (min-width: 1024px) {

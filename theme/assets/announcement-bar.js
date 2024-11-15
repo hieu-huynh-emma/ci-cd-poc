@@ -22,11 +22,6 @@ $("#announcement-bar").ready(async () => {
     perMove: 1,
     gap: ".25rem",
     arrows: false,
-    pagination: false,
-    breakpoints: {
-      768: {
-        destroy: true,
-      },
-    },
+    pagination: false
   }).mount();
 });

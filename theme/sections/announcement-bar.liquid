@@ -16,8 +16,8 @@
     }
 
     #announcement-bar .anno-wrapper {
-        min-height: 41px;
-        max-height: 41px;
+        min-height: 51px;
+        max-height: 51px;
         padding: .25rem 0;
 
         background-color: var(--section-bgc) !important;
@@ -92,13 +92,22 @@
                 </li>
               {% endfor %}
 
-              {% if section.settings.show_countdown_timer %}
-                <li class="splide__slide">
-                  <div class="countdown-container">
-                    <countdown-timer :minimal="true" :targetDate="{{ settings.sale_timer }}"></countdown-timer>
-                  </div>
-                </li>
-              {% endif %}
+              <li class="splide__slide">
+                <div class="anno-content extra">
+                  <p class="anno-text">
+                    Flash Sale of extra 5% off ends in:
+                  </p>
+                  <countdown-timer :minimal="true" :targetDate="2024-11-18 06:00"></countdown-timer>
+                </div>
+
+              </li>
+              {% comment %}{% if section.settings.show_countdown_timer %}{% endcomment %}
+                {% comment %}<li class="splide__slide">{% endcomment %}
+                  {% comment %}<div class="countdown-container">{% endcomment %}
+                    {% comment %}<countdown-timer :minimal="true" :targetDate="{{ settings.sale_timer }}"></countdown-timer>{% endcomment %}
+                  {% comment %}</div>{% endcomment %}
+                {% comment %}</li>{% endcomment %}
+              {% comment %}{% endif %}{% endcomment %}
             </ul>
           </div>
         </div>
