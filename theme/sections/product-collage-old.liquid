@@ -36,13 +36,16 @@
                 {% when "video" %}
                   {% assign media = block.settings.media %}
                   {% assign poster = media | image_url: width: 550 | prepend: "https:" %}
-                  <video class="card-media lazy" playsinline autoplay loop muted poster="{{ poster }}">
-                    {% for source in media.sources %}
-                      <source
-                              data-src="{{ source.url }}"
-                              type="{{ source.mime_type }}">
-                    {% endfor %}
-                  </video>
+                  <video class="card-media lazy" playsinline autoplay loop muted
+                                               poster="{{ poster }}">
+                                            {% for source in media.sources %}
+                                              {% if source.mime_type != "application/x-mpegURL" %}
+                                                <source
+                                                        data-src="{{ source.url }}"
+                                                        type="{{ source.mime_type }}">
+                                              {% endif %}
+                                            {% endfor %}
+                                        </video>
               {% endcase %}
             {% endif %}
 
