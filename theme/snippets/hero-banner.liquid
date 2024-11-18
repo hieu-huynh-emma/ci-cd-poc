@@ -1,8 +1,8 @@
-{% case settings.heading_size %}
-	{% when 'large' %}
-		{% assign headingClass = 'heading-1' %}
-	{% else %}
-		{% assign headingClass = 'heading-2' %}
+{% case props.heading_size %}
+  {% when 'large' %}
+    {% assign headingClass = 'heading-1' %}
+  {% else %}
+    {% assign headingClass = 'heading-2' %}
 {% endcase %}
 
 <style>
@@ -19,79 +19,64 @@
     }
 </style>
 
-<div class="banner-container" style="color: {{ settings.text_color }}"
+<div class="banner-container" style="color: {{ props.text_color }}"
      {% if index %}data-index="{{ index }}"{% endif %}>
-	<div class="banner-interior unintrusive-bg">
-		{% if settings.show_shadow %}
-			<div class="overlay-bg"></div>{% endif %}
+  <div class="banner-interior unintrusive-bg">
+    {% if props.show_shadow %}
+      <div class="overlay-bg"></div>{% endif %}
 
-		<div class="banner-panel">
-			<div class="banner-content">
-				<h2 class="banner-title relative {{ headingClass }}">
-					{% render 'rtf-viewer', content: settings.title %}
-				</h2>
-				{% if settings.subtitle %}
-					<div class="sub-heading">
-						{% render 'rtf-viewer', content: settings.subtitle %}
-					</div>
-				{% endif %}
-			</div>
-			<div class="banner-features">
-				{% if settings.timer %}
-					<hero-banner-countdown-timer class="hidden" end-time="{{ settings.timer }}">
-						<div class="countdown-timer" style="color: black;">
-							<div class="time-part">
-								<p class="digit"></p>
-								<p class="label">Days</p>
-							</div>
-							<div class="time-part">
-								<p class="digit"></p>
-								<p class="label">Hours</p>
-							</div>
-							<div class="time-part">
-								<p class="digit"></p>
-								<p class="label">Minutes</p>
-							</div>
-							<div class="time-part">
-								<p class="digit"></p>
-								<p class="label">Seconds</p>
-							</div>
-						</div>
-					</hero-banner-countdown-timer>
-				{% endif %}
+    <div class="banner-panel">
+      <div class="banner-content">
+        <h2 class="banner-title relative {{ headingClass }}">
+          {% render 'rtf-viewer', content: props.title %}
+        </h2>
+        {% if props.subtitle %}
+          <div class="sub-heading">
+            {% render 'rtf-viewer', content: props.subtitle %}
+          </div>
+        {% endif %}
+      </div>
 
-				{% if settings.show_cta %}
-					<tracked-button
-							:trackId="{{ settings.trackId }}"
-							class="banner-cta btn btn--{{ settings.cta_size }}"
-							href="{{ settings.cta_url }}">
-						{{ settings.cta_text }}
-					</tracked-button>
-				{% endif %}
-			</div>
-		</div>
-	</div>
+      {% if props.show_countdown_timer %}
+        <div class="banner-countdown">
+          <countdown-timer
+            :date="{{ settings.sale_timer }}"
+            :caption="{{ props.countdown_caption }}"
+          ></countdown-timer>
+        </div>
+      {% endif %}
 
-	{% assign en_desktop_url = settings.wallpaper_desktop_img %}
-	{% assign en_mobile_url = settings.wallpaper_mobile_img | default: en_desktop_url %}
-	{% assign fr_desktop_url = settings.wallpaper_desktop_fr_img | default: en_desktop_url %}
-	{% assign fr_mobile_url = settings.wallpaper_mobile_fr_img | default: fr_desktop_url %}
+      {% if props.show_cta %}
+        <tracked-button
+          :trackId="{{ props.trackId }}"
+          class="banner-cta btn btn--{{ props.cta_size }}"
+          href="{{ props.cta_url }}">
+          {{ props.cta_text }}
+        </tracked-button>
+      {% endif %}
+    </div>
+  </div>
 
-	<a href="{{ settings.cta_url }}" class="banner-flooring">
-		{% render 'picture-tag',
-				desktop_src: en_desktop_url,
-				mobile_src: en_mobile_url,
-				picture_attributes: 'lang="en"',
-				img_classes: "wallpaper",
-				alt: "Hero Wallpaper"
-		%}
-		{% render 'picture-tag',
-				desktop_src: fr_desktop_url,
-				mobile_src: fr_mobile_url,
-				picture_attributes: 'lang="fr"',
-				img_classes: "wallpaper",
-				alt: "Hero Wallpaper"
-		%}
-	</a>
+  {% assign en_desktop_url = props.wallpaper_desktop_img %}
+  {% assign en_mobile_url = props.wallpaper_mobile_img | default: en_desktop_url %}
+  {% assign fr_desktop_url = props.wallpaper_desktop_fr_img | default: en_desktop_url %}
+  {% assign fr_mobile_url = props.wallpaper_mobile_fr_img | default: fr_desktop_url %}
+
+  <a href="{{ props.cta_url }}" class="banner-flooring">
+    {% render 'picture-tag',
+      desktop_src: en_desktop_url,
+      mobile_src: en_mobile_url,
+      picture_attributes: 'lang="en"',
+      img_classes: "wallpaper",
+      alt: "Hero Wallpaper"
+    %}
+    {% render 'picture-tag',
+      desktop_src: fr_desktop_url,
+      mobile_src: fr_mobile_url,
+      picture_attributes: 'lang="fr"',
+      img_classes: "wallpaper",
+      alt: "Hero Wallpaper"
+    %}
+  </a>
 
 </div>

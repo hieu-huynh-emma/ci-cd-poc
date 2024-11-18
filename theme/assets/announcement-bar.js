@@ -16,7 +16,7 @@ $("#announcement-bar").ready(async () => {
     rewind: true,
     autoplay: true,
     autoWidth: false,
-    interval: 4000,
+    interval: 40000,
     perPage: 1,
     perMove: 1,
     gap: ".25rem",

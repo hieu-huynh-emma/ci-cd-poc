@@ -11,9 +11,9 @@
     }
   }
 
-  .banner-features {
+  .banner-countdown {
     display: grid;
-    gap: 1rem;
+    gap: 0.25rem;
     grid-template-columns:minmax(0, 1fr);
     justify-content: center;
     width: 100%;
@@ -22,13 +22,18 @@
       max-width: 352px;
     }
 
-    .banner-cta {
-      @media screen and (max-width: 769px) {
-        width: 100%;
-      }
-      @media screen and (min-width: 769px) {
-        max-width: 352px;
-      }
+    &__caption {
+      font-size: 14px;
+      text-align: left;
+    }
+  }
+
+  .banner-cta {
+    @media screen and (max-width: 769px) {
+      width: 100%;
+    }
+    @media screen and (min-width: 769px) {
+      max-width: 352px;
     }
   }
 

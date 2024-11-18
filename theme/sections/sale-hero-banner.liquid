@@ -1,11 +1,7 @@
-{% assign wallpaper = section.blocks | where: "type", "wallpaper" | first %}
-{% assign cta = section.blocks | where: "type", "cta" | first %}
-{% assign countdownTimer = section.blocks | where: "type", "countdown_timer" | first %}
-
 <style>
     #sale-hero-banner-section {
         min-height: 262px;
-        color: {{section.settings.text_color}};
+        color: {{props.text_color}};
     }
 
     @media screen and (min-width: 769px) {
@@ -21,36 +17,34 @@
 
 {{ 'sale-hero-banner.css' | asset_url | stylesheet_tag }}
 
+{% liquid
+  assign wallpaper = section.blocks | where: "type", "wallpaper" | first
+  assign cta = section.blocks | where: "type", "cta" | first
+  assign countdownTimer = section.blocks | where: "type", "countdown_timer" | first
+  assign props = section.settings
+%}
+
 <section id="sale-hero-banner-section" class="page-boundary">
   <div class="section-container">
     <div class="section-body">
       <div class="section-content">
-        <h1 class="heading-2">{{ section.settings.title | remove: "<p>" | remove: "</p>" }}</h1>
-        <h2 class="heading-3">{{ section.settings.subtitle }}</h2>
+        <h1 class="heading-2">{{ props.title | remove: "<p>" | remove: "</p>" }}</h1>
+        <h2 class="heading-3">{{ props.subtitle }}</h2>
       </div>
 
       <div class="section-features">
-        <hero-banner-countdown-timer class="hidden" end-time="{{ settings.sale_timer }}">
-          <div class="countdown-timer" style="color: black;">
-            <div class="time-part">
-              <p class="digit"></p>
-              <p class="label">Days</p>
-            </div>
-            <div class="time-part">
-              <p class="digit"></p>
-              <p class="label">Hours</p>
-            </div>
-            <div class="time-part">
-              <p class="digit"></p>
-              <p class="label">Minutes</p>
-            </div>
-            <div class="time-part">
-              <p class="digit"></p>
-              <p class="label">Seconds</p>
-            </div>
-          </div>
-        </hero-banner-countdown-timer>
+        <countdown-timer
+          :date="{{ settings.sale_timer }}"
+          :heading="{{ countdownTimer.settings.heading }}"
+          :caption="{{ countdownTimer.settings.caption }}"
+        ></countdown-timer>
       </div>
+
+      {% if props.tagline %}
+        <div class="tagline">
+          {% render 'rtf-viewer', content: props.tagline %}
+        </div>
+      {% endif %}
     </div>
 
 
@@ -95,6 +89,16 @@
           "id": "title",
           "type": "text",
           "label": "Countdown Title"
+        },
+        {
+          "id": "heading",
+          "type": "richtext",
+          "label": "Countdown Caption"
+        },
+        {
+          "id": "caption",
+          "type": "richtext",
+          "label": "Countdown Caption"
         }
       ]
     },

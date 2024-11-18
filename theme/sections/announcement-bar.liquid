@@ -76,7 +76,7 @@
                     </div>
 
                     {% if block.settings.show_countdown_timer %}
-                      <countdown-timer :minimal="true" :targetDate="{{ settings.sale_timer }}"></countdown-timer>
+                      <countdown-timer :type="minimal" :date="{{ settings.sale_timer }}"></countdown-timer>
                     {% endif %}
                   </div>
                 </li>

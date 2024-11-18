@@ -39,20 +39,7 @@ const Currency = {
   },
 };
 
-function getTimeParts(delta) {
-  const days = Math.floor(delta / 86400);
-  delta -= days * 86400;
 
-  const hours = Math.floor(delta / 3600) % 24;
-  delta -= hours * 3600;
-
-  const minutes = Math.floor(delta / 60) % 60;
-  delta -= minutes * 60;
-
-  const seconds = Math.floor(delta % 60); // in theory the modulus is not required
-
-  return [days, hours, minutes, seconds];
-}
 
 function isFunction(obj) {
   return !!(obj && obj.constructor && obj.call && obj.apply);

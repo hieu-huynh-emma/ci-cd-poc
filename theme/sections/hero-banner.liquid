@@ -15,7 +15,7 @@
 
 <div id="hero-banner-section" class="page-boundary" data-component="hero-banner">
     <div class="section-container">
-        {% render 'hero-banner', settings: section.settings %}
+        {% render 'hero-banner', props: section.settings %}
     </div>
 </div>
 
@@ -104,10 +104,15 @@
       "label": "CTA Size"
     },
     {
-      "type": "text",
-      "id": "timer",
-      "label": "Countdown Timer",
-      "info": "Please follow format: YYYY-MM-DD HH:mm"
+      "type": "checkbox",
+      "id": "show_countdown_timer",
+      "label": "Show Countdown Timer",
+      "default": false
+    },
+    {
+      "id": "countdown_caption",
+      "type": "richtext",
+      "label": "Countdown Caption"
     },
     {
       "id": "trackId",

@@ -33,7 +33,6 @@
   .anno-content {
     .anno-text {
       font-size: 14px;
-      line-height: 125%;
     }
   }
 
@@ -45,11 +44,11 @@
     align-items: center;
     justify-content: center;
     justify-items: center;
-
+    height: 100%;
     @media screen and (max-width: 769px) {
       grid-template-columns: minmax(0, 1fr);
       grid-template-rows: repeat(auto-fit, minmax(0, 1fr));
-      height: 100%;
+
     }
   }
 
