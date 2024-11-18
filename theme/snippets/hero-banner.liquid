@@ -37,23 +37,25 @@
         {% endif %}
       </div>
 
-      {% if props.show_countdown_timer %}
-        <div class="banner-countdown">
-          <countdown-timer
-            :date="{{ settings.sale_timer }}"
-            :caption="{{ props.countdown_caption }}"
-          ></countdown-timer>
-        </div>
-      {% endif %}
+      <div class="banner-features">
+        {% if props.show_countdown_timer %}
+          <div class="banner-countdown">
+            <countdown-timer
+              :date="{{ settings.sale_timer }}"
+              :caption="{{ props.countdown_caption }}"
+            ></countdown-timer>
+          </div>
+        {% endif %}
 
-      {% if props.show_cta %}
-        <tracked-button
-          :trackId="{{ props.trackId }}"
-          class="banner-cta btn btn--{{ props.cta_size }}"
-          href="{{ props.cta_url }}">
-          {{ props.cta_text }}
-        </tracked-button>
-      {% endif %}
+        {% if props.show_cta %}
+          <tracked-button
+            :trackId="{{ props.trackId }}"
+            class="banner-cta btn btn--{{ props.cta_size }}"
+            href="{{ props.cta_url }}">
+            {{ props.cta_text }}
+          </tracked-button>
+        {% endif %}
+      </div>
     </div>
   </div>
 
