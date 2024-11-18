@@ -13,11 +13,10 @@ $("#announcement-bar").ready(async () => {
 
   new Splide("#announcement_slide .splide", {
     mediaQuery: "min",
-    type: "fade",
     rewind: true,
     autoplay: true,
     autoWidth: false,
-
+    interval: 4000,
     perPage: 1,
     perMove: 1,
     gap: ".25rem",
