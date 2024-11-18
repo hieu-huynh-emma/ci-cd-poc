@@ -6,22 +6,31 @@
       "type": "announcement-bar",
       "blocks": {
         "f20c1dc5-1445-4727-82f1-38fc8e740656": {
-          "type": "announcement_content",
+          "type": "announcement",
           "settings": {
             "text": "<p>Black Friday is here! <strong>Up to 60% off<\/strong><\/p>",
-            "tooltip": ""
+            "tooltip": "",
+            "show_countdown_timer": false
+          }
+        },
+        "f20c1dc5-1445-4727-82f1-38fc8e740657": {
+          "type": "announcement",
+          "settings": {
+            "text": "<p>Flash Sale +5% off ends in:<\/p>",
+            "tooltip": "",
+            "show_countdown_timer": true
           }
         }
       },
       "block_order": [
-        "f20c1dc5-1445-4727-82f1-38fc8e740656"
+        "f20c1dc5-1445-4727-82f1-38fc8e740656",
+        "f20c1dc5-1445-4727-82f1-38fc8e740657"
       ],
       "settings": {
         "cta_btn_text": "Shop the sale",
         "link": "shopify:\/\/pages\/sale",
         "color_bg": "#2e2f3c",
-        "color_text": "#ffffff",
-        "show_countdown_timer": true
+        "color_text": "#ffffff"
       }
     },
     "header": {

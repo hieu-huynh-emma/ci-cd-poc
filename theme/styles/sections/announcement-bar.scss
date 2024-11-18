@@ -31,20 +31,25 @@
   }
 
   .anno-content {
-    &.extra {
-      @media screen and (max-width: 769px) {
-        display: grid;
-        gap: 0;
-        grid-template-columns: minmax(0, 1fr);
-        grid-template-rows: repeat(2, minmax(0, 1fr));
-        align-items: center;
-        justify-items: center;
-      }
+    .anno-text {
+      font-size: 14px;
+      line-height: 125%;
+    }
+  }
 
-      .anno-text {
-        font-size: 14px;
-        line-height: 125%;
-      }
+  .anno-chassis {
+    display: grid;
+    gap: 0;
+    grid-template-columns: repeat(2, minmax(0, auto));
+    grid-template-rows: minmax(0, 1fr);
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+
+    @media screen and (max-width: 769px) {
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-rows: repeat(auto-fit, minmax(0, 1fr));
+      height: 100%;
     }
   }
 

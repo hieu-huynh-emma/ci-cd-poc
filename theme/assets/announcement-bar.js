@@ -20,7 +20,7 @@ $("#announcement-bar").ready(async () => {
     perPage: 1,
     perMove: 1,
     gap: ".25rem",
-    arrows: false,
+    arrows: true,
     pagination: false
   }).mount();
 });
