@@ -39,12 +39,12 @@
 <script defer src="{{ 'product-form.js' | asset_url }}"></script>
 
 <div
-        id="product-layout"
-        class="page-boundary"
-        data-section-id="{{ section.id }}"
-        data-section-type="product"
-        data-enable-history-state="true"
-        data-ajax-enabled="{{ settings.enable_ajax }}"
+    id="product-layout"
+    class="page-boundary"
+    data-section-id="{{ section.id }}"
+    data-section-type="product"
+    data-enable-history-state="true"
+    data-ajax-enabled="{{ settings.enable_ajax }}"
 >
     <div class="product-info product-info-wrapper">
         <div id="product-viewer">
@@ -75,9 +75,9 @@
                 {% render 'product-buybox' %}
 
                 <div
-                        class="product-form__error-message-wrapper product-form__error-message-wrapper--hidden{% if section.settings.enable_payment_button %} product-form__error-message-wrapper--has-payment-button{% endif %}"
-                        data-error-message-wrapper
-                        role="alert"
+                    class="product-form__error-message-wrapper product-form__error-message-wrapper--hidden{% if section.settings.enable_payment_button %} product-form__error-message-wrapper--has-payment-button{% endif %}"
+                    data-error-message-wrapper
+                    role="alert"
                 >
                     <span class="visually-hidden">{{ 'general.accessibility.error' | t }} </span>
                     {% render 'icon-error' %}
@@ -86,17 +86,11 @@
                           </span>
                 </div>
 
-                <div class="installment-widgets">
-                    {%- if appBlock -%}
-                        {% render appBlock %}
-                    {% endif %}
+                <template id="price-transparency-placeholder"></template>
 
-                    {%- if affirm_widget -%}
-
-                        {% render 'affirm-widget-legacy' %}
-
-                    {% endif %}
-                </div>
+                {%- if appBlock -%}
+                    {% render appBlock %}
+                {% endif %}
 
                 <template id="product-auxiliary-placeholder"></template>
 
@@ -105,11 +99,11 @@
                 <template id="product-specifications-placeholder"></template>
 
                 <p
-                        class="visually-hidden"
-                        data-loader-status
-                        aria-live="assertive"
-                        role="alert"
-                        aria-hidden="true"
+                    class="visually-hidden"
+                    data-loader-status
+                    aria-live="assertive"
+                    role="alert"
+                    aria-hidden="true"
                 >
                     {{ 'products.product.loader_label' | t }}
                 </p>
@@ -127,9 +121,13 @@
 
 
 
+
+
     </script>
     <script type="application/json" id="ModelJson-{{ section.id }}">
       {{ product.media | where: 'media_type', 'model' | json }}
+
+
 
 
 

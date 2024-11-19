@@ -6,77 +6,40 @@
 
 <link rel="quickscript" loading="delayed" href="{{ 'price-transparency.css' | asset_url }}">
 
-<overlay-outlet :type="drawer" abtasty-campaign-id="1317071" abtasty-campaign-variation="0">
-	<overlay-trigger>
-		<div class="usp-m-trigger rounded-md p-2">
-			<svg data-v-9cbc2b4c="" data-v-e4470fc6="" viewBox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"
-			     class="info-box__icon icon__xs--size_m icon__sm--size_m icon__md--size_m icon__lg--size_m icon__xl--size_m icon--is-non-responsive themed themed--default icon icon--monochrome themed themed--default">
-				<defs data-v-9cbc2b4c=""></defs>
-				<path data-v-9cbc2b4c=""
-				      d="M22.934 13.832c-.525-.794-1.61-1.26-2.67-.62-.057.035-1.627.957-2.688 1.58-.437-1.57-1.735-2.542-3.576-2.542h-2c-.207 0-.402-.089-.758-.26-.65-.312-1.54-.74-3.242-.74a.75.75 0 000 1.5c1.36 0 2.015.314 2.593.592.417.201.849.408 1.407.408h2c1.44 0 1.975.762 2.16 1.5H12a.75.75 0 000 1.5h5a.732.732 0 00.343-.093l3.694-2.158c.336-.205.548.012.645.16.068.103.26.46-.098.717l-5.81 3.873c-5.452-.023-7.399-.901-7.444-.923a.75.75 0 00-.665 1.345c.088.044 2.228 1.079 8.335 1.079a.749.749 0 00.416-.126l6.02-4.014c1.04-.743 1.038-1.96.498-2.778zM5 10.25H2a.75.75 0 00-.75.75v10c0 .414.336.75.75.75h3a.75.75 0 00.75-.75V11a.75.75 0 00-.75-.75zm-.75 10h-1.5v-8.5h1.5v8.5zM12 8.75c.228 0 .45-.028.667-.067.62 1.22 1.873 2.067 3.333 2.067A3.754 3.754 0 0019.75 7 3.754 3.754 0 0016 3.25c-.228 0-.45.028-.667.067C14.713 2.097 13.46 1.25 12 1.25A3.754 3.754 0 008.25 5 3.754 3.754 0 0012 8.75zM15.75 5c0-.076-.018-.147-.023-.222.09-.012.18-.028.273-.028 1.24 0 2.25 1.01 2.25 2.25S17.24 9.25 16 9.25a2.243 2.243 0 01-1.937-1.124A3.746 3.746 0 0015.75 5zM12 2.75c1.24 0 2.25 1.01 2.25 2.25S13.24 7.25 12 7.25 9.75 6.24 9.75 5 10.76 2.75 12 2.75z"></path>
-			</svg>
+<overlay-outlet :type="drawer">
+    <overlay-trigger>
+        <div class="usp-m-trigger rounded-md p-2">
+            <svg data-v-9cbc2b4c="" data-v-e4470fc6="" viewBox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"
+                 class="info-box__icon icon__xs--size_m icon__sm--size_m icon__md--size_m icon__lg--size_m icon__xl--size_m icon--is-non-responsive themed themed--default icon icon--monochrome themed themed--default">
+                <defs data-v-9cbc2b4c=""></defs>
+                <path data-v-9cbc2b4c=""
+                      d="M22.934 13.832c-.525-.794-1.61-1.26-2.67-.62-.057.035-1.627.957-2.688 1.58-.437-1.57-1.735-2.542-3.576-2.542h-2c-.207 0-.402-.089-.758-.26-.65-.312-1.54-.74-3.242-.74a.75.75 0 000 1.5c1.36 0 2.015.314 2.593.592.417.201.849.408 1.407.408h2c1.44 0 1.975.762 2.16 1.5H12a.75.75 0 000 1.5h5a.732.732 0 00.343-.093l3.694-2.158c.336-.205.548.012.645.16.068.103.26.46-.098.717l-5.81 3.873c-5.452-.023-7.399-.901-7.444-.923a.75.75 0 00-.665 1.345c.088.044 2.228 1.079 8.335 1.079a.749.749 0 00.416-.126l6.02-4.014c1.04-.743 1.038-1.96.498-2.778zM5 10.25H2a.75.75 0 00-.75.75v10c0 .414.336.75.75.75h3a.75.75 0 00.75-.75V11a.75.75 0 00-.75-.75zm-.75 10h-1.5v-8.5h1.5v8.5zM12 8.75c.228 0 .45-.028.667-.067.62 1.22 1.873 2.067 3.333 2.067A3.754 3.754 0 0019.75 7 3.754 3.754 0 0016 3.25c-.228 0-.45.028-.667.067C14.713 2.097 13.46 1.25 12 1.25A3.754 3.754 0 008.25 5 3.754 3.754 0 0012 8.75zM15.75 5c0-.076-.018-.147-.023-.222.09-.012.18-.028.273-.028 1.24 0 2.25 1.01 2.25 2.25S17.24 9.25 16 9.25a2.243 2.243 0 01-1.937-1.124A3.746 3.746 0 0015.75 5zM12 2.75c1.24 0 2.25 1.01 2.25 2.25S13.24 7.25 12 7.25 9.75 6.24 9.75 5 10.76 2.75 12 2.75z"></path>
+            </svg>
 
-			<p class="text-xs md:text-sm underline">
-				{{ section.settings.grabber_text }}
-			</p>
-		</div>
-	</overlay-trigger>
+            <p class="text-xs md:text-sm underline">
+                {{ section.settings.grabber_text }}
+            </p>
+        </div>
+    </overlay-trigger>
 
-	<span slot="title">{{ section.settings.title }}</span>
+    <span slot="title">{{ section.settings.title }}</span>
 
-	<div slot="body" class="usp-m-container">
-		{% for block in section.blocks %}
-			<li class="usp-m">
-				<div class="usp-m__icon">
-					{{ block.settings.svg_icon }}
-				</div>
+    <div slot="body" class="usp-m-container">
+        {% for block in section.blocks %}
+            <li class="usp-m">
+                <div class="usp-m__icon">
+                    {{ block.settings.svg_icon }}
+                </div>
 
-				<p class="usp-m__title">
-					{{ block.settings.text }}
-				</p>
-				<div class="usp-m__desc">
-					{% render 'rtf-viewer', content: block.settings.content %}
-				</div>
-			</li>
-		{% endfor %}
-	</div>
-
-</overlay-outlet>
-
-<overlay-outlet :type="drawer" abtasty-campaign-id="1317071" abtasty-campaign-variation="1">
-	<overlay-trigger>
-		<div class="usp-m-trigger rounded-md p-2">
-			<svg data-v-9cbc2b4c="" data-v-e4470fc6="" viewBox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"
-			     class="info-box__icon icon__xs--size_m icon__sm--size_m icon__md--size_m icon__lg--size_m icon__xl--size_m icon--is-non-responsive themed themed--default icon icon--monochrome themed themed--default">
-				<defs data-v-9cbc2b4c=""></defs>
-				<path data-v-9cbc2b4c=""
-				      d="M22.934 13.832c-.525-.794-1.61-1.26-2.67-.62-.057.035-1.627.957-2.688 1.58-.437-1.57-1.735-2.542-3.576-2.542h-2c-.207 0-.402-.089-.758-.26-.65-.312-1.54-.74-3.242-.74a.75.75 0 000 1.5c1.36 0 2.015.314 2.593.592.417.201.849.408 1.407.408h2c1.44 0 1.975.762 2.16 1.5H12a.75.75 0 000 1.5h5a.732.732 0 00.343-.093l3.694-2.158c.336-.205.548.012.645.16.068.103.26.46-.098.717l-5.81 3.873c-5.452-.023-7.399-.901-7.444-.923a.75.75 0 00-.665 1.345c.088.044 2.228 1.079 8.335 1.079a.749.749 0 00.416-.126l6.02-4.014c1.04-.743 1.038-1.96.498-2.778zM5 10.25H2a.75.75 0 00-.75.75v10c0 .414.336.75.75.75h3a.75.75 0 00.75-.75V11a.75.75 0 00-.75-.75zm-.75 10h-1.5v-8.5h1.5v8.5zM12 8.75c.228 0 .45-.028.667-.067.62 1.22 1.873 2.067 3.333 2.067A3.754 3.754 0 0019.75 7 3.754 3.754 0 0016 3.25c-.228 0-.45.028-.667.067C14.713 2.097 13.46 1.25 12 1.25A3.754 3.754 0 008.25 5 3.754 3.754 0 0012 8.75zM15.75 5c0-.076-.018-.147-.023-.222.09-.012.18-.028.273-.028 1.24 0 2.25 1.01 2.25 2.25S17.24 9.25 16 9.25a2.243 2.243 0 01-1.937-1.124A3.746 3.746 0 0015.75 5zM12 2.75c1.24 0 2.25 1.01 2.25 2.25S13.24 7.25 12 7.25 9.75 6.24 9.75 5 10.76 2.75 12 2.75z"></path>
-			</svg>
-
-			<p class="text-xs md:text-sm underline">
-				{{ section.settings.grabber_text }}
-			</p>
-		</div>
-	</overlay-trigger>
-
-	<span slot="title">{{ section.settings.title }}</span>
-
-	<div slot="body" class="usp-m-container">
-		{% for block in section.blocks %}
-			<li class="usp-m">
-				<div class="usp-m__icon">
-					{{ block.settings.svg_icon }}
-				</div>
-
-				<p class="usp-m__title">
-					{{ block.settings.text }}
-				</p>
-				<div class="usp-m__desc">
-					{% render 'rtf-viewer', content: block.settings.content %}
-				</div>
-			</li>
-		{% endfor %}
-	</div>
+                <p class="usp-m__title">
+                    {{ block.settings.text }}
+                </p>
+                <div class="usp-m__desc">
+                    {% render 'rtf-viewer', content: block.settings.content %}
+                </div>
+            </li>
+        {% endfor %}
+    </div>
 </overlay-outlet>
 
 {% schema %}

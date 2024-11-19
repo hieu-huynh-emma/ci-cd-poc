@@ -19,7 +19,7 @@
 
   assign shortDesc = product.metafields.accentuate.short_description | metafield_tag
   assign specifications = product.metafields.accentuate.product_specifications
-  assign showSpecifications =  product.metafields.accentuate.show_specifications 
+  assign showSpecifications =  product.metafields.accentuate.show_specifications
 %}
 
 <product-card class="{% if landscape %} landscape{% endif %}" :productId="{{ product.id }}" abtasty-tracker="PDP_CTR">
@@ -228,11 +228,6 @@
             </del>
           {% endif %}
         </p>
-
-        <affirm-widget
-          :placement="promotion-line"
-          :amount="{{ product.selected_or_first_available_variant.price | divided_by: 100.00 }}"
-        ></affirm-widget>
       </div>
     </div>
   </tracked-button>
