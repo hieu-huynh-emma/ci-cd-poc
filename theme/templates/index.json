@@ -64,7 +64,7 @@
             "cta_text": "Shop the sale",
             "show_cta": true,
             "cta_size": "md",
-            "show_countdown_timer": true,
+            "show_countdown_timer": false,
             "countdown_caption": "",
             "discount_badge": false,
             "trackId": "Shop_left"
@@ -79,14 +79,15 @@
             "wallpaper_mobile_fr_img": "shopify:\/\/shop_images\/right_-_desktop_27.png",
             "title": "<h1>Flash Sale!<\/h1>",
             "heading_size": "medium",
-            "subtitle": "<h4><strong>Additional 5% Off with the code \"FlashSale\"<\/strong><\/h4>",
+            "subtitle": "<h5><strong>Limited time offer on our pack of 2 Cloud Pillows<\/strong><\/h5>",
             "show_shadow": true,
             "text_color": "#ffffff",
             "cta_url": "shopify:\/\/pages\/sale",
             "cta_text": "Shop the offer",
             "show_cta": false,
             "cta_size": "lg",
-            "timer": "2024-11-18 06:00",
+            "show_countdown_timer": true,
+            "countdown_caption": "",
             "discount_badge": true,
             "trackId": "Shop_right"
           }

@@ -32,13 +32,16 @@
         <h2 class="heading-3">{{ props.subtitle }}</h2>
       </div>
 
-      <div class="section-features">
-        <countdown-timer
-          :date="{{ settings.sale_timer }}"
-          :heading="{{ countdownTimer.settings.heading }}"
-          :caption="{{ countdownTimer.settings.caption }}"
-        ></countdown-timer>
-      </div>
+      {% if countdownTimer %}
+        <div class="section-features">
+          <countdown-timer
+            :date="{{ settings.sale_timer }}"
+            :heading="{{ countdownTimer.settings.heading }}"
+            :caption="{{ countdownTimer.settings.caption }}"
+          ></countdown-timer>
+        </div>
+      {% endif %}
+      
 
       {% if props.tagline %}
         <div class="tagline">
@@ -85,11 +88,7 @@
       "name": "Countdown Timer",
       "limit": 1,
       "settings": [
-        {
-          "id": "title",
-          "type": "text",
-          "label": "Countdown Title"
-        },
+
         {
           "id": "heading",
           "type": "richtext",
