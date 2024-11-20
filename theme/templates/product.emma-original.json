@@ -149,64 +149,6 @@
         "sectionId": ""
       }
     },
-    "overlay-text-on-image": {
-      "type": "product-media",
-      "blocks": {
-        "image_cmBQrE": {
-          "type": "image",
-          "settings": {
-            "en_image": "shopify:\/\/shop_images\/OGawardleft-Photoroom.webp",
-            "fr_image": "shopify:\/\/shop_images\/OGawardleft-Photoroom.webp"
-          }
-        },
-        "image_hydU4H": {
-          "type": "image",
-          "settings": {
-            "en_image": "shopify:\/\/shop_images\/Untitled_design_43.png",
-            "fr_image": "shopify:\/\/shop_images\/Untitled_design_43.png"
-          }
-        },
-        "image_eAAKWt": {
-          "type": "image",
-          "settings": {
-            "en_image": "shopify:\/\/shop_images\/Untitled_design_46.png",
-            "fr_image": "shopify:\/\/shop_images\/Untitled_design_46.png"
-          }
-        },
-        "image_WX78Lr": {
-          "type": "image",
-          "settings": {
-            "en_image": "shopify:\/\/shop_images\/OG-close-up.png",
-            "fr_image": "shopify:\/\/shop_images\/OG-close-up.png"
-          }
-        },
-        "image_MmCAhJ": {
-          "type": "image",
-          "settings": {
-            "en_image": "shopify:\/\/shop_images\/OG_couple.png",
-            "fr_image": "shopify:\/\/shop_images\/OG_couple.png"
-          }
-        },
-        "video_Y6iVXe": {
-          "type": "video",
-          "settings": {
-            "video": "shopify:\/\/files\/videos\/Unboxing (16x9).mp4"
-          }
-        }
-      },
-      "block_order": [
-        "image_cmBQrE",
-        "image_hydU4H",
-        "image_eAAKWt",
-        "image_WX78Lr",
-        "image_MmCAhJ",
-        "video_Y6iVXe"
-      ],
-      "settings": {
-        "heading": "",
-        "sectionId": "overlay-text-on-image"
-      }
-    },
     "risk-reversal": {
       "type": "risk-reversal",
       "blocks": {
@@ -496,61 +438,6 @@
         "95f7a903-df98-4d58-9b15-0db125d9190c"
       ],
       "settings": {}
-    },
-    "mattress-layers-static": {
-      "type": "mattress-layers-static",
-      "blocks": {
-        "4441c420-9648-469d-9fb2-bf8dbb9cf6ba": {
-          "type": "layer_item",
-          "settings": {
-            "title": "The covers that are super easy to wash",
-            "content": "The Emma cover is soft-to-touch, making it very comfortable to lie on. It is also completely removable, making it extremely easy to wash."
-          }
-        },
-        "3b4dd04a-036c-426d-8c1f-9729dd673c3e": {
-          "type": "layer_item",
-          "settings": {
-            "title": "The foam that regulates temperature",
-            "content": "Our groundbreaking Point Elastic Airgocell® technology enhances breathability and regulates temperature by absorbing and then evaporating sweat so that rising temperatures won’t disturb your sleep."
-          }
-        },
-        "bdebe803-1755-4362-ae36-1355b97d0e9d": {
-          "type": "layer_item",
-          "settings": {
-            "title": "The memory foam that hugs your body",
-            "content": "Our innovative Halo Memory Foam™ adapts to your body shape for targeted spinal alignment, enhanced pressure relief and body-hugging comfort."
-          }
-        },
-        "c9c66cb6-dfe8-4bc3-aef4-5f3af408a185": {
-          "type": "layer_item",
-          "settings": {
-            "title": "The base layer that keeps your spine aligned",
-            "content": "HRX stands for High Resiliency Extra. With 3 adaptive cut-out zones providing sufficient counter pressure, this layer is designed to keep your spine evenly aligned for maximum relief, rest and recovery – in any sleeping position."
-          }
-        },
-        "72c945db-310d-4f05-905a-b523e378d2f4": {
-          "type": "layer_item",
-          "settings": {
-            "title": "The Resistant, anti-slip, lower cover with handles",
-            "content": "Innovative mattress lower cover, designed with exceptional durability and a convenient handle for effortless maneuverability."
-          }
-        }
-      },
-      "block_order": [
-        "4441c420-9648-469d-9fb2-bf8dbb9cf6ba",
-        "3b4dd04a-036c-426d-8c1f-9729dd673c3e",
-        "bdebe803-1755-4362-ae36-1355b97d0e9d",
-        "c9c66cb6-dfe8-4bc3-aef4-5f3af408a185",
-        "72c945db-310d-4f05-905a-b523e378d2f4"
-      ],
-      "disabled": true,
-      "settings": {
-        "heading": "Emma Original - Layer by Layer",
-        "heading_alignment": "start",
-        "container_spacing": "sm",
-        "image": "shopify:\/\/shop_images\/Emma-Original-exploded-viewnumbers.jpg",
-        "carousel_mode": false
-      }
     },
     "mattress-layers": {
       "type": "mattress-layers",
@@ -1104,6 +991,22 @@
         "container_spacing": "sm"
       }
     },
+    "rich-text": {
+      "type": "rich-text",
+      "disabled": true,
+      "blocks": {
+        "text_aFBkPU": {
+          "type": "text",
+          "settings": {
+            "text": "<h4>Notes and Disclaimers<\/h4><ol><li>The price is for an Emma Select Bed 140x190cm, a mattress 140x190cm, a pillow 40x70cm, a duvet 240x220cm, 2 pillowcases 50x70cm and a duvet cover 240x220cm.<\/li><li>The price applies to the size 80x190cm.<\/li><li>The price applies to the size 140x200cm. The offer is valid for the 'Light' variant.<\/li><\/ol>"
+          }
+        }
+      },
+      "block_order": [
+        "text_aFBkPU"
+      ],
+      "settings": {}
+    },
     "contact-us": {
       "type": "contact-us",
       "settings": {
@@ -1117,7 +1020,6 @@
     "product-summary",
     "product-badges",
     "product-media",
-    "overlay-text-on-image",
     "risk-reversal",
     "campaign-teaser",
     "bundle-cross-sell",
@@ -1126,7 +1028,6 @@
     "product-unique-selling-points",
     "product-auxiliary",
     "multimedia-showcase",
-    "mattress-layers-static",
     "mattress-layers",
     "mattress-firmness",
     "featured-products",
@@ -1136,6 +1037,7 @@
     "168540174983dd55c2",
     "special-services",
     "featured-faqs",
+    "rich-text",
     "contact-us"
   ]
 }

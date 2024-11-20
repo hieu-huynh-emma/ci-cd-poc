@@ -1,0 +1,159 @@
+.rtf-viewer {
+  all: inherit;
+
+  p {
+    all: inherit;
+  }
+
+  ul {
+    margin: 8px 0 8px 15px;
+    list-style: initial;
+    font-size: 14px;
+  }
+
+  h3 {
+    font-size: 1rem;
+    @media screen and (min-width: 769px) {
+      font-size: 1.5rem;
+    }
+  }
+
+  h4 {
+    font-size: 1.25rem;
+  }
+}
+
+.rte {
+
+  &:after {
+    clear: both;
+    content: '';
+    display: block;
+  }
+
+  & > p:first-child {
+    margin-top: 0;
+  }
+
+  & > p:last-child {
+    margin-bottom: 0;
+  }
+
+  table {
+    table-layout: fixed;
+
+    td {
+      @media screen and (min-width: 750px) {
+        padding-left: 1.2rem;
+        padding-right: 1.2rem;
+      }
+
+    }
+
+  }
+
+
+  img {
+    height: auto;
+    max-width: 100%;
+  }
+
+  ul {
+    padding-left: 2rem;
+  }
+
+  ol {
+    counter-reset: item;
+
+    li {
+      margin-left: 1.5rem;
+      &:before {
+        display: inline-block;
+        content: counter(item) ") ";
+        counter-increment: item;
+        width: 1.5rem;
+        margin-left: -1.5rem;
+      }
+    }
+  }
+
+  li {
+    list-style: inherit;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+
+  a {
+    color: rgba(var(--color-link), var(--alpha-link));
+    text-underline-offset: 0.3rem;
+    text-decoration-thickness: 0.1rem;
+    transition: text-decoration-thickness var(--duration-short) ease;
+
+    &:hover {
+      color: rgb(var(--color-link));
+      text-decoration-thickness: 0.2rem;
+    }
+  }
+
+  blockquote {
+    display: inline-flex;
+
+    > * {
+      margin: -0.5rem 0 -0.5rem 0;
+    }
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.8rem;
+  }
+
+  h3 {
+    font-size: 1.6rem;
+  }
+
+  h4 {
+    font-size: 1.4rem;
+  }
+
+  h5 {
+    font-size: 1.2rem;
+  }
+
+  h6 {
+    font-size: 1rem;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-style: normal;
+    font-weight: 600;
+    line-height: 125%
+  }
+
+}
+
+
+section.rich-text {
+
+  /* Blocks */
+
+  .rich-text__blocks > * {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  .rich-text__blocks > * + * {
+    margin-top: 2rem;
+  }
+
+  .rich-text__blocks > * + a {
+    margin-top: 3rem;
+  }
+
+}
