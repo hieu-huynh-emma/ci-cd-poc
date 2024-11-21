@@ -946,6 +946,21 @@
         "solid_typo": false
       }
     },
+    "rich-text": {
+      "type": "rich-text",
+      "blocks": {
+        "text_aFBkPU": {
+          "type": "text",
+          "settings": {
+            "text": "<p><strong>Clearance Stock Notice:<\/strong> This product is part of our clearance program and may exhibit minor variations from standard specifications, including slight height deviations (0.5–1 inch). While these differences may affect quality marginally, they allow us to offer this mattress at a significantly reduced price.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "text_aFBkPU"
+      ],
+      "settings": {}
+    },
     "featured-faqs": {
       "type": "featured-faqs",
       "blocks": {
@@ -991,22 +1006,6 @@
         "container_spacing": "sm"
       }
     },
-    "rich-text": {
-      "type": "rich-text",
-      "disabled": true,
-      "blocks": {
-        "text_aFBkPU": {
-          "type": "text",
-          "settings": {
-            "text": "<h4>Notes and Disclaimers<\/h4><ol><li>The price is for an Emma Select Bed 140x190cm, a mattress 140x190cm, a pillow 40x70cm, a duvet 240x220cm, 2 pillowcases 50x70cm and a duvet cover 240x220cm.<\/li><li>The price applies to the size 80x190cm.<\/li><li>The price applies to the size 140x200cm. The offer is valid for the 'Light' variant.<\/li><\/ol>"
-          }
-        }
-      },
-      "block_order": [
-        "text_aFBkPU"
-      ],
-      "settings": {}
-    },
     "contact-us": {
       "type": "contact-us",
       "settings": {
@@ -1036,8 +1035,8 @@
     "customer-sentiment",
     "168540174983dd55c2",
     "special-services",
-    "featured-faqs",
     "rich-text",
+    "featured-faqs",
     "contact-us"
   ]
 }
