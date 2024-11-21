@@ -144,65 +144,6 @@
         "sectionId": ""
       }
     },
-    "overlay-text-on-image": {
-      "type": "product-media",
-      "blocks": {
-        "image_qbMg8D": {
-          "type": "image",
-          "settings": {
-            "en_image": "shopify:\/\/shop_images\/1_first_photo_2_fbe467ca-8ecc-4523-88c9-706a72c84761.png",
-            "fr_image": "shopify:\/\/shop_images\/1_first_photo_2_fbe467ca-8ecc-4523-88c9-706a72c84761.png"
-          }
-        },
-        "image_tFxA6z": {
-          "type": "image",
-          "settings": {
-            "en_image": "shopify:\/\/shop_images\/1S1HTEB2_Dark_render_Hybrid_Premium_1.png",
-            "fr_image": "shopify:\/\/shop_images\/1S1HTEB2_Dark_render_Hybrid_Premium_1.png"
-          }
-        },
-        "image_G4rdM8": {
-          "type": "image",
-          "settings": {
-            "en_image": "shopify:\/\/shop_images\/Cooling_Technology_USP.jpg",
-            "fr_image": "shopify:\/\/shop_images\/Cooling_Technology_USP.jpg"
-          }
-        },
-        "image_ynb7hQ": {
-          "type": "image",
-          "settings": {
-            "en_image": "shopify:\/\/shop_images\/1S1HTEB2_Dark_render_Hybrid_Premium_3.png",
-            "fr_image": "shopify:\/\/shop_images\/1S1HTEB2_Dark_render_Hybrid_Premium_3.png"
-          }
-        },
-        "image_fgJWGJ": {
-          "type": "image",
-          "settings": {
-            "en_image": "shopify:\/\/shop_images\/1S1HTEB2_Dark_render_Hybrid_Premium_4.png",
-            "fr_image": "shopify:\/\/shop_images\/1S1HTEB2_Dark_render_Hybrid_Premium_4.png"
-          }
-        },
-        "video_w76wX4": {
-          "type": "video",
-          "settings": {
-            "video": "shopify:\/\/files\/videos\/Unboxing (16x9).mp4"
-          }
-        }
-      },
-      "block_order": [
-        "image_qbMg8D",
-        "image_tFxA6z",
-        "image_G4rdM8",
-        "image_ynb7hQ",
-        "image_fgJWGJ",
-        "video_w76wX4"
-      ],
-      "disabled": true,
-      "settings": {
-        "heading": "",
-        "sectionId": "overlay-text-on-image"
-      }
-    },
     "price-transparency": {
       "type": "price-transparency",
       "blocks": {
@@ -425,8 +366,8 @@
           }
         },
         "cross_sell_widget_tXLCDN": {
-          "type": "cross_sell_widget",
           "disabled": true,
+          "type": "cross_sell_widget",
           "settings": {}
         }
       },
@@ -1028,7 +969,6 @@
         "note": "*automatically applied at cart"
       }
     }
-
   },
   "order": [
     "joint-product",
@@ -1037,7 +977,6 @@
     "product-summary",
     "product-badges",
     "product-media",
-    "overlay-text-on-image",
     "price-transparency",
     "risk-reversal",
     "campaign-teaser",

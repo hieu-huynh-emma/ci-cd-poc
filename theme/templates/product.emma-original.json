@@ -387,11 +387,17 @@
             "image": "shopify:\/\/shop_images\/Untitled_design_16.png",
             "product": "emma-hybrid-comfort"
           }
+        },
+        "cross_sell_widget_eKYGzp": {
+          "disabled": true,
+          "type": "cross_sell_widget",
+          "settings": {}
         }
       },
       "block_order": [
         "8c61e5e7-7152-452e-88a6-8f61c8afbbfc",
-        "upsell_widget_tXLCDN"
+        "upsell_widget_tXLCDN",
+        "cross_sell_widget_eKYGzp"
       ],
       "settings": {}
     },
