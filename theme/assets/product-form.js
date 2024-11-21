@@ -37,7 +37,7 @@ if (!customElements.get("product-form")) {
           _reset: true,
         };
 
-        const $crossSells = $("cross-sell-widget").filter(function () {
+        const $crossSells = $("cross-sell-widget").filter(function() {
           return $(this).find(".widget-checkbox__input").is(":checked");
         });
 
@@ -91,7 +91,7 @@ if (!customElements.get("product-form")) {
           ];
         }
 
-        const $bundleCrossSell = $("bundle-cross-sell").filter(function () {
+        const $bundleCrossSell = $("bundle-cross-sell").filter(function() {
           return $(this).find("#offer-switch").is(":checked");
         });
 
@@ -162,6 +162,7 @@ if (!customElements.get("product-form")) {
             }
 
             this.error = false;
+            await this.applyDiscountCode("BLACKFRIDAY2024");
 
             await this.cartSurface.open();
 
@@ -200,6 +201,26 @@ if (!customElements.get("product-form")) {
             this.$submitBtn.removeAttr("aria-disabled");
             this.$submitBtn.find(".loading-overlay__spinner").addClass("hidden");
           });
+      }
+
+      async applyDiscountCode(code) {
+        await fetch(`/discount/${code}`);
+
+        await ResourceCoordinator.requestVendor("Toastr");
+
+        // Trigger GA event
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+          "event": "coupon_code_added",
+          "coupon_code": code,
+          "coupon_code_method": "auto_applied",
+          "coupon_code_applied": true,
+          "gtm.uniqueEventId": 1,
+        });
+
+        toastr.success(`${code.toUpperCase()} discount code applied.`, "", {
+          iconClass: "",
+        });
       }
 
       handleErrorMessage(errorMessage = false) {

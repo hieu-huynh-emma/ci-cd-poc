@@ -129,7 +129,7 @@ class AffiliateAutoCoupon extends AffiliateControl {
 
         if (!coupon) return;
 
-        this.applyDiscountCode(coupon);
+        // this.applyDiscountCode(coupon);
     }
 
     async applyDiscountCode(code) {
