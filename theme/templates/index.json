@@ -175,78 +175,12 @@
         "isABTest": true
       }
     },
-    "cc490804-bd9c-4251-b97e-e0d2e226f4c8": {
-      "type": "rich-text",
-      "blocks": {
-        "template--15596666650787__cc490804-bd9c-4251-b97e-e0d2e226f4c8-16887276812ff0b258-0": {
-          "type": "heading",
-          "settings": {
-            "heading": "World Leading Sleep Brand",
-            "heading_size": "h0"
-          }
-        },
-        "template--15596666650787__cc490804-bd9c-4251-b97e-e0d2e226f4c8-16887276812ff0b258-1": {
-          "type": "text",
-          "disabled": true,
-          "settings": {
-            "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.<\/p>"
-          }
-        },
-        "template--15596666650787__cc490804-bd9c-4251-b97e-e0d2e226f4c8-16887276812ff0b258-2": {
-          "type": "button",
-          "disabled": true,
-          "settings": {
-            "button_label": "Button label",
-            "button_link": "",
-            "button_style_secondary": false
-          }
-        }
-      },
-      "block_order": [
-        "template--15596666650787__cc490804-bd9c-4251-b97e-e0d2e226f4c8-16887276812ff0b258-0",
-        "template--15596666650787__cc490804-bd9c-4251-b97e-e0d2e226f4c8-16887276812ff0b258-1",
-        "template--15596666650787__cc490804-bd9c-4251-b97e-e0d2e226f4c8-16887276812ff0b258-2"
-      ],
-      "custom_css": [
-        "h2 {font-size: 32px; font-weight: 600;}",
-        ".rich-text {margin: 50px 0 0;}"
-      ],
-      "settings": {
-        "color_scheme": "background-1",
-        "full_width": true
-      }
-    },
     "promotional-banner": {
       "type": "promotional-banner",
-      "blocks": {
-        "d22ef2ae-66f3-449d-ba55-b21a52a8c76a": {
-          "type": "item",
-          "disabled": true,
-          "settings": {
-            "icon": "shopify:\/\/shop_images\/Google_2015_logo_1.webp"
-          }
-        },
-        "8140edc8-79e5-4834-9f83-d32fcd2d2adf": {
-          "type": "item",
-          "disabled": true,
-          "settings": {
-            "icon": "shopify:\/\/shop_images\/amazon_logo.webp"
-          }
-        },
-        "8d40a1ab-28c7-48de-95f2-045c1feaf80f": {
-          "type": "item",
-          "disabled": true,
-          "settings": {}
-        }
-      },
-      "block_order": [
-        "d22ef2ae-66f3-449d-ba55-b21a52a8c76a",
-        "8140edc8-79e5-4834-9f83-d32fcd2d2adf",
-        "8d40a1ab-28c7-48de-95f2-045c1feaf80f"
-      ],
       "settings": {
         "lead_icon": "shopify:\/\/shop_images\/Star_filled.png",
-        "heading": "<p><strong>140,000 +<\/strong> 5-star reviews worldwide (Google & Amazon)<\/p>"
+        "heading": "World Leading Sleep Brand",
+        "content": "<p><strong>140,000 +<\/strong> 5-star reviews worldwide (Google & Amazon)<\/p>"
       }
     },
     "winning-awards": {
@@ -1783,7 +1717,6 @@
     "hero-split",
     "hero-banner",
     "featured-usps",
-    "cc490804-bd9c-4251-b97e-e0d2e226f4c8",
     "promotional-banner",
     "winning-awards",
     "winning-awards-old",

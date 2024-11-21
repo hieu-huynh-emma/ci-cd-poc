@@ -1,15 +1,15 @@
 <style>
-    #promotional-banner-section .promotional-banner {
+    #promotional-banner-section {
         min-height: 68px
     }
 
     @media screen and (min-width: 769px) {
-        #promotional-banner-section .promotional-banner {
+        #promotional-banner-section {
             min-height: 48px
         }
     }
 
-    #promotional-banner-section .section-content, #promotional-banner-section .top-brands {
+    #promotional-banner-section .section-content {
         display: none
     }
 </style>
@@ -18,24 +18,18 @@
 
 {% assign items = section.blocks | where: "type", "item" %}
 
-<section id="promotional-banner-section">
-	<div class="promotional-banner page-boundary">
-		<div class="section-content">
-			<img class="lazyload" data-src="{{ section.settings.lead_icon | image_url: width: 20 }}" width="20"
-			     height="20"/>
+<section id="promotional-banner-section" class="section-container">
+    <div class="section-chassis page-boundary">
 
-			<p class="text-white text-left">{{ section.settings.heading | remove: "<p>" | remove: "</p>" }}</p>
-		</div>
+        {% render 'section-header' %}
 
-		<div class="top-brands">
-			{%- for block in items -%}
-				<div class="banner-item">
-					<img class="lazyload" data-src="{{ block.settings.icon | image_url: height: 23 }}" width="auto"
-					     height="23"/>
-				</div>
-			{%- endfor -%}
-		</div>
-	</div>
+        <div class="section-content">
+            <img class="lazyload" data-src="{{ section.settings.lead_icon | image_url: width: 20 }}" width="20"
+                 height="20"/>
+
+            <p class="text-white">{{ section.settings.content | remove: "<p>" | remove: "</p>" }}</p>
+        </div>
+    </div>
 </section>
 
 {% schema %}
@@ -56,14 +50,19 @@
   ],
   "settings": [
     {
+      "id": "heading",
+      "type": "text",
+      "label": "Heading"
+    },
+    {
+      "id": "content",
+      "type": "richtext",
+      "label": "Contet"
+    },
+    {
       "id": "lead_icon",
       "type": "image_picker",
       "label": "Lead Icon"
-    },
-    {
-      "id": "heading",
-      "type": "richtext",
-      "label": "Heading"
     }
   ]
 }
