@@ -1,128 +1,117 @@
 {% assign items = section.blocks | where: "type", "item" %}
 
-
 <section id="risk-reversal-section">
     <ul class="risk-reversal">
-        <li>
-            <a href="/pages/trial" class="risk-reversal__item">
-                <img src="//emma-sleep.ca/cdn/shop/files/365_nights.png?v=1723709183&amp;width=100" width="60"
-                     height="auto" loading="lazy">
+        {% for block in section.blocks %}
+            {% assign props = block.settings %}
+            <li>
+                {% unless forloop.last %}
+                    <a href="{{ props.url }}" class="risk-reversal__item">
+                        <img src="{{ props.icon | image_url: width: 100 }}" width="60" height="auto" loading="lazy">
+                        <p class="text-sm">{{ props.heading }}</p>
+                    </a>
+                {% else %}
+                    <overlay-outlet>
+                        <overlay-trigger abtasty-tracker="Affirm-Messaging_CTR" class="risk-reversal__item">
+                            <img src="{{ props.icon | image_url: width: 100 }}" width="60" height="auto" loading="lazy">
 
-                <p class="text-sm">Free 365-Night Trial</p>
-            </a>
-        </li>
-        <li>
-            <a href="https://emma-sleep.ca/pages/faq#trial-and-guarantee" class="risk-reversal__item">
-                <img src="//emma-sleep.ca/cdn/shop/files/Delivery.png?v=1723709174&amp;width=100" width="60"
-                     height="auto" loading="lazy">
-                <p class="text-sm">Free Shipping &amp; Returns</p>
-            </a>
-        </li>
-        <li>
-            <a href="https://emma-sleep.ca/pages/faq#trial-and-guarantee" class="risk-reversal__item">
-                <img src="//emma-sleep.ca/cdn/shop/files/Warranty.png?v=1723709159&amp;width=100" width="60"
-                     height="auto" loading="lazy">
-                <p class="text-sm">10-Year Warranty</p>
-            </a>
-        </li>
-        <li>
-            <overlay-outlet>
-                <overlay-trigger abtasty-tracker="Affirm-Messaging_CTR" class="risk-reversal__item">
-                    <img src="//emma-sleep.ca/cdn/shop/files/0_APR..png?v=1723709064&amp;width=100" width="60"
-                         height="auto"
-                         loading="lazy">
-                    <p class="text-sm">0% APR Financing*</p>
-                </overlay-trigger>
+                            <p class="text-sm">{{ props.heading }}</p>
+                        </overlay-trigger>
 
-                <div slot="body" class="affirm-modal">
-                    <div class="product_step_inner">
-                        <div class="step_head">
-                            <h3 class="">Hit the snooze button on payments. </h3>
-                            <p class="sub_head"><strong>with</strong> <img loading="lazy" class="model_img"
-                                                                           src="https://cdn.shopify.com/s/files/1/0562/9873/3706/files/Logo_affirm.png?v=1659502934">
-                            </p>
-                        </div>
+                        <div slot="body" class="affirm-modal">
+                            <div class="product_step_inner">
+                                <div class="step_head">
+                                    <h3 class="">Hit the snooze button on payments. </h3>
+                                    <p class="sub_head"><strong>with</strong> <img loading="lazy" class="model_img"
+                                                                                   src="https://cdn.shopify.com/s/files/1/0562/9873/3706/files/Logo_affirm.png?v=1659502934">
+                                    </p>
+                                </div>
 
-                        <div class="pay_steps">
+                                <div class="pay_steps">
 
-                            <div class="step_item">
-                                <div class="step_icon">
-                                    <div class="step_icon_inner">
-                                        <div class="backimg"
-                                             style="background-image:url(https://cdn.shopify.com/s/files/1/0562/9873/3706/files/newcheckbox-svg.svg?v=1651902508);">
-                                            <svg class="transparent_svg" data-name="Layer 1"
-                                                 xmlns="http://www.w3.org/2000/svg"
-                                                 viewBox="0 0 378 378">
-                                                <rect class="cls-1" x="0.5" y="0.5" width="377" height="377"></rect>
-                                            </svg>
+                                    <div class="step_item">
+                                        <div class="step_icon">
+                                            <div class="step_icon_inner">
+                                                <div class="backimg"
+                                                     style="background-image:url(https://cdn.shopify.com/s/files/1/0562/9873/3706/files/newcheckbox-svg.svg?v=1651902508);">
+                                                    <svg class="transparent_svg" data-name="Layer 1"
+                                                         xmlns="http://www.w3.org/2000/svg"
+                                                         viewBox="0 0 378 378">
+                                                        <rect class="cls-1" x="0.5" y="0.5" width="377"
+                                                              height="377"></rect>
+                                                    </svg>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="step_data">
+                                            <div class="step_item_head">Instant Approval</div>
+                                            <div class="step_info">Get quick real-time decision with Affirm.</div>
                                         </div>
                                     </div>
 
-                                </div>
-                                <div class="step_data">
-                                    <div class="step_item_head">Instant Approval</div>
-                                    <div class="step_info">Get quick real-time decision with Affirm.</div>
-                                </div>
-                            </div>
-
-                            <div class="step_item">
-                                <div class="step_icon">
-                                    <div class="step_icon_inner">
-                                        <div class="backimg"
-                                             style="background-image:url(https://cdn.shopify.com/s/files/1/0562/9873/3706/files/new-percentage.svg?v=1652071855);">
-                                            <svg class="transparent_svg" data-name="Layer 1"
-                                                 xmlns="http://www.w3.org/2000/svg"
-                                                 viewBox="0 0 378 378">
-                                                <rect class="cls-1" x="0.5" y="0.5" width="377" height="377"></rect>
-                                            </svg>
+                                    <div class="step_item">
+                                        <div class="step_icon">
+                                            <div class="step_icon_inner">
+                                                <div class="backimg"
+                                                     style="background-image:url(https://cdn.shopify.com/s/files/1/0562/9873/3706/files/new-percentage.svg?v=1652071855);">
+                                                    <svg class="transparent_svg" data-name="Layer 1"
+                                                         xmlns="http://www.w3.org/2000/svg"
+                                                         viewBox="0 0 378 378">
+                                                        <rect class="cls-1" x="0.5" y="0.5" width="377"
+                                                              height="377"></rect>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="step_data">
+                                            <div class="step_item_head">0% APR (over 12 months)</div>
+                                            <div class="step_info">If eligible</div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="step_data">
-                                    <div class="step_item_head">0% APR (over 12 months)</div>
-                                    <div class="step_info">If eligible</div>
-                                </div>
-                            </div>
 
-                            <div class="step_item">
-                                <div class="step_icon">
-                                    <div class="step_icon_inner">
-                                        <div class="backimg"
-                                             style="background-image:url(https://cdn.shopify.com/s/files/1/0562/9873/3706/files/new-calender-svg.svg?v=1651902705);">
-                                            <svg class="transparent_svg" data-name="Layer 1"
-                                                 xmlns="http://www.w3.org/2000/svg"
-                                                 viewBox="0 0 378 378">
-                                                <rect class="cls-1" x="0.5" y="0.5" width="377" height="377"></rect>
-                                            </svg>
+                                    <div class="step_item">
+                                        <div class="step_icon">
+                                            <div class="step_icon_inner">
+                                                <div class="backimg"
+                                                     style="background-image:url(https://cdn.shopify.com/s/files/1/0562/9873/3706/files/new-calender-svg.svg?v=1651902705);">
+                                                    <svg class="transparent_svg" data-name="Layer 1"
+                                                         xmlns="http://www.w3.org/2000/svg"
+                                                         viewBox="0 0 378 378">
+                                                        <rect class="cls-1" x="0.5" y="0.5" width="377"
+                                                              height="377"></rect>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="step_data">
+                                            <div class="step_item_head">Easy Monthly Payments</div>
+                                            <div class="step_info">Sleep in, stress-free.</div>
                                         </div>
                                     </div>
+
+                                    <div class="step_item">
+                                        <p class="para_txt">Just select "Affirm" at checkout.</p>
+                                    </div>
                                 </div>
-                                <div class="step_data">
-                                    <div class="step_item_head">Easy Monthly Payments</div>
-                                    <div class="step_info">Sleep in, stress-free.</div>
-                                </div>
+
                             </div>
 
-                            <div class="step_item">
-                                <p class="para_txt">Just select "Affirm" at checkout.</p>
+                            <div class="pro_note">
+                                <div class="pro_note_inner">
+                                    <p>*Not available for purchase under $300 CAD</p>
+                                    <p>*Affirm cannot be used in conjunction with other discounts and promotions.</p>
+                                </div>
                             </div>
                         </div>
 
-                    </div>
-
-                    <div class="pro_note">
-                        <div class="pro_note_inner">
-                            <p>*Not available for purchase under $300 CAD</p>
-                            <p>*Affirm cannot be used in conjunction with other discounts and promotions.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <button slot="footer" class="Modal-DismissButton btn btn--secondary">
-                    <span class="text-white">Continue Shopping</span>
-                </button>
-            </overlay-outlet>
-        </li>
+                        <button slot="footer" class="Modal-DismissButton btn btn--secondary">
+                            <span class="text-white">Continue Shopping</span>
+                        </button>
+                    </overlay-outlet>
+                {% endunless %}
+            </li>
+        {% endfor %}
     </ul>
 </section>
 
