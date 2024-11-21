@@ -28,6 +28,7 @@ if (!customElements.get("product-form")) {
         this.$submitBtn.find(".loading-overlay__spinner").removeClass("hidden");
 
         await waitUntil((_) => !!this.cartSurface.loading === false);
+        await this.applyDiscountCode("FLASH");
 
         const config = fetchConfig("javascript");
         config.headers["X-Requested-With"] = "XMLHttpRequest";
@@ -162,7 +163,6 @@ if (!customElements.get("product-form")) {
             }
 
             this.error = false;
-            await this.applyDiscountCode("BLACKFRIDAY2024");
 
             await this.cartSurface.open();
 
