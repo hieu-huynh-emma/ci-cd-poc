@@ -27,7 +27,7 @@ const schema = [
         sectionId: "product-specifications",
     },
     {
-        sectionId: "bundle-box",
+        sectionId: "promotional-panel",
         outletQuery: "#attribute-configurator",
         insertPosition: "afterend",
     },

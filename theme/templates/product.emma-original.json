@@ -1011,6 +1011,17 @@
       "settings": {
         "title": "Need help deciding?"
       }
+    },
+    "promotional-panel": {
+      "disabled": true,
+      "type": "promotional-panel",
+      "settings": {
+        "collection": "black-friday-promotion",
+        "heading": "With the coupon code 'BLACKFRIDAY2024'*",
+        "promotional_text": "320$ in value",
+        "content": "Your mattress purchase includes 2 Premium Cooling Pillows",
+        "note": "*automatically applied at cart"
+      }
     }
   },
   "order": [
@@ -1037,6 +1048,7 @@
     "special-services",
     "rich-text",
     "featured-faqs",
-    "contact-us"
+    "contact-us",
+    "promotional-panel"
   ]
 }

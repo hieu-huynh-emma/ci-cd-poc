@@ -185,65 +185,6 @@
         "sectionId": ""
       }
     },
-    "overlay-text-on-image": {
-      "type": "product-media",
-      "blocks": {
-        "f5f456c7-b29a-4f74-826f-648e09f5b1cd": {
-          "type": "image",
-          "settings": {
-            "en_image": "shopify:\/\/shop_images\/Untitleddesign_10.png",
-            "fr_image": "shopify:\/\/shop_images\/Untitleddesign_10.png"
-          }
-        },
-        "image_hCRVnp": {
-          "type": "image",
-          "settings": {
-            "en_image": "shopify:\/\/shop_images\/22_Hybrid_Gallery_2_82b7ba1e-9fdb-420e-b1c3-e97e92849f75.jpg",
-            "fr_image": "shopify:\/\/shop_images\/22_Hybrid_Gallery_2_82b7ba1e-9fdb-420e-b1c3-e97e92849f75.jpg"
-          }
-        },
-        "image_nYLMak": {
-          "type": "image",
-          "settings": {
-            "en_image": "shopify:\/\/shop_images\/Untitled_design_7_add2f426-ed66-4307-bae6-eba9ca72e085.jpg",
-            "fr_image": "shopify:\/\/shop_images\/Untitled_design_7_add2f426-ed66-4307-bae6-eba9ca72e085.jpg"
-          }
-        },
-        "image_XnnqGC": {
-          "type": "image",
-          "settings": {
-            "en_image": "shopify:\/\/shop_images\/HYBRID_25_BALLOONS-S19_b1e3d26c-c508-44dc-86f2-0a0ba5c9ffc8.png",
-            "fr_image": "shopify:\/\/shop_images\/HYBRID_25_BALLOONS-S19_b1e3d26c-c508-44dc-86f2-0a0ba5c9ffc8.png"
-          }
-        },
-        "image_tgYJdq": {
-          "type": "image",
-          "settings": {
-            "en_image": "shopify:\/\/shop_images\/22_Hybrid_Gallery_3_0299d209-8201-41ca-826d-e27e70e13c07.jpg",
-            "fr_image": "shopify:\/\/shop_images\/22_Hybrid_Gallery_3_0299d209-8201-41ca-826d-e27e70e13c07.jpg"
-          }
-        },
-        "video_QERLkb": {
-          "type": "video",
-          "settings": {
-            "video": "shopify:\/\/files\/videos\/Unboxing (16x9).mp4"
-          }
-        }
-      },
-      "block_order": [
-        "f5f456c7-b29a-4f74-826f-648e09f5b1cd",
-        "image_hCRVnp",
-        "image_nYLMak",
-        "image_XnnqGC",
-        "image_tgYJdq",
-        "video_QERLkb"
-      ],
-      "disabled": true,
-      "settings": {
-        "heading": "",
-        "sectionId": "overlay-text-on-image"
-      }
-    },
     "risk-reversal": {
       "type": "risk-reversal",
       "blocks": {
@@ -1079,6 +1020,17 @@
       "settings": {
         "title": "Need help deciding?"
       }
+    },
+    "promotional-panel": {
+      "disabled": true,
+      "type": "promotional-panel",
+      "settings": {
+        "collection": "black-friday-promotion",
+        "heading": "With the coupon code 'BLACKFRIDAY2024'*",
+        "promotional_text": "320$ in value",
+        "content": "Your mattress purchase includes 2 Premium Cooling Pillows",
+        "note": "*automatically applied at cart"
+      }
     }
   },
   "order": [
@@ -1089,7 +1041,6 @@
     "campaign-teaser",
     "bundle-cross-sell",
     "product-media",
-    "overlay-text-on-image",
     "risk-reversal",
     "price-transparency",
     "product-unique-selling-points",
@@ -1104,6 +1055,7 @@
     "customer-sentiment",
     "1685402594226951ca",
     "featured-faqs",
-    "contact-us"
+    "contact-us",
+    "promotional-panel"
   ]
 }
