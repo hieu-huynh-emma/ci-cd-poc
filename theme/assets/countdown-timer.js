@@ -14,7 +14,8 @@ class CountdownTimer extends CustomElement {
 
   props = {
     date: "",
-    heading: "",
+    captionPlacement: "bottom",
+    captionAlignment: "left",
     caption: "",
     type: "full",
     pattern: "dd:hh:mm:ss",
@@ -64,19 +65,20 @@ class CountdownTimer extends CustomElement {
   template() {
     super.template();
 
-    const { heading, caption } = this.props;
+    const { caption } = this.props;
 
     return `
-           ${heading ? `<div class="timer-content"><div class="rtf-viewer">${heading}</div></div>` : ""}
+           ${caption ? `<div class="timer-caption"><div class="rtf-viewer">${caption}</div></div>` : ""}
            
            <div class="timer"></div>
-          
-            ${caption ? `<div class="timer-content"><div class="rtf-viewer">${caption}</div></div>` : ""}
         `;
   }
 
   beforeMount() {
+    const { captionPlacement, captionAlignment } = this.props;
     if (!this.$el.attr(":type")) this.$el.attr(":type", this.props.type);
+
+    this.$el.addClass(`caption-placement--${captionPlacement} caption-alignment--${captionAlignment}`);
   }
 
   mounted() {

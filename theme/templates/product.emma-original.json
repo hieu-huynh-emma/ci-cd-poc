@@ -1021,9 +1021,22 @@
     "promotional-panel": {
       "type": "promotional-panel",
       "disabled": true,
+      "blocks": {
+        "countdownTimer": {
+          "type": "countdownTimer",
+          "settings": {
+            "caption": "<p>Countdown Caption</p>",
+            "captionPlacement": "top",
+            "captionAlignment": "center"
+          }
+        }
+      },
+      "block_order": [
+        "countdownTimer"
+      ],
       "settings": {
         "collection": "black-friday-promotion",
-        "heading": "With the coupon code 'BLACKFRIDAY2024'*",
+        "heading": "With the coupon code 'FLASH'*",
         "promotional_text": "320$ in value",
         "content": "Your mattress purchase includes 2 Premium Cooling Pillows",
         "note": "*automatically applied at cart"
