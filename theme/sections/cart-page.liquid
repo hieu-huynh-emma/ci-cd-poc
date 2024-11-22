@@ -16,6 +16,8 @@
         font-size: 12px;
     }
 
+  
+
     #af_kd_discount_container0 {
         /* display:none !important */
         margin-top: 30px !important;
@@ -1332,6 +1334,13 @@
 
                         {%- endif -%}
                       {%- endif -%}
+
+                     {% if item.product_id == 8250232930442 %}
+                        <div class="cart-item-description">
+                          2 Free Pillows with mattress purchase
+                        </div>
+                      {% endif %}
+
                       {% if item.product.metafields.accentuate.is_bundle %}
                         {% assign current_variant = item.variant %}
 
@@ -1439,7 +1448,11 @@
                           </span>
                       {% endif %}
                       <strong class="product_price">
-                        {{ item.original_line_price | money }}
+                        {% if item.line_price == 0 %}
+                          FREE
+                        {% else %}
+                          {{ item.original_line_price | money }}
+                        {% endif %}
                       </strong>
                     </div>
                   </div>

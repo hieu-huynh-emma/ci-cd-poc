@@ -31,6 +31,7 @@
     },
     "bundle-cross-sell": {
       "type": "bundle-cross-sell",
+      "disabled": true,
       "settings": {
         "heading": "Add bundle offer!",
         "product": "premium-accessory-bundle",
@@ -367,7 +368,6 @@
         },
         "cross_sell_widget_tXLCDN": {
           "type": "cross_sell_widget",
-          "disabled": true,
           "settings": {}
         }
       },
@@ -960,7 +960,6 @@
     },
     "promotional-panel": {
       "type": "promotional-panel",
-      "disabled": true,
       "blocks": {
         "countdownTimer": {
           "type": "countdownTimer",
