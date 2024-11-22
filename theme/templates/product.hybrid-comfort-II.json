@@ -104,7 +104,7 @@
     "campaign-teaser": {
       "type": "campaign-teaser",
       "settings": {
-        "content": "<p><strong>Black Friday Sale:<\/strong> 55% off<\/p>",
+        "content": "<p><strong>Black Friday Sale: 55% off + 2 Free Pillows with the code \"FLASH\"<\/strong><\/p>",
         "bgcolor": "#2e2f3c",
         "color": "#ffffff",
         "show_countdown_timer": false
@@ -397,11 +397,6 @@
             "note": "*For queen sizes only. All prices and information from public sources listed as of Sept 1, 2023. Information may not reflect updated prices and promotions."
           }
         },
-        "cross_sell_widget_eKYGzp": {
-          "disabled": true,
-          "type": "cross_sell_widget",
-          "settings": {}
-        },
         "upsell_widget_tXLCDN": {
           "type": "upsell_widget",
           "settings": {
@@ -411,6 +406,11 @@
             "image": "shopify:\/\/shop_images\/Hybrid-Premium.png",
             "product": "emma-hybrid-premium"
           }
+        },
+        "cross_sell_widget_eKYGzp": {
+          "type": "cross_sell_widget",
+          "disabled": true,
+          "settings": {}
         }
       },
       "block_order": [
@@ -1028,8 +1028,8 @@
       }
     },
     "promotional-panel": {
-      "disabled": true,
       "type": "promotional-panel",
+      "disabled": true,
       "settings": {
         "collection": "black-friday-promotion",
         "heading": "With the coupon code 'BLACKFRIDAY2024'*",

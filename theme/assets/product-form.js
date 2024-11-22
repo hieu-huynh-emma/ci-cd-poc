@@ -218,9 +218,9 @@ if (!customElements.get("product-form")) {
           "gtm.uniqueEventId": 1,
         });
 
-        toastr.success(`${code.toUpperCase()} discount code applied.`, "", {
-          iconClass: "",
-        });
+        // toastr.success(`${code.toUpperCase()} discount code applied.`, "", {
+        //   iconClass: "",
+        // });
       }
 
       handleErrorMessage(errorMessage = false) {

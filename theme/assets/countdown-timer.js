@@ -67,11 +67,11 @@ class CountdownTimer extends CustomElement {
     const { heading, caption } = this.props;
 
     return `
-           ${heading ? `<div class="timer-content rtf-viewer">${heading}</div>` : ""}
+           ${heading ? `<div class="timer-content"><div class="rtf-viewer">${heading}</div></div>` : ""}
            
            <div class="timer"></div>
           
-            ${caption ? `<div class="timer-content timer-caption rtf-viewer">${caption}</div>` : ""}
+            ${caption ? `<div class="timer-content"><div class="rtf-viewer">${caption}</div></div>` : ""}
         `;
   }
 

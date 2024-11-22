@@ -145,7 +145,7 @@ ResourceCoordinator.registerVendor("Splide", [
   "https://cdn.jsdelivr.net/npm/@splidejs/splide@4.0.1/dist/js/splide.min.js",
 ]);
 
-ResourceCoordinator.registerVendor("Tippy", ["https://unpkg.com/@popperjs/core@2", "https://unpkg.com/tippy.js@6"]);
+ResourceCoordinator.registerVendor("Tippy", []);
 
 ResourceCoordinator.registerVendor("DriftZoom", ["https://cdnjs.cloudflare.com/ajax/libs/drift-zoom/1.5.1/Drift.min.js"]);
 ResourceCoordinator.registerVendor("MultiClamp", [Shop.assetUrl + 'MultiClamp.min.js']);

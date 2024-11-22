@@ -196,7 +196,7 @@
     "campaign-teaser": {
       "type": "campaign-teaser",
       "settings": {
-        "content": "<p><strong>Clearance Sale:<\/strong> 40% off<\/p>",
+        "content": "<p><strong>Clearance Sale: 40% off + 2 Free Pillows with the code \"FLASH\"<\/strong><\/p>",
         "bgcolor": "#2e2f3c",
         "color": "#ffffff",
         "show_countdown_timer": false
@@ -389,8 +389,8 @@
           }
         },
         "cross_sell_widget_eKYGzp": {
-          "disabled": true,
           "type": "cross_sell_widget",
+          "disabled": true,
           "settings": {}
         }
       },
@@ -1019,8 +1019,8 @@
       }
     },
     "promotional-panel": {
-      "disabled": true,
       "type": "promotional-panel",
+      "disabled": true,
       "settings": {
         "collection": "black-friday-promotion",
         "heading": "With the coupon code 'BLACKFRIDAY2024'*",
