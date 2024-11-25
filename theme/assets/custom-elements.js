@@ -67,6 +67,7 @@ class CustomElement extends HTMLElement {
 	}
 
 	connectedCallback() {
+		this.created()
 		this.extractProps();
 		this.init();
 
@@ -93,6 +94,7 @@ class CustomElement extends HTMLElement {
 	setup() {
 		this.mutationObserver = new MutationObserver(this.onMutation.bind(this));
 	}
+
 
 	init() {
 		this.$el.addClass(`${this.tagName.toLowerCase()}`)
@@ -130,6 +132,7 @@ class CustomElement extends HTMLElement {
 		return val
 	}
 
+	created() {}
 
 	beforeMount() {
 	}
