@@ -8,19 +8,22 @@
 </style>
 <link rel="quickscript" loading="delayed" href="{{ 'product-unique-selling-points.css' | asset_url }}">
 
-<div id="product-unique-selling-points">
+<product-unique-selling-points
+    id="product-unique-selling-points"
+    :paymentProviderSection="{{ paymentProvidersBlock.settings.payment_providers_section }}"
+>
     <ul class="benefits">
         {% for block in uniqueSellingPoints %}
             {% assign benefitUrl = block.settings.url %}
             <li>
                 <a
-                        class="unique-selling-point"{% if benefitUrl != blank %} href="{{ benefitUrl }}"{% endif %}
-                        target="_blank"
+                    class="unique-selling-point"{% if benefitUrl != blank %} href="{{ benefitUrl }}"{% endif %}
+                    target="_blank"
                 >
                     <img
-                            class="unique-selling-point__icon"
-                            src="{{ block.settings.icon | image_url: width: "25", height: "25" }}"
-                            loading="lazy"
+                        class="unique-selling-point__icon"
+                        src="{{ block.settings.icon | image_url: width: "25", height: "25" }}"
+                        loading="lazy"
                     >
                     <p class="title">
                         {{ block.settings.text }}
@@ -35,31 +38,21 @@
         {% if paymentProvidersBlock %}
             <li class="payment-providers unique-selling-point">
                 <img
-                        class="unique-selling-point__icon"
-                        src="{{ paymentProvidersBlock.settings.icon | image_url: width: "25", height: "25" }}"
-                        loading="lazy"
+                    class="unique-selling-point__icon"
+                    src="{{ paymentProvidersBlock.settings.icon | image_url: width: "25", height: "25" }}"
+                    loading="lazy"
                 >
                 <p class="title">
                     {{ paymentProvidersBlock.settings.text }}
                 </p>
                 <div class="payment-providers__listing_new"></div>
-                <script type="quickscript" loading="visibility">
-                  fetch(`?sections={{ paymentProvidersBlock.settings.payment_providers_section }}`)
-                    .then((response) => response.json())
-                    .then((res) => {
-                      const html = new DOMParser().parseFromString(
-                          res['{{ paymentProvidersBlock.settings.payment_providers_section }}'],
-                          'text/html'
-                      );
-                      $('.payment-providers.unique-selling-point .payment-providers__listing_new').html(
-                          html.querySelector('.payment-providers__listing').innerHTML
-                      );
-                  });
-                </script>
             </li>
         {% endif %}
     </ul>
-</div>
+</product-unique-selling-points>
+
+<script type="quickscript" loading="visibility" src="{{ 'product-unique-selling-points.js' | asset_url }}"></script>
+
 
 {% schema %}
 {
