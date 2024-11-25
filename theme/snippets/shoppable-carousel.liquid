@@ -8,7 +8,7 @@
                     {% case block.type %}
                         {% when "video" %}
                             {% assign media = block.settings.video %}
-                            {% assign poster = media | image_url: width: 550 | prepend: "https:" %}
+                            {% assign poster = media | image_url: width: 100 | prepend: "https:" %}
 
                             <div class="shoppable-frame">
                                 {% render 'shoppable-card', media: media, index: forloop.index0 %}

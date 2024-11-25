@@ -35,6 +35,7 @@
 
 									<div class="media-item media-container">
 										{% render 'picture-tag',
+												baseWidth: 100,
 												src: thumbnail.en_image,
 												picture_attributes: 'class="media-item__image" lang="en"',
 												img_classes: "",
@@ -53,6 +54,7 @@
 										{% assign height = 576 | divided_by: media.preview_image.aspect_ratio %}
 										{% assign alt = media.preview_image.alt | escape %}
 										{% render 'picture-tag',
+												baseWidth: 100,
 												src: media.preview_image,
 												picture_attributes: 'class="media-item__image cover-surface"',
 												img_classes: "cover-surface",
