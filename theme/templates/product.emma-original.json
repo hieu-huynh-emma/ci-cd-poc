@@ -211,6 +211,29 @@
         "note": "*No mattress protector available for Twin XL and Cal King sizes"
       }
     },
+    "promotional-panel": {
+      "type": "promotional-panel",
+      "blocks": {
+        "countdownTimer": {
+          "type": "countdownTimer",
+          "settings": {
+            "caption": "<p>+20% off on essential cloud pillows<\/p>",
+            "captionPlacement": "top",
+            "captionAlignment": "center"
+          }
+        }
+      },
+      "block_order": [
+        "countdownTimer"
+      ],
+      "settings": {
+        "collection": "black-friday-promotion",
+        "heading": "With the coupon code 'FLASH'*",
+        "promotional_text": "320$ in value",
+        "content": "",
+        "note": "*Automatically applied with your mattress purchase"
+      }
+    },
     "price-transparency": {
       "type": "price-transparency",
       "blocks": {
@@ -1016,29 +1039,6 @@
       "type": "contact-us",
       "settings": {
         "title": "Need help deciding?"
-      }
-    },
-    "promotional-panel": {
-      "type": "promotional-panel",
-      "blocks": {
-        "countdownTimer": {
-          "type": "countdownTimer",
-          "settings": {
-            "caption": "",
-            "captionPlacement": "top",
-            "captionAlignment": "center"
-          }
-        }
-      },
-      "block_order": [
-        "countdownTimer"
-      ],
-      "settings": {
-        "collection": "black-friday-promotion",
-        "heading": "With the coupon code 'FLASH'*",
-        "promotional_text": "320$ in value",
-        "content": "",
-        "note": "*Automatically applied with your mattress purchase"
       }
     }
   },

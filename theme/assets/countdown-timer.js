@@ -62,11 +62,17 @@ class CountdownTimer extends CustomElement {
     super();
   }
 
-  template() {
-    super.template();
-
+  async render() {
     const { caption } = this.props;
 
+    const [i18nCaption] = await translateWeglot([caption]);
+
+    this.innerHTML = this.template(i18nCaption);
+
+    this.onUpdated();
+  }
+
+  template(caption) {
     return `
            ${caption ? `<div class="timer-caption"><div class="rtf-viewer">${caption}</div></div>` : ""}
            
