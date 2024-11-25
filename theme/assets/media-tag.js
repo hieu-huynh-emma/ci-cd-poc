@@ -42,8 +42,8 @@ if (!customElements.get("picture-tag")) {
         }
 
         renderSourceSets(srcsets) {
-            return srcsets.map(({breakpoint, srcset}) => {
-                return ` <source media="(max-width: ${breakpoint})" data-srcset="${srcset}">`
+            return srcsets.map(({mediaQuery,breakpoint, srcset}) => {
+                return ` <source media="(${mediaQuery}-width: ${breakpoint})" data-srcset="${srcset}">`
             }).join('');
         }
 
@@ -75,6 +75,7 @@ if (!customElements.get("picture-tag")) {
 
                 const sizes = [
                     ...acc, {
+                        mediaQuery: "max",
                         breakpoint: breakpoint + 'px',
                         srcset: this.resizeUrl(url, breakpoint)
                     },
@@ -87,6 +88,7 @@ if (!customElements.get("picture-tag")) {
                     url.searchParams.delete("width");
 
                     sizes.push({
+                        mediaQuery: "min",
                         breakpoint: breakpoint + 'px',
                         srcset: this.resizeUrl(url, breakpoint)
                     })
