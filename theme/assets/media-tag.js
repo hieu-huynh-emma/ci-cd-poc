@@ -43,8 +43,10 @@ if (!customElements.get("picture-tag")) {
         }
 
         renderSourceSets(srcsets) {
+            const domLoaded = document.readyState === "complete"
+
             return srcsets.map(({mediaQuery,breakpoint, srcset}) => {
-                return ` <source media="(${mediaQuery}-width: ${breakpoint})" data-srcset="${srcset}">`
+                return ` <source media="(${mediaQuery}-width: ${breakpoint})" ${!domLoaded ? "data-": ""}srcset="${srcset}">`
             }).join('');
         }
 

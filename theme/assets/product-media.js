@@ -11,7 +11,7 @@ if (!customElements.get("product-media")) {
         }
 
         render() {
-            const tpl = document.querySelector("#ProductMedia-Template");
+            const tpl = this.$el.find("#ProductMedia-Template").get(0);
 
             this.$el.append(tpl.content);
         }
@@ -112,11 +112,9 @@ if (!customElements.get("product-media")) {
 
         onActive() {
             const {$placeholder} = this.refs;
-            console.log("=>(product-media.js:114) this.refs", this.refs);
             this.$el.addClass("is-initialized");
 
             $placeholder.remove()
-            console.log("=>(product-media.js:117) $placeholder", $placeholder);
         }
     }
 

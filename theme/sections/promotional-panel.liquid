@@ -1,32 +1,24 @@
-<style>
-    .promotional-panel {
-        display: none;
-    }
-</style>
-
-<link rel="quickscript" loading="delayed" href="{{ 'promotional-panel.css' | asset_url }}"/>
-
-{% assign countdownTimer = section.blocks | where: "type", "countdownTimer" | first %}
-
 <section id="promotional-panel" class="promotional-panel section-container">
+    {% assign countdownTimer = section.blocks | where: "type", "countdownTimer" | first %}
+
     <div class="ornament">
         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 365.882 365.882">
             <g transform="translate(9.5 9.5)">
                 <path
                     d="M278.705,200.941H6a12.5,12.5,0,0,1-12.5-12.5V18a12.5,12.5,0,0,1,25,0V175.941H266.205V18a12.5,12.5,0,0,1,25,0V188.441A12.5,12.5,0,0,1,278.705,200.941Z"
-                    transform="translate(31.088 155.441)" fill="currentColor"/>
+                    transform="translate(31.088 155.441)" fill="currentColor" />
                 <path
                     d="M3-2H343.882a12.5,12.5,0,0,1,12.5,12.5V95.72a12.5,12.5,0,0,1-12.5,12.5H3A12.5,12.5,0,0,1-9.5,95.72V10.5A12.5,12.5,0,0,1,3-2ZM331.382,23H15.5V83.22H331.382Z"
-                    transform="translate(0 77.72)" fill="currentColor"/>
+                    transform="translate(0 77.72)" fill="currentColor" />
                 <path
                     d="M18,278.661a12.5,12.5,0,0,1-12.5-12.5V10.5a12.5,12.5,0,0,1,25,0V266.161A12.5,12.5,0,0,1,18,278.661Z"
-                    transform="translate(155.441 77.72)" fill="currentColor"/>
+                    transform="translate(155.441 77.72)" fill="currentColor" />
                 <path
                     d="M126.809,100.72H50.11a55.11,55.11,0,0,1,0-110.22c69.107,0,88.178,91.379,88.956,95.269a12.5,12.5,0,0,1-12.257,14.951ZM50.11,15.5a30.11,30.11,0,0,0,0,60.22h60.2C102.9,53.786,84.982,15.5,50.11,15.5Z"
-                    transform="translate(46.632 0)" fill="currentColor"/>
+                    transform="translate(46.632 0)" fill="currentColor" />
                 <path
                     d="M94.7,100.72H18A12.5,12.5,0,0,1,5.743,85.769C6.521,81.879,25.591-9.5,94.7-9.5a55.11,55.11,0,1,1,0,110.22Zm-60.238-25H94.7a30.11,30.11,0,1,0,0-60.22C59.662,15.5,41.809,53.794,34.461,75.72Z"
-                    transform="translate(155.441 0)" fill="currentColor"/>
+                    transform="translate(155.441 0)" fill="currentColor" />
             </g>
         </svg>
         <span>FREE GIFT</span>
@@ -72,10 +64,10 @@
                         <svg class="promo-plus-sign" xmlns="http://www.w3.org/2000/svg" width="19" height="19"
                              viewBox="0 0 19 19"
                              fill="none">
-                            <ellipse cx="9.16309" cy="9.13953" rx="9.16309" ry="9.13953" fill="#FFDDB5"/>
+                            <ellipse cx="9.16309" cy="9.13953" rx="9.16309" ry="9.13953" fill="#FFDDB5" />
                             <path
                                 d="M8.4498 12H9.53512V9.87506H11.6601V8.78974H9.53512V6.6648H8.4498V8.78974H6.32486V9.87506H8.4498V12Z"
-                                fill="#F70"/>
+                                fill="#F70" />
                         </svg>
                     </div>
                 {% endunless %}
