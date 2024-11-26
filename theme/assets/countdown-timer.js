@@ -62,19 +62,17 @@ class CountdownTimer extends CustomElement {
     super();
   }
 
-  async render() {
+   render() {
     const { caption } = this.props;
 
-    const [i18nCaption] = await translateWeglot([caption]);
-
-    this.innerHTML = this.template(i18nCaption);
+    this.innerHTML = this.template(caption);
 
     this.onUpdated();
   }
 
   template(caption) {
     return `
-           ${caption ? `<div class="timer-caption"><div class="rtf-viewer">${caption}</div></div>` : ""}
+           ${caption ? `<div class="timer-caption weglot-tr"><div class="rtf-viewer weglot-tr">${caption}</div></div>` : ""}
            
            <div class="timer"></div>
         `;
@@ -154,8 +152,8 @@ class CountdownTimer extends CustomElement {
     }
 
     $timer.append(` <div :specifier="${unit.specifier}" class="time-display">
-      <p class="digit">${unit.value}</p>
-      <p class="label">${unit.label}</p>
+      <p class="digit weglot-tr">${unit.value}</p>
+      <p class="label weglot-tr">${unit.label}</p>
     </div>`);
   }
 }

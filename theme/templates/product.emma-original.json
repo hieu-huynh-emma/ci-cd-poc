@@ -559,40 +559,6 @@
         "is_animate_scaling": false
       }
     },
-    "rich_text_prbEqM": {
-      "type": "rich-text",
-      "blocks": {
-        "heading_tXRHCb": {
-          "type": "heading",
-          "settings": {
-            "heading": "¹ 2 Free Pillow offer non cumulative with other discount codes and applicable to new customers only.",
-            "heading_size": "h1"
-          }
-        },
-        "text_3MEMjY": {
-          "type": "text",
-          "disabled": true,
-          "settings": {
-            "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.<\/p>"
-          }
-        },
-        "button_bdCGwz": {
-          "type": "button",
-          "disabled": true,
-          "settings": {
-            "button_label": "Button label",
-            "button_link": "",
-            "button_style_secondary": false
-          }
-        }
-      },
-      "block_order": [
-        "heading_tXRHCb",
-        "text_3MEMjY",
-        "button_bdCGwz"
-      ],
-      "settings": {}
-    },
     "featured-products": {
       "type": "featured-products",
       "blocks": {
@@ -1023,6 +989,40 @@
       "settings": {
         "title": "Need help deciding?"
       }
+    },
+    "rich_text_prbEqM": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_tXRHCb": {
+          "type": "heading",
+          "settings": {
+            "heading": "¹ 2 Free Pillow offer non cumulative with other discount codes and applicable to new customers only.",
+            "heading_size": "h1"
+          }
+        },
+        "text_3MEMjY": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.<\/p>"
+          }
+        },
+        "button_bdCGwz": {
+          "type": "button",
+          "disabled": true,
+          "settings": {
+            "button_label": "Button label",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_tXRHCb",
+        "text_3MEMjY",
+        "button_bdCGwz"
+      ],
+      "settings": {}
     }
   },
   "order": [
@@ -1042,7 +1042,6 @@
     "multimedia-showcase",
     "mattress-layers",
     "mattress-firmness",
-    "rich_text_prbEqM",
     "featured-products",
     "product-carousel",
     "shoppable-media",
@@ -1050,6 +1049,7 @@
     "168540174983dd55c2",
     "rich-text",
     "featured-faqs",
-    "contact-us"
+    "contact-us",
+    "rich_text_prbEqM"
   ]
 }
