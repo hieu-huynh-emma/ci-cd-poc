@@ -104,7 +104,7 @@
     "campaign-teaser": {
       "type": "campaign-teaser",
       "settings": {
-        "content": "<p><strong>Black Friday Sale: 55% off + 2 Free Pillows with the code \"FLASH\"<\/strong><\/p>",
+        "content": "<p><strong>Black Friday Sale: 55% off + 2 Free Pillows with the code \"FLASH\" <\/strong>¹<\/p>",
         "bgcolor": "#2e2f3c",
         "color": "#ffffff",
         "show_countdown_timer": false
@@ -139,7 +139,7 @@
         "heading": "With the coupon code 'FLASH'*",
         "promotional_text": "320$ in value",
         "content": "",
-        "note": "*Automatically applied with your mattress purchase"
+        "note": "*Automatically applied with your mattress purchase, non cumulative with other discount codes"
       }
     },
     "product-media": {
@@ -614,6 +614,40 @@
         "is_animate_scaling": false
       }
     },
+    "rich_text_zUAknn": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_zDCwYp": {
+          "type": "heading",
+          "settings": {
+            "heading": "¹ 2 Free Pillow offer non cumulative with other discount codes and applicable to new customers only.",
+            "heading_size": "h1"
+          }
+        },
+        "text_MBDKTR": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": ""
+          }
+        },
+        "button_TdP3XX": {
+          "type": "button",
+          "disabled": true,
+          "settings": {
+            "button_label": "Button label",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_zDCwYp",
+        "text_MBDKTR",
+        "button_TdP3XX"
+      ],
+      "settings": {}
+    },
     "featured-products": {
       "type": "featured-products",
       "blocks": {
@@ -1068,6 +1102,7 @@
     "multimedia-showcase",
     "mattress-layers",
     "mattress-firmness",
+    "rich_text_zUAknn",
     "featured-products",
     "product-carousel",
     "shoppable-media",

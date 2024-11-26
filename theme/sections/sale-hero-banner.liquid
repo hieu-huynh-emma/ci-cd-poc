@@ -53,6 +53,7 @@
 
     {% if wallpaper != blank %}
       {% render 'picture-tag',
+        baseWidth: 700,
         src: wallpaper.settings.src,
         mobile_src: wallpaper.settings.mobile_src,
         picture_attributes: "class='section-wallpaper'",

@@ -58,7 +58,7 @@
         "heading": "With the coupon code 'FLASH'*",
         "promotional_text": "320$ in value",
         "content": "",
-        "note": "*Automatically applied with your mattress purchase"
+        "note": "*Automatically applied with your mattress purchase, non cumulative with other discount codes"
       }
     },
     "product-layout": {
@@ -290,7 +290,7 @@
     "campaign-teaser": {
       "type": "campaign-teaser",
       "settings": {
-        "content": "<p><strong>Black Friday Sale: 60% off + 2 Free Pillows with the code \"FLASH\"<\/strong><\/p>",
+        "content": "<p><strong>Black Friday Sale: 60% off + 2 Free Pillows with the code \"FLASH\" <\/strong>¹<\/p>",
         "bgcolor": "#2e2f3c",
         "color": "#ffffff",
         "show_countdown_timer": false
@@ -581,6 +581,73 @@
         "container_spacing": "md",
         "is_animate_scaling": false
       }
+    },
+    "rich_text_PcqHtT": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_8nHU8a": {
+          "type": "heading",
+          "settings": {
+            "heading": "Talk about your brand",
+            "heading_size": "h1"
+          }
+        },
+        "text_GLxMaR": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.<\/p>"
+          }
+        },
+        "button_DNnEMr": {
+          "type": "button",
+          "settings": {
+            "button_label": "Button label",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_8nHU8a",
+        "text_GLxMaR",
+        "button_DNnEMr"
+      ],
+      "disabled": true,
+      "settings": {}
+    },
+    "rich_text_8ftB8R": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_icWzF7": {
+          "type": "heading",
+          "settings": {
+            "heading": "¹ 2 Free Pillow offer non cumulative with other discount codes and applicable to new customers only.",
+            "heading_size": "h1"
+          }
+        },
+        "text_PmeEF6": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.<\/p>"
+          }
+        },
+        "button_Y7iEcn": {
+          "type": "button",
+          "disabled": true,
+          "settings": {
+            "button_label": "Button label",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_icWzF7",
+        "text_PmeEF6",
+        "button_Y7iEcn"
+      ],
+      "settings": {}
     },
     "featured-products": {
       "type": "featured-products",
@@ -999,6 +1066,8 @@
     "multimedia-showcase",
     "mattress-layers",
     "mattress-firmness",
+    "rich_text_PcqHtT",
+    "rich_text_8ftB8R",
     "featured-products",
     "product-carousel",
     "shoppable-media",

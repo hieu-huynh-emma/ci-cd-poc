@@ -4,6 +4,7 @@ if (!customElements.get("picture-tag")) {
             src: "",
             "desktop.src": "",
             "mobile.src": "",
+            placeholderWidth: 100,
             alt: "",
             fit: "none" // cover | contain | fill | scale-down
         }
@@ -50,11 +51,11 @@ if (!customElements.get("picture-tag")) {
         beforeMount() {
             super.beforeMount();
 
-            const {src} = this.props
+            const {src, placeholderWidth} = this.props
 
             this.url = new URL(src, location.origin)
 
-            this.placeholder = this.resizeUrl(this.url, 100);
+            this.placeholder = this.resizeUrl(this.url, placeholderWidth);
 
             this.props.width = this.$el.attr('width') ?? 'auto'
             this.props.height = this.$el.attr('height') ?? 'auto'

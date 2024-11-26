@@ -79,7 +79,7 @@
             "wallpaper_mobile_fr_img": "shopify:\/\/shop_images\/new_split_banner_-_mobile_5.png",
             "title": "<h1>Flash Sale!<\/h1>",
             "heading_size": "medium",
-            "subtitle": "<p><strong>Get 2 Free Premium Pillows with your mattress with the code \"FLASH\" <\/strong><\/p>",
+            "subtitle": "<p><strong>Get 2 Free Premium Pillows with your mattress with the code \"FLASH\" <\/strong>¹<\/p>",
             "show_shadow": true,
             "text_color": "#ffffff",
             "cta_url": "shopify:\/\/pages\/sale",
@@ -1710,6 +1710,40 @@
         "container_spacing": "md",
         "trackId": ""
       }
+    },
+    "rich_text_jc3E9N": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_gVpw7T": {
+          "type": "heading",
+          "settings": {
+            "heading": "¹ 2 Free Pillow offer non cumulative with other discount codes  and applicable to new customers only.",
+            "heading_size": "h1"
+          }
+        },
+        "text_warADR": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.<\/p>"
+          }
+        },
+        "button_ghn7B4": {
+          "type": "button",
+          "disabled": true,
+          "settings": {
+            "button_label": "Button label",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_gVpw7T",
+        "text_warADR",
+        "button_ghn7B4"
+      ],
+      "settings": {}
     }
   },
   "order": [
@@ -1732,6 +1766,7 @@
     "customer-sentiment",
     "media-publication",
     "customer-sentiment-old",
-    "shoppable-media"
+    "shoppable-media",
+    "rich_text_jc3E9N"
   ]
 }

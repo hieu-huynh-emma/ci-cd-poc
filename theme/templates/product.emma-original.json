@@ -196,7 +196,7 @@
     "campaign-teaser": {
       "type": "campaign-teaser",
       "settings": {
-        "content": "<p><strong>Clearance Sale: 40% off + 2 Free Pillows with the code \"FLASH\"<\/strong><\/p>",
+        "content": "<p><strong>Clearance Sale: 40% off + 2 Free Pillows with the code \"FLASH\" <\/strong>¹<\/p>",
         "bgcolor": "#2e2f3c",
         "color": "#ffffff",
         "show_countdown_timer": false
@@ -231,7 +231,7 @@
         "heading": "With the coupon code 'FLASH'*",
         "promotional_text": "320$ in value",
         "content": "",
-        "note": "*Automatically applied with your mattress purchase"
+        "note": "*Automatically applied with your mattress purchase, non cumulative with other discount codes"
       }
     },
     "price-transparency": {
@@ -558,6 +558,40 @@
         "container_spacing": "md",
         "is_animate_scaling": false
       }
+    },
+    "rich_text_prbEqM": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_tXRHCb": {
+          "type": "heading",
+          "settings": {
+            "heading": "¹ 2 Free Pillow offer non cumulative with other discount codes and applicable to new customers only.",
+            "heading_size": "h1"
+          }
+        },
+        "text_3MEMjY": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.<\/p>"
+          }
+        },
+        "button_bdCGwz": {
+          "type": "button",
+          "disabled": true,
+          "settings": {
+            "button_label": "Button label",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_tXRHCb",
+        "text_3MEMjY",
+        "button_bdCGwz"
+      ],
+      "settings": {}
     },
     "featured-products": {
       "type": "featured-products",
@@ -924,57 +958,6 @@
         "include_margins": true
       }
     },
-    "special-services": {
-      "type": "multicolumn-text",
-      "blocks": {
-        "48ca0997-ffa4-4408-8013-4796cb7f17c4": {
-          "type": "column",
-          "settings": {
-            "icon": "shopify:\/\/shop_images\/truck-free-black.png",
-            "title": "Free Delivery",
-            "content": "We’ll bring your Emma order straight to your door at no extra cost"
-          }
-        },
-        "f3255c5f-527e-4927-a670-554ff22e9ef7": {
-          "type": "column",
-          "settings": {
-            "icon": "shopify:\/\/shop_images\/100-night-black.png",
-            "title": "365-Night Trial",
-            "content": "Get properly acquainted with Emma so you can be sure we’re the one"
-          }
-        },
-        "c15d1ab6-4b9b-4e30-ace7-dbf193ff2d4f": {
-          "type": "column",
-          "settings": {
-            "icon": "shopify:\/\/shop_images\/award-black.png",
-            "title": "10 Year Guarantee",
-            "content": "Our products are built to last. You’re covered if something goes wrong"
-          }
-        },
-        "f9973382-ba4e-4931-817c-113225550dad": {
-          "type": "column",
-          "settings": {
-            "icon": "shopify:\/\/shop_images\/package-black.png",
-            "title": "Free Returns",
-            "content": "If Emma isn’t for you, our customer service team will take care of you"
-          }
-        }
-      },
-      "block_order": [
-        "48ca0997-ffa4-4408-8013-4796cb7f17c4",
-        "f3255c5f-527e-4927-a670-554ff22e9ef7",
-        "c15d1ab6-4b9b-4e30-ace7-dbf193ff2d4f",
-        "f9973382-ba4e-4931-817c-113225550dad"
-      ],
-      "disabled": true,
-      "settings": {
-        "column_alignment": "left",
-        "column_size": "medium",
-        "container_spacing": "md",
-        "horizontal_layout_on_mobile": true,
-        "solid_typo": false
-      }
-    },
     "rich-text": {
       "type": "rich-text",
       "blocks": {
@@ -1059,12 +1042,12 @@
     "multimedia-showcase",
     "mattress-layers",
     "mattress-firmness",
+    "rich_text_prbEqM",
     "featured-products",
     "product-carousel",
     "shoppable-media",
     "customer-sentiment",
     "168540174983dd55c2",
-    "special-services",
     "rich-text",
     "featured-faqs",
     "contact-us"

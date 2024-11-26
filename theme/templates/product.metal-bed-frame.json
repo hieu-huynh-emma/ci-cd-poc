@@ -29,11 +29,18 @@
     "product-media": {
       "type": "product-media",
       "blocks": {
+        "e4cd7962-4d57-4250-8e6e-4c76dd76d6d6": {
+          "type": "image",
+          "settings": {
+            "en_image": "shopify:\/\/shop_images\/A-01_2_81638794-0a6b-436f-9e39-98fc83d95bdd.jpg",
+            "fr_image": "shopify:\/\/shop_images\/A-01_2_81638794-0a6b-436f-9e39-98fc83d95bdd.jpg"
+          }
+        },
         "image_3Gan6b": {
           "type": "image",
           "settings": {
-            "en_image": "shopify:\/\/shop_images\/Untitled_design_42.png",
-            "fr_image": "shopify:\/\/shop_images\/Untitled_design_42.png"
+            "en_image": "shopify:\/\/shop_images\/QbedFr_Cover_001_1.jpg",
+            "fr_image": "shopify:\/\/shop_images\/QbedFr_Cover_001_1.jpg"
           }
         },
         "f5f456c7-b29a-4f74-826f-648e09f5b1cd": {
@@ -50,13 +57,6 @@
             "fr_image": "shopify:\/\/shop_images\/E-03_1.jpg"
           }
         },
-        "e4cd7962-4d57-4250-8e6e-4c76dd76d6d6": {
-          "type": "image",
-          "settings": {
-            "en_image": "shopify:\/\/shop_images\/A-01_2_81638794-0a6b-436f-9e39-98fc83d95bdd.jpg",
-            "fr_image": "shopify:\/\/shop_images\/A-01_2_81638794-0a6b-436f-9e39-98fc83d95bdd.jpg"
-          }
-        },
         "72b3b893-b0bb-44ad-978c-733ee54620a1": {
           "type": "image",
           "disabled": true,
@@ -67,10 +67,10 @@
         }
       },
       "block_order": [
+        "e4cd7962-4d57-4250-8e6e-4c76dd76d6d6",
         "image_3Gan6b",
         "f5f456c7-b29a-4f74-826f-648e09f5b1cd",
         "image_PgfbyT",
-        "e4cd7962-4d57-4250-8e6e-4c76dd76d6d6",
         "72b3b893-b0bb-44ad-978c-733ee54620a1"
       ],
       "settings": {
@@ -346,6 +346,39 @@
         "is_animate_scaling": false
       }
     },
+    "rich_text_qhzjNw": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_xhRxr4": {
+          "type": "heading",
+          "settings": {
+            "heading": "Disclaimer",
+            "heading_size": "h1"
+          }
+        },
+        "text_LX7jWf": {
+          "type": "text",
+          "settings": {
+            "text": "<p>This product is sourced from <strong>Nest Slumber<\/strong> and features their branding. While the packaging may feature Nest Slumber's branding, we assure you that the product meets our high standards for excellence and customer satisfaction.<\/p>"
+          }
+        },
+        "button_M3aHdh": {
+          "type": "button",
+          "disabled": true,
+          "settings": {
+            "button_label": "Button label",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_xhRxr4",
+        "text_LX7jWf",
+        "button_M3aHdh"
+      ],
+      "settings": {}
+    },
     "featured-products": {
       "type": "featured-products",
       "blocks": {
@@ -375,9 +408,9 @@
             "color": "#3c4196",
             "primary_badge": "",
             "secondary_badge": "BEST DEAL",
-            "image": "shopify:\/\/shop_images\/Emma_hybrid-comfort_exploded_2.png",
-            "product_title": "Emma Hybrid Comfort",
-            "desc": "<h1>★ 4.8<\/h1><p><strong>Our 13-Inch Hybrid mattress with enhanced support and ideal pressure distribution<\/strong><\/p>",
+            "image": "shopify:\/\/shop_images\/Untitled_design_8_26a090c2-2a1f-4f97-8580-f7262ced984f.png",
+            "product_title": "Emma Hybrid Comfort II",
+            "desc": "<h1>★ 4.8<\/h1><p><strong>Our newest Hybrid mattress with enhanced support and ideal pressure distribution<\/strong><\/p>",
             "discount_title": "",
             "comfort_meter": 6,
             "cooling_meter": 4,
@@ -411,7 +444,16 @@
       ],
       "settings": {
         "title": "Sleeping will never be the same",
-        "heading_alignment": "start"
+        "mobile_title": "",
+        "subtitle": "<p>Our sleep experts have mastered designing award-winning mattresses crafted to keep you relaxed and recharged, no matter what kind of sleeper you are. Climb on your best sleep yet!<\/p>",
+        "heading_alignment": "start",
+        "first_meter_title": "Comfort",
+        "show_first_meter": true,
+        "second_meter_title": "Cooling",
+        "show_second_meter": true,
+        "third_meter_title": "Motion Isolation",
+        "show_third_meter": true,
+        "show_secondary_badge": true
       }
     },
     "product-carousel": {
@@ -419,6 +461,7 @@
       "blocks": {
         "catalog_item_6rixNQ": {
           "type": "catalog_item",
+          "disabled": true,
           "settings": {
             "product": "ultimate-sleep-essential-bundle"
           }
@@ -426,7 +469,7 @@
         "d8319461-aedd-4805-884a-95b7ed1a5893": {
           "type": "catalog_item",
           "settings": {
-            "product": "perfect-sleep-bundle"
+            "product": "perfect-sleep-bundle-ii"
           }
         },
         "5e77d40f-79e8-4050-a013-d2325a25b443": {
@@ -477,6 +520,7 @@
           "type": "video",
           "settings": {
             "video": "shopify:\/\/files\/videos\/Buy_SeanMari.mp4",
+            "content": "",
             "product": ""
           }
         },
@@ -484,6 +528,7 @@
           "type": "video",
           "settings": {
             "video": "shopify:\/\/files\/videos\/Amber.story.mp4",
+            "content": "",
             "product": ""
           }
         },
@@ -491,6 +536,7 @@
           "type": "video",
           "settings": {
             "video": "shopify:\/\/files\/videos\/dying.MOV",
+            "content": "",
             "product": ""
           }
         },
@@ -498,6 +544,7 @@
           "type": "video",
           "settings": {
             "video": "shopify:\/\/files\/videos\/copy_095C1154-5368-40AF-8656-F51DD0CB3BE3_063d0e6f-2a0f-4988-8ae4-2c2bf3857ec8.mov",
+            "content": "",
             "product": ""
           }
         },
@@ -505,6 +552,7 @@
           "type": "video",
           "settings": {
             "video": "shopify:\/\/files\/videos\/3 reasons_c1e64666-1e6b-46d4-983e-4e7b10b857f8.mov",
+            "content": "",
             "product": ""
           }
         },
@@ -512,6 +560,7 @@
           "type": "video",
           "settings": {
             "video": "shopify:\/\/files\/videos\/Really worth the hype.mov",
+            "content": "",
             "product": ""
           }
         },
@@ -519,6 +568,7 @@
           "type": "video",
           "settings": {
             "video": "shopify:\/\/files\/videos\/Pillows + Mattres_7d2c14ad-531d-4c45-8ed6-8fadf4320af2.mp4",
+            "content": "",
             "product": ""
           }
         }
@@ -655,7 +705,9 @@
       ],
       "settings": {
         "title": "<p>Why our customers love Emma<\/p>",
-        "trackId": ""
+        "heading_alignment": "start",
+        "trackId": "",
+        "enable_text_clamp": true
       }
     },
     "168540174983dd55c2": {
@@ -793,6 +845,7 @@
     "multimedia-showcase",
     "mattress-layers-static",
     "mattress-firmness",
+    "rich_text_qhzjNw",
     "featured-products",
     "product-carousel",
     "shoppable-media",
