@@ -29,18 +29,11 @@
     "product-media": {
       "type": "product-media",
       "blocks": {
-        "e4cd7962-4d57-4250-8e6e-4c76dd76d6d6": {
+        "72b3b893-b0bb-44ad-978c-733ee54620a1": {
           "type": "image",
           "settings": {
-            "en_image": "shopify:\/\/shop_images\/A-01_2_81638794-0a6b-436f-9e39-98fc83d95bdd.jpg",
-            "fr_image": "shopify:\/\/shop_images\/A-01_2_81638794-0a6b-436f-9e39-98fc83d95bdd.jpg"
-          }
-        },
-        "image_3Gan6b": {
-          "type": "image",
-          "settings": {
-            "en_image": "shopify:\/\/shop_images\/QbedFr_Cover_001_1.jpg",
-            "fr_image": "shopify:\/\/shop_images\/QbedFr_Cover_001_1.jpg"
+            "en_image": "shopify:\/\/shop_images\/Bedroom.bed.png",
+            "fr_image": "shopify:\/\/shop_images\/Bedroom.bed.png"
           }
         },
         "f5f456c7-b29a-4f74-826f-648e09f5b1cd": {
@@ -50,28 +43,35 @@
             "fr_image": "shopify:\/\/shop_images\/BNJ5Y5BI_Canada_Bed_1_-_Copy.png"
           }
         },
+        "e4cd7962-4d57-4250-8e6e-4c76dd76d6d6": {
+          "type": "image",
+          "settings": {
+            "en_image": "shopify:\/\/shop_images\/A-01_2_81638794-0a6b-436f-9e39-98fc83d95bdd.jpg",
+            "fr_image": "shopify:\/\/shop_images\/A-01_2_81638794-0a6b-436f-9e39-98fc83d95bdd.jpg"
+          }
+        },
+        "image_3Gan6b": {
+          "type": "image",
+          "disabled": true,
+          "settings": {
+            "en_image": "shopify:\/\/shop_images\/QbedFr_Cover_001_1.jpg",
+            "fr_image": "shopify:\/\/shop_images\/QbedFr_Cover_001_1.jpg"
+          }
+        },
         "image_PgfbyT": {
           "type": "image",
           "settings": {
             "en_image": "shopify:\/\/shop_images\/E-03_1.jpg",
             "fr_image": "shopify:\/\/shop_images\/E-03_1.jpg"
           }
-        },
-        "72b3b893-b0bb-44ad-978c-733ee54620a1": {
-          "type": "image",
-          "disabled": true,
-          "settings": {
-            "en_image": "shopify:\/\/shop_images\/E-03_12521a61-bb47-4853-b71d-368baa820947.jpg",
-            "fr_image": "shopify:\/\/shop_images\/E-03_12521a61-bb47-4853-b71d-368baa820947.jpg"
-          }
         }
       },
       "block_order": [
+        "72b3b893-b0bb-44ad-978c-733ee54620a1",
+        "f5f456c7-b29a-4f74-826f-648e09f5b1cd",
         "e4cd7962-4d57-4250-8e6e-4c76dd76d6d6",
         "image_3Gan6b",
-        "f5f456c7-b29a-4f74-826f-648e09f5b1cd",
-        "image_PgfbyT",
-        "72b3b893-b0bb-44ad-978c-733ee54620a1"
+        "image_PgfbyT"
       ],
       "settings": {
         "heading": "",
@@ -141,7 +141,7 @@
           "settings": {
             "icon": "shopify:\/\/shop_images\/shipping_truck_db437bec-0f66-475d-9a43-c2bdab9dc26d.png",
             "text": "Free & fast delivery",
-            "content": "<p>Free no contact delivery for all orders <\/p><p>Dispatched in: <strong>1 business day <\/strong><br\/><\/p>",
+            "content": "<p>Free no contact delivery for all orders <\/p><p>Dispatched in:<strong> 3 to 4 business day <\/strong><br\/>(Additional fees or exclusions may apply to the Canadian Territories)<\/p>",
             "url": "https:\/\/www.emma-sleep.ca\/pages\/faq#your-order"
           }
         },
@@ -240,7 +240,7 @@
         "7eddc7a1-60de-430c-ad1d-0fa4619d108d": {
           "type": "image",
           "settings": {
-            "source": "shopify:\/\/shop_images\/E-03_1.jpg",
+            "source": "shopify:\/\/shop_images\/Bedroom.bed.png",
             "heading": "The right support in the right places",
             "content": "The Emma Original Bed uses premium materials for maximum comfort. Its sleek metal frame combines style and elegance, fitting seamlessly into any bedroom decor without overshadowing the room's aesthetic.",
             "inverted": false,
