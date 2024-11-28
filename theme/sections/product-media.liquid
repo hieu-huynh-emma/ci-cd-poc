@@ -196,6 +196,7 @@
       </div>
     </div>
   </template>
+                            
   <slot name="placeholder">
     {% case leadItem.type %}
       {% when "image" %}
@@ -205,14 +206,16 @@
             picture_attributes: 'class="media-item__image" lang="en"',
             img_classes: "",
             width: 808,
-            height: 486
+            height: 486,
+            fetchpriority: "high"
           %}
           {% render 'picture-tag',
             src: leadItem.settings.fr_image,
             picture_attributes: 'class="media-item__image" lang="fr"',
             img_classes: "",
             width: 808,
-            height: 486
+            height: 486,
+            fetchpriority: "high"
           %}
         </div>
     {% endcase %}
