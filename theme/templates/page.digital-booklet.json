@@ -1,0 +1,140 @@
+{
+  "layout": "theme.performance",
+  "sections": {
+    "main": {
+      "type": "static-page",
+      "settings": {
+        "showTitle": false
+      }
+    },
+    "165425073725b56235": {
+      "type": "rich-text",
+      "blocks": {
+        "16542507374a1f9691-0": {
+          "type": "heading",
+          "disabled": true,
+          "settings": {
+            "heading": "Talk about your brand",
+            "heading_size": "h1"
+          }
+        },
+        "16542507374a1f9691-1": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": ""
+          }
+        },
+        "16542507374a1f9691-2": {
+          "type": "button",
+          "disabled": true,
+          "settings": {
+            "button_label": "Button label",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "16542507374a1f9691-0",
+        "16542507374a1f9691-1",
+        "16542507374a1f9691-2"
+      ],
+      "settings": {}
+    },
+    "47cdc402-f526-47ac-8d3e-c8942fbf3252": {
+      "type": "home-collage-collection",
+      "blocks": {
+        "38985f04-9fc5-4a51-a444-e6d6baeea638": {
+          "type": "right_section",
+          "settings": {
+            "image-col-right": "shopify:\/\/shop_images\/image_23.png",
+            "col-title-right": "Pillows",
+            "col-text-right": "<p>Perfect Complement<\/p>",
+            "col-link-right": "shopify:\/\/collections\/pillows"
+          }
+        },
+        "9e674515-5e73-4aa8-b968-c8bb686b9766": {
+          "type": "right_section",
+          "settings": {
+            "image-col-right": "shopify:\/\/shop_images\/Woman_wrapped_in_duvet_Gallery.jpg",
+            "col-title-right": "Accessories",
+            "col-text-right": "<p>Full Experience <\/p>",
+            "col-link-right": "shopify:\/\/collections\/beddings"
+          }
+        }
+      },
+      "block_order": [
+        "38985f04-9fc5-4a51-a444-e6d6baeea638",
+        "9e674515-5e73-4aa8-b968-c8bb686b9766"
+      ],
+      "settings": {
+        "title": "Emma's Advanced Sleep Range",
+        "mobile_title": "Emma's Advanced Sleep Range",
+        "image-col-left": "shopify:\/\/shop_images\/new-mattresses.webp",
+        "col-title-left": "Mattresses",
+        "col-text-left": "<p>Most Awarded<\/p>",
+        "col-link-left": "shopify:\/\/collections\/mattresses"
+      }
+    },
+    "4b2a9bc1-b0d3-408f-8aaa-66295b6aba01": {
+      "type": "multicolumn",
+      "blocks": {
+        "template--15596666912931__4b2a9bc1-b0d3-408f-8aaa-66295b6aba01-168933124067839d59-0": {
+          "type": "column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/sleep.svg",
+            "title": "365 Free Night Trial",
+            "text": "<p>Rest easy knowing your mattress is backed by our 10-year guarantee.<\/p>"
+          }
+        },
+        "template--15596666912931__4b2a9bc1-b0d3-408f-8aaa-66295b6aba01-168933124067839d59-1": {
+          "type": "column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/freeshipping.svg",
+            "title": "Free Delivery and Returns",
+            "text": "<p>Rest easy knowing your mattress is backed by our 10-year guarantee.<\/p>"
+          }
+        },
+        "template--15596666912931__4b2a9bc1-b0d3-408f-8aaa-66295b6aba01-168933124067839d59-2": {
+          "type": "column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Guarantee.svg",
+            "title": "10-Year Guarantee",
+            "text": "<p>Rest easy knowing your mattress is backed by our 10-year guarantee.<\/p>"
+          }
+        },
+        "3e265d4c-fa2b-4a00-b4f9-5fee6f65a98f": {
+          "type": "column",
+          "settings": {
+            "title": "0% APR Financing*",
+            "text": "<p>Rest easy knowing your mattress is backed by our 10-year guarantee.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "template--15596666912931__4b2a9bc1-b0d3-408f-8aaa-66295b6aba01-168933124067839d59-0",
+        "template--15596666912931__4b2a9bc1-b0d3-408f-8aaa-66295b6aba01-168933124067839d59-1",
+        "template--15596666912931__4b2a9bc1-b0d3-408f-8aaa-66295b6aba01-168933124067839d59-2",
+        "3e265d4c-fa2b-4a00-b4f9-5fee6f65a98f"
+      ],
+      "disabled": true,
+      "settings": {
+        "title": "",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "column_alignment": "left",
+        "background_style": "primary",
+        "button_label": "",
+        "button_link": "",
+        "swipe_on_mobile": false
+      }
+    }
+  },
+  "order": [
+    "main",
+    "165425073725b56235",
+    "47cdc402-f526-47ac-8d3e-c8942fbf3252",
+    "4b2a9bc1-b0d3-408f-8aaa-66295b6aba01"
+  ]
+}
