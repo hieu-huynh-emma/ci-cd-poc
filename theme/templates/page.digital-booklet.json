@@ -1,140 +1,262 @@
 {
   "layout": "theme.performance",
   "sections": {
-    "main": {
-      "type": "static-page",
+    "hero-banner": {
+      "type": "hero-banner",
       "settings": {
-        "showTitle": false
+        "title": "<h2>Extended Cyber Monday - Up to 60% off<\/h2>",
+        "subtitle": "<p>Last Chance to get the Best Offer of the Year!<\/p><p><a href=\"\/pages\/emma-first-time-customer-offer-promo-details\" target=\"_blank\" title=\"Emma “First Time Customer Offer” Promo Details\">New Customers Only - Terms apply*<\/a><\/p>",
+        "text_color": "#ffffff",
+        "show_shadow": true,
+        "wallpaper_desktop_img": "shopify:\/\/shop_images\/full_dekstop_22_e6d1c379-3c4a-40c8-babf-2e3b5fb3c241.png",
+        "wallpaper_mobile_img": "shopify:\/\/shop_images\/full_mobile.png",
+        "wallpaper_desktop_fr_img": "shopify:\/\/shop_images\/full_dekstop_BF.png",
+        "wallpaper_mobile_fr_img": "shopify:\/\/shop_images\/full_mobile.png",
+        "cta_url": "shopify:\/\/pages\/sale",
+        "cta_text": "Shop Now",
+        "show_cta": true,
+        "cta_size": "md",
+        "show_countdown_timer": true,
+        "countdown_caption": "",
+        "trackId": "Shop"
       }
     },
-    "165425073725b56235": {
-      "type": "rich-text",
+    "intro": {
+      "type": "video-with-text",
+      "settings": {
+        "self_hosted_url": "shopify:\/\/files\/videos\/USP - Spinal Support 1920x1080.mp4",
+        "heading": "Easy to unpack!",
+        "content": "Unbox your Emma mattress on a flat surface, unroll it, and cut the plastic using the provided tool. It naturally regains shape in about 24 hours. Relax on your Emma mattress for a restful night's sleep.",
+        "inverted": false,
+        "cta_url": "",
+        "cta_text": ""
+      }
+    },
+    "step-1": {
+      "type": "faqs-with-image",
       "blocks": {
-        "16542507374a1f9691-0": {
-          "type": "heading",
-          "disabled": true,
+        "78ca144d-5919-4a1b-9e22-082ef5384310": {
+          "type": "faq",
           "settings": {
-            "heading": "Talk about your brand",
-            "heading_size": "h1"
+            "title": "Is it free to return your products?",
+            "content": "<p>It's 100% free to return your Emma! If your Emma turns out not to suit you for any reason, feel free to return it. Just simply get in contact with us via our chat support, phone or email and we will refund and collect it at no cost to you.Live support is also available from 08:00 to 18:00 GMT-6, Monday-Friday!<\/p>"
           }
         },
-        "16542507374a1f9691-1": {
-          "type": "text",
-          "disabled": true,
+        "c68412f4-0251-42dc-9113-a0eecd22c518": {
+          "type": "faq",
           "settings": {
-            "text": ""
+            "title": "How does your 365-Night-Trial work?",
+            "content": "<p>Our risk-free 365-night trial means that you get a full year to decide if your Emma mattress is a good fit for you. This gives you more time to try the mattress for yourself and experience the benefits that our 4Million+ customers have come to enjoy each night!<br\/><br\/>Helpful Tip: We recommend you sleep on your Emma for at least 21 nights so that you and your body can get suited to your new Emma mattress.<br\/><br\/>You can begin your 365-night trial today. Our 0% APR financing with Klarna also gives you the option to make 12 equal payments over the next 12 months.<\/p>"
           }
         },
-        "16542507374a1f9691-2": {
-          "type": "button",
+        "a72149c3-5420-4a8c-80fe-7370288da216": {
+          "type": "faq",
+          "settings": {
+            "title": "Do you ship nationwide?",
+            "content": "<p>We do offer free shipping within the contiguous United States.<br\/>At present, these are our non serviceable territories:<\/p><ul><li>Alaska<\/li><li>Hawaii<\/li><li>Puerto Rico<\/li><li>US Virgin Islands<\/li><li>American Samoa<\/li><\/ul>"
+          }
+        },
+        "d24509aa-3b72-4264-887a-32b88503b5c5": {
+          "type": "faq",
           "disabled": true,
           "settings": {
-            "button_label": "Button label",
-            "button_link": "",
-            "button_style_secondary": false
+            "title": "Title",
+            "content": "<p>Content<\/p>"
           }
         }
       },
       "block_order": [
-        "16542507374a1f9691-0",
-        "16542507374a1f9691-1",
-        "16542507374a1f9691-2"
+        "78ca144d-5919-4a1b-9e22-082ef5384310",
+        "c68412f4-0251-42dc-9113-a0eecd22c518",
+        "a72149c3-5420-4a8c-80fe-7370288da216",
+        "d24509aa-3b72-4264-887a-32b88503b5c5"
+      ],
+      "settings": {
+        "heading": "1. Test your mattress\n\n",
+        "image": "shopify:\/\/shop_images\/image_1.png",
+        "inverted": true,
+        "header_font": "tiempos",
+        "heading_alignment": "start",
+        "container_spacing": "md"
+      }
+    },
+    "multimedia-showcase": {
+      "type": "multimedia-showcase",
+      "blocks": {
+        "57e597f8-8943-4def-820a-a0e469678641": {
+          "type": "video",
+          "settings": {
+            "source": "shopify:\/\/files\/videos\/original bed-ddtopper-sheet.mp4",
+            "heading": "2. Air out your mattress",
+            "content": "When you unroll your mattress, you may notice a slight smell of \"new\". This is perfectly normal. Air it out in a well-ventilated room for a few hours. Washing the cover accelerates odor removal by clearing trapped scents. You can dilute a few small drops of your favorite essential oil in water and spray the solution onto the foam (not the cover!",
+            "inverted": false,
+            "cta_url": "",
+            "cta_text": ""
+          }
+        },
+        "95f7a903-df98-4d58-9b15-0db125d9190c": {
+          "type": "video",
+          "settings": {
+            "source": "shopify:\/\/files\/videos\/zero-motion-technology-clean.mp4",
+            "heading": "3. Rotate your mattress",
+            "content": "Rotate your Emma mattress monthly for the first six months to prevent body impressions, then switch to every three months. Make sure the white side of the cover is always facing up. (Note: Handles are for adjusting the mattress to the bed frame, not moving it.)",
+            "inverted": true,
+            "cta_url": "",
+            "cta_text": ""
+          }
+        }
+      },
+      "block_order": [
+        "57e597f8-8943-4def-820a-a0e469678641",
+        "95f7a903-df98-4d58-9b15-0db125d9190c"
       ],
       "settings": {}
     },
-    "47cdc402-f526-47ac-8d3e-c8942fbf3252": {
-      "type": "home-collage-collection",
-      "blocks": {
-        "38985f04-9fc5-4a51-a444-e6d6baeea638": {
-          "type": "right_section",
-          "settings": {
-            "image-col-right": "shopify:\/\/shop_images\/image_23.png",
-            "col-title-right": "Pillows",
-            "col-text-right": "<p>Perfect Complement<\/p>",
-            "col-link-right": "shopify:\/\/collections\/pillows"
-          }
-        },
-        "9e674515-5e73-4aa8-b968-c8bb686b9766": {
-          "type": "right_section",
-          "settings": {
-            "image-col-right": "shopify:\/\/shop_images\/Woman_wrapped_in_duvet_Gallery.jpg",
-            "col-title-right": "Accessories",
-            "col-text-right": "<p>Full Experience <\/p>",
-            "col-link-right": "shopify:\/\/collections\/beddings"
-          }
-        }
-      },
-      "block_order": [
-        "38985f04-9fc5-4a51-a444-e6d6baeea638",
-        "9e674515-5e73-4aa8-b968-c8bb686b9766"
-      ],
+    "step-4": {
+      "type": "content-section",
       "settings": {
-        "title": "Emma's Advanced Sleep Range",
-        "mobile_title": "Emma's Advanced Sleep Range",
-        "image-col-left": "shopify:\/\/shop_images\/new-mattresses.webp",
-        "col-title-left": "Mattresses",
-        "col-text-left": "<p>Most Awarded<\/p>",
-        "col-link-left": "shopify:\/\/collections\/mattresses"
+        "wallpaper": "shopify://shop_images/wallpaper-1.png",
+        "heading": "4. Get a suitable bed frames",
+        "content": "Choose the perfect bed to awaken your best"
       }
     },
-    "4b2a9bc1-b0d3-408f-8aaa-66295b6aba01": {
-      "type": "multicolumn",
+    "steps-5-6-7": {
+      "type": "multimedia-showcase",
       "blocks": {
-        "template--15596666912931__4b2a9bc1-b0d3-408f-8aaa-66295b6aba01-168933124067839d59-0": {
-          "type": "column",
+        "57e597f8-8943-4def-820a-a0e469678641": {
+          "type": "video",
           "settings": {
-            "image": "shopify:\/\/shop_images\/sleep.svg",
-            "title": "365 Free Night Trial",
-            "text": "<p>Rest easy knowing your mattress is backed by our 10-year guarantee.<\/p>"
+            "source": "shopify:\/\/files\/videos\/original bed-ddtopper-sheet.mp4",
+            "heading": "5. Let your mattress breathe",
+            "content": "Slatted bases prevent heat from building up and help air to circulate under the mattress. We also suggest using bed linen made from natural fibers such as cotton to maximise the cooling effect.",
+            "inverted": false,
+            "cta_url": "",
+            "cta_text": ""
           }
         },
-        "template--15596666912931__4b2a9bc1-b0d3-408f-8aaa-66295b6aba01-168933124067839d59-1": {
-          "type": "column",
+        "95f7a903-df98-4d58-9b15-0db125d9190c": {
+          "type": "video",
           "settings": {
-            "image": "shopify:\/\/shop_images\/freeshipping.svg",
-            "title": "Free Delivery and Returns",
-            "text": "<p>Rest easy knowing your mattress is backed by our 10-year guarantee.<\/p>"
+            "source": "shopify:\/\/files\/videos\/zero-motion-technology-clean.mp4",
+            "heading": "6. Care for your mattress",
+            "content": "Take care of your Emma mattress to maintain its' longevity. The upper part of the cover is machine washable up to 60° and 40° for the lower section.",
+            "inverted": true,
+            "cta_url": "",
+            "cta_text": ""
           }
         },
-        "template--15596666912931__4b2a9bc1-b0d3-408f-8aaa-66295b6aba01-168933124067839d59-2": {
-          "type": "column",
+        "95f7a903-df98-4d58-9b15-0db125d9190g": {
+          "type": "video",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Guarantee.svg",
-            "title": "10-Year Guarantee",
-            "text": "<p>Rest easy knowing your mattress is backed by our 10-year guarantee.<\/p>"
-          }
-        },
-        "3e265d4c-fa2b-4a00-b4f9-5fee6f65a98f": {
-          "type": "column",
-          "settings": {
-            "title": "0% APR Financing*",
-            "text": "<p>Rest easy knowing your mattress is backed by our 10-year guarantee.<\/p>"
+            "source": "shopify:\/\/files\/videos\/zero-motion-technology-clean.mp4",
+            "heading": "7. Lastly, protect your mattress!\n",
+            "content": "For prolonged happy and healthy sleep, use our mattress protector. It wraps around your mattress for a waterproof and irritation-free sleep.\n",
+            "inverted": false,
+            "cta_url": "#",
+            "cta_text": "Learn More"
           }
         }
       },
       "block_order": [
-        "template--15596666912931__4b2a9bc1-b0d3-408f-8aaa-66295b6aba01-168933124067839d59-0",
-        "template--15596666912931__4b2a9bc1-b0d3-408f-8aaa-66295b6aba01-168933124067839d59-1",
-        "template--15596666912931__4b2a9bc1-b0d3-408f-8aaa-66295b6aba01-168933124067839d59-2",
-        "3e265d4c-fa2b-4a00-b4f9-5fee6f65a98f"
+        "57e597f8-8943-4def-820a-a0e469678641",
+        "95f7a903-df98-4d58-9b15-0db125d9190c",
+        "95f7a903-df98-4d58-9b15-0db125d9190g"
       ],
-      "disabled": true,
+      "settings": {}
+    },
+    "shoppable-media": {
+      "type": "shoppable-media",
+      "blocks": {
+        "72c7f33b-7788-4524-bf53-816aecb093b6": {
+          "type": "video",
+          "settings": {
+            "video": "shopify:\/\/files\/videos\/Stephanie.UGC.mp4",
+            "content": "The ultimate ergonomic support.",
+            "product": "emma-hybrid-comfort"
+          }
+        },
+        "07d5912c-d4c3-4ebb-97a6-f723fc8a4f3f": {
+          "type": "video",
+          "settings": {
+            "video": "shopify:\/\/files\/videos\/Buy_SeanMari.mp4",
+            "content": "",
+            "product": ""
+          }
+        },
+        "video_P4jDEg": {
+          "type": "video",
+          "settings": {
+            "video": "shopify:\/\/files\/videos\/Amber.story.mp4",
+            "content": "",
+            "product": ""
+          }
+        },
+        "1764b6ed-cfac-4dec-9487-f9122604ba72": {
+          "type": "video",
+          "settings": {
+            "video": "shopify:\/\/files\/videos\/dying.MOV",
+            "content": "",
+            "product": ""
+          }
+        },
+        "1e675715-5ecb-41e6-a7ab-608b36025781": {
+          "type": "video",
+          "settings": {
+            "video": "shopify:\/\/files\/videos\/copy_095C1154-5368-40AF-8656-F51DD0CB3BE3_063d0e6f-2a0f-4988-8ae4-2c2bf3857ec8.mov",
+            "content": "",
+            "product": ""
+          }
+        },
+        "8fde16df-aace-45a2-bc5e-de66829da46e": {
+          "type": "video",
+          "settings": {
+            "video": "shopify:\/\/files\/videos\/3 reasons_c1e64666-1e6b-46d4-983e-4e7b10b857f8.mov",
+            "content": "",
+            "product": ""
+          }
+        },
+        "d2925961-e05b-4a94-be70-a9d7f7911010": {
+          "type": "video",
+          "settings": {
+            "video": "shopify:\/\/files\/videos\/Really worth the hype.mov",
+            "content": "",
+            "product": ""
+          }
+        },
+        "video_CTJ7wq": {
+          "type": "video",
+          "settings": {
+            "video": "shopify:\/\/files\/videos\/Pillows + Mattres_7d2c14ad-531d-4c45-8ed6-8fadf4320af2.mp4",
+            "content": "",
+            "product": ""
+          }
+        }
+      },
+      "block_order": [
+        "72c7f33b-7788-4524-bf53-816aecb093b6",
+        "07d5912c-d4c3-4ebb-97a6-f723fc8a4f3f",
+        "video_P4jDEg",
+        "1764b6ed-cfac-4dec-9487-f9122604ba72",
+        "1e675715-5ecb-41e6-a7ab-608b36025781",
+        "8fde16df-aace-45a2-bc5e-de66829da46e",
+        "d2925961-e05b-4a94-be70-a9d7f7911010",
+        "video_CTJ7wq"
+      ],
       "settings": {
-        "title": "",
-        "image_width": "full",
-        "image_ratio": "adapt",
-        "column_alignment": "left",
-        "background_style": "primary",
-        "button_label": "",
-        "button_link": "",
-        "swipe_on_mobile": false
+        "heading": "Our Story",
+        "heading_alignment": "center",
+        "container_spacing": "md",
+        "trackId": ""
       }
     }
   },
   "order": [
-    "main",
-    "165425073725b56235",
-    "47cdc402-f526-47ac-8d3e-c8942fbf3252",
-    "4b2a9bc1-b0d3-408f-8aaa-66295b6aba01"
+    "hero-banner",
+    "intro",
+    "step-1",
+    "multimedia-showcase",
+    "step-4",
+    "steps-5-6-7",
+    "shoppable-media"
   ]
 }
