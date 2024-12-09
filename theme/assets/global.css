@@ -510,73 +510,11 @@ loading-overlay svg {
     justify-items: center;
 }
 
-.two-columns-layout {
-    display: grid;
-    gap: 20px;
-    background-color: #fff;
-}
-
-.two-columns-layout .media-column {
-    display: flex;
-    justify-content: center;
-}
-
-.two-columns-layout .media-column iframe,
-.two-columns-layout .media-column img,
-.two-columns-layout .media-column video {
-    -o-object-fit: cover;
-    object-fit: cover;
-    width: 100%;
-    aspect-ratio: 656/369;
-    border-radius: 8px;
-    overflow: hidden;
-}
-
-@media screen and (min-width: 351px) {
-    .two-columns-layout .media-column iframe,
-    .two-columns-layout .media-column img,
-    .two-columns-layout .media-column video {
-        width: 351px;
-    }
-}
 
 @media screen and (min-width: 769px) {
     .multicolumn-card__title {
         font-size: 20px;
     }
-
-    .two-columns-layout {
-        gap: 80px;
-        grid-template-columns: minmax(0, auto) minmax(0, 1fr);
-    }
-
-    .two-columns-layout.is-inverted {
-        grid-template-columns: minmax(0, 1fr) minmax(0, auto);
-    }
-
-    .two-columns-layout.is-inverted .content-column {
-        order: -1;
-    }
-
-    .two-columns-layout .media-column iframe,
-    .two-columns-layout .media-column img,
-    .two-columns-layout .media-column video {
-        width: 450px;
-    }
-}
-
-@media screen and (min-width: 1024px) {
-    .two-columns-layout .media-column iframe,
-    .two-columns-layout .media-column img,
-    .two-columns-layout .media-column video {
-        width: 640px;
-    }
-}
-
-.two-columns-layout .content-column {
-    display: grid;
-    gap: 16px;
-    align-content: center;
 }
 
 @keyframes skeleton-loading {
@@ -600,14 +538,6 @@ lazy-component[size="md"] {
 
 lazy-component[size="lg"] {
     min-height: 600px;
-}
-
-@media screen and (min-width: 769px) {
-    .two-columns-layout .content-column {
-        gap: 40px;
-        justify-items: flex-start;
-    }
-
 }
 
 .faqs {
@@ -665,10 +595,6 @@ lazy-component[size="lg"] {
 }
 
 @media screen and (max-width: 769px) {
-    .two-columns-layout .content-column .btn {
-        width: 100%;
-    }
-
     .faq__answer {
         min-height: 1056px;
     }

@@ -24,12 +24,13 @@
     "intro": {
       "type": "video-with-text",
       "settings": {
-        "self_hosted_url": "shopify:\/\/files\/videos\/USP - Spinal Support 1920x1080.mp4",
         "heading": "Easy to unpack!",
         "content": "Unbox your Emma mattress on a flat surface, unroll it, and cut the plastic using the provided tool. It naturally regains shape in about 24 hours. Relax on your Emma mattress for a restful night's sleep.",
-        "inverted": false,
+        "self_hosted_url": "shopify:\/\/files\/videos\/USP - Spinal Support 1920x1080.mp4",
+        "external_url": "",
         "cta_url": "",
-        "cta_text": ""
+        "cta_text": "",
+        "inverted": false
       }
     },
     "step-1": {
@@ -72,7 +73,7 @@
         "d24509aa-3b72-4264-887a-32b88503b5c5"
       ],
       "settings": {
-        "heading": "1. Test your mattress\n\n",
+        "heading": "1. Test your mattress",
         "image": "shopify:\/\/shop_images\/image_1.png",
         "inverted": true,
         "header_font": "tiempos",
@@ -115,9 +116,12 @@
     "step-4": {
       "type": "content-section",
       "settings": {
-        "wallpaper": "shopify://shop_images/wallpaper-1.png",
         "heading": "4. Get a suitable bed frames",
-        "content": "Choose the perfect bed to awaken your best"
+        "content": "Choose the perfect bed to awaken your best",
+        "wallpaper": "shopify:\/\/shop_images\/768px_768x384px__1.webp",
+        "aspect_ratio": "14\/3",
+        "cta_url": "",
+        "cta_text": ""
       }
     },
     "steps-5-6-7": {
@@ -149,8 +153,8 @@
           "type": "video",
           "settings": {
             "source": "shopify:\/\/files\/videos\/zero-motion-technology-clean.mp4",
-            "heading": "7. Lastly, protect your mattress!\n",
-            "content": "For prolonged happy and healthy sleep, use our mattress protector. It wraps around your mattress for a waterproof and irritation-free sleep.\n",
+            "heading": "7. Lastly, protect your mattress!",
+            "content": "For prolonged happy and healthy sleep, use our mattress protector. It wraps around your mattress for a waterproof and irritation-free sleep.",
             "inverted": false,
             "cta_url": "#",
             "cta_text": "Learn More"
