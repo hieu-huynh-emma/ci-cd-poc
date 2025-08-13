@@ -8,3 +8,4 @@ $(document).ready(async function () {
         closeSpeed: 250
     });
 });
+

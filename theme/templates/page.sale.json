@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "layout": "theme.performance",
   "sections": {
@@ -7,23 +16,25 @@
         "ca504ac7-3137-4ad7-997c-c1e12bd1d446": {
           "type": "wallpaper",
           "settings": {
-            "src": "shopify:\/\/shop_images\/desktop.fall.sale.png",
-            "mobile_src": "shopify:\/\/shop_images\/mobile.fall.sale.png"
+            "src": "shopify://shop_images/11.08_Sale_Banner_Summer_desktop.svg",
+            "mobile_src": "shopify://shop_images/11.08_Mobile_summer_sales.png"
           }
         },
         "9593f14f-4c86-4af9-953e-0fa248231b89": {
           "type": "cta",
           "disabled": true,
           "settings": {
-            "url": "shopify:\/\/products\/emma-original-pillows",
+            "url": "shopify://products/emma-original-pillows",
             "text": "Shop Now",
-            "subtext": "FREE 365-Night Trial"
+            "subtext": "FREE 100-Night Trial"
           }
         },
         "49db6ad0-dd00-4708-aa5c-be2bb442196e": {
           "type": "countdown_timer",
+          "disabled": true,
           "settings": {
-            "title": "Winter Sale"
+            "heading": "",
+            "caption": ""
           }
         }
       },
@@ -32,10 +43,11 @@
         "9593f14f-4c86-4af9-953e-0fa248231b89",
         "49db6ad0-dd00-4708-aa5c-be2bb442196e"
       ],
+      "custom_css": [],
       "settings": {
-        "title": "<p><strong>Fall Sale<\/strong><\/p>",
+        "title": "<h1>Stay fresh, dry, and comfortable, every night</h1>",
         "tagline": "",
-        "subtitle": "Up to 60% off",
+        "subtitle": "",
         "text_color": "#ffffff",
         "wallpaper_size": "sm"
       }
@@ -110,28 +122,28 @@
       }
     },
     "special-services": {
-      "type": "multicolumn-text",
+      "type": "special-services",
       "blocks": {
-        "48ca0997-ffa4-4408-8013-4796cb7f17c4": {
-          "type": "column",
-          "settings": {
-            "icon": "shopify:\/\/shop_images\/freeshipping.svg",
-            "title": "Free Delivery and Returns",
-            "content": "Get your dream mattress delivered for free and return it stress-free if needed."
-          }
-        },
         "f3255c5f-527e-4927-a670-554ff22e9ef7": {
           "type": "column",
           "settings": {
-            "icon": "shopify:\/\/shop_images\/sleep.svg",
-            "title": "365 Free Night Trial",
-            "content": "Sleep easy for a whole year with our 365-night trial."
+            "icon": "shopify://shop_images/sleep_trial.svg",
+            "title": "100 Free Night Trial",
+            "content": "Sleep easy for a whole year with our 100-night trial."
+          }
+        },
+        "48ca0997-ffa4-4408-8013-4796cb7f17c4": {
+          "type": "column",
+          "settings": {
+            "icon": "shopify://shop_images/freeshipping.svg",
+            "title": "Free Delivery and Returns",
+            "content": "Get your dream mattress delivered for free and return it stress-free if needed."
           }
         },
         "c15d1ab6-4b9b-4e30-ace7-dbf193ff2d4f": {
           "type": "column",
           "settings": {
-            "icon": "shopify:\/\/shop_images\/Guarantee.svg",
+            "icon": "shopify://shop_images/Guarantee.svg",
             "title": "10 Year Guarantee",
             "content": "Rest easy knowing your mattress is backed by our decade-long guarantee."
           }
@@ -139,25 +151,17 @@
         "f9973382-ba4e-4931-817c-113225550dad": {
           "type": "column",
           "settings": {
-            "icon": "shopify:\/\/shop_images\/MicrosoftTeams-image_12.png",
-            "title": "0% APR Financing",
-            "content": "Make your dream mattress affordable with 0% APR financing."
+            "icon": "shopify://shop_images/0__APR.svg",
+            "title": "0% APR Financing*",
+            "content": "Make your dream mattress affordable with 0% APR financing *if eligible"
           }
         }
       },
       "block_order": [
-        "48ca0997-ffa4-4408-8013-4796cb7f17c4",
         "f3255c5f-527e-4927-a670-554ff22e9ef7",
+        "48ca0997-ffa4-4408-8013-4796cb7f17c4",
         "c15d1ab6-4b9b-4e30-ace7-dbf193ff2d4f",
         "f9973382-ba4e-4931-817c-113225550dad"
-      ],
-      "custom_css": [
-        ".multicolumn-card {justify-items: center; text-align: center; border-radius: 10px; background: #f7f7f9; padding: 44px 10px; gap: 10px; width: 25%;}",
-        ".multicolumn-list {gap: 20px; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); justify-items: center; justify-content: space-between; display: flex;}",
-        ".multicolumn-card__details {gap: 12px; text-align: center;}",
-        ".multicolumn-card__title {margin: 0; font-weight: 600;}",
-        ".multicolumn-card__details p {line-height: normal; color: #55576f;}",
-        ".multicolumn-card__icon {margin: auto;}"
       ],
       "settings": {
         "column_alignment": "left",
@@ -168,15 +172,15 @@
       }
     },
     "customer-sentiment": {
-      "type": "customer-sentiment",
+      "type": "customer-sentiment-old",
       "blocks": {
         "review_CEJiph": {
           "type": "review",
           "settings": {
-            "title": "Emma Hybrid Comfort Full Size - Five Stars",
-            "date": "05\/15\/24",
-            "product": "emma-hybrid-comfort-mattress",
-            "content": "<p>I've had the mattress for about one week. The firmness is just as described on the website and it's perfect for me (as someone who likes firm mattresses). Very easy to set up, ordering and shipping also went smoothly. So far I've noticed better temperature regulation than my old mattress; it is supportive with perfect amount of pillowy comfort. I'm very happy with my Hybrid Comfort purchase! <\/p>",
+            "title": "Emma Original Full Size - Five Stars",
+            "date": "05/15/24",
+            "product": "emma-original-a",
+            "content": "<p>I've had the mattress for about one week. The firmness is just as described on the website and it's perfect for me (as someone who likes firm mattresses). Very easy to set up, ordering and shipping also went smoothly. So far I've noticed better temperature regulation than my old mattress; it is supportive with perfect amount of pillowy comfort. I'm very happy with my Hybrid Comfort purchase! </p>",
             "author": "Ria S."
           }
         },
@@ -184,9 +188,9 @@
           "type": "review",
           "settings": {
             "title": "Cloud soft mattress",
-            "date": "01\/18\/24",
-            "product": "emma-hybrid-comfort-mattress",
-            "content": "<p>Hands down the most comfortable mattress we’ve ever had- supportive but with a cloud soft topper you just sink right into, even as a lightweight person. So pleased we got it!<\/p>",
+            "date": "01/18/24",
+            "product": "emma-original-a",
+            "content": "<p>Hands down the most comfortable mattress we’ve ever had- supportive but with a cloud soft topper you just sink right into, even as a lightweight person. So pleased we got it!</p>",
             "author": "Jennifer S."
           }
         },
@@ -194,9 +198,9 @@
           "type": "review",
           "settings": {
             "title": "Dream Bed",
-            "date": "02\/04\/2024",
-            "product": "emma-hybrid-premium",
-            "content": "<p>I am very pleased with this purchase. My first night was like sleeping on a cloud. I felt cocooned. I woke up feeling very rested. I love my Emma Hybrid Premium ! 😍😍<\/p>",
+            "date": "02/04/2024",
+            "product": "emma-performance-mattress-a",
+            "content": "<p>I am very pleased with this purchase. My first night was like sleeping on a cloud. I felt cocooned. I woke up feeling very rested. I love my Emma Performance ! 😍😍</p>",
             "author": "Celine E."
           }
         },
@@ -205,8 +209,8 @@
           "settings": {
             "title": "High quality mattress!",
             "date": "07 Mar 2023",
-            "product": "emma-original-mattress",
-            "content": "<p>I have used Emma Mattress for more than a month now and I'm totally in love with it. The quality of the mattress and comfort is definitely noteworthy. I would highly recommend using Emma if you are looking for premium quality mattress<\/p>",
+            "product": "emma-original-lite-a",
+            "content": "<p>I have used Emma Mattress for more than a month now and I'm totally in love with it. The quality of the mattress and comfort is definitely noteworthy. I would highly recommend using Emma if you are looking for premium quality mattress</p>",
             "author": "Javeria A."
           }
         },
@@ -216,7 +220,7 @@
             "title": "Excellent hybrid mattress",
             "date": "12 Apr 2023",
             "product": "emma-climax-hybrid",
-            "content": "<p>Excellent mattress, not too firm and not too soft, either! I got the pillow too, which I got to adjust by taking out one layer. I'm a side sleeper so the flexibility here was a gamechanger for me<\/p>",
+            "content": "<p>Excellent mattress, not too firm and not too soft, either! I got the pillow too, which I got to adjust by taking out one layer. I'm a side sleeper so the flexibility here was a gamechanger for me</p>",
             "author": "Ben A."
           }
         },
@@ -226,7 +230,7 @@
             "title": "Best quality sleep I've ever had!",
             "date": "25 Apr 2023",
             "product": "emma-climax-hybrid",
-            "content": "<p>I didn't realize how bad my previous mattress was until I received my Emma mattress. Not only do I sleep straight through the night (mind you, I sleep with my partner and dog and don't feel their movements at all!), I wake up energized and well rested. I no longer have any body aches and never feel too hot\/too cold. Highly recommend!<\/p>",
+            "content": "<p>I didn't realize how bad my previous mattress was until I received my Emma mattress. Not only do I sleep straight through the night (mind you, I sleep with my partner and dog and don't feel their movements at all!), I wake up energized and well rested. I no longer have any body aches and never feel too hot/too cold. Highly recommend!</p>",
             "author": "Jonathan W."
           }
         },
@@ -236,7 +240,7 @@
             "title": "Great for couples",
             "date": "05 May 2023",
             "product": "emma-climax-hybrid",
-            "content": "<p>We've tried orthopedic mattresses in the past, but returned it because they're TOO firm. I prefer soft ones, while my husband prefers firm. For some strange reason, this mattress just works for the both of us. His back pain's gone and I've been sleeping like a log every night!<\/p>",
+            "content": "<p>We've tried orthopedic mattresses in the past, but returned it because they're TOO firm. I prefer soft ones, while my husband prefers firm. For some strange reason, this mattress just works for the both of us. His back pain's gone and I've been sleeping like a log every night!</p>",
             "author": "Donna C."
           }
         },
@@ -246,7 +250,7 @@
             "title": "Uninterrupted sleep all night",
             "date": "20 May 2023",
             "product": "emma-climax-hybrid",
-            "content": "<p>This was recommended to me by my friend since I've been waking up in the middle of the night with my old mattress. So glad I listened cuz now I've been sleeping straight and waking up without a sweat<\/p>",
+            "content": "<p>This was recommended to me by my friend since I've been waking up in the middle of the night with my old mattress. So glad I listened cuz now I've been sleeping straight and waking up without a sweat</p>",
             "author": "Nicole W"
           }
         },
@@ -255,8 +259,8 @@
           "settings": {
             "title": "Best quality sleep I've ever had!",
             "date": "27 May 2023",
-            "product": "emma-original-mattress",
-            "content": "<p>I didn't realize how bad my previous mattress was until I received my Emma mattress. Not only do I sleep straight through the night (mind you, I sleep with my partner and dog and don't feel their movements at all!), I wake up energized and well rested. I no longer have any body aches and never feel too hot\/too cold. Highly recommend!<\/p>",
+            "product": "emma-original-lite-a",
+            "content": "<p>I didn't realize how bad my previous mattress was until I received my Emma mattress. Not only do I sleep straight through the night (mind you, I sleep with my partner and dog and don't feel their movements at all!), I wake up energized and well rested. I no longer have any body aches and never feel too hot/too cold. Highly recommend!</p>",
             "author": "Jonathan W."
           }
         },
@@ -265,8 +269,8 @@
           "settings": {
             "title": "Perfectly satisfied with my mattress...",
             "date": "03 Oct 2022",
-            "product": "emma-original-mattress",
-            "content": "<p>Perfectly happy with my mattress and pillows. What a joy this bed is, the only regret would be not buying it sooner 🙂<\/p>",
+            "product": "emma-original-lite-a",
+            "content": "<p>Perfectly happy with my mattress and pillows. What a joy this bed is, the only regret would be not buying it sooner 🙂</p>",
             "author": "Marion"
           }
         },
@@ -275,8 +279,8 @@
           "settings": {
             "title": "I can't wait for bedtime now!",
             "date": "08 Dec 2022",
-            "product": "emma-original-mattress",
-            "content": "<p>Sharing a conventional mattress that is sagging, with a long legged whippet was a disaster - most mornings I fell out of bed with him pushing me out. I now wake up every morning with much less pain and even the dog seems to love it!<\/p>",
+            "product": "emma-original-lite-a",
+            "content": "<p>Sharing a conventional mattress that is sagging, with a long legged whippet was a disaster - most mornings I fell out of bed with him pushing me out. I now wake up every morning with much less pain and even the dog seems to love it!</p>",
             "author": "Judy K."
           }
         },
@@ -285,8 +289,8 @@
           "settings": {
             "title": "Best sleeping with Emma",
             "date": "28 Dec 2022",
-            "product": "emma-original-mattress",
-            "content": "<p>My wife and I love this mattress because we never wake up during sleeping time, and we don't get lower back pain after we wake up.<\/p>",
+            "product": "emma-original-lite-a",
+            "content": "<p>My wife and I love this mattress because we never wake up during sleeping time, and we don't get lower back pain after we wake up.</p>",
             "author": "James L."
           }
         }
@@ -306,10 +310,8 @@
         "c4884297-13b5-40c7-9075-bed6e1cf82d8"
       ],
       "settings": {
-        "title": "<p>The honest truth from our customers<\/p>",
-        "heading_alignment": "start",
-        "trackId": "Truth_scroll_HP",
-        "enable_text_clamp": true
+        "title": "<p>The honest truth from our customers</p>",
+        "trackId": "Truth_scroll_HP"
       }
     },
     "image-with-faqs": {
@@ -319,21 +321,21 @@
           "type": "faq",
           "settings": {
             "title": "Is it free to return your products?",
-            "content": "<p>It's 100% free to return your Emma! If your Emma turns out not to suit you for any reason, feel free to return it. Just simply get in contact with us via our chat support, phone or email and we will refund and collect it at no cost to you.Live support is also available from 08:00 to 18:00 GMT-6, Monday-Friday!<\/p>"
+            "content": "<p>It's 100% free to return your Emma! If your Emma turns out not to suit you for any reason, feel free to return it. Just simply get in contact with us via our chat support, phone or email and we will refund and collect it at no cost to you.Live support is also available from 08:00 to 18:00 GMT-6, Monday-Friday!</p>"
           }
         },
         "c68412f4-0251-42dc-9113-a0eecd22c518": {
           "type": "faq",
           "settings": {
-            "title": "How does your 365-Night-Trial work?",
-            "content": "<p>Our risk-free 365-night trial means that you get a full year to decide if your Emma mattress is a good fit for you. This gives you more time to try the mattress for yourself and experience the benefits that our 4Million+ customers have come to enjoy each night!<br\/><br\/>Helpful Tip: We recommend you sleep on your Emma for at least 21 nights so that you and your body can get suited to your new Emma mattress.<br\/><br\/>You can begin your 365-night trial today. Our 0% APR financing with Klarna also gives you the option to make 12 equal payments over the next 12 months.<\/p>"
+            "title": "How does your 100-Night-Trial work?",
+            "content": "<p>Our risk-free 100-night trial means that you get a full year to decide if your Emma mattress is a good fit for you. This gives you more time to try the mattress for yourself and experience the benefits that our 4Million+ customers have come to enjoy each night!<br/><br/>Helpful Tip: We recommend you sleep on your Emma for at least 21 nights so that you and your body can get suited to your new Emma mattress.<br/><br/>You can begin your 100-night trial today. Our 0% APR financing with Klarna also gives you the option to make 12 equal payments over the next 12 months.</p>"
           }
         },
         "a72149c3-5420-4a8c-80fe-7370288da216": {
           "type": "faq",
           "settings": {
             "title": "Do you ship nationwide?",
-            "content": "<p>We do offer free shipping within the contiguous United States.<br\/>At present, these are our non serviceable territories:<\/p><ul><li>Alaska<\/li><li>Hawaii<\/li><li>Puerto Rico<\/li><li>US Virgin Islands<\/li><li>American Samoa<\/li><\/ul>"
+            "content": "<p>We do offer free shipping within the contiguous United States.<br/>At present, these are our non serviceable territories:</p><ul><li>Alaska</li><li>Hawaii</li><li>Puerto Rico</li><li>US Virgin Islands</li><li>American Samoa</li></ul>"
           }
         },
         "d24509aa-3b72-4264-887a-32b88503b5c5": {
@@ -341,7 +343,7 @@
           "disabled": true,
           "settings": {
             "title": "Title",
-            "content": "<p>Content<\/p>"
+            "content": "<p>Content</p>"
           }
         }
       },
@@ -354,12 +356,46 @@
       "disabled": true,
       "settings": {
         "heading": "A true worryfree sleeping experience.",
-        "image": "shopify:\/\/shop_images\/image_1.png",
+        "image": "shopify://shop_images/image_1.png",
         "inverted": true,
         "header_font": "tiempos",
         "heading_alignment": "start",
         "container_spacing": "md"
       }
+    },
+    "rich_text_RHYb33": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_Ngnqiw": {
+          "type": "heading",
+          "disabled": true,
+          "settings": {
+            "heading": "Talk about your brand",
+            "heading_size": "h1"
+          }
+        },
+        "text_mKfDnB": {
+          "type": "text",
+          "settings": {
+            "text": ""
+          }
+        },
+        "button_zMMbJE": {
+          "type": "button",
+          "disabled": true,
+          "settings": {
+            "button_label": "Button label",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_Ngnqiw",
+        "text_mKfDnB",
+        "button_zMMbJE"
+      ],
+      "settings": {}
     }
   },
   "order": [
@@ -367,6 +403,7 @@
     "sale-catalog",
     "special-services",
     "customer-sentiment",
-    "image-with-faqs"
+    "image-with-faqs",
+    "rich_text_RHYb33"
   ]
 }

@@ -1,216 +1,170 @@
-<style>
-  .upsell-bedding-container{
-    background:#fff;
-    padding:0px 0 30px;
-  }
-  .upsell_card{
-    background:#fff;
-    border-radius:8px;
-    overflow:hidden;
-    width:100%;
-  }
-  .upsell_card .card_thumb img{
-      height:180px;
-    object-fit:cover;
-    width:100%;
-  }
-  .upsell_card  .block_content{
-    padding:15px;
-    min-height:153px;
-    display:flex;
-    justify-content:space-between;
-    flex-direction:column;
-    align-items:flex-start;
-    background-color:rgb(46 47 60 / 4%)
-  }
-  .upsell_card  .block_content strong{
-    font-size:18px;
-    color:var(--primary-blue-color);
-  }
-  .pricing-sec{
-    display:flex;
-    align-items:center;
-    justify-content:start;
-    gap:2px;
-  }
-  .upsell_card  .block_content .cart_btn{
-    width:100%;
-    background:#FF8900;
-    border-radius:50px;
-    color:#fff !important;
-    font-size:14px !important;
-  padding:8px 15px;
-    min-height:inherit;
-    display:block;
-    margin-top:10px;
-    height:40px;
+{% assign catalogItems = collections['upsell-collection'].products %}
 
-  }
-  .cart_btn strong{
-     color:#fff !important;
-     font-size:14px !important;
-    font-weight:600;
-  }
-  .upsell_card select{
-    max-width: 100%;
-    border: 1px solid #f1f1f1;
-    border-radius: 50px;
-    margin: 7px 0;
-    padding: 2px 5px;
-    font-size: 14px;
-    text-align:left
-  }
-</style>
+<link rel="quickscript" loading="delayed" href="{{ 'cart-upsell.css' | asset_url }}">
+
+{% liquid
+
+  assign trackId = "Favorites_scroll"
+  assign postfix = "HP"
+
+  if template contains "product"
+    assign trackId = "Better_together"
+    assign postfix = product.metafields.accentuate.track_postfix
+  endif
+
+  if postfix != blank
+    assign trackId = trackId | append: "_" | append: postfix
+  endif
+%}
+
 {%- capture cart_items -%}
   {% for item in cart.items %}
     {{ item.product.handle }}{% unless forloop.last %} , {% endunless %}
   {% endfor %}
 {%- endcapture -%}
 
-<section id="cart-bedding-col-section" class="section-container upsell-bedding-container">
-  <div class="page-boundary">
-    <div class="section-header flex justify-between items-center">
-      <p class="text-comet text-left solid text-[16px] text-[#2E2F3C] hidden">{{ section.settings.subtitle }}</p>
-      <h2 class="text-xl text-left text-charade font-semibold  mb-3 md:mb-8">
-        <span class="hidden">{{ section.settings.title }}</span>
-        <span class="">Other Also Bought</span>
-      </h2>
-    </div>
-    <div class="splide ">
+<cart-upsell hidden>
 
-        {% render 'splide-arrows', old: true, trackId: "Cross_sell_cart" %}
+  <section id="cart-upsell-section" class="">
+    <div class="section-chassis page-boundary">
+      {% render 'section-header' %}
 
-      <div class="splide__track">
-        <ul class="splide__list">
-          {% for product in collections['upsell-collection'].products %}
-            {% unless cart_items contains product.handle %}
-              <li class="splide__slide">
-                <div class="w-full flex flex-col upsell_card">
-                  <a href="{{ product.url }}" class="image_block">
-                    <div class="card_thumb">
-                      {{ product.featured_image | img_url: '600x600' | img_tag: product.featured_image.alt }}
-                    </div>
+      <div class="grid-container splide splide--borderless pagination-bar">
+        {% include 'splide-arrows', trackId: trackId %}
+
+        <div class="splide__track">
+          <ul class="splide__list">
+            {% for product in catalogItems %}
+              <li class="splide__slide" productId="{{ product.id }}">
+                <cart-upsell-item
+                  :index="{{ forloop.index0 }}"
+                  :single="{{ product.has_only_default_variant }}"
+
+                >
+                  <a href="{{ product.url }}" class="block-media">
+                    {{ product.featured_image | image_url: width: 600 | image_tag: alt: product.featured_image.alt, class: "cover-surface" }}
                   </a>
-                  <div class="block_content">
-                    {% assign current_variant = product.selected_or_first_available_variant %}
-                    <a href="{{ product.url }}" class="block"
-                      ><strong class="text-sm text-[--primary-blue-color:#2e2f3c] font-inter ">
+                  <div class="block-content">
+                    <a href="{{ product.url }}" class="block-heading">
+                      <p class="w-full font-semibold text-md text-center">
                         {{- product.title -}}
-                      </strong></a
-                    >
-                    {% if product.variants.size > 1 %}
-                      <select
-                        id="product-select-{{ product.id }}"
-                        data-id="{{ product.id }}"
-                        name="id"
-                        class="text-center datachange"
-                      >
-                        {% for variant in product.variants %}
-                          {{ variant | json }}
-                          {% if variant.available %}
-                            <option
-                              {% if variant == product.selected_or_first_available_variant %}
-                                selected="selected"
-                              {% endif %}
-                              data-sku="{{ variant.sku }}"
-                              data-price="{{ variant.price | money_without_trailing_zeros }}"
-                              data-compare-price="{{ variant.compare_at_price | money_without_trailing_zeros }}"
-                              value="{{ variant.id }}"
-                            >
-                              {{ variant.title }} - {{ variant.price | money_without_trailing_zeros }}
-                            </option>
-                          {% else %}
-                            <option disabled="disabled">
-                              {{ variant.title }} - {{ 'products.product.sold_out' | t }}
-                            </option>
-                          {% endif %}
-                        {% endfor %}
-                      </select>
-                    {% else %}
-                      {{ product.variants.first.price | money_without_trailing_zeros }}
-                      <input type="hidden" name="id" value="{{ product.variants.first.id }}">
-                    {% endif %}
-
-                    <div class="card_foot">
-                      <form
-                        action="/cart/add"
-                        method="post"
-                        enctype="multipart/form-data"
-                        id="AddToCartForm"
-                        class="quick-add-to-cart small--hide clearfix"
-                      >
-                        <input
+                      </p>
+                    </a>
+                    <div class="block-variant-selector">
+                      {% if product.variants.size > 1 %}
+                        <select
+                          id="product-select-{{ product.id }}"
+                          data-id="{{ product.id }}"
                           name="id"
-                          class="id"
-                          value="{{ product.selected_or_first_available_variant.id }}"
-                          type="hidden"
+                          class="text-sm"
                         >
-                        <button type="submit" name="add" id="AddToCart" class="btn cart_btn">Add Product</button>
-                      </form>
+                          {% for variant in product.variants %}
+                            {% if variant.available %}
+                              <option
+                                {% if variant == product.selected_or_first_available_variant %}
+                                  selected="selected"
+                                {% endif %}
+                                data-sku="{{ variant.sku }}"
+                                data-price="{{ variant.price | money_without_trailing_zeros }}"
+                                data-compare-price="{{ variant.compare_at_price | money_without_trailing_zeros }}"
+                                value="{{ variant.id }}"
+                              >
+                                {{ variant.title }}
+                                - {{ variant.price | money_without_trailing_zeros }}
+                              </option>
+                            {% else %}
+                              <option disabled="disabled">
+                                {{ variant.title }}
+                                - {{ 'products.product.sold_out' | t }}
+                              </option>
+                            {% endif %}
+                          {% endfor %}
+                        </select>
+                      {% else %}
+                        {{ product.variants.first.price | money_without_trailing_zeros }}
+                        <input
+                          type="hidden" name="id"
+                          value="{{ product.variants.first.id }}"
+                        >
+                      {% endif %}
+                    </div>
+                    <div class="block-cta">
+                      <button
+                        type="button" name="add"
+                        class="btn btn--compact cta-button"
+                      >
+                        Add
+                      </button>
                     </div>
                   </div>
-                </div>
+                </cart-upsell-item>
               </li>
-            {% endunless %}
-          {% endfor %}
-        </ul>
+            {% endfor %}
+          </ul>
+        </div>
       </div>
     </div>
-  </div>
-</section>
-<script>
-    $("#cart-bedding-col-section").ready(async () => {
-      await ResourceCoordinator.requestVendor('Splide');
-      new Splide('#cart-bedding-col-section .splide', {
-          autoWidth: false,
-          padding: {right: '0rem'},
-          loop:true,
-          perPage: 4,
-          perMove: 1,
-          gap: '20px',
-          pagination: false,
-          breakpoints: {
-              768: {
-                  perPage: 1,
-                  arrows: true,
-                  pagination: true,
-              },
-              864: {
-                  perPage: 2
-              },
-              1024: {
-                  perPage: 3,
-                  gap: '12px',
-              }
-          }
-      }).mount();
-  })
 
-    $(document).ready(function() {
-    $('.datachange').on('change', function() {
-      var selectedVariant = $(this).val();
-      var selectedfvar = $('option:selected',this).val();
-      var selectedvarprice = $('option:selected',this).data("price");
-      var selectedvarcompprice = $('option:selected',this).data("compare-price");
+  </section>
 
-      if (selectedVariant !== '') {
-        $('.id').val(selectedVariant).trigger('change');
-       //  if(selectedvarprice !== '' && selectedfvar == selectedVariant){
-       //     $('.dataprice').text(selectedvarprice).trigger('change');
-       //  }
-       // if(selectedvarcompprice !== ''){
-       // $('.datacomprice').text(selectedvarcompprice).trigger('change');
-       //   }
-      }
-    });
-  });
-</script>
+</cart-upsell>
+
+<script
+  type="quickscript" loading="delayed" data-url="{{ 'cart-upsell.js' | asset_url }}"
+  src="{{ 'module-importer.js' | asset_url }}"
+></script>
 
 {% schema %}
 {
-  "name": "Cart Upsell",
+  "name": "Cart Upsell 2.0",
   "settings": [
-
+    {
+      "id": "heading",
+      "type": "text",
+      "label": "Heading",
+      "default": "Other Also Bought"
+    },
+    {
+      "id": "heading_alignment",
+      "type": "select",
+      "label": "Heading Alignment",
+      "options": [
+        {
+          "value": "start",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "end",
+          "label": "Right"
+        }
+      ],
+      "default": "start"
+    },
+    {
+      "type": "select",
+      "id": "container_spacing",
+      "options": [
+        {
+          "value": "lg",
+          "label": "Large (60px)"
+        },
+        {
+          "value": "md",
+          "label": "Medium (40px)"
+        }
+      ],
+      "default": "md",
+      "label": "Container Spacing"
+    },
+    {
+      "type": "text",
+      "id": "trackId",
+      "label": "Tracking ID"
+    }
   ]
 }
 {% endschema %}

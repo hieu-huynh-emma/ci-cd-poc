@@ -19,31 +19,15 @@
     {{ section.settings.desc | default: product.description }}
 </div>
 
+{% content_for "block", type: "text", id: "disclaimer" %}
+
 {% schema %}
 {
   "name": "Product Summary",
   "class": "hide-until-initialized",
   "blocks": [
     {
-      "type": "yotpo_star_rating",
-      "name": "Yotpo Product Reviews",
-      "settings": [
-        {
-          "id": "product",
-          "type": "product",
-          "label": "Product"
-        },
-        {
-          "id": "icon",
-          "type": "image_picker",
-          "label": "Icon"
-        },
-        {
-          "id": "new_layout",
-          "type": "checkbox",
-          "label": "Enable New Layout?"
-        }
-      ]
+      "type": "text"
     }
   ],
   "settings": [
@@ -56,11 +40,25 @@
       "id": "desc",
       "type": "richtext",
       "label": "Description"
-    },
+    }
+  ],
+  "presets": [
     {
-      "type": "text",
-      "id": "disclaimer",
-      "label": "Disclaimer"
+      "name": "Product Summary",
+      "blocks": [
+        {
+          "type": "text",
+          "static": true,
+          "id": "disclaimer",
+          "settings": {
+            "content": "",
+            "color": "#2e2f3c",
+            "size": "base",
+            "text_alignment": "left"
+          },
+          "blocks": {}
+        }
+      ]
     }
   ]
 }

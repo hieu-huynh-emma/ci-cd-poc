@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "type": "header",
   "name": "Header Group",
@@ -5,54 +14,68 @@
     "announcement-bar": {
       "type": "announcement-bar",
       "blocks": {
-        "f20c1dc5-1445-4727-82f1-38fc8e740656": {
-          "type": "announcement_content",
+        "announcement_QJrKfL": {
+          "type": "announcement",
           "settings": {
-            "text": "<p>Fall Sale: <strong>up to 60% off<\/strong><\/p>",
-            "tooltip": ""
+            "text": "<p>🤍<strong>UP TO 40% OFF MATTRESSES</strong>🤍</p>",
+            "tooltip": "",
+            "show_countdown_timer": false
           }
         },
-        "announcement_content_7yRzRg": {
-          "type": "announcement_content",
+        "announcement_kq99Fe": {
+          "type": "announcement",
+          "settings": {
+            "text": "<p>🔥<strong>40% OFF ACCESSORIES & PILLOWS</strong>🔥</p>",
+            "tooltip": "",
+            "show_countdown_timer": false
+          }
+        },
+        "announcement_7Bjak6": {
+          "type": "announcement",
           "disabled": true,
           "settings": {
-            "text": "",
-            "tooltip": ""
+            "text": "<p>⭐️<strong>GET EXTRA 5% OFF IN ORDER OVER $650</strong>⭐️</p>",
+            "tooltip": "",
+            "show_countdown_timer": false
+          }
+        },
+        "announcement_KmYCmy": {
+          "type": "announcement",
+          "disabled": true,
+          "settings": {
+            "text": "<p>🎁GET YOUR FREEBIES🎁</p>",
+            "tooltip": "",
+            "show_countdown_timer": true
           }
         }
       },
       "block_order": [
-        "f20c1dc5-1445-4727-82f1-38fc8e740656",
-        "announcement_content_7yRzRg"
-      ],
-      "custom_css": [
-        ".anno-wrapper {border: 1, 1, transparent; border-bottom: 0rem;}",
-        ".anno-chassis {display: flex; align-items: center;}",
-        "h2 {text-align: center;}",
-        ".btn--plain {background-color: #2e2f3c; color: #white;}"
+        "announcement_QJrKfL",
+        "announcement_kq99Fe",
+        "announcement_7Bjak6",
+        "announcement_KmYCmy"
       ],
       "settings": {
         "cta_btn_text": "Shop the sale",
-        "link": "shopify:\/\/pages\/sale",
-        "color_bg": "#2e2f3c",
-        "color_text": "#ffffff",
-        "show_countdown_timer": false
+        "link": "shopify://pages/sale",
+        "color_bg": "#ff8900",
+        "color_text": "#ffffff"
       }
     },
     "header": {
       "type": "header",
       "settings": {
-        "logo": "shopify:\/\/shop_images\/MicrosoftTeams-Logo_Emma_new.png",
+        "logo": "shopify://shop_images/MicrosoftTeams-Logo_Emma_new.png",
         "menu": "main-menu",
         "enable_sticky_header": false,
         "show_sale_link": false,
-        "sale_page_url": "shopify:\/\/collections\/mattresses"
+        "sale_page_url": "shopify://collections/mattresses",
+        "show_bulk_sale": false
       }
     },
     "breadcrumbs": {
       "type": "breadcrumbs",
-      "settings": {
-      }
+      "settings": {}
     }
   },
   "order": [

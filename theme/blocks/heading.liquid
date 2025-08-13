@@ -1,0 +1,45 @@
+{% assign settings = block.settings %}
+
+<heading-block
+    class="heading-block rtf-viewer"
+    {{ block.shopify_attributes }}
+    style="color: {{ settings.color }}; text-align: {{ settings.text_alignment }};"
+>
+    {{ settings.content }}
+</heading-block>
+
+{% schema %}
+{
+  "name": "Heading",
+  "tag": null,
+  "settings": [
+    {
+      "type": "richtext",
+      "id": "content",
+      "label": "Heading Content",
+      "default": "<p>Heading Content</p>"
+    },
+    {
+      "id": "color",
+      "type": "color",
+      "label": "Text Color",
+      "default": "#2e2f3c"
+    },
+    {
+      "id": "text_alignment",
+      "type": "text_alignment",
+      "label": "Text alignment",
+      "default": "center"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Heading",
+      "settings": {
+        "content": "<p>Heading Content</p>",
+        "color": "#2e2f3c"
+      }
+    }
+  ]
+}
+{% endschema %}

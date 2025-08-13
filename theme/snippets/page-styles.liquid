@@ -31,13 +31,12 @@
     {% liquid
         assign vendorStylesheet = "vendors.css"
         case template
-            when 'page.landing-page' or 'product.new-original-mattress' or 'product.climax-hybrid-mattress' or 'product.emma-hybrid-comfort' or 'product.hybrid-comfort-bundle'
+            when 'page.landing-page' or 'product.new-original-mattress' or 'product.climax-hybrid-mattress' or 'product.emma-original-a' or 'product.hybrid-comfort-bundle'
                 assign vendorStylesheet = "old-vendors.css"
         endcase
     %}
 
     <link is="delay-stylesheet" id="vendor-custom-styles" href="{{ vendorStylesheet | asset_url }}">
-    <link is="delay-stylesheet" href="{{ 'jquery.fancybox.css' | asset_url }}">
 
     <style>
         .unintrusive-bg {
@@ -52,3 +51,5 @@
     {% render 'old-page-styles' %}
 {% endif %}
 
+
+<link rel="stylesheet" href="{{ 'page-boundary.css' | asset_url }}">

@@ -1,0 +1,146 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "layout": "theme.performance",
+  "sections": {
+    "stack_section_ibDejB": {
+      "type": "stack",
+      "blocks": {
+        "heading_MAWRCq": {
+          "type": "heading",
+          "settings": {
+            "content": "<h1>Promo Offer Details<\/h1>",
+            "color": "#ffffff",
+            "text_alignment": "center"
+          },
+          "blocks": {}
+        },
+        "paragraph_iCCjN6": {
+          "type": "paragraph",
+          "settings": {
+            "content": "<h4>Discover all of our offers and get shopping!<\/h4>",
+            "color": "#ffffff",
+            "size": "base",
+            "text_alignment": "center"
+          },
+          "blocks": {}
+        },
+        "button_RUr3Ad": {
+          "type": "button",
+          "settings": {
+            "content": "<p>Shop Now<\/p>",
+            "bgcolor": "#6469aa",
+            "hover-bgcolor": "#4b4f8d",
+            "color": "#ffffff",
+            "hover-color": "",
+            "variant": "",
+            "href": "\/pages\/sale"
+          },
+          "blocks": {}
+        },
+        "container": {
+          "type": "container",
+          "static": true,
+          "settings": {
+            "bgcolor": "#2c3183",
+            "spacing": "none",
+            "margin_y": 0,
+            "margin_x": 0,
+            "padding_x": 0,
+            "padding_y": 10,
+            "border_radius": 0,
+            "boundless": true
+          },
+          "blocks": {}
+        },
+        "frame": {
+          "type": "frame",
+          "static": true,
+          "settings": {
+            "bgcolor": "rgba(0,0,0,0)",
+            "spacing": "base",
+            "vertical_alignment": "center",
+            "horizontal_alignment": "center",
+            "margin_y": 0,
+            "margin_x": 0,
+            "padding_x": 0,
+            "padding_y": 10,
+            "border_radius": 0,
+            "boundless": false,
+            "content_width": 55
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "heading_MAWRCq",
+        "paragraph_iCCjN6",
+        "button_RUr3Ad"
+      ],
+      "settings": {}
+    },
+    "passage": {
+      "type": "passage",
+      "settings": {},
+      "blocks": {
+        "container": {
+          "type": "container",
+          "static": true,
+          "settings": {
+            "bgcolor": "",
+            "spacing": "none",
+            "margin_y": 0,
+            "margin_x": 0,
+            "padding_x": 0,
+            "padding_y": 10,
+            "border_radius": 0,
+            "boundless": true
+          },
+          "blocks": {}
+        },
+        "frame": {
+          "type": "frame",
+          "static": true,
+          "settings": {
+            "bgcolor": "rgba(0,0,0,0)",
+            "spacing": "base",
+            "vertical_alignment": "center",
+            "horizontal_alignment": "center",
+            "margin_y": 0,
+            "margin_x": 0,
+            "padding_x": 0,
+            "padding_y": 10,
+            "border_radius": 0,
+            "boundless": false,
+            "content_width": 100
+          },
+          "blocks": {}
+        },
+        "paragraph": {
+          "type": "paragraph",
+          "settings": {
+            "content": "{{page.content}}",
+            "color": "",
+            "size": "base",
+            "text_alignment": "left"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "paragraph"
+      ]
+    }
+  },
+  "order": [
+    "stack_section_ibDejB",
+    "passage"
+  ]
+}

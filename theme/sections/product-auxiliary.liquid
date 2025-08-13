@@ -1,6 +1,8 @@
 {% assign quick_compare = section.blocks | where: 'type', 'quick_compare' | first %}
 {% assign upsell_widget = section.blocks | where: 'type', 'upsell_widget' | first %}
 {% assign cross_sell_widget = section.blocks | where: 'type', 'cross_sell_widget' | first %}
+{% assign cross_sell_widget_v2 = section.blocks | where: 'type', 'cross_sell_widget_v2' | first %}
+
 
 <link rel="quickscript" loading="delayed" href="{{ 'product-auxiliary.css' | asset_url }}">
 <script type="quickscript" src="{{ 'product-auxiliary.js' | asset_url }}"></script>
@@ -21,7 +23,21 @@
   >
   </script>
   
-  {% render 'cross-sell-widget' %}
+  {% render 'cross-sell-widget', settings: cross_sell_widget.settings %}
+{% endif %}
+
+{% if cross_sell_widget_v2 %}
+  <link rel="quickscript" loading="delayed" href="{{ 'cross-sell-widget.css' | asset_url }}">
+  
+  <script
+      type="quickscript"
+      loading="delayed"
+      data-url="{{ 'cross-sell-widget.js' | asset_url }}"
+      src="{{ 'module-importer.js' | asset_url }}"
+  >
+  </script>
+  
+  {% render 'cross-sell-widget-v2', settings: cross_sell_widget.settings %}
 {% endif %}
 
 {% if quick_compare %}
@@ -40,6 +56,22 @@
       "type": "cross_sell_widget",
       "name": "Cross-sell Widget",
       "settings": [
+        {
+          "id": "content",
+          "type": "richtext",
+          "label": "Content"
+        }
+      ]
+    },
+    {
+      "type": "cross_sell_widget_v2",
+      "name": "Cross-sell Widget V2",
+      "settings": [
+        {
+          "id": "content",
+          "type": "richtext",
+          "label": "Content"
+        }
       ]
     },
     {

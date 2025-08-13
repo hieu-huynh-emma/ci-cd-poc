@@ -1,34 +1,26 @@
-// $("#announcement-bar").ready(async () => {
-//     await ResourceCoordinator.requestVendor('Tippy');
+$("#announcement-bar").ready(async () => {
+  await ResourceCoordinator.requestVendor("Tippy");
+  await ResourceCoordinator.requestVendor("Splide");
 
-//     const tooltipContent = $("#announcement-bar").data('tooltip')
+  const tooltipContent = $("#announcement-bar").data("tooltip");
 
-//     setTimeout(() => {
-//         tippy('#announcement-bar .anno-tooltip', {
-//             content: tooltipContent
-//         });
-//     }, 500)
-// });
-  $("#test_slide").ready(async () => {
-    await ResourceCoordinator.requestVendor('Splide');
-    new Splide('#announcement_slide .splide', {
-      type: "fade",
-  rewind: true,
-  autoplay: true,
-      arrows:'false',
-        autoWidth: false,
-        padding: {right: '0rem'},
-        perPage: 1,
-        perMove: 1,
-        gap: '20px',
-        pagination: false,
-        breakpoints: {
-            768: {
-                perPage: 1,
-                arrows: false,
-                pagination: false,
-                gap: '12px',
-            }
-        }
-    }).mount();
-})
+  setTimeout(() => {
+    tippy("#announcement-bar .anno-tooltip", {
+      content: tooltipContent,
+    });
+  }, 500);
+
+
+  new Splide("#announcement_slide .splide", {
+    mediaQuery: "min",
+    rewind: true,
+    autoplay: true,
+    autoWidth: false,
+    interval: 40000,
+    perPage: 1,
+    perMove: 1,
+    gap: ".25rem",
+    arrows: true,
+    pagination: false
+  }).mount();
+});

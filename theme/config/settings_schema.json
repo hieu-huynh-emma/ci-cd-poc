@@ -215,39 +215,6 @@
     ]
   },
   {
-    "name": "t:settings_schema.layout.name",
-    "settings": [
-      {
-        "id": "sale_timer",
-        "type": "text",
-        "label": "t:settings_schema.layout.settings.sale_timer",
-        "info": "Please follow format: YYYY-MM-DD HH:mm"
-      },
-      {
-        "type": "select",
-        "id": "page_width",
-        "options": [
-          {
-            "value": "1200",
-            "label": "t:settings_schema.layout.settings.page_width.options__1.label"
-          },
-          {
-            "value": "1600",
-            "label": "t:settings_schema.layout.settings.page_width.options__2.label"
-          }
-        ],
-        "default": "1600",
-        "label": "t:settings_schema.layout.settings.page_width.label"
-      },
-      {
-        "id": "availability_schedule",
-        "type": "text",
-        "label": "t:settings_schema.layout.settings.availability_schedule",
-        "info": "Denotes hours of availability"
-      }
-    ]
-  },
-  {
     "name": "t:settings_schema.social-media.name",
     "settings": [
       {
@@ -366,6 +333,59 @@
         "id": "currency_code_enabled",
         "label": "t:settings_schema.currency_format.settings.currency_code_enabled.label",
         "default": true
+      }
+    ]
+  },
+  {
+    "name": "t:settings_schema.layout.name",
+    "settings": [
+      {
+        "type": "select",
+        "id": "theme_mode",
+        "options": [
+          {
+            "value": "light",
+            "label": "Light"
+          },
+          {
+            "value": "dark",
+            "label": "Dark"
+          }
+        ],
+        "default": "light",
+        "label": "Theme Mode"
+      },
+      {
+        "id": "sale_timer",
+        "type": "text",
+        "label": "t:settings_schema.layout.settings.sale_timer",
+        "info": "Please follow format: YYYY-MM-DD HH:mm"
+      },
+      {
+        "type": "select",
+        "id": "page_width",
+        "options": [
+          {
+            "value": "1200",
+            "label": "t:settings_schema.layout.settings.page_width.options__1.label"
+          },
+          {
+            "value": "1440",
+            "label": "1440"
+          },
+          {
+            "value": "1600",
+            "label": "t:settings_schema.layout.settings.page_width.options__2.label"
+          }
+        ],
+        "default": "1440",
+        "label": "t:settings_schema.layout.settings.page_width.label"
+      },
+      {
+        "id": "availability_schedule",
+        "type": "text",
+        "label": "t:settings_schema.layout.settings.availability_schedule",
+        "info": "Denotes hours of availability"
       }
     ]
   },

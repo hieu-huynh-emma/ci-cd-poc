@@ -40,9 +40,13 @@
             <div class="splide__track">
                 <ul class="splide__list">
                     {% for block in catalogItems %}
-                        <li class="splide__slide">
-                            {% render 'product-card', product: block.settings.product %}
-                        </li>
+                        {% assign product = block.settings.product %}
+
+                        {% if product.available %}
+                            <li class="splide__slide">
+                                {% render 'product-card', product: product %}
+                            </li>
+                        {% endif %}
                     {% endfor %}
                 </ul>
             </div>

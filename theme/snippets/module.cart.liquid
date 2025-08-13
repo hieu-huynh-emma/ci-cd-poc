@@ -1,0 +1,277 @@
+<template id="cart-recommendation-item-tpl">
+    <div class="card-container">
+        <slot name="media" class="card-media"></slot>
+
+        <div class="card-metadata">
+            <div class="card-header">
+                <slot name="title"></slot>
+            </div>
+
+            <div class="card-body">
+                <slot name="variant-selector"></slot>
+
+                <slot name="product-pricing"></slot>
+            </div>
+
+            <div class="card-footer">
+                <button type="button" class="btn btn--compact">
+                    Add Product
+                </button>
+            </div>
+        </div>
+
+
+    </div>
+</template>
+<script type="module" src="{{ 'shopify-analytics-connector.js' | asset_url }}"></script>
+
+
+<script type="module" src="{{ 'cart.js' | asset_url }}"></script>
+
+<link rel="stylesheet" href="{{ 'cart-lines.css' | asset_url }}">
+
+<script type="module" src="{{ 'cart-lines.js' | asset_url }}"></script>
+<link rel="quickscript" loading="delayed" href="{{ 'coupon-viewer.css' | asset_url }}">
+
+
+
+<script type="quickscript" loading="delayed"
+        src="{{ "quantity-adjuster.js" | asset_url }}"></script>
+
+<link rel="stylesheet" href="{{ 'cart.css' | asset_url }}"/>
+<link rel="stylesheet" href="{{ 'quantity-adjuster.css' | asset_url }}"/>
+
+{% if template == 'cart' %}
+    <script type="quickscript" loading="delayed" data-url="{{ 'cart-items.js' | asset_url }}"
+            src="{{ 'module-importer.js' | asset_url }}"></script>
+{% endif %}
+
+<script type="quickscript" loading="delayed" data-url="{{ 'cart-recommendation.js' | asset_url }}"
+        src="{{ 'module-importer.js' | asset_url }}"></script>
+<script type="quickscript" loading="delayed" data-url="{{ 'cart-icon-bubble.js' | asset_url }}"
+        src="{{ 'module-importer.js' | asset_url }}"></script>
+<script type="quickscript" loading="delayed" src="{{ 'coupon-viewer.js' | asset_url }}"></script>
+
+<script id="Cart-SSR-JSON" type="application/json">
+    {
+      "total_price": {{ cart.total_price  | divided_by: 100.00 }},
+      "item_count": {{ cart.item_count }},
+      "items": [
+          {%- for item in cart.items -%}
+            {
+                "id": {{ item.id }},
+                "attributes": {{ item.properties | json }},
+                "price": {{ item.price| divided_by: 100.00 }},
+                "compare_at_price": {{ item.variant.compare_at_price| divided_by: 100.00 }},
+                "original_line_price": {{ item.original_line_price| divided_by: 100.00}},
+                "final_price": {{ item.final_price| divided_by: 100.00 }},
+                "final_line_price": {{ item.final_line_price| divided_by: 100.00 }},
+                "quantity": {{ item.quantity }},
+                "discounted_price": {{ item.discounted_price| divided_by: 100.00 }},
+                "product": {
+                    "id": "{{ item.product.id }}",
+                    "title": "{{ item.product.title }}",
+                    "handle": "{{ item.product.handle }}",
+                    "metafields": [
+                        {
+                            "key": "bundle_quantity",
+                            "namespace": "accentuate",
+                            "value": "{{ item.product.metafields.accentuate.bundle_quantity }}"
+                        }
+                    ]
+                },
+                "variant": {{ item.variant | json }},
+                "title": "{{ item.title }}",
+                "image":  {
+                    "url":"{{ item.image | image_url: width: 500 }}"
+                },
+                "lineComponents": [
+                    {%- for lineComp in item.item_components -%}
+                      {
+                            "id": {{ lineComp.id }},
+                            "attributes": {{ lineComp.properties | json }},
+                            "price": {{ lineComp.price| divided_by: 100.00 }},
+                            "compare_at_price": {{ lineComp.variant.compare_at_price| divided_by: 100.00 }},
+                            "original_line_price": {{ lineComp.original_line_price| divided_by: 100.00 }},
+                            "final_price": {{ lineComp.final_price| divided_by: 100.00 }},
+                            "final_line_price": {{ lineComp.final_line_price| divided_by: 100.00 }},
+                            "quantity": {{ lineComp.quantity }},
+                            "discounted_price": {{ lineComp.discounted_price | divided_by: 100.00}},
+                            "product": {
+                                "id": "{{ lineComp.product.id }}",
+                                "title": "{{ lineComp.product.title }}",
+                                "handle": "{{ lineComp.product.handle }}",
+                                "metafields": [
+                                    {
+                                        "key": "bundle_quantity",
+                                        "namespace": "accentuate",
+                                        "value": "{{ lineComp.product.metafields.accentuate.bundle_quantity }}"
+                                    }
+                                ]
+                            },
+                            "variant": {
+                                "title": "{{ lineComp.product.title }}"
+                            },
+                            "title": "{{ lineComp.title }}",
+                            "image":  {
+                                "url":"{{ lineComp.image | image_url: width: 500 }}"
+                            }
+                      }
+                    {% unless forloop.last %},{% endunless %}
+                    {% endfor %}
+                ],
+                "discountAllocations": [
+                    {% for discount_allocation in item.discount_allocations %}
+                      {
+                         "title": "{{ discount_allocation.discount_application.title}}",
+                          "code": "{{ discount_allocation.discount_application.code }}",
+                          "discountedAmount": {"amount": "{{  discount_allocation.discount_application.total_allocated_amount }}"},
+                          "targetType": "{{ discount_allocation.discount_application.target_type }}",
+                          "type": "{{ discount_allocation.discount_application.type }}",
+                          "discountApplication": {
+                              "targetSelection": "{{ discount_allocation.target_selection }}"
+                          }
+                      }
+                    {% unless forloop.last %},{% endunless %}
+                    {% endfor %}
+                ]
+            }
+          {% unless forloop.last %},{% endunless %}
+          {% endfor %}
+      ],
+
+      "discountAllocations": [
+        {% for discount_application in cart.discount_applications %}
+          {
+              "title": "{{ discount_application.title}}",
+              "code": "{{ discount_application.code }}",
+              "discountedAmount": {"amount": "{{  discount_application.total_allocated_amount }}"},
+              "targetType": "{{ discount_application.target_type }}",
+              "type": "{{ discount_application.type }}",
+              "discountApplication": {
+                  "targetSelection": "{{ discount_application.target_selection }}"
+              }
+          }
+        {% unless forloop.last %},{% endunless %}
+        {% endfor %}
+      ]
+  }
+</script>
+
+<script id="Cart-Upsell-Collection-JSON" type="application/json">
+    {{ collections['upsell-collection'].products | json }}
+</script>
+
+
+<template id="Cart-Line-Template">
+    <cart-item-remove-button
+        id="CartDrawer-Remove-{{ line.index | plus: 1 }}"
+        :index="{{ line.index }}"
+        aria-label="{{ 'sections.cart.remove_title' | t: title: line.title }}"
+    >
+        <tracked-button :trackId="Delete_cart_ver">{% render 'icon-remove' %}</tracked-button>
+    </cart-item-remove-button>
+    <a class="cart-item-media" href="{{ line.url }}">
+        {{ line.image | image_url: width: 120, height: 80 | image_tag }}
+    </a>
+    <div class="cart-item-details">
+        <a href="{{ line.url }}" class="product__name paragraph-14 font-semibold">
+            {% assign title = line.title | split: ' - ' %}
+            <span>
+              {% if line.product.metafields.accentuate.is_bundle_cross_sell and line.product.metafields.accentuate.bundle_show_composite_product_name %}
+                  {{ primary_product.title }} + Accessory Bundle
+              {% else %}
+                  {{ line.product.metafields.accentuate.display_name | default: title[0] }}
+              {% endif %}
+            </span>
+
+            {% if line.selling_plan_allocation %}
+                <span class="ajaxcart__product-meta">
+                {{ line.selling_plan_allocation.selling_plan.name }}
+              </span>
+            {% endif %}
+        </a>
+
+        <div class="cart-item-actions">
+            {% if line.variant.title != "Default Title" %}
+                <p class="text-sm">
+                    {{ line.variant.title }}
+                </p>
+            {% endif %}
+        </div>
+
+        {% if line.product.metafields.accentuate.cart_promotional_message %}
+            <div class="cart-item-description">
+                {{ line.product.metafields.accentuate.cart_promotional_message }}
+            </div>
+        {% endif %}
+
+        {% if line.product.metafields.accentuate.is_bundle %}
+            {% assign current_variant = line.variant %}
+            {% assign bundle_item_metaobjects = current_variant.metafields.custom.bundle_items.value %}
+
+            {% if line.product.metafields.accentuate.bundle_show_composite_message %}
+                <div class="cart-item-description">
+                  <span>
+                     {% if line.product.metafields.accentuate.is_free_gift %}
+                         Your mattress purchase includes
+                     {% else %}
+                         Your purchase includes our
+                     {% endif %}
+                  </span>
+
+
+                    <span>
+                  {{ primary_product.title }} mattress ({{ current_variant.title }})
+                  {% if bundle_item_metaobjects.count == 1 %}and {% else %}, {% endif %}
+                </span>
+
+
+                    {% for bundle_item_metaobject in bundle_item_metaobjects %}
+                        {% assign bundle_item_variant = bundle_item_metaobject.product.value %}
+                        {% assign qty = bundle_item_metaobject.qty | default: 1 %}
+
+                        <span>
+				  {{ qty }} {{ bundle_item_variant.product.metafields.accentuate.display_name | default: bundle_item_variant.product.title }}{% if qty > 1 %}s{% endif %}
+                            {% if bundle_item_variant.title != "Default Title" %}
+                                ({{ bundle_item_variant.title }})
+                            {% endif %}
+					</span>
+
+                        {% unless forloop.last %}
+                            <span> {% if forloop.rindex0 == 1 %}and {% else %}, {% endif %}</span>
+                        {% endunless %}
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+        {% endif %}
+    </div>
+
+    <quantity-adjuster
+        :index="{{ line.index }}"
+        :value="{{ line.quantity }}"
+        :inventoryPolicy="{{ line.variant.inventory_policy }}"
+        :max="{{ line.variant.inventory_quantity }}"
+    ></quantity-adjuster>
+
+    <div class="cart-pricing cart-pricing--row">
+        {% if line.variant.compare_at_price > line.variant.price %}
+            <p class="cart-pricing__price cart-pricing__price--original">
+                {{ line.variant.compare_at_price | times: line.quantity | money_without_trailing_zeros }}
+            </p>
+        {% endif %}
+
+        <p
+            class="cart-pricing__price{% if line.variant.compare_at_price > line.variant.price %} text-red{% endif %}"
+        >
+            {% if line.final_line_price > 0 %}
+                {{ line.final_line_price | money_without_trailing_zeros }}
+            {% else %}
+                FREE
+            {% endif %}
+        </p>
+    </div>
+</template>
+
+<cart-engine></cart-engine>

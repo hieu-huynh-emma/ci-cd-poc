@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "layout": "theme.performance",
   "sections": {
@@ -26,7 +35,7 @@
           "settings": {
             "image": "shopify:\/\/shop_images\/percentage-1649211670035.png",
             "heading": "0% APR (over 12 months)",
-            "subheading": "No secrets, no surprises."
+            "subheading": "If eligible"
           }
         },
         "89abdc33-46d4-4fd6-8dc5-66a292c65728": {
@@ -43,8 +52,7 @@
         "a49e95fd-feb4-4672-b07b-605226a5122a",
         "89abdc33-46d4-4fd6-8dc5-66a292c65728"
       ],
-      "settings": {
-      }
+      "settings": {}
     },
     "financing-affirm-guide": {
       "type": "financing-affirm-guide",
@@ -66,7 +74,7 @@
         "775b23d4-ff87-4957-8f8e-caab7ad7b86d": {
           "type": "affirm-how-to",
           "settings": {
-            "heading": "3. Sleep With Your New Emma Original Mattress!",
+            "heading": "3. Sleep With Your New Emma Original Lite!",
             "subheading": "Once your checkout is completed with Affirm, your order will be shipped right to your door!"
           }
         }
@@ -79,7 +87,7 @@
       "settings": {
         "title": "Shop with Affirm in 3 Easy Steps!",
         "note": "Note that financing is not available on orders using other promotions, including discounts or free item offers. To access Affirm during an active promotional period, please remove the automated promo code in your order summary and proceed by selecting Affirm on the Payment screen.",
-        "link": "shopify:\/\/products\/emma-original-mattress"
+        "link": "shopify:\/\/products\/emma-original-lite-a"
       }
     },
     "financing-options": {
@@ -151,7 +159,7 @@
         "74b59900-4238-4280-b627-e7d028c7b8ad": {
           "type": "question-answer",
           "settings": {
-            "question": "What happens if I decide to return my mattress within the 365-night trial?",
+            "question": "What happens if I decide to return my mattress within the 100-night trial?",
             "answer": "<p>Purchases made using Affirm are subject to Emma's <a href=\"https:\/\/emma-sleep.ca\/pages\/200-day-trial\" target=\"_self\">trial and return policy.<\/a> Any returns will be processed by Emma, and your Affirm loan balance will be reduced or canceled accordingly. If you have already made monthly payments, it will be refunded to you by Affirm.<\/p>"
           }
         }
@@ -174,9 +182,9 @@
     "financing-footer": {
       "type": "financing-footer",
       "settings": {
-        "title": "Shop the Emma Original Mattress with Affirm today!",
+        "title": "Shop the Emma Original Lite with Affirm today!",
         "background_image": "shopify:\/\/shop_images\/emma-diamond-mattress-1654760061.jpg",
-        "link": "shopify:\/\/products\/emma-original-mattress"
+        "link": "shopify:\/\/products\/emma-original-lite-a"
       }
     }
   },

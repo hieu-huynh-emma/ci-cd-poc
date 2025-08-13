@@ -125,7 +125,7 @@ let CompetitorComparison = {
     } else {
       $("#competitor-buy-btn").attr(
         "href",
-        "/products/emma-hybrid-comfort"
+        "/products/emma-original-a"
       );
     }
   },

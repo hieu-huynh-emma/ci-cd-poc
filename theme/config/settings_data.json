@@ -1,12 +1,21 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "current": {
-    "colors_solid_button_labels": "#FFFFFF",
+    "colors_solid_button_labels": "#ffffff",
     "colors_accent_1": "#121212",
     "gradient_accent_1": "",
     "colors_accent_2": "#334fb4",
     "colors_text": "#121212",
     "colors_outline_button_labels": "#121212",
-    "colors_background_1": "#FFFFFF",
+    "colors_background_1": "#ffffff",
     "colors_background_2": "#f3f3f3",
     "color_drawer_text": "#3c4196",
     "color_drawer_border": "#ffffff",
@@ -14,23 +23,23 @@
     "color_drawer_button_text": "#3c4196",
     "type_header_font": "assistant_n4",
     "type_body_font": "assistant_n4",
-    "sale_timer": "2024-07-15 06:00",
-    "page_width": "1600",
-    "availability_schedule": "Available from 08:00 to 18:00 GMT-6, Monday-Friday",
-    "favicon": "shopify:\/\/shop_images\/MicrosoftTeams-image_3.png",
+    "favicon": "shopify://shop_images/MicrosoftTeams-image_3.png",
     "currency_code_enabled": false,
+    "theme_mode": "light",
+    "sale_timer": "2025-08-14 21:59",
+    "page_width": "1440",
+    "availability_schedule": "From 10AM to 8PM EST, Monday - Friday",
     "show_vendor": false,
     "show_cart_note": false,
     "cart_drawer_collection": "",
-    "checkout_logo_image": "shopify:\/\/shop_images\/Emma_Logo_Blue.png",
+    "checkout_logo_image": "shopify://shop_images/Emma_Logo_Blue.png",
     "checkout_sidebar_background_color": "#fff7ed",
     "checkout_accent_color": "#334fb4",
     "checkout_button_color": "#ff8900",
     "sections": {
       "home-countdown": {
         "type": "home-countdown",
-        "settings": {
-        }
+        "settings": {}
       },
       "checkout-shop-awards": {
         "type": "checkout-shop-awards",
@@ -38,25 +47,25 @@
           "49091865-221d-4b00-80c4-0e5331f38d9c": {
             "type": "award",
             "settings": {
-              "icon": "shopify:\/\/shop_images\/award-1.png"
+              "icon": "shopify://shop_images/award-1.png"
             }
           },
           "e323fff3-43c6-4b2d-8be5-abe637d170c8": {
             "type": "award",
             "settings": {
-              "icon": "shopify:\/\/shop_images\/award-5.png"
+              "icon": "shopify://shop_images/award-5.png"
             }
           },
           "546896c2-266c-4b09-a0d1-2092e9781ec4": {
             "type": "award",
             "settings": {
-              "icon": "shopify:\/\/shop_images\/award-3.png"
+              "icon": "shopify://shop_images/award-3.png"
             }
           },
           "0a546486-1c9f-422f-892e-40d5034dc348": {
             "type": "award",
             "settings": {
-              "icon": "shopify:\/\/shop_images\/award-4.png"
+              "icon": "shopify://shop_images/award-4.png"
             }
           }
         },
@@ -66,8 +75,7 @@
           "546896c2-266c-4b09-a0d1-2092e9781ec4",
           "0a546486-1c9f-422f-892e-40d5034dc348"
         ],
-        "settings": {
-        }
+        "settings": {}
       },
       "checkout-banner": {
         "type": "checkout-banner",
@@ -77,42 +85,40 @@
       },
       "cart-drawer-header": {
         "type": "cart-drawer-header",
-        "settings": {
-        }
+        "settings": {}
       },
       "cart-drawer-empty": {
         "type": "cart-drawer-empty",
         "settings": {
-          "core-product": "emma-hybrid-premium",
+          "core-product": "emma-performance-mattress-a",
           "suggestion-catalog": [
             "emma-mattress-protector",
             "emma-bed-frame"
           ],
-          "picture": "shopify:\/\/shop_images\/Group_34574.png",
-          "finance-tagline": "<p>As low as $450\/mo or 0% APR. <a href=\"\/products\/emma-original-mattress\" title=\"Emma Original Mattress\">Learn more<\/a><\/p>"
+          "picture": "shopify://shop_images/Group_34574.png",
+          "finance-tagline": "<p>As low as $450/mo or 0% APR. <a href=\"/products/emma-original-mattress\" title=\"Emma Original Lite\">Learn more</a></p>"
         }
       },
       "cart-customer-support": {
         "type": "cart-customer-support",
         "settings": {
-          "support-avatar": "shopify:\/\/shop_images\/checkout-support-avatar.png"
+          "support-avatar": "shopify://shop_images/checkout-support-avatar.png"
         }
       },
       "cart-drawer-summary": {
         "type": "cart-drawer-summary",
         "settings": {
-          "finance-tagline": "<p>As low as $450\/mo or 0% APR. <a href=\"\/products\/emma-original-mattress\" title=\"Emma Original Mattress\">Learn more<\/a><\/p>"
+          "finance-tagline": "<p>As low as $450/mo or 0% APR. <a href=\"/products/emma-original-mattress\" title=\"Emma Original Lite\">Learn more</a></p>"
         }
       },
       "cart-drawer-items": {
         "type": "cart-drawer-items",
-        "settings": {
-        }
+        "settings": {}
       },
-      "cart-drawer-upsell": {
-        "type": "cart-drawer-upsell",
+      "cart-recommendation": {
+        "type": "cart-recommendation",
         "settings": {
-          "title": ""
+          "collection": "accessory-recommendation"
         }
       },
       "checkout-countdown": {
@@ -136,56 +142,56 @@
           "6092a113-71a4-4302-bd21-164ebecdc9b7": {
             "type": "provider",
             "settings": {
-              "icon": "shopify:\/\/shop_images\/paypal_payment_provider.svg",
+              "icon": "shopify://shop_images/paypal_payment_provider.svg",
               "borderless": false
             }
           },
           "bd55a577-577c-4430-a6e1-4ee199a88a4c": {
             "type": "provider",
             "settings": {
-              "icon": "shopify:\/\/shop_images\/visa_payment_provider.svg",
+              "icon": "shopify://shop_images/visa_payment_provider.svg",
               "borderless": false
             }
           },
           "11d0ead4-7330-4a7e-9132-08d75b3cc8e0": {
             "type": "provider",
             "settings": {
-              "icon": "shopify:\/\/shop_images\/master-cart_payment_provider.svg",
+              "icon": "shopify://shop_images/master-cart_payment_provider.svg",
               "borderless": false
             }
           },
           "068a030e-2f91-4102-8a0d-43482ba3f812": {
             "type": "provider",
             "settings": {
-              "icon": "shopify:\/\/shop_images\/american_express.svg",
+              "icon": "shopify://shop_images/american_express.svg",
               "borderless": true
             }
           },
           "208a3390-fe5c-4b25-bd49-43033b0255bc": {
             "type": "provider",
             "settings": {
-              "icon": "shopify:\/\/shop_images\/discover-payment-method.svg",
+              "icon": "shopify://shop_images/discover-payment-method.svg",
               "borderless": true
             }
           },
           "8b290717-ffcc-44d2-b3b7-8d9aa9fd218c": {
             "type": "provider",
             "settings": {
-              "icon": "shopify:\/\/shop_images\/apple_pay.svg",
+              "icon": "shopify://shop_images/apple_pay.svg",
               "borderless": true
             }
           },
           "67fd2118-07c0-4e9f-9add-ac3345f71ab7": {
             "type": "provider",
             "settings": {
-              "icon": "shopify:\/\/shop_images\/pay_google.svg",
+              "icon": "shopify://shop_images/pay_google.svg",
               "borderless": false
             }
           },
           "886ff182-7e7c-4c45-838d-95b282141dda": {
             "type": "provider",
             "settings": {
-              "icon": "shopify:\/\/shop_images\/shop-pay.svg",
+              "icon": "shopify://shop_images/shop-pay.svg",
               "borderless": true
             }
           }
@@ -200,9 +206,7 @@
           "67fd2118-07c0-4e9f-9add-ac3345f71ab7",
           "886ff182-7e7c-4c45-838d-95b282141dda"
         ],
-        "custom_css": [
-
-        ],
+        "custom_css": [],
         "settings": {
           "show_shopify_payment_methods": false,
           "show_custom_payment_methods": true
@@ -228,7 +232,7 @@
           "53b852a7-1b73-4ffa-9db9-94dddffff479": {
             "type": "column",
             "settings": {
-              "icon": "shopify:\/\/shop_images\/freeshipping.svg",
+              "icon": "shopify://shop_images/freeshipping.svg",
               "title": "Free Delivery and Returns",
               "content": "Get your dream mattress delivered for free and return it stress-free if needed."
             }
@@ -236,7 +240,7 @@
           "9a7b56b3-fd2b-4fa7-9092-d316a3cd8b49": {
             "type": "column",
             "settings": {
-              "icon": "shopify:\/\/shop_images\/sleep.svg",
+              "icon": "shopify://shop_images/sleep.svg",
               "title": "365 Free Night Trial",
               "content": "Sleep easy for a whole year with our 365-night trial"
             }
@@ -244,7 +248,7 @@
           "6497f932-3871-433b-9082-9c23ce2ecbe4": {
             "type": "column",
             "settings": {
-              "icon": "shopify:\/\/shop_images\/Guarantee.svg",
+              "icon": "shopify://shop_images/Guarantee.svg",
               "title": "10 Year Guarantee",
               "content": "Rest easy knowing your mattress is backed by our decade-long guarantee"
             }
@@ -252,8 +256,8 @@
           "05450ae4-3784-488c-a842-cf11c90a9715": {
             "type": "column",
             "settings": {
-              "icon": "shopify:\/\/shop_images\/MicrosoftTeams-image_12.png",
-              "title": "0% APR Financing",
+              "icon": "shopify://shop_images/MicrosoftTeams-image_12.png",
+              "title": "0% APR Financing*",
               "content": "Make your dream mattress affordable with 0% APR financing."
             }
           }
@@ -281,14 +285,9 @@
       },
       "promotional-banner": {
         "type": "promotional-banner",
-        "custom_css": [
-          "#promotional-banner-section {background-color: white;}",
-          "div p {color: #000000 !important;}",
-          ".promotional-banner {padding: 10px 0 0 0;}"
-        ],
         "settings": {
-          "lead_icon": "shopify:\/\/shop_images\/Star_filled.png",
-          "heading": "<p><strong>75,000+ <\/strong> 5-star reviews worldwide<\/p>"
+          "heading": "<p><strong>75,000+ </strong> 5-star reviews worldwide</p>",
+          "lead_icon": "shopify://shop_images/Star_filled.png"
         }
       },
       "featured-products": {
@@ -297,14 +296,14 @@
           "6932dc84-6355-4996-97d4-73ced35bf132": {
             "type": "product-block",
             "settings": {
-              "product": "emma-original-mattress",
+              "product": "emma-original-lite-a",
               "show_star_rating": true,
               "color": "#3c4196",
               "primary_badge": "COMFORT",
               "secondary_badge": "BEST VALUE",
-              "image": "shopify:\/\/shop_images\/layer1.png",
+              "image": "shopify://shop_images/layer1.png",
               "product_title": "Emma Original",
-              "desc": "<p><strong>Our Most Awarded Memory Foam  Mattress for Budget-Conscious Sleepers<\/strong><\/p><p><strong>Comfort<\/strong><\/p><p><strong>Comfort<\/strong><\/p><p><strong>Comfort<\/strong><\/p>",
+              "desc": "<p><strong>Our Most Awarded Memory Foam  Mattress for Budget-Conscious Sleepers</strong></p><p><strong>Comfort</strong></p><p><strong>Comfort</strong></p><p><strong>Comfort</strong></p>",
               "discount_title": "",
               "comfort_meter": 6,
               "cooling_meter": 4,
@@ -319,9 +318,9 @@
               "color": "#3c4196",
               "primary_badge": "SUPPORT",
               "secondary_badge": "BEST SELLER",
-              "image": "shopify:\/\/shop_images\/layer2.png",
+              "image": "shopify://shop_images/layer2.png",
               "product_title": "Emma CliMax Hybrid",
-              "desc": "<p><strong>Our Top-Rated Plush Hybrid Mattress for Hot & Heavy Sleepers<\/strong><\/p><p><strong>Comfort<\/strong><\/p><p><strong>Comfort<\/strong><\/p><p><strong>Comfort<\/strong><\/p>",
+              "desc": "<p><strong>Our Top-Rated Plush Hybrid Mattress for Hot & Heavy Sleepers</strong></p><p><strong>Comfort</strong></p><p><strong>Comfort</strong></p><p><strong>Comfort</strong></p>",
               "discount_title": "",
               "comfort_meter": 7,
               "cooling_meter": 6,
@@ -336,9 +335,9 @@
               "color": "#3c4196",
               "primary_badge": "NEW",
               "secondary_badge": "PREMIUM CHOICE",
-              "image": "shopify:\/\/shop_images\/Shift_13-inch_Orange_Titanium.png",
+              "image": "shopify://shop_images/Shift_13-inch_Orange_Titanium.png",
               "product_title": "Emma Shift Mattress",
-              "desc": "<p><strong>Our Newest Mattress, Offering Personalized Comfort for Every Type of Sleeper<\/strong><\/p><p><strong>Comfort<\/strong><\/p><p><strong>Comfort<\/strong><\/p><p><strong>Comfort<\/strong><\/p>",
+              "desc": "<p><strong>Our Newest Mattress, Offering Personalized Comfort for Every Type of Sleeper</strong></p><p><strong>Comfort</strong></p><p><strong>Comfort</strong></p><p><strong>Comfort</strong></p>",
               "discount_title": "",
               "comfort_meter": 8,
               "cooling_meter": 8,
@@ -370,8 +369,8 @@
           "f453be21-cc45-4ba7-a5dd-ca214a8ec604": {
             "type": "product-block",
             "settings": {
-              "product": "emma-original-mattress",
-              "image": "shopify:\/\/shop_images\/layer1.png",
+              "product": "emma-original-lite-a",
+              "image": "shopify://shop_images/layer1.png",
               "desc": "Globally-Awarded Memory Foam Mattress for Budget-Conscious Sleepers"
             }
           },
@@ -379,7 +378,7 @@
             "type": "product-block",
             "settings": {
               "product": "emma-climax-hybrid",
-              "image": "shopify:\/\/shop_images\/layer2.png",
+              "image": "shopify://shop_images/layer2.png",
               "desc": "Top-Rated Plush Hybrid Mattress for Hot & Heavy Sleepers"
             }
           },
@@ -387,7 +386,7 @@
             "type": "product-block",
             "settings": {
               "product": "emma-shift",
-              "image": "shopify:\/\/shop_images\/Shift_13-inch_Orange_Titanium.png",
+              "image": "shopify://shop_images/Shift_13-inch_Orange_Titanium.png",
               "desc": "Our Newest Mattress for Sleepers Who Want Adjustable Comfort"
             }
           }
@@ -404,46 +403,39 @@
       "splash-screen": {
         "type": "splash-screen",
         "settings": {
-          "animated_media": "shopify:\/\/shop_images\/splash-screen.gif"
+          "animated_media": "shopify://shop_images/splash-screen.gif"
         }
       }
     },
-    "content_for_index": [
-
-    ],
+    "content_for_index": [],
     "blocks": {
       "7570552984445421165": {
-        "type": "shopify:\/\/apps\/yotpo-product-reviews-photos\/blocks\/settings\/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
+        "type": "shopify://apps/yotpo-product-reviews-photos/blocks/settings/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
         "disabled": false,
-        "settings": {
-        }
+        "settings": {}
       },
       "855628211100114053": {
-        "type": "shopify:\/\/apps\/klaviyo-email-marketing-sms\/blocks\/klaviyo-onsite-embed\/2632fe16-c075-4321-a88b-50b567f42507",
+        "type": "shopify://apps/klaviyo-email-marketing-sms/blocks/klaviyo-onsite-embed/2632fe16-c075-4321-a88b-50b567f42507",
         "disabled": false,
-        "settings": {
-        }
+        "settings": {}
       },
       "12657775114333427046": {
-        "type": "shopify:\/\/apps\/essential-countdown\/blocks\/app_embed\/722378e8-5a70-4eae-aa89-9e44e8e9f6de",
+        "type": "shopify://apps/essential-countdown/blocks/app_embed/722378e8-5a70-4eae-aa89-9e44e8e9f6de",
         "disabled": false,
-        "settings": {
-        }
+        "settings": {}
       },
       "6987625696575125306": {
-        "type": "shopify:\/\/apps\/weglot-translate-your-store\/blocks\/weglot\/3097482a-fafe-42ff-bc33-ea19e35c4a20",
+        "type": "shopify://apps/weglot-translate-your-store/blocks/weglot/3097482a-fafe-42ff-bc33-ea19e35c4a20",
         "disabled": false,
-        "settings": {
-        }
+        "settings": {}
       },
       "17985673643287205206": {
-        "type": "shopify:\/\/apps\/estimated-delivery-date-plus\/blocks\/app_setting\/4a0685bc-c234-45b2-8382-5ad6a8e3e3fd",
+        "type": "shopify://apps/estimated-delivery-date-plus/blocks/app_setting/4a0685bc-c234-45b2-8382-5ad6a8e3e3fd",
         "disabled": false,
-        "settings": {
-        }
+        "settings": {}
       },
       "15683396631634586217": {
-        "type": "shopify:\/\/apps\/inbox\/blocks\/chat\/841fc607-4181-4ad1-842d-e24d7f8bad6b",
+        "type": "shopify://apps/inbox/blocks/chat/841fc607-4181-4ad1-842d-e24d7f8bad6b",
         "disabled": true,
         "settings": {
           "button_color": "#3c4196",
@@ -455,23 +447,32 @@
         }
       },
       "16278478101612877664": {
-        "type": "shopify:\/\/apps\/pagefly-page-builder\/blocks\/app-embed\/83e179f7-59a0-4589-8c66-c0dddf959200",
+        "type": "shopify://apps/pagefly-page-builder/blocks/app-embed/83e179f7-59a0-4589-8c66-c0dddf959200",
         "disabled": true,
-        "settings": {
-        }
+        "settings": {}
       },
       "14339172867238703359": {
-        "type": "shopify:\/\/apps\/yotpo-product-photo-reviews\/blocks\/reviews_tab\/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
+        "type": "shopify://apps/yotpo-product-photo-reviews/blocks/reviews_tab/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
         "disabled": true,
         "settings": {
           "product": ""
         }
       },
+      "11212335281082087862": {
+        "type": "shopify://apps/sk-form-builder/blocks/app/f3e35b58-5874-4ef2-8e03-c92cda6e49eb",
+        "disabled": false,
+        "settings": {}
+      },
       "13642770171112532620": {
-        "type": "shopify:\/\/apps\/ab-tasty\/blocks\/abtasty-tag\/50439cd8-89e0-4240-838a-2948c07c763d",
+        "type": "shopify://apps/ab-tasty/blocks/abtasty-tag/50439cd8-89e0-4240-838a-2948c07c763d",
         "disabled": false,
         "settings": {
-          "abtasty_identifier": "b98579b87d8565047076037f703e1727"
+          "abtasty_identifier": "b98579b87d8565047076037f703e1727",
+          "abtasty_flagship_enabled": false,
+          "abtasty_flagship_environment_id": "",
+          "abtasty_flagship_visitor_id_storage_method": "localStorage",
+          "abtasty_sync_tag": false,
+          "abtasty_should_handle_subdomain": false
         }
       }
     }
@@ -499,5 +500,10 @@
       "type_header_font": "americana_n4",
       "type_body_font": "quattrocento_sans_n4"
     }
+  },
+  "platform_customizations": {
+    "custom_css": [
+      "cssa[href*=\"clearance\"],.header__menu-item:contains(\"clearance\"),nav a:contains(\"clearance\") {color: red !important;}"
+    ]
   }
 }

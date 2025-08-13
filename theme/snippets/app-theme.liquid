@@ -57,7 +57,15 @@ settings.colors_accent_2 }}{% endif %};
         --color_drawer_background: {{ settings.color_drawer_background }};
         --color_drawer_border: {{ settings.color_drawer_border }};
         --color_drawer_button: {{ settings.color_drawer_button }};
-        --color_drawer_button_text: {{ settings.color_drawer_button_text }}
+        --color_drawer_button_text: {{ settings.color_drawer_button_text }};
+    }
+
+    body > main {
+        min-height: calc(100vh - 40vh);
+    }
+
+    html, body {
+        scroll-behavior: smooth;
     }
 </style>
 
@@ -65,6 +73,10 @@ settings.colors_accent_2 }}{% endif %};
 {%- comment -%}
    ================= Global Styles =================
 {%- endcomment -%}
+
+
+{% render 'theme-mode' %}
+
 
 <link rel="stylesheet" href="{{ 'base.css' | asset_url }}">
 <link rel="stylesheet" href="{{ 'global.css' | asset_url }}">
@@ -88,11 +100,14 @@ settings.colors_accent_2 }}{% endif %};
     }
 </style>
 <link id="vendor-custom-styles" rel="quickscript" loading="delayed" href="{{ 'vendors.css' | asset_url }}">
-<link rel="quickscript" loading="delayed" href="{{ 'section-layout.css' | asset_url }}">
-<link rel="quickscript" loading="delayed" href="{{ 'catalog-layout.css' | asset_url }}">
+<link rel="stylesheet" href="{{ 'section-layout.css' | asset_url }}">
+<link rel="quickscript" loading="delayed" href="{{ 'content-layout.css' | asset_url }}">
+<link rel="stylesheet" href="{{ 'catalog-layout.css' | asset_url }}">
 <link rel="quickscript" loading="delayed" href="{{ 'weglot_lang_switcher.css' | asset_url }}">
 <link rel="quickscript" loading="delayed" href="{{ 'splide.custom.css' | asset_url }}">
 <link rel="quickscript" loading="delayed" href="{{ 'star-rating.css' | asset_url }}">
+<link rel="quickscript" loading="delayed" href="{{ 'fancybox.custom.css' | asset_url }}">
+<link rel="stylesheet" href="{{ 'loading-overlay.css' | asset_url }}">
 
 
 {% comment %}<link rel="stylesheet" href="{{ 'tailwind.css' | asset_url }}">{% endcomment %}
@@ -115,32 +130,137 @@ settings.colors_accent_2 }}{% endif %};
         position: relative;
     }
 
-    .tracked-button--link a {
+    tracked-button > a {
         position: absolute;
         inset: 0;
         opacity: 0;
     }
 
-    .tracked-button--overlay {
+    @media screen and (min-width: 769px) {
+        #fc_frame, #fc_frame.fc-widget-normal {
+            z-index: 101 !important;
+        }
+    }
+
+    hero-banner-countdown-timer {
+        max-width: 352px;
+
+        .countdown-timer {
+            display: grid;
+            gap: 4px;
+            grid-auto-flow: column;
+            grid-auto-columns: minmax(0, 1fr);
+            align-items: center;
+            justify-content: flex-start;
+            width: 100%;
+
+            .time-part {
+                display: grid;
+                justify-content: center;
+                padding: 2px 4px;
+                background-color: #fff;
+                border-radius: 4px;
+                text-align: center;
+                @media screen and (min-width: 768px) {
+                    width: 69px;
+                    padding: 4px
+                }
+
+                .digit {
+                    font-size: 16px;
+                    font-weight: 600;
+                    letter-spacing: 0;
+                    line-height: 125%;
+                    @media screen and (min-width: 768px) {
+                        font-size: 32px
+                    }
+                }
+
+                .label {
+                    font-weight: 400;
+                    font-size: .75rem;
+                    letter-spacing: 0;
+                    line-height: 1rem;
+                    @media screen and (min-width: 768px) {
+                        font-size: 12px
+                    }
+                }
+            }
+        }
+    }
+
+    payment-providers {
+        display: grid;
+        gap: .5rem;
+        grid-template-columns: repeat(auto-fit, minmax(0, 40px));
+        align-items: center;
+        justify-items: center;
+        width: 100%;
+    }
+
+    *:has(loading-overlay), *:has(loader-element) {
+        position: relative;
+    }
+
+    loader-element:not([\:type]) {
         position: absolute;
         inset: 0;
-        opacity: 0;
+        z-index: 3;
+
+        animation: skeleton-loading 1s linear infinite alternate;
     }
 
-    #fc_frame, #fc_frame.fc-widget-normal {
-        z-index: 101 !important;
+    loader-element[\:type="spinner"] {
+        position: absolute;
+        inset: 0;
+        z-index: 3;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
+    loader-element[\:type="spinner"] .spinner-overlay {
+        position: absolute;
+        inset: 0;
 
+        background-color: white;
+        opacity: 0.8;
+    }
+
+    loader-element[\:type="spinner"] .spinner {
+        animation: rotator 1.4s linear infinite;
+
+        circle {
+            stroke-dasharray: 280;
+            stroke-dashoffset: 0;
+            transform-origin: center;
+            stroke: #000;
+            animation: dash 1.4s ease-in-out infinite;
+        }
+    }
+    multicolumn-section {
+        display: grid;
+        gap: 1rem;
+        width: 100%
+    }
+    
+    @media screen and (min-width: 767px) {
+        multicolumn-section {
+            grid-template-columns:repeat(auto-fit, minmax(150px, 1fr));
+            justify-items: center;
+            justify-content: center
+        }
+    }
 </style>
 
 {% case template %}
     {% when 'index' %}
-        <link rel="stylesheet" href="{{ 'hero-banner.css' | asset_url }}">
         <link rel="quickscript" loading="delayed" href="{{ 'product-card.css' | asset_url }}">
     {% else %}
         <link rel="stylesheet" href="{{ 'product-card.css' | asset_url }}">
 {% endcase %}
 
 
-<link rel="quickscript" loading="delayed" href="{{ 'rtf-viewer.css' | asset_url }}">
+<link rel="quickscript" loading="delayed" href="{{ 'rich-text.css' | asset_url }}">
+<link rel="quickscript" loading="delayed" href="{{ 'animations.css' | asset_url }}">

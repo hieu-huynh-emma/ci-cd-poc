@@ -211,15 +211,18 @@ class NavSidebar extends CustomElement {
                   class="site-subnav__link"
                   ${childlink.active ? `aria-current="page"` : ""}
                   tabindex="-1"
+                  abtasty-tracker="PDP_CTR"
                 >
                  <p class="subnav-container__badge">${childlink.promotionCapsule}</p>
                   <div class="sub-item-content">
                      <div class="title_dis">
-                      <p class="font-semibold font-inter">
-                        ${i18nTitle}
-                      </p>
-                 ${childlink.subnavHtmlContent} 
-                   </div>
+                        <p class="font-semibold font-inter">
+                          ${i18nTitle}
+                        </p>
+                        <div class="weglot-tr">
+                          ${childlink.subnavHtmlContent} 
+                        </div>
+                     </div>
               <img src="${childlink.submenuThumbImage}&transform=resize=600" class="spotlight__image w-full h-full object-contain" loading="lazy" />
                   </div>
                 </a>
@@ -310,7 +313,7 @@ class NavSpotlight extends CustomElement {
     return `
       <div class="spotlight-media bg-wild-sand">
         ${badgeText ? `<p class="spotlight__badge absolute top-5 left-4 text-[13px]">${i18nBadge}</p>` : ""}
-        <a href="${url}" class="spotlight__link">
+        <a href="${url}" class="spotlight__link" abtasty-tracker="PDP_CTR">
           <img src="${imageUrl}" class="spotlight__image w-full h-full rounded-lg object-cover" loading="lazy" />
         </a>
       </div>
@@ -329,7 +332,7 @@ class NavSpotlight extends CustomElement {
 
   async refresh({ name, price, url, originalPrice, featuredImage, accentuate }) {
     const isShowFreeBundle = $("#nav-show-free-bundle").val()
-    const useABTestImg = url === "/products/emma-hybrid-comfort" && !!isShowFreeBundle;
+    const useABTestImg = url === "/products/emma-original-a" && !!isShowFreeBundle;
 
     this.data.name = name;
     this.data.price = currencyFormatter.format(price / 100);

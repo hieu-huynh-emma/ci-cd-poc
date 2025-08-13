@@ -1,44 +1,17 @@
-class CartIconBubble extends CustomButton {
-    async setupTooltips() {
-        await ResourceCoordinator.requestVendor('Tippy');
-
-        tippy('cart-icon-bubble', {
-            content: "Loading... Please Wait",
-            onShow(instance) {
-                const $el = $(instance.reference)
-
-                return !!$el.hasClass('is-loading')
-            },
-        });
-    }
-
-    mounted() {
-        super.mounted();
-
-        $(window).on("complete", this.setupTooltips)
-    }
-
-    onLoad(isLoading) {
-        super.onLoad(isLoading);
-
-        this.disabled = !!isLoading
-    }
-
-    onDisabledChange(isDisabled) {
-        this.$el[!!isDisabled ? 'addClass' : 'removeClass']('is-disabled')
-    }
+class CartScrollableContent extends CustomElement {
 }
 
-customElements.define('cart-icon-bubble', CartIconBubble);
+customElements.define("cart-scrollable-content", CartScrollableContent);
+
 
 class CartSurface extends CustomElement {
 
-    isInitialized
+    isLoaded = false;
 
     resources = {
-        stylesheets: ['cart-drawer.css'],
-        scripts: ['cart.js', 'cart-drawer.js', 'cart-item.js', 'cart-upsell.js', 'quantity-adjuster.js', 'variant-selector.js']
-    }
+        stylesheets: ["cart-drawer.css", "cart-recommendation.css"],
+        scripts: ["cart-item.js", "quantity-adjuster.js", "cart-drawer.js"],
+    };
 
     constructor() {
         super();
@@ -49,12 +22,12 @@ class CartSurface extends CustomElement {
 
         this.querySelector("#CartDrawer-Overlay").addEventListener(
             "click",
-            this.close.bind(this)
+            this.close.bind(this),
         );
 
         this.addEventListener(
             "keyup",
-            (evt) => evt.code === "Escape" && this.close()
+            (evt) => evt.code === "Escape" && this.close(),
         );
 
         this.setCartIconBubbleAccessibility();
@@ -63,12 +36,12 @@ class CartSurface extends CustomElement {
 
     get refs() {
         return {
-            cartIconBubble: document.getElementById('cart-icon-bubble'),
-            closeIcon: document.getElementById('CartDrawer-Close'),
-            cartSkeleton: document.getElementById('CartDrawer-Skeleton'),
-            cartMarkup: document.getElementById('CartDrawer-Markup'),
-            cartDrawer: document.getElementById('CartDrawer')
-        }
+            cartIconBubble: document.getElementById("cart-icon-bubble"),
+            closeIcon: document.getElementById("CartDrawer-Close"),
+            cartSkeleton: document.getElementById("CartDrawer-Skeleton"),
+            cartMarkup: document.getElementById("CartDrawer-Markup"),
+            cartDrawer: document.getElementById("CartDrawer"),
+        };
     }
 
     async open(triggeredBy) {
@@ -88,7 +61,7 @@ class CartSurface extends CustomElement {
                     this.querySelector("#CartDrawer") || this.querySelector("#CartDrawer-Close");
                 trapFocus(containerToTrapFocusOn, focusElement);
             },
-            {once: true}
+            { once: true },
         );
 
         document.body.classList.add("no-scroll");
@@ -104,92 +77,76 @@ class CartSurface extends CustomElement {
     }
 
     async prepare() {
-        this.loading = true
-        const isLoaded = (typeof CartDrawer === 'function');
+        this.loading = true;
 
-        if (!isLoaded) {
-            await ResourceCoordinator.requestVendor('Toastr');
-
+        if (!this.isLoaded) {
+            // await ResourceCoordinator.requestVendor('Toastr');
             await this.loadCartDrawer();
+            this.isLoaded = true;
         }
 
-        this.loading = false
+        this.loading = false;
     }
 
     async loadCartDrawer() {
-        await ResourceCoordinator.requestVendor("Swiper")
+        await this.loadStyleSheets();
 
-        await this.loadStyleSheets()
-
-        const result = await fetch(window.location.pathname + "?sections=" + this.getSectionsToRender().join(','))
+        const result = await fetch(window.location.pathname + "?sections=" + this.getSectionsToRender().join(","))
             .then(res => res.json());
 
         this.renderContents(result);
 
         await this.loadScripts();
 
-        $("#CartDrawer-Frame .cart-drawer-skeleton").remove()
+        $("#CartDrawer-Frame .cart-drawer-skeleton").remove();
+
+        const loaders = document.querySelectorAll(`cart-drawer-line [slot='pricing'] loader-element`);
+
+        loaders.forEach(loader => loader?.hide?.());
     }
 
     renderContents(parsedState) {
         this.getSectionsToRender().forEach(section => {
             const sectionElement = document.getElementById(section + "-placeholder");
 
-            $(sectionElement).replaceWith(parsedState[section])
-        })
+            $(sectionElement).replaceWith(parsedState[section]);
+        });
     }
 
     getSectionsToRender() {
-        return ["cart-drawer-empty", "cart-drawer-items", "cart-drawer-upsell", "cart-drawer-summary", "cart-customer-support"];
+        return ["cart-drawer-header", "cart-drawer-empty", "cart-drawer-items", "cart-recommendation"];
     }
 
     getCartPartsToRender() {
         return [
             {
-                id: 'shopify-section-cart-drawer-items',
+                id: "shopify-section-cart-drawer-items",
                 section: "cart-drawer-items",
-                selector: "cart-drawer-items"
-            },
-            {
-                id: "shopify-section-cart-drawer-summary",
-                section: "cart-drawer-summary",
-                selector: ".summary-list",
-            },
-
-            {
-                id: "shopify-section-cart-drawer-summary",
-                section: "cart-drawer-summary",
-                selector: "#CartTotals",
-            },
-
-            {
-                id: "cart-icon-bubble",
-                section: "cart-icon-bubble",
-                selector: ".cart-icon-bubble"
+                selector: "cart-drawer-items",
             },
             {
                 id: "shopify-section-cart-drawer-header",
                 section: "cart-drawer-header",
                 selector: ".drawer-title-container",
-            },
-            {
-                id: "shopify-section-cart-drawer-upsell",
-                section: "cart-drawer-upsell"
             }
+            , {
+                id: "shopify-section-cart-recommendation",
+                section: "cart-recommendation",
+            },
         ];
     }
 
 
     async loadStyleSheets() {
-        await Promise.allSettled(this.resources.stylesheets.map(url => $.getStylesheet(Shop.assetUrl + url)))
+        await Promise.allSettled(this.resources.stylesheets.map(url => $.getStylesheet(Shop.assetUrl + url)));
     }
 
     async loadScripts() {
-        await Promise.allSettled(this.resources.scripts.map(url => $.getScript(Shop.assetUrl + url)))
+        await Promise.allSettled(this.resources.scripts.map(url => $.getScript(Shop.assetUrl + url)));
     }
 
     setCartIconBubbleAccessibility() {
-        const {cartIconBubble} = this.refs
+        const { cartIconBubble } = this.refs;
 
         cartIconBubble.addEventListener("click", (event) => {
             event.preventDefault();
@@ -202,15 +159,15 @@ class CartSurface extends CustomElement {
             }
         });
 
-        cartIconBubble.disabled = false
+        cartIconBubble.disabled = false;
     }
 
     setCloseIconAccessibility() {
-        const {closeIcon} = this.refs;
+        const { closeIcon } = this.refs;
 
         closeIcon.addEventListener("click", (event) => {
             event.preventDefault();
-            this.close()
+            this.close();
         });
     }
 
@@ -221,4 +178,4 @@ class CartSurface extends CustomElement {
 
 }
 
-customElements.define('cart-surface', CartSurface);
+customElements.define("cart-surface", CartSurface);

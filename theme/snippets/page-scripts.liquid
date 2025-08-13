@@ -21,35 +21,31 @@
     window.accessibilityStrings = {
         shareSuccess: `{{ 'general.share.success_message' | t }}`,
     }
- 
+
 </script>
 
 
 
 {% if isOptimized == true %}
   <script is="delay-script" url="{{ 'helpers.js' | asset_url }}"></script>
-  
+
   <script is="delay-script" url="{{ 'resource-coordinator.js' | asset_url }}"></script>
   <script is="delay-script" url="{{ 'custom-elements.js' | asset_url }}"></script>
-  <script is="delay-script" url="{{ 'lazy-component.js' | asset_url }}"></script>
+
+
+    <script is="delay-script" url="{{ 'lazy-component.js' | asset_url }}"></script>
   <script is="delay-script" url="{{ 'loading-overlay.js' | asset_url }}"></script>
   <script is="delay-script" url="{{ 'countdown-timer.js' | asset_url }}"></script>
   <script is="delay-script" url="{{ 'star-rating.js' | asset_url }}"></script>
-  <script is="delay-script" url="{{ 'product-card.js' | asset_url }}"></script>
   <script is="delay-script" url="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script>
 
   <script is="delay-script" phase="interactive" url="{{ 'global.js' | asset_url }}"></script>
   <script is="delay-script" phase="interactive" url="{{ 'lazy.min.js' | file_url }}"></script>
 
   <script is="delay-script" phase="interactive" url="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
-  <script is="delay-script" phase="interactive" url="{{ 'main-navigation.js' | asset_url }}"></script>
-  <script is="delay-script" phase="interactive" url="{{ 'site-nav.js' | asset_url }}"></script>
-  <script is="delay-script" phase="interactive" url="{{ 'site-subnav.js' | asset_url }}"></script>
+
   <script is="delay-script" phase="interactive" url="{{ 'custom-tabs.js' | asset_url }}"></script>
-  <script is="delay-script" phase="interactive" url="{{ 'cart-surface.js' | asset_url }}"></script>
-  <script is="delay-script" phase="interactive" url="{{ 'store-localization-surface.js' | asset_url }}"></script>
-  <script is="delay-script" phase="interactive" url="{{ 'cookie-consent-bar.js' | asset_url }}"></script>
- 
+
   <script is="delay-script" url="{{ 'layout-script.js' | asset_url }}"></script>
   <script>
 
@@ -71,7 +67,7 @@
           // redirect user
           window.location.replace('/');
       }
-  
+
   </script>
 
 {% else %}

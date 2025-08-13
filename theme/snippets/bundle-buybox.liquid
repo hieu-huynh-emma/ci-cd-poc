@@ -106,7 +106,7 @@
                   </div>
                   <div class="product-bundle-item__details">
                     <div class="product__name paragraph-14 font-semibold">
-                      <span>{{ bundle_item_variant.product.title }}</span>
+                      <span>{{ bundle_item_variant.product.metafields.accentuate.display_name | default: bundle_item_variant.product.title }}</span>
                     </div>
 
                     <div class="product-bundle-item__description">
@@ -136,7 +136,7 @@
             </div>
             <div class="product-bundle-item__details">
               <div class="product__name paragraph-14 font-semibold">
-                <span>{{ configurable_product.title }}</span>
+                <span>{{ configurable_product.metafields.accentuate.display_name | default: configurable_product.title }}</span>
               </div>
             </div>
           </div>
@@ -158,7 +158,7 @@
       {% render 'product-quantity-selector', orientation: qtySelectorOrientation %}
 
       {% render 'product-price', variant: current_variant, product: product %}
-        <template id="price-transparency-placeholder"></template>
+        <affirm-widget :placement="promotion-badge" :page="product"></affirm-widget>
 
       {% render 'purchase-buttons' %}
     </div>

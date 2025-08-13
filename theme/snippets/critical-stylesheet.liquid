@@ -1,7 +1,6 @@
 <style>
     body {
         margin: 0;
-        background-color: #FFFEFB;
     }
 
     script[type="quickscript"][loading="visibility"], link[rel="quickscript"][loading="visibility"] {
@@ -61,6 +60,8 @@
         inset: 0;
         z-index: 1;
     }
+
+
 
     .hide-until-initialized {
         display: none
@@ -181,7 +182,6 @@
         box-sizing: border-box;
         height: 100%;
         scroll-padding-top: 10rem;
-        color: #2e2f3c
     }
 
     body {
@@ -190,7 +190,6 @@
         font-family: var(--font-body-family);
         font-style: var(--font-body-style);
         font-weight: var(--font-body-weight);
-        color: #2e2f3c;
         overflow-x: hidden
     }
 
@@ -217,7 +216,7 @@
         }
     }
 
-    [hidden] {
+    html body *[hidden] {
         display: none
     }
 
@@ -612,15 +611,5 @@
 
     .line-through {
         text-decoration-line: line-through
-    }
-</style>
-
-
-{% comment %}
-ABTest
-{% endcomment %}
-<style>
-    [abtasty-campaign-id="1296959"]:not([abtasty-campaign-variation="0"]) {
-        display: none;
     }
 </style>

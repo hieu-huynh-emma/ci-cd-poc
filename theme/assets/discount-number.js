@@ -1,8 +1,8 @@
 window.addEventListener('DOMContentLoaded', (event) => {
 
-	document.querySelectorAll('.grid__item').forEach(function(item) {
+	document.querySelectorAll('.grid__item')?.forEach(function(item) {
 		let id = item.querySelector('.card-wrapper').getAttribute('data-id');
-		if(item.querySelector(`#discount_number-${ id}`).getAttribute('data-discount')){
+		if(item.querySelector(`#discount_number-${ id}`)?.getAttribute('data-discount')){
 			let numbers = item.querySelector(`#discount_number-${ id}`).getAttribute('data-discount').split(',').map((item) => {
 				return parseInt(item);
 			}).filter((el) => {

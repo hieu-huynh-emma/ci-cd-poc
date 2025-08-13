@@ -1,16 +1,16 @@
-import { metaobjectMapper, productMapper, variantMapper } from "data-processor";
-import API from "storefront-api";
-import { METAFIELD } from "data-constants";
+import { metaobjectMapper, productMapper, variantMapper } from "./data-processor.js";
+import API from "./storefront-api.js";
+import { METAFIELD } from "./data-constants.js";
 
 export const fetchMetaobjects = (metaobjectIds) => {
-  return allFulfilled(metaobjectIds.map((id) => fetchMetaObject(id)));
+    return allFulfilled(metaobjectIds.map((id) => fetchMetaObject(id)));
 };
 
 export const fetchMetaObject = (gid) => {
-  return API({
-    method: "POST",
-    data: JSON.stringify({
-      query: `query getMetaObject($id: ID!) {
+    return API({
+        method: "POST",
+        data: JSON.stringify({
+            query: `query getMetaObject($id: ID!) {
     metaobject(id: $id) {
         id
         type
@@ -28,23 +28,24 @@ export const fetchMetaObject = (gid) => {
         }
     }
 }`,
-      variables: {
-        id: gid,
-      },
-    }),
-  }).then((res) => metaobjectMapper(res.data.data.metaobject));
+            variables: {
+                id: gid,
+            },
+        }),
+    }).then((res) => metaobjectMapper(res.data.data.metaobject));
 };
 
 export const fetchVariant = (gid) => {
-  const metafildsQuery = composeMetafieldsQuery([
-    METAFIELD.CROSS_SELLING_PRODUCT,
-    METAFIELD.OPTIN_BUNDLE_ITEM,
-  ]);
+    const metafildsQuery = composeMetafieldsQuery([
+        METAFIELD.CROSS_SELLING_PRODUCT,
+        METAFIELD.CONFIGURABLE_ITEM,
+        METAFIELD.FREEBIE_PRODUCT_VARIANT
+    ]);
 
-  return API({
-    method: "POST",
-    data: JSON.stringify({
-      query: `query getVariantById($id: ID!) {
+    return API({
+        method: "POST",
+        data: JSON.stringify({
+            query: `query getVariantById($id: ID!) {
     node(id: $id) {
         ... on ProductVariant {
             id
@@ -106,7 +107,10 @@ export const fetchVariant = (gid) => {
                         { namespace: "accentuate", key: "isolated_image" },
                         { namespace: "accentuate", key: "featured_image" },
                         { namespace: "accentuate", key: "display_name" },
-                        { namespace: "accentuate", key: "track_postfix" }
+                        { namespace: "accentuate", key: "track_postfix" },
+                        { namespace: "accentuate", key: "bundle_quantity" },
+                        { namespace: "accentuate", key: "cross_selling_promotion_badge" },
+                        { namespace: "accentuate", key: "cross_selling_promotion_text" }
                     ]
                 ) {
                     value
@@ -120,25 +124,26 @@ export const fetchVariant = (gid) => {
     }
 }
 `,
-      variables: {
-        id: gid,
-      },
-    }),
-  }).then((res) => variantMapper(res.data.data.node));
+            variables: {
+                id: gid,
+            },
+        }),
+    }).then((res) => variantMapper(res.data.data.node));
 };
 
 export const fetchProduct = (gid) => {
-  const metafildsQuery = composeMetafieldsQuery([
-    METAFIELD.CROSS_SELLING_PRODUCT,
-    "isolated_image",
-    "featured_image",
-    "display_name",
-    "track_postfix",
-  ]);
-  return API({
-    method: "POST",
-    data: JSON.stringify({
-      query: `query getProductById($id: ID!) {
+    const metafildsQuery = composeMetafieldsQuery([
+        METAFIELD.CROSS_SELLING_PRODUCT,
+        "isolated_image",
+        "featured_image",
+        "display_name",
+        "track_postfix",
+        "bundle_quantity"
+    ]);
+    return API({
+        method: "POST",
+        data: JSON.stringify({
+            query: `query getProductById($id: ID!) {
     node(id: $id) {
         ... on Product {
             id
@@ -186,37 +191,46 @@ export const fetchProduct = (gid) => {
     }
 }
 `,
-      variables: {
-        id: gid,
-      },
-    }),
-  }).then((res) => productMapper(res.data.data.node));
+            variables: {
+                id: gid,
+            },
+        }),
+    }).then((res) => productMapper(res.data.data.node));
 };
 
+export const onResponse = async (res) => {
+    const result = res.data;
+
+    if (!!result.errors) {
+        throw result.errors;
+    }
+
+    return result.data;
+};
 
 export const allFulfilled = async (promisedArr) => {
-  const results = await Promise.allSettled(promisedArr);
+    const results = await Promise.allSettled(promisedArr);
 
-  return results.filter((x) => x.status === "fulfilled").map((x) => x.value);
+    return results.filter((x) => x.status === "fulfilled").map((x) => x.value);
 };
 
 export const composeMetafieldsQuery = (metafieldKeys = []) => {
-  const metafields = metafieldKeys.map(key => ({ namespace: "accentuate", key }));
+    const metafields = metafieldKeys.map(key => ({ namespace: "accentuate", key }));
 
-  const formatted = metafields.reduce((r, m, i) => {
-    const isFirst = i === 0,
-      isLast = i === metafields.length - 1;
+    const formatted = metafields.reduce((r, m, i) => {
+        const isFirst = i === 0,
+            isLast = i === metafields.length - 1;
 
-    r += `${isFirst ? "[" : ""}{
+        r += `${isFirst ? "[" : ""}{
     namespace: "${m.namespace}",
     key: "${m.key}"
     }${isLast ? "]" : ","}`;
 
-    return r;
-  }, "");
+        return r;
+    }, "");
 
 
-  return metafields.length ? `
+    return metafields.length ? `
         metafields(
                 identifiers: [${formatted.substring(1, formatted.length - 1)}]
             ) {

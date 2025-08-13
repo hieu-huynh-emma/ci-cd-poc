@@ -1,4 +1,5 @@
 class JointProductEngine extends HTMLElement {
+    initialized = false;
     currProduct = {};
 
     coreProduct = {};
@@ -20,6 +21,8 @@ class JointProductEngine extends HTMLElement {
             this.removeYotpoStarRatingBlock();
             $("#product-layout .skeleton").hide();
         }, 100);
+
+        this.initialized = true;
     }
 
     fetchPDP(targetProduct) {
@@ -46,7 +49,7 @@ class JointProductEngine extends HTMLElement {
     }
 
     findMatchingVariant(currVariantId, targetProduct) {
-        const currVariantIndex = this.currProduct.variants.findIndex(({id: targetId}) => +currVariantId === targetId);
+        const currVariantIndex = this.currProduct.variants.findIndex(({ id: targetId }) => +currVariantId === targetId);
 
         return targetProduct.variants[currVariantIndex];
     }
@@ -109,7 +112,7 @@ class JointProductSelector extends HTMLElement {
     }
 
     updateURL() {
-        const {$variantSelects, engine} = this.refs;
+        const { $variantSelects, engine } = this.refs;
         const product = engine.coreProduct;
         const url = new URL(`${window.location.origin}/products/${product.handle}${window.location.search}`);
 
@@ -135,14 +138,14 @@ class JointProductSelector extends HTMLElement {
     };
 
     async updatePage(productId) {
-        const {engine} = this.refs;
+        const { engine } = this.refs;
 
         if (productId === engine.currProduct.id) return;
 
         $("#product-layout .skeleton").show();
 
-        const selectedProduct = this.data.find(({id: targetId}) => targetId === productId);
-        const selectedIndex = this.data.findIndex(({id: targetId}) => targetId === productId);
+        const selectedProduct = this.data.find(({ id: targetId }) => targetId === productId);
+        const selectedIndex = this.data.findIndex(({ id: targetId }) => targetId === productId);
 
         const pageHtml = await engine.fetchPDP(selectedProduct);
 
@@ -179,7 +182,7 @@ class JointProductSelector extends HTMLElement {
         // Re-updating the variant ID
         $("product-buybox select.select__select")
             .get(0)
-            .dispatchEvent(new Event("change", {bubbles: true}));
+            .dispatchEvent(new Event("change", { bubbles: true }));
 
         $(`input[name="product-id"]`).val(html.querySelector(`input[name="product-id"]`).value);
         $(`input[name="section-id"]`).val(html.querySelector(`input[name="section-id"]`).value);
@@ -187,57 +190,63 @@ class JointProductSelector extends HTMLElement {
 
     refreshSections(html) {
         return Promise.allSettled(
-            this.getSectionsToRender().map((config) => this.loadSection(html, config))
+            this.getSectionsToRender().map((config) => this.loadSection(html, config)),
         );
     }
 
-    loadSection(replacementPage, {sectionId, replaceId, selector, blocks = []}) {
+    loadSection(replacementPage, { sectionId, outletQuery, insertPosition, replaceId, selector, blocks = [] }) {
         return new Promise(async (resolve) => {
             const sectionQuery = `${sectionId ? `[id$='__${sectionId}']` : ""}`,
                 selectorQuery = `${selector ? `${selector}` : ""}`,
-                targetQuery = `${sectionQuery} ${selectorQuery}`
+                targetQuery = `${sectionQuery} ${selectorQuery}`;
+
+            const replacementEl = replacementPage.querySelector(targetQuery);
 
             const $currEl = $(targetQuery);
 
-            if (!$currEl.length) resolve();
+            if (!$currEl.length && !!replacementEl) {
+                const outletEl = document.querySelector(outletQuery);
 
-            $currEl.empty();
+                outletEl?.insertAdjacentHTML(insertPosition, replacementEl.outerHTML);
+                resolve();
+                return;
+            } else {
+                $currEl.empty();
+            }
 
-            const replacementEl = replacementPage.querySelector(targetQuery)
 
             if (!replacementEl) {
                 resolve();
-                return
+                return;
             }
 
             if (selector) {
-                $currEl.replaceWith(this.prepareHtml(replacementEl.outerHTML))
+                $currEl.replaceWith(this.prepareHtml(replacementEl.outerHTML));
             } else {
                 const doc = this.prepareHtml(replacementEl.innerHTML);
-                $currEl.html(doc)
+                $currEl.html(doc);
             }
 
-            await wait(50)
+            await wait(50);
 
             if (!!blocks?.length) {
-                await Promise.allSettled(blocks.map(this.loadBlock.bind(this, {sectionQuery,replacementPage})))
+                await Promise.allSettled(blocks.map(this.loadBlock.bind(this, { sectionQuery, replacementPage })));
             }
 
-            resolve()
+            resolve();
         });
     }
 
 
-    loadBlock({sectionQuery,replacementPage}, {query, outletQuery,blockId, insertPosition}) {
+    loadBlock({ sectionQuery, replacementPage }, { query, outletQuery, blockId, insertPosition }) {
         return new Promise((resolve) => {
             const blockEl = replacementPage.querySelector(query);
-            console.log("=>(joint-product.js:234) blockEl", blockEl);
             if (!blockEl) {
-                resolve()
-                return
+                resolve();
+                return;
             }
 
-            const processedBlock = this.prepareHtml(blockEl.outerHTML)
+            const processedBlock = this.prepareHtml(blockEl.outerHTML);
 
             if (outletQuery) {
                 const outletEl = document.querySelector(`${sectionQuery} ${outletQuery}`);
@@ -252,9 +261,9 @@ class JointProductSelector extends HTMLElement {
                 blockEl.classList.add("is-initialized");
             }, 500);
 
-            resolve()
+            resolve();
 
-        })
+        });
     }
 
     prepareHtml(html) {
@@ -281,20 +290,20 @@ class JointProductSelector extends HTMLElement {
                     {
                         query: `[id$="__price-transparency"]`,
                         blockId: "price-transparency",
-                    }
-                ]
+                    },
+                ],
             },
             {
                 selector: "sticky-buybox",
             },
             {
+                sectionId: "campaign-teaser",
+            },
+            {
                 sectionId: "product-media",
                 selector: "product-media",
             },
-            {
-                sectionId: "overlay-text-on-image",
-                selector: "product-media",
-            },
+
             {
                 sectionId: "product-auxiliary",
                 selector: "#quick-compare",
@@ -303,10 +312,24 @@ class JointProductSelector extends HTMLElement {
                 sectionId: "product-auxiliary",
                 selector: "#upsell-widget",
             },
+
             {
                 sectionId: "product-specifications",
             },
-            {sectionId: "bundle-box"},
+            {
+                sectionId: "product-unique-selling-points",
+            },
+            {
+                sectionId: "freebie-offer",
+                outletQuery: "#attribute-configurator",
+                insertPosition: "afterend",
+            },
+            {
+                sectionId: "freebie-bundle",
+                outletQuery: "#attribute-configurator",
+                insertPosition: "afterend",
+            },
+
             {
                 sectionId: "mattress-layers",
                 selector: "mattress-layers",
@@ -314,19 +337,25 @@ class JointProductSelector extends HTMLElement {
             {
                 sectionId: "mattress-firmness",
             },
+           {
+                sectionId: "product-auxiliary",
+                selector: "cross-sell-panel",
+                outletQuery: "#attribute-configurator",
+                insertPosition: "afterend",
+            },
         ];
     }
 
     refreshListeners() {
-        const {$variantSelects} = this.refs;
+        const { $variantSelects } = this.refs;
 
         $variantSelects.on("change", this.updateURL.bind(this));
     }
 
     refreshVariantListeners() {
-        const {$options} = this.refs;
+        const { $options } = this.refs;
 
-        $options.each(function () {
+        $options.each(function() {
             this.attachVariantListener();
         });
     }
@@ -353,7 +382,7 @@ class JointProductOption extends HTMLElement {
 
         const allProducts = JSON.parse(document.querySelector("#joint-product-data").textContent);
 
-        this.data.product = allProducts.find(({id: targetId}) => targetId === this.$el.data("productId"));
+        this.data.product = allProducts.find(({ id: targetId }) => targetId === this.$el.data("productId"));
     }
 
     connectedCallback() {
@@ -362,7 +391,7 @@ class JointProductOption extends HTMLElement {
     }
 
     renderPrice() {
-        const {variant} = this.data;
+        const { variant } = this.data;
 
         const $productPrice = $(this).find(".product-price");
 
@@ -381,14 +410,14 @@ class JointProductOption extends HTMLElement {
     }
 
     attachVariantListener() {
-        const {variantSelector} = this.refs;
+        const { variantSelector } = this.refs;
 
         variantSelector.addEventListener("change", this.onVariantChange.bind(this));
     }
 
     onVariantChange() {
-        const {variantSelector} = this.refs;
-        const {product} = this.data;
+        const { variantSelector } = this.refs;
+        const { product } = this.data;
 
         const size = variantSelector.value.split("|")[0].trim();
 
@@ -439,7 +468,7 @@ class JointProductStarRating extends HTMLElement {
 
         const options = {
             method: "GET",
-            headers: {Accept: "application/json", "Content-Type": "application/json"},
+            headers: { Accept: "application/json", "Content-Type": "application/json" },
         };
 
         const ratingScore = this.querySelector(".yotpo-rating-score");

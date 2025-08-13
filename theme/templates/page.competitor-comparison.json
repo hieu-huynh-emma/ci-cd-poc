@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "layout": "theme.performance",
   "sections": {
@@ -11,16 +20,15 @@
       "type": "competitor-comparison",
       "settings": {
         "emma-products": [
-          "emma-hybrid-comfort",
-          "emma-original-mattress"
+          "emma-original-a",
+          "emma-original-lite-a"
         ],
         "note": "*For queen sizes only. All prices and information from public sources listed as of October 10, 2022. Information may not reflect updated prices and promotions."
       }
     },
     "competitor-myth-busting": {
       "type": "competitor-myth-busting",
-      "settings": {
-      }
+      "settings": {}
     },
     "competitor-awards": {
       "type": "competitor-awards",
@@ -145,7 +153,7 @@
           "type": "text-block",
           "settings": {
             "icon": "shopify://shop_images/365_night_trial_blue_1.png",
-            "title": "<p>365 night<br/>trial</p>"
+            "title": "<p>100 night<br/>trial</p>"
           }
         },
         "61cd41e8-87d8-492f-a988-ae2ac2ec3379": {
@@ -206,8 +214,7 @@
     },
     "competitor-reviews": {
       "type": "competitor-reviews",
-      "settings": {
-      }
+      "settings": {}
     },
     "featured-products-compact": {
       "type": "featured-products-compact",
@@ -215,7 +222,7 @@
         "ea9c21c5-b22e-476d-86dd-aeac3fc49194": {
           "type": "product-block",
           "settings": {
-            "product": "emma-original-mattress",
+            "product": "emma-original-lite-a",
             "image": "shopify://shop_images/Rectangle_371.png",
             "desc": "Perfect balance of pressure-relief and support."
           }
@@ -223,7 +230,7 @@
         "b90ba716-de83-4ea2-93db-bd0d0e1dd95e": {
           "type": "product-block",
           "settings": {
-            "product": "emma-hybrid-comfort",
+            "product": "emma-original-a",
             "image": "shopify://shop_images/Rectangle_406.png",
             "desc": "Perfect balance of pressure-relief and support."
           }

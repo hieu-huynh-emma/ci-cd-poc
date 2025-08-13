@@ -1,142 +1,146 @@
-class CartUpsell extends CustomElement {
-  props = {
-    value: null,
-    options: [],
-    quantity: 0,
-    index: 0,
-    productId: 0
-  };
+import { EVENTS } from "./data-constants.js";
 
-  get refs() {
-    return {
-      allAddButtons: this.$el.find('button'),
-      allVariantSelectors: this.$el.find('variant-selector')
+if (!customElements.get("cart-upsell")) {
+  customElements.define("cart-upsell", class CartUpsell extends Element {
+    props = {
+      value: null,
+      options: [],
+      quantity: 0,
+      index: 0,
+      productId: 0,
+    };
+
+    eligibleProductIds = new Set();
+
+    get refs() {
+      return {
+        allAddButtons: this.$el.find("button"),
+        allVariantSelectors: this.$el.find("variant-selector"),
+      };
     }
-  }
 
 
-  mounted() {
-    let observer = new MutationObserver(this.onMutation.bind(this));
+    async setup() {
+      this.addEventListener("submit", this.onAddUpsell.bind(this));
 
-    observer.observe(this, {
-      childList: true,
-      subtree: true,
-      characterDataOldValue: true
-    });
+      Array.from(this.querySelectorAll("li.splide__slide")).forEach(slide => {
+        this.eligibleProductIds.add(slide.getAttribute("productId"));
+      });
 
-    this.initSwiper()
+      await this.initCarousel();
 
-    this.$el.find("button").click(this.onAddUpsell)
-  }
+      this.$el.attr("hidden", false);
 
-  async initSwiper() {
-    await ResourceCoordinator.requestVendor('Swiper');
+    }
 
+    setupListeners() {
+      document.addEventListener(EVENTS.CART_LOADED, this.removeInclusion.bind(this));
 
-    new Swiper('#shopify-section-cart-drawer-upsell .swiper', {
-      preventClicksPropagation: false,
-      preventClicks: false,
-      touchStartPreventDefault: false,
-      loop: true,
-      slidesPerView: "auto",
-      loopedSlides: 1,
-      spaceBetween: 16,
-      navigation: {
-        nextEl: ".swiper-arrow--next",
-        prevEl: ".swiper-arrow--prev",
-      },
-      scrollbar: {
-        el: ".swiper-scrollbar",
-        hide: true,
-      },
-    });
-  }
+      document.addEventListener(EVENTS.CART_UPDATED, this.removeInclusion.bind(this));
+    }
 
-  onMutation(mutationRecords) {
-    const cartUpsellRecord = mutationRecords.find(r => $(r.target).hasClass('cart-upsell'))
+    removeInclusion() {
+      const lineProductIds = new Set(window.Cart.state.lines.map(line => extractIdFromGid(line.merchandise.product.id)));
 
-    if (!!cartUpsellRecord) {
-      const swiper = $(cartUpsellRecord.target).find(".swiper")
-      if (!swiper.hasClass('swiper-initialize')) {
-        this.initSwiper()
+      const includedIds = this.eligibleProductIds.intersection(lineProductIds);
 
-        this.$el.find("button").click(this.onAddUpsell)
+      $("#cart-upsell-section")[(includedIds.size === this.eligibleProductIds.size) ? "addClass" : "removeClass"]("hidden");
+
+      this.querySelectorAll("li.splide__slide").forEach(slide => {
+        const $el = $(slide);
+        const productId = $el.attr("productId");
+
+        $el[includedIds.has(productId) ? "addClass" : "removeClass"]("hidden");
+      });
+    }
+
+    async initCarousel() {
+      await ResourceCoordinator.requestVendor("Splide");
+
+      this.carousel = new Splide(this.querySelector(".splide"), {
+        gap: "1rem",
+        mediaQuery: "min",
+        arrows: false,
+        pagination: true,
+        fixedWidth: 304,
+        breakpoints: {
+          768: {
+            gap: "1.5rem",
+            arrows: true,
+            pagination: false,
+          },
+        },
+      }).mount();
+    }
+
+    onDisabled(isDisabled) {
+      super.onDisabled(isDisabled);
+
+      const { allAddButtons, allVariantSelectors } = this.refs;
+
+      if (isDisabled) {
+        allAddButtons.attr("disabled", true);
+        allVariantSelectors.attr("disabled", true);
+      } else {
+        allAddButtons.attr("disabled", false);
+        allVariantSelectors.attr("disabled", false);
       }
     }
-  }
 
-  async onAddUpsell(e) {
-    e.stopPropagation();
-    const cartItems = document.getElementById('CartDrawerItems')
-    const cartSummaryNode = document.getElementById('CartDrawerSummary');
+    async onAddUpsell(e) {
+      e.stopPropagation();
+      const upsellItem = e.target;
 
-    const $upsellItem = $(this).closest('.upsell-item')
-    const $upsellVariantSelector = $upsellItem.find('.variant-selector select')
+      const variantId = upsellItem.single
+        ? upsellItem.$el.find("input[name='id']").val()
+        : upsellItem.$el.find("select option:selected").val();
 
-    const variantId = $upsellVariantSelector.find(":selected").val()
+      await window.Cart.addSingle(variantId, 1);
 
-    const scrollableContentEl = $(this).closest('cart-scrollable-content').get(0);
+      this.carousel.remove(upsellItem.index);
 
-    scrollableContentEl.loading = true
-    cartSummaryNode.loading = true
-
-    // const productId = $upsellItem.attr(':productid')
-
-    // const { freeGiftId, gwpTargetProductIds } = cartItems.props
-
-    // const isGWPTargetProduct = freeGiftId && gwpTargetProductIds.includes(+productId)
-
-    await cartItems.addToCart(variantId, 1);
-    
-    // isGWPTargetProduct && await cartItems.addToCart(freeGiftId, 1, { freeGift: true });
-
-    scrollableContentEl.loading = false
-    cartSummaryNode.loading = false
-
-  }
-
-  onDisabledChange(isDisabled) {
-    super.onDisabledChange(isDisabled);
-
-    const { allAddButtons, allVariantSelectors } = this.refs
-
-    if (isDisabled) {
-      allAddButtons.attr('disabled', true)
-      allVariantSelectors.attr('disabled', true)
-    } else {
-      allAddButtons.attr('disabled', false)
-      allVariantSelectors.attr('disabled', false)
     }
-  }
-}
+  });
 
-customElements.define('cart-upsell', CartUpsell);
+  customElements.define("cart-upsell-item", class CartUpsellItem extends Element {
+    props = {
+      index: 0,
+      single: false,
+    };
 
-class CartUpsellItem extends CustomElement {
-  beforeMount() {
-    super.beforeMount();
+    setup() {
+      this.submitEvent = new CustomEvent("submit", { bubbles: true });
 
-    const variantSelector = this.querySelector('variant-selector')
+      this.querySelector("button").addEventListener("click", this.onSubmit.bind(this));
 
-    variantSelector.addEventListener('change', this.refreshPrice.bind(this));
+      const variantSelector = this.querySelector("variant-selector");
 
-  }
+      variantSelector.addEventListener("change", this.refreshPrice.bind(this));
+    }
 
-  refreshPrice() {
-    const $selectedOption = this.$el.find(':selected');
-    const $pricingEl = this.$el.find('.upsell-item__pricing')
+    onSubmit() {
+      this.dispatchEvent(this.submitEvent);
+    }
 
 
-    const price = $selectedOption.data('price')
-    const originalPrice = $selectedOption.data('originalPrice')
-    const priceInCurrency = Currency.format(price, { maximumFractionDigits: price % 1 === 0 ? 0 : 2 });
-    const originalPriceInCurrency = Currency.format(originalPrice, { maximumFractionDigits: originalPrice % 1 === 0 ? 0 : 2 });
+    refreshPrice() {
+      const $selectedOption = this.$el.find(":selected");
+      const $pricingEl = this.$el.find(".upsell-item__pricing");
 
-    $pricingEl.html(`
+
+      const price = $selectedOption.data("price");
+      const originalPrice = $selectedOption.data("originalPrice");
+      const priceInCurrency = Currency.format(price, { maximumFractionDigits: price % 1 === 0 ? 0 : 2 });
+      const originalPriceInCurrency = Currency.format(originalPrice, { maximumFractionDigits: originalPrice % 1 === 0 ? 0 : 2 });
+
+      $pricingEl.html(`
       <div class="text-chambray">+${priceInCurrency}</div>
       ${(originalPrice > price) ? `<div class="font-light text-comet line-through">${originalPriceInCurrency}</div>` : ""}
-    `)
-  }
+    `);
+    }
+  });
 }
 
-customElements.define('cart-upsell-item', CartUpsellItem);
+
+
+

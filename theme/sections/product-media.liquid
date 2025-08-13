@@ -4,15 +4,20 @@
 {% assign otherItems = allItems | slice: 1, allItems.size %}
 
 <style>
-    .product-media-container :not(.is-initialized) product-media {
-        min-height: 280px;
-    }
+    product-media {
+        position: relative;
+        display: block;
 
+        overflow: hidden;
+        min-height: 280px;
+
+        border-radius: 8px;
+    }
 
     @media screen and (min-width: 769px) {
         product-media {
+            position: relative;
             aspect-ratio: 16 / 9;
-            overflow: hidden;
         }
     }
 
@@ -31,167 +36,190 @@
     product-media#overlay-text-on-image {
         display: none;
     }
+
+    .carousel-container {
+        opacity: 0;
+    }
+    .placeholder-container {
+        height: 100%;
+    }
 </style>
 
 <link rel="stylesheet" href="{{ 'product-media.css' | asset_url }}">
 
 {% liquid
 
-    assign trackId = "Carousel_Slide"
-    assign postfix = product.metafields.accentuate.track_postfix
+  assign trackId = "Carousel_Slide"
+  assign postfix = product.metafields.accentuate.track_postfix
 
-    if postfix != blank
-        assign trackId = trackId | append: "_" | append: postfix
-    endif
+  if postfix != blank
+    assign trackId = trackId | append: "_" | append: postfix
+  endif
 %}
 
+<script id="ProductMedia-JSON" type="application/json">
+  [
+  {% for block in allItems %}
+  {"type": "{{ block.type }}",
+      "en_src": "{{ block.settings.en_image | image_url: width: 700 }}",
+      "fr_src": "{{ block.settings.fr_image | image_url: width: 700 }}"
+    }
+  {% unless forloop.last %},{% endunless %}
+  {% endfor %}
+  ]
+</script>
+
+
+
 <product-media {% if section.settings.sectionId %}id="{{ section.settings.sectionId }}"{% endif %}>
-    {% case leadItem.type %}
-        {% when "image" %}
-            <div class="lead-item media-item media-container">
-                {% render 'picture-tag',
-                        src: leadItem.settings.en_image,
+  <template id="ProductMedia-Template">
+    <div class="carousel-container">
+      <div class="main-carousel">
+        <div class="splide no-gutter">
+          {% render 'splide-arrows', trackId: trackId, old: true %}
+
+          <div class="splide__track">
+            <ul class="splide__list">
+              {% for block in allItems %}
+                <li
+                  class="splide__slide"
+                >
+                  {% case block.type %}
+                    {% when "image" %}
+                      <div class="media-item media-container" data-type="{{ block.type }}">
+                        {% capture mediaItemAttributes %}
+                          class="media-item__image" lang="en" data-zoom="{{ block.settings.en_image | image_url: width: 2048 }}"
+                        {% endcapture %}
+                        {% render 'picture-tag',
+                          src: block.settings.en_image,
+                          picture_attributes: mediaItemAttributes,
+                          img_classes: "",
+                          width: 808,
+                          height: 486
+                        %}
+                        {% capture mediaItemAttributes %}
+                          class="media-item__image" lang="fr" data-zoom="{{ block.settings.fr_image | image_url: width: 2048 }}"
+                        {% endcapture %}
+                        {% render 'picture-tag',
+                          src: block.settings.fr_image,
+                          picture_attributes: mediaItemAttributes,
+                          img_classes: "",
+                          width: 808,
+                          height: 486
+                        %}
+                      </div>
+                    {% when "video" %}
+                      {% assign media = block.settings.video %}
+                      {% assign poster = media | image_url: width: 550 | prepend: "https:" %}
+                      <div class="media-item media-container" data-type="{{ block.type }}">
+                        <video playsinline preload="none" loop controls poster="{{ poster }}">
+                          {% for source in media.sources %}
+                            {% if source.mime_type != "application/x-mpegURL" %}
+                              <source
+                                src="{{ source.url }}"
+                                type="{{ source.mime_type }}">
+                            {% endif %}
+                          {% endfor %}
+                        </video>
+                      </div>
+                  {% endcase %}
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+        <div class="zoom-container"></div>
+      </div>
+
+
+      <div class="thumbnail-carousel splide no-gutter">
+        {% render 'splide-arrows', trackId: trackId %}
+
+        <div class="splide__track">
+          <ul class="splide__list">
+            {% for block in allItems %}
+              <li
+                class="splide__slide"
+              >
+                {% case block.type %}
+                  {% when "image" %}
+                    {% assign thumbnail = block.settings %}
+
+                    <div class="media-item media-container">
+                      {% render 'picture-tag',
+                        src: thumbnail.en_image,
                         picture_attributes: 'class="media-item__image" lang="en"',
                         img_classes: "",
                         width: 808,
                         height: 486
-                %}
-                {% render 'picture-tag',
-                        src: leadItem.settings.fr_image,
+                      %}
+                      {% render 'picture-tag',
+                        src: thumbnail.fr_image,
                         picture_attributes: 'class="media-item__image" lang="fr"',
                         img_classes: "",
                         width: 808,
                         height: 486
-                %}
-            </div>
-    {% endcase %}
-    <template>
-        <div class="carousel-container">
-            <div class="main-carousel">
-                <div class="splide">
-                    {% render 'splide-arrows', trackId: trackId %}
-
-                    <div class="splide__track">
-                        <ul class="splide__list">
-                            {% for block in allItems %}
-                                <li
-                                        class="splide__slide"
-                                >
-                                    {% case block.type %}
-                                        {% when "image" %}
-                                            <div class="media-item media-container" data-type="{{ block.type }}">
-                                                {% capture mediaItemAttributes %}
-                                                    class="media-item__image" lang="en" data-zoom="{{ block.settings.en_image | image_url: width: 2048 }}"
-                                                {% endcapture %}
-                                                {% render 'picture-tag',
-                                                        src: block.settings.en_image,
-                                                        picture_attributes: mediaItemAttributes,
-                                                        img_classes: "",
-                                                        width: 808,
-                                                        height: 486
-                                                %}
-                                                {% capture mediaItemAttributes %}
-                                                    class="media-item__image" lang="fr" data-zoom="{{ block.settings.fr_image | image_url: width: 2048 }}"
-                                                {% endcapture %}
-                                                {% render 'picture-tag',
-                                                        src: block.settings.fr_image,
-                                                        picture_attributes: mediaItemAttributes,
-                                                        img_classes: "",
-                                                        width: 808,
-                                                        height: 486
-                                                %}
-                                            </div>
-                                        {% when "video" %}
-                                            {% assign media = block.settings.video %}
-                                            {% assign poster = media | image_url: width: 550 | prepend: "https:" %}
-                                            <div class="media-item media-container" data-type="{{ block.type }}">
-                                                <video playsinline preload="none"  loop controls poster="{{ poster }}">
-                                                    {% for source in media.sources %}
-                                                      {% if source.mime_type != "application/x-mpegURL" %}
-                                                        <source
-                                                                src="{{ source.url }}"
-                                                                type="{{ source.mime_type }}">
-                                                        {% endif %}
-                                                    {% endfor %}
-                                                </video>
-                                            </div>
-                                    {% endcase %}
-                                </li>
-                            {% endfor %}
-                        </ul>
+                      %}
                     </div>
-                </div>
-                <div class="zoom-container"></div>
-            </div>
 
+                  {% when "video" or "external_video" %}
+                    {% assign media = block.settings.video %}
+                    <button id="Deferred-Poster-Modal-{{ media.id }}"
+                            class="media-poster media-container"
+                            type="button">
+                      <div class="poster-button motion-reduce">
+                        <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
+                             focusable="false" role="presentation"
+                             class="icon icon-play" fill="none" width="20" viewBox="0 0 10 14">
+                          <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M1.48177 0.814643C0.81532 0.448245 0 0.930414 0 1.69094V12.2081C0 12.991 0.858787 13.4702 1.52503 13.0592L10.5398 7.49813C11.1918 7.09588 11.1679 6.13985 10.4965 5.77075L1.48177 0.814643Z"
+                                fill="currentColor" />
+                        </svg>
+                      </div>
+                      {% assign height = 576 | divided_by: media.preview_image.aspect_ratio %}
+                      {% assign alt = media.preview_image.alt | escape %}
+                      {% render 'picture-tag',
+                        src: media.preview_image,
+                        picture_attributes: 'class="media-item__image"',
+                        img_classes: "",
+                        width: 576,
+                        height: height,
+                        alt: alt
+                      %}
+                    </button>
 
-            <div class="thumbnail-carousel splide">
-                {% render 'splide-arrows', trackId: trackId %}
-
-                <div class="splide__track">
-                    <ul class="splide__list">
-                        {% for block in allItems %}
-                            <li
-                                    class="splide__slide"
-                            >
-                                {% case block.type %}
-                                    {% when "image" %}
-                                        {% assign thumbnail = block.settings %}
-
-                                        <div class="media-item media-container">
-                                            {% render 'picture-tag',
-                                                    src: thumbnail.en_image,
-                                                    picture_attributes: 'class="media-item__image" lang="en"',
-                                                    img_classes: "",
-                                                    width: 808,
-                                                    height: 486
-                                            %}
-                                            {% render 'picture-tag',
-                                                    src: thumbnail.fr_image,
-                                                    picture_attributes: 'class="media-item__image" lang="fr"',
-                                                    img_classes: "",
-                                                    width: 808,
-                                                    height: 486
-                                            %}
-                                        </div>
-
-                                    {% when "video" or "external_video" %}
-                                        {% assign media = block.settings.video %}
-                                        <button id="Deferred-Poster-Modal-{{ media.id }}"
-                                                class="media-poster media-container"
-                                                type="button">
-                                            <div class="poster-button motion-reduce">
-                                                <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
-                                                     focusable="false" role="presentation"
-                                                     class="icon icon-play" fill="none" width="20" viewBox="0 0 10 14">
-                                                    <path fill-rule="evenodd" clip-rule="evenodd"
-                                                          d="M1.48177 0.814643C0.81532 0.448245 0 0.930414 0 1.69094V12.2081C0 12.991 0.858787 13.4702 1.52503 13.0592L10.5398 7.49813C11.1918 7.09588 11.1679 6.13985 10.4965 5.77075L1.48177 0.814643Z"
-                                                          fill="currentColor"/>
-                                                </svg>
-                                            </div>
-                                            {% assign height = 576 | divided_by: media.preview_image.aspect_ratio %}
-                                            {% assign alt = media.preview_image.alt | escape %}
-                                            {% render 'picture-tag',
-                                                    src: media.preview_image,
-                                                    picture_attributes: 'class="media-item__image"',
-                                                    img_classes: "",
-                                                    width: 576,
-                                                    height: height,
-                                                    alt: alt
-                                            %}
-                                        </button>
-
-                                {% endcase %}
-                            </li>
-                        {% endfor %}
-                    </ul>
-                </div>
-            </div>
+                {% endcase %}
+              </li>
+            {% endfor %}
+          </ul>
         </div>
-
-        <input id="lead-item-url" type="hidden"
-               value="{{ leadItem.settings.en_image | image_url: width: 600 }}">
-    </template>
+      </div>
+    </div>
+  </template>
+                            
+  <slot name="placeholder">
+    {% case leadItem.type %}
+      {% when "image" %}
+        <div class="placeholder-container">
+          {% render 'picture-tag',
+            src: leadItem.settings.en_image,
+            picture_attributes: 'class="media-item__image" lang="en"',
+            img_classes: "",
+            width: 808,
+            height: 486,
+            fetchpriority: "high"
+          %}
+          {% render 'picture-tag',
+            src: leadItem.settings.fr_image,
+            picture_attributes: 'class="media-item__image" lang="fr"',
+            img_classes: "",
+            width: 808,
+            height: 486,
+            fetchpriority: "high"
+          %}
+        </div>
+    {% endcase %}
+  </slot>
 </product-media>
 
 <script type="quickscript" loading="delayed" src="{{ 'product-media.js' | asset_url }}"></script>

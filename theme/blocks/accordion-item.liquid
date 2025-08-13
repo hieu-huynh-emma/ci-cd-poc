@@ -1,0 +1,64 @@
+<accordion-item>
+    <accordion-label>
+        {% content_for "block", type: "heading", id: "label" %}
+
+        {% content_for "block", type: "icon", id: "icon" %}
+    </accordion-label>
+    <accordion-content>
+        {% content_for "block", type: "paragraph", id: "content" %}
+    </accordion-content>
+</accordion-item>
+
+{% schema %}
+{
+  "name": "Accordion Item",
+  "tag": null,
+  "blocks": [
+    {
+      "type": "heading"
+    },
+    {
+      "type": "paragraph"
+    },
+    {
+      "type": "icon"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Accordion Item",
+      "blocks": [
+        {
+          "type": "heading",
+          "id": "label",
+          "static": true,
+          "name": "Label",
+          "settings": {
+          },
+          "blocks": {}
+        },
+        {
+          "type": "paragraph",
+          "id": "content",
+          "static": true,
+          "name": "Content",
+          "settings": {
+          },
+          "blocks": {}
+        },
+        {
+          "type": "icon",
+          "id": "icon",
+          "static": true,
+          "name": "Icon",
+          "settings": {
+            "src": "shopify://shop_images/chevron-down.svg",
+            "size": 12
+          },
+          "blocks": {}
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

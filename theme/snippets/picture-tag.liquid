@@ -2,27 +2,31 @@
 {% assign desktop_url = desktop_src | default: url %}
 {% assign mobile_url = mobile_src | default: desktop_url %}
 
+{% assign baseWidth = baseWidth | default: 400 %}
+
+
 <picture {{ picture_attributes }} >
-  <source media="(min-width: 1440px)"
-          data-srcset="{{ desktop_url | image_url: width: 2048 }}">
-  <source media="(min-width: 1024px)"
-          data-srcset="{{ desktop_url | image_url: width: 1440 }}">
-  <source media="(min-width: 992px)"
-          data-srcset="{{ desktop_url | image_url: width: 1024 }}">
-  <source media="(min-width: 768px)"
-          data-srcset="{{ desktop_url | image_url: width: 900 }}">
-  <source media="(max-width: 768px)"
-          data-srcset="{{ mobile_url | image_url: width: 700 }}">
+    <source media="(min-width: 1440px)"
+            data-srcset="{{ desktop_url | image_url: width: 2048 }}">
+    <source media="(min-width: 1024px)"
+            data-srcset="{{ desktop_url | image_url: width: 1440 }}">
+    <source media="(min-width: 992px)"
+            data-srcset="{{ desktop_url | image_url: width: 1024 }}">
+    <source media="(min-width: 768px)"
+            data-srcset="{{ desktop_url | image_url: width: 900 }}">
+    <source media="(max-width: 768px)"
+            data-srcset="{{ mobile_url | image_url: width: 700 }}">
 
-  <source media="(min-width: 768px)"
-          srcset="{{ desktop_url | image_url: width: 400 }}">
-  <source media="(max-width: 768px)"
-          srcset="{{ mobile_url | image_url: width: 400 }}">
+    <source media="(min-width: 768px)"
+            srcset="{{ desktop_url | image_url: width: baseWidth }}">
+    <source media="(max-width: 768px)"
+            srcset="{{ mobile_url | image_url: width: baseWidth }}">
 
-  <img class="lazyload {{ img_classes }}"
-       width="{{ width | default: "auto" }}"
-       height="{{ height | default: "auto" }}"
-       alt="{{ alt | default: "alt" }}"
-       {{ image_attributes }}
-  />
+    <img class="lazyload cover-surface {{ img_classes }}"
+         width="{{ width | default: "auto" }}"
+         height="{{ height | default: "auto" }}"
+         alt="{{ alt | default: "alt" }}"
+         fetchpriority="{{ fetchpriority | default: "low" }}"
+        {{ image_attributes }}
+    />
 </picture>

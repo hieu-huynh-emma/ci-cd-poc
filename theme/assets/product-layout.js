@@ -1,5 +1,3 @@
-
-
 const schema = [
     {
         sectionId: "product-summary",
@@ -11,7 +9,7 @@ const schema = [
         sectionId: "product-media",
     },
     {
-        sectionId: "overlay-text-on-image",
+        sectionId: "price-transparency"
     },
     {
         sectionId: "risk-reversal",
@@ -20,29 +18,33 @@ const schema = [
         sectionId: "campaign-teaser",
     },
     {
-        sectionId: "price-transparency",
-    },
-    {
         sectionId: "product-unique-selling-points",
     },
     {
         sectionId: "product-specifications",
     },
+
+    // {
+    //     sectionId: "bundle-cross-sell",
+    //     outletQuery: "#attribute-configurator",
+    //     insertPosition: "afterend",
+    // },
+    // {
+    //     sectionId: "freebie-bundle",
+    //     outletQuery: "#attribute-configurator",
+    //     insertPosition: "afterend",
+    // },
     {
-        sectionId: "bundle-box",
-        outletQuery: "#attribute-configurator",
+        sectionId: "promotional-panel",
+        outletQuery: `[id$="__price-transparency"]`,
         insertPosition: "afterend",
-    },
-    {
-        sectionId: "bundle-cross-sell",
-        outletQuery: "#attribute-configurator",
-        insertPosition: "afterend",
+        block: true
     },
     {
         sectionId: "product-auxiliary",
         blocks: [
             {
-                query: "cross-sell-panel",
+                query: "#cross-sell-panel",
                 outletQuery: "#attribute-configurator",
                 insertPosition: "afterend",
             },
@@ -53,24 +55,45 @@ const schema = [
             },
         ],
     },
+    {
+        sectionId: "freebie-offer",
+        outletQuery: "#attribute-configurator",
+        insertPosition: "afterend",
+    },
+    {
+        sectionId: "cover-selection",
+        selector: "cover-selection",
+        outletQuery: "#attribute-configurator",
+        insertPosition: "afterend",
+    },
 ];
 const sectionId = document.currentScript.dataset["sectionId"];
 const templateId = sectionId.split("__")[0];
 
 
-function loadSection({sectionId, outletQuery, insertPosition, blocks = []}) {
-    const sectionEl = document.querySelector(`#shopify-section-${templateId}__${sectionId}`);
+function loadSection({sectionId, selector, type, outletQuery, insertPosition, block, blocks = []}) {
+    let sectionEl
 
-    if(!sectionEl) return
+    if (!!block) {
+        sectionEl = document.querySelector(`.shopify-block[id*="__${sectionId}"]`)
+    } else {
+        const sectionQuery = `${sectionId ? `[id$='__${sectionId}']` : ""}`,
+            selectorQuery = `${selector ? `${selector}` : ""}`,
+            targetQuery = `${sectionQuery} ${selectorQuery}`;
 
-    const detachedSectionEl = sectionEl.parentElement.removeChild(sectionEl);
+        sectionEl = document.querySelector(targetQuery);
+    }
+
+    if (!sectionEl) return
+
+    const processedEl = type === 'clone' ? sectionEl.cloneNode(true) : sectionEl.parentElement.removeChild(sectionEl);
 
     if (outletQuery) {
         const outletEl = document.querySelector(outletQuery)
-        outletEl.insertAdjacentElement(insertPosition, detachedSectionEl);
+        outletEl?.insertAdjacentElement(insertPosition, processedEl);
     } else {
         const sectionPlaceholderEl = document.querySelector(`#product-layout #${sectionId}-placeholder`);
-        sectionPlaceholderEl?.replaceWith(detachedSectionEl);
+        sectionPlaceholderEl?.replaceWith(processedEl);
     }
 
     if (blocks.length > 0) {

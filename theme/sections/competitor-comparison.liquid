@@ -47,7 +47,7 @@
         free_shipping_and_returns: "Yes"
     };
 
-    const emmaClimaxQueen = emmaProducts['emma-hybrid-comfort'].info.variants.find(variant => variant.title.includes('Queen | 60" x 80'));
+    const emmaClimaxQueen = emmaProducts['emma-original-a'].info.variants.find(variant => variant.title.includes('Queen | 60" x 80'));
     const emmaHybridSpecifications = {
         price: `${currencyFormatter.format(emmaClimaxQueen.price / 100)} <span class='line-through font-medium text-sm'>${currencyFormatter.format(emmaClimaxQueen.compare_at_price / 100)}</span>`,
         layers: "6",

@@ -3,7 +3,8 @@
     {% render 'importmap' %}
     {% render 'app-preconnect' %}
     {% comment %}{{ content_for_header }}{% endcomment %}
-
+    {% if template == 'page.sale' or template == 'index' %}
+        {% assign themeMode = settings.theme_mode %}    {% endif %}
     <head>
         {% render 'app-essentials' %}
         {% render 'page-metadata' %}
@@ -12,7 +13,7 @@
         {% render 'app-theme' %}
     </head>
 
-    <body class="gradient">
+    <body class="gradient" data-mode="{{ themeMode }}">
         {% section 'splash-screen' %}
 
         <a class="skip-to-content-link button visually-hidden" href="#MainContent">
@@ -21,6 +22,7 @@
 
         {% sections 'header-group' %}
         {% sections 'affiliate-group' %}
+{% sections 'component-configurator' %}
 
         <main id="MainContent" class="content-for-layout focus-none" role="main" tabindex="-1">
             {{ content_for_layout }}
@@ -35,6 +37,6 @@
         {% render 'app-vendors' %}
         {% render 'app-scripts' %}
         {% render 'app-widgets' %}
-        {% render 'app-overlays' %}
+        {% render 'app-registrar' %}
     </body>
 </html>

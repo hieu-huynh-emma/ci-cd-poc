@@ -13,9 +13,11 @@
 
 </style>
 
+<link rel="stylesheet" href="{{ 'hero-banner.css' | asset_url }}">
+
 <div id="hero-banner-section" class="page-boundary" data-component="hero-banner">
     <div class="section-container">
-        {% render 'hero-banner', settings: section.settings %}
+        {% render 'hero-banner', props: section.settings %}
     </div>
 </div>
 
@@ -84,10 +86,35 @@
       "default": true
     },
     {
-      "type": "text",
-      "id": "timer",
-      "label": "Countdown Timer",
-      "info": "Please follow format: YYYY-MM-DD HH:mm"
+      "id": "cta_size",
+      "type": "select",
+      "options": [
+        {
+          "value": "sm",
+          "label": "Small"
+        },
+        {
+          "value": "md",
+          "label": "Medium"
+        },
+        {
+          "value": "lg",
+          "label": "Large"
+        }
+      ],
+      "default": "lg",
+      "label": "CTA Size"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_countdown_timer",
+      "label": "Show Countdown Timer",
+      "default": false
+    },
+    {
+      "id": "countdown_caption",
+      "type": "richtext",
+      "label": "Countdown Caption"
     },
     {
       "id": "trackId",

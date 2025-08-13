@@ -1,1 +1,25 @@
-:root{--color-primary:#FFA235;--color-secondary:#3C4196;--color-charade:#2E2F3C;--color-comet:#55576F;--color-chambray:#3C4196;--color-pizazz:#FF8900;--color-jade:#00B67A;--color-cultured:#F7F7F9;--color-spun-pearl:#B0B1C2;--color-athens-gray:#E6E7EC;--color-lochinvar:#288E7C;--color-scampi:#6469AA;--color-lapis-blue:#2C3183;--color-steel:#7F819D;--color-calm-600:#693F73;--color-scarlet:#F03306}@media screen and (max-width:769px){#featured-faqs-section .section-header{justify-content:flex-start;text-align:left}}
+:root {
+    --color-primary: #FFA235;
+    --color-secondary: #3C4196;
+    --color-charade: #2E2F3C;
+    --color-comet: #55576F;
+    --color-chambray: #3C4196;
+    --color-pizazz: #FF8900;
+    --color-jade: #00B67A;
+    --color-cultured: #F7F7F9;
+    --color-spun-pearl: #B0B1C2;
+    --color-athens-gray: #E6E7EC;
+    --color-lochinvar: #288E7C;
+    --color-scampi: #6469AA;
+    --color-lapis-blue: #2C3183;
+    --color-steel: #7F819D;
+    --color-calm-600: #693F73;
+    --color-scarlet: #F03306
+}
+
+@media screen and (max-width: 769px) {
+    #featured-faqs-section .section-header {
+        justify-content: flex-start;
+        text-align: left
+    }
+}

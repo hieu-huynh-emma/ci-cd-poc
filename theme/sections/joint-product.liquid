@@ -1,7 +1,7 @@
 <style>
-    #product-layout:not(.is-initialized) joint-product-selector {
-        display: none;
-    }
+  #product-layout:not(.is-initialized) joint-product-selector {
+    display: none;
+  }
 </style>
 <link rel="quickscript" loading="delayed" href="{{ 'joint-product.css' | asset_url }}">
 
@@ -53,8 +53,8 @@
 
         {% if block.settings.show_star_rating %}
           <joint-product-star-rating
-            :placeholder="{{ product.metafields.accentuate.placeholder_star_rating }}"
-            :productId="{{ product.id }}"
+              :placeholder="{{ product.metafields.accentuate.placeholder_star_rating }}"
+              :productId="{{ product.id }}"
           ></joint-product-star-rating>
         {% endif %}
 
@@ -69,6 +69,8 @@
 </joint-product-selector>
 
 <script type="quickscript" loading="delayed" src="{{ 'joint-product.js' | asset_url }}"></script>
+
+
 
 
 {% schema %}

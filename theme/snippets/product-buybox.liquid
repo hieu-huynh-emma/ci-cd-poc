@@ -2,7 +2,7 @@
 
 <input id="show_sticky_buybox" type="hidden" value="0">
 
-<div id="buybox-container" class="py-3">
+<div id="buybox-container">
   <product-buybox>
     <div class="skeleton"></div>
     <div id="product-form">
@@ -10,7 +10,7 @@
 
       {% render 'product-price', variant: current_variant, product: product %}
 
-      <template id="price-transparency-placeholder"></template>
+      <affirm-widget :placement="promotion-badge" :page="product"></affirm-widget>
 
       {% render 'purchase-buttons' %}
     </div>

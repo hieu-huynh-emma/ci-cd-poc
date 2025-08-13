@@ -1,12 +1,11 @@
 {% assign heroSplits = section.blocks | where: 'type', 'banner' %}
 {% assign heroSaleBadge = section.blocks | where: 'type', 'hero-sale-badge' %}
-
 <style>
     #hero-split-section .split-container {
         position: relative;
         border-radius: .5rem;
         overflow: hidden;
-        color: {{ section.settings.text_color }};
+        color: {{ section.props.text_color }};
     }
 
     @media screen and (min-width: 769px) {
@@ -16,64 +15,55 @@
         }
     }
 </style>
+<link rel="stylesheet" href="{{ 'hero-banner.css' | asset_url }}">
+
 <link rel="stylesheet" href="{{ 'hero-split.css' | asset_url }}">
 
 <div id="hero-split-section" class="page-boundary" data-component="hero-banner">
   <div class="split-container">
     <div class="split-interior">
       <div class="section-frame">
-        {% if settings.show_shadow %}<div class="overlay-bg"></div>{%endif%}
+        {% if props.show_shadow %}
+          <div class="overlay-bg"></div>
+        {% endif %}
 
         {% for block in heroSplits %}
-          {% assign settings = block.settings %}
-          {% case settings.heading_size %}
+          {% assign props = block.settings %}
+          {% case props.heading_size %}
             {% when 'large' %}
               {% assign headingClass = 'heading-1' %}
             {% else %}
               {% assign headingClass = 'heading-2' %}
           {% endcase %}
-          <div class="banner-panel" style="color: {{ settings.text_color }}">
+          <div class="banner-panel" style="color: {{ props.text_color }}">
             <div class="banner-content">
               <h2 class="banner-title relative {{ headingClass }}">
-                {% render 'rtf-viewer', content: settings.title %}
+                {% render 'rtf-viewer', content: props.title %}
               </h2>
-              {% if settings.subtitle %}
+              {% if props.subtitle %}
                 <div class="sub-heading">
-                  {% render 'rtf-viewer', content: settings.subtitle %}
+                  {% render 'rtf-viewer', content: props.subtitle %}
                 </div>
               {% endif %}
             </div>
-
             <div class="banner-features">
-              {% if settings.timer %}
-                <hero-banner-countdown-timer class="hidden" end-time="{{ settings.timer }}">
-                  <div class="countdown-timer" style="color: black;">
-                    <div class="time-part">
-                      <p class="digit"></p>
-                      <p class="label">Days</p>
-                    </div>
-                    <div class="time-part">
-                      <p class="digit"></p>
-                      <p class="label">Hours</p>
-                    </div>
-                    <div class="time-part">
-                      <p class="digit"></p>
-                      <p class="label">Minutes</p>
-                    </div>
-                    <div class="time-part">
-                      <p class="digit"></p>
-                      <p class="label">Seconds</p>
-                    </div>
-                  </div>
-                </hero-banner-countdown-timer>
+              {% if props.show_countdown_timer %}
+                <div class="banner-countdown">
+                  <countdown-timer
+                    :date="{{ settings.sale_timer }}"
+                    :caption="{{ props.countdown_caption }}"
+                  ></countdown-timer>
+
+                </div>
               {% endif %}
 
-              {% if settings.show_cta %}
-                  <tracked-button
-                    :trackId="{{ settings.trackId }}"
-                    class="banner-cta btn btn--lg" href="{{ settings.cta_url }}">
-                    {{ settings.cta_text }}
-                  </tracked-button>
+              {% if props.show_cta %}
+                <tracked-button
+                  :trackId="{{ props.trackId }}"
+                  class="banner-cta btn btn--{{ props.cta_size }}"
+                  href="{{ props.cta_url }}">
+                  {{ props.cta_text }}
+                </tracked-button>
 
               {% endif %}
             </div>
@@ -84,7 +74,7 @@
 
     <div class="section-frame">
       {% for block in heroSplits %}
-        {% render 'hero-banner', settings: block.settings, index: forloop.index0 %}
+        {% render 'hero-banner', props: block.settings, index: forloop.index0 %}
       {% endfor %}
     </div>
   </div>
@@ -135,15 +125,15 @@
           "options": [
             {
               "value": "medium",
-              "label": "t:sections.image-banner.blocks.heading.settings.heading_size.options__1.label"
+              "label": "t:sections.image-banner.blocks.heading.props.heading_size.options__1.label"
             },
             {
               "value": "large",
-              "label": "t:sections.image-banner.blocks.heading.settings.heading_size.options__2.label"
+              "label": "t:sections.image-banner.blocks.heading.props.heading_size.options__2.label"
             }
           ],
           "default": "medium",
-          "label": "t:sections.image-banner.blocks.heading.settings.heading_size.label"
+          "label": "t:sections.image-banner.blocks.heading.props.heading_size.label"
         },
         {
           "id": "subtitle",
@@ -179,10 +169,35 @@
           "default": true
         },
         {
-          "type": "text",
-          "id": "timer",
-          "label": "Countdown Timer",
-          "info": "Please follow format: YYYY-MM-DD HH:mm"
+          "id": "cta_size",
+          "type": "select",
+          "options": [
+            {
+              "value": "sm",
+              "label": "Small"
+            },
+            {
+              "value": "md",
+              "label": "Medium"
+            },
+            {
+              "value": "lg",
+              "label": "Large"
+            }
+          ],
+          "default": "lg",
+          "label": "CTA Size"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_countdown_timer",
+          "label": "Show Countdown Timer",
+          "default": false
+        },
+        {
+          "id": "countdown_caption",
+          "type": "richtext",
+          "label": "Countdown Caption"
         },
         {
           "type": "checkbox",

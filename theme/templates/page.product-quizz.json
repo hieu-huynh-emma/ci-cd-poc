@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "layout": "theme.performance",
   "sections": {
@@ -16,7 +25,7 @@
           "type": "text",
           "settings": {
             "full_width": true,
-            "text": "<p>Find the perfect mattress for you in just 30 seconds with this quiz!<\/p>"
+            "text": "<p>Find the perfect mattress for you in just 30 seconds with this quiz!</p>"
           }
         }
       },
@@ -31,11 +40,10 @@
     "landbot-widget": {
       "type": "landbot-widget",
       "settings": {
-        "url": "https:\/\/landbot.pro\/v3\/H-2073979-LPAQTJ6XMGZNCUF2\/index.html",
+        "url": "https://landbot.pro/v3/H-2073979-LPAQTJ6XMGZNCUF2/index.html",
         "boundless": true
       }
     },
-
     "product-collage": {
       "type": "product-collage",
       "blocks": {
@@ -54,7 +62,7 @@
           "settings": {
             "heading": "Pillows",
             "subheading": "Perfect Complement",
-            "media": "shopify:\/\/shop_images\/image_23.png",
+            "media": "shopify://shop_images/image_23.png",
             "collection": "pillows",
             "trackId": "Pillows_box_quiz"
           }

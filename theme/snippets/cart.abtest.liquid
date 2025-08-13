@@ -1,0 +1,69 @@
+<script defer>
+    (() => {
+        const campaignId = 1435511;
+
+        function getVariationId() {
+            const siteUrl = new URL(window.location.href);
+            const paramKey = "abtasty_variation";
+
+            const hasVariationParams = siteUrl.searchParams.has(paramKey);
+
+            let variationId = null;
+
+            if (hasVariationParams) {
+                variationId = +siteUrl.searchParams.get(paramKey);
+            } else {
+                const abtastySnatcher = new RegExp("ABTasty=([^;]+)", "g");
+                const cookieFound = abtastySnatcher.exec(document.cookie);
+                console.log("=>(cart.abtest.liquid:20) cookieFound", cookieFound);
+
+                if (!cookieFound) return null;
+
+                const abtastyCookie = cookieFound[0];
+
+                const campaignSnatcher = new RegExp(`&th=${campaignId}\\.\\d+`, "g");
+
+                const campaignFound = campaignSnatcher.exec(abtastyCookie);
+                console.log("=>(cart.abtest.liquid:28) campaignFound", campaignFound);
+
+                if (!campaignFound) return null;
+
+                variationId = +campaignFound[0].split(".")[1];
+            }
+
+            return variationId;
+        }
+
+        const template = "{{ template }}";
+
+        if (!template.includes("cart")) return;
+
+        // const variationId = getVariationId();
+
+        const url = new URL(window.location.href);
+
+        // executeCampaign(variationId);
+
+        if (template.includes("cart")) {
+            // window.addEventListener("abtasty_executedCampaign", (e) => {
+            //     if (e.detail.campaignId === campaignId) {
+            //         executeCampaign(e.detail.variationId)
+            //     }
+            // });
+        }
+
+        function executeCampaign(campaignVariation) {
+            if(campaignVariation === null) return
+            if (template === "cart" && +campaignVariation === 0) {
+                url.searchParams.set("view", "old");
+
+                window.location.href = url.toString();
+            }
+            if (template === "cart.old" && +campaignVariation !== 0) {
+                url.searchParams.delete("view");
+
+                window.location.href = url.toString();
+            }
+        }
+    })();
+</script>

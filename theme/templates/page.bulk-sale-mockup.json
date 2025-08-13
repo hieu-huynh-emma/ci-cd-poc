@@ -1,0 +1,152 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "layout": "theme.performance",
+  "sections": {
+    "custom_liquid_HUA4zX": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "<style>\n  .cta-button {\n    display: inline-block;\n    margin-top: 20px;\n    padding: 14px 28px;\n    background-color: #6469aa;\n    color: #ffffff;\n    text-decoration: none;\n    font-size: 18px;\n    font-weight: bold;\n    border-radius: 30px;\n    transition: background-color 0.3s ease;\n  }\n  .cta-button:hover {\n    background-color: #4b4f8d; \/* Slightly darker shade on hover *\/\n  }\n\n  html {\n    scroll-behavior: smooth; \/* Enables smooth scroll effect *\/\n  }\n<\/style>\n\n<div style=\"background-color: #2c3183; padding: 60px 20px; text-align: center; border-radius: 8px;\">\n  <h2 style=\"color: #ffffff; font-size: 50px; margin-bottom: 20px;\">Big Project? Big Comfort.<\/h2>\n  <p style=\"color: #ffffff; font-size: 18px; max-width: 700px; margin: 0 auto 30px;\">\n    Whether you’re furnishing guest rooms, student housing, or vacation rentals, we offer volume discounts and dedicated service to make large mattress orders simple.\n  <\/p>\n  <a href=\"#bulk-form\" class=\"cta-button\">\n    Submit a Request\n  <\/a>\n<\/div>"
+      }
+    },
+    "custom_liquid_9iACyN": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "<style>\n  .feature-icon {\n    transition: transform 0.3s ease;\n    width: 100px; \/* Bigger icons! *\/\n    margin-bottom: 15px;\n    display: block;\n    margin-left: auto;\n    margin-right: auto;\n  }\n  .feature-icon:hover {\n    transform: scale(1.1);\n  }\n<\/style>\n\n<div style=\"background-color: #f8f8f8; padding: 60px 20px;\">\n  <div style=\"max-width: 1200px; margin: 0 auto; text-align: center; margin-bottom: 1px;\">\n    <h2 style=\"color: #2c3183; font-size: 40px; margin-bottom: 10px;\">Why we are your best business partner<\/h2>\n  <\/div>\n\n<div style=\"background-color: #f8f8f8; padding: 60px 20px;\">\n  <div style=\"max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: center; gap: 30px;\">\n\n    <div style=\"flex: 1 1 200px; min-width: 200px; max-width: 250px; text-align: center;\">\n      <img class=\"feature-icon\" src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0562\/9873\/3706\/files\/Competitive_Pricing_1.svg?v=1745875037\" alt=\"Competitive Pricing\">\n      <h3 style=\"color: #2c3183; font-size: 20px; margin-bottom: 10px;\">Competitive Pricing<\/h3>\n      <p style=\"color: #555555; font-size: 16px;\">Save more when you order more<\/p>\n    <\/div>\n\n    <div style=\"flex: 1 1 200px; min-width: 200px; max-width: 250px; text-align: center;\">\n      <img class=\"feature-icon\" src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0562\/9873\/3706\/files\/Premium_Quality_1.svg?v=1745874941\" alt=\"Premium Quality\">\n      <h3 style=\"color: #2c3183; font-size: 20px; margin-bottom: 10px;\">Premium Quality<\/h3>\n      <p style=\"color: #555555; font-size: 16px;\">Award-Winning Technology<\/p>\n    <\/div>\n\n    <div style=\"flex: 1 1 200px; min-width: 200px; max-width: 250px; text-align: center;\">\n      <img class=\"feature-icon\" src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0562\/9873\/3706\/files\/Dedicated_Support_1.svg?v=1745874814\" alt=\"Dedicated Support\">\n      <h3 style=\"color: #2c3183; font-size: 20px; margin-bottom: 10px;\">Dedicated Support<\/h3>\n      <p style=\"color: #555555; font-size: 16px;\">Personalized service from our sleep experts<\/p>\n    <\/div>\n\n    <div style=\"flex: 1 1 200px; min-width: 200px; max-width: 250px; text-align: center;\">\n      <img class=\"feature-icon\" src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0562\/9873\/3706\/files\/Flexible_Bundles_2.svg?v=1745874701\" alt=\"Flexible Bundles\">\n      <h3 style=\"color: #2c3183; font-size: 20px; margin-bottom: 10px;\">Flexible Bundles<\/h3>\n      <p style=\"color: #555555; font-size: 16px;\">Also looking for accessories? We’ve got you covered<\/p>\n    <\/div>\n\n  <\/div>\n<\/div>"
+      }
+    },
+    "custom_liquid_gVqUpt": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "<style>\n  .fade-in-section {\n    opacity: 0;\n    transform: translateY(30px);\n    transition: all 0.8s ease-out;\n  }\n  .fade-in-section.visible {\n    opacity: 1;\n    transform: none;\n  }\n<\/style>\n\n<script>\n  document.addEventListener(\"DOMContentLoaded\", function() {\n    const sections = document.querySelectorAll('.fade-in-section');\n    const observer = new IntersectionObserver((entries) => {\n      entries.forEach(entry => {\n        if (entry.isIntersecting) {\n          entry.target.classList.add('visible');\n        }\n      });\n    }, { threshold: 0.1 });\n    sections.forEach(section => {\n      observer.observe(section);\n    });\n  });\n<\/script>\n\n<div class=\"fade-in-section\" style=\"background-color: #fafafa; padding: 60px 20px; border-radius: 8px;\">\n  <div style=\"max-width: 1200px; margin: 0 auto;\">\n    <h2 style=\"color: #000000; font-size: 40px; font-weight: bold; text-align: center; margin-bottom: 40px;\">\n      Our Bulk Mattress Orders are perfect for:\n    <\/h2>\n\n    <div style=\"display: flex; flex-wrap: wrap; align-items: center; gap: 40px; justify-content: center;\">\n\n      <!-- Left Column (Image) -->\n      <div style=\"flex: 1 1 500px; min-width: 300px;\">\n        <img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0562\/9873\/3706\/files\/bulk_orders.svg?v=1745876606\" alt=\"Bulk Orders Hotel Room\" style=\"width: 100%; border-radius: 8px;\">\n      <\/div>\n\n      <!-- Right Column (List) -->\n      <div style=\"flex: 1 1 400px; min-width: 280px;\">\n        <ul style=\"list-style-type: disc; color: #333333; font-size: 18px; padding-left: 20px;\">\n          <li style=\"margin-bottom: 15px;\">Hotels & Hospitality<\/li>\n          <li style=\"margin-bottom: 15px;\">Property Developers<\/li>\n          <li style=\"margin-bottom: 15px;\">Interior Designers<\/li>\n          <li style=\"margin-bottom: 15px;\">Vacation Rentals \/ Airbnbs<\/li>\n          <li style=\"margin-bottom: 15px;\">Student Housing & Senior Living<\/li>\n        <\/ul>\n      <\/div>\n\n    <\/div>\n  <\/div>\n<\/div>"
+      }
+    },
+    "custom_liquid_TDkPg7": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "<style>\n  .how-it-works-icon {\n    transition: transform 0.3s ease;\n    width: 80px;\n    margin-bottom: 15px;\n    display: block;\n    margin-left: auto;\n    margin-right: auto;\n  }\n  .how-it-works-icon:hover {\n    transform: scale(1.1);\n  }\n<\/style>\n\n<div style=\"background-color: #e9e9f6; padding: 60px 20px; border-radius: 40px; margin: 40px 20px;\">\n  <div style=\"max-width: 1200px; margin: 0 auto; text-align: center;\">\n    <h2 style=\"color: #2c3183; font-size: 36px; font-weight: bold; margin-bottom: 40px;\">How it works<\/h2>\n\n    <div style=\"display: flex; flex-wrap: wrap; justify-content: center; gap: 40px;\">\n\n      <!-- Step 1 -->\n      <div style=\"flex: 1 1 250px; min-width: 220px; text-align: center;\">\n        <img class=\"how-it-works-icon\" src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0562\/9873\/3706\/files\/Submit_a_request.svg?v=1745879336\" alt=\"Submit Request\">\n        <h3 style=\"color: #2c3183; font-size: 20px; margin-bottom: 10px;\">Submit your request<\/h3>\n        <p style=\"color: #000000; font-size: 16px;\">Tell us what you need<\/p>\n      <\/div>\n\n      <!-- Step 2 -->\n      <div style=\"flex: 1 1 250px; min-width: 220px; text-align: center;\">\n        <img class=\"how-it-works-icon\" src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0562\/9873\/3706\/files\/Get_a_quote.svg?v=1745879434\" alt=\"Get a custom quote\">\n        <h3 style=\"color: #2c3183; font-size: 20px; margin-bottom: 10px;\">Get a custom quote<\/h3>\n        <p style=\"color: #000000; font-size: 16px;\">We’ll send pricing and availability<\/p>\n      <\/div>\n\n      <!-- Step 3 -->\n      <div style=\"flex: 1 1 250px; min-width: 220px; text-align: center;\">\n        <img class=\"how-it-works-icon\" src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0562\/9873\/3706\/files\/Delivery_100_x_100_px.svg?v=1745879722\" alt=\"Confirm and deliver\">\n        <h3 style=\"color: #2c3183; font-size: 20px; margin-bottom: 10px;\">Confirm and deliver<\/h3>\n        <p style=\"color: #000000; font-size: 16px;\">We’ll handle the rest<\/p>\n      <\/div>\n\n    <\/div>\n  <\/div>\n<\/div>"
+      }
+    },
+    "custom_liquid_DaJFrW": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "<style>\n  .request-form input, .request-form textarea, .request-form select {\n    width: 100%;\n    padding: 12px;\n    margin-bottom: 15px;\n    border-radius: 10px;\n    border: none;\n    font-size: 16px;\n  }\n  .request-form label {\n    color: #ffffff;\n    font-weight: bold;\n    display: block;\n    margin-bottom: 5px;\n    font-size: 14px;\n  }\n  .request-form .submit-button {\n    background-color: #f8b940;\n    color: #ffffff;\n    font-size: 18px;\n    font-weight: bold;\n    padding: 14px;\n    border: none;\n    border-radius: 30px;\n    cursor: pointer;\n    width: 100%;\n    transition: background-color 0.3s ease;\n  }\n  .request-form .submit-button:hover {\n    background-color: #e0a72f;\n  }\n  .success-message {\n    background-color: #d4edda;\n    color: #155724;\n    padding: 15px;\n    border-radius: 8px;\n    margin-bottom: 20px;\n    text-align: center;\n    font-size: 18px;\n    font-weight: bold;\n  }\n<\/style>\n\n<script>\n  document.addEventListener(\"DOMContentLoaded\", function() {\n    if (window.location.href.indexOf('customer_posted=true') > -1) {\n      const successDiv = document.getElementById('success-message');\n      if (successDiv) {\n        successDiv.style.display = 'block';\n        window.scrollTo({ top: successDiv.offsetTop - 100, behavior: 'smooth' });\n      }\n    }\n  });\n<\/script>\n\n<div style=\"background-color: #2c3183; padding: 60px 20px;\">\n  <h2 style=\"color: #ffffff; text-align: center; font-size: 48px; font-weight: bold; margin-bottom: 40px;\">\n    Submit a Request\n  <\/h2>\n\n  <div style=\"max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; gap: 40px;\">\n\n    <!-- Left Column (Form) -->\n  <div id=\"bulk-form\" style=\"flex: 1 1 500px; min-width: 300px;\">\n\n      <!-- Success Message -->\n      <div id=\"success-message\" class=\"success-message\" style=\"display: none;\">\n        Thank you! Your request has been submitted successfully.\n      <\/div>\n\n      <form method=\"post\" action=\"\/contact#contact_form\" accept-charset=\"UTF-8\" class=\"request-form\">\n        <input type=\"hidden\" name=\"form_type\" value=\"contact\">\n        <input type=\"hidden\" name=\"utf8\" value=\"✓\">\n\n        <label for=\"Full Name\">Full name*<\/label>\n        <input type=\"text\" name=\"contact[Full Name]\" required>\n\n        <label for=\"Company\">Company or Organization*<\/label>\n        <input type=\"text\" name=\"contact[Company]\" required>\n\n        <label for=\"Email\">Email Address*<\/label>\n        <input type=\"email\" name=\"contact[email]\" required>\n\n        <div style=\"display: flex; gap: 10px;\">\n          <div style=\"flex: 1;\">\n            <label for=\"Quantity\">Quantity Needed*<\/label>\n            <input type=\"text\" name=\"contact[Quantity Needed]\" placeholder=\"Minimum of 20\" required>\n          <\/div>\n          <div style=\"flex: 1;\">\n            <label for=\"Phone\">Phone number*<\/label>\n            <input type=\"text\" name=\"contact[Phone Number]\" required>\n          <\/div>\n        <\/div>\n\n        <!-- Mattress Type & Size Dropdowns -->\n        <div style=\"display: flex; gap: 10px;\">\n          <div style=\"flex: 1;\">\n            <label for=\"Mattress Type\">Mattress type*<\/label>\n            <select name=\"contact[Mattress Type]\" required>\n              <option value=\"\" disabled selected>Select an option<\/option>\n              <option value=\"Original\">Original<\/option>\n              <option value=\"Hybrid Comfort\">Hybrid Comfort<\/option>\n              <option value=\"Emma Performance\">Emma Performance<\/option>\n              <option value=\"Don't care\">Don't care<\/option>\n            <\/select>\n          <\/div>\n          <div style=\"flex: 1;\">\n            <label for=\"Mattress Size\">Mattress size*<\/label>\n            <select name=\"contact[Mattress Size]\" required>\n              <option value=\"\" disabled selected>Select an option<\/option>\n              <option value=\"Twin\">Twin<\/option>\n              <option value=\"Twin XL\">Twin XL<\/option>\n              <option value=\"Full\">Full<\/option>\n              <option value=\"Queen\">Queen<\/option>\n              <option value=\"King\">King<\/option>\n              <option value=\"California King\">California King<\/option>\n              <option value=\"Looking for several sizes\">Looking for several sizes<\/option>\n            <\/select>\n          <\/div>\n        <\/div>\n\n        <!-- Address Fields -->\n        <label for=\"Address\">Address*<\/label>\n        <input type=\"text\" name=\"contact[Address]\" required>\n\n        <div style=\"display: flex; gap: 10px;\">\n          <div style=\"flex: 1;\">\n            <label for=\"Postal Code\">Postal Code*<\/label>\n            <input type=\"text\" name=\"contact[Postal Code]\" required>\n          <\/div>\n          <div style=\"flex: 1;\">\n            <label for=\"City\">City*<\/label>\n            <input type=\"text\" name=\"contact[City]\" required>\n          <\/div>\n          <div style=\"flex: 1;\">\n            <label for=\"Province\">Province*<\/label>\n            <input type=\"text\" name=\"contact[Province]\" required>\n          <\/div>\n        <\/div>\n\n        <!-- Comments -->\n        <label for=\"Comments\">Additional Comments<\/label>\n        <textarea name=\"contact[Comments]\" rows=\"4\"><\/textarea>\n\n        <button type=\"submit\" class=\"submit-button\">Submit form<\/button>\n      <\/form>\n    <\/div>\n\n    <!-- Right Column (Image + Rotated Text) -->\n    <div style=\"flex: 1 1 500px; min-width: 300px; text-align: center;\">\n      <img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0562\/9873\/3706\/files\/stack_of_mattresses.svg?v=1746049321\" alt=\"Mattress Stack\" style=\"width: 100%; max-width: 800px;\">\n      <div style=\"margin-top: 20px; color: #ffffff; font-size: 24px; font-weight: bold; transform: rotate(-8deg);\">\n        \n      <\/div>\n    <\/div>\n\n  <\/div>\n<\/div>"
+      }
+    },
+    "custom_liquid_7mydp9": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "<style>\n  .faq-section {\n    max-width: 900px;\n    margin: 60px auto;\n    padding: 0 20px;\n    font-family: sans-serif;\n    text-align: center;\n  }\n\n  .faq-section h2 {\n    color: #2c3183;\n    font-size: 36px;\n    font-weight: bold;\n    margin-bottom: 40px;\n  }\n\n  .faq {\n    border-bottom: 1px solid #bfc2d1;\n    text-align: left;\n    padding: 20px 0;\n    cursor: pointer;\n    position: relative;\n  }\n\n  .faq-title {\n    font-size: 20px;\n    font-weight: bold;\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n  }\n\n  .faq-answer {\n    max-height: 0;\n    overflow: hidden;\n    font-size: 16px;\n    color: #333;\n    transition: max-height 0.3s ease;\n    padding-right: 30px;\n  }\n\n  .faq.open .faq-answer {\n    max-height: 300px;\n    margin-top: 10px;\n  }\n\n  .faq-toggle {\n    font-size: 24px;\n    color: #a1a3b4;\n    transition: transform 0.3s ease;\n  }\n\n  .faq.open .faq-toggle {\n    transform: rotate(180deg);\n  }\n\n  .faq-button {\n    display: inline-block;\n    margin-top: 40px;\n    padding: 16px 32px;\n    font-size: 18px;\n    font-weight: bold;\n    background-color: #2c3183;\n    color: white;\n    border: none;\n    border-radius: 40px;\n    text-decoration: none;\n  }\n\n  .faq-button:hover {\n    background-color: #1f235f;\n  }\n<\/style>\n\n<div class=\"faq-section\">\n  <h2>FAQs<\/h2>\n\n  <div class=\"faq\">\n    <div class=\"faq-title\">\n      Is there a minimum order?\n      <span class=\"faq-toggle\">&#9662;<\/span>\n    <\/div>\n    <div class=\"faq-answer\">\n      Yes, we require a minimum of 20 mattresses for bulk pricing and fulfillment.\n    <\/div>\n  <\/div>\n\n  <div class=\"faq\">\n    <div class=\"faq-title\">\n      Can I request samples?\n      <span class=\"faq-toggle\">&#9662;<\/span>\n    <\/div>\n    <div class=\"faq-answer\">\n      At this time, we’re not able to provide samples. However, all our mattresses are built with the same award-winning technology trusted by millions of sleepers worldwide. Regardless of the mattress type, you can expect exceptional quality, comfort, and durability in every product.\n    <\/div>\n  <\/div>\n\n  <div class=\"faq\">\n    <div class=\"faq-title\">\n      How long does shipping take?\n      <span class=\"faq-toggle\">&#9662;<\/span>\n    <\/div>\n    <div class=\"faq-answer\">\n    We don’t currently offer shipping for bulk orders — pickup is required from our designated location. If you'd prefer to have your order delivered, you're welcome to arrange third-party shipping at your own cost. Once your order is confirmed, we’ll provide all pickup details, and if needed, we’re happy to offer guidance on carrier options.\n    <\/div>\n  <\/div>\n\n  <div class=\"faq\">\n    <div class=\"faq-title\">\n      How do payments work?\n      <span class=\"faq-toggle\">&#9662;<\/span>\n    <\/div>\n    <div class=\"faq-answer\">\n      Once your order is confirmed, we’ll send an invoice for secure online payment. Payment is required in full before delivery.\n    <\/div>\n  <\/div>\n\n  <!-- Final CTA Button that scrolls to the form -->\n  <a href=\"#bulk-form\" class=\"faq-button\">Submit a Request<\/a>\n<\/div>\n\n<script>\n  document.querySelectorAll(\".faq\").forEach(faq => {\n    faq.addEventListener(\"click\", () => {\n      faq.classList.toggle(\"open\");\n    });\n  });\n<\/script>"
+      }
+    },
+    "custom_liquid_3Phr4y": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "<style>\n  .contact-support {\n    background-color: #f7f7f9;\n    border-radius: 40px;\n    padding: 60px 20px;\n    text-align: center;\n    max-width: 900px;\n    margin: 60px auto;\n    font-family: sans-serif;\n  }\n\n  .contact-support h2 {\n    font-size: 32px;\n    color: #2e2a26;\n    font-weight: bold;\n    margin-bottom: 10px;\n  }\n\n  .contact-support p {\n    font-size: 20px;\n    color: #4a4a4a;\n    margin-bottom: 30px;\n  }\n\n  .contact-support .email-icon {\n    margin: 0 auto 16px;\n    width: 40px;\n    height: 40px;\n  }\n\n  .contact-support .email-text {\n    font-size: 18px;\n    color: #2e2a26;\n  }\n\n  .contact-support .email-text a {\n    color: #2e2a26;\n    text-decoration: underline;\n    font-weight: bold;\n  }\n<\/style>\n\n<div class=\"contact-support\">\n  <h2>Still have questions?<\/h2>\n  <p>We’re happy to help!<\/p>\n  \n  <!-- SVG Email Icon -->\n  <div class=\"email-icon\">\n    <svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#f8b940\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\n      <rect x=\"3\" y=\"5\" width=\"18\" height=\"14\" rx=\"2\" ry=\"2\"\/>\n      <polyline points=\"3 7 12 13 21 7\"\/>\n    <\/svg>\n  <\/div>\n\n  <div class=\"email-text\">\n    Drop us an email at <a href=\"mailto:support@emma-sleep.ca\">support@emma-sleep.ca<\/a> and we'll respond in 24–48 hours.\n  <\/div>\n<\/div>"
+      }
+    },
+    "165425073725b56235": {
+      "type": "rich-text",
+      "blocks": {
+        "16542507374a1f9691-0": {
+          "type": "heading",
+          "disabled": true,
+          "settings": {
+            "heading": "Talk about your brand",
+            "heading_size": "h1"
+          }
+        },
+        "16542507374a1f9691-1": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": ""
+          }
+        },
+        "16542507374a1f9691-2": {
+          "type": "button",
+          "disabled": true,
+          "settings": {
+            "button_label": "Button label",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "16542507374a1f9691-0",
+        "16542507374a1f9691-1",
+        "16542507374a1f9691-2"
+      ],
+      "settings": {}
+    },
+    "47cdc402-f526-47ac-8d3e-c8942fbf3252": {
+      "type": "home-collage-collection",
+      "blocks": {
+        "38985f04-9fc5-4a51-a444-e6d6baeea638": {
+          "type": "right_section",
+          "settings": {
+            "image-col-right": "shopify:\/\/shop_images\/image_23.png",
+            "col-title-right": "Pillows",
+            "col-text-right": "<p>Perfect Complement<\/p>",
+            "col-link-right": "shopify:\/\/collections\/pillows"
+          }
+        },
+        "9e674515-5e73-4aa8-b968-c8bb686b9766": {
+          "type": "right_section",
+          "settings": {
+            "image-col-right": "shopify:\/\/shop_images\/Woman_wrapped_in_duvet_Gallery.jpg",
+            "col-title-right": "Accessories",
+            "col-text-right": "<p>Full Experience <\/p>",
+            "col-link-right": "shopify:\/\/collections\/beddings"
+          }
+        }
+      },
+      "block_order": [
+        "38985f04-9fc5-4a51-a444-e6d6baeea638",
+        "9e674515-5e73-4aa8-b968-c8bb686b9766"
+      ],
+      "disabled": true,
+      "settings": {
+        "title": "Emma's Advanced Sleep Range",
+        "mobile_title": "Emma's Advanced Sleep Range",
+        "image-col-left": "shopify:\/\/shop_images\/new-mattresses.webp",
+        "col-title-left": "Mattresses",
+        "col-text-left": "<p>Most Awarded<\/p>",
+        "col-link-left": "shopify:\/\/collections\/mattresses"
+      }
+    },
+    "1747117791ae9669dc": {
+      "type": "apps",
+      "settings": {
+        "include_margins": true
+      }
+    }
+  },
+  "order": [
+    "custom_liquid_HUA4zX",
+    "custom_liquid_9iACyN",
+    "custom_liquid_gVqUpt",
+    "custom_liquid_TDkPg7",
+    "custom_liquid_DaJFrW",
+    "custom_liquid_7mydp9",
+    "custom_liquid_3Phr4y",
+    "165425073725b56235",
+    "47cdc402-f526-47ac-8d3e-c8942fbf3252",
+    "1747117791ae9669dc"
+  ]
+}

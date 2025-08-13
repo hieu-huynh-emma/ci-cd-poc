@@ -1,12 +1,12 @@
 {% liquid
  if product.id == 7829461794954
-     assign product = all_products['emma-hybrid-comfort']
+     assign product = all_products['emma-original-a']
  endif
 %}
 
 {% liquid
  if product.id == 7797711896714
-     assign product = all_products['emma-hybrid-comfort']
+     assign product = all_products['emma-original-a']
  endif
 %}
 
@@ -23,7 +23,7 @@
 </div>
 
 {% case template %}
-    {% when 'product.emma-hybrid-comfort' or 'product.hybrid-comfort-bundle' %}
+    {% when 'product.emma-original-a' or 'product.hybrid-comfort-bundle' %}
 
 		<script type="module">
         const starRatingObserver = new MutationObserver(function () {
@@ -31,8 +31,6 @@
 
           const $starsContainer = $(".yotpo-bottomline .yotpo-stars");
           const $reviewSource =  $(".yotpo-bottomline .text-m")
-
-          console.log($starsContainer)
 
           $('.yotpo-bottomline .yotpo-clr').remove()
 

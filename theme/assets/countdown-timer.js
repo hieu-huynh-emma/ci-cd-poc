@@ -1,87 +1,161 @@
+/*
+  Countdown Timer Component
+
+  Usage:
+    <countdown-timer
+     :date="2024-11-11"
+     :topCaption="Top"
+     :bottomCaption="Bottom"
+     :type="minimal"
+    ></countdown-timer>
+ */
+
 class CountdownTimer extends CustomElement {
 
-    props = {
-        targetDate: "",
-        title: "",
-        minimal: false,
-        size: ''
+  props = {
+    date: "",
+    captionPlacement: "bottom",
+    captionAlignment: "left",
+    caption: "",
+    type: "full",
+    pattern: "dd:hh:mm:ss",
+  };
+
+  SECONDS_PER_MINUTE = 60;
+  SECONDS_PER_HOUR = 60 * this.SECONDS_PER_MINUTE; // 3,600 seconds;
+  SECONDS_PER_DAY = 24 * this.SECONDS_PER_HOUR; // 86,400 seconds;
+
+  get timeUnits() {
+    return [
+      {
+        notations: ["D", "DD", "d", "dd"],
+        label: "days",
+        delta: this.SECONDS_PER_DAY,
+        specifier: "dd",
+      },
+      {
+        notations: ["H", "HH", "h", "hh"],
+        label: "hours",
+        delta: this.SECONDS_PER_HOUR,
+        specifier: "hh",
+      },
+      {
+        notations: ["M", "MM", "m", "mm"],
+        label: "minutes",
+        delta: this.SECONDS_PER_MINUTE,
+        specifier: "mm",
+      },
+      {
+        notations: ["S", "SS", "s", "ss"],
+        label: "seconds",
+        delta: 1,
+        specifier: "ss",
+      },
+    ];
+  }
+
+  get format() {
+    return this.parseUnits(this.props.pattern);
+  }
+
+  constructor() {
+    super();
+  }
+
+   render() {
+    const { caption } = this.props;
+
+    this.innerHTML = this.template(caption);
+
+    this.onUpdated();
+  }
+
+  template(caption) {
+    return `
+           ${caption ? `<div class="timer-caption weglot-tr"><div class="rtf-viewer weglot-tr">${caption}</div></div>` : ""}
+           
+           <div class="timer"></div>
+        `;
+  }
+
+  beforeMount() {
+    const { captionPlacement, captionAlignment } = this.props;
+    if (!this.$el.attr(":type")) this.$el.attr(":type", this.props.type);
+
+    this.$el.addClass(`caption-placement--${captionPlacement} caption-alignment--${captionAlignment}`);
+  }
+
+  mounted() {
+    super.mounted();
+
+    const { date } = this.props;
+
+    const startTime = Date.now();
+    const endTime = new Date(date.replace(" ", "T"));
+
+    let delta = (endTime - startTime) / 1000;
+
+    this.tick(delta);
+  }
+
+  parseUnits(pattern) {
+    if (!pattern) return Object.values(this.timeUnits);
+
+    return pattern.split(":").reduce((acc, timeSpecifier) => {
+      const foundUnit = this.timeUnits.find(({ notations }) => notations.includes(timeSpecifier));
+
+      if (foundUnit) acc.push({
+        ...foundUnit,
+        specifier: timeSpecifier,
+      });
+
+      return acc;
+    }, []);
+  }
+
+  tick(delta) {
+    if (!delta || delta < 0) {
+      this.$el.remove();
+      return;
+    }
+    const { minimal } = this.props;
+
+    const timeParts = this.getTimeParts(delta);
+
+    timeParts.forEach(this.renderTimeUnit.bind(this));
+
+    setTimeout(() => this.tick(delta - 1), 1000);
+  }
+
+  getTimeParts(delta) {
+    return this.format.map((unit) => {
+      const unitValue = Math.floor(delta / unit.delta);
+
+      delta -= unitValue * unit.delta;
+
+      return {
+        ...unit,
+        label: unit.label,
+        value: unitValue,
+      };
+    });
+  }
+
+  renderTimeUnit(unit) {
+    const $timer = this.$el.find(".timer");
+
+    const $foundUnitDisplay = $timer.find(`[\\:specifier="${unit.specifier}"]`);
+
+    if (!!$foundUnitDisplay.length) {
+      $foundUnitDisplay.find(".digit").text(unit.value);
+      return;
     }
 
-    constructor() {
-        super();
-    }
-
-    template() {
-        super.template();
-
-        const {title, minimal} = this.props
-
-
-        return `
-           ${title ? `<p class="paragraph-14 font-semibold text-white md:text-black">${title}</p>` : ""}
-           <div class="timer-display${minimal? " is-minimal": ""}">
-              <div class="time-part">
-                <p class="digit"></p>
-                <p class="label">Days</p>
-              </div>
-              <div class="time-part">
-                <p class="digit"></p>
-                <p class="label">Hours</p>
-              </div>
-              <div class="time-part">
-                <p class="digit"></p>
-                <p class="label">Minutes</p>
-              </div>
-              <div class="time-part">
-                <p class="digit"></p>
-                <p class="label">Seconds</p>
-              </div>
-           </div>
-        `
-    }
-
-    tick(delta) {
-        if (delta < 0) {
-            this.$el.remove();
-            return
-        }
-        const {minimal} = this.props
-
-        const timeParts = getTimeParts(delta)
-
-        if(minimal) {
-            const partLabels = ['days', 'hours', 'minutes', 'seconds'];
-
-            $(this).find('.timer-display').html(timeParts.map((digit, i) => `<div><b>${digit}</b> ${partLabels[i]}</div>`).join(' '))
-        }
-        else {
-            this.$el.find(".time-part").each(function (i) {
-
-                $(this).find(".digit").text(timeParts[i])
-            })
-        }
-
-    }
-
-    mounted() {
-        super.mounted();
-
-        const {targetDate} = this.props;
-
-        const startTime = Date.now();
-        const endTime = new Date(targetDate.replace(' ', 'T'));
-
-        let delta = (endTime - startTime) / 1000;
-
-        this.tick(delta)
-
-        setInterval(() => {
-            delta -= 1;
-            this.tick(delta)
-        }, 1000);
-    }
-
-
+    $timer.append(` <div :specifier="${unit.specifier}" class="time-display">
+      <p class="digit weglot-tr">${unit.value}</p>
+      <p class="label weglot-tr">${unit.label}</p>
+    </div>`);
+  }
 }
 
-customElements.define('countdown-timer', CountdownTimer);
+customElements.define("countdown-timer", CountdownTimer);

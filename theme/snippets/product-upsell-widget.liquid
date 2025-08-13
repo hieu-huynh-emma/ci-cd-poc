@@ -11,69 +11,66 @@
 <link rel="quickscript" loading="delayed" href="{{ 'upsell-widget.css' | asset_url }}">
 {% liquid
 
-  assign trackId = "Up_Sell"
-  assign postfix = product.metafields.accentuate.track_postfix
+    assign trackId = "Up_Sell"
+    assign postfix = product.metafields.accentuate.track_postfix
 
-  if postfix != blank
-    assign trackId = trackId | append: "_" | append: postfix
-  endif
+    if postfix != blank
+        assign trackId = trackId | append: "_" | append: postfix
+    endif
 %}
 
 <div id="upsell-widget">
-  <upsell-widget
-      name="upsell-widget"
-      type="widget"
-      id="up-selling-addon-{{ product.handle }}"
-      :adjustablePriceGap="{{ product.metafields.accentuate.upselling_is_adjustable_price_gap | default: false }}"
-      :eventName="up_selling"
+    <upsell-widget
+        name="upsell-widget"
+        type="widget"
+        id="up-selling-addon-{{ product.handle }}"
+        :adjustablePriceGap="{{ product.metafields.accentuate.upselling_is_adjustable_price_gap | default: false }}"
+        :eventName="up_selling"
 
-  >
-    {% assign product = settings.product %}
+    >
+        {% assign product = settings.product %}
 
-    <script type="application/json">{{ all_products[product] | json }}</script>
+        <script type="application/json">{{ all_products[product] | json }}</script>
 
-    <div class="widget-container">
-      {% if settings.badge != blank %}
-        <div class="widget-badges-container">
-          <div class="widget-badge">
-            {{ settings.badge }}
-          </div>
+        <div class="widget-container">
+            {% if settings.badge != blank %}
+                <div class="widget-badges-container">
+                    <div class="widget-badge">
+                        {{ settings.badge }}
+                    </div>
+                </div>
+            {% endif %}
+            <div class="product-details">
+                <div class="product-title">
+                    <p class="font-semibold">{{ settings.title }}</p>
+                </div>
+                <p class="product-price-container font-bold">
+                    <span id="upsell-price-disparity" class="text-scarlet"></span>
+                    <span> </span>
+                    <span id="upsell-original-price-disparity" class="text-sm line-through text-nobel"></span>
+                    <span id="upsell-product-size" class="text-scarlet"></span>
+                </p>
+
+                <div class="product-content">
+                    <div class="text-sm">
+                        {% render 'rtf-viewer', content: settings.content %}
+                    </div>
+                </div>
+
+                <tracked-button href="{{ product.url }}" :trackId="{{ trackId }}" class="product-button">
+                    UPGRADE NOW
+                </tracked-button>
+            </div>
+
+            <div class="product-media">
+                <picture-tag
+                    :src="{{ blockImg | default: settings.product.metafields.accentuate.featured_image[0].src | default: coverImg }}"
+                    width="100"
+                    height="57"
+                >
+                </picture-tag>
+            </div>
         </div>
-      {% endif %}
-      <div class="product-details">
-        <div class="product-title">
-          <p class="font-semibold">{{ settings.title }}</p>
-        </div>
-        <p class="product-price-container font-bold">
-          <span id="upsell-price-disparity" class="text-scarlet"></span>
-          <span> </span>
-          <span id="upsell-original-price-disparity" class="text-sm line-through text-nobel"></span>
-          <span id="upsell-product-size" class="text-scarlet"></span>
-        </p>
 
-        <div class="product-content">
-          <div class="text-sm">
-            {% render 'rtf-viewer', content: settings.content %}
-          </div>
-        </div>
-
-        <tracked-button href="{{ product.url }}" :trackId="{{ trackId }}" class="product-button">
-          View Product
-        </tracked-button>
-      </div>
-
-      <div class="product-media">
-        <img
-            class="lazyload"
-            data-src="{{ blockImg | default: settings.product.metafields.accentuate.featured_image[0].src |
-            default: coverImg }}"
-            alt=""
-            data-sizes="auto"
-            width="100"
-            height="57"
-        >
-      </div>
-    </div>
-
-  </upsell-widget>
+    </upsell-widget>
 </div>

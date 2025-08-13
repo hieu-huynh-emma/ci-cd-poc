@@ -48,7 +48,7 @@
                                     :clampable="{{ enable_text_clamp | default: false }}"
                             >
                                 <div class="customer-review__header">
-                                    <a href="{{ product.url }}" class="underline">
+                                    <a href="{{ product.url }}" class="underline" abtasty-tracker="PDP_CTR">
                                         {{ product.title }}
                                     </a>
                                     {% render 'star-ratings' %}

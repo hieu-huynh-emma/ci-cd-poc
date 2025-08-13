@@ -1,71 +1,88 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "layout": "theme.product",
   "sections": {
     "product-layout": {
       "type": "product-layout",
-      "settings": {
-      }
+      "settings": {}
     },
     "product-summary": {
       "type": "product-summary",
       "blocks": {
-        "yotpo_star_rating": {
-          "type": "yotpo_star_rating",
+        "disclaimer": {
+          "type": "text",
+          "disabled": true,
+          "static": true,
           "settings": {
-            "product": "{{product}}",
-            "new_layout": false
-          }
+            "content": "Text Content",
+            "color": "#2e2f3c",
+            "size": "base",
+            "text_alignment": "center"
+          },
+          "blocks": {}
         }
       },
-      "block_order": [
-        "yotpo_star_rating"
-      ],
       "settings": {
-        "title": "Emma Premium Cooling Pillow",
-        "desc": "<h6>The perfect blend of firmness, support and freshness<\/h6><p>Discover our thermoregulating pillow fitting any type of sleeper thanks to its adjustable layers<\/p><ul><li>Thermosync technology capturing excess heat for optimum sleep temperature<\/li><li>Easy-to-clean & machine-washable for a clean, refreshing sleep<\/li><li>Try it for 60 days with the Emma promise<\/li><\/ul>",
-        "disclaimer": ""
+        "title": "Premium Cooling Pillow 2-Pack",
+        "desc": "<h6>The perfect blend of firmness, support and freshness</h6><p>Discover our thermoregulating pillow fitting any type of sleeper thanks to its adjustable layers</p><ul><li>Thermosync technology capturing excess heat for optimum sleep temperature</li><li>Easy-to-clean & machine-washable for a clean, refreshing sleep</li><li>Try it for 60 days with the Emma promise</li><li>2 Pillows Included</li></ul>"
       }
     },
     "product-media": {
       "type": "product-media",
       "blocks": {
+        "image_7RjatD": {
+          "type": "image",
+          "settings": {
+            "en_image": "shopify://shop_images/premium_cooling_pillow.png",
+            "fr_image": "shopify://shop_images/premium_cooling_pillow.png"
+          }
+        },
         "f5f456c7-b29a-4f74-826f-648e09f5b1cd": {
           "type": "image",
           "settings": {
-            "en_image": "shopify:\/\/shop_images\/Small-B2_-_B_-_ORIGINAL_PILLOW_-_EDIT-S0.png",
-            "fr_image": "shopify:\/\/shop_images\/Small-B2_-_B_-_ORIGINAL_PILLOW_-_EDIT-S0.png"
+            "en_image": "shopify://shop_images/Small-B2_-_B_-_ORIGINAL_PILLOW_-_EDIT-S0.png",
+            "fr_image": "shopify://shop_images/Small-B2_-_B_-_ORIGINAL_PILLOW_-_EDIT-S0.png"
           }
         },
         "038c8f16-3a84-418c-9ee2-38f53be4a385": {
           "type": "image",
           "settings": {
-            "en_image": "shopify:\/\/shop_images\/Small-CUSTOMIZABLE_COOLING_FOAM_PILLOW_30S_-_ENG_SUB_-_EDIT_1_CC_00_00_10_07.jpg",
-            "fr_image": "shopify:\/\/shop_images\/Small-CUSTOMIZABLE_COOLING_FOAM_PILLOW_30S_-_ENG_SUB_-_EDIT_1_CC_00_00_10_07.jpg"
+            "en_image": "shopify://shop_images/Small-CUSTOMIZABLE_COOLING_FOAM_PILLOW_30S_-_ENG_SUB_-_EDIT_1_CC_00_00_10_07.jpg",
+            "fr_image": "shopify://shop_images/Small-CUSTOMIZABLE_COOLING_FOAM_PILLOW_30S_-_ENG_SUB_-_EDIT_1_CC_00_00_10_07.jpg"
           }
         },
         "e4cd7962-4d57-4250-8e6e-4c76dd76d6d6": {
           "type": "image",
           "settings": {
-            "en_image": "shopify:\/\/shop_images\/Small-CUSTOMIZABLE_COOLING_FOAM_PILLOW_30S_-_ENG_SUB_-_EDIT_1_CC_00_00_28_20.jpg",
-            "fr_image": "shopify:\/\/shop_images\/Small-CUSTOMIZABLE_COOLING_FOAM_PILLOW_30S_-_ENG_SUB_-_EDIT_1_CC_00_00_28_20.jpg"
+            "en_image": "shopify://shop_images/Small-CUSTOMIZABLE_COOLING_FOAM_PILLOW_30S_-_ENG_SUB_-_EDIT_1_CC_00_00_28_20.jpg",
+            "fr_image": "shopify://shop_images/Small-CUSTOMIZABLE_COOLING_FOAM_PILLOW_30S_-_ENG_SUB_-_EDIT_1_CC_00_00_28_20.jpg"
           }
         },
         "ae4539f2-6ea2-42a3-a132-a31010570bf1": {
           "type": "image",
           "settings": {
-            "en_image": "shopify:\/\/shop_images\/Small-CUSTOMIZABLE_COOLING_FOAM_PILLOW_30S_-_ENG_SUB_-_EDIT_1_CC_00_00_11_13.jpg",
-            "fr_image": "shopify:\/\/shop_images\/Small-CUSTOMIZABLE_COOLING_FOAM_PILLOW_30S_-_ENG_SUB_-_EDIT_1_CC_00_00_11_13.jpg"
+            "en_image": "shopify://shop_images/Small-CUSTOMIZABLE_COOLING_FOAM_PILLOW_30S_-_ENG_SUB_-_EDIT_1_CC_00_00_11_13.jpg",
+            "fr_image": "shopify://shop_images/Small-CUSTOMIZABLE_COOLING_FOAM_PILLOW_30S_-_ENG_SUB_-_EDIT_1_CC_00_00_11_13.jpg"
           }
         },
         "72b3b893-b0bb-44ad-978c-733ee54620a1": {
           "type": "image",
           "settings": {
-            "en_image": "shopify:\/\/shop_images\/Small-CUSTOMIZABLE_COOLING_FOAM_PILLOW_30S_-_ENG_SUB_-_EDIT_1_CC_00_00_05_10.jpg",
-            "fr_image": "shopify:\/\/shop_images\/Small-CUSTOMIZABLE_COOLING_FOAM_PILLOW_30S_-_ENG_SUB_-_EDIT_1_CC_00_00_05_10.jpg"
+            "en_image": "shopify://shop_images/Small-CUSTOMIZABLE_COOLING_FOAM_PILLOW_30S_-_ENG_SUB_-_EDIT_1_CC_00_00_05_10.jpg",
+            "fr_image": "shopify://shop_images/Small-CUSTOMIZABLE_COOLING_FOAM_PILLOW_30S_-_ENG_SUB_-_EDIT_1_CC_00_00_05_10.jpg"
           }
         }
       },
       "block_order": [
+        "image_7RjatD",
         "f5f456c7-b29a-4f74-826f-648e09f5b1cd",
         "038c8f16-3a84-418c-9ee2-38f53be4a385",
         "e4cd7962-4d57-4250-8e6e-4c76dd76d6d6",
@@ -83,8 +100,8 @@
         "f5f456c7-b29a-4f74-826f-648e09f5b1cd": {
           "type": "image",
           "settings": {
-            "en_image": "shopify:\/\/shop_images\/Untitled_design_5.jpg",
-            "fr_image": "shopify:\/\/shop_images\/Untitled_design_5.jpg"
+            "en_image": "shopify://shop_images/Untitled_design_5.jpg",
+            "fr_image": "shopify://shop_images/Untitled_design_5.jpg"
           }
         }
       },
@@ -103,32 +120,32 @@
           "type": "item",
           "settings": {
             "heading": "Free 60-Night Trial",
-            "icon": "shopify:\/\/shop_images\/365_nights.png",
-            "url": "shopify:\/\/pages\/trial"
+            "icon": "shopify://shop_images/365_nights.png",
+            "url": "shopify://pages/trial"
           }
         },
         "605013b2-263f-4c29-b4c0-136f75610eda": {
           "type": "item",
           "settings": {
             "heading": "Free Shipping & Returns",
-            "icon": "shopify:\/\/shop_images\/Delivery.png",
-            "url": "https:\/\/emma-sleep.ca\/pages\/faq#trial-and-guarantee"
+            "icon": "shopify://shop_images/Delivery.png",
+            "url": "https://emma-sleep.ca/pages/faq#trial-and-guarantee"
           }
         },
         "49138228-00c2-461a-bbdd-650d93f8503b": {
           "type": "item",
           "settings": {
             "heading": "2-Year Warranty",
-            "icon": "shopify:\/\/shop_images\/Warranty.png",
-            "url": "https:\/\/emma-sleep.ca\/pages\/faq#trial-and-guarantee"
+            "icon": "shopify://shop_images/Warranty.png",
+            "url": "https://emma-sleep.ca/pages/faq#trial-and-guarantee"
           }
         },
         "7bc03542-75ef-4463-b480-ec46f36ac421": {
           "type": "item",
           "settings": {
-            "heading": "0% APR Financing",
-            "icon": "shopify:\/\/shop_images\/0_APR..png",
-            "url": "https:\/\/emma-sleep.ca\/pages\/faq#purchasing-your-emma"
+            "heading": "0% APR Financing*",
+            "icon": "shopify://shop_images/0_APR..png",
+            "url": "https://emma-sleep.ca/pages/faq#purchasing-your-emma"
           }
         }
       },
@@ -138,14 +155,13 @@
         "49138228-00c2-461a-bbdd-650d93f8503b",
         "7bc03542-75ef-4463-b480-ec46f36ac421"
       ],
-      "settings": {
-      }
+      "settings": {}
     },
     "campaign-teaser": {
       "type": "campaign-teaser",
       "disabled": true,
       "settings": {
-        "content": "<p>55% off<\/p>",
+        "content": "<p>55% off</p>",
         "bgcolor": "#fef3ea",
         "color": "#2e2f3c",
         "show_countdown_timer": false
@@ -158,7 +174,7 @@
           "type": "item",
           "settings": {
             "title": "Materials",
-            "content": "<p>Emma smoothly combines high-quality materials to create a dream-like mattress that conforms to every body type. Through the combination of our extensive research and advanced foam technology, Emma offers the comfiest sleep possible. Emma mattresses offer comfort point-elastic caving that enables an ideal and unique fit for your body. As a result, your spine stays straight while at the same time offering you the necessary amount of support and comfort.<\/p><ol><li><\/li><\/ol>",
+            "content": "<p>Emma smoothly combines high-quality materials to create a dream-like mattress that conforms to every body type. Through the combination of our extensive research and advanced foam technology, Emma offers the comfiest sleep possible. Emma mattresses offer comfort point-elastic caving that enables an ideal and unique fit for your body. As a result, your spine stays straight while at the same time offering you the necessary amount of support and comfort.</p><ol><li></li></ol>",
             "product_dimension": false
           }
         },
@@ -166,7 +182,7 @@
           "type": "item",
           "settings": {
             "title": "Dimensions",
-            "content": "<p>Pillow Size: 28 x 16 in<br\/>Total Weight: 3.3 lbs<br\/>Filling Weight: 2.64 lbs<\/p>",
+            "content": "<p>Pillow Size: 28 x 16 in<br/>Total Weight: 3.3 lbs<br/>Filling Weight: 2.64 lbs</p>",
             "product_dimension": false
           }
         },
@@ -175,7 +191,7 @@
           "disabled": true,
           "settings": {
             "title": "Certifications",
-            "content": "<p>Our top-of-the-line foams are all CertiPUR-US® certified, meaning, they are made without any ozone-depleting chemicals and safe from VOCs, formaldehyde, and phthalates.<\/p>",
+            "content": "<p>Our top-of-the-line foams are all CertiPUR-US® certified, meaning, they are made without any ozone-depleting chemicals and safe from VOCs, formaldehyde, and phthalates.</p>",
             "product_dimension": false
           }
         }
@@ -185,8 +201,7 @@
         "b10d93d5-1a38-4340-b997-737c94850770",
         "361b0dc3-3896-4fb3-9116-255bf53f8858"
       ],
-      "settings": {
-      }
+      "settings": {}
     },
     "product-unique-selling-points": {
       "type": "product-unique-selling-points",
@@ -194,34 +209,34 @@
         "05167373-6c53-4bf6-b18f-7cae5ab215d7": {
           "type": "selling_point",
           "settings": {
-            "icon": "shopify:\/\/shop_images\/shipping_truck_db437bec-0f66-475d-9a43-c2bdab9dc26d.png",
+            "icon": "shopify://shop_images/shipping_truck_db437bec-0f66-475d-9a43-c2bdab9dc26d.png",
             "text": "Free & fast delivery",
-            "content": "<p>Free no contact delivery for all orders <\/p><p>Dispatched in: <strong>1 business day <\/strong><\/p><p>(Additional fees or exclusions may apply to the Canadian Territories)<\/p>",
-            "url": "https:\/\/www.emma-sleep.ca\/pages\/faq#your-order"
+            "content": "<p>Free no contact delivery for all orders </p><p>Delivered in : <strong>3-5 Business days</strong></p><p>(Additional fees or exclusions may apply to the Canadian Territories)</p>",
+            "url": "https://www.emma-sleep.ca/pages/faq#your-order"
           }
         },
         "e82e034a-8517-497e-b8ef-f81bff8064d2": {
           "type": "selling_point",
           "settings": {
-            "icon": "shopify:\/\/shop_images\/moon.png",
+            "icon": "shopify://shop_images/moon.png",
             "text": "60 Night trial",
-            "content": "<p>Take your time to decide whether or not Emma is for you<\/p>",
-            "url": "https:\/\/www.emma-sleep.ca\/pages\/faq#trial-and-guarantee"
+            "content": "<p>Take your time to decide whether or not Emma is for you</p>",
+            "url": "https://www.emma-sleep.ca/pages/faq#trial-and-guarantee"
           }
         },
         "167def1b-b3fa-4ffb-a44d-34d5942a0c56": {
           "type": "selling_point",
           "settings": {
-            "icon": "shopify:\/\/shop_images\/badge.png",
+            "icon": "shopify://shop_images/badge.png",
             "text": "2 Years warranty",
-            "content": "<p>Every Emma product is top-notch quality<\/p>",
-            "url": "https:\/\/www.emma-sleep.ca\/pages\/faq#trial-and-guarantee"
+            "content": "<p>Every Emma product is top-notch quality</p>",
+            "url": "https://www.emma-sleep.ca/pages/faq#trial-and-guarantee"
           }
         },
         "809302fb-d0b7-4e84-854b-40031868c836": {
           "type": "payment_providers",
           "settings": {
-            "icon": "shopify:\/\/shop_images\/MicrosoftTeams-image_12.png",
+            "icon": "shopify://shop_images/MicrosoftTeams-image_12.png",
             "text": "Payment Methods",
             "payment_providers_section": "payment-providers"
           }
@@ -233,13 +248,11 @@
         "167def1b-b3fa-4ffb-a44d-34d5942a0c56",
         "809302fb-d0b7-4e84-854b-40031868c836"
       ],
-      "settings": {
-      }
+      "settings": {}
     },
     "product-auxiliary": {
       "type": "product-auxiliary",
-      "settings": {
-      }
+      "settings": {}
     },
     "multimedia-showcase": {
       "type": "multimedia-showcase",
@@ -247,7 +260,7 @@
         "b6ade7e9-b417-46a1-95df-0bd7b07eff23": {
           "type": "video",
           "settings": {
-            "source": "shopify:\/\/files\/videos\/Compressed Preview-B2 - E2 - ORIGINAL PILLOW - EDIT 2.mp4",
+            "source": "shopify://files/videos/Compressed Preview-B2 - E2 - ORIGINAL PILLOW - EDIT 2.mp4",
             "heading": "More deep sleep, less waking up in a sweat",
             "content": "No more waking up in a sweat, thanks to ThermoSync® foam capturing excess heat for optimum sleep temperature. A regulated temperature favorises deep sleep phases and promotes a restful sleep without micro-awakenings throughout the night.",
             "inverted": false,
@@ -258,7 +271,7 @@
         "33609da3-1fbd-48a4-9aed-536ecffdfa1f": {
           "type": "video",
           "settings": {
-            "source": "shopify:\/\/files\/videos\/USP 2 Customizable Cooling Foam Pillow.mp4",
+            "source": "shopify://files/videos/USP 2 Customizable Cooling Foam Pillow.mp4",
             "heading": "Adjustable layers for perfect comfort",
             "content": "If you like to sleep on your stomach, keep just 1 layer in the pillow. For back sleepers, try 2-3 layers and see which you like more. And for side sleepers, keep all 3 layers for maximum support and comfort. You can mix and match the layers and the order they’re in so that you find your ideal comfort.",
             "inverted": true,
@@ -269,7 +282,7 @@
         "1a371ca4-873c-4776-951a-dfeed96ce72d": {
           "type": "video",
           "settings": {
-            "source": "shopify:\/\/files\/videos\/Untitled_design_(5).mp4",
+            "source": "shopify://files/videos/Untitled_design_(5).mp4",
             "heading": "The perfect blend of firmness, support and coolness",
             "content": "Enjoy undisturbed sleep thanks to our thermoregulating, adjustable three-layer pillow that fits any type of sleeper. Moisture-resistant cover that's machine washable too.",
             "inverted": false,
@@ -280,7 +293,7 @@
         "3d95e565-9049-42f4-8440-1c9ca0ac9074": {
           "type": "video",
           "settings": {
-            "source": "shopify:\/\/files\/videos\/Untitled_design_(4).mp4",
+            "source": "shopify://files/videos/Untitled_design_(4).mp4",
             "heading": "Easy to clean",
             "content": "Our Premium Cooling Pillow is made from our highest performing and most durable foams. This means it retains its shape overnight and over time. It is non-toxic and easy to clean: just remove the cover and put it in the washing machine.",
             "inverted": true,
@@ -295,8 +308,7 @@
         "1a371ca4-873c-4776-951a-dfeed96ce72d",
         "3d95e565-9049-42f4-8440-1c9ca0ac9074"
       ],
-      "settings": {
-      }
+      "settings": {}
     },
     "mattress-layers": {
       "type": "mattress-layers",
@@ -304,7 +316,7 @@
         "cover_layer_zPQz7H": {
           "type": "cover_layer",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Diamond_pillow_1.png",
+            "image": "shopify://shop_images/Diamond_pillow_1.png",
             "title": "Ultradry cover",
             "content": "The cover's UltraDry technology rapidly wicks away moisture, ensuring the perfect cool, dry sleep.",
             "gutter": 4,
@@ -314,7 +326,7 @@
         "internal_layer_gpgALY": {
           "type": "internal_layer",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Diamond_pillow_2.png",
+            "image": "shopify://shop_images/Diamond_pillow_2.png",
             "title": "ThermoSync cooling foam",
             "content": "The graphite Thermosync coating guarantees extended deep sleep phases thanks to temperature regulation. Body temperature quickly drops to a level that promotes restful sleep.",
             "is_thin": true,
@@ -325,7 +337,7 @@
         "internal_layer_r6cwd8": {
           "type": "internal_layer",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Diamond_pillow_3.png",
+            "image": "shopify://shop_images/Diamond_pillow_3.png",
             "title": "The soft foam that feels like a cloud",
             "content": "Heavenly sleeping climate thanks to breathable Airgocell® foam. The softest layer of the three.",
             "is_thin": false,
@@ -336,7 +348,7 @@
         "internal_layer_kPJhEn": {
           "type": "internal_layer",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Diamond_pillow_4.png",
+            "image": "shopify://shop_images/Diamond_pillow_4.png",
             "title": "Visco-adaptive foam",
             "content": "The visco-adaptive foam supports the head and neck with extreme precision for you to sleep in a state of total relaxation.",
             "is_thin": false,
@@ -347,7 +359,7 @@
         "72c945db-310d-4f05-905a-b523e378d2f4": {
           "type": "base_layer",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Diamond_pillow_5.png",
+            "image": "shopify://shop_images/Diamond_pillow_5.png",
             "title": "Ultradry cover",
             "content": "The cover's UltraDry technology rapidly wicks away moisture, ensuring the perfect cool, dry sleep.",
             "gutter": 1,
@@ -357,7 +369,7 @@
         "shadow_TWYLez": {
           "type": "shadow",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Foam_pillow_sh.png"
+            "image": "shopify://shop_images/Foam_pillow_sh.png"
           }
         }
       },
@@ -370,7 +382,7 @@
         "shadow_TWYLez"
       ],
       "settings": {
-        "wallpaper": "shopify:\/\/shop_images\/orange_1.png",
+        "wallpaper": "shopify://shop_images/orange_1.png",
         "heading": "Let's take a look under the covers",
         "heading_alignment": "center",
         "container_spacing": "sm",
@@ -380,13 +392,11 @@
     "mattress-firmness": {
       "type": "mattress-firmness",
       "disabled": true,
-      "custom_css": [
-
-      ],
+      "custom_css": [],
       "settings": {
         "title": "How does the Emma Original feel?",
         "subtitle": "MATTRESS FIRMNESS SCALE",
-        "description": "<p>On a soft to firm scale, we’re just right which means that you’ll feel the cloudlike comfort of modern memory foam while still have just the right amount of support to protect your back and hips as you sleep soundly through the night.<\/p>",
+        "description": "<p>On a soft to firm scale, we’re just right which means that you’ll feel the cloudlike comfort of modern memory foam while still have just the right amount of support to protect your back and hips as you sleep soundly through the night.</p>",
         "firmness_point": 5,
         "container_spacing": "md",
         "is_animate_scaling": false
@@ -398,14 +408,14 @@
         "old-featured-products-1": {
           "type": "product-block",
           "settings": {
-            "product": "emma-original-mattress",
+            "product": "emma-original-lite-a",
             "show_star_rating": false,
             "color": "#3c4196",
             "primary_badge": "COMFORT",
             "secondary_badge": "BEST VALUE",
-            "image": "shopify:\/\/shop_images\/EMMAOG_exploded.png",
+            "image": "shopify://shop_images/Original_II_-_H22.svg",
             "product_title": "Emma Original",
-            "desc": "<h1>★ 4.7<\/h1><p><strong>Our Most Awarded Mattress for Budget-Conscious Sleepers.<\/strong><\/p><ul><li>Most awarded mattress and budget-friendly<\/li><li>5 unique layers with minimal motion transfer<\/li><li>Breathable and moisture-wicking<\/li><\/ul>",
+            "desc": "<h1>★ 4.7</h1><p><strong>Our top pick for affordable, restful sleep, ideal for budget-conscious sleepers.</strong></p><ul><li>Most awarded mattress and budget-friendly</li><li>5 unique layers with minimal motion transfer</li><li>Breathable and moisture-wicking</li></ul>",
             "discount_title": "4th of July Sale",
             "comfort_meter": 4,
             "cooling_meter": 3,
@@ -416,14 +426,14 @@
         "2faeb4c9-fe7f-46bc-9cd1-3b2e38ad1752": {
           "type": "product-block",
           "settings": {
-            "product": "emma-hybrid-comfort",
+            "product": "emma-original-a",
             "show_star_rating": false,
             "color": "#3c4196",
             "primary_badge": "",
             "secondary_badge": "BEST DEAL",
-            "image": "shopify:\/\/shop_images\/Emma_hybrid-comfort_exploded_2.png",
-            "product_title": "Emma Hybrid Comfort",
-            "desc": "<h1>★ 4.8<\/h1><p><strong>Our 13-Inch Hybrid mattress with enhanced support and ideal pressure distribution<\/strong><\/p>",
+            "image": "shopify://shop_images/Untitled_design_8_26a090c2-2a1f-4f97-8580-f7262ced984f.png",
+            "product_title": "Emma Original",
+            "desc": "<h1>★ 4.8</h1><p><strong>Our newest Hybrid mattress with enhanced support and ideal pressure distribution</strong></p>",
             "discount_title": "",
             "comfort_meter": 6,
             "cooling_meter": 4,
@@ -434,37 +444,71 @@
         "5b5432f6-dba9-4790-a55c-48525184b6b4": {
           "type": "product-block",
           "settings": {
-            "product": "emma-hybrid-premium",
+            "product": "emma-performance-mattress-a",
             "show_star_rating": false,
             "color": "#3c4196",
             "primary_badge": "PREMIUM CHOICE",
             "secondary_badge": "PREMIUM CHOICE",
-            "image": "shopify:\/\/shop_images\/hybrid-premium-exploded_1.png",
-            "product_title": "Emma Hybrid Premium",
-            "desc": "<h1>★ 4.6<\/h1><p><strong>Our new best-in-class mattress for perfect cooling & absolute comfort<\/strong><\/p>",
+            "image": "shopify://shop_images/hybrid-premium-exploded_1.png",
+            "product_title": "Emma Performance",
+            "desc": "<h1>★ 4.6</h1><p><strong>Our new best-in-class mattress for perfect cooling & absolute comfort</strong></p>",
             "discount_title": "",
             "comfort_meter": 6,
             "cooling_meter": 6,
             "motion_isolation_meter": 6,
             "trackId": "Premium_compare_HP"
           }
+        },
+        "compare-button": {
+          "type": "explore-button",
+          "settings": {
+            "url": "shopify://collections/mattresses",
+            "text": "Find Your Perfect Mattress",
+            "trackId": "Comapre_All"
+          }
+        },
+        "quiz-button": {
+          "type": "explore-button",
+          "settings": {
+            "url": "shopify://pages/product-quizz",
+            "text": "Perfect Mattress Quiz",
+            "trackId": "Quizz"
+          }
         }
       },
       "block_order": [
         "old-featured-products-1",
         "2faeb4c9-fe7f-46bc-9cd1-3b2e38ad1752",
-        "5b5432f6-dba9-4790-a55c-48525184b6b4"
+        "5b5432f6-dba9-4790-a55c-48525184b6b4",
+        "compare-button",
+        "quiz-button"
       ],
       "settings": {
         "title": "Sleeping will never be the same",
-        "heading_alignment": "start"
+        "mobile_title": "",
+        "subtitle": "<p>Our sleep experts have mastered designing award-winning mattresses crafted to keep you relaxed and recharged, no matter what kind of sleeper you are. Climb on your best sleep yet!</p>",
+        "heading_alignment": "start",
+        "first_meter_title": "Comfort",
+        "show_first_meter": true,
+        "second_meter_title": "Cooling",
+        "show_second_meter": true,
+        "third_meter_title": "Motion Isolation",
+        "show_third_meter": true,
+        "show_secondary_badge": true
       }
     },
     "product-carousel": {
       "type": "product-carousel",
       "blocks": {
+        "catalog_item_EpYNTw": {
+          "type": "catalog_item",
+          "settings": {
+            "product": "perfect-sleep-bundle"
+          }
+        },
         "72c7f33b-7788-4524-bf53-816aecb093b6": {
           "type": "catalog_item",
+          "disabled": true,
           "settings": {
             "product": "perfect-sleep-bundle-ii"
           }
@@ -472,7 +516,7 @@
         "5e77d40f-79e8-4050-a013-d2325a25b443": {
           "type": "catalog_item",
           "settings": {
-            "product": "emma-hybrid-comfort"
+            "product": "emma-original-a"
           }
         },
         "07d5912c-d4c3-4ebb-97a6-f723fc8a4f3f": {
@@ -489,6 +533,7 @@
         }
       },
       "block_order": [
+        "catalog_item_EpYNTw",
         "72c7f33b-7788-4524-bf53-816aecb093b6",
         "5e77d40f-79e8-4050-a013-d2325a25b443",
         "07d5912c-d4c3-4ebb-97a6-f723fc8a4f3f",
@@ -501,6 +546,91 @@
         "trackId": ""
       }
     },
+    "shoppable-media": {
+      "type": "shoppable-media",
+      "blocks": {
+        "72c7f33b-7788-4524-bf53-816aecb093b6": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/Stephanie.UGC.mp4",
+            "content": "The ultimate ergonomic support.",
+            "product": "emma-original-a"
+          }
+        },
+        "07d5912c-d4c3-4ebb-97a6-f723fc8a4f3f": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/Buy_SeanMari.mp4",
+            "content": "",
+            "product": ""
+          }
+        },
+        "video_P4jDEg": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/Amber.story.mp4",
+            "content": "",
+            "product": ""
+          }
+        },
+        "1764b6ed-cfac-4dec-9487-f9122604ba72": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/dying.MOV",
+            "content": "",
+            "product": ""
+          }
+        },
+        "1e675715-5ecb-41e6-a7ab-608b36025781": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/copy_095C1154-5368-40AF-8656-F51DD0CB3BE3_063d0e6f-2a0f-4988-8ae4-2c2bf3857ec8.mov",
+            "content": "",
+            "product": ""
+          }
+        },
+        "8fde16df-aace-45a2-bc5e-de66829da46e": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/3 reasons_c1e64666-1e6b-46d4-983e-4e7b10b857f8.mov",
+            "content": "",
+            "product": ""
+          }
+        },
+        "d2925961-e05b-4a94-be70-a9d7f7911010": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/Really worth the hype.mov",
+            "content": "",
+            "product": ""
+          }
+        },
+        "video_CTJ7wq": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/Pillows + Mattres_7d2c14ad-531d-4c45-8ed6-8fadf4320af2.mp4",
+            "content": "",
+            "product": ""
+          }
+        }
+      },
+      "block_order": [
+        "72c7f33b-7788-4524-bf53-816aecb093b6",
+        "07d5912c-d4c3-4ebb-97a6-f723fc8a4f3f",
+        "video_P4jDEg",
+        "1764b6ed-cfac-4dec-9487-f9122604ba72",
+        "1e675715-5ecb-41e6-a7ab-608b36025781",
+        "8fde16df-aace-45a2-bc5e-de66829da46e",
+        "d2925961-e05b-4a94-be70-a9d7f7911010",
+        "video_CTJ7wq"
+      ],
+      "settings": {
+        "heading": "Our Story",
+        "heading_alignment": "center",
+        "container_spacing": "md",
+        "trackId": ""
+      }
+    },
     "customer-sentiment": {
       "type": "customer-sentiment",
       "blocks": {
@@ -509,8 +639,8 @@
           "settings": {
             "title": "High quality mattress!",
             "date": "12 May 2023",
-            "product": "emma-original-mattress",
-            "content": "<p>I have used Emma Mattress for more than a month now and I'm totally in love with it. The quality of the mattress and comfort is definitely noteworthy. I would highly recommend using Emma if you are looking for premium quality mattress<\/p>",
+            "product": "emma-original-lite-a",
+            "content": "<p>I have used Emma Mattress for more than a month now and I'm totally in love with it. The quality of the mattress and comfort is definitely noteworthy. I would highly recommend using Emma if you are looking for premium quality mattress</p>",
             "author": "Javeria A."
           }
         },
@@ -520,7 +650,7 @@
             "title": "Excellent hybrid mattress",
             "date": "20 Feb 2023",
             "product": "emma-climax-hybrid",
-            "content": "<p>Excellent mattress, not too firm and not too soft, either! I got the pillow too, which I got to adjust by taking out one layer. I'm a side sleeper so the flexibility here was a gamechanger for me<\/p>",
+            "content": "<p>Excellent mattress, not too firm and not too soft, either! I got the pillow too, which I got to adjust by taking out one layer. I'm a side sleeper so the flexibility here was a gamechanger for me</p>",
             "author": "Ben A."
           }
         },
@@ -530,7 +660,7 @@
             "title": "Best quality sleep I've ever had!",
             "date": "Nov 23 2022",
             "product": "emma-climax-hybrid",
-            "content": "<p>I didn't realize how bad my previous mattress was until I received my Emma mattress. Not only do I sleep straight through the night (mind you, I sleep with my partner and dog and don't feel their movements at all!), I wake up energized and well rested. I no longer have any body aches and never feel too hot\/too cold. Highly recommend!<\/p>",
+            "content": "<p>I didn't realize how bad my previous mattress was until I received my Emma mattress. Not only do I sleep straight through the night (mind you, I sleep with my partner and dog and don't feel their movements at all!), I wake up energized and well rested. I no longer have any body aches and never feel too hot/too cold. Highly recommend!</p>",
             "author": "Jonathan W."
           }
         },
@@ -540,7 +670,7 @@
             "title": "Great for couples",
             "date": "11 Oct 2022",
             "product": "emma-climax-hybrid",
-            "content": "<p>We've tried orthopedic mattresses in the past, but returned it because they're TOO firm. I prefer soft ones, while my husband prefers firm. For some strange reason, this mattress just works for the both of us. His back pain's gone and I've been sleeping like a log every night!<\/p>",
+            "content": "<p>We've tried orthopedic mattresses in the past, but returned it because they're TOO firm. I prefer soft ones, while my husband prefers firm. For some strange reason, this mattress just works for the both of us. His back pain's gone and I've been sleeping like a log every night!</p>",
             "author": "Donna C."
           }
         },
@@ -550,7 +680,7 @@
             "title": "Uninterrupted sleep all night",
             "date": "08 Oct 2022",
             "product": "emma-climax-hybrid",
-            "content": "<p>This was recommended to me by my friend since I've been waking up in the middle of the night with my old mattress. So glad I listened cuz now I've been sleeping straight and waking up without a sweat<\/p>",
+            "content": "<p>This was recommended to me by my friend since I've been waking up in the middle of the night with my old mattress. So glad I listened cuz now I've been sleeping straight and waking up without a sweat</p>",
             "author": "Nicole W"
           }
         },
@@ -559,8 +689,8 @@
           "settings": {
             "title": "Best quality sleep I've ever had!",
             "date": "6 Apr 2022",
-            "product": "emma-original-mattress",
-            "content": "<p>I didn't realize how bad my previous mattress was until I received my Emma mattress. Not only do I sleep straight through the night (mind you, I sleep with my partner and dog and don't feel their movements at all!), I wake up energized and well rested. I no longer have any body aches and never feel too hot\/too cold. Highly recommend!<\/p>",
+            "product": "emma-original-lite-a",
+            "content": "<p>I didn't realize how bad my previous mattress was until I received my Emma mattress. Not only do I sleep straight through the night (mind you, I sleep with my partner and dog and don't feel their movements at all!), I wake up energized and well rested. I no longer have any body aches and never feel too hot/too cold. Highly recommend!</p>",
             "author": "Jonathan W."
           }
         },
@@ -569,8 +699,8 @@
           "settings": {
             "title": "Perfectly satisfied with my mattress...",
             "date": "3 Jul 2022",
-            "product": "emma-original-mattress",
-            "content": "<p>Perfectly happy with my mattress and pillows. What a joy this bed is, the only regret would be not buying it sooner 🙂<\/p>",
+            "product": "emma-original-lite-a",
+            "content": "<p>Perfectly happy with my mattress and pillows. What a joy this bed is, the only regret would be not buying it sooner 🙂</p>",
             "author": "Marion"
           }
         },
@@ -579,8 +709,8 @@
           "settings": {
             "title": "I can't wait for bedtime now!",
             "date": "8 Jul 2022",
-            "product": "emma-original-mattress",
-            "content": "<p>Sharing a conventional mattress that is sagging, with a long legged whippet was a disaster - most mornings I fell out of bed with him pushing me out. I now wake up every morning with much less pain and even the dog seems to love it!<\/p>",
+            "product": "emma-original-lite-a",
+            "content": "<p>Sharing a conventional mattress that is sagging, with a long legged whippet was a disaster - most mornings I fell out of bed with him pushing me out. I now wake up every morning with much less pain and even the dog seems to love it!</p>",
             "author": "Judy K."
           }
         },
@@ -589,15 +719,15 @@
           "settings": {
             "title": "Best sleeping with Emma",
             "date": "28 Jul 2022",
-            "product": "emma-original-mattress",
-            "content": "<p>My wife and I love this mattress because we never wake up during sleeping time, and we don't get lower back pain after we wake up.<\/p>",
+            "product": "emma-original-lite-a",
+            "content": "<p>My wife and I love this mattress because we never wake up during sleeping time, and we don't get lower back pain after we wake up.</p>",
             "author": "James L."
           }
         },
         "09885043-86bc-4a59-a8db-0a8c8ae800b3": {
           "type": "cta-button",
           "settings": {
-            "url": "shopify:\/\/pages\/reviews",
+            "url": "shopify://pages/reviews",
             "text": "See all reviews"
           }
         }
@@ -615,8 +745,10 @@
         "09885043-86bc-4a59-a8db-0a8c8ae800b3"
       ],
       "settings": {
-        "title": "<p>Why our customers love Emma<\/p>",
-        "trackId": ""
+        "title": "<p>Why our customers love Emma</p>",
+        "heading_alignment": "start",
+        "trackId": "",
+        "enable_text_clamp": true
       }
     },
     "special-services": {
@@ -625,7 +757,7 @@
         "48ca0997-ffa4-4408-8013-4796cb7f17c4": {
           "type": "column",
           "settings": {
-            "icon": "shopify:\/\/shop_images\/truck-free-black.png",
+            "icon": "shopify://shop_images/truck-free-black.png",
             "title": "Free Delivery",
             "content": "We’ll bring your Emma order straight to your door at no extra cost"
           }
@@ -633,15 +765,15 @@
         "f3255c5f-527e-4927-a670-554ff22e9ef7": {
           "type": "column",
           "settings": {
-            "icon": "shopify:\/\/shop_images\/100-night-black.png",
-            "title": "365-Night Trial",
+            "icon": "shopify://shop_images/100-night-black.png",
+            "title": "100-Night Trial",
             "content": "Get properly acquainted with Emma so you can be sure we’re the one"
           }
         },
         "c15d1ab6-4b9b-4e30-ace7-dbf193ff2d4f": {
           "type": "column",
           "settings": {
-            "icon": "shopify:\/\/shop_images\/award-black.png",
+            "icon": "shopify://shop_images/award-black.png",
             "title": "10 Year Guarantee",
             "content": "Our products are built to last. You’re covered if something goes wrong"
           }
@@ -649,7 +781,7 @@
         "f9973382-ba4e-4931-817c-113225550dad": {
           "type": "column",
           "settings": {
-            "icon": "shopify:\/\/shop_images\/package-black.png",
+            "icon": "shopify://shop_images/package-black.png",
             "title": "Free Returns",
             "content": "If Emma isn’t for you, our customer service team will take care of you"
           }
@@ -674,7 +806,8 @@
       "type": "apps",
       "blocks": {
         "ec48ba11-8792-437a-81c3-42e63b297715": {
-          "type": "shopify:\/\/apps\/yotpo-product-reviews-ugc\/blocks\/reviews\/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
+          "type": "shopify://apps/yotpo-product-reviews/blocks/reviews/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
+          "disabled": true,
           "settings": {
             "product": "{{product}}"
           }
@@ -697,28 +830,29 @@
           "type": "faq",
           "settings": {
             "title": "Is it free to return your products?",
-            "content": "<p>It's 100% free to return your Emma! If your Emma turns out not to suit you for any reason, feel free to return it. Just simply get in contact with us via our chat support, phone or email and we will refund and collect it at no cost to you.<\/p><p><br\/>Live support is also available from 08:00 to 18:00 GMT-6, Monday-Friday!<\/p>"
+            "content": "<p>It's 100% free to return your Emma! If your Emma turns out not to suit you for any reason, feel free to return it. Just simply get in contact with us via our chat support, phone or email and we will refund and collect it at no cost to you.</p><p><br/>Live support is also available from 08:00 to 18:00 GMT-6, Monday-Friday!</p>"
           }
         },
         "c68412f4-0251-42dc-9113-a0eecd22c518": {
           "type": "faq",
           "settings": {
-            "title": "How does your 365-Night-Trial work?",
-            "content": "<p>Our risk-free 365-night trial means that you get a full year to decide if your Emma mattress is a good fit for you. This gives you more time to try the mattress for yourself and experience the benefits that our 4Million+ customers have come to enjoy each night!<br\/><br\/>Helpful Tip: We recommend you sleep on your Emma for at least 21 nights so that you and your body can get suited to your new Emma mattress.<br\/><br\/>You can begin your 365-night trial today. Our 0% APR financing with Affirm also gives you the option to make 12 equal payments over the next 12 months.<\/p>"
+            "title": "How does your 100-Night-Trial work?",
+            "content": "<p>get to take your time to decide if your Emma mattress is a good fit for you. This lets you try the mattress for yourself and experience the benefits that our 4Million+ customers have come to enjoy each night!</p><p>Helpful Tip: We recommend you sleep on your Emma for at least 30 nights so that you and your body can get suited to your new Emma mattress.</p><p>You can begin your 100-night trial today. Our 0% APR financing with Affirm also gives you the option to make 12 equal payments over the next 12 months.</p>"
           }
         },
         "a72149c3-5420-4a8c-80fe-7370288da216": {
           "type": "faq",
           "settings": {
             "title": "Do you ship nationwide?",
-            "content": "<p>We do offer free shipping in all the province in Canada.<\/p>"
+            "content": "<p>We ship to most locations across Canada! However, at this time, we do <strong>not offer delivery</strong> to the following provinces and territories:<br/><br/><strong>Yukon, Northwest Territories, Prince Edward Island, and Nunavut.</strong></p><p>Orders with shipping addresses in these areas will not be processed, and any payments made will be refunded in line with our <a href=\"/pages/returns-refunds\" title=\"Returns & Refunds\">Refund Policy</a>.</p><p>We also offer a <strong>Premium Delivery service</strong> for faster shipping in select areas. Currently, Premium Delivery is available in <strong>Ontario and British Columbia</strong> for a <strong>$50.00 CAD</strong> fee. We're working hard to expand this service to more cities soon!</p>"
           }
         },
         "d9373dca-57f2-4b56-8838-1a8fc22e21ca": {
           "type": "faq",
+          "disabled": true,
           "settings": {
             "title": "How long does shipping take?",
-            "content": "<p>Our free shipping takes approximately 5-7 days nationwide.<\/p>"
+            "content": "<p>Our free shipping takes approximately 5-7 days nationwide.</p>"
           }
         }
       },
@@ -733,105 +867,6 @@
         "header_font": "inter",
         "heading_alignment": "center",
         "container_spacing": "sm"
-      }
-    },
-    "social-proof": {
-      "type": "social-proof",
-      "blocks": {
-        "84018aaf-35e7-4db6-a525-9300ab3cb09d": {
-          "type": "influencer",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/m.for.mai.webp",
-            "heading": "Mai Le, Mom",
-            "tag": "@@m.for.mai",
-            "content": "<p>We've had our emma mattress for about 2 weeks and holy smokes I can attest to the zero partner disturbance... because I co-sleep and even with me moving around getting up it doesn't disturb my baby girl 🙌<\/p>",
-            "product": ""
-          }
-        },
-        "d1f52209-bde6-4ccd-87d0-49ea2becd11d": {
-          "type": "influencer",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/alexanderkenton.webp",
-            "heading": "Alex Liang, Interior Designer",
-            "tag": "@alexanderkenton",
-            "content": "<p>No bedroom redesign would be complete without a new mattress! And we’ve been really enjoying my new Emma Original. It’s soft, yet supportive and keeps us comfortable and cool all night long. I also love that the entire cover of the mattress can be removed and machine washed, to keep the mattress fresh and new.<\/p>",
-            "product": ""
-          }
-        },
-        "7709cf2c-1143-4824-81c1-62b710238f9b": {
-          "type": "influencer",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/coco.crochet.lee.webp",
-            "heading": "Lee Sartori, Author",
-            "tag": "@coco.crochet.lee",
-            "content": "<p>I've fallen in love with my Emma Mattress 😍. The Mattress sort of expands when you open it which made me think it would be way too soft. Surprise, it is actually very firm while keeping your sleep comfy and soft 😴💕. Because it's a memory foam mattress, you can sleep (or crochet) comfortably next to someone without disturbing them at all which is fantastic. All in all, I highly recommend!<\/p>",
-            "product": ""
-          }
-        },
-        "e58e98f1-698b-47ca-9f8f-f870d4912178": {
-          "type": "influencer",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/ayagonz.webp",
-            "heading": "Aya G,  Content Creator",
-            "tag": "@_ayagonz@_ayagonz",
-            "content": "<p>Emma has, no joke, given me the best sleep quality I've ever had (!!!) - I get to sleep straight through the night without being disturbed by any movements or noises, I no longer get any shoulder\/back aches and the temperature is always *just* right. I now wake up happier and more energized to take on my day. ⚡️<\/p>",
-            "product": ""
-          }
-        },
-        "484cd9ca-1dea-45d7-9ffd-0f116c02522c": {
-          "type": "influencer",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/pandi_po_family.jpg",
-            "heading": "Sylvana Carda, Mom",
-            "tag": "@pandi_po_family",
-            "content": "<p>Even superheroes sleep at night  🦸🏻‍♂️💫 Baby sleeps in his bed, but in the morning he joins us in our bed and I share my pillow with him. After using the pillow, I have much less neck pain unlike before when I wake up in the middle of the night and need to adjust my pillow several times.<\/p>",
-            "product": ""
-          }
-        },
-        "2b904078-1bfd-4d25-9240-dc4a59b21e90": {
-          "type": "influencer",
-          "settings": {
-            "heading": "Lena Almeida, Mom",
-            "tag": "@listen2lena",
-            "content": "<p>I couldn’t be happier! The mattress and pillows are cool, breathable and offer just the right support to help me drift off to dreamland. 💤 The best part? I barely feel my husband’s movement throughout the night, which has improved the quality of my sleep enormously.<\/p>",
-            "product": ""
-          }
-        },
-        "3dc30f3a-eac1-445a-9b01-47bbb9a968f3": {
-          "type": "influencer",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/orsida.luzati.webp",
-            "heading": "Orsida Luzati, Mom",
-            "tag": "@orsida.luzati",
-            "content": "<p>Who knew that a new mattress would have such a positive impact in our lives! The girls have found their favorite bed– soft and comfortable mattress (with motion isolating foam) and a 3-layer pillow with option to remove a layer for best comfort💗<\/p>",
-            "product": ""
-          }
-        },
-        "e75d739e-510e-4274-a7ef-017dae014f48": {
-          "type": "influencer",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/jessicatylerofficial.webp",
-            "heading": "Jessica Tyler, Content Creator",
-            "tag": "@jessicatylerofficial",
-            "content": "<p>I no longer wake up feeling like I’ve aged several years overnight with back pain! The support and comfort of this bed is seriously unmatched. Our bedroom has easily become my favorite room in the house - I already can’t wait to get back into bed tonight! 💤<\/p>",
-            "product": ""
-          }
-        }
-      },
-      "block_order": [
-        "84018aaf-35e7-4db6-a525-9300ab3cb09d",
-        "d1f52209-bde6-4ccd-87d0-49ea2becd11d",
-        "7709cf2c-1143-4824-81c1-62b710238f9b",
-        "e58e98f1-698b-47ca-9f8f-f870d4912178",
-        "484cd9ca-1dea-45d7-9ffd-0f116c02522c",
-        "2b904078-1bfd-4d25-9240-dc4a59b21e90",
-        "3dc30f3a-eac1-445a-9b01-47bbb9a968f3",
-        "e75d739e-510e-4274-a7ef-017dae014f48"
-      ],
-      "settings": {
-        "heading": "See Emma in action online",
-        "heading_alignment": "start",
-        "trackId": ""
       }
     },
     "contact-us": {
@@ -856,11 +891,11 @@
     "mattress-firmness",
     "featured-products",
     "product-carousel",
+    "shoppable-media",
     "customer-sentiment",
     "special-services",
     "168540174983dd55c2",
     "featured-faqs",
-    "social-proof",
     "contact-us"
   ]
 }

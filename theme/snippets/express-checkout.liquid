@@ -1,0 +1,26 @@
+{%- if additional_checkout_buttons -%}
+    <style>
+        shopify-accelerated-checkout-cart {
+            --shopify-accelerated-checkout-button-block-size: 52px;
+            --shopify-accelerated-checkout-button-inline-size: 52px;
+            --shopify-accelerated-checkout-button-border-radius: 60px;
+            --shopify-accelerated-checkout-button-box-shadow: none;
+            --shopify-accelerated-checkout-inline-alignment: flex-start;
+            --shopify-accelerated-checkout-row-gap: 0;
+            --shopify-accelerated-checkout-skeleton-background-color: #dedede;
+            --shopify-accelerated-checkout-skeleton-animation-opacity-start: 1;
+            --shopify-accelerated-checkout-skeleton-animation-opacity-end: 0.5;
+            --shopify-accelerated-checkout-skeleton-animation-duration: 4s;
+            --shopify-accelerated-checkout-skeleton-animation-timing-function: ease;
+        }
+
+        express-checkout-controller {
+            --scale: 0;
+
+            transition: all 250ms ease-in-out;
+
+            transform: scale(var(--scale))
+        }
+    </style>
+
+{%- endif -%}

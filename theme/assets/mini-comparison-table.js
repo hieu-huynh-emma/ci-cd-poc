@@ -99,7 +99,6 @@ let MiniComparisonTable = {
     let cellVal = specVal
 
     const productQueenVariant = product.variants.find(variant => variant.title.includes('Queen'));
-    console.log(productQueenVariant)
     const price = +productQueenVariant.price / 100
     const originalPrice = +productQueenVariant.compare_at_price / 100
 

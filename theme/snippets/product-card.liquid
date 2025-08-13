@@ -1,30 +1,46 @@
-{% comment %} <product-card class="{% if landscape %} landscape{% endif %}" :productId="{{ product.id }}"> {% endcomment %}
-<product-card class="{% if landscape %} landscape{% endif %}" :productId="{{ product.id }}">
-    {% liquid
-        assign postfix = "PDP"
-        if template == "page.sale"
-            assign postfix = "SP"
-        endif
+{% liquid
+    assign postfix = 'PDP'
+    if template == 'page.sale'
+        assign postfix = 'SP'
+    endif
 
-        if template contains "collection"
-            assign postfix = "CP"
-        endif
+    if template contains 'collection'
+        assign postfix = 'CP'
+    endif
 
-        assign trackId = product.metafields.accentuate.track_id | append: "_" | append: postfix
-    %}
+    assign trackId = product.metafields.accentuate.track_id | append: '_' | append: postfix
+
+    assign blockImg = blockImg | image_url: width: 450
+    assign coverImg = product.featured_image | image_url: width: 450
+    assign objectPosition = product.metafields.accentuate.featured_image_position
+    assign imgUrl = blockImg | default: product.metafields.accentuate.featured_image[0].src | default: coverImg
+
+    assign featuredRotation = shop.metafields.globals.mattress_cover_rotation | default: 'A'
 
 
-    <tracked-button :trackId="{{trackId}}" href="{{ product.url }}" class="wrapper">
+    assign contentType = product.metafields.accentuate.product_card_content_type | default: "Specifications"
+    assign shortDesc = product.metafields.accentuate.short_description | metafield_tag
+    assign keyFeatures = product.metafields.accentuate.product_card_key_features | metafield_tag
+
+     case featuredRotation
+         when 'A'
+             assign defaultSpecsShowcase = "specs_firmness_description|specs_height|specs_materials"
+         when 'B'
+            assign defaultSpecsShowcase = "specs_firmness_description|specs_layer_count|specs_materials"
+     endcase
+
+    assign specsShowcase = product.metafields.accentuate.product_card_specifications | default: defaultSpecsShowcase | split: "|"
+
+%}
+
+<product-card class="{% if landscape %} landscape{% endif %}" :productId="{{ product.id }}" abtasty-tracker="PDP_CTR">
+    <tracked-button :trackId="{{ trackId }}" href="{{ product.url }}" class="wrapper">
         <div class="product-card-media">
-            {% assign blockImg = blockImg | image_url: width: 450 %}
-            {% assign coverImg = product.featured_image | image_url: width: 450 %}
-            {% assign objectPosition = product.metafields.accentuate.featured_image_position %}
-            <img
-                    src="{{ blockImg | default: product.metafields.accentuate.featured_image[0].src | default: coverImg }}"
-                    alt=""
-                    class="product__image{% if objectPosition %} object-{{ objectPosition }}{% endif %}"
-                    loading="lazy"
-            />
+            <picture-tag
+                :src="{{ imgUrl }}"
+                :placeholderWidth="500"
+                class="product__image{% if objectPosition %} object-{{ objectPosition }}{% endif %}">
+            </picture-tag>
         </div>
 
         <div class="product-card-detail">
@@ -32,36 +48,89 @@
                 {% assign uptoDiscount = product.metafields.accentuate.upto_discount | times: 1 %}
                 {% if uptoDiscount > 0 %}
                     <div
-                            class="product-card-badge bg-scarlet"
+                        class="product-card-badge bg-scarlet text-white"
                     >
                         {{ uptoDiscount | prepend: '- ' | append: ' %' }}
                     </div>
                 {% endif %}
 
                 {% if product.metafields.accentuate.promotion_capsule %}
-                    <div class="product-card-badge bg-calm-600">{{ product.metafields.accentuate.promotion_capsule }}</div>
+                    <div
+                        class="product-card-badge bg-calm-600 text-white"
+                    >
+                        {{ product.metafields.accentuate.promotion_capsule }}
+                    </div>
+                {% endif %}
+                {% if product.metafields.accentuate.promotion_freebie_capsule %}
+                    <div
+                        class="product-card-badge bg-yellow-400"
+                    >
+                        {{ product.metafields.accentuate.promotion_freebie_capsule }}
+                    </div>
                 {% endif %}
             </div>
 
             <div class="product-card-metadata">
-               {% comment %} {% if show_star_rating == blank or show_star_rating == true %}
-                    <product-star-rating :productId="{{ product.id }}"></product-star-rating>
-                {% endif %}
+                {% comment %}
+                  {% if show_star_rating == blank or show_star_rating == true %}
+                      <product-star-rating :productId="{{ product.id }}"></product-star-rating>
+                  {% endif %}
                 {% endcomment %}
                 <h3 class="product__name font-inter">{{ product.title }}</h3>
 
-                <p class="product__short-desc">{{ product.metafields.accentuate.short_description }}</p>
+                {% case contentType %}
+                    {% when "Short Description" %}
+                        <div
+                            class="card-content__short-desc {% if smallFontSize %} text-sm{% else %} text-base{% endif %}">
+                            {{ shortDesc }}
+                        </div>
 
-                <p class="product__price">
-                    <span class="font-bold">{{ product.selected_or_first_available_variant.price | money }}</span>
+                    {% when "Key Features" %}
+                        <div
+                            class="card-content__key-features {% if smallFontSize %} text-sm{% else %} text-base{% endif %}">
+                            {{ keyFeatures }}
+                        </div>
 
-                    {% if product.selected_or_first_available_variant.compare_at_price > product.selected_or_first_available_variant.price %}
-                        <del class="product__original-price">{{ product.selected_or_first_available_variant.compare_at_price | money }}</del>
-                    {% endif %}
-                </p>
+                    {% when "Specifications" %}
+                        <product-specifications>
+                            <script type="application/json">
+                                [
+                                  {% for specKey in specsShowcase %}
+                                    {
+                                        "key": "{{ specKey }}",
+                                        "value": "{{ product.metafields.accentuate[specKey]}}"
+                                    }
+                                      {% unless forloop.last %},{% endunless %}
+                                  {% endfor %}
+                                ]
+                            </script>
+                        </product-specifications>
+                {% endcase %}
+
             </div>
 
-        </div>
+            <div class="product-card-footer">
+                <p class="product__price">
+                    <span class="font-bold text-scarlet">{{ product.selected_or_first_available_variant.price | money }}</span>
 
+                    {% if product.selected_or_first_available_variant.compare_at_price
+                    > product.selected_or_first_available_variant.price
+                    %}
+                        <del
+                            class="product__original-price"
+                        >
+                            {{- product.selected_or_first_available_variant.compare_at_price | money -}}
+                        </del>
+                    {% endif %}
+                </p>
+
+                {% if  product.metafields.accentuate.promotion_freebie_undertext %}
+                    <p class="text-scarlet text-xs">
+                        {{ product.metafields.accentuate.promotion_freebie_undertext }}
+                    </p>
+                {% endif %}
+
+            </div>
+        </div>
     </tracked-button>
 </product-card>

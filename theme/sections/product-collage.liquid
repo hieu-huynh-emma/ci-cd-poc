@@ -49,9 +49,11 @@
                                         <video class="card-media lazy" playsinline autoplay loop muted
                                                poster="{{ poster }}">
                                             {% for source in media.sources %}
+                                              {% if source.mime_type != "application/x-mpegURL" %}
                                                 <source
                                                         data-src="{{ source.url }}"
                                                         type="{{ source.mime_type }}">
+                                              {% endif %}
                                             {% endfor %}
                                         </video>
                                 {% endcase %}

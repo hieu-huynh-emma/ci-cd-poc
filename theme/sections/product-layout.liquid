@@ -38,13 +38,17 @@
 <script defer src="{{ 'product-layout.js' | asset_url }}" data-section-id="{{ section.id }}"></script>
 <script defer src="{{ 'product-form.js' | asset_url }}"></script>
 
+<link rel="stylesheet"  href="{{ 'bundle-box.css' | asset_url }}" />
+<script type="quickscript" loading="delayed" data-url="{{ 'bundle-offer.js' | asset_url }}"
+        src="{{ 'module-importer.js' | asset_url }}"></script>
+
 <div
-        id="product-layout"
-        class="page-boundary"
-        data-section-id="{{ section.id }}"
-        data-section-type="product"
-        data-enable-history-state="true"
-        data-ajax-enabled="{{ settings.enable_ajax }}"
+    id="product-layout"
+    class="page-boundary"
+    data-section-id="{{ section.id }}"
+    data-section-type="product"
+    data-enable-history-state="true"
+    data-ajax-enabled="{{ settings.enable_ajax }}"
 >
     <div class="product-info product-info-wrapper">
         <div id="product-viewer">
@@ -74,29 +78,30 @@
             {% form 'product', product, class: form_classes, novalidate: 'novalidate', data-product-form: '' %}
                 {% render 'product-buybox' %}
 
-                <div
-                        class="product-form__error-message-wrapper product-form__error-message-wrapper--hidden{% if section.settings.enable_payment_button %} product-form__error-message-wrapper--has-payment-button{% endif %}"
-                        data-error-message-wrapper
-                        role="alert"
-                >
-                    <span class="visually-hidden">{{ 'general.accessibility.error' | t }} </span>
-                    {% render 'icon-error' %}
-                    <span class="product-form__error-message" data-error-message>
-                            {{- 'products.product.quantity_minimum_message' | t -}}
-                          </span>
+                <product-form-error></product-form-error>
+
+                {% assign outOfStockNotice = product.metafields.accentuate.out_of_stock_notice[shop.locale] %}
+                {% assign disclaimer = product.metafields.accentuate.disclaimer[shop.locale] %}
+
+                <div id="stock-notifications"
+                     class="{% if outOfStockNotice == blank and disclaimer == blank %}hidden{% endif %}">
+
+
+                    <div id="disclaimer">{% render 'rtf-viewer', content: disclaimer %}</div>
+
+                    <div id="out-of-stock-notice"
+                         class="{% if product.selected_or_first_available_variant.available == true %}hidden {% endif %}"
+                    >
+                        {% render 'rtf-viewer', content: outOfStockNotice %}
+                    </div>
+
                 </div>
 
-                <div class="installment-widgets mb-4">
-                    {%- if appBlock -%}
-                        {% render appBlock %}
-                    {% endif %}
+                <template id="price-transparency-placeholder"></template>
 
-                    {%- if affirm_widget -%}
-
-                        {% render 'affirm-widget' %}
-
-                    {% endif %}
-                </div>
+                {%- if appBlock -%}
+                    {% render appBlock %}
+                {% endif %}
 
                 <template id="product-auxiliary-placeholder"></template>
 
@@ -105,11 +110,11 @@
                 <template id="product-specifications-placeholder"></template>
 
                 <p
-                        class="visually-hidden"
-                        data-loader-status
-                        aria-live="assertive"
-                        role="alert"
-                        aria-hidden="true"
+                    class="visually-hidden"
+                    data-loader-status
+                    aria-live="assertive"
+                    role="alert"
+                    aria-hidden="true"
                 >
                     {{ 'products.product.loader_label' | t }}
                 </p>
@@ -127,14 +132,57 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     </script>
     <script type="application/json" id="ModelJson-{{ section.id }}">
       {{ product.media | where: 'media_type', 'model' | json }}
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     </script>
 {% endunless %}
+
 
 {% schema %}
 {

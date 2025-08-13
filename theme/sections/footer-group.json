@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "type": "footer",
   "name": "Footer Group",
@@ -16,7 +25,7 @@
           "type": "text",
           "settings": {
             "heading": "Heading",
-            "subtext": "<p>Share store details, promotions, or brand content with your customers.<\/p>"
+            "subtext": "<p>Winter Sale from 7th January - 3rd February </p>"
           }
         }
       },
@@ -25,6 +34,7 @@
         "footer-1"
       ],
       "settings": {
+        "note": "<p></p><h6></h6>",
         "footer_main_menu": "footer-menu",
         "color_scheme": "background-1",
         "newsletter_enable": true,
@@ -37,8 +47,7 @@
     },
     "copyright": {
       "type": "copyright",
-      "settings": {
-      }
+      "settings": {}
     }
   },
   "order": [

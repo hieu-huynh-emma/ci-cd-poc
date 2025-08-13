@@ -1,0 +1,58 @@
+{% assign props = section.settings %}
+{% assign video = props.external_url | default: props.self_hosted_url %}
+{% assign sourceType = props.external_url.type | default: "video" %}
+
+<section class="video-with-text section-container">
+    <div class="page-boundary">
+        {% render 'media-with-text', settings: props, mediaType: sourceType, mediaSource: video %}
+    </div>
+</section>
+
+
+{% schema %}
+{
+  "name": "Video with Text Section",
+  "settings": [
+    {
+      "id": "heading",
+      "type": "text",
+      "label": "Heading"
+    },
+    {
+      "id": "content",
+      "type": "textarea",
+      "label": "Content"
+    },
+    {
+      "id": "self_hosted_url",
+      "type": "video",
+      "label": "A Shopify-hosted video"
+    },
+    {
+      "id": "external_url",
+      "type": "video_url",
+      "label": "A external video",
+      "accept": [
+        "youtube",
+        "vimeo"
+      ],
+      "info": "A video URL from YouTube or Vimeo, other providers aren't supported."
+    },
+    {
+      "id": "cta_url",
+      "type": "url",
+      "label": "Button Url"
+    },
+    {
+      "id": "cta_text",
+      "type": "text",
+      "label": "Button Text"
+    },
+    {
+      "id": "inverted",
+      "type": "checkbox",
+      "label": "Inverted?"
+    }
+  ]
+}
+{% endschema %}

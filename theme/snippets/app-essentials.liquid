@@ -1,4 +1,7 @@
+
 <script defer src="{{ 'jquery-3.6.0.min.js' | file_url }}"></script>
+
+<link rel="preconnect" href="https://emma-sleep.ca/cdn/shop/files"/>
 
 <script defer>
     const Shop = {
@@ -15,9 +18,10 @@
 
 <script defer src="{{ 'helpers.js' | asset_url }}"></script>
 <script defer src="{{ 'custom-elements.js' | asset_url }}"></script>
+<script defer src="{{ 'web-components.js' | asset_url }}"></script>
 <script defer src="{{ 'resource-coordinator.js' | asset_url }}"></script>
-
-{% render 'axios' %}
+<script defer src="{{ 'cookie-parser.js' | asset_url }}"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
 {% render 'critical-stylesheet' %}
 
