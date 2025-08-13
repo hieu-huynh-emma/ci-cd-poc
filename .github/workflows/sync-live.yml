@@ -1,31 +1,47 @@
-name: Shopify Sync Live
-
+name: Sync Theme
 on:
-  pull_request:
-    types:
-      - opened
-      - synchronize
-    branches:
-      - main
-
+  repository_dispatch:
+    types: [themes/update]
 jobs:
-  check_sync_status:
-    name: Check Sync Status
+  main:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          node-version: 18
-      - uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: 3.1
-          bundler: 'latest'
+          node-version: 20
+
       - name: Install Shopify CLI
-        run: npm install -g @shopify/cli
-      - name: Pull Live Theme
+        run: npm add -g @shopify/cli@latest
+
+      - name: Push theme to staging
         env:
-          SHOPIFY_FLAG_STORE: '${{ secrets.SHOPIFY_FLAG_STORE }}'
-          SHOPIFY_CLI_THEME_TOKEN: ${{ secrets.SHOPIFY_CLI_THEME_TOKEN }}
-          SHOPIFY_CLI_TTY: 0
-        run: shopify theme pull -l
+          SHOPIFY_STORE: "emma-sleep-ca-staging"
+          SHOPIFY_TOKEN: ${{ secrets.SHOPIFY_CLI_STAGING_THEME_TOKEN }}
+          SHOPIFY_THEME: "MAIN"
+        run: |
+          cd theme
+          shopify theme pull \
+            --store "$SHOPIFY_STORE" \
+            --password "$SHOPIFY_TOKEN" \
+            -l --json
+      - name: Commit and push if theme changed
+        run: |
+          cd theme
+          git config user.name = "Shopify Bot"
+          git config user.email = "shopify-bot@emma-sleep.com"
+          
+          if [[ -z $(git status) ]]; then
+            echo "✅No theme changes detected."
+            exit 0
+          fi
+          
+          git add -A
+          timestamp=$(date -u "+%Y-%m-%d %H:%M:%S UTC")
+          git commit -m "(bot): Sync LIVE theme at ${timestamp}"
+          git push
+
+
