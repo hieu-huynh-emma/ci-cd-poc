@@ -25,9 +25,10 @@ jobs:
         run: |
           cd theme
           shopify theme pull \
+            --json \
             --store "$SHOPIFY_STORE" \
             --password "$SHOPIFY_TOKEN" \
-            -l --json
+            -l
       - name: Commit and push if theme changed
         run: |
           cd theme
