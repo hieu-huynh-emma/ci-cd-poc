@@ -1,7 +1,7 @@
 name: Sync Theme
 on:
   repository_dispatch:
-    types: [themes/update]
+    
 jobs:
   main:
     runs-on: ubuntu-latest
