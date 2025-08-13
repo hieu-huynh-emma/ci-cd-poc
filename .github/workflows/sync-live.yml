@@ -2,7 +2,8 @@ name: Sync Theme
 on:
   repository_dispatch:
     types: [themes/update]
-    
+permissions:
+  contents: write   
 jobs:
   main:
     runs-on: ubuntu-latest
