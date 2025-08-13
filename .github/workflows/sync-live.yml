@@ -1,6 +1,7 @@
 name: Sync Theme
 on:
-  repository_dispatch
+  repository_dispatch:
+    types: [themes/update]
     
 jobs:
   main:
