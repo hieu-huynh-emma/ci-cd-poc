@@ -18,11 +18,10 @@ jobs:
       - name: Install Shopify CLI
         run: npm add -g @shopify/cli@latest
 
-      - name: Push theme to staging
+      - name: Pull Live Theme
         env:
-          SHOPIFY_STORE: "emma-sleep-ca-staging"
-          SHOPIFY_TOKEN: ${{ secrets.SHOPIFY_CLI_STAGING_THEME_TOKEN }}
-          SHOPIFY_THEME: "MAIN"
+          SHOPIFY_STORE: "emma-sleep-ca.myshopify.com"
+          SHOPIFY_TOKEN: ${{ secrets.SHOPIFY_CLI_THEME_TOKEN }}
         run: |
           cd theme
           shopify theme pull \
