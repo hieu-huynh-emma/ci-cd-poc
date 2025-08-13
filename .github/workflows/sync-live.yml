@@ -25,7 +25,6 @@ jobs:
         run: |
           cd theme
           shopify theme pull \
-            --json \
             --store "$SHOPIFY_STORE" \
             --password "$SHOPIFY_TOKEN" \
             -l
