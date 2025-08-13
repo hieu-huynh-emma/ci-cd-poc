@@ -1,6 +1,6 @@
 name: Sync Theme
 on:
-  repository_dispatch:
+  repository_dispatch
     
 jobs:
   main:
