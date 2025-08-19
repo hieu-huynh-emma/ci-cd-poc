@@ -8,7 +8,7 @@ on:
     ]
     branches: [ main ]
 jobs:
-  title-check:
+  pr-title-check:
     name: Check PR Title
     runs-on: ubuntu-latest
 

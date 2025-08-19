@@ -1,13 +1,6 @@
 name: Deploy Staging
 
 on:
-  pull_request:
-    types: [
-      opened,
-      synchronize, # PR commits
-      reopened
-    ]
-    branches: [ main ]
 
 jobs:
   deploy-staging:
