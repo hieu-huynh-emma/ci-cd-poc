@@ -14,7 +14,7 @@ jobs:
 
     steps:
       - name: Validate PR Title format
-        with:
+        env:
           PR_TITLE: ${{ github.event.pull_request.title }}
           FORMAT: "[EMKT-<number>]: <non-empty description>"
           REGEX: "EMKT"
