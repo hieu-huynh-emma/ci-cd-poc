@@ -1,0 +1,37 @@
+name: Pull Request UI Reviews
+on:
+  pull_request:
+    types: [ opened, synchronize, reopened ]
+    branches: [ main ]
+jobs:
+  create-preview-theme:
+    name: "Create Preview Theme"
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    concurrency:
+      group: prod-${{ github.event.pull_request.number }}
+      cancel-in-progress: true
+    with:
+      SHOPIFY_CLI_THEME_TOKEN: ${{ secrets.SHOPIFY_CLI_THEME_TOKEN }}
+      SHOPIFY_FLAG_STORE: "emma-dev"
+      PR_ID: ${{github.event.pull_request.number}}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install Shopify CLI
+        run: npm add -g @shopify/cli@latest
+
+      - name: Create Preview Theme
+        run: |
+          cd theme 
+          shopify theme push -u -j
+          --theme $PR_ID
+          --store $SHOPIFY_FLAG_STORE
+          --password $SHOPIFY_CLI_THEME_TOKEN
