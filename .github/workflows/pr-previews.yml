@@ -12,10 +12,7 @@ jobs:
     concurrency:
       group: prod-${{ github.event.pull_request.number }}
       cancel-in-progress: true
-    with:
-      SHOPIFY_CLI_THEME_TOKEN: ${{ secrets.SHOPIFY_CLI_THEME_TOKEN }}
-      SHOPIFY_FLAG_STORE: "emma-dev"
-      PR_ID: ${{github.event.pull_request.number}}
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -29,6 +26,10 @@ jobs:
         run: npm add -g @shopify/cli@latest
 
       - name: Create Preview Theme
+        env:
+          SHOPIFY_CLI_THEME_TOKEN: ${{ secrets.SHOPIFY_CLI_THEME_TOKEN }}
+          SHOPIFY_FLAG_STORE: "emma-dev"
+          PR_ID: ${{github.event.pull_request.number}}
         run: |
           cd theme 
           shopify theme push -u -j
