@@ -1,4 +1,4 @@
-name: Sync Theme
+name: [Sample] Sync Theme
 on:
   repository_dispatch:
     types: [themes/update]
@@ -21,7 +21,7 @@ jobs:
 
       - name: Pull Live Theme
         env:
-          SHOPIFY_STORE: "emma-sleep-ca.myshopify.com"
+          SHOPIFY_STORE: "emma-dev"
           SHOPIFY_TOKEN: ${{ secrets.SHOPIFY_CLI_THEME_TOKEN }}
         run: |
           cd theme

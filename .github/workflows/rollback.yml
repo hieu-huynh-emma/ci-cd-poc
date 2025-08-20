@@ -1,25 +1,22 @@
-name: Revert last release
+name: [Sample] Rollback
 
 on:
   workflow_dispatch:
     inputs:
-      branch:
-        description: 'Branch name'
+      release_version:
+        description: 'Hey, tell me which release version you want to rollback'
         required: true
-        default: 'main'
+        default: null
 
 jobs:
-  revert_release:
+  rollback:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout branch
         uses: actions/checkout@v2
         with:
-          ref: ${{ github.event.inputs.branch }}
+          ref: ${{ github.event.inputs.release_version }}
           fetch-depth: 0
-      - name: Revert pushed commit
+      - name: Rollback to release version
         run: |
-          git config --global user.name 'github-actions[bot]'
-          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git revert --no-edit HEAD
-          git push
+          [TODO]: Implement the script to revert here, remember to backup the current version
