@@ -27,7 +27,7 @@ jobs:
       - name: Push theme to production
         env:
           SHOPIFY_CLI_THEME_TOKEN: ${{ secrets.SHOPIFY_CLI_THEME_TOKEN }}
-          SHOPIFY_FLAG_STORE: ${{ SHOPIFY_FLAG_STORE }}
+          SHOPIFY_FLAG_STORE: ${{ vars.SHOPIFY_FLAG_STORE }}
         run: |
           cd theme && shopify theme push \
             --json \
