@@ -1,4 +1,4 @@
-name: Pull Request UI Reviews
+name: Pull Request UI Reviews 
 on:
   pull_request:
     types: [ opened, synchronize, reopened ]
