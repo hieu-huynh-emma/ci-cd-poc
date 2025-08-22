@@ -23,7 +23,7 @@ jobs:
         
           # Require: $FORMAT
           
-          if [[ "$PR_TITLE" =~ $REGEX]]; then
+          if [[ "$PR_TITLE" =~ $REGEX ]]; then
             echo "Title is valid"
             exit 0
           else
