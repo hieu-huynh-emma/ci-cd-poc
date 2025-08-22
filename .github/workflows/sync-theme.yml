@@ -6,8 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-    environment:
-      name: prod
+    environment: prod
     steps:
       - name: Checkout
         uses: actions/checkout@v4

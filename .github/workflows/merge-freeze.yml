@@ -4,10 +4,6 @@ on:
   pull_request:
     types: [opened, synchronize, reopened]
     branches: [main]
-
-permissions:
-  statuses: write
-
 jobs:
   check-for-merge-freeze:
     name: Check for Weekend Merge Freeze
