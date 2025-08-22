@@ -9,13 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
-    concurrency:
-      group: prod-${{ github.event.pull_request.number }}
-      cancel-in-progress: true
-    with:
-      SHOPIFY_CLI_THEME_TOKEN: ${{ secrets.SHOPIFY_CLI_THEME_TOKEN }}
-      SHOPIFY_FLAG_STORE: "emma-dev"
-      PR_ID: ${{github.event.pull_request.number}}
+    environment: prod
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -29,9 +23,13 @@ jobs:
         run: npm add -g @shopify/cli@latest
 
       - name: Create Preview Theme
+        env:
+          SHOPIFY_CLI_THEME_TOKEN: ${{ secrets.SHOPIFY_CLI_THEME_TOKEN }}
+          SHOPIFY_FLAG_STORE: ${{ SHOPIFY_FLAG_STORE }}
+          PR_ID: ${{github.event.pull_request.number}}
         run: |
           cd theme 
-          shopify theme push -u -j
-          --theme $PR_ID
-          --store $SHOPIFY_FLAG_STORE
-          --password $SHOPIFY_CLI_THEME_TOKEN
+          shopify theme push -u -j \
+          --theme "Pull Request #$PR_ID UI Previews" \
+          --store $SHOPIFY_FLAG_STORE \
+          --password $SHOPIFY_CLI_THEME_TOKEN \

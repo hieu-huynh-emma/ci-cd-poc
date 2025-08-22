@@ -1,4 +1,4 @@
-name: Pull Request Title Check
+name:  Pull Request Title Check
 on:
   pull_request:
     types: [
@@ -8,12 +8,13 @@ on:
     ]
     branches: [ main ]
 jobs:
-  title-check:
+  pr-title-check:
     name: Check PR Title
     runs-on: ubuntu-latest
+
     steps:
       - name: Validate PR Title format
-        with:
+        env:
           PR_TITLE: ${{ github.event.pull_request.title }}
           FORMAT: "[EMKT-<number>]: <non-empty description>"
           REGEX: "EMKT"
@@ -22,7 +23,7 @@ jobs:
         
           # Require: $FORMAT
           
-          if [[ "$PR_TITLE" =~ $REGEX]]; then
+          if [[ "$PR_TITLE" =~ $REGEX ]]; then
             echo "Title is valid"
             exit 0
           else
@@ -30,5 +31,4 @@ jobs:
             echo "Expected format: $FORMAT"
             exit 1
           fi
-
 

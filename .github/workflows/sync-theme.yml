@@ -1,12 +1,12 @@
-name: Sync Theme
+name:  Sync Theme
 on:
-  repository_dispatch:
-    types: [themes/update]
+  workflow_dispatch
 jobs:
   main:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+    environment: prod
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -21,13 +21,13 @@ jobs:
 
       - name: Pull Live Theme
         env:
-          SHOPIFY_STORE: "emma-sleep-ca.myshopify.com"
-          SHOPIFY_TOKEN: ${{ secrets.SHOPIFY_CLI_THEME_TOKEN }}
+          SHOPIFY_CLI_THEME_TOKEN: ${{ secrets.SHOPIFY_CLI_THEME_TOKEN }}
+          SHOPIFY_FLAG_STORE: ${{ SHOPIFY_FLAG_STORE }}
         run: |
           cd theme
           shopify theme pull \
-            --store "$SHOPIFY_STORE" \
-            --password "$SHOPIFY_TOKEN" \
+            --store "$SHOPIFY_FLAG_STORE" \
+            --password "$SHOPIFY_CLI_THEME_TOKEN" \
             -l
       - name: Commit and push if theme changed
         run: |

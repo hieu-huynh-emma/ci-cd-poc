@@ -1,32 +1,24 @@
-name: ⛔ Merge Freeze
+name:  ⛔ Merge Freeze
 
 on:
   pull_request:
-    types: [
-      opened,
-      synchronize,
-      reopened
-    ]
-    branches: [ main ]
-
+    types: [opened, synchronize, reopened]
+    branches: [main]
 jobs:
   check-for-merge-freeze:
     name: Check for Weekend Merge Freeze
     runs-on: ubuntu-latest
     env:
       TZ: 'Asia/Ho_Chi_Minh'
+      FREEZE_DAYS: "6,7"
     steps:
       - name: Check the current day
         run: |
-          # Get the current day of the week (1=Monday, ..., 5=Friday, 6=Saturday, 7=Sunday)
-          DAY_OF_WEEK=$(date +%u)
-
+          DAY_OF_WEEK=$(TZ='Asia/Ho_Chi_Minh' date +%u) || { echo "Failed to get date"; exit 1; }
           echo "Current day in ${{ env.TZ }} is: $DAY_OF_WEEK (Friday=5, Saturday=6, Sunday=7)"
-
-          # Fail the job if the day is Friday, Saturday, or Sunday
-          if [[ "$DAY_OF_WEEK" -ge 5 ]]; then
-            echo "❌ Merge Freeze is active. Merging is disabled from Friday to Sunday."
+          if echo "${{ env.FREEZE_DAYS }}" | grep -qw "$DAY_OF_WEEK"; then
+            echo "❌ Merge Freeze active. Merging disabled."
             exit 1
           else
-            echo "✅ Merge check passed. It's not the weekend!"
+            echo "✅ Merge check passed."
           fi
