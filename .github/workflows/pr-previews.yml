@@ -1,4 +1,4 @@
-name: Pull Request UI Reviews
+name: Pull Request UI Reviews 
 on:
   pull_request:
     types: [ opened, synchronize, reopened ]
@@ -25,7 +25,7 @@ jobs:
       - name: Create Preview Theme
         env:
           SHOPIFY_CLI_THEME_TOKEN: ${{ secrets.SHOPIFY_CLI_THEME_TOKEN }}
-          SHOPIFY_FLAG_STORE: ${{ SHOPIFY_FLAG_STORE }}
+          SHOPIFY_FLAG_STORE: ${{ vars.SHOPIFY_FLAG_STORE }}
           PR_ID: ${{github.event.pull_request.number}}
         run: |
           cd theme 
