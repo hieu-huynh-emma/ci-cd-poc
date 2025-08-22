@@ -1,0 +1,74 @@
+name: Production Deployment
+
+on:
+  pull_request:
+    types: [ closed ]
+    branches: [ main ]
+
+jobs:
+  deploy:
+    name: Deploy to Production
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    environment:
+      name: prod
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install Shopify CLI
+        run: npm add -g @shopify/cli@latest
+
+      - name: Push theme to production
+        env:
+          SHOPIFY_CLI_THEME_TOKEN: ${{ secrets.SHOPIFY_CLI_THEME_TOKEN }}
+          SHOPIFY_FLAG_STORE: ${{ SHOPIFY_FLAG_STORE }}
+        run: |
+          cd theme && shopify theme push \
+            --json \
+            --store "$SHOPIFY_FLAG_STORE" \
+            --password "$SHOPIFY_CLI_THEME_TOKEN" \
+            -l -a
+
+
+  create-tag:
+    name: Tagging
+    runs-on: ubuntu-latest
+    needs: deploy
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Create tag
+        run: |
+          git tag -a vX.Y.Z -m "Release vX.Y.Z - Description of changes"
+          git push --follow-tags
+
+
+  release:
+    name: Create Release
+    runs-on: ubuntu-latest
+    needs: [deploy, create-tag]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@latest
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          body: |
+            Changes in this Release
+            - First Change
+            - Second Change
+          draft: false
+          prerelease: false

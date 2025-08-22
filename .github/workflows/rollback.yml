@@ -3,10 +3,10 @@ name: Revert last release
 on:
   workflow_dispatch:
     inputs:
-      branch:
-        description: 'Branch name'
+      tag:
+        description: 'Tag name'
         required: true
-        default: 'main'
+        default: null
 
 jobs:
   revert_release:
@@ -15,10 +15,12 @@ jobs:
       - name: Checkout branch
         uses: actions/checkout@v2
         with:
-          ref: ${{ github.event.inputs.branch }}
+          ref: ${{ github.event.inputs.tag }}
           fetch-depth: 0
       - name: Revert pushed commit
         run: |
+          target_tag = git tag -l "$ref"
+          
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           git revert --no-edit HEAD
