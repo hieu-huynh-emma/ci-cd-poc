@@ -25,10 +25,11 @@ jobs:
       - name: Create Preview Theme
         env:
           SHOPIFY_CLI_THEME_TOKEN: ${{ secrets.SHOPIFY_CLI_THEME_TOKEN }}
+          SHOPIFY_FLAG_STORE: ${{ vars.SHOPIFY_FLAG_STORE }}
           PR_ID: ${{github.event.pull_request.number}}
         run: |
           cd theme 
           shopify theme push -u -j \
           --theme "Pull Request #$PR_ID UI Previews" \
-          --store ${SHOPIFY_FLAG_STORE} \
+          --store $SHOPIFY_FLAG_STORE \
           --password $SHOPIFY_CLI_THEME_TOKEN \
