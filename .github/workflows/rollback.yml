@@ -1,4 +1,4 @@
-name: Revert last release
+name: [Sample] Rollback
 
 on:
   workflow_dispatch:
@@ -9,7 +9,7 @@ on:
         default: null
 
 jobs:
-  revert_release:
+  rollback:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout branch
@@ -17,7 +17,7 @@ jobs:
         with:
           ref: ${{ github.event.inputs.tag }}
           fetch-depth: 0
-      - name: Revert pushed commit
+      - name: Rollback to release version
         run: |
           target_tag = git tag -l "$ref"
           
