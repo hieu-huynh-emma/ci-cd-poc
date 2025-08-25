@@ -19,33 +19,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Require fresh /sync-live-here (≤ 15 minutes)
-        id: freshness
-        uses: actions/github-script@v7
-        with:
-          script: |
-            const prNumber = context.payload.pull_request.number;
-            const { data: comments } = await github.rest.issues.listComments({
-              ...context.repo,
-              issue_number: prNumber,
-              per_page: 100,
-              sort: 'created',
-              direction: 'desc'
-            });
-            const slash = comments.find(c => typeof c.body === 'string' && c.body.trim().startsWith('/sync-live-here'));
-            if (!slash) {
-              core.setFailed("Missing `/sync-live-here`. Please comment `/sync-live-here` within the last 15 minutes before merging.");
-              return;
-            }
-            const created = new Date(slash.created_at).getTime();
-            const ageSec = Math.floor((Date.now() - created) / 1000);
-            const MAX = 15 * 60;
-            if (ageSec > MAX) {
-              core.setFailed(`\`/sync-live-here\` is stale (${Math.floor(ageSec/60)} min ago). Please run it again.`);
-              return;
-            }
-            core.setOutput('ok', 'true');
-
       - name: Checkout PR code
         if: steps.freshness.outputs.ok == 'true'
         uses: actions/checkout@v4
@@ -115,7 +88,32 @@ jobs:
           echo "id=$ID" >> $GITHUB_OUTPUT
           echo "url=$URL" >> $GITHUB_OUTPUT
           echo "Preview URL: $URL"
-
+      - name: Require fresh /sync-live-here (≤ 15 minutes)
+        id: freshness
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const prNumber = context.payload.pull_request.number;
+            const { data: comments } = await github.rest.issues.listComments({
+              ...context.repo,
+              issue_number: prNumber,
+              per_page: 100,
+              sort: 'created',
+              direction: 'desc'
+            });
+            const slash = comments.find(c => typeof c.body === 'string' && c.body.trim().startsWith('/sync-live-here'));
+            if (!slash) {
+              core.setFailed("Missing `/sync-live-here`. Please comment `/sync-live-here` within the last 15 minutes before merging.");
+              return;
+            }
+            const created = new Date(slash.created_at).getTime();
+            const ageSec = Math.floor((Date.now() - created) / 1000);
+            const MAX = 15 * 60;
+            if (ageSec > MAX) {
+              core.setFailed(`\`/sync-live-here\` is stale (${Math.floor(ageSec/60)} min ago). Please run it again.`);
+              return;
+            }
+            core.setOutput('ok', 'true');
       - name: Find existing preview comment
         if: steps.freshness.outputs.ok == 'true'
         id: find_comment
