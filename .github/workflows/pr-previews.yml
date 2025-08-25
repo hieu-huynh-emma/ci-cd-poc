@@ -1,4 +1,4 @@
-name: PR Check & Preview (Shopify Theme)
+name: PR Lint & Preview (Shopify Theme)
 
 on:
   pull_request:
@@ -8,70 +8,60 @@ on:
 permissions:
   contents: read
   pull-requests: read
-  issues: write # cần write để comment
+  issues: write
 
 concurrency:
-  group: pr-${{ github.event.pull_request.number }}
+  group: pr-preview-${{ github.event.pull_request.number }}
   cancel-in-progress: true
 
 jobs:
-  checks:
+  preview:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout PR code
-        if: steps.freshness.outputs.ok == 'true'
         uses: actions/checkout@v4
 
       - name: Setup Ruby (Theme Check)
-        if: steps.freshness.outputs.ok == 'true'
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: "3.2"
           bundler-cache: false
 
       - name: Install Theme Check
-        if: steps.freshness.outputs.ok == 'true'
         run: gem install theme-check
 
       - name: Run Theme Check (lint)
-        if: steps.freshness.outputs.ok == 'true'
         run: theme-check
 
       - name: Setup Node (Shopify CLI)
-        if: steps.freshness.outputs.ok == 'true'
         uses: actions/setup-node@v4
         with:
           node-version: "20"
 
       - name: Install Shopify CLI
-        if: steps.freshness.outputs.ok == 'true'
         run: npm i -g @shopify/cli @shopify/theme
 
       - name: Configure Shopify auth
-        if: steps.freshness.outputs.ok == 'true'
         env:
           SHOPIFY_FLAG_STORE: ${{ secrets.SHOPIFY_FLAG_STORE }}
-          SHOPIFY_CLI_THEME_TOKEN: ${{ secrets.SHOPIFY_CLI_THEME_TOKEN }}
+          SHOPIFY_CLI_THEME_TOKEN: ${{ secrets.SHOPIFY_THEME_TOKEN }}
         run: echo "Store $SHOPIFY_FLAG_STORE"
 
       - name: Push preview theme for this PR
-        if: steps.freshness.outputs.ok == 'true'
         env:
-          SHOPIFY_FLAG_STORE: ${{ secrets.SHOPIFY_CLI_THEME_TOKEN }}
-          SHOPIFY_CLI_THEME_TOKEN: ${{ secrets.SHOPIFY_CLI_THEME_TOKEN }}
+          SHOPIFY_FLAG_STORE: ${{ secrets.SHOPIFY_FLAG_STORE }}
+          SHOPIFY_CLI_THEME_TOKEN: ${{ secrets.SHOPIFY_THEME_TOKEN }}
         run: |
           THEME_NAME="CI-PR-${{ github.event.pull_request.number }}"
           shopify theme push "$THEME_NAME" --unpublished --nodelete --json
           echo "Pushed preview theme: $THEME_NAME"
 
-      # === NEW: Auto-comment Preview URL (find & update to avoid spam) ===
       - name: Fetch theme ID & preview URL
-        if: steps.freshness.outputs.ok == 'true'
         id: preview
         env:
-          SHOPIFY_FLAG_STORE: ${{ secrets.SHOPIFY_CLI_THEME_TOKEN }}
-          SHOPIFY_CLI_THEME_TOKEN: ${{ secrets.SHOPIFY_CLI_THEME_TOKEN }}
+          SHOPIFY_FLAG_STORE: ${{ secrets.SHOPIFY_FLAG_STORE }}
+          SHOPIFY_CLI_THEME_TOKEN: ${{ secrets.SHOPIFY_THEME_TOKEN }}
         run: |
           set -e
           THEME_NAME="CI-PR-${{ github.event.pull_request.number }}"
@@ -79,43 +69,14 @@ jobs:
           ID="$(echo "$JSON" | jq -r --arg name "$THEME_NAME" '.[] | select(.name==$name) | .id' | head -n1)"
           if [ -z "$ID" ] || [ "$ID" = "null" ]; then
             echo "Failed to find theme id for $THEME_NAME"
-            echo "json<<EOF" >> $GITHUB_OUTPUT
-            echo "$JSON" >> $GITHUB_OUTPUT
-            echo "EOF" >> $GITHUB_OUTPUT
             exit 1
           fi
           URL="https://${SHOPIFY_FLAG_STORE}/?preview_theme_id=${ID}"
           echo "id=$ID" >> $GITHUB_OUTPUT
           echo "url=$URL" >> $GITHUB_OUTPUT
           echo "Preview URL: $URL"
-      - name: Require fresh /sync-live-here (≤ 15 minutes)
-        id: freshness
-        uses: actions/github-script@v7
-        with:
-          script: |
-            const prNumber = context.payload.pull_request.number;
-            const { data: comments } = await github.rest.issues.listComments({
-              ...context.repo,
-              issue_number: prNumber,
-              per_page: 100,
-              sort: 'created',
-              direction: 'desc'
-            });
-            const slash = comments.find(c => typeof c.body === 'string' && c.body.trim().startsWith('/sync-live-here'));
-            if (!slash) {
-              core.setFailed("Missing `/sync-live-here`. Please comment `/sync-live-here` within the last 15 minutes before merging.");
-              return;
-            }
-            const created = new Date(slash.created_at).getTime();
-            const ageSec = Math.floor((Date.now() - created) / 1000);
-            const MAX = 15 * 60;
-            if (ageSec > MAX) {
-              core.setFailed(`\`/sync-live-here\` is stale (${Math.floor(ageSec/60)} min ago). Please run it again.`);
-              return;
-            }
-            core.setOutput('ok', 'true');
+
       - name: Find existing preview comment
-        if: steps.freshness.outputs.ok == 'true'
         id: find_comment
         uses: peter-evans/find-comment@v3
         with:
@@ -124,7 +85,6 @@ jobs:
           body-includes: "🧪 Preview theme"
 
       - name: Create or update preview comment
-        if: steps.freshness.outputs.ok == 'true'
         uses: peter-evans/create-or-update-comment@v4
         with:
           comment-id: ${{ steps.find_comment.outputs.comment-id }}
