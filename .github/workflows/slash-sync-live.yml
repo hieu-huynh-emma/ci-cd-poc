@@ -1,0 +1,118 @@
+name: Slash /sync-live-here (rebase feature onto LIVE snapshot)
+
+on:
+  issue_comment:
+    types: [created]
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+concurrency:
+  group: sync-live-here-${{ github.event.issue.number || github.run_id }}
+  cancel-in-progress: true
+
+jobs:
+  rebase-onto-live:
+    if: |
+      github.event.issue.pull_request != null &&
+      startsWith(github.event.comment.body, '/sync-live-here')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Guard – allow org member/collaborator only
+        id: guard
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const {owner, repo} = context.repo;
+            const commenter = context.payload.comment.user.login;
+            let ok = false;
+            try { await github.rest.orgs.checkMembershipForUser({ org: owner, username: commenter }); ok = true; } catch {}
+            if (!ok) { try { await github.rest.repos.checkCollaborator({ owner, repo, username: commenter }); ok = true; } catch {} }
+            if (!ok) core.setFailed(`User @${commenter} is not allowed to run /sync-live-here`);
+
+      - name: Get PR info
+        id: pr
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const pr = await github.rest.pulls.get({ ...context.repo, pull_number: context.payload.issue.number });
+            core.setOutput('headRef', pr.data.head.ref);
+            core.setOutput('headRepo', pr.data.head.repo.full_name);
+            core.setOutput('baseRef', pr.data.base.ref);
+
+      - name: Checkout PR head (write-enabled)
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ steps.pr.outputs.headRepo }}
+          ref: ${{ steps.pr.outputs.headRef }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node & Shopify CLI
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - run: npm i -g @shopify/cli @shopify/theme
+
+      - name: Configure Shopify auth
+        env:
+          SHOPIFY_FLAG_STORE: ${{ secrets.SHOPIFY_FLAG_STORE }}
+          SHOPIFY_CLI_THEME_TOKEN: ${{ secrets.SHOPIFY_CLI_THEME_TOKEN }}
+        run: echo "Store $SHOPIFY_FLAG_STORE"
+
+      - name: Compute merge-base with base branch
+        id: base
+        run: |
+          git fetch --no-tags --prune origin ${{ steps.pr.outputs.baseRef }}:origin/${{ steps.pr.outputs.baseRef }}
+          echo "base=$(git merge-base HEAD origin/${{ steps.pr.outputs.baseRef }})" >> $GITHUB_OUTPUT
+
+      - name: Create LIVE snapshot from base & pull LIVE
+        id: snap
+        env:
+          SHOPIFY_FLAG_STORE: ${{ secrets.SHOPIFY_STORE }}
+          SHOPIFY_CLI_THEME_TOKEN: ${{ secrets.SHOPIFY_THEME_TOKEN }}
+        run: |
+          set -e
+          git checkout -B live-snapshot origin/${{ steps.pr.outputs.baseRef }}
+          git rm -r --cached . 2>/dev/null || true
+          git clean -fdx
+          shopify theme pull --live --force
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "no_changes=true" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+          git add -A
+          git commit -m "chore(live): snapshot from LIVE $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          echo "no_changes=false" >> $GITHUB_OUTPUT
+
+      - name: Rebase PR commits onto LIVE snapshot (keep commit count)
+        if: steps.snap.outputs.no_changes == 'false'
+        run: |
+          set -e
+          git checkout ${{ steps.pr.outputs.headRef }}
+          git rebase --rebase-merges --onto live-snapshot ${{ steps.base.outputs.base }} HEAD
+
+      - name: Push back (force-with-lease)
+        if: steps.snap.outputs.no_changes == 'false'
+        run: |
+          git push --force-with-lease origin HEAD:${{ steps.pr.outputs.headRef }}
+
+      - name: Add label synced-live (optional)
+        if: always()
+        uses: actions-ecosystem/action-add-labels@v1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          labels: synced-live
+
+      - name: Comment result
+        if: always()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const noChanges = '${{ steps.snap.outputs.no_changes }}' === 'true';
+            const ts = new Date().toISOString();
+            const body = noChanges
+              ? `ℹ️ \`/sync-live-here\` at **${ts}** (UTC): LIVE has no changes relative to base. Rebase skipped.`
+              : `✅ \`/sync-live-here\` at **${ts}** (UTC): Rebased this branch on top of the latest **LIVE snapshot**.`;
+            await github.rest.issues.createComment({ ...context.repo, issue_number: context.payload.issue.number, body })
