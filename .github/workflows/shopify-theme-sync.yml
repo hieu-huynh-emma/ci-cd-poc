@@ -20,7 +20,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ~/.npm
-          key: ${{ jobs.setup-shopify-cli.outputs.cache-key }}
+          key: ${{ needs.setup-shopify-cli.outputs.cache-key }}
       - name: Pull Live Theme
         env:
           SHOPIFY_CLI_THEME_TOKEN: ${{ secrets.SHOPIFY_CLI_THEME_TOKEN }}
