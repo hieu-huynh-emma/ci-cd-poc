@@ -6,7 +6,18 @@ on:
 
 jobs:
   setup-shopify-cli:
-    uses: ./.github/workflows/setup-shopify-cli.yml
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install Shopify CLI
+        run: npm install -g @shopify/cli@latest
 
   check-for-changes:
     needs: setup-shopify-cli
@@ -16,13 +27,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Restore cache
-        uses: actions/cache/restore@v4
-        with:
-          path: ~/.npm # Or the location where global packages are installed
-          key: ${{ runner.os }}-npm-${{ hashFiles('package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-npm-
+
       - name: Pull Live Theme
         env:
           SHOPIFY_CLI_THEME_TOKEN: ${{ secrets.SHOPIFY_CLI_THEME_TOKEN }}
@@ -31,6 +36,7 @@ jobs:
           shopify theme pull \
             -s "$SHOPIFY_FLAG_STORE" \
             --password "$SHOPIFY_CLI_THEME_TOKEN" \
+            --path "theme" \
             -l
       - name: Commit and push if theme changed
         run: |
