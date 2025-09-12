@@ -7,6 +7,7 @@ jobs:
   setup-shopify-cli:
     uses: ./.github/workflows/setup-shopify-cli.yml
   check-for-changes:
+    needs: setup-shopify-cli
     runs-on: ubuntu-latest
     permissions:
       contents: write
