@@ -15,6 +15,14 @@ jobs:
         with:
           node-version: 20
 
+      - name: Cache Node Modules
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm # Or ./node_modules if you prefer to cache project-specific node_modules
+          key: ${{ runner.os }}-node-${{ inputs.node-version }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-${{ inputs.node-version }}-
       - name: Install Shopify CLI
+        if: steps.cache-npm.outputs.cache-hit != 'true'
         run: npm add -g @shopify/cli@latest
 
