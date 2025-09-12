@@ -16,22 +16,18 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - uses: pnpm/action-setup@v4
-        name: Install pnpm
-        with:
-          version: 8.14.0
       - name: Install Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'pnpm'
+          cache: 'npm'
 
       - name: Install Shopify CLI
-        run: pnpm add -g @shopify/cli@latest
+        run: npm install -g @shopify/cli@latest
 
       - name: Cache Node Modules
         uses: actions/cache@v4
         with:
-          path: ~/.pnpm-store
+          path: ~/lib/node_modules
           key: ${{ env.CACHE_KEY }}
 
