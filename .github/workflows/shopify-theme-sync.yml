@@ -3,23 +3,35 @@ on:
   pull_request:
     types: [ opened, synchronize, reopened ]
     branches: [ main ]
+
+env:
+  CACHE_KEY: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
 jobs:
   setup-shopify-cli:
-    uses: ./.github/workflows/setup-shopify-cli.yml
+    runs-on: ubuntu-latest
+    steps:
+      - name: Verify Cache
+        id: verify-cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: ${{ env.CACHE_KEY }}
+      - name: Setup Shopify CLI
+        if: steps.verify-cache.outputs.cache-hit != 'true'
+        uses: ./.github/workflows/setup-shopify-cli.yml
   check-for-changes:
     needs: setup-shopify-cli
-
     runs-on: ubuntu-latest
     permissions:
       contents: write
     steps:
-      - name: Restore node modules cache
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Restore cache
         uses: actions/cache@v4
         with:
-          path: ~/.npm # or node_modules
-          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-npm-
+          path: ~/.npm
+          key: ${{ env.CACHE_KEY }}
       - name: Pull Live Theme
         env:
           SHOPIFY_CLI_THEME_TOKEN: ${{ secrets.SHOPIFY_CLI_THEME_TOKEN }}
@@ -31,17 +43,17 @@ jobs:
             -l
       - name: Commit and push if theme changed
         run: |
-          cd theme
-          git config user.name = "Shopify Bot"
-          git config user.email = "shopify-bot@emma-sleep.com"
-          
-          if [[ -z $(git status) ]]; then
-            echo "✅No theme changes detected."
+          git config --global user.name "Shopify Bot"
+          git config --global user.email "shopify-bot@emma-sleep.com"
+
+          # Check if there are any changes
+          if git diff --quiet && git diff --cached --quiet; then
+            echo "✅ No theme changes detected."
             exit 0
           fi
-          
+
           git add -A
           timestamp=$(date -u "+%Y-%m-%d %H:%M:%S UTC")
-          git commit -m "(bot): Sync LIVE theme at ${timestamp}"
-          git push
+          git commit -m "chore(bot): Sync LIVE theme at ${timestamp}"
+          git push origin ${{ github.head_ref }}
 
