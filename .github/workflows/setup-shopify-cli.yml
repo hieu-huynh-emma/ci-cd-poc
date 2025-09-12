@@ -6,8 +6,7 @@ on:
       cache-key:
         description: "Cache key for Shopify CLI"
         value: "shopify-cli-cache"
-env:
-  CACHE_KEY: shopify-cli-cache
+
 jobs:
   restore-cache:
     runs-on: ubuntu-latest
@@ -21,7 +20,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ~/.npm
-          key: ${{ CACHE_KEY }}
+          key: shopify-cli-cache
 
   install-shopify-cli:
     needs: "restore-cache"
@@ -43,5 +42,5 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ~/.npm
-          key: ${{ CACHE_KEY }}
+          key: shopify-cli-cache
 
