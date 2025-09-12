@@ -5,8 +5,11 @@ on:
     branches: [ main ]
 
 jobs:
-  setup-shopify-cli:
+  check-for-changes:
+    needs: setup-shopify-cli
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -18,15 +21,6 @@ jobs:
 
       - name: Install Shopify CLI
         run: npm install -g @shopify/cli@latest
-
-  check-for-changes:
-    needs: setup-shopify-cli
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
 
       - name: Pull Live Theme
         env:
