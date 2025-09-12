@@ -1,0 +1,40 @@
+{% assign isUnavailable = false %}
+
+{% if product.selected_or_first_available_variant.available == false %}
+    {% assign isUnavailable = true %}
+{% endif %}
+
+{% liquid
+    
+    assign trackId = "Add_Cart"
+    assign postfix = product.metafields.accentuate.track_postfix
+    
+    if postfix != blank
+        assign trackId = trackId | append: "_" | append: postfix
+    endif
+%}
+
+<tracked-button :trackId="{{ trackId }}">
+    <button
+        type="button"
+        name="add"
+        class="btn btn--block btn--rounded product-form__cart-submit add-to-cart-btn w-full
+          {% if section.settings.enable_payment_button and product.selling_plan_groups == empty %} btn--secondary-accent{% endif %}
+    "
+        {% if isUnavailable %}disabled{% endif %}
+    >
+        {% render 'icon-cart-empty' %}
+        
+        <span data-add-to-cart-text>
+    {%- if isUnavailable -%}
+        {{ 'products.product.sold_out' | t }}
+    {%- else -%}
+        {{ 'products.product.add_to_cart' | t }}
+    {%- endif -%}
+  </span>
+        
+        <loader-element :type='spinner'></loader-element>
+    </button>
+</tracked-button>
+
+

@@ -1,0 +1,180 @@
+{{ block.settings | json | escape }}
+
+{% schema %}
+{
+  "name": "Frame",
+  "tag": null,
+  "settings": [
+    {
+      "type": "color",
+      "id": "bgcolor",
+      "label": "Background Color",
+      "default": "#1c1d1d"
+    },
+    {
+      "type": "select",
+      "id": "spacing",
+      "label": "Frame Spacing",
+      "options": [
+        {
+          "value": "none",
+          "label": "None"
+        },
+        {
+          "value": "2xs",
+          "label": "2 Extra Small (4px)"
+        },
+        {
+          "value": "xs",
+          "label": "Small (8px)"
+        },
+        {
+          "value": "sm",
+          "label": "Small (12px)"
+        },
+        {
+          "value": "base",
+          "label": "Base (16px)"
+        },
+        {
+          "value": "md",
+          "label": "Medium (24px)"
+        },
+        {
+          "value": "lg",
+          "label": "Large (32px)"
+        },
+        {
+          "value": "xl",
+          "label": "Extra Large (40px)"
+        }
+      ],
+      "default": "base",
+      "info": "Choose the size for the frame spacing."
+    },
+    {
+      "type": "select",
+      "id": "vertical_alignment",
+      "label": "Vertical Alignment",
+      "options": [
+        {
+          "value": "flex-start",
+          "label": "Top"
+        },
+        {
+          "value": "center",
+          "label": "Middle"
+        },
+        {
+          "value": "flex-end",
+          "label": "Bottom"
+        }
+      ],
+      "default": "center",
+      "info": "Use Flexbox or Grid align"
+    },
+    {
+      "type": "select",
+      "id": "horizontal_alignment",
+      "label": "Horizontal Alignment",
+      "options": [
+        {
+          "value": "flex-start",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Middle"
+        },
+        {
+          "value": "flex-end",
+          "label": "Right"
+        }
+      ],
+      "default": "center",
+      "info": "Use Flexbox or Grid justify"
+    },
+    {
+      "type": "range",
+      "id": "margin_y",
+      "label": "Margin Y",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 0,
+      "info": "Vertical margin, 1 unit = 4px"
+    },
+    {
+      "type": "range",
+      "id": "margin_x",
+      "label": "Margin X",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 0,
+      "info": "Horizontal margin, 1 unit = 4px"
+    },
+    {
+      "type": "range",
+      "id": "padding_x",
+      "label": "Padding X",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 0,
+      "info": "Horizontal padding, 1 unit = 4px"
+    },
+    {
+      "type": "range",
+      "id": "padding_y",
+      "label": "Padding Y",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 0,
+      "info": "Vertical padding, 1 unit = 4px"
+    },
+    {
+      "id": "border_radius",
+      "type": "range",
+      "label": "Border Radius",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 0,
+      "info": "Choose the border radius number."
+    },
+    {
+      "id": "boundless",
+      "type": "checkbox",
+      "label": "Boundless?",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "content_width",
+      "min": 10,
+      "max": 100,
+      "step": 1,
+      "default": 100,
+      "label": "Content Width (%)"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Frame",
+      "settings": {
+        "bgcolor": "#00000000",
+        "spacing": "base",
+        "margin_y": 0,
+        "margin_x": 0,
+        "padding_y": 10,
+        "padding_x": 0,
+        "border_radius": 0,
+        "boundless": false,
+        "content_width": 100
+      }
+    }
+  ]
+}
+{% endschema %}

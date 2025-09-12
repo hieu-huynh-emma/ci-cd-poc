@@ -1,0 +1,83 @@
+{% liquid
+  assign settings = block.settings
+%}
+
+<picture-tag
+    class="rounded-{{ settings.rounded }} overflow-hidden"
+    :src="{{ settings.src | image_url }}"
+    :placeholderWidth="500"
+    :width="{{ settings.size }}"
+    :height="{{ settings.size }}"
+    :fit="cover"
+>
+</picture-tag>
+
+{% schema %}
+{
+  "name": "Picture",
+  "tag": null,
+  "settings": [
+    {
+      "id": "src",
+      "type": "image_picker",
+      "label": "Image or GIF"
+    },
+    {
+      "id": "size",
+      "type": "number",
+      "default": 500,
+      "label": "Picture Size"
+    },
+    {
+      "id": "rounded",
+      "type": "select",
+      "label": "Picture Border Radius",
+      "options": [
+        {
+          "value": "none",
+          "label": "None"
+        },
+        {
+          "value": "xs",
+          "label": "Extra Small (2px)"
+        },
+        {
+          "value": "sm",
+          "label": "Small (4px)"
+        },
+        {
+          "value": "md",
+          "label": "Medium (6px)"
+        },
+        {
+          "value": "lg",
+          "label": "Large (8px)"
+        },
+        {
+          "value": "xl",
+          "label": "Extra Large (12px)"
+        },
+        {
+          "value": "2xl",
+          "label": "2 extra Large (16px)"
+        },
+        {
+          "value": "3xl",
+          "label": "3 extra Large (24px)"
+        }
+      ],
+      "default": "none",
+      "info": "Choose the border radius."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Picture",
+      "settings": {
+        "src": "",
+        "rounded": "none"
+      }
+    }
+  ]
+}
+{% endschema %}

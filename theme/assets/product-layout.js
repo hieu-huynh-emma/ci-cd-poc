@@ -1,0 +1,131 @@
+const schema = [
+    {
+        sectionId: "product-summary",
+    },
+    {
+        sectionId: "product-badges",
+    },
+    {
+        sectionId: "product-media",
+    },
+    {
+        sectionId: "price-transparency"
+    },
+    {
+        sectionId: "risk-reversal",
+    },
+    {
+        sectionId: "campaign-teaser",
+    },
+    {
+        sectionId: "product-unique-selling-points",
+    },
+    {
+        sectionId: "product-specifications",
+    },
+
+    // {
+    //     sectionId: "bundle-cross-sell",
+    //     outletQuery: "#attribute-configurator",
+    //     insertPosition: "afterend",
+    // },
+    // {
+    //     sectionId: "freebie-bundle",
+    //     outletQuery: "#attribute-configurator",
+    //     insertPosition: "afterend",
+    // },
+    {
+        sectionId: "promotional-panel",
+        outletQuery: `[id$="__price-transparency"]`,
+        insertPosition: "afterend",
+        block: true
+    },
+    {
+        sectionId: "product-auxiliary",
+        blocks: [
+            {
+                query: "#cross-sell-panel",
+                outletQuery: "#attribute-configurator",
+                insertPosition: "afterend",
+            },
+            {
+                query: `product-auxiliary[name="upsell-widget"]`,
+                outletQuery: "#attribute-configurator",
+                insertPosition: "afterend",
+            },
+        ],
+    },
+    {
+        sectionId: "freebie-offer",
+        outletQuery: "#attribute-configurator",
+        insertPosition: "afterend",
+    },
+    {
+        sectionId: "cover-selection",
+        selector: "cover-selection",
+        outletQuery: "#attribute-configurator",
+        insertPosition: "afterend",
+    },
+];
+const sectionId = document.currentScript.dataset["sectionId"];
+const templateId = sectionId.split("__")[0];
+
+
+function loadSection({sectionId, selector, type, outletQuery, insertPosition, block, blocks = []}) {
+    let sectionEl
+
+    if (!!block) {
+        sectionEl = document.querySelector(`.shopify-block[id*="__${sectionId}"]`)
+    } else {
+        const sectionQuery = `${sectionId ? `[id$='__${sectionId}']` : ""}`,
+            selectorQuery = `${selector ? `${selector}` : ""}`,
+            targetQuery = `${sectionQuery} ${selectorQuery}`;
+
+        sectionEl = document.querySelector(targetQuery);
+    }
+
+    if (!sectionEl) return
+
+    const processedEl = type === 'clone' ? sectionEl.cloneNode(true) : sectionEl.parentElement.removeChild(sectionEl);
+
+    if (outletQuery) {
+        const outletEl = document.querySelector(outletQuery)
+        outletEl?.insertAdjacentElement(insertPosition, processedEl);
+    } else {
+        const sectionPlaceholderEl = document.querySelector(`#product-layout #${sectionId}-placeholder`);
+        sectionPlaceholderEl?.replaceWith(processedEl);
+    }
+
+    if (blocks.length > 0) {
+        blocks.forEach(({query, insertPosition, outletQuery}) => {
+            try {
+                const blockEl = sectionEl.querySelector(query);
+                if (!blockEl) return;
+                const detachedBlockEl = blockEl.parentElement.removeChild(blockEl);
+                const outletEl = document.querySelector(outletQuery);
+
+                outletEl.insertAdjacentElement(insertPosition, detachedBlockEl);
+            } catch (e) {
+                console.error(e);
+            }
+        });
+    }
+
+    sectionEl.classList.remove("hidden");
+
+    setTimeout(() => {
+        sectionEl.classList.add("is-initialized");
+    }, 500);
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    schema.forEach(loadSection);
+
+    $("#product-layout .skeleton").hide();
+
+    const productLayoutEl = document.querySelector("#product-layout");
+
+    productLayoutEl.classList.add("is-initialized");
+
+
+});

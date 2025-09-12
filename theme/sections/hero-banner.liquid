@@ -1,0 +1,126 @@
+<style>
+    #hero-banner-section .section-container {
+        border-radius: .5rem;
+        overflow: hidden;
+        padding: 0;
+    }
+
+    @media screen and (max-width: 769px) {
+        #hero-banner-section .section-container {
+            height: 580px;
+        }
+    }
+
+</style>
+
+<link rel="stylesheet" href="{{ 'hero-banner.css' | asset_url }}">
+
+<div id="hero-banner-section" class="page-boundary" data-component="hero-banner">
+    <div class="section-container">
+        {% render 'hero-banner', props: section.settings %}
+    </div>
+</div>
+
+{% schema %}
+{
+  "name": "Hero Banner",
+  "class": "hero-banner",
+  "tag": "section",
+  "settings": [
+    {
+      "id": "title",
+      "type": "richtext",
+      "label": "Title"
+    },
+    {
+      "id": "subtitle",
+      "type": "richtext",
+      "label": "Subtitle"
+    },
+    {
+      "id": "text_color",
+      "type": "color",
+      "label": "Text Color",
+      "default": "#2e2f3c"
+    },
+    {
+      "id": "show_shadow",
+      "type": "checkbox",
+      "label": "Show Shadow?",
+      "default": true
+    },
+    {
+      "id": "wallpaper_desktop_img",
+      "type": "image_picker",
+      "label": "Wallpaper Desktop Image"
+    },
+    {
+      "id": "wallpaper_mobile_img",
+      "type": "image_picker",
+      "label": "Wallpaper Mobile Image"
+    },
+    {
+      "id": "wallpaper_desktop_fr_img",
+      "type": "image_picker",
+      "label": "Wallpaper Desktop French Image"
+    },
+    {
+      "id": "wallpaper_mobile_fr_img",
+      "type": "image_picker",
+      "label": "Wallpaper Mobile French Image"
+    },
+    {
+      "id": "cta_url",
+      "type": "url",
+      "label": "CTA Url"
+    },
+    {
+      "id": "cta_text",
+      "type": "text",
+      "label": "CTA Text"
+    },
+    {
+      "id": "show_cta",
+      "type": "checkbox",
+      "label": "Show CTA?",
+      "default": true
+    },
+    {
+      "id": "cta_size",
+      "type": "select",
+      "options": [
+        {
+          "value": "sm",
+          "label": "Small"
+        },
+        {
+          "value": "md",
+          "label": "Medium"
+        },
+        {
+          "value": "lg",
+          "label": "Large"
+        }
+      ],
+      "default": "lg",
+      "label": "CTA Size"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_countdown_timer",
+      "label": "Show Countdown Timer",
+      "default": false
+    },
+    {
+      "id": "countdown_caption",
+      "type": "richtext",
+      "label": "Countdown Caption"
+    },
+    {
+      "id": "trackId",
+      "type": "text",
+      "label": "Tracking ID"
+    }
+  ]
+}
+{% endschema %}

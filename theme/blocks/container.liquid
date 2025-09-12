@@ -1,0 +1,117 @@
+{{ block.settings | json | escape }}
+
+{% schema %}
+{
+  "name": "Container",
+  "tag": null,
+  "settings": [
+    {
+      "type": "color",
+      "id": "bgcolor",
+      "label": "Background Color",
+      "default": "#1c1d1d"
+    },
+    {
+      "type": "select",
+      "id": "spacing",
+      "label": "Container Spacing",
+      "options": [
+        {
+          "value": "none",
+          "label": "None"
+        },
+        {
+          "value": "sm",
+          "label": "Small (24px)"
+        },
+        {
+          "value": "base",
+          "label": "Base (32px)"
+        },
+        {
+          "value": "md",
+          "label": "Medium (40px)"
+        },
+        {
+          "value": "lg",
+          "label": "Large (60px)"
+        }
+      ],
+      "default": "base",
+      "info": "Choose the size for the container spacing."
+    },
+    {
+      "type": "range",
+      "id": "margin_y",
+      "label": "Margin Y",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 0,
+      "info": "Vertical margin, 1 unit = 4px"
+    },
+    {
+      "type": "range",
+      "id": "margin_x",
+      "label": "Margin X",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 0,
+      "info": "Horizontal margin, 1 unit = 4px"
+    },
+    {
+      "type": "range",
+      "id": "padding_x",
+      "label": "Padding X",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 0,
+      "info": "Horizontal padding, 1 unit = 4px"
+    },
+    {
+      "type": "range",
+      "id": "padding_y",
+      "label": "Padding Y",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 0,
+      "info": "Vertical padding, 1 unit = 4px"
+    },
+    {
+      "id": "border_radius",
+      "type": "range",
+      "label": "Border Radius",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 0,
+      "info": "Choose the border radius number."
+    },
+    {
+      "id": "boundless",
+      "type": "checkbox",
+      "label": "Boundless?",
+      "default": false
+    }
+  ],
+  "presets": [
+    {
+      "name": "Container",
+      "settings": {
+        "bgcolor": "#00000000",
+        "spacing": "base",
+        "margin_y": 0,
+        "margin_x": 0,
+        "padding_y": 10,
+        "padding_x": 0,
+
+        "border_radius": 0,
+        "boundless": false
+      }
+    }
+  ]
+}
+{% endschema %}

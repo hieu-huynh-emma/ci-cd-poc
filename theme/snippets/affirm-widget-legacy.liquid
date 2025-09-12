@@ -1,0 +1,107 @@
+{% assign selected_variant = product.selected_or_first_available_variant %}
+
+{% if selected_variant.price > 30000 %}
+  <link rel="quickscript" loading="delayed" href="{{ 'custom.css' | asset_url }}" />
+  <link rel="quickscript" loading="delayed" href="{{ 'fancybox.css' | asset_url }}" />
+  <script type="quickscript" loading="delayed" src="{{ 'fancybox.js' | asset_url }}"></script>
+
+  <script type="quickscript" loading="visibility" src="{{ 'affirm-widget-legacy.js' | asset_url }}"></script>
+
+  <div id="pro_step" style="display:none;">
+    <div class="product_step_inner">
+      <div class="step_head">
+        <h3 class="">Hit the snooze button on payments. </h3>
+        <p class="sub_head"> <strong>with</strong> <img loading="lazy" class="model_img" src="https://cdn.shopify.com/s/files/1/0562/9873/3706/files/Logo_affirm.png?v=1659502934"></p>
+      </div>
+
+      <div class="pay_steps">
+
+        <div class="step_item">
+          <div class="step_icon">
+            <div class="step_icon_inner">
+              <div class="backimg" style="background-image:url(https://cdn.shopify.com/s/files/1/0562/9873/3706/files/newcheckbox-svg.svg?v=1651902508);">
+                <svg class="transparent_svg" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 378 378">
+                  <rect class="cls-1" x="0.5" y="0.5" width="377" height="377"></rect>
+                </svg>
+              </div>
+            </div>
+
+          </div>
+          <div class="step_data">
+            <div class="step_item_head">Instant Approval</div>
+            <div class="step_info">Get quick real-time decision with Affirm.</div>
+          </div>
+        </div>
+
+        <div class="step_item">
+          <div class="step_icon">
+            <div class="step_icon_inner">
+              <div class="backimg" style="background-image:url(https://cdn.shopify.com/s/files/1/0562/9873/3706/files/new-percentage.svg?v=1652071855);">
+                <svg class="transparent_svg" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 378 378">
+                  <rect class="cls-1" x="0.5" y="0.5" width="377" height="377"></rect>
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div class="step_data">
+            <div class="step_item_head">0% APR (over 12 months)</div>
+            <div class="step_info">No secrets, no surprises.</div>
+          </div>
+        </div>
+
+        <div class="step_item">
+          <div class="step_icon">
+            <div class="step_icon_inner">
+              <div class="backimg" style="background-image:url(https://cdn.shopify.com/s/files/1/0562/9873/3706/files/new-calender-svg.svg?v=1651902705);">
+                <svg class="transparent_svg" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 378 378">
+                  <rect class="cls-1" x="0.5" y="0.5" width="377" height="377"></rect>
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div class="step_data">
+            <div class="step_item_head">Easy Monthly Payments</div>
+            <div class="step_info">Sleep in, stress-free.</div>
+          </div>
+        </div>
+
+        <div class="step_item">
+          <p class="para_txt">Just select "Affirm" at checkout.</p>
+        </div>
+
+        <div class="shop_btn">
+          <a href="#" data-fancybox-close class=""><span class="">continue shopping</span></a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="pro_note">
+      <div class="pro_note_inner">
+        <p>*Not available for purchase under $300 CAD</p>
+        <p>*Affirm cannot be used in conjunction with other discounts and promotions.</p>
+      </div>
+    </div>
+  </div>
+
+  <div abtasty-campaign-id="1317071" abtasty-campaign-variation="0" id="affirm-widget" class="affirm-as-low-as">
+    <div class="pro_info cart-drawer-affirm-en">
+      or
+      <strong><span class="pro_val">{{ selected_variant.price | divided_by: 12 | money }}</span></strong>
+      monthly with
+      <span class="pay_img" style="display: inline-flex">
+        <img class="lazyload"
+             data-src="https://cdn.shopify.com/s/files/1/0562/9873/3706/files/Logo_affirm.png?v=1659502934">
+      </span>
+      financing <a data-fancybox data-src="#pro_step" href="javascript:" class="que" abtasty-tracker="Affirm-Messaging_CTR">?</a>
+
+    </div>
+
+    <div data-fancybox data-src="#fr_pop" href="javascript:" class="fr_pop cart-drawer-affirm-fr"
+         style="display: none;">
+      <a class="fr_txt">Option de crédit</a>
+      <a class="que" abtasty-tracker="Affirm-Messaging_CTR">?</a>
+    </div>
+  </div>
+{% endif %}
+

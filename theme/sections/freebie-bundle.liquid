@@ -1,0 +1,115 @@
+{% assign freebieOfferActivated = shop.metafields.globals.freebie_campaign_cw9_active %}
+
+<style>
+    .ske-free {
+        position: absolute;
+        inset: 0;
+        z-index: 99;
+        pointer-events: none;
+        animation: skeleton-loading 1s linear infinite alternate;
+    }
+</style>
+
+{%- assign current_variant = product.selected_or_first_available_variant -%}
+
+{% assign offerProduct = all_products[section.settings.product] %}
+{% assign offerVariant = offerProduct.selected_or_first_available_variant %}
+
+
+{% if offerProduct != blank %}
+    <freebie-bundle
+        class="bundle-box is-loading"
+        data-product-id="{{ offerProduct.id }}"
+        data-variant-id="{{ offerVariant.id }}"
+    >
+        <script id="BundleCrossSell-JSON" type="application/json">{{ offerProduct | json }}</script>
+        <div class="bundle-container">
+            <div class="offer-header">
+                <div id="BundleCrossSell-Switcher" data-abtasty-cross-sell>
+                </div>
+
+                <p>{{ section.settings.heading }}</p>
+                <script>
+                    console.log({{ offerProduct | json }});
+                </script>
+
+                <p id="BundleCrossSell-PriceTag" class="flex items-center gap-2">
+                    <span
+                        class="text-sm line-through">{{ offerProduct.price | money_without_trailing_zeros }}</span>
+                    <span class="text-tango text-md font-semibold">FREE!</span>
+                </p>
+            </div>
+
+            <div class="bundle-items">
+                <div class="flex">
+                    <div id="product-configuration-{{ offerProduct.handle }}"
+                         class="product-bundle-item">
+
+                        <div class="product-bundle-item__media">
+                            {% assign featuredImg = offerProduct.featured_image | image_url: width: 120, height: 80 %}
+                            {% assign accentuateImg = offerProduct.metafields.accentuate.isolated_image[0].src %}
+
+                            <picture-tag
+                                :src="{{ accentuateImg | default: featuredImg }}"
+                                :fit="contain"
+                                width="120"
+                                height="80"
+                                class="product-bundle-item__image"
+                            >
+                            </picture-tag>
+                        </div>
+                        <div class="product-bundle-item__details">
+                            <div class="product__name">
+                            <span>
+                                {{ offerProduct.metafields.accentuate.display_name | default: offerProduct.title }}
+                            </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {% if section.settings.note %}
+                <p class="w-full text-center text-xs text-comet">
+                    {{ section.settings.note }}
+                </p>
+            {% endif %}
+            <div class="ske-free"></div>
+        </div>
+
+
+    </freebie-bundle>
+{% endif %}
+
+
+
+{% schema %}
+{
+  "name": "Freebie Bundle",
+  "class": "hide-until-initialized",
+  "settings": [
+    {
+      "id": "heading",
+      "type": "text",
+      "label": "Heading",
+      "default": "Add bundle offer!"
+    },
+    {
+      "id": "product",
+      "type": "product",
+      "label": "Product"
+    },
+    {
+      "id": "note",
+      "type": "text",
+      "label": "Note",
+      "default": "*No mattress protector available for Twin XL and Cal King sizes"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Bundle Cross Sell"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,97 @@
+<style>
+#redeem-msg {
+  border-radius: 8px;
+  background-color: #ffa13523;
+  padding: 10px;
+}
+</style>
+{% for item in cart.items %}
+    {% assign compare_price = item.variant.compare_at_price
+        | default: item.variant.price
+        | times: item.quantity
+    %}
+    {% assign total_cart_compare_price = total_cart_compare_price | plus: compare_price %}
+{% endfor %}
+
+
+<cart-summary>
+    <h4 class="heading-4 font-bold">Order Summary</h4>
+
+    <ul class="summary-list">
+
+        <li class="summary-item">
+            <cart-summary-line :key="cost.subtotal" :label="{{ 'cart.subtotal' | t }}"></cart-summary-line>
+        </li>
+        <li class="summary-item">
+            <cart-summary-line :key="discount.totalDiscount" :label="Total Savings"></cart-summary-line>
+        </li>
+        <li class="summary-item">
+            <cart-summary-line :static="true" :key="shipping" :content="FREE" :label="Shipping"></cart-summary-line>
+        </li>
+        <li class="summary-item font-semibold">
+            <cart-summary-line :key="cost.total" :label="Total (before tax)"></cart-summary-line>
+        </li>
+    </ul>
+
+    <cart-redeem-code></cart-redeem-code>
+
+    <cart-cta class="cart-cta">
+        <loader-element :type="skeleton"></loader-element>
+
+        {% if section.settings.tocAgreement %}
+            <cart-toc-agreement></cart-toc-agreement>
+        {% endif %}
+
+        <checkout-button :trackId="Check_out" abtasty-tracker="CheckoutCTR">
+            <button class="btn" type="submit" name="checkout" disabled>
+                <img width="14" height="18" src="{{ 'cart-white.svg' | asset_url }}"> Checkout
+            </button>
+        </checkout-button>
+
+        <express-checkout-controller
+            abtasty-tracker="CheckoutCTR"
+            :wallet="{{ section.settings.expressWallet }}"
+            id="content_for_additional_checkout_buttons">
+            
+            {{ content_for_additional_checkout_buttons }}
+        </express-checkout-controller>
+    </cart-cta>
+</cart-summary>
+
+{% schema %}
+{
+  "name": "Cart Summary",
+  "settings": [
+    {
+      "id": "tocAgreement",
+      "type": "checkbox",
+      "label": "Enable Toc Agreement?",
+      "default": false
+    },
+    {
+      "id": "expressWallet",
+      "type": "select",
+      "label": "Express Wallet",
+      "options": [
+        {
+          "value": "PayPal",
+          "label": "Paypal"
+        },
+        {
+          "value": "ShopPay",
+          "label": "Shop Pay"
+        },
+        {
+          "value": "GooglePay",
+          "label": "Google Pay"
+        },
+        {
+          "value": "ApplePay",
+          "label": "Apple Pay"
+        }
+      ],
+      "default": "PayPal"
+    }
+  ]
+}
+{% endschema %}

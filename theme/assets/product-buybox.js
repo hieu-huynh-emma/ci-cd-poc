@@ -1,0 +1,181 @@
+class ProductBuybox extends CustomElement {
+  props = {};
+
+  get refs() {
+    return {
+      $addToCart: $(".add-to-cart-btn"),
+      $fixAddToCart: $("#fixture-add-to-cart"),
+    };
+  }
+
+  mounted() {
+    super.mounted();
+
+    this.portal();
+
+    const { $addToCart, $fixAddToCart } = this.refs;
+    $addToCart.click(() => {
+      $fixAddToCart.trigger("click");
+    });
+
+    // Re-updating the variant ID
+    $("product-buybox select.select__select")
+      .get(0)
+      .dispatchEvent(new Event("change", { bubbles: true }));
+  }
+
+  portal() {
+    const showSticky = $("#show_sticky_buybox").val();
+
+    const $stickyBuybox = $("sticky-buybox");
+
+    const $cartSurface = $("cart-surface");
+
+    $cartSurface.before($stickyBuybox);
+  }
+}
+
+customElements.define("product-buybox", ProductBuybox);
+
+class StickyBuybox extends CustomElement {
+  props = {};
+
+  threshold;
+
+  previousY = 0;
+
+  get refs() {
+    const $buybox = $("product-buybox");
+    const $productOptions = $buybox.find("#attribute-configurator");
+    const $productPrice = $buybox.find("product-price");
+    const $productBuynow = $buybox.find(".product-form__controls-group");
+
+    const $proxySelect = this.$el.find("select");
+    const primaryId = $proxySelect.data("id");
+    const $primarySelect = $(`select#${primaryId}`);
+
+    const $proxyQtySelect = this.$el.find("quantity-input");
+    const $primaryQtySelect = $("product-buybox quantity-input");
+    const productMediaData = JSON.parse(document.querySelector("#ProductMedia-JSON").textContent)
+
+    return {
+      $doc: $(document),
+      $outlet: this.$el.find(".buybox-outlet"),
+      $buybox,
+      $productOptions,
+      $productPrice,
+      $productBuynow,
+      $productMedia: $("product-media"),
+      $productTitle: $("#product-title"),
+
+      $addToCart: $(".add-to-cart-btn"),
+      $fixAddToCart: $("#fixture-add-to-cart"),
+
+      $proxySelect,
+      $primarySelect,
+      $proxyQtySelect,
+      $primaryQtySelect,
+      productMediaData
+    };
+  }
+
+  constructor() {
+    super();
+    const $announcementBar = $(".announcement-bar-wrapper");
+    const $header = $(".site-header-wrapper");
+
+    this.threshold = $announcementBar.height() + $header.height() + 20;
+
+    const observer = new IntersectionObserver(debounce(this.onIntersect.bind(this), 100), {
+      rootMargin: `-${this.threshold}px 0px 0px 0px`,
+    });
+
+    const addToCartBtn = document.querySelector("product-buybox .add-to-cart-btn");
+    observer.observe(addToCartBtn);
+  }
+
+  mounted() {
+    super.mounted();
+
+    const { $addToCart, $fixAddToCart, $proxyQtySelect, $primaryQtySelect } = this.refs;
+    $addToCart.click(() => {
+      $fixAddToCart.trigger("click");
+    });
+
+    this.renderProductInfo();
+
+    const $proxySelects = this.$el.find("select");
+
+    $proxySelects.on("change", function() {
+      const primaryId = $(this).data("id");
+      const primarySelect = $(`product-buybox select#${primaryId}`);
+      primarySelect
+        .val($(this).val())
+        .get(0)
+        .dispatchEvent(new Event("change", { bubbles: true }));
+    });
+
+    $proxyQtySelect.on("change", () => {
+      $primaryQtySelect.find("input").val($proxyQtySelect.find("input").val());
+    });
+  }
+
+  onIntersect([entry]) {
+    const {
+      boundingClientRect: { y },
+      isIntersecting,
+    } = entry;
+
+    let isVisible = false;
+
+    if (y < this.previousY) {
+      // Scrolling Down
+      if (isIntersecting) {
+      } else {
+        isVisible = true;
+      }
+    } else {
+      // Scrolling Up
+    }
+
+    this.toggle(isVisible);
+
+    if (y !== this.previousY) this.previousY = y;
+  }
+
+  toggle(isVisible) {
+    if (isVisible) {
+      this.sync();
+    }
+
+    this.$el[isVisible ? "show" : "hide"]();
+  }
+
+  // Sync the value between primary components and proxy components
+  sync() {
+    const { $primaryQtySelect, $proxyQtySelect } = this.refs;
+
+    const $proxySelects = this.$el.find("select");
+
+    $proxySelects.each(function () {
+      const primaryId = $(this).data("id");
+      const primarySelect = $(`product-buybox select#${primaryId}`);
+
+      $(this).val(primarySelect.val());
+    });
+
+    $proxyQtySelect.find("input").val($primaryQtySelect.find("input").val());
+  }
+
+  renderProductInfo() {
+    const { productMediaData } = this.refs;
+
+    const currentLanguage = $("html").attr("lang");
+
+    const $leadItemURl = productMediaData[0][`${currentLanguage}_src`]
+
+    this.$el.find(".product-image").attr("src", $leadItemURl);
+  }
+}
+
+customElements.define("sticky-buybox", StickyBuybox);

@@ -1,0 +1,132 @@
+<style>
+    #product-layout:not(.is-initialized) cover-selection {
+        display: none;
+    }
+
+    cover-option {
+        position: relative;
+
+        display: grid;
+        gap: 0.25rem;
+        grid-template-rows: minmax(0, 120px)  minmax(0, auto) minmax(0, 1fr);
+        align-items: flex-start;
+    }
+</style>
+<link rel="quickscript" loading="delayed" href="{{ 'cover-selection.css' | asset_url }}">
+
+{% liquid
+
+    assign trackId = "Cover_Rotation"
+    assign postfix = product.metafields.accentuate.track_postfix
+
+    if postfix != blank
+        assign trackId = trackId | append: "_" | append: postfix
+    endif
+%}
+
+<script id="cover-selection-data" type="application/json">
+    [
+    {% for block in section.blocks %}
+        {% assign product = all_products[block.settings.product] %}
+        {{ product | json }}
+        {% unless forloop.last %},{% endunless %}
+    {% endfor %}
+    ]
+</script>
+
+<script id="joint-product-upsell-data" type="application/json">
+    [
+    {% for block in section.blocks %}
+        {% assign product = all_products[block.settings.upsell] %}
+        {{ product | json }}
+        {% unless forloop.last %},{% endunless %}
+    {% endfor %}
+    ]
+</script>
+
+<cover-selection-engine></cover-selection-engine>
+
+<cover-selection hidden>
+    <label>
+        {{ section.settings.heading }}
+    </label>
+
+    <div class="cover-options">
+        {% for block in section.blocks %}
+            {% assign product = block.settings.product %}
+            {% assign selected_variant = product.selected_variant %}
+            <cover-option :trackId="{{ trackId }}" data-product-id="{{ product.id }}">
+
+                <picture-tag
+                    :src="{{ block.settings.picture | image_url }}"
+                    :fit="cover"
+                    height="120"
+                >
+                </picture-tag>
+
+                <div class="flex gap-2 justify-start">
+                    <p class="font-semibold">{{ block.settings.label }}</p>
+                </div>
+
+                <p class="joint-product-option__desc text-comet text-xs">{{ block.settings.short_desc }}</p>
+            </cover-option>
+        {% endfor %}
+    </div>
+</cover-selection>
+
+<script type="quickscript" loading="delayed" src="{{ 'cover-selection.js' | asset_url }}"></script>
+
+
+{% schema %}
+{
+  "name": "Cover Selection",
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Item",
+      "settings": [
+        {
+          "id": "picture",
+          "type": "image_picker",
+          "label": "Picture"
+        },
+        {
+          "id": "label",
+          "type": "text",
+          "label": "Label"
+        },
+        {
+          "id": "short_desc",
+          "type": "text",
+          "label": "Short Description"
+        },
+        {
+          "id": "show_star_rating",
+          "type": "checkbox",
+          "label": "Show Star Rating",
+          "default": false
+        },
+        {
+          "id": "product",
+          "type": "product",
+          "label": "Product"
+        },
+        {
+          "id": "upsell",
+          "type": "product",
+          "label": "Upsell"
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "id": "heading",
+      "type": "text",
+      "label": "Heading",
+      "default": "Choose cover"
+    }
+  ]
+}
+{% endschema %}
+

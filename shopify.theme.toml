@@ -1,0 +1,11 @@
+[environments.default]
+store = "emma-sleep-ca"
+output = "json"
+path = "./theme"
+
+[environments.staging]
+theme = "142089060490"
+
+[environments.production]
+live = true
+allow-live = true

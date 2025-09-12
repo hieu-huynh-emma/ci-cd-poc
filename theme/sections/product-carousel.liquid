@@ -1,0 +1,126 @@
+{% assign catalogItems = section.blocks | where: 'type', 'catalog_item' %}
+
+
+<style>
+    .star-rating {
+        display: none
+    }
+
+    product-card .product-card-metadata {
+        align-content: start;
+    }
+</style>
+
+
+{% liquid
+
+    assign trackId = "Favorites_scroll"
+    assign postfix = "HP"
+
+    if template contains "product"
+        assign trackId = "Better_together"
+        assign postfix = product.metafields.accentuate.track_postfix
+    endif
+
+    if postfix != blank
+        assign trackId = trackId | append: "_" | append: postfix
+    endif
+%}
+
+<section abtasty-campaign-id="1296959"
+         abtasty-campaign-variation="0"
+         id="product-carousel-section"
+         class="section-container spacing-{{ section.settings.container_spacing }}">
+    <div class="section-chassis page-boundary">
+        {% render 'section-header' %}
+
+        <div class="grid-container splide">
+            {% include 'splide-arrows', trackId: trackId, old: true %}
+
+            <div class="splide__track">
+                <ul class="splide__list">
+                    {% for block in catalogItems %}
+                        {% assign product = block.settings.product %}
+
+                        {% if product.available %}
+                            <li class="splide__slide">
+                                {% render 'product-card', product: product %}
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        <script type="quickscript" loading="visibility" src="{{ 'product-carousel.js' | asset_url }}"></script>
+    </div>
+
+</section>
+
+
+{% schema %}
+{
+  "name": "Product Carousel",
+  "blocks": [
+    {
+      "type": "catalog_item",
+      "name": "Catalog Item",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product"
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "id": "heading",
+      "type": "text",
+      "label": "Heading",
+      "default": "Product Catalog"
+    },
+    {
+      "id": "heading_alignment",
+      "type": "select",
+      "label": "Heading Alignment",
+      "options": [
+        {
+          "value": "start",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "end",
+          "label": "Right"
+        }
+      ],
+      "default": "start"
+    },
+    {
+      "type": "select",
+      "id": "container_spacing",
+      "options": [
+        {
+          "value": "lg",
+          "label": "Large (60px)"
+        },
+        {
+          "value": "md",
+          "label": "Medium (40px)"
+        }
+      ],
+      "default": "md",
+      "label": "Container Spacing"
+    },
+    {
+      "type": "text",
+      "id": "trackId",
+      "label": "Tracking ID"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,154 @@
+{% assign affirm_widget = section.blocks | where: 'type', 'affirm_widget' | first %}
+{% assign mini_comparison_table = section.blocks | where: 'type', 'mini-comparison-table' | first %}
+{% assign appBlock = section.blocks | where: 'type', '@app' | first %}
+
+<style>
+    .attribute-configurator {
+        display: none;
+    }
+
+    #bundle-layout:not(.is-initialized) {
+        min-height: 1700px;
+    }
+
+    #product-summary-placeholder:not(.is-initialized) {
+        min-height: 300px;
+    }
+
+    .product-info-wrapper {
+      min-height: 90vh;
+    }
+
+    #product-layout:not(.is-initialized) product-form {
+      position: relative;
+      max-height: 50vh;
+      overflow: hidden;
+    }
+
+    #product-layout:not(.is-initialized) product-form .product-form {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+    }
+</style>
+<link rel="stylesheet" href="{{ 'product-layout.css' | asset_url }}" />
+<link rel="stylesheet" href="{{ 'bundle-layout.css' | asset_url }}" />
+<link rel="stylesheet" href="{{ 'product-price.css' | asset_url }}" />
+<link rel="stylesheet" href="{{ 'product-buybox.css' | asset_url }}" />
+<link rel="quickscript" loading="delayed" href="{{ 'sticky-buybox.css' | asset_url }}"/>
+
+<script defer src="{{ 'product-layout.js' | asset_url }}" data-section-id="{{ section.id }}"></script>
+<script defer src="{{ 'product-form.js' | asset_url }}"></script>
+
+<div
+    id="product-layout"
+    class="product-layout bundle-layout product-info"
+    data-section-id="{{ section.id }}"
+    data-section-type="bundle"
+    data-enable-history-state="true"
+    data-ajax-enabled="{{ settings.enable_ajax }}"
+>
+  <div class="product-info-wrapper page-boundary">
+    <div id="product-viewer">
+      <template id="campaign-teaser-placeholder"></template>
+
+      <div class="main-frame">
+        <div class="promotion-overlay">
+          <div id="product-badges-placeholder"></div>
+        </div>
+
+        <div id="product-media-placeholder" class="flex w-full"></div>
+      </div>
+
+      <div id="risk-reversal-placeholder"></div>
+    </div>
+
+    <product-form id="product-configurator">
+      <template id="product-summary-placeholder"></template>
+
+      {% capture form_classes -%}
+        product-form product-form-{{ section.id }}
+        {%- if section.settings.enable_payment_button and product.has_only_default_variant %} product-form--payment-button-no-variants {%- endif -%}
+        {%- if current_variant.available == false %} product-form--variant-sold-out {%- endif -%}
+      {%- endcapture %}
+
+      {% form 'product', product, class: form_classes, novalidate: 'novalidate', data-product-form: '' %}
+        {% render 'bundle-buybox' %}
+
+        <div class="installment-widgets">
+          {%- if appBlock -%}
+            {% render appBlock %}
+          {% endif %}
+
+          {%- if affirm_widget -%}
+            <div {{ block.shopify_attributes }}>
+              {% render 'affirm-widget-legacy' %}
+            </div>
+          {% endif %}
+        </div>
+
+          <product-form-error></product-form-error>
+
+
+          <template id="product-auxiliary-placeholder"></template>
+
+        <template id="product-unique-selling-points-placeholder"></template>
+
+        <template id="product-specifications-placeholder"></template>
+
+        <p
+            class="visually-hidden"
+            data-loader-status
+            aria-live="assertive"
+            role="alert"
+            aria-hidden="true"
+        >
+          {{ 'products.product.loader_label' | t }}
+        </p>
+
+        <button class="visually-hidden" id="fixture-add-to-cart"></button>
+      {% endform %}
+    </product-form>
+  </div>
+
+
+  {% unless product == empty %}
+    <script type="application/json" id="ProductJson-{{ section.id }}">
+    {{ product | json }}
+    </script>
+    <script type="application/json" id="ModelJson-{{ section.id }}">
+    {{ product.media | where: 'media_type', 'model' | json }}
+    </script>
+    <script type="application/json" id="AccentuateJson-{{ section.id }}">
+      [
+      {% for variant in product.variants %}
+				{
+	          "productId" : "{{ variant.product.id }}",
+	          "variantId": "{{ variant.id }}",
+	          "accentuate": {{ variant.metafields.accentuate | json }}
+				}
+				{% unless forloop.last %},{% endunless -%}
+      {% endfor %}
+      ]
+    </script>
+  {% endunless %}
+
+</div>
+
+{% schema %}
+{
+  "name": "Bundle Layout",
+  "blocks": [
+    {
+      "type": "@app"
+    },
+    {
+      "type": "affirm_widget",
+      "name": "Affirm Widget",
+      "limit": 1
+    }
+  ],
+  "settings": [
+  ]
+}
+{% endschema %}

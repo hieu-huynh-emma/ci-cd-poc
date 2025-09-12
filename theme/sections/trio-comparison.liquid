@@ -1,0 +1,432 @@
+<style>
+    #trio-comparison-section .section-body {
+        display: grid;
+        gap: 1.5rem;
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    #trio-comparison-section .quiz-card {
+        display: flex;
+        align-items: flex-end;
+    }
+
+    @media screen and (max-width: 1180px) {
+        #trio-comparison-section .quiz-card {
+            min-height: 187px;
+            width: 100%;
+        }
+    }
+
+    @media screen and (min-width: 1180px) {
+        #trio-comparison-section .section-body {
+            gap: 1rem;
+            grid-template-columns: minmax(min-content, 1fr) minmax(0, auto);
+        }
+    }
+</style>
+<link rel="quickscript" loading="delayed" href="{{ 'trio-comparison.css' | asset_url }}">
+
+{% assign productBlocks = section.blocks | where: "type", "product-block" %}
+
+{% assign compareBtn = exploreBtns | first %}
+{% assign quizBlock = section.blocks | where: "type", "quiz-block" | first %}
+
+{% liquid
+
+    assign compareTrackId = "Comapre_All"
+    assign quizzTrackId = "Quizz"
+    assign postfix = ""
+
+    if template == 'index'
+        assign postfix = "HP"
+    elsif template == "page.sale"
+        assign postfix = "SP"
+    elsif template contains "collection"
+        assign postfix = "CP"
+    else
+        assign postfix = product.metafields.accentuate.track_postfix
+    endif
+
+    if postfix != blank
+        assign compareTrackId = compareTrackId | append: "_" | append: postfix
+        assign quizzTrackId = quizzTrackId | append: "_" | append: postfix
+    endif
+%}
+
+<section id="trio-comparison-section" class="section-container">
+    <div class="section-chassis page-boundary">
+        <div class="section-header relative">
+            <div class="section-header__left flex flex-1 flex-col items-start">
+                <div class="text-left solid">
+                    {% render 'rtf-viewer', content: section.settings.subtitle %}
+                </div>
+                <h2 class="text-xl md:text-xxl text-left font-semibold">
+                    <span class="hidden md:inline">{{ section.settings.title }}</span>
+                    <span class="md:hidden">{{ section.settings.mobile_title }}</span>
+                </h2>
+            </div>
+
+            <div class="section-header__right">
+              {% unless template contains 'product' %}
+                  <tracked-button
+                    :trackId="{{ compareTrackId }}" href="/collections/mattresses"
+                    class="font-inter text-[16px] font-bold rounded-full border border-{#2E2F3C} text-center sec_btn bg-white"
+                >
+                    Find Your Perfect Mattress
+                </tracked-button>
+              {% endunless %}
+
+                <tracked-button
+                    :trackId="{{ quizzTrackId }}" href="/pages/product-quizz"
+                    class="font-inter text-[16px] font-bold rounded-full border border-{#2E2F3C} text-center sec_btn bg-white"
+                >
+                    Perfect Mattress Quiz
+                </tracked-button>
+            </div>
+        </div>
+
+
+        <div class="section-body">
+            <div class="product-carousel splide">
+                {% include 'splide-arrows' %}
+
+                <div class="splide__track">
+                    <ul class="splide__list">
+                        {%- for block in productBlocks -%}
+                            {% assign product = block.settings.product %}
+                            <li class="splide__slide">
+                                <a href="{{ product.url }}" class="card-container product-card  featured_card">
+                                    <div class="product_badge">
+                                        <div
+                                            style="background-color: {{ block.settings.color }};"
+                                            class="product-card-badge text-white"
+                                        >
+                                            {{ block.settings.secondary_badge }}
+                                        </div>
+                                        {% if product.metafields.accentuate.promotion_freebie_capsule %}
+                                            <div
+                                                class="bg-yellow-400"
+                                            >
+                                                {{ product.metafields.accentuate.promotion_freebie_capsule }}
+                                            </div>
+                                        {% endif %}
+                                    </div>
+                                    <div class="product-image">
+                                        <img
+                                            class="mx-auto h-full object-contain lazyload"
+                                            data-src="{{ block.settings.image | image_url: width: 800 }}"
+                                            width="350"
+                                            height="179"
+                                        />
+                                    </div>
+
+                                    <h3 class="px-4 text-[20px] font-semibold font-inter mt-2 mb-3">
+                                        {{ product.title | default: block.settings.product_title }}
+                                    </h3>
+
+                                    <div class="featured_card__attributes px-4 shopify-richtext mb-3">
+                                        {{ product.metafields.accentuate.featured_description | metafield_tag | default: block.settings.desc }}
+                                    </div>
+
+                                    <div class="product-specs">
+                                        {% assign specsShowcase = product.metafields.accentuate.specs_showcase_trio_comparison | split: "|" %}
+
+                                        {% for specKey in specsShowcase %}
+                                            {% assign specValue = product.metafields.accentuate[specKey] | times: 1 %}
+                                            {% case specKey %}
+                                                {% when "specs_comfort_rating" %}
+                                                    {% assign specName = "Comfort" %}
+                                                {% when "specs_motion_isolation" %}
+                                                    {% assign specName = "Motion Isolation" %}
+                                                {% when "specs_cooling" %}
+                                                    {% assign specName = "Cooling" %}
+                                                 {% when "specs_breathability" %}
+                                                    {% assign specName = "Breathability" %}
+                                            {% endcase %}
+
+                                            <div class="product-spec">
+                                                <p class="mb-1 text-[14px] font-semibold">{{ specName }}</p>
+                                                <div class="spec-gauge">
+                                                    {% for i in (1..8) %}
+                                                        <div class="spec-gauge__bar {% if i > specValue %}empty{% endif %}">
+                                                            &nbsp;
+                                                        </div>
+                                                    {% endfor %}
+                                                </div>
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+
+
+                                    <div class="product_card_foot">
+                                        <div class="p-4">
+                                            <p
+                                                class="mb-4 inline-block rounded-full border border-[#F4711E66] bg-[#FDB14766] px-2 py-1 text-[13px] leading-none hidden"
+                                            >
+                                                <span>{{ block.settings.discount_title }} -</span>
+                                                <span
+                                                    class="font-semibold"> {{ block.settings.discount_amount }}%</span>
+                                            </p>
+
+                                            <div class="flex items-center justify-between gap-2 flex-col">
+                                                <div>
+                                                    <div class=" text-[#55576F]">
+                                                        {% if product.compare_at_price > product.price %}
+                                                            From
+                                                        {% endif %}
+
+                                                        <span
+                                                            class="line-through"
+                                                        >{{ product.compare_at_price | money_without_trailing_zeros }}</span>
+                                                    </div>
+                                                    <div class="flex items-center flex-wrap gap-2 mb-2">
+                                                        <p class="font-semibold text-scarlet">Starting at: </p>
+                                                        {% if product.compare_at_price > product.price %}
+                                                            <p class="font-semibold mr-1">{{ product.price | money_without_trailing_zeros }}</p>
+                                                            <p class="line-through  hidden">{{ product.compare_at_price | money_without_trailing_zeros }}</p>
+                                                        {% else %}
+                                                            <p class="font-semibold">{{ product.price | money_without_trailing_zeros }}</p>
+                                                        {% endif %}
+
+                                                        {% if product.compare_at_price > product.price %}
+                                                            <span
+                                                                class="font-semibold"
+                                                                style="color:#F03306"
+                                                            >{{ product.compare_at_price | minus: product.price | times: 100.0 | divided_by: product.compare_at_price | money_without_currency | times: 100 | remove: '.0' }}% off </span>
+                                                        {% endif %}
+
+                                                    </div>
+
+                                                    {% if  product.metafields.accentuate.promotion_freebie_undertext %}
+                                                        <p class="text-scarlet text-xs">
+                                                            {{ product.metafields.accentuate.promotion_freebie_undertext }}
+                                                        </p>
+                                                    {% endif %}
+                                                </div>
+
+                                                {% liquid
+                                                    assign codename = product.metafields.accentuate.codename
+                                                    assign trackId = "Compare"
+
+                                                    if codename != blank
+                                                        assign trackId = trackId | prepend: "_" | prepend: codename
+                                                    endif
+
+                                                    if postfix != blank
+                                                        assign trackId = trackId | append: "_" | append: postfix
+                                                    endif
+                                                %}
+
+                                                <tracked-button
+                                                    :trackId="{{ trackId }}"
+                                                    class="btn testing w-{100%}"
+                                                    abtasty-tracker="PDP_CTR"
+                                                    href="{{ product.url }}"
+                                                    rel="noreferrer"
+                                                >Shop Now
+                                                </tracked-button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                        {%- endfor -%}
+                    </ul>
+                </div>
+            </div>
+
+            {% if quizBlock %}
+                <a href="{{ quizBlock.settings.url }}" target="_blank" class="quiz-card card-container">
+                    <div class="quiz-card__content">
+                        <h4 class="text-white text-md font-semibold">{{ quizBlock.settings.title }}</h4>
+                        <p class="text-white text-sm font-semibold">{{ quizBlock.settings.content }}</p>
+                        <div class="quiz-card__nav-icon">
+                            <svg width="42" height="42" viewBox="0 0 42 42" fill="none"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <rect x="1" y="1" width="40" height="40" rx="20" stroke="white" stroke-width="2"/>
+                                <path
+                                    d="M24.3977 20.6023L18.3977 14.6023C18.178 14.3826 17.822 14.3826 17.6023 14.6023C17.3826 14.822 17.3826 15.178 17.6023 15.3977L23.2046 21L17.6023 26.6023C17.3826 26.822 17.3826 27.178 17.6023 27.3977C17.7122 27.5076 17.8561 27.5625 18 27.5625C18.1439 27.5625 18.2878 27.5076 18.3977 27.3977L24.3977 21.3977C24.6174 21.178 24.6174 20.822 24.3977 20.6023Z"
+                                    fill="white"
+                                />
+                            </svg>
+                        </div>
+                    </div>
+                    {% render 'picture-tag',
+                        src: quizBlock.settings.wallpaper,
+                        picture_attributes: "class='quiz-card__wallpaper'",
+                        img_classes: "cover-surface"
+                    %}
+
+                </a>
+
+            {% endif %}
+        </div>
+    </div>
+
+    <script type="quickscript" loading="visibility" src="{{ 'trio-comparison.js' | asset_url }}"></script>
+</section>
+
+{% schema %}
+{
+  "name": "Trio Comparison (Revamp)",
+  "blocks": [
+    {
+      "type": "product-block",
+      "name": "Product Block",
+      "settings": [
+        {
+          "id": "product",
+          "type": "product",
+          "label": "Product"
+        },
+        {
+          "id": "show_star_rating",
+          "type": "checkbox",
+          "label": "Show Star Rating",
+          "default": true
+        },
+        {
+          "id": "color",
+          "type": "color",
+          "label": "Color"
+        },
+        {
+          "id": "primary_badge",
+          "type": "text",
+          "label": "Primary Badge"
+        },
+        {
+          "id": "secondary_badge",
+          "type": "text",
+          "label": "Secondary Badge"
+        },
+        {
+          "id": "mattress_height",
+          "type": "image_picker",
+          "label": "Mattress Height"
+        },
+        {
+          "id": "image",
+          "type": "image_picker",
+          "label": "Block Image"
+        },
+        {
+          "id": "product_title",
+          "type": "text",
+          "label": "Product Title"
+        },
+        {
+          "id": "desc",
+          "type": "richtext",
+          "label": "Block Description"
+        },
+        {
+          "id": "discount_title",
+          "type": "text",
+          "label": "Discount Title"
+        },
+        {
+          "type": "range",
+          "id": "comfort_meter",
+          "min": 1,
+          "max": 8,
+          "step": 1,
+          "label": "Comfort Meter",
+          "default": 8
+        },
+        {
+          "type": "range",
+          "id": "cooling_meter",
+          "min": 1,
+          "max": 8,
+          "step": 1,
+          "label": "Cooling Meter",
+          "default": 8
+        },
+        {
+          "type": "range",
+          "id": "motion_isolation_meter",
+          "min": 1,
+          "max": 8,
+          "step": 1,
+          "label": "Motion Isolation Meter",
+          "default": 8
+        },
+        {
+          "type": "text",
+          "id": "trackId",
+          "label": "CTA Button Tracking Id"
+        }
+      ]
+    },
+    {
+      "type": "quiz-block",
+      "name": "Quiz Block",
+      "settings": [
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Quizz Page URL"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "text",
+          "id": "content",
+          "label": "Content"
+        },
+        {
+          "type": "image_picker",
+          "id": "wallpaper",
+          "label": "Wallpaper"
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "id": "title",
+      "type": "text",
+      "label": "Title"
+    },
+    {
+      "id": "mobile_title",
+      "type": "text",
+      "label": "Mobile Title"
+    },
+    {
+      "id": "subtitle",
+      "type": "richtext",
+      "label": "Subtitle"
+    },
+    {
+      "id": "heading_alignment",
+      "type": "select",
+      "label": "Heading Alignment",
+      "options": [
+        {
+          "value": "start",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "end",
+          "label": "Right"
+        }
+      ],
+      "default": "start"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured Products"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,22 @@
+{% assign current_variant = product.selected_or_first_available_variant %}
+
+<input id="show_sticky_buybox" type="hidden" value="0">
+
+<div id="buybox-container">
+  <product-buybox>
+    <div class="skeleton"></div>
+    <div id="product-form">
+      {% render 'product-options' %}
+
+      {% render 'product-price', variant: current_variant, product: product %}
+
+      <affirm-widget :placement="promotion-badge" :page="product"></affirm-widget>
+
+      {% render 'purchase-buttons' %}
+    </div>
+  </product-buybox>
+
+  {% render 'sticky-buybox' %}
+</div>
+
+<script type="quickscript" loading="delayed" src="{{ 'product-buybox.js' | asset_url }}"></script>

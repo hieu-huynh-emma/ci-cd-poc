@@ -1,0 +1,75 @@
+<style>
+    section#risk-free-banner {
+	{% if template.name == 'product' %} display: none !important;
+	{% else %} min-height: 40px;
+	{% endif %}
+    }
+
+</style>
+<link rel="quickscript" loading="delayed" href="{{ 'risk-free-banner.css' | asset_url }}">
+
+{% assign bannerItems = section.blocks | where: "type", "banner-item" %}
+
+<section abtasty-campaign-id="1296959"
+         abtasty-campaign-variation="0"
+         id="risk-free-banner" class="">
+	<div class="splide">
+		<div class="splide__track">
+			<ul class="splide__list banner-list">
+				{% for block in bannerItems %}
+					{% assign url = block.settings.url %}
+
+					<li class="splide__slide">
+						<a class="banner-item"{% if url %} href="{{ url }}"{% endif %} target="_blank">
+                            <svg-tag
+                                :src="{{ block.settings.icon | image_url }}"
+                                :width="100%"
+                                :height="25"
+                                :placeholderWidth="100"
+                                class="banner-item__icon">
+                            </svg-tag>
+
+							<span class="font-extralight">{{ block.settings.text }}</span>
+						</a>
+					</li>
+				{% endfor %}
+			</ul>
+		</div>
+	</div>
+
+	<script type="quickscript" loading="visibility" src="{{ 'risk-free-banner.js' | asset_url }}"></script>
+</section>
+
+{% schema %}
+{
+  "name": "Risk Free Banner",
+  "blocks": [
+    {
+      "type": "banner-item",
+      "name": "Banner Item",
+      "settings": [
+        {
+          "id": "icon",
+          "type": "image_picker",
+          "label": "Banner Icon"
+        },
+        {
+          "id": "text",
+          "type": "text",
+          "label": "Banner Text"
+        },
+        {
+          "id": "url",
+          "type": "url",
+          "label": "Banner Url"
+        }
+      ]
+    }
+  ],
+  "disabled_on": {
+    "templates": [
+      "product"
+    ]
+  }
+}
+{% endschema %}

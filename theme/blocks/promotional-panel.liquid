@@ -1,0 +1,143 @@
+{% assign promotional = block.settings %}
+
+<promotional-panel
+    id="promotional-panel"
+    class="promotional-panel section-container"
+    data-product-id="{{ promotional.product.id }}"
+    data-size-compatible="{{ promotional.size_compatible }}"
+    data-promotional-coupon="{{ promotional.coupon }}"
+>
+    {% if promotional %}
+        <script id="Promotional-Product-JSON" type="application/json">
+          {{ all_products[promotional.product] | json }}
+        </script>
+    {% endif %}
+    <div class="ornament">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 365.882 365.882">
+            <g transform="translate(9.5 9.5)">
+                <path
+                    d="M278.705,200.941H6a12.5,12.5,0,0,1-12.5-12.5V18a12.5,12.5,0,0,1,25,0V175.941H266.205V18a12.5,12.5,0,0,1,25,0V188.441A12.5,12.5,0,0,1,278.705,200.941Z"
+                    transform="translate(31.088 155.441)" fill="currentColor" />
+                <path
+                    d="M3-2H343.882a12.5,12.5,0,0,1,12.5,12.5V95.72a12.5,12.5,0,0,1-12.5,12.5H3A12.5,12.5,0,0,1-9.5,95.72V10.5A12.5,12.5,0,0,1,3-2ZM331.382,23H15.5V83.22H331.382Z"
+                    transform="translate(0 77.72)" fill="currentColor" />
+                <path
+                    d="M18,278.661a12.5,12.5,0,0,1-12.5-12.5V10.5a12.5,12.5,0,0,1,25,0V266.161A12.5,12.5,0,0,1,18,278.661Z"
+                    transform="translate(155.441 77.72)" fill="currentColor" />
+                <path
+                    d="M126.809,100.72H50.11a55.11,55.11,0,0,1,0-110.22c69.107,0,88.178,91.379,88.956,95.269a12.5,12.5,0,0,1-12.257,14.951ZM50.11,15.5a30.11,30.11,0,0,0,0,60.22h60.2C102.9,53.786,84.982,15.5,50.11,15.5Z"
+                    transform="translate(46.632 0)" fill="currentColor" />
+                <path
+                    d="M94.7,100.72H18A12.5,12.5,0,0,1,5.743,85.769C6.521,81.879,25.591-9.5,94.7-9.5a55.11,55.11,0,1,1,0,110.22Zm-60.238-25H94.7a30.11,30.11,0,1,0,0-60.22C59.662,15.5,41.809,53.794,34.461,75.72Z"
+                    transform="translate(155.441 0)" fill="currentColor" />
+            </g>
+        </svg>
+        <span>{{ promotional.badge }}</span>
+    </div>
+
+    <h5 class="text-base font-semibold">{{ promotional.content }}</h5>
+
+    <div class="product-list-container">
+        {% if promotional.text != blank %}
+            <div class="promotional-text">
+                <p class="saving-text"> {{ promotional.text }}</p>
+            </div>
+        {% endif %}
+
+        <div class="product-list">
+            {% assign product = promotional.product %}
+            <div class="flex">
+                <div id="product-configuration-{{ product.handle }}" class="product-bundle-item">
+                    {% assign featuredImg = product.featured_image | image_url %}
+                    {% assign accentuateImg = product.metafields.accentuate.isolated_image[0].src %}
+
+                    <picture-tag
+                        :src="{{ accentuateImg | default: featuredImg }}"
+                        :fit="contain"
+                        height="240"
+                        class="px-2"
+                    >
+                    </picture-tag>
+
+                    <p class="product-bundle-item__details font-semibold">
+                        {{ product.metafields.accentuate.display_name | default: product.title }}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="box-details">
+        {% if promotional.note %}
+            <div class="col">
+                <div class="text-sm text-comet">
+                    {% render 'rtf-viewer', content: promotional.note %}
+                </div>
+            </div>
+        {% endif %}
+
+        {% if promotional.discount %}
+            <div class="col">
+                <div class="text-md font-bold uppercase">{{ promotional.discount }}</div>
+            </div>
+        {% endif %}
+
+    </div>
+
+    {% content_for 'blocks' %}
+
+</promotional-panel>
+
+
+{% schema %}
+{
+  "name": "Promotional Panel",
+  "blocks": [{"type": "@theme"}],
+  "settings": [
+    {
+      "id": "content",
+      "type": "text",
+      "label": "Content"
+    },
+    {
+      "id": "badge",
+      "type": "text",
+      "label": "Badge"
+    },
+    {
+      "id": "product",
+      "type": "product",
+      "label": "Promotional Product"
+    },
+    {
+      "id": "size_compatible",
+      "type": "checkbox",
+      "label": "Is size compatible",
+      "default": false
+    },
+    {
+      "id": "discount",
+      "type": "text",
+      "label": "Discount Information"
+    },
+    {
+      "id": "note",
+      "type": "richtext",
+      "label": "Promotional Note"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Promotional Panel",
+      "settings": {
+        "content": "Use THANKSMOM for 10% off Original Bed when you get a mattress* (Full or larger)",
+        "badge": "Bundle & Save!",
+        "product": "emma-original-bed",
+        "size_compatible": true,
+        "discount": "10% OFF",
+        "note": "<p>*Only elegible for Emma Original, Emma Original Lite, Emma Performance and Emma Performance.</p>"
+      }
+    }
+  ]
+}
+{% endschema %}

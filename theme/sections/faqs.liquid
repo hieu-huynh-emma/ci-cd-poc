@@ -1,0 +1,81 @@
+{% liquid
+    assign settings = section.settings
+%}
+
+<container-block
+    :settings="{% content_for "block", type: "container", id: "container" %}"
+>
+    <frame-block :settings="{% content_for "block", type: "frame", id: "frame" %}">
+        {% content_for "block", type: "heading", id: "heading" %}
+
+        {% content_for "block", type: "accordion", id: "accordion" %}
+        {% content_for 'blocks' %}
+    </frame-block>
+</container-block>
+
+
+{% schema %}
+{
+  "name": "FAQs",
+  "tag": "section",
+  "blocks": [
+    {
+      "type": "@theme"
+    }
+  ],
+  "settings": [
+  ],
+  "presets": [
+    {
+      "name": "FAQs",
+      "blocks": [
+        {
+          "type": "container",
+          "id": "container",
+          "static": true,
+          "name": "Container",
+          "settings": {
+          },
+          "blocks": {}
+        },
+        {
+          "type": "frame",
+          "id": "frame",
+          "static": true,
+          "name": "Frame",
+          "settings": {
+            "bgcolor": "#00000000",
+            "spacing": "base",
+            "margin_y": 0,
+            "margin_x": 0,
+            "padding_y": 10,
+            "padding_x": 0,
+            "border_radius": 0,
+            "boundless": false,
+            "content_width": 100
+          },
+          "blocks": {}
+        },
+        {
+          "type": "heading",
+          "id": "heading",
+          "static": true,
+          "name": "Heading",
+          "settings": {
+          },
+          "blocks": {}
+        },
+        {
+          "type": "accordion",
+          "id": "accordion",
+          "static": true,
+          "name": "Accordion",
+          "settings": {
+          },
+          "blocks": {}
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

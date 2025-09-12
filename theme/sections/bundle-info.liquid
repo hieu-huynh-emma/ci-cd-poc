@@ -1,0 +1,912 @@
+{%- assign current_variant = product.selected_or_first_available_variant -%}
+{%- assign compare_at_price = current_variant.compare_at_price -%}
+{%- assign price = current_variant.price -%}
+{% assign badge = section.blocks | where: 'type', 'badge' | first %}
+{% assign tax = section.blocks | where: 'type', 'tax' | first %}
+{% assign stock = section.blocks | where: 'type', 'stock' | first %}
+{% assign affirm_widget = section.blocks | where: 'type', 'affirm_widget' | first %}
+{% assign upsell_mattress = section.blocks | where: 'type', 'upsell_mattress' | first %}
+{% assign upsell_mattress_v2 = section.blocks | where: 'type', 'upsell_mattress_v2' | first %}
+{% assign sold_out_upsell = section.blocks | where: 'type', 'sold_out_upsell' | first %}
+{% assign disclaimer = section.blocks | where: 'type', 'disclaimer' | first %}
+
+{% assign bundleProductTemp = section.blocks | where: 'type', 'bundle_Product_Temp' %}
+{% assign cta_message = section.blocks | where: 'type', 'cta_message' | first %}
+{% assign mini_comparison_table = section.blocks | where: 'type', 'mini-comparison-table' | first %}
+{% assign appBlock = section.blocks | where: 'type', '@app' | first %}
+{% assign uniqueSellingPoints = section.blocks | where: 'type', 'unique_selling_point' %}
+{% assign paymentProvidersBlock = section.blocks | where: 'type', 'payment_providers' | first %}
+{% assign productSpecifications = section.blocks | where: 'type', 'product_specification' %}
+
+{% assign upsell_widget = section.blocks | where: 'type', 'upsell_widget' | first %}
+{% assign yotpo_star_rating = section.blocks | where: 'type', 'yotpo_star_rating' | first %}
+
+
+<script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
+
+<section
+	class="product-info"
+	id="ProductSection-{{ section.id }}"
+	data-section-id="{{ section.id }}"
+	data-section-type="product"
+	data-enable-history-state="true"
+	data-ajax-enabled="{{ settings.enable_ajax }}"
+>
+	<div class="product-info-wrapper page-boundary">
+        {% render 'product-viewer', section: section %}
+
+        <product-form class="right-section text">
+			<h2 id="product-title" class="paragraph-24 font-inter font-semibold flex items-center">
+				{{ section.settings.title | default: product.title }}
+
+				{% if section.settings.badge %}
+					<div
+						class="inline-flex bg-scarlet text-white py-[5px] px-[8px] uppercase rounded text-[13px] ml-[10px] leading-normal"
+					>
+						{{ section.settings.badge }}
+					</div>
+				{% endif %}
+			</h2>
+
+            {% render 'yotpo_star_rating', settings: yotpo_star_rating.settings %}
+
+			<div class="product-description">
+				{{ section.settings.desc | default: product.description }}
+			</div>
+
+			{% capture form_classes -%}
+				product-form product-form-{{ section.id }}
+				{%- if section.settings.enable_payment_button and product.has_only_default_variant %} product-form--payment-button-no-variants {%- endif -%}
+				{%- if current_variant.available == false %} product-form--variant-sold-out {%- endif -%}
+			{%- endcapture %}
+
+			{% for block in section.blocks %}
+				{% case block.type %}
+					{% when 'tagline' %}
+						<h4>{{ block.settings.text }}</h4>
+					{% when 'trustpilot' %}
+						<div class="trustpilot-wrapper">
+							<div class="rating-stars-container">
+								{% for i in (1..block.settings.stars_num) %}
+									<img
+										src="{{ 'trustpilot-rating-star.png' | asset_img_url }}"
+										width="17"
+										height="17"
+										loading="lazy"
+									>
+								{% endfor %}
+							</div>
+							<img src="{{ 'trustpilot-logo.png' | asset_img_url }}" height="17" loading="lazy">
+						</div>
+				{% endcase %}
+			{% endfor %}
+
+        {% form 'product', product, class: form_classes, novalidate: 'novalidate', data-product-form: '' %}
+          <div class="overlay">
+            <svg
+              aria-hidden="true"
+              focusable="false"
+              role="presentation"
+              width="40"
+              class="spinner"
+              viewBox="0 0 66 66"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
+            </svg>
+          </div>
+
+          {% render 'bundle-buy-box', product: product %}
+
+          {% render 'product-quantity-selector' %}
+
+          <div
+            class="product-form__error-message-wrapper product-form__error-message-wrapper--hidden{% if section.settings.enable_payment_button %} product-form__error-message-wrapper--has-payment-button{% endif %}"
+            data-error-message-wrapper
+            role="alert"
+          >
+            <span class="visually-hidden">{{ 'general.accessibility.error' | t }} </span>
+            {% include 'icon-error' %}
+            <span class="product-form__error-message" data-error-message>
+              {{- 'products.product.quantity_minimum_message' | t -}}
+            </span>
+          </div>
+          {% for block in bundleProductTemp %}
+            {% assign benefitUrl = block.settings.url %}
+            <div class="tempBundle">
+              <a class="unique-selling-point"{% if benefitUrl != blank %} href="{{ benefitUrl }}"{% endif %}
+                 target="_blank">
+                <img class="unique-selling-point__icon"  src="{{ block.settings.icon | image_url: width: "48", height: "48" }}"   loading="lazy" >
+                <p class="title">
+                  {{ block.settings.text }}
+                </p>
+                <div class="desc">
+                  {{ block.settings.content }}
+                </div>
+              </a>
+            </div>
+          {% endfor %}
+          <div id="price-{{ section.id }}" class="product__price -mb-1" {{ block.shopify_attributes }}>
+            {% render 'product-price', variant: current_variant, product: product %}
+          </div>
+
+          {% if tax %}
+            <div class="tax-wrapper">
+              <p class="tax-text">{{ tax.settings.text }}</p>
+            </div>
+          {% endif %}
+
+          {% if stock %}
+            <div class="stock-wrapper">
+              <p class="stock-text">{{ stock.settings.text }}</p>
+            </div>
+          {% endif %}
+
+          <div class="installment-widgets">
+            {%- if appBlock -%}
+              {% render appBlock %}
+            {% endif %}
+
+            {%- if affirm_widget -%}
+              <div {{ block.shopify_attributes }}>
+                {% render 'affirm-widget' %}
+              </div>
+            {% endif %}
+          </div>
+
+          <div class="product-form__controls-group product-form__controls-group--submit">
+            <div
+              class="
+                product-form__item product-form__item--submit
+                {%- if section.settings.enable_payment_button %} product-form__item--payment-button {%- endif -%}
+                {%- if product.has_only_default_variant %} product-form__item--no-variants {%- endif -%}
+              "
+            >
+              {% render 'add-to-cart-btn' %}
+
+              {% if section.settings.enable_payment_button %}
+                {{ form | payment_button }}
+              {% endif %}
+            </div>
+
+            {% if sold_out_upsell %}
+              <div
+                id="sold-out-upsell"
+                class="{% if product.selected_or_first_available_variant.available == true %}hidden{% endif %}"
+                data-default="{{ sold_out_upsell.settings.sold_out_upsell_text }}"
+              >
+                {% assign variantOutOfStockNotice = product.selected_or_first_available_variant.metafields.accentuate.out_of_stock_notice[shop.locale] %}
+
+                {% capture outOfStockMsg %}
+                  <p class="mt-2 mx-1 text-[#F03306] text-[14px] font-semibold">
+                    {% if variantOutOfStockNotice %}
+                      {{ variantOutOfStockNotice }}
+                    {% else %}
+                      {{ sold_out_upsell.settings.sold_out_upsell_text }}
+                    {% endif %}
+                  </p>
+                {% endcapture %}
+
+                {% if sold_out_upsell.settings.sold_out_upsell_product != blank %}
+                  <a class="underline" href="{{ sold_out_upsell.settings.sold_out_upsell_product }}">
+                    {{ outOfStockMsg }}
+                  </a>
+                {% else %}
+                  {{ outOfStockMsg }}
+                {% endif %}
+              </div>
+            {% endif %}
+
+            {% if disclaimer %}
+              <div
+                id="product-disclaimer"
+                data-default="{{ disclaimer.settings.default_message | remove: "<p>" | remove: "</p>" }}"
+              >
+                <p class="mt-2 mx-1 text-center text-[#F03306] text-[14px] font-semibold">
+                  {% assign variantDisclaimer = product.selected_or_first_available_variant.metafields.accentuate.disclaimer[shop.locale] %}
+                  {% if variantDisclaimer %}
+                    {{ variantDisclaimer }}
+                  {% else %}
+                    {{ disclaimer.settings.default_message | remove: "<p>" | remove: "</p>" }}
+                  {% endif %}
+                </p>
+
+
+              </div>
+
+            {% endif %}
+
+            {% if cta_message %}
+              <p style="color: {{ cta_message.settings.cta_message_color }}" class="mt-2 mx-1 text-[14px] font-semibold">
+                {{ cta_message.settings.cta_message }}
+              </p>
+            {% endif %}
+          </div>
+
+                  {% if section.settings.disclaimer != blank %}
+                      <p class="text-center text-scarlet font-semibold text-[14px] italic">
+                        {{ section.settings.disclaimer }}
+                      </p>
+                  {% endif %}
+
+                 {% if upsell_widget %}
+                      {% render 'product-upsell-widget', settings: upsell_widget.settings %}
+                 {% endif %}
+
+          {% if upsell_mattress %}
+            <div class="rounded border border-black py-2 px-3">
+              <a href="{{ upsell_mattress.settings.upsell_mattress_product }}">
+                <p>{{ upsell_mattress.settings.upsell_mattress_text }}</p>
+              </a>
+            </div>
+          {% endif %}
+
+          {% if upsell_mattress_v2 %}
+            <div class="rounded-2xl border-2 border-[#3C4196] px-4 py-4">
+              <div style="grid-template-columns: minmax(100px, 1fr) 2fr;" class="grid gap-3">
+                <div style="grid-row: 1 / 3;" class="self-center">
+                  {% render 'image-tag',
+                    image_src: upsell_mattress_v2.settings.upsell_mattress_product_image,
+                    width: 1200,
+                    class: 'mx-auto h-min'
+                  %}
+                </div>
+                <div class="px-4">
+                  <p class="text-[15px]">Upgrade to the Hybrid Comfort:</p>
+                  <ul class="ml-7 list-disc text-[15px]">
+                    <li>Best in cooling</li>
+                    <li>Additional support</li>
+                  </ul>
+                  <p class="text-[14px]">
+                    <span
+                    >From
+                      {{ upsell_mattress_v2.settings.upsell_mattress_product.price | money_without_trailing_zeros -}}
+                    </span>
+                    <span class="line-through">
+                      {{-
+                      upsell_mattress_v2.settings.upsell_mattress_product.compare_at_price
+                      | money_without_trailing_zeros
+                      -}}
+                    </span>
+                  </p>
+                </div>
+                <div style="grid-column: 2 / 3;" class="px-4">
+                  <a
+                    href="{{ upsell_mattress_v2.settings.upsell_mattress_product }}"
+                    class="block w-full rounded-lg border-2 border-[#3C4196] px-4 py-1 text-center text-[15px] font-semibold uppercase text-[#3C4196] transition-all duration-200 hover:bg-[#3C4196] hover:text-white"
+                  >View product</a
+                  >
+                </div>
+              </div>
+            </div>
+          {% endif %}
+			{% endform %}
+
+			<p
+				class="visually-hidden"
+				data-loader-status
+				aria-live="assertive"
+				role="alert"
+				aria-hidden="true"
+			>
+				{{ 'products.product.loader_label' | t }}
+			</p>
+
+			<button class="visually-hidden" data-add-to-cart></button>
+
+			{% if mini_comparison_table %}
+				<div class="overflow-auto mb-8">
+					{% render 'mini-comparison-table', settings: mini_comparison_table.settings %}
+				</div>
+			{% endif %}
+
+			<ul class="benefits">
+				{% for block in uniqueSellingPoints %}
+					<li class="unique-selling-point">
+						<img
+							class="unique-selling-point__icon"
+							src="{{ block.settings.icon | image_url: width: "25", height: "25" }}"
+							loading="lazy"
+						>
+						<p class="title">
+							{{ block.settings.text }}
+						</p>
+						<div class="desc">
+							{{ block.settings.content }}
+						</div>
+					</li>
+				{% endfor %}
+
+				{% if paymentProvidersBlock %}
+					<li class="payment-providers unique-selling-point">
+						<img
+							class="unique-selling-point__icon"
+							src="{{ paymentProvidersBlock.settings.icon | image_url: width: "25", height: "25" }}"
+							loading="lazy"
+						>
+						<p class="title">
+							{{ paymentProvidersBlock.settings.text }}
+						</p>
+                      <div class="payment-providers__listing_new">
+
+
+
+
+                <div class="payment-provider">
+                    <img src="//cdn.shopify.com/s/files/1/0562/9873/3706/files/paypal_payment_provider.svg?v=1698141213&amp;width=1440">
+                </div>
+
+
+
+                <div class="payment-provider">
+                    <img src="//cdn.shopify.com/s/files/1/0562/9873/3706/files/visa_payment_provider.svg?v=1698141376&amp;width=1440">
+                </div>
+
+
+
+                <div class="payment-provider">
+                    <img src="//cdn.shopify.com/s/files/1/0562/9873/3706/files/master-cart_payment_provider.svg?v=1698141377&amp;width=1440">
+                </div>
+
+
+
+                <div class="payment-provider">
+                    <img src="//cdn.shopify.com/s/files/1/0562/9873/3706/files/american_express.svg?v=1698141377&amp;width=1440">
+                </div>
+
+
+                <div class="payment-provider">
+                    <img src="//cdn.shopify.com/s/files/1/0562/9873/3706/files/discover-payment-method.svg?v=1698141377&amp;width=1440">
+                </div>
+
+
+
+                <div class="payment-provider">
+                    <img src="//cdn.shopify.com/s/files/1/0562/9873/3706/files/apple_pay.svg?v=1698141377&amp;width=1440">
+                </div>
+
+
+
+                <div class="payment-provider">
+                    <img src="//cdn.shopify.com/s/files/1/0562/9873/3706/files/pay_google.svg?v=1698141377&amp;width=1440">
+                </div>
+
+
+
+                <div class="payment-provider">
+                    <img src="//cdn.shopify.com/s/files/1/0562/9873/3706/files/shop-pay.svg?v=1698141377&amp;width=1440">
+                </div>
+
+
+
+
+
+    </div>
+                        {% comment %}
+						<div class="payment-providers__listing"></div>
+						<script>
+
+
+              fetch(`?sections={{ paymentProvidersBlock.settings.payment_providers_section }}`)
+                .then((response) => response.json())
+                .then((res) => {
+                  const html = new DOMParser().parseFromString(res['{{ paymentProvidersBlock.settings.payment_providers_section }}'], "text/html");
+                  $(".payment-providers.unique-selling-point .payment-providers__listing").html(html.querySelector(".payment-providers__listing").innerHTML);
+                });
+
+
+						</script>
+                   {% endcomment %}
+					</li>
+				{% endif %}
+			</ul>
+
+			<ul class="product-specifications">
+				{% for block in productSpecifications %}
+					<li class="product-specification">
+						<div class="product-specification__header">
+							<div class="title">
+								{{ block.settings.title }}
+							</div>
+							<svg
+								class="product-specification__icon"
+								width="24"
+								height="25"
+								viewBox="0 0 24 25"
+								fill="none"
+								xmlns="http://www.w3.org/2000/svg"
+							>
+								<path
+									d="M21.5303 8.44739C21.2373 8.15442 20.7627 8.15442 20.4697 8.44739L12 16.9171L3.53028 8.44739C3.23731 8.15442 2.7627 8.15442 2.46973 8.44739C2.17676 8.74036 2.17676 9.21497 2.46973 9.50794L11.4697 18.5079C11.6162 18.6544 11.8081 18.7277 12 18.7277C12.1924 18.7277 12.3838 18.6544 12.5303 18.5079L21.5303 9.50793C21.8232 9.21496 21.8232 8.74036 21.5303 8.44739Z"
+									fill="#2E2F3C"
+								/>
+							</svg>
+						</div>
+
+						<div class="product-specification__content">
+							{% if block.settings.product_dimension %}
+								<ul class="product-dimensions">
+									{% for variant in product.variants %}
+                                      {% if
+                                         variant.id == 43879027310730 or
+                                         variant.id == 43879027277962 or
+                                         variant.id == 43879027245194 or
+                                         variant.id == 43879027343498
+                                      %}
+                                      {% else %}
+                                         <li class="variant-dimension">
+											<h6 class="heading-6 font-semibold">
+												{{ variant.title | split: ' | ' | first }} | {{ variant.metafields.accentuate.dimension }}
+											</h6>
+										</li>
+									  {% endif %}
+									{% endfor %}
+								</ul>
+
+							{% else %}
+								{{ block.settings.content }}
+							{% endif %}
+						</div>
+					</li>
+					{% unless forloop.last %}<span class="separator"></span>{% endunless -%}
+				{% endfor %}
+			</ul>
+		</product-form>
+	</div>
+
+
+	{% unless product == empty %}
+		<script type="application/json" id="ProductJson-{{ section.id }}">
+    {{ product | json }}
+		</script>
+		<script type="application/json" id="ModelJson-{{ section.id }}">
+    {{ product.media | where: 'media_type', 'model' | json }}
+		</script>
+		<script type="application/json" id="AccentuateJson-{{ section.id }}">
+			[
+			{% for variant in product.variants %}
+				{
+	          "productId" : "{{ variant.product.id }}",
+	          "variantId": "{{ variant.id }}",
+	          "accentuate": {{ variant.metafields.accentuate | json }}
+				}
+				{% unless forloop.last %},{% endunless -%}
+			{% endfor %}
+			]
+		</script>
+	{% endunless %}
+
+</section>
+
+
+<script>
+  $(window).on("load", function () {
+    $('#ProductSection-{{ section.id }} .product-specification').beefup({
+      trigger: ".product-specification__header",
+      content: ".product-specification__content",
+      openSpeed: 500,
+      closeSpeed: 250,
+    });
+  });
+
+  const input = document.getElementById('Quantity-{{ section.id }}');
+
+  $(".quantity-input__button[name=\"minus\"]").click(function () {
+    if (input.value <= 1) {
+      return;
+    }
+    input.value--;
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Bundle Info",
+  "blocks": [
+    {
+      "type": "@app"
+    },
+    {
+      "type": "product_media",
+      "name": "Product Media",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "award",
+          "label": "Image"
+        },
+        {
+          "id": "hosted_video",
+          "type": "video",
+          "label": "Shopify-hosted video"
+        },
+        {
+          "type": "checkbox",
+          "id": "full_width",
+          "label": "Full Width?"
+        },
+        {
+          "type": "checkbox",
+          "id": "is_video",
+          "label": "Video?"
+        }
+      ]
+    },
+    {
+      "type": "tagline",
+      "name": "Tagline",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text"
+        }
+      ]
+    },
+    {
+      "type": "badge",
+      "name": "Badge",
+      "settings": [
+        {
+          "type": "text",
+          "id": "badge_text",
+          "label": "Text"
+        },
+        {
+          "type": "text",
+          "id": "desc",
+          "label": "Description"
+        }
+      ]
+    },
+     {
+      "type": "bundle_Product_Temp",
+      "name": "Bundle Product Temp",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content"
+        },
+        {
+          "id": "url",
+          "type": "url",
+          "label": "Banner Url"
+        }
+      ]
+    },
+    {
+      "type": "tax",
+      "name": "Tax",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text"
+        }
+      ]
+    },
+    {
+      "type": "stock",
+      "name": "Stock",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text"
+        }
+      ]
+    },
+    {
+      "type": "unique_selling_point",
+      "name": "Unique selling point",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content"
+        }
+      ]
+    },
+    {
+      "type": "payment_providers",
+      "name": "Payment Providers",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text"
+        },
+        {
+          "id": "payment_providers_section",
+          "type": "text",
+          "label": "Payment Providers Section ID"
+        }
+      ]
+    },
+    {
+      "type": "product_specification",
+      "name": "Product Specification",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content"
+        },
+        {
+          "id": "product_dimension",
+          "type": "checkbox",
+          "label": "Product Dimension?"
+        },
+        {
+          "id": "product_dimension_height",
+          "type": "text",
+          "label": "Product Dimension Height?"
+        }
+      ]
+    },
+    {
+      "type": "affirm_widget",
+      "name": "Affirm Widget",
+      "limit": 1
+    },
+    {
+      "type": "mini-comparison-table",
+      "name": "Mini Comparison Table",
+      "settings": [
+        {
+          "id": "badge",
+          "type": "text",
+          "label": "Badge",
+          "default": "-$1239"
+        },
+        {
+          "id": "note",
+          "type": "text",
+          "label": "Note",
+          "default": "*For queen sizes only. All prices and information from public sources listed as of October 10, 2022. Information may not reflect updated prices and promotions."
+        }
+      ]
+    },
+    {
+      "type": "upsell_mattress",
+      "name": "Upsell Mattress",
+      "settings": [
+        {
+          "id": "upsell_mattress_product",
+          "type": "product",
+          "label": "Upsell Mattress Product"
+        },
+        {
+          "id": "upsell_mattress_text",
+          "type": "text",
+          "label": "Text"
+        }
+      ]
+    },
+    {
+      "type": "upsell_mattress_v2",
+      "name": "Upsell Mattress V2",
+      "settings": [
+        {
+          "id": "upsell_mattress_product_image",
+          "type": "image_picker",
+          "label": "Upsell Mattress Product Image"
+        },
+        {
+          "id": "upsell_mattress_product",
+          "type": "product",
+          "label": "Upsell Mattress Product"
+        }
+      ]
+    },
+    {
+      "type": "sold_out_upsell",
+      "name": "Sold Out Upsell",
+      "settings": [
+        {
+          "id": "sold_out_upsell_product",
+          "type": "product",
+          "label": "Sold Out Upsell Product"
+        },
+        {
+          "id": "sold_out_upsell_text",
+          "type": "text",
+          "label": "Sold Out Upsell Text",
+          "info": "If you want a variant specific out of stock notice, go to Accentuate follow links below"
+        },
+        {
+          "type": "paragraph",
+          "content": "[Emma Original Lite](https://admin.shopify.com/store/emma-sleep-ca/apps/fa9557f87f6b23c6878ab205891bb8d9/app/edit?scope=product&id=6713686098058)"
+        },
+        {
+          "type": "paragraph",
+          "content": "[Emma Original](https://admin.shopify.com/store/emma-sleep-ca/apps/fa9557f87f6b23c6878ab205891bb8d9/app/edit?scope=product&id=7741865164938)"
+        },
+        {
+          "type": "paragraph",
+          "content": "[Emma Shift](https://admin.shopify.com/store/emma-sleep-ca/apps/fa9557f87f6b23c6878ab205891bb8d9/app/edit?scope=product&id=7713717682314)"
+        }
+      ]
+    },
+    {
+      "type": "disclaimer",
+      "name": "Disclaimer",
+      "settings": [
+        {
+          "id": "default_message",
+          "type": "text",
+          "label": "Default Product Disclaimer",
+          "info": "If you want a variant specific disclaimer, go to Accentuate follow links below"
+        },
+        {
+          "type": "paragraph",
+          "content": "[Emma Original Lite](https://admin.shopify.com/store/emma-sleep-ca/apps/fa9557f87f6b23c6878ab205891bb8d9/app/edit?scope=product&id=6713686098058)"
+        },
+        {
+          "type": "paragraph",
+          "content": "[Emma Original](https://admin.shopify.com/store/emma-sleep-ca/apps/fa9557f87f6b23c6878ab205891bb8d9/app/edit?scope=product&id=7741865164938)"
+        },
+        {
+          "type": "paragraph",
+          "content": "[Emma Shift](https://admin.shopify.com/store/emma-sleep-ca/apps/fa9557f87f6b23c6878ab205891bb8d9/app/edit?scope=product&id=7713717682314)"
+        }
+      ]
+    },
+    {
+      "type": "cta_message",
+      "name": "CTA Message",
+      "settings": [
+        {
+          "id": "cta_message",
+          "type": "text",
+          "label": "CTA message"
+        },
+        {
+          "type": "color",
+          "id": "cta_message_color",
+          "label": "CTA message",
+          "default": "#000"
+        }
+      ]
+    },
+     {
+      "type": "campaign_teaser",
+      "limit": 1,
+      "name": "Campaign Teaser",
+      "settings": [
+        {
+          "id": "title",
+          "type": "text",
+          "label": "Title"
+        },
+        {
+          "id": "content",
+          "type": "richtext",
+          "label": "Content"
+        }
+      ]
+    },
+    {
+      "type": "upsell_widget",
+      "name": "Upsell Widget",
+      "settings": [
+        {
+          "id": "title",
+          "type": "text",
+          "label": "Title"
+        },
+        {
+          "id": "content",
+          "type": "richtext",
+          "label": "Content"
+        },
+        {
+          "id": "image",
+          "type": "image_picker",
+          "label": "Featured Image"
+        },
+        {
+          "id": "product",
+          "type": "product",
+          "label": "Upsell  Product"
+        }
+      ]
+    },
+    {
+      "type": "yotpo_star_rating",
+      "name": "Yotpo Product Reviews",
+      "settings": [
+        {
+          "id": "product",
+          "type": "product",
+          "label": "Product"
+        },
+        {
+          "id": "icon",
+          "type": "image_picker",
+          "label": "Icon"
+        },
+        {
+          "id": "new_layout",
+          "type": "checkbox",
+          "label": "Enable New Layout?"
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "id": "title",
+      "type": "text",
+      "label": "Title"
+    },
+    {
+      "id": "desc",
+      "type": "richtext",
+      "label": "Description"
+    },
+    {
+      "id": "caption_headline",
+      "type": "text",
+      "label": "Headline"
+    },
+    {
+      "type": "textarea",
+      "id": "caption_content",
+      "label": "Content"
+    },
+    {
+      "type": "text",
+      "id": "badge",
+      "label": "Badge"
+    },
+     {
+      "type": "text",
+      "id": "disclaimer",
+      "label": "Disclaimer"
+    }
+  ]
+}
+{% endschema %}
