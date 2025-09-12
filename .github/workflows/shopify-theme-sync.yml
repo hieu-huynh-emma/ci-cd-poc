@@ -17,7 +17,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Restore cache
-        uses: actions/cache@v4
+        uses: actions/cache/restore@v4
         with:
           path: ~/lib/node_modules
           key: ${{ needs.setup-shopify-cli.outputs.cache-key }}

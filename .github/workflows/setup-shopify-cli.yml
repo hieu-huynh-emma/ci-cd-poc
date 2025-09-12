@@ -3,7 +3,6 @@ name: Setup Shopify CLI
 on:
   workflow_call:
     outputs:
-
       cache-key:
         description: "Cache key for Shopify CLI"
         value: "shopify-cli-cache"
@@ -24,8 +23,7 @@ jobs:
         run: npm install -g @shopify/cli@latest
 
       - name: Cache Node Modules
-        uses: actions/cache@v4
+        uses: actions/cache/save@v4
         with:
           path: ~/lib/node_modules
           key: ${{ env.CACHE_KEY }}
-
