@@ -3,9 +3,7 @@ name: Setup Shopify CLI
 on:
   workflow_call:
     outputs:
-      cache-path:
-        description: "Cache path for PNPM"
-        value: ${{ jobs.pnpm-cache-dir.outputs.STORE_PATH }}
+
       cache-key:
         description: "Cache key for Shopify CLI"
         value: "shopify-cli-cache"
