@@ -19,7 +19,7 @@ jobs:
       - name: Restore cache
         uses: actions/cache/restore@v4
         with:
-          path: ~/lib/node_modules
+          path: /opt/hostedtoolcache/node/20.19.5/x64/lib/node_modules
           key: ${{ needs.setup-shopify-cli.outputs.cache-key }}
       - name: Pull Live Theme
         env:
