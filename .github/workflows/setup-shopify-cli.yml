@@ -19,8 +19,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-      - name: Install Shopify CLI
-        run: npm install -g @shopify/cli@latest
+
       - name: Get npm global path
         id: npm-global-path
         run: echo "NPM_GLOBAL_PATH=$(npm root -g)" >> "$GITHUB_OUTPUT"
@@ -29,3 +28,5 @@ jobs:
         with:
           path: ${{ steps.npm-global-path.outputs.NPM_GLOBAL_PATH }}
           key: ${{ env.CACHE_KEY }}
+      - name: Install Shopify CLI
+        run: npm install -g @shopify/cli@latest
