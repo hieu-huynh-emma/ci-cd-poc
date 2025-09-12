@@ -8,10 +8,18 @@ jobs:
     uses: ./.github/workflows/setup-shopify-cli.yml
   check-for-changes:
     needs: setup-shopify-cli
+
     runs-on: ubuntu-latest
     permissions:
       contents: write
     steps:
+      - name: Restore node modules cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm # or node_modules
+          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-npm-
       - name: Pull Live Theme
         env:
           SHOPIFY_CLI_THEME_TOKEN: ${{ secrets.SHOPIFY_CLI_THEME_TOKEN }}
