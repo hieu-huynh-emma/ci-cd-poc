@@ -26,7 +26,9 @@ jobs:
       - name: Cache Node Modules
         uses: actions/cache/save@v4
         with:
-          path: ${{ steps.npm-global-path.outputs.NPM_GLOBAL_PATH }}
-          key: ${{ env.CACHE_KEY }}
+          path: ~/.npm # Or the location where global packages are installed
+          key: ${{ runner.os }}-npm-${{ hashFiles('package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-npm-
       - name: Install Shopify CLI
         run: npm install -g @shopify/cli@latest

@@ -19,8 +19,10 @@ jobs:
       - name: Restore cache
         uses: actions/cache/restore@v4
         with:
-          path: /opt/hostedtoolcache/node/20.19.5/x64/lib/node_modules
-          key: ${{ needs.setup-shopify-cli.outputs.cache-key }}
+          path: ~/.npm # Or the location where global packages are installed
+          key: ${{ runner.os }}-npm-${{ hashFiles('package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-npm-
       - name: Pull Live Theme
         env:
           SHOPIFY_CLI_THEME_TOKEN: ${{ secrets.SHOPIFY_CLI_THEME_TOKEN }}
