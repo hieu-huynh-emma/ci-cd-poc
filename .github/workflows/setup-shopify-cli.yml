@@ -1,7 +1,11 @@
 name: Setup Shopify CLI
 
 on:
-  workflow_call
+  workflow_call:
+    inputs:
+      key:
+        required: true
+        type: string
 
 jobs:
   install-shopify-cli:
@@ -20,10 +24,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-
+          key: ${{ key }}
       - name: Install Shopify CLI
         if: steps.cache-npm.outputs.cache-hit != 'true'
         run: npm install -g @shopify/cli@latest

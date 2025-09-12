@@ -5,7 +5,7 @@ on:
     branches: [ main ]
 
 env:
-  CACHE_KEY: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+  CACHE_KEY: shopify-cli-cache
 jobs:
   setup-shopify-cli:
     runs-on: ubuntu-latest
@@ -19,6 +19,9 @@ jobs:
       - name: Setup Shopify CLI
         if: steps.verify-cache.outputs.cache-hit != 'true'
         uses: ./.github/workflows/setup-shopify-cli.yml
+        with:
+          key: ${{ env.CACHE_KEY }}
+
   check-for-changes:
     needs: setup-shopify-cli
     runs-on: ubuntu-latest
