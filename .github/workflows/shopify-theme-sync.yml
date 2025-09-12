@@ -1,32 +1,23 @@
-name:  Sync Theme
+name: Shopify Sync Theme
 on:
-  workflow_dispatch
+  pull_request:
+    types: [ opened, synchronize, reopened ]
+    branches: [ main ]
 jobs:
-  main:
+  setup-shopify-cli:
+    uses: ./.github/workflows/setup-shopify-cli.yml
+  check-for-changes:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-    environment: prod
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-
-      - name: Install Shopify CLI
-        run: npm add -g @shopify/cli@latest
-
       - name: Pull Live Theme
         env:
           SHOPIFY_CLI_THEME_TOKEN: ${{ secrets.SHOPIFY_CLI_THEME_TOKEN }}
           SHOPIFY_FLAG_STORE: ${{ vars.SHOPIFY_FLAG_STORE }}
         run: |
-          cd theme
           shopify theme pull \
-            --store "$SHOPIFY_FLAG_STORE" \
+            -s "$SHOPIFY_FLAG_STORE" \
             --password "$SHOPIFY_CLI_THEME_TOKEN" \
             -l
       - name: Commit and push if theme changed
