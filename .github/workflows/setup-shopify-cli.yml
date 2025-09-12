@@ -5,30 +5,14 @@ on:
     outputs:
       cache-path:
         description: "Cache path for PNPM"
-        value: ${{ steps.pnpm-cache-dir.outputs.STORE_PATH }}
+        value: ${{ jobs.pnpm-cache-dir.outputs.STORE_PATH }}
       cache-key:
         description: "Cache key for Shopify CLI"
         value: "shopify-cli-cache"
 env:
   CACHE_KEY: shopify-cli-cache
 jobs:
-  restore-cache:
-    runs-on: ubuntu-latest
-    outputs:
-      cache-hit: ${{ steps.restore-cache.outputs.cache-hit == 'true' }}
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Restore cache
-        id: "restore-cache"
-        uses: actions/cache@v4
-        with:
-          path: ${{ env.CACHE_PATH }}
-          key: ${{ env.CACHE_KEY }}
-
   install-shopify-cli:
-    needs: "restore-cache"
-    if: needs.restore-cache.outputs.cache-hit != 'true'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -43,13 +27,9 @@ jobs:
       - name: Install Shopify CLI
         run: pnpm add -g @shopify/cli@latest
 
-      - name: Get pnpm store path
-        id: pnpm-cache-dir
-        run: echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
-
       - name: Cache Node Modules
         uses: actions/cache@v4
         with:
-          path: ${{ steps.pnpm-cache-dir.outputs.STORE_PATH }}
+          path: ~/.pnpm-store
           key: ${{ env.CACHE_KEY }}
 

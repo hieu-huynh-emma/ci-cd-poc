@@ -19,7 +19,7 @@ jobs:
       - name: Restore cache
         uses: actions/cache@v4
         with:
-          path: ${{ needs.setup-shopify-cli.outputs.cache-path }}
+          path: ~/.pnpm-store
           key: ${{ needs.setup-shopify-cli.outputs.cache-key }}
       - name: Pull Live Theme
         env:
