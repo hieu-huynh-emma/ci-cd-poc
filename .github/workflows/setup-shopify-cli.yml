@@ -1,14 +1,14 @@
 name: Setup Shopify CLI
 
-env:
-  CACHE_KEY: shopify-cli-cache
-
 on:
   workflow_call:
     outputs:
       cache-key:
         description: "Cache key for Shopify CLI"
         value: "shopify-cli-cache"
+env:
+  CACHE_KEY: shopify-cli-cache
+
 jobs:
   restore-cache:
     runs-on: ubuntu-latest
