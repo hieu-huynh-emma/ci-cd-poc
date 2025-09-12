@@ -8,7 +8,6 @@ on:
         value: "shopify-cli-cache"
 env:
   CACHE_KEY: shopify-cli-cache
-
 jobs:
   restore-cache:
     runs-on: ubuntu-latest
