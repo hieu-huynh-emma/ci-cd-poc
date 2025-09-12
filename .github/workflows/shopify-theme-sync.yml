@@ -10,6 +10,8 @@ jobs:
   setup-shopify-cli:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
       - name: Verify Cache
         id: verify-cache
         uses: actions/cache@v4
