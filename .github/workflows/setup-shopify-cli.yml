@@ -1,14 +1,31 @@
 name: Setup Shopify CLI
 
+env:
+  CACHE_KEY: shopify-cli-cache
+
 on:
   workflow_call:
-    inputs:
-      key:
-        required: true
-        type: string
-
+    outputs:
+      cache-key:
+        description: "Cache key for Shopify CLI"
+        value: ${{ CACHE_KEY }}
 jobs:
+  restore-cache:
+    runs-on: ubuntu-latest
+    outputs:
+      cache-hit: ${{ steps.restore-cache.outputs.cache-hit == 'true' }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Restore cache
+        id: "restore-cache"
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: ${{ env.CACHE_KEY }}
   install-shopify-cli:
+    needs: "restore-cache"
+    if: restore-cache.outputs.cache-hit != 'true'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -18,14 +35,13 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
+      - name: Install Shopify CLI
+        run: npm install -g @shopify/cli@latest
 
       - name: Cache Node Modules
         id: cache-npm
         uses: actions/cache@v4
         with:
           path: ~/.npm
-          key: ${{ key }}
-      - name: Install Shopify CLI
-        if: steps.cache-npm.outputs.cache-hit != 'true'
-        run: npm install -g @shopify/cli@latest
+          key: ${{ CACHE_KEY }}
 
