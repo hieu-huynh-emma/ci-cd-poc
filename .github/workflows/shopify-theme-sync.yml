@@ -9,10 +9,12 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+      pull-requests: write
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
+        with:
+          ref: main
       - name: Install Node.js
         uses: actions/setup-node@v4
         with:
@@ -32,30 +34,55 @@ jobs:
             --path "theme" \
             -l
 
-      - name: Commit and push if theme changed
+      - name: Verify theme changed
+        id: verify-theme-changed
+        run: |
+          # Check if there are any changes
+          if git diff --quiet && git diff --cached --quiet; then
+            echo "✅ No theme changes detected."
+            echo "hasChanged=false" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+          echo "hasChanged=true" >> $GITHUB_OUTPUT
+
+      - name: "commit changed files and create PR"
+        if: ${{ steps.verify-theme-changed.outputs.hasChanged == 'true' }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git config --global user.name "Shopify Bot"
           git config --global user.email "shopify-bot@emma-sleep.com"
 
-          # Check if there are any changes
-          if git diff --quiet && git diff --cached --quiet; then
-            echo "✅ No theme changes detected."
-            exit 0
-          fi
+          # Create unique branch name with timestamp
+          timestamp=$(date -u "+%Y%m%d-%H%M%S")
+          BRANCH_NAME="sync-live-theme-${timestamp}"
 
-          # Get current branch name
-          CURRENT_BRANCH="${{ github.head_ref }}"
-          echo "Working on branch: $CURRENT_BRANCH"
+          echo "Creating branch: $BRANCH_NAME"
 
-          # Fetch and switch to main branch
-          git fetch origin main
-          git checkout main
+          # Create and checkout new branch from main
+          git checkout -b "$BRANCH_NAME"
 
-          # Apply the theme changes to main
+          # Commit the theme changes
           git add -A
-          timestamp=$(date -u "+%Y-%m-%d %H:%M:%S UTC")
-          git commit -m "system(bot): Sync LIVE theme at ${timestamp}"
+          commit_timestamp=$(date -u "+%Y-%m-%d %H:%M:%S UTC")
+          git commit -m "system(bot): Sync LIVE theme at ${commit_timestamp}"
 
-          # Push directly to main branch
-          git push origin main
+          # Push the new branch
+          git push origin "$BRANCH_NAME"
+
+          # Create pull request
+          gh pr create \
+            --title "🤖 Sync LIVE theme at ${commit_timestamp}" \
+            --body "Automated sync of live theme changes from Shopify store." \
+            --base main \
+            --head "$BRANCH_NAME"
+
+          # Get PR number for rebase and merge
+          PR_NUMBER=$(gh pr view --json number --jq '.number')
+
+          # Rebase and merge PR
+          gh pr merge "$PR_NUMBER" \
+            --rebase \
+            --delete-branch \
+            --admin
 
