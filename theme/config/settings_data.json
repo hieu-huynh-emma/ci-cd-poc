@@ -26,9 +26,9 @@
     "favicon": "shopify://shop_images/MicrosoftTeams-image_3.png",
     "currency_code_enabled": false,
     "theme_mode": "light",
-    "sale_timer": "2025-08-18 21:59",
+    "sale_timer": "2025-09-15 21:59",
     "page_width": "1440",
-    "availability_schedule": "From 10AsdfjssdfdsafaklfjslkfjsklM to s8PM EST, Monday - Friday",
+    "availability_schedule": "From 10AM to 8PM EST, Monday - Friday",
     "show_vendor": false,
     "show_cart_note": false,
     "cart_drawer_collection": "",
@@ -80,7 +80,7 @@
       "checkout-banner": {
         "type": "checkout-banner",
         "settings": {
-          "text": "Free delivsdsdfdsfsery"
+          "text": "Free delivery"
         }
       },
       "cart-drawer-header": {
@@ -96,7 +96,7 @@
             "emma-bed-frame"
           ],
           "picture": "shopify://shop_images/Group_34574.png",
-          "finance-tagline": "<p>As low as $ddd450/mo or 0% APR. <a href=\"/products/emma-original-mattress\" title=\"Emma Original Lite\">Learn more</a></p>"
+          "finance-tagline": "<p>As low as $450/mo or 0% APR. <a href=\"/products/emma-original-mattress\" title=\"Emma Original Lite\">Learn more</a></p>"
         }
       },
       "cart-customer-support": {
@@ -402,10 +402,155 @@
       },
       "splash-screen": {
         "type": "splash-screen",
+        "settings": {
+          "animated_media": "shopify://shop_images/splash-screen.gif"
+        }
+      },
+      "cart-drawer-cross-sell": {
+        "type": "cart-drawer-cross-sell",
+        "settings": {
+          "cross_sell_title": "Some Things Are Better Together",
+          "cross_sell_description": "Make sure to choose a size that matches your mattress",
+          "cart_upsell_products": [
+            "premium-breathable-mattress-protector",
+            "duvet",
+            "emma-foam-pillow"
+          ],
+          "atc_text": "Add to Cart"
+        }
+      }
+    },
+    "content_for_index": [],
+    "blocks": {
+      "7570552984445421165": {
+        "type": "shopify://apps/yotpo-product-reviews-photos/blocks/settings/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
+        "disabled": false,
+        "settings": {}
+      },
+      "855628211100114053": {
+        "type": "shopify://apps/klaviyo-email-marketing-sms/blocks/klaviyo-onsite-embed/2632fe16-c075-4321-a88b-50b567f42507",
+        "disabled": false,
+        "settings": {}
+      },
+      "12657775114333427046": {
+        "type": "shopify://apps/essential-countdown/blocks/app_embed/722378e8-5a70-4eae-aa89-9e44e8e9f6de",
+        "disabled": false,
+        "settings": {}
+      },
+      "6987625696575125306": {
+        "type": "shopify://apps/weglot-translate-your-store/blocks/weglot/3097482a-fafe-42ff-bc33-ea19e35c4a20",
+        "disabled": false,
+        "settings": {}
+      },
+      "17985673643287205206": {
+        "type": "shopify://apps/estimated-delivery-date-plus/blocks/app_setting/4a0685bc-c234-45b2-8382-5ad6a8e3e3fd",
+        "disabled": false,
+        "settings": {}
+      },
+      "15683396631634586217": {
+        "type": "shopify://apps/inbox/blocks/chat/841fc607-4181-4ad1-842d-e24d7f8bad6b",
+        "disabled": true,
+        "settings": {
+          "button_color": "#3c4196",
+          "button_icon": "chat_bubble",
+          "button_text": "chat_with_us",
+          "button_horizontal_position": "bottom_right",
+          "button_vertical_position": "lowest",
+          "greeting_message": "👋 Hello! Please message us if you have questions, or give us an idea of what you’re looking for. We’re happy to make recommendations."
+        }
+      },
+      "16278478101612877664": {
+        "type": "shopify://apps/pagefly-page-builder/blocks/app-embed/83e179f7-59a0-4589-8c66-c0dddf959200",
+        "disabled": true,
+        "settings": {}
+      },
+      "14339172867238703359": {
+        "type": "shopify://apps/yotpo-product-photo-reviews/blocks/reviews_tab/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
+        "disabled": true,
+        "settings": {
+          "product": ""
+        }
+      },
+      "11212335281082087862": {
+        "type": "shopify://apps/sk-form-builder/blocks/app/f3e35b58-5874-4ef2-8e03-c92cda6e49eb",
+        "disabled": false,
+        "settings": {}
+      },
+      "13642770171112532620": {
+        "type": "shopify://apps/ab-tasty/blocks/abtasty-tag/50439cd8-89e0-4240-838a-2948c07c763d",
+        "disabled": false,
+        "settings": {
+          "abtasty_identifier": "b98579b87d8565047076037f703e1727",
+          "abtasty_flagship_enabled": false,
+          "abtasty_flagship_environment_id": "",
+          "abtasty_flagship_visitor_id_storage_method": "localStorage",
+          "abtasty_sync_tag": false,
+          "abtasty_should_handle_subdomain": false
+        }
+      },
+      "7878088468538493966": {
+        "type": "shopify://apps/wisepops-ai-popups-push-cro/blocks/app-embed/e7d7a4f7-0df4-4073-9375-5f36db513952",
+        "disabled": false,
         "settings": {}
       }
     },
-    "content_for_index": []
+    "color_schemes": {
+      "scheme-1": {
+        "settings": {
+          "background": "#ffa236",
+          "background_gradient": "",
+          "text": "#403833",
+          "button": "#403833",
+          "button_label": "#ffffff",
+          "secondary_button_label": "#403833",
+          "shadow": "rgba(0,0,0,0)"
+        }
+      },
+      "scheme-2": {
+        "settings": {
+          "background": "#403833",
+          "background_gradient": "",
+          "text": "#ffffff",
+          "button": "#ffffff",
+          "button_label": "#403833",
+          "secondary_button_label": "#ffffff",
+          "shadow": "#121212"
+        }
+      },
+      "scheme-3": {
+        "settings": {
+          "background": "#f9f7f6",
+          "background_gradient": "",
+          "text": "#403833",
+          "button": "#403833",
+          "button_label": "#f9f7f6",
+          "secondary_button_label": "#403833",
+          "shadow": "rgba(0,0,0,0)"
+        }
+      },
+      "scheme-4": {
+        "settings": {
+          "background": "#ffffff",
+          "background_gradient": "",
+          "text": "#403833",
+          "button": "#403833",
+          "button_label": "#ffffff",
+          "secondary_button_label": "#403833",
+          "shadow": "#121212"
+        }
+      },
+      "scheme-5": {
+        "settings": {
+          "background": "#121212",
+          "background_gradient": "",
+          "text": "#ffffff",
+          "button": "#ff9d26",
+          "button_label": "#121212",
+          "secondary_button_label": "#ffffff",
+          "shadow": "rgba(0,0,0,0)"
+        }
+      }
+    }
   },
   "presets": {
     "Default": {

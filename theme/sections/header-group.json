@@ -17,15 +17,16 @@
         "announcement_QJrKfL": {
           "type": "announcement",
           "settings": {
-            "text": "<p>🤍<strong>UP TO 40% OFF MATTRESSES</strong>🤍</p>",
+            "text": "<p><strong>🤍GET FREE GIFT ON SELECTED MATTRESSES🤍</strong></p>",
             "tooltip": "",
             "show_countdown_timer": false
           }
         },
         "announcement_kq99Fe": {
           "type": "announcement",
+          "disabled": true,
           "settings": {
-            "text": "<p>🔥<strong>UP TO</strong> <strong>45% OFF ACCESSORIES & PILLOWS</strong>🔥</p>",
+            "text": "<p>🔥<strong>GET 45% OFF DUVET WITH MATTRESS PURCHASE</strong>🔥</p>",
             "tooltip": "",
             "show_countdown_timer": false
           }
@@ -34,7 +35,7 @@
           "type": "announcement",
           "disabled": true,
           "settings": {
-            "text": "<p>⭐️<strong>GET EXTRA 5% OFF IN ORDER OVER $650</strong>⭐️</p>",
+            "text": "<p>⭐️<strong>GET EXTRA 5% OFF IN ORDERS OVER $650</strong>⭐️</p>",
             "tooltip": "",
             "show_countdown_timer": false
           }
@@ -57,7 +58,7 @@
       ],
       "settings": {
         "cta_btn_text": "Shop the sale",
-        "link": "shopify://pages/sale",
+        "link": "shopify://collections/mattresses",
         "color_bg": "#ff8900",
         "color_text": "#ffffff"
       }

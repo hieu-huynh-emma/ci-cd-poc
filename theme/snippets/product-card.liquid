@@ -111,7 +111,12 @@
 
             <div class="product-card-footer">
                 <p class="product__price">
-                    <span class="font-bold text-scarlet">{{ product.selected_or_first_available_variant.price | money }}</span>
+                         {% if product.selected_or_first_available_variant.compare_at_price > 0 %}
+                            {% assign colorClass = "text-scarlet" %}
+                            {% else %}
+                            {% assign colorClass = "text-black" %}
+                         {% endif %}
+                    <span class="font-bold {{ colorClass }}">{{ product.selected_or_first_available_variant.price | money }}</span>
 
                     {% if product.selected_or_first_available_variant.compare_at_price
                     > product.selected_or_first_available_variant.price

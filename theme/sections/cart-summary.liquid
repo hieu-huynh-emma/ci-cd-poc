@@ -50,9 +50,9 @@
 
         <express-checkout-controller
             abtasty-tracker="CheckoutCTR"
-            :wallet="{{ section.settings.expressWallet }}"
+            :wallet="ShopPay"
             id="content_for_additional_checkout_buttons">
-            
+
             {{ content_for_additional_checkout_buttons }}
         </express-checkout-controller>
     </cart-cta>
@@ -67,30 +67,6 @@
       "type": "checkbox",
       "label": "Enable Toc Agreement?",
       "default": false
-    },
-    {
-      "id": "expressWallet",
-      "type": "select",
-      "label": "Express Wallet",
-      "options": [
-        {
-          "value": "PayPal",
-          "label": "Paypal"
-        },
-        {
-          "value": "ShopPay",
-          "label": "Shop Pay"
-        },
-        {
-          "value": "GooglePay",
-          "label": "Google Pay"
-        },
-        {
-          "value": "ApplePay",
-          "label": "Apple Pay"
-        }
-      ],
-      "default": "PayPal"
     }
   ]
 }

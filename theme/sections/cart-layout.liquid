@@ -154,8 +154,68 @@
 </cart-layout>
 
 
-<script type="quickscript" loading="delayed" data-url="{{ 'cart-redeem-code.js' | asset_url }}"
-        src="{{ 'module-importer.js' | asset_url }}"></script>
+<script type="quickscript" loading="delayed" data-url="{{ 'cart-redeem-code.js' | asset_url }}" src="{{ 'module-importer.js' | asset_url }}"></script>
+
+<script>
+  (function() {
+
+  function updateDiscountsList() {
+    fetch('/cart.js')
+      .then(res => res.json())
+      .then(cart => {
+        const discountTitles = [];
+
+        cart.items.forEach(item => {
+          item.line_level_discount_allocations.forEach(discount => {
+            discountTitles.push(discount.discount_application.title);
+          });
+        });
+
+        const uniqueTitles = [...new Set(discountTitles)].join(',');
+
+        return fetch('/cart/update.js', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            attributes: {
+              discounts_list: uniqueTitles
+            }
+          })
+        });
+      })
+      .then(res => res.json())
+      .then(updatedCart => {
+        console.log("Updated cart attributes:", updatedCart.attributes);
+      })
+      .catch(err => console.error("Error updating cart attributes:", err));
+  }
+
+  updateDiscountsList();
+
+const observer = new MutationObserver((mutations) => {
+  mutations.forEach((mutation) => {
+    mutation.addedNodes.forEach((node) => {
+      if (node.tagName) {
+        const tag = node.tagName.toLowerCase();
+        if (tag === 'line-remove-button' || tag === 'quantity-adjuster-button') {
+          node.addEventListener('click', () => {
+            setTimeout(() => {
+              updateDiscountsList();
+            }, 500);
+          });
+        }
+      }
+    });
+  });
+});
+
+observer.observe(document.body, {
+  childList: true,
+  subtree: true
+});
+
+})();
+</script>
 
 {% schema %}
 {
