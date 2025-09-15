@@ -43,17 +43,24 @@ jobs:
             exit 0
           fi
 
+          # Get current branch name
+          CURRENT_BRANCH="${{ github.head_ref }}"
+          echo "Working on branch: $CURRENT_BRANCH"
+
           # Fetch latest main branch
           git fetch origin main
 
-          # Stash current changes temporarily
+          # Commit the changes
           git add -A
           timestamp=$(date -u "+%Y-%m-%d %H:%M:%S UTC")
           git commit -m "system(bot): Sync LIVE theme at ${timestamp}"
 
-          # Rebase to make sync commit the first commit in the PR
+          # Ensure we're on the correct branch
+          git checkout "$CURRENT_BRANCH"
+
+          # Rebase onto main to make sync commit the first commit
           git rebase origin/main
 
           # Force push the rebased branch
-          git push --force-with-lease origin ${{ github.head_ref }}
+          git push --force-with-lease origin "$CURRENT_BRANCH"
 
