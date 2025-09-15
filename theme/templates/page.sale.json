@@ -16,8 +16,8 @@
         "ca504ac7-3137-4ad7-997c-c1e12bd1d446": {
           "type": "wallpaper",
           "settings": {
-            "src": "shopify://shop_images/16.08_Sale_Banner_Summer_desktop.svg",
-            "mobile_src": "shopify://shop_images/16.08_Mobile_summer_sales.png"
+            "src": "shopify://shop_images/10.09_Sale_Banner_Fall_Sales_desktop.svg",
+            "mobile_src": "shopify://shop_images/10.09_Fall_Sales_mobile.png"
           }
         },
         "9593f14f-4c86-4af9-953e-0fa248231b89": {
@@ -45,7 +45,7 @@
       ],
       "custom_css": [],
       "settings": {
-        "title": "<h1>Enjoy our Back2School FLASH SALE</h1>",
+        "title": "<h1>Get The Coziest Deals!</h1>",
         "tagline": "",
         "subtitle": "",
         "text_color": "#ffffff",
@@ -73,6 +73,7 @@
         },
         "catalog_item_L3UECP": {
           "type": "catalog_item",
+          "disabled": true,
           "settings": {
             "title": "",
             "collection": "bundles",
@@ -90,7 +91,6 @@
         },
         "catalog_item_WyBqe3": {
           "type": "catalog_item",
-          "disabled": true,
           "settings": {
             "title": "",
             "collection": "beddings",
@@ -136,15 +136,15 @@
           "type": "column",
           "settings": {
             "icon": "shopify://shop_images/freeshipping.svg",
-            "title": "Free Delivery and Returns",
-            "content": "Get your dream mattress delivered for free and return it stress-free if needed."
+            "title": "Free Delivery*",
+            "content": "Get your dream mattress delivered for free. *Exclusions may apply."
           }
         },
         "c15d1ab6-4b9b-4e30-ace7-dbf193ff2d4f": {
           "type": "column",
           "settings": {
             "icon": "shopify://shop_images/Guarantee.svg",
-            "title": "10 Year Guarantee",
+            "title": "10 Year Warranty",
             "content": "Rest easy knowing your mattress is backed by our decade-long guarantee."
           }
         },

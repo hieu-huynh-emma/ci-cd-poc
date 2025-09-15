@@ -114,7 +114,7 @@ class CartSurface extends CustomElement {
     }
 
     getSectionsToRender() {
-        return ["cart-drawer-header", "cart-drawer-empty", "cart-drawer-items", "cart-recommendation"];
+        return ["cart-drawer-header", "cart-drawer-empty","cart-drawer-cross-sell", "cart-drawer-items", "cart-recommendation"];
     }
 
     getCartPartsToRender() {
@@ -132,6 +132,10 @@ class CartSurface extends CustomElement {
             , {
                 id: "shopify-section-cart-recommendation",
                 section: "cart-recommendation",
+            },
+            {
+                id: "shopify-section-cart-drawer-cross-sell",
+                section: "cart-drawer-cross-sell",
             },
         ];
     }

@@ -1,0 +1,1174 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "layout": "theme.performance",
+  "sections": {
+    "stack_section_ibDejB": {
+      "type": "stack",
+      "blocks": {
+        "heading_MAWRCq": {
+          "type": "heading",
+          "settings": {
+            "content": "<h1>Exclusive Deals,</h1><h1>One Weekend Only</h1>",
+            "color": "#ffffff",
+            "text_alignment": "center"
+          },
+          "blocks": {}
+        },
+        "paragraph_iCCjN6": {
+          "type": "paragraph",
+          "settings": {
+            "content": "<h6>The Open Air Market is here!</h6><p>Shop exclusive discounts in person at our warehouse pop-up and find your next favorite sleep essential!</p>",
+            "color": "#ffffff",
+            "size": "base",
+            "text_alignment": "center"
+          },
+          "blocks": {}
+        },
+        "button_RUr3Ad": {
+          "type": "button",
+          "settings": {
+            "content": "<p>RSVP Now</p>",
+            "bgcolor": "#6469aa",
+            "hover-bgcolor": "#4b4f8d",
+            "color": "#ffffff",
+            "hover-color": "",
+            "variant": "",
+            "href": "#bulk-form"
+          },
+          "blocks": {}
+        },
+        "container": {
+          "type": "container",
+          "static": true,
+          "settings": {
+            "bgcolor": "#2c3183",
+            "spacing": "none",
+            "margin_y": 0,
+            "margin_x": 0,
+            "padding_x": 0,
+            "padding_y": 10,
+            "border_radius": 0,
+            "boundless": true
+          },
+          "blocks": {}
+        },
+        "frame": {
+          "type": "frame",
+          "static": true,
+          "settings": {
+            "bgcolor": "rgba(0,0,0,0)",
+            "spacing": "base",
+            "vertical_alignment": "center",
+            "horizontal_alignment": "center",
+            "margin_y": 0,
+            "margin_x": 0,
+            "padding_x": 0,
+            "padding_y": 10,
+            "border_radius": 0,
+            "boundless": false,
+            "content_width": 55
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "heading_MAWRCq",
+        "paragraph_iCCjN6",
+        "button_RUr3Ad"
+      ],
+      "settings": {}
+    },
+    "perfect-for": {
+      "type": "two-column",
+      "blocks": {
+        "container": {
+          "type": "container",
+          "static": true,
+          "settings": {
+            "bgcolor": "#f8f8f8",
+            "spacing": "none",
+            "margin_y": 0,
+            "margin_x": 0,
+            "padding_x": 0,
+            "padding_y": 10,
+            "border_radius": 0,
+            "boundless": false
+          },
+          "blocks": {}
+        },
+        "frame": {
+          "type": "frame",
+          "static": true,
+          "settings": {
+            "bgcolor": "rgba(0,0,0,0)",
+            "spacing": "xl",
+            "vertical_alignment": "center",
+            "horizontal_alignment": "center",
+            "margin_y": 0,
+            "margin_x": 0,
+            "padding_x": 0,
+            "padding_y": 10,
+            "border_radius": 0,
+            "boundless": false,
+            "content_width": 100
+          },
+          "blocks": {}
+        },
+        "heading": {
+          "type": "heading",
+          "static": true,
+          "settings": {
+            "content": "<h2>Everything You Need To Know:</h2>",
+            "color": "#2e2f3c",
+            "text_alignment": "center"
+          },
+          "blocks": {}
+        },
+        "column-left": {
+          "type": "column",
+          "static": true,
+          "settings": {
+            "type": "none",
+            "vertical_alignment": "center",
+            "horizontal_alignment": "center",
+            "text_alignment": "left",
+            "spacing_x": 0,
+            "spacing_y": 0
+          },
+          "blocks": {
+            "picture": {
+              "type": "picture",
+              "settings": {
+                "src": "shopify://shop_images/Bulk_image.svg",
+                "size": 80,
+                "rounded": "lg"
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "picture"
+          ]
+        },
+        "column-right": {
+          "type": "column",
+          "static": true,
+          "settings": {
+            "type": "none",
+            "vertical_alignment": "center",
+            "horizontal_alignment": "center",
+            "text_alignment": "left",
+            "spacing_x": 0,
+            "spacing_y": 0
+          },
+          "blocks": {
+            "paragraph": {
+              "type": "paragraph",
+              "settings": {
+                "content": "<h4><strong>Location</strong></h4><ul><li>Jjndjdlnfdlnjf</li></ul><h4><strong>Dates</strong></h4><ul><li>Saturday, August 30th</li><li>Sunday, August 31st</li></ul><h4><strong>Time</strong></h4><ul><li>10:00am - 16:00pm</li></ul>",
+                "color": "#2e2f3c",
+                "size": "base",
+                "text_alignment": "left"
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "paragraph"
+          ]
+        }
+      },
+      "settings": {
+        "id": "",
+        "split": 60
+      }
+    },
+    "featured-products": {
+      "type": "featured-products-business",
+      "blocks": {
+        "dc648e6a-73d1-4d9c-aa18-80fedeab1b00": {
+          "type": "product-block",
+          "settings": {
+            "product": "emma-original-lite-a",
+            "show_star_rating": true,
+            "color": "#3c4196",
+            "primary_badge": "BEST VALUE",
+            "secondary_badge": "BEST VALUE",
+            "image": "shopify://shop_images/Original_II_-_H22.svg",
+            "product_title": "Emma Original",
+            "desc": "<p>Our top pick for affordable, restful sleep, ideal for Budget-Conscious Sleepers.</p><p><strong>9-Inch Height</strong></p><p><strong>5 Layers</strong></p><p><strong>Excellent Comfort</strong></p><p><strong>3 Zones<br/><br/>Breathable, moisture-wicking <br/>& climate-regulating</strong></p><p><strong>Minimal Motion Transfer<br/><br/>Free Shipping & Returns<br/>365-Night Trial<br/>10-Year Warranty</strong></p>",
+            "discount_title": "",
+            "comfort_meter": 6,
+            "cooling_meter": 4,
+            "motion_isolation_meter": 6,
+            "trackId": "OG_Compare_MP"
+          }
+        },
+        "de83e3a7-7ae2-4d8f-9917-fd290fbf9e2e": {
+          "type": "product-block",
+          "settings": {
+            "product": "emma-original-a",
+            "show_star_rating": true,
+            "color": "#3c4196",
+            "primary_badge": "",
+            "secondary_badge": "BEST DEAL",
+            "image": "shopify://shop_images/Emma_hybrid-comfort_exploded_2.png",
+            "product_title": "Emma Original",
+            "desc": "<p>Our Hybrid Mattress with enhanced support and ideal pressure distribution</p><p><strong>10-Inch Height</strong></p><p><strong>6 Layers</strong></p><p><strong>Maximum Comfort</strong></p><p><strong>7 Zones<br/><br/>Breathable, moisture-wicking <br/>& temperature regulation</strong></p><p><strong>Zero Motion Transfer<br/><br/>Free Shipping & Returns<br/>365-Night Trial<br/>10-Year Warranty</strong></p>",
+            "discount_title": "",
+            "comfort_meter": 8,
+            "cooling_meter": 6,
+            "motion_isolation_meter": 8,
+            "trackId": "Comfort_Compare_MP"
+          }
+        },
+        "f634c250-61e1-4006-8387-c5a5ea529c2f": {
+          "type": "product-block",
+          "settings": {
+            "product": "emma-performance-mattress-a",
+            "show_star_rating": true,
+            "color": "#3c4196",
+            "primary_badge": "",
+            "secondary_badge": "PREMIUM CHOICE",
+            "image": "shopify://shop_images/hybrid-premium-exploded_1.png",
+            "product_title": "Emma Performance",
+            "desc": "<p>Our best-in-class mattress: perfect cooling & ultimate comfort</p><p><strong>14-Inch Height</strong></p><p><strong>8 Layers</strong></p><p><strong>Enhanced Comfort</strong></p><p><strong>7 Zones </strong></p><p><strong>New Cooling Technology</strong></p><p><strong>Extra Pressure Relief <br/>& Zero Motion Transfer</strong></p><p><strong>Free Shipping & Returns<br/>365-Night Trial<br/>10-Year Warranty</strong></p>",
+            "discount_title": "",
+            "comfort_meter": 8,
+            "cooling_meter": 8,
+            "motion_isolation_meter": 8,
+            "trackId": "Premium_Compare_MP"
+          }
+        },
+        "quiz-button": {
+          "type": "explore-button",
+          "settings": {
+            "url": "shopify://pages/product-quizz",
+            "text": "Perfect Mattress Quiz",
+            "trackId": "Quizz"
+          }
+        }
+      },
+      "block_order": [
+        "dc648e6a-73d1-4d9c-aa18-80fedeab1b00",
+        "de83e3a7-7ae2-4d8f-9917-fd290fbf9e2e",
+        "f634c250-61e1-4006-8387-c5a5ea529c2f",
+        "quiz-button"
+      ],
+      "settings": {
+        "title": "Which mattress is right for you?",
+        "mobile_title": "Which mattress is right for you ?",
+        "subtitle": "<p>Discover our award-winning collection of mattresses, with a range of features to meet your needs.</p>",
+        "heading_alignment": "start",
+        "first_meter_title": "Comfort",
+        "show_first_meter": true,
+        "second_meter_title": "Cooling",
+        "show_second_meter": true,
+        "third_meter_title": "Motion Isolation",
+        "show_third_meter": true,
+        "show_secondary_badge": true
+      }
+    },
+    "why-us": {
+      "type": "multicolumn",
+      "blocks": {
+        "f3255c5f-527e-4927-a670-554ff22e9ef7": {
+          "type": "column",
+          "settings": {
+            "type": "featuring",
+            "vertical_alignment": "center",
+            "horizontal_alignment": "center",
+            "text_alignment": "left",
+            "spacing_x": 0,
+            "spacing_y": 0
+          },
+          "blocks": {
+            "icon": {
+              "type": "icon",
+              "settings": {
+                "src": "shopify://shop_images/Competitive_Pricing_1.svg",
+                "size": 100
+              },
+              "blocks": {}
+            },
+            "heading": {
+              "type": "heading",
+              "settings": {
+                "content": "<h4>Competitive Pricing</h4>",
+                "color": "#2c3183",
+                "text_alignment": "center"
+              },
+              "blocks": {}
+            },
+            "paragraph": {
+              "type": "paragraph",
+              "settings": {
+                "content": "<p>Save more when you order more\n\n</p>",
+                "color": "#2e2f3c",
+                "size": "base",
+                "text_alignment": "center"
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "icon",
+            "heading",
+            "paragraph"
+          ]
+        },
+        "48ca0997-ffa4-4408-8013-4796cb7f17c4": {
+          "type": "column",
+          "settings": {
+            "type": "featuring",
+            "vertical_alignment": "center",
+            "horizontal_alignment": "center",
+            "text_alignment": "left",
+            "spacing_x": 0,
+            "spacing_y": 0
+          },
+          "blocks": {
+            "icon": {
+              "type": "icon",
+              "settings": {
+                "src": "shopify://shop_images/Premium_Quality_1.svg",
+                "size": 100
+              },
+              "blocks": {}
+            },
+            "heading": {
+              "type": "heading",
+              "settings": {
+                "content": "<h4>Premium Quality</h4>",
+                "color": "#2c3183",
+                "text_alignment": "center"
+              },
+              "blocks": {}
+            },
+            "paragraph": {
+              "type": "paragraph",
+              "settings": {
+                "content": "<p>Award-Winning Technology</p>",
+                "color": "#2e2f3c",
+                "size": "base",
+                "text_alignment": "center"
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "icon",
+            "heading",
+            "paragraph"
+          ]
+        },
+        "c15d1ab6-4b9b-4e30-ace7-dbf193ff2d4f": {
+          "type": "column",
+          "settings": {
+            "type": "featuring",
+            "vertical_alignment": "center",
+            "horizontal_alignment": "center",
+            "text_alignment": "left",
+            "spacing_x": 0,
+            "spacing_y": 0
+          },
+          "blocks": {
+            "icon": {
+              "type": "icon",
+              "settings": {
+                "src": "shopify://shop_images/Dedicated_Support_1.svg",
+                "size": 100
+              },
+              "blocks": {}
+            },
+            "heading": {
+              "type": "heading",
+              "settings": {
+                "content": "<h4>Dedicated Support</h4>",
+                "color": "#2c3183",
+                "text_alignment": "center"
+              },
+              "blocks": {}
+            },
+            "paragraph": {
+              "type": "paragraph",
+              "settings": {
+                "content": "<p>Personalized service from our sleep experts</p>",
+                "color": "#2e2f3c",
+                "size": "base",
+                "text_alignment": "center"
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "icon",
+            "heading",
+            "paragraph"
+          ]
+        },
+        "f9973382-ba4e-4931-817c-113225550dad": {
+          "type": "column",
+          "settings": {
+            "type": "featuring",
+            "vertical_alignment": "center",
+            "horizontal_alignment": "center",
+            "text_alignment": "left",
+            "spacing_x": 0,
+            "spacing_y": 0
+          },
+          "blocks": {
+            "icon": {
+              "type": "icon",
+              "settings": {
+                "src": "shopify://shop_images/Flexible_Bundles_2.svg",
+                "size": 100
+              },
+              "blocks": {}
+            },
+            "heading": {
+              "type": "heading",
+              "settings": {
+                "content": "<h4>Flexible Bundles</h4>",
+                "color": "#2c3183",
+                "text_alignment": "center"
+              },
+              "blocks": {}
+            },
+            "paragraph": {
+              "type": "paragraph",
+              "settings": {
+                "content": "<p>Also looking for accessories? We’ve got you covered</p>",
+                "color": "#2e2f3c",
+                "size": "base",
+                "text_alignment": "center"
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "icon",
+            "heading",
+            "paragraph"
+          ]
+        },
+        "container": {
+          "type": "container",
+          "static": true,
+          "settings": {
+            "bgcolor": "#fafafa",
+            "spacing": "none",
+            "margin_y": 0,
+            "margin_x": 0,
+            "padding_x": 0,
+            "padding_y": 10,
+            "border_radius": 0,
+            "boundless": false
+          },
+          "blocks": {}
+        },
+        "frame": {
+          "type": "frame",
+          "static": true,
+          "settings": {
+            "bgcolor": "rgba(0,0,0,0)",
+            "spacing": "xl",
+            "vertical_alignment": "center",
+            "horizontal_alignment": "center",
+            "margin_y": 0,
+            "margin_x": 0,
+            "padding_x": 0,
+            "padding_y": 10,
+            "border_radius": 0,
+            "boundless": false,
+            "content_width": 100
+          },
+          "blocks": {}
+        },
+        "heading": {
+          "type": "heading",
+          "static": true,
+          "settings": {
+            "content": "<h2>Why we are your best business partner</h2>",
+            "color": "#2c3183",
+            "text_alignment": "center"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "f3255c5f-527e-4927-a670-554ff22e9ef7",
+        "48ca0997-ffa4-4408-8013-4796cb7f17c4",
+        "c15d1ab6-4b9b-4e30-ace7-dbf193ff2d4f",
+        "f9973382-ba4e-4931-817c-113225550dad"
+      ],
+      "settings": {}
+    },
+    "how-it-works": {
+      "type": "multicolumn",
+      "blocks": {
+        "f3255c5f-527e-4927-a670-554ff22e9ef7": {
+          "type": "column",
+          "settings": {
+            "type": "featuring",
+            "vertical_alignment": "center",
+            "horizontal_alignment": "center",
+            "text_alignment": "left",
+            "spacing_x": 0,
+            "spacing_y": 0
+          },
+          "blocks": {
+            "icon": {
+              "type": "icon",
+              "settings": {
+                "src": "shopify://shop_images/Submit_a_request.svg",
+                "size": 80
+              },
+              "blocks": {}
+            },
+            "heading": {
+              "type": "heading",
+              "settings": {
+                "content": "<h4>Submit your request</h4>",
+                "color": "#2c3183",
+                "text_alignment": "center"
+              },
+              "blocks": {}
+            },
+            "paragraph": {
+              "type": "paragraph",
+              "settings": {
+                "content": "<p>Tell us what you need</p>",
+                "color": "#2e2f3c",
+                "size": "base",
+                "text_alignment": "center"
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "icon",
+            "heading",
+            "paragraph"
+          ]
+        },
+        "48ca0997-ffa4-4408-8013-4796cb7f17c4": {
+          "type": "column",
+          "settings": {
+            "type": "featuring",
+            "vertical_alignment": "center",
+            "horizontal_alignment": "center",
+            "text_alignment": "left",
+            "spacing_x": 0,
+            "spacing_y": 0
+          },
+          "blocks": {
+            "icon": {
+              "type": "icon",
+              "settings": {
+                "src": "shopify://shop_images/Get_a_quote.svg",
+                "size": 80
+              },
+              "blocks": {}
+            },
+            "heading": {
+              "type": "heading",
+              "settings": {
+                "content": "<h4>Get a custom quote</h4>",
+                "color": "#2c3183",
+                "text_alignment": "center"
+              },
+              "blocks": {}
+            },
+            "paragraph": {
+              "type": "paragraph",
+              "settings": {
+                "content": "<p>We’ll send pricing and availability</p>",
+                "color": "#2e2f3c",
+                "size": "base",
+                "text_alignment": "center"
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "icon",
+            "heading",
+            "paragraph"
+          ]
+        },
+        "c15d1ab6-4b9b-4e30-ace7-dbf193ff2d4f": {
+          "type": "column",
+          "settings": {
+            "type": "featuring",
+            "vertical_alignment": "center",
+            "horizontal_alignment": "center",
+            "text_alignment": "left",
+            "spacing_x": 0,
+            "spacing_y": 0
+          },
+          "blocks": {
+            "icon": {
+              "type": "icon",
+              "settings": {
+                "src": "shopify://shop_images/Delivery_100_x_100_px.svg",
+                "size": 80
+              },
+              "blocks": {}
+            },
+            "heading": {
+              "type": "heading",
+              "settings": {
+                "content": "<h4>Confirm and deliver</h4>",
+                "color": "#2c3183",
+                "text_alignment": "center"
+              },
+              "blocks": {}
+            },
+            "paragraph": {
+              "type": "paragraph",
+              "settings": {
+                "content": "<p>We’ll handle the rest</p>",
+                "color": "#2e2f3c",
+                "size": "base",
+                "text_alignment": "center"
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "icon",
+            "heading",
+            "paragraph"
+          ]
+        },
+        "container": {
+          "type": "container",
+          "static": true,
+          "settings": {
+            "bgcolor": "#e9e9f6",
+            "spacing": "base",
+            "margin_y": 0,
+            "margin_x": 5,
+            "padding_x": 0,
+            "padding_y": 10,
+            "border_radius": 40,
+            "boundless": false
+          },
+          "blocks": {}
+        },
+        "frame": {
+          "type": "frame",
+          "static": true,
+          "settings": {
+            "bgcolor": "rgba(0,0,0,0)",
+            "spacing": "xl",
+            "vertical_alignment": "center",
+            "horizontal_alignment": "center",
+            "margin_y": 0,
+            "margin_x": 0,
+            "padding_x": 0,
+            "padding_y": 10,
+            "border_radius": 0,
+            "boundless": false,
+            "content_width": 100
+          },
+          "blocks": {}
+        },
+        "heading": {
+          "type": "heading",
+          "static": true,
+          "settings": {
+            "content": "<h2>How it works\n</h2>",
+            "color": "#2c3183",
+            "text_alignment": "center"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "f3255c5f-527e-4927-a670-554ff22e9ef7",
+        "48ca0997-ffa4-4408-8013-4796cb7f17c4",
+        "c15d1ab6-4b9b-4e30-ace7-dbf193ff2d4f"
+      ],
+      "settings": {}
+    },
+    "two_column_cXk7jm": {
+      "type": "two-column",
+      "blocks": {
+        "container": {
+          "type": "container",
+          "static": true,
+          "settings": {
+            "bgcolor": "#2c3183",
+            "spacing": "base",
+            "margin_y": 0,
+            "margin_x": 0,
+            "padding_x": 0,
+            "padding_y": 10,
+            "border_radius": 0,
+            "boundless": false
+          },
+          "blocks": {}
+        },
+        "frame": {
+          "type": "frame",
+          "static": true,
+          "settings": {
+            "bgcolor": "rgba(0,0,0,0)",
+            "spacing": "base",
+            "vertical_alignment": "center",
+            "horizontal_alignment": "center",
+            "margin_y": 0,
+            "margin_x": 0,
+            "padding_x": 0,
+            "padding_y": 10,
+            "border_radius": 0,
+            "boundless": false,
+            "content_width": 100
+          },
+          "blocks": {}
+        },
+        "heading": {
+          "type": "heading",
+          "static": true,
+          "settings": {
+            "content": "<h2>Submit a Request</h2>",
+            "color": "#ffffff",
+            "text_alignment": "center"
+          },
+          "blocks": {}
+        },
+        "column-left": {
+          "type": "column",
+          "static": true,
+          "settings": {
+            "type": "none",
+            "vertical_alignment": "center",
+            "horizontal_alignment": "center",
+            "text_alignment": "left",
+            "spacing_x": 0,
+            "spacing_y": 0
+          },
+          "blocks": {
+            "sk_form_builder_form_mcFVpk": {
+              "type": "shopify://apps/sk-form-builder/blocks/form/f3e35b58-5874-4ef2-8e03-c92cda6e49eb",
+              "settings": {
+                "show_form": true,
+                "form_token": "4c75683876647774"
+              }
+            }
+          },
+          "block_order": [
+            "sk_form_builder_form_mcFVpk"
+          ]
+        },
+        "column-right": {
+          "type": "column",
+          "static": true,
+          "settings": {
+            "type": "none",
+            "vertical_alignment": "center",
+            "horizontal_alignment": "center",
+            "text_alignment": "left",
+            "spacing_x": 0,
+            "spacing_y": 0
+          },
+          "blocks": {
+            "picture_3cGUjH": {
+              "type": "picture",
+              "settings": {
+                "src": "shopify://shop_images/stack_of_mattresses.svg",
+                "size": 500,
+                "rounded": "none"
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "picture_3cGUjH"
+          ]
+        }
+      },
+      "settings": {
+        "id": "bulk-form",
+        "split": 50
+      }
+    },
+    "47cdc402-f526-47ac-8d3e-c8942fbf3252": {
+      "type": "home-collage-collection",
+      "blocks": {
+        "38985f04-9fc5-4a51-a444-e6d6baeea638": {
+          "type": "right_section",
+          "settings": {
+            "image-col-right": "shopify://shop_images/image_23.png",
+            "col-title-right": "Pillows",
+            "col-text-right": "<p>Perfect Complement</p>",
+            "col-link-right": "shopify://collections/pillows"
+          }
+        },
+        "9e674515-5e73-4aa8-b968-c8bb686b9766": {
+          "type": "right_section",
+          "settings": {
+            "image-col-right": "shopify://shop_images/Woman_wrapped_in_duvet_Gallery.jpg",
+            "col-title-right": "Accessories",
+            "col-text-right": "<p>Full Experience </p>",
+            "col-link-right": "shopify://collections/beddings"
+          }
+        }
+      },
+      "block_order": [
+        "38985f04-9fc5-4a51-a444-e6d6baeea638",
+        "9e674515-5e73-4aa8-b968-c8bb686b9766"
+      ],
+      "disabled": true,
+      "settings": {
+        "title": "Emma's Advanced Sleep Range",
+        "mobile_title": "Emma's Advanced Sleep Range",
+        "image-col-left": "shopify://shop_images/new-mattresses.webp",
+        "col-title-left": "Mattresses",
+        "col-text-left": "<p>Most Awarded</p>",
+        "col-link-left": "shopify://collections/mattresses"
+      }
+    },
+    "1747117791ae9669dc": {
+      "type": "apps",
+      "settings": {
+        "include_margins": true
+      }
+    },
+    "faqs": {
+      "type": "faqs",
+      "blocks": {
+        "button_RUr3Ad": {
+          "type": "button",
+          "settings": {
+            "content": "<p>Submit a Request</p>",
+            "bgcolor": "#6469aa",
+            "hover-bgcolor": "#4b4f8d",
+            "color": "#ffffff",
+            "hover-color": "",
+            "variant": "",
+            "href": "#bulk-form"
+          },
+          "blocks": {}
+        },
+        "container": {
+          "type": "container",
+          "static": true,
+          "settings": {
+            "bgcolor": "rgba(0,0,0,0)",
+            "spacing": "none",
+            "margin_y": 0,
+            "margin_x": 0,
+            "padding_x": 0,
+            "padding_y": 10,
+            "border_radius": 0,
+            "boundless": true
+          },
+          "blocks": {}
+        },
+        "frame": {
+          "type": "frame",
+          "static": true,
+          "settings": {
+            "bgcolor": "rgba(0,0,0,0)",
+            "spacing": "xl",
+            "vertical_alignment": "center",
+            "horizontal_alignment": "center",
+            "margin_y": 0,
+            "margin_x": 0,
+            "padding_x": 0,
+            "padding_y": 10,
+            "border_radius": 0,
+            "boundless": false,
+            "content_width": 80
+          },
+          "blocks": {}
+        },
+        "heading": {
+          "type": "heading",
+          "static": true,
+          "settings": {
+            "content": "<h2>FAQs</h2>",
+            "color": "#2c3183",
+            "text_alignment": "center"
+          },
+          "blocks": {}
+        },
+        "accordion": {
+          "type": "accordion",
+          "static": true,
+          "settings": {
+            "type": "none",
+            "vertical_alignment": "center",
+            "horizontal_alignment": "center",
+            "text_alignment": "left",
+            "spacing_x": 0,
+            "spacing_y": 0
+          },
+          "blocks": {
+            "faq-1": {
+              "type": "accordion-item",
+              "settings": {},
+              "blocks": {
+                "label": {
+                  "type": "heading",
+                  "static": true,
+                  "settings": {
+                    "content": "<p><strong>Is there a minimum order?</strong></p>",
+                    "color": "#2e2f3c",
+                    "text_alignment": "left"
+                  },
+                  "blocks": {}
+                },
+                "icon": {
+                  "type": "icon",
+                  "static": true,
+                  "settings": {
+                    "src": "shopify://shop_images/chevron-down.svg",
+                    "size": 24
+                  },
+                  "blocks": {}
+                },
+                "content": {
+                  "type": "paragraph",
+                  "static": true,
+                  "settings": {
+                    "content": "<p>Yes, we require a minimum of 20 mattresses for bulk pricing and fulfillment, and a minimum of x for accessories.</p>",
+                    "color": "#2e2f3c",
+                    "size": "base",
+                    "text_alignment": "left"
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": []
+            },
+            "separator-1": {
+              "type": "separator",
+              "settings": {
+                "color": "#2e2f3c4d",
+                "size": 1
+              },
+              "blocks": {}
+            },
+            "faq-2": {
+              "type": "accordion-item",
+              "settings": {},
+              "blocks": {
+                "label": {
+                  "type": "heading",
+                  "static": true,
+                  "settings": {
+                    "content": "<p><strong>Can I request samples?</strong></p>",
+                    "color": "#2e2f3c",
+                    "text_alignment": "left"
+                  },
+                  "blocks": {}
+                },
+                "icon": {
+                  "type": "icon",
+                  "static": true,
+                  "settings": {
+                    "src": "shopify://shop_images/chevron-down.svg",
+                    "size": 24
+                  },
+                  "blocks": {}
+                },
+                "content": {
+                  "type": "paragraph",
+                  "static": true,
+                  "settings": {
+                    "content": "<p>At this time, we’re not able to provide samples. However, all our mattresses are built with the same award-winning technology trusted by millions of sleepers worldwide. Regardless of the mattress type, you can expect exceptional quality, comfort, and durability in every product.</p>",
+                    "color": "#2e2f3c",
+                    "size": "base",
+                    "text_alignment": "left"
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": []
+            },
+            "separator-2": {
+              "type": "separator",
+              "settings": {
+                "color": "#2e2f3c4d",
+                "size": 1
+              },
+              "blocks": {}
+            },
+            "faq-3": {
+              "type": "accordion-item",
+              "settings": {},
+              "blocks": {
+                "label": {
+                  "type": "heading",
+                  "static": true,
+                  "settings": {
+                    "content": "<p><strong>How long does shipping take?</strong></p>",
+                    "color": "#2e2f3c",
+                    "text_alignment": "left"
+                  },
+                  "blocks": {}
+                },
+                "icon": {
+                  "type": "icon",
+                  "static": true,
+                  "settings": {
+                    "src": "shopify://shop_images/chevron-down.svg",
+                    "size": 24
+                  },
+                  "blocks": {}
+                },
+                "content": {
+                  "type": "paragraph",
+                  "static": true,
+                  "settings": {
+                    "content": "<p>We offer flexible pickup and delivery options to fit your needs.<br/><br/>While shipping costs aren’t included in the base price, we can help coordinate delivery at an additional cost. You’re also welcome to arrange your own carrier pickup. Once your order is confirmed, we’ll share all pickup details — and if needed, we’ll gladly assist with cost-effective shipping options based on your order volume.</p>",
+                    "color": "#2e2f3c",
+                    "size": "base",
+                    "text_alignment": "left"
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": []
+            },
+            "separator-3": {
+              "type": "separator",
+              "settings": {
+                "color": "#2e2f3c4d",
+                "size": 1
+              },
+              "blocks": {}
+            },
+            "faq-4": {
+              "type": "accordion-item",
+              "settings": {},
+              "blocks": {
+                "label": {
+                  "type": "heading",
+                  "static": true,
+                  "settings": {
+                    "content": "<p><strong>How do payments work?</strong></p>",
+                    "color": "#2e2f3c",
+                    "text_alignment": "left"
+                  },
+                  "blocks": {}
+                },
+                "icon": {
+                  "type": "icon",
+                  "static": true,
+                  "settings": {
+                    "src": "shopify://shop_images/chevron-down.svg",
+                    "size": 24
+                  },
+                  "blocks": {}
+                },
+                "content": {
+                  "type": "paragraph",
+                  "static": true,
+                  "settings": {
+                    "content": "<p>Once your order is confirmed, we’ll send an invoice for secure online payment. Payment is required in full before delivery.</p>",
+                    "color": "#2e2f3c",
+                    "size": "base",
+                    "text_alignment": "left"
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": []
+            },
+            "separator_ncqCaV": {
+              "type": "separator",
+              "settings": {
+                "color": "#2e2f3c4d",
+                "size": 1
+              },
+              "blocks": {}
+            },
+            "accordion_item_R3WwC9": {
+              "type": "accordion-item",
+              "settings": {},
+              "blocks": {
+                "label": {
+                  "type": "heading",
+                  "static": true,
+                  "settings": {
+                    "content": "<p><strong>How long does it take to receive a quote after submitting a request?</strong></p>",
+                    "color": "#2e2f3c",
+                    "text_alignment": "left"
+                  },
+                  "blocks": {}
+                },
+                "icon": {
+                  "type": "icon",
+                  "static": true,
+                  "settings": {
+                    "src": "shopify://shop_images/chevron-down.svg",
+                    "size": 24
+                  },
+                  "blocks": {}
+                },
+                "content": {
+                  "type": "paragraph",
+                  "static": true,
+                  "settings": {
+                    "content": "<p>We aim to respond to all bulk order requests within <strong>x–x business days</strong>. Our team will carefully review your details and get back to you with a personalized quote, including availability and pricing. If we need any additional info to finalize your quote, we’ll reach out promptly.</p>",
+                    "color": "#2e2f3c",
+                    "size": "base",
+                    "text_alignment": "left"
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": []
+            }
+          },
+          "block_order": [
+            "faq-1",
+            "separator-1",
+            "faq-2",
+            "separator-2",
+            "faq-3",
+            "separator-3",
+            "faq-4",
+            "separator_ncqCaV",
+            "accordion_item_R3WwC9"
+          ]
+        }
+      },
+      "block_order": [
+        "button_RUr3Ad"
+      ],
+      "settings": {}
+    },
+    "contact-us": {
+      "type": "contact-us",
+      "settings": {
+        "title": "Still have questions?"
+      }
+    }
+  },
+  "order": [
+    "stack_section_ibDejB",
+    "perfect-for",
+    "featured-products",
+    "why-us",
+    "how-it-works",
+    "two_column_cXk7jm",
+    "47cdc402-f526-47ac-8d3e-c8942fbf3252",
+    "1747117791ae9669dc",
+    "faqs",
+    "contact-us"
+  ]
+}

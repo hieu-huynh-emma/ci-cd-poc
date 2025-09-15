@@ -323,7 +323,7 @@ class NavSpotlight extends CustomElement {
           <p class="spotlight__name text-xl font-semibold">${i18nName}</p>
         </a>
         <div class="flex items-center gap-2 text-md">
-          ${originalPrice ? `<p class="inline">${i18nFromText}</p> ` : ""}<span class="spotlight__price text-scarlet font-bold">${price}</span>
+          ${originalPrice ? `<p class="inline">${i18nFromText}</p> ` : ""}<span class="spotlight__price ${originalPrice ? `text-scarlet` : `text-black`} font-bold">${price}</span>
           ${originalPrice ? `<span class="spotlight__original-price line-through text-xs">${originalPrice}</span>` : ""}
         </div>
       </div>

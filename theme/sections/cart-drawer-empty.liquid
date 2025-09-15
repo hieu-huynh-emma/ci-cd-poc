@@ -1,5 +1,10 @@
 {% assign picture = section.settings.picture %}
-
+<style>
+    cart-surface.is-empty .cart-drawer-empty {
+        height: fit-content !important;
+        overflow: clip;
+    }
+</style>
 <div class="empty-content">
     <p class="text-comet font-light">{{ 'sections.cart.empty' | t }}</p>
 
@@ -80,6 +85,7 @@
         >
         <p class="paragraph-10 font-semibold">10-year warranty</p>
     </div>
+
 </div>
 
 {% schema %}

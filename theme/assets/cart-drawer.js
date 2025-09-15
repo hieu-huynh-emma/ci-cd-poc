@@ -20,14 +20,6 @@ if (!customElements.get("cart-drawer")) {
 
         async mounted() {
             this.renderShipOutTime();
-            // const {cartRedeem, cartSurface} = this.refs
-
-            // const isEmpty = cartSurface.$el.hasClass('is-empty')
-            //
-            // if (!isEmpty) {
-            // 	await this.loadCheckout();
-            // 	cartRedeem.renderDiscountTag();
-            // }
         }
 
         renderShipOutTime() {
@@ -41,112 +33,6 @@ if (!customElements.get("cart-drawer")) {
             $shipOutTime.find('.cart-banner__content')
                         .text((currentHour > 14) ? $shipOutTime.data('shipNext') : $shipOutTime.data('shipNow'))
         }
-
-        // async loadCheckout() {
-        //
-        // 	this.loading = true
-        // 	cartItems.disabled = true
-        // 	cartRedeem.loading = true
-        // 	cartRecommendation.disabled = true
-        //
-        // 	try {
-        // 		await this.parseCheckoutPage();
-        //
-        // 		await this.getCheckoutData();
-        //
-        // 	} catch (e) {
-        // 		toastr.error(e)
-        // 	} finally {
-        // 		this.loading = false
-        // 		cartItems.disabled = false
-        // 		cartRedeem.loading = false
-        // 		cartRecommendation.disabled = false
-        // 	}
-        // }
-
-        // async parseCheckoutPage() {
-        // 	let gettingShopifyCheckoutPagePromise = fetch('/checkout', {method: 'get'});
-        // 	const response = (await gettingShopifyCheckoutPagePromise).clone();
-        // 	gettingShopifyCheckoutPagePromise = null;
-        // 	try {
-        // 		const urlParts = response.url.split('/checkouts/');
-        // 		if (urlParts.length < 2) {
-        // 			return false;
-        // 		}
-        // 		this.shopifyCheckoutToken = urlParts[1].split('?')[0].split('/')[0]
-        // 		const text = await response.text();
-        // 		let parser = new DOMParser();
-        // 		const doc = parser.parseFromString(text, 'text/html');
-        // 		const metaEl = doc.querySelector('meta[name="shopify-checkout-authorization-token"]');
-        // 		if (!metaEl) {
-        // 			return false;
-        // 		}
-        // 		this.shopifyAuthorizationToken = metaEl.getAttribute('content');
-        //
-        //
-        // 		return true;
-        // 	} catch (e) {
-        // 		console.log(e);
-        // 		return false;
-        // 	}
-        // }
-
-        // async getCheckoutData() {
-        // 	const response = await this.requestCheckout();
-        // 	this.checkout = response.checkout;
-        //
-        // 	return this.checkout
-        // }
-
-        // async updateCheckoutData(payload) {
-        // 	const response = await this.requestCheckout(payload, 'PUT');
-        // 	this.checkout = response.checkout;
-        // }
-
-        // async requestCheckout(payload, method = 'get') {
-        // 	const response = await fetch(
-        // 		`/wallets/checkouts/${this.shopifyCheckoutToken}?source=cartDrawer`,
-        // 		{
-        // 			method,
-        // 			mode: 'cors',
-        // 			headers: {
-        // 				'Accept': '*/*',
-        // 				'Cache-Control': 'max-age=0',
-        // 				'x-shopify-checkout-authorization-token': this.shopifyAuthorizationToken,
-        // 				'Content-Type': 'application/json'
-        // 			},
-        // 			...(!!payload ? {body: JSON.stringify(payload)} : {})
-        // 		});
-        // 	if (response.status === 429) {
-        // 		throw "You have tried applying discount codes too many times. Please try again later";
-        // 	}
-        // 	if (response.ok) {
-        // 		return response.json();
-        // 	} else {
-        // 		throw await response.json();
-        // 	}
-        // }
-
-        // setSummaryAccessibility(cartDrawerNote) {
-        //     cartDrawerNote.setAttribute("role", "button");
-        //     cartDrawerNote.setAttribute("aria-expanded", "false");
-        //
-        //     if (cartDrawerNote.nextElementSibling.getAttribute("id")) {
-        //         cartDrawerNote.setAttribute(
-        //             "aria-controls",
-        //             cartDrawerNote.nextElementSibling.id
-        //         );
-        //     }
-        //
-        //     cartDrawerNote.addEventListener("click", (event) => {
-        //         event.currentTarget.setAttribute(
-        //             "aria-expanded",
-        //             !event.currentTarget.closest("details").hasAttribute("open")
-        //         );
-        //     });
-        //
-        //     cartDrawerNote.parentElement.addEventListener("keyup", onKeyUpEscape);
-        // }
 
         renderContents(parsedState) {
             this.getSectionsToRender().forEach((section) => {
