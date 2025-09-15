@@ -309,7 +309,7 @@
         "605013b2-263f-4c29-b4c0-136f75610eda": {
           "type": "item",
           "settings": {
-            "heading": "Free Shipping & Returns",
+            "heading": "Free Shipping*",
             "icon": "shopify://shop_images/Delivery.png",
             "url": "https://emma-sleep.ca/pages/faq#trial-and-guarantee"
           }
@@ -409,8 +409,9 @@
         },
         "cross_sell_widget_tXLCDN": {
           "type": "cross_sell_widget",
+          "disabled": true,
           "settings": {
-            "content": ""
+            "content": "<p><strong>45% OFF CLOUD DUVET with Mattress Purchase</strong></p>"
           }
         },
         "upsell_widget_tXLCDN": {
@@ -683,11 +684,18 @@
         "72c7f33b-7788-4524-bf53-816aecb093b6": {
           "type": "catalog_item",
           "settings": {
+            "product": "premium-breathable-mattress-protector"
+          }
+        },
+        "catalog_item_tLUYFL": {
+          "type": "catalog_item",
+          "settings": {
             "product": "emma-foam-pillow"
           }
         },
         "07d5912c-d4c3-4ebb-97a6-f723fc8a4f3f": {
           "type": "catalog_item",
+          "disabled": true,
           "settings": {
             "product": "emma-mattress-protector"
           }
@@ -695,11 +703,12 @@
         "6157481e-9612-4a7c-a3bf-4006a99b7bd6": {
           "type": "catalog_item",
           "settings": {
-            "product": "premium-cooling-pillow"
+            "product": "duvet"
           }
         },
         "5e77d40f-79e8-4050-a013-d2325a25b443": {
           "type": "catalog_item",
+          "disabled": true,
           "settings": {
             "product": "emma-original-a"
           }
@@ -720,6 +729,7 @@
       },
       "block_order": [
         "72c7f33b-7788-4524-bf53-816aecb093b6",
+        "catalog_item_tLUYFL",
         "07d5912c-d4c3-4ebb-97a6-f723fc8a4f3f",
         "6157481e-9612-4a7c-a3bf-4006a99b7bd6",
         "5e77d40f-79e8-4050-a013-d2325a25b443",
@@ -977,6 +987,7 @@
         "a72149c3-5420-4a8c-80fe-7370288da216",
         "d9373dca-57f2-4b56-8838-1a8fc22e21ca"
       ],
+      "disabled": true,
       "settings": {
         "heading": "FAQs",
         "header_font": "inter",

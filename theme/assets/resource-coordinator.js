@@ -32,11 +32,10 @@ window.ResourceCoordinator = new (class {
 
     resources = new Map();
 
-    constructor() {
-    }
+    constructor() { }
 
     registerVendor(vendorId, urls = [], waitForGlobalName, postFetch) {
-        this.resources.set(vendorId, { urls, postFetch, waitForGlobalName});
+        this.resources.set(vendorId, { urls, postFetch, waitForGlobalName });
     }
 
     async requestVendor(vendorId) {
@@ -151,22 +150,17 @@ ResourceCoordinator.registerVendor("Swiper", [
     "https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js",
 ]);
 
-ResourceCoordinator.registerVendor("Splide", [
-    Shop.assetUrl + "splide@4.0.1.min.css",
-    Shop.assetUrl + "splide@4.0.1.min.js",
-    "Splide"
-]);
+ResourceCoordinator.registerVendor("Splide", [Shop.assetUrl + "splide@4.0.1.min.css", Shop.assetUrl + "splide@4.0.1.min.js"], "Splide");
 
-ResourceCoordinator.registerVendor("Tippy", [
-    Shop.assetUrl + "popper.min.js" ,
-    Shop.assetUrl + "tippy.min.js" ,
-    "tippy"
-]);
+ResourceCoordinator.registerVendor("Tippy", [Shop.assetUrl + "tippy.min.js"], "tippy");
 
 ResourceCoordinator.registerVendor("DriftZoom", ["https://cdnjs.cloudflare.com/ajax/libs/drift-zoom/1.5.1/Drift.min.js"]);
 ResourceCoordinator.registerVendor("MultiClamp", [Shop.assetUrl + "MultiClamp.min.js"]);
 
-ResourceCoordinator.registerVendor("AsSwitch", ["https://cdn.jsdelivr.net/npm/jquery-asSwitch@0.2.3/dist/jquery-asSwitch.min.js", "https://cdn.jsdelivr.net/npm/jquery-asSwitch@0.2.3/dist/css/asSwitch.min.css"]);
+ResourceCoordinator.registerVendor("AsSwitch", [
+    "https://cdn.jsdelivr.net/npm/jquery-asSwitch@0.2.3/dist/jquery-asSwitch.min.js",
+    "https://cdn.jsdelivr.net/npm/jquery-asSwitch@0.2.3/dist/css/asSwitch.min.css",
+]);
 
 ResourceCoordinator.registerVendor("Fancybox", [
     Shop.assetUrl + "fancybox.js",

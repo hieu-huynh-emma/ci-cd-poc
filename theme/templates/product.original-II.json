@@ -47,10 +47,9 @@
     },
     "freebie-offer": {
       "type": "freebie-offer",
-      "disabled": true,
       "settings": {
-        "heading": "GET YOUR FREEBIES",
-        "badge": "<p>SAVE UP TO $468</p>",
+        "heading": "FREE GIFT",
+        "badge": "<p>VALUE $249</p>",
         "bottom_text": ""
       }
     },
@@ -84,7 +83,7 @@
       },
       "settings": {
         "title": "Emma Original Lite",
-        "desc": "<p><strong>Unbeatable value</strong></p><p>Affordable comfort, transformative sleep. Ingenious point-elastic design supports your body's every curve and spine with unmatched precision.</p><ul><li>Pressure relief</li><li>8-inch height</li><li>Long lasting and durable</li><li>Hybrid Technology</li><li>Breathable Washable Cover</li></ul>"
+        "desc": "<p><strong>Unbeatable value</strong></p><p>Affordable comfort, transformative sleep. Ingenious point-elastic design supports your body's every curve and spine with unmatched precision.</p><ul><li><strong>Includes FREE Premium Pillow Set worth $249</strong></li><li>Pressure relief</li><li>8-inch height</li><li>Long lasting and durable</li><li>Hybrid Technology</li><li>Breathable Washable Cover</li></ul>"
       }
     },
     "product-badges": {
@@ -115,6 +114,13 @@
           "settings": {
             "en_image": "shopify://shop_images/Untitled_design_24.png",
             "fr_image": "shopify://shop_images/Untitled_design_24.png"
+          }
+        },
+        "image_fpriTU": {
+          "type": "image",
+          "settings": {
+            "en_image": "shopify://shop_images/Gallery_EN_Free_Premium_Pillow_Set.png",
+            "fr_image": "shopify://shop_images/Gallery_FR_Free_Premium_Pillow_Set.png"
           }
         },
         "72b3b893-b0bb-44ad-978c-733ee54620a1": {
@@ -171,6 +177,7 @@
       },
       "block_order": [
         "f5f456c7-b29a-4f74-826f-648e09f5b1cd",
+        "image_fpriTU",
         "72b3b893-b0bb-44ad-978c-733ee54620a1",
         "ae4539f2-6ea2-42a3-a132-a31010570bf1",
         "image_df6k6L",
@@ -308,7 +315,7 @@
         "605013b2-263f-4c29-b4c0-136f75610eda": {
           "type": "item",
           "settings": {
-            "heading": "Free Shipping & Returns",
+            "heading": "Free Shipping*",
             "icon": "shopify://shop_images/Delivery.png",
             "url": "https://emma-sleep.ca/pages/faq#trial-and-guarantee"
           }
@@ -409,7 +416,7 @@
         "cross_sell_widget_tXLCDN": {
           "type": "cross_sell_widget",
           "settings": {
-            "content": ""
+            "content": "<p><strong>45% OFF CLOUD DUVET with Mattress Purchase</strong></p>"
           }
         },
         "upsell_widget_tXLCDN": {
@@ -682,11 +689,18 @@
         "72c7f33b-7788-4524-bf53-816aecb093b6": {
           "type": "catalog_item",
           "settings": {
+            "product": "premium-breathable-mattress-protector"
+          }
+        },
+        "catalog_item_8exW46": {
+          "type": "catalog_item",
+          "settings": {
             "product": "emma-foam-pillow"
           }
         },
         "07d5912c-d4c3-4ebb-97a6-f723fc8a4f3f": {
           "type": "catalog_item",
+          "disabled": true,
           "settings": {
             "product": "emma-mattress-protector"
           }
@@ -694,11 +708,12 @@
         "6157481e-9612-4a7c-a3bf-4006a99b7bd6": {
           "type": "catalog_item",
           "settings": {
-            "product": "premium-cooling-pillow"
+            "product": "duvet"
           }
         },
         "5e77d40f-79e8-4050-a013-d2325a25b443": {
           "type": "catalog_item",
+          "disabled": true,
           "settings": {
             "product": "emma-original-a"
           }
@@ -719,6 +734,7 @@
       },
       "block_order": [
         "72c7f33b-7788-4524-bf53-816aecb093b6",
+        "catalog_item_8exW46",
         "07d5912c-d4c3-4ebb-97a6-f723fc8a4f3f",
         "6157481e-9612-4a7c-a3bf-4006a99b7bd6",
         "5e77d40f-79e8-4050-a013-d2325a25b443",
@@ -943,22 +959,22 @@
         "78ca144d-5919-4a1b-9e22-082ef5384310": {
           "type": "faq",
           "settings": {
-            "title": "Is it free to return your products?",
-            "content": "<p>It's 100% free to return your Emma! If your Emma turns out not to suit you for any reason, feel free to return it. Just simply get in contact with us via our chat support, phone or email and we will refund and collect it at no cost to you.</p><p><br/>Live support is also available from 08:00 to 18:00 GMT-6, Monday-Friday!</p>"
+            "title": "Can I return my products?",
+            "content": "<p>If you would like to start the return process, you can start the process by reaching out to our Customer Care agents from 10AM to 8PM EST, Monday-Friday through our available channels: </p><ul><li>Email: support@emma-sleep.ca  </li><li>or speak directly with an agent using our live-chat feature on our website. </li></ul><p>At the moment, our support is available in English only. We apologize for any inconvenience this may cause and are actively working towards offering assistance in French in the future. </p><p>Please note that the product must be available for return. For more information, you may review our Terms & Conditions (Article VIII). </p><p>After getting in touch with our Customer Care agents to initiate a return (<strong>note: please prepare your Order Numbe</strong>r), they will explain the steps to continue with return depending on if the product is packed or unpacked. In some cases we may ask you to proceed with donation of the product.</p>"
           }
         },
         "c68412f4-0251-42dc-9113-a0eecd22c518": {
           "type": "faq",
           "settings": {
             "title": "How does your 100-Night-Trial work?",
-            "content": "<p>get to take your time to decide if your Emma mattress is a good fit for you. This lets you try the mattress for yourself and experience the benefits that our 4Million+ customers have come to enjoy each night!</p><p>Helpful Tip: We recommend you sleep on your Emma for at least 30 nights so that you and your body can get suited to your new Emma mattress.</p><p>You can begin your 100-night trial today. Our 0% APR financing with Affirm also gives you the option to make 12 equal payments over the next 12 months.</p>"
+            "content": "<p>Take your time to decide if your Emma mattress is a good fit for you. Our 100-Night-Trial lets you try the mattress for yourself and experience the benefits that our 5million+ customers have come to enjoy each night!</p><p><strong>Helpful Tip:</strong> We recommend you sleep on your Emma Mattress for at least 30 nights so that you and your body can get suited to your new mattress.</p><p>You can begin your 100-Night Trial today. Our 0% APR financing with Affirm also gives you the option to make 12 equal payments over the next 12 months.</p>"
           }
         },
         "a72149c3-5420-4a8c-80fe-7370288da216": {
           "type": "faq",
           "settings": {
             "title": "Do you ship nationwide?",
-            "content": "<p>We ship to most locations across Canada! However, at this time, we do <strong>not offer delivery</strong> to the following provinces and territories:<br/><br/><strong>Yukon, Northwest Territories, Prince Edward Island, and Nunavut.</strong></p><p>Orders with shipping addresses in these areas will not be processed, and any payments made will be refunded in line with our <a href=\"/pages/returns-refunds\" title=\"Returns & Refunds\">Refund Policy</a>.</p><p>We also offer a <strong>Premium Delivery service</strong> for faster shipping in select areas. Currently, Premium Delivery is available in <strong>Ontario and British Columbia</strong> for a <strong>$50.00 CAD</strong> fee. We're working hard to expand this service to more cities soon!</p>"
+            "content": "<p>Yes! We’re happy to share that we now ship our products nationwide across Canada.</p><p>To make sure we can deliver to every corner of the country, a few regions have special delivery fees due to distance and logistics:</p><ul><li><strong>Yukon</strong>: $300 CAD delivery fee</li><li><strong>Northwest Territories, Prince Edward Island, and Nunavut</strong>: $50 CAD remote area fee</li><li><strong>New Brunswick and Newfoundland and Labrador</strong>: $29.99 CAD shipping fee<br/></li></ul><p>For faster service, we also offer <strong>Premium Delivery</strong> in <strong>Ontario and British Columbia</strong> for $50 CAD. We’re working hard to expand this option to more cities soon!</p>"
           }
         },
         "d9373dca-57f2-4b56-8838-1a8fc22e21ca": {

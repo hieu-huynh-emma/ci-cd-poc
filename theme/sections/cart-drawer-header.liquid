@@ -3,8 +3,8 @@
     <div class="drawer-title font-tiempos {% if cart.item_count == 0 %}is-empty{% endif %}">
       <h2 class="text-white">{{ 'cart.title' | t }}</h2>
       {% if cart.item_count != 0 %}
-        <span>-</span>
-        <div class="cart-item-count">{{ cart.item_count | json }} Item{% if cart.item_count > 1 %}s{% endif %}</div>
+        <spa class="hidden">-</span>
+        <div class="cart-item-count hidden">{{ cart.item_count | json }} Item{% if cart.item_count > 1 %}s{% endif %}</div>
       {% endif %}
 
     </div>
