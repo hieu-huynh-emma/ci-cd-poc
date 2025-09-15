@@ -55,12 +55,9 @@ jobs:
           timestamp=$(date -u "+%Y-%m-%d %H:%M:%S UTC")
           git commit -m "system(bot): Sync LIVE theme at ${timestamp}"
 
-          # Ensure we're on the correct branch
-          git checkout "$CURRENT_BRANCH"
-
-          # Rebase onto main to make sync commit the first commit
+          # Rebase current branch onto main to make sync commit the first commit
           git rebase origin/main
 
           # Force push the rebased branch
-          git push --force-with-lease origin "$CURRENT_BRANCH"
+          git push --force-with-lease origin HEAD:"$CURRENT_BRANCH"
 
