@@ -47,17 +47,15 @@ jobs:
           CURRENT_BRANCH="${{ github.head_ref }}"
           echo "Working on branch: $CURRENT_BRANCH"
 
-          # Fetch latest main branch
+          # Fetch and switch to main branch
           git fetch origin main
+          git checkout main
 
-          # Commit the changes
+          # Apply the theme changes to main
           git add -A
           timestamp=$(date -u "+%Y-%m-%d %H:%M:%S UTC")
           git commit -m "system(bot): Sync LIVE theme at ${timestamp}"
 
-          # Rebase current branch onto main to make sync commit the first commit
-          git rebase origin/main
-
-          # Force push the rebased branch
-          git push --force-with-lease origin HEAD:"$CURRENT_BRANCH"
+          # Push directly to main branch
+          git push origin main
 
