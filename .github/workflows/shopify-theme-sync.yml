@@ -43,8 +43,17 @@ jobs:
             exit 0
           fi
 
+          # Fetch latest main branch
+          git fetch origin main
+
+          # Stash current changes temporarily
           git add -A
           timestamp=$(date -u "+%Y-%m-%d %H:%M:%S UTC")
-          git commit -m "chore(bot): Sync LIVE theme at ${timestamp}"
-          git push origin ${{ github.head_ref }}
+          git commit -m "system(bot): Sync LIVE theme at ${timestamp}"
+
+          # Rebase to make sync commit the first commit in the PR
+          git rebase origin/main
+
+          # Force push the rebased branch
+          git push --force-with-lease origin ${{ github.head_ref }}
 
