@@ -141,8 +141,9 @@
                                                         {% if product.compare_at_price > product.price %}
                                                             From
                                                         {% endif %}
-                                                        <span
-                                                            class="line-through">{{ product.compare_at_price | money_without_trailing_zeros }}</span>
+                                                        {% if product.compare_at_price > 0 %}
+                                                        <span class="line-through">{{ product.compare_at_price | money_without_trailing_zeros }}</span>
+                                                        {% endif %}
                                                     </div>
 
                                                     <div class="flex items-center justify-center flex-wrap gap-2">

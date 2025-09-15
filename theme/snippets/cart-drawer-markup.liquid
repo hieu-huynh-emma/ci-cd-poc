@@ -1,4 +1,9 @@
-<cart-drawer id="CartDrawer" class="overflow-full">
+<style>
+.cart-disclaimer {
+    padding: 1rem;
+}
+</style>
+<cart-drawer id="CartDrawer" class="overflow-full !justify-start">
     {% section 'cart-drawer-header' %}
 
     <div
@@ -17,10 +22,7 @@
         <div id="cart-drawer-empty-placeholder"></div>
         <cart-scrollable-content>
             {% render 'cart-drawer-banner' %}
-{% comment %}{% endcomment %}
-            {% comment %}<div abtasty-campaign-id="1411464" abtasty-campaign-variation="0">{% endcomment %}
-                {% comment %}<div id="cart-drawer-items-placeholder"></div>{% endcomment %}
-            {% comment %}</div>{% endcomment %}
+
 
             <div>
                 <cart-drawer-lines></cart-drawer-lines>
@@ -28,11 +30,13 @@
 
             <div id="cart-recommendation-placeholder"></div>
 
-            <style>.cart-disclaimer {
-                    padding: 0 1rem;
-                }</style>
+
             {% render 'cart-disclaimer' %}
+            <div class="p-4">
+            {% section 'cart-drawer-cross-sell' %}
+            </div>   
         </cart-scrollable-content>
+            
     </div>
 
     {% render 'cart-drawer-footer' %}

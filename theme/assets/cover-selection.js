@@ -384,7 +384,6 @@ class CoverSelection extends HTMLElement {
         }).get();
 
         const shouldHidden = optionsData.some(({variant: {available}}) => !available)
-        console.log("=>(cover-selection.js:360) shouldHidden", shouldHidden);
         this.$el.attr("hidden", false);
 
 
@@ -402,10 +401,6 @@ class CoverSelection extends HTMLElement {
             this.$el.attr("hidden", shouldHidden);
         } else {
             const availProductId = availOption?.product?.id;
-
-            console.log("=>(cover-selection.js:364) availOption", availOption);
-            console.log("=>(cover-selection.js:368) availProductId", availProductId);
-            console.log("=>(cover-selection.js:364) engine.currProduct.id", engine.currProduct.id)
 
             this.updatePage(availProductId)
 

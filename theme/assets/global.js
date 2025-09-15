@@ -790,3 +790,67 @@ class YotpoReviewStarsStandalone extends HTMLElement {
 }
 
 customElements.define("yotpo-review-stars-standalone", YotpoReviewStarsStandalone);
+
+class HeroBannerCountdownTimer extends HTMLElement {
+  constructor() {
+    super();
+    this.digitElements = Array.from(this.querySelectorAll(".digit"));
+    this.startTime = Date.now();
+    this.endTime = null;
+  }
+
+  connectedCallback() {
+    this.endTime = new Date(this.getAttribute("end-time").replace(" ", "T"));
+    this.startTimer();
+    setTimeout(() => {
+      this.style.display = "block";
+    }, 1000);
+  }
+
+  disconnectedCallback() { }
+
+  setValues(values) {
+    if (values.length !== this.digitElements.length) {
+      console.error("Invalid values provided.");
+      return;
+    }
+
+    values.forEach((value, index) => {
+      this.digitElements[index].textContent = value;
+    });
+  }
+
+  getTimeParts(delta) {
+    const days = Math.floor(delta / 86400);
+    delta -= days * 86400;
+
+    const hours = Math.floor(delta / 3600) % 24;
+    delta -= hours * 3600;
+
+    const minutes = Math.floor(delta / 60) % 60;
+    delta -= minutes * 60;
+
+    const seconds = Math.floor(delta % 60); // in theory the modulus is not required
+
+    return [days, hours, minutes, seconds];
+  }
+
+  renderTimer(delta) {
+    const timeParts = this.getTimeParts(delta);
+    this.setValues(timeParts);
+  }
+
+  startTimer() {
+    const intervalId = setInterval(() => {
+      const delta = (this.endTime - Date.now()) / 1000;
+      if (delta >= 0) {
+        this.renderTimer(delta);
+      } else {
+        clearInterval(intervalId);
+        this.remove();
+      }
+    }, 1000);
+  }
+}
+
+customElements.define("hero-banner-countdown-timer", HeroBannerCountdownTimer);
