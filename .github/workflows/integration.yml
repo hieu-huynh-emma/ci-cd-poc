@@ -1,0 +1,13 @@
+name: integration.yml
+on:
+  pull_request:
+    branches: [ main ]
+    types: [ opened, synchronize, reopened ]
+jobs:
+  verify-theme-sync:
+    uses: "./.github/workflows/shopify-theme-sync.yml"
+
+  verify-out-of-date:
+    runs-on: ubuntu-latest
+    steps:
+      -
