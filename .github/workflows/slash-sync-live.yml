@@ -58,7 +58,7 @@ jobs:
 
       - name: Configure Shopify auth
         env:
-          SHOPIFY_FLAG_STORE: ${{ secrets.SHOPIFY_FLAG_STORE }}
+          SHOPIFY_FLAG_STORE: emma-dev.myshopify.com
           SHOPIFY_CLI_THEME_TOKEN: ${{ secrets.SHOPIFY_CLI_THEME_TOKEN }}
         run: echo "Store $SHOPIFY_FLAG_STORE"
 
@@ -81,8 +81,6 @@ jobs:
         id: snap
         env:
           SHOPIFY_CLI_THEME_TOKEN: ${{ secrets.SHOPIFY_CLI_THEME_TOKEN }}
-          SHOPIFY_FLAG_STORE: ${{ vars.SHOPIFY_FLAG_STORE }}
-          SHOPIFY_FLAG_PATH: ${{ vars.SHOPIFY_FLAG_PATH}}
         run: |
           set -e
           # checkout snapshot từ upstream/<baseRef>
@@ -93,7 +91,7 @@ jobs:
           rm -rf theme/* theme/.[!.]* theme/..?* || true
 
           # kéo LIVE vào ./theme
-          shopify theme pull --store $SHOPIFY_FLAG_STORE --path $SHOPIFY_FLAG_PATH --password $SHOPIFY_CLI_THEME_TOKEN --force
+          shopify theme pull --store "emma-dev.myshopify.com" --path theme --password $SHOPIFY_CLI_THEME_TOKEN --force
 
           # nếu không có thay đổi thì no-op
           if [ -z "$(git status --porcelain)" ]; then
