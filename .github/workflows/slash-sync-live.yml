@@ -49,6 +49,7 @@ jobs:
           repository: ${{ steps.pr.outputs.headRepo }}
           ref: ${{ steps.pr.outputs.headRef }}
           token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0 # 👈 FULL HISTORY để merge-base chính xác
 
       - name: Setup Node & Shopify CLI
         uses: actions/setup-node@v4
@@ -68,14 +69,13 @@ jobs:
           set -e
           # add upstream = base repo nếu chưa có
           if ! git remote | grep -q '^upstream$'; then
-            git remote add upstream https://github.com/${{ steps.pr.outputs.baseRepo }}.git
+            git remote add upstream https://github.com/${{ steps.pr.outputs.baseRepo || github.repository }}.git
           fi
-          # fetch đúng branch từ upstream vào refs/remotes/upstream/<baseRef>
           git fetch --no-tags --prune upstream ${{ steps.pr.outputs.baseRef }}:refs/remotes/upstream/${{ steps.pr.outputs.baseRef }}
-          # tính merge-base giữa HEAD của PR và upstream/<baseRef>
-          echo "base=$(git merge-base HEAD refs/remotes/upstream/${{ steps.pr.outputs.baseRef }})" >> $GITHUB_OUTPUT
-          git fetch --no-tags --prune origin ${{ steps.pr.outputs.baseRef }}:origin/${{ steps.pr.outputs.baseRef }}
-          echo "base=$(git merge-base HEAD origin/${{ steps.pr.outputs.baseRef }})" >> $GITHUB_OUTPUT
+          BASE=$(git merge-base HEAD refs/remotes/upstream/${{ steps.pr.outputs.baseRef }})
+          echo "base=$BASE" >> $GITHUB_OUTPUT
+          echo "Merge-base: $BASE"
+          echo "Commits ahead of base: $(git rev-list --count $BASE..HEAD)"
 
       - name: Configure Git author (commenter)
         uses: actions/github-script@v7
@@ -118,7 +118,14 @@ jobs:
         run: |
           set -e
           git checkout ${{ steps.pr.outputs.headRef }}
-          git rebase --rebase-merges --onto live-snapshot ${{ steps.base.outputs.base }} HEAD
+          # Các flag quan trọng:
+          # --reapply-cherry-picks: đừng drop commit do phát hiện “trùng”
+          # --empty=keep: nếu sau sync LIVE commit trở thành empty, vẫn giữ commit (giữ message, history)
+          git rebase --rebase-merges --reapply-cherry-picks --empty=keep \
+            --onto live-snapshot ${{ steps.base.outputs.base }} ${{ steps.pr.outputs.headRef }}
+
+          echo "After rebase, commits ahead of live-snapshot:"
+          git log --oneline live-snapshot..HEAD
 
       - name: Push back (force-with-lease)
         if: steps.snap.outputs.no_changes == 'false'
