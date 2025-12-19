@@ -91,7 +91,7 @@ jobs:
           rm -rf theme/* theme/.[!.]* theme/..?* || true
 
           # kéo LIVE vào ./theme
-          shopify theme pull --store "emma-greg-dev-store.myshopify.com" --path theme --password "shptka_ac06aad8ca02547f088c4b35ebaed0ab" --force
+          shopify theme pull --store "emma-greg-dev-store.myshopify.com" --path "theme" --password "shptka_ac06aad8ca02547f088c4b35ebaed0ab" --force --live
 
           # nếu không có thay đổi thì no-op
           if [ -z "$(git status --porcelain)" ]; then
