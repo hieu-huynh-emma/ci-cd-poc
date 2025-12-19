@@ -113,19 +113,40 @@ jobs:
           git commit -m "chore(live): snapshot from LIVE $(date -u +%Y-%m-%dT%H:%M:%SZ)"
           echo "no_changes=false" >> $GITHUB_OUTPUT
 
+      - name: Find last LIVE snapshot commit on this branch (if any)
+        id: last_snap
+        run: |
+          # Tìm commit gần nhất có message "chore(live): snapshot from LIVE ..."
+          LAST=$(git log --grep='^chore(live): snapshot from LIVE' --format=%H -n1 || true)
+          echo "last=$LAST" >> $GITHUB_OUTPUT
+          if [ -n "$LAST" ]; then
+            echo "Found last LIVE snapshot: $LAST"
+            echo "Commits since last snapshot:"
+            git log --oneline $LAST..HEAD || true
+          else
+            echo "No previous snapshot found; will use merge-base."
+            echo "Commits since merge-base:"
+            git log --oneline ${{ steps.base.outputs.base }}..HEAD || true
+          fi
+
       - name: Rebase PR commits onto LIVE snapshot (keep commit count)
         if: steps.snap.outputs.no_changes == 'false'
         run: |
           set -e
           git checkout ${{ steps.pr.outputs.headRef }}
-          # Các flag quan trọng:
-          # --reapply-cherry-picks: đừng drop commit do phát hiện “trùng”
-          # --empty=keep: nếu sau sync LIVE commit trở thành empty, vẫn giữ commit (giữ message, history)
-          git rebase --rebase-merges --reapply-cherry-picks \
-            --onto live-snapshot ${{ steps.base.outputs.base }} ${{ steps.pr.outputs.headRef }}
 
-          echo "After rebase, commits ahead of live-snapshot:"
-          git log --oneline live-snapshot..HEAD
+          # Nếu đã từng snapshot: chỉ re-apply các commit SAU snapshot gần nhất
+          START="${{ steps.last_snap.outputs.last }}"
+          if [ -z "$START" ] || [ "$START" = "null" ]; then
+            START="${{ steps.base.outputs.base }}"
+          fi
+
+          # Giữ merge graph, re-apply cherry-picks, và giữ commit rỗng nếu cần
+          git rebase --rebase-merges --reapply-cherry-picks --empty=keep \
+            --onto live-snapshot "$START" ${{ steps.pr.outputs.headRef }}
+
+          echo "After rebase:"
+          git log --oneline -n 20
 
       - name: Push back (force-with-lease)
         if: steps.snap.outputs.no_changes == 'false'
