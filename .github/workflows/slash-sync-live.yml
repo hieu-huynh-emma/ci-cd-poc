@@ -77,6 +77,15 @@ jobs:
           git fetch --no-tags --prune origin ${{ steps.pr.outputs.baseRef }}:origin/${{ steps.pr.outputs.baseRef }}
           echo "base=$(git merge-base HEAD origin/${{ steps.pr.outputs.baseRef }})" >> $GITHUB_OUTPUT
 
+      - name: Configure Git author (commenter)
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const name = context.payload.comment.user.login;
+            const email = `${name}@users.noreply.github.com`;
+            core.info(`Setting git author to ${name} <${email}>`);
+            await exec.exec('git', ['config', '--local', 'user.name', name]);
+            await exec.exec('git', ['config', '--local', 'user.email', email]);
       - name: Create LIVE snapshot from base & pull LIVE
         id: snap
         env:
