@@ -14,12 +14,6 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  log:
-    runs-on: ubuntu-latest
-    steps:
-      - name: log
-        id: log
-        run: echo "start sync-live job"
   rebase-onto-live:
     if: |
       github.event.issue.pull_request &&
