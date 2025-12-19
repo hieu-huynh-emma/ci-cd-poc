@@ -2,4 +2,3 @@
 
 Shopify template for Canada
 test
-test
