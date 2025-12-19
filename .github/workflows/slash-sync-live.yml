@@ -121,7 +121,7 @@ jobs:
           # Các flag quan trọng:
           # --reapply-cherry-picks: đừng drop commit do phát hiện “trùng”
           # --empty=keep: nếu sau sync LIVE commit trở thành empty, vẫn giữ commit (giữ message, history)
-          git rebase --rebase-merges --reapply-cherry-picks --empty=keep \
+          git rebase --rebase-merges --reapply-cherry-picks \
             --onto live-snapshot ${{ steps.base.outputs.base }} ${{ steps.pr.outputs.headRef }}
 
           echo "After rebase, commits ahead of live-snapshot:"
