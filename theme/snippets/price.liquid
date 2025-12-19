@@ -1,110 +1,79 @@
-{% comment %}
-    Renders a list of product's price (regular, sale)
+{%- doc -%}
+  This snippet is used to render a product card.
+  It is used in the product block,featured product block, and the product card block.
 
-    Accepts:
-    - product: {Object} Product Liquid object (optional)
-    - use_variant: {Boolean} Renders selected or first variant price instead of overall product pricing (optional)
-    - show_badges: {Boolean} Renders 'Sale' and 'Sold Out' tags if the product matches the condition (optional)
-    - price_class: {String} Adds a price class to the price element (optional)
+  @param {product} product_resource - The product to render
+  @param {boolean} [show_unit_price] - Whether to show the unit price
+  @param {boolean} [show_sale_price_first] - Whether to show the sale price first
+{%- enddoc -%}
 
-    Usage:
-    {% render 'price', product: product %}
-{% endcomment %}
 {%- liquid
-  if use_variant
-    assign target = product.selected_or_first_available_variant
+  assign show_unit_price = show_unit_price | default: false
+  assign show_sale_price_first = show_sale_price_first | default: false
+  assign selected_variant = product_resource.selected_or_first_available_variant
+  assign price = selected_variant.price
+  assign compare_at_price = selected_variant.compare_at_price
+
+  assign show_compare_price = false
+  if compare_at_price > price
+    assign show_compare_price = true
+  endif
+
+  if product_resource == blank
+    assign price = 1999
+  endif
+
+  # Checks if product handle matches the closest product's handle (i.e. product page)
+  # and if the currency code is enabled for product pages
+  if product.handle == closest.product.handle and settings.currency_code_enabled_product_pages
+    assign price = price | money_with_currency
+    assign compare_at_price = compare_at_price | money_with_currency
+
+    # Checks if product handle does not match the closest product's handle (i.e. product card)
+    # and if the currency code is enabled for product cards
+  elsif product.handle != closest.product.handle and settings.currency_code_enabled_product_cards
+    assign price = price | money_with_currency
+    assign compare_at_price = compare_at_price | money_with_currency
+
   else
-    assign target = product
-  endif
-
-  assign compare_at_price = target.compare_at_price
-  assign price = target.price | default: 1999
-  assign available = target.available | default: false
-  assign money_price = price | money
-  if settings.currency_code_enabled
-    assign money_price = price | money_with_currency
-  endif
-
-  if target == product and product.price_varies
-    assign money_price = 'products.product.price.from_price_html' | t: price: money_price
+    assign price = price | money
+    assign compare_at_price = compare_at_price | money
   endif
 -%}
 
-<div class="price
-  {%- if price_class %} {{ price_class }}{% endif -%}
-  {%- if available == false %} price--sold-out {% endif -%}
-  {%- if compare_at_price > price %} price--on-sale {% endif -%}
-  {%- if product.price_varies == false and product.compare_at_price_varies %} price--no-compare{% endif -%}
- {%- if show_badges %} price--show-badge{% endif -%} ">
-  
-  <div>
-    {%- comment -%}
-      Explanation of description list:
-        - div.price__regular: Displayed when there are no variants on sale
-        - div.price__sale: Displayed when a variant is a sale
-    {%- endcomment -%}
-    <div class="price__regular">
-      <span class="visually-hidden visually-hidden--inline">{{ 'products.product.price.regular_price' | t }}</span>
-      <span class="price-item price-item--regular">
-        {{ money_price }}
-      </span>
-    </div>
-    <div class="price__sale">
-      <span class="visually-hidden visually-hidden--inline">{{ 'products.product.price.sale_price' | t }}</span>
-      <span class="price-item price-item--sale price-item--last">
-        {{ money_price }}
-      </span>
-      {%- unless product.price_varies == false and product.compare_at_price_varies %}
-        <span class="visually-hidden visually-hidden--inline">{{ 'products.product.price.regular_price' | t }}</span>
-        <span>
-          <s class="price-item price-item--regular">
-            {% if settings.currency_code_enabled %}
-              {{ compare_at_price | money_with_currency }}
-            {% else %}
-              {{ compare_at_price | money }}
-            {% endif %}
-          </s>
-        </span>
-      {%- endunless -%}
-    </div>
-    {% comment %}<small class="unit-price caption{% if product.selected_or_first_available_variant.unit_price_measurement == nil %} hidden{% endif %}">{% endcomment %}
-      {% comment %}<span class="visually-hidden">{{ 'products.product.price.unit_price' | t }}</span>{% endcomment %}
-      {% comment %}<span class="price-item price-item--last">{% endcomment %}
-        {% comment %}<span>{{- product.selected_or_first_available_variant.unit_price | money -}}</span>{% endcomment %}
-        {% comment %}<span aria-hidden="true">/</span>{% endcomment %}
-        {% comment %}<span class="visually-hidden">&nbsp;{{ 'accessibility.unit_price_separator' | t }}&nbsp;</span>{% endcomment %}
-        {% comment %}<span>{% endcomment %}
-          {% comment %}{%- if product.selected_or_first_available_variant.unit_price_measurement.reference_value != 1 -%}{{- product.selected_or_first_available_variant.unit_price_measurement.reference_value -}}{%- endif -%}{% endcomment %}
-          {% comment %}{{ product.selected_or_first_available_variant.unit_price_measurement.reference_unit }}{% endcomment %}
-        {% comment %}</span>{% endcomment %}
-      {% comment %}</span>{% endcomment %}
-    {% comment %}</small>{% endcomment %}
-  </div>
-  {%- if show_badges -%}
-    {% comment %}
-    <span class="badge price__badge-sale color-{{ settings.sale_badge_color_scheme }} text-white" aria-hidden="true">
-      {{ 'products.product.on_sale' | t }}
+<div ref="priceContainer">
+  {% if show_sale_price_first == false and show_compare_price %}
+    <span role="group">
+      <span class="visually-hidden">{{ 'content.price_regular' | t }}&nbsp;</span>
+      <span class="compare-at-price">{{- compare_at_price -}}</span>
     </span>
-     {% endcomment %}
-     {% if compare_at_price > price -%}
-      <div class="price-badge-wrapper">
-        <p class="font-semibold price-badge" style="color:#F03306">
-          {{
-            compare_at_price
-            | minus: price
-            | times: 100.0
-            | divided_by: compare_at_price
-            | money_without_currency
-            | times: 100
-            | remove: '.0'
-          -}}
-          %
-          off
-        </p>
-      </div>
-    {%- endif %}
-    <span class="badge price__badge-sold-out color-{{ settings.sold_out_badge_color_scheme }}" aria-hidden="true">
-      {{ 'products.product.sold_out' | t }}
+  {% endif %}
+
+  {% if show_compare_price %}
+    <span role="group">
+      <span class="visually-hidden">{{ 'content.price_sale' | t }}&nbsp;</span>
+      <span class="price">{{ price | default: '&nbsp;' }}</span>
     </span>
+  {% else %}
+    <span class="price">{{ price | default: '&nbsp;' }}</span>
+  {% endif %}
+
+  {% if show_sale_price_first == true and show_compare_price %}
+    <span role="group">
+      <span class="visually-hidden">{{ 'content.price_regular' | t }}&nbsp;</span>
+      <span class="compare-at-price">{{- compare_at_price -}}</span>
+    </span>
+  {% endif %}
+  {%- if selected_variant.unit_price and show_unit_price %}
+    {%- liquid
+      if product.handle == closest.product.handle and settings.currency_code_enabled_product_pages
+        assign unit_price = selected_variant.unit_price | money_with_currency
+      elsif product.handle != closest.product.handle and settings.currency_code_enabled_product_cards
+        assign unit_price = selected_variant.unit_price | money_with_currency
+      else
+        assign unit_price = selected_variant.unit_price | money
+      endif
+    -%}
+    {% render 'unit-price', price: unit_price, measurement: selected_variant.unit_price_measurement %}
   {%- endif -%}
 </div>

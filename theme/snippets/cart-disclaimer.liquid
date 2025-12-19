@@ -1,9 +1,0 @@
-
-
-{% assign cartDisclaimer = shop.metafields.globals.cart_disclaimer %}
-
-{% if cartDisclaimer %}
-    <div class="cart-disclaimer">
-        {% render 'rtf-viewer', content: cartDisclaimer %}
-    </div>
-{% endif %}
