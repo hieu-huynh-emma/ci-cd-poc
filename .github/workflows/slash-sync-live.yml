@@ -4,14 +4,14 @@ on:
   issue_comment:
     types: [created]
 
-# permissions:
-#   contents: write
-#   pull-requests: write
-#   issues: write
-#
-# concurrency:
-#   group: sync-live-here-${{ github.event.issue.number || github.run_id }}
-#   cancel-in-progress: true
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+concurrency:
+  group: sync-live-here-${{ github.event.issue.number || github.run_id }}
+  cancel-in-progress: true
 
 jobs:
   log:
