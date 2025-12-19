@@ -1,87 +1,113 @@
-{% liquid
-    assign settings = block.settings
-%}
 
-<button-block
-    style="
-        --bgcolor: {{ settings.bgcolor }};
-        --hover-bgcolor: {{ settings.hover-bgcolor | default: settings.bgcolor }};
-        --color: {{ settings.color }};
-        --hover-color: {{ settings.hover-color | default: settings.color }};
-        "
-    {% if settings.href != blank %}href="{{ settings.href }}"{% endif %}
-    {% if settings.variant %}:variant="{{ settings.variant }}"{% endif %}
->
-    {% render 'rtf-viewer', content: settings.content %}
-</button-block>
+{% render 'button', link: block.settings.link %}
 
 {% schema %}
 {
-  "name": "Button",
+  "name": "t:names.button",
   "tag": null,
   "settings": [
     {
-      "type": "richtext",
-      "id": "content",
-      "label": "Button Content",
-      "default": "<p>Button Content</p>"
+      "type": "text",
+      "id": "label",
+      "label": "t:settings.label",
+      "default": "t:text_defaults.button_label"
     },
     {
-      "id": "bgcolor",
-      "type": "color",
-      "label": "Background Color",
-      "default": "#ff8900"
+      "type": "url",
+      "id": "link",
+      "label": "t:settings.link"
     },
     {
-      "id": "hover-bgcolor",
-      "type": "color",
-      "label": "Background Color when hovered",
-      "default": "#ff8900"
+      "type": "checkbox",
+      "id": "open_in_new_tab",
+      "label": "t:settings.open_new_tab",
+      "default": false
     },
     {
-      "type": "color",
-      "id": "color",
-      "label": "Text Color",
-      "default": "#ffffff"
-    },
-    {
-      "id": "hover-color",
-      "type": "color",
-      "label": "Text Color when hovered"
-    },
-    {
-      "id": "variant",
       "type": "select",
-      "label": "Button Variant",
+      "id": "style_class",
+      "label": "t:settings.style",
       "options": [
         {
-          "value": "",
-          "label": "Base"
+          "value": "button",
+          "label": "t:options.primary"
         },
         {
-          "value": "secondary",
-          "label": "Secondary"
+          "value": "button-secondary",
+          "label": "t:options.secondary"
         },
         {
-          "value": "cta",
-          "label": "CTA"
+          "value": "link",
+          "label": "t:options.link"
         }
       ],
-      "default": ""
+      "default": "button"
     },
     {
-      "id": "href",
-      "type": "url",
-      "label": "Href",
-      "info": "Link"
+      "type": "header",
+      "content": "t:content.size"
+    },
+    {
+      "type": "select",
+      "id": "width",
+      "label": "t:settings.width_desktop",
+      "options": [
+        {
+          "value": "fit-content",
+          "label": "t:options.fit_content"
+        },
+        {
+          "value": "custom",
+          "label": "t:options.custom"
+        }
+      ],
+      "default": "fit-content"
+    },
+    {
+      "type": "range",
+      "id": "custom_width",
+      "label": "t:settings.custom_width",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "default": 100,
+      "visible_if": "{{ block.settings.width == \"custom\" }}"
+    },
+    {
+      "type": "select",
+      "id": "width_mobile",
+      "label": "t:settings.width_mobile",
+      "options": [
+        {
+          "value": "fit-content",
+          "label": "t:options.fit_content"
+        },
+        {
+          "value": "custom",
+          "label": "t:options.custom"
+        }
+      ],
+      "default": "fit-content"
+    },
+    {
+      "type": "range",
+      "id": "custom_width_mobile",
+      "label": "t:settings.custom_width",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "default": 100,
+      "visible_if": "{{ block.settings.width_mobile == \"custom\" }}"
     }
   ],
   "presets": [
     {
-      "name": "Button",
+      "name": "t:names.button",
+      "category": "t:categories.basic",
       "settings": {
-        "content": "<p>Button Content</p>",
-        "href": ""
+        "link": "shopify://collections/all"
       }
     }
   ]
