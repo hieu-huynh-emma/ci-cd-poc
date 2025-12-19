@@ -4,14 +4,14 @@ on:
   issue_comment:
     types: [created]
 
-# permissions:
-#   contents: write
-#   pull-requests: write
-#   issues: write
-#
-# concurrency:
-#   group: sync-live-here-${{ github.event.issue.number || github.run_id }}
-#   cancel-in-progress: true
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+concurrency:
+  group: sync-live-here-${{ github.event.issue.number || github.run_id }}
+  cancel-in-progress: true
 
 jobs:
   log:
@@ -47,6 +47,7 @@ jobs:
             core.setOutput('headRef', pr.data.head.ref);
             core.setOutput('headRepo', pr.data.head.repo.full_name);
             core.setOutput('baseRef', pr.data.base.ref);
+            core.setOutput('baseRepo', pr.data.base.repo.full_name);
 
       - name: Checkout PR head (write-enabled)
         uses: actions/checkout@v4
@@ -70,24 +71,43 @@ jobs:
       - name: Compute merge-base with base branch
         id: base
         run: |
+          set -e
+          # add upstream = base repo nếu chưa có
+          if ! git remote | grep -q '^upstream$'; then
+            git remote add upstream https://github.com/${{ steps.pr.outputs.baseRepo }}.git
+          fi
+          # fetch đúng branch từ upstream vào refs/remotes/upstream/<baseRef>
+          git fetch --no-tags --prune upstream ${{ steps.pr.outputs.baseRef }}:refs/remotes/upstream/${{ steps.pr.outputs.baseRef }}
+          # tính merge-base giữa HEAD của PR và upstream/<baseRef>
+          echo "base=$(git merge-base HEAD refs/remotes/upstream/${{ steps.pr.outputs.baseRef }})" >> $GITHUB_OUTPUT
           git fetch --no-tags --prune origin ${{ steps.pr.outputs.baseRef }}:origin/${{ steps.pr.outputs.baseRef }}
           echo "base=$(git merge-base HEAD origin/${{ steps.pr.outputs.baseRef }})" >> $GITHUB_OUTPUT
 
       - name: Create LIVE snapshot from base & pull LIVE
         id: snap
         env:
-          SHOPIFY_FLAG_STORE: ${{ secrets.SHOPIFY_FLAG_STORE }}
-          SHOPIFY_CLI_THEME_TOKEN: ${{ secrets.SHOPIFY_THEME_TOKEN }}
+          SHOPIFY_CLI_THEME_TOKEN: ${{ secrets.SHOPIFY_CLI_THEME_TOKEN }}
+          SHOPIFY_FLAG_STORE: ${{ vars.SHOPIFY_FLAG_STORE }}
+          SHOPIFY_FLAG_PATH: ${{ vars.SHOPIFY_FLAG_PATH}}
         run: |
           set -e
-          git checkout -B live-snapshot origin/${{ steps.pr.outputs.baseRef }}
-          git rm -r --cached . 2>/dev/null || true
-          git clean -fdx
-          shopify theme pull --live --force
+          # checkout snapshot từ upstream/<baseRef>
+          git checkout -B live-snapshot refs/remotes/upstream/${{ steps.pr.outputs.baseRef }}
+
+          # dọn CHỈ thư mục theme/
+          mkdir -p theme
+          rm -rf theme/* theme/.[!.]* theme/..?* || true
+
+          # kéo LIVE vào ./theme
+          shopify theme pull --store $SHOPIFY_FLAG_STORE --path $SHOPIFY_FLAG_PATH --password $SHOPIFY_CLI_THEME_TOKEN --force
+
+          # nếu không có thay đổi thì no-op
           if [ -z "$(git status --porcelain)" ]; then
             echo "no_changes=true" >> $GITHUB_OUTPUT
             exit 0
           fi
+
+          # commit chỉ thay đổi trong theme/
           git add -A
           git commit -m "chore(live): snapshot from LIVE $(date -u +%Y-%m-%dT%H:%M:%SZ)"
           echo "no_changes=false" >> $GITHUB_OUTPUT
