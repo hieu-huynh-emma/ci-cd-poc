@@ -1,35 +1,96 @@
-name: Pull Request UI Reviews 
+name: PR Lint & Preview (Shopify Theme)
+
 on:
   pull_request:
-    types: [ opened, synchronize, reopened ]
-    branches: [ main ]
+    types: [opened, synchronize, reopened, ready_for_review]
+    branches: [main]
+
+permissions:
+  contents: read
+  pull-requests: read
+  issues: write
+
+concurrency:
+  group: pr-preview-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
 jobs:
-  create-preview-theme:
-    name: "Create Preview Theme"
+  preview:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-    environment: prod
+
     steps:
-      - name: Checkout
+      - name: Checkout PR code
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
+      - name: Setup Ruby (Theme Check)
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.2"
+          bundler-cache: false
+
+      - name: Install Theme Check
+        run: gem install theme-check
+
+      - name: Run Theme Check (lint)
+        run: theme-check
+
+      - name: Setup Node (Shopify CLI)
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: "20"
 
       - name: Install Shopify CLI
-        run: npm add -g @shopify/cli@latest
+        run: npm i -g @shopify/cli @shopify/theme
 
-      - name: Create Preview Theme
+      - name: Configure Shopify auth
         env:
-          SHOPIFY_CLI_THEME_TOKEN: ${{ secrets.SHOPIFY_CLI_THEME_TOKEN }}
-          SHOPIFY_FLAG_STORE: ${{ vars.SHOPIFY_FLAG_STORE }}
-          PR_ID: ${{github.event.pull_request.number}}
+          SHOPIFY_FLAG_STORE: ${{ secrets.SHOPIFY_FLAG_STORE }}
+          SHOPIFY_CLI_THEME_TOKEN: ${{ secrets.SHOPIFY_THEME_TOKEN }}
+        run: echo "Store $SHOPIFY_FLAG_STORE"
+
+      - name: Push preview theme for this PR
+        env:
+          SHOPIFY_FLAG_STORE: ${{ secrets.SHOPIFY_FLAG_STORE }}
+          SHOPIFY_CLI_THEME_TOKEN: ${{ secrets.SHOPIFY_THEME_TOKEN }}
         run: |
-          cd theme 
-          shopify theme push -u -j \
-          --theme "Pull Request #$PR_ID UI Previews" \
-          --store $SHOPIFY_FLAG_STORE \
-          --password $SHOPIFY_CLI_THEME_TOKEN \
+          THEME_NAME="CI-PR-${{ github.event.pull_request.number }}"
+          shopify theme push "$THEME_NAME" --unpublished --nodelete --json
+          echo "Pushed preview theme: $THEME_NAME"
+
+      - name: Fetch theme ID & preview URL
+        id: preview
+        env:
+          SHOPIFY_FLAG_STORE: ${{ secrets.SHOPIFY_FLAG_STORE }}
+          SHOPIFY_CLI_THEME_TOKEN: ${{ secrets.SHOPIFY_THEME_TOKEN }}
+        run: |
+          set -e
+          THEME_NAME="CI-PR-${{ github.event.pull_request.number }}"
+          JSON="$(shopify theme list --json)"
+          ID="$(echo "$JSON" | jq -r --arg name "$THEME_NAME" '.[] | select(.name==$name) | .id' | head -n1)"
+          if [ -z "$ID" ] || [ "$ID" = "null" ]; then
+            echo "Failed to find theme id for $THEME_NAME"
+            exit 1
+          fi
+          URL="https://${SHOPIFY_FLAG_STORE}/?preview_theme_id=${ID}"
+          echo "id=$ID" >> $GITHUB_OUTPUT
+          echo "url=$URL" >> $GITHUB_OUTPUT
+          echo "Preview URL: $URL"
+
+      - name: Find existing preview comment
+        id: find_comment
+        uses: peter-evans/find-comment@v3
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          comment-author: "github-actions[bot]"
+          body-includes: "🧪 Preview theme"
+
+      - name: Create or update preview comment
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          comment-id: ${{ steps.find_comment.outputs.comment-id }}
+          issue-number: ${{ github.event.pull_request.number }}
+          body: |
+            🧪 **Preview theme** for PR #${{ github.event.pull_request.number }}
+            • Theme ID: `${{ steps.preview.outputs.id }}`
+            • Link: ${{ steps.preview.outputs.url }}
+          edit-mode: replace
