@@ -38,9 +38,9 @@ jobs:
         with:
           script: |
             const pr = await github.rest.pulls.get({ ...context.repo, pull_number: context.payload.issue.number });
-            core.setOutput('headRef', pr.data.head.ref);
+            core.setOutput('headRef',  pr.data.head.ref);
             core.setOutput('headRepo', pr.data.head.repo.full_name);
-            core.setOutput('baseRef', pr.data.base.ref);
+            core.setOutput('baseRef',  pr.data.base.ref);
             core.setOutput('baseRepo', pr.data.base.repo.full_name);
 
       - name: Checkout PR head (write-enabled)
@@ -49,7 +49,7 @@ jobs:
           repository: ${{ steps.pr.outputs.headRepo }}
           ref: ${{ steps.pr.outputs.headRef }}
           token: ${{ secrets.GITHUB_TOKEN }}
-          fetch-depth: 0 # 👈 FULL HISTORY để merge-base chính xác
+          fetch-depth: 0
 
       - name: Setup Node & Shopify CLI
         uses: actions/setup-node@v4
@@ -57,17 +57,18 @@ jobs:
           node-version: "20"
       - run: npm i -g @shopify/cli @shopify/theme
 
-      - name: Configure Shopify auth
+      - name: Configure Shopify auth (echo only)
         env:
-          SHOPIFY_FLAG_STORE: emma-dev.myshopify.com
-          SHOPIFY_CLI_THEME_TOKEN: ${{ secrets.SHOPIFY_CLI_THEME_TOKEN }}
-        run: echo "Store $SHOPIFY_FLAG_STORE"
+          SHOPIFY_FLAG_STORE: ${{ vars.SHOPIFY_FLAG_STORE }}
+          SHOPIFY_FLAG_PATH: ${{ vars.SHOPIFY_FLAG_PATH }}
+        run: |
+          echo "Store: ${SHOPIFY_FLAG_STORE}"
+          echo "Path : ${SHOPIFY_FLAG_PATH:-theme}"
 
       - name: Compute merge-base with base branch
         id: base
         run: |
           set -e
-          # add upstream = base repo nếu chưa có
           if ! git remote | grep -q '^upstream$'; then
             git remote add upstream https://github.com/${{ steps.pr.outputs.baseRepo || github.repository }}.git
           fi
@@ -78,74 +79,88 @@ jobs:
           echo "Commits ahead of base: $(git rev-list --count $BASE..HEAD)"
 
       - name: Configure Git author (commenter)
-        uses: actions/github-script@v7
-        with:
-          script: |
-            const name = context.payload.comment.user.login;
-            const email = `${name}@users.noreply.github.com`;
-            core.info(`Setting git author to ${name} <${email}>`);
-            await exec.exec('git', ['config', '--local', 'user.name', name]);
-            await exec.exec('git', ['config', '--local', 'user.email', email]);
+        run: |
+          git config --local user.name  "${{ github.event.comment.user.login }}"
+          git config --local user.email "${{ github.event.comment.user.login }}@users.noreply.github.com"
+
       - name: Create LIVE snapshot from base & pull LIVE
         id: snap
         env:
-          SHOPIFY_CLI_THEME_TOKEN: ${{ secrets.SHOPIFY_CLI_THEME_TOKEN }}
+          SHOPIFY_FLAG_STORE: emma-greg-dev-store.myshopify.com
+          SHOPIFY_FLAG_PATH: theme
+          SHOPIFY_CLI_THEME_TOKEN: shptka_ac06aad8ca02547f088c4b35ebaed0ab
         run: |
           set -e
-          # checkout snapshot từ upstream/<baseRef>
+          # checkout snapshot from upstream/<baseRef>
           git checkout -B live-snapshot refs/remotes/upstream/${{ steps.pr.outputs.baseRef }}
 
-          # dọn CHỈ thư mục theme/
-          mkdir -p theme
-          rm -rf theme/* theme/.[!.]* theme/..?* || true
+          # clean ONLY the theme directory
+          THEME_DIR="${SHOPIFY_FLAG_PATH:-theme}"
+          mkdir -p "$THEME_DIR"
+          rm -rf "$THEME_DIR"/* "$THEME_DIR"/.[!.]* "$THEME_DIR"/..?* || true
 
-          # kéo LIVE vào ./theme
-          shopify theme pull --store "emma-greg-dev-store.myshopify.com" --path "theme" --password "shptka_ac06aad8ca02547f088c4b35ebaed0ab" --force --live
+          # pull LIVE into THEME_DIR
+          shopify theme pull \
+            --store "$SHOPIFY_FLAG_STORE" \
+            --password "$SHOPIFY_CLI_THEME_TOKEN" \
+            --path "$THEME_DIR" \
+            --force \
+            --live
 
-          # nếu không có thay đổi thì no-op
+          # no-op if nothing changed
           if [ -z "$(git status --porcelain)" ]; then
             echo "no_changes=true" >> $GITHUB_OUTPUT
             exit 0
           fi
 
-          # commit chỉ thay đổi trong theme/
           git add -A
           git commit -m "chore(live): snapshot from LIVE $(date -u +%Y-%m-%dT%H:%M:%SZ)"
           echo "no_changes=false" >> $GITHUB_OUTPUT
 
+      - name: Switch back to feature branch for scan
+        run: git checkout ${{ steps.pr.outputs.headRef }}
+
       - name: Find last LIVE snapshot commit on this branch (if any)
         id: last_snap
         run: |
-          # Tìm commit gần nhất có message "chore(live): snapshot from LIVE ..."
-          LAST=$(git log --grep='^chore(live): snapshot from LIVE' --format=%H -n1 || true)
+          BR="${{ steps.pr.outputs.headRef }}"
+          LAST=$(git log "$BR" --grep='^chore(live): snapshot from LIVE' --format=%H -n1 || true)
           echo "last=$LAST" >> $GITHUB_OUTPUT
           if [ -n "$LAST" ]; then
-            echo "Found last LIVE snapshot: $LAST"
+            echo "Found last LIVE snapshot on $BR: $LAST"
             echo "Commits since last snapshot:"
-            git log --oneline $LAST..HEAD || true
+            git log --oneline "$LAST".."$BR" || true
           else
-            echo "No previous snapshot found; will use merge-base."
+            echo "No previous snapshot on $BR; will use merge-base."
             echo "Commits since merge-base:"
-            git log --oneline ${{ steps.base.outputs.base }}..HEAD || true
+            git log --oneline ${{ steps.base.outputs.base }}.."$BR" || true
           fi
 
-      - name: Rebase PR commits onto LIVE snapshot (keep commit count)
+      - name: Rebase PR commits onto LIVE snapshot (drop old snapshots)
         if: steps.snap.outputs.no_changes == 'false'
         run: |
           set -e
-          git checkout ${{ steps.pr.outputs.headRef }}
-
-          # Nếu đã từng snapshot: chỉ re-apply các commit SAU snapshot gần nhất
+          BR="${{ steps.pr.outputs.headRef }}"
           START="${{ steps.last_snap.outputs.last }}"
           if [ -z "$START" ] || [ "$START" = "null" ]; then
             START="${{ steps.base.outputs.base }}"
           fi
 
-          # Giữ merge graph, re-apply cherry-picks, và giữ commit rỗng nếu cần
-          git rebase --rebase-merges --reapply-cherry-picks --empty=keep \
-            --onto live-snapshot "$START" ${{ steps.pr.outputs.headRef }}
+          AHEAD=$(git rev-list --count "$START".."$BR")
+          echo "Commits to replay: $AHEAD"
 
-          echo "After rebase:"
+          if [ "$AHEAD" -eq 0 ]; then
+            echo "No commits after last snapshot. Fast-updating branch to live-snapshot."
+            git checkout "$BR"
+            git reset --hard live-snapshot
+          else
+            export GIT_SEQUENCE_EDITOR='bash -c "sed -E -i '\''/^[a-z]+ [0-9a-f]+ .*chore\\(live\\): snapshot from LIVE/d'\'' \"$1\""'
+            git checkout "$BR"
+            git rebase --rebase-merges --reapply-cherry-picks --empty=keep \
+              --onto live-snapshot "$START" "$BR"
+          fi
+
+          echo "After rewrite:"
           git log --oneline -n 20
 
       - name: Push back (force-with-lease)
@@ -169,5 +184,5 @@ jobs:
             const ts = new Date().toISOString();
             const body = noChanges
               ? `ℹ️ \`/sync-live-here\` at **${ts}** (UTC): LIVE has no changes relative to base. Rebase skipped.`
-              : `✅ \`/sync-live-here\` at **${ts}** (UTC): Rebased this branch on top of the latest **LIVE snapshot**.`;
+              : `✅ \`/sync-live-here\` at **${ts}** (UTC): Rebased this branch on top of the latest **LIVE snapshot** (old snapshots removed).`;
             await github.rest.issues.createComment({ ...context.repo, issue_number: context.payload.issue.number, body })
